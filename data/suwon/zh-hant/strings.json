@@ -1,0 +1,1974 @@
+{
+  "KIND_LABELS.attraction": {
+    "ko": "관광지",
+    "zh_hant": "觀光景點"
+  },
+  "KIND_LABELS.stay": {
+    "ko": "숙소",
+    "zh_hant": "住宿"
+  },
+  "KIND_LABELS.food": {
+    "ko": "음식점",
+    "zh_hant": "餐廳"
+  },
+  "FACT_LABELS.address": {
+    "ko": "주소",
+    "zh_hant": "地址"
+  },
+  "FACT_LABELS.usetime": {
+    "ko": "이용시간",
+    "zh_hant": "開放時間"
+  },
+  "FACT_LABELS.usetime_restdate": {
+    "ko": "영업시간·정기휴일",
+    "zh_hant": "營業時間、固定公休日"
+  },
+  "FACT_LABELS.restdate": {
+    "ko": "쉬는 날",
+    "zh_hant": "公休日"
+  },
+  "FACT_LABELS.usefee": {
+    "ko": "이용요금",
+    "zh_hant": "使用費用"
+  },
+  "FACT_LABELS.parking": {
+    "ko": "주차",
+    "zh_hant": "停車"
+  },
+  "FACT_LABELS.parking_seats": {
+    "ko": "주차·좌석",
+    "zh_hant": "停車、座位"
+  },
+  "FACT_LABELS.parkingfee": {
+    "ko": "주차요금",
+    "zh_hant": "停車費"
+  },
+  "FACT_LABELS.spendtime": {
+    "ko": "관람 소요시간",
+    "zh_hant": "參觀所需時間"
+  },
+  "FACT_LABELS.checkin": {
+    "ko": "체크인",
+    "zh_hant": "入住"
+  },
+  "FACT_LABELS.checkout": {
+    "ko": "체크아웃",
+    "zh_hant": "退房"
+  },
+  "FACT_LABELS.menu": {
+    "ko": "대표 메뉴",
+    "zh_hant": "代表菜色"
+  },
+  "FACT_LABELS.infocenter": {
+    "ko": "문의",
+    "zh_hant": "洽詢"
+  },
+  "FACT_LABELS.homepage": {
+    "ko": "홈페이지",
+    "zh_hant": "網站"
+  },
+  "FACT_LABELS.babycarriage": {
+    "ko": "유모차 대여",
+    "zh_hant": "嬰兒車租借"
+  },
+  "FACT_LABELS.pet": {
+    "ko": "반려동물 동반",
+    "zh_hant": "攜帶寵物"
+  },
+  "FACT_LABELS.expagerange": {
+    "ko": "체험 가능 연령",
+    "zh_hant": "體驗適用年齡"
+  },
+  "FACT_LABELS.useseason": {
+    "ko": "이용 시기",
+    "zh_hant": "使用時期"
+  },
+  "FACT_LABELS.accessible_parking": {
+    "ko": "장애인 주차장",
+    "zh_hant": "身障停車位"
+  },
+  "FACT_LABELS.wheelchair": {
+    "ko": "휠체어 대여",
+    "zh_hant": "輪椅租借"
+  },
+  "FACT_LABELS.accessible_toilet": {
+    "ko": "장애인 화장실",
+    "zh_hant": "無障礙廁所"
+  },
+  "FACT_LABELS.accessible_route": {
+    "ko": "주 출입 접근로",
+    "zh_hant": "主要出入口通道"
+  },
+  "FACT_LABELS.openperiod": {
+    "ko": "운영 기간",
+    "zh_hant": "營運期間"
+  },
+  "FACT_LABELS.discount": {
+    "ko": "할인",
+    "zh_hant": "優惠"
+  },
+  "FACT_LABELS.roomcount": {
+    "ko": "객실 수",
+    "zh_hant": "客房數"
+  },
+  "FACT_LABELS.roomtype": {
+    "ko": "객실 유형",
+    "zh_hant": "客房類型"
+  },
+  "FACT_LABELS.cooking": {
+    "ko": "객실 내 취사",
+    "zh_hant": "客房內炊煮"
+  },
+  "FACT_LABELS.subfacility": {
+    "ko": "부대시설",
+    "zh_hant": "附屬設施"
+  },
+  "FACT_LABELS.treatmenu": {
+    "ko": "취급 메뉴",
+    "zh_hant": "供應菜色"
+  },
+  "FACT_LABELS.seat": {
+    "ko": "좌석",
+    "zh_hant": "座位"
+  },
+  "FACT_LABELS.packing": {
+    "ko": "포장",
+    "zh_hant": "外帶"
+  },
+  "FACT_LABELS.expguide": {
+    "ko": "체험 안내",
+    "zh_hant": "體驗介紹"
+  },
+  "FACT_LABELS.filming": {
+    "ko": "촬영지 정보",
+    "zh_hant": "拍攝地資訊"
+  },
+  "FACT_LABELS.reservation": {
+    "ko": "예약 안내",
+    "zh_hant": "預約須知"
+  },
+  "FACT_LABELS.reservationurl": {
+    "ko": "예약 페이지",
+    "zh_hant": "預約頁面"
+  },
+  "FACT_LABELS.creditcard": {
+    "ko": "신용카드 결제",
+    "zh_hant": "信用卡付款"
+  },
+  "FACT_LABELS.kidsfacility": {
+    "ko": "어린이 놀이방",
+    "zh_hant": "兒童遊戲室"
+  },
+  "FACT_LABELS.fairday": {
+    "ko": "장날",
+    "zh_hant": "市集日"
+  },
+  "FACT_LABELS.saleitem": {
+    "ko": "판매 품목",
+    "zh_hant": "販售品項"
+  },
+  "FACT_LABELS.shopguide": {
+    "ko": "매장 안내",
+    "zh_hant": "店鋪資訊"
+  },
+  "INDEX_GROUP_LABELS.hours": {
+    "ko": "이용시간",
+    "zh_hant": "開放時間"
+  },
+  "INDEX_GROUP_LABELS.restdate": {
+    "ko": "쉬는 날",
+    "zh_hant": "公休日"
+  },
+  "INDEX_GROUP_LABELS.fee": {
+    "ko": "요금",
+    "zh_hant": "費用"
+  },
+  "INDEX_GROUP_LABELS.parking": {
+    "ko": "주차",
+    "zh_hant": "停車"
+  },
+  "INDEX_GROUP_LABELS.phone": {
+    "ko": "전화",
+    "zh_hant": "電話"
+  },
+  "INDEX_GROUP_LABELS.homepage": {
+    "ko": "홈페이지",
+    "zh_hant": "網站"
+  },
+  "INDEX_GROUP_LABELS.checkin": {
+    "ko": "체크인",
+    "zh_hant": "入住"
+  },
+  "INDEX_GROUP_LABELS.menu": {
+    "ko": "대표 메뉴",
+    "zh_hant": "代表菜色"
+  },
+  "TITLE_LABELS.usetime": {
+    "ko": "이용시간",
+    "zh_hant": "開放時間"
+  },
+  "TITLE_LABELS.usetime_restdate": {
+    "ko": "영업시간",
+    "zh_hant": "營業時間"
+  },
+  "TITLE_LABELS.restdate": {
+    "ko": "쉬는 날",
+    "zh_hant": "公休日"
+  },
+  "TITLE_LABELS.usefee": {
+    "ko": "요금",
+    "zh_hant": "費用"
+  },
+  "TITLE_LABELS.parking": {
+    "ko": "주차",
+    "zh_hant": "停車"
+  },
+  "TITLE_LABELS.parking_seats": {
+    "ko": "주차",
+    "zh_hant": "停車"
+  },
+  "TITLE_LABELS.parkingfee": {
+    "ko": "주차",
+    "zh_hant": "停車"
+  },
+  "TITLE_LABELS.checkin": {
+    "ko": "체크인",
+    "zh_hant": "入住"
+  },
+  "TITLE_LABELS.menu": {
+    "ko": "메뉴",
+    "zh_hant": "菜單"
+  },
+  "LISTS.attraction.title": {
+    "ko": "관광지",
+    "zh_hant": "觀光景點"
+  },
+  "LISTS.attraction.h1": {
+    "ko": "가볼만한 곳·관광지",
+    "zh_hant": "旅遊去處、觀光景點"
+  },
+  "LISTS.attraction.seo": {
+    "ko": "{region} 가볼만한 곳{n} — 관광지 이용시간·쉬는 날·요금·주차·길찾기",
+    "zh_hant": "{region}景點{n} — 開放時間、休息日、門票、停車與路線"
+  },
+  "LISTS.attraction.lead": {
+    "ko": "어떤 곳인지, 지금 가도 되는지 확인하고 길찾기로 이어 가세요.",
+    "zh_hant": "先確認是什麼樣的地方、現在能否前往，再接著查詢路線。"
+  },
+  "LISTS.stay.title": {
+    "ko": "숙소",
+    "zh_hant": "住宿"
+  },
+  "LISTS.stay.h1": {
+    "ko": "숙소",
+    "zh_hant": "住宿"
+  },
+  "LISTS.stay.seo": {
+    "ko": "{region} 숙소{n} — 호텔·모텔·게스트하우스의 체크인·주차·문의",
+    "zh_hant": "{region}住宿{n} — 飯店、汽車旅館與民宿的入住時間、停車與聯絡方式"
+  },
+  "LISTS.stay.lead": {
+    "ko": "숙소마다 체크인·체크아웃·주차·문의처를 정리했습니다.",
+    "zh_hant": "每處住宿都整理了入住、退房、停車與洽詢方式。"
+  },
+  "LISTS.food.title": {
+    "ko": "음식점",
+    "zh_hant": "餐廳"
+  },
+  "LISTS.food.h1": {
+    "ko": "맛집·음식점",
+    "zh_hant": "美食、餐廳"
+  },
+  "LISTS.food.seo": {
+    "ko": "{region} 맛집·음식점{n} — 대표 메뉴·영업시간·쉬는 날·주차",
+    "zh_hant": "{region}餐廳{n} — 招牌菜、營業時間、休息日與停車"
+  },
+  "LISTS.food.lead": {
+    "ko": "음식점마다 대표 메뉴와 영업시간·정기휴일을 정리했습니다.",
+    "zh_hant": "每家餐廳都整理了代表菜色與營業時間、固定公休日。"
+  },
+  "ATTRACTION_GROUPS.0": {
+    "ko": "수원화성·성곽·행궁",
+    "zh_hant": "水原華城·城郭·行宮"
+  },
+  "ATTRACTION_GROUPS.1": {
+    "ko": "박물관·미술관·전시",
+    "zh_hant": "博物館·美術館·展覽"
+  },
+  "ATTRACTION_GROUPS.2": {
+    "ko": "호수·수목원·공원·산",
+    "zh_hant": "湖泊·樹木園·公園·山林"
+  },
+  "ATTRACTION_GROUPS.3": {
+    "ko": "전통시장·공방·체험·레포츠",
+    "zh_hant": "傳統市場·工房·體驗·休閒運動"
+  },
+  "ALT_LABELS.period": {
+    "ko": "기간",
+    "zh_hant": "期間"
+  },
+  "ALT_LABELS.place_name": {
+    "ko": "장소",
+    "zh_hant": "地點"
+  },
+  "ALT_LABELS.address": {
+    "ko": "주소",
+    "zh_hant": "地址"
+  },
+  "ALT_LABELS.fee": {
+    "ko": "요금",
+    "zh_hant": "費用"
+  },
+  "ALT_LABELS.playtime": {
+    "ko": "시간",
+    "zh_hant": "時間"
+  },
+  "ALT_LABELS.tel": {
+    "ko": "문의",
+    "zh_hant": "洽詢"
+  },
+  "NAV.0": {
+    "ko": "관광지",
+    "zh_hant": "觀光景點"
+  },
+  "NAV.1": {
+    "ko": "숙소",
+    "zh_hant": "住宿"
+  },
+  "NAV.2": {
+    "ko": "음식점",
+    "zh_hant": "餐廳"
+  },
+  "NAV.3": {
+    "ko": "영상",
+    "zh_hant": "影片"
+  },
+  "NAV.4": {
+    "ko": "코스",
+    "zh_hant": "路線"
+  },
+  "NAV.5": {
+    "ko": "가이드",
+    "zh_hant": "指南"
+  },
+  "NAV.6": {
+    "ko": "행사",
+    "zh_hant": "活動"
+  },
+  "NAV.7": {
+    "ko": "지도",
+    "zh_hant": "地圖"
+  },
+  "NAV.8": {
+    "ko": "해외에서 본 {region}",
+    "zh_hant": "海外眼中的{region}"
+  },
+  "REGIONS.hwaseong-haenggung": {
+    "ko": "수원화성·화성행궁·행리단길",
+    "zh_hant": "水原華城·華城行宮·行理團路"
+  },
+  "REGIONS.paldalmun-market": {
+    "ko": "팔달문·전통시장·통닭거리",
+    "zh_hant": "Paldalmun·Jeontongsijang· 炸整雞 Geori"
+  },
+  "REGIONS.gwanggyo-yeongtong": {
+    "ko": "광교호수공원·박물관·영통",
+    "zh_hant": "光教湖水公園·會展中心·靈通"
+  },
+  "REGIONS.manseok-jangan": {
+    "ko": "만석공원·광교산·장안",
+    "zh_hant": "萬石公園·日月樹木園·長安"
+  },
+  "REGIONS.irwol-gwonseon": {
+    "ko": "일월수목원·서호공원·권선",
+    "zh_hant": "Irwolsumogwon·Seohogongwon·Gwonseon"
+  },
+  "REGIONS.none": {
+    "ko": "권역 미정",
+    "zh_hant": "未分配片區"
+  },
+  "LIST_HUB_TINY.attraction": {
+    "ko": "수원화성·행궁·성곽 가이드",
+    "zh_hant": "水原華城·行宮·城郭指南"
+  },
+  "LIST_HUB_TINY.food": {
+    "ko": "월요일 영업·맛집 가이드",
+    "zh_hant": "週一營業美食指南"
+  },
+  "LIST_HUB_TINY.stay": {
+    "ko": "호텔·한옥·숙소 가이드",
+    "zh_hant": "飯店·韓屋·住宿指南"
+  },
+  "STAY_TYPE.숙박": {
+    "ko": "숙박업소",
+    "zh_hant": "住宿設施"
+  },
+  "STAY_TYPE.기타": {
+    "ko": "그 밖의 숙소",
+    "zh_hant": "其他住宿"
+  },
+  "STAY_TYPE.": {
+    "ko": "그 밖의 숙소",
+    "zh_hant": "其他住宿"
+  },
+  "ATTR_TYPE.쇼핑": {
+    "ko": "시장·쇼핑",
+    "zh_hant": "市場、購物"
+  },
+  "ATTR_TYPE.레포츠": {
+    "ko": "레포츠",
+    "zh_hant": "休閒運動"
+  },
+  "ATTR_TYPE.문화시설": {
+    "ko": "문화시설",
+    "zh_hant": "文化設施"
+  },
+  "STATUS_PREFIX.usefee": {
+    "ko": "요금",
+    "zh_hant": "費用"
+  },
+  "STATUS_PREFIX.parking_seats": {
+    "ko": "주차·좌석",
+    "zh_hant": "停車、座位"
+  },
+  "STATUS_PREFIX.checkin": {
+    "ko": "체크인",
+    "zh_hant": "入住"
+  },
+  "STATUS_PREFIX.checkout": {
+    "ko": "체크아웃",
+    "zh_hant": "退房"
+  },
+  "STATUS_PREFIX.roomcount": {
+    "ko": "객실",
+    "zh_hant": "客房"
+  },
+  "STATUS_PREFIX.menu": {
+    "ko": "대표 메뉴",
+    "zh_hant": "代表菜色"
+  },
+  "CONTEST_LABEL.usetime": {
+    "ko": "이용시간",
+    "zh_hant": "開放時間"
+  },
+  "CONTEST_LABEL.restdate": {
+    "ko": "쉬는 날",
+    "zh_hant": "公休日"
+  },
+  "CONTEST_LABEL.usefee": {
+    "ko": "요금",
+    "zh_hant": "費用"
+  },
+  "CONTEST_LABEL.parking": {
+    "ko": "주차",
+    "zh_hant": "停車"
+  },
+  "CONTEST_LABEL.usetime_restdate": {
+    "ko": "영업시간",
+    "zh_hant": "營業時間"
+  },
+  "CONTEST_LABEL.checkin": {
+    "ko": "체크인",
+    "zh_hant": "入住"
+  },
+  "CONTEST_LABEL.checkout": {
+    "ko": "체크아웃",
+    "zh_hant": "退房"
+  },
+  "CONTEST_LABEL.menu": {
+    "ko": "대표 메뉴",
+    "zh_hant": "代表菜色"
+  },
+  "CONTEST_LABEL.parking_seats": {
+    "ko": "주차·좌석",
+    "zh_hant": "停車、座位"
+  },
+  "CONTEST_LABEL.roomcount": {
+    "ko": "객실",
+    "zh_hant": "客房"
+  },
+  "STOP_KIND_LABELS.meal": {
+    "ko": "식사",
+    "zh_hant": "用餐"
+  },
+  "STOP_KIND_LABELS.lodging": {
+    "ko": "숙박",
+    "zh_hant": "住宿"
+  },
+  "STOP_KIND_LABELS.activity": {
+    "ko": "일정",
+    "zh_hant": "行程"
+  },
+  "STOP_KIND_LABELS.day": {
+    "ko": "일차",
+    "zh_hant": "日"
+  },
+  "STAY_ASK.0": {
+    "ko": "독채 여부",
+    "zh_hant": "是否為獨棟"
+  },
+  "STAY_ASK.1": {
+    "ko": "반려동물 동반",
+    "zh_hant": "攜帶寵物"
+  },
+  "LIST_CFG.attraction.title": {
+    "ko": "관광지",
+    "zh_hant": "觀光景點"
+  },
+  "LIST_CFG.attraction.cols.usetime": {
+    "ko": "이용시간",
+    "zh_hant": "開放時間"
+  },
+  "LIST_CFG.attraction.cols.restdate": {
+    "ko": "쉬는 날",
+    "zh_hant": "公休日"
+  },
+  "LIST_CFG.attraction.cols.usefee": {
+    "ko": "요금",
+    "zh_hant": "費用"
+  },
+  "LIST_CFG.attraction.cols.parking": {
+    "ko": "주차",
+    "zh_hant": "停車"
+  },
+  "LIST_CFG.attraction.check": {
+    "ko": "요금 무료",
+    "zh_hant": "免費"
+  },
+  "LIST_CFG.stay.title": {
+    "ko": "숙소",
+    "zh_hant": "住宿"
+  },
+  "LIST_CFG.stay.cols.checkin": {
+    "ko": "체크인",
+    "zh_hant": "入住"
+  },
+  "LIST_CFG.stay.cols.checkout": {
+    "ko": "체크아웃",
+    "zh_hant": "退房"
+  },
+  "LIST_CFG.stay.cols.parking": {
+    "ko": "주차",
+    "zh_hant": "停車"
+  },
+  "LIST_CFG.stay.cols.tel": {
+    "ko": "문의",
+    "zh_hant": "洽詢"
+  },
+  "LIST_CFG.stay.check": {
+    "ko": "체크인 시간 있음",
+    "zh_hant": "有標示入住時間"
+  },
+  "LIST_CFG.food.title": {
+    "ko": "음식점",
+    "zh_hant": "餐廳"
+  },
+  "LIST_CFG.food.cols.menu": {
+    "ko": "대표 메뉴",
+    "zh_hant": "代表菜色"
+  },
+  "LIST_CFG.food.cols.usetime_restdate": {
+    "ko": "영업시간·정기휴일",
+    "zh_hant": "營業時間、固定公休日"
+  },
+  "LIST_CFG.food.cols.parking_seats": {
+    "ko": "주차·좌석",
+    "zh_hant": "停車、座位"
+  },
+  "LIST_CFG.food.cols.tel": {
+    "ko": "문의",
+    "zh_hant": "洽詢"
+  },
+  "LIST_CFG.food.check": {
+    "ko": "월요일 영업 표기",
+    "zh_hant": "標示週一營業"
+  },
+  "LIC.KOGL-1": {
+    "ko": "공공누리 제1유형",
+    "zh_hant": "韓國公共授權（KOGL）第1類"
+  },
+  "LIC.KOGL-3": {
+    "ko": "공공누리 제3유형(변경금지)",
+    "zh_hant": "韓國公共授權（KOGL）第3類（禁止變更）"
+  },
+  "CALL_LINE": {
+    "ko": "방문 전 전화 확인",
+    "zh_hant": "出發前請致電確認"
+  },
+  "ORGANISER_LINE": {
+    "ko": "방문 전 주최 측 확인",
+    "zh_hant": "出發前請向主辦單位確認"
+  },
+  "CONFLICT.sources_differ": {
+    "ko": "출처마다 다름",
+    "zh_hant": "各來源不一致"
+  },
+  "CONFLICT.hours_only": {
+    "ko": "영업시간만 다름",
+    "zh_hant": "僅營業時間不同"
+  },
+  "site.site_name": {
+    "ko": "수원각",
+    "zh_hant": "水原閣"
+  },
+  "site.description": {
+    "ko": "수원각은 수원의 관광지·맛집(음식점)·숙소·여행 코스·축제·영상을 한곳에 모은 여행 정보 사이트입니다. 장소마다 이용시간·쉬는 날·요금·주차·길찾기와 값별 출처를 적었습니다.",
+    "zh_hant": "水原閣是將水原的景點、餐飲店、住宿、旅行路線、慶典與影片匯集一處的旅行資訊網站，逐一標註開放時間、公休日、費用、停車、導航及各項來源。"
+  },
+  "site.disclaimer": {
+    "ko": "수원시 공식 홈페이지와 별도로 운영되는 독립 사이트입니다. 원문·사진의 권리는 각 출처에 있으며 표시된 이용조건을 따릅니다.",
+    "zh_hant": "本網站獨立於水原市官方網站營運。原文與照片的權利歸各來源所有，並遵循所示使用條件。"
+  },
+  "site.operator.name": {
+    "ko": "에이아이오투오",
+    "zh_hant": "Eiaiotuo"
+  },
+  "site.official_links.0.name": {
+    "ko": "수원문화관광 (수원특례시)",
+    "zh_hant": "水原觀光（水原特例市文化觀光）"
+  },
+  "site.official_links.0.note": {
+    "ko": "수원시 공식 관광정보",
+    "zh_hant": "水原市官方旅遊資訊"
+  },
+  "site.official_links.1.name": {
+    "ko": "수원문화재단",
+    "zh_hant": "韓國觀光公社（大韓民國角落）"
+  },
+  "site.official_links.1.note": {
+    "ko": "수원화성·화성행궁·축제 안내",
+    "zh_hant": "韓國觀光公社旅遊資訊"
+  },
+  "site.official_links.2.name": {
+    "ko": "대한민국 구석구석",
+    "zh_hant": "Daehanminguk Guseokguseok"
+  },
+  "site.official_links.2.note": {
+    "ko": "한국관광공사 관광정보",
+    "zh_hant": "Hangukgwangwanggongsa Gwangwangjeongbo"
+  },
+  "theme.islands-sea.name": {
+    "ko": "호수·수변·야경",
+    "zh_hant": "水原華城·行宮·城郭"
+  },
+  "theme.islands-sea.description": {
+    "ko": "광교호수공원, 방화수류정 용연, 서호공원, 만석공원 등 수원의 호수와 수변 야경 명소",
+    "zh_hant": "水原華城、華城行宮、長安門、八達門、華西門、蒼龍門、訪花隨柳亭、練武臺、西將臺與華寧殿"
+  },
+  "theme.modern-history.name": {
+    "ko": "수원화성·역사·박물관",
+    "zh_hant": "博物館·美術館·歷史文化"
+  },
+  "theme.modern-history.description": {
+    "ko": "유네스코 세계문화유산 수원화성과 화성행궁, 수원화성박물관·수원시립미술관·삼성이노베이션뮤지엄 등 역사와 전시",
+    "zh_hant": "水原華城博物館、水原博物館、水原市立美術館、國立農業博物館、三星創新博物館與解憂齋"
+  },
+  "theme.parks-nature.name": {
+    "ko": "수목원·숲·공원",
+    "zh_hant": "湖水公園·樹木園·林道"
+  },
+  "theme.parks-nature.description": {
+    "ko": "일월수목원, 영흥수목원, 광교산, 칠보산, 효원공원 월화원 등 도심 속 정원과 숲길",
+    "zh_hant": "光教湖水公園、日月樹木園、靈興樹木園、萬石公園、西湖公園、孝園公園粵華苑與光教山步道"
+  },
+  "theme.alleys-culture.name": {
+    "ko": "행리단길·시장·체험",
+    "zh_hant": "行理團路·傳統市場·體驗"
+  },
+  "theme.alleys-culture.description": {
+    "ko": "행리단길, 수원통닭거리, 팔달문 전통시장, 화성어차·플라잉수원·아쿠아플라넷 등 골목과 체험",
+    "zh_hant": "行理團路、工房街、水原炸雞街、南門市場、池洞市場、飛越水原熱氣球、華城御車與光教Aqua Planet水族館"
+  },
+  "category:관광지": {
+    "ko": "관광지",
+    "zh_hant": "觀光景點"
+  },
+  "category:문화시설": {
+    "ko": "문화시설",
+    "zh_hant": "文化設施"
+  },
+  "category:레포츠": {
+    "ko": "레포츠",
+    "zh_hant": "休閒運動"
+  },
+  "category:쇼핑": {
+    "ko": "쇼핑",
+    "zh_hant": "購物"
+  },
+  "category:숙박": {
+    "ko": "숙박",
+    "zh_hant": "住宿"
+  },
+  "category:음식점": {
+    "ko": "음식점",
+    "zh_hant": "餐廳"
+  },
+  "provider:한국관광공사 TourAPI": {
+    "ko": "한국관광공사 TourAPI",
+    "zh_hant": "韓國觀光公社 TourAPI"
+  },
+  "provider:카카오맵": {
+    "ko": "카카오맵",
+    "zh_hant": "Kakao地圖"
+  },
+  "provider:수원시 문화관광": {
+    "ko": "수원시 문화관광",
+    "zh_hant": "水原市文化觀光"
+  },
+  "provider:한국관광공사 고캠핑(TourAPI)": {
+    "ko": "한국관광공사 고캠핑(TourAPI)",
+    "zh_hant": "韓國觀光公社GoCamping露營資訊（TourAPI）"
+  },
+  "chrome.skip": {
+    "en": "Skip to main content",
+    "zh_hant": "跳至主要內容"
+  },
+  "chrome.main_menu": {
+    "en": "Main menu",
+    "zh_hant": "主選單"
+  },
+  "chrome.language": {
+    "en": "Language",
+    "zh_hant": "語言"
+  },
+  "chrome.menu": {
+    "en": "Menu",
+    "zh_hant": "選單"
+  },
+  "chrome.full_menu": {
+    "en": "Full menu",
+    "zh_hant": "完整選單"
+  },
+  "chrome.about_sources": {
+    "en": "About and sources",
+    "zh_hant": "關於本站與資料來源"
+  },
+  "chrome.you_are_here": {
+    "en": "You are here",
+    "zh_hant": "目前位置"
+  },
+  "chrome.explore": {
+    "en": "Explore",
+    "zh_hant": "探索"
+  },
+  "chrome.sources": {
+    "en": "Sources",
+    "zh_hant": "資料來源"
+  },
+  "chrome.foot_tourapi": {
+    "en": "Places, hours and photos:",
+    "zh_hant": "地點、開放時間與照片："
+  },
+  "chrome.kto_tourapi": {
+    "en": "Korea Tourism Organization TourAPI",
+    "zh_hant": "韓國觀光公社 TourAPI"
+  },
+  "chrome.foot_official": {
+    "en": "Official tourism site:",
+    "zh_hant": "官方觀光網站："
+  },
+  "chrome.foot_original": {
+    "en": "Original texts:",
+    "zh_hant": "原文來源："
+  },
+  "chrome.foot_maps": {
+    "en": "Maps: © OpenStreetMap contributors",
+    "zh_hant": "地圖：Kakao 地圖"
+  },
+  "chrome.about": {
+    "en": "About",
+    "zh_hant": "關於"
+  },
+  "chrome.about_site": {
+    "en": "About this site",
+    "zh_hant": "關於本站"
+  },
+  "chrome.how_made": {
+    "en": "How the pages are made",
+    "zh_hant": "頁面製作方式"
+  },
+  "chrome.report_error": {
+    "en": "Report an error",
+    "zh_hant": "回報錯誤"
+  },
+  "chrome.llms_guide": {
+    "en": "Guide for AI (llms.txt)",
+    "zh_hant": "AI 指南（llms.txt）"
+  },
+  "chrome.sitemap": {
+    "en": "Sitemap",
+    "zh_hant": "網站地圖"
+  },
+  "chrome.run_by": {
+    "en": "Run by",
+    "zh_hant": "營運者"
+  },
+  "chrome.editor_role": {
+    "en": "Editor in charge",
+    "zh_hant": "責任編輯"
+  },
+  "chrome.home": {
+    "en": "Home",
+    "zh_hant": "首頁"
+  },
+  "chrome.nav_attraction": {
+    "en": "Things to do",
+    "zh_hant": "景點"
+  },
+  "chrome.nav_food": {
+    "en": "Food",
+    "zh_hant": "美食"
+  },
+  "chrome.nav_stay": {
+    "en": "Stay",
+    "zh_hant": "住宿"
+  },
+  "chrome.guides": {
+    "en": "Guides",
+    "zh_hant": "指南"
+  },
+  "chrome.courses": {
+    "en": "Courses",
+    "zh_hant": "路線"
+  },
+  "chrome.events": {
+    "en": "Events",
+    "zh_hant": "活動"
+  },
+  "chrome.h1_attraction": {
+    "en": "Things to Do in {r}",
+    "zh_hant": "{r}景點"
+  },
+  "chrome.h1_food": {
+    "en": "Where to Eat in {r}",
+    "zh_hant": "{r}美食"
+  },
+  "chrome.h1_stay": {
+    "en": "Where to Stay in {r}",
+    "zh_hant": "{r}住宿"
+  },
+  "chrome.title_attraction": {
+    "en": "Things to Do in {r}: {n} Attractions with Hours, Fees and Parking",
+    "zh_hant": "{r}景點：{n}處景點的開放時間、費用與停車"
+  },
+  "chrome.title_food": {
+    "en": "Where to Eat in {r}: {n} Restaurants with Dishes, Hours and Parking",
+    "zh_hant": "{r}美食：{n}家餐廳的菜色、營業時間與停車"
+  },
+  "chrome.title_stay": {
+    "en": "Where to Stay in {r}: {n} Stays with Check-in, Parking and Contacts",
+    "zh_hant": "{r}住宿：{n}處住宿的入住、停車與聯絡方式"
+  },
+  "chrome.desc_attraction.other": {
+    "en": "{n} attractions in {r}: opening hours, closed days, fees and parking, each with its source and check date, and directions.",
+    "zh_hant": "{r}的{n}處景點：開放時間、公休日、費用與停車，各附資料來源與確認日期，以及路線指引。"
+  },
+  "chrome.desc_food.other": {
+    "en": "{n} restaurants in {r}: signature dishes, hours, closed days and parking, each with its source and check date, and directions.",
+    "zh_hant": "{r}的{n}家餐廳：代表菜色、營業時間、公休日與停車，各附資料來源與確認日期，以及路線指引。"
+  },
+  "chrome.desc_stay.other": {
+    "en": "{n} stays in {r}: check-in and check-out times, parking and phone numbers, each with its source and check date, and directions.",
+    "zh_hant": "{r}的{n}處住宿：入住與退房時間、停車與電話，各附資料來源與確認日期，以及路線指引。"
+  },
+  "chrome.count_attraction.other": {
+    "en": "{n} attractions",
+    "zh_hant": "{n}處景點"
+  },
+  "chrome.count_food.other": {
+    "en": "{n} restaurants",
+    "zh_hant": "{n}家餐廳"
+  },
+  "chrome.count_stay.other": {
+    "en": "{n} stays",
+    "zh_hant": "{n}處住宿"
+  },
+  "chrome.guide_link": {
+    "en": "Guide: {name}",
+    "zh_hant": "指南：{name}"
+  },
+  "chrome.by_area": {
+    "en": "By area",
+    "zh_hant": "依區域"
+  },
+  "chrome.rec_call": {
+    "en": "Sources differ · call before visiting",
+    "zh_hant": "各來源不一致 · 出發前請致電確認"
+  },
+  "chrome.photos_is": {
+    "en": "Photos: {name}",
+    "zh_hant": "照片：{name}"
+  },
+  "chrome.map_only_n.other": {
+    "en": "Only the {n} places with coordinates",
+    "zh_hant": "僅顯示有座標的{n}處"
+  },
+  "chrome.list_map": {
+    "en": "{name} map",
+    "zh_hant": "{name}地圖"
+  },
+  "chrome.show_map": {
+    "en": "Show the map",
+    "zh_hant": "顯示地圖"
+  },
+  "chrome.source": {
+    "en": "Source",
+    "zh_hant": "來源"
+  },
+  "chrome.source_word": {
+    "en": "source",
+    "zh_hant": "來源"
+  },
+  "chrome.source_is": {
+    "en": "Source: {name}",
+    "zh_hant": "來源：{name}"
+  },
+  "chrome.kto": {
+    "en": "Korea Tourism Organization",
+    "zh_hant": "韓國觀光公社"
+  },
+  "chrome.kto_visitkorea": {
+    "en": "Korea Tourism Organization (VisitKorea)",
+    "zh_hant": "韓國觀光公社（VisitKorea）"
+  },
+  "chrome.kto_page": {
+    "en": "Korea Tourism Organization page (in Korean)",
+    "zh_hant": "韓國觀光公社頁面（韓文）"
+  },
+  "chrome.provider_kto": {
+    "en": "Korea Tourism Organization",
+    "zh_hant": "韓國觀光公社"
+  },
+  "chrome.provider_official": {
+    "en": "Official website",
+    "zh_hant": "官方網站"
+  },
+  "chrome.rechecked_with": {
+    "en": "rechecked with {name}",
+    "zh_hant": "已依{name}再次確認"
+  },
+  "chrome.photo_alt": {
+    "en": "{name} photo {i}",
+    "zh_hant": "{name}照片{i}"
+  },
+  "chrome.photo_is": {
+    "en": "Photo: {name}",
+    "zh_hant": "照片：{name}"
+  },
+  "chrome.photos_n.other": {
+    "en": "{n} photos",
+    "zh_hant": "{n}張照片"
+  },
+  "chrome.prev_photo": {
+    "en": "Previous photo",
+    "zh_hant": "上一張照片"
+  },
+  "chrome.next_photo": {
+    "en": "Next photo",
+    "zh_hant": "下一張照片"
+  },
+  "chrome.not_listed": {
+    "en": "Not listed",
+    "zh_hant": "未提供"
+  },
+  "chrome.not_listed_list": {
+    "en": "Not listed: {items}",
+    "zh_hant": "未提供：{items}"
+  },
+  "chrome.sources_list": {
+    "en": "Sources: {items}",
+    "zh_hant": "來源：{items}"
+  },
+  "chrome.more_down": {
+    "en": "more ↓",
+    "zh_hant": "更多 ↓"
+  },
+  "chrome.more": {
+    "en": "more",
+    "zh_hant": "更多"
+  },
+  "chrome.kf_differ": {
+    "en": "{labels}: sources differ",
+    "zh_hant": "{labels}：各來源不一致"
+  },
+  "chrome.call_before": {
+    "en": "Call before visiting",
+    "zh_hant": "出發前請致電確認"
+  },
+  "chrome.notice": {
+    "en": "Notice",
+    "zh_hant": "公告"
+  },
+  "chrome.notice_open": {
+    "en": "{dates}: open",
+    "zh_hant": "{dates}：開館"
+  },
+  "chrome.notice_closed": {
+    "en": "{dates}: closed",
+    "zh_hant": "{dates}：休館"
+  },
+  "chrome.notice_hours": {
+    "en": "{dates}: open {start}–{end}",
+    "zh_hant": "{dates}：{start}–{end} 開放"
+  },
+  "chrome.notice_last_entry": {
+    "en": "last entry {time}",
+    "zh_hant": "{time}停止入場"
+  },
+  "chrome.or_word": {
+    "en": "or",
+    "zh_hant": "或"
+  },
+  "chrome.in_korean": {
+    "en": "In Korean: {name}",
+    "zh_hant": "韓文：{name}"
+  },
+  "chrome.in_korean_paren": {
+    "en": "{name} (in Korean)",
+    "zh_hant": "{name}（韓文）"
+  },
+  "chrome.designations": {
+    "en": "Designations",
+    "zh_hant": "官方指定"
+  },
+  "chrome.parking_seats": {
+    "en": "Parking and seating",
+    "zh_hant": "停車與座位"
+  },
+  "chrome.rooms_n.other": {
+    "en": "{n} rooms",
+    "zh_hant": "{n}間客房"
+  },
+  "chrome.how_to_get": {
+    "en": "How to get to {name}",
+    "zh_hant": "如何前往{name}"
+  },
+  "chrome.search_tag": {
+    "en": "search",
+    "zh_hant": "搜尋"
+  },
+  "chrome.other_maps": {
+    "en": "Other maps",
+    "zh_hant": "其他地圖"
+  },
+  "chrome.map_google": {
+    "en": "Google Maps",
+    "zh_hant": "Google 地圖"
+  },
+  "chrome.map_naver": {
+    "en": "Naver Map",
+    "zh_hant": "Naver 地圖"
+  },
+  "chrome.map_kakao": {
+    "en": "Kakao Map",
+    "zh_hant": "Kakao 地圖"
+  },
+  "chrome.route_kakao": {
+    "en": "Kakao Map directions",
+    "zh_hant": "Kakao 地圖路線"
+  },
+  "chrome.route_google": {
+    "en": "Google Maps directions",
+    "zh_hant": "Google 地圖路線"
+  },
+  "chrome.route_tmap": {
+    "en": "TMAP (app)",
+    "zh_hant": "TMAP（App）"
+  },
+  "chrome.directions": {
+    "en": "Directions",
+    "zh_hant": "路線指引"
+  },
+  "chrome.map_loading": {
+    "en": "Loading the map.",
+    "zh_hant": "地圖載入中。"
+  },
+  "chrome.map_text": {
+    "en": "The places on this map are also listed on this page.",
+    "zh_hant": "地圖上的地點也以文字列在本頁。"
+  },
+  "chrome.map_credit": {
+    "en": "Map: © OpenStreetMap contributors",
+    "zh_hant": "地圖：Kakao 地圖"
+  },
+  "chrome.map_of": {
+    "en": "Map of {name}",
+    "zh_hant": "{name}地圖"
+  },
+  "chrome.map_straight": {
+    "en": "Distances are straight lines between coordinates",
+    "zh_hant": "距離為座標之間的直線距離"
+  },
+  "chrome.map_loc": {
+    "en": "Location: {provider}",
+    "zh_hant": "位置：{provider}"
+  },
+  "chrome.sec_facts": {
+    "en": "Facts",
+    "zh_hant": "基本資訊"
+  },
+  "chrome.sec_photos": {
+    "en": "Photos",
+    "zh_hant": "照片"
+  },
+  "chrome.sec_map": {
+    "en": "Map",
+    "zh_hant": "地圖"
+  },
+  "chrome.sec_nearby": {
+    "en": "Nearby",
+    "zh_hant": "周邊"
+  },
+  "chrome.sec_details": {
+    "en": "Details",
+    "zh_hant": "詳細資訊"
+  },
+  "chrome.sec_faq": {
+    "en": "FAQ",
+    "zh_hant": "常見問題"
+  },
+  "chrome.sec_sources": {
+    "en": "Sources",
+    "zh_hant": "資料來源"
+  },
+  "chrome.sec_places": {
+    "en": "Places",
+    "zh_hant": "地點"
+  },
+  "chrome.sec_stops": {
+    "en": "Stops",
+    "zh_hant": "站點"
+  },
+  "chrome.jump_place": {
+    "en": "Jump to a section of {name}",
+    "zh_hant": "前往{name}的各段落"
+  },
+  "chrome.h_facts": {
+    "en": "{name} before you go",
+    "zh_hant": "{name}出發前須知"
+  },
+  "chrome.h_photos": {
+    "en": "{name} photos",
+    "zh_hant": "{name}照片"
+  },
+  "chrome.h_more": {
+    "en": "{name} more information",
+    "zh_hant": "{name}更多資訊"
+  },
+  "chrome.h_fit": {
+    "en": "{name} facilities and access",
+    "zh_hant": "{name}設施與無障礙"
+  },
+  "chrome.h_map": {
+    "en": "{name} map",
+    "zh_hant": "{name}地圖"
+  },
+  "chrome.h_near": {
+    "en": "{name} nearby and related",
+    "zh_hant": "{name}周邊與相關資訊"
+  },
+  "chrome.h_details": {
+    "en": "{name} in detail",
+    "zh_hant": "{name}詳細介紹"
+  },
+  "chrome.h_faq": {
+    "en": "{name} FAQ",
+    "zh_hant": "{name}常見問題"
+  },
+  "chrome.h_sources": {
+    "en": "{name} sources",
+    "zh_hant": "{name}資料來源"
+  },
+  "chrome.near_sights": {
+    "en": "Things to do nearby",
+    "zh_hant": "周邊景點"
+  },
+  "chrome.near_biz": {
+    "en": "Places to stay and eat nearby",
+    "zh_hant": "周邊住宿與餐廳"
+  },
+  "chrome.near_note": {
+    "en": "Within {m} m · straight-line distance · {provider}",
+    "zh_hant": "{m} m以內 · 直線距離 · {provider}"
+  },
+  "chrome.courses_here": {
+    "en": "Official courses through this place",
+    "zh_hant": "經過此地的官方路線"
+  },
+  "chrome.courses_here_plain": {
+    "en": "Courses through this place",
+    "zh_hant": "途經此處的路線"
+  },
+  "chrome.guides_here": {
+    "en": "Guides that include this place",
+    "zh_hant": "收錄此地的指南"
+  },
+  "chrome.events_here": {
+    "en": "Events held here",
+    "zh_hant": "在此舉辦的活動"
+  },
+  "chrome.original_page": {
+    "en": "Original page",
+    "zh_hant": "原始頁面"
+  },
+  "chrome.visitkorea": {
+    "en": "VisitKorea",
+    "zh_hant": "VisitKorea"
+  },
+  "chrome.korean_page": {
+    "en": "Korean page",
+    "zh_hant": "韓文頁面"
+  },
+  "chrome.name_in_region": {
+    "en": "{name}, {r}",
+    "zh_hant": "{name}（{r}）"
+  },
+  "chrome.visit_information": {
+    "en": "{name}: Visit Information",
+    "zh_hant": "{name}：造訪資訊"
+  },
+  "chrome.place_desc_fallback": {
+    "en": "{name} in {r}.",
+    "zh_hant": "{name}位於{r}。"
+  },
+  "chrome.jump_guide": {
+    "en": "Jump to a section of this guide",
+    "zh_hant": "前往本指南的各段落"
+  },
+  "chrome.guide_places_n.other": {
+    "en": "The {n} places in this guide",
+    "zh_hant": "本指南的{n}個地點"
+  },
+  "chrome.full_list": {
+    "en": "Full list",
+    "zh_hant": "完整列表"
+  },
+  "chrome.n_more.other": {
+    "en": "{n} more",
+    "zh_hant": "另外{n}個"
+  },
+  "chrome.see_full_list": {
+    "en": "See the full list",
+    "zh_hant": "查看完整列表"
+  },
+  "chrome.places_in_guide": {
+    "en": "The places in this guide",
+    "zh_hant": "本指南收錄的地點"
+  },
+  "chrome.prev_place": {
+    "en": "Previous place",
+    "zh_hant": "上一個地點"
+  },
+  "chrome.next_place": {
+    "en": "Next place",
+    "zh_hant": "下一個地點"
+  },
+  "chrome.toc_label": {
+    "en": "Contents of this guide",
+    "zh_hant": "本指南目錄"
+  },
+  "chrome.toc_head": {
+    "en": "Contents",
+    "zh_hant": "目錄"
+  },
+  "chrome.places_in_section": {
+    "en": "Places named in this section",
+    "zh_hant": "本段提到的地點"
+  },
+  "chrome.places_again": {
+    "en": "Places named in this section that have a card above",
+    "zh_hant": "本段提到、上方已有卡片的地點"
+  },
+  "chrome.guide_map": {
+    "en": "Map of the places in this guide",
+    "zh_hant": "本指南地點的地圖"
+  },
+  "chrome.map_numbers": {
+    "en": "Numbers: the order of the list below",
+    "zh_hant": "數字：下方列表的順序"
+  },
+  "chrome.guides_h1": {
+    "en": "{r} travel guides",
+    "zh_hant": "{r}旅遊指南"
+  },
+  "chrome.guides_lede": {
+    "en": "Each guide answers one travel question and lists its places with their visit information.",
+    "zh_hant": "依菜色找餐廳、找住宿、依區域找景點，以及不開車、帶孩子或下雨天的旅行。每份指南都列出所收錄地點的造訪資訊。"
+  },
+  "chrome.all_guides": {
+    "en": "All guides",
+    "zh_hant": "所有指南"
+  },
+  "chrome.places_unit.other": {
+    "en": "places",
+    "zh_hant": "個地點"
+  },
+  "chrome.label_in_region": {
+    "en": "{label} in {r}",
+    "zh_hant": "{r}的{label}"
+  },
+  "chrome.guides_title": {
+    "en": "{r} Travel Guides by Purpose",
+    "zh_hant": "{r}旅遊指南：依目的分類"
+  },
+  "chrome.guides_desc.other": {
+    "en": "{n} guides to {r}, each with its places and their visit information.",
+    "zh_hant": "{r}的{n}份旅遊指南：依菜色找餐廳、找住宿、依區域找景點，以及不開車、帶孩子或下雨天的旅行，各附地點與造訪資訊。"
+  },
+  "chrome.jump_course": {
+    "en": "Jump to a section of this course",
+    "zh_hant": "前往本路線的各段落"
+  },
+  "chrome.official_course_of": {
+    "en": "Official course of {name}",
+    "zh_hant": "{name}的官方路線"
+  },
+  "chrome.course_from": {
+    "en": "Course from {name}",
+    "zh_hant": "{name}路線"
+  },
+  "chrome.straight_total": {
+    "en": "Straight-line total",
+    "zh_hant": "直線距離合計"
+  },
+  "chrome.legs_coords": {
+    "en": "Legs with coordinates",
+    "zh_hant": "有座標的路段"
+  },
+  "chrome.start_end": {
+    "en": "Start → end",
+    "zh_hant": "起點 → 終點"
+  },
+  "chrome.directions_to_stop": {
+    "en": "Directions to stop {n}",
+    "zh_hant": "前往第{n}站的路線"
+  },
+  "chrome.stops_in_order.other": {
+    "en": "{n} stops in order",
+    "zh_hant": "依序經過的{n}站"
+  },
+  "chrome.next_stop": {
+    "en": "next stop {d}",
+    "zh_hant": "下一站 {d}"
+  },
+  "chrome.visit_info_for": {
+    "en": "Visit information for {name}",
+    "zh_hant": "{name}的造訪資訊"
+  },
+  "chrome.course_map": {
+    "en": "Course map",
+    "zh_hant": "路線地圖"
+  },
+  "chrome.map_of_stops": {
+    "en": "Map of the stops of {name}",
+    "zh_hant": "{name}各站地圖"
+  },
+  "chrome.course_map_caption.other": {
+    "en": "{a} of {b} stops have coordinates · joined in order by straight lines",
+    "zh_hant": "{b}站中有{a}站有座標 · 依序以直線相連"
+  },
+  "chrome.course_source": {
+    "en": "Course source",
+    "zh_hant": "路線來源"
+  },
+  "chrome.distances": {
+    "en": "Distances",
+    "zh_hant": "距離"
+  },
+  "chrome.legs_measured.other": {
+    "en": "{a} of {b} legs measured as straight lines between Korea Tourism Organization TourAPI coordinates",
+    "zh_hant": "{b}段中有{a}段依韓國觀光公社 TourAPI 座標以直線測量"
+  },
+  "chrome.legs_measured_src.other": {
+    "en": "{a} of {b} legs measured as straight lines between coordinates from {src}",
+    "zh_hant": "{b}段中有{a}段依{src}座標以直線測量"
+  },
+  "chrome.courses_h1": {
+    "en": "{r} travel courses",
+    "zh_hant": "{r}旅遊路線"
+  },
+  "chrome.courses_lede": {
+    "en": "The official courses of {name}, stop by stop, with each stop's visit information.",
+    "zh_hant": "依序介紹{name}的官方路線及各途經點的遊覽資訊。"
+  },
+  "chrome.courses_lede_of": {
+    "en": "The courses of {name}, stop by stop, with each stop's visit information.",
+    "zh_hant": "依序介紹{name}的路線及各途經點的遊覽資訊。"
+  },
+  "chrome.courses_lede_any": {
+    "en": "The courses, stop by stop, with each stop's visit information.",
+    "zh_hant": "依序介紹各條旅遊路線及各途經點的遊覽資訊。"
+  },
+  "chrome.stops_of": {
+    "en": "Stops of {name} in order",
+    "zh_hant": "{name}各站（依序）"
+  },
+  "chrome.plus_more": {
+    "en": "+ {n} more",
+    "zh_hant": "+ 另外{n}站"
+  },
+  "chrome.n_stops.other": {
+    "en": "{n} stops",
+    "zh_hant": "{n}站"
+  },
+  "chrome.straight_line": {
+    "en": "straight-line {d}",
+    "zh_hant": "直線{d}"
+  },
+  "chrome.region_name": {
+    "en": "{r} {name}",
+    "zh_hant": "{r}{name}"
+  },
+  "chrome.n_stops_title.other": {
+    "en": "{n} Stops",
+    "zh_hant": "{n}站"
+  },
+  "chrome.course_desc_fallback.other": {
+    "en": "{name}: {n} stops.",
+    "zh_hant": "{name}：共{n}站。"
+  },
+  "chrome.courses_title": {
+    "en": "{r} Travel Courses: Day Trips and Overnight Trips",
+    "zh_hant": "{r}旅遊路線：一日遊與過夜行程"
+  },
+  "chrome.courses_title_day": {
+    "en": "{r} Travel Courses: Day Trips",
+    "zh_hant": "{r}旅遊路線：一日遊"
+  },
+  "chrome.courses_title_night": {
+    "en": "{r} Travel Courses: Overnight Trips",
+    "zh_hant": "{r}旅遊路線：過夜遊"
+  },
+  "chrome.courses_title_any": {
+    "en": "{r} Travel Courses",
+    "zh_hant": "{r}旅遊路線"
+  },
+  "chrome.courses_desc.other": {
+    "en": "The {n} official travel courses of {provider}, stop by stop, with the visit information of each stop.",
+    "zh_hant": "{provider}的{n}條官方旅遊路線，逐站列出，並附上每一站的造訪資訊。"
+  },
+  "chrome.courses_desc_of.other": {
+    "en": "The {n} travel courses of {provider}, stop by stop, with the visit information of each stop.",
+    "zh_hant": "依序介紹{provider}的{n}條旅遊路線及各途經點的遊覽資訊。"
+  },
+  "chrome.courses_desc_any.other": {
+    "en": "{n} travel courses, stop by stop, with the visit information of each stop.",
+    "zh_hant": "依序介紹{n}條旅遊路線及各途經點的遊覽資訊。"
+  },
+  "chrome.lede_longest": {
+    "en": "the longest leg is from {a} to {b}, {d} in a straight line",
+    "zh_hant": "最長的路段是從{a}到{b}，直線距離{d}"
+  },
+  "chrome.lede_near.other": {
+    "en": "The first {n} stops are within 1 km of the start in a straight line",
+    "zh_hant": "前{n}站距起點皆在直線1 km以內"
+  },
+  "chrome.lede_both": {
+    "en": "{near}, and {longest}.",
+    "zh_hant": "{near}，{longest}。"
+  },
+  "chrome.lede_one": {
+    "en": "{text}.",
+    "zh_hant": "{text}。"
+  },
+  "chrome.lede_ends.other": {
+    "en": "The {n} stops start at {a} and end at {b}.",
+    "zh_hant": "這{n}站從{a}出發，在{b}結束。"
+  },
+  "chrome.ev_dates": {
+    "en": "Dates",
+    "zh_hant": "日期"
+  },
+  "chrome.ev_time": {
+    "en": "Time",
+    "zh_hant": "時間"
+  },
+  "chrome.ev_fee": {
+    "en": "Fee",
+    "zh_hant": "費用"
+  },
+  "chrome.ev_venue": {
+    "en": "Venue",
+    "zh_hant": "場地"
+  },
+  "chrome.ev_address": {
+    "en": "Address",
+    "zh_hant": "地址"
+  },
+  "chrome.ev_organizer": {
+    "en": "Organizer",
+    "zh_hant": "主辦單位"
+  },
+  "chrome.ev_contact": {
+    "en": "Contact",
+    "zh_hant": "聯絡方式"
+  },
+  "chrome.website": {
+    "en": "Website",
+    "zh_hant": "網站"
+  },
+  "chrome.program": {
+    "en": "Program",
+    "zh_hant": "活動內容"
+  },
+  "chrome.usually": {
+    "en": "Usually:",
+    "zh_hant": "通常："
+  },
+  "chrome.other_editions": {
+    "en": "Other editions:",
+    "zh_hant": "其他屆次："
+  },
+  "chrome.places_label": {
+    "en": "Places:",
+    "zh_hant": "地點："
+  },
+  "chrome.sources_label": {
+    "en": "Sources:",
+    "zh_hant": "來源："
+  },
+  "chrome.events_h1": {
+    "en": "{r} festivals and events",
+    "zh_hant": "{r}慶典與活動"
+  },
+  "chrome.events_lede": {
+    "en": "The dates, venue and fee of each festival's newest edition, its program and where the information comes from. Where two sources give different values, both are shown.",
+    "zh_hant": "列出每個慶典最新一屆的日期、場地與費用、活動內容，以及資訊來源。兩個來源數值不同時，兩者都會列出。"
+  },
+  "chrome.upcoming": {
+    "en": "Upcoming and ongoing",
+    "zh_hant": "即將舉行與進行中"
+  },
+  "chrome.past": {
+    "en": "Past",
+    "zh_hant": "已結束"
+  },
+  "chrome.festivals": {
+    "en": "Festivals and events",
+    "zh_hant": "慶典與活動"
+  },
+  "chrome.past_editions": {
+    "en": "Past editions",
+    "zh_hant": "過往屆次"
+  },
+  "chrome.season_h": {
+    "en": "Held around this time in earlier years",
+    "zh_hant": "往年這個時候舉辦的活動"
+  },
+  "chrome.season_note": {
+    "en": "Their newest edition, a year or two ago, began within the next three months of the year. This year's dates are not in our data yet; the cards below give each edition as it was.",
+    "zh_hant": "這些活動的最新一屆在一兩年前的未來3個月內舉辦。今年日期尚未收錄，下方卡片展示上一屆的內容。"
+  },
+  "chrome.past_note": {
+    "en": "The newest edition of each series, newest first.",
+    "zh_hant": "各系列的最新一屆，由新到舊排列。"
+  },
+  "chrome.events_title": {
+    "en": "{r} Festivals and Events: Dates, Venues and Fees",
+    "zh_hant": "{r}慶典與活動：日期、場地與費用"
+  },
+  "chrome.events_desc": {
+    "en": "{a} upcoming or ongoing and {b} past festivals and events in {r}: dates, venue, fee and organizer of the newest edition, with sources.",
+    "zh_hant": "{r}即將舉行或進行中的{a}個、已結束的{b}個慶典與活動：最新一屆的日期、場地、費用與主辦單位，並附資料來源。"
+  },
+  "chrome.about_title": {
+    "en": "About This Site: Sources, Photos and Corrections",
+    "zh_hant": "關於本站：資料來源、照片與更正"
+  },
+  "chrome.about_desc": {
+    "en": "What {site} is, where its information comes from, how sources are shown, photo licenses, how names are written and how to report an error.",
+    "zh_hant": "{site}是什麼、資訊從何而來、如何標示來源、照片授權、名稱寫法，以及如何回報錯誤。"
+  },
+  "chrome.about_lede": {
+    "en": "{site} is the edition in this language of {ko_site}, a travel information site about {r}: when places open, what they cost, where to park and how to get there, for attractions, restaurants and places to stay, with the official courses and festival dates.",
+    "zh_hant": "{site}是{ko_site}的繁體中文版。這個{r}旅遊資訊網站列出景點、餐廳與住宿何時開放、費用多少、在哪停車、如何前往，並附官方路線與慶典日期。"
+  },
+  "chrome.about_lede_courses": {
+    "en": "{site} is the edition in this language of {ko_site}, a travel information site about {r}: when places open, what they cost, where to park and how to get there, for attractions, restaurants and places to stay, with travel courses and festival dates.",
+    "zh_hant": "{site}是{r}旅遊資訊網站「{ko_site}」的本語言版本。本站彙整景點、餐廳和住宿的開放時間、費用、停車與交通方式，並附有旅遊路線與慶典日期。"
+  },
+  "chrome.about_lede_none": {
+    "en": "{site} is the edition in this language of {ko_site}, a travel information site about {r}: when places open, what they cost, where to park and how to get there, for attractions, restaurants and places to stay.",
+    "zh_hant": "{site}是{r}旅遊資訊網站「{ko_site}」的本語言版本。本站彙整景點、餐廳和住宿的開放時間、費用、停車與交通方式。"
+  },
+  "chrome.about_what": {
+    "en": "What is here",
+    "zh_hant": "本站內容"
+  },
+  "chrome.about_counts": {
+    "en": "Pages in this language for {places} places ({indexed} of them in search results; the others are listed but not indexed until they meet the site's index rule), {guides} guides, {courses} official courses and {series} festival and event series.",
+    "zh_hant": "本版收錄{places}個地點頁面、{guides}份指南、{courses}條官方路線，以及{series}個慶典與活動系列。地點頁面中有{indexed}個會出現在搜尋結果；其餘頁面仍列在網站上，但在符合本站的索引規則前不會被收錄。"
+  },
+  "chrome.about_counts_plain": {
+    "en": "Pages in this language for {places} places ({indexed} of them in search results; the others are listed but not indexed until they meet the site's index rule), {guides} guides, {courses} courses and {series} festival and event series.",
+    "zh_hant": "本語言共有{places}處地點頁面、{guides}篇指南、{courses}條路線及{series}個慶典系列。其中{indexed}處地點收錄於搜尋結果，其餘在滿足索引標準前暫不收錄。"
+  },
+  "chrome.about_sync": {
+    "en": "Each page in this language is a translation of its Korean page. When the Korean page changes, the translated page is taken down until the translation is updated, so the two never say different things.",
+    "zh_hant": "本語言的每個頁面都譯自對應的韓文頁面。韓文頁面更新時，譯文頁面會先下架，待翻譯更新後再上線，因此兩者內容不會不一致。"
+  },
+  "chrome.about_how_1": {
+    "en": "Opening hours, closed days, fees, parking, phone numbers, check-in times and menus come from the Korea Tourism Organization's TourAPI and from {source}, and for some places from their own official websites. Nothing is filled in from general knowledge.",
+    "zh_hant": "開放時間、休息日、費用、停車、電話、入住時間和菜單來自韓國觀光公社TourAPI與{source}，部分地點來自其官方網站。本站不以常識填補任何資訊。"
+  },
+  "chrome.about_how_1_kto": {
+    "en": "Opening hours, closed days, fees, parking, phone numbers, check-in times and menus come from the Korea Tourism Organization's TourAPI and, for some places, from their own official websites. Nothing is filled in from general knowledge.",
+    "zh_hant": "營業時間、休息日、費用、停車、電話號碼、入住時間及菜單均來自韓國觀光公社的TourAPI，部分地點亦來自其官方網站。沒有任何內容憑常識臆測補充。"
+  },
+  "chrome.about_how_2": {
+    "en": "Every value names its source. Where two sources give different values, the page shows both, each with its source, and says \"{note}\". A value no source gives is listed once as \"{missing}\".",
+    "zh_hant": "每個數值都標明來源。兩個來源數值不同時，頁面會同時列出兩者並各附來源，並註明「{note}」。沒有任何來源提供的數值，只會標示一次「{missing}」。"
+  },
+  "chrome.about_how_3": {
+    "en": "Texts from {source} are not copied; each place page links to its original page. Distances are straight lines between coordinates, not travel distances.",
+    "zh_hant": "本站不轉載{source}的文字，各地點頁面均連結到其原文頁面。距離為座標之間的直線距離，而非通行距離。"
+  },
+  "chrome.about_how_3_unconfirmed": {
+    "en": "Original texts whose terms of use (the KOGL type) are not confirmed are not copied: pages link to them, descriptions are written anew, and values such as hours, fees and menus are kept as the source gives them. Distances are straight lines between coordinates, not travel distances.",
+    "zh_hant": "未確認使用條件（公共Nuri類型）的原文不予轉載：頁面提供原文連結，說明文字重新撰寫，營業時間、費用、菜單等事實數值保持來源原樣。距離為座標間的直線距離，而非實際通行距離。"
+  },
+  "chrome.about_photos": {
+    "en": "Photos are from the Korea Tourism Organization under the Korea Open Government License (KOGL): {n1} under {lic1} and {n3} under {lic3}. Type 3 photos are shown exactly as published: never cropped, enlarged or edited. Each photo carries its source and license.",
+    "zh_hant": "照片來自韓國觀光公社，依韓國公共授權（KOGL）使用：{n1}張為{lic1}，{n3}張為{lic3}。第3類照片依原樣呈現，不裁切、不放大、不修改。每張照片都標示來源與授權。"
+  },
+  "chrome.about_art": {
+    "en": "The illustrations on this site were drawn with generative AI; every photo of a place is an official Korea Tourism Organization photo, shown with its source.",
+    "zh_hant": "本站的插圖以生成式 AI 繪製；每張地點照片都是韓國觀光公社的官方照片，並標示來源。"
+  },
+  "chrome.about_names_h": {
+    "en": "Names",
+    "zh_hant": "名稱"
+  },
+  "chrome.about_names": {
+    "en": "Place names are the Korea Tourism Organization's official names in this language when it gives one; otherwise they are translated from the Korean name (the proper part transcribed, the generic part translated). Every place page also shows the Korean name, which helps when you search a Korean map or show it to a taxi driver.",
+    "zh_hant": "地點名稱若有韓國觀光公社提供的此語言官方名稱，就使用該名稱；否則由韓文名稱翻譯（專有部分轉寫，通用部分意譯）。每個地點頁面也會顯示韓文名稱，方便在韓國地圖上搜尋或出示給計程車司機。"
+  },
+  "chrome.about_names_noex": {
+    "en": "Place names are the Korea Tourism Organization's official names in this language when it gives one; otherwise they are translated from the Korean name (the proper part transcribed, the generic part translated). Every place page also shows the Korean name, which helps when you search a Korean map or show it to a taxi driver.",
+    "zh_hant": "地點名稱在韓國觀光公社提供本語言官方名稱時直接採用；否則由韓語名稱翻譯而來（專名部分音譯，通名部分意譯）。每個地點頁面同時標示韓語名稱，方便在韓國地圖中搜尋或出示給計程車司機。"
+  },
+  "chrome.the_operator": {
+    "en": "the operator",
+    "zh_hant": "營運者"
+  },
+  "chrome.about_report": {
+    "en": "If a value is wrong or out of date, write to {mail} with the page address and the source that shows the correct value.",
+    "zh_hant": "若有數值錯誤或已過時，請將頁面網址與顯示正確數值的來源寄至{mail}。"
+  },
+  "chrome.about_operator": {
+    "en": "Operator: {op}. This site is run independently of {city}.",
+    "zh_hant": "營運方：{op}。本網站獨立於{city}營運。"
+  },
+  "chrome.about_operator_only": {
+    "en": "Operator: {op}.",
+    "zh_hant": "營運方：{op}。"
+  },
+  "chrome.co_heading": {
+    "en": "The company behind this site",
+    "zh_hant": "營運公司"
+  },
+  "chrome.co_name": {
+    "en": "Company",
+    "zh_hant": "公司名稱"
+  },
+  "chrome.co_ceo": {
+    "en": "CEO",
+    "zh_hant": "代表理事"
+  },
+  "chrome.co_biz_no": {
+    "en": "Business registration no.",
+    "zh_hant": "營業登記號碼"
+  },
+  "chrome.co_corp_no": {
+    "en": "Corporate registration no.",
+    "zh_hant": "法人登記號碼"
+  },
+  "chrome.co_founded": {
+    "en": "Founded",
+    "zh_hant": "成立日期"
+  },
+  "chrome.co_head_office": {
+    "en": "Head office",
+    "zh_hant": "總部"
+  },
+  "chrome.co_lab": {
+    "en": "R&D center",
+    "zh_hant": "研究所"
+  },
+  "chrome.co_tel": {
+    "en": "Tel.",
+    "zh_hant": "電話"
+  },
+  "chrome.co_contact": {
+    "en": "Contact",
+    "zh_hant": "聯絡方式"
+  },
+  "chrome.co_site": {
+    "en": "Company website",
+    "zh_hant": "公司網站"
+  },
+  "chrome.co_info": {
+    "en": "Company information",
+    "zh_hant": "公司資訊"
+  },
+  "chrome.co_note": {
+    "en": "This site is run by the company above, not by a city government or any other public body. For questions about a place or an event, use the phone number and official links on its page.",
+    "zh_hant": "本網站由上述公司營運，並非濟州特別自治道或任何公共機關的網站。有關景點或活動的詢問，請使用各頁面上的電話號碼與官方連結。"
+  },
+  "chrome.co_copyright": {
+    "en": "Copyright © {name}. Photos and source texts belong to their sources.",
+    "zh_hant": "Copyright © {name}。照片與原始資料的權利屬於各出處。"
+  },
+  "chrome.official_sites": {
+    "en": "Official sites",
+    "zh_hant": "官方網站"
+  },
+  "chrome.home_title": {
+    "en": "{site}: {r} Attractions, Food, Stays, Courses and Festivals",
+    "zh_hant": "{site}：{r}景點、美食、住宿、路線與慶典"
+  },
+  "chrome.home_desc": {
+    "en": "{a} attractions, {f} restaurants and {s} places to stay in {r}, with opening hours, prices, parking and directions, plus official courses and festival dates, in one place.",
+    "zh_hant": "{r}的{a}處景點、{f}家餐廳與{s}處住宿，附開放時間、價格、停車與路線指引，另有官方路線與慶典日期，集中在一處。"
+  },
+  "chrome.home_desc_courses": {
+    "en": "{a} attractions, {f} restaurants and {s} places to stay in {r}, with opening hours, prices, parking and directions, plus travel courses and festival dates, in one place.",
+    "zh_hant": "匯集{r}{a}處景點、{f}家餐廳與{s}處住宿的開放時間、費用、停車和路線，並附有旅遊路線與慶典日期。"
+  },
+  "chrome.home_desc_none": {
+    "en": "{a} attractions, {f} restaurants and {s} places to stay in {r}, with opening hours, prices, parking and directions, in one place.",
+    "zh_hant": "匯集{r}{a}處景點、{f}家餐廳與{s}處住宿的開放時間、費用、停車和路線。"
+  },
+  "chrome.home_kicker": {
+    "en": "{r}, {admin}, Korea",
+    "zh_hant": "韓國{admin}{r}"
+  },
+  "chrome.home_kicker_city": {
+    "en": "{r}, Korea",
+    "zh_hant": "韓國{r}"
+  },
+  "chrome.home_sub": {
+    "en": "Opening hours, prices and how to get there for {r}'s attractions, restaurants and places to stay, in one place.",
+    "zh_hant": "{r}景點、餐廳與住宿的開放時間、價格與前往方式，集中在一處。"
+  },
+  "chrome.home_cta": {
+    "en": "Start with an official course",
+    "zh_hant": "從官方路線開始"
+  },
+  "chrome.home_cta_plain": {
+    "en": "Start with a course",
+    "zh_hant": "從路線開始"
+  },
+  "chrome.cat_attraction": {
+    "en": "Attractions",
+    "zh_hant": "景點"
+  },
+  "chrome.cat_food": {
+    "en": "Restaurants",
+    "zh_hant": "餐廳"
+  },
+  "chrome.cat_stay": {
+    "en": "Places to stay",
+    "zh_hant": "住宿"
+  },
+  "chrome.now_on": {
+    "en": "Now on",
+    "zh_hant": "進行中"
+  },
+  "chrome.until": {
+    "en": "until {d}",
+    "zh_hant": "至{d}"
+  },
+  "chrome.start_here": {
+    "en": "Start here",
+    "zh_hant": "從這裡開始"
+  },
+  "chrome.num_attraction.other": {
+    "en": "attractions",
+    "zh_hant": "處景點"
+  },
+  "chrome.num_food.other": {
+    "en": "restaurants",
+    "zh_hant": "家餐廳"
+  },
+  "chrome.num_stay.other": {
+    "en": "places to stay",
+    "zh_hant": "處住宿"
+  },
+  "chrome.num_courses.other": {
+    "en": "official courses",
+    "zh_hant": "條官方路線"
+  },
+  "chrome.num_courses_plain.other": {
+    "en": "courses",
+    "zh_hant": "條路線"
+  },
+  "chrome.num_guides.other": {
+    "en": "guides",
+    "zh_hant": "份指南"
+  },
+  "chrome.nums_title": {
+    "en": "{r} travel, in numbers.",
+    "zh_hant": "用數字看{r}旅遊。"
+  },
+  "chrome.feat_eyebrow": {
+    "en": "On the most official courses",
+    "zh_hant": "最多官方路線經過的地方"
+  },
+  "chrome.feat_eyebrow_plain": {
+    "en": "On the most courses",
+    "zh_hant": "多條路線途經之處"
+  },
+  "chrome.feat_h": {
+    "en": "Places to start",
+    "zh_hant": "從這些地方開始"
+  },
+  "chrome.all_attractions.other": {
+    "en": "All {n} attractions",
+    "zh_hant": "全部{n}處景點"
+  },
+  "chrome.hubs_h": {
+    "en": "Eat, stay, see",
+    "zh_hant": "吃、住、看"
+  },
+  "chrome.coming_up": {
+    "en": "Coming up",
+    "zh_hant": "即將舉行"
+  },
+  "chrome.all_events": {
+    "en": "All festivals and events",
+    "zh_hant": "所有慶典與活動"
+  },
+  "chrome.lines_h": {
+    "en": "Official courses, in order",
+    "zh_hant": "官方路線，依序排列"
+  },
+  "chrome.lines_h_plain": {
+    "en": "Courses, in order",
+    "zh_hant": "依序瀏覽路線"
+  },
+  "chrome.all_courses": {
+    "en": "All courses",
+    "zh_hant": "所有路線"
+  },
+  "chrome.tile_courses_short": {
+    "en": "Official day and overnight courses",
+    "zh_hant": "官方一日遊與過夜路線"
+  },
+  "chrome.tile_courses_short_plain": {
+    "en": "Day and overnight courses",
+    "zh_hant": "一日遊與過夜路線"
+  },
+  "chrome.tile_courses_any": {
+    "en": "Official courses, stop by stop",
+    "zh_hant": "官方路線逐站介紹"
+  },
+  "chrome.tile_courses_any_plain": {
+    "en": "Courses, stop by stop",
+    "zh_hant": "路線逐站介紹"
+  },
+  "chrome.tile_courses_tiny": {
+    "en": "Day and overnight",
+    "zh_hant": "一日遊與過夜"
+  },
+  "chrome.tile_courses_tiny_day": {
+    "en": "Day trips",
+    "zh_hant": "一日遊"
+  },
+  "chrome.tile_courses_tiny_any": {
+    "en": "Stop by stop",
+    "zh_hant": "逐站瀏覽"
+  },
+  "chrome.tile_courses_pill": {
+    "en": "Official",
+    "zh_hant": "官方"
+  },
+  "chrome.tile_attraction": {
+    "en": "Attractions",
+    "zh_hant": "景點"
+  },
+  "chrome.tile_food": {
+    "en": "Restaurants",
+    "zh_hant": "餐廳"
+  },
+  "chrome.tile_stay": {
+    "en": "Stays",
+    "zh_hant": "住宿"
+  },
+  "chrome.tile_short_attraction": {
+    "en": "Hours, closed days, fees and parking",
+    "zh_hant": "開放時間、公休日、費用與停車"
+  },
+  "chrome.tile_tiny_attraction": {
+    "en": "Hours · fees",
+    "zh_hant": "時間、費用"
+  },
+  "chrome.tile_short_food": {
+    "en": "Dishes, hours, closed days and parking",
+    "zh_hant": "菜色、營業時間、公休日與停車"
+  },
+  "chrome.tile_tiny_food": {
+    "en": "Dishes · hours",
+    "zh_hant": "菜色、時間"
+  },
+  "chrome.tile_short_stay": {
+    "en": "Check-in, check-out, parking and phone",
+    "zh_hant": "入住、退房、停車與電話"
+  },
+  "chrome.tile_tiny_stay": {
+    "en": "Check-in times",
+    "zh_hant": "入住時間"
+  },
+  "chrome.tile_events_short": {
+    "en": "Upcoming and ongoing festivals",
+    "zh_hant": "即將舉行與進行中的慶典"
+  },
+  "chrome.tile_events_tiny": {
+    "en": "Upcoming",
+    "zh_hant": "即將舉行"
+  },
+  "chrome.llms_home": {
+    "en": "{r} attractions, restaurants and places to stay with hours, prices, parking and directions; official courses and festival dates.",
+    "zh_hant": "{r}的景點、餐廳與住宿，附開放時間、價格、停車與路線指引；另有官方路線與慶典日期。"
+  },
+  "chrome.llms_home_courses": {
+    "en": "{r} attractions, restaurants and places to stay with hours, prices, parking and directions; travel courses and festival dates.",
+    "zh_hant": "{r}景點、餐廳與住宿的開放時間、費用、停車和路線；旅遊路線與慶典日期。"
+  },
+  "chrome.llms_home_none": {
+    "en": "{r} attractions, restaurants and places to stay with hours, prices, parking and directions.",
+    "zh_hant": "{r}景點、餐廳與住宿的開放時間、費用、停車和路線。"
+  },
+  "chrome.none_district": {
+    "en": "District not listed",
+    "zh_hant": "未註明區縣"
+  },
+  "chrome.none_anchors": {
+    "en": "Area not assigned",
+    "zh_hant": "未分配片區"
+  },
+  "chrome.map_zoom_in": {
+    "en": "Zoom in",
+    "zh_hant": "放大"
+  },
+  "chrome.map_zoom_out": {
+    "en": "Zoom out",
+    "zh_hant": "縮小"
+  },
+  "chrome.map_whole_course": {
+    "en": "Whole course",
+    "zh_hant": "整條路線"
+  },
+  "chrome.map_fail": {
+    "en": "The map could not be loaded.",
+    "zh_hant": "無法載入地圖。"
+  },
+  "chrome.map_off": {
+    "en": "Some stops lie off the map · show them",
+    "zh_hant": "部分站點在地圖範圍外 · 顯示這些站點"
+  },
+  "provider:수원시": {
+    "ko": "수원시",
+    "zh_hant": "水原市"
+  }
+}

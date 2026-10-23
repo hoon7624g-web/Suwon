@@ -1,0 +1,13 @@
+{
+ "languages": [
+  "ko",
+  "en"
+ ],
+ "site_url": "https://fixture.test",
+ "ga4_id": "G-FIXTURE000",
+ "operator": {
+  "contact": "corrections@fixture.test"
+ },
+ "description": "",
+ "site_faq": []
+}

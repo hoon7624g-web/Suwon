@@ -1,0 +1,17 @@
+[
+  {
+    "id": "metro-event-1",
+    "slug": "sample-festival",
+    "status": "published",
+    "name": "[샘플] 2026 구·군 축제 A",
+    "series": "[샘플] 구·군 축제 A",
+    "start_date": "2026-10-30",
+    "end_date": "2026-11-01",
+    "place_name": "[샘플] 행사 장소",
+    "address": "대구광역시 중구 샘플로 1",
+    "summary": "[샘플] 시험용 행사입니다. 시리즈 slug(sample-festival)를 데이터에 저장했습니다.",
+    "source_name": "한국관광공사 TourAPI",
+    "source_url": "",
+    "checked_at": "2026-10-08"
+  }
+]

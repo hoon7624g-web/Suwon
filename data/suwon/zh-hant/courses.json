@@ -1,0 +1,278 @@
+{
+  "suwon-course-1": {
+    "slug": "hwaseong-haenggung-heritage",
+    "name": "路線1｜水原華城·華城行宮·訪花隨柳亭王宮城郭漫步",
+    "group": "路線旅行",
+    "duration": "一日遊",
+    "summary": "",
+    "stops": [
+      {
+        "name": "華城行宮",
+        "note": "",
+        "place_slug": "hwaseonghaenggung"
+      },
+      {
+        "name": "水原 華寧殿",
+        "note": "",
+        "place_slug": "suwon-hwaryeongjeon"
+      },
+      {
+        "name": "孝園之鐘·西將臺",
+        "note": "",
+        "place_slug": "hyowonui-jong-seojangdae"
+      },
+      {
+        "name": "華西門",
+        "note": "",
+        "place_slug": "hwaseomun"
+      },
+      {
+        "name": "長安門",
+        "note": "",
+        "place_slug": "janganmun"
+      },
+      {
+        "name": "華虹門",
+        "note": "",
+        "place_slug": "hwahongmun"
+      },
+      {
+        "name": "訪花隨柳亭（東北角樓）",
+        "note": "",
+        "place_slug": "banghwasuryujeong"
+      },
+      {
+        "name": "行理團路",
+        "note": "",
+        "place_slug": "haengnidangil"
+      }
+    ],
+    "ko_hash": "44c05c8f6416f89a",
+    "translated_at": "2026-10-23"
+  },
+  "suwon-course-2": {
+    "slug": "yeonmudae-paldalmun-market",
+    "name": "路線2｜八達門·南門與池洞市場·水原炸雞街·行理團路街巷之旅",
+    "group": "路線旅行",
+    "duration": "一日遊",
+    "summary": "",
+    "stops": [
+      {
+        "name": "練武臺（東將臺）",
+        "note": "",
+        "place_slug": "yeonmudae"
+      },
+      {
+        "name": "東北空心墩",
+        "note": "",
+        "place_slug": "dongbukgongsimdon"
+      },
+      {
+        "name": "蒼龍門",
+        "note": "",
+        "place_slug": "changnyongmun"
+      },
+      {
+        "name": "Flying水原",
+        "note": "",
+        "place_slug": "peullaing-suwon"
+      },
+      {
+        "name": "水原華城博物館",
+        "note": "",
+        "place_slug": "suwonhwaseongbangmulgwan"
+      },
+      {
+        "name": "八達門",
+        "note": "",
+        "place_slug": "paldalmun"
+      },
+      {
+        "name": "池洞市場",
+        "note": "",
+        "place_slug": "jidongsijang"
+      },
+      {
+        "name": "水原炸雞街",
+        "note": "",
+        "place_slug": "suwontongdakgeori"
+      }
+    ],
+    "ko_hash": "27045435818760d4",
+    "translated_at": "2026-10-23"
+  },
+  "suwon-course-3": {
+    "slug": "gwanggyo-lake-aquaplanet",
+    "name": "路線3｜練武臺·飛越水原熱氣球·水原華城博物館·奉寧寺東城郭漫遊",
+    "group": "路線旅行",
+    "duration": "一日遊",
+    "summary": "",
+    "stops": [
+      {
+        "name": "光教湖水公園",
+        "note": "",
+        "place_slug": "gwanggyohosugongwon"
+      },
+      {
+        "name": "光教弗萊堡觀景臺",
+        "note": "",
+        "place_slug": "gwanggyo-peuraibureukeujeonmangdae"
+      },
+      {
+        "name": "光教Aqua Planet水族館",
+        "note": "",
+        "place_slug": "akuapeullanet-gwanggyo"
+      },
+      {
+        "name": "水原市 Ribateuseupeiseu 光教",
+        "note": "",
+        "place_slug": "suwonsiribateuseupeiseugwanggyo"
+      },
+      {
+        "name": "Gyeonggi 圖書館",
+        "note": "",
+        "place_slug": "gyeonggidoseogwan"
+      },
+      {
+        "name": "水原光教博物館",
+        "note": "",
+        "place_slug": "suwongwanggyobangmulgwan"
+      },
+      {
+        "name": "水原博物館",
+        "note": "",
+        "place_slug": "suwonbangmulgwan"
+      }
+    ],
+    "ko_hash": "4e8421930bcdc930",
+    "translated_at": "2026-10-23"
+  },
+  "suwon-course-4": {
+    "slug": "irwol-seoho-sangsang",
+    "name": "路線4｜光教湖水公園·光教Aqua Planet水族館·水原博物館水畔之旅",
+    "group": "路線旅行",
+    "duration": "一日遊",
+    "summary": "",
+    "stops": [
+      {
+        "name": "日月樹木園",
+        "note": "",
+        "place_slug": "irwolsumogwon"
+      },
+      {
+        "name": "Irwolhosu 公園",
+        "note": "",
+        "place_slug": "irwolhosugongwon"
+      },
+      {
+        "name": "西湖公園",
+        "note": "",
+        "place_slug": "seohogongwon"
+      },
+      {
+        "name": "國立農業博物館",
+        "note": "",
+        "place_slug": "gungnimnongeopbangmulgwan"
+      },
+      {
+        "name": "京畿想像校園",
+        "note": "",
+        "place_slug": "gyeonggisangsangkaempeoseu"
+      },
+      {
+        "name": "水原Starfield圖書館",
+        "note": "",
+        "place_slug": "byeolmadangdoseogwan-seutapildeu-suwonjeom"
+      }
+    ],
+    "ko_hash": "d984df49756853d4",
+    "translated_at": "2026-10-23"
+  },
+  "suwon-course-5": {
+    "slug": "manseok-haeujae-jangan",
+    "name": "路線5｜日月樹木園·水原Starfield·萬石公園·解憂齋長安區漫步",
+    "group": "路線旅行",
+    "duration": "一日遊",
+    "summary": "",
+    "stops": [
+      {
+        "name": "萬石公園",
+        "note": "",
+        "place_slug": "manseokgongwon"
+      },
+      {
+        "name": "水原市 Rimmanseok 展覽館",
+        "note": "",
+        "place_slug": "suwonsirimmanseokjeonsigwan"
+      },
+      {
+        "name": "老松地帶",
+        "note": "",
+        "place_slug": "nosongjidae"
+      },
+      {
+        "name": "解憂齋",
+        "note": "",
+        "place_slug": "haeujae"
+      },
+      {
+        "name": "奉寧寺（水原）",
+        "note": "",
+        "place_slug": "bongnyeongsa"
+      },
+      {
+        "name": "光教 Marugil",
+        "note": "",
+        "place_slug": "gwanggyomarugil"
+      }
+    ],
+    "ko_hash": "209ad7503d46b9f4",
+    "translated_at": "2026-10-23"
+  },
+  "suwon-course-6": {
+    "slug": "wolhwawon-yeongheung-art",
+    "name": "路線6｜西湖公園·國立農業博物館·京畿想像校園·粵華苑園林漫遊",
+    "group": "路線旅行",
+    "duration": "一日遊",
+    "summary": "",
+    "stops": [
+      {
+        "name": "孝園公園 粵華苑",
+        "note": "",
+        "place_slug": "hyowongongwon-wolhwawon"
+      },
+      {
+        "name": "孝園公園",
+        "note": "",
+        "place_slug": "hyowongongwon"
+      },
+      {
+        "name": "京畿藝術中心",
+        "note": "",
+        "place_slug": "gyeonggiateusenteo"
+      },
+      {
+        "name": "Nahyeseokgeori",
+        "note": "",
+        "place_slug": "nahyeseokgeori"
+      },
+      {
+        "name": "三星創新博物館",
+        "note": "",
+        "place_slug": "samseonginobeisyeonmyujieom"
+      },
+      {
+        "name": "靈興樹木園",
+        "note": "",
+        "place_slug": "yeongheungsumogwon"
+      },
+      {
+        "name": "水原市立美術館",
+        "note": "",
+        "place_slug": "suwonsirimmisulgwan"
+      }
+    ],
+    "ko_hash": "62025c256cf5a24c",
+    "translated_at": "2026-10-23"
+  }
+}

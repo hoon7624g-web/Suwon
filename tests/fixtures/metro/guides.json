@@ -1,0 +1,40 @@
+[
+  {
+    "id": "metro-guide-1",
+    "slug": "sample-guide",
+    "label": "[샘플] 가이드",
+    "title": "[샘플] 구·군별로 둘러보기, 어떻게 할까?",
+    "status": "published",
+    "reviewed_at": "2026-10-08",
+    "checked_at": "2026-10-08",
+    "summary": "[샘플] 시험용 가이드입니다. 근거는 아래 장소 페이지의 출처 데이터뿐입니다.",
+    "body": [
+      {
+        "heading": "[샘플] 동선",
+        "text": "[샘플] 시험용 본문입니다."
+      }
+    ],
+    "items": [
+      {
+        "place_slug": "jung-gu-jeonsigwan-a",
+        "reason": "[샘플] 시험용"
+      },
+      {
+        "place_slug": "suseong-gu-gongwon-c",
+        "reason": "[샘플] 시험용"
+      }
+    ],
+    "sources": [
+      {
+        "name": "한국관광공사 TourAPI",
+        "url": "https://korean.visitkorea.or.kr"
+      }
+    ],
+    "faq": [
+      {
+        "q": "[샘플] 가이드 질문인가요?",
+        "a": "[샘플] 근거 데이터 안에서만 답합니다."
+      }
+    ]
+  }
+]

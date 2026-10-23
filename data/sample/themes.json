@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "modern-history",
+    "name": "근대와 역사",
+    "description": "근대문화유산과 박물관",
+    "visual": {
+      "tone": "history",
+      "icon": "building"
+    }
+  },
+  {
+    "slug": "islands-sea",
+    "name": "섬과 바다",
+    "description": "고군산군도의 섬 여행",
+    "visual": {
+      "tone": "sea",
+      "icon": "wave"
+    }
+  },
+  {
+    "slug": "parks-nature",
+    "name": "공원과 자연",
+    "description": "호수와 공원, 느린 산책",
+    "visual": {
+      "tone": "park",
+      "icon": "tree"
+    }
+  },
+  {
+    "slug": "alleys-culture",
+    "name": "골목과 문화",
+    "description": "골목에서 만나는 군산",
+    "visual": {
+      "tone": "alley",
+      "icon": "lamp"
+    }
+  }
+]

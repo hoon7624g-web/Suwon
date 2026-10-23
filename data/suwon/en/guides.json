@@ -1,0 +1,440 @@
+{
+  "guide-01": {
+    "slug": "suwon-hwaseong-fortress-haenggung",
+    "label": "Suwon Hwaseong · Haenggung · Fortress",
+    "title": "Which Suwon Hwaseong, Hwaseong Haenggung, and Banghwasuryujeong fortress sights and free year-round attractions can you visit?",
+    "summary": "This site lists 20 Suwon Hwaseong, Hwaseong Haenggung, gate, pavilion, and fortress attractions, including 50 Suwon attractions open all year with free admission. Compare the hours, closed days, and fees of 10 key spots below.",
+    "body": [
+      {
+        "heading": "20 Suwon Hwaseong & Haenggung Fortress Sights and 50 Free Year-Round Attractions",
+        "text": "According to Korea Tourism Organization TourAPI records, 20 Suwon attractions are associated with Suwon Hwaseong Fortress, Hwaseong Haenggung Palace, the four gates. In addition, Banghwasuryujeong, Yeonmudae, Hwahongmun, Seojangdae, and Hwaryeongjeon, and 50 attractions are open all year for free."
+      },
+      {
+        "heading": "Checking Open Fortress Wall Sections and Ticketing Deadlines for Palace & Rides",
+        "text": "While the Suwon Hwaseong fortress trail and outer gates remain open all year for free, Hwaseong Haenggung Palace, the Hwaseong Trolley, and. In addition, the Flying Suwon helium balloon enforce ticketing cutoffs and weather or closing rules, so check the 10 places below before departure."
+      }
+    ],
+    "items": [
+      {
+        "place_slug": "suwon-hwaseong",
+        "reason": "Located in the Yeonghwa-dong area (hours: 00:00 – 24:00; closed days: Open all year)."
+      },
+      {
+        "place_slug": "hwaseonghaenggung",
+        "reason": "Located in the Namchang-dong area (hours: 09:00–18:00 (Yagangaejang Sijeun 18:00–21:30 Byeoldo Unyeong); closed days: Open all year (Yagangaejangeun Monday, Tuesday Hyumu))."
+      },
+      {
+        "place_slug": "banghwasuryujeong",
+        "reason": "Located in the Maehyang-dong area (hours: Always open (Nugak Naebu Churip 09:00–18:00); closed days: Open all year)."
+      },
+      {
+        "place_slug": "janganmun",
+        "reason": "Located in the Jangan-dong area (hours: Always open (Seonggwak Tambangno Ilchul–22:00); closed days: Open all year)."
+      },
+      {
+        "place_slug": "paldalmun",
+        "reason": "Located in the Paldal-ro 2-ga area (hours: 09:00 – 18:00; closed days: Open all year)."
+      },
+      {
+        "place_slug": "hwaseomun",
+        "reason": "Located in the Jangan-dong area (hours: Always open; closed days: Open all year)."
+      },
+      {
+        "place_slug": "changnyongmun",
+        "reason": "Located in the Namsu-dong area (hours: Always open; closed days: Open all year)."
+      },
+      {
+        "place_slug": "yeonmudae",
+        "reason": "Located in the Maehyang-dong area (hours: 10:00 – 17:00; closed days: Open all year)."
+      },
+      {
+        "place_slug": "hwahongmun",
+        "reason": "Located in the Paldal-gu area (hours: Always open; closed days: Open all year)."
+      },
+      {
+        "place_slug": "hyowonui-jong-seojangdae",
+        "reason": "Located in the Namchang-dong area (hours: 09:00–18:00 (Seonggwakgil Always open ); closed days: Open all year)."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How many Suwon Hwaseong and Haenggung fortress sights and free year-round attractions are in Suwon?",
+        "a": "There are 20 Suwon Hwaseong, Haenggung, gate, and pavilion attractions, and 50 attractions are open all year for free.",
+        "source": "한국관광공사 TourAPI"
+      }
+    ],
+    "sources": [
+      {
+        "name": "Korea Tourism Organization TourAPI",
+        "url": "https://api.visitkorea.or.kr/"
+      }
+    ],
+    "ko_hash": "93c35614c0e5d3d6",
+    "translated_at": "2026-10-23"
+  },
+  "guide-02": {
+    "slug": "suwon-with-kids",
+    "label": "With Kids",
+    "title": "Which arboretums, aquariums, museums, and parks in Suwon are convenient to visit with kids?",
+    "summary": "In Suwon, 52 attractions include arboretums, lakes, parks, Aqua Planet, observatories, museums, and art galleries, and 43 are cultural facilities such as museums and libraries. Compare the hours and visitor conditions of 10 key spots below.",
+    "body": [
+      {
+        "heading": "52 Arboretums, Lakes, Parks, Aquariums & Museums and 43 Cultural Facilities",
+        "text": "Based on Korea Tourism Organization TourAPI records, 52 Suwon attractions include arboretums, lakes, parks, Aqua Planet, observatories, museums, or art galleries in. In addition, their names, and 43 cultural facilities such as agricultural museums, map museums, children's libraries, and art centers are recorded."
+      },
+      {
+        "heading": "Checking Closed Mondays, Advance Reservations & Last Entry Times",
+        "text": "Irwol and Yeongheung Arboretums and municipal museums close every Monday, while Samsung Innovation Museum and children's experience halls require advance online booking. In addition, or close ticketing early, so review the 10 places below before visiting."
+      }
+    ],
+    "items": [
+      {
+        "place_slug": "irwolsumogwon",
+        "reason": "Located in the Cheoncheon-dong area (hours: 09:30 – 17:30; closed days: every Monday Hyumuil)."
+      },
+      {
+        "place_slug": "yeongheungsumogwon",
+        "reason": "Located in the Yeongtong-dong area (hours: 09:30 – 17:30; closed days: every Monday Hyumuil)."
+      },
+      {
+        "place_slug": "akuapeullanet-gwanggyo",
+        "reason": "Located in the Ha-dong area (hours: 10:30 – 19:30; closed days: Open all year)."
+      },
+      {
+        "place_slug": "gwanggyohosugongwon",
+        "reason": "Located in the Ha-dong area (hours: 00:00 – 24:00; closed days: Open all year)."
+      },
+      {
+        "place_slug": "gungnimnongeopbangmulgwan",
+        "reason": "Located in the Seodun-dong area (hours: 10:00 – 18:00; closed days: every Monday Hyumuil)."
+      },
+      {
+        "place_slug": "haeujae",
+        "reason": "Located in the Imok-dong area (hours: 10:00 – 18:00; closed days: Open all year)."
+      },
+      {
+        "place_slug": "samseonginobeisyeonmyujieom",
+        "reason": "Located in the Maetan-dong area (hours: 13:00 – 14:00; closed days: every Sunday Hyumuil)."
+      },
+      {
+        "place_slug": "suwonhwaseongbangmulgwan",
+        "reason": "Located in the Maehyang-dong area (hours: 09:00 – 18:00; closed days: every Monday Hyumuil)."
+      },
+      {
+        "place_slug": "suwongwanggyobangmulgwan",
+        "reason": "Located in the Iui-dong area (hours: 09:00 – 18:00; closed days: every Monday Hyumuil)."
+      },
+      {
+        "place_slug": "gwanggyoeorinicheonmundae",
+        "reason": "Located in the Iui-dong area (hours: 15:00 – 24:00; closed days: every Sunday, Monday Hyumuil)."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How many arboretum, lake, park, aquarium, and museum attractions and cultural facilities are in Suwon?",
+        "a": "There are 52 arboretum, lake, park, aquarium, observatory, and museum attractions, and 43 cultural facilities.",
+        "source": "한국관광공사 TourAPI"
+      }
+    ],
+    "sources": [
+      {
+        "name": "Korea Tourism Organization TourAPI",
+        "url": "https://api.visitkorea.or.kr/"
+      }
+    ],
+    "ko_hash": "5654bc7aea71390a",
+    "translated_at": "2026-10-23"
+  },
+  "guide-03": {
+    "slug": "suwon-indoor-museums",
+    "label": "Rainy Day · Indoor",
+    "title": "Which museums, art galleries, libraries, and indoor cultural spaces in Suwon are convenient for a rainy day?",
+    "summary": "This site lists 43 cultural facilities in Suwon along with 34 museum, art gallery, library, exhibition, and aquarium attractions. Compare the hours, regular closed days, and admission fees of 10 key indoor spots below.",
+    "body": [
+      {
+        "heading": "43 Cultural Facilities and 34 Museums, Galleries, Libraries & Indoor Venues",
+        "text": "Under Korea Tourism Organization TourAPI categories, 43 Suwon venues are registered as cultural facilities, and 34 attractions include museums, art galleries, libraries, exhibition halls, cultural centers, or Aqua Planet in their names."
+      },
+      {
+        "heading": "Comparing Opening Hours, Monday Closures & Free Admission",
+        "text": "Major venues such as Suwon Hwaseong Museum, Suwon Museum, Suwon Museum of Art, and the National Agricultural Museum close on Mondays or. In addition, the first Monday of the month and stop ticket sales before closing time, while Starfield Library Suwon and Aqua Planet Gwanggyo stay open year-round, so compare the 10 places below."
+      }
+    ],
+    "items": [
+      {
+        "place_slug": "suwonhwaseongbangmulgwan",
+        "reason": "Located in the Maehyang-dong area (hours: 09:00 – 18:00; closed days: every Monday Hyumuil)."
+      },
+      {
+        "place_slug": "suwonsirimmisulgwan",
+        "reason": "Located in the Sinpung-dong area (hours: 10:00 – 19:00; closed days: Open all year)."
+      },
+      {
+        "place_slug": "suwonbangmulgwan",
+        "reason": "Located in the Iui-dong area (hours: 09:00 – 18:00; closed days: every Monday Hyumuil)."
+      },
+      {
+        "place_slug": "suwongwanggyobangmulgwan",
+        "reason": "Located in the Iui-dong area (hours: 09:00 – 18:00; closed days: every Monday Hyumuil)."
+      },
+      {
+        "place_slug": "gungnimnongeopbangmulgwan",
+        "reason": "Located in the Seodun-dong area (hours: 10:00 – 18:00; closed days: every Monday Hyumuil)."
+      },
+      {
+        "place_slug": "haeujae",
+        "reason": "Located in the Imok-dong area (hours: 10:00 – 18:00; closed days: Open all year)."
+      },
+      {
+        "place_slug": "byeolmadangdoseogwan-seutapildeu-suwonjeom",
+        "reason": "Located in the Jeongja-dong area (hours: 10:00 – 22:00; closed days: Open all year)."
+      },
+      {
+        "place_slug": "gyeonggidoseogwan",
+        "reason": "Located in the Iui-dong area (hours: 10:00 – 21:00; closed days: every Monday Hyumuil)."
+      },
+      {
+        "place_slug": "akuapeullanet-gwanggyo",
+        "reason": "Located in the Ha-dong area (hours: 10:30 – 19:30; closed days: Open all year)."
+      },
+      {
+        "place_slug": "gyeonggisangsangkaempeoseu",
+        "reason": "Located in the Seodun-dong area (hours: 10:00 – 18:00; closed days: every Monday Hyumuil)."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How many places in Suwon are classified as cultural facilities and how many are museum, gallery, or library attractions?",
+        "a": "There are 43 attractions registered as cultural facilities in Suwon, and 34 attractions related to museums, art galleries, libraries, exhibition halls, and aquariums.",
+        "source": "한국관광공사 TourAPI"
+      }
+    ],
+    "sources": [
+      {
+        "name": "Korea Tourism Organization TourAPI",
+        "url": "https://api.visitkorea.or.kr/"
+      }
+    ],
+    "ko_hash": "f6847d43bea34097",
+    "translated_at": "2026-10-23"
+  },
+  "guide-04": {
+    "slug": "pet-friendly-suwon",
+    "label": "With Pets",
+    "title": "Which parks, attractions, cafes, and stays in Suwon provide pet-friendly guidelines?",
+    "summary": "A total of 16 places in Suwon list pet-accompaniment rules, comprising 13 attractions, 2 restaurants and cafes, and 1 stay. Compare the permitted areas and leash or carrier requirements of 10 key spots below.",
+    "body": [
+      {
+        "heading": "Pet Guidelines Across 13 Attractions, 2 Cafes & 1 Stay",
+        "text": "According to Korea Tourism Organization pet-travel and GoCamping records, 16 Suwon places list pet rules: 13 dog parks, lake parks, and outdoor attractions, 2 cafes and restaurants, and 1 stay."
+      },
+      {
+        "heading": "Checking Dog Park Registration Rules, Leashes & Carrier Requirements",
+        "text": "Gwanggyo Lake Park Dog Playground checks animal registration and divides small and large dog zones, while Starfield Suwon, fortress trails, and cafes. In addition, specify leash or carrier rules, so review the fact tables of the 10 places below before visiting."
+      }
+    ],
+    "items": [
+      {
+        "place_slug": "gwanggyohosugongwon-ballyeogyeon-noriteo",
+        "reason": "Located in the Yeongtong-gu area (hours: 10:00 – 22:00; closed days: every Monday Hyumuil)."
+      },
+      {
+        "place_slug": "gwanggyohosugongwon",
+        "reason": "Located in the Ha-dong area (hours: 00:00 – 24:00; closed days: Open all year)."
+      },
+      {
+        "place_slug": "suwon-hwaseong",
+        "reason": "Located in the Yeonghwa-dong area (hours: 00:00 – 24:00; closed days: Open all year)."
+      },
+      {
+        "place_slug": "banghwasuryujeong",
+        "reason": "Located in the Maehyang-dong area (hours: Always open (Nugak Naebu Churip 09:00–18:00); closed days: Open all year)."
+      },
+      {
+        "place_slug": "manseokgongwon",
+        "reason": "Located in the Songjuk-dong area (parking: Manseokgongwon nearby public parking lot Paid Unyeong, 1 day Choedae 4,000 won , Jucha Gonggan Manchi Ana early Mancha Available)."
+      },
+      {
+        "place_slug": "irwolhosugongwon",
+        "reason": "Located in the Cheoncheon-dong area (hours: Always open; closed days: Open all year)."
+      },
+      {
+        "place_slug": "hyowongongwon",
+        "reason": "Located in the Ingye-dong area (hours: 00:00 – 24:00; closed days: Open all year)."
+      },
+      {
+        "place_slug": "seutapildeu-suwon",
+        "reason": "Located in the Jeongja-dong area (hours: 10:00 – 22:00; closed days: Open all year)."
+      },
+      {
+        "place_slug": "sollaeeumkaempingjang",
+        "reason": "Located in the Geumgok-dong area (parking: Free Jucha)."
+      },
+      {
+        "place_slug": "deohyusik-aneukhotel-suwon-ingyejeom",
+        "reason": "Located in the Ingye-dong area (parking: Free Jucha)."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How many attractions, restaurants, and stays in Suwon have registered pet-accompaniment information?",
+        "a": "Out of 16 places in total, there are 13 attractions, 2 restaurants and cafes, and 1 stay.",
+        "source": "한국관광공사 TourAPI"
+      }
+    ],
+    "sources": [
+      {
+        "name": "Korea Tourism Organization TourAPI",
+        "url": "https://api.visitkorea.or.kr/"
+      }
+    ],
+    "ko_hash": "6b4c1b84ae155a37",
+    "translated_at": "2026-10-23"
+  },
+  "guide-05": {
+    "slug": "monday-open-restaurants-suwon",
+    "label": "Open Monday · Dining",
+    "title": "Which Suwon wang-galbi, fried chicken, kalguksu, and cafe spots in Suwon are open on Monday?",
+    "summary": "Among Suwon restaurants on this site, 180 do not close on Monday. Across 55 Suwon wang-galbi, Korean beef, and grilled meat restaurants, 35 fried chicken, kalguksu, naengmyeon, haejangguk, and dumpling spots, and 59 coffee and bakery cafes, compare 10 key places below.",
+    "body": [
+      {
+        "heading": "180 Places Open Monday and 55 Galbi & Grill, 35 Chicken & Noodle & 59 Bakery Spots",
+        "text": "Based on Korea Tourism Organization TourAPI and Kakao Map records, 180 Suwon restaurants and cafes do not list Monday as a regular closing day. By menu, 55 serve wang-galbi, beef or pork ribs, Korean beef, bulgogi, or pork belly, 35 serve cauldron fried chicken, kalguksu, naengmyeon. In addition, haejangguk, seolleongtang, sundae, or dumplings, and 59 serve coffee, bakery items, cakes, or desserts."
+      },
+      {
+        "heading": "Checking Afternoon Break Times and Last-Order Cutoffs",
+        "text": "Major Suwon wang-galbi restaurants, fried chicken shops on Suwon Chicken Street, and cafes along Haengnidan-gil and Gwanggyo Cafe Street often have weekday. In addition, break times or last-order cutoffs, so check the 10 places below before visiting."
+      }
+    ],
+    "items": [
+      {
+        "place_slug": "gabojeonggalbi",
+        "reason": "Located in the Ingye-dong area (main dish: Gungnaesan Korean beef (Hanwoo) Marinated short ribs ( 1 Inbun) 79,000 won; hours: 11:30 – 21:30)."
+      },
+      {
+        "place_slug": "bonsuwongalbi",
+        "reason": "Located in the Uman-dong area (main dish: Fresh beef short ribs 70,000 won; menu: Fresh beef short ribs 70,000 won , Marinated. In addition, short ribs 65,000 won , Beef short rib soup 20,000 won , Cold broth noodles (mul-naengmyeon) 12,000 won , Spicy mixed cold noodles 12,000 won)."
+      },
+      {
+        "place_slug": "riteulbonsuwongalbijip",
+        "reason": "Located in the Yeonghwa-dong area (main dish: Beef short rib soup 12,000 won; hours: 11:00 – 20:30)."
+      },
+      {
+        "place_slug": "jinmitongdak",
+        "reason": "Located in the Namsu-dong area (main dish: Huraideu 20,000 won; menu: Huraideu 20,000 won , Whole fried chicken (tongdak) 20,000 won . In addition, Sweet and spicy fried chicken 21,000 won , Banban 21,000 won)."
+      },
+      {
+        "place_slug": "bungmun-yuchihoegwan",
+        "reason": "Located in the Yeonghwa-dong area (main dish: Haejangguk 10,000 won; menu: Haejangguk 10,000 won , Sulguk 12,000 won , Boiled pork slices 30,000 won , Haejangguk (Teuk) 12,000 won)."
+      },
+      {
+        "place_slug": "yuchihoegwan",
+        "reason": "Located in the Ingye-dong area (main dish: Haejangguk 12,000 won; menu: Haejangguk 12,000 won , Boiled pork slices ( spaces ). In addition, 40,000 won , Boiled pork slices Muchim 40,000 won , Boiled pork slices (Soa) 20,000 won)."
+      },
+      {
+        "place_slug": "yeonpogalbi",
+        "reason": "Located in the Buksu-dong area (main dish: Marinated short ribs ( 450 g) 58,000 won; hours: 11:20 – 21:30)."
+      },
+      {
+        "place_slug": "sillagalbi",
+        "reason": "Located in the Woncheon-dong area (main dish: Wang Fresh beef short ribs ( 1 Inbun) 70,000 won; hours: 11:30 – 22:00)."
+      },
+      {
+        "place_slug": "jeongjiyeongkeopiroseuteojeu-haenggungbonjeom",
+        "reason": "Located in the Sinpung-dong area (main dish: Kokoneot 7,000 won; hours: 12:00 – 22:00)."
+      },
+      {
+        "place_slug": "yeonmil",
+        "reason": "Located in the Paldal-ro 1-ga area (main dish: Saeuyukjeummandu ( 8 items ) 14,000 won; hours: 11:30 – 21:00)."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How many restaurants in Suwon are open on Monday, and how many specialize in galbi and grilled meat, chicken and noodles, and coffee and bakery items?",
+        "a": "There are 180 restaurants without a Monday closure, along with 55 wang-galbi, Korean beef, and grilled meat spots, 35 fried chicken, noodle, soup, and dumpling restaurants, and 59 coffee and bakery places.",
+        "source": "한국관광공사 TourAPI"
+      }
+    ],
+    "sources": [
+      {
+        "name": "Korea Tourism Organization TourAPI",
+        "url": "https://api.visitkorea.or.kr/"
+      }
+    ],
+    "ko_hash": "a12856407115de7e",
+    "translated_at": "2026-10-23"
+  },
+  "guide-06": {
+    "slug": "suwon-hotels-hanok-stays",
+    "label": "Hotels · Hanok · Stays",
+    "title": "How can you compare 27 hotels, hanok stays, and guesthouses in Suwon?",
+    "summary": "This site lists 27 hotels, hanok stays, guesthouses, and motels in Suwon, including 26 stays with parking guidance. Compare the check-in and check-out times and room capacities of 10 key stays below.",
+    "body": [
+      {
+        "heading": "27 Hotels, Hanok Stays & Guesthouses and 26 Stays with Parking Info",
+        "text": "Based on Korea Tourism Organization TourAPI records, 27 lodging facilities are registered in Suwon across Suwon Station, Ingye-dong, Gwanggyo Convention Center, and Haenggung-dong, and 26 stays list parking availability."
+      },
+      {
+        "heading": "Comparing Check-In & Check-Out Times and On-Site Facilities",
+        "text": "Business hotels near Suwon Station, Gwanggyo, and Ingye-dong and traditional hanok stays inside the Hwaseong fortress walls differ in check-in and check-out. In addition, times, room counts, and dining or seminar facilities, so compare the fact tables of the 10 stays below."
+      }
+    ],
+    "items": [
+      {
+        "place_slug": "nobotel-aembaeseodeo-suwon",
+        "reason": "Located in the Maesan-ro 1-ga area (parking: Sukso Nae Tusukgaek Free parking lot use Available , Gogeup Balletpaking Seobiseu Wanbi)."
+      },
+      {
+        "place_slug": "koteuyadeu-bai-merieoteu-suwon",
+        "reason": "Located in the Ha-dong area (parking: Tusukgaek Selpeu Jucha Free , rooms Dang 1 spaces Jiha 1 F Jucha Available , parking lot Jiha 5 F Available)."
+      },
+      {
+        "place_slug": "ramadapeuraja-suwonhotel",
+        "reason": "Located in the Ingye-dong area (parking: Jiha 4 F Jucha Available , parking lot Ipgu Jobeum, Jucha Sigan Jehan None)."
+      },
+      {
+        "place_slug": "ibiseu-aembaeseodeo-suwon",
+        "reason": "Located in the Ingye-dong area (category: Sukbak)."
+      },
+      {
+        "place_slug": "dono-1796-hotel",
+        "reason": "Located in the Jangan-dong area (parking: Free Jucha)."
+      },
+      {
+        "place_slug": "yeoyeojae",
+        "reason": "Located in the Sinpung-dong area (check-in: 15:00; check-out: 11:00)."
+      },
+      {
+        "place_slug": "siwoljae",
+        "reason": "Located in the Yeonmu-dong area (check-in: 15:00; check-out: 11:00)."
+      },
+      {
+        "place_slug": "133-patirum-hanokseuteijeom",
+        "reason": "Located in the Paldal-ro 2-ga area (check-in: 15:00; check-out: 11:00)."
+      },
+      {
+        "place_slug": "reubonsuwonsilkeurodeuhotel",
+        "reason": "Located in the Ingye-dong area (category: Sukbak)."
+      },
+      {
+        "place_slug": "hotel-areutte",
+        "reason": "Located in the Ingye-dong area (parking: Hotel Geonmul Nae Tawojucha Available , Sukbakgaek Charyang Jucha Available , Free Ballet Seobiseu Jegong)."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How many total lodging facilities and stays with parking guidance are registered in Suwon?",
+        "a": "There are 27 hotels, hanok stays, and guesthouses in total, and 26 stays list parking information.",
+        "source": "한국관광공사 TourAPI"
+      }
+    ],
+    "sources": [
+      {
+        "name": "Korea Tourism Organization TourAPI",
+        "url": "https://api.visitkorea.or.kr/"
+      }
+    ],
+    "ko_hash": "a9958a1f4519d517",
+    "translated_at": "2026-10-23"
+  }
+}

@@ -1,0 +1,4002 @@
+{
+  "tourapi-4074940": {
+    "name_ko": "PLAY your TRIP",
+    "name_zh_hans": "PLAY your TRIP",
+    "name_zh_hans_source": "translated",
+    "name_rr": "PLAY your TRIP",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2747097": {
+    "name_ko": "광교마루길",
+    "name_zh_hans": "光教 Marugil",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gwanggyomarugil",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-125577": {
+    "name_ko": "노송지대",
+    "name_zh_hans": "老松地带",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Nosongjidae",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3428384": {
+    "name_ko": "대유평공원",
+    "name_zh_hans": "Daeyupyeong 公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Daeyupyeonggongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2613660": {
+    "name_ko": "만석거공원",
+    "name_zh_hans": "万石渠公园",
+    "name_zh_hans_source": "TourAPI ChsService2",
+    "name_rr": "Manseokgeogongwon",
+    "zh_hans_contentid": "3454941",
+    "addr_zh_hans": "京畿道水原市长安区正祖路1087",
+    "match_m": 0.0,
+    "match_basis": "coordinates_type_same_photo"
+  },
+  "tourapi-3351831": {
+    "name_ko": "만석공원",
+    "name_zh_hans": "万石公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Manseokgongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": "rejected: coordinates_type"
+  },
+  "tourapi-2781841": {
+    "name_ko": "밤밭청개구리공원",
+    "name_zh_hans": "Bambatcheonggaeguri 公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Bambatcheonggaegurigongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2745742": {
+    "name_ko": "보현선원",
+    "name_zh_hans": "Bohyeonseonwon",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Bohyeonseonwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2745737": {
+    "name_ko": "북수원온천",
+    "name_zh_hans": "北水原温泉",
+    "name_zh_hans_source": "TourAPI ChsService2",
+    "name_rr": "Buksuwononcheon",
+    "zh_hans_contentid": "3492761",
+    "addr_zh_hans": "京畿道水原市长安区西部路2139 (栗田洞)",
+    "match_m": 5.9,
+    "match_basis": "coordinates_type_korean_title"
+  },
+  "tourapi-125555": {
+    "name_ko": "수원 화성",
+    "name_zh_hans": "水原华城",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwon Hwaseong",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3076051": {
+    "name_ko": "일월수목원",
+    "name_zh_hans": "日月树木园",
+    "name_zh_hans_source": "TourAPI ChsService2",
+    "name_rr": "Irwolsumogwon",
+    "zh_hans_contentid": "3442377",
+    "addr_zh_hans": "京畿道水原市长安区日月路61",
+    "match_m": 5.8,
+    "match_basis": "coordinates_type"
+  },
+  "tourapi-3081125": {
+    "name_ko": "일월호수공원",
+    "name_zh_hans": "Irwolhosu 公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Irwolhosugongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2741599": {
+    "name_ko": "장안공원",
+    "name_zh_hans": "Jangan 公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Jangangongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-482135": {
+    "name_ko": "청련암",
+    "name_zh_hans": "青莲庵",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Cheongnyeonam",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2741606": {
+    "name_ko": "효행공원",
+    "name_zh_hans": "Hyohaeng 公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Hyohaenggongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-130831": {
+    "name_ko": "경기도교육청중앙도서관",
+    "name_zh_hans": "Gyeonggidogyoyukcheongjungang 图书馆",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gyeonggidogyoyukcheongjungangdoseogwan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3427294": {
+    "name_ko": "경기도행정역사관",
+    "name_zh_hans": "Gyeonggidohaengjeongyeoksagwan",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gyeonggidohaengjeongyeoksagwan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3335521": {
+    "name_ko": "별마당도서관 스타필드 수원점",
+    "name_zh_hans": "水原Starfield图书馆",
+    "name_zh_hans_source": "TourAPI ChsService2",
+    "name_rr": "Byeolmadangdoseogwan Seutapildeu Suwonjeom",
+    "zh_hans_contentid": "3495677",
+    "addr_zh_hans": "京畿道水原市长安区水城路175 (亭子洞)",
+    "match_m": 5.8,
+    "match_basis": "coordinates_type_korean_title"
+  },
+  "tourapi-3562537": {
+    "name_ko": "복합문화공간 111씨엠(111CM)",
+    "name_zh_hans": "Bokhammunhwagonggan 111 Ssiem （111CM）",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Bokhammunhwagonggan 111ssiem(111CM)",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3075454": {
+    "name_ko": "수원SK아트리움",
+    "name_zh_hans": "水原SK Ateurium",
+    "name_zh_hans_source": "translated",
+    "name_rr": "SuwonSKateurium",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-130711": {
+    "name_ko": "수원시립만석전시관",
+    "name_zh_hans": "水原市 Rimmanseok 展览馆",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwonsirimmanseokjeonsigwan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-130826": {
+    "name_ko": "슬기샘어린이도서관",
+    "name_zh_hans": "Seulgisaemeorini 图书馆",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Seulgisaemeorinidoseogwan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3081953": {
+    "name_ko": "한누리아트홀",
+    "name_zh_hans": "Hannuriateuhol",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Hannuriateuhol",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-1925403": {
+    "name_ko": "해우재",
+    "name_zh_hans": "解忧斋",
+    "name_zh_hans_source": "TourAPI ChsService2",
+    "name_rr": "Haeujae",
+    "zh_hans_contentid": "2469588",
+    "addr_zh_hans": "京畿道水原市长安区长安路458号街9",
+    "match_m": 22.3,
+    "match_basis": "coordinates_type"
+  },
+  "tourapi-1835368": {
+    "name_ko": "서호천길",
+    "name_zh_hans": "Seohocheongil",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Seohocheongil",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3057776": {
+    "name_ko": "수원KT위즈파크",
+    "name_zh_hans": "水原KT Wiz棒球场",
+    "name_zh_hans_source": "translated",
+    "name_rr": "SuwonKTwijeupakeu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3116124": {
+    "name_ko": "스몹 수원",
+    "name_zh_hans": "Seumop 水原",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Seumop Suwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3081940": {
+    "name_ko": "점핑파크 정자점",
+    "name_zh_hans": "Jeompingpakeu 亭子 Jeom",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Jeompingpakeu Jeongjajeom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-132105": {
+    "name_ko": "반딧불이 연무시장",
+    "name_zh_hans": "Banditburi 练武市场",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Banditburi Yeonmusijang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2753658": {
+    "name_ko": "북수원시장",
+    "name_zh_hans": "Buk 水原市 Jang",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Buksuwonsijang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3335600": {
+    "name_ko": "스타필드 수원",
+    "name_zh_hans": "水原Starfield",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Seutapildeu Suwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2752967": {
+    "name_ko": "장안문거북시장",
+    "name_zh_hans": "长安门龟市场",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Janganmungeobuksijang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2752977": {
+    "name_ko": "정자시장",
+    "name_zh_hans": "亭子市场",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Jeongjasijang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2752643": {
+    "name_ko": "조원시장",
+    "name_zh_hans": "枣园市场",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Jowonsijang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-1770188": {
+    "name_ko": "모텔나무",
+    "name_zh_hans": "汽车旅馆 Namu",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Motellamu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3533132": {
+    "name_ko": "시월재",
+    "name_zh_hans": "Siwoljae",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Siwoljae",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3083959": {
+    "name_ko": "탑클라우드호텔 수원점",
+    "name_zh_hans": "Tapkeullaudeu 酒店 水原 Jeom",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Tapkeullaudeuhotel Suwonjeom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2844721": {
+    "name_ko": "광교헌농원",
+    "name_zh_hans": "光教 Heonnongwon",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gwanggyoheonnongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2846370": {
+    "name_ko": "그집 해장국",
+    "name_zh_hans": "Geujip 醒酒汤",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Geujip Haejangguk",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2844733": {
+    "name_ko": "그집쭈꾸미볶음",
+    "name_zh_hans": "Geujipjjukkumibokkeum",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Geujipjjukkumibokkeum",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-807896": {
+    "name_ko": "길림성",
+    "name_zh_hans": "Gillimseong",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gillimseong",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2745736": {
+    "name_ko": "리틀본수원갈비집",
+    "name_zh_hans": "Riteulbon 水原排骨 Jip",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Riteulbonsuwongalbijip",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2835369": {
+    "name_ko": "명성돼지갈비",
+    "name_zh_hans": "Myeongseongdwaeji 排骨",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Myeongseongdwaejigalbi",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2835388": {
+    "name_ko": "바다로간코끼리꼬창",
+    "name_zh_hans": "Badarogankokkirikkochang",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Badarogankokkirikkochang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2751109": {
+    "name_ko": "백세삼계탕 수원파장본점",
+    "name_zh_hans": "Baeksesamgyetang 水原芭长总店",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Baeksesamgyetang Suwonpajangbonjeom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2754026": {
+    "name_ko": "백세짬뽕 수원본점",
+    "name_zh_hans": "Baeksejjamppong 水原总店",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Baeksejjamppong Suwonbonjeom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2781827": {
+    "name_ko": "백운주말농장",
+    "name_zh_hans": "Baegunjumallongjang",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Baegunjumallongjang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2873600": {
+    "name_ko": "북문 유치회관",
+    "name_zh_hans": "Bungmun Yuchihoegwan",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Bungmun Yuchihoegwan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2844760": {
+    "name_ko": "북수원화로",
+    "name_zh_hans": "Buk 水原 Hwaro",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Buksuwonhwaro",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-133041": {
+    "name_ko": "삼풍가든",
+    "name_zh_hans": "Sampunggadeun",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Sampunggadeun",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2830470": {
+    "name_ko": "서동진의커피랩 본점",
+    "name_zh_hans": "Seodongjinuikeopiraep 总店",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Seodongjinuikeopiraep Bonjeom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2916318": {
+    "name_ko": "송죽약방",
+    "name_zh_hans": "松竹 Yakbang",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Songjugyakbang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-602559": {
+    "name_ko": "송풍가든",
+    "name_zh_hans": "Songpunggadeun",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Songpunggadeun",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2835405": {
+    "name_ko": "신사강정육점식당",
+    "name_zh_hans": "Sinsagangjeongyukjeom 餐厅",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Sinsagangjeongyukjeomsikdang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2838706": {
+    "name_ko": "아늑",
+    "name_zh_hans": "Aneuk",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Aneuk",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2848130": {
+    "name_ko": "예전각설렁탕",
+    "name_zh_hans": "Yejeongak 雪浓汤",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Yejeongakseolleongtang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2848097": {
+    "name_ko": "우리동네 스시카야",
+    "name_zh_hans": "Uridongne Seusikaya",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Uridongne Seusikaya",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2844774": {
+    "name_ko": "우리동네스시신조",
+    "name_zh_hans": "Uridongneseusisinjo",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Uridongneseusisinjo",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2753976": {
+    "name_ko": "우전옥간장게장",
+    "name_zh_hans": "Ujeonokganjanggejang",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Ujeonokganjanggejang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3354946": {
+    "name_ko": "일월수목원 카페 데이지원",
+    "name_zh_hans": "日月树木园 咖啡厅 Deijiwon",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Irwolsumogwon Kape Deijiwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3081946": {
+    "name_ko": "장안농원",
+    "name_zh_hans": "Jangannongwon",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Jangannongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2751121": {
+    "name_ko": "제철쌈밥",
+    "name_zh_hans": "Jecheolssambap",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Jecheolssambap",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3445980": {
+    "name_ko": "타임체임버바이스템커피 수원스타필드점",
+    "name_zh_hans": "Taimcheimbeobaiseutemkeopi 水原 Seutapildeujeom",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Taimcheimbeobaiseutemkeopi Suwonseutapildeujeom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2929831": {
+    "name_ko": "파치 성대점",
+    "name_zh_hans": "Pachi Seongdaejeom",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Pachi Seongdaejeom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2844781": {
+    "name_ko": "풍어생선구이정식",
+    "name_zh_hans": "Pungeosaengseonguijeongsik",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Pungeosaengseonguijeongsik",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2835421": {
+    "name_ko": "형제농원",
+    "name_zh_hans": "Hyeongjenongwon",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Hyeongjenongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2846661": {
+    "name_ko": "홍남매칼국수",
+    "name_zh_hans": "Hongnammae 刀削面",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Hongnammaekalguksu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2754720": {
+    "name_ko": "고렴공원",
+    "name_zh_hans": "Goryeom 公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Goryeomgongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2739465": {
+    "name_ko": "당수체육공원",
+    "name_zh_hans": "Dangsucheyuk 公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Dangsucheyukgongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2745729": {
+    "name_ko": "대부둑공원",
+    "name_zh_hans": "Daebuduk 公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Daebudukgongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2742299": {
+    "name_ko": "마중공원",
+    "name_zh_hans": "Majung 公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Majunggongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2739425": {
+    "name_ko": "무궁화동산",
+    "name_zh_hans": "Mugunghwadongsan",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Mugunghwadongsan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2739473": {
+    "name_ko": "수원올림픽공원",
+    "name_zh_hans": "水原奥林匹克公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwonollimpikgongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2739462": {
+    "name_ko": "여기산공원",
+    "name_zh_hans": "Yeogisan 公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Yeogisangongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3075475": {
+    "name_ko": "오목천체육공원(서수원체육공원)",
+    "name_zh_hans": "梧木川 Cheyuk 公园（ Seo 水原 Cheyuk 公园）",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Omokcheoncheyukgongwon (Seosuwoncheyukgongwon)",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2742282": {
+    "name_ko": "오목호수공원",
+    "name_zh_hans": "Omokhosu 公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Omokhosugongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2746031": {
+    "name_ko": "용화사",
+    "name_zh_hans": "Yonghwasa",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Yonghwasa",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2741603": {
+    "name_ko": "중보들공원",
+    "name_zh_hans": "Jungbodeul 公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Jungbodeulgongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3427162": {
+    "name_ko": "타임빌라스 수원",
+    "name_zh_hans": "Timevillas 水原",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Taimbillaseu Suwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3081843": {
+    "name_ko": "경기도업사이클플라자",
+    "name_zh_hans": "Gyeonggidoeopsaikeulpeullaja",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gyeonggidoeopsaikeulpeullaja",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2747132": {
+    "name_ko": "경기상상캠퍼스",
+    "name_zh_hans": "京畿想象校园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gyeonggisangsangkaempeoseu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2747134": {
+    "name_ko": "고색뉴지엄",
+    "name_zh_hans": "古索 Nyujieom",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gosaengnyujieom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2944481": {
+    "name_ko": "국립농업박물관",
+    "name_zh_hans": "国立农业博物馆",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gungnimnongeopbangmulgwan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-130837": {
+    "name_ko": "서수원도서관",
+    "name_zh_hans": "Seo 水原图书馆",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Seosuwondoseogwan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3075791": {
+    "name_ko": "수원메쎄",
+    "name_zh_hans": "水原Messe展览中心",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwonmesse",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-129718": {
+    "name_ko": "수원문화원",
+    "name_zh_hans": "水原 Munhwawon",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwonmunhwawon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-130825": {
+    "name_ko": "지혜샘어린이도서관",
+    "name_zh_hans": "Jihyesaemeorini 图书馆",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Jihyesaemeorinidoseogwan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2745948": {
+    "name_ko": "서수원주민편익시설",
+    "name_zh_hans": "Seo 水原 Juminpyeoniksiseol",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Seosuwonjuminpyeoniksiseol",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2909927": {
+    "name_ko": "솔내음캠핑장",
+    "name_zh_hans": "Sollaeeum 露营场",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Sollaeeumkaempingjang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3078246": {
+    "name_ko": "수원체력단련장",
+    "name_zh_hans": "水原 Cheryeokdallyeonjang",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwoncheryeokdallyeonjang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2753389": {
+    "name_ko": "권선종합시장",
+    "name_zh_hans": "劝善 Jonghap 市场",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gwonseonjonghapsijang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-132353": {
+    "name_ko": "수원 농수산물도매시장",
+    "name_zh_hans": "水原 Nongsusanmuldomae 市场",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwon Nongsusanmuldomaesijang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2847042": {
+    "name_ko": "호텔 세인트",
+    "name_zh_hans": "酒店 Seinteu",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Hotel Seinteu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2846969": {
+    "name_ko": "호텔아마레",
+    "name_zh_hans": "酒店 Amare",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Hoteramare",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2876387": {
+    "name_ko": "10593 베이글커피하우스",
+    "name_zh_hans": "10593 Beigeulkeopihauseu",
+    "name_zh_hans_source": "translated",
+    "name_rr": "10593 Beigeulkeopihauseu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2831373": {
+    "name_ko": "경성집",
+    "name_zh_hans": "Gyeongseongjip",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gyeongseongjip",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2844739": {
+    "name_ko": "금정참치 본점",
+    "name_zh_hans": "Geumjeongchamchi 总店",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Geumjeongchamchi Bonjeom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2747109": {
+    "name_ko": "기와집",
+    "name_zh_hans": "Giwajip",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Giwajip",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2831004": {
+    "name_ko": "남수원갈비",
+    "name_zh_hans": "Nam 水原排骨",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Namsuwongalbi",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2745722": {
+    "name_ko": "넓은뜰",
+    "name_zh_hans": "Neolbeuntteul",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Neolbeuntteul",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2873654": {
+    "name_ko": "다래식당",
+    "name_zh_hans": "Darae 餐厅",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Daraesikdang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2844749": {
+    "name_ko": "돈까스여행",
+    "name_zh_hans": "Donkkaseuyeohaeng",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Donkkaseuyeohaeng",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2873484": {
+    "name_ko": "마포해장",
+    "name_zh_hans": "Mapohaejang",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Mapohaejang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2867025": {
+    "name_ko": "말로우 플레이스",
+    "name_zh_hans": "Mallou Peulleiseu",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Mallou Peulleiseu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3354928": {
+    "name_ko": "메모리",
+    "name_zh_hans": "Memori",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Memori",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2873631": {
+    "name_ko": "메밀정원",
+    "name_zh_hans": "Memiljeongwon",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Memiljeongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2868856": {
+    "name_ko": "명가네순대국",
+    "name_zh_hans": "Myeonggane 米肠 Guk",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Myeongganesundaeguk",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2867048": {
+    "name_ko": "박네집송탄부대찌개 무공닭갈비",
+    "name_zh_hans": "Bangnejipsongtanbudaejjigae Mugongdak 排骨",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Bangnejipsongtanbudaejjigae Mugongdakgalbi",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2829072": {
+    "name_ko": "삐에스몽테제빵소",
+    "name_zh_hans": "Ppieseumongtejeppangso",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Ppieseumongtejeppangso",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2831490": {
+    "name_ko": "서수원숯불갈비",
+    "name_zh_hans": "Seo 水原 Sutbul 排骨",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Seosuwonsutbulgalbi",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2873500": {
+    "name_ko": "석산정",
+    "name_zh_hans": "Seoksanjeong",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Seoksanjeong",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3458446": {
+    "name_ko": "소롯",
+    "name_zh_hans": "Sorot",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Sorot",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2629006": {
+    "name_ko": "송할머니옻닭",
+    "name_zh_hans": "Songhalmeoniotdak",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Songhalmeoniotdak",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4110195": {
+    "name_ko": "수복헌",
+    "name_zh_hans": "Subokheon",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Subokheon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2765454": {
+    "name_ko": "수인닭발집",
+    "name_zh_hans": "Suindakbaljip",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suindakbaljip",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2754001": {
+    "name_ko": "아낙네",
+    "name_zh_hans": "Anangne",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Anangne",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2831410": {
+    "name_ko": "열구자",
+    "name_zh_hans": "Yeolguja",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Yeolguja",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3415003": {
+    "name_ko": "오렌지베이글",
+    "name_zh_hans": "Orenjibeigeul",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Orenjibeigeul",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2868656": {
+    "name_ko": "우동일번가",
+    "name_zh_hans": "Udongilbeonga",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Udongilbeonga",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2831365": {
+    "name_ko": "은미정&은미찬",
+    "name_zh_hans": "Eunmijeong & Eunmichan",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Eunmijeong&Eunmichan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2873459": {
+    "name_ko": "이리부농",
+    "name_zh_hans": "Iribunong",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Iribunong",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2866447": {
+    "name_ko": "이서방왕족발보쌈 수원본점",
+    "name_zh_hans": "Iseobangwangjokbalbossam 水原总店",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Iseobangwangjokbalbossam Suwonbonjeom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2753968": {
+    "name_ko": "장터설렁탕",
+    "name_zh_hans": "Jangteo 雪浓汤",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Jangteoseolleongtang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2868543": {
+    "name_ko": "짜마차이나호매실본점",
+    "name_zh_hans": "Jjamachaina 好梅实总店",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Jjamachainahomaesilbonjeom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2746015": {
+    "name_ko": "초가집",
+    "name_zh_hans": "Chogajip",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Chogajip",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2588610": {
+    "name_ko": "초암골",
+    "name_zh_hans": "Choamgol",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Choamgol",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2831393": {
+    "name_ko": "최씨화로",
+    "name_zh_hans": "Choessihwaro",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Choessihwaro",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2831418": {
+    "name_ko": "칠보회관",
+    "name_zh_hans": "Chilbohoegwan",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Chilbohoegwan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2873710": {
+    "name_ko": "카페 7",
+    "name_zh_hans": "咖啡厅 7",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Kape 7",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2829911": {
+    "name_ko": "카페 하이라이트",
+    "name_zh_hans": "咖啡厅 Hairaiteu",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Kape Hairaiteu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3456360": {
+    "name_ko": "카페아고",
+    "name_zh_hans": "咖啡厅 Ago",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Kapeago",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2828475": {
+    "name_ko": "포커스온나우",
+    "name_zh_hans": "Pokeoseuonnau",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Pokeoseuonnau",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3454743": {
+    "name_ko": "하남미소명품한우",
+    "name_zh_hans": "Hanammisomyeongpumhanu",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Hanammisomyeongpumhanu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2831021": {
+    "name_ko": "한양설렁탕",
+    "name_zh_hans": "Hanyang 雪浓汤",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Hanyangseolleongtang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2781824": {
+    "name_ko": "한우이야기",
+    "name_zh_hans": "Hanuiyagi",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Hanuiyagi",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2906356": {
+    "name_ko": "한장어",
+    "name_zh_hans": "Hanjangeo",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Hanjangeo",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3356157": {
+    "name_ko": "호랑",
+    "name_zh_hans": "Horang",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Horang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3494623": {
+    "name_ko": "XR버스 1795행",
+    "name_zh_hans": "XR Beoseu 1795 Haeng",
+    "name_zh_hans_source": "translated",
+    "name_rr": "XRbeoseu 1795haeng",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-129191": {
+    "name_ko": "나혜석거리",
+    "name_zh_hans": "Nahyeseokgeori",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Nahyeseokgeori",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2613657": {
+    "name_ko": "동북공심돈",
+    "name_zh_hans": "东北空心墩",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Dongbukgongsimdon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2613658": {
+    "name_ko": "방화수류정(동북각루)",
+    "name_zh_hans": "访花随柳亭（东北角楼）",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Banghwasuryujeong (Dongbukgangnu)",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-316296": {
+    "name_ko": "봉녕사",
+    "name_zh_hans": "奉宁寺（水原）",
+    "name_zh_hans_source": "TourAPI ChsService2",
+    "name_rr": "Bongnyeongsa",
+    "zh_hans_contentid": "3454991",
+    "addr_zh_hans": "京畿道水原市八达区苍龙大路236-54",
+    "match_m": 6.1,
+    "match_basis": "coordinates_type"
+  },
+  "tourapi-2613659": {
+    "name_ko": "봉돈",
+    "name_zh_hans": "烽墩",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Bongdon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2781854": {
+    "name_ko": "서호공원",
+    "name_zh_hans": "西湖公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Seohogongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2739474": {
+    "name_ko": "서호꽃뫼공원",
+    "name_zh_hans": "西湖花山公园",
+    "name_zh_hans_source": "TourAPI ChsService2",
+    "name_rr": "Seohokkonmoegongwon",
+    "zh_hans_contentid": "3442363",
+    "addr_zh_hans": "京畿道水原市八达区水城路100",
+    "match_m": 6.1,
+    "match_basis": "coordinates_type"
+  },
+  "tourapi-2667588": {
+    "name_ko": "수원 공방거리",
+    "name_zh_hans": "水原 工坊街",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwon Gongbanggeori",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": "rejected: coordinates_type"
+  },
+  "tourapi-3033796": {
+    "name_ko": "수원 구 부국원",
+    "name_zh_hans": "水原 Gu Bugugwon",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwon Gu Bugugwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2946407": {
+    "name_ko": "수원 지동벽화마을",
+    "name_zh_hans": "水原 Jidong 壁画村",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwon Jidongbyeokhwamaeul",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3081123": {
+    "name_ko": "수원 현충탑",
+    "name_zh_hans": "水原 Hyeonchungtap",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwon Hyeonchungtap",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-736662": {
+    "name_ko": "수원 화령전",
+    "name_zh_hans": "水原 华宁殿",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwon Hwaryeongjeon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-486986": {
+    "name_ko": "수원사",
+    "name_zh_hans": "水原寺",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwonsa",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": "rejected: coordinates_type"
+  },
+  "tourapi-3080477": {
+    "name_ko": "수원전통문화관",
+    "name_zh_hans": "水原传统文化馆",
+    "name_zh_hans_source": "TourAPI ChsService2",
+    "name_rr": "Suwonjeontongmunhwagwan",
+    "zh_hans_contentid": "3492739",
+    "addr_zh_hans": "京畿道水原市八达区长安洞",
+    "match_m": 5.8,
+    "match_basis": "coordinates_type_korean_title"
+  },
+  "tourapi-2613664": {
+    "name_ko": "수원통닭거리",
+    "name_zh_hans": "水原炸鸡一条街",
+    "name_zh_hans_source": "TourAPI ChsService2",
+    "name_rr": "Suwontongdakgeori",
+    "zh_hans_contentid": "3009215",
+    "addr_zh_hans": "京畿道水原市八达区正祖路800号街16",
+    "match_m": 5.6,
+    "match_basis": "coordinates_type_same_photo"
+  },
+  "tourapi-264400": {
+    "name_ko": "수원향교",
+    "name_zh_hans": "水原乡校",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwonhyanggyo",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2480899": {
+    "name_ko": "수원화성 관광특구",
+    "name_zh_hans": "水原华城 Gwangwangteukgu",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwonhwaseong Gwangwangteukgu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": "rejected: coordinates_type"
+  },
+  "tourapi-4067984": {
+    "name_ko": "수원화성 성곽길",
+    "name_zh_hans": "水原华城 城郭步道",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwonhwaseong Seonggwakgil",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": "rejected: coordinates_type"
+  },
+  "tourapi-2745735": {
+    "name_ko": "숙지공원",
+    "name_zh_hans": "Sukji 公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Sukjigongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-1064469": {
+    "name_ko": "연무대(동장대)",
+    "name_zh_hans": "练武台（东将台）",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Yeonmudae (Dongjangdae)",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3489886": {
+    "name_ko": "왕의 골목여행",
+    "name_zh_hans": "Wangui Golmogyeohaeng",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Wangui Golmogyeohaeng",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-126618": {
+    "name_ko": "인계예술공원",
+    "name_zh_hans": "仁溪艺术公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Ingyeyesulgongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-264390": {
+    "name_ko": "장안문",
+    "name_zh_hans": "长安门",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Janganmun",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-264392": {
+    "name_ko": "창룡문",
+    "name_zh_hans": "苍龙门",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Changnyongmun",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-125512": {
+    "name_ko": "팔달공원",
+    "name_zh_hans": "Paldal 公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Paldalgongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-264386": {
+    "name_ko": "팔달문",
+    "name_zh_hans": "八达门",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Paldalmun",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": "rejected: coordinates_type"
+  },
+  "tourapi-482258": {
+    "name_ko": "팔달사",
+    "name_zh_hans": "八达寺",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Paldalsa",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": "rejected: coordinates_type"
+  },
+  "tourapi-2714556": {
+    "name_ko": "팔달산",
+    "name_zh_hans": "Paldalsan",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Paldalsan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2745995": {
+    "name_ko": "행궁동 벽화마을",
+    "name_zh_hans": "行宫洞壁画村",
+    "name_zh_hans_source": "TourAPI ChsService2",
+    "name_rr": "Haenggung-dong Byeokhwamaeul",
+    "zh_hans_contentid": "3094057",
+    "addr_zh_hans": "京畿道水原市八达区华西门路72号街9-6",
+    "match_m": 9.1,
+    "match_basis": "coordinates_type_korean_title"
+  },
+  "tourapi-3033047": {
+    "name_ko": "행리단길",
+    "name_zh_hans": "行理团路",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Haengnidangil",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": "rejected: coordinates_type"
+  },
+  "tourapi-2741604": {
+    "name_ko": "화서공원",
+    "name_zh_hans": "华西公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Hwaseogongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": "rejected: coordinates_type"
+  },
+  "tourapi-264388": {
+    "name_ko": "화서문(華西門)",
+    "name_zh_hans": "华西门",
+    "name_zh_hans_source": "TourAPI ChsService2",
+    "name_rr": "Hwaseomun(華西門)",
+    "zh_hans_contentid": "331577",
+    "addr_zh_hans": "京畿道水原市八达区长安洞334",
+    "match_m": 6.1,
+    "match_basis": "coordinates_type_korean_title"
+  },
+  "tourapi-264402": {
+    "name_ko": "화성어차",
+    "name_zh_hans": "华城御车",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Hwaseongeocha",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-129437": {
+    "name_ko": "화성행궁",
+    "name_zh_hans": "华城行宫",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Hwaseonghaenggung",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-264394": {
+    "name_ko": "화홍문(華虹門)",
+    "name_zh_hans": "华虹门（虹）",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Hwahongmun(華虹門)",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-128985": {
+    "name_ko": "효원공원",
+    "name_zh_hans": "孝园公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Hyowongongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-750947": {
+    "name_ko": "효원공원 월화원",
+    "name_zh_hans": "孝园公园 粤华苑",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Hyowongongwon Wolhwawon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-264408": {
+    "name_ko": "효원의 종·서장대",
+    "name_zh_hans": "孝园之钟·西将台",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Hyowonui Jong·Seojangdae",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3084989": {
+    "name_ko": "경기문화재단 아트홀(구 다산홀)",
+    "name_zh_hans": "Gyeonggimunhwajaedan Ateuhol （ Gu Dasanhol ）",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gyeonggimunhwajaedan Ateuhol (Gu Dasanhol)",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-130489": {
+    "name_ko": "경기아트센터",
+    "name_zh_hans": "京畿艺术中心",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gyeonggiateusenteo",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2630998": {
+    "name_ko": "미리내마술극단 은하수홀",
+    "name_zh_hans": "Mirinaemasulgeukdan Eunhasuhol",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Mirinaemasulgeukdan Eunhasuhol",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3351028": {
+    "name_ko": "수원 월드컵경기장 축구박물관",
+    "name_zh_hans": "水原 Woldeukeopgyeonggijang Chukgu 博物馆",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwon Woldeukeopgyeonggijang Chukgubangmulgwan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-130829": {
+    "name_ko": "수원선경도서관",
+    "name_zh_hans": "水原 Seongyeong 图书馆",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwonseongyeongdoseogwan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2033483": {
+    "name_ko": "수원시립미술관",
+    "name_zh_hans": "水原市立美术馆",
+    "name_zh_hans_source": "TourAPI ChsService2",
+    "name_rr": "Suwonsirimmisulgwan",
+    "zh_hans_contentid": "3442364",
+    "addr_zh_hans": "京畿道水原市八达区正祖路833",
+    "match_m": 12.7,
+    "match_basis": "coordinates_type"
+  },
+  "tourapi-130828": {
+    "name_ko": "수원시립중앙도서관",
+    "name_zh_hans": "水原市 Ripjungang 图书馆",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwonsiripjungangdoseogwan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4039864": {
+    "name_ko": "수원시미디어센터",
+    "name_zh_hans": "水原市 Midieosenteo",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwonsimidieosenteo",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-130095": {
+    "name_ko": "수원시민회관",
+    "name_zh_hans": "水原市 Minhoegwan",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwonsiminhoegwan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-130094": {
+    "name_ko": "수원야외음악당",
+    "name_zh_hans": "水原 Yaoeeumakdang",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwonyaoeeumakdang",
+    "zh_hans_contentid": "3097000",
+    "addr_zh_hans": "京畿道水原市八达区东水原路335",
+    "match_m": 110.9,
+    "match_basis": "coordinates_type_same_photo"
+  },
+  "tourapi-1921150": {
+    "name_ko": "수원화성박물관",
+    "name_zh_hans": "水原华城博物馆",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwonhwaseongbangmulgwan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3304086": {
+    "name_ko": "정조테마공연장",
+    "name_zh_hans": "正祖主题表演场",
+    "name_zh_hans_source": "TourAPI ChsService2",
+    "name_rr": "Jeongjotemagongyeonjang",
+    "zh_hans_contentid": "3341682",
+    "addr_zh_hans": "京畿道水原市八达区正祖路817",
+    "match_m": 6.0,
+    "match_basis": "coordinates_type_korean_title"
+  },
+  "tourapi-2553414": {
+    "name_ko": "해움미술관",
+    "name_zh_hans": "Haeum 美术馆",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Haeummisulgwan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-1835388": {
+    "name_ko": "중복들길(서호공원입구 ~ 배양교)",
+    "name_zh_hans": "Jungbokdeulgil （西湖公园 Ipgu – Baeyanggyo ）",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Jungbokdeulgil (Seohogongwonipgu ~ Baeyanggyo)",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-131719": {
+    "name_ko": "수원월드컵경기장",
+    "name_zh_hans": "水原世界杯体育场",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwonwoldeukeopgyeonggijang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2714220": {
+    "name_ko": "플라잉 수원",
+    "name_zh_hans": "飞越水原热气球",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Peullaing Suwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": "rejected: coordinates_type"
+  },
+  "tourapi-2916328": {
+    "name_ko": "AK플라자 수원",
+    "name_zh_hans": "AK PLAZA水原店",
+    "name_zh_hans_source": "TourAPI ChsService2",
+    "name_rr": "AKpeullaja Suwon",
+    "zh_hans_contentid": "2975111",
+    "addr_zh_hans": "京畿道水原市八达区德灵大路924",
+    "match_m": 66.7,
+    "match_basis": "coordinates_type_korean_title"
+  },
+  "tourapi-2753679": {
+    "name_ko": "남문로데오시장",
+    "name_zh_hans": "南门罗德奥市场",
+    "name_zh_hans_source": "TourAPI ChsService2",
+    "name_rr": "Nammullodeosijang",
+    "zh_hans_contentid": "3492728",
+    "addr_zh_hans": "京畿道水原市八达区行宫路88",
+    "match_m": 4.6,
+    "match_basis": "coordinates_type_korean_title"
+  },
+  "tourapi-2753395": {
+    "name_ko": "매산시장",
+    "name_zh_hans": "梅山市场",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Maesansijang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-1177952": {
+    "name_ko": "못골종합시장 (못골시장)",
+    "name_zh_hans": "Motgol综合市场",
+    "name_zh_hans_source": "TourAPI ChsService2",
+    "name_rr": "Motgoljonghapsijang (Motgolsijang)",
+    "zh_hans_contentid": "2380460",
+    "addr_zh_hans": "京畿道水原市八达区水原川路258 10-12",
+    "match_m": 18.9,
+    "match_basis": "coordinates_type"
+  },
+  "tourapi-2753669": {
+    "name_ko": "미나리광시장",
+    "name_zh_hans": "水芹菜广市场",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Minarigwangsijang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": "rejected: coordinates_type"
+  },
+  "tourapi-2589025": {
+    "name_ko": "수원 남문시장",
+    "name_zh_hans": "水原 南门市场",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwon Nammunsijang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-132352": {
+    "name_ko": "수원 영동시장",
+    "name_zh_hans": "水原 荣洞市场",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwon Yeongdongsijang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2753666": {
+    "name_ko": "수원역전시장",
+    "name_zh_hans": "水原 Yeokjeon 市场",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwonyeokjeonsijang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3083201": {
+    "name_ko": "스모어 팩토리",
+    "name_zh_hans": "Seumoeo Paektori",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Seumoeo Paektori",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2752971": {
+    "name_ko": "지동시장",
+    "name_zh_hans": "池洞市场",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Jidongsijang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": "rejected: coordinates_type"
+  },
+  "tourapi-2752650": {
+    "name_ko": "팔달문시장",
+    "name_zh_hans": "八达门市场",
+    "name_zh_hans_source": "TourAPI ChsService2",
+    "name_rr": "Paldalmunsijang",
+    "zh_hans_contentid": "3402825",
+    "addr_zh_hans": "京畿道水原市八达区正祖路770号街17",
+    "match_m": 5.8,
+    "match_basis": "coordinates_type_korean_title"
+  },
+  "tourapi-3351843": {
+    "name_ko": "화서시장",
+    "name_zh_hans": "华西市场",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Hwaseosijang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3105334": {
+    "name_ko": "133파티룸 한옥스테이점",
+    "name_zh_hans": "133 Patirum 韩屋 Seuteijeom",
+    "name_zh_hans_source": "translated",
+    "name_rr": "133patirum Hanokseuteijeom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2846932": {
+    "name_ko": "Dune45호텔",
+    "name_zh_hans": "Dune45酒店",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Dune45hotel",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2849741": {
+    "name_ko": "S STAY HOTEL",
+    "name_zh_hans": "S STAY HOTEL",
+    "name_zh_hans_source": "translated",
+    "name_rr": "S STAY HOTEL",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2849981": {
+    "name_ko": "넘버25 수원화성행궁점",
+    "name_zh_hans": "Neombeo 25 水原华城行宫 Jeom",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Neombeo25 Suwonhwaseonghaenggungjeom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3511808": {
+    "name_ko": "노보텔 앰배서더 수원",
+    "name_zh_hans": "Nobotel Aembaeseodeo 水原",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Nobotel Aembaeseodeo Suwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3483793": {
+    "name_ko": "더휴식 아늑호텔 수원 인계점",
+    "name_zh_hans": "THE HYOOSIK AANK酒店（水原仁溪店）",
+    "name_zh_hans_source": "TourAPI ChsService2",
+    "name_rr": "Deohyusik Aneukhotel Suwon Ingyejeom",
+    "zh_hans_contentid": "3489511",
+    "addr_zh_hans": "京畿道水原市八达区仁溪路94号街29 (仁溪洞)",
+    "match_m": 5.9,
+    "match_basis": "coordinates_type_korean_title"
+  },
+  "tourapi-2918709": {
+    "name_ko": "도노 1796 호텔",
+    "name_zh_hans": "Dono 1796 酒店",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Dono 1796 Hotel",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-971242": {
+    "name_ko": "라마다프라자 수원호텔",
+    "name_zh_hans": "Ramadapeuraja 水原酒店",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Ramadapeuraja Suwonhotel",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2445211": {
+    "name_ko": "르본수원실크로드호텔",
+    "name_zh_hans": "Reubon 水原 Silkeurodeu 酒店",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Reubonsuwonsilkeurodeuhotel",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": "rejected: coordinates_type"
+  },
+  "tourapi-143140": {
+    "name_ko": "수원 코리아 호텔",
+    "name_zh_hans": "水原 Koria 酒店",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwon Koria Hotel",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3438561": {
+    "name_ko": "스테이용궁",
+    "name_zh_hans": "Seuteiyonggung",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Seuteiyonggung",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2849935": {
+    "name_ko": "아이비 스테이",
+    "name_zh_hans": "Aibi Seutei",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Aibi Seutei",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3102131": {
+    "name_ko": "여여재",
+    "name_zh_hans": "Yeoyeojae",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Yeoyeojae",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2848421": {
+    "name_ko": "오르세호텔",
+    "name_zh_hans": "Oreuse 酒店",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Oreusehotel",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-986600": {
+    "name_ko": "이비스 앰배서더 수원",
+    "name_zh_hans": "Ibiseu Aembaeseodeo 水原",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Ibiseu Aembaeseodeo Suwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2927029": {
+    "name_ko": "해든호텔 하이엔드",
+    "name_zh_hans": "Haedeun 酒店 Haiendeu",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Haedeunhotel Haiendeu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2849962": {
+    "name_ko": "해시호텔",
+    "name_zh_hans": "Haesi 酒店",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Haesihotel",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2918752": {
+    "name_ko": "호텔 166",
+    "name_zh_hans": "酒店 166",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Hotel 166",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2848435": {
+    "name_ko": "호텔 아르떼",
+    "name_zh_hans": "酒店 Areutte",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Hotel Areutte",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2848429": {
+    "name_ko": "호텔더스타일",
+    "name_zh_hans": "酒店 Deoseutail",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Hoteldeoseutail",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2607118": {
+    "name_ko": "(신)대원옥",
+    "name_zh_hans": "（ Sin ） Daewonok",
+    "name_zh_hans_source": "translated",
+    "name_rr": "(Sin)Daewonok",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2747099": {
+    "name_ko": "100년한우",
+    "name_zh_hans": "100 Nyeonhanu",
+    "name_zh_hans_source": "translated",
+    "name_rr": "100nyeonhanu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2892852": {
+    "name_ko": "91커피",
+    "name_zh_hans": "91 Keopi",
+    "name_zh_hans_source": "translated",
+    "name_rr": "91keopi",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2892876": {
+    "name_ko": "955카페",
+    "name_zh_hans": "955咖啡厅",
+    "name_zh_hans_source": "translated",
+    "name_rr": "955kape",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-602895": {
+    "name_ko": "가보정갈비",
+    "name_zh_hans": "Gabojeong 排骨",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gabojeonggalbi",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2892936": {
+    "name_ko": "경안당",
+    "name_zh_hans": "Gyeongandang",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gyeongandang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2747096": {
+    "name_ko": "고기랑",
+    "name_zh_hans": "Gogirang",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gogirang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2747116": {
+    "name_ko": "고등반점",
+    "name_zh_hans": "高等 Banjeom",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Godeungbanjeom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3355253": {
+    "name_ko": "골디스",
+    "name_zh_hans": "Goldiseu",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Goldiseu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3356102": {
+    "name_ko": "꿍냐우 행궁점",
+    "name_zh_hans": "Kkungnyau 行宫 Jeom",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Kkungnyau Haenggungjeom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2765607": {
+    "name_ko": "더유로피언",
+    "name_zh_hans": "Deoyuropieon",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Deoyuropieon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-133048": {
+    "name_ko": "두꺼비집",
+    "name_zh_hans": "Dukkeobijip",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Dukkeobijip",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2893055": {
+    "name_ko": "라이크 노 아더",
+    "name_zh_hans": "Raikeu No Adeo",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Raikeu No Adeo",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2893073": {
+    "name_ko": "레드브릭커피하우스",
+    "name_zh_hans": "Redeubeurikkeopihauseu",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Redeubeurikkeopihauseu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2846626": {
+    "name_ko": "로마경양식",
+    "name_zh_hans": "Romagyeongyangsik",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Romagyeongyangsik",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2893147": {
+    "name_ko": "르빵드파리앤브런치하우스 행궁점",
+    "name_zh_hans": "Reuppangdeupariaenbeureonchihauseu 行宫 Jeom",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Reuppangdeupariaenbeureonchihauseu Haenggungjeom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2745738": {
+    "name_ko": "마초",
+    "name_zh_hans": "Macho",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Macho",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2745740": {
+    "name_ko": "마포본가",
+    "name_zh_hans": "Mapobonga",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Mapobonga",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2875136": {
+    "name_ko": "만수전복",
+    "name_zh_hans": "Mansujeonbok",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Mansujeonbok",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-1847681": {
+    "name_ko": "매일김치담그는집",
+    "name_zh_hans": "Maeilgimchidamgeuneunjip",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Maeilgimchidamgeuneunjip",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2893186": {
+    "name_ko": "매트그린",
+    "name_zh_hans": "Maeteugeurin",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Maeteugeurin",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": "rejected: coordinates_type"
+  },
+  "tourapi-2893218": {
+    "name_ko": "메모리아마넷",
+    "name_zh_hans": "Memoriamanet",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Memoriamanet",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3358922": {
+    "name_ko": "모나미 카레",
+    "name_zh_hans": "Monami Kare",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Monami Kare",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2867036": {
+    "name_ko": "모이커피클래식",
+    "name_zh_hans": "Moikeopikeullaesik",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Moikeopikeullaesik",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3413591": {
+    "name_ko": "몽테드",
+    "name_zh_hans": "梦+ed",
+    "name_zh_hans_source": "TourAPI ChsService2",
+    "name_rr": "Mongtedeu",
+    "zh_hans_contentid": "3413790",
+    "addr_zh_hans": "京畿道水原市八达区华西门路48号街14",
+    "match_m": 5.7,
+    "match_basis": "coordinates_type_korean_title"
+  },
+  "tourapi-808072": {
+    "name_ko": "무등산",
+    "name_zh_hans": "Mudeungsan",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Mudeungsan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2867393": {
+    "name_ko": "미나미참치",
+    "name_zh_hans": "Minamichamchi",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Minamichamchi",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2850331": {
+    "name_ko": "미식가의주방",
+    "name_zh_hans": "Misikgauijubang",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Misikgauijubang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2765531": {
+    "name_ko": "백청우칼국수",
+    "name_zh_hans": "Baekcheongu 刀削面",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Baekcheongukalguksu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-602854": {
+    "name_ko": "본수원갈비",
+    "name_zh_hans": "本水原排骨",
+    "name_zh_hans_source": "TourAPI ChsService2",
+    "name_rr": "Bonsuwongalbi",
+    "zh_hans_contentid": "1321141",
+    "addr_zh_hans": "京畿道水原市八达区中部大路223号街41(牛满洞)",
+    "match_m": 8.9,
+    "match_basis": "coordinates_type_korean_title"
+  },
+  "tourapi-2893243": {
+    "name_ko": "본지르르",
+    "name_zh_hans": "Bonjireureu",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Bonjireureu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3355255": {
+    "name_ko": "삼춘옥",
+    "name_zh_hans": "Samchunok",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Samchunok",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2876341": {
+    "name_ko": "센텀커피",
+    "name_zh_hans": "Senteomkeopi",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Senteomkeopi",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2867652": {
+    "name_ko": "수원만두",
+    "name_zh_hans": "水原 Mandu",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwonmandu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2893530": {
+    "name_ko": "슬로우써니사이드",
+    "name_zh_hans": "Seullousseonisaideu",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Seullousseonisaideu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": "rejected: coordinates_type"
+  },
+  "tourapi-2867627": {
+    "name_ko": "시골집우렁이쌈밥",
+    "name_zh_hans": "Sigoljibureongissambap",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Sigoljibureongissambap",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2867168": {
+    "name_ko": "어구미 본점",
+    "name_zh_hans": "Eogumi 总店",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Eogumi Bonjeom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2765517": {
+    "name_ko": "어반벨리801",
+    "name_zh_hans": "Eobanbelli 801",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Eobanbelli801",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2893531": {
+    "name_ko": "언올드첨",
+    "name_zh_hans": "Eonoldeucheom",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Eonoldeucheom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2867885": {
+    "name_ko": "연밀",
+    "name_zh_hans": "Yeonmil",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Yeonmil",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-274367": {
+    "name_ko": "연포갈비",
+    "name_zh_hans": "渊瀑排骨",
+    "name_zh_hans_source": "TourAPI ChsService2",
+    "name_rr": "Yeonpogalbi",
+    "zh_hans_contentid": "332370",
+    "addr_zh_hans": "京畿道水原市八达区正祖路906号街 56-1号(北水洞)",
+    "match_m": 5.5,
+    "match_basis": "coordinates_type_korean_title"
+  },
+  "tourapi-3355366": {
+    "name_ko": "열두알우동집",
+    "name_zh_hans": "Yeolduarudongjip",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Yeolduarudongjip",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2867891": {
+    "name_ko": "영천식당",
+    "name_zh_hans": "Yeongcheon 餐厅",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Yeongcheonsikdang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2848162": {
+    "name_ko": "예박사",
+    "name_zh_hans": "Yebaksa",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Yebaksa",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2753978": {
+    "name_ko": "오리대가",
+    "name_zh_hans": "Oridaega",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Oridaega",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2867664": {
+    "name_ko": "옥동이",
+    "name_zh_hans": "Okdongi",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Okdongi",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2867501": {
+    "name_ko": "운멜로 1호점",
+    "name_zh_hans": "Unmello 1 Hojeom",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Unmello 1hojeom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2753972": {
+    "name_ko": "유치회관",
+    "name_zh_hans": "Yuchihoegwan",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Yuchihoegwan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2765414": {
+    "name_ko": "이모네손칼국수",
+    "name_zh_hans": "Imoneson 刀削面",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Imonesonkalguksu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": "rejected: coordinates_type"
+  },
+  "tourapi-2868632": {
+    "name_ko": "이화정",
+    "name_zh_hans": "Ihwajeong",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Ihwajeong",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2892528": {
+    "name_ko": "일상엔",
+    "name_zh_hans": "Ilsangen",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Ilsangen",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-133405": {
+    "name_ko": "입주집",
+    "name_zh_hans": "Ipjujip",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Ipjujip",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4054880": {
+    "name_ko": "정지영커피로스터즈 행궁본점",
+    "name_zh_hans": "Jeongjiyeongkeopiroseuteojeu 行宫总店",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Jeongjiyeongkeopiroseuteojeu Haenggungbonjeom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": "rejected: coordinates_type"
+  },
+  "tourapi-2868608": {
+    "name_ko": "조대감부대찌개",
+    "name_zh_hans": "Jodaegambudaejjigae",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Jodaegambudaejjigae",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3355152": {
+    "name_ko": "조마담칼국수",
+    "name_zh_hans": "Jomadam 刀削面",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Jomadamkalguksu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2873447": {
+    "name_ko": "진미통닭",
+    "name_zh_hans": "Jinmi 炸鸡",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Jinmitongdak",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2904242": {
+    "name_ko": "채상궁 수원본점",
+    "name_zh_hans": "Chaesanggung 水原总店",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Chaesanggung Suwonbonjeom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2906138": {
+    "name_ko": "카페 도안",
+    "name_zh_hans": "咖啡厅 Doan",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Kape Doan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2851839": {
+    "name_ko": "카페 디아즈",
+    "name_zh_hans": "咖啡厅 Diajeu",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Kape Diajeu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2765417": {
+    "name_ko": "카페메이븐",
+    "name_zh_hans": "咖啡厅 Meibeun",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Kapemeibeun",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2875180": {
+    "name_ko": "콜링우드",
+    "name_zh_hans": "Kollingudeu",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Kollingudeu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": "rejected: coordinates_type"
+  },
+  "tourapi-2905573": {
+    "name_ko": "태리주택",
+    "name_zh_hans": "Taerijutaek",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Taerijutaek",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3445870": {
+    "name_ko": "트레저가든",
+    "name_zh_hans": "Teurejeogadeun",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Teurejeogadeun",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3355128": {
+    "name_ko": "팔달제과",
+    "name_zh_hans": "Paldaljegwa",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Paldaljegwa",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2892874": {
+    "name_ko": "팜투하녹",
+    "name_zh_hans": "Pamtuhanok",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Pamtuhanok",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-134966": {
+    "name_ko": "한국관",
+    "name_zh_hans": "Hangukgwan",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Hangukgwan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3443160": {
+    "name_ko": "홍라드 인계나혜석점",
+    "name_zh_hans": "Hongnadeu 仁溪 Nahyeseokjeom",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Hongnadeu Ingyenahyeseokjeom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2469037": {
+    "name_ko": "히말라야정원",
+    "name_zh_hans": "Himallayajeongwon",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Himallayajeongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2633915": {
+    "name_ko": "광교 프라이부르크전망대",
+    "name_zh_hans": "光教弗莱堡观景台",
+    "name_zh_hans_source": "TourAPI ChsService2",
+    "name_rr": "Gwanggyo Peuraibureukeujeonmangdae",
+    "zh_hans_contentid": "3492741",
+    "addr_zh_hans": "京畿道水原市灵通区光教湖水路127 (下洞)",
+    "match_m": 0.0,
+    "match_basis": "coordinates_type_korean_title"
+  },
+  "tourapi-2739469": {
+    "name_ko": "광교중앙공원",
+    "name_zh_hans": "光教中央公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gwanggyojunganggongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2662855": {
+    "name_ko": "광교호수공원",
+    "name_zh_hans": "光教湖水公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gwanggyohosugongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2930334": {
+    "name_ko": "광교호수공원 반려견 놀이터",
+    "name_zh_hans": "光教湖水公园 Ballyeogyeon Noriteo",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gwanggyohosugongwon Ballyeogyeon Noriteo",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2872885": {
+    "name_ko": "글빛누리공원",
+    "name_zh_hans": "Geulbinnuri 公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Geulbinnurigongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2739476": {
+    "name_ko": "매탄공원",
+    "name_zh_hans": "梅滩公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Maetangongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2781860": {
+    "name_ko": "물봉선어린이공원",
+    "name_zh_hans": "Mulbongseoneorini 公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Mulbongseoneorinigongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2781864": {
+    "name_ko": "반달공원",
+    "name_zh_hans": "Bandal 公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Bandalgongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2745741": {
+    "name_ko": "반야사",
+    "name_zh_hans": "Banyasa",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Banyasa",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2781847": {
+    "name_ko": "방죽공원",
+    "name_zh_hans": "Bangjuk 公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Bangjukgongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2462893": {
+    "name_ko": "삼성이노베이션뮤지엄",
+    "name_zh_hans": "三星创新博物馆",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Samseonginobeisyeonmyujieom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2745732": {
+    "name_ko": "성죽공원",
+    "name_zh_hans": "Seongjuk 公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Seongjukgongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2742316": {
+    "name_ko": "수원어린이교통공원",
+    "name_zh_hans": "水原 Eorinigyotong 公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwoneorinigyotonggongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3057779": {
+    "name_ko": "신동수변공원",
+    "name_zh_hans": "Sindongsubyeon 公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Sindongsubyeongongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-736630": {
+    "name_ko": "심온선생묘",
+    "name_zh_hans": "沈温先生墓",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Simonseonsaengmyo",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2998800": {
+    "name_ko": "영흥수목원",
+    "name_zh_hans": "灵兴树木园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Yeongheungsumogwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": "rejected: coordinates_type"
+  },
+  "tourapi-3426388": {
+    "name_ko": "영흥숲공원",
+    "name_zh_hans": "Yeongheungsup 公园",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Yeongheungsupgongwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": "rejected: coordinates_type"
+  },
+  "tourapi-130919": {
+    "name_ko": "경기대학교소성박물관",
+    "name_zh_hans": "Gyeonggidaehakgyososeong 博物馆",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gyeonggidaehakgyososeongbangmulgwan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3564769": {
+    "name_ko": "경기도서관",
+    "name_zh_hans": "Gyeonggi 图书馆",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gyeonggidoseogwan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3033137": {
+    "name_ko": "광교어린이천문대",
+    "name_zh_hans": "光教 Eorini 天文台",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gwanggyoeorinicheonmundae",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4076762": {
+    "name_ko": "광교푸른숲도서관",
+    "name_zh_hans": "光教 Pureunsup 图书馆",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gwanggyopureunsupdoseogwan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-130744": {
+    "name_ko": "국립지도박물관",
+    "name_zh_hans": "国立地图博物馆",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gungnipjidobangmulgwan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-130827": {
+    "name_ko": "바른샘어린이도서관",
+    "name_zh_hans": "Bareunsaemeorini 图书馆",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Bareunsaemeorinidoseogwan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-130816": {
+    "name_ko": "수원 영통도서관",
+    "name_zh_hans": "水原 灵通图书馆",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwon Yeongtongdoseogwan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2379222": {
+    "name_ko": "수원광교박물관",
+    "name_zh_hans": "水原光教博物馆",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwongwanggyobangmulgwan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-638913": {
+    "name_ko": "수원박물관",
+    "name_zh_hans": "水原博物馆",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwonbangmulgwan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3029071": {
+    "name_ko": "수원시립아트스페이스광교",
+    "name_zh_hans": "水原市 Ribateuseupeiseu 光教",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwonsiribateuseupeiseugwanggyo",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2703375": {
+    "name_ko": "수원컨벤션센터",
+    "name_zh_hans": "水原会展中心",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwonkeonbensyeonsenteo",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-130943": {
+    "name_ko": "아주대학교도구박물관",
+    "name_zh_hans": "Ajudaehakgyodogu 博物馆",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Ajudaehakgyodogubangmulgwan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2714652": {
+    "name_ko": "아쿠아플라넷 광교",
+    "name_zh_hans": "光教Aqua Planet水族馆",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Akuapeullanet Gwanggyo",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2753042": {
+    "name_ko": "광교호수공원 가족캠핑장",
+    "name_zh_hans": "光教湖水公园 Gajok 露营场",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gwanggyohosugongwon Gajokkaempingjang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3057778": {
+    "name_ko": "로라비트",
+    "name_zh_hans": "Rorabiteu",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Rorabiteu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3057775": {
+    "name_ko": "바운스슈퍼파크 수원영통센터",
+    "name_zh_hans": "Baunseusyupeopakeu 水原灵通 Senteo",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Baunseusyupeopakeu Suwonyeongtongsenteo",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-131767": {
+    "name_ko": "수원체육문화센터",
+    "name_zh_hans": "水原 Cheyungmunhwasenteo",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Suwoncheyungmunhwasenteo",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2753656": {
+    "name_ko": "구매탄시장",
+    "name_zh_hans": "Gu 梅滩市场",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gumaetansijang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4054293": {
+    "name_ko": "롯데몰 광교점",
+    "name_zh_hans": "乐天购物中心光教店",
+    "name_zh_hans_source": "TourAPI ChsService2",
+    "name_rr": "Rotdemol Gwanggyojeom",
+    "zh_hans_contentid": "4054378",
+    "addr_zh_hans": "京畿道水原市灵通区道厅路10",
+    "match_m": 0.0,
+    "match_basis": "coordinates_type_korean_title"
+  },
+  "tourapi-2926530": {
+    "name_ko": "롯데아울렛 광교점",
+    "name_zh_hans": "Rotdeaullet 光教 Jeom",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Rotdeaullet Gwanggyojeom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2849901": {
+    "name_ko": "아모르앤심포니호텔",
+    "name_zh_hans": "Amoreuaensimponi 酒店",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Amoreuaensimponihotel",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2752981": {
+    "name_ko": "코트야드 바이 메리어트 수원",
+    "name_zh_hans": "Koteuyadeu Bai Merieoteu 水原",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Koteuyadeu Bai Merieoteu Suwon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2747216": {
+    "name_ko": "335키친 광교아브뉴프랑점",
+    "name_zh_hans": "335 Kichin 光教 Abeunyupeurangjeom",
+    "name_zh_hans_source": "translated",
+    "name_rr": "335kichin Gwanggyoabeunyupeurangjeom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2844697": {
+    "name_ko": "가원",
+    "name_zh_hans": "Gawon",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gawon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2848359": {
+    "name_ko": "갈풍집",
+    "name_zh_hans": "Galpungjip",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Galpungjip",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2848347": {
+    "name_ko": "고기잡이 수원본점",
+    "name_zh_hans": "Gogijabi 水原总店",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gogijabi Suwonbonjeom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2835351": {
+    "name_ko": "광교갈비",
+    "name_zh_hans": "光教排骨",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gwanggyogalbi",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2855712": {
+    "name_ko": "광교벌교집",
+    "name_zh_hans": "光教 Beolgyojip",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gwanggyobeolgyojip",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2848323": {
+    "name_ko": "구스타브",
+    "name_zh_hans": "Guseutabeu",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Guseutabeu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2846949": {
+    "name_ko": "군포해물탕",
+    "name_zh_hans": "Gunpohaemultang",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gunpohaemultang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2846354": {
+    "name_ko": "그로또",
+    "name_zh_hans": "Geurotto",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Geurotto",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2754744": {
+    "name_ko": "금화루",
+    "name_zh_hans": "Geumhwaru",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Geumhwaru",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2829013": {
+    "name_ko": "김성민커피",
+    "name_zh_hans": "Gimseongminkeopi",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Gimseongminkeopi",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2892978": {
+    "name_ko": "꼬따꼬뜨",
+    "name_zh_hans": "Kkottakkotteu",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Kkottakkotteu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2846416": {
+    "name_ko": "노대감감자탕매탄본점",
+    "name_zh_hans": "Nodaegamgamjatang 梅滩总店",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Nodaegamgamjatangmaetanbonjeom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2867549": {
+    "name_ko": "노란황태 본점",
+    "name_zh_hans": "Noranhwangtae 总店",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Noranhwangtae Bonjeom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3470706": {
+    "name_ko": "달구운바람 돼지갈비 영통망포점",
+    "name_zh_hans": "Dal 九云 Baram Dwaeji 排骨 灵通网浦 Jeom",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Dalguunbaram Dwaejigalbi Yeongtongmangpojeom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2872836": {
+    "name_ko": "대박횟집",
+    "name_zh_hans": "Daebakhoetjip",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Daebakhoetjip",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2745734": {
+    "name_ko": "도기",
+    "name_zh_hans": "Dogi",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Dogi",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2893042": {
+    "name_ko": "도미닉커피랩",
+    "name_zh_hans": "Dominikkeopiraep",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Dominikkeopiraep",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2846434": {
+    "name_ko": "동산참숯갈비",
+    "name_zh_hans": "Dongsanchamsut 排骨",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Dongsanchamsutgalbi",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2892923": {
+    "name_ko": "듀쿠플(DU COUPLE)",
+    "name_zh_hans": "Dyukupeul （DU COUPLE）",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Dyukupeul(DU COUPLE)",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2846605": {
+    "name_ko": "땡이네소곱창",
+    "name_zh_hans": "Ttaenginesogopchang",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Ttaenginesogopchang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2893108": {
+    "name_ko": "레이지하우스",
+    "name_zh_hans": "Reijihauseu",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Reijihauseu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2829069": {
+    "name_ko": "르디투어",
+    "name_zh_hans": "Reuditueo",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Reuditueo",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2846649": {
+    "name_ko": "멘야고코로",
+    "name_zh_hans": "Menyagokoro",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Menyagokoro",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3444598": {
+    "name_ko": "미소텐동",
+    "name_zh_hans": "Misoten-dong",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Misoten-dong",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2753981": {
+    "name_ko": "버들치",
+    "name_zh_hans": "Beodeulchi",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Beodeulchi",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2906078": {
+    "name_ko": "벌교집",
+    "name_zh_hans": "Beolgyojip",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Beolgyojip",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2868834": {
+    "name_ko": "벌교추어탕",
+    "name_zh_hans": "Beolgyochueotang",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Beolgyochueotang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2868679": {
+    "name_ko": "봉화칼국수",
+    "name_zh_hans": "Bonghwa 刀削面",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Bonghwakalguksu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2765543": {
+    "name_ko": "삼포가는길",
+    "name_zh_hans": "Sampoganeungil",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Sampoganeungil",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2875152": {
+    "name_ko": "상원회관",
+    "name_zh_hans": "Sangwonhoegwan",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Sangwonhoegwan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2867866": {
+    "name_ko": "새벽집",
+    "name_zh_hans": "Saebyeokjip",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Saebyeokjip",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2893524": {
+    "name_ko": "서린낙지",
+    "name_zh_hans": "Seorinnakji",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Seorinnakji",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2781831": {
+    "name_ko": "서울24시감자탕해장국",
+    "name_zh_hans": "Seoul 24 Sigamjatang 醒酒汤",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Seoul24sigamjatanghaejangguk",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2867876": {
+    "name_ko": "세비야식당",
+    "name_zh_hans": "Sebiya 餐厅",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Sebiyasikdang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2906110": {
+    "name_ko": "수타원",
+    "name_zh_hans": "Sutawon",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Sutawon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2867413": {
+    "name_ko": "스시스이렌",
+    "name_zh_hans": "Seusiseuiren",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Seusiseuiren",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2765462": {
+    "name_ko": "스시유카이",
+    "name_zh_hans": "Seusiyukai",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Seusiyukai",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3354836": {
+    "name_ko": "시화연풍",
+    "name_zh_hans": "Sihwayeonpung",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Sihwayeonpung",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2875164": {
+    "name_ko": "신동순대국",
+    "name_zh_hans": "Sindong 米肠 Guk",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Sindongsundaeguk",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2753992": {
+    "name_ko": "신라갈비",
+    "name_zh_hans": "Silla 排骨",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Sillagalbi",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2867433": {
+    "name_ko": "썬프란시스코마켓",
+    "name_zh_hans": "Sseonpeuransiseukomaket",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Sseonpeuransiseukomaket",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2829999": {
+    "name_ko": "아미스타",
+    "name_zh_hans": "Amiseuta",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Amiseuta",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2893534": {
+    "name_ko": "에이프런",
+    "name_zh_hans": "Eipeureon",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Eipeureon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3355495": {
+    "name_ko": "영흥수목원 카페 버터플라이",
+    "name_zh_hans": "灵兴树木园 咖啡厅 Beoteopeullai",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Yeongheungsumogwon Kape Beoteopeullai",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2848239": {
+    "name_ko": "예랑",
+    "name_zh_hans": "Yerang",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Yerang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2754009": {
+    "name_ko": "오늘의초밥",
+    "name_zh_hans": "Oneuruichobap",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Oneuruichobap",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2848107": {
+    "name_ko": "오봉베르",
+    "name_zh_hans": "Obongbereu",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Obongbereu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2867471": {
+    "name_ko": "올리브 1999",
+    "name_zh_hans": "Ollibeu 1999",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Ollibeu 1999",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2893540": {
+    "name_ko": "와이엠엠디",
+    "name_zh_hans": "Waiememdi",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Waiememdi",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2765438": {
+    "name_ko": "윤돈",
+    "name_zh_hans": "Yundon",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Yundon",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2753967": {
+    "name_ko": "정진식당",
+    "name_zh_hans": "Jeongjin 餐厅",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Jeongjinsikdang",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2753966": {
+    "name_ko": "제주할망돈가",
+    "name_zh_hans": "Jejuhalmangdonga",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Jejuhalmangdonga",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2847005": {
+    "name_ko": "좋은소식",
+    "name_zh_hans": "Joeunsosik",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Joeunsosik",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2751138": {
+    "name_ko": "천상한우",
+    "name_zh_hans": "Cheonsanghanu",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Cheonsanghanu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2867518": {
+    "name_ko": "춘천에서 온 숯닭",
+    "name_zh_hans": "Chuncheoneseo On Sutdak",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Chuncheoneseo On Sutdak",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2892653": {
+    "name_ko": "카페 그루비",
+    "name_zh_hans": "咖啡厅 Geurubi",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Kape Geurubi",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2892681": {
+    "name_ko": "카페 리핑",
+    "name_zh_hans": "咖啡厅 Riping",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Kape Riping",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2892706": {
+    "name_ko": "커피 바이브",
+    "name_zh_hans": "Keopi Baibeu",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Keopi Baibeu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2806730": {
+    "name_ko": "콜스커피",
+    "name_zh_hans": "Kolseukeopi",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Kolseukeopi",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2906226": {
+    "name_ko": "텔온",
+    "name_zh_hans": "Teron",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Teron",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3443259": {
+    "name_ko": "티크닉 앨리웨이 광교점",
+    "name_zh_hans": "Tikeunik Aelliwei 光教 Jeom",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Tikeunik Aelliwei Gwanggyojeom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2765420": {
+    "name_ko": "포동이네",
+    "name_zh_hans": "Podongine",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Podongine",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2804503": {
+    "name_ko": "피켈",
+    "name_zh_hans": "Pikel",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Pikel",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2893125": {
+    "name_ko": "피크닉타이거",
+    "name_zh_hans": "Pikeuniktaigeo",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Pikeuniktaigeo",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2841995": {
+    "name_ko": "하얀풍차제과점 망포점",
+    "name_zh_hans": "Hayanpungchajegwajeom 网浦 Jeom",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Hayanpungchajegwajeom Mangpojeom",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2851901": {
+    "name_ko": "한우갑",
+    "name_zh_hans": "Hanugap",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Hanugap",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2848015": {
+    "name_ko": "행궁정찬",
+    "name_zh_hans": "行宫 Jeongchan",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Haenggungjeongchan",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3025574": {
+    "name_ko": "헤르츠",
+    "name_zh_hans": "Hereucheu",
+    "name_zh_hans_source": "translated",
+    "name_rr": "Hereucheu",
+    "zh_hans_contentid": "",
+    "addr_zh_hans": "",
+    "match_m": null,
+    "match_basis": ""
+  }
+}

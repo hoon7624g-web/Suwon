@@ -1,0 +1,380 @@
+[
+  {
+    "id": "suwon-course-1",
+    "slug": "hwaseong-haenggung-heritage",
+    "name": "1코스 | 수원화성·화성행궁·방화수류정·행리단길 성곽 기행",
+    "group": "코스여행",
+    "duration": "당일",
+    "status": "published",
+    "summary_auto": true,
+    "summary": "",
+    "stops": [
+      {
+        "name": "화성행궁",
+        "note": "",
+        "place_slug": "hwaseonghaenggung",
+        "link_basis": "exact"
+      },
+      {
+        "name": "수원 화령전",
+        "note": "",
+        "place_slug": "suwon-hwaryeongjeon",
+        "link_basis": "exact"
+      },
+      {
+        "name": "효원의 종·서장대",
+        "note": "",
+        "place_slug": "hyowonui-jong-seojangdae",
+        "link_basis": "exact"
+      },
+      {
+        "name": "화서문(華西門)",
+        "note": "",
+        "place_slug": "hwaseomun",
+        "link_basis": "exact"
+      },
+      {
+        "name": "장안문",
+        "note": "",
+        "place_slug": "janganmun",
+        "link_basis": "exact"
+      },
+      {
+        "name": "화홍문(華虹門)",
+        "note": "",
+        "place_slug": "hwahongmun",
+        "link_basis": "exact"
+      },
+      {
+        "name": "방화수류정(동북각루)",
+        "note": "",
+        "place_slug": "banghwasuryujeong",
+        "link_basis": "exact"
+      },
+      {
+        "name": "행리단길",
+        "note": "",
+        "place_slug": "haengnidangil",
+        "link_basis": "exact"
+      }
+    ],
+    "original": {
+      "text": "",
+      "source_name": "한국관광공사 TourAPI",
+      "source_url": "https://api.visitkorea.or.kr/",
+      "license": "KOGL-1",
+      "collected_at": "2026-10-23"
+    },
+    "approved_at": "2026-10-23",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
+  },
+  {
+    "id": "suwon-course-2",
+    "slug": "yeonmudae-paldalmun-market",
+    "name": "2코스 | 연무대·플라잉수원·팔달문·전통시장·통닭거리 도보 여행",
+    "group": "코스여행",
+    "duration": "당일",
+    "status": "published",
+    "summary_auto": true,
+    "summary": "",
+    "stops": [
+      {
+        "name": "연무대(동장대)",
+        "note": "",
+        "place_slug": "yeonmudae",
+        "link_basis": "exact"
+      },
+      {
+        "name": "동북공심돈",
+        "note": "",
+        "place_slug": "dongbukgongsimdon",
+        "link_basis": "exact"
+      },
+      {
+        "name": "창룡문",
+        "note": "",
+        "place_slug": "changnyongmun",
+        "link_basis": "exact"
+      },
+      {
+        "name": "플라잉 수원",
+        "note": "",
+        "place_slug": "peullaing-suwon",
+        "link_basis": "exact"
+      },
+      {
+        "name": "수원화성박물관",
+        "note": "",
+        "place_slug": "suwonhwaseongbangmulgwan",
+        "link_basis": "exact"
+      },
+      {
+        "name": "팔달문",
+        "note": "",
+        "place_slug": "paldalmun",
+        "link_basis": "exact"
+      },
+      {
+        "name": "지동시장",
+        "note": "",
+        "place_slug": "jidongsijang",
+        "link_basis": "exact"
+      },
+      {
+        "name": "수원통닭거리",
+        "note": "",
+        "place_slug": "suwontongdakgeori",
+        "link_basis": "exact"
+      }
+    ],
+    "original": {
+      "text": "",
+      "source_name": "한국관광공사 TourAPI",
+      "source_url": "https://api.visitkorea.or.kr/",
+      "license": "KOGL-1",
+      "collected_at": "2026-10-23"
+    },
+    "approved_at": "2026-10-23",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
+  },
+  {
+    "id": "suwon-course-3",
+    "slug": "gwanggyo-lake-aquaplanet",
+    "name": "3코스 | 광교호수공원·아쿠아플라넷·광교박물관·수원박물관 나들이",
+    "group": "코스여행",
+    "duration": "당일",
+    "status": "published",
+    "summary_auto": true,
+    "summary": "",
+    "stops": [
+      {
+        "name": "광교호수공원",
+        "note": "",
+        "place_slug": "gwanggyohosugongwon",
+        "link_basis": "exact"
+      },
+      {
+        "name": "광교 프라이부르크전망대",
+        "note": "",
+        "place_slug": "gwanggyo-peuraibureukeujeonmangdae",
+        "link_basis": "exact"
+      },
+      {
+        "name": "아쿠아플라넷 광교",
+        "note": "",
+        "place_slug": "akuapeullanet-gwanggyo",
+        "link_basis": "exact"
+      },
+      {
+        "name": "수원시립아트스페이스광교",
+        "note": "",
+        "place_slug": "suwonsiribateuseupeiseugwanggyo",
+        "link_basis": "exact"
+      },
+      {
+        "name": "경기도서관",
+        "note": "",
+        "place_slug": "gyeonggidoseogwan",
+        "link_basis": "exact"
+      },
+      {
+        "name": "수원광교박물관",
+        "note": "",
+        "place_slug": "suwongwanggyobangmulgwan",
+        "link_basis": "exact"
+      },
+      {
+        "name": "수원박물관",
+        "note": "",
+        "place_slug": "suwonbangmulgwan",
+        "link_basis": "exact"
+      }
+    ],
+    "original": {
+      "text": "",
+      "source_name": "한국관광공사 TourAPI",
+      "source_url": "https://api.visitkorea.or.kr/",
+      "license": "KOGL-1",
+      "collected_at": "2026-10-23"
+    },
+    "approved_at": "2026-10-23",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
+  },
+  {
+    "id": "suwon-course-4",
+    "slug": "irwol-seoho-sangsang",
+    "name": "4코스 | 일월수목원·국립농업박물관·서호공원·경기상상캠퍼스 생태 산책",
+    "group": "코스여행",
+    "duration": "당일",
+    "status": "published",
+    "summary_auto": true,
+    "summary": "",
+    "stops": [
+      {
+        "name": "일월수목원",
+        "note": "",
+        "place_slug": "irwolsumogwon",
+        "link_basis": "exact"
+      },
+      {
+        "name": "일월호수공원",
+        "note": "",
+        "place_slug": "irwolhosugongwon",
+        "link_basis": "exact"
+      },
+      {
+        "name": "서호공원",
+        "note": "",
+        "place_slug": "seohogongwon",
+        "link_basis": "exact"
+      },
+      {
+        "name": "국립농업박물관",
+        "note": "",
+        "place_slug": "gungnimnongeopbangmulgwan",
+        "link_basis": "exact"
+      },
+      {
+        "name": "경기상상캠퍼스",
+        "note": "",
+        "place_slug": "gyeonggisangsangkaempeoseu",
+        "link_basis": "exact"
+      },
+      {
+        "name": "별마당도서관 스타필드 수원점",
+        "note": "",
+        "place_slug": "byeolmadangdoseogwan-seutapildeu-suwonjeom",
+        "link_basis": "exact"
+      }
+    ],
+    "original": {
+      "text": "",
+      "source_name": "한국관광공사 TourAPI",
+      "source_url": "https://api.visitkorea.or.kr/",
+      "license": "KOGL-1",
+      "collected_at": "2026-10-23"
+    },
+    "approved_at": "2026-10-23",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
+  },
+  {
+    "id": "suwon-course-5",
+    "slug": "manseok-haeujae-jangan",
+    "name": "5코스 | 만석공원·노송지대·해우재·광교마루길 장안 힐링 코스",
+    "group": "코스여행",
+    "duration": "당일",
+    "status": "published",
+    "summary_auto": true,
+    "summary": "",
+    "stops": [
+      {
+        "name": "만석공원",
+        "note": "",
+        "place_slug": "manseokgongwon",
+        "link_basis": "exact"
+      },
+      {
+        "name": "수원시립만석전시관",
+        "note": "",
+        "place_slug": "suwonsirimmanseokjeonsigwan",
+        "link_basis": "exact"
+      },
+      {
+        "name": "노송지대",
+        "note": "",
+        "place_slug": "nosongjidae",
+        "link_basis": "exact"
+      },
+      {
+        "name": "해우재",
+        "note": "",
+        "place_slug": "haeujae",
+        "link_basis": "exact"
+      },
+      {
+        "name": "봉녕사",
+        "note": "",
+        "place_slug": "bongnyeongsa",
+        "link_basis": "exact"
+      },
+      {
+        "name": "광교마루길",
+        "note": "",
+        "place_slug": "gwanggyomarugil",
+        "link_basis": "exact"
+      }
+    ],
+    "original": {
+      "text": "",
+      "source_name": "한국관광공사 TourAPI",
+      "source_url": "https://api.visitkorea.or.kr/",
+      "license": "KOGL-1",
+      "collected_at": "2026-10-23"
+    },
+    "approved_at": "2026-10-23",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
+  },
+  {
+    "id": "suwon-course-6",
+    "slug": "wolhwawon-yeongheung-art",
+    "name": "6코스 | 효원공원 월화원·영흥수목원·삼성이노베이션뮤지엄 도심 정원 기행",
+    "group": "코스여행",
+    "duration": "당일",
+    "status": "published",
+    "summary_auto": true,
+    "summary": "",
+    "stops": [
+      {
+        "name": "효원공원 월화원",
+        "note": "",
+        "place_slug": "hyowongongwon-wolhwawon",
+        "link_basis": "exact"
+      },
+      {
+        "name": "효원공원",
+        "note": "",
+        "place_slug": "hyowongongwon",
+        "link_basis": "exact"
+      },
+      {
+        "name": "경기아트센터",
+        "note": "",
+        "place_slug": "gyeonggiateusenteo",
+        "link_basis": "exact"
+      },
+      {
+        "name": "나혜석거리",
+        "note": "",
+        "place_slug": "nahyeseokgeori",
+        "link_basis": "exact"
+      },
+      {
+        "name": "삼성이노베이션뮤지엄",
+        "note": "",
+        "place_slug": "samseonginobeisyeonmyujieom",
+        "link_basis": "exact"
+      },
+      {
+        "name": "영흥수목원",
+        "note": "",
+        "place_slug": "yeongheungsumogwon",
+        "link_basis": "exact"
+      },
+      {
+        "name": "수원시립미술관",
+        "note": "",
+        "place_slug": "suwonsirimmisulgwan",
+        "link_basis": "exact"
+      }
+    ],
+    "original": {
+      "text": "",
+      "source_name": "한국관광공사 TourAPI",
+      "source_url": "https://api.visitkorea.or.kr/",
+      "license": "KOGL-1",
+      "collected_at": "2026-10-23"
+    },
+    "approved_at": "2026-10-23",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
+  }
+]

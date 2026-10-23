@@ -1,0 +1,1974 @@
+{
+  "KIND_LABELS.attraction": {
+    "ko": "관광지",
+    "ja": "観光地"
+  },
+  "KIND_LABELS.stay": {
+    "ko": "숙소",
+    "ja": "宿泊施設"
+  },
+  "KIND_LABELS.food": {
+    "ko": "음식점",
+    "ja": "飲食店"
+  },
+  "FACT_LABELS.address": {
+    "ko": "주소",
+    "ja": "住所"
+  },
+  "FACT_LABELS.usetime": {
+    "ko": "이용시간",
+    "ja": "利用時間"
+  },
+  "FACT_LABELS.usetime_restdate": {
+    "ko": "영업시간·정기휴일",
+    "ja": "営業時間・定休日"
+  },
+  "FACT_LABELS.restdate": {
+    "ko": "쉬는 날",
+    "ja": "休業日"
+  },
+  "FACT_LABELS.usefee": {
+    "ko": "이용요금",
+    "ja": "利用料金"
+  },
+  "FACT_LABELS.parking": {
+    "ko": "주차",
+    "ja": "駐車場"
+  },
+  "FACT_LABELS.parking_seats": {
+    "ko": "주차·좌석",
+    "ja": "駐車場・座席"
+  },
+  "FACT_LABELS.parkingfee": {
+    "ko": "주차요금",
+    "ja": "駐車料金"
+  },
+  "FACT_LABELS.spendtime": {
+    "ko": "관람 소요시간",
+    "ja": "観覧の所要時間"
+  },
+  "FACT_LABELS.checkin": {
+    "ko": "체크인",
+    "ja": "チェックイン"
+  },
+  "FACT_LABELS.checkout": {
+    "ko": "체크아웃",
+    "ja": "チェックアウト"
+  },
+  "FACT_LABELS.menu": {
+    "ko": "대표 메뉴",
+    "ja": "代表メニュー"
+  },
+  "FACT_LABELS.infocenter": {
+    "ko": "문의",
+    "ja": "問い合わせ"
+  },
+  "FACT_LABELS.homepage": {
+    "ko": "홈페이지",
+    "ja": "ホームページ"
+  },
+  "FACT_LABELS.babycarriage": {
+    "ko": "유모차 대여",
+    "ja": "ベビーカー貸出"
+  },
+  "FACT_LABELS.pet": {
+    "ko": "반려동물 동반",
+    "ja": "ペット同伴"
+  },
+  "FACT_LABELS.expagerange": {
+    "ko": "체험 가능 연령",
+    "ja": "体験できる年齢"
+  },
+  "FACT_LABELS.useseason": {
+    "ko": "이용 시기",
+    "ja": "利用時期"
+  },
+  "FACT_LABELS.accessible_parking": {
+    "ko": "장애인 주차장",
+    "ja": "障害者用駐車場"
+  },
+  "FACT_LABELS.wheelchair": {
+    "ko": "휠체어 대여",
+    "ja": "車いす貸出"
+  },
+  "FACT_LABELS.accessible_toilet": {
+    "ko": "장애인 화장실",
+    "ja": "障害者用トイレ"
+  },
+  "FACT_LABELS.accessible_route": {
+    "ko": "주 출입 접근로",
+    "ja": "主出入口への通路"
+  },
+  "FACT_LABELS.openperiod": {
+    "ko": "운영 기간",
+    "ja": "運営期間"
+  },
+  "FACT_LABELS.discount": {
+    "ko": "할인",
+    "ja": "割引"
+  },
+  "FACT_LABELS.roomcount": {
+    "ko": "객실 수",
+    "ja": "客室数"
+  },
+  "FACT_LABELS.roomtype": {
+    "ko": "객실 유형",
+    "ja": "客室タイプ"
+  },
+  "FACT_LABELS.cooking": {
+    "ko": "객실 내 취사",
+    "ja": "客室内での調理"
+  },
+  "FACT_LABELS.subfacility": {
+    "ko": "부대시설",
+    "ja": "付帯施設"
+  },
+  "FACT_LABELS.treatmenu": {
+    "ko": "취급 메뉴",
+    "ja": "取扱メニュー"
+  },
+  "FACT_LABELS.seat": {
+    "ko": "좌석",
+    "ja": "座席"
+  },
+  "FACT_LABELS.packing": {
+    "ko": "포장",
+    "ja": "持ち帰り"
+  },
+  "FACT_LABELS.expguide": {
+    "ko": "체험 안내",
+    "ja": "体験案内"
+  },
+  "FACT_LABELS.filming": {
+    "ko": "촬영지 정보",
+    "ja": "ロケ地情報"
+  },
+  "FACT_LABELS.reservation": {
+    "ko": "예약 안내",
+    "ja": "予約案内"
+  },
+  "FACT_LABELS.reservationurl": {
+    "ko": "예약 페이지",
+    "ja": "予約ページ"
+  },
+  "FACT_LABELS.creditcard": {
+    "ko": "신용카드 결제",
+    "ja": "クレジットカード決済"
+  },
+  "FACT_LABELS.kidsfacility": {
+    "ko": "어린이 놀이방",
+    "ja": "子ども用プレイルーム"
+  },
+  "FACT_LABELS.fairday": {
+    "ko": "장날",
+    "ja": "市の立つ日"
+  },
+  "FACT_LABELS.saleitem": {
+    "ko": "판매 품목",
+    "ja": "販売品目"
+  },
+  "FACT_LABELS.shopguide": {
+    "ko": "매장 안내",
+    "ja": "店舗案内"
+  },
+  "INDEX_GROUP_LABELS.hours": {
+    "ko": "이용시간",
+    "ja": "利用時間"
+  },
+  "INDEX_GROUP_LABELS.restdate": {
+    "ko": "쉬는 날",
+    "ja": "休業日"
+  },
+  "INDEX_GROUP_LABELS.fee": {
+    "ko": "요금",
+    "ja": "料金"
+  },
+  "INDEX_GROUP_LABELS.parking": {
+    "ko": "주차",
+    "ja": "駐車場"
+  },
+  "INDEX_GROUP_LABELS.phone": {
+    "ko": "전화",
+    "ja": "電話"
+  },
+  "INDEX_GROUP_LABELS.homepage": {
+    "ko": "홈페이지",
+    "ja": "ホームページ"
+  },
+  "INDEX_GROUP_LABELS.checkin": {
+    "ko": "체크인",
+    "ja": "チェックイン"
+  },
+  "INDEX_GROUP_LABELS.menu": {
+    "ko": "대표 메뉴",
+    "ja": "代表メニュー"
+  },
+  "TITLE_LABELS.usetime": {
+    "ko": "이용시간",
+    "ja": "利用時間"
+  },
+  "TITLE_LABELS.usetime_restdate": {
+    "ko": "영업시간",
+    "ja": "営業時間"
+  },
+  "TITLE_LABELS.restdate": {
+    "ko": "쉬는 날",
+    "ja": "休業日"
+  },
+  "TITLE_LABELS.usefee": {
+    "ko": "요금",
+    "ja": "料金"
+  },
+  "TITLE_LABELS.parking": {
+    "ko": "주차",
+    "ja": "駐車場"
+  },
+  "TITLE_LABELS.parking_seats": {
+    "ko": "주차",
+    "ja": "駐車場"
+  },
+  "TITLE_LABELS.parkingfee": {
+    "ko": "주차",
+    "ja": "駐車場"
+  },
+  "TITLE_LABELS.checkin": {
+    "ko": "체크인",
+    "ja": "チェックイン"
+  },
+  "TITLE_LABELS.menu": {
+    "ko": "메뉴",
+    "ja": "メニュー"
+  },
+  "LISTS.attraction.title": {
+    "ko": "관광지",
+    "ja": "観光地"
+  },
+  "LISTS.attraction.h1": {
+    "ko": "가볼만한 곳·관광지",
+    "ja": "見どころ・観光地"
+  },
+  "LISTS.attraction.seo": {
+    "ko": "{region} 가볼만한 곳{n} — 관광지 이용시간·쉬는 날·요금·주차·길찾기",
+    "ja": "{region}の見どころ{n} — 営業時間・休業日・料金・駐車場・道案内"
+  },
+  "LISTS.attraction.lead": {
+    "ko": "어떤 곳인지, 지금 가도 되는지 확인하고 길찾기로 이어 가세요.",
+    "ja": "どんな場所か、今行けるかを確かめて、道案内に進んでください。"
+  },
+  "LISTS.stay.title": {
+    "ko": "숙소",
+    "ja": "宿泊施設"
+  },
+  "LISTS.stay.h1": {
+    "ko": "숙소",
+    "ja": "宿泊施設"
+  },
+  "LISTS.stay.seo": {
+    "ko": "{region} 숙소{n} — 호텔·모텔·게스트하우스의 체크인·주차·문의",
+    "ja": "{region}の宿泊施設{n} — ホテル・モーテル・ゲストハウスのチェックイン・駐車場・連絡先"
+  },
+  "LISTS.stay.lead": {
+    "ko": "숙소마다 체크인·체크아웃·주차·문의처를 정리했습니다.",
+    "ja": "宿泊施設ごとにチェックイン・チェックアウト・駐車場・問い合わせ先をまとめました。"
+  },
+  "LISTS.food.title": {
+    "ko": "음식점",
+    "ja": "飲食店"
+  },
+  "LISTS.food.h1": {
+    "ko": "맛집·음식점",
+    "ja": "グルメ・飲食店"
+  },
+  "LISTS.food.seo": {
+    "ko": "{region} 맛집·음식점{n} — 대표 메뉴·영업시간·쉬는 날·주차",
+    "ja": "{region}の飲食店{n} — 主なメニュー・営業時間・休業日・駐車場"
+  },
+  "LISTS.food.lead": {
+    "ko": "음식점마다 대표 메뉴와 영업시간·정기휴일을 정리했습니다.",
+    "ja": "飲食店ごとに代表メニューと営業時間・定休日をまとめました。"
+  },
+  "ATTRACTION_GROUPS.0": {
+    "ko": "수원화성·성곽·행궁",
+    "ja": "水原華城・城郭・行宮"
+  },
+  "ATTRACTION_GROUPS.1": {
+    "ko": "박물관·미술관·전시",
+    "ja": "博物館・美術館・展示"
+  },
+  "ATTRACTION_GROUPS.2": {
+    "ko": "호수·수목원·공원·산",
+    "ja": "湖・樹木園・公園・山"
+  },
+  "ATTRACTION_GROUPS.3": {
+    "ko": "전통시장·공방·체험·레포츠",
+    "ja": "伝統市場・工房・体験・レジャー"
+  },
+  "ALT_LABELS.period": {
+    "ko": "기간",
+    "ja": "期間"
+  },
+  "ALT_LABELS.place_name": {
+    "ko": "장소",
+    "ja": "場所"
+  },
+  "ALT_LABELS.address": {
+    "ko": "주소",
+    "ja": "住所"
+  },
+  "ALT_LABELS.fee": {
+    "ko": "요금",
+    "ja": "料金"
+  },
+  "ALT_LABELS.playtime": {
+    "ko": "시간",
+    "ja": "時間"
+  },
+  "ALT_LABELS.tel": {
+    "ko": "문의",
+    "ja": "問い合わせ"
+  },
+  "NAV.0": {
+    "ko": "관광지",
+    "ja": "観光地"
+  },
+  "NAV.1": {
+    "ko": "숙소",
+    "ja": "宿泊施設"
+  },
+  "NAV.2": {
+    "ko": "음식점",
+    "ja": "飲食店"
+  },
+  "NAV.3": {
+    "ko": "영상",
+    "ja": "動画"
+  },
+  "NAV.4": {
+    "ko": "코스",
+    "ja": "コース"
+  },
+  "NAV.5": {
+    "ko": "가이드",
+    "ja": "ガイド"
+  },
+  "NAV.6": {
+    "ko": "행사",
+    "ja": "イベント"
+  },
+  "NAV.7": {
+    "ko": "지도",
+    "ja": "地図"
+  },
+  "NAV.8": {
+    "ko": "해외에서 본 {region}",
+    "ja": "海外から見た{region}"
+  },
+  "REGIONS.hwaseong-haenggung": {
+    "ko": "수원화성·화성행궁·행리단길",
+    "ja": "水原華城・華城行宮・行理団通り"
+  },
+  "REGIONS.paldalmun-market": {
+    "ko": "팔달문·전통시장·통닭거리",
+    "ja": "パルタルムン·チョントンシチャン· 丸鶏フライドチキン コリ"
+  },
+  "REGIONS.gwanggyo-yeongtong": {
+    "ko": "광교호수공원·박물관·영통",
+    "ja": "光教湖水公園・コンベンション・霊通"
+  },
+  "REGIONS.manseok-jangan": {
+    "ko": "만석공원·광교산·장안",
+    "ja": "万石公園・日月樹木園・長安"
+  },
+  "REGIONS.irwol-gwonseon": {
+    "ko": "일월수목원·서호공원·권선",
+    "ja": "イルウォルスモクウォヌ·ソホコンウォヌ·クォンソン"
+  },
+  "REGIONS.none": {
+    "ko": "권역 미정",
+    "ja": "圏域未指定"
+  },
+  "LIST_HUB_TINY.attraction": {
+    "ko": "수원화성·행궁·성곽 가이드",
+    "ja": "水原華城・行宮・城郭ガイド"
+  },
+  "LIST_HUB_TINY.food": {
+    "ko": "월요일 영업·맛집 가이드",
+    "ja": "月曜日営業グルメガイド"
+  },
+  "LIST_HUB_TINY.stay": {
+    "ko": "호텔·한옥·숙소 가이드",
+    "ja": "ホテル・韓屋・宿ガイド"
+  },
+  "STAY_TYPE.숙박": {
+    "ko": "숙박업소",
+    "ja": "宿泊施設"
+  },
+  "STAY_TYPE.기타": {
+    "ko": "그 밖의 숙소",
+    "ja": "その他の宿泊施設"
+  },
+  "STAY_TYPE.": {
+    "ko": "그 밖의 숙소",
+    "ja": "その他の宿泊施設"
+  },
+  "ATTR_TYPE.쇼핑": {
+    "ko": "시장·쇼핑",
+    "ja": "市場・ショッピング"
+  },
+  "ATTR_TYPE.레포츠": {
+    "ko": "레포츠",
+    "ja": "レジャースポーツ"
+  },
+  "ATTR_TYPE.문화시설": {
+    "ko": "문화시설",
+    "ja": "文化施設"
+  },
+  "STATUS_PREFIX.usefee": {
+    "ko": "요금",
+    "ja": "料金"
+  },
+  "STATUS_PREFIX.parking_seats": {
+    "ko": "주차·좌석",
+    "ja": "駐車場・座席"
+  },
+  "STATUS_PREFIX.checkin": {
+    "ko": "체크인",
+    "ja": "チェックイン"
+  },
+  "STATUS_PREFIX.checkout": {
+    "ko": "체크아웃",
+    "ja": "チェックアウト"
+  },
+  "STATUS_PREFIX.roomcount": {
+    "ko": "객실",
+    "ja": "客室"
+  },
+  "STATUS_PREFIX.menu": {
+    "ko": "대표 메뉴",
+    "ja": "代表メニュー"
+  },
+  "CONTEST_LABEL.usetime": {
+    "ko": "이용시간",
+    "ja": "利用時間"
+  },
+  "CONTEST_LABEL.restdate": {
+    "ko": "쉬는 날",
+    "ja": "休業日"
+  },
+  "CONTEST_LABEL.usefee": {
+    "ko": "요금",
+    "ja": "料金"
+  },
+  "CONTEST_LABEL.parking": {
+    "ko": "주차",
+    "ja": "駐車場"
+  },
+  "CONTEST_LABEL.usetime_restdate": {
+    "ko": "영업시간",
+    "ja": "営業時間"
+  },
+  "CONTEST_LABEL.checkin": {
+    "ko": "체크인",
+    "ja": "チェックイン"
+  },
+  "CONTEST_LABEL.checkout": {
+    "ko": "체크아웃",
+    "ja": "チェックアウト"
+  },
+  "CONTEST_LABEL.menu": {
+    "ko": "대표 메뉴",
+    "ja": "代表メニュー"
+  },
+  "CONTEST_LABEL.parking_seats": {
+    "ko": "주차·좌석",
+    "ja": "駐車場・座席"
+  },
+  "CONTEST_LABEL.roomcount": {
+    "ko": "객실",
+    "ja": "客室"
+  },
+  "STOP_KIND_LABELS.meal": {
+    "ko": "식사",
+    "ja": "食事"
+  },
+  "STOP_KIND_LABELS.lodging": {
+    "ko": "숙박",
+    "ja": "宿泊"
+  },
+  "STOP_KIND_LABELS.activity": {
+    "ko": "일정",
+    "ja": "行程"
+  },
+  "STOP_KIND_LABELS.day": {
+    "ko": "일차",
+    "ja": "日目"
+  },
+  "STAY_ASK.0": {
+    "ko": "독채 여부",
+    "ja": "一棟貸しかどうか"
+  },
+  "STAY_ASK.1": {
+    "ko": "반려동물 동반",
+    "ja": "ペット同伴"
+  },
+  "LIST_CFG.attraction.title": {
+    "ko": "관광지",
+    "ja": "観光地"
+  },
+  "LIST_CFG.attraction.cols.usetime": {
+    "ko": "이용시간",
+    "ja": "利用時間"
+  },
+  "LIST_CFG.attraction.cols.restdate": {
+    "ko": "쉬는 날",
+    "ja": "休業日"
+  },
+  "LIST_CFG.attraction.cols.usefee": {
+    "ko": "요금",
+    "ja": "料金"
+  },
+  "LIST_CFG.attraction.cols.parking": {
+    "ko": "주차",
+    "ja": "駐車場"
+  },
+  "LIST_CFG.attraction.check": {
+    "ko": "요금 무료",
+    "ja": "料金無料"
+  },
+  "LIST_CFG.stay.title": {
+    "ko": "숙소",
+    "ja": "宿泊施設"
+  },
+  "LIST_CFG.stay.cols.checkin": {
+    "ko": "체크인",
+    "ja": "チェックイン"
+  },
+  "LIST_CFG.stay.cols.checkout": {
+    "ko": "체크아웃",
+    "ja": "チェックアウト"
+  },
+  "LIST_CFG.stay.cols.parking": {
+    "ko": "주차",
+    "ja": "駐車場"
+  },
+  "LIST_CFG.stay.cols.tel": {
+    "ko": "문의",
+    "ja": "問い合わせ"
+  },
+  "LIST_CFG.stay.check": {
+    "ko": "체크인 시간 있음",
+    "ja": "チェックイン時間の記載あり"
+  },
+  "LIST_CFG.food.title": {
+    "ko": "음식점",
+    "ja": "飲食店"
+  },
+  "LIST_CFG.food.cols.menu": {
+    "ko": "대표 메뉴",
+    "ja": "代表メニュー"
+  },
+  "LIST_CFG.food.cols.usetime_restdate": {
+    "ko": "영업시간·정기휴일",
+    "ja": "営業時間・定休日"
+  },
+  "LIST_CFG.food.cols.parking_seats": {
+    "ko": "주차·좌석",
+    "ja": "駐車場・座席"
+  },
+  "LIST_CFG.food.cols.tel": {
+    "ko": "문의",
+    "ja": "問い合わせ"
+  },
+  "LIST_CFG.food.check": {
+    "ko": "월요일 영업 표기",
+    "ja": "月曜日営業の記載あり"
+  },
+  "LIC.KOGL-1": {
+    "ko": "공공누리 제1유형",
+    "ja": "公共ヌリ第1類型"
+  },
+  "LIC.KOGL-3": {
+    "ko": "공공누리 제3유형(변경금지)",
+    "ja": "公共ヌリ第3類型（変更禁止）"
+  },
+  "CALL_LINE": {
+    "ko": "방문 전 전화 확인",
+    "ja": "訪問前に電話で確認"
+  },
+  "ORGANISER_LINE": {
+    "ko": "방문 전 주최 측 확인",
+    "ja": "訪問前に主催者に確認"
+  },
+  "CONFLICT.sources_differ": {
+    "ko": "출처마다 다름",
+    "ja": "情報源ごとに異なる"
+  },
+  "CONFLICT.hours_only": {
+    "ko": "영업시간만 다름",
+    "ja": "営業時間のみ異なる"
+  },
+  "site.site_name": {
+    "ko": "수원각",
+    "ja": "水原閣"
+  },
+  "site.description": {
+    "ko": "수원각은 수원의 관광지·맛집(음식점)·숙소·여행 코스·축제·영상을 한곳에 모은 여행 정보 사이트입니다. 장소마다 이용시간·쉬는 날·요금·주차·길찾기와 값별 출처를 적었습니다.",
+    "ja": "水原閣は水原の観光地・飲食店・宿・旅行コース・祭り・動画を一か所にまとめた旅行情報サイトです。場所ごとに利用時間・定休日・料金・駐車・道案内と出典を記載しています。"
+  },
+  "site.disclaimer": {
+    "ko": "수원시 공식 홈페이지와 별도로 운영되는 독립 사이트입니다. 원문·사진의 권리는 각 출처에 있으며 표시된 이용조건을 따릅니다.",
+    "ja": "水原市公式ホームページとは別に運営される独立サイトです。原文・写真の権利は各出典にあり、表示された利用条件に従います。"
+  },
+  "site.operator.name": {
+    "ko": "에이아이오투오",
+    "ja": "エイアイオーツーオー"
+  },
+  "site.official_links.0.name": {
+    "ko": "수원문화관광 (수원특례시)",
+    "ja": "水原観光（水原特例市文化観光）"
+  },
+  "site.official_links.0.note": {
+    "ko": "수원시 공식 관광정보",
+    "ja": "水原市公式観光情報"
+  },
+  "site.official_links.1.name": {
+    "ko": "수원문화재단",
+    "ja": "大韓民国隅々（韓国観光公社）"
+  },
+  "site.official_links.1.note": {
+    "ko": "수원화성·화성행궁·축제 안내",
+    "ja": "韓国観光公社の観光情報"
+  },
+  "site.official_links.2.name": {
+    "ko": "대한민국 구석구석",
+    "ja": "テハンミンクク クソククソク"
+  },
+  "site.official_links.2.note": {
+    "ko": "한국관광공사 관광정보",
+    "ja": "ハンクククァンクァンコンサ クァンクァンチョンポ"
+  },
+  "theme.islands-sea.name": {
+    "ko": "호수·수변·야경",
+    "ja": "水原華城・行宮・城郭"
+  },
+  "theme.islands-sea.description": {
+    "ko": "광교호수공원, 방화수류정 용연, 서호공원, 만석공원 등 수원의 호수와 수변 야경 명소",
+    "ja": "水原華城・華城行宮・長安門・八達門・華西門・蒼龍門・訪花随柳亭・錬武台・西将台・華寧殿"
+  },
+  "theme.modern-history.name": {
+    "ko": "수원화성·역사·박물관",
+    "ja": "博物館・美術館・歴史文化"
+  },
+  "theme.modern-history.description": {
+    "ko": "유네스코 세계문화유산 수원화성과 화성행궁, 수원화성박물관·수원시립미술관·삼성이노베이션뮤지엄 등 역사와 전시",
+    "ja": "水原華城博物館・水原博物館・水原市立美術館・国立農業博物館・サムスンイノベーションミュージアム・解憂斎"
+  },
+  "theme.parks-nature.name": {
+    "ko": "수목원·숲·공원",
+    "ja": "湖水公園・樹木園・森の道"
+  },
+  "theme.parks-nature.description": {
+    "ko": "일월수목원, 영흥수목원, 광교산, 칠보산, 효원공원 월화원 등 도심 속 정원과 숲길",
+    "ja": "光教湖水公園・日月樹木園・霊興樹木園・万石公園・西湖公園・孝園公園粤華苑・光教山散策路"
+  },
+  "theme.alleys-culture.name": {
+    "ko": "행리단길·시장·체험",
+    "ja": "行理団通り・伝統市場・体験"
+  },
+  "theme.alleys-culture.description": {
+    "ko": "행리단길, 수원통닭거리, 팔달문 전통시장, 화성어차·플라잉수원·아쿠아플라넷 등 골목과 체험",
+    "ja": "行理団通り・工房通り・水原チキン通り・南門市場・池洞市場・フライング水原・華城御車・アクアプラネット光教"
+  },
+  "category:관광지": {
+    "ko": "관광지",
+    "ja": "観光地"
+  },
+  "category:문화시설": {
+    "ko": "문화시설",
+    "ja": "文化施設"
+  },
+  "category:레포츠": {
+    "ko": "레포츠",
+    "ja": "レジャースポーツ"
+  },
+  "category:쇼핑": {
+    "ko": "쇼핑",
+    "ja": "ショッピング"
+  },
+  "category:숙박": {
+    "ko": "숙박",
+    "ja": "宿泊"
+  },
+  "category:음식점": {
+    "ko": "음식점",
+    "ja": "飲食店"
+  },
+  "provider:한국관광공사 TourAPI": {
+    "ko": "한국관광공사 TourAPI",
+    "ja": "韓国観光公社 TourAPI"
+  },
+  "provider:카카오맵": {
+    "ko": "카카오맵",
+    "ja": "カカオマップ"
+  },
+  "provider:수원시 문화관광": {
+    "ko": "수원시 문화관광",
+    "ja": "水原市文化観光"
+  },
+  "provider:한국관광공사 고캠핑(TourAPI)": {
+    "ko": "한국관광공사 고캠핑(TourAPI)",
+    "ja": "韓国観光公社 ゴーキャンピング（TourAPI）"
+  },
+  "chrome.skip": {
+    "en": "Skip to main content",
+    "ja": "本文へスキップ"
+  },
+  "chrome.main_menu": {
+    "en": "Main menu",
+    "ja": "メインメニュー"
+  },
+  "chrome.language": {
+    "en": "Language",
+    "ja": "言語"
+  },
+  "chrome.menu": {
+    "en": "Menu",
+    "ja": "メニュー"
+  },
+  "chrome.full_menu": {
+    "en": "Full menu",
+    "ja": "全メニュー"
+  },
+  "chrome.about_sources": {
+    "en": "About and sources",
+    "ja": "サイト紹介と出典"
+  },
+  "chrome.you_are_here": {
+    "en": "You are here",
+    "ja": "現在地"
+  },
+  "chrome.explore": {
+    "en": "Explore",
+    "ja": "探す"
+  },
+  "chrome.sources": {
+    "en": "Sources",
+    "ja": "出典"
+  },
+  "chrome.foot_tourapi": {
+    "en": "Places, hours and photos:",
+    "ja": "場所・営業時間・写真："
+  },
+  "chrome.kto_tourapi": {
+    "en": "Korea Tourism Organization TourAPI",
+    "ja": "韓国観光公社 TourAPI"
+  },
+  "chrome.foot_official": {
+    "en": "Official tourism site:",
+    "ja": "公式観光サイト："
+  },
+  "chrome.foot_original": {
+    "en": "Original texts:",
+    "ja": "原文出典："
+  },
+  "chrome.foot_maps": {
+    "en": "Maps: © OpenStreetMap contributors",
+    "ja": "地図：カカオマップ"
+  },
+  "chrome.about": {
+    "en": "About",
+    "ja": "サイト紹介"
+  },
+  "chrome.about_site": {
+    "en": "About this site",
+    "ja": "このサイトについて"
+  },
+  "chrome.how_made": {
+    "en": "How the pages are made",
+    "ja": "ページの作り方"
+  },
+  "chrome.report_error": {
+    "en": "Report an error",
+    "ja": "誤りを報告"
+  },
+  "chrome.llms_guide": {
+    "en": "Guide for AI (llms.txt)",
+    "ja": "AI向けガイド（llms.txt）"
+  },
+  "chrome.sitemap": {
+    "en": "Sitemap",
+    "ja": "サイトマップ"
+  },
+  "chrome.run_by": {
+    "en": "Run by",
+    "ja": "運営"
+  },
+  "chrome.editor_role": {
+    "en": "Editor in charge",
+    "ja": "編集責任者"
+  },
+  "chrome.home": {
+    "en": "Home",
+    "ja": "ホーム"
+  },
+  "chrome.nav_attraction": {
+    "en": "Things to do",
+    "ja": "見どころ"
+  },
+  "chrome.nav_food": {
+    "en": "Food",
+    "ja": "グルメ"
+  },
+  "chrome.nav_stay": {
+    "en": "Stay",
+    "ja": "宿泊"
+  },
+  "chrome.guides": {
+    "en": "Guides",
+    "ja": "ガイド"
+  },
+  "chrome.courses": {
+    "en": "Courses",
+    "ja": "コース"
+  },
+  "chrome.events": {
+    "en": "Events",
+    "ja": "イベント"
+  },
+  "chrome.h1_attraction": {
+    "en": "Things to Do in {r}",
+    "ja": "{r}の見どころ"
+  },
+  "chrome.h1_food": {
+    "en": "Where to Eat in {r}",
+    "ja": "{r}のグルメ"
+  },
+  "chrome.h1_stay": {
+    "en": "Where to Stay in {r}",
+    "ja": "{r}の宿泊施設"
+  },
+  "chrome.title_attraction": {
+    "en": "Things to Do in {r}: {n} Attractions with Hours, Fees and Parking",
+    "ja": "{r}の見どころ：観光地{n}か所の営業時間・料金・駐車場"
+  },
+  "chrome.title_food": {
+    "en": "Where to Eat in {r}: {n} Restaurants with Dishes, Hours and Parking",
+    "ja": "{r}のグルメ：飲食店{n}か所の料理・営業時間・駐車場"
+  },
+  "chrome.title_stay": {
+    "en": "Where to Stay in {r}: {n} Stays with Check-in, Parking and Contacts",
+    "ja": "{r}の宿泊施設：{n}か所のチェックイン・駐車場・連絡先"
+  },
+  "chrome.desc_attraction.other": {
+    "en": "{n} attractions in {r}: opening hours, closed days, fees and parking, each with its source and check date, and directions.",
+    "ja": "{r}の観光地{n}か所。営業時間・休業日・料金・駐車場を、それぞれの出典と確認日、道案内とともに載せています。"
+  },
+  "chrome.desc_food.other": {
+    "en": "{n} restaurants in {r}: signature dishes, hours, closed days and parking, each with its source and check date, and directions.",
+    "ja": "{r}の飲食店{n}か所。代表メニュー・営業時間・休業日・駐車場を、それぞれの出典と確認日、道案内とともに載せています。"
+  },
+  "chrome.desc_stay.other": {
+    "en": "{n} stays in {r}: check-in and check-out times, parking and phone numbers, each with its source and check date, and directions.",
+    "ja": "{r}の宿泊施設{n}か所。チェックイン・チェックアウトの時間、駐車場、電話番号を、それぞれの出典と確認日、道案内とともに載せています。"
+  },
+  "chrome.count_attraction.other": {
+    "en": "{n} attractions",
+    "ja": "観光地{n}か所"
+  },
+  "chrome.count_food.other": {
+    "en": "{n} restaurants",
+    "ja": "飲食店{n}か所"
+  },
+  "chrome.count_stay.other": {
+    "en": "{n} stays",
+    "ja": "宿泊施設{n}か所"
+  },
+  "chrome.guide_link": {
+    "en": "Guide: {name}",
+    "ja": "ガイド：{name}"
+  },
+  "chrome.by_area": {
+    "en": "By area",
+    "ja": "エリア別"
+  },
+  "chrome.rec_call": {
+    "en": "Sources differ · call before visiting",
+    "ja": "情報源により異なる・訪問前に電話で確認"
+  },
+  "chrome.photos_is": {
+    "en": "Photos: {name}",
+    "ja": "写真：{name}"
+  },
+  "chrome.map_only_n.other": {
+    "en": "Only the {n} places with coordinates",
+    "ja": "座標がある{n}か所のみ"
+  },
+  "chrome.list_map": {
+    "en": "{name} map",
+    "ja": "{name}の地図"
+  },
+  "chrome.show_map": {
+    "en": "Show the map",
+    "ja": "地図を表示"
+  },
+  "chrome.source": {
+    "en": "Source",
+    "ja": "出典"
+  },
+  "chrome.source_word": {
+    "en": "source",
+    "ja": "出典"
+  },
+  "chrome.source_is": {
+    "en": "Source: {name}",
+    "ja": "出典：{name}"
+  },
+  "chrome.kto": {
+    "en": "Korea Tourism Organization",
+    "ja": "韓国観光公社"
+  },
+  "chrome.kto_visitkorea": {
+    "en": "Korea Tourism Organization (VisitKorea)",
+    "ja": "韓国観光公社（VisitKorea）"
+  },
+  "chrome.kto_page": {
+    "en": "Korea Tourism Organization page (in Korean)",
+    "ja": "韓国観光公社のページ（韓国語）"
+  },
+  "chrome.provider_kto": {
+    "en": "Korea Tourism Organization",
+    "ja": "韓国観光公社"
+  },
+  "chrome.provider_official": {
+    "en": "Official website",
+    "ja": "公式ウェブサイト"
+  },
+  "chrome.rechecked_with": {
+    "en": "rechecked with {name}",
+    "ja": "{name}で再確認"
+  },
+  "chrome.photo_alt": {
+    "en": "{name} photo {i}",
+    "ja": "{name}の写真{i}"
+  },
+  "chrome.photo_is": {
+    "en": "Photo: {name}",
+    "ja": "写真：{name}"
+  },
+  "chrome.photos_n.other": {
+    "en": "{n} photos",
+    "ja": "写真{n}枚"
+  },
+  "chrome.prev_photo": {
+    "en": "Previous photo",
+    "ja": "前の写真"
+  },
+  "chrome.next_photo": {
+    "en": "Next photo",
+    "ja": "次の写真"
+  },
+  "chrome.not_listed": {
+    "en": "Not listed",
+    "ja": "記載なし"
+  },
+  "chrome.not_listed_list": {
+    "en": "Not listed: {items}",
+    "ja": "記載なし：{items}"
+  },
+  "chrome.sources_list": {
+    "en": "Sources: {items}",
+    "ja": "出典：{items}"
+  },
+  "chrome.more_down": {
+    "en": "more ↓",
+    "ja": "もっと見る ↓"
+  },
+  "chrome.more": {
+    "en": "more",
+    "ja": "もっと見る"
+  },
+  "chrome.kf_differ": {
+    "en": "{labels}: sources differ",
+    "ja": "{labels}：情報源により異なる"
+  },
+  "chrome.call_before": {
+    "en": "Call before visiting",
+    "ja": "訪問前に電話で確認"
+  },
+  "chrome.notice": {
+    "en": "Notice",
+    "ja": "お知らせ"
+  },
+  "chrome.notice_open": {
+    "en": "{dates}: open",
+    "ja": "{dates}：開館"
+  },
+  "chrome.notice_closed": {
+    "en": "{dates}: closed",
+    "ja": "{dates}：休館"
+  },
+  "chrome.notice_hours": {
+    "en": "{dates}: open {start}–{end}",
+    "ja": "{dates}：{start}–{end} 開館"
+  },
+  "chrome.notice_last_entry": {
+    "en": "last entry {time}",
+    "ja": "入場締切 {time}"
+  },
+  "chrome.or_word": {
+    "en": "or",
+    "ja": "または"
+  },
+  "chrome.in_korean": {
+    "en": "In Korean: {name}",
+    "ja": "韓国語：{name}"
+  },
+  "chrome.in_korean_paren": {
+    "en": "{name} (in Korean)",
+    "ja": "{name}（韓国語）"
+  },
+  "chrome.designations": {
+    "en": "Designations",
+    "ja": "指定"
+  },
+  "chrome.parking_seats": {
+    "en": "Parking and seating",
+    "ja": "駐車場・座席"
+  },
+  "chrome.rooms_n.other": {
+    "en": "{n} rooms",
+    "ja": "客室{n}室"
+  },
+  "chrome.how_to_get": {
+    "en": "How to get to {name}",
+    "ja": "{name}への行き方"
+  },
+  "chrome.search_tag": {
+    "en": "search",
+    "ja": "検索"
+  },
+  "chrome.other_maps": {
+    "en": "Other maps",
+    "ja": "他の地図"
+  },
+  "chrome.map_google": {
+    "en": "Google Maps",
+    "ja": "Googleマップ"
+  },
+  "chrome.map_naver": {
+    "en": "Naver Map",
+    "ja": "NAVERマップ"
+  },
+  "chrome.map_kakao": {
+    "en": "Kakao Map",
+    "ja": "カカオマップ"
+  },
+  "chrome.route_kakao": {
+    "en": "Kakao Map directions",
+    "ja": "カカオマップで経路検索"
+  },
+  "chrome.route_google": {
+    "en": "Google Maps directions",
+    "ja": "Googleマップで経路検索"
+  },
+  "chrome.route_tmap": {
+    "en": "TMAP (app)",
+    "ja": "TMAP（アプリ）"
+  },
+  "chrome.directions": {
+    "en": "Directions",
+    "ja": "道案内"
+  },
+  "chrome.map_loading": {
+    "en": "Loading the map.",
+    "ja": "地図を読み込んでいます。"
+  },
+  "chrome.map_text": {
+    "en": "The places on this map are also listed on this page.",
+    "ja": "この地図の場所は、このページに文章でも載せています。"
+  },
+  "chrome.map_credit": {
+    "en": "Map: © OpenStreetMap contributors",
+    "ja": "地図：カカオマップ"
+  },
+  "chrome.map_of": {
+    "en": "Map of {name}",
+    "ja": "{name}の地図"
+  },
+  "chrome.map_straight": {
+    "en": "Distances are straight lines between coordinates",
+    "ja": "距離は座標間の直線距離です"
+  },
+  "chrome.map_loc": {
+    "en": "Location: {provider}",
+    "ja": "位置：{provider}"
+  },
+  "chrome.sec_facts": {
+    "en": "Facts",
+    "ja": "基本情報"
+  },
+  "chrome.sec_photos": {
+    "en": "Photos",
+    "ja": "写真"
+  },
+  "chrome.sec_map": {
+    "en": "Map",
+    "ja": "地図"
+  },
+  "chrome.sec_nearby": {
+    "en": "Nearby",
+    "ja": "周辺"
+  },
+  "chrome.sec_details": {
+    "en": "Details",
+    "ja": "詳細"
+  },
+  "chrome.sec_faq": {
+    "en": "FAQ",
+    "ja": "よくある質問"
+  },
+  "chrome.sec_sources": {
+    "en": "Sources",
+    "ja": "出典"
+  },
+  "chrome.sec_places": {
+    "en": "Places",
+    "ja": "場所"
+  },
+  "chrome.sec_stops": {
+    "en": "Stops",
+    "ja": "立ち寄り先"
+  },
+  "chrome.jump_place": {
+    "en": "Jump to a section of {name}",
+    "ja": "{name}の各セクションへ移動"
+  },
+  "chrome.h_facts": {
+    "en": "{name} before you go",
+    "ja": "{name}の訪問前情報"
+  },
+  "chrome.h_photos": {
+    "en": "{name} photos",
+    "ja": "{name}の写真"
+  },
+  "chrome.h_more": {
+    "en": "{name} more information",
+    "ja": "{name}のその他の情報"
+  },
+  "chrome.h_fit": {
+    "en": "{name} facilities and access",
+    "ja": "{name}の設備とアクセス"
+  },
+  "chrome.h_map": {
+    "en": "{name} map",
+    "ja": "{name}の地図"
+  },
+  "chrome.h_near": {
+    "en": "{name} nearby and related",
+    "ja": "{name}の周辺と関連情報"
+  },
+  "chrome.h_details": {
+    "en": "{name} in detail",
+    "ja": "{name}の詳細"
+  },
+  "chrome.h_faq": {
+    "en": "{name} FAQ",
+    "ja": "{name}のよくある質問"
+  },
+  "chrome.h_sources": {
+    "en": "{name} sources",
+    "ja": "{name}の出典"
+  },
+  "chrome.near_sights": {
+    "en": "Things to do nearby",
+    "ja": "周辺の見どころ"
+  },
+  "chrome.near_biz": {
+    "en": "Places to stay and eat nearby",
+    "ja": "周辺の宿泊施設と飲食店"
+  },
+  "chrome.near_note": {
+    "en": "Within {m} m · straight-line distance · {provider}",
+    "ja": "{m} m以内・直線距離・{provider}"
+  },
+  "chrome.courses_here": {
+    "en": "Official courses through this place",
+    "ja": "この場所を通る公式コース"
+  },
+  "chrome.courses_here_plain": {
+    "en": "Courses through this place",
+    "ja": "この場所を通るコース"
+  },
+  "chrome.guides_here": {
+    "en": "Guides that include this place",
+    "ja": "この場所を含むガイド"
+  },
+  "chrome.events_here": {
+    "en": "Events held here",
+    "ja": "ここで開かれるイベント"
+  },
+  "chrome.original_page": {
+    "en": "Original page",
+    "ja": "原文ページ"
+  },
+  "chrome.visitkorea": {
+    "en": "VisitKorea",
+    "ja": "VisitKorea"
+  },
+  "chrome.korean_page": {
+    "en": "Korean page",
+    "ja": "韓国語ページ"
+  },
+  "chrome.name_in_region": {
+    "en": "{name}, {r}",
+    "ja": "{name}（{r}）"
+  },
+  "chrome.visit_information": {
+    "en": "{name}: Visit Information",
+    "ja": "{name}：訪問情報"
+  },
+  "chrome.place_desc_fallback": {
+    "en": "{name} in {r}.",
+    "ja": "{r}の{name}。"
+  },
+  "chrome.jump_guide": {
+    "en": "Jump to a section of this guide",
+    "ja": "このガイドの各セクションへ移動"
+  },
+  "chrome.guide_places_n.other": {
+    "en": "The {n} places in this guide",
+    "ja": "このガイドの{n}か所"
+  },
+  "chrome.full_list": {
+    "en": "Full list",
+    "ja": "一覧"
+  },
+  "chrome.n_more.other": {
+    "en": "{n} more",
+    "ja": "ほか{n}件"
+  },
+  "chrome.see_full_list": {
+    "en": "See the full list",
+    "ja": "一覧をすべて見る"
+  },
+  "chrome.places_in_guide": {
+    "en": "The places in this guide",
+    "ja": "このガイドの場所"
+  },
+  "chrome.prev_place": {
+    "en": "Previous place",
+    "ja": "前の場所"
+  },
+  "chrome.next_place": {
+    "en": "Next place",
+    "ja": "次の場所"
+  },
+  "chrome.toc_label": {
+    "en": "Contents of this guide",
+    "ja": "このガイドの目次"
+  },
+  "chrome.toc_head": {
+    "en": "Contents",
+    "ja": "目次"
+  },
+  "chrome.places_in_section": {
+    "en": "Places named in this section",
+    "ja": "このセクションに出てくる場所"
+  },
+  "chrome.places_again": {
+    "en": "Places named in this section that have a card above",
+    "ja": "このセクションに出てくる場所のうち、上にカードがあるもの"
+  },
+  "chrome.guide_map": {
+    "en": "Map of the places in this guide",
+    "ja": "このガイドの場所の地図"
+  },
+  "chrome.map_numbers": {
+    "en": "Numbers: the order of the list below",
+    "ja": "番号：下のリストの順番"
+  },
+  "chrome.guides_h1": {
+    "en": "{r} travel guides",
+    "ja": "{r}旅行ガイド"
+  },
+  "chrome.guides_lede": {
+    "en": "Each guide answers one travel question and lists its places with their visit information.",
+    "ja": "料理別のグルメ、宿泊施設、エリア別の見どころ、車なし・子ども連れ・雨の日の旅を紹介します。各ガイドには場所ごとの訪問情報を載せています。"
+  },
+  "chrome.all_guides": {
+    "en": "All guides",
+    "ja": "すべてのガイド"
+  },
+  "chrome.places_unit.other": {
+    "en": "places",
+    "ja": "か所"
+  },
+  "chrome.label_in_region": {
+    "en": "{label} in {r}",
+    "ja": "{r}の{label}"
+  },
+  "chrome.guides_title": {
+    "en": "{r} Travel Guides by Purpose",
+    "ja": "目的別の{r}旅行ガイド"
+  },
+  "chrome.guides_desc.other": {
+    "en": "{n} guides to {r}, each with its places and their visit information.",
+    "ja": "{r}のガイド{n}本。料理別のグルメ、宿泊施設、エリア別の見どころ、車なし・子ども連れ・雨の日の旅を、各場所の訪問情報とともに紹介します。"
+  },
+  "chrome.jump_course": {
+    "en": "Jump to a section of this course",
+    "ja": "このコースの各セクションへ移動"
+  },
+  "chrome.official_course_of": {
+    "en": "Official course of {name}",
+    "ja": "{name}の公式コース"
+  },
+  "chrome.course_from": {
+    "en": "Course from {name}",
+    "ja": "{name}のコース"
+  },
+  "chrome.straight_total": {
+    "en": "Straight-line total",
+    "ja": "直線距離の合計"
+  },
+  "chrome.legs_coords": {
+    "en": "Legs with coordinates",
+    "ja": "座標がある区間"
+  },
+  "chrome.start_end": {
+    "en": "Start → end",
+    "ja": "出発 → 到着"
+  },
+  "chrome.directions_to_stop": {
+    "en": "Directions to stop {n}",
+    "ja": "立ち寄り先{n}への道案内"
+  },
+  "chrome.stops_in_order.other": {
+    "en": "{n} stops in order",
+    "ja": "順番に巡る{n}か所"
+  },
+  "chrome.next_stop": {
+    "en": "next stop {d}",
+    "ja": "次の立ち寄り先まで{d}"
+  },
+  "chrome.visit_info_for": {
+    "en": "Visit information for {name}",
+    "ja": "{name}の訪問情報"
+  },
+  "chrome.course_map": {
+    "en": "Course map",
+    "ja": "コース地図"
+  },
+  "chrome.map_of_stops": {
+    "en": "Map of the stops of {name}",
+    "ja": "{name}の立ち寄り先の地図"
+  },
+  "chrome.course_map_caption.other": {
+    "en": "{a} of {b} stops have coordinates · joined in order by straight lines",
+    "ja": "立ち寄り先{b}か所のうち{a}か所に座標があり、順番に直線で結んでいます"
+  },
+  "chrome.course_source": {
+    "en": "Course source",
+    "ja": "コースの出典"
+  },
+  "chrome.distances": {
+    "en": "Distances",
+    "ja": "距離"
+  },
+  "chrome.legs_measured.other": {
+    "en": "{a} of {b} legs measured as straight lines between Korea Tourism Organization TourAPI coordinates",
+    "ja": "{b}区間のうち{a}区間を、韓国観光公社 TourAPI の座標間の直線で測っています"
+  },
+  "chrome.legs_measured_src.other": {
+    "en": "{a} of {b} legs measured as straight lines between coordinates from {src}",
+    "ja": "{b}区間のうち{a}区間を、{src}の座標間の直線で測っています"
+  },
+  "chrome.courses_h1": {
+    "en": "{r} travel courses",
+    "ja": "{r}旅行コース"
+  },
+  "chrome.courses_lede": {
+    "en": "The official courses of {name}, stop by stop, with each stop's visit information.",
+    "ja": "{name}の公式コースを、立ち寄り先ごとの訪問情報とともに順番に紹介します。"
+  },
+  "chrome.courses_lede_of": {
+    "en": "The courses of {name}, stop by stop, with each stop's visit information.",
+    "ja": "{name}のコースを、立ち寄り先ごとの訪問情報とともに順番に紹介します。"
+  },
+  "chrome.courses_lede_any": {
+    "en": "The courses, stop by stop, with each stop's visit information.",
+    "ja": "旅行コースを、立ち寄り先ごとの訪問情報とともに順番に紹介します。"
+  },
+  "chrome.stops_of": {
+    "en": "Stops of {name} in order",
+    "ja": "{name}の立ち寄り先（順番）"
+  },
+  "chrome.plus_more": {
+    "en": "+ {n} more",
+    "ja": "＋ほか{n}か所"
+  },
+  "chrome.n_stops.other": {
+    "en": "{n} stops",
+    "ja": "{n}か所"
+  },
+  "chrome.straight_line": {
+    "en": "straight-line {d}",
+    "ja": "直線{d}"
+  },
+  "chrome.region_name": {
+    "en": "{r} {name}",
+    "ja": "{r} {name}"
+  },
+  "chrome.n_stops_title.other": {
+    "en": "{n} Stops",
+    "ja": "{n}か所"
+  },
+  "chrome.course_desc_fallback.other": {
+    "en": "{name}: {n} stops.",
+    "ja": "{name}：立ち寄り先{n}か所。"
+  },
+  "chrome.courses_title": {
+    "en": "{r} Travel Courses: Day Trips and Overnight Trips",
+    "ja": "{r}旅行コース：日帰りと宿泊の旅"
+  },
+  "chrome.courses_title_day": {
+    "en": "{r} Travel Courses: Day Trips",
+    "ja": "{r}旅行コース：日帰りの旅"
+  },
+  "chrome.courses_title_night": {
+    "en": "{r} Travel Courses: Overnight Trips",
+    "ja": "{r}旅行コース：宿泊の旅"
+  },
+  "chrome.courses_title_any": {
+    "en": "{r} Travel Courses",
+    "ja": "{r}旅行コース"
+  },
+  "chrome.courses_desc.other": {
+    "en": "The {n} official travel courses of {provider}, stop by stop, with the visit information of each stop.",
+    "ja": "{provider}の公式旅行コース{n}本を、立ち寄り先ごとの訪問情報とともに順番に紹介します。"
+  },
+  "chrome.courses_desc_of.other": {
+    "en": "The {n} travel courses of {provider}, stop by stop, with the visit information of each stop.",
+    "ja": "{provider}の旅行コース{n}本を、立ち寄り先ごとの訪問情報とともに順番に紹介します。"
+  },
+  "chrome.courses_desc_any.other": {
+    "en": "{n} travel courses, stop by stop, with the visit information of each stop.",
+    "ja": "旅行コース{n}本を、立ち寄り先ごとの訪問情報とともに順番に紹介します。"
+  },
+  "chrome.lede_longest": {
+    "en": "the longest leg is from {a} to {b}, {d} in a straight line",
+    "ja": "最も長い区間は{a}から{b}までで、直線で{d}です"
+  },
+  "chrome.lede_near.other": {
+    "en": "The first {n} stops are within 1 km of the start in a straight line",
+    "ja": "最初の{n}か所は出発地点から直線で1 km以内にあります"
+  },
+  "chrome.lede_both": {
+    "en": "{near}, and {longest}.",
+    "ja": "{near}。また、{longest}。"
+  },
+  "chrome.lede_one": {
+    "en": "{text}.",
+    "ja": "{text}。"
+  },
+  "chrome.lede_ends.other": {
+    "en": "The {n} stops start at {a} and end at {b}.",
+    "ja": "{n}か所の立ち寄り先は{a}から始まり、{b}で終わります。"
+  },
+  "chrome.ev_dates": {
+    "en": "Dates",
+    "ja": "日程"
+  },
+  "chrome.ev_time": {
+    "en": "Time",
+    "ja": "時間"
+  },
+  "chrome.ev_fee": {
+    "en": "Fee",
+    "ja": "料金"
+  },
+  "chrome.ev_venue": {
+    "en": "Venue",
+    "ja": "会場"
+  },
+  "chrome.ev_address": {
+    "en": "Address",
+    "ja": "住所"
+  },
+  "chrome.ev_organizer": {
+    "en": "Organizer",
+    "ja": "主催"
+  },
+  "chrome.ev_contact": {
+    "en": "Contact",
+    "ja": "問い合わせ"
+  },
+  "chrome.website": {
+    "en": "Website",
+    "ja": "ウェブサイト"
+  },
+  "chrome.program": {
+    "en": "Program",
+    "ja": "プログラム"
+  },
+  "chrome.usually": {
+    "en": "Usually:",
+    "ja": "例年："
+  },
+  "chrome.other_editions": {
+    "en": "Other editions:",
+    "ja": "ほかの開催回："
+  },
+  "chrome.places_label": {
+    "en": "Places:",
+    "ja": "場所："
+  },
+  "chrome.sources_label": {
+    "en": "Sources:",
+    "ja": "出典："
+  },
+  "chrome.events_h1": {
+    "en": "{r} festivals and events",
+    "ja": "{r}の祭り・イベント"
+  },
+  "chrome.events_lede": {
+    "en": "The dates, venue and fee of each festival's newest edition, its program and where the information comes from. Where two sources give different values, both are shown.",
+    "ja": "各祭りの最新回の日程・会場・料金、プログラム、情報の出典をまとめました。二つの情報源で値が異なる場合は、両方を表示します。"
+  },
+  "chrome.upcoming": {
+    "en": "Upcoming and ongoing",
+    "ja": "開催予定・開催中"
+  },
+  "chrome.past": {
+    "en": "Past",
+    "ja": "過去"
+  },
+  "chrome.festivals": {
+    "en": "Festivals and events",
+    "ja": "祭り・イベント"
+  },
+  "chrome.past_editions": {
+    "en": "Past editions",
+    "ja": "過去の開催"
+  },
+  "chrome.season_h": {
+    "en": "Held around this time in earlier years",
+    "ja": "例年この時期に開かれた行事"
+  },
+  "chrome.season_note": {
+    "en": "Their newest edition, a year or two ago, began within the next three months of the year. This year's dates are not in our data yet; the cards below give each edition as it was.",
+    "ja": "最新回が1–2年前、今から3か月以内と同じ時期に始まった行事です。今年の日程はまだ当サイトの資料にありません。下のカードはその回の内容です。"
+  },
+  "chrome.past_note": {
+    "en": "The newest edition of each series, newest first.",
+    "ja": "各シリーズの最新回を、新しい順に表示しています。"
+  },
+  "chrome.events_title": {
+    "en": "{r} Festivals and Events: Dates, Venues and Fees",
+    "ja": "{r}の祭り・イベント：日程・会場・料金"
+  },
+  "chrome.events_desc": {
+    "en": "{a} upcoming or ongoing and {b} past festivals and events in {r}: dates, venue, fee and organizer of the newest edition, with sources.",
+    "ja": "{r}の開催予定・開催中の祭りとイベント{a}件、終了した{b}件。最新回の日程・会場・料金・主催者を出典とともに載せています。"
+  },
+  "chrome.about_title": {
+    "en": "About This Site: Sources, Photos and Corrections",
+    "ja": "このサイトについて：出典・写真・訂正"
+  },
+  "chrome.about_desc": {
+    "en": "What {site} is, where its information comes from, how sources are shown, photo licenses, how names are written and how to report an error.",
+    "ja": "{site}とは何か、情報の出どころ、出典の示し方、写真のライセンス、名称の表記、誤りの報告方法を説明します。"
+  },
+  "chrome.about_lede": {
+    "en": "{site} is the edition in this language of {ko_site}, a travel information site about {r}: when places open, what they cost, where to park and how to get there, for attractions, restaurants and places to stay, with the official courses and festival dates.",
+    "ja": "{site}は、{r}の旅行情報サイト「{ko_site}」の日本語版です。観光地・飲食店・宿泊施設について、営業時間、料金、駐車場、行き方をまとめています。公式コースと祭りの日程も載せています。"
+  },
+  "chrome.about_lede_courses": {
+    "en": "{site} is the edition in this language of {ko_site}, a travel information site about {r}: when places open, what they cost, where to park and how to get there, for attractions, restaurants and places to stay, with travel courses and festival dates.",
+    "ja": "{site}は、{r}の旅行情報サイト「{ko_site}」のこの言語版です。観光地・飲食店・宿泊施設について、営業時間、料金、駐車場、行き方をまとめています。旅行コースと祭りの日程も載せています。"
+  },
+  "chrome.about_lede_none": {
+    "en": "{site} is the edition in this language of {ko_site}, a travel information site about {r}: when places open, what they cost, where to park and how to get there, for attractions, restaurants and places to stay.",
+    "ja": "{site}は、{r}の旅行情報サイト「{ko_site}」のこの言語版です。観光地・飲食店・宿泊施設について、営業時間、料金、駐車場、行き方をまとめています。"
+  },
+  "chrome.about_what": {
+    "en": "What is here",
+    "ja": "掲載内容"
+  },
+  "chrome.about_counts": {
+    "en": "Pages in this language for {places} places ({indexed} of them in search results; the others are listed but not indexed until they meet the site's index rule), {guides} guides, {courses} official courses and {series} festival and event series.",
+    "ja": "日本語のページは、場所{places}か所、ガイド{guides}本、公式コース{courses}本、祭り・イベント{series}シリーズです。場所のうち{indexed}か所は検索結果に表示されます。残りは一覧には載せていますが、サイトの索引基準を満たすまで検索エンジンには登録しません。"
+  },
+  "chrome.about_counts_plain": {
+    "en": "Pages in this language for {places} places ({indexed} of them in search results; the others are listed but not indexed until they meet the site's index rule), {guides} guides, {courses} courses and {series} festival and event series.",
+    "ja": "この言語のページは、場所{places}か所、ガイド{guides}本、コース{courses}本、祭り・イベント{series}シリーズです。場所のうち{indexed}か所は検索結果に表示されます。残りは一覧には載せていますが、サイトの索引基準を満たすまで検索エンジンには登録しません。"
+  },
+  "chrome.about_sync": {
+    "en": "Each page in this language is a translation of its Korean page. When the Korean page changes, the translated page is taken down until the translation is updated, so the two never say different things.",
+    "ja": "日本語の各ページは、韓国語ページの翻訳です。韓国語ページが変わると、翻訳を更新するまで翻訳ページを取り下げます。そのため、両者の内容が食い違うことはありません。"
+  },
+  "chrome.about_how_1": {
+    "en": "Opening hours, closed days, fees, parking, phone numbers, check-in times and menus come from the Korea Tourism Organization's TourAPI and from {source}, and for some places from their own official websites. Nothing is filled in from general knowledge.",
+    "ja": "営業時間、休業日、料金、駐車場、電話番号、チェックイン時間、メニューは韓国観光公社のTourAPIと{source}から得ています。一部の場所は公式ウェブサイトからも得ています。一般的な知識で補った値はありません。"
+  },
+  "chrome.about_how_1_kto": {
+    "en": "Opening hours, closed days, fees, parking, phone numbers, check-in times and menus come from the Korea Tourism Organization's TourAPI and, for some places, from their own official websites. Nothing is filled in from general knowledge.",
+    "ja": "営業時間、休業日、料金、駐車場、電話番号、チェックイン時間、メニューは韓国観光公社のTourAPIから得ています。一部の場所は、その場所の公式ウェブサイトからも得ています。一般的な知識で補った値はありません。"
+  },
+  "chrome.about_how_2": {
+    "en": "Every value names its source. Where two sources give different values, the page shows both, each with its source, and says \"{note}\". A value no source gives is listed once as \"{missing}\".",
+    "ja": "すべての値に出典を示します。二つの情報源で値が異なる場合は、両方をそれぞれの出典とともに示し、「{note}」と記します。どの情報源にもない値は、「{missing}」と一度だけ記します。"
+  },
+  "chrome.about_how_3": {
+    "en": "Texts from {source} are not copied; each place page links to its original page. Distances are straight lines between coordinates, not travel distances.",
+    "ja": "{source}の文章は転載しません。各場所のページから原文ページへリンクしています。距離は座標間の直線距離で、移動距離ではありません。"
+  },
+  "chrome.about_how_3_unconfirmed": {
+    "en": "Original texts whose terms of use (the KOGL type) are not confirmed are not copied: pages link to them, descriptions are written anew, and values such as hours, fees and menus are kept as the source gives them. Distances are straight lines between coordinates, not travel distances.",
+    "ja": "利用条件（公共ヌリ類型）が確認されていない原文は転載しません。ページから原文へリンクし、説明文は新たに書き起こし、営業時間・料金・メニューなどの事実値は出典どおり記載します。距離は座標間の直線距離で、移動距離ではありません。"
+  },
+  "chrome.about_photos": {
+    "en": "Photos are from the Korea Tourism Organization under the Korea Open Government License (KOGL): {n1} under {lic1} and {n3} under {lic3}. Type 3 photos are shown exactly as published: never cropped, enlarged or edited. Each photo carries its source and license.",
+    "ja": "写真は、韓国観光公社が公共ヌリ（KOGL）で提供しているものです。{lic1}が{n1}枚、{lic3}が{n3}枚です。第3類型の写真は公開されたとおりに掲載し、切り抜き・拡大・編集はしません。各写真に出典とライセンスを表示しています。"
+  },
+  "chrome.about_art": {
+    "en": "The illustrations on this site were drawn with generative AI; every photo of a place is an official Korea Tourism Organization photo, shown with its source.",
+    "ja": "このサイトのイラストは生成AIで描きました。場所の写真はすべて韓国観光公社の公式写真で、出典とともに掲載しています。"
+  },
+  "chrome.about_names_h": {
+    "en": "Names",
+    "ja": "名称"
+  },
+  "chrome.about_names": {
+    "en": "Place names are the Korea Tourism Organization's official names in this language when it gives one; otherwise they are translated from the Korean name (the proper part transcribed, the generic part translated). Every place page also shows the Korean name, which helps when you search a Korean map or show it to a taxi driver.",
+    "ja": "場所の名称は、韓国観光公社が日本語の公式名称を示している場合はそれを使います。ない場合は韓国語の名称から訳しています（固有の部分は音写し、一般的な部分は翻訳）。各場所のページには韓国語の名称も載せています。韓国の地図で検索するときや、タクシーの運転手に見せるときに役立ちます。"
+  },
+  "chrome.about_names_noex": {
+    "en": "Place names are the Korea Tourism Organization's official names in this language when it gives one; otherwise they are translated from the Korean name (the proper part transcribed, the generic part translated). Every place page also shows the Korean name, which helps when you search a Korean map or show it to a taxi driver.",
+    "ja": "場所の名称は、韓国観光公社がこの言語の公式名称を示している場合はそれを使います。ない場合は韓国語の名称から訳しています（固有の部分は音写し、一般的な部分は翻訳）。各場所のページには韓国語の名称も載せています。韓国の地図で検索するときや、タクシーの運転手に見せるときに役立ちます。"
+  },
+  "chrome.the_operator": {
+    "en": "the operator",
+    "ja": "運営者"
+  },
+  "chrome.about_report": {
+    "en": "If a value is wrong or out of date, write to {mail} with the page address and the source that shows the correct value.",
+    "ja": "値が誤っている、または古い場合は、ページのアドレスと正しい値を示す出典を添えて、{mail}までご連絡ください。"
+  },
+  "chrome.about_operator": {
+    "en": "Operator: {op}. This site is run independently of {city}.",
+    "ja": "運営：{op}。このサイトは{city}とは独立して運営しています。"
+  },
+  "chrome.about_operator_only": {
+    "en": "Operator: {op}.",
+    "ja": "運営：{op}。"
+  },
+  "chrome.co_heading": {
+    "en": "The company behind this site",
+    "ja": "運営会社"
+  },
+  "chrome.co_name": {
+    "en": "Company",
+    "ja": "会社名"
+  },
+  "chrome.co_ceo": {
+    "en": "CEO",
+    "ja": "代表取締役"
+  },
+  "chrome.co_biz_no": {
+    "en": "Business registration no.",
+    "ja": "事業者登録番号"
+  },
+  "chrome.co_corp_no": {
+    "en": "Corporate registration no.",
+    "ja": "法人登録番号"
+  },
+  "chrome.co_founded": {
+    "en": "Founded",
+    "ja": "設立"
+  },
+  "chrome.co_head_office": {
+    "en": "Head office",
+    "ja": "本社"
+  },
+  "chrome.co_lab": {
+    "en": "R&D center",
+    "ja": "研究所"
+  },
+  "chrome.co_tel": {
+    "en": "Tel.",
+    "ja": "電話"
+  },
+  "chrome.co_contact": {
+    "en": "Contact",
+    "ja": "連絡先"
+  },
+  "chrome.co_site": {
+    "en": "Company website",
+    "ja": "会社ウェブサイト"
+  },
+  "chrome.co_info": {
+    "en": "Company information",
+    "ja": "会社情報"
+  },
+  "chrome.co_note": {
+    "en": "This site is run by the company above, not by a city government or any other public body. For questions about a place or an event, use the phone number and official links on its page.",
+    "ja": "このサイトは済州特別自治道や公的機関ではなく、上記の会社が運営しています。施設やイベントについてのお問い合わせは、各ページの電話番号と公式リンクからお願いします。"
+  },
+  "chrome.co_copyright": {
+    "en": "Copyright © {name}. Photos and source texts belong to their sources.",
+    "ja": "Copyright © {name}。写真と出典資料の権利は各出典に帰属します。"
+  },
+  "chrome.official_sites": {
+    "en": "Official sites",
+    "ja": "公式サイト"
+  },
+  "chrome.home_title": {
+    "en": "{site}: {r} Attractions, Food, Stays, Courses and Festivals",
+    "ja": "{site}：{r}の観光地・グルメ・宿泊・コース・祭り"
+  },
+  "chrome.home_desc": {
+    "en": "{a} attractions, {f} restaurants and {s} places to stay in {r}, with opening hours, prices, parking and directions, plus official courses and festival dates, in one place.",
+    "ja": "{r}の観光地{a}か所、飲食店{f}か所、宿泊施設{s}か所の営業時間・料金・駐車場・道案内を一か所にまとめました。公式コースと祭りの日程も載せています。"
+  },
+  "chrome.home_desc_courses": {
+    "en": "{a} attractions, {f} restaurants and {s} places to stay in {r}, with opening hours, prices, parking and directions, plus travel courses and festival dates, in one place.",
+    "ja": "{r}の観光地{a}か所、飲食店{f}か所、宿泊施設{s}か所の営業時間・料金・駐車場・道案内を一か所にまとめました。旅行コースと祭りの日程も載せています。"
+  },
+  "chrome.home_desc_none": {
+    "en": "{a} attractions, {f} restaurants and {s} places to stay in {r}, with opening hours, prices, parking and directions, in one place.",
+    "ja": "{r}の観光地{a}か所、飲食店{f}か所、宿泊施設{s}か所の営業時間・料金・駐車場・道案内を一か所にまとめました。"
+  },
+  "chrome.home_kicker": {
+    "en": "{r}, {admin}, Korea",
+    "ja": "韓国 {admin} {r}"
+  },
+  "chrome.home_kicker_city": {
+    "en": "{r}, Korea",
+    "ja": "韓国 {r}"
+  },
+  "chrome.home_sub": {
+    "en": "Opening hours, prices and how to get there for {r}'s attractions, restaurants and places to stay, in one place.",
+    "ja": "{r}の観光地・飲食店・宿泊施設の営業時間、料金、行き方を一か所にまとめました。"
+  },
+  "chrome.home_cta": {
+    "en": "Start with an official course",
+    "ja": "公式コースから始める"
+  },
+  "chrome.home_cta_plain": {
+    "en": "Start with a course",
+    "ja": "コースから始める"
+  },
+  "chrome.cat_attraction": {
+    "en": "Attractions",
+    "ja": "観光地"
+  },
+  "chrome.cat_food": {
+    "en": "Restaurants",
+    "ja": "飲食店"
+  },
+  "chrome.cat_stay": {
+    "en": "Places to stay",
+    "ja": "宿泊施設"
+  },
+  "chrome.now_on": {
+    "en": "Now on",
+    "ja": "開催中"
+  },
+  "chrome.until": {
+    "en": "until {d}",
+    "ja": "{d}まで"
+  },
+  "chrome.start_here": {
+    "en": "Start here",
+    "ja": "ここから始める"
+  },
+  "chrome.num_attraction.other": {
+    "en": "attractions",
+    "ja": "観光地"
+  },
+  "chrome.num_food.other": {
+    "en": "restaurants",
+    "ja": "飲食店"
+  },
+  "chrome.num_stay.other": {
+    "en": "places to stay",
+    "ja": "宿泊施設"
+  },
+  "chrome.num_courses.other": {
+    "en": "official courses",
+    "ja": "公式コース"
+  },
+  "chrome.num_courses_plain.other": {
+    "en": "courses",
+    "ja": "コース"
+  },
+  "chrome.num_guides.other": {
+    "en": "guides",
+    "ja": "ガイド"
+  },
+  "chrome.nums_title": {
+    "en": "{r} travel, in numbers.",
+    "ja": "数字で見る{r}旅行。"
+  },
+  "chrome.feat_eyebrow": {
+    "en": "On the most official courses",
+    "ja": "公式コースに最も多く登場"
+  },
+  "chrome.feat_eyebrow_plain": {
+    "en": "On the most courses",
+    "ja": "多くのコースに含まれる場所"
+  },
+  "chrome.feat_h": {
+    "en": "Places to start",
+    "ja": "まず訪れる場所"
+  },
+  "chrome.all_attractions.other": {
+    "en": "All {n} attractions",
+    "ja": "観光地{n}か所をすべて見る"
+  },
+  "chrome.hubs_h": {
+    "en": "Eat, stay, see",
+    "ja": "食べる、泊まる、見る"
+  },
+  "chrome.coming_up": {
+    "en": "Coming up",
+    "ja": "まもなく開催"
+  },
+  "chrome.all_events": {
+    "en": "All festivals and events",
+    "ja": "すべての祭り・イベント"
+  },
+  "chrome.lines_h": {
+    "en": "Official courses, in order",
+    "ja": "公式コースを順番に"
+  },
+  "chrome.lines_h_plain": {
+    "en": "Courses, in order",
+    "ja": "コースを順番に"
+  },
+  "chrome.all_courses": {
+    "en": "All courses",
+    "ja": "すべてのコース"
+  },
+  "chrome.tile_courses_short": {
+    "en": "Official day and overnight courses",
+    "ja": "公式の日帰り・宿泊コース"
+  },
+  "chrome.tile_courses_short_plain": {
+    "en": "Day and overnight courses",
+    "ja": "日帰り・宿泊コース"
+  },
+  "chrome.tile_courses_any": {
+    "en": "Official courses, stop by stop",
+    "ja": "公式コースを順番に"
+  },
+  "chrome.tile_courses_any_plain": {
+    "en": "Courses, stop by stop",
+    "ja": "コースを順番に"
+  },
+  "chrome.tile_courses_tiny": {
+    "en": "Day and overnight",
+    "ja": "日帰り・宿泊"
+  },
+  "chrome.tile_courses_tiny_day": {
+    "en": "Day trips",
+    "ja": "日帰り"
+  },
+  "chrome.tile_courses_tiny_any": {
+    "en": "Stop by stop",
+    "ja": "立ち寄り順"
+  },
+  "chrome.tile_courses_pill": {
+    "en": "Official",
+    "ja": "公式"
+  },
+  "chrome.tile_attraction": {
+    "en": "Attractions",
+    "ja": "観光地"
+  },
+  "chrome.tile_food": {
+    "en": "Restaurants",
+    "ja": "飲食店"
+  },
+  "chrome.tile_stay": {
+    "en": "Stays",
+    "ja": "宿泊施設"
+  },
+  "chrome.tile_short_attraction": {
+    "en": "Hours, closed days, fees and parking",
+    "ja": "営業時間・休業日・料金・駐車場"
+  },
+  "chrome.tile_tiny_attraction": {
+    "en": "Hours · fees",
+    "ja": "営業時間・料金"
+  },
+  "chrome.tile_short_food": {
+    "en": "Dishes, hours, closed days and parking",
+    "ja": "料理・営業時間・休業日・駐車場"
+  },
+  "chrome.tile_tiny_food": {
+    "en": "Dishes · hours",
+    "ja": "料理・営業時間"
+  },
+  "chrome.tile_short_stay": {
+    "en": "Check-in, check-out, parking and phone",
+    "ja": "チェックイン・チェックアウト・駐車場・電話"
+  },
+  "chrome.tile_tiny_stay": {
+    "en": "Check-in times",
+    "ja": "チェックイン時間"
+  },
+  "chrome.tile_events_short": {
+    "en": "Upcoming and ongoing festivals",
+    "ja": "開催予定・開催中の祭り"
+  },
+  "chrome.tile_events_tiny": {
+    "en": "Upcoming",
+    "ja": "開催予定"
+  },
+  "chrome.llms_home": {
+    "en": "{r} attractions, restaurants and places to stay with hours, prices, parking and directions; official courses and festival dates.",
+    "ja": "{r}の観光地・飲食店・宿泊施設の営業時間、料金、駐車場、道案内。公式コースと祭りの日程も載せています。"
+  },
+  "chrome.llms_home_courses": {
+    "en": "{r} attractions, restaurants and places to stay with hours, prices, parking and directions; travel courses and festival dates.",
+    "ja": "{r}の観光地・飲食店・宿泊施設の営業時間・料金・駐車場・道案内、旅行コースと祭りの日程。"
+  },
+  "chrome.llms_home_none": {
+    "en": "{r} attractions, restaurants and places to stay with hours, prices, parking and directions.",
+    "ja": "{r}の観光地・飲食店・宿泊施設の営業時間・料金・駐車場・道案内。"
+  },
+  "chrome.none_district": {
+    "en": "District not listed",
+    "ja": "区・郡未記載"
+  },
+  "chrome.none_anchors": {
+    "en": "Area not assigned",
+    "ja": "圏域未指定"
+  },
+  "chrome.map_zoom_in": {
+    "en": "Zoom in",
+    "ja": "拡大"
+  },
+  "chrome.map_zoom_out": {
+    "en": "Zoom out",
+    "ja": "縮小"
+  },
+  "chrome.map_whole_course": {
+    "en": "Whole course",
+    "ja": "コース全体"
+  },
+  "chrome.map_fail": {
+    "en": "The map could not be loaded.",
+    "ja": "地図を読み込めませんでした。"
+  },
+  "chrome.map_off": {
+    "en": "Some stops lie off the map · show them",
+    "ja": "一部の立ち寄り先が地図の外にあります・表示する"
+  },
+  "provider:수원시": {
+    "ko": "수원시",
+    "ja": "水原市"
+  }
+}

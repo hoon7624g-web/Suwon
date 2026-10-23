@@ -1,0 +1,626 @@
+{
+ "gunsan-305395": {
+  "slug": "geundaeyeoksabangmulgwan",
+  "kind": "attraction",
+  "name_ko": "근대역사박물관",
+  "name_en": "Modern History Museum",
+  "name_en_source": "romanized specific part + English generic (MCST guideline)",
+  "summary": "The Modern History Museum is a museum on Gunsan's modern and maritime culture that opened in September 2011. The 1st floor has the Maritime Logistics History Hall and the Children's Museum, and the 3rd floor has the Modern Life Hall and the special exhibition room. A single-site ticket costs 2,000 won for adults, parking is free, and it is closed every Monday and on January 1.",
+  "facts": {
+   "address": {
+    "value": "240 Haemang-ro, Gunsan-si, Jeonbuk State"
+   },
+   "usetime": {
+    "value": "March–October 09:00–18:00 (last entry 17:30) / November–February 09:00–17:00 (last entry 16:30)",
+    "alternatives": [
+     {
+      "value": "09:00–21:00 (last entry 20:30)",
+      "provider": "군산시 문화관광 상세 정보표"
+     }
+    ],
+    "note": "Sources differ — call before visiting"
+   },
+   "restdate": {
+    "value": "Every Monday, January 1, and days the mayor designates as closing days"
+   },
+   "usefee": {
+    "value": "[Museum combined ticket]\n- Adults 3,000 won\n- Teens, soldiers 2,000 won\n- Children 1,000 won\n[Single-site ticket]\n- Adults 2,000 won\n- Teens, soldiers 1,000 won\n- Children 500 won\n※ See the website for details"
+   },
+   "parkingfee": {
+    "value": "Free"
+   },
+   "infocenter": {
+    "value": "063-454-7870",
+    "also": [
+     {
+      "value": "Museum information desk 063-454-5953",
+      "provider": "한국관광공사 TourAPI"
+     }
+    ]
+   },
+   "creditcard": {
+    "value": "Accepted"
+   },
+   "babycarriage": {
+    "value": "Not available"
+   },
+   "accessible_parking": {
+    "value": "8 accessible parking spaces"
+   },
+   "wheelchair": {
+    "value": "Available to borrow (8 wheelchairs)"
+   },
+   "accessible_toilet": {
+    "value": "Accessible restrooms for men and women"
+   },
+   "accessible_route": {
+    "value": "A ramp leads to the entrance (gentle slope)"
+   }
+  },
+  "details": [
+   {
+    "heading": "When the Modern History Museum was built and what it cost",
+    "text": "The Modern History Museum is a regional museum on the theme of Gunsan's modern and maritime culture, and it opened in September 2011. The construction project began in 2007 and cost 18.2 billion won. The site covers 8,348 m² (2,525 pyeong), the total floor area is 4,248 m² (1,285 pyeong), and the building has 1 basement level and 3 floors above ground.",
+    "source": "https://www.gunsan.go.kr/tour/m2080/view/305395"
+   },
+   {
+    "heading": "Modern History Museum main exhibits: the past, present, and future of Gunsan as an international trade port",
+    "text": "The main exhibits of the Modern History Museum use artifacts and materials from prehistoric times to the modern era. They first show Gunsan's past as a center of logistics and distribution. Building on that, they invite you to think about the present and future of Gunsan as an international trade port. The sections are Life and Culture on Gunsan's history, Maritime Distribution on the port's logistics and distribution role, and Sea and Culture on the culture and history of Gunsan and Gogunsan. Another section shows artifacts excavated from the seabed near Gunsan, among others.",
+    "source": "https://www.gunsan.go.kr/tour/m2080/view/305395"
+   },
+   {
+    "heading": "Modern History Museum rooms and sizes by floor: from the 1st-floor Maritime Logistics History Hall to the 3rd-floor Modern Life Hall",
+    "text": "The 1st floor of the Modern History Museum has the 509 m² Maritime Logistics History Hall, the 126 m² Children's Museum, and a 113 m² storage room. The 2nd floor is the 84 m² Modern Archives Gyujanggak Room. The 3rd floor has the 617 m² Modern Life Hall, the 231 m² special exhibition room, and a 73 m² seminar room. Of the spaces in the floor guide, the largest is the 3rd-floor Modern Life Hall.",
+    "source": "https://www.gunsan.go.kr/tour/m2080/view/305395"
+   },
+   {
+    "heading": "Modern History Museum's 3 ticket types: single-site, museum combined, and Geumgang area combined",
+    "text": "The Modern History Museum has three kinds of tickets: a single-site ticket for this museum only and two combined tickets for several sites (the museum combined ticket and the Geumgang area combined ticket). The single-site ticket is 2,000 won for adults (1,000 won for Gunsan residents). The museum combined ticket covers 4 sites (the museum, art museum, architecture hall, and Wibongham) and is 3,000 won for adults (2,000 won for Gunsan residents). The Geumgang area combined ticket adds 3 Geumgang area sites (Chae Man-sik Literary Museum, Geumgang Future Experience Center, and the March 1st Movement Memorial Hall) to these 4. It is 5,000 won for adults (3,000 won for Gunsan residents).",
+    "source": "https://www.gunsan.go.kr/tour/m2080/view/305395"
+   }
+  ],
+  "faq": [
+   {
+    "q": "Which day of the week is the Modern History Museum closed?",
+    "a": "It is closed every Monday. It also closes on January 1 and on days the mayor designates as closing days.",
+    "source": "https://museum.gunsan.go.kr/new/contents/userInfo101.jsp"
+   },
+   {
+    "q": "How much is admission to the Modern History Museum?",
+    "a": "A single-site ticket costs 2,000 won for adults, 1,000 won for teens and soldiers, and 500 won for children; adult Gunsan residents pay 1,000 won. The museum combined ticket covers the museum, art museum, architecture hall, and Wibongham. It costs 3,000 won for adults, 2,000 won for teens and soldiers, and 1,000 won for children.",
+    "source": "https://www.gunsan.go.kr/tour/m2080/view/305395"
+   },
+   {
+    "q": "Is there a parking fee at the Modern History Museum?",
+    "a": "No. Parking is free, and you can pay by credit card.",
+    "source": "한국관광공사 TourAPI"
+   },
+   {
+    "q": "Does the Modern History Museum have an exhibit space for kids?",
+    "a": "Yes. The 1st floor has a 126 m² Children's Museum. A child's single-site ticket costs 500 won.",
+    "source": "https://www.gunsan.go.kr/tour/m2080/view/305395"
+   },
+   {
+    "q": "What exhibits can you see at the Modern History Museum?",
+    "a": "Sections include Life and Culture, Maritime Distribution, Sea and Culture, and artifacts excavated from the seabed near Gunsan. Maritime Distribution covers Gunsan's role as a logistics port, and Sea and Culture covers the culture and history of Gunsan and Gogunsan. The overall theme of the main exhibits is the past, present, and future of Gunsan as a trade port.",
+    "source": "https://www.gunsan.go.kr/tour/m2080/view/305395"
+   },
+   {
+    "q": "Can you tour the Modern History Museum indoors on a rainy day?",
+    "a": "Yes. The exhibition rooms are inside a building with 1 basement level and 3 floors above ground. The 1st floor has the Maritime Logistics History Hall and the Children's Museum, the 2nd floor has the Modern Archives Gyujanggak Room, and the 3rd floor has the Modern Life Hall and the special exhibition room.",
+    "source": "https://www.gunsan.go.kr/tour/m2080/view/305395"
+   },
+   {
+    "q": "Can you borrow a wheelchair at the Modern History Museum?",
+    "a": "Yes. There are 8 wheelchairs to borrow. There are 8 accessible parking spaces, a gentle ramp to the entrance, and accessible restrooms for men and women.",
+    "source": "https://www.gunsan.go.kr/tour/m2080/view/305395"
+   },
+   {
+    "q": "When did the Modern History Museum open?",
+    "a": "It opened in September 2011. The Modern History Museum construction project began in 2007 and cost 18.2 billion won.",
+    "source": "https://www.gunsan.go.kr/tour/m2080/view/305395"
+   },
+   {
+    "q": "How many floors does the Modern History Museum building have?",
+    "a": "It has 1 basement level and 3 floors above ground. The Modern History Museum exhibit spaces are on floors 1–3, and the total floor area is 4,248 m².",
+    "source": "https://www.gunsan.go.kr/tour/m2080/view/305395"
+   },
+   {
+    "q": "What is the largest exhibition room at the Modern History Museum?",
+    "a": "Of the spaces in the floor guide, the largest is the 3rd-floor Modern Life Hall (617 m²), followed by the 1st-floor Maritime Logistics History Hall (509 m²).",
+    "source": "https://www.gunsan.go.kr/tour/m2080/view/305395"
+   }
+  ],
+  "ko_hash": "47006de0f4d32f16",
+  "translated_at": "2026-10-08"
+ },
+ "gunsan-305372": {
+  "slug": "eunpahosugongwon",
+  "kind": "attraction",
+  "name_ko": "은파호수공원",
+  "name_en": "Eunpa Lake Park",
+  "name_en_source": "romanized specific part + English generic (MCST guideline)",
+  "summary": "Eunpa Lake Park is a lake park in Naun-dong built around a reservoir. In 1985, the reservoir and the surrounding hills, 2,578,524 m², were designated a national tourist site, and a ring road circles the site. The park has Mulbit Bridge, a musical fountain, a waterside stage, a native lotus habitat, an inline skating rink, a cherry blossom walking path, and more.",
+  "facts": {
+   "address": {
+    "value": "9 Eunpasunhwan-gil (Naun-dong), Gunsan-si, Jeonbuk State"
+   },
+   "usetime": {
+    "value": "Always open"
+   },
+   "restdate": {
+    "value": "Open all year"
+   },
+   "usefee": {
+    "value": "Free"
+   },
+   "parking": {
+    "value": "Available"
+   },
+   "infocenter": {
+    "value": "Gunsan City Eunpa Park Management Office 063-454-4896"
+   },
+   "accessible_parking": {
+    "value": "None"
+   },
+   "wheelchair": {
+    "value": "None"
+   },
+   "accessible_toilet": {
+    "value": "None"
+   }
+  },
+  "details": [
+   {
+    "heading": "Eunpa Lake Park grew from a pre-Joseon reservoir into a national tourist site in 1985",
+    "text": "The reservoir at the center of Eunpa Lake Park was built for farming before the Joseon period, and it appears on Kim Jeong-ho's Daedongyeojido map. In 1985, 2,578,524 m², combining this reservoir and the small hills around it, was designated a national tourist site. A ring road runs around the site, so you can drive all the way around the Eunpa tourist area, which is called the 'ninety-nine bends.'",
+    "source": "https://www.gunsan.go.kr/tour/m2094/view/305372"
+   },
+   {
+    "heading": "Eunpa Lake Park's Mulbit Bridge and musical fountain, and its place among Korea's 100 major tourist attractions",
+    "text": "Mulbit Bridge at Eunpa Lake Park is shaped after the folk tale of the Aegibau, Jungbau, and Gaebau rocks. Together with the musical fountain, it creates the park's night scenery. The Eunpa tourist area was included among Korea's 100 major tourist attractions through the 'Making Good Places to Live' regional resources contest.",
+    "source": "https://www.gunsan.go.kr/tour/m2094/view/305372"
+   },
+   {
+    "heading": "Eunpa Lake Park accessibility and the Gunsan City travel course that includes it",
+    "text": "Eunpa Lake Park has no accessible parking, wheelchair rental, or accessible restrooms. Gunsan City's culture and tourism site lists it on Course C (Modern History and Gunsan Nature and Ecology).",
+    "source": "https://www.gunsan.go.kr/tour/m2094/view/305372"
+   }
+  ],
+  "faq": [
+   {
+    "q": "Does Eunpa Lake Park have closing days or limited hours?",
+    "a": "No. It is always open, all year.",
+    "source": "한국관광공사 TourAPI"
+   },
+   {
+    "q": "Can you park at Eunpa Lake Park?",
+    "a": "Yes, you can park. It is free to use, and inquiries go to the Gunsan City Eunpa Park Management Office (063-454-4896).",
+    "source": "한국관광공사 TourAPI"
+   },
+   {
+    "q": "What is Eunpa Lake Park?",
+    "a": "It is a park built around a farming reservoir made before the Joseon period. The reservoir appears on Kim Jeong-ho's Daedongyeojido map. In 1985, the reservoir and the surrounding hills were designated a national tourist site together.",
+    "source": "https://www.gunsan.go.kr/tour/m2094/view/305372"
+   },
+   {
+    "q": "Is there anything to see at night at Eunpa Lake Park?",
+    "a": "Yes. Mulbit Bridge and the musical fountain create the night scenery. Mulbit Bridge is designed after the folk tale of Aegibau, Jungbau, and Gaebau.",
+    "source": "https://www.gunsan.go.kr/tour/m2094/view/305372"
+   },
+   {
+    "q": "Can you drive around Eunpa Lake Park?",
+    "a": "Yes. A ring road runs around the site, so you can tour it by car.",
+    "source": "https://www.gunsan.go.kr/tour/m2094/view/305372"
+   },
+   {
+    "q": "Where does the name 'Eunpa' in Eunpa Lake Park come from?",
+    "a": "It comes from the way the ripples sparkle around sunset.",
+    "source": "https://www.gunsan.go.kr/tour/m2094/view/305372"
+   },
+   {
+    "q": "Does Eunpa Lake Park have accessible restrooms or wheelchair rental?",
+    "a": "No. Eunpa Lake Park has no accessible parking, no wheelchair rental, and no accessible restrooms.",
+    "source": "https://www.gunsan.go.kr/tour/m2094/view/305372"
+   },
+   {
+    "q": "Has Eunpa Lake Park been chosen as a national tourist attraction?",
+    "a": "Yes. The Eunpa tourist area was included among Korea's 100 major tourist attractions through the 'Making Good Places to Live' regional resources contest.",
+    "source": "https://www.gunsan.go.kr/tour/m2094/view/305372"
+   },
+   {
+    "q": "When was Eunpa Lake Park designated a national tourist site?",
+    "a": "In 1985. At that time, 2,578,524 m², combining the reservoir and the small hills around it, became a national tourist site.",
+    "source": "https://www.gunsan.go.kr/tour/m2094/view/305372"
+   }
+  ],
+  "ko_hash": "73f07b6c5a276ff1",
+  "translated_at": "2026-10-08"
+ },
+ "gunsan-1379526": {
+  "slug": "gunsangeundaegeonchukgwan",
+  "kind": "attraction",
+  "name_ko": "군산근대건축관",
+  "name_en": "Gunsan Modern Architecture Museum",
+  "name_en_source": "romanized specific part + English generic (MCST guideline)",
+  "summary": "Gunsan Modern Architecture Museum is the former Joseon Bank Gunsan Branch building, the hub of rice exploitation during the Japanese colonial period; its repair and restoration were completed in 2008. Admission is 500 won for adults, 300 won for teens and soldiers, and 200 won for children. It is closed every Monday and on January 1, and you can park at the Modern History Museum or Jinpo Marine Park parking lot.",
+  "facts": {
+   "address": {
+    "value": "214 Haemang-ro, Gunsan-si, Jeonbuk State"
+   },
+   "usetime": {
+    "value": "Winter 09:00–17:00, summer 09:00–18:00. Closed January 1, days the mayor designates as closing days, and every Monday",
+    "alternatives": [
+     {
+      "value": "[Summer (March–October)]\n09:00–18:00 (last entry 17:30)\n[Winter (November–February)]\n09:00–17:00 (last entry 16:30)",
+      "provider": "한국관광공사 TourAPI"
+     }
+    ],
+    "note": "Sources differ — call before visiting"
+   },
+   "restdate": {
+    "value": "January 1, days the mayor designates as closing days, and every Monday"
+   },
+   "usefee": {
+    "value": "- Adults 500 won\n- Teens, soldiers 300 won\n- Children 200 won"
+   },
+   "parking": {
+    "value": "Available (Modern History Museum and Jinpo Marine Park parking lots)"
+   },
+   "infocenter": {
+    "value": "063-454-7870"
+   },
+   "creditcard": {
+    "value": "Not accepted"
+   },
+   "babycarriage": {
+    "value": "Not available"
+   }
+  },
+  "details": [],
+  "faq": [
+   {
+    "q": "What was the Gunsan Modern Architecture Museum building originally?",
+    "a": "It was the building of the Joseon Bank Gunsan Branch during the Japanese colonial period. That branch was the hub of rice exploitation at the time. The building was repaired and restored in 2008.",
+    "source": "https://www.gunsan.go.kr/tour/m2338/view/1379526"
+   },
+   {
+    "q": "When is Gunsan Modern Architecture Museum closed?",
+    "a": "It is closed every Monday, on January 1, and on days the mayor designates as closing days.",
+    "source": "https://www.gunsan.go.kr/tour/m2338/view/1379526"
+   },
+   {
+    "q": "How much is admission to Gunsan Modern Architecture Museum?",
+    "a": "It costs 500 won for adults, 300 won for teens and soldiers, and 200 won for children.",
+    "source": "한국관광공사 TourAPI"
+   },
+   {
+    "q": "Can I park at Gunsan Modern Architecture Museum?",
+    "a": "Yes. You can use the Modern History Museum parking lot or the Jinpo Marine Park parking lot.",
+    "source": "한국관광공사 TourAPI"
+   },
+   {
+    "q": "What is the phone number for Gunsan Modern Architecture Museum?",
+    "a": "It is 063-454-7870.",
+    "source": "https://www.gunsan.go.kr/tour/m2338/view/1379526"
+   }
+  ],
+  "ko_hash": "f5699be58b3cb360",
+  "translated_at": "2026-10-08"
+ },
+ "gunsan-305401": {
+  "slug": "cheongamsan",
+  "kind": "attraction",
+  "name_ko": "청암산",
+  "name_en": "Cheongamsan Mountain",
+  "name_en_source": "romanized specific part + English generic (MCST guideline)",
+  "summary": "Cheongamsan Mountain is a mountain spanning Hoehyeon-myeon and Oksan-myeon. Its trails rise and fall evenly, so it is used for both hiking and walking. Before the Joseon period, it was called Chwiamsan Mountain.",
+  "facts": {
+   "address": {
+    "value": "Hoehyeon-myeon and Oksan-myeon area, Gunsan-si, Jeonbuk State"
+   },
+   "accessible_parking": {
+    "value": "None"
+   },
+   "wheelchair": {
+    "value": "Not available"
+   },
+   "accessible_toilet": {
+    "value": "None"
+   }
+  },
+  "details": [
+   {
+    "heading": "How Cheongamsan Mountain got its name: from Chwiamsan to Cheongamsan, and Saemsan",
+    "text": "Before the Joseon period, Cheongamsan Mountain was called Chwiamsan, meaning \"green mountain.\" The name is said to have changed to today's Cheongamsan during the Japanese colonial period. Said quickly, Chwiamsan sounds like Saemsan, so the name Saemsan is also used.",
+    "source": "https://www.gunsan.go.kr/tour/m2080/view/305401"
+   },
+   {
+    "heading": "The Cheongamsan Mountain reservoir was once rice paddies, crossed by a road linking Wolhasan and the Geumgang River",
+    "text": "The Cheongamsan Mountain reservoir is said to have been rice paddies originally. A large road ran through the middle of those paddies, linking Wolhasan in Hoehyeon to the Geumgang River. Wolhasan was a port on the Mangyeonggang River in the Joseon period.",
+    "source": "https://www.gunsan.go.kr/tour/m2080/view/305401"
+   },
+   {
+    "heading": "Cheongamsan Mountain, once a military stronghold: an earthen fortress reaching behind Hoehyeon Elementary School, and the Malbawi legend",
+    "text": "Cheongamsan Mountain was a strategic military point. The mountain connects to neighboring Geumseongsan Mountain. An earthen fortress was built across this area as far as the back of today's Hoehyeon Elementary School. It guarded against outside forces coming up the Mangyeonggang River. A legend tells of a general who leapt from Cheongamsan Mountain to the mountain across. The spot where his horse died was called Malbawi (Horse Rock).",
+    "source": "https://www.gunsan.go.kr/tour/m2080/view/305401"
+   },
+   {
+    "heading": "5 old villages around Cheongamsan Mountain: Jangdari, Palpunggaengi, Sedong, Yodong, and Gosadong",
+    "text": "There were 5 villages around Cheongamsan Mountain: Jangdari, Palpunggaengi, Sedong, Yodong, and Gosadong. Jangdari took its name from Jangjae-myeon, part of Hoemi-hyeon in the Joseon period. Palpunggaengi is said to have had a tavern and lodging houses and to have been home to entertainers. Traces of Sedong remain in today's Sejang-ri. Gosadong was named after Gosa, a temple that consoled the spirits of those killed in battle. It is now Gosa-ri.",
+    "source": "https://www.gunsan.go.kr/tour/m2080/view/305401"
+   }
+  ],
+  "faq": [
+   {
+    "q": "Can Cheongamsan Mountain also be used as a walking route?",
+    "a": "Yes. The Cheongamsan Mountain trail mixes uphill and downhill sections evenly, so it serves as both a hiking trail and a walking path. It is part of Gunsan City's \"Lake and Forest Walk Course\" and \"Course C Modern History and Gunsan Nature.\"",
+    "source": "https://www.gunsan.go.kr/tour/m2080/view/305401"
+   },
+   {
+    "q": "Does Cheongamsan Mountain have an accessible restroom or accessible parking?",
+    "a": "No. Cheongamsan Mountain has no accessible parking or accessible restroom, and wheelchair rental is not available.",
+    "source": "https://www.gunsan.go.kr/tour/m2080/view/305401"
+   },
+   {
+    "q": "What is the Malbawi legend of Cheongamsan Mountain?",
+    "a": "The Malbawi legend says that during a war, a general leapt from Cheongamsan Mountain to the mountain across, and his horse died. The spot came to be called Malbawi (Horse Rock).",
+    "source": "https://www.gunsan.go.kr/tour/m2080/view/305401"
+   }
+  ],
+  "ko_hash": "b11a4c764c1d065c",
+  "translated_at": "2026-10-08"
+ },
+ "gunsan-306591": {
+  "slug": "bokseongnu",
+  "kind": "food",
+  "name_ko": "복성루",
+  "name_en": "Bokseongnu",
+  "name_en_source": "romanized specific part + English generic (MCST guideline)",
+  "summary": "Bokseongnu is a 35-seat Chinese restaurant serving jjamppong, fried rice, jjamppong rice, japchae rice, mul jjajang and more. It is open 10:00–16:00 and closes on Sundays and public holidays. Diners use a public parking lot.",
+  "facts": {
+   "address": {
+    "value": "382 Wolmyeong-ro (Miwon-dong), Gunsan-si, Jeonbuk State"
+   },
+   "usetime_restdate": {
+    "value": "10:00–16:00, closed Sundays and public holidays"
+   },
+   "parking_seats": {
+    "value": "Public parking lot / 35 seats"
+   },
+   "menu": {
+    "value": "Seafood jjamppong (spicy seafood noodle soup)",
+    "also": [
+     {
+      "value": "Jjajangmyeon (black bean noodles)",
+      "provider": "한국관광공사 TourAPI"
+     }
+    ]
+   },
+   "treatmenu": {
+    "value": "Jjamppong / fried rice / jjamppong rice / japchae rice / mul jjajang, etc."
+   },
+   "packing": {
+    "value": "Available (some dishes)"
+   },
+   "reservation": {
+    "value": "Phone reservations available (063-445-8412)"
+   },
+   "infocenter": {
+    "value": "063-445-8412"
+   },
+   "creditcard": {
+    "value": "Accepted"
+   }
+  },
+  "details": [],
+  "faq": [
+   {
+    "q": "Is Bokseongnu open on public holidays?",
+    "a": "No. It closes on Sundays and public holidays. Hours are 10:00–16:00.",
+    "source": "https://www.gunsan.go.kr/tour/m2147/view/306591"
+   },
+   {
+    "q": "Can I make a reservation at Bokseongnu?",
+    "a": "Yes. You can reserve by phone at 063-445-8412.",
+    "source": "한국관광공사 TourAPI"
+   }
+  ],
+  "ko_hash": "1f538be242a12516",
+  "translated_at": "2026-10-08"
+ },
+ "gunsan-1305918": {
+  "slug": "binhaewon",
+  "kind": "food",
+  "name_ko": "빈해원",
+  "name_en": "Binhaewon",
+  "name_en_source": "romanized specific part + English generic (MCST guideline)",
+  "summary": "Binhaewon is a Chinese restaurant whose signature dish is jjajangmyeon (black bean noodles). It also serves Gunsan samseon jjamppong, gan jjajang, yuni jjajang and more. It is on the jjamppong specialty street on Dongnyeong-gil in Jangmi-dong, and parking is free.",
+  "facts": {
+   "address": {
+    "value": "57 Dongnyeong-gil (Jangmi-dong), Gunsan-si, Jeonbuk State"
+   },
+   "usetime_restdate": {
+    "value": "10:00–21:00, closed every Monday",
+    "alternatives": [
+     {
+      "value": "[Weekdays]\n- 10:30–20:00\n- Break time 15:00–16:30\n- Last order 19:00\n[Weekends]\n- 10:00–20:00\n- Break time 17:00–18:00\n- Last order 19:00 / Closed every Monday",
+      "provider": "한국관광공사 TourAPI"
+     }
+    ],
+    "note": "Sources differ — call before visiting"
+   },
+   "parking": {
+    "value": "Available, free of charge"
+   },
+   "menu": {
+    "value": "Jjajangmyeon (black bean noodles)"
+   },
+   "treatmenu": {
+    "value": "Gunsan samseon jjamppong / gan jjajang / yuni jjajang, etc."
+   },
+   "infocenter": {
+    "value": "063-445-2429"
+   }
+  },
+  "details": [],
+  "faq": [
+   {
+    "q": "Does Binhaewon charge for parking?",
+    "a": "No. Binhaewon has parking, and it is free of charge.",
+    "source": "한국관광공사 TourAPI"
+   }
+  ],
+  "ko_hash": "dee91c136db2b9cb",
+  "translated_at": "2026-10-08"
+ },
+ "gunsan-307082": {
+  "slug": "ramada-gunsanhotel",
+  "kind": "stay",
+  "name_ko": "라마다 군산호텔",
+  "name_en": "Ramada Gunsan Hotel",
+  "name_en_source": "romanized specific part + English generic (MCST guideline)",
+  "summary": "Ramada Gunsan Hotel is a tourist hotel with 137 rooms, a fitness center, a business center, a wedding hall and a banquet hall. It is near Eunpa Lake Park, and cooking is not allowed in the rooms.",
+  "facts": {
+   "address": {
+    "value": "400 Daehak-ro (Naun-dong), Gunsan-si, Jeonbuk State"
+   },
+   "checkin": {
+    "value": "15:00"
+   },
+   "checkout": {
+    "value": "12:00 the next day"
+   },
+   "roomcount": {
+    "value": "137 rooms"
+   },
+   "roomtype": {
+    "value": "Standard double/twin/family twin, deluxe double/family twin/suite/ondol"
+   },
+   "cooking": {
+    "value": "Not allowed"
+   },
+   "subfacility": {
+    "value": "Fitness center, business center, wedding hall, banquet hall"
+   },
+   "reservation": {
+    "value": "063-441-8000"
+   },
+   "infocenter": {
+    "value": "063-441-8000"
+   }
+  },
+  "details": [],
+  "faq": [
+   {
+    "q": "What are the check-in and check-out times at Ramada Gunsan Hotel?",
+    "a": "Check-in is 15:00, and check-out is 12:00 the next day.",
+    "source": "한국관광공사 TourAPI"
+   },
+   {
+    "q": "Can I cook in the rooms at Ramada Gunsan Hotel?",
+    "a": "No. Cooking is not allowed in the rooms.",
+    "source": "한국관광공사 TourAPI"
+   }
+  ],
+  "ko_hash": "f668a2968f5bcdf9",
+  "translated_at": "2026-10-08"
+ },
+ "gunsan-433871": {
+  "slug": "dongguksa",
+  "kind": "attraction",
+  "name_ko": "동국사",
+  "name_en": "Dongguksa Temple",
+  "name_en_source": "romanized specific part + English generic (MCST guideline)",
+  "summary": "Dongguksa Temple is a Japanese-style Buddhist temple in Geumgwang-dong that began in 1909 as Geumgangseonsa, a mission hall founded by Uchida, a monk of Japan's Soto school. The main hall and monks' quarters were newly built on the current site in 1913, and the temple was registered as Dongguksa Temple in 1955. The Edo-period-style main hall is Registered Cultural Heritage No. 64, and the Shakyamuni Triad enshrined in it is also designated cultural heritage.",
+  "facts": {
+   "address": {
+    "value": "16 Dongguksa-gil (Geumgwang-dong), Gunsan-si, Jeonbuk State"
+   },
+   "usetime": {
+    "value": "[Summer]\n08:00–19:00\n[Winter]\n08:00–18:00"
+   },
+   "restdate": {
+    "value": "Open all year"
+   },
+   "usefee": {
+    "value": "Free"
+   },
+   "parking": {
+    "value": "Not available"
+   },
+   "infocenter": {
+    "value": "063-462-5366"
+   },
+   "babycarriage": {
+    "value": "Not available"
+   }
+  },
+  "details": [
+   {
+    "heading": "Dongguksa Temple began in 1909 as Geumgangseonsa, a mission hall founded by the Japanese Soto monk Uchida",
+    "text": "Dongguksa Temple grew out of Geumgangseonsa (Geumgangsa), a mission hall founded in August 1909 by Uchida, a monk of Japan's Soto school. Its first site was on the 1-jo street of Gunsan's foreign settlement. The main hall and monks' quarters were newly built on the current site in 1913. Donations from 29 followers, including large Gunsan landowners such as Kumamoto and Miyazaki, made this possible, and the main hall's building materials came from Japan.",
+    "source": "https://www.gunsan.go.kr/tour/m2339/view/433871"
+   },
+   {
+    "heading": "Dongguksa Temple got its name in 1955, when Kim Nam-gok registered it",
+    "text": "The name Dongguksa was given in 1955, when Kim Nam-gok (1913–1983) registered the temple after the Jeonbuk Buddhist administrative office took it over. The name means 'from now on, a temple of our country (Haedongguk).' Earlier, at liberation in 1945, the US military government confiscated the temple. In 1947, it was sold off by the state and run as a temple again. In 1970, it was registered under Seonunsa, the 24th parish of the Jogye Order of Korean Buddhism.",
+    "source": "https://www.gunsan.go.kr/tour/m2339/view/433871"
+   },
+   {
+    "heading": "Dongguksa Temple main hall style: Japanese Edo period, 5 bays wide and 5 bays deep, 75-degree roof pitch",
+    "text": "The main hall of Dongguksa Temple is a square, single-story building (5 bays at the front and 5 bays at the side). It follows Japanese Edo-period architecture and has a hip-and-gable roof with single eaves. The roof pitch is a steep 75 degrees, the ridge is a straight line, and the outer walls have many windows, unlike a hanok. A corridor also connects it to the monks' living quarters, which differs from traditional Korean temples.",
+    "source": "https://www.gunsan.go.kr/tour/m2339/view/433871"
+   },
+   {
+    "heading": "Dongguksa Temple heritage status: Registered Cultural Heritage No. 64; the Shakyamuni Triad is Jeollabuk-do Tangible Cultural Heritage No. 213",
+    "text": "Dongguksa Temple is Registered Cultural Heritage No. 64, registered by the Cultural Heritage Administration on July 15, 2003. The Shakyamuni Triad enshrined in the main hall is separately designated as Jeollabuk-do Tangible Cultural Heritage No. 213.",
+    "source": "https://www.gunsan.go.kr/tour/m2339/view/433871"
+   }
+  ],
+  "faq": [
+   {
+    "q": "What kind of temple is Dongguksa Temple?",
+    "a": "It is a Japanese-style temple that began as Geumgangseonsa, a mission hall founded in 1909 by Uchida, a monk of Japan's Soto school. In 1913, donations from 29 followers paid for a new main hall and monks' quarters on the current site. In 1955, Kim Nam-gok registered it as Dongguksa, a name meaning 'a temple of our country (Haedongguk).'",
+    "source": "https://www.gunsan.go.kr/tour/m2339/view/433871"
+   },
+   {
+    "q": "How is the Dongguksa Temple main hall different from traditional Korean temples?",
+    "a": "Unlike traditional temples, it is connected by a corridor to the quarters where monks live. It was built in the Edo-period style with materials brought from Japan. The roof is steep at 75 degrees, the ridge is straight, and the outer walls have many windows. It measures 5 bays at the front and 5 bays at the side.",
+    "source": "https://www.gunsan.go.kr/tour/m2339/view/433871"
+   },
+   {
+    "q": "Were any movies filmed at Dongguksa Temple?",
+    "a": "Yes. Christmas in August (1998) and Once Upon a Time in High School (2004) were filmed here.",
+    "source": "https://www.gunsan.go.kr/tour/m2339/view/433871"
+   },
+   {
+    "q": "Until what time can you visit Dongguksa Temple?",
+    "a": "You can visit 08:00–19:00 in summer and 08:00–18:00 in winter, and it is open all year. Admission is free, and parking is not available.",
+    "source": "한국관광공사 TourAPI"
+   },
+   {
+    "q": "Is Dongguksa Temple a registered cultural heritage site?",
+    "a": "Yes. It is Registered Cultural Heritage No. 64, registered on July 15, 2003. The Shakyamuni Triad enshrined in the main hall is also separately designated as cultural heritage.",
+    "source": "https://www.gunsan.go.kr/tour/m2339/view/433871"
+   },
+   {
+    "q": "What does the name Dongguksa mean?",
+    "a": "It means 'a temple of our country (Haedongguk).' In 1955, Kim Nam-gok registered the temple under the name Dongguksa with this meaning.",
+    "source": "https://www.gunsan.go.kr/tour/m2339/view/433871"
+   },
+   {
+    "q": "Which Buddhist order does Dongguksa Temple belong to?",
+    "a": "It belongs to the Jogye Order of Korean Buddhism. In 1970, it was registered under Seonunsa, the 24th parish of the Jogye Order.",
+    "source": "https://www.gunsan.go.kr/tour/m2339/view/433871"
+   },
+   {
+    "q": "Is the Dongguksa Temple Shakyamuni Triad designated cultural heritage?",
+    "a": "Yes. The Shakyamuni Triad enshrined in the main hall is Jeollabuk-do Tangible Cultural Heritage No. 213.",
+    "source": "https://www.gunsan.go.kr/tour/m2339/view/433871"
+   }
+  ],
+  "ko_hash": "5d697f37a99563a3",
+  "translated_at": "2026-10-08"
+ }
+}

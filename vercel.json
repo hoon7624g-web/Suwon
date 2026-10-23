@@ -1,0 +1,57 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "npm ci --omit=dev",
+  "buildCommand": "",
+  "outputDirectory": "public",
+  "trailingSlash": true,
+  "functions": {
+    "api/chat.js": {
+      "maxDuration": 120,
+      "supportsCancellation": true,
+      "includeFiles": "public/chat/**"
+    },
+    "api/plan.js": {
+      "maxDuration": 60,
+      "supportsCancellation": true,
+      "includeFiles": "public/chat/**"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/chat/",
+      "destination": "/api/chat"
+    },
+    {
+      "source": "/api/plan/",
+      "destination": "/api/plan"
+    }
+  ],
+  "git": {
+    "deploymentEnabled": {
+      "local/*": false
+    }
+  },
+  "redirects": [
+    {
+      "source": "/places/suwon-sollaeeum-kaempingjang/",
+      "destination": "/places/sollaeeumkaempingjang/",
+      "permanent": true
+    },
+    {
+      "source": "/:lang(en|ja|zh-hans|zh-hant|de|fr|es|ru)/places/suwon-sollaeeum-kaempingjang/",
+      "destination": "/:lang/places/sollaeeumkaempingjang/",
+      "permanent": true
+    },
+    {
+      "source": "/places/suwon-kt-wijeupakeu-2/",
+      "destination": "/places/suwon-kt-wijeupakeu/",
+      "permanent": true
+    },
+    {
+      "source": "/:lang(en|ja|zh-hans|zh-hant|de|fr|es|ru)/places/suwon-kt-wijeupakeu-2/",
+      "destination": "/:lang/places/suwon-kt-wijeupakeu/",
+      "permanent": true
+    }
+  ]
+}

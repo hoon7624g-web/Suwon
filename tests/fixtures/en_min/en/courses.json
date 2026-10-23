@@ -1,0 +1,68 @@
+{
+ "gunsan-course-m2135-2": {
+  "slug": "gunsan-course-m2135-2",
+  "name": "Course B Modern–Geumgang Area",
+  "group": "Day Trip Course",
+  "duration": "Day trip",
+  "summary": "This day trip course from Gunsan City Culture and Tourism links 11 stops in order. It starts at the Modern History Museum and ends at the Impi Station Building.",
+  "stops": [
+   {
+    "name": "Modern History Museum",
+    "note": "",
+    "place_slug": "geundaeyeoksabangmulgwan"
+   },
+   {
+    "name": "Chowon Photo Studio",
+    "note": "",
+    "place_slug": "chowonsajingwan"
+   },
+   {
+    "name": "Japanese-style House in Sinheung-dong",
+    "note": "",
+    "place_slug": "gunsansinheungdongilbonsikgaok"
+   },
+   {
+    "name": "Mallaengi Village",
+    "note": "",
+    "place_slug": "mallaengimaeul"
+   },
+   {
+    "name": "Dongguksa Temple",
+    "note": "",
+    "place_slug": "dongguksa"
+   },
+   {
+    "name": "Gyeongam-dong Railroad Village",
+    "note": "",
+    "place_slug": "gyeongam-dong-cheolgilmaeul"
+   },
+   {
+    "name": "Lee Yeong-chun House",
+    "note": "",
+    "place_slug": "iyeongchun-gaok"
+   },
+   {
+    "name": "March 1st Movement 100th Anniversary Memorial Hall",
+    "note": "",
+    "place_slug": "3-1-undong-100-junyeon-ginyeomgwan"
+   },
+   {
+    "name": "Chae Man-sik Literary Museum",
+    "note": "",
+    "place_slug": "chaemansik-munhakgwan"
+   },
+   {
+    "name": "Geumgang Future Experience Center",
+    "note": "",
+    "place_slug": "geumgangmiraecheheomgwan"
+   },
+   {
+    "name": "Impi Station Building",
+    "note": "",
+    "place_slug": "gunsan-impiyeoksa"
+   }
+  ],
+  "ko_hash": "03559002f21e05ee",
+  "translated_at": "2026-10-08"
+ }
+}

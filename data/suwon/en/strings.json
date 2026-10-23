@@ -1,0 +1,726 @@
+{
+  "KIND_LABELS.attraction": {
+    "ko": "관광지",
+    "en": "Attraction"
+  },
+  "KIND_LABELS.stay": {
+    "ko": "숙소",
+    "en": "Stay"
+  },
+  "KIND_LABELS.food": {
+    "ko": "음식점",
+    "en": "Restaurant"
+  },
+  "FACT_LABELS.address": {
+    "ko": "주소",
+    "en": "Address"
+  },
+  "FACT_LABELS.usetime": {
+    "ko": "이용시간",
+    "en": "Hours"
+  },
+  "FACT_LABELS.usetime_restdate": {
+    "ko": "영업시간·정기휴일",
+    "en": "Hours and regular closing days"
+  },
+  "FACT_LABELS.restdate": {
+    "ko": "쉬는 날",
+    "en": "Closed days"
+  },
+  "FACT_LABELS.usefee": {
+    "ko": "이용요금",
+    "en": "Fees"
+  },
+  "FACT_LABELS.parking": {
+    "ko": "주차",
+    "en": "Parking"
+  },
+  "FACT_LABELS.parking_seats": {
+    "ko": "주차·좌석",
+    "en": "Parking and seating"
+  },
+  "FACT_LABELS.parkingfee": {
+    "ko": "주차요금",
+    "en": "Parking fee"
+  },
+  "FACT_LABELS.spendtime": {
+    "ko": "관람 소요시간",
+    "en": "Time needed for a visit"
+  },
+  "FACT_LABELS.checkin": {
+    "ko": "체크인",
+    "en": "Check-in"
+  },
+  "FACT_LABELS.checkout": {
+    "ko": "체크아웃",
+    "en": "Check-out"
+  },
+  "FACT_LABELS.menu": {
+    "ko": "대표 메뉴",
+    "en": "Signature dishes"
+  },
+  "FACT_LABELS.infocenter": {
+    "ko": "문의",
+    "en": "Contact"
+  },
+  "FACT_LABELS.homepage": {
+    "ko": "홈페이지",
+    "en": "Website"
+  },
+  "FACT_LABELS.babycarriage": {
+    "ko": "유모차 대여",
+    "en": "Stroller rental"
+  },
+  "FACT_LABELS.pet": {
+    "ko": "반려동물 동반",
+    "en": "Pets"
+  },
+  "FACT_LABELS.expagerange": {
+    "ko": "체험 가능 연령",
+    "en": "Ages for activities"
+  },
+  "FACT_LABELS.useseason": {
+    "ko": "이용 시기",
+    "en": "Season"
+  },
+  "FACT_LABELS.accessible_parking": {
+    "ko": "장애인 주차장",
+    "en": "Accessible parking"
+  },
+  "FACT_LABELS.wheelchair": {
+    "ko": "휠체어 대여",
+    "en": "Wheelchair rental"
+  },
+  "FACT_LABELS.accessible_toilet": {
+    "ko": "장애인 화장실",
+    "en": "Accessible restroom"
+  },
+  "FACT_LABELS.accessible_route": {
+    "ko": "주 출입 접근로",
+    "en": "Main entrance access"
+  },
+  "FACT_LABELS.openperiod": {
+    "ko": "운영 기간",
+    "en": "Operating period"
+  },
+  "FACT_LABELS.discount": {
+    "ko": "할인",
+    "en": "Discounts"
+  },
+  "FACT_LABELS.roomcount": {
+    "ko": "객실 수",
+    "en": "Number of rooms"
+  },
+  "FACT_LABELS.roomtype": {
+    "ko": "객실 유형",
+    "en": "Room types"
+  },
+  "FACT_LABELS.cooking": {
+    "ko": "객실 내 취사",
+    "en": "In-room cooking"
+  },
+  "FACT_LABELS.subfacility": {
+    "ko": "부대시설",
+    "en": "Facilities"
+  },
+  "FACT_LABELS.treatmenu": {
+    "ko": "취급 메뉴",
+    "en": "Menu"
+  },
+  "FACT_LABELS.seat": {
+    "ko": "좌석",
+    "en": "Seating"
+  },
+  "FACT_LABELS.packing": {
+    "ko": "포장",
+    "en": "Takeout"
+  },
+  "FACT_LABELS.expguide": {
+    "ko": "체험 안내",
+    "en": "Activities"
+  },
+  "FACT_LABELS.filming": {
+    "ko": "촬영지 정보",
+    "en": "Filming location information"
+  },
+  "FACT_LABELS.reservation": {
+    "ko": "예약 안내",
+    "en": "Reservations"
+  },
+  "FACT_LABELS.reservationurl": {
+    "ko": "예약 페이지",
+    "en": "Booking page"
+  },
+  "FACT_LABELS.creditcard": {
+    "ko": "신용카드 결제",
+    "en": "Credit card payment"
+  },
+  "FACT_LABELS.kidsfacility": {
+    "ko": "어린이 놀이방",
+    "en": "Kids' playroom"
+  },
+  "FACT_LABELS.fairday": {
+    "ko": "장날",
+    "en": "Market days"
+  },
+  "FACT_LABELS.saleitem": {
+    "ko": "판매 품목",
+    "en": "Items sold"
+  },
+  "FACT_LABELS.shopguide": {
+    "ko": "매장 안내",
+    "en": "Store information"
+  },
+  "INDEX_GROUP_LABELS.hours": {
+    "ko": "이용시간",
+    "en": "Hours"
+  },
+  "INDEX_GROUP_LABELS.restdate": {
+    "ko": "쉬는 날",
+    "en": "Closed days"
+  },
+  "INDEX_GROUP_LABELS.fee": {
+    "ko": "요금",
+    "en": "Fees"
+  },
+  "INDEX_GROUP_LABELS.parking": {
+    "ko": "주차",
+    "en": "Parking"
+  },
+  "INDEX_GROUP_LABELS.phone": {
+    "ko": "전화",
+    "en": "Phone"
+  },
+  "INDEX_GROUP_LABELS.homepage": {
+    "ko": "홈페이지",
+    "en": "Website"
+  },
+  "INDEX_GROUP_LABELS.checkin": {
+    "ko": "체크인",
+    "en": "Check-in"
+  },
+  "INDEX_GROUP_LABELS.menu": {
+    "ko": "대표 메뉴",
+    "en": "Signature dishes"
+  },
+  "TITLE_LABELS.usetime": {
+    "ko": "이용시간",
+    "en": "Hours"
+  },
+  "TITLE_LABELS.usetime_restdate": {
+    "ko": "영업시간",
+    "en": "Hours"
+  },
+  "TITLE_LABELS.restdate": {
+    "ko": "쉬는 날",
+    "en": "Closed days"
+  },
+  "TITLE_LABELS.usefee": {
+    "ko": "요금",
+    "en": "Fees"
+  },
+  "TITLE_LABELS.parking": {
+    "ko": "주차",
+    "en": "Parking"
+  },
+  "TITLE_LABELS.parking_seats": {
+    "ko": "주차",
+    "en": "Parking"
+  },
+  "TITLE_LABELS.parkingfee": {
+    "ko": "주차",
+    "en": "Parking"
+  },
+  "TITLE_LABELS.checkin": {
+    "ko": "체크인",
+    "en": "Check-in"
+  },
+  "TITLE_LABELS.menu": {
+    "ko": "메뉴",
+    "en": "Menu"
+  },
+  "LISTS.attraction.title": {
+    "ko": "관광지",
+    "en": "Attractions"
+  },
+  "LISTS.attraction.h1": {
+    "ko": "가볼만한 곳·관광지",
+    "en": "Places to Visit · Attractions"
+  },
+  "LISTS.attraction.seo": {
+    "ko": "{region} 가볼만한 곳{n} — 관광지 이용시간·쉬는 날·요금·주차·길찾기",
+    "en": "Places to Visit in {region}{n} — Hours, Closed Days, Fees, Parking and Directions"
+  },
+  "LISTS.attraction.lead": {
+    "ko": "어떤 곳인지, 지금 가도 되는지 확인하고 길찾기로 이어 가세요.",
+    "en": "See what each place is and whether you can go now, then get directions."
+  },
+  "LISTS.stay.title": {
+    "ko": "숙소",
+    "en": "Stays"
+  },
+  "LISTS.stay.h1": {
+    "ko": "숙소",
+    "en": "Stays"
+  },
+  "LISTS.stay.seo": {
+    "ko": "{region} 숙소{n} — 호텔·모텔·게스트하우스의 체크인·주차·문의",
+    "en": "Places to Stay in {region}{n} — Check-in, Parking and Contacts for Hotels, Motels and Guesthouses"
+  },
+  "LISTS.stay.lead": {
+    "ko": "숙소마다 체크인·체크아웃·주차·문의처를 정리했습니다.",
+    "en": "Each stay lists check-in, check-out, parking and who to contact."
+  },
+  "LISTS.food.title": {
+    "ko": "음식점",
+    "en": "Restaurants"
+  },
+  "LISTS.food.h1": {
+    "ko": "맛집·음식점",
+    "en": "Places to Eat · Restaurants"
+  },
+  "LISTS.food.seo": {
+    "ko": "{region} 맛집·음식점{n} — 대표 메뉴·영업시간·쉬는 날·주차",
+    "en": "Restaurants in {region}{n} — Main Dishes, Hours, Closed Days and Parking"
+  },
+  "LISTS.food.lead": {
+    "ko": "음식점마다 대표 메뉴와 영업시간·정기휴일을 정리했습니다.",
+    "en": "Each restaurant lists its signature dishes, hours and regular closing days."
+  },
+  "ATTRACTION_GROUPS.0": {
+    "ko": "수원화성·성곽·행궁",
+    "en": "Suwon Hwaseong · Fortress Wall · Haenggung"
+  },
+  "ATTRACTION_GROUPS.1": {
+    "ko": "박물관·미술관·전시",
+    "en": "Museums · Art Galleries · Exhibitions"
+  },
+  "ATTRACTION_GROUPS.2": {
+    "ko": "호수·수목원·공원·산",
+    "en": "Lakes · Arboretums · Parks · Mountains"
+  },
+  "ATTRACTION_GROUPS.3": {
+    "ko": "전통시장·공방·체험·레포츠",
+    "en": "Traditional Markets · Workshops · Experiences · Leisure Sports"
+  },
+  "ALT_LABELS.period": {
+    "ko": "기간",
+    "en": "Dates"
+  },
+  "ALT_LABELS.place_name": {
+    "ko": "장소",
+    "en": "Venue"
+  },
+  "ALT_LABELS.address": {
+    "ko": "주소",
+    "en": "Address"
+  },
+  "ALT_LABELS.fee": {
+    "ko": "요금",
+    "en": "Fee"
+  },
+  "ALT_LABELS.playtime": {
+    "ko": "시간",
+    "en": "Time"
+  },
+  "ALT_LABELS.tel": {
+    "ko": "문의",
+    "en": "Contact"
+  },
+  "NAV.0": {
+    "ko": "관광지",
+    "en": "Attractions"
+  },
+  "NAV.1": {
+    "ko": "숙소",
+    "en": "Stays"
+  },
+  "NAV.2": {
+    "ko": "음식점",
+    "en": "Restaurants"
+  },
+  "NAV.3": {
+    "ko": "영상",
+    "en": "Videos"
+  },
+  "NAV.4": {
+    "ko": "코스",
+    "en": "Courses"
+  },
+  "NAV.5": {
+    "ko": "가이드",
+    "en": "Guides"
+  },
+  "NAV.6": {
+    "ko": "행사",
+    "en": "Events"
+  },
+  "NAV.7": {
+    "ko": "지도",
+    "en": "Map"
+  },
+  "NAV.8": {
+    "ko": "해외에서 본 {region}",
+    "en": "{region} Abroad"
+  },
+  "REGIONS.hwaseong-haenggung": {
+    "ko": "수원화성·화성행궁·행리단길",
+    "en": "Suwon Hwaseong · Hwaseong Haenggung · Haengnidan-gil"
+  },
+  "REGIONS.paldalmun-market": {
+    "ko": "팔달문·전통시장·통닭거리",
+    "en": "Paldalmun·Jeontongsijang· Whole fried chicken (tongdak) Geori"
+  },
+  "REGIONS.gwanggyo-yeongtong": {
+    "ko": "광교호수공원·박물관·영통",
+    "en": "Gwanggyo Lake Park · Convention · Yeongtong"
+  },
+  "REGIONS.manseok-jangan": {
+    "ko": "만석공원·광교산·장안",
+    "en": "Manseok Park · Irwol Arboretum · Jangan"
+  },
+  "REGIONS.irwol-gwonseon": {
+    "ko": "일월수목원·서호공원·권선",
+    "en": "Irwolsumogwon·Seohogongwon·Gwonseon"
+  },
+  "REGIONS.none": {
+    "ko": "권역 미정",
+    "en": "Area Unassigned"
+  },
+  "LIST_HUB_TINY.attraction": {
+    "ko": "수원화성·행궁·성곽 가이드",
+    "en": "Hwaseong Fortress Guide"
+  },
+  "LIST_HUB_TINY.food": {
+    "ko": "월요일 영업·맛집 가이드",
+    "en": "Open Monday Dining Guide"
+  },
+  "LIST_HUB_TINY.stay": {
+    "ko": "호텔·한옥·숙소 가이드",
+    "en": "Hotels & Hanok Stays Guide"
+  },
+  "STAY_TYPE.숙박": {
+    "ko": "숙박업소",
+    "en": "Lodging"
+  },
+  "STAY_TYPE.기타": {
+    "ko": "그 밖의 숙소",
+    "en": "Other lodging"
+  },
+  "STAY_TYPE.": {
+    "ko": "그 밖의 숙소",
+    "en": "Other lodging"
+  },
+  "ATTR_TYPE.쇼핑": {
+    "ko": "시장·쇼핑",
+    "en": "Market and shopping"
+  },
+  "ATTR_TYPE.레포츠": {
+    "ko": "레포츠",
+    "en": "Leisure sports"
+  },
+  "ATTR_TYPE.문화시설": {
+    "ko": "문화시설",
+    "en": "Cultural facility"
+  },
+  "STATUS_PREFIX.usefee": {
+    "ko": "요금",
+    "en": "Fee"
+  },
+  "STATUS_PREFIX.parking_seats": {
+    "ko": "주차·좌석",
+    "en": "Parking and seating"
+  },
+  "STATUS_PREFIX.checkin": {
+    "ko": "체크인",
+    "en": "Check-in"
+  },
+  "STATUS_PREFIX.checkout": {
+    "ko": "체크아웃",
+    "en": "Check-out"
+  },
+  "STATUS_PREFIX.roomcount": {
+    "ko": "객실",
+    "en": "Rooms"
+  },
+  "STATUS_PREFIX.menu": {
+    "ko": "대표 메뉴",
+    "en": "Signature dishes"
+  },
+  "CONTEST_LABEL.usetime": {
+    "ko": "이용시간",
+    "en": "Hours"
+  },
+  "CONTEST_LABEL.restdate": {
+    "ko": "쉬는 날",
+    "en": "Closed days"
+  },
+  "CONTEST_LABEL.usefee": {
+    "ko": "요금",
+    "en": "Fees"
+  },
+  "CONTEST_LABEL.parking": {
+    "ko": "주차",
+    "en": "Parking"
+  },
+  "CONTEST_LABEL.usetime_restdate": {
+    "ko": "영업시간",
+    "en": "Hours"
+  },
+  "CONTEST_LABEL.checkin": {
+    "ko": "체크인",
+    "en": "Check-in"
+  },
+  "CONTEST_LABEL.checkout": {
+    "ko": "체크아웃",
+    "en": "Check-out"
+  },
+  "CONTEST_LABEL.menu": {
+    "ko": "대표 메뉴",
+    "en": "Signature dishes"
+  },
+  "CONTEST_LABEL.parking_seats": {
+    "ko": "주차·좌석",
+    "en": "Parking and seating"
+  },
+  "CONTEST_LABEL.roomcount": {
+    "ko": "객실",
+    "en": "Rooms"
+  },
+  "STOP_KIND_LABELS.meal": {
+    "ko": "식사",
+    "en": "Meal"
+  },
+  "STOP_KIND_LABELS.lodging": {
+    "ko": "숙박",
+    "en": "Overnight stay"
+  },
+  "STOP_KIND_LABELS.activity": {
+    "ko": "일정",
+    "en": "Activity"
+  },
+  "STOP_KIND_LABELS.day": {
+    "ko": "일차",
+    "en": "Day"
+  },
+  "STAY_ASK.0": {
+    "ko": "독채 여부",
+    "en": "Whether it is a private stand-alone unit"
+  },
+  "STAY_ASK.1": {
+    "ko": "반려동물 동반",
+    "en": "Pets"
+  },
+  "LIST_CFG.attraction.title": {
+    "ko": "관광지",
+    "en": "Attractions"
+  },
+  "LIST_CFG.attraction.cols.usetime": {
+    "ko": "이용시간",
+    "en": "Hours"
+  },
+  "LIST_CFG.attraction.cols.restdate": {
+    "ko": "쉬는 날",
+    "en": "Closed days"
+  },
+  "LIST_CFG.attraction.cols.usefee": {
+    "ko": "요금",
+    "en": "Fees"
+  },
+  "LIST_CFG.attraction.cols.parking": {
+    "ko": "주차",
+    "en": "Parking"
+  },
+  "LIST_CFG.attraction.check": {
+    "ko": "요금 무료",
+    "en": "Free of charge"
+  },
+  "LIST_CFG.stay.title": {
+    "ko": "숙소",
+    "en": "Stays"
+  },
+  "LIST_CFG.stay.cols.checkin": {
+    "ko": "체크인",
+    "en": "Check-in"
+  },
+  "LIST_CFG.stay.cols.checkout": {
+    "ko": "체크아웃",
+    "en": "Check-out"
+  },
+  "LIST_CFG.stay.cols.parking": {
+    "ko": "주차",
+    "en": "Parking"
+  },
+  "LIST_CFG.stay.cols.tel": {
+    "ko": "문의",
+    "en": "Contact"
+  },
+  "LIST_CFG.stay.check": {
+    "ko": "체크인 시간 있음",
+    "en": "Check-in time listed"
+  },
+  "LIST_CFG.food.title": {
+    "ko": "음식점",
+    "en": "Restaurants"
+  },
+  "LIST_CFG.food.cols.menu": {
+    "ko": "대표 메뉴",
+    "en": "Signature dishes"
+  },
+  "LIST_CFG.food.cols.usetime_restdate": {
+    "ko": "영업시간·정기휴일",
+    "en": "Hours and regular closing days"
+  },
+  "LIST_CFG.food.cols.parking_seats": {
+    "ko": "주차·좌석",
+    "en": "Parking and seating"
+  },
+  "LIST_CFG.food.cols.tel": {
+    "ko": "문의",
+    "en": "Contact"
+  },
+  "LIST_CFG.food.check": {
+    "ko": "월요일 영업 표기",
+    "en": "Listed as open on Mondays"
+  },
+  "LIC.KOGL-1": {
+    "ko": "공공누리 제1유형",
+    "en": "KOGL Type 1"
+  },
+  "LIC.KOGL-3": {
+    "ko": "공공누리 제3유형(변경금지)",
+    "en": "KOGL Type 3 (no changes allowed)"
+  },
+  "CALL_LINE": {
+    "ko": "방문 전 전화 확인",
+    "en": "Call before visiting"
+  },
+  "ORGANISER_LINE": {
+    "ko": "방문 전 주최 측 확인",
+    "en": "Check with the organizer before visiting"
+  },
+  "CONFLICT.sources_differ": {
+    "ko": "출처마다 다름",
+    "en": "Sources differ"
+  },
+  "CONFLICT.hours_only": {
+    "ko": "영업시간만 다름",
+    "en": "Only the hours differ"
+  },
+  "site.site_name": {
+    "ko": "수원각",
+    "en": "Suwongak"
+  },
+  "site.description": {
+    "ko": "수원각은 수원의 관광지·맛집(음식점)·숙소·여행 코스·축제·영상을 한곳에 모은 여행 정보 사이트입니다. 장소마다 이용시간·쉬는 날·요금·주차·길찾기와 값별 출처를 적었습니다.",
+    "en": "Suwongak brings together Suwon's attractions, restaurants, stays, courses, festivals, and videos in one place, with hours, closed days, fees, parking, directions, and per-value sources."
+  },
+  "site.disclaimer": {
+    "ko": "수원시 공식 홈페이지와 별도로 운영되는 독립 사이트입니다. 원문·사진의 권리는 각 출처에 있으며 표시된 이용조건을 따릅니다.",
+    "en": "An independent site operated separately from the official Suwon City website. Rights to original texts and photos belong to each source under the stated terms."
+  },
+  "site.operator.name": {
+    "ko": "에이아이오투오",
+    "en": "Eiaiotuo"
+  },
+  "site.official_links.0.name": {
+    "ko": "수원문화관광 (수원특례시)",
+    "en": "Suwon Tourism (Suwon Special City Culture & Tourism)"
+  },
+  "site.official_links.0.note": {
+    "ko": "수원시 공식 관광정보",
+    "en": "Official tourism portal of Suwon City"
+  },
+  "site.official_links.1.name": {
+    "ko": "수원문화재단",
+    "en": "VisitKorea (Korean)"
+  },
+  "site.official_links.1.note": {
+    "ko": "수원화성·화성행궁·축제 안내",
+    "en": "Korea Tourism Organization travel portal"
+  },
+  "site.official_links.2.name": {
+    "ko": "대한민국 구석구석",
+    "en": "Daehanminguk Guseokguseok"
+  },
+  "site.official_links.2.note": {
+    "ko": "한국관광공사 관광정보",
+    "en": "Hangukgwangwanggongsa Gwangwangjeongbo"
+  },
+  "theme.islands-sea.name": {
+    "ko": "호수·수변·야경",
+    "en": "Suwon Hwaseong · Haenggung · Fortress Walls"
+  },
+  "theme.islands-sea.description": {
+    "ko": "광교호수공원, 방화수류정 용연, 서호공원, 만석공원 등 수원의 호수와 수변 야경 명소",
+    "en": "Suwon Hwaseong Fortress, Hwaseong Haenggung Palace, the Four Gates, Banghwasuryujeong Pavilion, Yeonmudae, Seojangdae, and Hwaryeongjeon"
+  },
+  "theme.modern-history.name": {
+    "ko": "수원화성·역사·박물관",
+    "en": "Museums · Art Galleries · Heritage"
+  },
+  "theme.modern-history.description": {
+    "ko": "유네스코 세계문화유산 수원화성과 화성행궁, 수원화성박물관·수원시립미술관·삼성이노베이션뮤지엄 등 역사와 전시",
+    "en": "Suwon Hwaseong Museum, Suwon Museum, Suwon Museum of Art, National Agricultural Museum, Samsung Innovation Museum, and Haewoojae"
+  },
+  "theme.parks-nature.name": {
+    "ko": "수목원·숲·공원",
+    "en": "Lakes · Arboretums · Parks"
+  },
+  "theme.parks-nature.description": {
+    "ko": "일월수목원, 영흥수목원, 광교산, 칠보산, 효원공원 월화원 등 도심 속 정원과 숲길",
+    "en": "Gwanggyo Lake Park, Irwol Arboretum, Yeongheung Arboretum, Manseok Park, Seoho Park, Wolhwawon Garden, and Gwanggyosan trails"
+  },
+  "theme.alleys-culture.name": {
+    "ko": "행리단길·시장·체험",
+    "en": "Haengnidan-gil · Traditional Markets · Experiences"
+  },
+  "theme.alleys-culture.description": {
+    "ko": "행리단길, 수원통닭거리, 팔달문 전통시장, 화성어차·플라잉수원·아쿠아플라넷 등 골목과 체험",
+    "en": "Haengnidan-gil, Suwon Chicken Street, Nammun, Motgol, and Jidong markets, Flying Suwon, Hwaseong Trolley, and Aqua Planet Gwanggyo"
+  },
+  "category:관광지": {
+    "ko": "관광지",
+    "en": "Attraction"
+  },
+  "category:문화시설": {
+    "ko": "문화시설",
+    "en": "Cultural facility"
+  },
+  "category:레포츠": {
+    "ko": "레포츠",
+    "en": "Leisure sports"
+  },
+  "category:쇼핑": {
+    "ko": "쇼핑",
+    "en": "Shopping"
+  },
+  "category:숙박": {
+    "ko": "숙박",
+    "en": "Lodging"
+  },
+  "category:음식점": {
+    "ko": "음식점",
+    "en": "Restaurant"
+  },
+  "provider:한국관광공사 TourAPI": {
+    "ko": "한국관광공사 TourAPI",
+    "en": "Korea Tourism Organization TourAPI"
+  },
+  "provider:카카오맵": {
+    "ko": "카카오맵",
+    "en": "Kakao Map"
+  },
+  "provider:수원시 문화관광": {
+    "ko": "수원시 문화관광",
+    "en": "Suwon Culture & Tourism"
+  },
+  "provider:한국관광공사 고캠핑(TourAPI)": {
+    "ko": "한국관광공사 고캠핑(TourAPI)",
+    "en": "Korea Tourism Organization GoCamping (TourAPI)"
+  },
+  "provider:수원시": {
+    "ko": "수원시",
+    "en": "Suwon"
+  }
+}

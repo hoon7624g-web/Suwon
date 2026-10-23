@@ -1,0 +1,89 @@
+{
+ "gunsan-sujemaekju-and-beulluseu-peseutibeol": {
+  "series_name": "Gunsan Craft Beer & Blues Festival",
+  "newest": {
+   "name": "Gunsan Craft Beer & Blues Festival",
+   "period_text": "June 12 (Fri)–June 14 (Sun), 2026, 3 days",
+   "place_name": "Modern History Museum parking lot",
+   "address": "224 Haemang-ro (Jangmi-dong), Gunsan-si, Jeonbuk State",
+   "fee": "Paid (6,000 won; you get a 5,000 won local gift certificate)",
+   "playtime": "12:00–22:00",
+   "sponsor": "Gunsan City",
+   "tel": "063-454-5252",
+   "notes": [],
+   "id": "event-tourapi-2853719"
+  },
+  "alternatives": {
+   "place_name": {
+    "values": [
+     "Around the Modern History Museum and the Inner Harbor, Gunsan"
+    ],
+    "providers": [
+     "군산시 보도자료 '군산, 수제맥주 도시로 도약…'2026 군산 맥주 & 블루스(음악) 축제'개최' (먹거리정책과, 2026-04-10, 보도자료 번호 34202)"
+    ],
+    "note": "Sources differ — check with the organizer before visiting"
+   },
+   "fee": {
+    "values": [
+     "Paid, 6,000 won (you get a 5,000 won Gunsan Love Gift Certificate, a wristband and a raffle ticket)"
+    ],
+    "providers": [
+     "군산 수제맥주&블루스 페스티벌 누리집 '축제안내'"
+    ],
+    "note": "Sources differ — check with the organizer before visiting"
+   },
+   "address": {
+    "values": [
+     "240 Haemang-ro, Gunsan-si, Jeonbuk (parking lot area near the Modern History Museum)"
+    ],
+    "providers": [
+     "군산 수제맥주&블루스 페스티벌 누리집 '축제안내'"
+    ],
+    "note": "Sources differ — check with the organizer before visiting"
+   }
+  },
+  "highlights": [
+   "The focus is 'Gunsan Malt' craft beer, made from 100% Gunsan barley. Taking part: 4 Gunsan breweries and 6 local beer makers that use Gunsan Malt. There are also 6 beers from overseas partner cities: Yantai and Qingdao (China), Takamatsu and Kagoshima (Japan), New Taipei (Taiwan) and Tacoma (US).",
+   "16 blues bands, including Kang San-e Band, Kim Jong-seo Band, Kim Gyeong-ho Band and Sinchon Blues.",
+   "About 30 Gunsan restaurant booths and 5,000 table seats.",
+   "You get beer in exchange for beer vouchers (bought by card or cash) or 5,000 won Gunsan Love Gift Certificates.",
+   "Pets may enter in a cage or a stroller.",
+   "19 public and temporary parking lots nearby (140 spaces in front of Jinpo Marine Park, 140 at the former police station, 105 under Dongbaek Bridge, and more).",
+   "About 40 temporary Culture Nuri Card merchants."
+  ],
+  "program_notes": [],
+  "usual": [
+   {
+    "text": "Every year around June 20 / Friday, Saturday, Sunday (3 days)",
+    "place": "Around the Modern History Museum parking lot, Gunsan-si, Jeonbuk State"
+   }
+  ],
+  "editions": [
+   {
+    "id": "fest-군산-수제맥주블루스-페스티벌-2025",
+    "name": "2025 4th Gunsan Craft Beer & Blues Festival",
+    "period_text": "",
+    "place_name": "Around the Modern History Museum"
+   },
+   {
+    "id": "event-1449917",
+    "name": "Gunsan Craft Beer & Blues Festival",
+    "period_text": "Every year around June 20 / Friday, Saturday, Sunday (3 days)",
+    "place_name": "Around the Modern History Museum parking lot, Gunsan-si, Jeonbuk State"
+   }
+  ],
+  "sources": {
+   "한국관광공사 TourAPI": "Korea Tourism Organization TourAPI",
+   "군산 수제맥주&블루스 페스티벌 누리집 '축제안내'": "Gunsan Craft Beer & Blues Festival website 'Festival Information'",
+   "군산 수제맥주&블루스 페스티벌 누리집 '안내사항'": "Gunsan Craft Beer & Blues Festival website 'Visitor Notes'",
+   "군산 수제맥주&블루스 페스티벌 누리집 '주차장 안내'": "Gunsan Craft Beer & Blues Festival website 'Parking Information'",
+   "군산시 문화관광 축제/행사 정보 '군산 수제맥주&블루스 페스티벌'": "Gunsan City Culture and Tourism festival/event information 'Gunsan Craft Beer & Blues Festival'",
+   "군산시 보도자료 '군산, 수제맥주 도시로 도약…'2026 군산 맥주 & 블루스(음악) 축제'개최' (먹거리정책과, 2026-04-10, 보도자료 번호 34202)": "Gunsan City press release 'Gunsan leaps toward becoming a craft beer city… 2026 Gunsan Beer & Blues (Music) Festival to be held' (Food Policy Division, 2026-04-10, press release no. 34202)",
+   "군산시 보도자료 '군산시, 2026 수제맥주&음악(블루스) 축제 문화누리카드 임시가맹점 운영' (문화예술과, 2026-06-05, 보도자료 번호 34482)": "Gunsan City press release 'Gunsan City runs temporary Culture Nuri Card merchants at the 2026 Craft Beer & Music (Blues) Festival' (Culture and Arts Division, 2026-06-05, press release no. 34482)",
+   "군산시 보도자료 '초 여름밤 군산을 달구는 축제가 온다 '2025 군산 수제맥주&블루스 페스티벌'' (먹거리정책과, 2025-05-02, 보도자료 번호 32161)": "Gunsan City press release 'The festival that heats up Gunsan on early summer nights is coming: 2025 Gunsan Craft Beer & Blues Festival' (Food Policy Division, 2025-05-02, press release no. 32161)",
+   "군산시 문화관광": "Gunsan City Culture and Tourism"
+  },
+  "ko_hash": "d5ca207c6b83559c",
+  "translated_at": "2026-10-08"
+ }
+}

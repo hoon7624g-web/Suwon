@@ -1,0 +1,374 @@
+{
+ "mascot-icon-3d": {
+  "size": "icon",
+  "px": [
+   64,
+   128
+  ],
+  "avif": [
+   [
+    "mascot-icon-3d-64.avif",
+    64,
+    1883
+   ],
+   [
+    "mascot-icon-3d-128.avif",
+    128,
+    3619
+   ]
+  ],
+  "webp": [
+   [
+    "mascot-icon-3d-64.webp",
+    64,
+    2120
+   ],
+   [
+    "mascot-icon-3d-128.webp",
+    128,
+    4318
+   ]
+  ]
+ },
+ "mascot-icon-flat": {
+  "size": "icon",
+  "px": [
+   64,
+   128
+  ],
+  "avif": [
+   [
+    "mascot-icon-flat-64.avif",
+    64,
+    1835
+   ],
+   [
+    "mascot-icon-flat-128.avif",
+    128,
+    3259
+   ]
+  ],
+  "webp": [
+   [
+    "mascot-icon-flat-64.webp",
+    64,
+    2164
+   ],
+   [
+    "mascot-icon-flat-128.webp",
+    128,
+    4426
+   ]
+  ]
+ },
+ "mascot-hello": {
+  "size": "small",
+  "px": [
+   96,
+   192
+  ],
+  "avif": [
+   [
+    "mascot-hello-96.avif",
+    96,
+    3286
+   ],
+   [
+    "mascot-hello-192.avif",
+    192,
+    6747
+   ]
+  ],
+  "webp": [
+   [
+    "mascot-hello-96.webp",
+    96,
+    3734
+   ],
+   [
+    "mascot-hello-192.webp",
+    192,
+    8092
+   ]
+  ]
+ },
+ "mascot-point": {
+  "size": "small",
+  "px": [
+   96,
+   192
+  ],
+  "avif": [
+   [
+    "mascot-point-96.avif",
+    96,
+    3343
+   ],
+   [
+    "mascot-point-192.avif",
+    192,
+    6053
+   ]
+  ],
+  "webp": [
+   [
+    "mascot-point-96.webp",
+    96,
+    3616
+   ],
+   [
+    "mascot-point-192.webp",
+    192,
+    7900
+   ]
+  ]
+ },
+ "mascot-think": {
+  "size": "small",
+  "px": [
+   96,
+   192
+  ],
+  "avif": [
+   [
+    "mascot-think-96.avif",
+    96,
+    3044
+   ],
+   [
+    "mascot-think-192.avif",
+    192,
+    6453
+   ]
+  ],
+  "webp": [
+   [
+    "mascot-think-96.webp",
+    96,
+    3494
+   ],
+   [
+    "mascot-think-192.webp",
+    192,
+    7970
+   ]
+  ]
+ },
+ "mascot-sorry": {
+  "size": "small",
+  "px": [
+   96,
+   192
+  ],
+  "avif": [
+   [
+    "mascot-sorry-96.avif",
+    96,
+    3134
+   ],
+   [
+    "mascot-sorry-192.avif",
+    192,
+    6151
+   ]
+  ],
+  "webp": [
+   [
+    "mascot-sorry-96.webp",
+    96,
+    3418
+   ],
+   [
+    "mascot-sorry-192.webp",
+    192,
+    7276
+   ]
+  ]
+ },
+ "mascot-search": {
+  "size": "small",
+  "px": [
+   96,
+   192
+  ],
+  "avif": [
+   [
+    "mascot-search-96.avif",
+    96,
+    3521
+   ],
+   [
+    "mascot-search-192.avif",
+    192,
+    6825
+   ]
+  ],
+  "webp": [
+   [
+    "mascot-search-96.webp",
+    96,
+    3620
+   ],
+   [
+    "mascot-search-192.webp",
+    192,
+    7708
+   ]
+  ]
+ },
+ "mascot-404": {
+  "size": "medium",
+  "px": [
+   200,
+   400
+  ],
+  "avif": [
+   [
+    "mascot-404-200.avif",
+    200,
+    7333
+   ],
+   [
+    "mascot-404-400.avif",
+    400,
+    15349
+   ]
+  ],
+  "webp": [
+   [
+    "mascot-404-200.webp",
+    200,
+    8646
+   ],
+   [
+    "mascot-404-400.webp",
+    400,
+    19588
+   ]
+  ]
+ },
+ "mascot-empty": {
+  "size": "medium",
+  "px": [
+   200,
+   400
+  ],
+  "avif": [
+   [
+    "mascot-empty-200.avif",
+    200,
+    6854
+   ],
+   [
+    "mascot-empty-400.avif",
+    400,
+    14548
+   ]
+  ],
+  "webp": [
+   [
+    "mascot-empty-200.webp",
+    200,
+    9430
+   ],
+   [
+    "mascot-empty-400.webp",
+    400,
+    21154
+   ]
+  ]
+ },
+ "mascot-plan": {
+  "size": "medium",
+  "px": [
+   200,
+   400
+  ],
+  "avif": [
+   [
+    "mascot-plan-200.avif",
+    200,
+    7622
+   ],
+   [
+    "mascot-plan-400.avif",
+    400,
+    16387
+   ]
+  ],
+  "webp": [
+   [
+    "mascot-plan-200.webp",
+    200,
+    9394
+   ],
+   [
+    "mascot-plan-400.webp",
+    400,
+    21042
+   ]
+  ]
+ },
+ "mascot-plan-done": {
+  "size": "medium",
+  "px": [
+   200,
+   400
+  ],
+  "avif": [
+   [
+    "mascot-plan-done-200.avif",
+    200,
+    8099
+   ],
+   [
+    "mascot-plan-done-400.avif",
+    400,
+    17252
+   ]
+  ],
+  "webp": [
+   [
+    "mascot-plan-done-200.webp",
+    200,
+    9266
+   ],
+   [
+    "mascot-plan-done-400.webp",
+    400,
+    20590
+   ]
+  ]
+ },
+ "mascot-plan-rain": {
+  "size": "small",
+  "px": [
+   96,
+   192
+  ],
+  "avif": [
+   [
+    "mascot-plan-rain-96.avif",
+    96,
+    4124
+   ],
+   [
+    "mascot-plan-rain-192.avif",
+    192,
+    7993
+   ]
+  ],
+  "webp": [
+   [
+    "mascot-plan-rain-96.webp",
+    96,
+    4410
+   ],
+   [
+    "mascot-plan-rain-192.webp",
+    192,
+    9382
+   ]
+  ]
+ }
+}

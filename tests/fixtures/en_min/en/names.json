@@ -1,0 +1,82 @@
+{
+ "gunsan-305395": {
+  "name_ko": "근대역사박물관",
+  "name_en": "Modern History Museum",
+  "name_en_source": "romanized specific part + English generic (MCST guideline)",
+  "name_rr": "Geundaeyeoksabangmulgwan",
+  "en_contentid": "",
+  "addr_en": "",
+  "match_m": null,
+  "match_basis": ""
+ },
+ "gunsan-305372": {
+  "name_ko": "은파호수공원",
+  "name_en": "Eunpa Lake Park",
+  "name_en_source": "romanized specific part + English generic (MCST guideline)",
+  "name_rr": "Eunpahosugongwon",
+  "en_contentid": "",
+  "addr_en": "",
+  "match_m": null,
+  "match_basis": ""
+ },
+ "gunsan-1379526": {
+  "name_ko": "군산근대건축관",
+  "name_en": "Gunsan Modern Architecture Museum",
+  "name_en_source": "romanized specific part + English generic (MCST guideline)",
+  "name_rr": "Gunsangeundaegeonchukgwan",
+  "en_contentid": "",
+  "addr_en": "",
+  "match_m": null,
+  "match_basis": ""
+ },
+ "gunsan-305401": {
+  "name_ko": "청암산",
+  "name_en": "Cheongamsan Mountain",
+  "name_en_source": "romanized specific part + English generic (MCST guideline)",
+  "name_rr": "Cheongamsan",
+  "en_contentid": "",
+  "addr_en": "",
+  "match_m": null,
+  "match_basis": ""
+ },
+ "gunsan-306591": {
+  "name_ko": "복성루",
+  "name_en": "Bokseongnu",
+  "name_en_source": "romanized specific part + English generic (MCST guideline)",
+  "name_rr": "Bokseongnu",
+  "en_contentid": "",
+  "addr_en": "",
+  "match_m": null,
+  "match_basis": ""
+ },
+ "gunsan-1305918": {
+  "name_ko": "빈해원",
+  "name_en": "Binhaewon",
+  "name_en_source": "romanized specific part + English generic (MCST guideline)",
+  "name_rr": "Binhaewon",
+  "en_contentid": "",
+  "addr_en": "",
+  "match_m": null,
+  "match_basis": ""
+ },
+ "gunsan-307082": {
+  "name_ko": "라마다 군산호텔",
+  "name_en": "Ramada Gunsan Hotel",
+  "name_en_source": "romanized specific part + English generic (MCST guideline)",
+  "name_rr": "Ramada Gunsanhotel",
+  "en_contentid": "",
+  "addr_en": "",
+  "match_m": null,
+  "match_basis": ""
+ },
+ "gunsan-433871": {
+  "name_ko": "동국사",
+  "name_en": "Dongguksa Temple",
+  "name_en_source": "romanized specific part + English generic (MCST guideline)",
+  "name_rr": "Dongguksa",
+  "en_contentid": "",
+  "addr_en": "",
+  "match_m": null,
+  "match_basis": ""
+ }
+}

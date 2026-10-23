@@ -1,0 +1,214 @@
+{
+  "_notes": [
+    "시험용 fixture(tests/fixtures/metro): 대구 형태의 설정(9개 구·군, 별칭, district 모드)과 '[샘플]' 가짜 장소. 장소·도로 이름은 지어낸 것이고 행정구역 이름만 실제다. 좌표는 대구 범위 안의 합성 값이다."
+  ],
+  "site_url": "https://metro.test",
+  "site_name": "[샘플] 광역시 여행 시험 사이트",
+  "site_name_en": "Metro Travel (fixture)",
+  "brand": "[샘플] 광역시 여행 시험 사이트",
+  "region": "대구",
+  "region_en": "Daegu",
+  "region_admin": "대구광역시",
+  "region_admin_en": "Daegu",
+  "locality": "대구광역시",
+  "locality_en": "Daegu",
+  "districts": [
+    "중구",
+    "동구",
+    "서구",
+    "남구",
+    "북구",
+    "수성구",
+    "달서구",
+    "달성군",
+    "군위군"
+  ],
+  "address_aliases": [
+    "대구시",
+    "대구"
+  ],
+  "region_homographs": [
+    "대구탕",
+    "대구뽈",
+    "대구찜",
+    "대구지리",
+    "대구매운탕",
+    "대구살",
+    "대구전"
+  ],
+  "id_prefix": "daegu",
+  "languages": [
+    "ko"
+  ],
+  "description": "[샘플] 광역시 형태의 설정과 가짜 장소로 엔진을 시험하는 fixture입니다.",
+  "disclaimer": "[샘플] 시험용 fixture입니다. 실제 장소 정보가 아닙니다.",
+  "affiliation": "",
+  "operator": {
+    "name": "에이아이오투오",
+    "name_en": "AIO2O",
+    "url": "https://www.o2osolution.ai/",
+    "contact": "[샘플] 정정 요청 메일 주소",
+    "logo": "/assets/brand/icon-512.png"
+  },
+  "source": {
+    "name": "",
+    "name_en": "",
+    "url": "",
+    "collected_at": "",
+    "kogl": ""
+  },
+  "ga4_id": "",
+  "gtm_id": "",
+  "search_verification": {},
+  "indexnow_key": "",
+  "center": {
+    "lat": null,
+    "lng": null
+  },
+  "tmap_scheme": "tmap://route?goalname={name}&goalx={lng}&goaly={lat}",
+  "publish_rules": {
+    "allowed_original_licenses": [
+      "KOGL-1",
+      "KOGL-3"
+    ],
+    "allowed_image_licenses": [
+      "KOGL-1",
+      "KOGL-3"
+    ]
+  },
+  "crawler_policy": {
+    "allow_training_bots": false
+  },
+  "official_links": [
+    {
+      "name": "대구관광",
+      "url": "https://tour.daegu.go.kr",
+      "note": "대구광역시 관광 안내"
+    },
+    {
+      "name": "대한민국 구석구석",
+      "url": "https://korean.visitkorea.or.kr",
+      "note": "한국관광공사 관광정보"
+    }
+  ],
+  "official_domains": [
+    {
+      "domain": "tour.daegu.go.kr",
+      "name": "대구관광"
+    },
+    {
+      "domain": "daegu.go.kr",
+      "name": "대구광역시"
+    },
+    {
+      "domain": "jung.daegu.kr",
+      "name": "대구 중구"
+    },
+    {
+      "domain": "dong.daegu.kr",
+      "name": "대구 동구"
+    },
+    {
+      "domain": "dgs.go.kr",
+      "name": "대구 서구"
+    },
+    {
+      "domain": "nam.daegu.kr",
+      "name": "대구 남구"
+    },
+    {
+      "domain": "buk.daegu.kr",
+      "name": "대구 북구"
+    },
+    {
+      "domain": "suseong.kr",
+      "name": "대구 수성구"
+    },
+    {
+      "domain": "dalseong.daegu.kr",
+      "name": "대구 달성군"
+    },
+    {
+      "domain": "gunwi.go.kr",
+      "name": "대구 군위군"
+    }
+  ],
+  "provider_short": [],
+  "regions": {
+    "mode": "district",
+    "label": "구·군",
+    "area_label": "동·읍·면",
+    "anchors": [],
+    "far": null,
+    "none_label": "구·군 미기재"
+  },
+  "dist_anchors": [],
+  "designations": {
+    "order": [
+      "baeknyeon",
+      "mobeom",
+      "good_stay",
+      "goodprice",
+      "women_safe_stay",
+      "ansim",
+      "low_sodium"
+    ],
+    "short": {
+      "good_stay": "우수숙박시설",
+      "women_safe_stay": "여성안심숙박",
+      "low_sodium": "나트륨 줄이기"
+    },
+    "show_year": []
+  },
+  "categories": {},
+  "list_hubs": {},
+  "list_filters": {},
+  "video_topics": [],
+  "search_examples": [
+    "막창",
+    "서문시장",
+    "수성못"
+  ],
+  "slug_policy": {
+    "collision": "district"
+  },
+  "home": {
+    "answers": [],
+    "story": [],
+    "center": null,
+    "far": null,
+    "teaser_course": "",
+    "featured_min_courses": 7,
+    "video_rows": [],
+    "gallery": null,
+    "media": {
+      "cover": null,
+      "hero": [],
+      "gallery": []
+    }
+  },
+  "tourapi": {
+    "base_url": "https://apis.data.go.kr/B551011/KorService2",
+    "op_suffix": "2",
+    "region_keyword": "대구",
+    "ldong_regn_name": "대구광역시",
+    "list_scope": "districts",
+    "title_suffixes": [],
+    "nearby_radius_m": 2000,
+    "nearby_per_kind": 3
+  },
+  "site_faq": [],
+  "english": {
+    "districts": {
+      "중구": "Jung-gu",
+      "동구": "Dong-gu",
+      "서구": "Seo-gu",
+      "남구": "Nam-gu",
+      "북구": "Buk-gu",
+      "수성구": "Suseong-gu",
+      "달서구": "Dalseo-gu",
+      "달성군": "Dalseong-gun",
+      "군위군": "Gunwi-gun"
+    }
+  }
+}

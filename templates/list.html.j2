@@ -1,0 +1,73 @@
+{% extends "base.html.j2" %}
+{% import "_art.html.j2" as artm %}
+{#- List pages /places/ /stays/ /food/ and the theme pages (theme.html.j2 extends this one). Everything comes from
+    L = pipeline/present.list_vm(S, kind[, theme]): records grouped by 권역 or 구·군 (cityv.region_label; the group ids
+    and L.regions [(name, count, id)] are the view model's, ASCII), each with the kind's four key-fact cells
+    (KF_LIST_COLS — the same slots as the place page's spec tiles, '확인 필요' in place, both values of a conflict).
+    The header band: the list's AI art (list.head.<list>) or, on a theme page, the theme's (theme.head.<slug>).
+    A short band: the title with its count (the query words of LISTS[kind].h1 when the pipeline sets them) and, on
+    desktop, the count per group as links. The filter bar is laid out from the first paint with JS (css 70-p1) and
+    absent without it (the `hidden` attribute; site.js removes it); without JS the grouped list is the answer. The bar
+    is _filters.html.j2's, shared with the other versions (L.filters = present.filter_vm).
+    Map: beside the list on desktop (folded when fewer than 30% of the records have coordinates, CLAUDE.md 7),
+    behind the 목록 | 지도 switch below 1024px; it shows the places the filter keeps, and its counts ('지도 n', the
+    caption's [data-geo-cap]) follow the filter (site.js, map.js). -#}
+{% import "_p1.html.j2" as p1 %}
+{% import "_filters.html.j2" as fb %}
+{% set track = {'stay': 'stay_click', 'food': 'food_click'}.get(L.kind, 'nearby_click') %}
+{% set words = L.title if L.theme else (cfg.h1 if cfg is defined and cfg.h1 else L.title) %}
+{% set label = (site.region ~ ' ' ~ L.title) if not L.theme else L.title %}
+{% block main_class %}{% endblock %}
+{% block bodyclass %}pg-list kind-{{ L.kind }}{% if L.theme %} pg-theme{% endif %}{% endblock %}
+{% block content %}
+<section class="pg-hero band-s list-head" aria-labelledby="h-list">{{ artm.band((art_slots or {}).get('theme.head.' ~ L.theme.slug) if L.theme else (art_slots or {}).get('list.head.' ~ {'attraction': 'places', 'food': 'food', 'stay': 'stays'}.get(L.kind, ''))) }}
+  <div class="wrap band-grid">
+    <div>
+      {#- I19: the mascot beside the head of the food list (icon_audit; 96–120px, the band picture above stays); a theme's
+          picture when the 3D registry has one for its slug ('theme-<slug>', pipeline/icons.py) -#}
+      {% set hm = none if L.theme else {'food': 'mascot-eat'}.get(L.kind) %}{% if hm %}<span class="hd-mascot">{{ ui.kpic(hm, 'pin', 104) }}</span>{% endif %}
+      {% if L.theme %}{% set tp = 'theme-' ~ L.theme.slug %}{% if icon_pic is defined and icon_pic(tp) %}<p class="hd-pic">{{ ui.kpic(tp, 'pin', 64) }}</p>{% endif %}<p class="kicker"><a href="/places/">관광지</a><span>테마</span></p>{% endif %}
+      <h1 id="h-list" class="h-list">{% if L.theme %}{{ L.title }}{% else %}{{ site.region }} {% for w in words.split("·") %}<span class="nw">{{ w }}{{ "·" if not loop.last }}</span>{% if not loop.last %}<wbr>{% endif %}{% endfor %}{% endif %}{% if L.count %} <span class="count tn">{{ L.count }}곳</span>{% endif %}</h1>
+      <p class="list-lede">{% if L.theme and L.theme.description %}{{ L.theme.description }}{% else %}{% for k, lab in L.slot_cols %}{{ lab }}{% if not loop.last %} · {% endif %}{% endfor %}{% endif %}</p>
+      {% if hub and not L.theme %}<p class="list-hub"><a href="{{ hub.path }}" data-track="guide_click">{{ hub.label }}<span class="arr" aria-hidden="true">›</span></a></p>{% endif %}
+    </div>
+    {% if L.regions|length > 1 %}<ol class="band-data only-wide" aria-label="{{ cityv.region_label }}별">{% for r, n, rid in L.regions %}<li><a href="#{{ rid }}"><b class="num tn">{{ n }}</b><span>{{ r }}</span></a></li>{% endfor %}</ol>{% endif %}
+  </div>
+</section>
+
+{% if L.count %}
+<div class="wrap list-grid{% if not L.map_open %} map-folded{% endif %}">
+  <div class="list-main">
+    {{ fb.bar(L.filters, cityv.region_label) }}
+
+    <div class="ledger" data-ledger>
+      <div class="lg-head" aria-hidden="true"><span>{{ L.title }}</span>{% for k, lab in L.slot_cols %}<span>{{ lab }}</span>{% endfor %}</div>
+      {% for g in L.groups %}
+      <section class="lg-group{% if not loop.first %} cv{% endif %}" id="{{ g.id }}" aria-labelledby="{{ g.id }}-h">
+        <h2 class="lg-g" id="{{ g.id }}-h">{{ g.name }} <span class="tn">{{ g.recs|length }}곳</span></h2>
+        <ol class="recs">{% for it in g.recs %}{{ p1.rec(it, L.kind) }}{% endfor %}</ol>
+      </section>
+      {% endfor %}
+      <p class="empty" data-empty hidden>{{ L.filters.w.empty }}</p>
+    </div>
+    {% if L.n_photo %}{% set lics = [] %}{% for g in L.groups %}{% for it in g.recs %}{% if it.photo and it.photo.type not in lics %}{% set _ = lics.append(it.photo.type) %}{% endif %}{% endfor %}{% endfor %}
+    <p class="note list-foot">사진 출처: 한국관광공사 · 공공누리 제{{ lics|sort|join('·') }}유형</p>{% endif %}
+    {{ p1.dzsrc(L.dz_sources) }}
+  </div>
+  {% if L.n_geo %}
+  <aside class="list-map" id="list-map" aria-label="{{ L.title }} 지도">
+    {% if L.map_open %}
+    {{ p1.placemap({'list': L.points, 'far_label': cityv.far_label, 'none_label': cityv.none_label}, label ~ ' 지도', 'list-mapfig', '좌표가 있는 ' ~ L.n_geo ~ '곳만 표시') }}
+    {% else %}
+    <details class="map-fold"><summary>지도 보기 <span class="muted" data-geo-cap>좌표가 있는 {{ L.n_geo }}곳만 표시</span></summary>
+    {{ p1.placemap({'list': L.points, 'far_label': cityv.far_label, 'none_label': cityv.none_label}, label ~ ' 지도', 'list-mapfig', '좌표가 있는 ' ~ L.n_geo ~ '곳만 표시') }}
+    </details>
+    {% endif %}
+  </aside>
+  {% endif %}
+</div>
+{% else %}
+{% set src = site.source if site.source and site.source.url and site.source.name else (site.official_links[0] if site.official_links else none) %}
+<div class="wrap list-empty"><p class="empty">방문 정보를 확인한 곳부터 안내합니다.{% if src %} 지금은 {{ '출처 사이트' if src is sameas site.source else '공식 안내' }}에서 확인하세요.{% endif %}</p>{% if src %}<p><a href="{{ src.url }}" rel="noopener" data-track="official_click">{{ src.name }}에서 확인 {{ ui.icon('external', 'icon-sm') }}</a></p>{% endif %}</div>
+{% endif %}
+{% endblock %}

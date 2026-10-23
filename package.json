@@ -1,0 +1,15 @@
+{
+  "name": "suwongak",
+  "private": true,
+  "description": "수원각 (Suwongak) — 수원 여행의 모든 것",
+  "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "test": "node --test \"tests/js/*.test.js\""
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "0.133.0"
+  }
+}

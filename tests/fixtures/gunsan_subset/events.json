@@ -1,0 +1,133 @@
+[
+ {
+  "id": "event-fixture-1",
+  "slug": "sample-spring-night-market",
+  "status": "published",
+  "series": "[샘플] 봄꽃 야시장",
+  "name": "[샘플] 2030 봄꽃 야시장",
+  "period_text": "2030. 4. 5.(금) ~ 4. 7.(일)",
+  "start_date": "2030-04-05",
+  "end_date": "2030-04-07",
+  "place_name": "전북특별자치도 군산시 [샘플] 호수공원 일원",
+  "address": "전북특별자치도 군산시 은파순환길 9(나운동)",
+  "geo": {
+   "lat": 35.9567,
+   "lng": 126.697
+  },
+  "playtime": "18:00~22:00",
+  "fee": "무료",
+  "tel": "063-000-0001",
+  "sponsor": "[샘플] 축제위원회",
+  "source_name": "한국관광공사 TourAPI",
+  "source_url": "",
+  "checked_at": "2026-10-08",
+  "place_slugs": [
+   "eunpahosugongwon"
+  ],
+  "highlights": [
+   "[샘플] 야시장 먹거리 장터"
+  ],
+  "alternatives": {
+   "tel": [
+    {
+     "value": "070-0000-0002(운영사무국)",
+     "source_name": "[샘플] 행사 누리집",
+     "source_url": "https://example.com/events/",
+     "checked_at": "2026-10-08"
+    }
+   ]
+  }
+ },
+ {
+  "id": "event-fixture-2",
+  "slug": "sample-spring-night-market",
+  "status": "published",
+  "series": "[샘플] 봄꽃 야시장",
+  "name": "[샘플] 2025 봄꽃 야시장",
+  "period_text": "2025. 4. 4.(금) ~ 4. 6.(일)",
+  "start_date": "2025-04-04",
+  "end_date": "2025-04-06",
+  "place_name": "[샘플] 호수공원 일원",
+  "source_name": "한국관광공사 TourAPI",
+  "source_url": "",
+  "checked_at": "2026-10-08"
+ },
+ {
+  "id": "event-fixture-3",
+  "slug": "sample-craft-beer-festival",
+  "status": "published",
+  "series": "[샘플] 수제맥주 축제",
+  "name": "[샘플] 2025 수제맥주 축제",
+  "period_text": "2025. 6. 20.(금) ~ 6. 22.(일)",
+  "start_date": "2025-06-20",
+  "end_date": "2025-06-22",
+  "place_name": "[샘플] 축제 광장",
+  "fee": "10,000원",
+  "source_name": "한국관광공사 TourAPI",
+  "source_url": "",
+  "checked_at": "2026-10-08",
+  "alternatives": {
+   "fee": [
+    {
+     "value": "12,000원(사전 예매 10,000원)",
+     "source_name": "[샘플] 행사 누리집",
+     "source_url": "https://example.com/events/",
+     "checked_at": "2026-10-08"
+    }
+   ],
+   "place_name": [
+    {
+     "value": "[샘플] 강변 광장",
+     "source_name": "[샘플] 행사 누리집",
+     "source_url": "https://example.com/events/",
+     "checked_at": "2026-10-08"
+    }
+   ]
+  }
+ },
+ {
+  "id": "event-fixture-4",
+  "status": "published",
+  "series": "[샘플] 수제맥주 축제",
+  "name": "[샘플] 수제맥주 축제",
+  "period_text": "매년 6월 20일 전후 / 금, 토, 일(3일간)",
+  "start_date": "",
+  "place_name": "[샘플] 축제 광장",
+  "source_name": "[샘플] 행사 누리집",
+  "source_url": "https://example.com/events/",
+  "checked_at": "2026-10-08"
+ },
+ {
+  "id": "event-fixture-5",
+  "status": "published",
+  "name": "[샘플] 골목 음악회",
+  "period_text": "날짜는 출처에 없음",
+  "start_date": "",
+  "place_name": "[샘플] 골목",
+  "source_name": "[샘플] 행사 누리집",
+  "source_url": "https://example.com/events/",
+  "checked_at": "2026-10-08"
+ },
+ {
+  "id": "event-fixture-6",
+  "status": "published",
+  "name": "[샘플] 2025 가을 등산축제",
+  "period_text": "2025년 가을(날짜는 출처에 없음)",
+  "start_date": "",
+  "place_name": "[샘플] 산 입구",
+  "source_name": "[샘플] 행사 누리집",
+  "source_url": "https://example.com/events/",
+  "checked_at": "2026-10-08"
+ },
+ {
+  "id": "event-fixture-7",
+  "status": "published",
+  "name": "[샘플] 강변 음악회",
+  "period_text": "2025.5.28(수) 18:30~",
+  "start_date": "",
+  "place_name": "전북특별자치도 군산시 [샘플] 강변 무대",
+  "source_name": "[샘플] 행사 누리집",
+  "source_url": "https://example.com/events/",
+  "checked_at": "2026-10-08"
+ }
+]

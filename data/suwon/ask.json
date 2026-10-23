@@ -1,0 +1,74 @@
+{
+  "starters": [
+    {
+      "q": {
+        "ko": "수원화성·화성행궁·방화수류정 명소",
+        "en": "Suwon Hwaseong, Haenggung & sights",
+        "ja": "水原華城・華城行宮・訪花随柳亭の名所",
+        "zh-Hans": "水原华城·华城行宫·访花随柳亭景点",
+        "zh-Hant": "水原華城·華城行宮·訪花隨柳亭景點",
+        "de": "Festung Hwaseong, Haenggung & Highlights",
+        "fr": "Forteresse Hwaseong, Haenggung & sites",
+        "es": "Fortaleza Hwaseong, Haenggung y lugares",
+        "ru": "Крепость Хвасон, Хэнгун и места"
+      },
+      "guide": "guide-01"
+    },
+    {
+      "q": {
+        "ko": "아이와 함께 가기 좋은 수목원·아쿠아플라넷",
+        "en": "Places to visit with kids in Suwon",
+        "ja": "子どもと一緒に行きやすい植物園・水族館",
+        "zh-Hans": "适合带孩子去的树木园·水族馆",
+        "zh-Hant": "適合帶孩子去的樹木園·水族館",
+        "de": "Ausflugsziele mit Kindern in Suwon",
+        "fr": "Sorties avec des enfants à Suwon",
+        "es": "Lugares para ir con niños en Suwon",
+        "ru": "Куда пойти с детьми в Сувоне"
+      },
+      "guide": "guide-02"
+    },
+    {
+      "q": {
+        "ko": "비 오는 날 갈 만한 실내 박물관·미술관",
+        "en": "Indoor museums for a rainy day",
+        "ja": "雨の日に行ける博物館・美術館",
+        "zh-Hans": "下雨天可去的室内博物馆·美术馆",
+        "zh-Hant": "下雨天可去的室內博物館·美術館",
+        "de": "Museen drinnen bei Regen",
+        "fr": "Musées couverts par temps de pluie",
+        "es": "Museos cubiertos para días de lluvia",
+        "ru": "Музеи Сувона в дождливую погоду"
+      },
+      "guide": "guide-03"
+    },
+    {
+      "q": {
+        "ko": "수원 왕갈비·통닭거리·전통시장 맛집",
+        "en": "Where to eat Suwon galbi & chicken?",
+        "ja": "水原王カルビ・チキン通り・伝統市場グルメ",
+        "zh-Hans": "水原王排骨·炸鸡街·传统市场美食",
+        "zh-Hant": "水原王排骨·炸雞街·傳統市場美食",
+        "de": "Suwon-Galbi, Hähnchen & Märkte",
+        "fr": "Où manger galbi et poulet à Suwon ?",
+        "es": "Dónde comer galbi y pollo en Suwon",
+        "ru": "Где поесть сувон-кальби и курочку"
+      },
+      "guide": "guide-05"
+    },
+    {
+      "q": {
+        "ko": "이번 달 수원 행사·야간개장",
+        "en": "Suwon festivals this month",
+        "ja": "今月の水原イベント・祭り",
+        "zh-Hans": "本月水原活动·节庆",
+        "zh-Hant": "本月水原活動·節慶",
+        "de": "Feste in Suwon diesen Monat",
+        "fr": "Festivals à Suwon ce mois-ci",
+        "es": "Festivales en Suwon este mes",
+        "ru": "Фестивали Сувона в этом месяце"
+      },
+      "page": "events"
+    }
+  ]
+}

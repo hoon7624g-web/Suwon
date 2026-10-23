@@ -1,0 +1,440 @@
+{
+  "guide-01": {
+    "slug": "suwon-hwaseong-fortress-haenggung",
+    "label": "水原華城·行宮·城郭",
+    "title": "水原有哪些水原華城、華城行宮、訪花隨柳亭城郭景點與常年免費開放的觀光地？",
+    "summary": "本網站收錄的水原華城、華城行宮、四大門、角樓與城郭相關景點共20處，全年無休且免費開放的水原觀光地有50處。下方可對比10處主要景點的開放時間、公休日與門票標準。",
+    "body": [
+      {
+        "heading": "20處水原華城、華城行宮城郭景點與50處全年無休免費觀光地",
+        "text": "據韓國觀光公社TourAPI統計，水原華城、華城行宮、長安門、八達門、華西門、蒼龍門及訪花隨柳亭。練武臺、華虹門、西將臺、華寧殿等城郭相關景點共20處，全年無休且免費的水原觀光地為50處。"
+      },
+      {
+        "heading": "確認城郭常年開放路段與行宮、體驗設施售票截止時間",
+        "text": "水原華城城郭步道與四大門外部全年免費開放，但華城行宮。華城御車和飛越水原繫留熱氣球設有售票截止時間及氣象、休館規定，建議出發前核對下方10處景點的營運條件。"
+      }
+    ],
+    "items": [
+      {
+        "place_slug": "suwon-hwaseong",
+        "reason": "位於迎華洞片區，開放時間為00:00 – 24:00，公休日為全年無休。"
+      },
+      {
+        "place_slug": "hwaseonghaenggung",
+        "reason": "位於南昌洞片區，開放時間為09:00–18:00 （Yagangaejang Sijeun。此外，18:00–21:30 Byeoldo Unyeong）。公休日為全年無休 （Yagangaejangeun 週一、週二 Hyumu）。"
+      },
+      {
+        "place_slug": "banghwasuryujeong",
+        "reason": "位於梅香洞片區，開放時間為隨時開放 （Nugak Naebu Churip 09:00–18:00），公休日為全年無休。"
+      },
+      {
+        "place_slug": "janganmun",
+        "reason": "位於長安洞片區，開放時間為隨時開放 （Seonggwak Tambangno Ilchul–22:00），公休日為全年無休。"
+      },
+      {
+        "place_slug": "paldalmun",
+        "reason": "位於八達路2街片區，開放時間為09:00 – 18:00，公休日為全年無休。"
+      },
+      {
+        "place_slug": "hwaseomun",
+        "reason": "位於長安洞片區，開放時間為隨時開放，公休日為全年無休。"
+      },
+      {
+        "place_slug": "changnyongmun",
+        "reason": "位於南水洞片區，開放時間為隨時開放，公休日為全年無休。"
+      },
+      {
+        "place_slug": "yeonmudae",
+        "reason": "位於梅香洞片區，開放時間為10:00 – 17:00，公休日為全年無休。"
+      },
+      {
+        "place_slug": "hwahongmun",
+        "reason": "位於八達區片區，開放時間為隨時開放，公休日為全年無休。"
+      },
+      {
+        "place_slug": "hyowonui-jong-seojangdae",
+        "reason": "位於南昌洞片區，開放時間為09:00–18:00 （Seonggwakgil 隨時開放 ），公休日為全年無休。"
+      }
+    ],
+    "faq": [
+      {
+        "q": "水原的水原華城、行宮、城郭相關景點與全年無休免費觀光地各有多少處？",
+        "a": "水原華城、華城行宮、四大門與角樓相關景點共20處，全年無休且免費的觀光地為50處。",
+        "source": "한국관광공사 TourAPI"
+      }
+    ],
+    "sources": [
+      {
+        "name": "韓國觀光公社 TourAPI",
+        "url": "https://api.visitkorea.or.kr/"
+      }
+    ],
+    "ko_hash": "93c35614c0e5d3d6",
+    "translated_at": "2026-10-23"
+  },
+  "guide-02": {
+    "slug": "suwon-with-kids",
+    "label": "親子同行",
+    "title": "水原有哪些適合帶孩子遊覽的樹木園、水族館、博物館與公園景點？",
+    "summary": "水原的樹木園、湖泊、公園、水族館、天文台、博物館與美術館景點共52處，博物館、展覽館與圖書館等文化設施共43處。下方可對比10處主要景點的開放時間與遊覽條件。",
+    "body": [
+      {
+        "heading": "52處樹木園、湖泊、公園、水族館與博物館及43處文化設施概況",
+        "text": "據韓國觀光公社TourAPI資料，名稱包含樹木園、湖泊、公園、Aqua Planet水族館、天文台。博物館或美術館的水原觀光地有52處，農業博物館、地圖博物館、兒童圖書館與藝術中心等文化設施共收錄43處。"
+      },
+      {
+        "heading": "確認週一休館、預約要求與停止入場時間",
+        "text": "日月樹木園、靈興樹木園及公立博物館每週一休館。三星創新博物館與兒童體驗館則設有線上預約或提前停止入場規定，建議遊覽前核對下方10處地點的開放時間與公休日。"
+      }
+    ],
+    "items": [
+      {
+        "place_slug": "irwolsumogwon",
+        "reason": "位於泉川洞片區，開放時間為09:30 – 17:30，公休日為每週 週一 Hyumuil。"
+      },
+      {
+        "place_slug": "yeongheungsumogwon",
+        "reason": "位於靈通洞片區，開放時間為09:30 – 17:30，公休日為每週 週一 Hyumuil。"
+      },
+      {
+        "place_slug": "akuapeullanet-gwanggyo",
+        "reason": "位於下洞片區，開放時間為10:30 – 19:30，公休日為全年無休。"
+      },
+      {
+        "place_slug": "gwanggyohosugongwon",
+        "reason": "位於下洞片區，開放時間為00:00 – 24:00，公休日為全年無休。"
+      },
+      {
+        "place_slug": "gungnimnongeopbangmulgwan",
+        "reason": "位於西屯洞片區，開放時間為10:00 – 18:00，公休日為每週 週一 Hyumuil。"
+      },
+      {
+        "place_slug": "haeujae",
+        "reason": "位於梨木洞片區，開放時間為10:00 – 18:00，公休日為全年無休。"
+      },
+      {
+        "place_slug": "samseonginobeisyeonmyujieom",
+        "reason": "位於梅灘洞片區，開放時間為13:00 – 14:00，公休日為每週 週日 Hyumuil。"
+      },
+      {
+        "place_slug": "suwonhwaseongbangmulgwan",
+        "reason": "位於梅香洞片區，開放時間為09:00 – 18:00，公休日為每週 週一 Hyumuil。"
+      },
+      {
+        "place_slug": "suwongwanggyobangmulgwan",
+        "reason": "位於二儀洞片區，開放時間為09:00 – 18:00，公休日為每週 週一 Hyumuil。"
+      },
+      {
+        "place_slug": "gwanggyoeorinicheonmundae",
+        "reason": "位於二儀洞片區，開放時間為15:00 – 24:00，公休日為每週 週日、週一 Hyumuil。"
+      }
+    ],
+    "faq": [
+      {
+        "q": "水原的樹木園、湖泊、公園、水族館、博物館相關觀光地與文化設施各有多少處？",
+        "a": "樹木園、湖泊、公園、水族館、天文台與博物館景點為52處，文化設施為43處。",
+        "source": "한국관광공사 TourAPI"
+      }
+    ],
+    "sources": [
+      {
+        "name": "韓國觀光公社 TourAPI",
+        "url": "https://api.visitkorea.or.kr/"
+      }
+    ],
+    "ko_hash": "5654bc7aea71390a",
+    "translated_at": "2026-10-23"
+  },
+  "guide-03": {
+    "slug": "suwon-indoor-museums",
+    "label": "雨天·室內",
+    "title": "水原有哪些適合雨天遊覽的博物館、美術館、圖書館與室內文化設施？",
+    "summary": "本網站收錄的水原文化設施共43處，名稱包含博物館、美術館、圖書館、展覽館或水族館的觀光地有34處。下方可對比10處主要室內場館的參觀時間、公休日與門票標準。",
+    "body": [
+      {
+        "heading": "43處文化設施與34處博物館、美術館、圖書館及室內場館",
+        "text": "按韓國觀光公社TourAPI分類，登記為文化設施的水原景點共43處，名稱含博物館、美術館、圖書館。展覽館、文化館、藝術或Aqua Planet的觀光地共34處。"
+      },
+      {
+        "heading": "參觀時間、週一休館與免費參觀對比",
+        "text": "水原華城博物館、水原博物館。水原市立美術館與國立農業博物館等展館常在每週一或每月第一個週一休館並在閉館前停止售票。而星空圖書館與光教水族館全年無休開放，建議提前對照下方10處場館規劃路線。"
+      }
+    ],
+    "items": [
+      {
+        "place_slug": "suwonhwaseongbangmulgwan",
+        "reason": "位於梅香洞片區，開放時間為09:00 – 18:00，公休日為每週 週一 Hyumuil。"
+      },
+      {
+        "place_slug": "suwonsirimmisulgwan",
+        "reason": "位於新豐洞片區，開放時間為10:00 – 19:00，公休日為全年無休。"
+      },
+      {
+        "place_slug": "suwonbangmulgwan",
+        "reason": "位於二儀洞片區，開放時間為09:00 – 18:00，公休日為每週 週一 Hyumuil。"
+      },
+      {
+        "place_slug": "suwongwanggyobangmulgwan",
+        "reason": "位於二儀洞片區，開放時間為09:00 – 18:00，公休日為每週 週一 Hyumuil。"
+      },
+      {
+        "place_slug": "gungnimnongeopbangmulgwan",
+        "reason": "位於西屯洞片區，開放時間為10:00 – 18:00，公休日為每週 週一 Hyumuil。"
+      },
+      {
+        "place_slug": "haeujae",
+        "reason": "位於梨木洞片區，開放時間為10:00 – 18:00，公休日為全年無休。"
+      },
+      {
+        "place_slug": "byeolmadangdoseogwan-seutapildeu-suwonjeom",
+        "reason": "位於亭子洞片區，開放時間為10:00 – 22:00，公休日為全年無休。"
+      },
+      {
+        "place_slug": "gyeonggidoseogwan",
+        "reason": "位於二儀洞片區，開放時間為10:00 – 21:00，公休日為每週 週一 Hyumuil。"
+      },
+      {
+        "place_slug": "akuapeullanet-gwanggyo",
+        "reason": "位於下洞片區，開放時間為10:30 – 19:30，公休日為全年無休。"
+      },
+      {
+        "place_slug": "gyeonggisangsangkaempeoseu",
+        "reason": "位於西屯洞片區，開放時間為10:00 – 18:00，公休日為每週 週一 Hyumuil。"
+      }
+    ],
+    "faq": [
+      {
+        "q": "水原被歸類為文化設施的地點與博物館、美術館、圖書館相關景點各有多少處？",
+        "a": "登記為文化設施的水原觀光地有43處，博物館、美術館、圖書館、展覽館與水族館相關景點有34處。",
+        "source": "한국관광공사 TourAPI"
+      }
+    ],
+    "sources": [
+      {
+        "name": "韓國觀光公社 TourAPI",
+        "url": "https://api.visitkorea.or.kr/"
+      }
+    ],
+    "ko_hash": "f6847d43bea34097",
+    "translated_at": "2026-10-23"
+  },
+  "guide-04": {
+    "slug": "pet-friendly-suwon",
+    "label": "攜寵同行",
+    "title": "水原有哪些提供寵物同行說明的湖水公園、觀光地、咖啡廳與住宿？",
+    "summary": "登記有攜寵標準的水原地點共16處，包括觀光地13處、餐飲與咖啡廳2處、住宿1處。下方可對比10處主要地點的可同行區域及牽引繩、寵物包規定。",
+    "body": [
+      {
+        "heading": "13處觀光地、2處咖啡餐廳與1處住宿的攜寵標準",
+        "text": "據韓國觀光公社攜寵旅行及GoCamping資料，記載寵物項目的水原地點共16處。按類型分為寵物犬遊樂場、湖水公園與觀光地13處、咖啡餐飲店2處、住宿1處。"
+      },
+      {
+        "heading": "確認寵物犬遊樂場登記標準、牽引繩與航空箱規定",
+        "text": "光教湖水公園寵物犬遊樂場需核驗動物登記並分設中小型犬與大型犬區，水原Starfield。城郭步道與咖啡廳則分別規定了牽引繩或寵物包要求，出發前請核對下方10處地點的事實表。"
+      }
+    ],
+    "items": [
+      {
+        "place_slug": "gwanggyohosugongwon-ballyeogyeon-noriteo",
+        "reason": "位於靈通區片區，開放時間為10:00 – 22:00，公休日為每週 週一 Hyumuil。"
+      },
+      {
+        "place_slug": "gwanggyohosugongwon",
+        "reason": "位於下洞片區，開放時間為00:00 – 24:00，公休日為全年無休。"
+      },
+      {
+        "place_slug": "suwon-hwaseong",
+        "reason": "位於迎華洞片區，開放時間為00:00 – 24:00，公休日為全年無休。"
+      },
+      {
+        "place_slug": "banghwasuryujeong",
+        "reason": "位於梅香洞片區，開放時間為隨時開放 （Nugak Naebu Churip 09:00–18:00），公休日為全年無休。"
+      },
+      {
+        "place_slug": "manseokgongwon",
+        "reason": "位於松竹洞片區，停車為Manseokgongwon 附近 公共停車場 收費 Unyeong, 1 天。Choedae 4,000韓元，Jucha Gonggan Manchi Ana 提前 Mancha 可。"
+      },
+      {
+        "place_slug": "irwolhosugongwon",
+        "reason": "位於泉川洞片區，開放時間為隨時開放，公休日為全年無休。"
+      },
+      {
+        "place_slug": "hyowongongwon",
+        "reason": "位於仁溪洞片區，開放時間為00:00 – 24:00，公休日為全年無休。"
+      },
+      {
+        "place_slug": "seutapildeu-suwon",
+        "reason": "位於亭子洞片區，開放時間為10:00 – 22:00，公休日為全年無休。"
+      },
+      {
+        "place_slug": "sollaeeumkaempingjang",
+        "reason": "位於金谷洞片區，停車為免費 Jucha。"
+      },
+      {
+        "place_slug": "deohyusik-aneukhotel-suwon-ingyejeom",
+        "reason": "位於仁溪洞片區，停車為免費 Jucha。"
+      }
+    ],
+    "faq": [
+      {
+        "q": "水原登記有攜寵資訊的觀光地、餐飲店和住宿各有多少處？",
+        "a": "在全部16處地點中，觀光地為13處，餐飲與咖啡廳為2處，住宿為1處。",
+        "source": "한국관광공사 TourAPI"
+      }
+    ],
+    "sources": [
+      {
+        "name": "韓國觀光公社 TourAPI",
+        "url": "https://api.visitkorea.or.kr/"
+      }
+    ],
+    "ko_hash": "6b4c1b84ae155a37",
+    "translated_at": "2026-10-23"
+  },
+  "guide-05": {
+    "slug": "monday-open-restaurants-suwon",
+    "label": "週一營業·美食",
+    "title": "水原有哪些週一營業的王排骨、炸雞、刀削麵與咖啡烘焙餐廳？",
+    "summary": "在本網站收錄的水原餐飲店中，公休日不含週一的有180家。在水原王排骨、韓牛與烤肉55家、炸雞、刀削麵、冷麵、醒酒湯與餃子35家。咖啡與烘焙59家中，下方可對比10家主要餐廳的菜單與營業時間。",
+    "body": [
+      {
+        "heading": "180家週一營業餐廳與55家王排骨烤肉、35家炸雞麵食、59家烘焙咖啡店",
+        "text": "據韓國觀光公社TourAPI及Kakao地圖資料，定期公休日不含週一的水原餐廳與咖啡廳共180家。按菜品劃分，王排骨、牛豬排骨、韓牛、烤肉與五花肉有55家，鐵鍋炸雞、刀削麵、冷麵、醒酒湯、雪濃湯。米腸與餃子有35家，咖啡、烘焙、蛋糕與甜點有59家。"
+      },
+      {
+        "heading": "確認午後休息時間與最後點單截止時間",
+        "text": "水原王排骨名店、水原炸雞街專門店及行理團路。光教咖啡街門市常設有平日午後休息時間或最後點單時間，建議到訪前核對下方10家餐廳的營業時間與諮詢電話。"
+      }
+    ],
+    "items": [
+      {
+        "place_slug": "gabojeonggalbi",
+        "reason": "位於仁溪洞片區，主打菜品為Gungnaesan 韓牛 調味排骨 （ 1 Inbun）。79,000韓元，營業時間為11:30 – 21:30。"
+      },
+      {
+        "place_slug": "bonsuwongalbi",
+        "reason": "位於牛滿洞片區，主打菜品為鮮排骨 70,000韓元，供應菜品為鮮排骨 70,000韓元。調味排骨 65,000韓元，排骨湯 20,000韓元，水冷麵 12,000韓元，拌冷麵 12,000韓元。"
+      },
+      {
+        "place_slug": "riteulbonsuwongalbijip",
+        "reason": "位於迎華洞片區，主打菜品為排骨湯 12,000韓元，營業時間為11:00 – 20:30。"
+      },
+      {
+        "place_slug": "jinmitongdak",
+        "reason": "位於南水洞片區，主打菜品為Huraideu 20,000韓元。供應菜品為Huraideu 20,000韓元，炸整雞 20,000韓元，甜辣醬炸雞 21,000韓元。Banban 21,000韓元。"
+      },
+      {
+        "place_slug": "bungmun-yuchihoegwan",
+        "reason": "位於迎華洞片區，主打菜品為Haejangguk 10,000韓元。供應菜品為Haejangguk 10,000韓元，Sulguk 12,000韓元。白切肉 30,000韓元，Haejangguk （Teuk） 12,000韓元。"
+      },
+      {
+        "place_slug": "yuchihoegwan",
+        "reason": "位於仁溪洞片區，主打菜品為Haejangguk 12,000韓元。供應菜品為Haejangguk 12,000韓元，白切肉 （ 輛 ） 40,000韓元。白切肉 Muchim 40,000韓元，白切肉 （Soa） 20,000韓元。"
+      },
+      {
+        "place_slug": "yeonpogalbi",
+        "reason": "位於北水洞片區，主打菜品為調味排骨 （ 450 g） 58,000韓元，營業時間為11:20 – 21:30。"
+      },
+      {
+        "place_slug": "sillagalbi",
+        "reason": "位於遠川洞片區，主打菜品為Wang 鮮排骨 （ 1 Inbun） 70,000韓元，營業時間為11:30 – 22:00。"
+      },
+      {
+        "place_slug": "jeongjiyeongkeopiroseuteojeu-haenggungbonjeom",
+        "reason": "位於新豐洞片區，主打菜品為Kokoneot 7,000韓元，營業時間為12:00 – 22:00。"
+      },
+      {
+        "place_slug": "yeonmil",
+        "reason": "位於八達路1街片區，主打菜品為Saeuyukjeummandu （ 8 個 ） 14,000韓元，營業時間為11:30 – 21:00。"
+      }
+    ],
+    "faq": [
+      {
+        "q": "水原週一營業的餐飲店以及王排骨與烤肉、炸雞與麵食、咖啡與烘焙門市各有多少家？",
+        "a": "週一不休息的餐飲店有180家，王排骨、韓牛與烤肉55家，炸雞、刀削麵、冷麵、湯品與餃子35家，咖啡與烘焙59家。",
+        "source": "한국관광공사 TourAPI"
+      }
+    ],
+    "sources": [
+      {
+        "name": "韓國觀光公社 TourAPI",
+        "url": "https://api.visitkorea.or.kr/"
+      }
+    ],
+    "ko_hash": "a12856407115de7e",
+    "translated_at": "2026-10-23"
+  },
+  "guide-06": {
+    "slug": "suwon-hotels-hanok-stays",
+    "label": "飯店·韓屋·住宿",
+    "title": "如何挑選水原的27家飯店、韓屋住宿與青年旅舍？",
+    "summary": "本網站收錄的水原飯店、韓屋住宿與青年旅舍共27家，登記有停車說明的住宿為26家。下方可對比10家主要住宿的入住退房時間及客房規模。",
+    "body": [
+      {
+        "heading": "27家飯店、韓屋住宿與青年旅舍及26家提供停車說明的住宿",
+        "text": "據韓國觀光公社TourAPI資料，水原共登記有27家住宿設施，分布於水原站、仁溪洞。光教會展中心與行宮洞一帶，其中提供停車說明的住宿有26家。"
+      },
+      {
+        "heading": "對比入住退房時間與飯店配套設施",
+        "text": "水原站、光教與仁溪洞周邊的商務及觀光飯店與水原華城城內的韓屋住宿在入住退房時間、客房數量及餐飲。會議配套設施上各不相同，可根據行程對照下方10家住宿的詳細事實表。"
+      }
+    ],
+    "items": [
+      {
+        "place_slug": "nobotel-aembaeseodeo-suwon",
+        "reason": "位於梅山路1街片區，停車為Sukso Nae Tusukgaek 免費 停車場 使用 可。此外，Gogeup Balletpaking Seobiseu Wanbi。"
+      },
+      {
+        "place_slug": "koteuyadeu-bai-merieoteu-suwon",
+        "reason": "位於下洞片區，停車為Tusukgaek Selpeu Jucha 免費。客房 Dang 1 輛 Jiha 1 層 Jucha 可，停車場 Jiha 5 層 有。"
+      },
+      {
+        "place_slug": "ramadapeuraja-suwonhotel",
+        "reason": "位於仁溪洞片區，停車為Jiha 4 層 Jucha 可，停車場 Ipgu Jobeum, Jucha Sigan Jehan 無。"
+      },
+      {
+        "place_slug": "ibiseu-aembaeseodeo-suwon",
+        "reason": "位於仁溪洞片區，類別為Sukbak。"
+      },
+      {
+        "place_slug": "dono-1796-hotel",
+        "reason": "位於長安洞片區，停車為免費 Jucha。"
+      },
+      {
+        "place_slug": "yeoyeojae",
+        "reason": "位於新豐洞片區，入住為15:00，退房為11:00。"
+      },
+      {
+        "place_slug": "siwoljae",
+        "reason": "位於練武洞片區，入住為15:00，退房為11:00。"
+      },
+      {
+        "place_slug": "133-patirum-hanokseuteijeom",
+        "reason": "位於八達路2街片區，入住為15:00，退房為11:00。"
+      },
+      {
+        "place_slug": "reubonsuwonsilkeurodeuhotel",
+        "reason": "位於仁溪洞片區，類別為Sukbak。"
+      },
+      {
+        "place_slug": "hotel-areutte",
+        "reason": "位於仁溪洞片區，停車為Hotel Geonmul Nae Tawojucha 可。Sukbakgaek Charyang Jucha 可，免費 Ballet Seobiseu Jegong。"
+      }
+    ],
+    "faq": [
+      {
+        "q": "水原登記的住宿設施總數及提供停車說明的住宿各有多少家？",
+        "a": "飯店、韓屋住宿與青年旅舍共27家，提供停車說明的住宿有26家。",
+        "source": "한국관광공사 TourAPI"
+      }
+    ],
+    "sources": [
+      {
+        "name": "韓國觀光公社 TourAPI",
+        "url": "https://api.visitkorea.or.kr/"
+      }
+    ],
+    "ko_hash": "a9958a1f4519d517",
+    "translated_at": "2026-10-23"
+  }
+}

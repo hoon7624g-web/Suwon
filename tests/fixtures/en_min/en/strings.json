@@ -1,0 +1,810 @@
+{
+ "ATTRACTION_GROUPS.0": {
+  "ko": "박물관·전시",
+  "en": "Museums and exhibitions"
+ },
+ "ATTRACTION_GROUPS.1": {
+  "ko": "체험",
+  "en": "Hands-on experiences"
+ },
+ "ATTRACTION_GROUPS.2": {
+  "ko": "문화유산",
+  "en": "Cultural heritage"
+ },
+ "ATTRACTION_GROUPS.3": {
+  "ko": "자연·야외",
+  "en": "Nature and outdoors"
+ },
+ "ATTR_TYPE.공중하강체험시설": {
+  "ko": "체험",
+  "en": "Experience"
+ },
+ "ATTR_TYPE.레포츠": {
+  "ko": "레포츠",
+  "en": "Leisure sports"
+ },
+ "ATTR_TYPE.문화시설": {
+  "ko": "문화시설",
+  "en": "Cultural facility"
+ },
+ "ATTR_TYPE.산업/회의 시설": {
+  "ko": "산업·회의 시설",
+  "en": "Industrial or convention facility"
+ },
+ "ATTR_TYPE.쇼핑": {
+  "ko": "시장·쇼핑",
+  "en": "Market and shopping"
+ },
+ "CONTEST_LABEL.checkin": {
+  "ko": "체크인",
+  "en": "Check-in"
+ },
+ "CONTEST_LABEL.checkout": {
+  "ko": "체크아웃",
+  "en": "Check-out"
+ },
+ "CONTEST_LABEL.menu": {
+  "ko": "대표 메뉴",
+  "en": "Signature dishes"
+ },
+ "CONTEST_LABEL.parking": {
+  "ko": "주차",
+  "en": "Parking"
+ },
+ "CONTEST_LABEL.parking_seats": {
+  "ko": "주차·좌석",
+  "en": "Parking and seating"
+ },
+ "CONTEST_LABEL.restdate": {
+  "ko": "쉬는 날",
+  "en": "Closed days"
+ },
+ "CONTEST_LABEL.roomcount": {
+  "ko": "객실",
+  "en": "Rooms"
+ },
+ "CONTEST_LABEL.usefee": {
+  "ko": "요금",
+  "en": "Fees"
+ },
+ "CONTEST_LABEL.usetime": {
+  "ko": "이용시간",
+  "en": "Hours"
+ },
+ "CONTEST_LABEL.usetime_restdate": {
+  "ko": "영업시간",
+  "en": "Hours"
+ },
+ "FACT_LABELS.accessible_parking": {
+  "ko": "장애인 주차장",
+  "en": "Accessible parking"
+ },
+ "FACT_LABELS.accessible_route": {
+  "ko": "주 출입 접근로",
+  "en": "Main entrance access"
+ },
+ "FACT_LABELS.accessible_toilet": {
+  "ko": "장애인 화장실",
+  "en": "Accessible restroom"
+ },
+ "FACT_LABELS.address": {
+  "ko": "주소",
+  "en": "Address"
+ },
+ "FACT_LABELS.babycarriage": {
+  "ko": "유모차 대여",
+  "en": "Stroller rental"
+ },
+ "FACT_LABELS.checkin": {
+  "ko": "체크인",
+  "en": "Check-in"
+ },
+ "FACT_LABELS.checkout": {
+  "ko": "체크아웃",
+  "en": "Check-out"
+ },
+ "FACT_LABELS.cooking": {
+  "ko": "객실 내 취사",
+  "en": "In-room cooking"
+ },
+ "FACT_LABELS.creditcard": {
+  "ko": "신용카드 결제",
+  "en": "Credit card payment"
+ },
+ "FACT_LABELS.discount": {
+  "ko": "할인",
+  "en": "Discounts"
+ },
+ "FACT_LABELS.expagerange": {
+  "ko": "체험 가능 연령",
+  "en": "Ages for activities"
+ },
+ "FACT_LABELS.expguide": {
+  "ko": "체험 안내",
+  "en": "Activities"
+ },
+ "FACT_LABELS.fairday": {
+  "ko": "장날",
+  "en": "Market days"
+ },
+ "FACT_LABELS.filming": {
+  "ko": "촬영지 정보",
+  "en": "Filming location information"
+ },
+ "FACT_LABELS.homepage": {
+  "ko": "홈페이지",
+  "en": "Website"
+ },
+ "FACT_LABELS.infocenter": {
+  "ko": "문의",
+  "en": "Contact"
+ },
+ "FACT_LABELS.kidsfacility": {
+  "ko": "어린이 놀이방",
+  "en": "Kids' playroom"
+ },
+ "FACT_LABELS.menu": {
+  "ko": "대표 메뉴",
+  "en": "Signature dishes"
+ },
+ "FACT_LABELS.openperiod": {
+  "ko": "운영 기간",
+  "en": "Operating period"
+ },
+ "FACT_LABELS.packing": {
+  "ko": "포장",
+  "en": "Takeout"
+ },
+ "FACT_LABELS.parking": {
+  "ko": "주차",
+  "en": "Parking"
+ },
+ "FACT_LABELS.parking_seats": {
+  "ko": "주차·좌석",
+  "en": "Parking and seating"
+ },
+ "FACT_LABELS.parkingfee": {
+  "ko": "주차요금",
+  "en": "Parking fee"
+ },
+ "FACT_LABELS.pet": {
+  "ko": "반려동물 동반",
+  "en": "Pets"
+ },
+ "FACT_LABELS.reservation": {
+  "ko": "예약 안내",
+  "en": "Reservations"
+ },
+ "FACT_LABELS.reservationurl": {
+  "ko": "예약 페이지",
+  "en": "Booking page"
+ },
+ "FACT_LABELS.restdate": {
+  "ko": "쉬는 날",
+  "en": "Closed days"
+ },
+ "FACT_LABELS.roomcount": {
+  "ko": "객실 수",
+  "en": "Number of rooms"
+ },
+ "FACT_LABELS.roomtype": {
+  "ko": "객실 유형",
+  "en": "Room types"
+ },
+ "FACT_LABELS.saleitem": {
+  "ko": "판매 품목",
+  "en": "Items sold"
+ },
+ "FACT_LABELS.seat": {
+  "ko": "좌석",
+  "en": "Seating"
+ },
+ "FACT_LABELS.shopguide": {
+  "ko": "매장 안내",
+  "en": "Store information"
+ },
+ "FACT_LABELS.spendtime": {
+  "ko": "관람 소요시간",
+  "en": "Time needed for a visit"
+ },
+ "FACT_LABELS.subfacility": {
+  "ko": "부대시설",
+  "en": "Facilities"
+ },
+ "FACT_LABELS.treatmenu": {
+  "ko": "취급 메뉴",
+  "en": "Menu"
+ },
+ "FACT_LABELS.usefee": {
+  "ko": "이용요금",
+  "en": "Fees"
+ },
+ "FACT_LABELS.useseason": {
+  "ko": "이용 시기",
+  "en": "Season"
+ },
+ "FACT_LABELS.usetime": {
+  "ko": "이용시간",
+  "en": "Hours"
+ },
+ "FACT_LABELS.usetime_restdate": {
+  "ko": "영업시간·정기휴일",
+  "en": "Hours and regular closing days"
+ },
+ "FACT_LABELS.wheelchair": {
+  "ko": "휠체어 대여",
+  "en": "Wheelchair rental"
+ },
+ "FOOD_TYPE.식육(숯불구이)": {
+  "ko": "고기구이",
+  "en": "Grilled meat"
+ },
+ "INDEX_GROUP_LABELS.checkin": {
+  "ko": "체크인",
+  "en": "Check-in"
+ },
+ "INDEX_GROUP_LABELS.fee": {
+  "ko": "요금",
+  "en": "Fees"
+ },
+ "INDEX_GROUP_LABELS.homepage": {
+  "ko": "홈페이지",
+  "en": "Website"
+ },
+ "INDEX_GROUP_LABELS.hours": {
+  "ko": "이용시간",
+  "en": "Hours"
+ },
+ "INDEX_GROUP_LABELS.menu": {
+  "ko": "대표 메뉴",
+  "en": "Signature dishes"
+ },
+ "INDEX_GROUP_LABELS.parking": {
+  "ko": "주차",
+  "en": "Parking"
+ },
+ "INDEX_GROUP_LABELS.phone": {
+  "ko": "전화",
+  "en": "Phone"
+ },
+ "INDEX_GROUP_LABELS.restdate": {
+  "ko": "쉬는 날",
+  "en": "Closed days"
+ },
+ "KIND_LABELS.attraction": {
+  "ko": "관광지",
+  "en": "Attraction"
+ },
+ "KIND_LABELS.food": {
+  "ko": "음식점",
+  "en": "Restaurant"
+ },
+ "KIND_LABELS.stay": {
+  "ko": "숙소",
+  "en": "Stay"
+ },
+ "LIC.KOGL-1": {
+  "ko": "공공누리 제1유형",
+  "en": "KOGL Type 1"
+ },
+ "LIC.KOGL-3": {
+  "ko": "공공누리 제3유형(변경금지)",
+  "en": "KOGL Type 3 (no changes allowed)"
+ },
+ "LISTS.attraction.lead": {
+  "ko": "어떤 곳인지, 지금 가도 되는지 확인하고 길찾기로 이어 가세요.",
+  "en": "See what each place is and whether you can go now, then get directions."
+ },
+ "LISTS.food.lead": {
+  "ko": "음식점마다 대표 메뉴와 영업시간·정기휴일을 정리했습니다.",
+  "en": "Each restaurant lists its signature dishes, hours and regular closing days."
+ },
+ "LISTS.stay.lead": {
+  "ko": "숙소마다 체크인·체크아웃·주차·문의처를 정리했습니다.",
+  "en": "Each stay lists check-in, check-out, parking and who to contact."
+ },
+ "LIST_HUB_TINY.attraction": {
+  "ko": "",
+  "en": "Area by area"
+ },
+ "LIST_HUB_TINY.stay": {
+  "ko": "",
+  "en": "Including pensions"
+ },
+ "REGIONS.eunpa": {
+  "ko": "은파",
+  "en": "Eunpa"
+ },
+ "REGIONS.far": {
+  "ko": "먼 섬",
+  "en": "Outlying islands"
+ },
+ "REGIONS.geumgang": {
+  "ko": "금강",
+  "en": "Geumgang River"
+ },
+ "REGIONS.gogunsan": {
+  "ko": "고군산",
+  "en": "Gogunsan"
+ },
+ "REGIONS.none": {
+  "ko": "권역 미정",
+  "en": "Area not assigned"
+ },
+ "REGIONS.saemangeum-bieung": {
+  "ko": "새만금·비응",
+  "en": "Saemangeum and Bieung"
+ },
+ "REGIONS.wondosim": {
+  "ko": "원도심",
+  "en": "Old downtown"
+ },
+ "STATUS_PREFIX.checkin": {
+  "ko": "체크인",
+  "en": "Check-in"
+ },
+ "STATUS_PREFIX.checkout": {
+  "ko": "체크아웃",
+  "en": "Check-out"
+ },
+ "STATUS_PREFIX.menu": {
+  "ko": "대표 메뉴",
+  "en": "Signature dishes"
+ },
+ "STATUS_PREFIX.parking_seats": {
+  "ko": "주차·좌석",
+  "en": "Parking and seating"
+ },
+ "STATUS_PREFIX.roomcount": {
+  "ko": "객실",
+  "en": "Rooms"
+ },
+ "STATUS_PREFIX.usefee": {
+  "ko": "요금",
+  "en": "Fee"
+ },
+ "STAY_TYPE.": {
+  "ko": "그 밖의 숙소",
+  "en": "Other lodging"
+ },
+ "STAY_TYPE.굿스테이": {
+  "ko": "굿스테이 인증 숙소",
+  "en": "Goodstay-certified lodging"
+ },
+ "STAY_TYPE.기타": {
+  "ko": "그 밖의 숙소",
+  "en": "Other lodging"
+ },
+ "STAY_TYPE.숙박": {
+  "ko": "숙박업소",
+  "en": "Lodging"
+ },
+ "STAY_TYPE.여관/모텔": {
+  "ko": "모텔·여관",
+  "en": "Motel or inn"
+ },
+ "STAY_TYPE.일반호텔": {
+  "ko": "호텔",
+  "en": "Hotel"
+ },
+ "STOP_KIND_LABELS.activity": {
+  "ko": "일정",
+  "en": "Activity"
+ },
+ "STOP_KIND_LABELS.lodging": {
+  "ko": "숙박",
+  "en": "Overnight stay"
+ },
+ "STOP_KIND_LABELS.meal": {
+  "ko": "식사",
+  "en": "Meal"
+ },
+ "TITLE_LABELS.checkin": {
+  "ko": "체크인",
+  "en": "Check-in"
+ },
+ "TITLE_LABELS.menu": {
+  "ko": "메뉴",
+  "en": "Menu"
+ },
+ "TITLE_LABELS.parking": {
+  "ko": "주차",
+  "en": "Parking"
+ },
+ "TITLE_LABELS.parking_seats": {
+  "ko": "주차",
+  "en": "Parking"
+ },
+ "TITLE_LABELS.parkingfee": {
+  "ko": "주차",
+  "en": "Parking"
+ },
+ "TITLE_LABELS.restdate": {
+  "ko": "쉬는 날",
+  "en": "Closed days"
+ },
+ "TITLE_LABELS.usefee": {
+  "ko": "요금",
+  "en": "Fees"
+ },
+ "TITLE_LABELS.usetime": {
+  "ko": "이용시간",
+  "en": "Hours"
+ },
+ "TITLE_LABELS.usetime_restdate": {
+  "ko": "영업시간",
+  "en": "Hours"
+ },
+ "category:감성여행": {
+  "ko": "감성여행",
+  "en": "Sentimental trips"
+ },
+ "category:게스트하우스": {
+  "ko": "게스트하우스",
+  "en": "Guesthouse"
+ },
+ "category:골프장": {
+  "ko": "골프장",
+  "en": "Golf course"
+ },
+ "category:공중하강체험시설": {
+  "ko": "공중하강체험시설",
+  "en": "Aerial descent experience facility"
+ },
+ "category:관광명소 > 경암동 철길마을": {
+  "ko": "관광명소 > 경암동 철길마을",
+  "en": "Attractions > Gyeongam-dong Railroad Village"
+ },
+ "category:관광명소 > 공원": {
+  "ko": "관광명소 > 공원",
+  "en": "Attractions > Park"
+ },
+ "category:관광지": {
+  "ko": "관광지",
+  "en": "Attraction"
+ },
+ "category:관광호텔": {
+  "ko": "관광호텔",
+  "en": "Tourist hotel"
+ },
+ "category:국가등록 문화유산": {
+  "ko": "국가등록 문화유산",
+  "en": "Nationally Registered Cultural Heritage"
+ },
+ "category:국가지정 문화유산 - 보물": {
+  "ko": "국가지정 문화유산 - 보물",
+  "en": "Nationally Designated Heritage - Treasure"
+ },
+ "category:국가지정 문화유산 - 사적": {
+  "ko": "국가지정 문화유산 - 사적",
+  "en": "Nationally Designated Heritage - Historic Site"
+ },
+ "category:군산시향토유산": {
+  "ko": "군산시향토유산",
+  "en": "Gunsan Local Heritage"
+ },
+ "category:굿스테이": {
+  "ko": "굿스테이",
+  "en": "Goodstay"
+ },
+ "category:근대문화유산투어": {
+  "ko": "근대문화유산투어",
+  "en": "Modern cultural heritage tour"
+ },
+ "category:금강": {
+  "ko": "금강",
+  "en": "Geumgang River"
+ },
+ "category:기타": {
+  "ko": "기타",
+  "en": "Other"
+ },
+ "category:기타 체험": {
+  "ko": "기타 체험",
+  "en": "Other experience"
+ },
+ "category:나이트투어": {
+  "ko": "나이트투어",
+  "en": "Night tour"
+ },
+ "category:농어촌 체험": {
+  "ko": "농어촌 체험",
+  "en": "Farm and fishing village experience"
+ },
+ "category:농촌교육농장 품질인증": {
+  "ko": "농촌교육농장 품질인증",
+  "en": "Quality-certified rural education farm"
+ },
+ "category:도지정 기념물": {
+  "ko": "도지정 기념물",
+  "en": "Provincial Monument"
+ },
+ "category:도지정 문화유산 자료": {
+  "ko": "도지정 문화유산 자료",
+  "en": "Provincial Cultural Heritage Material"
+ },
+ "category:도지정 유형 문화유산": {
+  "ko": "도지정 유형 문화유산",
+  "en": "Provincial Tangible Cultural Heritage"
+ },
+ "category:레저 > 골프장": {
+  "ko": "레저 > 골프장",
+  "en": "Leisure > Golf course"
+ },
+ "category:레포츠": {
+  "ko": "레포츠",
+  "en": "Leisure sports"
+ },
+ "category:말랭이마을": {
+  "ko": "말랭이마을",
+  "en": "Mallaengi Village"
+ },
+ "category:문화시설": {
+  "ko": "문화시설",
+  "en": "Cultural facility"
+ },
+ "category:박물관/전시관": {
+  "ko": "박물관/전시관",
+  "en": "Museum/Exhibition hall"
+ },
+ "category:분식": {
+  "ko": "분식",
+  "en": "Bunsik (Korean snacks)"
+ },
+ "category:비응 마파지길": {
+  "ko": "비응 마파지길",
+  "en": "Bieung Mapaji Trail"
+ },
+ "category:산": {
+  "ko": "산",
+  "en": "Mountain"
+ },
+ "category:산업/회의 시설": {
+  "ko": "산업/회의 시설",
+  "en": "Industrial/Convention facility"
+ },
+ "category:섬여행": {
+  "ko": "섬여행",
+  "en": "Island trips"
+ },
+ "category:쇼핑": {
+  "ko": "쇼핑",
+  "en": "Shopping"
+ },
+ "category:숙박": {
+  "ko": "숙박",
+  "en": "Lodging"
+ },
+ "category:식육(숯불구이)": {
+  "ko": "식육(숯불구이)",
+  "en": "Meat (charcoal grill)"
+ },
+ "category:여관/모텔": {
+  "ko": "여관/모텔",
+  "en": "Inn/Motel"
+ },
+ "category:음식점": {
+  "ko": "음식점",
+  "en": "Restaurant"
+ },
+ "category:일반호텔": {
+  "ko": "일반호텔",
+  "en": "General hotel"
+ },
+ "category:일식": {
+  "ko": "일식",
+  "en": "Japanese"
+ },
+ "category:중식": {
+  "ko": "중식",
+  "en": "Chinese"
+ },
+ "category:짬뽕 특화거리 ( 중식)": {
+  "ko": "짬뽕 특화거리 ( 중식)",
+  "en": "Jjamppong Specialty Street (Chinese)"
+ },
+ "category:찜질방": {
+  "ko": "찜질방",
+  "en": "Jjimjilbang (Korean sauna)"
+ },
+ "category:탕류": {
+  "ko": "탕류",
+  "en": "Soups and stews"
+ },
+ "category:테마여행 > 감성여행": {
+  "ko": "테마여행 > 감성여행",
+  "en": "Theme trips > Sentimental trips"
+ },
+ "category:한식": {
+  "ko": "한식",
+  "en": "Korean"
+ },
+ "designation:군산맛집(2026, 군산시 지정)": {
+  "ko": "군산맛집(2026, 군산시 지정)",
+  "en": "2026 Gunsan Matjip (designated by Gunsan City)"
+ },
+ "designation:모범음식점(군산시 지정)": {
+  "ko": "모범음식점(군산시 지정)",
+  "en": "Model Restaurant (Gunsan City)"
+ },
+ "designation:백년가게(중소벤처기업부)": {
+  "ko": "백년가게(중소벤처기업부)",
+  "en": "Centennial Store (Ministry of SMEs and Startups)"
+ },
+ "designation:안심식당": {
+  "ko": "안심식당",
+  "en": "Safe Restaurant"
+ },
+ "designation:짬뽕 특화거리(군산시)": {
+  "ko": "짬뽕 특화거리(군산시)",
+  "en": "Jjamppong Street (Gunsan City)"
+ },
+ "designation:착한가격업소(군산시)": {
+  "ko": "착한가격업소(군산시)",
+  "en": "Good-Price Store (Gunsan City)"
+ },
+ "designation:향토음식점(전북, 2020)": {
+  "ko": "향토음식점(전북, 2020)",
+  "en": "Local Food Restaurant (Jeonbuk, 2020)"
+ },
+ "designation_source:군산시 문화관광 「군산맛집」 지정 현황(2026)": {
+  "ko": "군산시 문화관광 「군산맛집」 지정 현황(2026)",
+  "en": "Gunsan Culture and Tourism: Gunsan Matjip designations (2026)"
+ },
+ "designation_source:군산시 문화관광 모범음식점 현황": {
+  "ko": "군산시 문화관광 모범음식점 현황",
+  "en": "Gunsan Culture and Tourism: Model Restaurant list"
+ },
+ "designation_source:군산시 문화관광 안심식당 지정업소 현황": {
+  "ko": "군산시 문화관광 안심식당 지정업소 현황",
+  "en": "Gunsan Culture and Tourism: Safe Restaurant list"
+ },
+ "designation_source:군산시 문화관광 짬뽕 특화거리": {
+  "ko": "군산시 문화관광 짬뽕 특화거리",
+  "en": "Gunsan Culture and Tourism: Jjamppong Street"
+ },
+ "designation_source:군산시 착한가격업소 목록(2025년 12월 기준)": {
+  "ko": "군산시 착한가격업소 목록(2025년 12월 기준)",
+  "en": "Gunsan City Good-Price Store list (as of December 2025)"
+ },
+ "designation_source:소상공인시장진흥공단 전국 백년가게 지정 목록(2026-08-20)": {
+  "ko": "소상공인시장진흥공단 전국 백년가게 지정 목록(2026-08-20)",
+  "en": "Small Enterprise and Market Service: national Centennial Store list (2026-08-20)"
+ },
+ "designation_source:전북특별자치도 향토 음식점 현황(2020-09-30)": {
+  "ko": "전북특별자치도 향토 음식점 현황(2020-09-30)",
+  "en": "Jeonbuk State local food restaurant list (2020-09-30)"
+ },
+ "provider:군산근대역사박물관 홈페이지": {
+  "ko": "군산근대역사박물관 홈페이지",
+  "en": "Gunsan Modern History Museum website"
+ },
+ "provider:군산시 문화관광": {
+  "ko": "군산시 문화관광",
+  "en": "Gunsan City Culture and Tourism"
+ },
+ "provider:군산시 문화관광 군산맛집 지정 현황": {
+  "ko": "군산시 문화관광 군산맛집 지정 현황",
+  "en": "Gunsan City Culture and Tourism list of designated Gunsan Matjip restaurants"
+ },
+ "provider:군산시 문화관광 목록": {
+  "ko": "군산시 문화관광 목록",
+  "en": "Gunsan City Culture and Tourism listings"
+ },
+ "provider:군산시 문화관광 상세 정보표": {
+  "ko": "군산시 문화관광 상세 정보표",
+  "en": "Gunsan City Culture and Tourism detail table"
+ },
+ "provider:군산시 문화관광 안심식당 지정업소 현황": {
+  "ko": "군산시 문화관광 안심식당 지정업소 현황",
+  "en": "Gunsan City Culture and Tourism Safe Restaurant list"
+ },
+ "provider:군산시 위생과 지정업소 현황": {
+  "ko": "군산시 위생과 지정업소 현황",
+  "en": "Gunsan City Sanitation Division list of designated restaurants"
+ },
+ "provider:금강미래체험관 홈페이지": {
+  "ko": "금강미래체험관 홈페이지",
+  "en": "Geumgang Future Experience Center website"
+ },
+ "provider:금강미래체험관 홈페이지 공지": {
+  "ko": "금강미래체험관 홈페이지 공지",
+  "en": "Geumgang Future Experience Center website notice"
+ },
+ "provider:채만식문학관 홈페이지": {
+  "ko": "채만식문학관 홈페이지",
+  "en": "Chae Man-sik Literary Museum website"
+ },
+ "provider:한국관광공사 TourAPI": {
+  "ko": "한국관광공사 TourAPI",
+  "en": "Korea Tourism Organization TourAPI"
+ },
+ "theme.alleys-culture.name": {
+  "ko": "골목과 문화",
+  "en": "Alleys and Culture"
+ },
+ "theme.islands-sea.name": {
+  "ko": "섬과 바다",
+  "en": "Islands and Sea"
+ },
+ "theme.modern-history.name": {
+  "ko": "근대와 역사",
+  "en": "Modern Era and History"
+ },
+ "theme.parks-nature.name": {
+  "ko": "공원과 자연",
+  "en": "Parks and Nature"
+ },
+ "LIST_CFG.attraction.title": {
+  "ko": "관광지",
+  "en": "Attractions"
+ },
+ "LIST_CFG.attraction.cols.usetime": {
+  "ko": "이용시간",
+  "en": "Hours"
+ },
+ "LIST_CFG.attraction.cols.restdate": {
+  "ko": "쉬는 날",
+  "en": "Closed days"
+ },
+ "LIST_CFG.attraction.cols.usefee": {
+  "ko": "요금",
+  "en": "Fees"
+ },
+ "LIST_CFG.attraction.cols.parking": {
+  "ko": "주차",
+  "en": "Parking"
+ },
+ "LIST_CFG.attraction.check": {
+  "ko": "요금 무료",
+  "en": "Free of charge"
+ },
+ "LIST_CFG.stay.title": {
+  "ko": "숙소",
+  "en": "Stays"
+ },
+ "LIST_CFG.stay.cols.checkin": {
+  "ko": "체크인",
+  "en": "Check-in"
+ },
+ "LIST_CFG.stay.cols.checkout": {
+  "ko": "체크아웃",
+  "en": "Check-out"
+ },
+ "LIST_CFG.stay.cols.parking": {
+  "ko": "주차",
+  "en": "Parking"
+ },
+ "LIST_CFG.stay.cols.tel": {
+  "ko": "문의",
+  "en": "Contact"
+ },
+ "LIST_CFG.stay.check": {
+  "ko": "체크인 시간 있음",
+  "en": "Check-in time listed"
+ },
+ "LIST_CFG.food.title": {
+  "ko": "음식점",
+  "en": "Restaurants"
+ },
+ "LIST_CFG.food.cols.menu": {
+  "ko": "대표 메뉴",
+  "en": "Signature dishes"
+ },
+ "LIST_CFG.food.cols.usetime_restdate": {
+  "ko": "영업시간·정기휴일",
+  "en": "Hours and regular closing days"
+ },
+ "LIST_CFG.food.cols.parking_seats": {
+  "ko": "주차·좌석",
+  "en": "Parking and seating"
+ },
+ "LIST_CFG.food.cols.tel": {
+  "ko": "문의",
+  "en": "Contact"
+ },
+ "LIST_CFG.food.check": {
+  "ko": "월요일 영업 표기",
+  "en": "Listed as open on Mondays"
+ }
+}

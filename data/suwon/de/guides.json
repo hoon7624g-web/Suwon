@@ -1,0 +1,440 @@
+{
+  "guide-01": {
+    "slug": "suwon-hwaseong-fortress-haenggung",
+    "label": "Suwon Hwaseong · Haenggung · Stadtmauer",
+    "title": "Welche Festungsorte rund um Suwon Hwaseong und Hwaseong Haenggung sowie ganzjährig kostenlosen Ziele gibt es?",
+    "summary": "Auf dieser Website sind 20 Orte rund um die Festung Suwon Hwaseong, den Palast Hwaseong Haenggung und die Stadttore verzeichnet, darunter 50 ganzjährig kostenlose Ziele in Suwon. Unten lassen sich 10 wichtige Orte vergleichen.",
+    "body": [
+      {
+        "heading": "20 Festungs- und Palastorte sowie 50 ganzjährig kostenlose Ziele",
+        "text": "Laut TourAPI der Korea Tourism Organization gehören 20 Sehenswürdigkeiten zur Festung Suwon Hwaseong, zum Palast Hwaseong Haenggung, den vier Toren, Banghwasuryujeong, Yeonmudae, Seojangdae und Hwaryeongjeon; 50 Orte in Suwon sind ganzjährig kostenlos."
+      },
+      {
+        "heading": "Durchgehend geöffnete Mauerabschnitte und Kassenzeiten für Palast und Fahrten prüfen",
+        "text": "Während der Festungsweg und die Stadttore ganzjährig kostenlos zugänglich sind, gelten im Palast Hwaseong Haenggung, bei der Hwaseong-Bahn und beim Ballon Flying. Zudem gilt für die Anlage: Suwon feste Kassen- und Wetterregeln; prüfen Sie daher vorab die 10 Orte unten."
+      }
+    ],
+    "items": [
+      {
+        "place_slug": "suwon-hwaseong",
+        "reason": "Liegt im Bereich Yeonghwa-dong mit Öffnungszeiten: 00:00 – 24:00 und Ruhetag: Ganzjährig ohne Ruhetag."
+      },
+      {
+        "place_slug": "hwaseonghaenggung",
+        "reason": "Liegt im Bereich Namchang-dong mit Öffnungszeiten: 09:00–18:00 (Yagangaejang Sijeun 18:00–21:30 Byeoldo Unyeong) und Ruhetag: Ganzjährig geöffnet (Yagangaejangeun Montag, Dienstag Hyumu)."
+      },
+      {
+        "place_slug": "banghwasuryujeong",
+        "reason": "Liegt im Bereich Maehyang-dong mit Öffnungszeiten: Durchgehend geöffnet (Nugak Naebu Churip 09:00–18:00) und Ruhetag: Ganzjährig ohne Ruhetag."
+      },
+      {
+        "place_slug": "janganmun",
+        "reason": "Liegt im Bereich Jangan-dong mit Öffnungszeiten: Durchgehend geöffnet (Seonggwak Tambangno Ilchul–22:00) und Ruhetag: Ganzjährig ohne Ruhetag."
+      },
+      {
+        "place_slug": "paldalmun",
+        "reason": "Liegt im Bereich Paldal-ro 2-ga mit Öffnungszeiten: 09:00 – 18:00 und Ruhetag: Ganzjährig ohne Ruhetag."
+      },
+      {
+        "place_slug": "hwaseomun",
+        "reason": "Liegt im Bereich Jangan-dong mit Öffnungszeiten: Jederzeit geöffnet und Ruhetag: Ganzjährig ohne Ruhetag."
+      },
+      {
+        "place_slug": "changnyongmun",
+        "reason": "Liegt im Bereich Namsu-dong mit Öffnungszeiten: Jederzeit geöffnet und Ruhetag: Ganzjährig ohne Ruhetag."
+      },
+      {
+        "place_slug": "yeonmudae",
+        "reason": "Liegt im Bereich Maehyang-dong mit Öffnungszeiten: 10:00 – 17:00 und Ruhetag: Ganzjährig ohne Ruhetag."
+      },
+      {
+        "place_slug": "hwahongmun",
+        "reason": "Liegt im Bereich Paldal-gu mit Öffnungszeiten: Jederzeit geöffnet und Ruhetag: Ganzjährig ohne Ruhetag."
+      },
+      {
+        "place_slug": "hyowonui-jong-seojangdae",
+        "reason": "Liegt im Bereich Namchang-dong mit Öffnungszeiten: 09:00–18:00 (Seonggwakgil Durchgehend geöffnet ) und Ruhetag: Ganzjährig ohne Ruhetag."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wie viele Festungs- und Palastorte sowie ganzjährig kostenlose Ziele gibt es in Suwon?",
+        "a": "Es gibt 20 Orte rund um Festung, Palast, Tore und Pavillons sowie 50 ganzjährig geöffnete kostenlose Sehenswürdigkeiten.",
+        "source": "한국관광공사 TourAPI"
+      }
+    ],
+    "sources": [
+      {
+        "name": "Korea Tourism Organization TourAPI",
+        "url": "https://api.visitkorea.or.kr/"
+      }
+    ],
+    "ko_hash": "93c35614c0e5d3d6",
+    "translated_at": "2026-10-23"
+  },
+  "guide-02": {
+    "slug": "suwon-with-kids",
+    "label": "Mit Kindern",
+    "title": "Welche Arboreten, Aquarien, Museen und Parks in Suwon eignen sich für Familien mit Kindern?",
+    "summary": "In Suwon gibt es 52 Arboreten, Seen, Parks, Aquarien, Sternwarten und Museen sowie 43 Kultureinrichtungen wie Museen und Bibliotheken. Unten können Sie 10 wichtige Orte vergleichen.",
+    "body": [
+      {
+        "heading": "52 Arboreten, Seen, Parks, Aquarien und Museen sowie 43 Kultureinrichtungen",
+        "text": "Nach Angaben von TourAPI tragen 52 Sehenswürdigkeiten in Suwon Namen mit Bezug zu Arboretum, See, Park, Aqua Planet, Sternwarte, Museum oder Kunstgalerie, und 43 Kultureinrichtungen wie Museen und Kinderbibliotheken sind erfasst."
+      },
+      {
+        "heading": "Schließung am Montag, Vorabreservierung und Einlassschluss prüfen",
+        "text": "Die Arboreten Irwol und Yeongheung sowie städtische Museen schließen jeden Montag, während das Samsung Innovation Museum und Kindererlebnisräume oft Online-Buchungen erfordern; prüfen Sie daher die 10 Orte unten vor dem Besuch."
+      }
+    ],
+    "items": [
+      {
+        "place_slug": "irwolsumogwon",
+        "reason": "Liegt im Bereich Cheoncheon-dong mit Öffnungszeiten: 09:30 – 17:30 und Ruhetag: jeden Montag Hyumuil."
+      },
+      {
+        "place_slug": "yeongheungsumogwon",
+        "reason": "Liegt im Bereich Yeongtong-dong mit Öffnungszeiten: 09:30 – 17:30 und Ruhetag: jeden Montag Hyumuil."
+      },
+      {
+        "place_slug": "akuapeullanet-gwanggyo",
+        "reason": "Liegt im Bereich Ha-dong mit Öffnungszeiten: 10:30 – 19:30 und Ruhetag: Ganzjährig ohne Ruhetag."
+      },
+      {
+        "place_slug": "gwanggyohosugongwon",
+        "reason": "Liegt im Bereich Ha-dong mit Öffnungszeiten: 00:00 – 24:00 und Ruhetag: Ganzjährig ohne Ruhetag."
+      },
+      {
+        "place_slug": "gungnimnongeopbangmulgwan",
+        "reason": "Liegt im Bereich Seodun-dong mit Öffnungszeiten: 10:00 – 18:00 und Ruhetag: jeden Montag Hyumuil."
+      },
+      {
+        "place_slug": "haeujae",
+        "reason": "Liegt im Bereich Imok-dong mit Öffnungszeiten: 10:00 – 18:00 und Ruhetag: Ganzjährig ohne Ruhetag."
+      },
+      {
+        "place_slug": "samseonginobeisyeonmyujieom",
+        "reason": "Liegt im Bereich Maetan-dong mit Öffnungszeiten: 13:00 – 14:00 und Ruhetag: jeden Sonntag Hyumuil."
+      },
+      {
+        "place_slug": "suwonhwaseongbangmulgwan",
+        "reason": "Liegt im Bereich Maehyang-dong mit Öffnungszeiten: 09:00 – 18:00 und Ruhetag: jeden Montag Hyumuil."
+      },
+      {
+        "place_slug": "suwongwanggyobangmulgwan",
+        "reason": "Liegt im Bereich Iui-dong mit Öffnungszeiten: 09:00 – 18:00 und Ruhetag: jeden Montag Hyumuil."
+      },
+      {
+        "place_slug": "gwanggyoeorinicheonmundae",
+        "reason": "Liegt im Bereich Iui-dong mit Öffnungszeiten: 15:00 – 24:00 und Ruhetag: jeden Sonntag, Montag Hyumuil."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wie viele Arboreten, Seen, Parks, Aquarien und Museen sowie Kultureinrichtungen gibt es in Suwon?",
+        "a": "Es gibt 52 Arboreten, Seen, Parks, Aquarien, Sternwarten und Museen sowie 43 Kultureinrichtungen.",
+        "source": "한국관광공사 TourAPI"
+      }
+    ],
+    "sources": [
+      {
+        "name": "Korea Tourism Organization TourAPI",
+        "url": "https://api.visitkorea.or.kr/"
+      }
+    ],
+    "ko_hash": "5654bc7aea71390a",
+    "translated_at": "2026-10-23"
+  },
+  "guide-03": {
+    "slug": "suwon-indoor-museums",
+    "label": "Regentag · Indoor",
+    "title": "Welche Museen, Kunstgalerien, Bibliotheken und Kultureinrichtungen in Suwon eignen sich für Regentage?",
+    "summary": "Auf dieser Website sind 43 Kultureinrichtungen in Suwon sowie 34 Museen, Kunstgalerien, Bibliotheken, Ausstellungshallen und Aquarien erfasst. Vergleichen Sie unten die 10 wichtigsten Orte.",
+    "body": [
+      {
+        "heading": "43 Kultureinrichtungen sowie 34 Museen, Galerien, Bibliotheken und Indoor-Ziele",
+        "text": "In der TourAPI-Klassifikation sind 43 Orte in Suwon als Kultureinrichtungen registriert, und 34 Sehenswürdigkeiten tragen Namen wie Museum, Kunstmuseum, Bibliothek, Ausstellungshalle, Kulturzentrum oder Aqua Planet."
+      },
+      {
+        "heading": "Öffnungszeiten, Schließung am Montag und kostenloser Eintritt im Vergleich",
+        "text": "Museen wie das Suwon-Hwaseong-Museum, das Stadtmuseum Suwon, das Kunstmuseum Suwon und das Landwirtschaftsmuseum schließen montags, während die Starfield-Bibliothek und Aqua Planet Gwanggyo. Zudem gilt für die Anlage: ganzjährig geöffnet sind; gleichen Sie daher die 10 Orte unten ab."
+      }
+    ],
+    "items": [
+      {
+        "place_slug": "suwonhwaseongbangmulgwan",
+        "reason": "Liegt im Bereich Maehyang-dong mit Öffnungszeiten: 09:00 – 18:00 und Ruhetag: jeden Montag Hyumuil."
+      },
+      {
+        "place_slug": "suwonsirimmisulgwan",
+        "reason": "Liegt im Bereich Sinpung-dong mit Öffnungszeiten: 10:00 – 19:00 und Ruhetag: Ganzjährig ohne Ruhetag."
+      },
+      {
+        "place_slug": "suwonbangmulgwan",
+        "reason": "Liegt im Bereich Iui-dong mit Öffnungszeiten: 09:00 – 18:00 und Ruhetag: jeden Montag Hyumuil."
+      },
+      {
+        "place_slug": "suwongwanggyobangmulgwan",
+        "reason": "Liegt im Bereich Iui-dong mit Öffnungszeiten: 09:00 – 18:00 und Ruhetag: jeden Montag Hyumuil."
+      },
+      {
+        "place_slug": "gungnimnongeopbangmulgwan",
+        "reason": "Liegt im Bereich Seodun-dong mit Öffnungszeiten: 10:00 – 18:00 und Ruhetag: jeden Montag Hyumuil."
+      },
+      {
+        "place_slug": "haeujae",
+        "reason": "Liegt im Bereich Imok-dong mit Öffnungszeiten: 10:00 – 18:00 und Ruhetag: Ganzjährig ohne Ruhetag."
+      },
+      {
+        "place_slug": "byeolmadangdoseogwan-seutapildeu-suwonjeom",
+        "reason": "Liegt im Bereich Jeongja-dong mit Öffnungszeiten: 10:00 – 22:00 und Ruhetag: Ganzjährig ohne Ruhetag."
+      },
+      {
+        "place_slug": "gyeonggidoseogwan",
+        "reason": "Liegt im Bereich Iui-dong mit Öffnungszeiten: 10:00 – 21:00 und Ruhetag: jeden Montag Hyumuil."
+      },
+      {
+        "place_slug": "akuapeullanet-gwanggyo",
+        "reason": "Liegt im Bereich Ha-dong mit Öffnungszeiten: 10:30 – 19:30 und Ruhetag: Ganzjährig ohne Ruhetag."
+      },
+      {
+        "place_slug": "gyeonggisangsangkaempeoseu",
+        "reason": "Liegt im Bereich Seodun-dong mit Öffnungszeiten: 10:00 – 18:00 und Ruhetag: jeden Montag Hyumuil."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wie viele Orte in Suwon sind als Kultureinrichtungen eingestuft und wie viele sind Museen, Galerien oder Bibliotheken?",
+        "a": "Es sind 43 Ziele als Kultureinrichtungen registriert sowie 34 Orte rund um Museen, Kunstgalerien, Bibliotheken, Ausstellungshallen und Aquarien.",
+        "source": "한국관광공사 TourAPI"
+      }
+    ],
+    "sources": [
+      {
+        "name": "Korea Tourism Organization TourAPI",
+        "url": "https://api.visitkorea.or.kr/"
+      }
+    ],
+    "ko_hash": "f6847d43bea34097",
+    "translated_at": "2026-10-23"
+  },
+  "guide-04": {
+    "slug": "pet-friendly-suwon",
+    "label": "Mit Haustieren",
+    "title": "Welche Parks, Sehenswürdigkeiten, Cafés und Unterkünfte in Suwon haben Regeln für Haustiere?",
+    "summary": "Insgesamt 16 Orte in Suwon führen Angaben zur Mitnahme von Haustieren, darunter 13 Sehenswürdigkeiten, 2 Restaurants und Cafés sowie 1 Unterkunft. Unten lassen sich 10 wichtige Orte vergleichen.",
+    "body": [
+      {
+        "heading": "Haustierregeln für 13 Sehenswürdigkeiten, 2 Cafés und 1 Unterkunft",
+        "text": "Laut den Haustier- und GoCamping-Daten der Korea Tourism Organization führen 16 Orte in Suwon Haustierangaben: 13 Hundeparks, Seeparks und Ausflugsziele, 2 Cafés sowie 1 Unterkunft."
+      },
+      {
+        "heading": "Hundepark-Registrierung, Leinenpflicht und Transportbox-Regeln prüfen",
+        "text": "Der Hundespielplatz im Gwanggyo-Seepark prüft die Tierregistrierung und trennt Bereiche nach Größe, während im Starfield Suwon, auf Festungswegen und in Cafés Leinen- oder Transportbox-Regeln gelten; prüfen Sie vorab die 10 Orte unten."
+      }
+    ],
+    "items": [
+      {
+        "place_slug": "gwanggyohosugongwon-ballyeogyeon-noriteo",
+        "reason": "Liegt im Bereich Yeongtong-gu mit Öffnungszeiten: 10:00 – 22:00 und Ruhetag: jeden Montag Hyumuil."
+      },
+      {
+        "place_slug": "gwanggyohosugongwon",
+        "reason": "Liegt im Bereich Ha-dong mit Öffnungszeiten: 00:00 – 24:00 und Ruhetag: Ganzjährig ohne Ruhetag."
+      },
+      {
+        "place_slug": "suwon-hwaseong",
+        "reason": "Liegt im Bereich Yeonghwa-dong mit Öffnungszeiten: 00:00 – 24:00 und Ruhetag: Ganzjährig ohne Ruhetag."
+      },
+      {
+        "place_slug": "banghwasuryujeong",
+        "reason": "Liegt im Bereich Maehyang-dong mit Öffnungszeiten: Durchgehend geöffnet (Nugak Naebu Churip 09:00–18:00) und Ruhetag: Ganzjährig ohne Ruhetag."
+      },
+      {
+        "place_slug": "manseokgongwon",
+        "reason": "Liegt im Bereich Songjuk-dong mit Parken: Manseokgongwon nahegelegen öffentlicher Parkplatz Kostenpflichtig Unyeong, 1 Tag Choedae 4.000 Won , Jucha Gonggan Manchi Ana vorzeitig Mancha Möglich."
+      },
+      {
+        "place_slug": "irwolhosugongwon",
+        "reason": "Liegt im Bereich Cheoncheon-dong mit Öffnungszeiten: Jederzeit geöffnet und Ruhetag: Ganzjährig ohne Ruhetag."
+      },
+      {
+        "place_slug": "hyowongongwon",
+        "reason": "Liegt im Bereich Ingye-dong mit Öffnungszeiten: 00:00 – 24:00 und Ruhetag: Ganzjährig ohne Ruhetag."
+      },
+      {
+        "place_slug": "seutapildeu-suwon",
+        "reason": "Liegt im Bereich Jeongja-dong mit Öffnungszeiten: 10:00 – 22:00 und Ruhetag: Ganzjährig ohne Ruhetag."
+      },
+      {
+        "place_slug": "sollaeeumkaempingjang",
+        "reason": "Liegt im Bereich Geumgok-dong mit Parken: kostenlos Jucha."
+      },
+      {
+        "place_slug": "deohyusik-aneukhotel-suwon-ingyejeom",
+        "reason": "Liegt im Bereich Ingye-dong mit Parken: kostenlos Jucha."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wie viele Sehenswürdigkeiten, Restaurants und Unterkünfte in Suwon haben registrierte Haustierinformationen?",
+        "a": "Von insgesamt 16 Orten entfallen 13 auf Sehenswürdigkeiten, 2 auf Restaurants und Cafés sowie 1 auf Unterkünfte.",
+        "source": "한국관광공사 TourAPI"
+      }
+    ],
+    "sources": [
+      {
+        "name": "Korea Tourism Organization TourAPI",
+        "url": "https://api.visitkorea.or.kr/"
+      }
+    ],
+    "ko_hash": "6b4c1b84ae155a37",
+    "translated_at": "2026-10-23"
+  },
+  "guide-05": {
+    "slug": "monday-open-restaurants-suwon",
+    "label": "Montag geöffnet · Essen",
+    "title": "Welche Restaurants für Wang-Galbi, Brathähnchen, Kalguksu und Gebäck in Suwon haben am Montag geöffnet?",
+    "summary": "Unter den Restaurants in Suwon auf dieser Website haben 180 am Montag keinen Ruhetag. Aus 55 Galbi- und Grillrestaurants, 35 Hähnchen-, Nudel- und Suppenlokalen sowie 59 Kaffee- und Bäckerei-Cafés können Sie unten 10 Orte vergleichen.",
+    "body": [
+      {
+        "heading": "180 am Montag geöffnete Lokale sowie 55 Galbi-, 35 Hähnchen-/Nudel- und 59 Café-Orte",
+        "text": "Laut TourAPI und Kakao Map haben 180 Restaurants und Cafés in Suwon am Montag keinen regulären Ruhetag. Nach Speisen gibt es 55 Galbi- und Grillrestaurants, 35 Lokale für Brathähnchen, Kalguksu, Naengmyeon, Suppen und Teigtaschen sowie 59 Cafés für Kaffee, Backwaren und Desserts."
+      },
+      {
+        "heading": "Nachmittagspausen und Zeiten für die letzte Bestellung prüfen",
+        "text": "Große Wang-Galbi-Restaurants, Hähnchenlokale in der Suwon Chicken Street und Cafés in Haengnidan-gil und Gwanggyo haben oft Nachmittagspausen oder feste Bestellschlusszeiten; prüfen Sie daher vorab die 10 Orte unten."
+      }
+    ],
+    "items": [
+      {
+        "place_slug": "gabojeonggalbi",
+        "reason": "Liegt im Bereich Ingye-dong mit Hauptgericht: Gungnaesan Koreanisches Rindfleisch (Hanwoo) Marinierte Rippchen ( 1 Inbun) 79.000 Won und Öffnungszeiten: 11:30 – 21:30."
+      },
+      {
+        "place_slug": "bonsuwongalbi",
+        "reason": "Liegt im Bereich Uman-dong mit Hauptgericht: Frische Rinderrippchen 70.000 Won und Speiseangebot: Frische Rinderrippchen 70.000 Won , Marinierte Rippchen 65.000 Won . Zudem gilt für die Anlage: Rinderrippensuppe 20.000 Won , Kalte Brühennudeln 12.000 Won , Scharfe kalte Nudeln 12.000 Won."
+      },
+      {
+        "place_slug": "riteulbonsuwongalbijip",
+        "reason": "Liegt im Bereich Yeonghwa-dong mit Hauptgericht: Rinderrippensuppe 12.000 Won und Öffnungszeiten: 11:00 – 20:30."
+      },
+      {
+        "place_slug": "jinmitongdak",
+        "reason": "Liegt im Bereich Namsu-dong mit Hauptgericht: Huraideu 20.000 Won und Speiseangebot: Huraideu 20.000 Won , Brathähnchen (Tongdak) 20.000 Won , Süß-scharfes Brathähnchen 21.000 Won , Banban 21.000 Won."
+      },
+      {
+        "place_slug": "bungmun-yuchihoegwan",
+        "reason": "Liegt im Bereich Yeonghwa-dong mit Hauptgericht: Haejangguk 10.000 Won und Speiseangebot: Haejangguk 10.000 Won , Sulguk 12.000 Won , Gekochtes Schweinefleisch 30.000 Won , Haejangguk (Teuk) 12.000 Won."
+      },
+      {
+        "place_slug": "yuchihoegwan",
+        "reason": "Liegt im Bereich Ingye-dong mit Hauptgericht: Haejangguk 12.000 Won und Speiseangebot: Haejangguk 12.000 Won , Gekochtes Schweinefleisch ( Stellplätze ) 40.000 Won. Zudem gilt für die Anlage: Gekochtes Schweinefleisch Muchim 40.000 Won , Gekochtes Schweinefleisch (Soa) 20.000 Won."
+      },
+      {
+        "place_slug": "yeonpogalbi",
+        "reason": "Liegt im Bereich Buksu-dong mit Hauptgericht: Marinierte Rippchen ( 450 g) 58.000 Won und Öffnungszeiten: 11:20 – 21:30."
+      },
+      {
+        "place_slug": "sillagalbi",
+        "reason": "Liegt im Bereich Woncheon-dong mit Hauptgericht: Wang Frische Rinderrippchen ( 1 Inbun) 70.000 Won und Öffnungszeiten: 11:30 – 22:00."
+      },
+      {
+        "place_slug": "jeongjiyeongkeopiroseuteojeu-haenggungbonjeom",
+        "reason": "Liegt im Bereich Sinpung-dong mit Hauptgericht: Kokoneot 7.000 Won und Öffnungszeiten: 12:00 – 22:00."
+      },
+      {
+        "place_slug": "yeonmil",
+        "reason": "Liegt im Bereich Paldal-ro 1-ga mit Hauptgericht: Saeuyukjeummandu ( 8 Stück ) 14.000 Won und Öffnungszeiten: 11:30 – 21:00."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wie viele Restaurants in Suwon sind am Montag geöffnet und wie viele bieten Galbi/Grillfleisch, Hähnchen/Nudeln sowie Kaffee/Backwaren?",
+        "a": "Es gibt 180 Restaurants ohne Ruhetag am Montag sowie 55 Galbi- und Grillrestaurants, 35 Hähnchen-, Nudel- und Suppenlokale und 59 Kaffee- und Bäckerei-Orte.",
+        "source": "한국관광공사 TourAPI"
+      }
+    ],
+    "sources": [
+      {
+        "name": "Korea Tourism Organization TourAPI",
+        "url": "https://api.visitkorea.or.kr/"
+      }
+    ],
+    "ko_hash": "a12856407115de7e",
+    "translated_at": "2026-10-23"
+  },
+  "guide-06": {
+    "slug": "suwon-hotels-hanok-stays",
+    "label": "Hotels · Hanok · Unterkünfte",
+    "title": "Wie wählt man unter 27 Hotels, Hanok-Unterkünften und Gästehäusern in Suwon?",
+    "summary": "Auf dieser Website sind 27 Hotels, Hanok-Unterkünfte und Gästehäuser in Suwon verzeichnet, darunter 26 Unterkünfte mit Parkplatzinformationen. Vergleichen Sie unten 10 wichtige Unterkünfte.",
+    "body": [
+      {
+        "heading": "27 Hotels, Hanok-Unterkünfte und Gästehäuser sowie 26 Unterkünfte mit Park-Info",
+        "text": "Nach Daten von TourAPI sind in Suwon 27 Beherbergungsbetriebe rund um den Bahnhof Suwon, Ingye-dong, das Kongresszentrum Gwanggyo und Haenggung-dong registriert; 26 Unterkünfte führen Angaben zum Parken."
+      },
+      {
+        "heading": "Check-in-/Check-out-Zeiten und Ausstattung im Vergleich",
+        "text": "Business-Hotels nahe dem Bahnhof Suwon, Gwanggyo und Ingye-dong sowie Hanok-Unterkünfte innerhalb der Festung unterscheiden sich bei Check-in-Zeiten, Zimmeranzahl und Einrichtungen; vergleichen Sie unten die 10 Unterkünfte."
+      }
+    ],
+    "items": [
+      {
+        "place_slug": "nobotel-aembaeseodeo-suwon",
+        "reason": "Liegt im Bereich Maesan-ro 1-ga mit Parken: Sukso Nae Tusukgaek kostenlos Parkplatz Nutzung Möglich , Gogeup Balletpaking Seobiseu Wanbi."
+      },
+      {
+        "place_slug": "koteuyadeu-bai-merieoteu-suwon",
+        "reason": "Liegt im Bereich Ha-dong mit Parken: Tusukgaek Selpeu Jucha kostenlos , Zimmer Dang 1 Stellplätze Jiha 1 Stock Jucha Möglich , Parkplatz Jiha 5 Stock Vorhanden."
+      },
+      {
+        "place_slug": "ramadapeuraja-suwonhotel",
+        "reason": "Liegt im Bereich Ingye-dong mit Parken: Jiha 4 Stock Jucha Möglich , Parkplatz Ipgu Jobeum, Jucha Sigan Jehan Keine."
+      },
+      {
+        "place_slug": "ibiseu-aembaeseodeo-suwon",
+        "reason": "Liegt im Bereich Ingye-dong mit Kategorie: Sukbak."
+      },
+      {
+        "place_slug": "dono-1796-hotel",
+        "reason": "Liegt im Bereich Jangan-dong mit Parken: kostenlos Jucha."
+      },
+      {
+        "place_slug": "yeoyeojae",
+        "reason": "Liegt im Bereich Sinpung-dong mit Check-in: 15:00 und Check-out: 11:00."
+      },
+      {
+        "place_slug": "siwoljae",
+        "reason": "Liegt im Bereich Yeonmu-dong mit Check-in: 15:00 und Check-out: 11:00."
+      },
+      {
+        "place_slug": "133-patirum-hanokseuteijeom",
+        "reason": "Liegt im Bereich Paldal-ro 2-ga mit Check-in: 15:00 und Check-out: 11:00."
+      },
+      {
+        "place_slug": "reubonsuwonsilkeurodeuhotel",
+        "reason": "Liegt im Bereich Ingye-dong mit Kategorie: Sukbak."
+      },
+      {
+        "place_slug": "hotel-areutte",
+        "reason": "Liegt im Bereich Ingye-dong mit Parken: Hotel Geonmul Nae Tawojucha Möglich , Sukbakgaek Charyang Jucha Möglich , kostenlos Ballet Seobiseu Jegong."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wie viele Unterkünfte insgesamt und wie viele mit Parkplatzinformationen sind in Suwon registriert?",
+        "a": "Es gibt insgesamt 27 Hotels, Hanok-Unterkünfte und Gästehäuser, und 26 Unterkünfte führen Angaben zum Parken.",
+        "source": "한국관광공사 TourAPI"
+      }
+    ],
+    "sources": [
+      {
+        "name": "Korea Tourism Organization TourAPI",
+        "url": "https://api.visitkorea.or.kr/"
+      }
+    ],
+    "ko_hash": "a9958a1f4519d517",
+    "translated_at": "2026-10-23"
+  }
+}

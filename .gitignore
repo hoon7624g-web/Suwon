@@ -1,0 +1,18 @@
+.env
+reports/
+data/raw/*/probe-*/
+data/raw/*/html/*
+!data/raw/*/html/sample-*.html
+__pycache__/
+*.pyc
+.pytest_cache/
+dist/
+dist-*/
+data/cache/
+data/*/places.json.bak
+# npm packages of the site assistant (api/chat.js); Vercel installs them from package-lock.json (npm ci)
+node_modules/
+# ChatGPT originals of the AI art (tools/art_media.py reads them; only the renditions are committed)
+incoming/ai-images/*
+!incoming/ai-images/README.md
+work/

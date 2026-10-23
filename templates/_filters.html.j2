@@ -1,0 +1,55 @@
+{#- _filters.html.j2 — the list filter bar of Korean and every version (list.html.j2, en/list.html.j2; site.js 'list
+    filters'). F = present.filter_vm: chips (value, label, n) — the value is the Korean key every version shares, so the
+    URL (?type=…&region=…&theme=…&check=1&view=map) means the same in every language; F.w the words
+    (locales.LIST_WORDS); [data-result] carries the count line's plural forms (data-forms, {n}) and the 'of all' tail
+    (data-of, {m}) for site.js; the '지도 n' count of the list | map switch is the shown rows with coordinates (rows
+    data-geo, kept by site.js). Laid out from the first paint with JS, absent without it (the hidden attribute).
+    area: the Korean page's group word (cityv.region_label: '권역' or '구·군'), which names the region row and its
+    '모든 …' chip instead of the locale's generic word; the other versions keep F.w. F.dishes: the food list's 메뉴
+    row (present.dish_chips; ?dish=…), shown under the top row so a reader narrows by dish in one tap. -#}
+{% macro bar(F, area='') -%}
+<div class="filters" data-filters hidden>
+  <div class="f-top">
+    {% if F.types|length > 1 %}
+    <div class="f-row f-types" role="group" aria-label="{{ F.w.type }}">
+      <button type="button" data-f="type" data-v="" aria-pressed="true">{{ F.w.all }} <span class="tn">{{ F.count }}</span></button>
+      {% for v, lab, n in F.types %}<button type="button" data-f="type" data-v="{{ v }}" aria-pressed="false">{{ lab }} <span class="tn">{{ n }}</span></button>{% endfor %}
+    </div>
+    {% endif %}
+    <div class="f-tools">
+      <p class="f-result" aria-live="polite"><span data-result data-forms="{{ F.forms|tojson_attr }}" data-of="{{ F.w.of }}">{{ F.result }}</span></p>
+      <button type="button" class="f-more" aria-expanded="false" aria-controls="f-panel" data-f-more>{{ F.w.filters }}<span class="f-badge tn" data-f-badge hidden></span></button>
+      {% if F.n_geo %}<div class="seg" role="group" aria-label="{{ F.w.view }}"><button type="button" data-view="list" aria-pressed="true">{{ F.w.list }}</button><button type="button" data-view="map" aria-pressed="false">{{ F.w.map }} <span class="tn">{{ F.n_geo }}</span></button></div>{% endif %}
+    </div>
+  </div>
+  {% if F.dishes %}
+  <div class="f-dishrow">
+    <div class="f-row f-dishes" role="group" aria-label="{{ F.w.dish }}">
+      <button type="button" data-f="dish" data-v="" aria-pressed="true">{{ F.w.all_dishes }}</button>
+      {% for v, lab, n in F.dishes %}<button type="button" data-f="dish" data-v="{{ v }}" aria-pressed="false">{{ lab }} <span class="tn">{{ n }}</span></button>{% endfor %}
+    </div>
+  </div>
+  {% endif %}
+  <div class="f-panel" id="f-panel" data-f-panel hidden>
+    {% if F.regions|length > 1 %}
+    <div class="f-row" role="group" aria-label="{{ area or F.w.area }}">
+      <button type="button" data-f="region" data-v="" aria-pressed="true">{{ ('모든 ' ~ area) if area else F.w.all_areas }}</button>
+      {% for v, lab, n in F.regions %}<button type="button" data-f="region" data-v="{{ v }}" aria-pressed="false">{{ lab }} <span class="tn">{{ n }}</span></button>{% endfor %}
+    </div>
+    {% endif %}
+    {% if F.themes %}
+    <div class="f-row" role="group" aria-label="{{ F.w.theme }}">
+      <button type="button" data-f="theme" data-v="" aria-pressed="true">{{ F.w.all_themes }}</button>
+      {% for v, lab, n in F.themes %}<button type="button" data-f="theme" data-v="{{ v }}" aria-pressed="false">{{ lab }} <span class="tn">{{ n }}</span></button>{% endfor %}
+    </div>
+    {% endif %}
+    {% if F.check and F.check[1] %}<label class="f-check"><input type="checkbox" data-f="check" value="{{ F.check[0] }}"> {{ F.check[1] }} <span class="tn">{{ F.check[2] }}</span></label>{% endif %}
+  </div>
+</div>
+{%- endmacro %}
+
+{#- the filter keys of one list row (present.list_vm item; en_site.list_vm passes the same keys): empty ones left out;
+    data-geo marks a row that is a point of the list map (site.js counts the shown ones: '지도 n', the map caption) -#}
+{% macro rec_attrs(it) -%}
+{% if it.geo %} data-geo="1"{% endif %}{% if it.tags %} data-types="|{{ it.tags|join('|') }}|"{% endif %}{% if it.dishes %} data-dishes="|{{ it.dishes|join('|') }}|"{% endif %} data-region="{{ it.region }}"{% if it.themes %} data-themes="{{ it.themes|join(' ') }}"{% endif %}{% for k, v in it.flags.items() %}{% if v %} data-{{ k }}="1"{% endif %}{% endfor %}
+{%- endmacro %}

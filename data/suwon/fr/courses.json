@@ -1,0 +1,278 @@
+{
+  "suwon-course-1": {
+    "slug": "hwaseong-haenggung-heritage",
+    "name": "Circuit 1 | Forteresse Suwon Hwaseong, palais Hwaseong Haenggung et pavillon Banghwasuryujeong",
+    "group": "Circuit",
+    "duration": "Excursion d'une journée",
+    "summary": "",
+    "stops": [
+      {
+        "name": "Hwaseong Haenggung Palace",
+        "note": "",
+        "place_slug": "hwaseonghaenggung"
+      },
+      {
+        "name": "Suwon Hwaryeongjeon Shrine",
+        "note": "",
+        "place_slug": "suwon-hwaryeongjeon"
+      },
+      {
+        "name": "Bell of Hyowon & Seojangdae Command Post",
+        "note": "",
+        "place_slug": "hyowonui-jong-seojangdae"
+      },
+      {
+        "name": "Hwaseomun Gate",
+        "note": "",
+        "place_slug": "hwaseomun"
+      },
+      {
+        "name": "Janganmun Gate",
+        "note": "",
+        "place_slug": "janganmun"
+      },
+      {
+        "name": "Porte Hwahongmun",
+        "note": "",
+        "place_slug": "hwahongmun"
+      },
+      {
+        "name": "Pavillon Banghwasuryujeong (nord-est de la forteresse)",
+        "note": "",
+        "place_slug": "banghwasuryujeong"
+      },
+      {
+        "name": "Haengnidan-gil",
+        "note": "",
+        "place_slug": "haengnidangil"
+      }
+    ],
+    "ko_hash": "44c05c8f6416f89a",
+    "translated_at": "2026-10-23"
+  },
+  "suwon-course-2": {
+    "slug": "yeonmudae-paldalmun-market",
+    "name": "Circuit 2 | Porte Paldalmun, marchés Nammun et Motgol, rue du poulet frit et Haengnidan-gil",
+    "group": "Circuit",
+    "duration": "Excursion d'une journée",
+    "summary": "",
+    "stops": [
+      {
+        "name": "Yeonmudae (Dongjangdae)",
+        "note": "",
+        "place_slug": "yeonmudae"
+      },
+      {
+        "name": "Dongbukgongsimdon",
+        "note": "",
+        "place_slug": "dongbukgongsimdon"
+      },
+      {
+        "name": "Changnyongmun Gate",
+        "note": "",
+        "place_slug": "changnyongmun"
+      },
+      {
+        "name": "Flying Suwon",
+        "note": "",
+        "place_slug": "peullaing-suwon"
+      },
+      {
+        "name": "Musée de Suwon Hwaseong",
+        "note": "",
+        "place_slug": "suwonhwaseongbangmulgwan"
+      },
+      {
+        "name": "Paldalmun Gate",
+        "note": "",
+        "place_slug": "paldalmun"
+      },
+      {
+        "name": "Jidong Market",
+        "note": "",
+        "place_slug": "jidongsijang"
+      },
+      {
+        "name": "La rue des plats tong dak à Suwon",
+        "note": "",
+        "place_slug": "suwontongdakgeori"
+      }
+    ],
+    "ko_hash": "27045435818760d4",
+    "translated_at": "2026-10-23"
+  },
+  "suwon-course-3": {
+    "slug": "gwanggyo-lake-aquaplanet",
+    "name": "Circuit 3 | Yeonmudae, ballon Flying Suwon, musée de Hwaseong et temple Bongnyeongsa",
+    "group": "Circuit",
+    "duration": "Excursion d'une journée",
+    "summary": "",
+    "stops": [
+      {
+        "name": "Gwanggyo Lake Park",
+        "note": "",
+        "place_slug": "gwanggyohosugongwon"
+      },
+      {
+        "name": "Observatoire Gwanggyo Freiburg à Gwanggyo",
+        "note": "",
+        "place_slug": "gwanggyo-peuraibureukeujeonmangdae"
+      },
+      {
+        "name": "Aqua Planet Gwanggyo",
+        "note": "",
+        "place_slug": "akuapeullanet-gwanggyo"
+      },
+      {
+        "name": "Suwonsiribateuseupeiseugwanggyo",
+        "note": "",
+        "place_slug": "suwonsiribateuseupeiseugwanggyo"
+      },
+      {
+        "name": "Gyeonggidoseogwan",
+        "note": "",
+        "place_slug": "gyeonggidoseogwan"
+      },
+      {
+        "name": "Suwon Gwanggyo Museum",
+        "note": "",
+        "place_slug": "suwongwanggyobangmulgwan"
+      },
+      {
+        "name": "Musée de Suwon",
+        "note": "",
+        "place_slug": "suwonbangmulgwan"
+      }
+    ],
+    "ko_hash": "4e8421930bcdc930",
+    "translated_at": "2026-10-23"
+  },
+  "suwon-course-4": {
+    "slug": "irwol-seoho-sangsang",
+    "name": "Circuit 4 | Parc du lac Gwanggyo, Aqua Planet Gwanggyo et musée de Suwon",
+    "group": "Circuit",
+    "duration": "Excursion d'une journée",
+    "summary": "",
+    "stops": [
+      {
+        "name": "Ilwol Arboretum",
+        "note": "",
+        "place_slug": "irwolsumogwon"
+      },
+      {
+        "name": "Irwolhosugongwon",
+        "note": "",
+        "place_slug": "irwolhosugongwon"
+      },
+      {
+        "name": "Seoho Park",
+        "note": "",
+        "place_slug": "seohogongwon"
+      },
+      {
+        "name": "National Agricultural Museum",
+        "note": "",
+        "place_slug": "gungnimnongeopbangmulgwan"
+      },
+      {
+        "name": "Gyeonggi Sangsang Campus",
+        "note": "",
+        "place_slug": "gyeonggisangsangkaempeoseu"
+      },
+      {
+        "name": "Bibliothèque Byeolmadang – Starfield Suwon",
+        "note": "",
+        "place_slug": "byeolmadangdoseogwan-seutapildeu-suwonjeom"
+      }
+    ],
+    "ko_hash": "d984df49756853d4",
+    "translated_at": "2026-10-23"
+  },
+  "suwon-course-5": {
+    "slug": "manseok-haeujae-jangan",
+    "name": "Circuit 5 | Arboretum d'Irwol, Starfield Suwon, parc Manseok et Haewoojae à Jangan-gu",
+    "group": "Circuit",
+    "duration": "Excursion d'une journée",
+    "summary": "",
+    "stops": [
+      {
+        "name": "Manseok Park",
+        "note": "",
+        "place_slug": "manseokgongwon"
+      },
+      {
+        "name": "Suwonsirimmanseokjeonsigwan",
+        "note": "",
+        "place_slug": "suwonsirimmanseokjeonsigwan"
+      },
+      {
+        "name": "Nosongjidae",
+        "note": "",
+        "place_slug": "nosongjidae"
+      },
+      {
+        "name": "Haewoojae Museum (Mr. Toilet House)",
+        "note": "",
+        "place_slug": "haeujae"
+      },
+      {
+        "name": "Suwon Bongnyeongsa Temple",
+        "note": "",
+        "place_slug": "bongnyeongsa"
+      },
+      {
+        "name": "Gwanggyomarugil",
+        "note": "",
+        "place_slug": "gwanggyomarugil"
+      }
+    ],
+    "ko_hash": "209ad7503d46b9f4",
+    "translated_at": "2026-10-23"
+  },
+  "suwon-course-6": {
+    "slug": "wolhwawon-yeongheung-art",
+    "name": "Circuit 6 | Parc Seoho, musée national de l'agriculture, campus Sangsang et jardin Wolhwawon",
+    "group": "Circuit",
+    "duration": "Excursion d'une journée",
+    "summary": "",
+    "stops": [
+      {
+        "name": "Wolhwawon Garden (Hyowon Park)",
+        "note": "",
+        "place_slug": "hyowongongwon-wolhwawon"
+      },
+      {
+        "name": "Hyowongongwon",
+        "note": "",
+        "place_slug": "hyowongongwon"
+      },
+      {
+        "name": "Gyeonggiateusenteo",
+        "note": "",
+        "place_slug": "gyeonggiateusenteo"
+      },
+      {
+        "name": "Nahyeseokgeori",
+        "note": "",
+        "place_slug": "nahyeseokgeori"
+      },
+      {
+        "name": "Samsung Innovation Museum",
+        "note": "",
+        "place_slug": "samseonginobeisyeonmyujieom"
+      },
+      {
+        "name": "Yeongheung Arboretum",
+        "note": "",
+        "place_slug": "yeongheungsumogwon"
+      },
+      {
+        "name": "Musée municipal d'art de Suwon",
+        "note": "",
+        "place_slug": "suwonsirimmisulgwan"
+      }
+    ],
+    "ko_hash": "62025c256cf5a24c",
+    "translated_at": "2026-10-23"
+  }
+}

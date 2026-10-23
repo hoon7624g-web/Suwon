@@ -1,0 +1,147 @@
+[
+ {
+  "id": "event-1449917",
+  "contentid": "",
+  "status": "published",
+  "name": "군산 수제맥주&블루스 페스티벌",
+  "period_text": "매년 6월 20일 전후 / 금, 토, 일(3일간)",
+  "start_date": "",
+  "end_date": "",
+  "place_name": "전북특별자치도 군산시  근대역사박물관 주차장 일원",
+  "address": "",
+  "geo": {},
+  "summary": "",
+  "source_name": "군산시 문화관광",
+  "source_url": "https://www.gunsan.go.kr/tour/m2101/view/1449917",
+  "checked_at": "2026-10-08",
+  "recurring": true,
+  "series": "군산 수제맥주&블루스 페스티벌",
+  "approved_at": "2026-10-08",
+  "approved_by": "운영자 공개 승인(페이지별 검수 전)",
+  "slug": "gunsan-sujemaekju-and-beulluseu-peseutibeol"
+ },
+ {
+  "id": "event-tourapi-2853719",
+  "contentid": "2853719",
+  "status": "published",
+  "name": "군산 수제맥주&블루스 페스티벌",
+  "start_date": "2026-06-12",
+  "end_date": "2026-06-14",
+  "place_name": "군산근대역사박물관 주차장",
+  "address": "전북특별자치도 군산시 해망로 224 (장미동)",
+  "summary": "",
+  "source_name": "한국관광공사 TourAPI",
+  "source_url": "",
+  "checked_at": "2026-10-08",
+  "playtime": "12:00~22:00",
+  "fee": "유료(6,000원-지역상품권 5천원 지급)",
+  "sponsor": "군산시",
+  "tel": "063-454-5252",
+  "homepage": "https://gunsanbnbfesta.co.kr/",
+  "geo": {
+   "lat": 35.9897716587,
+   "lng": 126.7131486773,
+   "source": "TourAPI"
+  },
+  "series": "군산 수제맥주&블루스 페스티벌",
+  "alternatives": {
+   "place_name": [
+    {
+     "value": "군산 근대역사박물관 및 내항 일원",
+     "source_name": "군산시 보도자료 '군산, 수제맥주 도시로 도약…'2026 군산 맥주 & 블루스(음악) 축제'개최' (먹거리정책과, 2026-04-10, 보도자료 번호 34202)",
+     "source_url": "https://eminwon.gunsan.go.kr/emwp/jsp/ofr/OfrNewsEpctLSub.jsp?news_epct_yn=1,2",
+     "checked_at": "2026-10-08"
+    }
+   ],
+   "fee": [
+    {
+     "value": "유료 6,000원(군산사랑상품권 5천원·손목띠·경품권 지급)",
+     "source_name": "군산 수제맥주&블루스 페스티벌 누리집 '축제안내'",
+     "source_url": "https://gunsanbnbfesta.co.kr/page/50001.php",
+     "checked_at": "2026-10-08"
+    }
+   ],
+   "address": [
+    {
+     "value": "전북 군산시 해망로 240(군산 근대역사박물관 인근 주차장 일원)",
+     "source_name": "군산 수제맥주&블루스 페스티벌 누리집 '축제안내'",
+     "source_url": "https://gunsanbnbfesta.co.kr/page/50001.php",
+     "checked_at": "2026-10-08"
+    }
+   ]
+  },
+  "period_text": "2026. 6. 12.(금) ~ 6. 14.(일), 3일간",
+  "highlights": [
+   "중심은 100% 군산보리로 만든 '군산맥아' 수제맥주: 군산 양조장 4곳, 군산맥아를 쓰는 로컬 맥주 6곳, 국외 교류도시 맥주 6종(중국 연태·청도, 일본 다카마쓰·가고시마, 대만 신베이, 미국 타코마)",
+   "블루스밴드 16팀: 강산에밴드, 김종서밴드, 김경호밴드, 신촌블루스 등",
+   "군산 음식점 부스 약 30곳, 테이블 좌석 5,000석",
+   "맥주는 맥주교환권(카드·현금으로 구입)이나 군산사랑상품권 5천원권으로 교환",
+   "반려동물은 케이지나 유모차에 태우면 입장 가능",
+   "주변 공영·임시주차장 19곳(진포해양공원 앞 140면, 구 경찰서 140면, 동백대교 하단 105면 등)",
+   "문화누리카드 임시가맹점 40여 곳 운영"
+  ],
+  "also_sources": [
+   {
+    "name": "군산 수제맥주&블루스 페스티벌 누리집 '축제안내'",
+    "url": "https://gunsanbnbfesta.co.kr/page/50001.php",
+    "checked_at": "2026-10-08"
+   },
+   {
+    "name": "군산 수제맥주&블루스 페스티벌 누리집 '안내사항'",
+    "url": "https://gunsanbnbfesta.co.kr/page/50005.php",
+    "checked_at": "2026-10-08"
+   },
+   {
+    "name": "군산 수제맥주&블루스 페스티벌 누리집 '주차장 안내'",
+    "url": "https://gunsanbnbfesta.co.kr/page/50006.php",
+    "checked_at": "2026-10-08"
+   },
+   {
+    "name": "군산시 문화관광 축제/행사 정보 '군산 수제맥주&블루스 페스티벌'",
+    "url": "https://www.gunsan.go.kr/tour/m2101/view/1449917",
+    "checked_at": "2026-10-08"
+   },
+   {
+    "name": "군산시 보도자료 '군산, 수제맥주 도시로 도약…'2026 군산 맥주 & 블루스(음악) 축제'개최' (먹거리정책과, 2026-04-10, 보도자료 번호 34202)",
+    "url": "https://eminwon.gunsan.go.kr/emwp/jsp/ofr/OfrNewsEpctLSub.jsp?news_epct_yn=1,2",
+    "checked_at": "2026-10-08",
+    "news_epct_no": "34202"
+   },
+   {
+    "name": "군산시 보도자료 '군산시, 2026 수제맥주&음악(블루스) 축제 문화누리카드 임시가맹점 운영' (문화예술과, 2026-06-05, 보도자료 번호 34482)",
+    "url": "https://eminwon.gunsan.go.kr/emwp/jsp/ofr/OfrNewsEpctLSub.jsp?news_epct_yn=1,2",
+    "checked_at": "2026-10-08",
+    "news_epct_no": "34482"
+   }
+  ],
+  "approved_at": "2026-10-08",
+  "approved_by": "운영자 공개 승인(페이지별 검수 전)",
+  "slug": "gunsan-sujemaekju-and-beulluseu-peseutibeol",
+  "place_slugs": [
+   "geundaeyeoksabangmulgwan",
+   "gunsannaehang"
+  ],
+  "place_slug": "geundaeyeoksabangmulgwan"
+ },
+ {
+  "id": "fest-군산-수제맥주블루스-페스티벌-2025",
+  "contentid": "",
+  "status": "published",
+  "series": "군산 수제맥주&블루스 페스티벌",
+  "name": "2025 제4회 군산 수제맥주&블루스 페스티벌",
+  "period_text": "",
+  "start_date": "2025-06-20",
+  "end_date": "2025-06-22",
+  "place_name": "군산근대역사박물관 일원",
+  "address": "",
+  "geo": {},
+  "summary": "",
+  "source_name": "군산시 보도자료 '초 여름밤 군산을 달구는 축제가 온다 '2025 군산 수제맥주&블루스 페스티벌'' (먹거리정책과, 2025-05-02, 보도자료 번호 32161)",
+  "source_url": "https://eminwon.gunsan.go.kr/emwp/jsp/ofr/OfrNewsEpctLSub.jsp?news_epct_yn=1,2",
+  "checked_at": "2026-10-08",
+  "source_news_epct_no": "32161",
+  "approved_at": "2026-10-08",
+  "approved_by": "운영자 공개 승인(페이지별 검수 전)",
+  "slug": "gunsan-sujemaekju-and-beulluseu-peseutibeol"
+ }
+]

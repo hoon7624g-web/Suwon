@@ -1,0 +1,1041 @@
+{
+  "_notes": [
+    "2026-10-23 생성: 군산각(gunsan.webforai.kr) 및 다도시 확장 엔진(pipeline/city.py)을 바탕으로 수원 여행 실증 사이트 수원각(Suwongak) 구성.",
+    "범위: 경기도(lDongRegnCd 41) 산하 수원시 장안구(111)·권선구(113)·팔달구(115)·영통구(117) 및 수원시(110) 전역 — 5개 여행 권역(수원화성·화성행궁·행리단길, 팔달문·전통시장·통닭거리, 광교호수공원·박물관·영통, 만석공원·광교산·장안, 일월수목원·서호공원·권선).",
+    "주소: https://suwon.webforai.kr (Vercel 배포 후 도메인 연결 예정). 지도 제공자는 도메인 등록 전까지 오픈소스 지도(OSM) 기본."
+  ],
+  "site_url": "https://suwon.webforai.kr",
+  "site_name": "수원각",
+  "site_name_en": "Suwongak",
+  "brand": "수원각",
+  "brand_symbol": "suwongak-symbol.svg",
+  "region": "수원",
+  "region_en": "Suwon",
+  "region_admin": "경기도",
+  "region_admin_en": "Gyeonggi-do",
+  "locality": "수원시",
+  "locality_en": "Suwon-si",
+  "districts": [
+    "장안구",
+    "권선구",
+    "팔달구",
+    "영통구"
+  ],
+  "address_aliases": [
+    "경기",
+    "수원특례시",
+    "수원"
+  ],
+  "region_homographs": [],
+  "id_prefix": "suwon",
+  "languages": [
+    "ko",
+    "en",
+    "ja",
+    "zh-hans",
+    "zh-hant",
+    "de",
+    "fr",
+    "es",
+    "ru"
+  ],
+  "locales": {
+    "ja": {
+      "city": "水原",
+      "admin": "京畿道",
+      "site_name": "水原閣"
+    },
+    "zh-hans": {
+      "city": "水原",
+      "admin": "京畿道",
+      "site_name": "水原阁"
+    },
+    "zh-hant": {
+      "city": "水原",
+      "admin": "京畿道",
+      "site_name": "水原閣"
+    },
+    "de": {
+      "city": "Suwon",
+      "admin": "Gyeonggi-do",
+      "site_name": "Suwongak"
+    },
+    "fr": {
+      "city": "Suwon",
+      "admin": "Gyeonggi-do",
+      "site_name": "Suwongak"
+    },
+    "es": {
+      "city": "Suwon",
+      "admin": "Gyeonggi-do",
+      "site_name": "Suwongak"
+    },
+    "ru": {
+      "city": "Сувон",
+      "admin": "Кёнгидо",
+      "site_name": "Сувонгак"
+    }
+  },
+  "description": "수원각은 수원의 관광지·맛집(음식점)·숙소·여행 코스·축제·영상을 한곳에 모은 여행 정보 사이트입니다. 장소마다 이용시간·쉬는 날·요금·주차·길찾기와 값별 출처를 적었습니다.",
+  "disclaimer": "수원시 공식 홈페이지와 별도로 운영되는 독립 사이트입니다. 원문·사진의 권리는 각 출처에 있으며 표시된 이용조건을 따릅니다.",
+  "affiliation": "",
+  "operator": {
+    "name": "에이아이오투오",
+    "legal_name": "주식회사 에이아이오투오",
+    "name_en": "AIO2O",
+    "url": "https://www.o2osolution.ai/",
+    "contact": "shyun@o2o.kr",
+    "logo": "/assets/brand/icon-512.png",
+    "ceo": "안성민",
+    "ceo_en": "Sungmin Ahn",
+    "business_no": "620-87-00810",
+    "corporate_no": "140111-0070330",
+    "founded": "2017-08-16",
+    "head_office": "대구광역시 북구 옥산로 111, 5층 유니콘랩 대구 에이05호(칠성동2가, 아이엠뱅크 제2본점)",
+    "head_office_postal": "41593",
+    "head_office_en": "Unit A05, 5F Unicorn Lab Daegu, 111 Oksan-ro, Buk-gu, Daegu 41593, Republic of Korea",
+    "lab": "경기도 성남시 수정구 금토로 32 KT판교빌딩 East 504호",
+    "lab_postal": "13453",
+    "lab_en": "Unit 504, KT Pangyo Building East, 32 Geumto-ro, Sujeong-gu, Seongnam-si, Gyeonggi-do 13453, Republic of Korea",
+    "tel": "070-4260-8310",
+    "email": "contact@o2o.kr",
+    "about": "AI 마케팅 자동화·AI 협상 에이전트·RAG 기반 채팅 시스템을 만드는 AI 솔루션 기업",
+    "about_en": "an AI solutions company (AI marketing automation, AI negotiation agents, RAG-based chat systems)",
+    "sources": "상호·대표·사업자등록번호·법인등록번호·본사: 사업자등록증(2025-02-06 발급)·등기사항전부증명서(2026-09-15 발행), 설립일: 등기 회사성립연월일, 연구소·대표전화·이메일·하는 일: 회사 누리집 www.o2osolution.ai(2026-10-17 확인), 영문 이름·주소: 같은 누리집 영문판"
+  },
+  "source": {
+    "name": "",
+    "name_en": "",
+    "url": "",
+    "collected_at": "",
+    "kogl": ""
+  },
+  "ga4_id": "",
+  "gtm_id": "",
+  "search_verification": {},
+  "indexnow_key": "d1771aa12264159a398d02ebee823397",
+  "center": {
+    "lat": 37.2804,
+    "lng": 127.0155
+  },
+  "tmap_scheme": "tmap://route?goalname={name}&goalx={lng}&goaly={lat}",
+  "publish_rules": {
+    "allowed_original_licenses": [
+      "KOGL-1",
+      "KOGL-3"
+    ],
+    "allowed_image_licenses": [
+      "KOGL-1",
+      "KOGL-3"
+    ]
+  },
+  "crawler_policy": {
+    "allow_training_bots": true,
+    "decided": "2026-10-23 운영자: 군산각과 동일하게 AI 학습·생성형 답변 크롤러 허용(브랜드 인지·인용 확대 목적)"
+  },
+  "official_links": [
+    {
+      "name": "수원문화관광 (수원특례시)",
+      "url": "https://www.suwon.go.kr/web/visitsuwon/index.do",
+      "note": "수원시 공식 관광정보"
+    },
+    {
+      "name": "수원문화재단",
+      "url": "https://www.swcf.or.kr",
+      "note": "수원화성·화성행궁·축제 안내"
+    },
+    {
+      "name": "대한민국 구석구석",
+      "url": "https://korean.visitkorea.or.kr",
+      "note": "한국관광공사 관광정보"
+    }
+  ],
+  "official_domains": [
+    {
+      "domain": "suwon.go.kr",
+      "name": "수원특례시 문화관광"
+    },
+    {
+      "domain": "swcf.or.kr",
+      "name": "수원문화재단"
+    },
+    {
+      "domain": "suwonmuseum.go.kr",
+      "name": "수원시박물관"
+    },
+    {
+      "domain": "suma.suwon.go.kr",
+      "name": "수원시립미술관"
+    },
+    {
+      "domain": "ggcf.kr",
+      "name": "경기문화재단"
+    },
+    {
+      "domain": "aquaplanet.co.kr",
+      "name": "아쿠아플라넷 광교"
+    },
+    {
+      "domain": "samsunginnovationmuseum.com",
+      "name": "삼성이노베이션뮤지엄"
+    }
+  ],
+  "provider_short": [
+    {
+      "match": "수원특례시 문화관광",
+      "short": "수원시"
+    },
+    {
+      "match": "수원시 문화관광",
+      "short": "수원시"
+    },
+    {
+      "match": "수원문화재단",
+      "short": "수원문화재단"
+    }
+  ],
+  "regions": {
+    "mode": "anchors",
+    "label": "권역",
+    "area_label": "동·구",
+    "anchors": [
+      {
+        "key": "hwaseong-haenggung",
+        "name": "수원화성·화성행궁·행리단길",
+        "place_id": "tourapi-129437"
+      },
+      {
+        "key": "paldalmun-market",
+        "name": "팔달문·전통시장·통닭거리",
+        "place_id": "tourapi-264386"
+      },
+      {
+        "key": "gwanggyo-yeongtong",
+        "name": "광교호수공원·박물관·영통",
+        "place_id": "tourapi-2662855"
+      },
+      {
+        "key": "manseok-jangan",
+        "name": "만석공원·광교산·장안",
+        "place_id": "tourapi-3351831"
+      },
+      {
+        "key": "irwol-gwonseon",
+        "name": "일월수목원·서호공원·권선",
+        "place_id": "tourapi-3076051"
+      }
+    ],
+    "far": null,
+    "none_label": "권역 미정"
+  },
+  "dist_anchors": [
+    "tourapi-129437",
+    "tourapi-264386",
+    "tourapi-2662855",
+    "tourapi-3351831",
+    "tourapi-3076051"
+  ],
+  "geo_bounds": [
+    37.18,
+    37.38,
+    126.9,
+    127.15
+  ],
+  "course_move": {
+    "guides_first": [
+      "guide-03"
+    ],
+    "guides_last": [],
+    "route_by_guide": {}
+  },
+  "event_kinds": {},
+  "designations": {
+    "order": [
+      "baeknyeon",
+      "mobeom",
+      "good_stay",
+      "goodprice",
+      "ansim"
+    ],
+    "short": {},
+    "show_year": []
+  },
+  "categories": {},
+  "list_hubs": {
+    "attraction": {
+      "guide_id": "guide-01",
+      "label": "수원화성·행궁·성곽 가이드"
+    },
+    "food": {
+      "guide_id": "guide-05",
+      "label": "월요일 영업·맛집 가이드"
+    },
+    "stay": {
+      "guide_id": "guide-06",
+      "label": "호텔·한옥·숙소 가이드"
+    }
+  },
+  "guide_head_pics": {},
+  "list_filters": {
+    "attraction_groups": [
+      [
+        "수원화성·성곽·행궁",
+        [
+          "수원화성",
+          "화성행궁",
+          "장안문",
+          "팔달문",
+          "화서문",
+          "창룡문",
+          "방화수류정",
+          "서장대",
+          "동장대",
+          "연무대",
+          "봉돈",
+          "공심돈",
+          "화홍문",
+          "성곽",
+          "어차",
+          "플라잉수원"
+        ]
+      ],
+      [
+        "박물관·미술관·전시",
+        [
+          "박물관",
+          "미술관",
+          "화성박물관",
+          "광교박물관",
+          "이노베이션",
+          "수원시립",
+          "전시",
+          "아트",
+          "갤러리",
+          "기념관",
+          "해우재",
+          "문학관"
+        ]
+      ],
+      [
+        "호수·수목원·공원·산",
+        [
+          "광교호수",
+          "일월수목원",
+          "영흥수목원",
+          "서호",
+          "만석공원",
+          "효원공원",
+          "월화원",
+          "광교산",
+          "칠보산",
+          "팔달산",
+          "수목원",
+          "호수",
+          "공원",
+          "산책"
+        ]
+      ],
+      [
+        "전통시장·공방·체험·레포츠",
+        [
+          "시장",
+          "못골",
+          "지동",
+          "팔달문시장",
+          "영동시장",
+          "미로시장",
+          "통닭거리",
+          "행리단길",
+          "공방거리",
+          "아쿠아플라넷",
+          "체험",
+          "열기구",
+          "국궁",
+          "캠핑",
+          "레포츠"
+        ]
+      ]
+    ]
+  },
+  "video_topics": [
+    {
+      "title": "여행 코스",
+      "slug": "yeohaeng-koseu"
+    },
+    {
+      "title": "수원화성·화성행궁",
+      "slug": "suwon-hwaseong-haenggung"
+    },
+    {
+      "title": "행리단길·방화수류정",
+      "slug": "haengnidan-banghwasuryujeong"
+    },
+    {
+      "title": "광교호수공원·아쿠아플라넷",
+      "slug": "gwanggyo-hosu"
+    },
+    {
+      "title": "수목원·공원·광교산",
+      "slug": "sumogwon-gongwon"
+    },
+    {
+      "title": "박물관·미술관",
+      "slug": "bangmulgwan-misulgwan"
+    },
+    {
+      "title": "왕갈비·통닭·전통시장",
+      "slug": "wanggalbi-tongdak-sijang"
+    },
+    {
+      "title": "카페·디저트",
+      "slug": "kape-dijeoteu"
+    },
+    {
+      "title": "축제·야간개장",
+      "slug": "chukje-yagan"
+    },
+    {
+      "title": "기타",
+      "slug": "other"
+    }
+  ],
+  "search_examples": [
+    "수원화성",
+    "화성행궁",
+    "광교호수공원"
+  ],
+  "slug_policy": {
+    "collision": "number"
+  },
+  "home": {
+    "answers": [
+      [
+        "수원화성·행궁·성곽",
+        "guide-01"
+      ],
+      [
+        "아이와 함께",
+        "guide-02"
+      ],
+      [
+        "비 오는 날·실내",
+        "guide-03"
+      ],
+      [
+        "반려동물 동반",
+        "guide-04"
+      ],
+      [
+        "월요일 영업·맛집",
+        "guide-05"
+      ],
+      [
+        "호텔·한옥·숙소",
+        "guide-06"
+      ]
+    ],
+    "story": [
+      {
+        "id": "fortress-palace",
+        "big": "성곽과 행궁",
+        "kicker": "수원화성 · 화성행궁 · 방화수류정",
+        "title": "유네스코 세계문화유산 수원화성 성곽길과 정조대왕의 발자취가 깃든 화성행궁·방화수류정",
+        "sources": [
+          {
+            "place_id": "tourapi-125555",
+            "needle": "수원 화성"
+          },
+          {
+            "place_id": "tourapi-129437",
+            "needle": "화성행궁"
+          }
+        ],
+        "figs": [
+          "within",
+          "far_km"
+        ],
+        "photo": [
+          "tourapi-2613658",
+          0
+        ]
+      },
+      {
+        "id": "market-alley",
+        "big": "시장과 골목",
+        "kicker": "팔달문 · 남문시장 · 수원통닭거리",
+        "title": "정조가 세운 팔달문 아래 전통시장 아홉 곳과 가마솥 고소한 향이 퍼지는 수원통닭거리",
+        "sources": [
+          {
+            "place_id": "tourapi-2589025",
+            "needle": "수원 남문시장"
+          },
+          {
+            "place_id": "tourapi-2613664",
+            "needle": "수원통닭거리"
+          }
+        ],
+        "figs": [],
+        "photo": [
+          "tourapi-2613664",
+          0
+        ]
+      },
+      {
+        "id": "lake-garden",
+        "big": "호수와 수목원",
+        "kicker": "광교호수공원 · 일월수목원 · 월화원",
+        "title": "수변 데크길이 이어진 광교호수공원과 사계절 온실을 품은 일월수목원·효원공원 월화원",
+        "sources": [
+          {
+            "place_id": "tourapi-2662855",
+            "needle": "광교호수공원"
+          },
+          {
+            "place_id": "tourapi-3076051",
+            "needle": "일월수목원"
+          }
+        ],
+        "figs": [],
+        "photo": [
+          "tourapi-2662855",
+          0
+        ]
+      }
+    ],
+    "center": {
+      "place_id": "tourapi-129437",
+      "radius_m": 6000
+    },
+    "far": {
+      "place_id": "tourapi-2662855"
+    },
+    "teaser_course": "suwon-course-1",
+    "featured_min_courses": 1,
+    "video_rows": [
+      "수원화성·화성행궁",
+      "광교호수공원·아쿠아플라넷",
+      "왕갈비·통닭·전통시장"
+    ],
+    "gallery": {
+      "eyebrow": "수원 풍경",
+      "title": "유네스코 세계문화유산 수원화성과 화성행궁, 방화수류정·광교호수공원·일월수목원까지 사진으로 미리 보는 수원",
+      "region": "수원화성·화성행궁·행리단길"
+    },
+    "media": {
+      "cover": [
+        "tourapi-125555",
+        0
+      ],
+      "hero": [
+        [
+          "tourapi-125555",
+          0
+        ],
+        [
+          "tourapi-129437",
+          0
+        ],
+        [
+          "tourapi-2613658",
+          0
+        ],
+        [
+          "tourapi-2662855",
+          0
+        ],
+        [
+          "tourapi-750947",
+          0
+        ],
+        [
+          "tourapi-3076051",
+          0
+        ]
+      ],
+      "gallery": [
+        [
+          "tourapi-3351831",
+          0
+        ],
+        [
+          "tourapi-1925403",
+          0
+        ],
+        [
+          "tourapi-2613664",
+          0
+        ],
+        [
+          "tourapi-4067984",
+          0
+        ],
+        [
+          "tourapi-2589025",
+          0
+        ],
+        [
+          "tourapi-2752650",
+          0
+        ]
+      ]
+    },
+    "getting_here": {
+      "label": "실내·문화 가이드",
+      "guide_id": "guide-03"
+    }
+  },
+  "tourapi": {
+    "base_url": "https://apis.data.go.kr/B551011/KorService2",
+    "op_suffix": "2",
+    "region_keyword": "수원",
+    "ldong_regn_name": "경기도",
+    "list_scope": "districts",
+    "title_suffixes": [
+      "수원",
+      "수원시"
+    ],
+    "photo_keywords": [
+      "수원",
+      "수원화성",
+      "화성행궁",
+      "방화수류정",
+      "장안문",
+      "팔달문",
+      "화서문",
+      "창룡문",
+      "서장대",
+      "화홍문",
+      "연무대",
+      "광교호수공원",
+      "일월수목원",
+      "영흥수목원",
+      "월화원",
+      "서호공원"
+    ],
+    "nearby_radius_m": 2000,
+    "nearby_per_kind": 3,
+    "min_interval": 0.08
+  },
+  "site_faq": [],
+  "editor": {
+    "name": "윤상훈",
+    "role": "편집 책임",
+    "role_en": "Editor in charge"
+  },
+  "launch_exceptions": {
+    "ga4_id": "2026-10-23 운영자: 공개를 먼저 준비하고 GA4는 수원 전용 속성을 만든 뒤 설치"
+  },
+  "publication": {
+    "decided_at": "2026-10-23",
+    "decided_by": "운영자",
+    "scope": "색인 기준(유형별 필수 정보 2개 이상·요약 규칙)을 통과한 장소와 가이드·코스·행사. 페이지별 사람 검수 전이며 approved_at으로 기록"
+  },
+  "emergency": {
+    "decided_at": "2026-10-15",
+    "decided_by": "운영자",
+    "checked_at": "2026-10-15",
+    "sources": {
+      "kto_safety": {
+        "provider": "한국관광공사 VisitKorea",
+        "label": "외국인 관광객 재난안전 안내",
+        "url": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=248145"
+      },
+      "kto_1330": {
+        "provider": "한국관광공사 VisitKorea",
+        "label": "1330 관광통역안내",
+        "url": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=140632&menuSn=454"
+      }
+    },
+    "lines": [
+      {
+        "tel": "119",
+        "what": "fire_ambulance",
+        "ko": "소방·구급차",
+        "src": "kto_safety"
+      },
+      {
+        "tel": "112",
+        "what": "police",
+        "ko": "경찰",
+        "src": "kto_safety"
+      },
+      {
+        "tel": "1330",
+        "what": "travel_helpline",
+        "ko": "관광안내·통역(전화·채팅)",
+        "abroad": "+82-2-1330",
+        "src": "kto_1330"
+      }
+    ],
+    "phrases": [
+      "English please",
+      "Interpreter please"
+    ],
+    "steps": [
+      {
+        "id": "interpreter",
+        "src": "kto_safety",
+        "ko": "한국어를 못 하면 전화가 연결된 뒤 'English please' 또는 'Interpreter please'라고 말하세요. 통역사와 이어 줍니다."
+      },
+      {
+        "id": "location",
+        "src": "kto_safety",
+        "ko": "있는 곳은 근처 건물 이름이나 휴대전화가 보여 주는 위치(GPS)로 알리세요."
+      }
+    ]
+  },
+  "chatbot": {
+    "assistant_name": {
+      "ko": "수원 여행 도우미",
+      "en": "Suwon travel helper",
+      "ja": "水原旅行アシスタント",
+      "zh-Hans": "水原旅行助手",
+      "zh-Hant": "水原旅行助手",
+      "de": "Suwon-Reisehelfer",
+      "fr": "Assistant voyage Suwon",
+      "es": "Asistente de viaje de Suwon",
+      "ru": "Помощник по Сувону"
+    },
+    "region_names": {
+      "ko": "수원",
+      "en": "Suwon",
+      "ja": "水原",
+      "zh-Hans": "水原",
+      "zh-Hant": "水原",
+      "de": "Suwon",
+      "fr": "Suwon",
+      "es": "Suwon",
+      "ru": "Сувон"
+    },
+    "chips": {
+      "ko": [
+        "수원화성·화성행궁·방화수류정 명소",
+        "아이와 함께 가기 좋은 수목원·아쿠아플라넷",
+        "비 오는 날 갈 만한 실내 박물관·미술관",
+        "수원 왕갈비·통닭거리·전통시장 맛집",
+        "이번 달 수원 행사·야간개장"
+      ],
+      "en": [
+        "Suwon Hwaseong, Haenggung & sights",
+        "Places to visit with kids in Suwon",
+        "Indoor museums for a rainy day",
+        "Where to eat Suwon galbi & chicken?",
+        "Suwon festivals this month"
+      ],
+      "ja": [
+        "水原華城・華城行宮・訪花随柳亭の名所",
+        "子どもと一緒に行きやすい植物園・水族館",
+        "雨の日に行ける博物館・美術館",
+        "水原王カルビ・チキン通り・伝統市場グルメ",
+        "今月の水原イベント・祭り"
+      ],
+      "zh-Hans": [
+        "水原华城·华城行宫·访花随柳亭景点",
+        "适合带孩子去的树木园·水族馆",
+        "下雨天可去的室内博物馆·美术馆",
+        "水原王排骨·炸鸡街·传统市场美食",
+        "本月水原活动·节庆"
+      ],
+      "zh-Hant": [
+        "水原華城·華城行宮·訪花隨柳亭景點",
+        "適合帶孩子去的樹木園·水族館",
+        "下雨天可去的室內博物館·美術館",
+        "水原王排骨·炸雞街·傳統市場美食",
+        "本月水原活動·節慶"
+      ],
+      "de": [
+        "Festung Hwaseong, Haenggung & Highlights",
+        "Ausflugsziele mit Kindern in Suwon",
+        "Museen drinnen bei Regen",
+        "Suwon-Galbi, Hähnchen & Märkte",
+        "Feste in Suwon diesen Monat"
+      ],
+      "fr": [
+        "Forteresse Hwaseong, Haenggung & sites",
+        "Sorties avec des enfants à Suwon",
+        "Musées couverts par temps de pluie",
+        "Où manger galbi et poulet à Suwon ?",
+        "Festivals à Suwon ce mois-ci"
+      ],
+      "es": [
+        "Fortaleza Hwaseong, Haenggung y lugares",
+        "Lugares para ir con niños en Suwon",
+        "Museos cubiertos para días de lluvia",
+        "Dónde comer galbi y pollo en Suwon",
+        "Festivales en Suwon este mes"
+      ],
+      "ru": [
+        "Крепость Хвасон, Хэнгун и места",
+        "Куда пойти с детьми в Сувоне",
+        "Музеи Сувона в дождливую погоду",
+        "Где поесть сувон-кальби и курочку",
+        "Фестивали Сувона в этом месяце"
+      ]
+    },
+    "production_aliases": [
+      "https://suwon.vercel.app",
+      "https://suwon.webforai.kr"
+    ],
+    "previous_sites": []
+  },
+  "plan": {
+    "hubs": [
+      {
+        "key": "suwon-station",
+        "name": "수원역(KTX·1호선·수인분당선)"
+      },
+      {
+        "key": "gwanggyo-station",
+        "name": "광교중앙역(신분당선)"
+      },
+      {
+        "key": "bus-terminal",
+        "name": "수원종합버스터미널"
+      }
+    ],
+    "resident_label": "수원 시민·인근 출발"
+  },
+  "abroad": {
+    "keywords": [
+      "Suwon",
+      "Suwon Hwaseong",
+      "Hwaseong Fortress",
+      "Hwaseong Haenggung",
+      "Banghwasuryujeong",
+      "Gwanggyo Lake Park",
+      "Suwon 통닭거리",
+      "水原",
+      "水原華城",
+      "华城行宫",
+      "Сувон"
+    ]
+  },
+  "en_name_words": {
+    "수원": "Suwon",
+    "장안구": "Jangan-gu",
+    "권선구": "Gwonseon-gu",
+    "팔달구": "Paldal-gu",
+    "영통구": "Yeongtong-gu",
+    "행궁": "Haenggung",
+    "화성": "Hwaseong",
+    "광교": "Gwanggyo",
+    "인계": "Ingye",
+    "매탄": "Maetan",
+    "영통": "Yeongtong",
+    "망포": "Mangpo",
+    "호매실": "Homaesil",
+    "세류": "Seryu",
+    "정자": "Jeongja",
+    "파장": "Pajang",
+    "송죽": "Songjuk",
+    "연무": "Yeonmu",
+    "지동": "Ji-dong",
+    "우만": "Uman",
+    "원천": "Woncheon",
+    "이의": "Iui",
+    "하동": "Ha-dong"
+  },
+  "food_dishes": {
+    "about": "음식점 목록의 '메뉴' 거르개(present.dish_keys): 장소 이름·대표 메뉴(menu)·취급 메뉴(treatmenu)에 words 가운데 하나가 들어 있으면 그 묶음. 3곳 이상인 묶음만 보인다.",
+    "groups": [
+      {
+        "key": "수원왕갈비·한우·고기구이",
+        "words": [
+          "왕갈비",
+          "수원갈비",
+          "생갈비",
+          "양념갈비",
+          "갈비",
+          "소갈비",
+          "돼지갈비",
+          "한우",
+          "삼겹살",
+          "목살",
+          "등심",
+          "불고기",
+          "숯불",
+          "오리",
+          "장어",
+          "바비큐"
+        ],
+        "names": {
+          "en": "Suwon wang-galbi, Korean beef & grilled meat",
+          "ja": "水原王カルビ・韓牛・焼肉",
+          "zh-hans": "水原王排骨·韩牛·烤肉",
+          "zh-hant": "水原王排骨·韓牛·烤肉",
+          "de": "Suwon-Wanggalbi, koreanisches Rind & Grillfleisch",
+          "fr": "Wang-galbi de Suwon, bœuf coréen et grillades",
+          "es": "Wang-galbi de Suwon, res coreana y parrilla",
+          "ru": "Сувон ванкальби, корейская говядина и барбекю"
+        }
+      },
+      {
+        "key": "가마솥통닭·치킨·전통시장먹거리",
+        "words": [
+          "통닭",
+          "가마솥통닭",
+          "후라이드",
+          "양념통닭",
+          "치킨",
+          "닭강정",
+          "순대",
+          "순대곱창",
+          "족발",
+          "보쌈",
+          "빈대떡",
+          "전",
+          "만두",
+          "떡볶이"
+        ],
+        "names": {
+          "en": "Suwon cauldron fried chicken & market street food",
+          "ja": "水原釜揚げチキン・伝統市場グルメ",
+          "zh-hans": "水原铁锅炸鸡·传统市场美食",
+          "zh-hant": "水原鐵鍋炸雞·傳統市場美食",
+          "de": "Suwon-Kesselbrathähnchen & Marktspezialitäten",
+          "fr": "Poulet frit au chaudron de Suwon et cuisine de marché",
+          "es": "Pollo frito al caldero de Suwon y comida de mercado",
+          "ru": "Сувонская курочка в котле и рыночная еда"
+        }
+      },
+      {
+        "key": "갈비탕·해장국·국밥·전골",
+        "words": [
+          "갈비탕",
+          "해장국",
+          "설렁탕",
+          "곰탕",
+          "국밥",
+          "순댓국",
+          "순대국",
+          "부대찌개",
+          "전골",
+          "감자탕",
+          "삼계탕",
+          "매운탕",
+          "추어탕",
+          "샤브샤브"
+        ],
+        "names": {
+          "en": "Galbitang, haejangguk, gukbap & hotpot soups",
+          "ja": "カルビタン・ヘジャングク・クッパ・鍋",
+          "zh-hans": "排骨汤·醒酒汤·汤饭·火锅",
+          "zh-hant": "排骨湯·醒酒湯·湯飯·火鍋",
+          "de": "Galbitang, Haejangguk, Gukbap & Eintöpfe",
+          "fr": "Galbitang, haejangguk, gukbap et soupes mijotées",
+          "es": "Galbitang, haejangguk, gukbap y sopas calientes",
+          "ru": "Кальбитхан, хэджангук, кукпап и горячие супы"
+        }
+      },
+      {
+        "key": "한정식·두부·백반·생선요리",
+        "words": [
+          "한정식",
+          "정식",
+          "두부",
+          "순두부",
+          "보리밥",
+          "돌솥밥",
+          "비빔밥",
+          "쌈밥",
+          "백반",
+          "게장",
+          "생선구이",
+          "회",
+          "초밥",
+          "스시"
+        ],
+        "names": {
+          "en": "Korean table d’hôte, tofu, set meals & seafood",
+          "ja": "韓定食・豆腐・定食・海鮮",
+          "zh-hans": "韩定食·豆腐·套餐·海鲜",
+          "zh-hant": "韓定食·豆腐·套餐·海鮮",
+          "de": "Koreanisches Menü (Hanjeongsik), Tofu & Fischgerichte",
+          "fr": "Menu coréen (hanjeongsik), tofu et fruits de mer",
+          "es": "Menú coreano (hanjeongsik), tofu y pescados",
+          "ru": "Ханджонсик, тофу, сеты и морепродукты"
+        }
+      },
+      {
+        "key": "냉면·칼국수·막국수·면요리",
+        "words": [
+          "냉면",
+          "평양냉면",
+          "함흥냉면",
+          "칼국수",
+          "막국수",
+          "메밀",
+          "국수",
+          "수제비",
+          "우동",
+          "소바",
+          "짜장",
+          "짬뽕"
+        ],
+        "names": {
+          "en": "Naengmyeon, kalguksu, buckwheat & noodle dishes",
+          "ja": "冷麺・カルグクス・マッククス・麺料理",
+          "zh-hans": "冷面·刀削面·荞麦面·面食",
+          "zh-hant": "冷麵·刀削麵·蕎麥麵·麵食",
+          "de": "Naengmyeon, Kalguksu & Nudelgerichte",
+          "fr": "Naengmyeon, kalguksu et plats de nouilles",
+          "es": "Naengmyeon, kalguksu y platos de fideos",
+          "ru": "Нэнмён, кхальгуксу и блюда из лапши"
+        }
+      },
+      {
+        "key": "파스타·브런치·양식·아시안",
+        "words": [
+          "파스타",
+          "피자",
+          "스테이크",
+          "브런치",
+          "리조또",
+          "돈까스",
+          "돈가스",
+          "버거",
+          "커리",
+          "쌀국수"
+        ],
+        "names": {
+          "en": "Pasta, brunch, steak & international dining",
+          "ja": "パスタ・ブランチ・ステーキ・洋食",
+          "zh-hans": "意面·早午餐·牛排·西餐",
+          "zh-hant": "義大利麵·早午餐·牛排·西餐",
+          "de": "Pasta, Brunch, Steak & internationale Küche",
+          "fr": "Pâtes, brunch, steak et cuisine internationale",
+          "es": "Pasta, brunch, carnes y cocina internacional",
+          "ru": "Паста, бранч, стейки и мировая кухня"
+        }
+      },
+      {
+        "key": "행리단길·광교 카페·베이커리·디저트",
+        "words": [
+          "커피",
+          "아메리카노",
+          "라떼",
+          "핸드드립",
+          "카페",
+          "빵",
+          "베이커리",
+          "소금빵",
+          "케이크",
+          "디저트",
+          "빙수",
+          "차",
+          "에이드"
+        ],
+        "names": {
+          "en": "Haengnidan-gil & Gwanggyo specialty coffee, bakery & desserts",
+          "ja": "行理団通り・光教カフェ・ベーカリー・デザート",
+          "zh-hans": "行理团路·光教精品咖啡·烘焙·甜点",
+          "zh-hant": "行理團路·光教精品咖啡·烘焙·甜點",
+          "de": "Kaffeespezialitäten, Bäckerei & Café-Desserts",
+          "fr": "Café de spécialité, boulangerie et desserts",
+          "es": "Café de especialidad, panadería y postres",
+          "ru": "Спешелти-кофе, выпечка и десерты"
+        }
+      }
+    ]
+  }
+}

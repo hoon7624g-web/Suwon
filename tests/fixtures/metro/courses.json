@@ -1,0 +1,26 @@
+[
+  {
+    "id": "metro-course-1",
+    "slug": "sample-day-course",
+    "name": "[샘플] 당일 코스 A",
+    "duration": "당일",
+    "status": "published",
+    "reviewed_at": "2026-10-08",
+    "summary": "[샘플] 시험용 코스입니다. 경유지마다 장소 페이지를 연결합니다.",
+    "stops": [
+      {
+        "place_slug": "jung-gu-jeonsigwan-a",
+        "note": "[샘플] 첫 경유지"
+      },
+      {
+        "place_slug": "jung-gu-sikdang-b",
+        "note": ""
+      },
+      {
+        "name": "[샘플] 페이지 없는 경유지",
+        "note": "[샘플] 이름과 지도 검색만 나갑니다."
+      }
+    ],
+    "original": {}
+  }
+]

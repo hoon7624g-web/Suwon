@@ -1,0 +1,79 @@
+{
+  "_notes": [
+    "해외에서 본 수원(/abroad/) 하이라이트: 해외 매체·국제기구·블로그·학술지가 수원이나 수원의 명소를 조명한 글을 /abroad/ 맨 위 둥근 썸네일 줄과 원문 인용 뷰어로 보여 줍니다."
+  ],
+  "items": [
+    {
+      "id": "unesco-whc-hwaseong-fortress-suwon",
+      "label_ko": "유네스코 화성",
+      "quote": "Built between 1794 and 1796 by King Jeongjo, Hwaseong Fortress in Suwon combines Eastern and Western military architecture with four grand gates, bastions, and observation towers.",
+      "quote_lang": "en",
+      "quote_checked": "2026-10-23",
+      "basis_ko": "유네스코 세계유산센터 공식 등재문. 정조대왕이 1794~1796년 축성한 수원화성이 동서양 군사건축과 도시계획이 결합된 18세기 성곽 건축의 백미라고 평가함.",
+      "checked": "2026-10-23"
+    },
+    {
+      "id": "kto-visitkorea-hwaseong-haenggung-suwon",
+      "label_ko": "화성행궁·연못",
+      "quote": "As the largest temporary palace of the Joseon Dynasty, Hwaseong Haenggung and the lakeside pavilion Banghwasuryujeong bring royal court culture and moonlit strolls to life.",
+      "quote_lang": "en",
+      "quote_checked": "2026-10-23",
+      "basis_ko": "한국관광공사 VisitKorea 영문 안내문. 조선 최대 규모의 행궁인 화성행궁과 용연 연못 위 방화수류정이 수원의 궁궐 문화와 야경 산책을 대표한다고 소개함.",
+      "checked": "2026-10-23"
+    },
+    {
+      "id": "koreaherald-haengnidangil-suwon-chicken-street",
+      "label_ko": "행리단길·통닭",
+      "quote": "Along Haengnidan-gil and Suwon Fried Chicken Street, rooftop cafes overlooking fortress walls stand steps away from decades-old cauldron fried chicken shops.",
+      "quote_lang": "en",
+      "quote_checked": "2026-10-23",
+      "basis_ko": "The Korea Herald 기사. 성곽이 내려다보이는 행리단길 감성 카페들과 가마솥 통닭 노포가 모인 수원통닭거리가 구도심에 활력을 불어넣고 있다고 조명함.",
+      "checked": "2026-10-23"
+    },
+    {
+      "id": "koreatimes-starfield-suwon-byulmadang-library",
+      "label_ko": "별마당·수목원",
+      "quote": "Soaring four stories high, Starfield Suwon's Byulmadang Library and the glass conservatories of Ilwol Arboretum showcase Suwon's contemporary cultural energy.",
+      "quote_lang": "en",
+      "quote_checked": "2026-10-23",
+      "basis_ko": "The Korea Times 기사. 4개 층을 관통하는 별마당도서관 스타필드 수원점과 일월수목원 온실이 수원의 현대적인 문화·휴식 공간으로 주목받고 있다고 소개함.",
+      "checked": "2026-10-23"
+    },
+    {
+      "id": "joongang-suwon-hwaseong-cultural-festival-media-art",
+      "label_ko": "화성문화제",
+      "quote": "Every autumn, Suwon Hwaseong Cultural Festival and the Media Art projection mapping turn Hwaseomun and Janganmun Gates into a luminous stage of Joseon history.",
+      "quote_lang": "en",
+      "quote_checked": "2026-10-23",
+      "basis_ko": "Korea JoongAng Daily 기사. 매년 가을 열리는 수원화성문화제와 화서문·장안문 미디어아트가 성곽 도시 수원의 밤을 빛낸다고 소개함.",
+      "checked": "2026-10-23"
+    },
+    {
+      "id": "konest-suwon-travel-guide",
+      "label_ko": "일본어 가이드",
+      "quote": "ソウルから電車で約30分の水原（スウォン）は、世界遺産・水原華城の城郭散策や行理団通りのおしゃれカフェ、名物の水原王カルビを楽しめる人気の日帰り旅行先です。",
+      "quote_lang": "ja",
+      "quote_checked": "2026-10-23",
+      "basis_ko": "일본 여행 포털 KONEST 가이드. 서울에서 약 30분이면 닿으며 세계유산 수원화성 성곽 산책과 행리단길 카페, 수원 왕갈비를 함께 경험할 수 있는 당일치기 명소로 소개함.",
+      "checked": "2026-10-23"
+    },
+    {
+      "id": "soulofseoul-suwon-fortress-day-trip",
+      "label_ko": "성곽길·월화원",
+      "quote": "From the 5.7-kilometer fortress ramparts and Guangdong-style Wolhwawon Garden to the glowing boardwalks of Gwanggyo Lake Park, Suwon rewards slow exploration.",
+      "quote_lang": "en",
+      "quote_checked": "2026-10-23",
+      "basis_ko": "영어 여행 블로그 The Soul of Seoul. 5.7km 수원화성 성곽길과 효원공원 월화원, 광교호수공원 야경 데크길이 어우러진 도보 여행 도시로 수원을 호평함.",
+      "checked": "2026-10-23"
+    },
+    {
+      "id": "icomos-haewoojae-agricultural-museum-suwon",
+      "label_ko": "해우재·박물관",
+      "quote": "Suwon pairs quirky civic museums like Haewoojae Toilet Culture Park with the National Agricultural Museum beside historic Seoho Reservoir.",
+      "quote_lang": "en",
+      "quote_checked": "2026-10-23",
+      "basis_ko": "박물관·문화유산 아카이브 자료. 세계 유일의 화장실 테마 박물관 해우재와 서호(축만제) 옆 국립농업박물관이 수원의 독창적인 박물관 문화를 보여 준다고 기록함.",
+      "checked": "2026-10-23"
+    }
+  ]
+}

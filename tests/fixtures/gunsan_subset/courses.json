@@ -1,0 +1,475 @@
+[
+ {
+  "id": "gunsan-course-m2135-1",
+  "slug": "gunsan-course-m2135-1",
+  "name": "A코스 | 근대~고군산",
+  "duration": "당일",
+  "status": "published",
+  "summary": "군산시 문화관광이 안내하는 당일 코스로, 근대역사 박물관에서 시작해 새만금 종합수산시장까지 경유지 11곳을 순서대로 잇습니다.",
+  "stops": [
+   {
+    "name": "근대역사 박물관",
+    "note": "",
+    "place_slug": "geundaeyeoksabangmulgwan",
+    "link_basis": "exact"
+   },
+   {
+    "name": "호남관세박물관",
+    "note": "",
+    "place_slug": "honamgwansebangmulgwan",
+    "link_basis": "exact"
+   },
+   {
+    "name": "진포해양테마공원",
+    "note": "",
+    "place_slug": "jinpohaeyanggongwon",
+    "link_basis": "alias: 진포해양공원 원문: '군산 내항의 진포해양테마공원'"
+   },
+   {
+    "name": "근대건축관",
+    "note": "",
+    "place_slug": "gunsangeundaegeonchukgwan",
+    "link_basis": "exact"
+   },
+   {
+    "name": "동국사",
+    "note": "",
+    "place_slug": "dongguksa",
+    "link_basis": "exact"
+   },
+   {
+    "name": "신흥일본식가옥",
+    "note": "",
+    "place_slug": "gunsansinheungdongilbonsikgaok",
+    "link_basis": "alias: 신흥동 일본식가옥 표기 차이"
+   },
+   {
+    "name": "중식",
+    "note": ""
+   },
+   {
+    "name": "비응마파지길",
+    "note": "",
+    "place_slug": "bieung-mapajigil",
+    "link_basis": "exact"
+   },
+   {
+    "name": "새만금방조제 신시배수갑문",
+    "note": ""
+   },
+   {
+    "name": "선유도,대장도일원",
+    "note": ""
+   },
+   {
+    "name": "새만금 종합수산시장",
+    "note": ""
+   }
+  ],
+  "original": {
+   "text": "\r\n    \n\r\n      \nA코스 | 근대~고군산\n\r\n       \n\r\n    \n  \n\r\n    \n\r\n      \n\r\n        \r\n        \n근대역사\n\r\n          박물관\n\r\n        \n호남관세박물관\n\r\n        \n진포해양테마공원\n\r\n        \n근대건축관\n\r\n          \n\r\n        \n동국사\n\r\n        \n신흥일본식가옥\n\r\n        \n중식\n\r\n        \n비응마파지길\n\r\n        \n새만금방조제\n\r\n          신시배수갑문\n\r\n        \n선유도,대장도일원\n\r\n        \n새만금\n\r\n          종합수산시장\n\r\n      \n\r\n    \n\r\n  ",
+   "source_url": "https://www.gunsan.go.kr/tour/m2135",
+   "license": "NONE",
+   "license_evidence": "공공누리 유형 표기(alt·파일명·문구)를 해당 콘텐츠 영역에서 찾지 못함",
+   "source_name": "군산시 문화관광",
+   "collected_at": "2026-10-08",
+   "sha256": "8142a20c9da3d48c51714eb36ed5b003ca0d705210c80f168613917a26156b13"
+  },
+  "group": "당일 코스",
+  "summary_auto": true,
+  "approved_at": "2026-10-08",
+  "approved_by": "운영자 공개 승인(페이지별 검수 전)"
+ },
+ {
+  "id": "gunsan-course-m2135-2",
+  "slug": "gunsan-course-m2135-2",
+  "name": "B코스 | 근대~금강권",
+  "duration": "당일",
+  "status": "published",
+  "summary": "군산시 문화관광이 안내하는 당일 코스로, 근대역사 박물관에서 시작해 임피역사까지 경유지 11곳을 순서대로 잇습니다.",
+  "stops": [
+   {
+    "name": "근대역사 박물관",
+    "note": "",
+    "place_slug": "geundaeyeoksabangmulgwan",
+    "link_basis": "exact"
+   },
+   {
+    "place_slug": "chowonsajingwan",
+    "note": "",
+    "link_basis": "exact",
+    "name": ""
+   },
+   {
+    "name": "신흥동 일본식가옥",
+    "note": "",
+    "place_slug": "gunsansinheungdongilbonsikgaok",
+    "link_basis": "exact"
+   },
+   {
+    "name": "말랭이마을",
+    "note": "",
+    "place_slug": "mallaengimaeul",
+    "link_basis": "exact"
+   },
+   {
+    "name": "동국사",
+    "note": "",
+    "place_slug": "dongguksa",
+    "link_basis": "exact"
+   },
+   {
+    "name": "경암동 철길마을",
+    "note": "",
+    "place_slug": "gyeongam-dong-cheolgilmaeul",
+    "link_basis": "exact"
+   },
+   {
+    "name": "이영춘가옥",
+    "note": "",
+    "place_slug": "iyeongchun-gaok",
+    "link_basis": "exact"
+   },
+   {
+    "name": "3.1운동 100주년기념관",
+    "note": "",
+    "place_slug": "3-1-undong-100-junyeon-ginyeomgwan",
+    "link_basis": "exact"
+   },
+   {
+    "name": "채만식문학관",
+    "note": "",
+    "place_slug": "chaemansik-munhakgwan",
+    "link_basis": "exact"
+   },
+   {
+    "name": "금강미래체험관",
+    "note": "",
+    "place_slug": "geumgangmiraecheheomgwan",
+    "link_basis": "exact"
+   },
+   {
+    "name": "임피역사",
+    "note": "",
+    "place_slug": "gunsan-impiyeoksa",
+    "link_basis": "exact"
+   }
+  ],
+  "original": {
+   "text": "\r\n    \n\r\n      \nB코스 | 근대~금강권\n\r\n       \n\r\n    \n  \n\r\n    \n\r\n      \n\r\n        \r\n        \n근대역사\n\r\n          박물관\n\r\n        \n초원사진관\n\r\n        \n신흥동\n\r\n          일본식가옥\n\r\n        \n말랭이마을\n\r\n        \n동국사\n\r\n        \n경암동\n\r\n          철길마을\n\r\n        \n이영춘가옥\n\r\n        \n3.1운동\n\r\n          100주년기념관\n\r\n        \n채만식문학관\n\r\n        \n금강미래체험관\n\r\n        \n임피역사\n\r\n      \n\r\n    \n\r\n  ",
+   "source_url": "https://www.gunsan.go.kr/tour/m2135",
+   "license": "NONE",
+   "license_evidence": "공공누리 유형 표기(alt·파일명·문구)를 해당 콘텐츠 영역에서 찾지 못함",
+   "source_name": "군산시 문화관광",
+   "collected_at": "2026-10-08",
+   "sha256": "8553b014e3a18478674105533fef9166ab92c5595bbbcb7bff5c58fefba315e0"
+  },
+  "group": "당일 코스",
+  "summary_auto": true,
+  "approved_at": "2026-10-08",
+  "approved_by": "운영자 공개 승인(페이지별 검수 전)"
+ },
+ {
+  "id": "gunsan-course-m2137-1",
+  "slug": "gunsan-course-m2137-1",
+  "name": "2박 3일 코스",
+  "duration": "2박 3일",
+  "status": "published",
+  "summary": "군산시 문화관광이 안내하는 2박 3일 코스로, 근대역사 박물관에서 시작해 방축도출렁다리까지 경유지 24곳을 순서대로 잇습니다.",
+  "stops": [
+   {
+    "name": "근대역사 박물관",
+    "note": "",
+    "place_slug": "geundaeyeoksabangmulgwan",
+    "link_basis": "exact"
+   },
+   {
+    "name": "호남관세박물관",
+    "note": "",
+    "place_slug": "honamgwansebangmulgwan",
+    "link_basis": "exact"
+   },
+   {
+    "name": "근대건축관",
+    "note": "",
+    "place_slug": "gunsangeundaegeonchukgwan",
+    "link_basis": "exact"
+   },
+   {
+    "name": "근대미술관",
+    "note": "",
+    "place_slug": "gu-ilbon-je-18-eunhaeng-gunsanjijeom",
+    "link_basis": "alias: 군산시 문화관광 근대미술관 안내(m2224): '(구)일본 제 18은행 군산지점'"
+   },
+   {
+    "place_slug": "jinpohaeyanggongwon",
+    "note": "",
+    "link_basis": "exact",
+    "name": ""
+   },
+   {
+    "name": "중식",
+    "note": ""
+   },
+   {
+    "name": "동국사",
+    "note": "",
+    "place_slug": "dongguksa",
+    "link_basis": "exact"
+   },
+   {
+    "place_slug": "chowonsajingwan",
+    "note": "",
+    "link_basis": "exact",
+    "name": ""
+   },
+   {
+    "name": "신흥동 일본식가옥",
+    "note": "",
+    "place_slug": "gunsansinheungdongilbonsikgaok",
+    "link_basis": "exact"
+   },
+   {
+    "name": "말랭이마을",
+    "note": "",
+    "place_slug": "mallaengimaeul",
+    "link_basis": "exact"
+   },
+   {
+    "name": "석식",
+    "note": ""
+   },
+   {
+    "name": "야경(해망굴,월명공원수시탑,신흥동도시숲공원,은파호수공원 등)",
+    "note": ""
+   },
+   {
+    "name": "경암동 철길마을",
+    "note": "",
+    "place_slug": "gyeongam-dong-cheolgilmaeul",
+    "link_basis": "exact"
+   },
+   {
+    "name": "이영춘가옥",
+    "note": "",
+    "place_slug": "iyeongchun-gaok",
+    "link_basis": "exact"
+   },
+   {
+    "name": "비응마파지길",
+    "note": "",
+    "place_slug": "bieung-mapajigil",
+    "link_basis": "exact"
+   },
+   {
+    "name": "새만금방조제 신시배수갑문",
+    "note": ""
+   },
+   {
+    "name": "무녀도쥐똥섬",
+    "note": "",
+    "place_slug": "munyeodo",
+    "link_basis": "part_of"
+   },
+   {
+    "name": "선유스카이썬라인",
+    "note": "",
+    "place_slug": "seonyu-seukaisseollain",
+    "link_basis": "exact"
+   },
+   {
+    "name": "망주봉일원",
+    "note": "",
+    "place_slug": "gunsan-seonyudo-mangjubong-irwon",
+    "link_basis": "alias: 장소 명칭 '군산 선유도 망주봉 일원'"
+   },
+   {
+    "name": "선유도명사십리해수욕장일몰감상",
+    "note": "",
+    "place_slug": "seonyudo",
+    "link_basis": "part_of"
+   },
+   {
+    "name": "대장도대장봉등반",
+    "note": "",
+    "place_slug": "daejangdo",
+    "link_basis": "part_of"
+   },
+   {
+    "name": "유람선관광",
+    "note": ""
+   },
+   {
+    "name": "장자도차도선선착장 (여객선예약 063.464.4614)",
+    "note": "",
+    "place_slug": "jangjado",
+    "link_basis": "part_of"
+   },
+   {
+    "name": "방축도출렁다리",
+    "note": ""
+   }
+  ],
+  "original": {
+   "text": "\r\n\t\t\n\r\n\t\t\t\r\n\t\t\n\r\n\t\t\n\r\n\t\t\t\n1일차\n\r\n\t\t\t\n\r\n\t\t\t\t\n근대역사\n박물관\n\r\n\t\t\t\t\n호남관세박물관\n\r\n\t\t\t\t\n근대건축관\n\r\n\t\t\t\t\n근대미술관\n\r\n\t\t\t\t\n진포해양공원\n\r\n\t\t\t\t\n중식\n\r\n\t\t\t\t\n동국사\n\r\n\t\t\t\t\n초원사진관\n\r\n\t\t\t\t\n신흥동\n일본식가옥\n\r\n\t\t\t\t\n말랭이마을\n\r\n\t\t\t\t\n석식\n\r\n\t\t\t\t\n야경(해망굴,월명공원수시탑,신흥동도시숲공원,은파호수공원 등)\n\r\n\t\t\t\n\r\n            \n2일차\n\r\n\t\t\t\n\r\n\t\t\t\t\n경암동\n철길마을\n\r\n\t\t\t\t\n이영춘가옥\n\r\n\t\t\t\t\n비응마파지길\n\r\n\t\t\t\t\n새만금방조제\n신시배수갑문\n\r\n\t\t\t\t\n무녀도쥐똥섬\n\r\n\t\t\t\t\n선유스카이썬라인\n\r\n\t\t\t\t\n망주봉일원\n\r\n\t\t\t\t\n선유도명사십리해수욕장일몰감상\n\r\n\t\t\t\n\r\n\t\t\t\n2일차(1안)\n\r\n\t\t\t\n\r\n\t\t\t\t\n대장도대장봉등반\n\r\n\t\t\t\t\n유람선관광\n\r\n\t\t\t\n\r\n            \n2일차(2안)\n\r\n\t\t\t\n\r\n\t\t\t\t\n장자도차도선선착장\n(여객선예약 063.464.4614)\n\r\n\t\t\t\t\n방축도출렁다리\n\r\n\t\t\t\n\r\n\t\t\n\r\n\t",
+   "source_url": "https://www.gunsan.go.kr/tour/m2137",
+   "license": "NONE",
+   "license_evidence": "공공누리 유형 표기(alt·파일명·문구)를 해당 콘텐츠 영역에서 찾지 못함",
+   "source_name": "군산시 문화관광",
+   "collected_at": "2026-10-08",
+   "sha256": "f8e413588504e834d2c5b78bdeabc9e9ec3d891ce0bcb79f226cea14aaa5f180"
+  },
+  "group": "2박 3일 코스",
+  "summary_auto": true,
+  "approved_at": "2026-10-08",
+  "approved_by": "운영자 공개 승인(페이지별 검수 전)"
+ },
+ {
+  "id": "gunsan-course-m2552-2",
+  "slug": "gunsan-course-m2552-2",
+  "name": "호수&숲산책 코스",
+  "duration": "",
+  "status": "published",
+  "summary": "군산시 문화관광이 안내하는 포토투어 코스로, 은파유원지 물빛다리에서 시작해 금강습지 생태공원까지 경유지 7곳을 순서대로 잇습니다.",
+  "stops": [
+   {
+    "name": "은파유원지 물빛다리",
+    "note": ""
+   },
+   {
+    "name": "은파유원지 별빛다리",
+    "note": ""
+   },
+   {
+    "name": "액자 속 청암산",
+    "note": ""
+   },
+   {
+    "name": "청암산 죽향길",
+    "note": "",
+    "place_slug": "cheongamsan",
+    "link_basis": "part_of"
+   },
+   {
+    "name": "왕버드나무",
+    "note": ""
+   },
+   {
+    "name": "금강미래체험관 (구.철새조망대)",
+    "note": "",
+    "place_slug": "geumgangmiraecheheomgwan",
+    "link_basis": "exact"
+   },
+   {
+    "name": "금강습지 생태공원",
+    "note": ""
+   }
+  ],
+  "original": {
+   "text": "\r\n\t\t\n\r\n\t\t\t\n호수&숲산책 코스\n\r\n\t\t\t군산생태권역\r\n\t\t\n\r\n\t\t\n\r\n\t\t\t\n\r\n\t\t\t\t\n\r\n\t\t\t\t\t은파유원지\n물빛다리\r\n\t\t\t\t\n\r\n\t\t\t\t\n\r\n\t\t\t\t\t은파유원지\n별빛다리\r\n\t\t\t\t\n\r\n\t\t\t\t\n\r\n\t\t\t\t\t액자 속\n청암산\r\n\t\t\t\t\n\r\n\t\t\t\t\n\r\n\t\t\t\t\t청암산\n죽향길\r\n\t\t\t\t\n\r\n\t\t\t\t\n왕버드나무\n\r\n\t\t\t\t\n\r\n\t\t\t\t\n금강미래체험관\n(구.철새조망대)\n\r\n\t\t\t\t\n금강습지\n생태공원\n\r\n\t\t\t\n\r\n\t\t\n\r\n\t",
+   "source_url": "https://www.gunsan.go.kr/tour/m2552",
+   "license": "NONE",
+   "license_evidence": "공공누리 유형 표기(alt·파일명·문구)를 해당 콘텐츠 영역에서 찾지 못함",
+   "source_name": "군산시 문화관광",
+   "collected_at": "2026-10-08",
+   "sha256": "4119f3df348e39c1fed4052a70e75d6637f29e2935055a081a1577100c7dc265"
+  },
+  "group": "포토투어 코스",
+  "summary_auto": true,
+  "approved_at": "2026-10-08",
+  "approved_by": "운영자 공개 승인(페이지별 검수 전)"
+ },
+ {
+  "id": "gunsan-course-arirang",
+  "name": "아리랑 코스",
+  "duration": "",
+  "status": "published",
+  "summary": "대하소설 『아리랑』을 주제로 한 코스로, 근대역사박물관에서 문창초등학교까지 13곳을 순서대로 잇습니다. 소설의 이야기가 시작되는 군산항의 부잔교·철길과 옛 조선은행·일본18은행 건물을 지나, 월명호수와 해망굴을 거쳐 옥구저수지와 미성동 열대자 마을로 이어집니다. 코스 앞부분의 근대역사박물관·호남관세박물관·근대미술관은 매주 월요일 휴관합니다.",
+  "stops": [
+   {
+    "name": "근대역사박물관",
+    "note": "",
+    "place_slug": "geundaeyeoksabangmulgwan",
+    "link_basis": "exact"
+   },
+   {
+    "name": "호남관세박물관",
+    "note": "",
+    "place_slug": "honamgwansebangmulgwan",
+    "link_basis": "exact"
+   },
+   {
+    "name": "부잔교·철길(군산항)",
+    "note": "",
+    "place_slug": "gunsan-naehang-tteundari-budu",
+    "link_basis": "alias: 군산 내항 뜬다리 부두 원문: '부잔교라고도 불리며'"
+   },
+   {
+    "name": "(구)조선은행(근대건축관)",
+    "note": "",
+    "place_slug": "gunsangeundaegeonchukgwan",
+    "link_basis": "exact"
+   },
+   {
+    "name": "(구)일본18은행(근대미술관)",
+    "note": "",
+    "place_slug": "gu-ilbon-je-18-eunhaeng-gunsanjijeom",
+    "link_basis": "alias: 구 일본 제18은행 군산지점 표기 차이"
+   },
+   {
+    "name": "미두장비",
+    "note": ""
+   },
+   {
+    "name": "군산 3.1기념관",
+    "note": ""
+   },
+   {
+    "name": "월명호수",
+    "note": "",
+    "place_slug": "wolmyeonghosu",
+    "link_basis": "exact"
+   },
+   {
+    "name": "월명공원 수시탑",
+    "note": "",
+    "place_slug": "wolmyeonggongwon",
+    "link_basis": "part_of"
+   },
+   {
+    "name": "해망굴",
+    "note": "",
+    "place_slug": "haemanggul",
+    "link_basis": "exact"
+   },
+   {
+    "name": "옥구저수지",
+    "note": ""
+   },
+   {
+    "name": "열대자 마을(미성동)",
+    "note": ""
+   },
+   {
+    "name": "문창초등학교",
+    "note": ""
+   }
+  ],
+  "original": {
+   "text": "\r\n\t\t\t\t\r\n\t\t\t\t\n아리랑 코스 안내\n\r\n\r\n기본정보\n\r\n\r\n대하 소설 아리랑은 1990. 12.11 한국일보 연재를 시작으로 1995년 7월 해방 50주년을 맞이하여 제 12권을 출간하였던 작품으로 일제강점기 40여년의 세월과 민족의 고난과 투쟁을 그리고 있다. \r\n\r\n일제강점기에 전라도에서 생산된 곡물을 수탈해서 일본으로 실어 나르던 항구도시가 군산이다.\n\r\n이야기는 이 항구 군산에서 시작된다.\n\r\n방영근은 돌아가신 아버지의 약값으로 빌린돈 때문에 군산항에서 거의 강제로 화와이행 배에 태워지고 방영근, 지삼출등이 피눈물을 뿌리던 그 군산항에서 이야기는 본줄기로 들어간다.\n\r\n녹슨 철길 위로 호남평야의 쌀을 가득 싣고 왔을 화차들이며, 무려 25만 가마를 쌓을 수 있을 만큼 거대한 쌀창고들,  그리고 그사이로 쌀가마니를 지고  뛰어다녔을 지삼출이며 그 과정에서 변절해가는 서무룡들, 그리고 그들에게 떡을 팔아서라도 자식을 가르쳐야했던 수많은 보름이들, 미선창고마다 가득히 모여서 쌀을 고르던 이 땅의 수국이들을 선히 그려볼 수 있을 것이다.\n\r\n코스안내\n\r\n\r\n\r\n01 근대역사박물관\n\r\n02 호남관세박물관\n\r\n03 부잔교, 철길(군산항 )\n\r\n04 (구)조선은행(근대건축관 )\n\r\n05 (구)일본18은행 (근대미술관) \n\r\n06 미두장비\n\r\n07 군산 3.1기념관\n\r\n08 월명호수\n\r\n09 월명공원 수시탑\n\r\n10 해망굴\n\r\n11 옥구저수지\n\r\n12 열대자 마을(미성동)\n\r\n13 문창초등학교\n\r\n\t\t\t\t\r\n\t\t",
+   "source_url": "https://www.gunsan.go.kr/tour/m2127/view/307108",
+   "license": "NONE",
+   "license_evidence": "공공누리 유형 표기(alt·파일명·문구)를 해당 콘텐츠 영역에서 찾지 못함",
+   "source_name": "군산시 문화관광",
+   "collected_at": "2026-10-08",
+   "sha256": "7241bda9bab8efbcefc9f971226ccf088cd820667b1535e80e473af7075ab439"
+  },
+  "group": "근대문화유산투어",
+  "summary_auto": false,
+  "checked_at": "2026-10-08",
+  "reviewed_at": "",
+  "approved_at": "2026-10-08",
+  "approved_by": "운영자 공개 승인(페이지별 검수 전)",
+  "slug": "arirang-koseu"
+ }
+]

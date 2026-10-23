@@ -1,0 +1,392 @@
+[
+  {
+    "id": "metro-0001",
+    "slug": "jung-gu-jeonsigwan-a",
+    "name": "[샘플] 중구 전시관 A",
+    "kind": "attraction",
+    "category": "",
+    "themes": [
+      "sample-culture"
+    ],
+    "tier": "basic",
+    "status": "published",
+    "reviewed_at": "2026-10-08",
+    "summary": "[샘플] 시험용 가짜 장소입니다. 실제 장소가 아니며 값은 모두 지어낸 것입니다.",
+    "facts": {
+      "address": "대구광역시 중구 샘플로2길 80 (삼덕동1가)",
+      "usetime": "[샘플] 09:00~18:00",
+      "restdate": "[샘플] 월요일",
+      "parking": "[샘플] 가능",
+      "infocenter": "053-000-0001"
+    },
+    "facts_source": {
+      "provider": "한국관광공사 TourAPI",
+      "contentid": "",
+      "checked_at": "2026-10-08"
+    },
+    "original": {},
+    "tourapi": {},
+    "geo": {
+      "lat": 35.869,
+      "lng": 128.5975,
+      "source": "[샘플] 합성 좌표",
+      "url": "https://example.com/metro-fixture/coordinates",
+      "checked_at": "2026-10-11"
+    }
+  },
+  {
+    "id": "metro-0002",
+    "slug": "jung-gu-sikdang-b",
+    "name": "[샘플] 중구 식당 B",
+    "kind": "food",
+    "category": "",
+    "themes": [],
+    "tier": "basic",
+    "status": "published",
+    "reviewed_at": "2026-10-08",
+    "summary": "[샘플] 시험용 가짜 장소입니다. 실제 장소가 아니며 값은 모두 지어낸 것입니다.",
+    "facts": {
+      "address": "대구광역시 중구 샘플로 1 (동성로2가)",
+      "usetime_restdate": "[샘플] 11:00~21:00 / 일요일",
+      "menu": "[샘플] 대표 메뉴",
+      "parking": "[샘플] 불가",
+      "infocenter": "053-000-0002"
+    },
+    "facts_source": {
+      "provider": "한국관광공사 TourAPI",
+      "contentid": "",
+      "checked_at": "2026-10-08"
+    },
+    "original": {},
+    "tourapi": {},
+    "geo": {
+      "lat": 35.8702,
+      "lng": 128.5951,
+      "source": "[샘플] 합성 좌표",
+      "url": "https://example.com/metro-fixture/coordinates",
+      "checked_at": "2026-10-11"
+    }
+  },
+  {
+    "id": "metro-0003",
+    "slug": "suseong-gu-gongwon-c",
+    "name": "[샘플] 수성구 공원 C",
+    "kind": "attraction",
+    "category": "",
+    "themes": [
+      "sample-nature"
+    ],
+    "tier": "basic",
+    "status": "published",
+    "reviewed_at": "2026-10-08",
+    "summary": "[샘플] 시험용 가짜 장소입니다. 실제 장소가 아니며 값은 모두 지어낸 것입니다.",
+    "facts": {
+      "address": "대구광역시 수성구 시험로 42",
+      "usetime": "[샘플] 09:00~18:00",
+      "restdate": "[샘플] 월요일",
+      "parking": "[샘플] 가능",
+      "infocenter": "053-000-0001"
+    },
+    "facts_source": {
+      "provider": "한국관광공사 TourAPI",
+      "contentid": "",
+      "checked_at": "2026-10-08"
+    },
+    "original": {},
+    "tourapi": {},
+    "geo": {
+      "lat": 35.8281,
+      "lng": 128.6203,
+      "source": "[샘플] 합성 좌표",
+      "url": "https://example.com/metro-fixture/coordinates",
+      "checked_at": "2026-10-11"
+    }
+  },
+  {
+    "id": "metro-0004",
+    "slug": "gunwi-gun-cheheomgwan-d",
+    "name": "[샘플] 군위군 체험관 D",
+    "kind": "attraction",
+    "category": "",
+    "themes": [
+      "sample-nature"
+    ],
+    "tier": "basic",
+    "status": "published",
+    "reviewed_at": "2026-10-08",
+    "summary": "[샘플] 시험용 가짜 장소입니다. 실제 장소가 아니며 값은 모두 지어낸 것입니다.",
+    "facts": {
+      "address": "대구광역시 군위군 군위읍 예시로 10",
+      "usetime": "[샘플] 09:00~18:00",
+      "restdate": "[샘플] 월요일",
+      "parking": "[샘플] 가능",
+      "infocenter": "053-000-0001"
+    },
+    "facts_source": {
+      "provider": "한국관광공사 TourAPI",
+      "contentid": "",
+      "checked_at": "2026-10-08"
+    },
+    "original": {},
+    "tourapi": {},
+    "geo": {
+      "lat": 36.2401,
+      "lng": 128.5702,
+      "source": "[샘플] 합성 좌표",
+      "url": "https://example.com/metro-fixture/coordinates",
+      "checked_at": "2026-10-11"
+    }
+  },
+  {
+    "id": "metro-0005",
+    "slug": "dalseong-gun-sukso-e",
+    "name": "[샘플] 달성군 숙소 E",
+    "kind": "stay",
+    "category": "",
+    "themes": [],
+    "tier": "basic",
+    "status": "published",
+    "reviewed_at": "2026-10-08",
+    "summary": "[샘플] 시험용 가짜 장소입니다. 실제 장소가 아니며 값은 모두 지어낸 것입니다.",
+    "facts": {
+      "address": "대구광역시 달성군 가창면 가상로 1",
+      "checkin": "15:00",
+      "checkout": "11:00",
+      "parking": "[샘플] 가능",
+      "infocenter": "053-000-0003"
+    },
+    "facts_source": {
+      "provider": "한국관광공사 TourAPI",
+      "contentid": "",
+      "checked_at": "2026-10-08"
+    },
+    "original": {},
+    "tourapi": {},
+    "geo": {
+      "lat": 35.7802,
+      "lng": 128.6301,
+      "source": "[샘플] 합성 좌표",
+      "url": "https://example.com/metro-fixture/coordinates",
+      "checked_at": "2026-10-11"
+    }
+  },
+  {
+    "id": "metro-0006",
+    "slug": "dong-gu-sikdang-f",
+    "name": "[샘플] 동구 식당 F",
+    "kind": "food",
+    "category": "",
+    "themes": [],
+    "tier": "basic",
+    "status": "published",
+    "reviewed_at": "2026-10-08",
+    "summary": "[샘플] 시험용 가짜 장소입니다. 실제 장소가 아니며 값은 모두 지어낸 것입니다.",
+    "facts": {
+      "address": "대구 동구 샘플길 5",
+      "usetime_restdate": "[샘플] 11:00~21:00 / 일요일",
+      "menu": "[샘플] 대표 메뉴",
+      "parking": "[샘플] 불가",
+      "infocenter": "053-000-0002"
+    },
+    "facts_source": {
+      "provider": "한국관광공사 TourAPI",
+      "contentid": "",
+      "checked_at": "2026-10-08"
+    },
+    "original": {},
+    "tourapi": {},
+    "geo": {
+      "lat": 35.8865,
+      "lng": 128.6352,
+      "source": "[샘플] 합성 좌표",
+      "url": "https://example.com/metro-fixture/coordinates",
+      "checked_at": "2026-10-11"
+    }
+  },
+  {
+    "id": "metro-0007",
+    "slug": "dalseo-gu-jeonsisil-g",
+    "name": "[샘플] 달서구 전시실 G",
+    "kind": "attraction",
+    "category": "",
+    "themes": [
+      "sample-culture"
+    ],
+    "tier": "basic",
+    "status": "published",
+    "reviewed_at": "2026-10-08",
+    "summary": "[샘플] 시험용 가짜 장소입니다. 실제 장소가 아니며 값은 모두 지어낸 것입니다.",
+    "facts": {
+      "address": "대구광역시 달서구 모형로 1 나동 2층",
+      "usetime": "[샘플] 09:00~18:00",
+      "restdate": "[샘플] 월요일",
+      "parking": "[샘플] 가능",
+      "infocenter": "053-000-0001"
+    },
+    "facts_source": {
+      "provider": "한국관광공사 TourAPI",
+      "contentid": "",
+      "checked_at": "2026-10-08"
+    },
+    "original": {},
+    "tourapi": {}
+  },
+  {
+    "id": "metro-0008",
+    "slug": "gu-gun-eomneun-jangso-h",
+    "name": "[샘플] 구·군 없는 장소 H",
+    "kind": "attraction",
+    "category": "",
+    "themes": [],
+    "tier": "basic",
+    "status": "published",
+    "reviewed_at": "2026-10-08",
+    "summary": "[샘플] 시험용 가짜 장소입니다. 실제 장소가 아니며 값은 모두 지어낸 것입니다.",
+    "facts": {
+      "address": "대구광역시 샘플대로 9",
+      "usetime": "[샘플] 09:00~18:00",
+      "restdate": "[샘플] 월요일",
+      "parking": "[샘플] 가능",
+      "infocenter": "053-000-0001"
+    },
+    "facts_source": {
+      "provider": "한국관광공사 TourAPI",
+      "contentid": "",
+      "checked_at": "2026-10-08"
+    },
+    "original": {},
+    "tourapi": {}
+  },
+  {
+    "id": "metro-0009",
+    "slug": "gateun-ireum-sikdang",
+    "name": "[샘플] 같은 이름 식당",
+    "kind": "food",
+    "category": "",
+    "themes": [],
+    "tier": "basic",
+    "status": "published",
+    "reviewed_at": "2026-10-08",
+    "summary": "[샘플] 시험용 가짜 장소입니다. 실제 장소가 아니며 값은 모두 지어낸 것입니다.",
+    "facts": {
+      "address": "대구광역시 북구 샘플로 3",
+      "usetime_restdate": "[샘플] 11:00~21:00 / 일요일",
+      "menu": "[샘플] 대표 메뉴",
+      "parking": "[샘플] 불가",
+      "infocenter": "053-000-0002"
+    },
+    "facts_source": {
+      "provider": "한국관광공사 TourAPI",
+      "contentid": "",
+      "checked_at": "2026-10-08"
+    },
+    "original": {},
+    "tourapi": {},
+    "geo": {
+      "lat": 35.8851,
+      "lng": 128.5822,
+      "source": "[샘플] 합성 좌표",
+      "url": "https://example.com/metro-fixture/coordinates",
+      "checked_at": "2026-10-11"
+    }
+  },
+  {
+    "id": "metro-0010",
+    "slug": "gateun-ireum-sikdang-nam-gu",
+    "name": "[샘플] 같은 이름 식당",
+    "kind": "food",
+    "category": "",
+    "themes": [],
+    "tier": "basic",
+    "status": "published",
+    "reviewed_at": "2026-10-08",
+    "summary": "[샘플] 시험용 가짜 장소입니다. 실제 장소가 아니며 값은 모두 지어낸 것입니다.",
+    "facts": {
+      "address": "대구광역시 남구 샘플로 7",
+      "usetime_restdate": "[샘플] 11:00~21:00 / 일요일",
+      "menu": "[샘플] 대표 메뉴",
+      "parking": "[샘플] 불가",
+      "infocenter": "053-000-0002"
+    },
+    "facts_source": {
+      "provider": "한국관광공사 TourAPI",
+      "contentid": "",
+      "checked_at": "2026-10-08"
+    },
+    "original": {},
+    "tourapi": {},
+    "geo": {
+      "lat": 35.846,
+      "lng": 128.5973,
+      "source": "[샘플] 합성 좌표",
+      "url": "https://example.com/metro-fixture/coordinates",
+      "checked_at": "2026-10-11"
+    }
+  },
+  {
+    "id": "metro-0011",
+    "slug": "seo-gu-sukso-k",
+    "name": "[샘플] 서구 숙소 K",
+    "kind": "stay",
+    "category": "",
+    "themes": [],
+    "tier": "basic",
+    "status": "published",
+    "reviewed_at": "2026-10-08",
+    "summary": "[샘플] 시험용 가짜 장소입니다. 실제 장소가 아니며 값은 모두 지어낸 것입니다.",
+    "facts": {
+      "address": "대구광역시 서구 시험길 11 (내당동)",
+      "checkin": "15:00",
+      "checkout": "11:00",
+      "parking": "[샘플] 가능",
+      "infocenter": "053-000-0003"
+    },
+    "facts_source": {
+      "provider": "한국관광공사 TourAPI",
+      "contentid": "",
+      "checked_at": "2026-10-08"
+    },
+    "original": {},
+    "tourapi": {},
+    "geo": {
+      "lat": 35.8601,
+      "lng": 128.5592,
+      "source": "[샘플] 합성 좌표",
+      "url": "https://example.com/metro-fixture/coordinates",
+      "checked_at": "2026-10-11"
+    }
+  },
+  {
+    "id": "metro-0012",
+    "slug": "gunwi-gun-yet-juso-jangso-l",
+    "name": "[샘플] 군위군 옛 주소 장소 L",
+    "kind": "attraction",
+    "category": "",
+    "themes": [],
+    "tier": "basic",
+    "status": "published",
+    "reviewed_at": "2026-10-08",
+    "summary": "[샘플] 시험용 가짜 장소입니다. 실제 장소가 아니며 값은 모두 지어낸 것입니다.",
+    "facts": {
+      "address": "경상북도 군위군 효령면 예시길 3",
+      "usetime": "[샘플] 09:00~18:00",
+      "restdate": "[샘플] 월요일",
+      "parking": "[샘플] 가능",
+      "infocenter": "053-000-0001"
+    },
+    "facts_source": {
+      "provider": "한국관광공사 TourAPI",
+      "contentid": "",
+      "checked_at": "2026-10-08"
+    },
+    "original": {},
+    "tourapi": {},
+    "geo": {
+      "lat": 36.1802,
+      "lng": 128.6201,
+      "source": "[샘플] 합성 좌표",
+      "url": "https://example.com/metro-fixture/coordinates",
+      "checked_at": "2026-10-11"
+    }
+  }
+]

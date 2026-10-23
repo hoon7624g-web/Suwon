@@ -1,0 +1,278 @@
+{
+  "suwon-course-1": {
+    "slug": "hwaseong-haenggung-heritage",
+    "name": "Маршрут 1 | Крепость Сувон Хвасон, дворец Хвасон Хэнгун и павильон Панхвасурюджон",
+    "group": "Маршрут",
+    "duration": "Однодневная поездка",
+    "summary": "",
+    "stops": [
+      {
+        "name": "Хвасонхэнгун",
+        "note": "",
+        "place_slug": "hwaseonghaenggung"
+      },
+      {
+        "name": "Сувон Хварёнджон",
+        "note": "",
+        "place_slug": "suwon-hwaryeongjeon"
+      },
+      {
+        "name": "Хёвоный Чон·Соджандэ",
+        "note": "",
+        "place_slug": "hyowonui-jong-seojangdae"
+      },
+      {
+        "name": "Ворота Хвасомун в крепости Хвасон в Сувоне",
+        "note": "",
+        "place_slug": "hwaseomun"
+      },
+      {
+        "name": "Чанъанмун",
+        "note": "",
+        "place_slug": "janganmun"
+      },
+      {
+        "name": "Хвахонмун()",
+        "note": "",
+        "place_slug": "hwahongmun"
+      },
+      {
+        "name": "Панхвасурюджон(Тонбукканну)",
+        "note": "",
+        "place_slug": "banghwasuryujeong"
+      },
+      {
+        "name": "Улица Хэннидан-киль",
+        "note": "",
+        "place_slug": "haengnidangil"
+      }
+    ],
+    "ko_hash": "44c05c8f6416f89a",
+    "translated_at": "2026-10-23"
+  },
+  "suwon-course-2": {
+    "slug": "yeonmudae-paldalmun-market",
+    "name": "Маршрут 2 | Ворота Пхальдальмун, рынки Наммун и Мотколь, улица курочки и Хэннидан-киль",
+    "group": "Маршрут",
+    "duration": "Однодневная поездка",
+    "summary": "",
+    "stops": [
+      {
+        "name": "Ёнмудэ(Тонджандэ)",
+        "note": "",
+        "place_slug": "yeonmudae"
+      },
+      {
+        "name": "Тонбукконсимдон",
+        "note": "",
+        "place_slug": "dongbukgongsimdon"
+      },
+      {
+        "name": "Чханнёнмун",
+        "note": "",
+        "place_slug": "changnyongmun"
+      },
+      {
+        "name": "Пхыллаин Сувон",
+        "note": "",
+        "place_slug": "peullaing-suwon"
+      },
+      {
+        "name": "Музей крепости Хвасон в Сувоне",
+        "note": "",
+        "place_slug": "suwonhwaseongbangmulgwan"
+      },
+      {
+        "name": "Пхальдальмун",
+        "note": "",
+        "place_slug": "paldalmun"
+      },
+      {
+        "name": "Чидонсиджан",
+        "note": "",
+        "place_slug": "jidongsijang"
+      },
+      {
+        "name": "Аллея жареной курицы в Сувоне",
+        "note": "",
+        "place_slug": "suwontongdakgeori"
+      }
+    ],
+    "ko_hash": "27045435818760d4",
+    "translated_at": "2026-10-23"
+  },
+  "suwon-course-3": {
+    "slug": "gwanggyo-lake-aquaplanet",
+    "name": "Маршрут 3 | Ёнмудэ, аэростат Flying Suwon, Музей Сувон Хвасон и храм Поннёнса",
+    "group": "Маршрут",
+    "duration": "Однодневная поездка",
+    "summary": "",
+    "stops": [
+      {
+        "name": "Озёрный парк Квангё",
+        "note": "",
+        "place_slug": "gwanggyohosugongwon"
+      },
+      {
+        "name": "Смотровая площадка Фрайбург Квангё",
+        "note": "",
+        "place_slug": "gwanggyo-peuraibureukeujeonmangdae"
+      },
+      {
+        "name": "Акхуапхылланет Квангё",
+        "note": "",
+        "place_slug": "akuapeullanet-gwanggyo"
+      },
+      {
+        "name": "Сувонсирибатхысыпхеисыгвангё",
+        "note": "",
+        "place_slug": "suwonsiribateuseupeiseugwanggyo"
+      },
+      {
+        "name": "Кёнгидосогван",
+        "note": "",
+        "place_slug": "gyeonggidoseogwan"
+      },
+      {
+        "name": "Сувонгвангёбанмульгван",
+        "note": "",
+        "place_slug": "suwongwanggyobangmulgwan"
+      },
+      {
+        "name": "Сувонбанмульгван",
+        "note": "",
+        "place_slug": "suwonbangmulgwan"
+      }
+    ],
+    "ko_hash": "4e8421930bcdc930",
+    "translated_at": "2026-10-23"
+  },
+  "suwon-course-4": {
+    "slug": "irwol-seoho-sangsang",
+    "name": "Маршрут 4 | Озёрный парк Квангё, океанариум Aqua Planet и Музей Сувона",
+    "group": "Маршрут",
+    "duration": "Однодневная поездка",
+    "summary": "",
+    "stops": [
+      {
+        "name": "Дендрарий Ирволь",
+        "note": "",
+        "place_slug": "irwolsumogwon"
+      },
+      {
+        "name": "Ирвольхосугонъвон",
+        "note": "",
+        "place_slug": "irwolhosugongwon"
+      },
+      {
+        "name": "Сохогонъвон",
+        "note": "",
+        "place_slug": "seohogongwon"
+      },
+      {
+        "name": "Куннимнонъоппанмульгван",
+        "note": "",
+        "place_slug": "gungnimnongeopbangmulgwan"
+      },
+      {
+        "name": "Кёнгисансанкхэмпхосы",
+        "note": "",
+        "place_slug": "gyeonggisangsangkaempeoseu"
+      },
+      {
+        "name": "Пёльмадандосогван Сытхапхильды Сувонджом",
+        "note": "",
+        "place_slug": "byeolmadangdoseogwan-seutapildeu-suwonjeom"
+      }
+    ],
+    "ko_hash": "d984df49756853d4",
+    "translated_at": "2026-10-23"
+  },
+  "suwon-course-5": {
+    "slug": "manseok-haeujae-jangan",
+    "name": "Маршрут 5 | Дендрарий Ирволь, Starfield Suwon, парк Мансок и музей Хэуджэ в Чанъан-гу",
+    "group": "Маршрут",
+    "duration": "Однодневная поездка",
+    "summary": "",
+    "stops": [
+      {
+        "name": "Мансокконъвон",
+        "note": "",
+        "place_slug": "manseokgongwon"
+      },
+      {
+        "name": "Сувонсириммансокчонсигван",
+        "note": "",
+        "place_slug": "suwonsirimmanseokjeonsigwan"
+      },
+      {
+        "name": "Носонджидэ",
+        "note": "",
+        "place_slug": "nosongjidae"
+      },
+      {
+        "name": "Хэуджэ",
+        "note": "",
+        "place_slug": "haeujae"
+      },
+      {
+        "name": "Поннёнсаа",
+        "note": "",
+        "place_slug": "bongnyeongsa"
+      },
+      {
+        "name": "Квангёмаругиль",
+        "note": "",
+        "place_slug": "gwanggyomarugil"
+      }
+    ],
+    "ko_hash": "209ad7503d46b9f4",
+    "translated_at": "2026-10-23"
+  },
+  "suwon-course-6": {
+    "slug": "wolhwawon-yeongheung-art",
+    "name": "Маршрут 6 | Парк Сохо, Сельскохозяйственный музей, кампус Сансан и сад Вольхвавон",
+    "group": "Маршрут",
+    "duration": "Однодневная поездка",
+    "summary": "",
+    "stops": [
+      {
+        "name": "Хёвонгонъвон Вольхвавон",
+        "note": "",
+        "place_slug": "hyowongongwon-wolhwawon"
+      },
+      {
+        "name": "Хёвонгонъвон",
+        "note": "",
+        "place_slug": "hyowongongwon"
+      },
+      {
+        "name": "Кёнгиатхысентхо",
+        "note": "",
+        "place_slug": "gyeonggiateusenteo"
+      },
+      {
+        "name": "Нахесоккори",
+        "note": "",
+        "place_slug": "nahyeseokgeori"
+      },
+      {
+        "name": "Самсонъинобеисёнмюджиом",
+        "note": "",
+        "place_slug": "samseonginobeisyeonmyujieom"
+      },
+      {
+        "name": "Ёнхынсумогвон",
+        "note": "",
+        "place_slug": "yeongheungsumogwon"
+      },
+      {
+        "name": "Сувонский городской художественный музей",
+        "note": "",
+        "place_slug": "suwonsirimmisulgwan"
+      }
+    ],
+    "ko_hash": "62025c256cf5a24c",
+    "translated_at": "2026-10-23"
+  }
+}

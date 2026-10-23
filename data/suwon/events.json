@@ -1,0 +1,555 @@
+[
+  {
+    "id": "event-tourapi-3512510",
+    "contentid": "3512510",
+    "status": "published",
+    "name": "경기도 문화사계 \"봄\" 경기 상상해 봄 페스타",
+    "start_date": "2026-03-28",
+    "end_date": "2026-03-29",
+    "place_name": "경기상상캠퍼스 일원",
+    "place_slugs": [
+      "gyeonggisangsangkaempeoseu",
+      "gungnimnongeopbangmulgwan"
+    ],
+    "address": "경기도 수원시 권선구 서둔로 166 (서둔동)",
+    "summary": "경기도 문화사계 \"봄\" 경기 상상해 봄 페스타는 2026-03-28부터 2026-03-29까지 경기상상캠퍼스 일원(경기도 수원시 권선구 서둔로 166 (서둔동))에서 열리는 수원 지역 행사입니다. 주최·주관은 경기도 / 경기문화재단이며, 이용 요금은 무료 기준으로 운영됩니다(문의 031-956-8318).",
+    "source_name": "한국관광공사 TourAPI",
+    "source_url": "https://www.ggcf.kr/",
+    "checked_at": "2026-10-23",
+    "fee": "무료",
+    "sponsor": "경기도 / 경기문화재단",
+    "tel": "031-956-8318",
+    "homepage": "https://www.ggcf.kr/",
+    "geo": {
+      "lat": 37.2667762711767,
+      "lng": 126.985018218555,
+      "source": "TourAPI"
+    },
+    "approved_at": "2026-10-23",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)",
+    "slug": "gyeonggido-munhwasagye-bom-gyeonggi-sangsanghae-bom-peseuta"
+  },
+  {
+    "id": "event-tourapi-3492561",
+    "contentid": "3492561",
+    "status": "published",
+    "name": "만석거 새빛축제",
+    "start_date": "2026-04-03",
+    "end_date": "2026-04-12",
+    "place_name": "만석공원(만석거) 일원",
+    "place_slugs": [
+      "manseokgongwon",
+      "manseokgeogongwon",
+      "suwonsirimmanseokjeonsigwan"
+    ],
+    "address": "경기도 수원시 장안구 정조로 1085 (송죽동)",
+    "summary": "만석거 새빛축제는 2026-04-03부터 2026-04-12까지 만석공원(만석거) 일원(경기도 수원시 장안구 정조로 1085 (송죽동))에서 열리는 수원 지역 행사입니다. 주최·주관은 수원특례시이며, 이용 요금은 무료 기준으로 운영됩니다(문의 031-5191-3084).",
+    "source_name": "한국관광공사 TourAPI",
+    "source_url": "https://www.suwon.go.kr/web/visitsuwon/index.do",
+    "checked_at": "2026-10-23",
+    "fee": "무료",
+    "sponsor": "수원특례시",
+    "tel": "031-5191-3084",
+    "homepage": "https://www.suwon.go.kr/web/visitsuwon/index.do",
+    "geo": {
+      "lat": 37.30118807213841,
+      "lng": 127.00300050292128,
+      "source": "TourAPI"
+    },
+    "approved_at": "2026-10-23",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)",
+    "slug": "manseokgeo-saebitchukje"
+  },
+  {
+    "id": "event-tourapi-4058556",
+    "contentid": "4058556",
+    "status": "published",
+    "name": "컬처라운지 경기, 장(場)",
+    "start_date": "2026-04-18",
+    "end_date": "2026-12-15",
+    "place_name": "경기도청·경기도서관 광교 일원",
+    "place_slugs": [
+      "gyeonggidoseogwan",
+      "gwanggyojunganggongwon",
+      "gwanggyohosugongwon"
+    ],
+    "address": "경기도 수원시 영통구 도청로 지하36 (이의동) 지하",
+    "summary": "컬처라운지 경기, 장(場)은 2026-04-18부터 2026-12-15까지 경기도청·경기도서관 광교 일원(경기도 수원시 영통구 도청로 지하36 (이의동) 지하)에서 열리는 수원 지역 행사입니다. 주최·주관은 경기도 / 경기문화재단이며, 이용 요금은 무료 기준으로 운영됩니다(문의 031-259-4724).",
+    "source_name": "한국관광공사 TourAPI",
+    "source_url": "https://www.ggcf.kr/",
+    "checked_at": "2026-10-23",
+    "fee": "무료",
+    "sponsor": "경기도 / 경기문화재단",
+    "tel": "031-259-4724",
+    "homepage": "https://www.ggcf.kr/",
+    "geo": {
+      "lat": 37.2879129895568,
+      "lng": 127.054491044714,
+      "source": "TourAPI"
+    },
+    "approved_at": "2026-10-23",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)",
+    "slug": "keolcheoraunji-gyeonggi-jang"
+  },
+  {
+    "id": "event-tourapi-2657619",
+    "contentid": "2657619",
+    "status": "published",
+    "name": "2026 화성행궁 야간개장",
+    "start_date": "2026-05-01",
+    "end_date": "2026-11-01",
+    "place_name": "화성행궁 일원",
+    "place_slugs": [
+      "hwaseonghaenggung",
+      "suwon-hwaryeongjeon",
+      "suwonsirimmisulgwan"
+    ],
+    "address": "경기도 수원시 팔달구 정조로 825 (남창동)",
+    "summary": "2026 화성행궁 야간개장은 2026-05-01부터 2026-11-01까지 화성행궁 일원(경기도 수원시 팔달구 정조로 825 (남창동))에서 열리는 수원 지역 행사입니다. 주최·주관은 수원특례시 / 수원문화재단이며, 이용 요금은 성인 2,000원 · 청소년 1,500원 · 어린이 1,000원(한복 착용 시 무료) 기준으로 운영됩니다(문의 031-290-3600).",
+    "source_name": "한국관광공사 TourAPI",
+    "source_url": "https://www.swcf.or.kr",
+    "checked_at": "2026-10-23",
+    "fee": "성인 2,000원 · 청소년 1,500원 · 어린이 1,000원(한복 착용 시 무료)",
+    "sponsor": "수원특례시 / 수원문화재단",
+    "tel": "031-290-3600",
+    "homepage": "https://www.swcf.or.kr",
+    "geo": {
+      "lat": 37.2818163237,
+      "lng": 127.0163732353,
+      "source": "TourAPI"
+    },
+    "approved_at": "2026-10-23",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)",
+    "slug": "hwaseonghaenggung-yagangaejang"
+  },
+  {
+    "id": "event-tourapi-3114685",
+    "contentid": "3114685",
+    "status": "published",
+    "name": "꼬마농부의 컬러 팜 대모험",
+    "start_date": "2026-05-05",
+    "end_date": "2026-05-09",
+    "place_name": "국립농업박물관 일원",
+    "place_slugs": [
+      "gungnimnongeopbangmulgwan",
+      "gyeonggisangsangkaempeoseu",
+      "seohogongwon"
+    ],
+    "address": "경기도 수원시 권선구 수인로 154 (서둔동)",
+    "summary": "꼬마농부의 컬러 팜 대모험은 2026-05-05부터 2026-05-09까지 국립농업박물관 일원(경기도 수원시 권선구 수인로 154 (서둔동))에서 열리는 수원 지역 행사입니다. 주최·주관은 국립농업박물관이며, 이용 요금은 무료(일부 체험 예약제) 기준으로 운영됩니다(문의 031-324-9114~5).",
+    "source_name": "한국관광공사 TourAPI",
+    "source_url": "https://www.namuk.or.kr/",
+    "checked_at": "2026-10-23",
+    "fee": "무료(일부 체험 예약제)",
+    "sponsor": "국립농업박물관",
+    "tel": "031-324-9114~5",
+    "homepage": "https://www.namuk.or.kr/",
+    "geo": {
+      "lat": 37.275427099204265,
+      "lng": 126.98267250666271,
+      "source": "TourAPI"
+    },
+    "approved_at": "2026-10-23",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)",
+    "slug": "kkomanongbuui-keolleo-pam-daemoheom"
+  },
+  {
+    "id": "event-tourapi-577335",
+    "contentid": "577335",
+    "status": "published",
+    "name": "수원연극축제",
+    "start_date": "2026-05-16",
+    "end_date": "2026-05-17",
+    "place_name": "경기상상캠퍼스 일원",
+    "place_slugs": [
+      "gyeonggisangsangkaempeoseu",
+      "gungnimnongeopbangmulgwan",
+      "seohogongwon"
+    ],
+    "address": "경기도 수원시 권선구 서둔로 166 (서둔동) 경기상상캠퍼스",
+    "summary": "수원연극축제는 2026-05-16부터 2026-05-17까지 경기상상캠퍼스 일원(경기도 수원시 권선구 서둔로 166 (서둔동) 경기상상캠퍼스)에서 열리는 수원 지역 행사입니다. 주최·주관은 수원특례시 / 수원문화재단이며, 이용 요금은 무료 기준으로 운영됩니다(문의 031-5191-2768).",
+    "source_name": "한국관광공사 TourAPI",
+    "source_url": "https://www.swcf.or.kr",
+    "checked_at": "2026-10-23",
+    "fee": "무료",
+    "sponsor": "수원특례시 / 수원문화재단",
+    "tel": "031-5191-2768",
+    "homepage": "https://www.swcf.or.kr",
+    "geo": {
+      "lat": 37.26652899449143,
+      "lng": 126.98117491025482,
+      "source": "TourAPI"
+    },
+    "approved_at": "2026-10-23",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)",
+    "slug": "suwonyeongeukchukje"
+  },
+  {
+    "id": "event-tourapi-3486730",
+    "contentid": "3486730",
+    "status": "published",
+    "name": "경기미 김밥페스타",
+    "start_date": "2026-06-13",
+    "end_date": "2026-06-14",
+    "place_name": "수원컨벤션센터 일원",
+    "place_slugs": [
+      "suwonkeonbensyeonsenteo",
+      "gwanggyohosugongwon",
+      "akuapeullanet-gwanggyo"
+    ],
+    "address": "경기도 수원시 영통구 광교중앙로 140 (하동)",
+    "summary": "경기미 김밥페스타는 2026-06-13부터 2026-06-14까지 수원컨벤션센터 일원(경기도 수원시 영통구 광교중앙로 140 (하동))에서 열리는 수원 지역 행사입니다. 주최·주관은 경기도 / 경기도농수산진흥원이며, 이용 요금은 무료 기준으로 운영됩니다(문의 031-774-3312).",
+    "source_name": "한국관광공사 TourAPI",
+    "source_url": "https://www.scc.or.kr/",
+    "checked_at": "2026-10-23",
+    "fee": "무료",
+    "sponsor": "경기도 / 경기도농수산진흥원",
+    "tel": "031-774-3312",
+    "homepage": "https://www.scc.or.kr/",
+    "geo": {
+      "lat": 37.28582866409523,
+      "lng": 127.05944694152052,
+      "source": "TourAPI"
+    },
+    "approved_at": "2026-10-23",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)",
+    "slug": "gyeonggimi-gimbappeseuta"
+  },
+  {
+    "id": "event-tourapi-1825520",
+    "contentid": "1825520",
+    "status": "published",
+    "name": "2026 경기인형극제 in 수원",
+    "start_date": "2026-07-16",
+    "end_date": "2026-07-22",
+    "place_name": "경기상상캠퍼스·수원 일원",
+    "place_slugs": [
+      "gyeonggisangsangkaempeoseu",
+      "gungnimnongeopbangmulgwan"
+    ],
+    "address": "경기도 수원시 권선구 서둔로 166 (서둔동)",
+    "summary": "2026 경기인형극제 in 수원은 2026-07-16부터 2026-07-22까지 경기상상캠퍼스·수원 일원(경기도 수원시 권선구 서둔로 166 (서둔동))에서 열리는 수원 지역 행사입니다. 주최·주관은 경기인형극제조직위원회 / 경기문화재단이며, 이용 요금은 공연별 상이(야외 프로그램 무료) 기준으로 운영됩니다(문의 070-4681-0675).",
+    "source_name": "한국관광공사 TourAPI",
+    "source_url": "https://www.ggcf.kr/",
+    "checked_at": "2026-10-23",
+    "fee": "공연별 상이(야외 프로그램 무료)",
+    "sponsor": "경기인형극제조직위원회 / 경기문화재단",
+    "tel": "070-4681-0675",
+    "homepage": "https://www.ggcf.kr/",
+    "geo": {
+      "lat": 37.2665289945,
+      "lng": 126.9811749103,
+      "source": "TourAPI"
+    },
+    "approved_at": "2026-10-23",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)",
+    "slug": "gyeonggiinhyeonggeukje-in-suwon"
+  },
+  {
+    "id": "event-tourapi-1916616",
+    "contentid": "1916616",
+    "status": "published",
+    "name": "수원 국가유산야행",
+    "start_date": "2026-08-14",
+    "end_date": "2026-08-30",
+    "place_name": "화성행궁·방화수류정·행궁동 일원",
+    "place_slugs": [
+      "hwaseonghaenggung",
+      "banghwasuryujeong",
+      "haengnidangil"
+    ],
+    "address": "경기도 수원시 수원천로392번길",
+    "summary": "수원 국가유산야행은 2026-08-14부터 2026-08-30까지 화성행궁·방화수류정·행궁동 일원(경기도 수원시 수원천로392번길)에서 열리는 수원 지역 행사입니다. 주최·주관은 수원특례시 / 수원문화재단이며, 이용 요금은 무료(일부 체험 유료) 기준으로 운영됩니다(문의 031-290-3562~5).",
+    "source_name": "한국관광공사 TourAPI",
+    "source_url": "https://www.swcf.or.kr",
+    "checked_at": "2026-10-23",
+    "fee": "무료(일부 체험 유료)",
+    "sponsor": "수원특례시 / 수원문화재단",
+    "tel": "031-290-3562~5",
+    "homepage": "https://www.swcf.or.kr",
+    "geo": {
+      "lat": 37.286645,
+      "lng": 127.0197179,
+      "source": "TourAPI"
+    },
+    "approved_at": "2026-10-23",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)",
+    "slug": "suwon-gukgayusanyahaeng"
+  },
+  {
+    "id": "event-tourapi-4095402",
+    "contentid": "4095402",
+    "status": "published",
+    "name": "2026 서가콘서트 : 셜록홈즈",
+    "start_date": "2026-09-08",
+    "end_date": "2026-09-08",
+    "place_name": "경기아트센터 소극장",
+    "place_slugs": [
+      "hyowongongwon-wolhwawon",
+      "hyowongongwon"
+    ],
+    "address": "경기도 수원시 팔달구 효원로307번길 20 (인계동)",
+    "summary": "2026 서가콘서트 : 셜록홈즈는 2026-09-08부터 2026-09-08까지 경기아트센터 소극장(경기도 수원시 팔달구 효원로307번길 20 (인계동))에서 열리는 수원 지역 행사입니다. 주최·주관은 경기아트센터이며, 이용 요금은 전석 20,000원 기준으로 운영됩니다(문의 031-230-3268).",
+    "source_name": "한국관광공사 TourAPI",
+    "source_url": "https://www.ggac.or.kr/",
+    "checked_at": "2026-10-23",
+    "fee": "전석 20,000원",
+    "sponsor": "경기아트센터",
+    "tel": "031-230-3268",
+    "homepage": "https://www.ggac.or.kr/",
+    "geo": {
+      "lat": 37.261583328,
+      "lng": 127.0375696865,
+      "source": "TourAPI"
+    },
+    "approved_at": "2026-10-23",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)",
+    "slug": "seogakonseoteu-syeollokhomjeu"
+  },
+  {
+    "id": "event-tourapi-2616316",
+    "contentid": "2616316",
+    "status": "published",
+    "name": "수원재즈페스티벌",
+    "start_date": "2026-09-18",
+    "end_date": "2026-09-19",
+    "place_name": "광교호수공원 재미난밭 일원",
+    "place_slugs": [
+      "gwanggyohosugongwon",
+      "suwonkeonbensyeonsenteo",
+      "akuapeullanet-gwanggyo"
+    ],
+    "address": "경기도 수원시 영통구 광교호수로 165 (하동)",
+    "summary": "수원재즈페스티벌은 2026-09-18부터 2026-09-19까지 광교호수공원 재미난밭 일원(경기도 수원시 영통구 광교호수로 165 (하동))에서 열리는 수원 지역 행사입니다. 주최·주관은 수원특례시 / 수원문화재단이며, 이용 요금은 무료 기준으로 운영됩니다(문의 070-4945-9580).",
+    "source_name": "한국관광공사 TourAPI",
+    "source_url": "https://www.swcf.or.kr",
+    "checked_at": "2026-10-23",
+    "fee": "무료",
+    "sponsor": "수원특례시 / 수원문화재단",
+    "tel": "070-4945-9580",
+    "homepage": "https://www.swcf.or.kr",
+    "geo": {
+      "lat": 37.2832676649,
+      "lng": 127.0700567363,
+      "source": "TourAPI"
+    },
+    "approved_at": "2026-10-23",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)",
+    "slug": "suwonjaejeupeseutibeol"
+  },
+  {
+    "id": "event-tourapi-2751090",
+    "contentid": "2751090",
+    "status": "published",
+    "name": "수원화성 미디어아트",
+    "start_date": "2026-09-19",
+    "end_date": "2026-10-06",
+    "place_name": "수원화성 화서문·장안문·장안공원 일원",
+    "place_slugs": [
+      "hwaseomun",
+      "janganmun",
+      "jangangongwon"
+    ],
+    "address": "경기도 수원시 팔달구 장안동 334",
+    "summary": "수원화성 미디어아트는 2026-09-19부터 2026-10-06까지 수원화성 화서문·장안문·장안공원 일원(경기도 수원시 팔달구 장안동 334)에서 열리는 수원 지역 행사입니다. 주최·주관은 수원특례시 / 수원문화재단이며, 이용 요금은 무료(일부 관람석 유료) 기준으로 운영됩니다(문의 031-290-3622, 031-5191-3084).",
+    "source_name": "한국관광공사 TourAPI",
+    "source_url": "https://www.swcf.or.kr",
+    "checked_at": "2026-10-23",
+    "fee": "무료(일부 관람석 유료)",
+    "sponsor": "수원특례시 / 수원문화재단",
+    "tel": "031-290-3622, 031-5191-3084",
+    "homepage": "https://www.swcf.or.kr",
+    "geo": {
+      "lat": 37.285512,
+      "lng": 127.009673,
+      "source": "TourAPI"
+    },
+    "approved_at": "2026-10-23",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)",
+    "slug": "suwonhwaseong-midieoateu"
+  },
+  {
+    "id": "event-tourapi-914138",
+    "contentid": "914138",
+    "status": "published",
+    "name": "수원화성문화제",
+    "start_date": "2026-10-04",
+    "end_date": "2026-10-11",
+    "place_name": "화성행궁·행궁광장·수원화성 일원",
+    "place_slugs": [
+      "hwaseonghaenggung",
+      "suwon-hwaseong",
+      "janganmun"
+    ],
+    "address": "경기도 수원시 팔달구 정조로 825 (남창동) 행궁광장",
+    "summary": "수원화성문화제는 2026-10-04부터 2026-10-11까지 화성행궁·행궁광장·수원화성 일원(경기도 수원시 팔달구 정조로 825 (남창동) 행궁광장)에서 열리는 수원 지역 행사입니다. 주최·주관은 수원특례시 / 수원문화재단이며, 이용 요금은 무료(일부 프로그램 유료) 기준으로 운영됩니다(문의 031-5191-3647).",
+    "source_name": "한국관광공사 TourAPI",
+    "source_url": "https://www.swcf.or.kr",
+    "checked_at": "2026-10-23",
+    "fee": "무료(일부 프로그램 유료)",
+    "sponsor": "수원특례시 / 수원문화재단",
+    "tel": "031-5191-3647",
+    "homepage": "https://www.swcf.or.kr",
+    "geo": {
+      "lat": 37.2818820192,
+      "lng": 127.0143944638,
+      "source": "TourAPI"
+    },
+    "approved_at": "2026-10-23",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)",
+    "slug": "suwonhwaseongmunhwaje"
+  },
+  {
+    "id": "event-tourapi-4099101",
+    "contentid": "4099101",
+    "status": "published",
+    "name": "불취무귀야시장 시즌2",
+    "start_date": "2026-10-10",
+    "end_date": "2026-10-31",
+    "place_name": "수원남문시장·팔달문시장 일원",
+    "place_slugs": [
+      "suwon-nammunsijang",
+      "paldalmunsijang",
+      "paldalmun"
+    ],
+    "address": "경기도 수원시 팔달구 팔달문로 9 (팔달로2가)",
+    "summary": "불취무귀야시장 시즌2는 2026-10-10부터 2026-10-31까지 수원남문시장·팔달문시장 일원(경기도 수원시 팔달구 팔달문로 9 (팔달로2가))에서 열리는 수원 지역 행사입니다. 주최·주관은 수원특례시 / 팔달문전통시장상인회이며, 이용 요금은 입장 무료(먹거리·체험 별도) 기준으로 운영됩니다(문의 031-8001-1101).",
+    "source_name": "한국관광공사 TourAPI",
+    "source_url": "https://www.suwon.go.kr/web/visitsuwon/index.do",
+    "checked_at": "2026-10-23",
+    "fee": "입장 무료(먹거리·체험 별도)",
+    "sponsor": "수원특례시 / 팔달문전통시장상인회",
+    "tel": "031-8001-1101",
+    "homepage": "https://www.suwon.go.kr/web/visitsuwon/index.do",
+    "geo": {
+      "lat": 37.277751177,
+      "lng": 127.0184725227,
+      "source": "TourAPI"
+    },
+    "approved_at": "2026-10-23",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)",
+    "slug": "bulchwimugwiyasijang-sijeun-2"
+  },
+  {
+    "id": "event-tourapi-3343831",
+    "contentid": "3343831",
+    "status": "published",
+    "name": "2026 대한민국 AI 콘텐츠 어워즈",
+    "start_date": "2026-10-15",
+    "end_date": "2026-10-16",
+    "place_name": "수원메쎄·타임빌라스 수원 일원",
+    "place_slugs": [
+      "suwonmesse",
+      "ak-peullaja-suwon"
+    ],
+    "address": "경기도 수원시 권선구 세화로 134 (서둔동) 4층",
+    "summary": "2026 대한민국 AI 콘텐츠 어워즈는 2026-10-15부터 2026-10-16까지 수원메쎄·타임빌라스 수원 일원(경기도 수원시 권선구 세화로 134 (서둔동) 4층)에서 열리는 수원 지역 행사입니다. 주최·주관은 경기도 / 경기콘텐츠진흥원이며, 이용 요금은 무료 기준으로 운영됩니다(문의 070-7575-2351).",
+    "source_name": "한국관광공사 TourAPI",
+    "source_url": "https://www.suwon.go.kr/web/visitsuwon/index.do",
+    "checked_at": "2026-10-23",
+    "fee": "무료",
+    "sponsor": "경기도 / 경기콘텐츠진흥원",
+    "tel": "070-7575-2351",
+    "homepage": "https://www.suwon.go.kr/web/visitsuwon/index.do",
+    "geo": {
+      "lat": 37.2641627269,
+      "lng": 126.997385539,
+      "source": "TourAPI"
+    },
+    "approved_at": "2026-10-23",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)",
+    "slug": "daehanminguk-ai-kontencheu-eowojeu"
+  },
+  {
+    "id": "event-tourapi-4132933",
+    "contentid": "4132933",
+    "status": "published",
+    "name": "수원특례시 반려동물 한마음축제",
+    "start_date": "2026-10-24",
+    "end_date": "2026-10-24",
+    "place_name": "광교중앙공원 일원",
+    "place_slugs": [
+      "gwanggyojunganggongwon",
+      "gwanggyohosugongwon",
+      "gwanggyohosugongwon-ballyeogyeon-noriteo"
+    ],
+    "address": "경기도 수원시 영통구 광교중앙로 216 (하동) 광교중앙공원",
+    "summary": "수원특례시 반려동물 한마음축제는 2026-10-24부터 2026-10-24까지 광교중앙공원 일원(경기도 수원시 영통구 광교중앙로 216 (하동) 광교중앙공원)에서 열리는 수원 지역 행사입니다. 주최·주관은 수원특례시이며, 이용 요금은 무료 기준으로 운영됩니다(문의 031-5191-3328).",
+    "source_name": "한국관광공사 TourAPI",
+    "source_url": "https://www.suwon.go.kr/web/visitsuwon/index.do",
+    "checked_at": "2026-10-23",
+    "fee": "무료",
+    "sponsor": "수원특례시",
+    "tel": "031-5191-3328",
+    "homepage": "https://www.suwon.go.kr/web/visitsuwon/index.do",
+    "geo": {
+      "lat": 37.2907652402,
+      "lng": 127.0640032492,
+      "source": "TourAPI"
+    },
+    "approved_at": "2026-10-23",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)",
+    "slug": "suwonteungnyesi-ballyeodongmul-hanmaeumchukje"
+  },
+  {
+    "id": "event-tourapi-3552019",
+    "contentid": "3552019",
+    "status": "published",
+    "name": "2026 뷰티썸 수원",
+    "start_date": "2026-11-05",
+    "end_date": "2026-11-07",
+    "place_name": "수원컨벤션센터 전시장",
+    "place_slugs": [
+      "suwonkeonbensyeonsenteo",
+      "gwanggyohosugongwon",
+      "akuapeullanet-gwanggyo"
+    ],
+    "address": "경기도 수원시 영통구 광교중앙로 140 (하동)",
+    "summary": "2026 뷰티썸 수원은 2026-11-05부터 2026-11-07까지 수원컨벤션센터 전시장(경기도 수원시 영통구 광교중앙로 140 (하동))에서 열리는 수원 지역 행사입니다. 주최·주관은 수원특례시 / 수원컨벤션센터이며, 이용 요금은 사전등록 무료(현장 구매 별도) 기준으로 운영됩니다(문의 02-6121-6229).",
+    "source_name": "한국관광공사 TourAPI",
+    "source_url": "https://www.scc.or.kr/",
+    "checked_at": "2026-10-23",
+    "fee": "사전등록 무료(현장 구매 별도)",
+    "sponsor": "수원특례시 / 수원컨벤션센터",
+    "tel": "02-6121-6229",
+    "homepage": "https://www.scc.or.kr/",
+    "geo": {
+      "lat": 37.2858286641,
+      "lng": 127.0594469415,
+      "source": "TourAPI"
+    },
+    "approved_at": "2026-10-23",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)",
+    "slug": "byutisseom-suwon"
+  },
+  {
+    "id": "event-tourapi-3368470",
+    "contentid": "3368470",
+    "status": "published",
+    "name": "경기미 디저트 페스타",
+    "start_date": "2026-11-21",
+    "end_date": "2026-11-22",
+    "place_name": "수원메쎄 일원",
+    "place_slugs": [
+      "suwonmesse",
+      "ak-peullaja-suwon"
+    ],
+    "address": "경기도 수원시 권선구 세화로134번길 37 (서둔동)",
+    "summary": "경기미 디저트 페스타는 2026-11-21부터 2026-11-22까지 수원메쎄 일원(경기도 수원시 권선구 세화로134번길 37 (서둔동))에서 열리는 수원 지역 행사입니다. 주최·주관은 경기도 / 경기도농수산진흥원이며, 이용 요금은 무료(사전 등록 시) 기준으로 운영됩니다(문의 031-774-3312).",
+    "source_name": "한국관광공사 TourAPI",
+    "source_url": "https://www.suwon.go.kr/web/visitsuwon/index.do",
+    "checked_at": "2026-10-23",
+    "fee": "무료(사전 등록 시)",
+    "sponsor": "경기도 / 경기도농수산진흥원",
+    "tel": "031-774-3312",
+    "homepage": "https://www.suwon.go.kr/web/visitsuwon/index.do",
+    "geo": {
+      "lat": 37.2668071001,
+      "lng": 126.9971816138,
+      "source": "TourAPI"
+    },
+    "approved_at": "2026-10-23",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)",
+    "slug": "gyeonggimi-dijeoteu-peseuta"
+  }
+]

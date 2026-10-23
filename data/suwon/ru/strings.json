@@ -1,0 +1,2230 @@
+{
+  "KIND_LABELS.attraction": {
+    "ko": "관광지",
+    "ru": "Достопримечательность"
+  },
+  "KIND_LABELS.stay": {
+    "ko": "숙소",
+    "ru": "Жильё"
+  },
+  "KIND_LABELS.food": {
+    "ko": "음식점",
+    "ru": "Ресторан"
+  },
+  "FACT_LABELS.address": {
+    "ko": "주소",
+    "ru": "Адрес"
+  },
+  "FACT_LABELS.usetime": {
+    "ko": "이용시간",
+    "ru": "Часы работы"
+  },
+  "FACT_LABELS.usetime_restdate": {
+    "ko": "영업시간·정기휴일",
+    "ru": "Часы работы и постоянные выходные"
+  },
+  "FACT_LABELS.restdate": {
+    "ko": "쉬는 날",
+    "ru": "Выходные дни"
+  },
+  "FACT_LABELS.usefee": {
+    "ko": "이용요금",
+    "ru": "Стоимость"
+  },
+  "FACT_LABELS.parking": {
+    "ko": "주차",
+    "ru": "Парковка"
+  },
+  "FACT_LABELS.parking_seats": {
+    "ko": "주차·좌석",
+    "ru": "Парковка и посадочные места"
+  },
+  "FACT_LABELS.parkingfee": {
+    "ko": "주차요금",
+    "ru": "Плата за парковку"
+  },
+  "FACT_LABELS.spendtime": {
+    "ko": "관람 소요시간",
+    "ru": "Время на осмотр"
+  },
+  "FACT_LABELS.checkin": {
+    "ko": "체크인",
+    "ru": "Заезд"
+  },
+  "FACT_LABELS.checkout": {
+    "ko": "체크아웃",
+    "ru": "Выезд"
+  },
+  "FACT_LABELS.menu": {
+    "ko": "대표 메뉴",
+    "ru": "Фирменные блюда"
+  },
+  "FACT_LABELS.infocenter": {
+    "ko": "문의",
+    "ru": "Контакты"
+  },
+  "FACT_LABELS.homepage": {
+    "ko": "홈페이지",
+    "ru": "Сайт"
+  },
+  "FACT_LABELS.babycarriage": {
+    "ko": "유모차 대여",
+    "ru": "Прокат детских колясок"
+  },
+  "FACT_LABELS.pet": {
+    "ko": "반려동물 동반",
+    "ru": "С питомцами"
+  },
+  "FACT_LABELS.expagerange": {
+    "ko": "체험 가능 연령",
+    "ru": "Возраст участников программ"
+  },
+  "FACT_LABELS.useseason": {
+    "ko": "이용 시기",
+    "ru": "Сезон"
+  },
+  "FACT_LABELS.accessible_parking": {
+    "ko": "장애인 주차장",
+    "ru": "Парковка для людей с инвалидностью"
+  },
+  "FACT_LABELS.wheelchair": {
+    "ko": "휠체어 대여",
+    "ru": "Прокат инвалидных колясок"
+  },
+  "FACT_LABELS.accessible_toilet": {
+    "ko": "장애인 화장실",
+    "ru": "Туалет для людей с инвалидностью"
+  },
+  "FACT_LABELS.accessible_route": {
+    "ko": "주 출입 접근로",
+    "ru": "Доступ к главному входу"
+  },
+  "FACT_LABELS.openperiod": {
+    "ko": "운영 기간",
+    "ru": "Период работы"
+  },
+  "FACT_LABELS.discount": {
+    "ko": "할인",
+    "ru": "Скидки"
+  },
+  "FACT_LABELS.roomcount": {
+    "ko": "객실 수",
+    "ru": "Число номеров"
+  },
+  "FACT_LABELS.roomtype": {
+    "ko": "객실 유형",
+    "ru": "Типы номеров"
+  },
+  "FACT_LABELS.cooking": {
+    "ko": "객실 내 취사",
+    "ru": "Приготовление еды в номере"
+  },
+  "FACT_LABELS.subfacility": {
+    "ko": "부대시설",
+    "ru": "Удобства"
+  },
+  "FACT_LABELS.treatmenu": {
+    "ko": "취급 메뉴",
+    "ru": "Меню"
+  },
+  "FACT_LABELS.seat": {
+    "ko": "좌석",
+    "ru": "Посадочные места"
+  },
+  "FACT_LABELS.packing": {
+    "ko": "포장",
+    "ru": "Еда навынос"
+  },
+  "FACT_LABELS.expguide": {
+    "ko": "체험 안내",
+    "ru": "Программы для посетителей"
+  },
+  "FACT_LABELS.filming": {
+    "ko": "촬영지 정보",
+    "ru": "Сведения о съёмках"
+  },
+  "FACT_LABELS.reservation": {
+    "ko": "예약 안내",
+    "ru": "Бронирование"
+  },
+  "FACT_LABELS.reservationurl": {
+    "ko": "예약 페이지",
+    "ru": "Страница бронирования"
+  },
+  "FACT_LABELS.creditcard": {
+    "ko": "신용카드 결제",
+    "ru": "Оплата кредитной картой"
+  },
+  "FACT_LABELS.kidsfacility": {
+    "ko": "어린이 놀이방",
+    "ru": "Детская игровая комната"
+  },
+  "FACT_LABELS.fairday": {
+    "ko": "장날",
+    "ru": "Базарные дни"
+  },
+  "FACT_LABELS.saleitem": {
+    "ko": "판매 품목",
+    "ru": "Товары"
+  },
+  "FACT_LABELS.shopguide": {
+    "ko": "매장 안내",
+    "ru": "О магазине"
+  },
+  "INDEX_GROUP_LABELS.hours": {
+    "ko": "이용시간",
+    "ru": "Часы работы"
+  },
+  "INDEX_GROUP_LABELS.restdate": {
+    "ko": "쉬는 날",
+    "ru": "Выходные дни"
+  },
+  "INDEX_GROUP_LABELS.fee": {
+    "ko": "요금",
+    "ru": "Стоимость"
+  },
+  "INDEX_GROUP_LABELS.parking": {
+    "ko": "주차",
+    "ru": "Парковка"
+  },
+  "INDEX_GROUP_LABELS.phone": {
+    "ko": "전화",
+    "ru": "Телефон"
+  },
+  "INDEX_GROUP_LABELS.homepage": {
+    "ko": "홈페이지",
+    "ru": "Сайт"
+  },
+  "INDEX_GROUP_LABELS.checkin": {
+    "ko": "체크인",
+    "ru": "Заезд"
+  },
+  "INDEX_GROUP_LABELS.menu": {
+    "ko": "대표 메뉴",
+    "ru": "Фирменные блюда"
+  },
+  "TITLE_LABELS.usetime": {
+    "ko": "이용시간",
+    "ru": "Часы работы"
+  },
+  "TITLE_LABELS.usetime_restdate": {
+    "ko": "영업시간",
+    "ru": "Часы работы"
+  },
+  "TITLE_LABELS.restdate": {
+    "ko": "쉬는 날",
+    "ru": "Выходные дни"
+  },
+  "TITLE_LABELS.usefee": {
+    "ko": "요금",
+    "ru": "Стоимость"
+  },
+  "TITLE_LABELS.parking": {
+    "ko": "주차",
+    "ru": "Парковка"
+  },
+  "TITLE_LABELS.parking_seats": {
+    "ko": "주차",
+    "ru": "Парковка"
+  },
+  "TITLE_LABELS.parkingfee": {
+    "ko": "주차",
+    "ru": "Парковка"
+  },
+  "TITLE_LABELS.checkin": {
+    "ko": "체크인",
+    "ru": "Заезд"
+  },
+  "TITLE_LABELS.menu": {
+    "ko": "메뉴",
+    "ru": "Меню"
+  },
+  "LISTS.attraction.title": {
+    "ko": "관광지",
+    "ru": "Достопримечательности"
+  },
+  "LISTS.attraction.h1": {
+    "ko": "가볼만한 곳·관광지",
+    "ru": "Куда сходить · достопримечательности"
+  },
+  "LISTS.attraction.seo": {
+    "ko": "{region} 가볼만한 곳{n} — 관광지 이용시간·쉬는 날·요금·주차·길찾기",
+    "ru": "Достопримечательности {region}{n} — часы работы, выходные дни, цены, парковка и схема проезда"
+  },
+  "LISTS.attraction.lead": {
+    "ko": "어떤 곳인지, 지금 가도 되는지 확인하고 길찾기로 이어 가세요.",
+    "ru": "Узнайте, что это за место и можно ли поехать туда сейчас, а затем постройте маршрут."
+  },
+  "LISTS.stay.title": {
+    "ko": "숙소",
+    "ru": "Жильё"
+  },
+  "LISTS.stay.h1": {
+    "ko": "숙소",
+    "ru": "Жильё"
+  },
+  "LISTS.stay.seo": {
+    "ko": "{region} 숙소{n} — 호텔·모텔·게스트하우스의 체크인·주차·문의",
+    "ru": "Жильё в {region}{n} — заезд, парковка и контакты отелей, мотелей и гостевых домов"
+  },
+  "LISTS.stay.lead": {
+    "ko": "숙소마다 체크인·체크아웃·주차·문의처를 정리했습니다.",
+    "ru": "Для каждого варианта жилья собраны время заезда и выезда, парковка и контакты."
+  },
+  "LISTS.food.title": {
+    "ko": "음식점",
+    "ru": "Рестораны"
+  },
+  "LISTS.food.h1": {
+    "ko": "맛집·음식점",
+    "ru": "Где поесть · рестораны"
+  },
+  "LISTS.food.seo": {
+    "ko": "{region} 맛집·음식점{n} — 대표 메뉴·영업시간·쉬는 날·주차",
+    "ru": "Рестораны в {region}{n} — фирменные блюда, часы работы, выходные дни и парковка"
+  },
+  "LISTS.food.lead": {
+    "ko": "음식점마다 대표 메뉴와 영업시간·정기휴일을 정리했습니다.",
+    "ru": "Для каждого ресторана собраны фирменные блюда, часы работы и постоянные выходные."
+  },
+  "ATTRACTION_GROUPS.0": {
+    "ko": "수원화성·성곽·행궁",
+    "ru": "Крепость Сувон Хвасон · Стены · Дворец Хэнгун"
+  },
+  "ATTRACTION_GROUPS.1": {
+    "ko": "박물관·미술관·전시",
+    "ru": "Музеи · Художественные галереи · Выставки"
+  },
+  "ATTRACTION_GROUPS.2": {
+    "ko": "호수·수목원·공원·산",
+    "ru": "Озёра · Дендрарии · Парки · Горы"
+  },
+  "ATTRACTION_GROUPS.3": {
+    "ko": "전통시장·공방·체험·레포츠",
+    "ru": "Рынки · Мастерские · Мастер-классы · Активный отдых"
+  },
+  "ALT_LABELS.period": {
+    "ko": "기간",
+    "ru": "Даты"
+  },
+  "ALT_LABELS.place_name": {
+    "ko": "장소",
+    "ru": "Место"
+  },
+  "ALT_LABELS.address": {
+    "ko": "주소",
+    "ru": "Адрес"
+  },
+  "ALT_LABELS.fee": {
+    "ko": "요금",
+    "ru": "Стоимость"
+  },
+  "ALT_LABELS.playtime": {
+    "ko": "시간",
+    "ru": "Время"
+  },
+  "ALT_LABELS.tel": {
+    "ko": "문의",
+    "ru": "Контакты"
+  },
+  "NAV.0": {
+    "ko": "관광지",
+    "ru": "Достопримечательности"
+  },
+  "NAV.1": {
+    "ko": "숙소",
+    "ru": "Жильё"
+  },
+  "NAV.2": {
+    "ko": "음식점",
+    "ru": "Рестораны"
+  },
+  "NAV.3": {
+    "ko": "영상",
+    "ru": "Видео"
+  },
+  "NAV.4": {
+    "ko": "코스",
+    "ru": "Маршруты"
+  },
+  "NAV.5": {
+    "ko": "가이드",
+    "ru": "Путеводители"
+  },
+  "NAV.6": {
+    "ko": "행사",
+    "ru": "События"
+  },
+  "NAV.7": {
+    "ko": "지도",
+    "ru": "Карта"
+  },
+  "NAV.8": {
+    "ko": "해외에서 본 {region}",
+    "ru": "{region} за рубежом"
+  },
+  "REGIONS.hwaseong-haenggung": {
+    "ko": "수원화성·화성행궁·행리단길",
+    "ru": "Сувон Хвасон · Дворец Хвасон Хэнгун · Хэннидан-киль"
+  },
+  "REGIONS.paldalmun-market": {
+    "ko": "팔달문·전통시장·통닭거리",
+    "ru": "Пхальдальмун·Чонтхонсиджан· Жареная курица тхондак Кори"
+  },
+  "REGIONS.gwanggyo-yeongtong": {
+    "ko": "광교호수공원·박물관·영통",
+    "ru": "Озёрный парк Квангё · Конгресс-центр · Ёнтхон"
+  },
+  "REGIONS.manseok-jangan": {
+    "ko": "만석공원·광교산·장안",
+    "ru": "Парк Мансок · Дендрарий Ирволь · Чанъан"
+  },
+  "REGIONS.irwol-gwonseon": {
+    "ko": "일월수목원·서호공원·권선",
+    "ru": "Ирвольсумогвон·Сохогонъвон·Квонсон"
+  },
+  "REGIONS.none": {
+    "ko": "권역 미정",
+    "ru": "Зона не указана"
+  },
+  "LIST_HUB_TINY.attraction": {
+    "ko": "수원화성·행궁·성곽 가이드",
+    "ru": "Гид по крепости Хвасон"
+  },
+  "LIST_HUB_TINY.food": {
+    "ko": "월요일 영업·맛집 가이드",
+    "ru": "Открыто в понедельник"
+  },
+  "LIST_HUB_TINY.stay": {
+    "ko": "호텔·한옥·숙소 가이드",
+    "ru": "Отели и дома ханок"
+  },
+  "STAY_TYPE.숙박": {
+    "ko": "숙박업소",
+    "ru": "Объект размещения"
+  },
+  "STAY_TYPE.기타": {
+    "ko": "그 밖의 숙소",
+    "ru": "Другое жильё"
+  },
+  "STAY_TYPE.": {
+    "ko": "그 밖의 숙소",
+    "ru": "Другое жильё"
+  },
+  "ATTR_TYPE.쇼핑": {
+    "ko": "시장·쇼핑",
+    "ru": "Рынки и шопинг"
+  },
+  "ATTR_TYPE.레포츠": {
+    "ko": "레포츠",
+    "ru": "Активный отдых"
+  },
+  "ATTR_TYPE.문화시설": {
+    "ko": "문화시설",
+    "ru": "Учреждение культуры"
+  },
+  "STATUS_PREFIX.usefee": {
+    "ko": "요금",
+    "ru": "Стоимость"
+  },
+  "STATUS_PREFIX.parking_seats": {
+    "ko": "주차·좌석",
+    "ru": "Парковка и места"
+  },
+  "STATUS_PREFIX.checkin": {
+    "ko": "체크인",
+    "ru": "Заезд"
+  },
+  "STATUS_PREFIX.checkout": {
+    "ko": "체크아웃",
+    "ru": "Выезд"
+  },
+  "STATUS_PREFIX.roomcount": {
+    "ko": "객실",
+    "ru": "Номера"
+  },
+  "STATUS_PREFIX.menu": {
+    "ko": "대표 메뉴",
+    "ru": "Фирменные блюда"
+  },
+  "CONTEST_LABEL.usetime": {
+    "ko": "이용시간",
+    "ru": "Часы работы"
+  },
+  "CONTEST_LABEL.restdate": {
+    "ko": "쉬는 날",
+    "ru": "Выходные дни"
+  },
+  "CONTEST_LABEL.usefee": {
+    "ko": "요금",
+    "ru": "Стоимость"
+  },
+  "CONTEST_LABEL.parking": {
+    "ko": "주차",
+    "ru": "Парковка"
+  },
+  "CONTEST_LABEL.usetime_restdate": {
+    "ko": "영업시간",
+    "ru": "Часы работы"
+  },
+  "CONTEST_LABEL.checkin": {
+    "ko": "체크인",
+    "ru": "Заезд"
+  },
+  "CONTEST_LABEL.checkout": {
+    "ko": "체크아웃",
+    "ru": "Выезд"
+  },
+  "CONTEST_LABEL.menu": {
+    "ko": "대표 메뉴",
+    "ru": "Фирменные блюда"
+  },
+  "CONTEST_LABEL.parking_seats": {
+    "ko": "주차·좌석",
+    "ru": "Парковка и места"
+  },
+  "CONTEST_LABEL.roomcount": {
+    "ko": "객실",
+    "ru": "Номера"
+  },
+  "STOP_KIND_LABELS.meal": {
+    "ko": "식사",
+    "ru": "Еда"
+  },
+  "STOP_KIND_LABELS.lodging": {
+    "ko": "숙박",
+    "ru": "Ночлег"
+  },
+  "STOP_KIND_LABELS.activity": {
+    "ko": "일정",
+    "ru": "Программа"
+  },
+  "STOP_KIND_LABELS.day": {
+    "ko": "일차",
+    "ru": "День"
+  },
+  "STAY_ASK.0": {
+    "ko": "독채 여부",
+    "ru": "Сдаётся ли дом целиком"
+  },
+  "STAY_ASK.1": {
+    "ko": "반려동물 동반",
+    "ru": "С питомцами"
+  },
+  "LIST_CFG.attraction.title": {
+    "ko": "관광지",
+    "ru": "Достопримечательности"
+  },
+  "LIST_CFG.attraction.cols.usetime": {
+    "ko": "이용시간",
+    "ru": "Часы работы"
+  },
+  "LIST_CFG.attraction.cols.restdate": {
+    "ko": "쉬는 날",
+    "ru": "Выходные дни"
+  },
+  "LIST_CFG.attraction.cols.usefee": {
+    "ko": "요금",
+    "ru": "Стоимость"
+  },
+  "LIST_CFG.attraction.cols.parking": {
+    "ko": "주차",
+    "ru": "Парковка"
+  },
+  "LIST_CFG.attraction.check": {
+    "ko": "요금 무료",
+    "ru": "Бесплатно"
+  },
+  "LIST_CFG.stay.title": {
+    "ko": "숙소",
+    "ru": "Жильё"
+  },
+  "LIST_CFG.stay.cols.checkin": {
+    "ko": "체크인",
+    "ru": "Заезд"
+  },
+  "LIST_CFG.stay.cols.checkout": {
+    "ko": "체크아웃",
+    "ru": "Выезд"
+  },
+  "LIST_CFG.stay.cols.parking": {
+    "ko": "주차",
+    "ru": "Парковка"
+  },
+  "LIST_CFG.stay.cols.tel": {
+    "ko": "문의",
+    "ru": "Контакты"
+  },
+  "LIST_CFG.stay.check": {
+    "ko": "체크인 시간 있음",
+    "ru": "Указано время заезда"
+  },
+  "LIST_CFG.food.title": {
+    "ko": "음식점",
+    "ru": "Рестораны"
+  },
+  "LIST_CFG.food.cols.menu": {
+    "ko": "대표 메뉴",
+    "ru": "Фирменные блюда"
+  },
+  "LIST_CFG.food.cols.usetime_restdate": {
+    "ko": "영업시간·정기휴일",
+    "ru": "Часы работы и постоянные выходные"
+  },
+  "LIST_CFG.food.cols.parking_seats": {
+    "ko": "주차·좌석",
+    "ru": "Парковка и места"
+  },
+  "LIST_CFG.food.cols.tel": {
+    "ko": "문의",
+    "ru": "Контакты"
+  },
+  "LIST_CFG.food.check": {
+    "ko": "월요일 영업 표기",
+    "ru": "Указано: открыто в понедельник"
+  },
+  "LIC.KOGL-1": {
+    "ko": "공공누리 제1유형",
+    "ru": "KOGL, тип 1"
+  },
+  "LIC.KOGL-3": {
+    "ko": "공공누리 제3유형(변경금지)",
+    "ru": "KOGL, тип 3 (без изменений)"
+  },
+  "CALL_LINE": {
+    "ko": "방문 전 전화 확인",
+    "ru": "Позвоните перед визитом"
+  },
+  "ORGANISER_LINE": {
+    "ko": "방문 전 주최 측 확인",
+    "ru": "Уточните у организаторов перед визитом"
+  },
+  "CONFLICT.sources_differ": {
+    "ko": "출처마다 다름",
+    "ru": "Источники расходятся"
+  },
+  "CONFLICT.hours_only": {
+    "ko": "영업시간만 다름",
+    "ru": "Расходятся только часы работы"
+  },
+  "site.site_name": {
+    "ko": "수원각",
+    "ru": "Сувонгак"
+  },
+  "site.description": {
+    "ko": "수원각은 수원의 관광지·맛집(음식점)·숙소·여행 코스·축제·영상을 한곳에 모은 여행 정보 사이트입니다. 장소마다 이용시간·쉬는 날·요금·주차·길찾기와 값별 출처를 적었습니다.",
+    "ru": "Сувонгак объединяет достопримечательности, рестораны, жильё, маршруты, фестивали и видео Сувона с часами работы, выходными, ценами, парковкой, маршрутами и источниками."
+  },
+  "site.disclaimer": {
+    "ko": "수원시 공식 홈페이지와 별도로 운영되는 독립 사이트입니다. 원문·사진의 권리는 각 출처에 있으며 표시된 이용조건을 따릅니다.",
+    "ru": "Независимый сайт, работающий отдельно от официального сайта города Сувон. Права на тексты и фото принадлежат соответствующим источникам."
+  },
+  "site.operator.name": {
+    "ko": "에이아이오투오",
+    "ru": "Эиаиотхуо"
+  },
+  "site.official_links.0.name": {
+    "ko": "수원문화관광 (수원특례시)",
+    "ru": "Туризм Сувона (Культура и туризм города Сувон)"
+  },
+  "site.official_links.0.note": {
+    "ko": "수원시 공식 관광정보",
+    "ru": "Официальная туристическая информация Сувона"
+  },
+  "site.official_links.1.name": {
+    "ko": "수원문화재단",
+    "ru": "VisitKorea (на корейском)"
+  },
+  "site.official_links.1.note": {
+    "ko": "수원화성·화성행궁·축제 안내",
+    "ru": "Туристическая информация Национальной организации туризма Кореи"
+  },
+  "site.official_links.2.name": {
+    "ko": "대한민국 구석구석",
+    "ru": "Тэханмингук Кусоккусок"
+  },
+  "site.official_links.2.note": {
+    "ko": "한국관광공사 관광정보",
+    "ru": "Хангукквангвангонса Квангванджонбо"
+  },
+  "theme.islands-sea.name": {
+    "ko": "호수·수변·야경",
+    "ru": "Крепость Сувон Хвасон · Дворец Хэнгун · Стены"
+  },
+  "theme.islands-sea.description": {
+    "ko": "광교호수공원, 방화수류정 용연, 서호공원, 만석공원 등 수원의 호수와 수변 야경 명소",
+    "ru": "Крепость Сувон Хвасон, дворец Хвасон Хэнгун, четыре крепостных ворот, павильон Панхвасурюджон, Ёнмудэ, Соджандэ и Хварёнджон"
+  },
+  "theme.modern-history.name": {
+    "ko": "수원화성·역사·박물관",
+    "ru": "Музеи · Художественные галереи · Наследие"
+  },
+  "theme.modern-history.description": {
+    "ko": "유네스코 세계문화유산 수원화성과 화성행궁, 수원화성박물관·수원시립미술관·삼성이노베이션뮤지엄 등 역사와 전시",
+    "ru": "Музей Сувон Хвасон, Музей Сувона, Художественный музей Сувона, Сельскохозяйственный музей, Музей инноваций Samsung и Хэуджэ"
+  },
+  "theme.parks-nature.name": {
+    "ko": "수목원·숲·공원",
+    "ru": "Озёрные парки · Дендрарии · Лесные тропы"
+  },
+  "theme.parks-nature.description": {
+    "ko": "일월수목원, 영흥수목원, 광교산, 칠보산, 효원공원 월화원 등 도심 속 정원과 숲길",
+    "ru": "Озёрный парк Квангё, дендрарии Ирволь и Ёнхын, парки Мансок и Сохо, сад Вольхвавон и тропы Квангёсана"
+  },
+  "theme.alleys-culture.name": {
+    "ko": "행리단길·시장·체험",
+    "ru": "Хэннидан-киль · Рынки · Мастер-классы"
+  },
+  "theme.alleys-culture.description": {
+    "ko": "행리단길, 수원통닭거리, 팔달문 전통시장, 화성어차·플라잉수원·아쿠아플라넷 등 골목과 체험",
+    "ru": "Хэннидан-киль, улица жареной курицы, рынки Наммун и Чидон, аэростат Flying Suwon, трамвай Хвасон и океанариум Aqua Planet"
+  },
+  "category:관광지": {
+    "ko": "관광지",
+    "ru": "Достопримечательность"
+  },
+  "category:문화시설": {
+    "ko": "문화시설",
+    "ru": "Учреждение культуры"
+  },
+  "category:레포츠": {
+    "ko": "레포츠",
+    "ru": "Активный отдых"
+  },
+  "category:쇼핑": {
+    "ko": "쇼핑",
+    "ru": "Шопинг"
+  },
+  "category:숙박": {
+    "ko": "숙박",
+    "ru": "Жильё"
+  },
+  "category:음식점": {
+    "ko": "음식점",
+    "ru": "Ресторан"
+  },
+  "provider:한국관광공사 TourAPI": {
+    "ko": "한국관광공사 TourAPI",
+    "ru": "TourAPI Корейской организации по туризму"
+  },
+  "provider:카카오맵": {
+    "ko": "카카오맵",
+    "ru": "Kakao Map"
+  },
+  "provider:수원시 문화관광": {
+    "ko": "수원시 문화관광",
+    "ru": "Культура и туризм Сувона"
+  },
+  "provider:한국관광공사 고캠핑(TourAPI)": {
+    "ko": "한국관광공사 고캠핑(TourAPI)",
+    "ru": "Национальная организация туризма Кореи: GoCamping (TourAPI)"
+  },
+  "chrome.skip": {
+    "en": "Skip to main content",
+    "ru": "Перейти к основному содержанию"
+  },
+  "chrome.main_menu": {
+    "en": "Main menu",
+    "ru": "Главное меню"
+  },
+  "chrome.language": {
+    "en": "Language",
+    "ru": "Язык"
+  },
+  "chrome.menu": {
+    "en": "Menu",
+    "ru": "Меню"
+  },
+  "chrome.full_menu": {
+    "en": "Full menu",
+    "ru": "Полное меню"
+  },
+  "chrome.about_sources": {
+    "en": "About and sources",
+    "ru": "О сайте и источниках"
+  },
+  "chrome.you_are_here": {
+    "en": "You are here",
+    "ru": "Вы здесь"
+  },
+  "chrome.explore": {
+    "en": "Explore",
+    "ru": "Обзор"
+  },
+  "chrome.sources": {
+    "en": "Sources",
+    "ru": "Источники"
+  },
+  "chrome.foot_tourapi": {
+    "en": "Places, hours and photos:",
+    "ru": "Места, часы работы и фото:"
+  },
+  "chrome.kto_tourapi": {
+    "en": "Korea Tourism Organization TourAPI",
+    "ru": "TourAPI Корейской организации по туризму"
+  },
+  "chrome.foot_official": {
+    "en": "Official tourism site:",
+    "ru": "Официальный туристический сайт:"
+  },
+  "chrome.foot_original": {
+    "en": "Original texts:",
+    "ru": "Исходные тексты:"
+  },
+  "chrome.foot_maps": {
+    "en": "Maps: © OpenStreetMap contributors",
+    "ru": "Карты: Kakao Map"
+  },
+  "chrome.about": {
+    "en": "About",
+    "ru": "О сайте"
+  },
+  "chrome.about_site": {
+    "en": "About this site",
+    "ru": "Об этом сайте"
+  },
+  "chrome.how_made": {
+    "en": "How the pages are made",
+    "ru": "Как создаются страницы"
+  },
+  "chrome.report_error": {
+    "en": "Report an error",
+    "ru": "Сообщить об ошибке"
+  },
+  "chrome.llms_guide": {
+    "en": "Guide for AI (llms.txt)",
+    "ru": "Руководство для систем ИИ (llms.txt)"
+  },
+  "chrome.sitemap": {
+    "en": "Sitemap",
+    "ru": "Карта сайта"
+  },
+  "chrome.run_by": {
+    "en": "Run by",
+    "ru": "Оператор"
+  },
+  "chrome.editor_role": {
+    "en": "Editor in charge",
+    "ru": "Ответственный редактор"
+  },
+  "chrome.home": {
+    "en": "Home",
+    "ru": "Главная"
+  },
+  "chrome.nav_attraction": {
+    "en": "Things to do",
+    "ru": "Что посмотреть"
+  },
+  "chrome.nav_food": {
+    "en": "Food",
+    "ru": "Еда"
+  },
+  "chrome.nav_stay": {
+    "en": "Stay",
+    "ru": "Жильё"
+  },
+  "chrome.guides": {
+    "en": "Guides",
+    "ru": "Путеводители"
+  },
+  "chrome.courses": {
+    "en": "Courses",
+    "ru": "Маршруты"
+  },
+  "chrome.events": {
+    "en": "Events",
+    "ru": "События"
+  },
+  "chrome.h1_attraction": {
+    "en": "Things to Do in {r}",
+    "ru": "{r}: что посмотреть"
+  },
+  "chrome.h1_food": {
+    "en": "Where to Eat in {r}",
+    "ru": "{r}: где поесть"
+  },
+  "chrome.h1_stay": {
+    "en": "Where to Stay in {r}",
+    "ru": "{r}: где остановиться"
+  },
+  "chrome.title_attraction": {
+    "en": "Things to Do in {r}: {n} Attractions with Hours, Fees and Parking",
+    "ru": "{r}: что посмотреть — достопримечательности ({n}) с часами работы, ценами и парковкой"
+  },
+  "chrome.title_food": {
+    "en": "Where to Eat in {r}: {n} Restaurants with Dishes, Hours and Parking",
+    "ru": "{r}: где поесть — рестораны ({n}) с блюдами, часами работы и парковкой"
+  },
+  "chrome.title_stay": {
+    "en": "Where to Stay in {r}: {n} Stays with Check-in, Parking and Contacts",
+    "ru": "{r}: где остановиться — жильё ({n}) с временем заезда, парковкой и контактами"
+  },
+  "chrome.desc_attraction.one": {
+    "en": "{n} attractions in {r}: opening hours, closed days, fees and parking, each with its source and check date, and directions.",
+    "ru": "{n} достопримечательность в городе {r}: часы работы, выходные дни, цены и парковка с источником и датой проверки, а также как добраться."
+  },
+  "chrome.desc_attraction.few": {
+    "en": "{n} attractions in {r}: opening hours, closed days, fees and parking, each with its source and check date, and directions.",
+    "ru": "{n} достопримечательности в городе {r}: часы работы, выходные дни, цены и парковка с источником и датой проверки, а также как добраться."
+  },
+  "chrome.desc_attraction.many": {
+    "en": "{n} attractions in {r}: opening hours, closed days, fees and parking, each with its source and check date, and directions.",
+    "ru": "{n} достопримечательностей в городе {r}: часы работы, выходные дни, цены и парковка с источником и датой проверки, а также как добраться."
+  },
+  "chrome.desc_food.one": {
+    "en": "{n} restaurants in {r}: signature dishes, hours, closed days and parking, each with its source and check date, and directions.",
+    "ru": "{n} ресторан в городе {r}: фирменные блюда, часы работы, выходные дни и парковка с источником и датой проверки, а также как добраться."
+  },
+  "chrome.desc_food.few": {
+    "en": "{n} restaurants in {r}: signature dishes, hours, closed days and parking, each with its source and check date, and directions.",
+    "ru": "{n} ресторана в городе {r}: фирменные блюда, часы работы, выходные дни и парковка с источником и датой проверки, а также как добраться."
+  },
+  "chrome.desc_food.many": {
+    "en": "{n} restaurants in {r}: signature dishes, hours, closed days and parking, each with its source and check date, and directions.",
+    "ru": "{n} ресторанов в городе {r}: фирменные блюда, часы работы, выходные дни и парковка с источником и датой проверки, а также как добраться."
+  },
+  "chrome.desc_stay.one": {
+    "en": "{n} stays in {r}: check-in and check-out times, parking and phone numbers, each with its source and check date, and directions.",
+    "ru": "{n} вариант жилья в городе {r}: время заезда и выезда, парковка и телефоны с источником и датой проверки, а также как добраться."
+  },
+  "chrome.desc_stay.few": {
+    "en": "{n} stays in {r}: check-in and check-out times, parking and phone numbers, each with its source and check date, and directions.",
+    "ru": "{n} варианта жилья в городе {r}: время заезда и выезда, парковка и телефоны с источником и датой проверки, а также как добраться."
+  },
+  "chrome.desc_stay.many": {
+    "en": "{n} stays in {r}: check-in and check-out times, parking and phone numbers, each with its source and check date, and directions.",
+    "ru": "{n} вариантов жилья в городе {r}: время заезда и выезда, парковка и телефоны с источником и датой проверки, а также как добраться."
+  },
+  "chrome.count_attraction.one": {
+    "en": "{n} attractions",
+    "ru": "{n} достопримечательность"
+  },
+  "chrome.count_attraction.few": {
+    "en": "{n} attractions",
+    "ru": "{n} достопримечательности"
+  },
+  "chrome.count_attraction.many": {
+    "en": "{n} attractions",
+    "ru": "{n} достопримечательностей"
+  },
+  "chrome.count_food.one": {
+    "en": "{n} restaurants",
+    "ru": "{n} ресторан"
+  },
+  "chrome.count_food.few": {
+    "en": "{n} restaurants",
+    "ru": "{n} ресторана"
+  },
+  "chrome.count_food.many": {
+    "en": "{n} restaurants",
+    "ru": "{n} ресторанов"
+  },
+  "chrome.count_stay.one": {
+    "en": "{n} stays",
+    "ru": "{n} вариант жилья"
+  },
+  "chrome.count_stay.few": {
+    "en": "{n} stays",
+    "ru": "{n} варианта жилья"
+  },
+  "chrome.count_stay.many": {
+    "en": "{n} stays",
+    "ru": "{n} вариантов жилья"
+  },
+  "chrome.guide_link": {
+    "en": "Guide: {name}",
+    "ru": "Путеводитель: {name}"
+  },
+  "chrome.by_area": {
+    "en": "By area",
+    "ru": "По районам"
+  },
+  "chrome.rec_call": {
+    "en": "Sources differ · call before visiting",
+    "ru": "Источники расходятся · позвоните перед визитом"
+  },
+  "chrome.photos_is": {
+    "en": "Photos: {name}",
+    "ru": "Фото: {name}"
+  },
+  "chrome.map_only_n.one": {
+    "en": "Only the {n} places with coordinates",
+    "ru": "Только {n} место с координатами"
+  },
+  "chrome.map_only_n.few": {
+    "en": "Only the {n} places with coordinates",
+    "ru": "Только {n} места с координатами"
+  },
+  "chrome.map_only_n.many": {
+    "en": "Only the {n} places with coordinates",
+    "ru": "Только {n} мест с координатами"
+  },
+  "chrome.list_map": {
+    "en": "{name} map",
+    "ru": "Карта: {name}"
+  },
+  "chrome.show_map": {
+    "en": "Show the map",
+    "ru": "Показать карту"
+  },
+  "chrome.source": {
+    "en": "Source",
+    "ru": "Источник"
+  },
+  "chrome.source_word": {
+    "en": "source",
+    "ru": "источник"
+  },
+  "chrome.source_is": {
+    "en": "Source: {name}",
+    "ru": "Источник: {name}"
+  },
+  "chrome.kto": {
+    "en": "Korea Tourism Organization",
+    "ru": "Корейская организация по туризму"
+  },
+  "chrome.kto_visitkorea": {
+    "en": "Korea Tourism Organization (VisitKorea)",
+    "ru": "Корейская организация по туризму (VisitKorea)"
+  },
+  "chrome.kto_page": {
+    "en": "Korea Tourism Organization page (in Korean)",
+    "ru": "Страница Корейской организации по туризму (на корейском)"
+  },
+  "chrome.provider_kto": {
+    "en": "Korea Tourism Organization",
+    "ru": "Корейская организация по туризму"
+  },
+  "chrome.provider_official": {
+    "en": "Official website",
+    "ru": "Официальный сайт"
+  },
+  "chrome.rechecked_with": {
+    "en": "rechecked with {name}",
+    "ru": "перепроверено по источнику: {name}"
+  },
+  "chrome.photo_alt": {
+    "en": "{name} photo {i}",
+    "ru": "{name}, фото {i}"
+  },
+  "chrome.photo_is": {
+    "en": "Photo: {name}",
+    "ru": "Фото: {name}"
+  },
+  "chrome.photos_n.one": {
+    "en": "{n} photo",
+    "ru": "{n} фотография"
+  },
+  "chrome.photos_n.few": {
+    "en": "{n} photos",
+    "ru": "{n} фотографии"
+  },
+  "chrome.photos_n.many": {
+    "en": "{n} photos",
+    "ru": "{n} фотографий"
+  },
+  "chrome.prev_photo": {
+    "en": "Previous photo",
+    "ru": "Предыдущее фото"
+  },
+  "chrome.next_photo": {
+    "en": "Next photo",
+    "ru": "Следующее фото"
+  },
+  "chrome.not_listed": {
+    "en": "Not listed",
+    "ru": "Не указано"
+  },
+  "chrome.not_listed_list": {
+    "en": "Not listed: {items}",
+    "ru": "Не указано: {items}"
+  },
+  "chrome.sources_list": {
+    "en": "Sources: {items}",
+    "ru": "Источники: {items}"
+  },
+  "chrome.more_down": {
+    "en": "more ↓",
+    "ru": "ещё ↓"
+  },
+  "chrome.more": {
+    "en": "more",
+    "ru": "ещё"
+  },
+  "chrome.kf_differ": {
+    "en": "{labels}: sources differ",
+    "ru": "{labels}: источники расходятся"
+  },
+  "chrome.call_before": {
+    "en": "Call before visiting",
+    "ru": "Позвоните перед визитом"
+  },
+  "chrome.notice": {
+    "en": "Notice",
+    "ru": "Объявление"
+  },
+  "chrome.notice_open": {
+    "en": "{dates}: open",
+    "ru": "{dates}: открыто"
+  },
+  "chrome.notice_closed": {
+    "en": "{dates}: closed",
+    "ru": "{dates}: закрыто"
+  },
+  "chrome.notice_hours": {
+    "en": "{dates}: open {start}–{end}",
+    "ru": "{dates}: открыто {start}–{end}"
+  },
+  "chrome.notice_last_entry": {
+    "en": "last entry {time}",
+    "ru": "вход до {time}"
+  },
+  "chrome.or_word": {
+    "en": "or",
+    "ru": "или"
+  },
+  "chrome.in_korean": {
+    "en": "In Korean: {name}",
+    "ru": "По-корейски: {name}"
+  },
+  "chrome.in_korean_paren": {
+    "en": "{name} (in Korean)",
+    "ru": "{name} (на корейском)"
+  },
+  "chrome.designations": {
+    "en": "Designations",
+    "ru": "Официальные статусы"
+  },
+  "chrome.parking_seats": {
+    "en": "Parking and seating",
+    "ru": "Парковка и посадочные места"
+  },
+  "chrome.rooms_n.one": {
+    "en": "{n} rooms",
+    "ru": "{n} номер"
+  },
+  "chrome.rooms_n.few": {
+    "en": "{n} rooms",
+    "ru": "{n} номера"
+  },
+  "chrome.rooms_n.many": {
+    "en": "{n} rooms",
+    "ru": "{n} номеров"
+  },
+  "chrome.how_to_get": {
+    "en": "How to get to {name}",
+    "ru": "Как добраться: {name}"
+  },
+  "chrome.search_tag": {
+    "en": "search",
+    "ru": "поиск"
+  },
+  "chrome.other_maps": {
+    "en": "Other maps",
+    "ru": "Другие карты"
+  },
+  "chrome.map_google": {
+    "en": "Google Maps",
+    "ru": "Google Карты"
+  },
+  "chrome.map_naver": {
+    "en": "Naver Map",
+    "ru": "Naver Map"
+  },
+  "chrome.map_kakao": {
+    "en": "Kakao Map",
+    "ru": "Kakao Map"
+  },
+  "chrome.route_kakao": {
+    "en": "Kakao Map directions",
+    "ru": "Маршрут в Kakao Map"
+  },
+  "chrome.route_google": {
+    "en": "Google Maps directions",
+    "ru": "Маршрут в Google Картах"
+  },
+  "chrome.route_tmap": {
+    "en": "TMAP (app)",
+    "ru": "TMAP (приложение)"
+  },
+  "chrome.directions": {
+    "en": "Directions",
+    "ru": "Маршрут"
+  },
+  "chrome.map_loading": {
+    "en": "Loading the map.",
+    "ru": "Загружаем карту."
+  },
+  "chrome.map_text": {
+    "en": "The places on this map are also listed on this page.",
+    "ru": "Места на этой карте также перечислены на этой странице."
+  },
+  "chrome.map_credit": {
+    "en": "Map: © OpenStreetMap contributors",
+    "ru": "Карта: Kakao Map"
+  },
+  "chrome.map_of": {
+    "en": "Map of {name}",
+    "ru": "Карта: {name}"
+  },
+  "chrome.map_straight": {
+    "en": "Distances are straight lines between coordinates",
+    "ru": "Расстояния — по прямой между координатами"
+  },
+  "chrome.map_loc": {
+    "en": "Location: {provider}",
+    "ru": "Местоположение: {provider}"
+  },
+  "chrome.sec_facts": {
+    "en": "Facts",
+    "ru": "Сведения"
+  },
+  "chrome.sec_photos": {
+    "en": "Photos",
+    "ru": "Фото"
+  },
+  "chrome.sec_map": {
+    "en": "Map",
+    "ru": "Карта"
+  },
+  "chrome.sec_nearby": {
+    "en": "Nearby",
+    "ru": "Рядом"
+  },
+  "chrome.sec_details": {
+    "en": "Details",
+    "ru": "Подробности"
+  },
+  "chrome.sec_faq": {
+    "en": "FAQ",
+    "ru": "Вопросы и ответы"
+  },
+  "chrome.sec_sources": {
+    "en": "Sources",
+    "ru": "Источники"
+  },
+  "chrome.sec_places": {
+    "en": "Places",
+    "ru": "Места"
+  },
+  "chrome.sec_stops": {
+    "en": "Stops",
+    "ru": "Пункты"
+  },
+  "chrome.jump_place": {
+    "en": "Jump to a section of {name}",
+    "ru": "Перейти к разделу страницы: {name}"
+  },
+  "chrome.h_facts": {
+    "en": "{name} before you go",
+    "ru": "{name}: перед визитом"
+  },
+  "chrome.h_photos": {
+    "en": "{name} photos",
+    "ru": "{name}: фото"
+  },
+  "chrome.h_more": {
+    "en": "{name} more information",
+    "ru": "{name}: дополнительная информация"
+  },
+  "chrome.h_fit": {
+    "en": "{name} facilities and access",
+    "ru": "{name}: удобства и доступность"
+  },
+  "chrome.h_map": {
+    "en": "{name} map",
+    "ru": "{name}: карта"
+  },
+  "chrome.h_near": {
+    "en": "{name} nearby and related",
+    "ru": "{name}: что рядом и связанные места"
+  },
+  "chrome.h_details": {
+    "en": "{name} in detail",
+    "ru": "{name}: подробно"
+  },
+  "chrome.h_faq": {
+    "en": "{name} FAQ",
+    "ru": "{name}: вопросы и ответы"
+  },
+  "chrome.h_sources": {
+    "en": "{name} sources",
+    "ru": "{name}: источники"
+  },
+  "chrome.near_sights": {
+    "en": "Things to do nearby",
+    "ru": "Что посмотреть рядом"
+  },
+  "chrome.near_biz": {
+    "en": "Places to stay and eat nearby",
+    "ru": "Где остановиться и поесть рядом"
+  },
+  "chrome.near_note": {
+    "en": "Within {m} m · straight-line distance · {provider}",
+    "ru": "В пределах {m} м · расстояние по прямой · {provider}"
+  },
+  "chrome.courses_here": {
+    "en": "Official courses through this place",
+    "ru": "Официальные маршруты через это место"
+  },
+  "chrome.courses_here_plain": {
+    "en": "Courses through this place",
+    "ru": "Маршруты через это место"
+  },
+  "chrome.guides_here": {
+    "en": "Guides that include this place",
+    "ru": "Путеводители, где есть это место"
+  },
+  "chrome.events_here": {
+    "en": "Events held here",
+    "ru": "События в этом месте"
+  },
+  "chrome.original_page": {
+    "en": "Original page",
+    "ru": "Исходная страница"
+  },
+  "chrome.visitkorea": {
+    "en": "VisitKorea",
+    "ru": "VisitKorea"
+  },
+  "chrome.korean_page": {
+    "en": "Korean page",
+    "ru": "Страница на корейском"
+  },
+  "chrome.name_in_region": {
+    "en": "{name}, {r}",
+    "ru": "{name}, {r}"
+  },
+  "chrome.visit_information": {
+    "en": "{name}: Visit Information",
+    "ru": "{name}: информация для посещения"
+  },
+  "chrome.place_desc_fallback": {
+    "en": "{name} in {r}.",
+    "ru": "{name} в городе {r}."
+  },
+  "chrome.jump_guide": {
+    "en": "Jump to a section of this guide",
+    "ru": "Перейти к разделу путеводителя"
+  },
+  "chrome.guide_places_n.one": {
+    "en": "The {n} places in this guide",
+    "ru": "{n} место в этом путеводителе"
+  },
+  "chrome.guide_places_n.few": {
+    "en": "The {n} places in this guide",
+    "ru": "{n} места в этом путеводителе"
+  },
+  "chrome.guide_places_n.many": {
+    "en": "The {n} places in this guide",
+    "ru": "{n} мест в этом путеводителе"
+  },
+  "chrome.full_list": {
+    "en": "Full list",
+    "ru": "Полный список"
+  },
+  "chrome.n_more.one": {
+    "en": "{n} more",
+    "ru": "ещё {n}"
+  },
+  "chrome.n_more.few": {
+    "en": "{n} more",
+    "ru": "ещё {n}"
+  },
+  "chrome.n_more.many": {
+    "en": "{n} more",
+    "ru": "ещё {n}"
+  },
+  "chrome.see_full_list": {
+    "en": "See the full list",
+    "ru": "Смотреть полный список"
+  },
+  "chrome.places_in_guide": {
+    "en": "The places in this guide",
+    "ru": "Места в этом путеводителе"
+  },
+  "chrome.prev_place": {
+    "en": "Previous place",
+    "ru": "Предыдущее место"
+  },
+  "chrome.next_place": {
+    "en": "Next place",
+    "ru": "Следующее место"
+  },
+  "chrome.toc_label": {
+    "en": "Contents of this guide",
+    "ru": "Содержание путеводителя"
+  },
+  "chrome.toc_head": {
+    "en": "Contents",
+    "ru": "Содержание"
+  },
+  "chrome.places_in_section": {
+    "en": "Places named in this section",
+    "ru": "Места из этого раздела"
+  },
+  "chrome.places_again": {
+    "en": "Places named in this section that have a card above",
+    "ru": "Места из этого раздела, карточки которых есть выше"
+  },
+  "chrome.guide_map": {
+    "en": "Map of the places in this guide",
+    "ru": "Карта мест из путеводителя"
+  },
+  "chrome.map_numbers": {
+    "en": "Numbers: the order of the list below",
+    "ru": "Номера — порядок в списке ниже"
+  },
+  "chrome.guides_h1": {
+    "en": "{r} travel guides",
+    "ru": "{r}: путеводители"
+  },
+  "chrome.guides_lede": {
+    "en": "Each guide answers one travel question and lists its places with their visit information.",
+    "ru": "Где поесть — по блюдам, где остановиться, что посмотреть — по районам, а также поездки без машины, с детьми и в дождливый день. В каждом путеводителе — список мест со сведениями для посещения."
+  },
+  "chrome.all_guides": {
+    "en": "All guides",
+    "ru": "Все путеводители"
+  },
+  "chrome.places_unit.one": {
+    "en": "places",
+    "ru": "место"
+  },
+  "chrome.places_unit.few": {
+    "en": "places",
+    "ru": "места"
+  },
+  "chrome.places_unit.many": {
+    "en": "places",
+    "ru": "мест"
+  },
+  "chrome.label_in_region": {
+    "en": "{label} in {r}",
+    "ru": "{label} в городе {r}"
+  },
+  "chrome.guides_title": {
+    "en": "{r} Travel Guides by Purpose",
+    "ru": "{r}: путеводители по целям поездки"
+  },
+  "chrome.guides_desc.one": {
+    "en": "{n} guide to {r}, with its places and their visit information.",
+    "ru": "{n} путеводитель по городу {r}: где поесть — по блюдам, где остановиться, что посмотреть — по районам, поездки без машины, с детьми и в дождливый день; в каждом — места и сведения для посещения."
+  },
+  "chrome.guides_desc.few": {
+    "en": "{n} guides to {r}, each with its places and their visit information.",
+    "ru": "{n} путеводителя по городу {r}: где поесть — по блюдам, где остановиться, что посмотреть — по районам, поездки без машины, с детьми и в дождливый день; в каждом — места и сведения для посещения."
+  },
+  "chrome.guides_desc.many": {
+    "en": "{n} guides to {r}, each with its places and their visit information.",
+    "ru": "{n} путеводителей по городу {r}: где поесть — по блюдам, где остановиться, что посмотреть — по районам, поездки без машины, с детьми и в дождливый день; в каждом — места и сведения для посещения."
+  },
+  "chrome.jump_course": {
+    "en": "Jump to a section of this course",
+    "ru": "Перейти к разделу маршрута"
+  },
+  "chrome.official_course_of": {
+    "en": "Official course of {name}",
+    "ru": "Официальный маршрут: {name}"
+  },
+  "chrome.course_from": {
+    "en": "Course from {name}",
+    "ru": "Маршрут от {name}"
+  },
+  "chrome.straight_total": {
+    "en": "Straight-line total",
+    "ru": "Всего по прямой"
+  },
+  "chrome.legs_coords": {
+    "en": "Legs with coordinates",
+    "ru": "Отрезки с координатами"
+  },
+  "chrome.start_end": {
+    "en": "Start → end",
+    "ru": "Начало → конец"
+  },
+  "chrome.directions_to_stop": {
+    "en": "Directions to stop {n}",
+    "ru": "Как добраться до пункта {n}"
+  },
+  "chrome.stops_in_order.one": {
+    "en": "{n} stops in order",
+    "ru": "{n} пункт по порядку"
+  },
+  "chrome.stops_in_order.few": {
+    "en": "{n} stops in order",
+    "ru": "{n} пункта по порядку"
+  },
+  "chrome.stops_in_order.many": {
+    "en": "{n} stops in order",
+    "ru": "{n} пунктов по порядку"
+  },
+  "chrome.next_stop": {
+    "en": "next stop {d}",
+    "ru": "до следующего пункта {d}"
+  },
+  "chrome.visit_info_for": {
+    "en": "Visit information for {name}",
+    "ru": "Информация для посещения: {name}"
+  },
+  "chrome.course_map": {
+    "en": "Course map",
+    "ru": "Карта маршрута"
+  },
+  "chrome.map_of_stops": {
+    "en": "Map of the stops of {name}",
+    "ru": "Карта пунктов маршрута: {name}"
+  },
+  "chrome.course_map_caption.one": {
+    "en": "{a} of {b} stops have coordinates · joined in order by straight lines",
+    "ru": "Координаты есть у {a} из {b} пункта · соединены по порядку прямыми линиями"
+  },
+  "chrome.course_map_caption.few": {
+    "en": "{a} of {b} stops have coordinates · joined in order by straight lines",
+    "ru": "Координаты есть у {a} из {b} пунктов · соединены по порядку прямыми линиями"
+  },
+  "chrome.course_map_caption.many": {
+    "en": "{a} of {b} stops have coordinates · joined in order by straight lines",
+    "ru": "Координаты есть у {a} из {b} пунктов · соединены по порядку прямыми линиями"
+  },
+  "chrome.course_source": {
+    "en": "Course source",
+    "ru": "Источник маршрута"
+  },
+  "chrome.distances": {
+    "en": "Distances",
+    "ru": "Расстояния"
+  },
+  "chrome.legs_measured.one": {
+    "en": "{a} of {b} legs measured as straight lines between Korea Tourism Organization TourAPI coordinates",
+    "ru": "{a} из {b} отрезка измерены по прямой между координатами TourAPI Корейской организации по туризму"
+  },
+  "chrome.legs_measured.few": {
+    "en": "{a} of {b} legs measured as straight lines between Korea Tourism Organization TourAPI coordinates",
+    "ru": "{a} из {b} отрезков измерены по прямой между координатами TourAPI Корейской организации по туризму"
+  },
+  "chrome.legs_measured.many": {
+    "en": "{a} of {b} legs measured as straight lines between Korea Tourism Organization TourAPI coordinates",
+    "ru": "{a} из {b} отрезков измерены по прямой между координатами TourAPI Корейской организации по туризму"
+  },
+  "chrome.legs_measured_src.one": {
+    "en": "{a} of {b} legs measured as straight lines between coordinates from {src}",
+    "ru": "{a} из {b} отрезка измерены по прямой между координатами ({src})"
+  },
+  "chrome.legs_measured_src.few": {
+    "en": "{a} of {b} legs measured as straight lines between coordinates from {src}",
+    "ru": "{a} из {b} отрезков измерены по прямой между координатами ({src})"
+  },
+  "chrome.legs_measured_src.many": {
+    "en": "{a} of {b} legs measured as straight lines between coordinates from {src}",
+    "ru": "{a} из {b} отрезков измерены по прямой между координатами ({src})"
+  },
+  "chrome.courses_h1": {
+    "en": "{r} travel courses",
+    "ru": "{r}: туристические маршруты"
+  },
+  "chrome.courses_lede": {
+    "en": "The official courses of {name}, stop by stop, with each stop's visit information.",
+    "ru": "Официальные маршруты {name} по порядку остановок со справочной информацией по каждому месту."
+  },
+  "chrome.courses_lede_of": {
+    "en": "The courses of {name}, stop by stop, with each stop's visit information.",
+    "ru": "Маршруты {name} по порядку остановок со справочной информацией по каждому месту."
+  },
+  "chrome.courses_lede_any": {
+    "en": "The courses, stop by stop, with each stop's visit information.",
+    "ru": "Туристические маршруты по порядку остановок со справочной информацией по каждому месту."
+  },
+  "chrome.stops_of": {
+    "en": "Stops of {name} in order",
+    "ru": "Пункты маршрута по порядку: {name}"
+  },
+  "chrome.plus_more": {
+    "en": "+ {n} more",
+    "ru": "+ ещё {n}"
+  },
+  "chrome.n_stops.one": {
+    "en": "{n} stops",
+    "ru": "{n} пункт"
+  },
+  "chrome.n_stops.few": {
+    "en": "{n} stops",
+    "ru": "{n} пункта"
+  },
+  "chrome.n_stops.many": {
+    "en": "{n} stops",
+    "ru": "{n} пунктов"
+  },
+  "chrome.straight_line": {
+    "en": "straight-line {d}",
+    "ru": "по прямой {d}"
+  },
+  "chrome.region_name": {
+    "en": "{r} {name}",
+    "ru": "{r}: {name}"
+  },
+  "chrome.n_stops_title.one": {
+    "en": "{n} Stops",
+    "ru": "{n} пункт"
+  },
+  "chrome.n_stops_title.few": {
+    "en": "{n} Stops",
+    "ru": "{n} пункта"
+  },
+  "chrome.n_stops_title.many": {
+    "en": "{n} Stops",
+    "ru": "{n} пунктов"
+  },
+  "chrome.course_desc_fallback.one": {
+    "en": "{name}: {n} stops.",
+    "ru": "{name}: {n} пункт."
+  },
+  "chrome.course_desc_fallback.few": {
+    "en": "{name}: {n} stops.",
+    "ru": "{name}: {n} пункта."
+  },
+  "chrome.course_desc_fallback.many": {
+    "en": "{name}: {n} stops.",
+    "ru": "{name}: {n} пунктов."
+  },
+  "chrome.courses_title": {
+    "en": "{r} Travel Courses: Day Trips and Overnight Trips",
+    "ru": "{r}: туристические маршруты — на один день и с ночёвкой"
+  },
+  "chrome.courses_title_day": {
+    "en": "{r} Travel Courses: Day Trips",
+    "ru": "Маршруты по {r}: поездки на один день"
+  },
+  "chrome.courses_title_night": {
+    "en": "{r} Travel Courses: Overnight Trips",
+    "ru": "Маршруты по {r}: поездки с ночёвкой"
+  },
+  "chrome.courses_title_any": {
+    "en": "{r} Travel Courses",
+    "ru": "Туристические маршруты по {r}"
+  },
+  "chrome.courses_desc.one": {
+    "en": "The official travel course of {provider}, stop by stop, with the visit information of each stop.",
+    "ru": "Официальный туристический маршрут от {provider} по порядку остановок со справочной информацией по каждому месту."
+  },
+  "chrome.courses_desc.few": {
+    "en": "The {n} official travel courses of {provider}, stop by stop, with the visit information of each stop.",
+    "ru": "{provider}: {n} официальных туристических маршрута по пунктам, со сведениями для посещения каждого пункта."
+  },
+  "chrome.courses_desc.many": {
+    "en": "The {n} official travel courses of {provider}, stop by stop, with the visit information of each stop.",
+    "ru": "{provider}: {n} официальных туристических маршрутов по пунктам, со сведениями для посещения каждого пункта."
+  },
+  "chrome.courses_desc_of.one": {
+    "en": "The travel course of {provider}, stop by stop, with the visit information of each stop.",
+    "ru": "Туристический маршрут от {provider} по порядку остановок со справочной информацией по каждому месту."
+  },
+  "chrome.courses_desc_of.few": {
+    "en": "The {n} travel courses of {provider}, stop by stop, with the visit information of each stop.",
+    "ru": "{n} туристических маршрута от {provider} по порядку остановок со справочной информацией по каждому месту."
+  },
+  "chrome.courses_desc_of.many": {
+    "en": "The {n} travel courses of {provider}, stop by stop, with the visit information of each stop.",
+    "ru": "{n} туристических маршрутов от {provider} по порядку остановок со справочной информацией по каждому месту."
+  },
+  "chrome.courses_desc_any.one": {
+    "en": "One travel course, stop by stop, with the visit information of each stop.",
+    "ru": "Один туристический маршрут по порядку остановок со справочной информацией по каждому месту."
+  },
+  "chrome.courses_desc_any.few": {
+    "en": "{n} travel courses, stop by stop, with the visit information of each stop.",
+    "ru": "{n} туристических маршрута по порядку остановок со справочной информацией по каждому месту."
+  },
+  "chrome.courses_desc_any.many": {
+    "en": "{n} travel courses, stop by stop, with the visit information of each stop.",
+    "ru": "{n} туристических маршрутов по порядку остановок со справочной информацией по каждому месту."
+  },
+  "chrome.lede_longest": {
+    "en": "the longest leg is from {a} to {b}, {d} in a straight line",
+    "ru": "самый длинный отрезок — {a} → {b}, {d} по прямой"
+  },
+  "chrome.lede_near.one": {
+    "en": "The first {n} stops are within 1 km of the start in a straight line",
+    "ru": "Первый {n} пункт находится в пределах 1 км от начала по прямой"
+  },
+  "chrome.lede_near.few": {
+    "en": "The first {n} stops are within 1 km of the start in a straight line",
+    "ru": "Первые {n} пункта находятся в пределах 1 км от начала по прямой"
+  },
+  "chrome.lede_near.many": {
+    "en": "The first {n} stops are within 1 km of the start in a straight line",
+    "ru": "Первые {n} пунктов находятся в пределах 1 км от начала по прямой"
+  },
+  "chrome.lede_both": {
+    "en": "{near}, and {longest}.",
+    "ru": "{near}, а {longest}."
+  },
+  "chrome.lede_one": {
+    "en": "{text}.",
+    "ru": "{text}."
+  },
+  "chrome.lede_ends.one": {
+    "en": "The {n} stops start at {a} and end at {b}.",
+    "ru": "Маршрут из {n} пункта: начало — {a}, конец — {b}."
+  },
+  "chrome.lede_ends.few": {
+    "en": "The {n} stops start at {a} and end at {b}.",
+    "ru": "Маршрут из {n} пунктов: начало — {a}, конец — {b}."
+  },
+  "chrome.lede_ends.many": {
+    "en": "The {n} stops start at {a} and end at {b}.",
+    "ru": "Маршрут из {n} пунктов: начало — {a}, конец — {b}."
+  },
+  "chrome.ev_dates": {
+    "en": "Dates",
+    "ru": "Даты"
+  },
+  "chrome.ev_time": {
+    "en": "Time",
+    "ru": "Время"
+  },
+  "chrome.ev_fee": {
+    "en": "Fee",
+    "ru": "Стоимость"
+  },
+  "chrome.ev_venue": {
+    "en": "Venue",
+    "ru": "Место проведения"
+  },
+  "chrome.ev_address": {
+    "en": "Address",
+    "ru": "Адрес"
+  },
+  "chrome.ev_organizer": {
+    "en": "Organizer",
+    "ru": "Организатор"
+  },
+  "chrome.ev_contact": {
+    "en": "Contact",
+    "ru": "Контакты"
+  },
+  "chrome.website": {
+    "en": "Website",
+    "ru": "Сайт"
+  },
+  "chrome.program": {
+    "en": "Program",
+    "ru": "Программа"
+  },
+  "chrome.usually": {
+    "en": "Usually:",
+    "ru": "Обычно:"
+  },
+  "chrome.other_editions": {
+    "en": "Other editions:",
+    "ru": "Другие выпуски:"
+  },
+  "chrome.places_label": {
+    "en": "Places:",
+    "ru": "Места:"
+  },
+  "chrome.sources_label": {
+    "en": "Sources:",
+    "ru": "Источники:"
+  },
+  "chrome.events_h1": {
+    "en": "{r} festivals and events",
+    "ru": "{r}: фестивали и события"
+  },
+  "chrome.events_lede": {
+    "en": "The dates, venue and fee of each festival's newest edition, its program and where the information comes from. Where two sources give different values, both are shown.",
+    "ru": "Даты, место и стоимость последнего выпуска каждого фестиваля, его программа и источники сведений. Если два источника дают разные значения, показаны оба."
+  },
+  "chrome.upcoming": {
+    "en": "Upcoming and ongoing",
+    "ru": "Предстоящие и текущие"
+  },
+  "chrome.past": {
+    "en": "Past",
+    "ru": "Прошедшие"
+  },
+  "chrome.festivals": {
+    "en": "Festivals and events",
+    "ru": "Фестивали и события"
+  },
+  "chrome.past_editions": {
+    "en": "Past editions",
+    "ru": "Прошедшие выпуски"
+  },
+  "chrome.season_h": {
+    "en": "Held around this time in earlier years",
+    "ru": "Проводились в это время в прошлые годы"
+  },
+  "chrome.season_note": {
+    "en": "Their newest edition, a year or two ago, began within the next three months of the year. This year's dates are not in our data yet; the cards below give each edition as it was.",
+    "ru": "Последний выпуск год-два назад начался в ближайшие три месяца года. Даты этого года пока нет в наших данных; ниже — карточки того выпуска."
+  },
+  "chrome.past_note": {
+    "en": "The newest edition of each series, newest first.",
+    "ru": "Последний выпуск каждой серии, сначала самые новые."
+  },
+  "chrome.events_title": {
+    "en": "{r} Festivals and Events: Dates, Venues and Fees",
+    "ru": "{r}: фестивали и события — даты, места и стоимость"
+  },
+  "chrome.events_desc": {
+    "en": "{a} upcoming or ongoing and {b} past festivals and events in {r}: dates, venue, fee and organizer of the newest edition, with sources.",
+    "ru": "Фестивали и события в городе {r}: предстоящие и текущие — {a}, прошедшие — {b}. Даты, место, стоимость и организатор последнего выпуска, с источниками."
+  },
+  "chrome.about_title": {
+    "en": "About This Site: Sources, Photos and Corrections",
+    "ru": "О сайте: источники, фотографии и исправления"
+  },
+  "chrome.about_desc": {
+    "en": "What {site} is, where its information comes from, how sources are shown, photo licenses, how names are written and how to report an error.",
+    "ru": "Что такое «{site}», откуда берутся сведения, как указаны источники, лицензии фотографий, как записаны названия и как сообщить об ошибке."
+  },
+  "chrome.about_lede": {
+    "en": "{site} is the edition in this language of {ko_site}, a travel information site about {r}: when places open, what they cost, where to park and how to get there, for attractions, restaurants and places to stay, with the official courses and festival dates.",
+    "ru": "«{site}» — русская версия сайта «{ko_site}» с информацией для путешественников о городе {r}. Здесь собрано, когда открыты места, сколько это стоит, где припарковаться и как добраться — для достопримечательностей, ресторанов и жилья, а также официальные маршруты и даты фестивалей."
+  },
+  "chrome.about_lede_courses": {
+    "en": "{site} is the edition in this language of {ko_site}, a travel information site about {r}: when places open, what they cost, where to park and how to get there, for attractions, restaurants and places to stay, with travel courses and festival dates.",
+    "ru": "{site} — версия на этом языке сайта туристической информации о регионе {r} «{ko_site}»: часы работы, цены, парковка и схема проезда для достопримечательностей, ресторанов и жилья, а также маршруты и даты фестивалей."
+  },
+  "chrome.about_lede_none": {
+    "en": "{site} is the edition in this language of {ko_site}, a travel information site about {r}: when places open, what they cost, where to park and how to get there, for attractions, restaurants and places to stay.",
+    "ru": "{site} — версия на этом языке сайта туристической информации о регионе {r} «{ko_site}»: часы работы, цены, парковка и схема проезда для достопримечательностей, ресторанов и жилья."
+  },
+  "chrome.about_what": {
+    "en": "What is here",
+    "ru": "Что здесь есть"
+  },
+  "chrome.about_counts": {
+    "en": "Pages in this language for {places} places ({indexed} of them in search results; the others are listed but not indexed until they meet the site's index rule), {guides} guides, {courses} official courses and {series} festival and event series.",
+    "ru": "Страницы на русском языке: мест — {places} (в результатах поиска — {indexed}; остальные есть в списках, но не индексируются, пока не отвечают правилу индексации сайта), путеводителей — {guides}, официальных маршрутов — {courses}, серий фестивалей и событий — {series}."
+  },
+  "chrome.about_counts_plain": {
+    "en": "Pages in this language for {places} places ({indexed} of them in search results; the others are listed but not indexed until they meet the site's index rule), {guides} guides, {courses} courses and {series} festival and event series.",
+    "ru": "Страницы на этом языке: мест — {places} (в результатах поиска — {indexed}; остальные есть в списках, но не индексируются, пока не отвечают правилу индексации сайта), путеводителей — {guides}, маршрутов — {courses}, серий фестивалей и событий — {series}."
+  },
+  "chrome.about_sync": {
+    "en": "Each page in this language is a translation of its Korean page. When the Korean page changes, the translated page is taken down until the translation is updated, so the two never say different things.",
+    "ru": "Каждая страница на этом языке — перевод корейской страницы. Когда корейская страница меняется, переведённая страница снимается до обновления перевода, поэтому они никогда не расходятся."
+  },
+  "chrome.about_how_1": {
+    "en": "Opening hours, closed days, fees, parking, phone numbers, check-in times and menus come from the Korea Tourism Organization's TourAPI and from {source}, and for some places from their own official websites. Nothing is filled in from general knowledge.",
+    "ru": "Часы работы, выходные дни, цены, парковка, телефоны, время заезда и меню взяты из TourAPI Национальной организации туризма Кореи и {source}, а для некоторых мест — с их официальных сайтов. Ничего не дополняется из общих знаний."
+  },
+  "chrome.about_how_1_kto": {
+    "en": "Opening hours, closed days, fees, parking, phone numbers, check-in times and menus come from the Korea Tourism Organization's TourAPI and, for some places, from their own official websites. Nothing is filled in from general knowledge.",
+    "ru": "Часы работы, выходные дни, цены, парковка, телефоны, время заезда и меню взяты из TourAPI Национальной организации туризма Кореи, а для некоторых мест — с их официальных сайтов. Ничего не дополняется из общих знаний."
+  },
+  "chrome.about_how_2": {
+    "en": "Every value names its source. Where two sources give different values, the page shows both, each with its source, and says \"{note}\". A value no source gives is listed once as \"{missing}\".",
+    "ru": "У каждого значения указан источник. Если два источника дают разные значения, на странице показаны оба, каждое со своим источником, и написано: «{note}». Значение, которого нет ни в одном источнике, один раз отмечено как «{missing}»."
+  },
+  "chrome.about_how_3": {
+    "en": "Texts from {source} are not copied; each place page links to its original page. Distances are straight lines between coordinates, not travel distances.",
+    "ru": "Тексты {source} не копируются: каждая страница места ссылается на свою исходную страницу. Расстояния даны по прямой между координатами, а не по дорогам."
+  },
+  "chrome.about_how_3_unconfirmed": {
+    "en": "Original texts whose terms of use (the KOGL type) are not confirmed are not copied: pages link to them, descriptions are written anew, and values such as hours, fees and menus are kept as the source gives them. Distances are straight lines between coordinates, not travel distances.",
+    "ru": "Исходные тексты, условия использования которых (тип KOGL) не подтверждены, не копируются: страницы ссылаются на оригинал, описания пишутся заново, а часы работы, цены и меню сохраняются как в источнике. Расстояния даны по прямой между координатами, а не по дорогам."
+  },
+  "chrome.about_photos": {
+    "en": "Photos are from the Korea Tourism Organization under the Korea Open Government License (KOGL): {n1} under {lic1} and {n3} under {lic3}. Type 3 photos are shown exactly as published: never cropped, enlarged or edited. Each photo carries its source and license.",
+    "ru": "Фотографии предоставлены Корейской организацией по туризму по лицензии Korea Open Government License (KOGL): {n1} — по {lic1}, {n3} — по {lic3}. Фотографии типа 3 показаны точно в опубликованном виде: без обрезки, увеличения и обработки. У каждой фотографии указаны источник и лицензия."
+  },
+  "chrome.about_art": {
+    "en": "The illustrations on this site were drawn with generative AI; every photo of a place is an official Korea Tourism Organization photo, shown with its source.",
+    "ru": "Иллюстрации на этом сайте нарисованы с помощью генеративного ИИ; каждая фотография места — официальная фотография Корейской организации по туризму с указанием источника."
+  },
+  "chrome.about_names_h": {
+    "en": "Names",
+    "ru": "Названия"
+  },
+  "chrome.about_names": {
+    "en": "Place names are the Korea Tourism Organization's official names in this language when it gives one; otherwise they are translated from the Korean name (the proper part transcribed, the generic part translated). Every place page also shows the Korean name, which helps when you search a Korean map or show it to a taxi driver.",
+    "ru": "Названия мест — официальные названия Корейской организации по туризму на этом языке, если они есть; иначе названия переведены с корейского (собственная часть транскрибирована, родовая — переведена). На каждой странице места есть и корейское название: оно поможет при поиске на корейской карте или если показать его таксисту."
+  },
+  "chrome.about_names_noex": {
+    "en": "Place names are the Korea Tourism Organization's official names in this language when it gives one; otherwise they are translated from the Korean name (the proper part transcribed, the generic part translated). Every place page also shows the Korean name, which helps when you search a Korean map or show it to a taxi driver.",
+    "ru": "Названия мест — официальные названия Национальной организации туризма Кореи на этом языке, если они есть; иначе названия переведены с корейского (собственная часть транскрибирована, родовая — переведена). На каждой странице места есть и корейское название: оно поможет при поиске на корейской карте или если показать его таксисту."
+  },
+  "chrome.the_operator": {
+    "en": "the operator",
+    "ru": "оператор"
+  },
+  "chrome.about_report": {
+    "en": "If a value is wrong or out of date, write to {mail} with the page address and the source that shows the correct value.",
+    "ru": "Если значение неверно или устарело, напишите на {mail}, указав адрес страницы и источник с верным значением."
+  },
+  "chrome.about_operator": {
+    "en": "Operator: {op}. This site is run independently of {city}.",
+    "ru": "Оператор: {op}. Сайт работает независимо от {city}."
+  },
+  "chrome.about_operator_only": {
+    "en": "Operator: {op}.",
+    "ru": "Оператор: {op}."
+  },
+  "chrome.co_heading": {
+    "en": "The company behind this site",
+    "ru": "Компания-оператор"
+  },
+  "chrome.co_name": {
+    "en": "Company",
+    "ru": "Компания"
+  },
+  "chrome.co_ceo": {
+    "en": "CEO",
+    "ru": "Генеральный директор"
+  },
+  "chrome.co_biz_no": {
+    "en": "Business registration no.",
+    "ru": "Регистрационный номер предприятия"
+  },
+  "chrome.co_corp_no": {
+    "en": "Corporate registration no.",
+    "ru": "Номер регистрации юрлица"
+  },
+  "chrome.co_founded": {
+    "en": "Founded",
+    "ru": "Дата основания"
+  },
+  "chrome.co_head_office": {
+    "en": "Head office",
+    "ru": "Головной офис"
+  },
+  "chrome.co_lab": {
+    "en": "R&D center",
+    "ru": "Исследовательский центр"
+  },
+  "chrome.co_tel": {
+    "en": "Tel.",
+    "ru": "Тел."
+  },
+  "chrome.co_contact": {
+    "en": "Contact",
+    "ru": "Контакты"
+  },
+  "chrome.co_site": {
+    "en": "Company website",
+    "ru": "Сайт компании"
+  },
+  "chrome.co_info": {
+    "en": "Company information",
+    "ru": "Сведения о компании"
+  },
+  "chrome.co_note": {
+    "en": "This site is run by the company above, not by a city government or any other public body. For questions about a place or an event, use the phone number and official links on its page.",
+    "ru": "Этот сайт ведёт указанная выше компания, а не администрация Чеджу или иной государственный орган. С вопросами о месте или мероприятии обращайтесь по телефону и официальным ссылкам на его странице."
+  },
+  "chrome.co_copyright": {
+    "en": "Copyright © {name}. Photos and source texts belong to their sources.",
+    "ru": "Copyright © {name}. Права на фотографии и исходные тексты принадлежат их источникам."
+  },
+  "chrome.official_sites": {
+    "en": "Official sites",
+    "ru": "Официальные сайты"
+  },
+  "chrome.home_title": {
+    "en": "{site}: {r} Attractions, Food, Stays, Courses and Festivals",
+    "ru": "{site}: {r} — достопримечательности, еда, жильё, маршруты и фестивали"
+  },
+  "chrome.home_desc": {
+    "en": "{a} attractions, {f} restaurants and {s} places to stay in {r}, with opening hours, prices, parking and directions, plus official courses and festival dates, in one place.",
+    "ru": "Город {r} в одном месте: достопримечательности ({a}), рестораны ({f}) и жильё ({s}) с часами работы, ценами, парковкой и схемой проезда, а также официальные маршруты и даты фестивалей."
+  },
+  "chrome.home_desc_courses": {
+    "en": "{a} attractions, {f} restaurants and {s} places to stay in {r}, with opening hours, prices, parking and directions, plus travel courses and festival dates, in one place.",
+    "ru": "Регион {r} в одном месте: достопримечательности ({a}), рестораны ({f}) и жильё ({s}) с часами работы, ценами, парковкой и схемой проезда, а также маршруты и даты фестивалей."
+  },
+  "chrome.home_desc_none": {
+    "en": "{a} attractions, {f} restaurants and {s} places to stay in {r}, with opening hours, prices, parking and directions, in one place.",
+    "ru": "Регион {r} в одном месте: достопримечательности ({a}), рестораны ({f}) и жильё ({s}) с часами работы, ценами, парковкой и схемой проезда."
+  },
+  "chrome.home_kicker": {
+    "en": "{r}, {admin}, Korea",
+    "ru": "{r}, {admin}, Корея"
+  },
+  "chrome.home_kicker_city": {
+    "en": "{r}, Korea",
+    "ru": "{r}, Корея"
+  },
+  "chrome.home_sub": {
+    "en": "Opening hours, prices and how to get there for {r}'s attractions, restaurants and places to stay, in one place.",
+    "ru": "Часы работы, цены и как добраться — для достопримечательностей, ресторанов и жилья города {r}, в одном месте."
+  },
+  "chrome.home_cta": {
+    "en": "Start with an official course",
+    "ru": "Начните с официального маршрута"
+  },
+  "chrome.home_cta_plain": {
+    "en": "Start with a course",
+    "ru": "Начните с маршрута"
+  },
+  "chrome.cat_attraction": {
+    "en": "Attractions",
+    "ru": "Достопримечательности"
+  },
+  "chrome.cat_food": {
+    "en": "Restaurants",
+    "ru": "Рестораны"
+  },
+  "chrome.cat_stay": {
+    "en": "Places to stay",
+    "ru": "Жильё"
+  },
+  "chrome.now_on": {
+    "en": "Now on",
+    "ru": "Сейчас идёт"
+  },
+  "chrome.until": {
+    "en": "until {d}",
+    "ru": "до {d}"
+  },
+  "chrome.start_here": {
+    "en": "Start here",
+    "ru": "Начните здесь"
+  },
+  "chrome.num_attraction.one": {
+    "en": "attractions",
+    "ru": "достопримечательность"
+  },
+  "chrome.num_attraction.few": {
+    "en": "attractions",
+    "ru": "достопримечательности"
+  },
+  "chrome.num_attraction.many": {
+    "en": "attractions",
+    "ru": "достопримечательностей"
+  },
+  "chrome.num_food.one": {
+    "en": "restaurants",
+    "ru": "ресторан"
+  },
+  "chrome.num_food.few": {
+    "en": "restaurants",
+    "ru": "ресторана"
+  },
+  "chrome.num_food.many": {
+    "en": "restaurants",
+    "ru": "ресторанов"
+  },
+  "chrome.num_stay.one": {
+    "en": "places to stay",
+    "ru": "вариант жилья"
+  },
+  "chrome.num_stay.few": {
+    "en": "places to stay",
+    "ru": "варианта жилья"
+  },
+  "chrome.num_stay.many": {
+    "en": "places to stay",
+    "ru": "вариантов жилья"
+  },
+  "chrome.num_courses.one": {
+    "en": "official courses",
+    "ru": "официальный маршрут"
+  },
+  "chrome.num_courses.few": {
+    "en": "official courses",
+    "ru": "официальных маршрута"
+  },
+  "chrome.num_courses.many": {
+    "en": "official courses",
+    "ru": "официальных маршрутов"
+  },
+  "chrome.num_courses_plain.one": {
+    "en": "courses",
+    "ru": "маршрут"
+  },
+  "chrome.num_courses_plain.few": {
+    "en": "courses",
+    "ru": "маршрута"
+  },
+  "chrome.num_courses_plain.many": {
+    "en": "courses",
+    "ru": "маршрутов"
+  },
+  "chrome.num_guides.one": {
+    "en": "guides",
+    "ru": "путеводитель"
+  },
+  "chrome.num_guides.few": {
+    "en": "guides",
+    "ru": "путеводителя"
+  },
+  "chrome.num_guides.many": {
+    "en": "guides",
+    "ru": "путеводителей"
+  },
+  "chrome.nums_title": {
+    "en": "{r} travel, in numbers.",
+    "ru": "Поездка в {r} в цифрах."
+  },
+  "chrome.feat_eyebrow": {
+    "en": "On the most official courses",
+    "ru": "Чаще всего в официальных маршрутах"
+  },
+  "chrome.feat_eyebrow_plain": {
+    "en": "On the most courses",
+    "ru": "Чаще всего в маршрутах"
+  },
+  "chrome.feat_h": {
+    "en": "Places to start",
+    "ru": "С чего начать"
+  },
+  "chrome.all_attractions.one": {
+    "en": "All {n} attractions",
+    "ru": "Все {n} достопримечательность"
+  },
+  "chrome.all_attractions.few": {
+    "en": "All {n} attractions",
+    "ru": "Все {n} достопримечательности"
+  },
+  "chrome.all_attractions.many": {
+    "en": "All {n} attractions",
+    "ru": "Все {n} достопримечательностей"
+  },
+  "chrome.hubs_h": {
+    "en": "Eat, stay, see",
+    "ru": "Поесть, остановиться, посмотреть"
+  },
+  "chrome.coming_up": {
+    "en": "Coming up",
+    "ru": "Скоро"
+  },
+  "chrome.all_events": {
+    "en": "All festivals and events",
+    "ru": "Все фестивали и события"
+  },
+  "chrome.lines_h": {
+    "en": "Official courses, in order",
+    "ru": "Официальные маршруты по порядку"
+  },
+  "chrome.lines_h_plain": {
+    "en": "Courses, in order",
+    "ru": "Маршруты по порядку"
+  },
+  "chrome.all_courses": {
+    "en": "All courses",
+    "ru": "Все маршруты"
+  },
+  "chrome.tile_courses_short": {
+    "en": "Official day and overnight courses",
+    "ru": "Официальные маршруты на день и с ночёвкой"
+  },
+  "chrome.tile_courses_short_plain": {
+    "en": "Day and overnight courses",
+    "ru": "Маршруты на день и с ночёвкой"
+  },
+  "chrome.tile_courses_any": {
+    "en": "Official courses, stop by stop",
+    "ru": "Официальные маршруты по порядку"
+  },
+  "chrome.tile_courses_any_plain": {
+    "en": "Courses, stop by stop",
+    "ru": "Маршруты по порядку"
+  },
+  "chrome.tile_courses_tiny": {
+    "en": "Day and overnight",
+    "ru": "На день и с ночёвкой"
+  },
+  "chrome.tile_courses_tiny_day": {
+    "en": "Day trips",
+    "ru": "На один день"
+  },
+  "chrome.tile_courses_tiny_any": {
+    "en": "Stop by stop",
+    "ru": "По остановкам"
+  },
+  "chrome.tile_courses_pill": {
+    "en": "Official",
+    "ru": "Официальные"
+  },
+  "chrome.tile_attraction": {
+    "en": "Attractions",
+    "ru": "Достопримечательности"
+  },
+  "chrome.tile_food": {
+    "en": "Restaurants",
+    "ru": "Рестораны"
+  },
+  "chrome.tile_stay": {
+    "en": "Stays",
+    "ru": "Жильё"
+  },
+  "chrome.tile_short_attraction": {
+    "en": "Hours, closed days, fees and parking",
+    "ru": "Часы работы, выходные, цены и парковка"
+  },
+  "chrome.tile_tiny_attraction": {
+    "en": "Hours · fees",
+    "ru": "Часы · цены"
+  },
+  "chrome.tile_short_food": {
+    "en": "Dishes, hours, closed days and parking",
+    "ru": "Блюда, часы работы, выходные и парковка"
+  },
+  "chrome.tile_tiny_food": {
+    "en": "Dishes · hours",
+    "ru": "Блюда · часы"
+  },
+  "chrome.tile_short_stay": {
+    "en": "Check-in, check-out, parking and phone",
+    "ru": "Заезд, выезд, парковка и телефон"
+  },
+  "chrome.tile_tiny_stay": {
+    "en": "Check-in times",
+    "ru": "Время заезда"
+  },
+  "chrome.tile_events_short": {
+    "en": "Upcoming and ongoing festivals",
+    "ru": "Предстоящие и текущие фестивали"
+  },
+  "chrome.tile_events_tiny": {
+    "en": "Upcoming",
+    "ru": "Скоро"
+  },
+  "chrome.llms_home": {
+    "en": "{r} attractions, restaurants and places to stay with hours, prices, parking and directions; official courses and festival dates.",
+    "ru": "Город {r}: достопримечательности, рестораны и жильё с часами работы, ценами, парковкой и схемой проезда; официальные маршруты и даты фестивалей."
+  },
+  "chrome.llms_home_courses": {
+    "en": "{r} attractions, restaurants and places to stay with hours, prices, parking and directions; travel courses and festival dates.",
+    "ru": "Регион {r}: достопримечательности, рестораны и жильё с часами работы, ценами, парковкой и схемой проезда; маршруты и даты фестивалей."
+  },
+  "chrome.llms_home_none": {
+    "en": "{r} attractions, restaurants and places to stay with hours, prices, parking and directions.",
+    "ru": "Регион {r}: достопримечательности, рестораны и жильё с часами работы, ценами, парковкой и схемой проезда."
+  },
+  "chrome.none_district": {
+    "en": "District not listed",
+    "ru": "Район не указан"
+  },
+  "chrome.none_anchors": {
+    "en": "Area not assigned",
+    "ru": "Зона не указана"
+  },
+  "chrome.map_zoom_in": {
+    "en": "Zoom in",
+    "ru": "Приблизить"
+  },
+  "chrome.map_zoom_out": {
+    "en": "Zoom out",
+    "ru": "Отдалить"
+  },
+  "chrome.map_whole_course": {
+    "en": "Whole course",
+    "ru": "Весь маршрут"
+  },
+  "chrome.map_fail": {
+    "en": "The map could not be loaded.",
+    "ru": "Не удалось загрузить карту."
+  },
+  "chrome.map_off": {
+    "en": "Some stops lie off the map · show them",
+    "ru": "Некоторые пункты за пределами карты · показать"
+  },
+  "provider:수원시": {
+    "ko": "수원시",
+    "ru": "Город Сувон"
+  }
+}

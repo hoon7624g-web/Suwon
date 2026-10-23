@@ -1,0 +1,20 @@
+[
+  {
+    "slug": "sample-culture",
+    "name": "[샘플] 문화",
+    "description": "[샘플] 시험용 주제",
+    "visual": {
+      "tone": "history",
+      "icon": "building"
+    }
+  },
+  {
+    "slug": "sample-nature",
+    "name": "[샘플] 자연",
+    "description": "[샘플] 시험용 주제",
+    "visual": {
+      "tone": "park",
+      "icon": "tree"
+    }
+  }
+]

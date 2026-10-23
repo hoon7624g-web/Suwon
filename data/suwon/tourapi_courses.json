@@ -1,0 +1,24 @@
+{
+ "_meta": {
+  "about": "한국관광공사 TourAPI 여행코스(contentTypeId 25) 수집 결과 — 사람이 확인하고 도시의 코스 가져오기 도구(tools/import_courses_<도시>.py)로 코스에 넣기 전의 원자료. overview는 사실 확인용이며 싣지 않는다.",
+  "provider": "한국관광공사 TourAPI(KorService2: areaBasedList2·detailCommon2·detailIntro2·detailInfo2)",
+  "content_type": "25",
+  "list": {
+   "scope": "districts",
+   "regn": "경기도(41)",
+   "by_district": {
+    "장안구": 0,
+    "권선구": 0,
+    "팔달구": 0,
+    "영통구": 0
+   },
+   "duplicates": 0
+  },
+  "collected_on": "2026-10-23",
+  "stopped": "",
+  "list_complete": true,
+  "courses_in_list": 0,
+  "courses_detailed": 0
+ },
+ "courses": []
+}

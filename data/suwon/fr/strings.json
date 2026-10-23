@@ -1,0 +1,2102 @@
+{
+  "KIND_LABELS.attraction": {
+    "ko": "관광지",
+    "fr": "Site touristique"
+  },
+  "KIND_LABELS.stay": {
+    "ko": "숙소",
+    "fr": "Hébergement"
+  },
+  "KIND_LABELS.food": {
+    "ko": "음식점",
+    "fr": "Restaurant"
+  },
+  "FACT_LABELS.address": {
+    "ko": "주소",
+    "fr": "Adresse"
+  },
+  "FACT_LABELS.usetime": {
+    "ko": "이용시간",
+    "fr": "Horaires"
+  },
+  "FACT_LABELS.usetime_restdate": {
+    "ko": "영업시간·정기휴일",
+    "fr": "Horaires et jours de fermeture habituels"
+  },
+  "FACT_LABELS.restdate": {
+    "ko": "쉬는 날",
+    "fr": "Jours de fermeture"
+  },
+  "FACT_LABELS.usefee": {
+    "ko": "이용요금",
+    "fr": "Tarifs"
+  },
+  "FACT_LABELS.parking": {
+    "ko": "주차",
+    "fr": "Parking"
+  },
+  "FACT_LABELS.parking_seats": {
+    "ko": "주차·좌석",
+    "fr": "Parking et places assises"
+  },
+  "FACT_LABELS.parkingfee": {
+    "ko": "주차요금",
+    "fr": "Tarif du parking"
+  },
+  "FACT_LABELS.spendtime": {
+    "ko": "관람 소요시간",
+    "fr": "Durée de la visite"
+  },
+  "FACT_LABELS.checkin": {
+    "ko": "체크인",
+    "fr": "Arrivée"
+  },
+  "FACT_LABELS.checkout": {
+    "ko": "체크아웃",
+    "fr": "Départ"
+  },
+  "FACT_LABELS.menu": {
+    "ko": "대표 메뉴",
+    "fr": "Spécialités"
+  },
+  "FACT_LABELS.infocenter": {
+    "ko": "문의",
+    "fr": "Contact"
+  },
+  "FACT_LABELS.homepage": {
+    "ko": "홈페이지",
+    "fr": "Site web"
+  },
+  "FACT_LABELS.babycarriage": {
+    "ko": "유모차 대여",
+    "fr": "Mise à disposition de poussettes"
+  },
+  "FACT_LABELS.pet": {
+    "ko": "반려동물 동반",
+    "fr": "Animaux de compagnie"
+  },
+  "FACT_LABELS.expagerange": {
+    "ko": "체험 가능 연령",
+    "fr": "Âges admis pour les activités"
+  },
+  "FACT_LABELS.useseason": {
+    "ko": "이용 시기",
+    "fr": "Saison"
+  },
+  "FACT_LABELS.accessible_parking": {
+    "ko": "장애인 주차장",
+    "fr": "Parking pour personnes handicapées"
+  },
+  "FACT_LABELS.wheelchair": {
+    "ko": "휠체어 대여",
+    "fr": "Mise à disposition de fauteuils roulants"
+  },
+  "FACT_LABELS.accessible_toilet": {
+    "ko": "장애인 화장실",
+    "fr": "Toilettes pour personnes handicapées"
+  },
+  "FACT_LABELS.accessible_route": {
+    "ko": "주 출입 접근로",
+    "fr": "Accès à l'entrée principale"
+  },
+  "FACT_LABELS.openperiod": {
+    "ko": "운영 기간",
+    "fr": "Période d'ouverture"
+  },
+  "FACT_LABELS.discount": {
+    "ko": "할인",
+    "fr": "Réductions"
+  },
+  "FACT_LABELS.roomcount": {
+    "ko": "객실 수",
+    "fr": "Nombre de chambres"
+  },
+  "FACT_LABELS.roomtype": {
+    "ko": "객실 유형",
+    "fr": "Types de chambres"
+  },
+  "FACT_LABELS.cooking": {
+    "ko": "객실 내 취사",
+    "fr": "Cuisine en chambre"
+  },
+  "FACT_LABELS.subfacility": {
+    "ko": "부대시설",
+    "fr": "Équipements annexes"
+  },
+  "FACT_LABELS.treatmenu": {
+    "ko": "취급 메뉴",
+    "fr": "Plats proposés"
+  },
+  "FACT_LABELS.seat": {
+    "ko": "좌석",
+    "fr": "Places assises"
+  },
+  "FACT_LABELS.packing": {
+    "ko": "포장",
+    "fr": "À emporter"
+  },
+  "FACT_LABELS.expguide": {
+    "ko": "체험 안내",
+    "fr": "Informations sur les activités"
+  },
+  "FACT_LABELS.filming": {
+    "ko": "촬영지 정보",
+    "fr": "Informations sur le lieu de tournage"
+  },
+  "FACT_LABELS.reservation": {
+    "ko": "예약 안내",
+    "fr": "Informations sur les réservations"
+  },
+  "FACT_LABELS.reservationurl": {
+    "ko": "예약 페이지",
+    "fr": "Page de réservation"
+  },
+  "FACT_LABELS.creditcard": {
+    "ko": "신용카드 결제",
+    "fr": "Paiement par carte de crédit"
+  },
+  "FACT_LABELS.kidsfacility": {
+    "ko": "어린이 놀이방",
+    "fr": "Salle de jeux pour enfants"
+  },
+  "FACT_LABELS.fairday": {
+    "ko": "장날",
+    "fr": "Jours de marché"
+  },
+  "FACT_LABELS.saleitem": {
+    "ko": "판매 품목",
+    "fr": "Produits vendus"
+  },
+  "FACT_LABELS.shopguide": {
+    "ko": "매장 안내",
+    "fr": "Informations sur le magasin"
+  },
+  "INDEX_GROUP_LABELS.hours": {
+    "ko": "이용시간",
+    "fr": "Horaires"
+  },
+  "INDEX_GROUP_LABELS.restdate": {
+    "ko": "쉬는 날",
+    "fr": "Jours de fermeture"
+  },
+  "INDEX_GROUP_LABELS.fee": {
+    "ko": "요금",
+    "fr": "Tarifs"
+  },
+  "INDEX_GROUP_LABELS.parking": {
+    "ko": "주차",
+    "fr": "Parking"
+  },
+  "INDEX_GROUP_LABELS.phone": {
+    "ko": "전화",
+    "fr": "Téléphone"
+  },
+  "INDEX_GROUP_LABELS.homepage": {
+    "ko": "홈페이지",
+    "fr": "Site web"
+  },
+  "INDEX_GROUP_LABELS.checkin": {
+    "ko": "체크인",
+    "fr": "Arrivée"
+  },
+  "INDEX_GROUP_LABELS.menu": {
+    "ko": "대표 메뉴",
+    "fr": "Spécialités"
+  },
+  "TITLE_LABELS.usetime": {
+    "ko": "이용시간",
+    "fr": "Horaires"
+  },
+  "TITLE_LABELS.usetime_restdate": {
+    "ko": "영업시간",
+    "fr": "Horaires"
+  },
+  "TITLE_LABELS.restdate": {
+    "ko": "쉬는 날",
+    "fr": "Jours de fermeture"
+  },
+  "TITLE_LABELS.usefee": {
+    "ko": "요금",
+    "fr": "Tarifs"
+  },
+  "TITLE_LABELS.parking": {
+    "ko": "주차",
+    "fr": "Parking"
+  },
+  "TITLE_LABELS.parking_seats": {
+    "ko": "주차",
+    "fr": "Parking"
+  },
+  "TITLE_LABELS.parkingfee": {
+    "ko": "주차",
+    "fr": "Parking"
+  },
+  "TITLE_LABELS.checkin": {
+    "ko": "체크인",
+    "fr": "Arrivée"
+  },
+  "TITLE_LABELS.menu": {
+    "ko": "메뉴",
+    "fr": "Menu"
+  },
+  "LISTS.attraction.title": {
+    "ko": "관광지",
+    "fr": "Sites touristiques"
+  },
+  "LISTS.attraction.h1": {
+    "ko": "가볼만한 곳·관광지",
+    "fr": "Lieux à visiter · sites touristiques"
+  },
+  "LISTS.attraction.seo": {
+    "ko": "{region} 가볼만한 곳{n} — 관광지 이용시간·쉬는 날·요금·주차·길찾기",
+    "fr": "Lieux à visiter à {region}{n} — horaires, jours de fermeture, tarifs, stationnement et accès"
+  },
+  "LISTS.attraction.lead": {
+    "ko": "어떤 곳인지, 지금 가도 되는지 확인하고 길찾기로 이어 가세요.",
+    "fr": "Découvrez ce qu'est chaque lieu et si vous pouvez y aller dès à présent, puis passez à l'itinéraire."
+  },
+  "LISTS.stay.title": {
+    "ko": "숙소",
+    "fr": "Hébergements"
+  },
+  "LISTS.stay.h1": {
+    "ko": "숙소",
+    "fr": "Hébergements"
+  },
+  "LISTS.stay.seo": {
+    "ko": "{region} 숙소{n} — 호텔·모텔·게스트하우스의 체크인·주차·문의",
+    "fr": "Hébergements à {region}{n} — arrivée, stationnement et contact des hôtels, motels et maisons d’hôtes"
+  },
+  "LISTS.stay.lead": {
+    "ko": "숙소마다 체크인·체크아웃·주차·문의처를 정리했습니다.",
+    "fr": "Chaque hébergement indique ses heures d'arrivée et de départ, son parking et son contact."
+  },
+  "LISTS.food.title": {
+    "ko": "음식점",
+    "fr": "Restaurants"
+  },
+  "LISTS.food.h1": {
+    "ko": "맛집·음식점",
+    "fr": "Où manger · restaurants"
+  },
+  "LISTS.food.seo": {
+    "ko": "{region} 맛집·음식점{n} — 대표 메뉴·영업시간·쉬는 날·주차",
+    "fr": "Restaurants à {region}{n} — spécialités, horaires, jours de fermeture et stationnement"
+  },
+  "LISTS.food.lead": {
+    "ko": "음식점마다 대표 메뉴와 영업시간·정기휴일을 정리했습니다.",
+    "fr": "Chaque restaurant indique ses spécialités, ses horaires et ses jours de fermeture habituels."
+  },
+  "ATTRACTION_GROUPS.0": {
+    "ko": "수원화성·성곽·행궁",
+    "fr": "Forteresse Suwon Hwaseong · Remparts · Haenggung"
+  },
+  "ATTRACTION_GROUPS.1": {
+    "ko": "박물관·미술관·전시",
+    "fr": "Musées · Galeries d'art · Expositions"
+  },
+  "ATTRACTION_GROUPS.2": {
+    "ko": "호수·수목원·공원·산",
+    "fr": "Lacs · Arboretums · Parcs · Montagnes"
+  },
+  "ATTRACTION_GROUPS.3": {
+    "ko": "전통시장·공방·체험·레포츠",
+    "fr": "Marchés · Ateliers · Expériences · Sports de loisirs"
+  },
+  "ALT_LABELS.period": {
+    "ko": "기간",
+    "fr": "Période"
+  },
+  "ALT_LABELS.place_name": {
+    "ko": "장소",
+    "fr": "Lieu"
+  },
+  "ALT_LABELS.address": {
+    "ko": "주소",
+    "fr": "Adresse"
+  },
+  "ALT_LABELS.fee": {
+    "ko": "요금",
+    "fr": "Tarif"
+  },
+  "ALT_LABELS.playtime": {
+    "ko": "시간",
+    "fr": "Horaires"
+  },
+  "ALT_LABELS.tel": {
+    "ko": "문의",
+    "fr": "Contact"
+  },
+  "NAV.0": {
+    "ko": "관광지",
+    "fr": "Sites touristiques"
+  },
+  "NAV.1": {
+    "ko": "숙소",
+    "fr": "Hébergements"
+  },
+  "NAV.2": {
+    "ko": "음식점",
+    "fr": "Restaurants"
+  },
+  "NAV.3": {
+    "ko": "영상",
+    "fr": "Vidéos"
+  },
+  "NAV.4": {
+    "ko": "코스",
+    "fr": "Parcours"
+  },
+  "NAV.5": {
+    "ko": "가이드",
+    "fr": "Guides"
+  },
+  "NAV.6": {
+    "ko": "행사",
+    "fr": "Événements"
+  },
+  "NAV.7": {
+    "ko": "지도",
+    "fr": "Carte"
+  },
+  "NAV.8": {
+    "ko": "해외에서 본 {region}",
+    "fr": "{region} vu de l’étranger"
+  },
+  "REGIONS.hwaseong-haenggung": {
+    "ko": "수원화성·화성행궁·행리단길",
+    "fr": "Suwon Hwaseong · Hwaseong Haenggung · Haengnidan-gil"
+  },
+  "REGIONS.paldalmun-market": {
+    "ko": "팔달문·전통시장·통닭거리",
+    "fr": "Paldalmun·Jeontongsijang· Poulet frit (tongdak) Geori"
+  },
+  "REGIONS.gwanggyo-yeongtong": {
+    "ko": "광교호수공원·박물관·영통",
+    "fr": "Parc du lac Gwanggyo · Palais des congrès · Yeongtong"
+  },
+  "REGIONS.manseok-jangan": {
+    "ko": "만석공원·광교산·장안",
+    "fr": "Parc Manseok · Arboretum d'Irwol · Jangan"
+  },
+  "REGIONS.irwol-gwonseon": {
+    "ko": "일월수목원·서호공원·권선",
+    "fr": "Irwolsumogwon·Seohogongwon·Gwonseon"
+  },
+  "REGIONS.none": {
+    "ko": "권역 미정",
+    "fr": "Zone non attribuée"
+  },
+  "LIST_HUB_TINY.attraction": {
+    "ko": "수원화성·행궁·성곽 가이드",
+    "fr": "Guide forteresse Hwaseong"
+  },
+  "LIST_HUB_TINY.food": {
+    "ko": "월요일 영업·맛집 가이드",
+    "fr": "Restaurants ouverts lundi"
+  },
+  "LIST_HUB_TINY.stay": {
+    "ko": "호텔·한옥·숙소 가이드",
+    "fr": "Hôtels et séjours hanok"
+  },
+  "STAY_TYPE.숙박": {
+    "ko": "숙박업소",
+    "fr": "Établissement d'hébergement"
+  },
+  "STAY_TYPE.기타": {
+    "ko": "그 밖의 숙소",
+    "fr": "Autre hébergement"
+  },
+  "STAY_TYPE.": {
+    "ko": "그 밖의 숙소",
+    "fr": "Autre hébergement"
+  },
+  "ATTR_TYPE.쇼핑": {
+    "ko": "시장·쇼핑",
+    "fr": "Marchés et boutiques"
+  },
+  "ATTR_TYPE.레포츠": {
+    "ko": "레포츠",
+    "fr": "Sports de loisir"
+  },
+  "ATTR_TYPE.문화시설": {
+    "ko": "문화시설",
+    "fr": "Établissement culturel"
+  },
+  "STATUS_PREFIX.usefee": {
+    "ko": "요금",
+    "fr": "Tarif"
+  },
+  "STATUS_PREFIX.parking_seats": {
+    "ko": "주차·좌석",
+    "fr": "Parking et places assises"
+  },
+  "STATUS_PREFIX.checkin": {
+    "ko": "체크인",
+    "fr": "Arrivée"
+  },
+  "STATUS_PREFIX.checkout": {
+    "ko": "체크아웃",
+    "fr": "Départ"
+  },
+  "STATUS_PREFIX.roomcount": {
+    "ko": "객실",
+    "fr": "Chambres"
+  },
+  "STATUS_PREFIX.menu": {
+    "ko": "대표 메뉴",
+    "fr": "Spécialités"
+  },
+  "CONTEST_LABEL.usetime": {
+    "ko": "이용시간",
+    "fr": "Horaires"
+  },
+  "CONTEST_LABEL.restdate": {
+    "ko": "쉬는 날",
+    "fr": "Jours de fermeture"
+  },
+  "CONTEST_LABEL.usefee": {
+    "ko": "요금",
+    "fr": "Tarifs"
+  },
+  "CONTEST_LABEL.parking": {
+    "ko": "주차",
+    "fr": "Parking"
+  },
+  "CONTEST_LABEL.usetime_restdate": {
+    "ko": "영업시간",
+    "fr": "Horaires"
+  },
+  "CONTEST_LABEL.checkin": {
+    "ko": "체크인",
+    "fr": "Arrivée"
+  },
+  "CONTEST_LABEL.checkout": {
+    "ko": "체크아웃",
+    "fr": "Départ"
+  },
+  "CONTEST_LABEL.menu": {
+    "ko": "대표 메뉴",
+    "fr": "Spécialités"
+  },
+  "CONTEST_LABEL.parking_seats": {
+    "ko": "주차·좌석",
+    "fr": "Parking et places assises"
+  },
+  "CONTEST_LABEL.roomcount": {
+    "ko": "객실",
+    "fr": "Chambres"
+  },
+  "STOP_KIND_LABELS.meal": {
+    "ko": "식사",
+    "fr": "Repas"
+  },
+  "STOP_KIND_LABELS.lodging": {
+    "ko": "숙박",
+    "fr": "Nuitée"
+  },
+  "STOP_KIND_LABELS.activity": {
+    "ko": "일정",
+    "fr": "Programme"
+  },
+  "STOP_KIND_LABELS.day": {
+    "ko": "일차",
+    "fr": "Jour"
+  },
+  "STAY_ASK.0": {
+    "ko": "독채 여부",
+    "fr": "Logement indépendant ou non"
+  },
+  "STAY_ASK.1": {
+    "ko": "반려동물 동반",
+    "fr": "Animaux de compagnie"
+  },
+  "LIST_CFG.attraction.title": {
+    "ko": "관광지",
+    "fr": "Sites touristiques"
+  },
+  "LIST_CFG.attraction.cols.usetime": {
+    "ko": "이용시간",
+    "fr": "Horaires"
+  },
+  "LIST_CFG.attraction.cols.restdate": {
+    "ko": "쉬는 날",
+    "fr": "Jours de fermeture"
+  },
+  "LIST_CFG.attraction.cols.usefee": {
+    "ko": "요금",
+    "fr": "Tarifs"
+  },
+  "LIST_CFG.attraction.cols.parking": {
+    "ko": "주차",
+    "fr": "Parking"
+  },
+  "LIST_CFG.attraction.check": {
+    "ko": "요금 무료",
+    "fr": "Accès gratuit"
+  },
+  "LIST_CFG.stay.title": {
+    "ko": "숙소",
+    "fr": "Hébergements"
+  },
+  "LIST_CFG.stay.cols.checkin": {
+    "ko": "체크인",
+    "fr": "Arrivée"
+  },
+  "LIST_CFG.stay.cols.checkout": {
+    "ko": "체크아웃",
+    "fr": "Départ"
+  },
+  "LIST_CFG.stay.cols.parking": {
+    "ko": "주차",
+    "fr": "Parking"
+  },
+  "LIST_CFG.stay.cols.tel": {
+    "ko": "문의",
+    "fr": "Contact"
+  },
+  "LIST_CFG.stay.check": {
+    "ko": "체크인 시간 있음",
+    "fr": "Heure d'arrivée indiquée"
+  },
+  "LIST_CFG.food.title": {
+    "ko": "음식점",
+    "fr": "Restaurants"
+  },
+  "LIST_CFG.food.cols.menu": {
+    "ko": "대표 메뉴",
+    "fr": "Spécialités"
+  },
+  "LIST_CFG.food.cols.usetime_restdate": {
+    "ko": "영업시간·정기휴일",
+    "fr": "Horaires et jours de fermeture habituels"
+  },
+  "LIST_CFG.food.cols.parking_seats": {
+    "ko": "주차·좌석",
+    "fr": "Parking et places assises"
+  },
+  "LIST_CFG.food.cols.tel": {
+    "ko": "문의",
+    "fr": "Contact"
+  },
+  "LIST_CFG.food.check": {
+    "ko": "월요일 영업 표기",
+    "fr": "Ouverture le lundi indiquée"
+  },
+  "LIC.KOGL-1": {
+    "ko": "공공누리 제1유형",
+    "fr": "KOGL type 1"
+  },
+  "LIC.KOGL-3": {
+    "ko": "공공누리 제3유형(변경금지)",
+    "fr": "KOGL type 3 (modification interdite)"
+  },
+  "CALL_LINE": {
+    "ko": "방문 전 전화 확인",
+    "fr": "Appelez avant votre visite"
+  },
+  "ORGANISER_LINE": {
+    "ko": "방문 전 주최 측 확인",
+    "fr": "Vérifiez auprès de l'organisateur avant votre visite"
+  },
+  "CONFLICT.sources_differ": {
+    "ko": "출처마다 다름",
+    "fr": "Les sources diffèrent"
+  },
+  "CONFLICT.hours_only": {
+    "ko": "영업시간만 다름",
+    "fr": "Seuls les horaires diffèrent"
+  },
+  "site.site_name": {
+    "ko": "수원각",
+    "fr": "Suwongak"
+  },
+  "site.description": {
+    "ko": "수원각은 수원의 관광지·맛집(음식점)·숙소·여행 코스·축제·영상을 한곳에 모은 여행 정보 사이트입니다. 장소마다 이용시간·쉬는 날·요금·주차·길찾기와 값별 출처를 적었습니다.",
+    "fr": "Suwongak rassemble les sites, restaurants, hébergements, circuits, festivals et vidéos de Suwon avec horaires, jours de fermeture, tarifs, parking, itinéraires et sources."
+  },
+  "site.disclaimer": {
+    "ko": "수원시 공식 홈페이지와 별도로 운영되는 독립 사이트입니다. 원문·사진의 권리는 각 출처에 있으며 표시된 이용조건을 따릅니다.",
+    "fr": "Site indépendant géré séparément du site officiel de la ville de Suwon. Les droits des textes et photos appartiennent à chaque source selon les conditions indiquées."
+  },
+  "site.operator.name": {
+    "ko": "에이아이오투오",
+    "fr": "Eiaiotuo"
+  },
+  "site.official_links.0.name": {
+    "ko": "수원문화관광 (수원특례시)",
+    "fr": "Tourisme de Suwon (Culture et Tourisme de la ville de Suwon)"
+  },
+  "site.official_links.0.note": {
+    "ko": "수원시 공식 관광정보",
+    "fr": "Informations touristiques officielles de Suwon"
+  },
+  "site.official_links.1.name": {
+    "ko": "수원문화재단",
+    "fr": "VisitKorea (coréen)"
+  },
+  "site.official_links.1.note": {
+    "ko": "수원화성·화성행궁·축제 안내",
+    "fr": "Informations touristiques de l'Organisation du tourisme de Corée"
+  },
+  "site.official_links.2.name": {
+    "ko": "대한민국 구석구석",
+    "fr": "Daehanminguk Guseokguseok"
+  },
+  "site.official_links.2.note": {
+    "ko": "한국관광공사 관광정보",
+    "fr": "Hangukgwangwanggongsa Gwangwangjeongbo"
+  },
+  "theme.islands-sea.name": {
+    "ko": "호수·수변·야경",
+    "fr": "Forteresse Suwon Hwaseong · Haenggung · Remparts"
+  },
+  "theme.islands-sea.description": {
+    "ko": "광교호수공원, 방화수류정 용연, 서호공원, 만석공원 등 수원의 호수와 수변 야경 명소",
+    "fr": "Forteresse Suwon Hwaseong, palais Hwaseong Haenggung, les quatre portes, pavillon Banghwasuryujeong, Yeonmudae, Seojangdae et Hwaryeongjeon"
+  },
+  "theme.modern-history.name": {
+    "ko": "수원화성·역사·박물관",
+    "fr": "Musées · Galeries d'art · Patrimoine"
+  },
+  "theme.modern-history.description": {
+    "ko": "유네스코 세계문화유산 수원화성과 화성행궁, 수원화성박물관·수원시립미술관·삼성이노베이션뮤지엄 등 역사와 전시",
+    "fr": "Musée de Suwon Hwaseong, musée de Suwon, musée d'art de Suwon, musée national de l'agriculture, Samsung Innovation Museum et Haewoojae"
+  },
+  "theme.parks-nature.name": {
+    "ko": "수목원·숲·공원",
+    "fr": "Parcs du lac · Arboretums · Sentiers"
+  },
+  "theme.parks-nature.description": {
+    "ko": "일월수목원, 영흥수목원, 광교산, 칠보산, 효원공원 월화원 등 도심 속 정원과 숲길",
+    "fr": "Parc du lac Gwanggyo, arboretums d'Irwol et Yeongheung, parcs Manseok et Seoho, jardin Wolhwawon et sentiers de Gwanggyosan"
+  },
+  "theme.alleys-culture.name": {
+    "ko": "행리단길·시장·체험",
+    "fr": "Haengnidan-gil · Marchés · Expériences"
+  },
+  "theme.alleys-culture.description": {
+    "ko": "행리단길, 수원통닭거리, 팔달문 전통시장, 화성어차·플라잉수원·아쿠아플라넷 등 골목과 체험",
+    "fr": "Haengnidan-gil, rue du poulet frit, marchés Nammun et Jidong, ballon Flying Suwon, train Hwaseong et Aqua Planet Gwanggyo"
+  },
+  "category:관광지": {
+    "ko": "관광지",
+    "fr": "Site touristique"
+  },
+  "category:문화시설": {
+    "ko": "문화시설",
+    "fr": "Établissement culturel"
+  },
+  "category:레포츠": {
+    "ko": "레포츠",
+    "fr": "Sports de loisir"
+  },
+  "category:쇼핑": {
+    "ko": "쇼핑",
+    "fr": "Commerces"
+  },
+  "category:숙박": {
+    "ko": "숙박",
+    "fr": "Hébergement"
+  },
+  "category:음식점": {
+    "ko": "음식점",
+    "fr": "Restaurant"
+  },
+  "provider:한국관광공사 TourAPI": {
+    "ko": "한국관광공사 TourAPI",
+    "fr": "TourAPI de l'Office national du tourisme coréen"
+  },
+  "provider:카카오맵": {
+    "ko": "카카오맵",
+    "fr": "Kakao Map"
+  },
+  "provider:수원시 문화관광": {
+    "ko": "수원시 문화관광",
+    "fr": "Culture et Tourisme de Suwon"
+  },
+  "provider:한국관광공사 고캠핑(TourAPI)": {
+    "ko": "한국관광공사 고캠핑(TourAPI)",
+    "fr": "Office national du tourisme coréen – GoCamping (TourAPI)"
+  },
+  "chrome.skip": {
+    "en": "Skip to main content",
+    "fr": "Aller au contenu principal"
+  },
+  "chrome.main_menu": {
+    "en": "Main menu",
+    "fr": "Menu principal"
+  },
+  "chrome.language": {
+    "en": "Language",
+    "fr": "Langue"
+  },
+  "chrome.menu": {
+    "en": "Menu",
+    "fr": "Menu"
+  },
+  "chrome.full_menu": {
+    "en": "Full menu",
+    "fr": "Menu complet"
+  },
+  "chrome.about_sources": {
+    "en": "About and sources",
+    "fr": "À propos et sources"
+  },
+  "chrome.you_are_here": {
+    "en": "You are here",
+    "fr": "Vous êtes ici"
+  },
+  "chrome.explore": {
+    "en": "Explore",
+    "fr": "Explorer"
+  },
+  "chrome.sources": {
+    "en": "Sources",
+    "fr": "Sources"
+  },
+  "chrome.foot_tourapi": {
+    "en": "Places, hours and photos:",
+    "fr": "Lieux, horaires et photos :"
+  },
+  "chrome.kto_tourapi": {
+    "en": "Korea Tourism Organization TourAPI",
+    "fr": "TourAPI de l'Office national du tourisme coréen"
+  },
+  "chrome.foot_official": {
+    "en": "Official tourism site:",
+    "fr": "Site officiel du tourisme :"
+  },
+  "chrome.foot_original": {
+    "en": "Original texts:",
+    "fr": "Textes originaux :"
+  },
+  "chrome.foot_maps": {
+    "en": "Maps: © OpenStreetMap contributors",
+    "fr": "Cartes : Kakao Map"
+  },
+  "chrome.about": {
+    "en": "About",
+    "fr": "À propos"
+  },
+  "chrome.about_site": {
+    "en": "About this site",
+    "fr": "À propos de ce site"
+  },
+  "chrome.how_made": {
+    "en": "How the pages are made",
+    "fr": "Comment les pages sont réalisées"
+  },
+  "chrome.report_error": {
+    "en": "Report an error",
+    "fr": "Signaler une erreur"
+  },
+  "chrome.llms_guide": {
+    "en": "Guide for AI (llms.txt)",
+    "fr": "Guide pour l'IA (llms.txt)"
+  },
+  "chrome.sitemap": {
+    "en": "Sitemap",
+    "fr": "Plan du site"
+  },
+  "chrome.run_by": {
+    "en": "Run by",
+    "fr": "Géré par"
+  },
+  "chrome.editor_role": {
+    "en": "Editor in charge",
+    "fr": "Rédacteur responsable"
+  },
+  "chrome.home": {
+    "en": "Home",
+    "fr": "Accueil"
+  },
+  "chrome.nav_attraction": {
+    "en": "Things to do",
+    "fr": "À voir et à faire"
+  },
+  "chrome.nav_food": {
+    "en": "Food",
+    "fr": "Où manger"
+  },
+  "chrome.nav_stay": {
+    "en": "Stay",
+    "fr": "Où dormir"
+  },
+  "chrome.guides": {
+    "en": "Guides",
+    "fr": "Guides"
+  },
+  "chrome.courses": {
+    "en": "Courses",
+    "fr": "Circuits"
+  },
+  "chrome.events": {
+    "en": "Events",
+    "fr": "Événements"
+  },
+  "chrome.h1_attraction": {
+    "en": "Things to Do in {r}",
+    "fr": "À voir et à faire à {r}"
+  },
+  "chrome.h1_food": {
+    "en": "Where to Eat in {r}",
+    "fr": "Où manger à {r}"
+  },
+  "chrome.h1_stay": {
+    "en": "Where to Stay in {r}",
+    "fr": "Où dormir à {r}"
+  },
+  "chrome.title_attraction": {
+    "en": "Things to Do in {r}: {n} Attractions with Hours, Fees and Parking",
+    "fr": "À voir et à faire à {r} : {n} sites avec horaires, tarifs et parking"
+  },
+  "chrome.title_food": {
+    "en": "Where to Eat in {r}: {n} Restaurants with Dishes, Hours and Parking",
+    "fr": "Où manger à {r} : {n} restaurants avec spécialités, horaires et parking"
+  },
+  "chrome.title_stay": {
+    "en": "Where to Stay in {r}: {n} Stays with Check-in, Parking and Contacts",
+    "fr": "Où dormir à {r} : {n} hébergements avec arrivée, parking et contacts"
+  },
+  "chrome.desc_attraction.one": {
+    "en": "{n} attractions in {r}: opening hours, closed days, fees and parking, each with its source and check date, and directions.",
+    "fr": "{n} site touristique à {r} : horaires, jours de fermeture, tarifs et parking, chaque valeur avec sa source et sa date de vérification, et l'itinéraire."
+  },
+  "chrome.desc_attraction.other": {
+    "en": "{n} attractions in {r}: opening hours, closed days, fees and parking, each with its source and check date, and directions.",
+    "fr": "{n} sites touristiques à {r} : horaires, jours de fermeture, tarifs et parking, chaque valeur avec sa source et sa date de vérification, et les itinéraires."
+  },
+  "chrome.desc_food.one": {
+    "en": "{n} restaurants in {r}: signature dishes, hours, closed days and parking, each with its source and check date, and directions.",
+    "fr": "{n} restaurant à {r} : spécialités, horaires, jours de fermeture et parking, chaque valeur avec sa source et sa date de vérification, et l'itinéraire."
+  },
+  "chrome.desc_food.other": {
+    "en": "{n} restaurants in {r}: signature dishes, hours, closed days and parking, each with its source and check date, and directions.",
+    "fr": "{n} restaurants à {r} : spécialités, horaires, jours de fermeture et parking, chaque valeur avec sa source et sa date de vérification, et les itinéraires."
+  },
+  "chrome.desc_stay.one": {
+    "en": "{n} stays in {r}: check-in and check-out times, parking and phone numbers, each with its source and check date, and directions.",
+    "fr": "{n} hébergement à {r} : heures d'arrivée et de départ, parking et numéro de téléphone, chaque valeur avec sa source et sa date de vérification, et l'itinéraire."
+  },
+  "chrome.desc_stay.other": {
+    "en": "{n} stays in {r}: check-in and check-out times, parking and phone numbers, each with its source and check date, and directions.",
+    "fr": "{n} hébergements à {r} : heures d'arrivée et de départ, parking et numéros de téléphone, chaque valeur avec sa source et sa date de vérification, et les itinéraires."
+  },
+  "chrome.count_attraction.one": {
+    "en": "{n} attractions",
+    "fr": "{n} site touristique"
+  },
+  "chrome.count_attraction.other": {
+    "en": "{n} attractions",
+    "fr": "{n} sites touristiques"
+  },
+  "chrome.count_food.one": {
+    "en": "{n} restaurants",
+    "fr": "{n} restaurant"
+  },
+  "chrome.count_food.other": {
+    "en": "{n} restaurants",
+    "fr": "{n} restaurants"
+  },
+  "chrome.count_stay.one": {
+    "en": "{n} stays",
+    "fr": "{n} hébergement"
+  },
+  "chrome.count_stay.other": {
+    "en": "{n} stays",
+    "fr": "{n} hébergements"
+  },
+  "chrome.guide_link": {
+    "en": "Guide: {name}",
+    "fr": "Guide : {name}"
+  },
+  "chrome.by_area": {
+    "en": "By area",
+    "fr": "Par secteur"
+  },
+  "chrome.rec_call": {
+    "en": "Sources differ · call before visiting",
+    "fr": "Les sources diffèrent · appelez avant votre visite"
+  },
+  "chrome.photos_is": {
+    "en": "Photos: {name}",
+    "fr": "Photos : {name}"
+  },
+  "chrome.map_only_n.one": {
+    "en": "Only the {n} places with coordinates",
+    "fr": "Uniquement {n} lieu avec coordonnées"
+  },
+  "chrome.map_only_n.other": {
+    "en": "Only the {n} places with coordinates",
+    "fr": "Uniquement les {n} lieux avec coordonnées"
+  },
+  "chrome.list_map": {
+    "en": "{name} map",
+    "fr": "Carte : {name}"
+  },
+  "chrome.show_map": {
+    "en": "Show the map",
+    "fr": "Afficher la carte"
+  },
+  "chrome.source": {
+    "en": "Source",
+    "fr": "Source"
+  },
+  "chrome.source_word": {
+    "en": "source",
+    "fr": "source"
+  },
+  "chrome.source_is": {
+    "en": "Source: {name}",
+    "fr": "Source : {name}"
+  },
+  "chrome.kto": {
+    "en": "Korea Tourism Organization",
+    "fr": "Office national du tourisme coréen"
+  },
+  "chrome.kto_visitkorea": {
+    "en": "Korea Tourism Organization (VisitKorea)",
+    "fr": "Office national du tourisme coréen (VisitKorea)"
+  },
+  "chrome.kto_page": {
+    "en": "Korea Tourism Organization page (in Korean)",
+    "fr": "Page de l'Office national du tourisme coréen (en coréen)"
+  },
+  "chrome.provider_kto": {
+    "en": "Korea Tourism Organization",
+    "fr": "Office national du tourisme coréen"
+  },
+  "chrome.provider_official": {
+    "en": "Official website",
+    "fr": "Site officiel"
+  },
+  "chrome.rechecked_with": {
+    "en": "rechecked with {name}",
+    "fr": "revérifié avec {name}"
+  },
+  "chrome.photo_alt": {
+    "en": "{name} photo {i}",
+    "fr": "{name}, photo {i}"
+  },
+  "chrome.photo_is": {
+    "en": "Photo: {name}",
+    "fr": "Photo : {name}"
+  },
+  "chrome.photos_n.one": {
+    "en": "{n} photo",
+    "fr": "{n} photo"
+  },
+  "chrome.photos_n.other": {
+    "en": "{n} photos",
+    "fr": "{n} photos"
+  },
+  "chrome.prev_photo": {
+    "en": "Previous photo",
+    "fr": "Photo précédente"
+  },
+  "chrome.next_photo": {
+    "en": "Next photo",
+    "fr": "Photo suivante"
+  },
+  "chrome.not_listed": {
+    "en": "Not listed",
+    "fr": "Non indiqué"
+  },
+  "chrome.not_listed_list": {
+    "en": "Not listed: {items}",
+    "fr": "Non indiqué : {items}"
+  },
+  "chrome.sources_list": {
+    "en": "Sources: {items}",
+    "fr": "Sources : {items}"
+  },
+  "chrome.more_down": {
+    "en": "more ↓",
+    "fr": "voir plus ↓"
+  },
+  "chrome.more": {
+    "en": "more",
+    "fr": "voir plus"
+  },
+  "chrome.kf_differ": {
+    "en": "{labels}: sources differ",
+    "fr": "{labels} : les sources diffèrent"
+  },
+  "chrome.call_before": {
+    "en": "Call before visiting",
+    "fr": "Appelez avant votre visite"
+  },
+  "chrome.notice": {
+    "en": "Notice",
+    "fr": "Avis"
+  },
+  "chrome.notice_open": {
+    "en": "{dates}: open",
+    "fr": "{dates} : ouvert"
+  },
+  "chrome.notice_closed": {
+    "en": "{dates}: closed",
+    "fr": "{dates} : fermé"
+  },
+  "chrome.notice_hours": {
+    "en": "{dates}: open {start}–{end}",
+    "fr": "{dates} : ouvert {start}–{end}"
+  },
+  "chrome.notice_last_entry": {
+    "en": "last entry {time}",
+    "fr": "dernière entrée {time}"
+  },
+  "chrome.or_word": {
+    "en": "or",
+    "fr": "ou"
+  },
+  "chrome.in_korean": {
+    "en": "In Korean: {name}",
+    "fr": "En coréen : {name}"
+  },
+  "chrome.in_korean_paren": {
+    "en": "{name} (in Korean)",
+    "fr": "{name} (en coréen)"
+  },
+  "chrome.designations": {
+    "en": "Designations",
+    "fr": "Labels officiels"
+  },
+  "chrome.parking_seats": {
+    "en": "Parking and seating",
+    "fr": "Parking et places assises"
+  },
+  "chrome.rooms_n.one": {
+    "en": "{n} rooms",
+    "fr": "{n} chambre"
+  },
+  "chrome.rooms_n.other": {
+    "en": "{n} rooms",
+    "fr": "{n} chambres"
+  },
+  "chrome.how_to_get": {
+    "en": "How to get to {name}",
+    "fr": "Comment rejoindre {name}"
+  },
+  "chrome.search_tag": {
+    "en": "search",
+    "fr": "recherche"
+  },
+  "chrome.other_maps": {
+    "en": "Other maps",
+    "fr": "Autres cartes"
+  },
+  "chrome.map_google": {
+    "en": "Google Maps",
+    "fr": "Google Maps"
+  },
+  "chrome.map_naver": {
+    "en": "Naver Map",
+    "fr": "Naver Map"
+  },
+  "chrome.map_kakao": {
+    "en": "Kakao Map",
+    "fr": "Kakao Map"
+  },
+  "chrome.route_kakao": {
+    "en": "Kakao Map directions",
+    "fr": "Itinéraire Kakao Map"
+  },
+  "chrome.route_google": {
+    "en": "Google Maps directions",
+    "fr": "Itinéraire Google Maps"
+  },
+  "chrome.route_tmap": {
+    "en": "TMAP (app)",
+    "fr": "TMAP (application)"
+  },
+  "chrome.directions": {
+    "en": "Directions",
+    "fr": "Itinéraire"
+  },
+  "chrome.map_loading": {
+    "en": "Loading the map.",
+    "fr": "Chargement de la carte."
+  },
+  "chrome.map_text": {
+    "en": "The places on this map are also listed on this page.",
+    "fr": "Les lieux de cette carte figurent aussi en texte sur cette page."
+  },
+  "chrome.map_credit": {
+    "en": "Map: © OpenStreetMap contributors",
+    "fr": "Carte : Kakao Map"
+  },
+  "chrome.map_of": {
+    "en": "Map of {name}",
+    "fr": "Carte : {name}"
+  },
+  "chrome.map_straight": {
+    "en": "Distances are straight lines between coordinates",
+    "fr": "Les distances sont mesurées en ligne droite entre les coordonnées"
+  },
+  "chrome.map_loc": {
+    "en": "Location: {provider}",
+    "fr": "Emplacement : {provider}"
+  },
+  "chrome.sec_facts": {
+    "en": "Facts",
+    "fr": "Infos pratiques"
+  },
+  "chrome.sec_photos": {
+    "en": "Photos",
+    "fr": "Photos"
+  },
+  "chrome.sec_map": {
+    "en": "Map",
+    "fr": "Carte"
+  },
+  "chrome.sec_nearby": {
+    "en": "Nearby",
+    "fr": "À proximité"
+  },
+  "chrome.sec_details": {
+    "en": "Details",
+    "fr": "Détails"
+  },
+  "chrome.sec_faq": {
+    "en": "FAQ",
+    "fr": "FAQ"
+  },
+  "chrome.sec_sources": {
+    "en": "Sources",
+    "fr": "Sources"
+  },
+  "chrome.sec_places": {
+    "en": "Places",
+    "fr": "Lieux"
+  },
+  "chrome.sec_stops": {
+    "en": "Stops",
+    "fr": "Étapes"
+  },
+  "chrome.jump_place": {
+    "en": "Jump to a section of {name}",
+    "fr": "Aller à une section de {name}"
+  },
+  "chrome.h_facts": {
+    "en": "{name} before you go",
+    "fr": "{name} : avant d'y aller"
+  },
+  "chrome.h_photos": {
+    "en": "{name} photos",
+    "fr": "{name} : photos"
+  },
+  "chrome.h_more": {
+    "en": "{name} more information",
+    "fr": "{name} : plus d'informations"
+  },
+  "chrome.h_fit": {
+    "en": "{name} facilities and access",
+    "fr": "{name} : équipements et accès"
+  },
+  "chrome.h_map": {
+    "en": "{name} map",
+    "fr": "{name} : carte"
+  },
+  "chrome.h_near": {
+    "en": "{name} nearby and related",
+    "fr": "{name} : à proximité et contenus liés"
+  },
+  "chrome.h_details": {
+    "en": "{name} in detail",
+    "fr": "{name} en détail"
+  },
+  "chrome.h_faq": {
+    "en": "{name} FAQ",
+    "fr": "{name} : FAQ"
+  },
+  "chrome.h_sources": {
+    "en": "{name} sources",
+    "fr": "{name} : sources"
+  },
+  "chrome.near_sights": {
+    "en": "Things to do nearby",
+    "fr": "À voir et à faire à proximité"
+  },
+  "chrome.near_biz": {
+    "en": "Places to stay and eat nearby",
+    "fr": "Où dormir et manger à proximité"
+  },
+  "chrome.near_note": {
+    "en": "Within {m} m · straight-line distance · {provider}",
+    "fr": "À moins de {m} m · distance en ligne droite · {provider}"
+  },
+  "chrome.courses_here": {
+    "en": "Official courses through this place",
+    "fr": "Circuits officiels passant par ce lieu"
+  },
+  "chrome.courses_here_plain": {
+    "en": "Courses through this place",
+    "fr": "Parcours passant par ce lieu"
+  },
+  "chrome.guides_here": {
+    "en": "Guides that include this place",
+    "fr": "Guides qui incluent ce lieu"
+  },
+  "chrome.events_here": {
+    "en": "Events held here",
+    "fr": "Événements organisés ici"
+  },
+  "chrome.original_page": {
+    "en": "Original page",
+    "fr": "Page d'origine"
+  },
+  "chrome.visitkorea": {
+    "en": "VisitKorea",
+    "fr": "VisitKorea"
+  },
+  "chrome.korean_page": {
+    "en": "Korean page",
+    "fr": "Page en coréen"
+  },
+  "chrome.name_in_region": {
+    "en": "{name}, {r}",
+    "fr": "{name}, {r}"
+  },
+  "chrome.visit_information": {
+    "en": "{name}: Visit Information",
+    "fr": "{name} : informations pratiques"
+  },
+  "chrome.place_desc_fallback": {
+    "en": "{name} in {r}.",
+    "fr": "{name} à {r}."
+  },
+  "chrome.jump_guide": {
+    "en": "Jump to a section of this guide",
+    "fr": "Aller à une section de ce guide"
+  },
+  "chrome.guide_places_n.one": {
+    "en": "The {n} places in this guide",
+    "fr": "{n} lieu dans ce guide"
+  },
+  "chrome.guide_places_n.other": {
+    "en": "The {n} places in this guide",
+    "fr": "Les {n} lieux de ce guide"
+  },
+  "chrome.full_list": {
+    "en": "Full list",
+    "fr": "Liste complète"
+  },
+  "chrome.n_more.one": {
+    "en": "{n} more",
+    "fr": "{n} de plus"
+  },
+  "chrome.n_more.other": {
+    "en": "{n} more",
+    "fr": "{n} de plus"
+  },
+  "chrome.see_full_list": {
+    "en": "See the full list",
+    "fr": "Voir la liste complète"
+  },
+  "chrome.places_in_guide": {
+    "en": "The places in this guide",
+    "fr": "Les lieux de ce guide"
+  },
+  "chrome.prev_place": {
+    "en": "Previous place",
+    "fr": "Lieu précédent"
+  },
+  "chrome.next_place": {
+    "en": "Next place",
+    "fr": "Lieu suivant"
+  },
+  "chrome.toc_label": {
+    "en": "Contents of this guide",
+    "fr": "Sommaire de ce guide"
+  },
+  "chrome.toc_head": {
+    "en": "Contents",
+    "fr": "Sommaire"
+  },
+  "chrome.places_in_section": {
+    "en": "Places named in this section",
+    "fr": "Lieux cités dans cette section"
+  },
+  "chrome.places_again": {
+    "en": "Places named in this section that have a card above",
+    "fr": "Lieux cités dans cette section qui ont une fiche plus haut"
+  },
+  "chrome.guide_map": {
+    "en": "Map of the places in this guide",
+    "fr": "Carte des lieux de ce guide"
+  },
+  "chrome.map_numbers": {
+    "en": "Numbers: the order of the list below",
+    "fr": "Numéros : l'ordre de la liste ci-dessous"
+  },
+  "chrome.guides_h1": {
+    "en": "{r} travel guides",
+    "fr": "Guides de voyage de {r}"
+  },
+  "chrome.guides_lede": {
+    "en": "Each guide answers one travel question and lists its places with their visit information.",
+    "fr": "Où manger selon le plat, où dormir, que voir et faire par secteur, et des sorties sans voiture, avec des enfants ou par temps de pluie. Chaque guide présente ses lieux avec leurs informations pratiques."
+  },
+  "chrome.all_guides": {
+    "en": "All guides",
+    "fr": "Tous les guides"
+  },
+  "chrome.places_unit.one": {
+    "en": "places",
+    "fr": "lieu"
+  },
+  "chrome.places_unit.other": {
+    "en": "places",
+    "fr": "lieux"
+  },
+  "chrome.label_in_region": {
+    "en": "{label} in {r}",
+    "fr": "{label} à {r}"
+  },
+  "chrome.guides_title": {
+    "en": "{r} Travel Guides by Purpose",
+    "fr": "Guides de voyage de {r} par objectif"
+  },
+  "chrome.guides_desc.one": {
+    "en": "{n} guide to {r}, with its places and their visit information.",
+    "fr": "{n} guide de {r} : où manger selon le plat, où dormir, que voir et faire par secteur, sorties sans voiture, avec des enfants ou par temps de pluie, avec ses lieux et leurs informations pratiques."
+  },
+  "chrome.guides_desc.other": {
+    "en": "{n} guides to {r}, each with its places and their visit information.",
+    "fr": "{n} guides de {r} : où manger selon le plat, où dormir, que voir et faire par secteur, sorties sans voiture, avec des enfants ou par temps de pluie, chacun avec ses lieux et leurs informations pratiques."
+  },
+  "chrome.jump_course": {
+    "en": "Jump to a section of this course",
+    "fr": "Aller à une section de ce circuit"
+  },
+  "chrome.official_course_of": {
+    "en": "Official course of {name}",
+    "fr": "Circuit officiel : {name}"
+  },
+  "chrome.course_from": {
+    "en": "Course from {name}",
+    "fr": "Parcours de {name}"
+  },
+  "chrome.straight_total": {
+    "en": "Straight-line total",
+    "fr": "Total en ligne droite"
+  },
+  "chrome.legs_coords": {
+    "en": "Legs with coordinates",
+    "fr": "Tronçons avec coordonnées"
+  },
+  "chrome.start_end": {
+    "en": "Start → end",
+    "fr": "Départ → arrivée"
+  },
+  "chrome.directions_to_stop": {
+    "en": "Directions to stop {n}",
+    "fr": "Itinéraire vers l'étape {n}"
+  },
+  "chrome.stops_in_order.one": {
+    "en": "{n} stops in order",
+    "fr": "{n} étape dans l'ordre"
+  },
+  "chrome.stops_in_order.other": {
+    "en": "{n} stops in order",
+    "fr": "{n} étapes dans l'ordre"
+  },
+  "chrome.next_stop": {
+    "en": "next stop {d}",
+    "fr": "étape suivante à {d}"
+  },
+  "chrome.visit_info_for": {
+    "en": "Visit information for {name}",
+    "fr": "Informations pratiques : {name}"
+  },
+  "chrome.course_map": {
+    "en": "Course map",
+    "fr": "Carte du circuit"
+  },
+  "chrome.map_of_stops": {
+    "en": "Map of the stops of {name}",
+    "fr": "Carte des étapes : {name}"
+  },
+  "chrome.course_map_caption.one": {
+    "en": "{a} of {b} stops have coordinates · joined in order by straight lines",
+    "fr": "Étapes avec coordonnées : {a} sur {b} · reliées dans l'ordre par des lignes droites"
+  },
+  "chrome.course_map_caption.other": {
+    "en": "{a} of {b} stops have coordinates · joined in order by straight lines",
+    "fr": "Étapes avec coordonnées : {a} sur {b} · reliées dans l'ordre par des lignes droites"
+  },
+  "chrome.course_source": {
+    "en": "Course source",
+    "fr": "Source du circuit"
+  },
+  "chrome.distances": {
+    "en": "Distances",
+    "fr": "Distances"
+  },
+  "chrome.legs_measured.one": {
+    "en": "{a} of {b} legs measured as straight lines between Korea Tourism Organization TourAPI coordinates",
+    "fr": "Tronçons mesurés en ligne droite entre les coordonnées TourAPI de l'Office national du tourisme coréen : {a} sur {b}"
+  },
+  "chrome.legs_measured.other": {
+    "en": "{a} of {b} legs measured as straight lines between Korea Tourism Organization TourAPI coordinates",
+    "fr": "Tronçons mesurés en ligne droite entre les coordonnées TourAPI de l'Office national du tourisme coréen : {a} sur {b}"
+  },
+  "chrome.legs_measured_src.one": {
+    "en": "{a} of {b} legs measured as straight lines between coordinates from {src}",
+    "fr": "Tronçons mesurés en ligne droite entre les coordonnées ({src}) : {a} sur {b}"
+  },
+  "chrome.legs_measured_src.other": {
+    "en": "{a} of {b} legs measured as straight lines between coordinates from {src}",
+    "fr": "Tronçons mesurés en ligne droite entre les coordonnées ({src}) : {a} sur {b}"
+  },
+  "chrome.courses_h1": {
+    "en": "{r} travel courses",
+    "fr": "Circuits de voyage à {r}"
+  },
+  "chrome.courses_lede": {
+    "en": "The official courses of {name}, stop by stop, with each stop's visit information.",
+    "fr": "Les parcours officiels de {name}, étape par étape, avec les informations de visite de chaque arrêt."
+  },
+  "chrome.courses_lede_of": {
+    "en": "The courses of {name}, stop by stop, with each stop's visit information.",
+    "fr": "Les parcours de {name}, étape par étape, avec les informations de visite de chaque arrêt."
+  },
+  "chrome.courses_lede_any": {
+    "en": "The courses, stop by stop, with each stop's visit information.",
+    "fr": "Les parcours de voyage, étape par étape, avec les informations de visite de chaque arrêt."
+  },
+  "chrome.stops_of": {
+    "en": "Stops of {name} in order",
+    "fr": "{name} : étapes dans l'ordre"
+  },
+  "chrome.plus_more": {
+    "en": "+ {n} more",
+    "fr": "+ {n} autres"
+  },
+  "chrome.n_stops.one": {
+    "en": "{n} stops",
+    "fr": "{n} étape"
+  },
+  "chrome.n_stops.other": {
+    "en": "{n} stops",
+    "fr": "{n} étapes"
+  },
+  "chrome.straight_line": {
+    "en": "straight-line {d}",
+    "fr": "{d} en ligne droite"
+  },
+  "chrome.region_name": {
+    "en": "{r} {name}",
+    "fr": "{name} à {r}"
+  },
+  "chrome.n_stops_title.one": {
+    "en": "{n} Stops",
+    "fr": "{n} étape"
+  },
+  "chrome.n_stops_title.other": {
+    "en": "{n} Stops",
+    "fr": "{n} étapes"
+  },
+  "chrome.course_desc_fallback.one": {
+    "en": "{name}: {n} stops.",
+    "fr": "{name} : {n} étape."
+  },
+  "chrome.course_desc_fallback.other": {
+    "en": "{name}: {n} stops.",
+    "fr": "{name} : {n} étapes."
+  },
+  "chrome.courses_title": {
+    "en": "{r} Travel Courses: Day Trips and Overnight Trips",
+    "fr": "Circuits à {r} : excursions d'une journée et séjours avec nuitée"
+  },
+  "chrome.courses_title_day": {
+    "en": "{r} Travel Courses: Day Trips",
+    "fr": "Parcours à {r} : excursions d’une journée"
+  },
+  "chrome.courses_title_night": {
+    "en": "{r} Travel Courses: Overnight Trips",
+    "fr": "Parcours à {r} : séjours avec nuitée"
+  },
+  "chrome.courses_title_any": {
+    "en": "{r} Travel Courses",
+    "fr": "Parcours de voyage à {r}"
+  },
+  "chrome.courses_desc.one": {
+    "en": "The official travel course of {provider}, stop by stop, with the visit information of each stop.",
+    "fr": "Le parcours officiel de {provider}, étape par étape, avec les informations de visite de chaque arrêt."
+  },
+  "chrome.courses_desc.other": {
+    "en": "The {n} official travel courses of {provider}, stop by stop, with the visit information of each stop.",
+    "fr": "Les {n} circuits officiels de {provider}, étape par étape, avec les informations pratiques de chaque étape."
+  },
+  "chrome.courses_desc_of.one": {
+    "en": "The travel course of {provider}, stop by stop, with the visit information of each stop.",
+    "fr": "Le parcours de voyage de {provider}, étape par étape, avec les informations de visite de chaque arrêt."
+  },
+  "chrome.courses_desc_of.other": {
+    "en": "The {n} travel courses of {provider}, stop by stop, with the visit information of each stop.",
+    "fr": "Les {n} parcours de voyage de {provider}, étape par étape, avec les informations de visite de chaque arrêt."
+  },
+  "chrome.courses_desc_any.one": {
+    "en": "One travel course, stop by stop, with the visit information of each stop.",
+    "fr": "Un parcours de voyage, étape par étape, avec les informations de visite de chaque arrêt."
+  },
+  "chrome.courses_desc_any.other": {
+    "en": "{n} travel courses, stop by stop, with the visit information of each stop.",
+    "fr": "{n} parcours de voyage, étape par étape, avec les informations de visite de chaque arrêt."
+  },
+  "chrome.lede_longest": {
+    "en": "the longest leg is from {a} to {b}, {d} in a straight line",
+    "fr": "le tronçon le plus long va de {a} à {b}, soit {d} en ligne droite"
+  },
+  "chrome.lede_near.one": {
+    "en": "The first {n} stops are within 1 km of the start in a straight line",
+    "fr": "La première étape ({n}) est à moins de 1 km du départ en ligne droite"
+  },
+  "chrome.lede_near.other": {
+    "en": "The first {n} stops are within 1 km of the start in a straight line",
+    "fr": "Les {n} premières étapes sont à moins de 1 km du départ en ligne droite"
+  },
+  "chrome.lede_both": {
+    "en": "{near}, and {longest}.",
+    "fr": "{near}, et {longest}."
+  },
+  "chrome.lede_one": {
+    "en": "{text}.",
+    "fr": "{text}."
+  },
+  "chrome.lede_ends.one": {
+    "en": "The {n} stops start at {a} and end at {b}.",
+    "fr": "Le parcours de {n} étape commence à {a} et se termine à {b}."
+  },
+  "chrome.lede_ends.other": {
+    "en": "The {n} stops start at {a} and end at {b}.",
+    "fr": "Les {n} étapes commencent à {a} et se terminent à {b}."
+  },
+  "chrome.ev_dates": {
+    "en": "Dates",
+    "fr": "Dates"
+  },
+  "chrome.ev_time": {
+    "en": "Time",
+    "fr": "Horaires"
+  },
+  "chrome.ev_fee": {
+    "en": "Fee",
+    "fr": "Tarif"
+  },
+  "chrome.ev_venue": {
+    "en": "Venue",
+    "fr": "Lieu"
+  },
+  "chrome.ev_address": {
+    "en": "Address",
+    "fr": "Adresse"
+  },
+  "chrome.ev_organizer": {
+    "en": "Organizer",
+    "fr": "Organisateur"
+  },
+  "chrome.ev_contact": {
+    "en": "Contact",
+    "fr": "Contact"
+  },
+  "chrome.website": {
+    "en": "Website",
+    "fr": "Site web"
+  },
+  "chrome.program": {
+    "en": "Program",
+    "fr": "Programme"
+  },
+  "chrome.usually": {
+    "en": "Usually:",
+    "fr": "Habituellement :"
+  },
+  "chrome.other_editions": {
+    "en": "Other editions:",
+    "fr": "Autres éditions :"
+  },
+  "chrome.places_label": {
+    "en": "Places:",
+    "fr": "Lieux :"
+  },
+  "chrome.sources_label": {
+    "en": "Sources:",
+    "fr": "Sources :"
+  },
+  "chrome.events_h1": {
+    "en": "{r} festivals and events",
+    "fr": "Festivals et événements à {r}"
+  },
+  "chrome.events_lede": {
+    "en": "The dates, venue and fee of each festival's newest edition, its program and where the information comes from. Where two sources give different values, both are shown.",
+    "fr": "Les dates, le lieu et le tarif de l'édition la plus récente de chaque festival, son programme et l'origine des informations. Quand deux sources donnent des valeurs différentes, les deux sont affichées."
+  },
+  "chrome.upcoming": {
+    "en": "Upcoming and ongoing",
+    "fr": "À venir et en cours"
+  },
+  "chrome.past": {
+    "en": "Past",
+    "fr": "Passés"
+  },
+  "chrome.festivals": {
+    "en": "Festivals and events",
+    "fr": "Festivals et événements"
+  },
+  "chrome.past_editions": {
+    "en": "Past editions",
+    "fr": "Éditions passées"
+  },
+  "chrome.season_h": {
+    "en": "Held around this time in earlier years",
+    "fr": "Organisés à cette période les années précédentes"
+  },
+  "chrome.season_note": {
+    "en": "Their newest edition, a year or two ago, began within the next three months of the year. This year's dates are not in our data yet; the cards below give each edition as it was.",
+    "fr": "Leur dernière édition, il y a un ou deux ans, a commencé dans les trois prochains mois de l'année. Les dates de cette année ne figurent pas encore dans nos données ; les fiches ci-dessous présentent cette édition."
+  },
+  "chrome.past_note": {
+    "en": "The newest edition of each series, newest first.",
+    "fr": "Pour chaque série, l'édition la plus récente ; les séries sont classées de la plus récente à la plus ancienne."
+  },
+  "chrome.events_title": {
+    "en": "{r} Festivals and Events: Dates, Venues and Fees",
+    "fr": "Festivals et événements à {r} : dates, lieux et tarifs"
+  },
+  "chrome.events_desc": {
+    "en": "{a} upcoming or ongoing and {b} past festivals and events in {r}: dates, venue, fee and organizer of the newest edition, with sources.",
+    "fr": "{a} festivals et événements à venir ou en cours et {b} passés à {r} : dates, lieu, tarif et organisateur de l'édition la plus récente, avec les sources."
+  },
+  "chrome.about_title": {
+    "en": "About This Site: Sources, Photos and Corrections",
+    "fr": "À propos de ce site : sources, photos et corrections"
+  },
+  "chrome.about_desc": {
+    "en": "What {site} is, where its information comes from, how sources are shown, photo licenses, how names are written and how to report an error.",
+    "fr": "Ce qu'est {site}, d'où viennent ses informations, comment les sources sont indiquées, les licences des photos, l'écriture des noms et comment signaler une erreur."
+  },
+  "chrome.about_lede": {
+    "en": "{site} is the edition in this language of {ko_site}, a travel information site about {r}: when places open, what they cost, where to park and how to get there, for attractions, restaurants and places to stay, with the official courses and festival dates.",
+    "fr": "{site} est l'édition en français de {ko_site}, un site d'information touristique sur {r} : horaires d'ouverture, prix, stationnement et accès pour les sites touristiques, les restaurants et les hébergements, avec les circuits officiels et les dates des festivals."
+  },
+  "chrome.about_lede_courses": {
+    "en": "{site} is the edition in this language of {ko_site}, a travel information site about {r}: when places open, what they cost, where to park and how to get there, for attractions, restaurants and places to stay, with travel courses and festival dates.",
+    "fr": "{site} est l’édition dans cette langue de {ko_site}, un site d’information touristique sur {r} : horaires, tarifs, stationnement et accès pour les sites, restaurants et hébergements, avec des parcours de voyage et les dates des festivals."
+  },
+  "chrome.about_lede_none": {
+    "en": "{site} is the edition in this language of {ko_site}, a travel information site about {r}: when places open, what they cost, where to park and how to get there, for attractions, restaurants and places to stay.",
+    "fr": "{site} est l’édition dans cette langue de {ko_site}, un site d’information touristique sur {r} : horaires, tarifs, stationnement et accès pour les sites, restaurants et hébergements."
+  },
+  "chrome.about_what": {
+    "en": "What is here",
+    "fr": "Ce que contient le site"
+  },
+  "chrome.about_counts": {
+    "en": "Pages in this language for {places} places ({indexed} of them in search results; the others are listed but not indexed until they meet the site's index rule), {guides} guides, {courses} official courses and {series} festival and event series.",
+    "fr": "Pages en français : {places} lieux, {guides} guides, {courses} circuits officiels et {series} séries de festivals et d'événements. Parmi les lieux, {indexed} figurent dans les résultats de recherche ; les autres sont listés mais non indexés tant qu'ils ne respectent pas la règle d'indexation du site."
+  },
+  "chrome.about_counts_plain": {
+    "en": "Pages in this language for {places} places ({indexed} of them in search results; the others are listed but not indexed until they meet the site's index rule), {guides} guides, {courses} courses and {series} festival and event series.",
+    "fr": "Pages dans cette langue pour {places} lieux (dont {indexed} indexés ; les autres sont listés jusqu’à remplir la règle d’indexation), {guides} guides, {courses} parcours et {series} séries d’événements."
+  },
+  "chrome.about_sync": {
+    "en": "Each page in this language is a translation of its Korean page. When the Korean page changes, the translated page is taken down until the translation is updated, so the two never say different things.",
+    "fr": "Chaque page en français est une traduction de sa page en coréen. Quand la page en coréen change, la page traduite est retirée jusqu'à la mise à jour de la traduction : les deux ne disent ainsi jamais des choses différentes."
+  },
+  "chrome.about_how_1": {
+    "en": "Opening hours, closed days, fees, parking, phone numbers, check-in times and menus come from the Korea Tourism Organization's TourAPI and from {source}, and for some places from their own official websites. Nothing is filled in from general knowledge.",
+    "fr": "Les horaires d’ouverture, jours de fermeture, tarifs, parkings, numéros de téléphone, heures d’arrivée et menus proviennent de la TourAPI de l’Office national du tourisme coréen et de {source}, et pour certains lieux de leur site officiel. Rien n’est complété à partir de connaissances générales."
+  },
+  "chrome.about_how_1_kto": {
+    "en": "Opening hours, closed days, fees, parking, phone numbers, check-in times and menus come from the Korea Tourism Organization's TourAPI and, for some places, from their own official websites. Nothing is filled in from general knowledge.",
+    "fr": "Les horaires d’ouverture, jours de fermeture, tarifs, parkings, numéros de téléphone, heures d’arrivée et menus proviennent de la TourAPI de l’Office national du tourisme coréen et, pour certains lieux, de leur propre site officiel. Rien n’est complété à partir de connaissances générales."
+  },
+  "chrome.about_how_2": {
+    "en": "Every value names its source. Where two sources give different values, the page shows both, each with its source, and says \"{note}\". A value no source gives is listed once as \"{missing}\".",
+    "fr": "Chaque valeur indique sa source. Quand deux sources donnent des valeurs différentes, la page affiche les deux, chacune avec sa source, et indique « {note} ». Une valeur qu'aucune source ne donne est indiquée une seule fois comme « {missing} »."
+  },
+  "chrome.about_how_3": {
+    "en": "Texts from {source} are not copied; each place page links to its original page. Distances are straight lines between coordinates, not travel distances.",
+    "fr": "Les textes de {source} ne sont pas copiés ; chaque page de lieu renvoie vers sa page originale. Les distances sont des lignes droites entre coordonnées, non des distances de trajet."
+  },
+  "chrome.about_how_3_unconfirmed": {
+    "en": "Original texts whose terms of use (the KOGL type) are not confirmed are not copied: pages link to them, descriptions are written anew, and values such as hours, fees and menus are kept as the source gives them. Distances are straight lines between coordinates, not travel distances.",
+    "fr": "Les textes originaux dont le type KOGL n’est pas confirmé ne sont pas copiés. Les pages renvoient vers l’original, les descriptions sont réécrites et les horaires, tarifs et menus sont conservés. Les distances sont des lignes droites entre coordonnées."
+  },
+  "chrome.about_photos": {
+    "en": "Photos are from the Korea Tourism Organization under the Korea Open Government License (KOGL): {n1} under {lic1} and {n3} under {lic3}. Type 3 photos are shown exactly as published: never cropped, enlarged or edited. Each photo carries its source and license.",
+    "fr": "Les photos proviennent de l'Office national du tourisme coréen, sous licence gouvernementale ouverte de Corée (KOGL) : {n1} sous {lic1} et {n3} sous {lic3}. Les photos de type 3 sont présentées exactement telles que publiées : jamais recadrées, agrandies ni retouchées. Chaque photo indique sa source et sa licence."
+  },
+  "chrome.about_art": {
+    "en": "The illustrations on this site were drawn with generative AI; every photo of a place is an official Korea Tourism Organization photo, shown with its source.",
+    "fr": "Les illustrations de ce site ont été dessinées avec une IA générative ; chaque photo d'un lieu est une photo officielle de l'Office national du tourisme coréen, présentée avec sa source."
+  },
+  "chrome.about_names_h": {
+    "en": "Names",
+    "fr": "Noms"
+  },
+  "chrome.about_names": {
+    "en": "Place names are the Korea Tourism Organization's official names in this language when it gives one; otherwise they are translated from the Korean name (the proper part transcribed, the generic part translated). Every place page also shows the Korean name, which helps when you search a Korean map or show it to a taxi driver.",
+    "fr": "Les noms de lieux sont les noms officiels en français de l'Office national du tourisme coréen quand il en donne un ; sinon, ils sont traduits du nom coréen (partie propre transcrite, partie générique traduite). Chaque page de lieu affiche aussi le nom coréen, utile pour chercher sur une carte coréenne ou pour le montrer à un chauffeur de taxi."
+  },
+  "chrome.about_names_noex": {
+    "en": "Place names are the Korea Tourism Organization's official names in this language when it gives one; otherwise they are translated from the Korean name (the proper part transcribed, the generic part translated). Every place page also shows the Korean name, which helps when you search a Korean map or show it to a taxi driver.",
+    "fr": "Les noms de lieux sont les noms officiels de l’Office national du tourisme coréen dans cette langue lorsqu’ils existent ; sinon, ils sont traduits du coréen (la partie propre transcrite, la partie générique traduite). Chaque page indique aussi le nom coréen, utile sur une carte coréenne ou pour un chauffeur de taxi."
+  },
+  "chrome.the_operator": {
+    "en": "the operator",
+    "fr": "l'exploitant du site"
+  },
+  "chrome.about_report": {
+    "en": "If a value is wrong or out of date, write to {mail} with the page address and the source that shows the correct value.",
+    "fr": "Si une valeur est erronée ou périmée, écrivez à {mail} en indiquant l'adresse de la page et la source qui donne la bonne valeur."
+  },
+  "chrome.about_operator": {
+    "en": "Operator: {op}. This site is run independently of {city}.",
+    "fr": "Opérateur : {op}. Ce site est géré indépendamment de {city}."
+  },
+  "chrome.about_operator_only": {
+    "en": "Operator: {op}.",
+    "fr": "Opérateur : {op}."
+  },
+  "chrome.co_heading": {
+    "en": "The company behind this site",
+    "fr": "Société éditrice"
+  },
+  "chrome.co_name": {
+    "en": "Company",
+    "fr": "Société"
+  },
+  "chrome.co_ceo": {
+    "en": "CEO",
+    "fr": "PDG"
+  },
+  "chrome.co_biz_no": {
+    "en": "Business registration no.",
+    "fr": "N° d’enregistrement d’entreprise"
+  },
+  "chrome.co_corp_no": {
+    "en": "Corporate registration no.",
+    "fr": "N° d’immatriculation de la société"
+  },
+  "chrome.co_founded": {
+    "en": "Founded",
+    "fr": "Création"
+  },
+  "chrome.co_head_office": {
+    "en": "Head office",
+    "fr": "Siège social"
+  },
+  "chrome.co_lab": {
+    "en": "R&D center",
+    "fr": "Centre de R&D"
+  },
+  "chrome.co_tel": {
+    "en": "Tel.",
+    "fr": "Tél."
+  },
+  "chrome.co_contact": {
+    "en": "Contact",
+    "fr": "Contact"
+  },
+  "chrome.co_site": {
+    "en": "Company website",
+    "fr": "Site de l’entreprise"
+  },
+  "chrome.co_info": {
+    "en": "Company information",
+    "fr": "Mentions légales"
+  },
+  "chrome.co_note": {
+    "en": "This site is run by the company above, not by a city government or any other public body. For questions about a place or an event, use the phone number and official links on its page.",
+    "fr": "Ce site est édité par la société ci-dessus, et non par la ville de Jeju ou un autre organisme public. Pour toute question sur un lieu ou un événement, utilisez le numéro de téléphone et les liens officiels de sa page."
+  },
+  "chrome.co_copyright": {
+    "en": "Copyright © {name}. Photos and source texts belong to their sources.",
+    "fr": "Copyright © {name}. Les droits des photos et des textes sources appartiennent à leurs sources."
+  },
+  "chrome.official_sites": {
+    "en": "Official sites",
+    "fr": "Sites officiels"
+  },
+  "chrome.home_title": {
+    "en": "{site}: {r} Attractions, Food, Stays, Courses and Festivals",
+    "fr": "{site} : sites touristiques, restaurants, hébergements, circuits et festivals à {r}"
+  },
+  "chrome.home_desc": {
+    "en": "{a} attractions, {f} restaurants and {s} places to stay in {r}, with opening hours, prices, parking and directions, plus official courses and festival dates, in one place.",
+    "fr": "{a} sites touristiques, {f} restaurants et {s} hébergements à {r}, avec horaires, prix, parking et accès, ainsi que les circuits officiels et les dates des festivals, au même endroit."
+  },
+  "chrome.home_desc_courses": {
+    "en": "{a} attractions, {f} restaurants and {s} places to stay in {r}, with opening hours, prices, parking and directions, plus travel courses and festival dates, in one place.",
+    "fr": "{a} sites touristiques, {f} restaurants et {s} hébergements à {r}, avec horaires, tarifs, stationnement et accès, ainsi que des parcours de voyage et les dates des festivals, en un seul endroit."
+  },
+  "chrome.home_desc_none": {
+    "en": "{a} attractions, {f} restaurants and {s} places to stay in {r}, with opening hours, prices, parking and directions, in one place.",
+    "fr": "{a} sites touristiques, {f} restaurants et {s} hébergements à {r}, avec horaires, tarifs, stationnement et accès, en un seul endroit."
+  },
+  "chrome.home_kicker": {
+    "en": "{r}, {admin}, Korea",
+    "fr": "{r}, {admin}, Corée"
+  },
+  "chrome.home_kicker_city": {
+    "en": "{r}, Korea",
+    "fr": "{r}, Corée"
+  },
+  "chrome.home_sub": {
+    "en": "Opening hours, prices and how to get there for {r}'s attractions, restaurants and places to stay, in one place.",
+    "fr": "Horaires, prix et accès des sites touristiques, restaurants et hébergements de {r}, au même endroit."
+  },
+  "chrome.home_cta": {
+    "en": "Start with an official course",
+    "fr": "Commencer par un circuit officiel"
+  },
+  "chrome.home_cta_plain": {
+    "en": "Start with a course",
+    "fr": "Commencer par un parcours"
+  },
+  "chrome.cat_attraction": {
+    "en": "Attractions",
+    "fr": "Sites touristiques"
+  },
+  "chrome.cat_food": {
+    "en": "Restaurants",
+    "fr": "Restaurants"
+  },
+  "chrome.cat_stay": {
+    "en": "Places to stay",
+    "fr": "Hébergements"
+  },
+  "chrome.now_on": {
+    "en": "Now on",
+    "fr": "En ce moment"
+  },
+  "chrome.until": {
+    "en": "until {d}",
+    "fr": "jusqu'au {d}"
+  },
+  "chrome.start_here": {
+    "en": "Start here",
+    "fr": "Commencez ici"
+  },
+  "chrome.num_attraction.one": {
+    "en": "attractions",
+    "fr": "site touristique"
+  },
+  "chrome.num_attraction.other": {
+    "en": "attractions",
+    "fr": "sites touristiques"
+  },
+  "chrome.num_food.one": {
+    "en": "restaurants",
+    "fr": "restaurant"
+  },
+  "chrome.num_food.other": {
+    "en": "restaurants",
+    "fr": "restaurants"
+  },
+  "chrome.num_stay.one": {
+    "en": "places to stay",
+    "fr": "hébergement"
+  },
+  "chrome.num_stay.other": {
+    "en": "places to stay",
+    "fr": "hébergements"
+  },
+  "chrome.num_courses.one": {
+    "en": "official courses",
+    "fr": "circuit officiel"
+  },
+  "chrome.num_courses.other": {
+    "en": "official courses",
+    "fr": "circuits officiels"
+  },
+  "chrome.num_courses_plain.one": {
+    "en": "courses",
+    "fr": "parcours"
+  },
+  "chrome.num_courses_plain.other": {
+    "en": "courses",
+    "fr": "parcours"
+  },
+  "chrome.num_guides.one": {
+    "en": "guides",
+    "fr": "guide"
+  },
+  "chrome.num_guides.other": {
+    "en": "guides",
+    "fr": "guides"
+  },
+  "chrome.nums_title": {
+    "en": "{r} travel, in numbers.",
+    "fr": "Voyager à {r}, en chiffres."
+  },
+  "chrome.feat_eyebrow": {
+    "en": "On the most official courses",
+    "fr": "Présents dans le plus de circuits officiels"
+  },
+  "chrome.feat_eyebrow_plain": {
+    "en": "On the most courses",
+    "fr": "Sur le plus de parcours"
+  },
+  "chrome.feat_h": {
+    "en": "Places to start",
+    "fr": "Par où commencer"
+  },
+  "chrome.all_attractions.one": {
+    "en": "All {n} attractions",
+    "fr": "Voir {n} site touristique"
+  },
+  "chrome.all_attractions.other": {
+    "en": "All {n} attractions",
+    "fr": "Voir les {n} sites touristiques"
+  },
+  "chrome.hubs_h": {
+    "en": "Eat, stay, see",
+    "fr": "Manger, dormir, visiter"
+  },
+  "chrome.coming_up": {
+    "en": "Coming up",
+    "fr": "À venir"
+  },
+  "chrome.all_events": {
+    "en": "All festivals and events",
+    "fr": "Tous les festivals et événements"
+  },
+  "chrome.lines_h": {
+    "en": "Official courses, in order",
+    "fr": "Circuits officiels, dans l'ordre"
+  },
+  "chrome.lines_h_plain": {
+    "en": "Courses, in order",
+    "fr": "Parcours dans l’ordre"
+  },
+  "chrome.all_courses": {
+    "en": "All courses",
+    "fr": "Tous les circuits"
+  },
+  "chrome.tile_courses_short": {
+    "en": "Official day and overnight courses",
+    "fr": "Circuits officiels d'une journée ou avec nuitée"
+  },
+  "chrome.tile_courses_short_plain": {
+    "en": "Day and overnight courses",
+    "fr": "Parcours d’un jour et séjours"
+  },
+  "chrome.tile_courses_any": {
+    "en": "Official courses, stop by stop",
+    "fr": "Parcours officiels étape par étape"
+  },
+  "chrome.tile_courses_any_plain": {
+    "en": "Courses, stop by stop",
+    "fr": "Parcours étape par étape"
+  },
+  "chrome.tile_courses_tiny": {
+    "en": "Day and overnight",
+    "fr": "Journée ou nuitée"
+  },
+  "chrome.tile_courses_tiny_day": {
+    "en": "Day trips",
+    "fr": "Excursions"
+  },
+  "chrome.tile_courses_tiny_any": {
+    "en": "Stop by stop",
+    "fr": "Étape par étape"
+  },
+  "chrome.tile_courses_pill": {
+    "en": "Official",
+    "fr": "Officiel"
+  },
+  "chrome.tile_attraction": {
+    "en": "Attractions",
+    "fr": "Sites touristiques"
+  },
+  "chrome.tile_food": {
+    "en": "Restaurants",
+    "fr": "Restaurants"
+  },
+  "chrome.tile_stay": {
+    "en": "Stays",
+    "fr": "Hébergements"
+  },
+  "chrome.tile_short_attraction": {
+    "en": "Hours, closed days, fees and parking",
+    "fr": "Horaires, jours de fermeture, tarifs et parking"
+  },
+  "chrome.tile_tiny_attraction": {
+    "en": "Hours · fees",
+    "fr": "Horaires · tarifs"
+  },
+  "chrome.tile_short_food": {
+    "en": "Dishes, hours, closed days and parking",
+    "fr": "Plats, horaires, jours de fermeture et parking"
+  },
+  "chrome.tile_tiny_food": {
+    "en": "Dishes · hours",
+    "fr": "Plats · horaires"
+  },
+  "chrome.tile_short_stay": {
+    "en": "Check-in, check-out, parking and phone",
+    "fr": "Arrivée, départ, parking et téléphone"
+  },
+  "chrome.tile_tiny_stay": {
+    "en": "Check-in times",
+    "fr": "Heures d'arrivée"
+  },
+  "chrome.tile_events_short": {
+    "en": "Upcoming and ongoing festivals",
+    "fr": "Festivals à venir et en cours"
+  },
+  "chrome.tile_events_tiny": {
+    "en": "Upcoming",
+    "fr": "À venir"
+  },
+  "chrome.llms_home": {
+    "en": "{r} attractions, restaurants and places to stay with hours, prices, parking and directions; official courses and festival dates.",
+    "fr": "Sites touristiques, restaurants et hébergements de {r} avec horaires, prix, parking et itinéraires ; circuits officiels et dates des festivals."
+  },
+  "chrome.llms_home_courses": {
+    "en": "{r} attractions, restaurants and places to stay with hours, prices, parking and directions; travel courses and festival dates.",
+    "fr": "Sites touristiques, restaurants et hébergements à {r} avec horaires, tarifs, stationnement et accès ; parcours de voyage et dates des festivals."
+  },
+  "chrome.llms_home_none": {
+    "en": "{r} attractions, restaurants and places to stay with hours, prices, parking and directions.",
+    "fr": "Sites touristiques, restaurants et hébergements à {r} avec horaires, tarifs, stationnement et accès."
+  },
+  "chrome.none_district": {
+    "en": "District not listed",
+    "fr": "District non indiqué"
+  },
+  "chrome.none_anchors": {
+    "en": "Area not assigned",
+    "fr": "Zone non attribuée"
+  },
+  "chrome.map_zoom_in": {
+    "en": "Zoom in",
+    "fr": "Zoom avant"
+  },
+  "chrome.map_zoom_out": {
+    "en": "Zoom out",
+    "fr": "Zoom arrière"
+  },
+  "chrome.map_whole_course": {
+    "en": "Whole course",
+    "fr": "Tout le circuit"
+  },
+  "chrome.map_fail": {
+    "en": "The map could not be loaded.",
+    "fr": "La carte n'a pas pu être chargée."
+  },
+  "chrome.map_off": {
+    "en": "Some stops lie off the map · show them",
+    "fr": "Certaines étapes sont hors de la carte · les afficher"
+  },
+  "provider:수원시": {
+    "ko": "수원시",
+    "fr": "Ville de Suwon"
+  }
+}
