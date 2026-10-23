@@ -133,22 +133,22 @@
     },
     "theme-modern-history": {
       "glyph": "building",
-      "label": "민속촌·박물관·역사유산",
+      "label": "수원화성·행궁·박물관·역사유산",
       "group": "themes"
     },
     "theme-islands-sea": {
       "glyph": "wave",
-      "label": "호수·저수지·수변산책",
+      "label": "광교호수·방화수류정·수변산책",
       "group": "themes"
     },
     "theme-parks-nature": {
       "glyph": "tree",
-      "label": "숲·휴양림·식물원·계곡",
+      "label": "수목원·숲·공원·광교산",
       "group": "themes"
     },
     "theme-alleys-culture": {
       "glyph": "lamp",
-      "label": "테마파크·카페거리·체험",
+      "label": "행리단길·통닭거리·전통시장·체험",
       "group": "themes"
     },
     "sit-rainy": {
@@ -198,7 +198,7 @@
     },
     "mascot-wave-boat": {
       "glyph": "wave",
-      "label": "해변·바다 안내 마스코트",
+      "label": "호수·수변 안내 마스코트",
       "group": "mascot"
     },
     "icon-plan": {

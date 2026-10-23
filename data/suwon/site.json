@@ -793,7 +793,8 @@
         "name": "수원종합버스터미널"
       }
     ],
-    "resident_label": "수원 시민·인근 출발"
+    "resident_label": "수원 시민·인근 출발",
+    "note_example": "예: 점심은 수원왕갈비나 통닭거리에서 먹고 싶어요. 오후엔 화성행궁과 방화수류정을 걷고 싶어요."
   },
   "abroad": {
     "keywords": [

@@ -8,44 +8,44 @@
       [
         "head-places-400.avif",
         400,
-        12812
+        6509
       ],
       [
         "head-places-800.avif",
         800,
-        41908
+        19738
       ],
       [
         "head-places-1280.avif",
         1280,
-        85355
+        41533
       ],
       [
         "head-places-1536.avif",
         1536,
-        108607
+        54917
       ]
     ],
     "webp": [
       [
         "head-places-400.webp",
         400,
-        17100
+        6956
       ],
       [
         "head-places-800.webp",
         800,
-        56414
+        18256
       ],
       [
         "head-places-1280.webp",
         1280,
-        111418
+        36516
       ],
       [
         "head-places-1536.webp",
         1536,
-        136704
+        46546
       ]
     ]
   },
@@ -58,44 +58,44 @@
       [
         "head-food-400.avif",
         400,
-        16737
+        10982
       ],
       [
         "head-food-800.avif",
         800,
-        48435
+        31147
       ],
       [
         "head-food-1280.avif",
         1280,
-        88359
+        61670
       ],
       [
         "head-food-1536.avif",
         1536,
-        110482
+        79453
       ]
     ],
     "webp": [
       [
         "head-food-400.webp",
         400,
-        23430
+        14356
       ],
       [
         "head-food-800.webp",
         800,
-        69884
+        36916
       ],
       [
         "head-food-1280.webp",
         1280,
-        130240
+        66204
       ],
       [
         "head-food-1536.webp",
         1536,
-        156894
+        80924
       ]
     ]
   },
@@ -108,44 +108,44 @@
       [
         "head-stays-400.avif",
         400,
-        10744
+        7523
       ],
       [
         "head-stays-800.avif",
         800,
-        35579
+        19727
       ],
       [
         "head-stays-1280.avif",
         1280,
-        71408
+        39989
       ],
       [
         "head-stays-1536.avif",
         1536,
-        91456
+        52405
       ]
     ],
     "webp": [
       [
         "head-stays-400.webp",
         400,
-        13398
+        8482
       ],
       [
         "head-stays-800.webp",
         800,
-        42210
+        19800
       ],
       [
         "head-stays-1280.webp",
         1280,
-        84690
+        37058
       ],
       [
         "head-stays-1536.webp",
         1536,
-        104430
+        47544
       ]
     ]
   },
@@ -158,44 +158,44 @@
       [
         "head-courses-400.avif",
         400,
-        11330
+        3073
       ],
       [
         "head-courses-800.avif",
         800,
-        36059
+        8854
       ],
       [
         "head-courses-1280.avif",
         1280,
-        70901
+        21634
       ],
       [
         "head-courses-1536.avif",
         1536,
-        87888
+        29557
       ]
     ],
     "webp": [
       [
         "head-courses-400.webp",
         400,
-        15184
+        2940
       ],
       [
         "head-courses-800.webp",
         800,
-        46262
+        7694
       ],
       [
         "head-courses-1280.webp",
         1280,
-        90394
+        17494
       ],
       [
         "head-courses-1536.webp",
         1536,
-        109038
+        25560
       ]
     ]
   },
@@ -208,44 +208,44 @@
       [
         "head-guides-400.avif",
         400,
-        13176
+        7920
       ],
       [
         "head-guides-800.avif",
         800,
-        49083
+        24003
       ],
       [
         "head-guides-1280.avif",
         1280,
-        99913
+        49618
       ],
       [
         "head-guides-1536.avif",
         1536,
-        127162
+        63697
       ]
     ],
     "webp": [
       [
         "head-guides-400.webp",
         400,
-        18458
+        8302
       ],
       [
         "head-guides-800.webp",
         800,
-        64620
+        22474
       ],
       [
         "head-guides-1280.webp",
         1280,
-        130770
+        44084
       ],
       [
         "head-guides-1536.webp",
         1536,
-        160996
+        56516
       ]
     ]
   },
@@ -258,44 +258,44 @@
       [
         "head-events-400.avif",
         400,
-        13887
+        5660
       ],
       [
         "head-events-800.avif",
         800,
-        50787
+        17149
       ],
       [
         "head-events-1280.avif",
         1280,
-        100276
+        37284
       ],
       [
         "head-events-1536.avif",
         1536,
-        124935
+        48822
       ]
     ],
     "webp": [
       [
         "head-events-400.webp",
         400,
-        18442
+        5766
       ],
       [
         "head-events-800.webp",
         800,
-        65798
+        15280
       ],
       [
         "head-events-1280.webp",
         1280,
-        138542
+        31338
       ],
       [
         "head-events-1536.webp",
         1536,
-        167542
+        41788
       ]
     ]
   },
@@ -308,44 +308,44 @@
       [
         "head-videos-400.avif",
         400,
-        11103
+        5153
       ],
       [
         "head-videos-800.avif",
         800,
-        29197
+        16597
       ],
       [
         "head-videos-1280.avif",
         1280,
-        55596
+        36318
       ],
       [
         "head-videos-1536.avif",
         1536,
-        69576
+        48078
       ]
     ],
     "webp": [
       [
         "head-videos-400.webp",
         400,
-        15596
+        5370
       ],
       [
         "head-videos-800.webp",
         800,
-        38950
+        15360
       ],
       [
         "head-videos-1280.webp",
         1280,
-        69218
+        32088
       ],
       [
         "head-videos-1536.webp",
         1536,
-        85770
+        42890
       ]
     ]
   },
@@ -358,44 +358,44 @@
       [
         "head-abroad-400.avif",
         400,
-        14955
+        2843
       ],
       [
         "head-abroad-800.avif",
         800,
-        53067
+        7357
       ],
       [
         "head-abroad-1280.avif",
         1280,
-        105942
+        17666
       ],
       [
         "head-abroad-1536.avif",
         1536,
-        133600
+        24734
       ]
     ],
     "webp": [
       [
         "head-abroad-400.webp",
         400,
-        20846
+        2950
       ],
       [
         "head-abroad-800.webp",
         800,
-        73410
+        7026
       ],
       [
         "head-abroad-1280.webp",
         1280,
-        152724
+        14854
       ],
       [
         "head-abroad-1536.webp",
         1536,
-        183278
+        21058
       ]
     ]
   },
@@ -408,44 +408,44 @@
       [
         "head-map-400.avif",
         400,
-        10663
+        9613
       ],
       [
         "head-map-800.avif",
         800,
-        31838
+        26958
       ],
       [
         "head-map-1280.avif",
         1280,
-        61796
+        54599
       ],
       [
         "head-map-1536.avif",
         1536,
-        77578
+        69986
       ]
     ],
     "webp": [
       [
         "head-map-400.webp",
         400,
-        13986
+        11970
       ],
       [
         "head-map-800.webp",
         800,
-        39288
+        29478
       ],
       [
         "head-map-1280.webp",
         1280,
-        74324
+        52354
       ],
       [
         "head-map-1536.webp",
         1536,
-        89492
+        64722
       ]
     ]
   },
@@ -458,44 +458,44 @@
       [
         "about-hero-400.avif",
         400,
-        18169
+        10930
       ],
       [
         "about-hero-800.avif",
         800,
-        59807
+        33305
       ],
       [
         "about-hero-1280.avif",
         1280,
-        117571
+        67953
       ],
       [
         "about-hero-1536.avif",
         1536,
-        145939
+        87672
       ]
     ],
     "webp": [
       [
         "about-hero-400.webp",
         400,
-        24734
+        12042
       ],
       [
         "about-hero-800.webp",
         800,
-        84240
+        32098
       ],
       [
         "about-hero-1280.webp",
         1280,
-        169500
+        59354
       ],
       [
         "about-hero-1536.webp",
         1536,
-        204020
+        76582
       ]
     ]
   },
@@ -508,1816 +508,34 @@
       [
         "plan-hero-640.avif",
         640,
-        25726
+        20336
       ],
       [
         "plan-hero-1280.avif",
         1280,
-        68031
+        60395
       ],
       [
         "plan-hero-1536.avif",
         1536,
-        84567
+        79624
       ]
     ],
     "webp": [
       [
         "plan-hero-640.webp",
         640,
-        32784
+        24514
       ],
       [
         "plan-hero-1280.webp",
         1280,
-        84546
+        58486
       ],
       [
         "plan-hero-1536.webp",
         1536,
-        102164
-      ]
-    ]
-  },
-  "guide-01": {
-    "w": 1536,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "guide-01-640.avif",
-        640,
-        52868
-      ],
-      [
-        "guide-01-1280.avif",
-        1280,
-        148721
-      ],
-      [
-        "guide-01-1536.avif",
-        1536,
-        184850
-      ]
-    ],
-    "webp": [
-      [
-        "guide-01-640.webp",
-        640,
-        69746
-      ],
-      [
-        "guide-01-1280.webp",
-        1280,
-        206286
-      ],
-      [
-        "guide-01-1536.webp",
-        1536,
-        248620
-      ]
-    ]
-  },
-  "guide-02": {
-    "w": 1536,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "guide-02-640.avif",
-        640,
-        62840
-      ],
-      [
-        "guide-02-1280.avif",
-        1280,
-        182190
-      ],
-      [
-        "guide-02-1536.avif",
-        1536,
-        226191
-      ]
-    ],
-    "webp": [
-      [
-        "guide-02-640.webp",
-        640,
-        86302
-      ],
-      [
-        "guide-02-1280.webp",
-        1280,
-        262630
-      ],
-      [
-        "guide-02-1536.webp",
-        1536,
-        320566
-      ]
-    ]
-  },
-  "guide-03": {
-    "w": 1536,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "guide-03-640.avif",
-        640,
-        40606
-      ],
-      [
-        "guide-03-1280.avif",
-        1280,
-        122083
-      ],
-      [
-        "guide-03-1536.avif",
-        1536,
-        157036
-      ]
-    ],
-    "webp": [
-      [
-        "guide-03-640.webp",
-        640,
-        54360
-      ],
-      [
-        "guide-03-1280.webp",
-        1280,
-        157544
-      ],
-      [
-        "guide-03-1536.webp",
-        1536,
-        191174
-      ]
-    ]
-  },
-  "guide-04": {
-    "w": 1536,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "guide-04-640.avif",
-        640,
-        38431
-      ],
-      [
-        "guide-04-1280.avif",
-        1280,
-        99280
-      ],
-      [
-        "guide-04-1536.avif",
-        1536,
-        122991
-      ]
-    ],
-    "webp": [
-      [
-        "guide-04-640.webp",
-        640,
-        54608
-      ],
-      [
-        "guide-04-1280.webp",
-        1280,
-        139746
-      ],
-      [
-        "guide-04-1536.webp",
-        1536,
-        165496
-      ]
-    ]
-  },
-  "guide-05": {
-    "w": 1536,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "guide-05-640.avif",
-        640,
-        37609
-      ],
-      [
-        "guide-05-1280.avif",
-        1280,
-        93332
-      ],
-      [
-        "guide-05-1536.avif",
-        1536,
-        114657
-      ]
-    ],
-    "webp": [
-      [
-        "guide-05-640.webp",
-        640,
-        52846
-      ],
-      [
-        "guide-05-1280.webp",
-        1280,
-        129064
-      ],
-      [
-        "guide-05-1536.webp",
-        1536,
-        156428
-      ]
-    ]
-  },
-  "guide-06": {
-    "w": 1536,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "guide-06-640.avif",
-        640,
-        33158
-      ],
-      [
-        "guide-06-1280.avif",
-        1280,
-        95955
-      ],
-      [
-        "guide-06-1536.avif",
-        1536,
-        122395
-      ]
-    ],
-    "webp": [
-      [
-        "guide-06-640.webp",
-        640,
-        36040
-      ],
-      [
-        "guide-06-1280.webp",
-        1280,
-        102506
-      ],
-      [
-        "guide-06-1536.webp",
-        1536,
-        126798
-      ]
-    ]
-  },
-  "card-event": {
-    "w": 1536,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "card-event-640.avif",
-        640,
-        41682
-      ],
-      [
-        "card-event-1280.avif",
-        1280,
-        113545
-      ],
-      [
-        "card-event-1536.avif",
-        1536,
-        141165
-      ]
-    ],
-    "webp": [
-      [
-        "card-event-640.webp",
-        640,
-        53444
-      ],
-      [
-        "card-event-1280.webp",
-        1280,
-        147534
-      ],
-      [
-        "card-event-1536.webp",
-        1536,
-        175732
-      ]
-    ]
-  },
-  "card-guide": {
-    "w": 1536,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "card-guide-640.avif",
-        640,
-        40958
-      ],
-      [
-        "card-guide-1280.avif",
-        1280,
-        117571
-      ],
-      [
-        "card-guide-1536.avif",
-        1536,
-        145939
-      ]
-    ],
-    "webp": [
-      [
-        "card-guide-640.webp",
-        640,
-        57234
-      ],
-      [
-        "card-guide-1280.webp",
-        1280,
-        169500
-      ],
-      [
-        "card-guide-1536.webp",
-        1536,
-        204020
-      ]
-    ]
-  },
-  "card-video": {
-    "w": 1536,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "card-video-640.avif",
-        640,
-        29827
-      ],
-      [
-        "card-video-1280.avif",
-        1280,
-        82962
-      ],
-      [
-        "card-video-1536.avif",
-        1536,
-        104498
-      ]
-    ],
-    "webp": [
-      [
-        "card-video-640.webp",
-        640,
-        36820
-      ],
-      [
-        "card-video-1280.webp",
-        1280,
-        96162
-      ],
-      [
-        "card-video-1536.webp",
-        1536,
-        118306
-      ]
-    ]
-  },
-  "card-abroad": {
-    "w": 1536,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "card-abroad-640.avif",
-        640,
-        50395
-      ],
-      [
-        "card-abroad-1280.avif",
-        1280,
-        149964
-      ],
-      [
-        "card-abroad-1536.avif",
-        1536,
-        187810
-      ]
-    ],
-    "webp": [
-      [
-        "card-abroad-640.webp",
-        640,
-        69806
-      ],
-      [
-        "card-abroad-1280.webp",
-        1280,
-        216716
-      ],
-      [
-        "card-abroad-1536.webp",
-        1536,
-        258650
-      ]
-    ]
-  },
-  "card-course": {
-    "w": 1536,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "card-course-640.avif",
-        640,
-        40032
-      ],
-      [
-        "card-course-1280.avif",
-        1280,
-        120144
-      ],
-      [
-        "card-course-1536.avif",
-        1536,
-        152716
-      ]
-    ],
-    "webp": [
-      [
-        "card-course-640.webp",
-        640,
-        52156
-      ],
-      [
-        "card-course-1280.webp",
-        1280,
-        157042
-      ],
-      [
-        "card-course-1536.webp",
-        1536,
-        189918
-      ]
-    ]
-  },
-  "chat-empty": {
-    "w": 1024,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "chat-empty-400.avif",
-        400,
-        18890
-      ],
-      [
-        "chat-empty-800.avif",
-        800,
-        66678
-      ]
-    ],
-    "webp": [
-      [
-        "chat-empty-400.webp",
-        400,
-        23316
-      ],
-      [
-        "chat-empty-800.webp",
-        800,
-        81454
-      ]
-    ]
-  },
-  "art-404": {
-    "w": 1024,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "art-404-400.avif",
-        400,
-        32243
-      ],
-      [
-        "art-404-800.avif",
-        800,
-        92132
-      ]
-    ],
-    "webp": [
-      [
-        "art-404-400.webp",
-        400,
-        42514
-      ],
-      [
-        "art-404-800.webp",
-        800,
-        130600
-      ]
-    ]
-  },
-  "art-search-empty": {
-    "w": 1024,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "art-search-empty-400.avif",
-        400,
-        30730
-      ],
-      [
-        "art-search-empty-800.avif",
-        800,
-        76875
-      ]
-    ],
-    "webp": [
-      [
-        "art-search-empty-400.webp",
-        400,
-        42026
-      ],
-      [
-        "art-search-empty-800.webp",
-        800,
-        108012
-      ]
-    ]
-  },
-  "vtopic-yeohaeng-koseu": {
-    "w": 1536,
-    "h": 640,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "vtopic-yeohaeng-koseu-400.avif",
-        400,
-        12429
-      ],
-      [
-        "vtopic-yeohaeng-koseu-800.avif",
-        800,
-        42314
-      ],
-      [
-        "vtopic-yeohaeng-koseu-1280.avif",
-        1280,
-        84822
-      ],
-      [
-        "vtopic-yeohaeng-koseu-1536.avif",
-        1536,
-        108404
-      ]
-    ],
-    "webp": [
-      [
-        "vtopic-yeohaeng-koseu-400.webp",
-        400,
-        16208
-      ],
-      [
-        "vtopic-yeohaeng-koseu-800.webp",
-        800,
-        55542
-      ],
-      [
-        "vtopic-yeohaeng-koseu-1280.webp",
-        1280,
-        112918
-      ],
-      [
-        "vtopic-yeohaeng-koseu-1536.webp",
-        1536,
-        136100
-      ]
-    ]
-  },
-  "vtopic-other": {
-    "w": 1536,
-    "h": 640,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "vtopic-other-400.avif",
-        400,
-        17485
-      ],
-      [
-        "vtopic-other-800.avif",
-        800,
-        64103
-      ],
-      [
-        "vtopic-other-1280.avif",
-        1280,
-        125152
-      ],
-      [
-        "vtopic-other-1536.avif",
-        1536,
-        155266
-      ]
-    ],
-    "webp": [
-      [
-        "vtopic-other-400.webp",
-        400,
-        24070
-      ],
-      [
-        "vtopic-other-800.webp",
-        800,
-        87622
-      ],
-      [
-        "vtopic-other-1280.webp",
-        1280,
-        183298
-      ],
-      [
-        "vtopic-other-1536.webp",
-        1536,
-        220078
-      ]
-    ]
-  },
-  "evkind-sea": {
-    "w": 1536,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "evkind-sea-640.avif",
-        640,
-        33548
-      ],
-      [
-        "evkind-sea-1280.avif",
-        1280,
-        96373
-      ],
-      [
-        "evkind-sea-1536.avif",
-        1536,
-        120749
-      ]
-    ],
-    "webp": [
-      [
-        "evkind-sea-640.webp",
-        640,
-        43402
-      ],
-      [
-        "evkind-sea-1280.webp",
-        1280,
-        122354
-      ],
-      [
-        "evkind-sea-1536.webp",
-        1536,
-        147904
-      ]
-    ]
-  },
-  "evkind-flowers": {
-    "w": 1536,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "evkind-flowers-640.avif",
-        640,
-        62476
-      ],
-      [
-        "evkind-flowers-1280.avif",
-        1280,
-        180061
-      ],
-      [
-        "evkind-flowers-1536.avif",
-        1536,
-        224282
-      ]
-    ],
-    "webp": [
-      [
-        "evkind-flowers-640.webp",
-        640,
-        84470
-      ],
-      [
-        "evkind-flowers-1280.webp",
-        1280,
-        256870
-      ],
-      [
-        "evkind-flowers-1536.webp",
-        1536,
-        312676
-      ]
-    ]
-  },
-  "evkind-nature": {
-    "w": 1536,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "evkind-nature-640.avif",
-        640,
-        37451
-      ],
-      [
-        "evkind-nature-1280.avif",
-        1280,
-        111741
-      ],
-      [
-        "evkind-nature-1536.avif",
-        1536,
-        141558
-      ]
-    ],
-    "webp": [
-      [
-        "evkind-nature-640.webp",
-        640,
-        48610
-      ],
-      [
-        "evkind-nature-1280.webp",
-        1280,
-        141678
-      ],
-      [
-        "evkind-nature-1536.webp",
-        1536,
-        172484
-      ]
-    ]
-  },
-  "evkind-night": {
-    "w": 1536,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "evkind-night-640.avif",
-        640,
-        44016
-      ],
-      [
-        "evkind-night-1280.avif",
-        1280,
-        125375
-      ],
-      [
-        "evkind-night-1536.avif",
-        1536,
-        158142
-      ]
-    ],
-    "webp": [
-      [
-        "evkind-night-640.webp",
-        640,
-        60646
-      ],
-      [
-        "evkind-night-1280.webp",
-        1280,
-        175860
-      ],
-      [
-        "evkind-night-1536.webp",
-        1536,
-        210414
-      ]
-    ]
-  },
-  "evkind-food": {
-    "w": 1536,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "evkind-food-640.avif",
-        640,
-        46173
-      ],
-      [
-        "evkind-food-1280.avif",
-        1280,
-        113466
-      ],
-      [
-        "evkind-food-1536.avif",
-        1536,
-        141102
-      ]
-    ],
-    "webp": [
-      [
-        "evkind-food-640.webp",
-        640,
-        63730
-      ],
-      [
-        "evkind-food-1280.webp",
-        1280,
-        155124
-      ],
-      [
-        "evkind-food-1536.webp",
-        1536,
-        185544
-      ]
-    ]
-  },
-  "evkind-stage": {
-    "w": 1536,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "evkind-stage-640.avif",
-        640,
-        28312
-      ],
-      [
-        "evkind-stage-1280.avif",
-        1280,
-        81043
-      ],
-      [
-        "evkind-stage-1536.avif",
-        1536,
-        102544
-      ]
-    ],
-    "webp": [
-      [
-        "evkind-stage-640.webp",
-        640,
-        32350
-      ],
-      [
-        "evkind-stage-1280.webp",
-        1280,
-        88614
-      ],
-      [
-        "evkind-stage-1536.webp",
-        1536,
-        112144
-      ]
-    ]
-  },
-  "evkind-market": {
-    "w": 1536,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "evkind-market-640.avif",
-        640,
-        49703
-      ],
-      [
-        "evkind-market-1280.avif",
-        1280,
-        123225
-      ],
-      [
-        "evkind-market-1536.avif",
-        1536,
-        152634
-      ]
-    ],
-    "webp": [
-      [
-        "evkind-market-640.webp",
-        640,
-        68764
-      ],
-      [
-        "evkind-market-1280.webp",
-        1280,
-        171194
-      ],
-      [
-        "evkind-market-1536.webp",
-        1536,
-        204898
-      ]
-    ]
-  },
-  "evkind-ceremony": {
-    "w": 1536,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "evkind-ceremony-640.avif",
-        640,
-        48735
-      ],
-      [
-        "evkind-ceremony-1280.avif",
-        1280,
-        136890
-      ],
-      [
-        "evkind-ceremony-1536.avif",
-        1536,
-        169557
-      ]
-    ],
-    "webp": [
-      [
-        "evkind-ceremony-640.webp",
-        640,
-        63828
-      ],
-      [
-        "evkind-ceremony-1280.webp",
-        1280,
-        185688
-      ],
-      [
-        "evkind-ceremony-1536.webp",
-        1536,
-        221982
-      ]
-    ]
-  },
-  "evkind-race": {
-    "w": 1536,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "evkind-race-640.avif",
-        640,
-        33594
-      ],
-      [
-        "evkind-race-1280.avif",
-        1280,
-        102885
-      ],
-      [
-        "evkind-race-1536.avif",
-        1536,
-        131347
-      ]
-    ],
-    "webp": [
-      [
-        "evkind-race-640.webp",
-        640,
-        43438
-      ],
-      [
-        "evkind-race-1280.webp",
-        1280,
-        133008
-      ],
-      [
-        "evkind-race-1536.webp",
-        1536,
-        161954
-      ]
-    ]
-  },
-  "evkind-book": {
-    "w": 1536,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "evkind-book-640.avif",
-        640,
-        54064
-      ],
-      [
-        "evkind-book-1280.avif",
-        1280,
-        148529
-      ],
-      [
-        "evkind-book-1536.avif",
-        1536,
-        185392
-      ]
-    ],
-    "webp": [
-      [
-        "evkind-book-640.webp",
-        640,
-        74702
-      ],
-      [
-        "evkind-book-1280.webp",
-        1280,
-        212068
-      ],
-      [
-        "evkind-book-1536.webp",
-        1536,
-        253104
-      ]
-    ]
-  },
-  "evkind-alley": {
-    "w": 1536,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "evkind-alley-640.avif",
-        640,
-        53453
-      ],
-      [
-        "evkind-alley-1280.avif",
-        1280,
-        157757
-      ],
-      [
-        "evkind-alley-1536.avif",
-        1536,
-        198446
-      ]
-    ],
-    "webp": [
-      [
-        "evkind-alley-640.webp",
-        640,
-        76046
-      ],
-      [
-        "evkind-alley-1280.webp",
-        1280,
-        222156
-      ],
-      [
-        "evkind-alley-1536.webp",
-        1536,
-        267346
-      ]
-    ]
-  },
-  "evkind-other": {
-    "w": 1536,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "evkind-other-640.avif",
-        640,
-        56111
-      ],
-      [
-        "evkind-other-1280.avif",
-        1280,
-        165057
-      ],
-      [
-        "evkind-other-1536.avif",
-        1536,
-        206834
-      ]
-    ],
-    "webp": [
-      [
-        "evkind-other-640.webp",
-        640,
-        74086
-      ],
-      [
-        "evkind-other-1280.webp",
-        1280,
-        231968
-      ],
-      [
-        "evkind-other-1536.webp",
-        1536,
-        277786
-      ]
-    ]
-  },
-  "month-01": {
-    "w": 1024,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "month-01-400.avif",
-        400,
-        23993
-      ],
-      [
-        "month-01-800.avif",
-        800,
-        79924
-      ]
-    ],
-    "webp": [
-      [
-        "month-01-400.webp",
-        400,
-        31752
-      ],
-      [
-        "month-01-800.webp",
-        800,
-        106744
-      ]
-    ]
-  },
-  "month-02": {
-    "w": 1024,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "month-02-400.avif",
-        400,
-        15655
-      ],
-      [
-        "month-02-800.avif",
-        800,
-        49994
-      ]
-    ],
-    "webp": [
-      [
-        "month-02-400.webp",
-        400,
-        18286
-      ],
-      [
-        "month-02-800.webp",
-        800,
-        57796
-      ]
-    ]
-  },
-  "month-03": {
-    "w": 1024,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "month-03-400.avif",
-        400,
-        35281
-      ],
-      [
-        "month-03-800.avif",
-        800,
-        119391
-      ]
-    ],
-    "webp": [
-      [
-        "month-03-400.webp",
-        400,
-        46488
-      ],
-      [
-        "month-03-800.webp",
-        800,
-        161242
-      ]
-    ]
-  },
-  "month-04": {
-    "w": 1024,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "month-04-400.avif",
-        400,
-        40944
-      ],
-      [
-        "month-04-800.avif",
-        800,
-        120891
-      ]
-    ],
-    "webp": [
-      [
-        "month-04-400.webp",
-        400,
-        54804
-      ],
-      [
-        "month-04-800.webp",
-        800,
-        176746
-      ]
-    ]
-  },
-  "month-05": {
-    "w": 1024,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "month-05-400.avif",
-        400,
-        19696
-      ],
-      [
-        "month-05-800.avif",
-        800,
-        60886
-      ]
-    ],
-    "webp": [
-      [
-        "month-05-400.webp",
-        400,
-        27046
-      ],
-      [
-        "month-05-800.webp",
-        800,
-        82406
-      ]
-    ]
-  },
-  "month-06": {
-    "w": 1024,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "month-06-400.avif",
-        400,
-        34944
-      ],
-      [
-        "month-06-800.avif",
-        800,
-        103328
-      ]
-    ],
-    "webp": [
-      [
-        "month-06-400.webp",
-        400,
-        46066
-      ],
-      [
-        "month-06-800.webp",
-        800,
-        140886
-      ]
-    ]
-  },
-  "month-07": {
-    "w": 1024,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "month-07-400.avif",
-        400,
-        28422
-      ],
-      [
-        "month-07-800.avif",
-        800,
-        71789
-      ]
-    ],
-    "webp": [
-      [
-        "month-07-400.webp",
-        400,
-        39242
-      ],
-      [
-        "month-07-800.webp",
-        800,
-        98904
-      ]
-    ]
-  },
-  "month-08": {
-    "w": 1024,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "month-08-400.avif",
-        400,
-        19356
-      ],
-      [
-        "month-08-800.avif",
-        800,
-        57855
-      ]
-    ],
-    "webp": [
-      [
-        "month-08-400.webp",
-        400,
-        24194
-      ],
-      [
-        "month-08-800.webp",
-        800,
-        72164
-      ]
-    ]
-  },
-  "month-09": {
-    "w": 1024,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "month-09-400.avif",
-        400,
-        20915
-      ],
-      [
-        "month-09-800.avif",
-        800,
-        59537
-      ]
-    ],
-    "webp": [
-      [
-        "month-09-400.webp",
-        400,
-        26624
-      ],
-      [
-        "month-09-800.webp",
-        800,
-        74072
-      ]
-    ]
-  },
-  "month-10": {
-    "w": 1024,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "month-10-400.avif",
-        400,
-        40670
-      ],
-      [
-        "month-10-800.avif",
-        800,
-        138436
-      ]
-    ],
-    "webp": [
-      [
-        "month-10-400.webp",
-        400,
-        54664
-      ],
-      [
-        "month-10-800.webp",
-        800,
-        188864
-      ]
-    ]
-  },
-  "month-11": {
-    "w": 1024,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "month-11-400.avif",
-        400,
-        40460
-      ],
-      [
-        "month-11-800.avif",
-        800,
-        136539
-      ]
-    ],
-    "webp": [
-      [
-        "month-11-400.webp",
-        400,
-        56634
-      ],
-      [
-        "month-11-800.webp",
-        800,
-        196824
-      ]
-    ]
-  },
-  "month-12": {
-    "w": 1024,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "month-12-400.avif",
-        400,
-        23275
-      ],
-      [
-        "month-12-800.avif",
-        800,
-        75113
-      ]
-    ],
-    "webp": [
-      [
-        "month-12-400.webp",
-        400,
-        30272
-      ],
-      [
-        "month-12-800.webp",
-        800,
-        98576
-      ]
-    ]
-  },
-  "abroad-press": {
-    "w": 1024,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "abroad-press-400.avif",
-        400,
-        14111
-      ],
-      [
-        "abroad-press-800.avif",
-        800,
-        35488
-      ]
-    ],
-    "webp": [
-      [
-        "abroad-press-400.webp",
-        400,
-        17898
-      ],
-      [
-        "abroad-press-800.webp",
-        800,
-        44058
-      ]
-    ]
-  },
-  "abroad-official": {
-    "w": 1024,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "abroad-official-400.avif",
-        400,
-        16729
-      ],
-      [
-        "abroad-official-800.avif",
-        800,
-        44604
-      ]
-    ],
-    "webp": [
-      [
-        "abroad-official-400.webp",
-        400,
-        21712
-      ],
-      [
-        "abroad-official-800.webp",
-        800,
-        56264
-      ]
-    ]
-  },
-  "abroad-travel": {
-    "w": 1024,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "abroad-travel-400.avif",
-        400,
-        18890
-      ],
-      [
-        "abroad-travel-800.avif",
-        800,
-        66678
-      ]
-    ],
-    "webp": [
-      [
-        "abroad-travel-400.webp",
-        400,
-        23316
-      ],
-      [
-        "abroad-travel-800.webp",
-        800,
-        81454
-      ]
-    ]
-  },
-  "abroad-blog": {
-    "w": 1024,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "abroad-blog-400.avif",
-        400,
-        12428
-      ],
-      [
-        "abroad-blog-800.avif",
-        800,
-        34322
-      ]
-    ],
-    "webp": [
-      [
-        "abroad-blog-400.webp",
-        400,
-        15966
-      ],
-      [
-        "abroad-blog-800.webp",
-        800,
-        42988
-      ]
-    ]
-  },
-  "abroad-research": {
-    "w": 1024,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "abroad-research-400.avif",
-        400,
-        18633
-      ],
-      [
-        "abroad-research-800.avif",
-        800,
-        51972
-      ]
-    ],
-    "webp": [
-      [
-        "abroad-research-400.webp",
-        400,
-        24972
-      ],
-      [
-        "abroad-research-800.webp",
-        800,
-        66272
-      ]
-    ]
-  },
-  "abroad-videos": {
-    "w": 1024,
-    "h": 1024,
-    "avif_quality": 60,
-    "webp_quality": 78,
-    "avif": [
-      [
-        "abroad-videos-400.avif",
-        400,
-        20356
-      ],
-      [
-        "abroad-videos-800.avif",
-        800,
-        54456
-      ]
-    ],
-    "webp": [
-      [
-        "abroad-videos-400.webp",
-        400,
-        27384
-      ],
-      [
-        "abroad-videos-800.webp",
-        800,
-        70456
-      ]
-    ]
-  },
-  "og-default": {
-    "w": 1200,
-    "h": 630,
-    "jpg_quality": 82,
-    "jpg": [
-      [
-        "og-default-1200.jpg",
-        1200,
-        170570
-      ]
-    ]
-  },
-  "og-plan": {
-    "w": 1200,
-    "h": 630,
-    "jpg_quality": 82,
-    "jpg": [
-      [
-        "og-plan-1200.jpg",
-        1200,
-        104378
-      ]
-    ]
-  },
-  "og-abroad": {
-    "w": 1200,
-    "h": 630,
-    "jpg_quality": 82,
-    "jpg": [
-      [
-        "og-abroad-1200.jpg",
-        1200,
-        200849
-      ]
-    ]
-  },
-  "og-en": {
-    "w": 1200,
-    "h": 630,
-    "jpg_quality": 82,
-    "jpg": [
-      [
-        "og-en-1200.jpg",
-        1200,
-        170570
-      ]
-    ]
-  },
-  "og-ja": {
-    "w": 1200,
-    "h": 630,
-    "jpg_quality": 82,
-    "jpg": [
-      [
-        "og-ja-1200.jpg",
-        1200,
-        170570
-      ]
-    ]
-  },
-  "og-zh-hans": {
-    "w": 1200,
-    "h": 630,
-    "jpg_quality": 82,
-    "jpg": [
-      [
-        "og-zh-hans-1200.jpg",
-        1200,
-        170570
-      ]
-    ]
-  },
-  "og-zh-hant": {
-    "w": 1200,
-    "h": 630,
-    "jpg_quality": 82,
-    "jpg": [
-      [
-        "og-zh-hant-1200.jpg",
-        1200,
-        170570
-      ]
-    ]
-  },
-  "og-de": {
-    "w": 1200,
-    "h": 630,
-    "jpg_quality": 82,
-    "jpg": [
-      [
-        "og-de-1200.jpg",
-        1200,
-        170570
-      ]
-    ]
-  },
-  "og-fr": {
-    "w": 1200,
-    "h": 630,
-    "jpg_quality": 82,
-    "jpg": [
-      [
-        "og-fr-1200.jpg",
-        1200,
-        170570
-      ]
-    ]
-  },
-  "og-es": {
-    "w": 1200,
-    "h": 630,
-    "jpg_quality": 82,
-    "jpg": [
-      [
-        "og-es-1200.jpg",
-        1200,
-        170570
-      ]
-    ]
-  },
-  "og-ru": {
-    "w": 1200,
-    "h": 630,
-    "jpg_quality": 82,
-    "jpg": [
-      [
-        "og-ru-1200.jpg",
-        1200,
-        170570
+        74524
       ]
     ]
   },
@@ -2330,44 +548,44 @@
       [
         "area-hwaseong-haenggung-400.avif",
         400,
-        10089
+        6305
       ],
       [
         "area-hwaseong-haenggung-800.avif",
         800,
-        32973
+        17751
       ],
       [
         "area-hwaseong-haenggung-1280.avif",
         1280,
-        67575
+        36286
       ],
       [
         "area-hwaseong-haenggung-1536.avif",
         1536,
-        85531
+        48208
       ]
     ],
     "webp": [
       [
         "area-hwaseong-haenggung-400.webp",
         400,
-        13084
+        7360
       ],
       [
         "area-hwaseong-haenggung-800.webp",
         800,
-        45128
+        17640
       ],
       [
         "area-hwaseong-haenggung-1280.webp",
         1280,
-        93672
+        33632
       ],
       [
         "area-hwaseong-haenggung-1536.webp",
         1536,
-        113210
+        42378
       ]
     ]
   },
@@ -2380,44 +598,44 @@
       [
         "area-paldalmun-market-400.avif",
         400,
-        14479
+        11454
       ],
       [
         "area-paldalmun-market-800.avif",
         800,
-        51646
+        31888
       ],
       [
         "area-paldalmun-market-1280.avif",
         1280,
-        103596
+        61471
       ],
       [
         "area-paldalmun-market-1536.avif",
         1536,
-        129942
+        78810
       ]
     ],
     "webp": [
       [
         "area-paldalmun-market-400.webp",
         400,
-        20106
+        15650
       ],
       [
         "area-paldalmun-market-800.webp",
         800,
-        70686
+        38046
       ],
       [
         "area-paldalmun-market-1280.webp",
         1280,
-        146884
+        64944
       ],
       [
         "area-paldalmun-market-1536.webp",
         1536,
-        176442
+        79332
       ]
     ]
   },
@@ -2430,140 +648,584 @@
       [
         "area-gwanggyo-yeongtong-400.avif",
         400,
-        18284
+        5416
       ],
       [
         "area-gwanggyo-yeongtong-800.avif",
         800,
-        66546
+        15587
       ],
       [
         "area-gwanggyo-yeongtong-1280.avif",
         1280,
-        129798
+        33527
       ],
       [
         "area-gwanggyo-yeongtong-1536.avif",
         1536,
-        161647
+        44588
       ]
     ],
     "webp": [
       [
         "area-gwanggyo-yeongtong-400.webp",
         400,
-        24796
+        5436
       ],
       [
         "area-gwanggyo-yeongtong-800.webp",
         800,
-        91534
+        13760
       ],
       [
         "area-gwanggyo-yeongtong-1280.webp",
         1280,
-        190918
+        27716
       ],
       [
         "area-gwanggyo-yeongtong-1536.webp",
         1536,
-        229864
+        36426
       ]
     ]
   },
   "area-manseok-jangan": {
     "w": 1536,
     "h": 640,
+    "avif_quality": 60,
+    "webp_quality": 78,
     "avif": [
       [
         "area-manseok-jangan-400.avif",
         400,
-        10089
+        7520
       ],
       [
         "area-manseok-jangan-800.avif",
         800,
-        32973
+        27304
       ],
       [
         "area-manseok-jangan-1280.avif",
         1280,
-        67575
+        56836
       ],
       [
         "area-manseok-jangan-1536.avif",
         1536,
-        85531
+        72250
       ]
     ],
     "webp": [
       [
         "area-manseok-jangan-400.webp",
         400,
-        13084
+        7734
       ],
       [
         "area-manseok-jangan-800.webp",
         800,
-        45128
+        24732
       ],
       [
         "area-manseok-jangan-1280.webp",
         1280,
-        93672
+        50126
       ],
       [
         "area-manseok-jangan-1536.webp",
         1536,
-        113210
+        65856
       ]
     ]
   },
   "area-irwol-gwonseon": {
     "w": 1536,
     "h": 640,
+    "avif_quality": 60,
+    "webp_quality": 78,
     "avif": [
       [
         "area-irwol-gwonseon-400.avif",
         400,
-        18284
+        6166
       ],
       [
         "area-irwol-gwonseon-800.avif",
         800,
-        66546
+        19138
       ],
       [
         "area-irwol-gwonseon-1280.avif",
         1280,
-        129798
+        42755
       ],
       [
         "area-irwol-gwonseon-1536.avif",
         1536,
-        161647
+        55860
       ]
     ],
     "webp": [
       [
         "area-irwol-gwonseon-400.webp",
         400,
-        24796
+        5988
       ],
       [
         "area-irwol-gwonseon-800.webp",
         800,
-        91534
+        16448
       ],
       [
         "area-irwol-gwonseon-1280.webp",
         1280,
-        190918
+        35384
       ],
       [
         "area-irwol-gwonseon-1536.webp",
         1536,
-        229864
+        46440
+      ]
+    ]
+  },
+  "theme-islands-sea": {
+    "w": 1536,
+    "h": 640,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "theme-islands-sea-400.avif",
+        400,
+        5298
+      ],
+      [
+        "theme-islands-sea-800.avif",
+        800,
+        18876
+      ],
+      [
+        "theme-islands-sea-1280.avif",
+        1280,
+        39876
+      ],
+      [
+        "theme-islands-sea-1536.avif",
+        1536,
+        52592
+      ]
+    ],
+    "webp": [
+      [
+        "theme-islands-sea-400.webp",
+        400,
+        5666
+      ],
+      [
+        "theme-islands-sea-800.webp",
+        800,
+        18044
+      ],
+      [
+        "theme-islands-sea-1280.webp",
+        1280,
+        37368
+      ],
+      [
+        "theme-islands-sea-1536.webp",
+        1536,
+        49464
+      ]
+    ]
+  },
+  "theme-modern-history": {
+    "w": 1536,
+    "h": 640,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "theme-modern-history-400.avif",
+        400,
+        6269
+      ],
+      [
+        "theme-modern-history-800.avif",
+        800,
+        18497
+      ],
+      [
+        "theme-modern-history-1280.avif",
+        1280,
+        38027
+      ],
+      [
+        "theme-modern-history-1536.avif",
+        1536,
+        50252
+      ]
+    ],
+    "webp": [
+      [
+        "theme-modern-history-400.webp",
+        400,
+        6462
+      ],
+      [
+        "theme-modern-history-800.webp",
+        800,
+        16684
+      ],
+      [
+        "theme-modern-history-1280.webp",
+        1280,
+        32540
+      ],
+      [
+        "theme-modern-history-1536.webp",
+        1536,
+        41888
+      ]
+    ]
+  },
+  "theme-parks-nature": {
+    "w": 1536,
+    "h": 640,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "theme-parks-nature-400.avif",
+        400,
+        3020
+      ],
+      [
+        "theme-parks-nature-800.avif",
+        800,
+        9131
+      ],
+      [
+        "theme-parks-nature-1280.avif",
+        1280,
+        21753
+      ],
+      [
+        "theme-parks-nature-1536.avif",
+        1536,
+        30360
+      ]
+    ],
+    "webp": [
+      [
+        "theme-parks-nature-400.webp",
+        400,
+        2778
+      ],
+      [
+        "theme-parks-nature-800.webp",
+        800,
+        7460
+      ],
+      [
+        "theme-parks-nature-1280.webp",
+        1280,
+        16800
+      ],
+      [
+        "theme-parks-nature-1536.webp",
+        1536,
+        24384
+      ]
+    ]
+  },
+  "theme-alleys-culture": {
+    "w": 1536,
+    "h": 640,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "theme-alleys-culture-400.avif",
+        400,
+        6164
+      ],
+      [
+        "theme-alleys-culture-800.avif",
+        800,
+        16740
+      ],
+      [
+        "theme-alleys-culture-1280.avif",
+        1280,
+        34662
+      ],
+      [
+        "theme-alleys-culture-1536.avif",
+        1536,
+        46706
+      ]
+    ],
+    "webp": [
+      [
+        "theme-alleys-culture-400.webp",
+        400,
+        7114
+      ],
+      [
+        "theme-alleys-culture-800.webp",
+        800,
+        17094
+      ],
+      [
+        "theme-alleys-culture-1280.webp",
+        1280,
+        32520
+      ],
+      [
+        "theme-alleys-culture-1536.webp",
+        1536,
+        42522
+      ]
+    ]
+  },
+  "guide-01": {
+    "w": 1536,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "guide-01-640.avif",
+        640,
+        13011
+      ],
+      [
+        "guide-01-1280.avif",
+        1280,
+        47439
+      ],
+      [
+        "guide-01-1536.avif",
+        1536,
+        62635
+      ]
+    ],
+    "webp": [
+      [
+        "guide-01-640.webp",
+        640,
+        10588
+      ],
+      [
+        "guide-01-1280.webp",
+        1280,
+        37556
+      ],
+      [
+        "guide-01-1536.webp",
+        1536,
+        52452
+      ]
+    ]
+  },
+  "guide-02": {
+    "w": 1536,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "guide-02-640.avif",
+        640,
+        13716
+      ],
+      [
+        "guide-02-1280.avif",
+        1280,
+        44037
+      ],
+      [
+        "guide-02-1536.avif",
+        1536,
+        60212
+      ]
+    ],
+    "webp": [
+      [
+        "guide-02-640.webp",
+        640,
+        11928
+      ],
+      [
+        "guide-02-1280.webp",
+        1280,
+        35030
+      ],
+      [
+        "guide-02-1536.webp",
+        1536,
+        49062
+      ]
+    ]
+  },
+  "guide-03": {
+    "w": 1536,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "guide-03-640.avif",
+        640,
+        25201
+      ],
+      [
+        "guide-03-1280.avif",
+        1280,
+        71366
+      ],
+      [
+        "guide-03-1536.avif",
+        1536,
+        91468
+      ]
+    ],
+    "webp": [
+      [
+        "guide-03-640.webp",
+        640,
+        26604
+      ],
+      [
+        "guide-03-1280.webp",
+        1280,
+        63382
+      ],
+      [
+        "guide-03-1536.webp",
+        1536,
+        80106
+      ]
+    ]
+  },
+  "guide-04": {
+    "w": 1536,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "guide-04-640.avif",
+        640,
+        22662
+      ],
+      [
+        "guide-04-1280.avif",
+        1280,
+        68345
+      ],
+      [
+        "guide-04-1536.avif",
+        1536,
+        89262
+      ]
+    ],
+    "webp": [
+      [
+        "guide-04-640.webp",
+        640,
+        23610
+      ],
+      [
+        "guide-04-1280.webp",
+        1280,
+        64434
+      ],
+      [
+        "guide-04-1536.webp",
+        1536,
+        81538
+      ]
+    ]
+  },
+  "guide-05": {
+    "w": 1536,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "guide-05-640.avif",
+        640,
+        24141
+      ],
+      [
+        "guide-05-1280.avif",
+        1280,
+        71656
+      ],
+      [
+        "guide-05-1536.avif",
+        1536,
+        93130
+      ]
+    ],
+    "webp": [
+      [
+        "guide-05-640.webp",
+        640,
+        26834
+      ],
+      [
+        "guide-05-1280.webp",
+        1280,
+        65916
+      ],
+      [
+        "guide-05-1536.webp",
+        1536,
+        84732
+      ]
+    ]
+  },
+  "guide-06": {
+    "w": 1536,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "guide-06-640.avif",
+        640,
+        18248
+      ],
+      [
+        "guide-06-1280.avif",
+        1280,
+        56082
+      ],
+      [
+        "guide-06-1536.avif",
+        1536,
+        73884
+      ]
+    ],
+    "webp": [
+      [
+        "guide-06-640.webp",
+        640,
+        16872
+      ],
+      [
+        "guide-06-1280.webp",
+        1280,
+        46510
+      ],
+      [
+        "guide-06-1536.webp",
+        1536,
+        62424
       ]
     ]
   },
@@ -2576,44 +1238,44 @@
       [
         "course-suwon-course-1-400.avif",
         400,
-        9947
+        4605
       ],
       [
         "course-suwon-course-1-800.avif",
         800,
-        30736
+        13837
       ],
       [
         "course-suwon-course-1-1280.avif",
         1280,
-        61899
+        31305
       ],
       [
         "course-suwon-course-1-1536.avif",
         1536,
-        79266
+        41676
       ]
     ],
     "webp": [
       [
         "course-suwon-course-1-400.webp",
         400,
-        13050
+        4436
       ],
       [
         "course-suwon-course-1-800.webp",
         800,
-        40750
+        12076
       ],
       [
         "course-suwon-course-1-1280.webp",
         1280,
-        82440
+        26096
       ],
       [
         "course-suwon-course-1-1536.webp",
         1536,
-        99006
+        34498
       ]
     ]
   },
@@ -2626,44 +1288,44 @@
       [
         "course-suwon-course-2-400.avif",
         400,
-        13186
+        8965
       ],
       [
         "course-suwon-course-2-800.avif",
         800,
-        42037
+        25517
       ],
       [
         "course-suwon-course-2-1280.avif",
         1280,
-        83068
+        50939
       ],
       [
         "course-suwon-course-2-1536.avif",
         1536,
-        104064
+        65686
       ]
     ],
     "webp": [
       [
         "course-suwon-course-2-400.webp",
         400,
-        17626
+        11392
       ],
       [
         "course-suwon-course-2-800.webp",
         800,
-        56486
+        28928
       ],
       [
         "course-suwon-course-2-1280.webp",
         1280,
-        113078
+        52018
       ],
       [
         "course-suwon-course-2-1536.webp",
         1536,
-        136850
+        64248
       ]
     ]
   },
@@ -2676,44 +1338,44 @@
       [
         "course-suwon-course-3-400.avif",
         400,
-        18703
+        9263
       ],
       [
         "course-suwon-course-3-800.avif",
         800,
-        63557
+        26355
       ],
       [
         "course-suwon-course-3-1280.avif",
         1280,
-        125866
+        51853
       ],
       [
         "course-suwon-course-3-1536.avif",
         1536,
-        158988
+        66310
       ]
     ],
     "webp": [
       [
         "course-suwon-course-3-400.webp",
         400,
-        27126
+        10218
       ],
       [
         "course-suwon-course-3-800.webp",
         800,
-        93944
+        25652
       ],
       [
         "course-suwon-course-3-1280.webp",
         1280,
-        192746
+        47946
       ],
       [
         "course-suwon-course-3-1536.webp",
         1536,
-        231514
+        58954
       ]
     ]
   },
@@ -2726,44 +1388,44 @@
       [
         "course-suwon-course-4-400.avif",
         400,
-        13903
+        7753
       ],
       [
         "course-suwon-course-4-800.avif",
         800,
-        50985
+        27795
       ],
       [
         "course-suwon-course-4-1280.avif",
         1280,
-        102958
+        58443
       ],
       [
         "course-suwon-course-4-1536.avif",
         1536,
-        130007
+        74316
       ]
     ],
     "webp": [
       [
         "course-suwon-course-4-400.webp",
         400,
-        18226
+        7956
       ],
       [
         "course-suwon-course-4-800.webp",
         800,
-        67494
+        26604
       ],
       [
         "course-suwon-course-4-1280.webp",
         1280,
-        143300
+        56246
       ],
       [
         "course-suwon-course-4-1536.webp",
         1536,
-        174728
+        71106
       ]
     ]
   },
@@ -2776,44 +1438,44 @@
       [
         "course-suwon-course-5-400.avif",
         400,
-        8012
+        3841
       ],
       [
         "course-suwon-course-5-800.avif",
         800,
-        25173
+        12771
       ],
       [
         "course-suwon-course-5-1280.avif",
         1280,
-        53437
+        28400
       ],
       [
         "course-suwon-course-5-1536.avif",
         1536,
-        67661
+        37873
       ]
     ],
     "webp": [
       [
         "course-suwon-course-5-400.webp",
         400,
-        10164
+        4016
       ],
       [
         "course-suwon-course-5-800.webp",
         800,
-        33648
+        10332
       ],
       [
         "course-suwon-course-5-1280.webp",
         1280,
-        68524
+        22348
       ],
       [
         "course-suwon-course-5-1536.webp",
         1536,
-        83262
+        30170
       ]
     ]
   },
@@ -2826,44 +1488,384 @@
       [
         "course-suwon-course-6-400.avif",
         400,
-        12724
+        9045
       ],
       [
         "course-suwon-course-6-800.avif",
         800,
-        42075
+        23211
       ],
       [
         "course-suwon-course-6-1280.avif",
         1280,
-        81420
+        45804
       ],
       [
         "course-suwon-course-6-1536.avif",
         1536,
-        102266
+        59116
       ]
     ],
     "webp": [
       [
         "course-suwon-course-6-400.webp",
         400,
-        16670
+        10164
       ],
       [
         "course-suwon-course-6-800.webp",
         800,
-        54778
+        22878
       ],
       [
         "course-suwon-course-6-1280.webp",
         1280,
-        102848
+        41806
       ],
       [
         "course-suwon-course-6-1536.webp",
         1536,
-        126768
+        52784
+      ]
+    ]
+  },
+  "card-event": {
+    "w": 1536,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "card-event-640.avif",
+        640,
+        19157
+      ],
+      [
+        "card-event-1280.avif",
+        1280,
+        55215
+      ],
+      [
+        "card-event-1536.avif",
+        1536,
+        72425
+      ]
+    ],
+    "webp": [
+      [
+        "card-event-640.webp",
+        640,
+        18858
+      ],
+      [
+        "card-event-1280.webp",
+        1280,
+        48444
+      ],
+      [
+        "card-event-1536.webp",
+        1536,
+        62994
+      ]
+    ]
+  },
+  "card-guide": {
+    "w": 1536,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "card-guide-640.avif",
+        640,
+        19039
+      ],
+      [
+        "card-guide-1280.avif",
+        1280,
+        56729
+      ],
+      [
+        "card-guide-1536.avif",
+        1536,
+        74713
+      ]
+    ],
+    "webp": [
+      [
+        "card-guide-640.webp",
+        640,
+        20136
+      ],
+      [
+        "card-guide-1280.webp",
+        1280,
+        50890
+      ],
+      [
+        "card-guide-1536.webp",
+        1536,
+        65234
+      ]
+    ]
+  },
+  "card-video": {
+    "w": 1536,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "card-video-640.avif",
+        640,
+        15053
+      ],
+      [
+        "card-video-1280.avif",
+        1280,
+        55438
+      ],
+      [
+        "card-video-1536.avif",
+        1536,
+        70884
+      ]
+    ],
+    "webp": [
+      [
+        "card-video-640.webp",
+        640,
+        13912
+      ],
+      [
+        "card-video-1280.webp",
+        1280,
+        47346
+      ],
+      [
+        "card-video-1536.webp",
+        1536,
+        64286
+      ]
+    ]
+  },
+  "card-abroad": {
+    "w": 1536,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "card-abroad-640.avif",
+        640,
+        22502
+      ],
+      [
+        "card-abroad-1280.avif",
+        1280,
+        77825
+      ],
+      [
+        "card-abroad-1536.avif",
+        1536,
+        101074
+      ]
+    ],
+    "webp": [
+      [
+        "card-abroad-640.webp",
+        640,
+        20864
+      ],
+      [
+        "card-abroad-1280.webp",
+        1280,
+        69790
+      ],
+      [
+        "card-abroad-1536.webp",
+        1536,
+        88040
+      ]
+    ]
+  },
+  "card-course": {
+    "w": 1536,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "card-course-640.avif",
+        640,
+        13796
+      ],
+      [
+        "card-course-1280.avif",
+        1280,
+        54200
+      ],
+      [
+        "card-course-1536.avif",
+        1536,
+        71780
+      ]
+    ],
+    "webp": [
+      [
+        "card-course-640.webp",
+        640,
+        11498
+      ],
+      [
+        "card-course-1280.webp",
+        1280,
+        43684
+      ],
+      [
+        "card-course-1536.webp",
+        1536,
+        59784
+      ]
+    ]
+  },
+  "chat-empty": {
+    "w": 1024,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "chat-empty-400.avif",
+        400,
+        13685
+      ],
+      [
+        "chat-empty-800.avif",
+        800,
+        42429
+      ]
+    ],
+    "webp": [
+      [
+        "chat-empty-400.webp",
+        400,
+        16206
+      ],
+      [
+        "chat-empty-800.webp",
+        800,
+        46882
+      ]
+    ]
+  },
+  "art-404": {
+    "w": 1024,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "art-404-400.avif",
+        400,
+        4452
+      ],
+      [
+        "art-404-800.avif",
+        800,
+        16924
+      ]
+    ],
+    "webp": [
+      [
+        "art-404-400.webp",
+        400,
+        4466
+      ],
+      [
+        "art-404-800.webp",
+        800,
+        14838
+      ]
+    ]
+  },
+  "art-search-empty": {
+    "w": 1024,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "art-search-empty-400.avif",
+        400,
+        9004
+      ],
+      [
+        "art-search-empty-800.avif",
+        800,
+        28266
+      ]
+    ],
+    "webp": [
+      [
+        "art-search-empty-400.webp",
+        400,
+        9300
+      ],
+      [
+        "art-search-empty-800.webp",
+        800,
+        24836
+      ]
+    ]
+  },
+  "vtopic-yeohaeng-koseu": {
+    "w": 1536,
+    "h": 640,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "vtopic-yeohaeng-koseu-400.avif",
+        400,
+        5345
+      ],
+      [
+        "vtopic-yeohaeng-koseu-800.avif",
+        800,
+        19086
+      ],
+      [
+        "vtopic-yeohaeng-koseu-1280.avif",
+        1280,
+        42615
+      ],
+      [
+        "vtopic-yeohaeng-koseu-1536.avif",
+        1536,
+        55450
+      ]
+    ],
+    "webp": [
+      [
+        "vtopic-yeohaeng-koseu-400.webp",
+        400,
+        4988
+      ],
+      [
+        "vtopic-yeohaeng-koseu-800.webp",
+        800,
+        15302
+      ],
+      [
+        "vtopic-yeohaeng-koseu-1280.webp",
+        1280,
+        34068
+      ],
+      [
+        "vtopic-yeohaeng-koseu-1536.webp",
+        1536,
+        46174
       ]
     ]
   },
@@ -2876,44 +1878,44 @@
       [
         "vtopic-suwon-hwaseong-haenggung-400.avif",
         400,
-        11934
+        6340
       ],
       [
         "vtopic-suwon-hwaseong-haenggung-800.avif",
         800,
-        37059
+        19382
       ],
       [
         "vtopic-suwon-hwaseong-haenggung-1280.avif",
         1280,
-        72727
+        41310
       ],
       [
         "vtopic-suwon-hwaseong-haenggung-1536.avif",
         1536,
-        92016
+        54585
       ]
     ],
     "webp": [
       [
         "vtopic-suwon-hwaseong-haenggung-400.webp",
         400,
-        15102
+        6630
       ],
       [
         "vtopic-suwon-hwaseong-haenggung-800.webp",
         800,
-        49150
+        17838
       ],
       [
         "vtopic-suwon-hwaseong-haenggung-1280.webp",
         1280,
-        98322
+        36458
       ],
       [
         "vtopic-suwon-hwaseong-haenggung-1536.webp",
         1536,
-        120008
+        47434
       ]
     ]
   },
@@ -2926,44 +1928,44 @@
       [
         "vtopic-haengnidan-banghwasuryujeong-400.avif",
         400,
-        21814
+        7761
       ],
       [
         "vtopic-haengnidan-banghwasuryujeong-800.avif",
         800,
-        75605
+        23953
       ],
       [
         "vtopic-haengnidan-banghwasuryujeong-1280.avif",
         1280,
-        143621
+        49179
       ],
       [
         "vtopic-haengnidan-banghwasuryujeong-1536.avif",
         1536,
-        178133
+        63978
       ]
     ],
     "webp": [
       [
         "vtopic-haengnidan-banghwasuryujeong-400.webp",
         400,
-        30452
+        8106
       ],
       [
         "vtopic-haengnidan-banghwasuryujeong-800.webp",
         800,
-        105976
+        22424
       ],
       [
         "vtopic-haengnidan-banghwasuryujeong-1280.webp",
         1280,
-        219650
+        43422
       ],
       [
         "vtopic-haengnidan-banghwasuryujeong-1536.webp",
         1536,
-        260320
+        55838
       ]
     ]
   },
@@ -2976,44 +1978,44 @@
       [
         "vtopic-gwanggyo-hosu-400.avif",
         400,
-        13227
+        6548
       ],
       [
         "vtopic-gwanggyo-hosu-800.avif",
         800,
-        48381
+        18218
       ],
       [
         "vtopic-gwanggyo-hosu-1280.avif",
         1280,
-        97804
+        37519
       ],
       [
         "vtopic-gwanggyo-hosu-1536.avif",
         1536,
-        124901
+        49383
       ]
     ],
     "webp": [
       [
         "vtopic-gwanggyo-hosu-400.webp",
         400,
-        18626
+        6786
       ],
       [
         "vtopic-gwanggyo-hosu-800.webp",
         800,
-        63818
+        16334
       ],
       [
         "vtopic-gwanggyo-hosu-1280.webp",
         1280,
-        129186
+        31936
       ],
       [
         "vtopic-gwanggyo-hosu-1536.webp",
         1536,
-        157184
+        42610
       ]
     ]
   },
@@ -3026,44 +2028,44 @@
       [
         "vtopic-sumogwon-gongwon-400.avif",
         400,
-        9961
+        6315
       ],
       [
         "vtopic-sumogwon-gongwon-800.avif",
         800,
-        29200
+        18160
       ],
       [
         "vtopic-sumogwon-gongwon-1280.avif",
         1280,
-        59149
+        40082
       ],
       [
         "vtopic-sumogwon-gongwon-1536.avif",
         1536,
-        74591
+        52033
       ]
     ],
     "webp": [
       [
         "vtopic-sumogwon-gongwon-400.webp",
         400,
-        13072
+        7264
       ],
       [
         "vtopic-sumogwon-gongwon-800.webp",
         800,
-        40174
+        17524
       ],
       [
         "vtopic-sumogwon-gongwon-1280.webp",
         1280,
-        79370
+        34288
       ],
       [
         "vtopic-sumogwon-gongwon-1536.webp",
         1536,
-        95304
+        44766
       ]
     ]
   },
@@ -3076,44 +2078,44 @@
       [
         "vtopic-bangmulgwan-misulgwan-400.avif",
         400,
-        16160
+        3680
       ],
       [
         "vtopic-bangmulgwan-misulgwan-800.avif",
         800,
-        59092
+        13915
       ],
       [
         "vtopic-bangmulgwan-misulgwan-1280.avif",
         1280,
-        116788
+        33392
       ],
       [
         "vtopic-bangmulgwan-misulgwan-1536.avif",
         1536,
-        147748
+        44055
       ]
     ],
     "webp": [
       [
         "vtopic-bangmulgwan-misulgwan-400.webp",
         400,
-        22742
+        3492
       ],
       [
         "vtopic-bangmulgwan-misulgwan-800.webp",
         800,
-        84464
+        11798
       ],
       [
         "vtopic-bangmulgwan-misulgwan-1280.webp",
         1280,
-        173630
+        27928
       ],
       [
         "vtopic-bangmulgwan-misulgwan-1536.webp",
         1536,
-        212700
+        38400
       ]
     ]
   },
@@ -3126,44 +2128,44 @@
       [
         "vtopic-wanggalbi-tongdak-sijang-400.avif",
         400,
-        13549
+        3804
       ],
       [
         "vtopic-wanggalbi-tongdak-sijang-800.avif",
         800,
-        39742
+        11518
       ],
       [
         "vtopic-wanggalbi-tongdak-sijang-1280.avif",
         1280,
-        73908
+        25693
       ],
       [
         "vtopic-wanggalbi-tongdak-sijang-1536.avif",
         1536,
-        92274
+        35979
       ]
     ],
     "webp": [
       [
         "vtopic-wanggalbi-tongdak-sijang-400.webp",
         400,
-        19432
+        4194
       ],
       [
         "vtopic-wanggalbi-tongdak-sijang-800.webp",
         800,
-        56118
+        9822
       ],
       [
         "vtopic-wanggalbi-tongdak-sijang-1280.webp",
         1280,
-        105308
+        20814
       ],
       [
         "vtopic-wanggalbi-tongdak-sijang-1536.webp",
         1536,
-        125980
+        29172
       ]
     ]
   },
@@ -3176,44 +2178,44 @@
       [
         "vtopic-kape-dijeoteu-400.avif",
         400,
-        12450
+        6201
       ],
       [
         "vtopic-kape-dijeoteu-800.avif",
         800,
-        40210
+        17489
       ],
       [
         "vtopic-kape-dijeoteu-1280.avif",
         1280,
-        78052
+        36750
       ],
       [
         "vtopic-kape-dijeoteu-1536.avif",
         1536,
-        97954
+        48289
       ]
     ],
     "webp": [
       [
         "vtopic-kape-dijeoteu-400.webp",
         400,
-        15702
+        7090
       ],
       [
         "vtopic-kape-dijeoteu-800.webp",
         800,
-        49268
+        17308
       ],
       [
         "vtopic-kape-dijeoteu-1280.webp",
         1280,
-        94798
+        32142
       ],
       [
         "vtopic-kape-dijeoteu-1536.webp",
         1536,
-        114376
+        41844
       ]
     ]
   },
@@ -3226,44 +2228,1246 @@
       [
         "vtopic-chukje-yagan-400.avif",
         400,
-        13887
+        6018
       ],
       [
         "vtopic-chukje-yagan-800.avif",
         800,
-        50787
+        17734
       ],
       [
         "vtopic-chukje-yagan-1280.avif",
         1280,
-        100276
+        38485
       ],
       [
         "vtopic-chukje-yagan-1536.avif",
         1536,
-        124935
+        50082
       ]
     ],
     "webp": [
       [
         "vtopic-chukje-yagan-400.webp",
         400,
-        18442
+        5964
       ],
       [
         "vtopic-chukje-yagan-800.webp",
         800,
-        65798
+        15392
       ],
       [
         "vtopic-chukje-yagan-1280.webp",
         1280,
-        138542
+        31852
       ],
       [
         "vtopic-chukje-yagan-1536.webp",
         1536,
-        167542
+        42082
+      ]
+    ]
+  },
+  "vtopic-other": {
+    "w": 1536,
+    "h": 640,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "vtopic-other-400.avif",
+        400,
+        4508
+      ],
+      [
+        "vtopic-other-800.avif",
+        800,
+        21073
+      ],
+      [
+        "vtopic-other-1280.avif",
+        1280,
+        49754
+      ],
+      [
+        "vtopic-other-1536.avif",
+        1536,
+        64442
+      ]
+    ],
+    "webp": [
+      [
+        "vtopic-other-400.webp",
+        400,
+        4302
+      ],
+      [
+        "vtopic-other-800.webp",
+        800,
+        16976
+      ],
+      [
+        "vtopic-other-1280.webp",
+        1280,
+        41948
+      ],
+      [
+        "vtopic-other-1536.webp",
+        1536,
+        55478
+      ]
+    ]
+  },
+  "evkind-sea": {
+    "w": 1536,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "evkind-sea-640.avif",
+        640,
+        33522
+      ],
+      [
+        "evkind-sea-1280.avif",
+        1280,
+        108736
+      ],
+      [
+        "evkind-sea-1536.avif",
+        1536,
+        138588
+      ]
+    ],
+    "webp": [
+      [
+        "evkind-sea-640.webp",
+        640,
+        33390
+      ],
+      [
+        "evkind-sea-1280.webp",
+        1280,
+        102938
+      ],
+      [
+        "evkind-sea-1536.webp",
+        1536,
+        130686
+      ]
+    ]
+  },
+  "evkind-flowers": {
+    "w": 1536,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "evkind-flowers-640.avif",
+        640,
+        20656
+      ],
+      [
+        "evkind-flowers-1280.avif",
+        1280,
+        67508
+      ],
+      [
+        "evkind-flowers-1536.avif",
+        1536,
+        87479
+      ]
+    ],
+    "webp": [
+      [
+        "evkind-flowers-640.webp",
+        640,
+        17214
+      ],
+      [
+        "evkind-flowers-1280.webp",
+        1280,
+        55472
+      ],
+      [
+        "evkind-flowers-1536.webp",
+        1536,
+        75016
+      ]
+    ]
+  },
+  "evkind-nature": {
+    "w": 1536,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "evkind-nature-640.avif",
+        640,
+        33893
+      ],
+      [
+        "evkind-nature-1280.avif",
+        1280,
+        98456
+      ],
+      [
+        "evkind-nature-1536.avif",
+        1536,
+        125418
+      ]
+    ],
+    "webp": [
+      [
+        "evkind-nature-640.webp",
+        640,
+        35666
+      ],
+      [
+        "evkind-nature-1280.webp",
+        1280,
+        94432
+      ],
+      [
+        "evkind-nature-1536.webp",
+        1536,
+        117220
+      ]
+    ]
+  },
+  "evkind-night": {
+    "w": 1536,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "evkind-night-640.avif",
+        640,
+        12412
+      ],
+      [
+        "evkind-night-1280.avif",
+        1280,
+        39372
+      ],
+      [
+        "evkind-night-1536.avif",
+        1536,
+        52474
+      ]
+    ],
+    "webp": [
+      [
+        "evkind-night-640.webp",
+        640,
+        11002
+      ],
+      [
+        "evkind-night-1280.webp",
+        1280,
+        32662
+      ],
+      [
+        "evkind-night-1536.webp",
+        1536,
+        46098
+      ]
+    ]
+  },
+  "evkind-food": {
+    "w": 1536,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "evkind-food-640.avif",
+        640,
+        33072
+      ],
+      [
+        "evkind-food-1280.avif",
+        1280,
+        87161
+      ],
+      [
+        "evkind-food-1536.avif",
+        1536,
+        112154
+      ]
+    ],
+    "webp": [
+      [
+        "evkind-food-640.webp",
+        640,
+        39520
+      ],
+      [
+        "evkind-food-1280.webp",
+        1280,
+        91310
+      ],
+      [
+        "evkind-food-1536.webp",
+        1536,
+        113032
+      ]
+    ]
+  },
+  "evkind-stage": {
+    "w": 1536,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "evkind-stage-640.avif",
+        640,
+        18420
+      ],
+      [
+        "evkind-stage-1280.avif",
+        1280,
+        53675
+      ],
+      [
+        "evkind-stage-1536.avif",
+        1536,
+        70317
+      ]
+    ],
+    "webp": [
+      [
+        "evkind-stage-640.webp",
+        640,
+        17896
+      ],
+      [
+        "evkind-stage-1280.webp",
+        1280,
+        46324
+      ],
+      [
+        "evkind-stage-1536.webp",
+        1536,
+        60694
+      ]
+    ]
+  },
+  "evkind-market": {
+    "w": 1536,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "evkind-market-640.avif",
+        640,
+        34026
+      ],
+      [
+        "evkind-market-1280.avif",
+        1280,
+        94035
+      ],
+      [
+        "evkind-market-1536.avif",
+        1536,
+        119829
+      ]
+    ],
+    "webp": [
+      [
+        "evkind-market-640.webp",
+        640,
+        41096
+      ],
+      [
+        "evkind-market-1280.webp",
+        1280,
+        97558
+      ],
+      [
+        "evkind-market-1536.webp",
+        1536,
+        117566
+      ]
+    ]
+  },
+  "evkind-ceremony": {
+    "w": 1536,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "evkind-ceremony-640.avif",
+        640,
+        29386
+      ],
+      [
+        "evkind-ceremony-1280.avif",
+        1280,
+        82107
+      ],
+      [
+        "evkind-ceremony-1536.avif",
+        1536,
+        107264
+      ]
+    ],
+    "webp": [
+      [
+        "evkind-ceremony-640.webp",
+        640,
+        36206
+      ],
+      [
+        "evkind-ceremony-1280.webp",
+        1280,
+        89680
+      ],
+      [
+        "evkind-ceremony-1536.webp",
+        1536,
+        110284
+      ]
+    ]
+  },
+  "evkind-race": {
+    "w": 1536,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "evkind-race-640.avif",
+        640,
+        31160
+      ],
+      [
+        "evkind-race-1280.avif",
+        1280,
+        89773
+      ],
+      [
+        "evkind-race-1536.avif",
+        1536,
+        114004
+      ]
+    ],
+    "webp": [
+      [
+        "evkind-race-640.webp",
+        640,
+        30618
+      ],
+      [
+        "evkind-race-1280.webp",
+        1280,
+        84734
+      ],
+      [
+        "evkind-race-1536.webp",
+        1536,
+        106462
+      ]
+    ]
+  },
+  "evkind-book": {
+    "w": 1536,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "evkind-book-640.avif",
+        640,
+        33823
+      ],
+      [
+        "evkind-book-1280.avif",
+        1280,
+        93975
+      ],
+      [
+        "evkind-book-1536.avif",
+        1536,
+        121283
+      ]
+    ],
+    "webp": [
+      [
+        "evkind-book-640.webp",
+        640,
+        41754
+      ],
+      [
+        "evkind-book-1280.webp",
+        1280,
+        101774
+      ],
+      [
+        "evkind-book-1536.webp",
+        1536,
+        125186
+      ]
+    ]
+  },
+  "evkind-alley": {
+    "w": 1536,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "evkind-alley-640.avif",
+        640,
+        26874
+      ],
+      [
+        "evkind-alley-1280.avif",
+        1280,
+        77858
+      ],
+      [
+        "evkind-alley-1536.avif",
+        1536,
+        100443
+      ]
+    ],
+    "webp": [
+      [
+        "evkind-alley-640.webp",
+        640,
+        28612
+      ],
+      [
+        "evkind-alley-1280.webp",
+        1280,
+        72114
+      ],
+      [
+        "evkind-alley-1536.webp",
+        1536,
+        90644
+      ]
+    ]
+  },
+  "evkind-other": {
+    "w": 1536,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "evkind-other-640.avif",
+        640,
+        24611
+      ],
+      [
+        "evkind-other-1280.avif",
+        1280,
+        77066
+      ],
+      [
+        "evkind-other-1536.avif",
+        1536,
+        98550
+      ]
+    ],
+    "webp": [
+      [
+        "evkind-other-640.webp",
+        640,
+        22818
+      ],
+      [
+        "evkind-other-1280.webp",
+        1280,
+        68298
+      ],
+      [
+        "evkind-other-1536.webp",
+        1536,
+        84560
+      ]
+    ]
+  },
+  "month-01": {
+    "w": 1024,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "month-01-400.avif",
+        400,
+        11668
+      ],
+      [
+        "month-01-800.avif",
+        800,
+        36949
+      ]
+    ],
+    "webp": [
+      [
+        "month-01-400.webp",
+        400,
+        11094
+      ],
+      [
+        "month-01-800.webp",
+        800,
+        30202
+      ]
+    ]
+  },
+  "month-02": {
+    "w": 1024,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "month-02-400.avif",
+        400,
+        4396
+      ],
+      [
+        "month-02-800.avif",
+        800,
+        14853
+      ]
+    ],
+    "webp": [
+      [
+        "month-02-400.webp",
+        400,
+        4352
+      ],
+      [
+        "month-02-800.webp",
+        800,
+        12346
+      ]
+    ]
+  },
+  "month-03": {
+    "w": 1024,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "month-03-400.avif",
+        400,
+        16501
+      ],
+      [
+        "month-03-800.avif",
+        800,
+        46489
+      ]
+    ],
+    "webp": [
+      [
+        "month-03-400.webp",
+        400,
+        17308
+      ],
+      [
+        "month-03-800.webp",
+        800,
+        42484
+      ]
+    ]
+  },
+  "month-04": {
+    "w": 1024,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "month-04-400.avif",
+        400,
+        14284
+      ],
+      [
+        "month-04-800.avif",
+        800,
+        43356
+      ]
+    ],
+    "webp": [
+      [
+        "month-04-400.webp",
+        400,
+        14202
+      ],
+      [
+        "month-04-800.webp",
+        800,
+        38758
+      ]
+    ]
+  },
+  "month-05": {
+    "w": 1024,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "month-05-400.avif",
+        400,
+        9476
+      ],
+      [
+        "month-05-800.avif",
+        800,
+        36238
+      ]
+    ],
+    "webp": [
+      [
+        "month-05-400.webp",
+        400,
+        9390
+      ],
+      [
+        "month-05-800.webp",
+        800,
+        31924
+      ]
+    ]
+  },
+  "month-06": {
+    "w": 1024,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "month-06-400.avif",
+        400,
+        6041
+      ],
+      [
+        "month-06-800.avif",
+        800,
+        21768
+      ]
+    ],
+    "webp": [
+      [
+        "month-06-400.webp",
+        400,
+        5168
+      ],
+      [
+        "month-06-800.webp",
+        800,
+        16426
+      ]
+    ]
+  },
+  "month-07": {
+    "w": 1024,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "month-07-400.avif",
+        400,
+        14880
+      ],
+      [
+        "month-07-800.avif",
+        800,
+        45884
+      ]
+    ],
+    "webp": [
+      [
+        "month-07-400.webp",
+        400,
+        14212
+      ],
+      [
+        "month-07-800.webp",
+        800,
+        39670
+      ]
+    ]
+  },
+  "month-08": {
+    "w": 1024,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "month-08-400.avif",
+        400,
+        12510
+      ],
+      [
+        "month-08-800.avif",
+        800,
+        36317
+      ]
+    ],
+    "webp": [
+      [
+        "month-08-400.webp",
+        400,
+        12154
+      ],
+      [
+        "month-08-800.webp",
+        800,
+        30744
+      ]
+    ]
+  },
+  "month-09": {
+    "w": 1024,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "month-09-400.avif",
+        400,
+        11913
+      ],
+      [
+        "month-09-800.avif",
+        800,
+        34380
+      ]
+    ],
+    "webp": [
+      [
+        "month-09-400.webp",
+        400,
+        11648
+      ],
+      [
+        "month-09-800.webp",
+        800,
+        30164
+      ]
+    ]
+  },
+  "month-10": {
+    "w": 1024,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "month-10-400.avif",
+        400,
+        10620
+      ],
+      [
+        "month-10-800.avif",
+        800,
+        34688
+      ]
+    ],
+    "webp": [
+      [
+        "month-10-400.webp",
+        400,
+        9840
+      ],
+      [
+        "month-10-800.webp",
+        800,
+        28760
+      ]
+    ]
+  },
+  "month-11": {
+    "w": 1024,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "month-11-400.avif",
+        400,
+        14887
+      ],
+      [
+        "month-11-800.avif",
+        800,
+        42838
+      ]
+    ],
+    "webp": [
+      [
+        "month-11-400.webp",
+        400,
+        15286
+      ],
+      [
+        "month-11-800.webp",
+        800,
+        41032
+      ]
+    ]
+  },
+  "month-12": {
+    "w": 1024,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "month-12-400.avif",
+        400,
+        6625
+      ],
+      [
+        "month-12-800.avif",
+        800,
+        22614
+      ]
+    ],
+    "webp": [
+      [
+        "month-12-400.webp",
+        400,
+        5122
+      ],
+      [
+        "month-12-800.webp",
+        800,
+        15874
+      ]
+    ]
+  },
+  "abroad-press": {
+    "w": 1024,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "abroad-press-400.avif",
+        400,
+        14768
+      ],
+      [
+        "abroad-press-800.avif",
+        800,
+        42100
+      ]
+    ],
+    "webp": [
+      [
+        "abroad-press-400.webp",
+        400,
+        16474
+      ],
+      [
+        "abroad-press-800.webp",
+        800,
+        39444
+      ]
+    ]
+  },
+  "abroad-official": {
+    "w": 1024,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "abroad-official-400.avif",
+        400,
+        10811
+      ],
+      [
+        "abroad-official-800.avif",
+        800,
+        34117
+      ]
+    ],
+    "webp": [
+      [
+        "abroad-official-400.webp",
+        400,
+        12340
+      ],
+      [
+        "abroad-official-800.webp",
+        800,
+        31330
+      ]
+    ]
+  },
+  "abroad-travel": {
+    "w": 1024,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "abroad-travel-400.avif",
+        400,
+        15322
+      ],
+      [
+        "abroad-travel-800.avif",
+        800,
+        45863
+      ]
+    ],
+    "webp": [
+      [
+        "abroad-travel-400.webp",
+        400,
+        17996
+      ],
+      [
+        "abroad-travel-800.webp",
+        800,
+        50774
+      ]
+    ]
+  },
+  "abroad-blog": {
+    "w": 1024,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "abroad-blog-400.avif",
+        400,
+        11837
+      ],
+      [
+        "abroad-blog-800.avif",
+        800,
+        36480
+      ]
+    ],
+    "webp": [
+      [
+        "abroad-blog-400.webp",
+        400,
+        14366
+      ],
+      [
+        "abroad-blog-800.webp",
+        800,
+        40146
+      ]
+    ]
+  },
+  "abroad-research": {
+    "w": 1024,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "abroad-research-400.avif",
+        400,
+        10489
+      ],
+      [
+        "abroad-research-800.avif",
+        800,
+        33055
+      ]
+    ],
+    "webp": [
+      [
+        "abroad-research-400.webp",
+        400,
+        13008
+      ],
+      [
+        "abroad-research-800.webp",
+        800,
+        34650
+      ]
+    ]
+  },
+  "abroad-videos": {
+    "w": 1024,
+    "h": 1024,
+    "avif_quality": 60,
+    "webp_quality": 78,
+    "avif": [
+      [
+        "abroad-videos-400.avif",
+        400,
+        19333
+      ],
+      [
+        "abroad-videos-800.avif",
+        800,
+        51630
+      ]
+    ],
+    "webp": [
+      [
+        "abroad-videos-400.webp",
+        400,
+        24378
+      ],
+      [
+        "abroad-videos-800.webp",
+        800,
+        56684
+      ]
+    ]
+  },
+  "og-default": {
+    "w": 1200,
+    "h": 630,
+    "jpg_quality": 82,
+    "jpg": [
+      [
+        "og-default-1200.jpg",
+        1200,
+        81242
+      ]
+    ]
+  },
+  "og-plan": {
+    "w": 1200,
+    "h": 630,
+    "jpg_quality": 82,
+    "jpg": [
+      [
+        "og-plan-1200.jpg",
+        1200,
+        113494
+      ]
+    ]
+  },
+  "og-abroad": {
+    "w": 1200,
+    "h": 630,
+    "jpg_quality": 82,
+    "jpg": [
+      [
+        "og-abroad-1200.jpg",
+        1200,
+        58350
+      ]
+    ]
+  },
+  "og-en": {
+    "w": 1200,
+    "h": 630,
+    "jpg_quality": 82,
+    "jpg": [
+      [
+        "og-en-1200.jpg",
+        1200,
+        81242
+      ]
+    ]
+  },
+  "og-ja": {
+    "w": 1200,
+    "h": 630,
+    "jpg_quality": 82,
+    "jpg": [
+      [
+        "og-ja-1200.jpg",
+        1200,
+        81242
+      ]
+    ]
+  },
+  "og-zh-hans": {
+    "w": 1200,
+    "h": 630,
+    "jpg_quality": 82,
+    "jpg": [
+      [
+        "og-zh-hans-1200.jpg",
+        1200,
+        81242
+      ]
+    ]
+  },
+  "og-zh-hant": {
+    "w": 1200,
+    "h": 630,
+    "jpg_quality": 82,
+    "jpg": [
+      [
+        "og-zh-hant-1200.jpg",
+        1200,
+        81242
+      ]
+    ]
+  },
+  "og-de": {
+    "w": 1200,
+    "h": 630,
+    "jpg_quality": 82,
+    "jpg": [
+      [
+        "og-de-1200.jpg",
+        1200,
+        81242
+      ]
+    ]
+  },
+  "og-fr": {
+    "w": 1200,
+    "h": 630,
+    "jpg_quality": 82,
+    "jpg": [
+      [
+        "og-fr-1200.jpg",
+        1200,
+        81242
+      ]
+    ]
+  },
+  "og-es": {
+    "w": 1200,
+    "h": 630,
+    "jpg_quality": 82,
+    "jpg": [
+      [
+        "og-es-1200.jpg",
+        1200,
+        81242
+      ]
+    ]
+  },
+  "og-ru": {
+    "w": 1200,
+    "h": 630,
+    "jpg_quality": 82,
+    "jpg": [
+      [
+        "og-ru-1200.jpg",
+        1200,
+        81242
       ]
     ]
   }
