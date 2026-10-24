@@ -765,8 +765,7 @@
       "usetime": "상시 개방",
       "restdate": "연중무휴",
       "usefee": "무료",
-      "infocenter": "031-228-5114",
-      "pet": "야외 공원 산책로 동반 가능 (목줄 착용·배변봉투 지참)"
+      "infocenter": "031-228-5114"
     },
     "facts_source": {
       "provider": "한국관광공사 TourAPI",
@@ -800,11 +799,6 @@
         "contentid": ""
       },
       "infocenter": {
-        "provider": "수원시 문화관광",
-        "checked_at": "2026-10-23",
-        "contentid": ""
-      },
-      "pet": {
         "provider": "수원시 문화관광",
         "checked_at": "2026-10-23",
         "contentid": ""
@@ -1230,8 +1224,7 @@
     "facts": {
       "address": "경기도 수원시 장안구 정조로 1088 (송죽동)",
       "infocenter": "031-228-4182",
-      "parking": "만석공원 인근 공영주차장 유료 운영, 1일 최대 4,000원, 주차 공간 많지 않아 조기 만차 가능",
-      "pet": "야외 호수 산책로 동반 가능 (목줄 착용·배변봉투 지참)"
+      "parking": "만석공원 인근 공영주차장 유료 운영, 1일 최대 4,000원, 주차 공간 많지 않아 조기 만차 가능"
     },
     "facts_source": {
       "provider": "한국관광공사 TourAPI",
@@ -1251,11 +1244,6 @@
       },
       "parking": {
         "provider": "카카오맵",
-        "checked_at": "2026-10-23",
-        "contentid": ""
-      },
-      "pet": {
-        "provider": "수원시 문화관광",
         "checked_at": "2026-10-23",
         "contentid": ""
       }
@@ -1980,8 +1968,7 @@
       "homepage": "https://www.swcf.or.kr",
       "usetime": "00:00 ~ 24:00",
       "restdate": "연중무휴",
-      "parking": "화성 행궁 광장 주차장 및 장안동 공영주차장 이용 가능, 행사 기간 및 주말 혼잡 예상, 주변에 화홍문공영주차장, 장안동공영주차장 등 여러 공영주차장 있음",
-      "pet": "야외 성곽 산책로 동반 가능 (목줄·배변봉투 지참)"
+      "parking": "화성 행궁 광장 주차장 및 장안동 공영주차장 이용 가능, 행사 기간 및 주말 혼잡 예상, 주변에 화홍문공영주차장, 장안동공영주차장 등 여러 공영주차장 있음"
     },
     "facts_source": {
       "provider": "한국관광공사 TourAPI",
@@ -2024,11 +2011,6 @@
       },
       "parking": {
         "provider": "카카오맵",
-        "checked_at": "2026-10-23",
-        "contentid": ""
-      },
-      "pet": {
-        "provider": "수원시 문화관광",
         "checked_at": "2026-10-23",
         "contentid": ""
       }
@@ -2454,8 +2436,7 @@
       "usetime": "상시 개방",
       "restdate": "연중무휴",
       "usefee": "무료",
-      "infocenter": "031-228-5114",
-      "pet": "호수 둘레길 동반 가능 (일월수목원 내부 제한, 목줄 착용)"
+      "infocenter": "031-228-5114"
     },
     "facts_source": {
       "provider": "한국관광공사 TourAPI",
@@ -2489,11 +2470,6 @@
         "contentid": ""
       },
       "infocenter": {
-        "provider": "수원시 문화관광",
-        "checked_at": "2026-10-23",
-        "contentid": ""
-      },
-      "pet": {
         "provider": "수원시 문화관광",
         "checked_at": "2026-10-23",
         "contentid": ""
@@ -11951,8 +11927,7 @@
       "homepage": "https://starfield.co.kr/suwon/main.do",
       "usetime": "10:00 ~ 22:00",
       "restdate": "연중무휴",
-      "parking": "무료 주차",
-      "pet": "반려견 동반 가능 (목줄 또는 케이지·유모차 이용, 예방접종 완료견)"
+      "parking": "무료 주차"
     },
     "facts_source": {
       "provider": "한국관광공사 TourAPI",
@@ -11987,11 +11962,6 @@
       },
       "parking": {
         "provider": "카카오맵",
-        "checked_at": "2026-10-23",
-        "contentid": ""
-      },
-      "pet": {
-        "provider": "수원시 문화관광",
         "checked_at": "2026-10-23",
         "contentid": ""
       }
@@ -47725,8 +47695,7 @@
       "usetime": "상시 개방 (누각 내부 출입 09:00~18:00)",
       "restdate": "연중무휴",
       "parking": "화홍문·연무대 공영주차장 이용",
-      "infocenter": "031-290-3600",
-      "pet": "용연·성곽 산책로 동반 가능 (누각 내부 제한, 목줄 착용)"
+      "infocenter": "031-290-3600"
     },
     "facts_source": {
       "provider": "한국관광공사 TourAPI",
@@ -47766,11 +47735,6 @@
         "contentid": ""
       },
       "infocenter": {
-        "provider": "수원시 문화관광",
-        "checked_at": "2026-10-23",
-        "contentid": ""
-      },
-      "pet": {
         "provider": "수원시 문화관광",
         "checked_at": "2026-10-23",
         "contentid": ""
@@ -50152,8 +50116,7 @@
     "facts": {
       "address": "경기도 수원시 팔달구 정조로800번길 16 (팔달로1가)",
       "usefee": "점포별로 상이함",
-      "parking": "팔달구청 공영주차장 도보 5분 거리, 각 시장 주차장 운영 중, 꼬꼬 주차장 및 지동시장 주차장 유료 이용 가능",
-      "pet": "거리 산책 동반 가능 (매장별 실내 동반 여부 상이)"
+      "parking": "팔달구청 공영주차장 도보 5분 거리, 각 시장 주차장 운영 중, 꼬꼬 주차장 및 지동시장 주차장 유료 이용 가능"
     },
     "facts_source": {
       "provider": "한국관광공사 TourAPI",
@@ -50173,11 +50136,6 @@
       },
       "parking": {
         "provider": "카카오맵",
-        "checked_at": "2026-10-23",
-        "contentid": ""
-      },
-      "pet": {
-        "provider": "수원시 문화관광",
         "checked_at": "2026-10-23",
         "contentid": ""
       }
@@ -54275,8 +54233,7 @@
       "infocenter": "031-228-7042",
       "usetime": "00:00 ~ 24:00",
       "restdate": "연중무휴",
-      "parking": "자체 주차장 없음, 근처 경기아트센터 공영주차장 유료 이용 가능, 추석 연휴 무료 주차 지원",
-      "pet": "야외 공원 산책로 동반 가능 (목줄 착용·배변봉투 지참, 월화원 내부 제한)"
+      "parking": "자체 주차장 없음, 근처 경기아트센터 공영주차장 유료 이용 가능, 추석 연휴 무료 주차 지원"
     },
     "facts_source": {
       "provider": "한국관광공사 TourAPI",
@@ -54306,11 +54263,6 @@
       },
       "parking": {
         "provider": "카카오맵",
-        "checked_at": "2026-10-23",
-        "contentid": ""
-      },
-      "pet": {
-        "provider": "수원시 문화관광",
         "checked_at": "2026-10-23",
         "contentid": ""
       }
@@ -58044,8 +57996,7 @@
       "homepage": "https://m.akplaza.com/store/introduce?store=02",
       "usetime": "10:30 ~ 20:30",
       "restdate": "연중무휴",
-      "parking": "주차 가능",
-      "pet": "반려동물 동반 가능 (이동장·전용 유모차 이용 시, 식당가 등 일부 매장 제외)"
+      "parking": "주차 가능"
     },
     "facts_source": {
       "provider": "한국관광공사 TourAPI",
@@ -58080,11 +58031,6 @@
       },
       "parking": {
         "provider": "카카오맵",
-        "checked_at": "2026-10-23",
-        "contentid": ""
-      },
-      "pet": {
-        "provider": "수원시 문화관광",
         "checked_at": "2026-10-23",
         "contentid": ""
       }
@@ -84137,8 +84083,7 @@
       "restdate": "연중무휴",
       "menu": "전남친토스트 6,800원",
       "treatmenu": "전남친토스트 6,800원, 홍라드브라우니 6,800원, 브라운크로플 12,300원, 아메리카노 4,800원, 플랫화이트 5,300원, 카페라떼 5,800원",
-      "parking": "주차 불가, 근처 유료주차장 및 인계동 무료 노상주차장 이용",
-      "pet": "반려동물 동반 가능 (케이지·목줄 지참)"
+      "parking": "주차 불가, 근처 유료주차장 및 인계동 무료 노상주차장 이용"
     },
     "facts_source": {
       "provider": "한국관광공사 TourAPI",
@@ -84178,11 +84123,6 @@
       },
       "parking": {
         "provider": "카카오맵",
-        "checked_at": "2026-10-23",
-        "contentid": ""
-      },
-      "pet": {
-        "provider": "수원시 문화관광",
         "checked_at": "2026-10-23",
         "contentid": ""
       }
@@ -84954,8 +84894,7 @@
       "homepage": "http://www.gglakepark.or.kr/",
       "usetime": "00:00 ~ 24:00",
       "restdate": "연중무휴",
-      "parking": "공원 내 넓은 주차장 이용 가능, 주차 요금 800원",
-      "pet": "야외 수변 산책로 동반 가능 (목줄 착용·배변봉투 지참)"
+      "parking": "공원 내 넓은 주차장 이용 가능, 주차 요금 800원"
     },
     "facts_source": {
       "provider": "한국관광공사 TourAPI",
@@ -84990,11 +84929,6 @@
       },
       "parking": {
         "provider": "카카오맵",
-        "checked_at": "2026-10-23",
-        "contentid": ""
-      },
-      "pet": {
-        "provider": "수원시 문화관광",
         "checked_at": "2026-10-23",
         "contentid": ""
       }
@@ -85136,8 +85070,7 @@
       "homepage": "http://www.gglakepark.or.kr",
       "usetime": "10:00 ~ 22:00",
       "restdate": "매주 월요일 휴무일",
-      "parking": "유료 주차",
-      "pet": "반려견 동반 전용 시설 (동물등록 내장형·외장형 필수, 맹견 출입 제한)"
+      "parking": "유료 주차"
     },
     "facts_source": {
       "provider": "한국관광공사 TourAPI",
@@ -85172,11 +85105,6 @@
       },
       "parking": {
         "provider": "카카오맵",
-        "checked_at": "2026-10-23",
-        "contentid": ""
-      },
-      "pet": {
-        "provider": "수원시 문화관광",
         "checked_at": "2026-10-23",
         "contentid": ""
       }
@@ -94837,8 +94765,7 @@
       "homepage": "https://www.lotteshopping.com/store/main?cstrCd=0355",
       "usetime": "10:30 ~ 21:00",
       "restdate": "연중무휴",
-      "parking": "유료 주차",
-      "pet": "반려동물 동반 가능 (전용 유모차·케이지 이용 시, 일부 매장 제외)"
+      "parking": "유료 주차"
     },
     "facts_source": {
       "provider": "한국관광공사 TourAPI",
@@ -94873,11 +94800,6 @@
       },
       "parking": {
         "provider": "카카오맵",
-        "checked_at": "2026-10-23",
-        "contentid": ""
-      },
-      "pet": {
-        "provider": "수원시 문화관광",
         "checked_at": "2026-10-23",
         "contentid": ""
       }
@@ -115221,8 +115143,7 @@
       "restdate": "연중무휴",
       "menu": "크림티 세트 12,000원",
       "treatmenu": "크림티 세트 12,000원, 클래식 애프터눈 티 세트 28,000원, 크림티 키트 12,000원, 백차 7,000원, 녹차 6,000원, 우롱차 6,000원",
-      "parking": "광교 엘리웨이 상가 지하 주차장 이용 가능, 30분 무료 회차 및 결제 금액에 따른 최대 4시간 무료 주차 지원",
-      "pet": "반려동물 동반 가능 (야외 테라스 및 지정 구역)"
+      "parking": "광교 엘리웨이 상가 지하 주차장 이용 가능, 30분 무료 회차 및 결제 금액에 따른 최대 4시간 무료 주차 지원"
     },
     "facts_source": {
       "provider": "한국관광공사 TourAPI",
@@ -115262,11 +115183,6 @@
       },
       "parking": {
         "provider": "카카오맵",
-        "checked_at": "2026-10-23",
-        "contentid": ""
-      },
-      "pet": {
-        "provider": "수원시 문화관광",
         "checked_at": "2026-10-23",
         "contentid": ""
       }

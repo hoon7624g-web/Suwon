@@ -1061,10 +1061,22 @@ def _render(env, S: State, out: Path, template: str, path: str, page: dict, page
     og = None if page.get("image") else art.og_fallback(art.for_lang(S.art, "ko"), path, "ko")
     if og:  # a page without a photo of its own: the link-preview illustration (never a place page)
         page.update(image=S.abs(og["src"]), image_alt=og["alt"], image_w=og["w"], image_h=og["h"])
+    elif not page.get("image") and brand_og(S.site, path):   # no illustration either: the brand picture
+        page.update(image=S.abs(BRAND_OG), image_alt=S.site.get("site_name") or "", image_w=512, image_h=512)
     html = env.get_template(template).render({**S.common(page, page_kind), **ctx})  # a page's own keys win
     _write(out, path, html)
     if path != "/404.html" and in_sitemap:
         S.pages.append((path, lastmod or None))
+
+
+# the link preview of a page with neither a photo nor an illustration (2026-10-24: the art was withdrawn): the brand
+# picture, for a site with a brand symbol — never on a place page (its preview stays its provider photo, or none)
+BRAND_OG = "/assets/brand/icon-512.png"
+
+
+def brand_og(site: dict, path: str) -> bool:
+    return bool(site.get("brand_symbol")) and (TEMPLATES / BRAND_OG.lstrip("/")).is_file() \
+        and not art.PLACE_PAGE.match(path) and not path.endswith("/404.html")
 
 
 def _simple_page(S: State, path: str, title: str, description: str, crumbs: list, item_urls: list[str] | None = None,

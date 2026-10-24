@@ -172,9 +172,6 @@
       },
       "infocenter": {
         "value": "031-228-5114"
-      },
-      "pet": {
-        "value": "Yaoe Gongwon 步道 可携宠 （ 需系牵引绳 ·Baebyeonbongtu Jicham）"
       }
     },
     "details": [],
@@ -195,7 +192,7 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "20d5d9d122231a8a",
+    "ko_hash": "f803796634e966ab",
     "translated_at": "2026-10-23"
   },
   "tourapi-2613660": {
@@ -269,9 +266,6 @@
       },
       "infocenter": {
         "value": "031-228-4182"
-      },
-      "pet": {
-        "value": "Yaoe Hosu 步道 可携宠 （ 需系牵引绳 ·Baebyeonbongtu Jicham）"
       }
     },
     "details": [],
@@ -287,7 +281,7 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "8f8a2690431beefe",
+    "ko_hash": "11348b4cc666ff88",
     "translated_at": "2026-10-23"
   },
   "tourapi-2781841": {
@@ -463,9 +457,6 @@
       },
       "infocenter": {
         "value": "031-290-3600"
-      },
-      "pet": {
-        "value": "Yaoe Seonggwak 步道 可携宠 （Mokjul·Baebyeonbongtu Jicham）"
       }
     },
     "details": [],
@@ -486,7 +477,7 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "9c4b621850861d9d",
+    "ko_hash": "1c5cee7e1e7142d3",
     "translated_at": "2026-10-23"
   },
   "tourapi-3076051": {
@@ -566,9 +557,6 @@
       },
       "infocenter": {
         "value": "031-228-5114"
-      },
-      "pet": {
-        "value": "Hosu Dullegil 可携宠 （Irwolsumogwon Naebu Jehan，需系牵引绳 ）"
       }
     },
     "details": [],
@@ -589,7 +577,7 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "35c6088627144282",
+    "ko_hash": "cfbd8426ef97791a",
     "translated_at": "2026-10-23"
   },
   "tourapi-2741599": {
@@ -1443,9 +1431,6 @@
       },
       "infocenter": {
         "value": "1833-9001"
-      },
-      "pet": {
-        "value": "Ballyeogyeon 可携宠 （Mokjul Ttoneun Keiji·Yumocha 使用，Yebangjeopjong Wallyogyeon）"
       }
     },
     "details": [],
@@ -1466,7 +1451,7 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "f5263c853e79bd6f",
+    "ko_hash": "7a8fa27eaa33d4f5",
     "translated_at": "2026-10-23"
   },
   "tourapi-2752967": {
@@ -6397,9 +6382,6 @@
       },
       "infocenter": {
         "value": "031-290-3600"
-      },
-      "pet": {
-        "value": "Yongyeon·Seonggwak 步道 可携宠 （Nugak Naebu Jehan，需系牵引绳 ）"
       }
     },
     "details": [],
@@ -6420,7 +6402,7 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "2ad765219c1517ec",
+    "ko_hash": "387666108b41fbbf",
     "translated_at": "2026-10-23"
   },
   "tourapi-316296": {
@@ -6982,9 +6964,6 @@
       },
       "parking": {
         "value": "Paldalgucheong 公共停车场 Dobo 5 Bun Geori, Gak Sijang 停车场 Unyeong Jung, Kkokko 停车场 及 Jidongsijang 停车场 收费 使用 可"
-      },
-      "pet": {
-        "value": "Geori Sanchaek 可携宠 （Maejangbyeol Sillae Dongban Yeobu Sangi）"
       }
     },
     "details": [],
@@ -7005,7 +6984,7 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "f9593dc4dcfded36",
+    "ko_hash": "0ef09e25dca2b7a0",
     "translated_at": "2026-10-23"
   },
   "tourapi-264400": {
@@ -7976,9 +7955,6 @@
       },
       "infocenter": {
         "value": "031-228-7042"
-      },
-      "pet": {
-        "value": "Yaoe Gongwon 步道 可携宠 （ 需系牵引绳 ·Baebyeonbongtu Jicham, Wolhwawon Naebu Jehan）"
       }
     },
     "details": [],
@@ -7999,7 +7975,7 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "742bd308d82724f8",
+    "ko_hash": "69f0ea5d5ef697fe",
     "translated_at": "2026-10-23"
   },
   "tourapi-750947": {
@@ -8793,9 +8769,6 @@
       },
       "infocenter": {
         "value": "1661-1114"
-      },
-      "pet": {
-        "value": "Ballyeodongmul 可携宠 （Idongjang· 专用 Yumocha 使用 Si，餐厅 等 Ilbu Maejang Jeoe）"
       }
     },
     "details": [],
@@ -8816,7 +8789,7 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "3883d7e963a076e3",
+    "ko_hash": "05915d581e02eb56",
     "translated_at": "2026-10-23"
   },
   "tourapi-2753679": {
@@ -13076,9 +13049,6 @@
       },
       "treatmenu": {
         "value": "Jeonnamchintoseuteu 6,800韩元，Hongnadeubeurauni 6,800韩元，Beuraunkeuropeul 12,300韩元，美式咖啡 4,800韩元，Peullaethwaiteu 5,300韩元，拿铁咖啡 5,800韩元"
-      },
-      "pet": {
-        "value": "Ballyeodongmul 可携宠 （Keiji·Mokjul Jicham）"
       }
     },
     "details": [],
@@ -13094,7 +13064,7 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "bbf7db34c4298074",
+    "ko_hash": "5aaca91f64e3e450",
     "translated_at": "2026-10-23"
   },
   "tourapi-2469037": {
@@ -13265,9 +13235,6 @@
       },
       "infocenter": {
         "value": "070-8800-2460"
-      },
-      "pet": {
-        "value": "Yaoe Subyeon 步道 可携宠 （ 需系牵引绳 ·Baebyeonbongtu Jicham）"
       }
     },
     "details": [],
@@ -13288,7 +13255,7 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "8b50db7f61434ea1",
+    "ko_hash": "ddda498f3b512401",
     "translated_at": "2026-10-23"
   },
   "tourapi-2930334": {
@@ -13313,9 +13280,6 @@
       },
       "parking": {
         "value": "收费 Jucha"
-      },
-      "pet": {
-        "value": "Ballyeogyeon Dongban 专用 Siseol （Dongmuldeungnok Naejanghyeong·Oejanghyeong Pilsu, Maenggyeon Churip Jehan）"
       }
     },
     "details": [],
@@ -13336,7 +13300,7 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "b0882926358fe7f8",
+    "ko_hash": "a55657886b627a65",
     "translated_at": "2026-10-23"
   },
   "tourapi-2872885": {
@@ -14764,9 +14728,6 @@
       },
       "infocenter": {
         "value": "1577-0001"
-      },
-      "pet": {
-        "value": "Ballyeodongmul 可携宠 （ 专用 Yumocha·Keiji 使用 Si, Ilbu Maejang Jeoe）"
       }
     },
     "details": [],
@@ -14787,7 +14748,7 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "18724bd51434302f",
+    "ko_hash": "26ad40c84a715186",
     "translated_at": "2026-10-23"
   },
   "tourapi-2926530": {
@@ -17701,9 +17662,6 @@
       },
       "treatmenu": {
         "value": "Keurimti Seteu 12,000韩元，Keullaesik Aepeuteonun Ti Seteu 28,000韩元，Keurimti Kiteu 12,000韩元，Baekcha 7,000韩元，Nokcha 6,000韩元，Urongcha 6,000韩元"
-      },
-      "pet": {
-        "value": "Ballyeodongmul 可携宠 （Yaoe Teraseu 及 Jijeong Guyeok）"
       }
     },
     "details": [],
@@ -17719,7 +17677,7 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "cda136aa10699379",
+    "ko_hash": "fe61711166706a9e",
     "translated_at": "2026-10-23"
   },
   "tourapi-2765420": {

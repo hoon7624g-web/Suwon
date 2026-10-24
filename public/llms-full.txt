@@ -45,7 +45,6 @@ URL: https://suwon.webforai.kr/places/daeyupyeonggongwon/
 - 주차: 대유평공원 지하주차장 6시간 무료 주차, 화서역 환승 공영주차장 이용 가능 (출처: 카카오맵)
 - 주차(다른 출처 값): 대유평공원·스타필드 수원 인근 주차장 이용 (출처: 수원시 문화관광) — 출처마다 값이 달라 방문 전 전화 확인
 - 문의: 031-228-5114 (출처: 수원시 문화관광)
-- 반려동물 동반: 야외 공원 산책로 동반 가능 (목줄 착용·배변봉투 지참) (출처: 수원시 문화관광)
 
 ## 만석거공원 (관광지)
 URL: https://suwon.webforai.kr/places/manseokgeogongwon/
@@ -64,7 +63,6 @@ URL: https://suwon.webforai.kr/places/manseokgongwon/
 - 주소: 경기도 수원시 장안구 정조로 1088 (송죽동) (출처: 한국관광공사 TourAPI)
 - 주차: 만석공원 인근 공영주차장 유료 운영, 1일 최대 4,000원, 주차 공간 많지 않아 조기 만차 가능 (출처: 카카오맵)
 - 문의: 031-228-4182 (출처: 카카오맵)
-- 반려동물 동반: 야외 호수 산책로 동반 가능 (목줄 착용·배변봉투 지참) (출처: 수원시 문화관광)
 
 ## 밤밭청개구리공원 (관광지)
 URL: https://suwon.webforai.kr/places/bambatcheonggaegurigongwon/
@@ -107,7 +105,6 @@ URL: https://suwon.webforai.kr/places/suwon-hwaseong/
 - 주차(다른 출처 값): 연무대·장안공원·화성행궁·팔달산 공영주차장 이용 (출처: 수원시 문화관광) — 출처마다 값이 달라 방문 전 전화 확인
 - 문의: 031-290-3600 (출처: 카카오맵)
 - 홈페이지: https://www.swcf.or.kr (출처: 카카오맵)
-- 반려동물 동반: 야외 성곽 산책로 동반 가능 (목줄·배변봉투 지참) (출처: 수원시 문화관광)
 
 ## 일월수목원 (관광지)
 URL: https://suwon.webforai.kr/places/irwolsumogwon/
@@ -129,7 +126,6 @@ URL: https://suwon.webforai.kr/places/irwolhosugongwon/
 - 주차: 일월호수공원 주차장은 넓지 않지만 무료, 주말 및 성수기에는 주차 공간 부족할 수 있음 (출처: 카카오맵)
 - 주차(다른 출처 값): 일월수목원·일월공원 공영주차장 이용 (출처: 수원시 문화관광) — 출처마다 값이 달라 방문 전 전화 확인
 - 문의: 031-228-5114 (출처: 수원시 문화관광)
-- 반려동물 동반: 호수 둘레길 동반 가능 (일월수목원 내부 제한, 목줄 착용) (출처: 수원시 문화관광)
 
 ## 장안공원 (관광지)
 URL: https://suwon.webforai.kr/places/jangangongwon/
@@ -319,7 +315,6 @@ URL: https://suwon.webforai.kr/places/seutapildeu-suwon/
 - 주차: 무료 주차 (출처: 카카오맵)
 - 문의: 1833-9001 (출처: 카카오맵)
 - 홈페이지: https://starfield.co.kr/suwon/main.do (출처: 카카오맵)
-- 반려동물 동반: 반려견 동반 가능 (목줄 또는 케이지·유모차 이용, 예방접종 완료견) (출처: 수원시 문화관광)
 
 ## 장안문거북시장 (관광지)
 URL: https://suwon.webforai.kr/places/janganmungeobuksijang/
@@ -1493,7 +1488,6 @@ URL: https://suwon.webforai.kr/places/banghwasuryujeong/
 - 주차: 화홍문·연무대 공영주차장 이용 (출처: 수원시 문화관광)
 - 문의: 031-290-3600 (출처: 수원시 문화관광)
 - 홈페이지: http://www.swcf.or.kr/?p=59&listGubun=list&page=1&viewMode=view&idx=40 (출처: 카카오맵)
-- 반려동물 동반: 용연·성곽 산책로 동반 가능 (누각 내부 제한, 목줄 착용) (출처: 수원시 문화관광)
 
 ## 봉녕사 (관광지)
 URL: https://suwon.webforai.kr/places/bongnyeongsa/
@@ -1616,7 +1610,6 @@ URL: https://suwon.webforai.kr/places/suwontongdakgeori/
 - 주소: 경기도 수원시 팔달구 정조로800번길 16 (팔달로1가) (출처: 한국관광공사 TourAPI)
 - 이용요금: 점포별로 상이함 (출처: 한국관광공사 TourAPI)
 - 주차: 팔달구청 공영주차장 도보 5분 거리, 각 시장 주차장 운영 중, 꼬꼬 주차장 및 지동시장 주차장 유료 이용 가능 (출처: 카카오맵)
-- 반려동물 동반: 거리 산책 동반 가능 (매장별 실내 동반 여부 상이) (출처: 수원시 문화관광)
 
 ## 수원향교 (관광지)
 URL: https://suwon.webforai.kr/places/suwonhyanggyo/
@@ -1828,7 +1821,6 @@ URL: https://suwon.webforai.kr/places/hyowongongwon/
 - 쉬는 날: 연중무휴 (출처: 카카오맵)
 - 주차: 자체 주차장 없음, 근처 경기아트센터 공영주차장 유료 이용 가능, 추석 연휴 무료 주차 지원 (출처: 카카오맵)
 - 문의: 031-228-7042 (출처: 카카오맵)
-- 반려동물 동반: 야외 공원 산책로 동반 가능 (목줄 착용·배변봉투 지참, 월화원 내부 제한) (출처: 수원시 문화관광)
 
 ## 효원공원 월화원 (관광지)
 URL: https://suwon.webforai.kr/places/hyowongongwon-wolhwawon/
@@ -2008,7 +2000,6 @@ URL: https://suwon.webforai.kr/places/ak-peullaja-suwon/
 - 주차: 주차 가능 (출처: 카카오맵)
 - 문의: 1661-1114 (출처: 카카오맵)
 - 홈페이지: https://m.akplaza.com/store/introduce?store=02 (출처: 카카오맵)
-- 반려동물 동반: 반려동물 동반 가능 (이동장·전용 유모차 이용 시, 식당가 등 일부 매장 제외) (출처: 수원시 문화관광)
 
 ## 남문로데오시장 (관광지)
 URL: https://suwon.webforai.kr/places/nammullodeosijang/
@@ -3053,7 +3044,6 @@ URL: https://suwon.webforai.kr/places/hongnadeu-ingyenahyeseokjeom/
 - 대표 메뉴: 전남친토스트 6,800원 (출처: 카카오맵)
 - 취급 메뉴: 전남친토스트 6,800원, 홍라드브라우니 6,800원, 브라운크로플 12,300원, 아메리카노 4,800원, 플랫화이트 5,300원, 카페라떼 5,800원 (출처: 카카오맵)
 - 홈페이지: https://www.instagram.com/hongrard.coffee (출처: 카카오맵)
-- 반려동물 동반: 반려동물 동반 가능 (케이지·목줄 지참) (출처: 수원시 문화관광)
 
 ## 히말라야정원 (음식점)
 URL: https://suwon.webforai.kr/places/himallayajeongwon/
@@ -3096,7 +3086,6 @@ URL: https://suwon.webforai.kr/places/gwanggyohosugongwon/
 - 주차: 공원 내 넓은 주차장 이용 가능, 주차 요금 800원 (출처: 카카오맵)
 - 문의: 070-8800-2460 (출처: 카카오맵)
 - 홈페이지: http://www.gglakepark.or.kr/ (출처: 카카오맵)
-- 반려동물 동반: 야외 수변 산책로 동반 가능 (목줄 착용·배변봉투 지참) (출처: 수원시 문화관광)
 
 ## 광교호수공원 반려견 놀이터 (관광지)
 URL: https://suwon.webforai.kr/places/gwanggyohosugongwon-ballyeogyeon-noriteo/
@@ -3107,7 +3096,6 @@ URL: https://suwon.webforai.kr/places/gwanggyohosugongwon-ballyeogyeon-noriteo/
 - 이용요금: 무료 (출처: 한국관광공사 TourAPI)
 - 주차: 유료 주차 (출처: 카카오맵)
 - 홈페이지: http://www.gglakepark.or.kr (출처: 카카오맵)
-- 반려동물 동반: 반려견 동반 전용 시설 (동물등록 내장형·외장형 필수, 맹견 출입 제한) (출처: 수원시 문화관광)
 
 ## 글빛누리공원 (관광지)
 URL: https://suwon.webforai.kr/places/geulbinnurigongwon/
@@ -3425,7 +3413,6 @@ URL: https://suwon.webforai.kr/places/rotdemol-gwanggyojeom/
 - 주차: 유료 주차 (출처: 카카오맵)
 - 문의: 1577-0001 (출처: 카카오맵)
 - 홈페이지: https://www.lotteshopping.com/store/main?cstrCd=0355 (출처: 카카오맵)
-- 반려동물 동반: 반려동물 동반 가능 (전용 유모차·케이지 이용 시, 일부 매장 제외) (출처: 수원시 문화관광)
 
 ## 롯데아울렛 광교점 (관광지)
 URL: https://suwon.webforai.kr/places/rotdeaullet-gwanggyojeom/
@@ -4157,7 +4144,6 @@ URL: https://suwon.webforai.kr/places/tikeunik-aelliwei-gwanggyojeom/
 - 대표 메뉴: 크림티 세트 12,000원 (출처: 카카오맵)
 - 취급 메뉴: 크림티 세트 12,000원, 클래식 애프터눈 티 세트 28,000원, 크림티 키트 12,000원, 백차 7,000원, 녹차 6,000원, 우롱차 6,000원 (출처: 카카오맵)
 - 홈페이지: https://www.instagram.com/teacnic_gwanggyo (출처: 카카오맵)
-- 반려동물 동반: 반려동물 동반 가능 (야외 테라스 및 지정 구역) (출처: 수원시 문화관광)
 
 ## 포동이네 (음식점)
 URL: https://suwon.webforai.kr/places/podongine/

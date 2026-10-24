@@ -397,6 +397,9 @@ def test_abroad_items_are_in_the_knowledge(real):
     published foreign article and post is a doc (kind abroad) with its original title, outlet or account, language,
     date and address; /abroad/ is a catalog line with the counts and a page listing every item, newest first."""
     S, docs = real["S"], real["docs"]["docs"]
+    if not S.abroad:   # 2026-10-24: the city's unverified items were withdrawn — no abroad docs
+        assert not any(k.startswith("abroad:") for k in docs)
+        return
     line = _lines(real["catalog"])["/abroad/"]
     arts = [a for a in S.abroad if a["kind"] == "article"]
     assert f"해외 기사 {len(arts)}건" in line and "search_site kind abroad" in line

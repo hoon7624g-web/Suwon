@@ -2050,12 +2050,14 @@ class Pages:
 
     def render(self, template: str, path: str, page: dict, page_kind: str, lastmod: str | None = None,
                in_sitemap: bool = True, **ctx) -> None:
-        from .build import _write
+        from .build import BRAND_OG, _write, brand_og
         code = self.loc.code
         og = None if page.get("image") else art.og_fallback(art.for_lang(self.S.art, code), path, code)
         if og:  # a page without a photo of its own: the version's link-preview illustration (og.default-en, og.ja …;
             # never a place page) with its alt in the version's language
             page.update(image=self.S.abs(og["src"]), image_alt=og["alts"].get(code, ""), image_w=og["w"], image_h=og["h"])
+        elif not page.get("image") and brand_og(self.S.site, path):   # no illustration either: the brand picture
+            page.update(image=self.S.abs(BRAND_OG), image_alt=self.site.site_name, image_w=512, image_h=512)
         elif (page.get("image") or "").startswith("/"):
             page["image"] = self.S.abs(page["image"])
         html = self.env.get_template(template).render({**self.common(page, page_kind, path), **ctx})

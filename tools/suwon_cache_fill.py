@@ -33,7 +33,12 @@ def read_items(path: Path) -> list[dict]:
     return it if isinstance(it, list) else ([it] if isinstance(it, dict) else [])
 
 
-def write_kor_cache(kor_api: TourAPI, op: str, items: list[dict], **params) -> Path:
+def write_kor_cache(kor_api: TourAPI, op: str, items: list[dict], **params) -> Path | None:
+    """Blocked for empty results (operator decision 2026-10-24): an empty 'resultCode 0000' answer that no service
+    gave, or a list item copied in as detailCommon, made TourAPI look collected when it was not. Nothing is written
+    then; tools/tourapi_bulk.py calls KorService2 itself for those."""
+    if not items:
+        return None
     clean_params = {k: v for k, v in params.items() if v not in (None, "")}
     p = kor_api._cache_path(op, clean_params)
     payload = {
@@ -173,22 +178,20 @@ def main() -> int:
     wrote_image = 0
     for cid, it in all_targets.items():
         ctype = str(it.get("contenttypeid") or "")
-        cm_items = pet_common.get(cid) or [it]
-        write_kor_cache(kor_api, "detailCommon", cm_items, contentId=cid)
-        wrote_common += 1
+        cm_items = pet_common.get(cid) or []   # never the list item in place of a detailCommon answer
+        if write_kor_cache(kor_api, "detailCommon", cm_items, contentId=cid):
+            wrote_common += 1
 
         if ctype:
             intr_items = pet_intro.get(cid) or []
-            write_kor_cache(kor_api, "detailIntro", intr_items, contentId=cid, contentTypeId=ctype)
-            wrote_intro += 1
+            if write_kor_cache(kor_api, "detailIntro", intr_items, contentId=cid, contentTypeId=ctype):
+                wrote_intro += 1
 
         if ctype in ("12", "28", "25"):
             inf_items = pet_info.get(cid) or []
-            write_kor_cache(kor_api, "detailInfo", inf_items, contentId=cid, contentTypeId=ctype)
-            wrote_info += 1
-
-        write_kor_cache(kor_api, "detailImage", [], contentId=cid, imageYN="Y", numOfRows=20, pageNo=1)
-        wrote_image += 1
+            if write_kor_cache(kor_api, "detailInfo", inf_items, contentId=cid, contentTypeId=ctype):
+                wrote_info += 1
+        # detailImage: no empty answer is written any more (2026-10-24) — tools/tourapi_bulk.py asks KorService2
 
     print(json.dumps({
         "targets": len(all_targets),

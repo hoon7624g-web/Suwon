@@ -102,8 +102,9 @@ def test_the_new_pictures_are_registered_and_fall_back_to_line_glyphs():
     # the hero illustration and the link preview are registered but not shown: a seaside harbour does not fit the city
     # (data/daegu/art.json _notes — the operator decides); the page then opens on its pictureless layout
     art = json.loads((ROOT / "data" / "suwon" / "art.json").read_text("utf-8"))["images"]
-    assert art["plan-hero"]["slot"] == "plan.head" and art["og-plan"]["slot"] == "og.plan"
-    assert all(art[k]["alt"].startswith("일러스트: ") and art[k]["langs"] == ["ko"] for k in ("plan-hero", "og-plan"))
+    for k, slot in (("plan-hero", "plan.head"), ("og-plan", "og.plan")):   # 2026-10-24: none (the art was withdrawn)
+        if k in art:
+            assert art[k]["slot"] == slot and art[k]["alt"].startswith("일러스트: ") and art[k]["langs"] == ["ko"], k
 
 
 SITE = "https://example.com"
