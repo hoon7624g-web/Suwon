@@ -1,0 +1,150 @@
+{
+  "about": "TourAPI 원응답 캐시 묶음 — tools/tourapi_harvest.py --unpack으로 data/cache/tourapi/에 되돌린다. 사실 확인·병합 도구의 입력이며 화면에 그대로 싣지 않는다(overview 포함).",
+  "packed_on": "2026-10-24",
+  "archives": {
+    "chsservice2.tar.gz": {
+      "service": "chs",
+      "files": 1293,
+      "by_operation": {
+        "areaBasedList": 4,
+        "detailCommon": 322,
+        "detailImage": 322,
+        "detailInfo": 322,
+        "detailIntro": 322,
+        "searchFestival": 1
+      },
+      "newest": "2026-10-24",
+      "collected": "2026-10-24~ 재수집: 대구각 엔진 수집기(pipeline/tourapi.py·tools/tourapi_harvest.py), 공급자 응답만"
+    },
+    "chtservice2.tar.gz": {
+      "service": "cht",
+      "files": 1313,
+      "by_operation": {
+        "areaBasedList": 4,
+        "detailCommon": 327,
+        "detailImage": 327,
+        "detailInfo": 327,
+        "detailIntro": 327,
+        "searchFestival": 1
+      },
+      "newest": "2026-10-24",
+      "collected": "2026-10-24~ 재수집: 대구각 엔진 수집기(pipeline/tourapi.py·tools/tourapi_harvest.py), 공급자 응답만"
+    },
+    "engservice2.tar.gz": {
+      "service": "eng",
+      "files": 1333,
+      "by_operation": {
+        "areaBasedList": 4,
+        "detailCommon": 332,
+        "detailImage": 332,
+        "detailInfo": 332,
+        "detailIntro": 332,
+        "searchFestival": 1
+      },
+      "newest": "2026-10-24",
+      "collected": "2026-10-24~ 재수집: 대구각 엔진 수집기(pipeline/tourapi.py·tools/tourapi_harvest.py), 공급자 응답만"
+    },
+    "freservice2.tar.gz": {
+      "service": "fre",
+      "files": 101,
+      "by_operation": {
+        "areaBasedList": 4,
+        "detailCommon": 24,
+        "detailImage": 24,
+        "detailInfo": 24,
+        "detailIntro": 24,
+        "searchFestival": 1
+      },
+      "newest": "2026-10-24",
+      "collected": "2026-10-24~ 재수집: 대구각 엔진 수집기(pipeline/tourapi.py·tools/tourapi_harvest.py), 공급자 응답만"
+    },
+    "gerservice2.tar.gz": {
+      "service": "ger",
+      "files": 113,
+      "by_operation": {
+        "areaBasedList": 4,
+        "detailCommon": 27,
+        "detailImage": 27,
+        "detailInfo": 27,
+        "detailIntro": 27,
+        "searchFestival": 1
+      },
+      "newest": "2026-10-24",
+      "collected": "2026-10-24~ 재수집: 대구각 엔진 수집기(pipeline/tourapi.py·tools/tourapi_harvest.py), 공급자 응답만"
+    },
+    "jpnservice2.tar.gz": {
+      "service": "jpn",
+      "files": 1337,
+      "by_operation": {
+        "areaBasedList": 4,
+        "detailCommon": 333,
+        "detailImage": 333,
+        "detailInfo": 333,
+        "detailIntro": 333,
+        "searchFestival": 1
+      },
+      "newest": "2026-10-24",
+      "collected": "2026-10-24~ 재수집: 대구각 엔진 수집기(pipeline/tourapi.py·tools/tourapi_harvest.py), 공급자 응답만"
+    },
+    "korpettourservice2.tar.gz": {
+      "service": "pet",
+      "files": 271,
+      "by_operation": {
+        "areaBasedList": 4,
+        "detailPetTour": 267
+      },
+      "newest": "2026-10-24",
+      "collected": "2026-10-24~ 재수집: 대구각 엔진 수집기(pipeline/tourapi.py·tools/tourapi_harvest.py), 공급자 응답만"
+    },
+    "korservice2.tar.gz": {
+      "service": "kor",
+      "files": 93,
+      "by_operation": {
+        "areaBasedList": 28,
+        "areaBasedSyncList": 58,
+        "lclsSystmCode": 1,
+        "ldongCode": 2,
+        "searchFestival": 4
+      },
+      "newest": "2026-10-24",
+      "collected": "2026-10-24~ 재수집: 대구각 엔진 수집기(pipeline/tourapi.py·tools/tourapi_harvest.py), 공급자 응답만"
+    },
+    "photo_gallery.tar.gz": {
+      "service": "photo",
+      "files": 9,
+      "by_operation": {
+        "gallerySearchList": 9
+      },
+      "newest": "2026-10-24",
+      "collected": "2026-10-24~ 재수집: 대구각 엔진 수집기(pipeline/tourapi.py·tools/tourapi_harvest.py), 공급자 응답만"
+    },
+    "russervice2.tar.gz": {
+      "service": "rus",
+      "files": 93,
+      "by_operation": {
+        "areaBasedList": 4,
+        "detailCommon": 22,
+        "detailImage": 22,
+        "detailInfo": 22,
+        "detailIntro": 22,
+        "searchFestival": 1
+      },
+      "newest": "2026-10-24",
+      "collected": "2026-10-24~ 재수집: 대구각 엔진 수집기(pipeline/tourapi.py·tools/tourapi_harvest.py), 공급자 응답만"
+    },
+    "spnservice2.tar.gz": {
+      "service": "spn",
+      "files": 141,
+      "by_operation": {
+        "areaBasedList": 4,
+        "detailCommon": 34,
+        "detailImage": 34,
+        "detailInfo": 34,
+        "detailIntro": 34,
+        "searchFestival": 1
+      },
+      "newest": "2026-10-24",
+      "collected": "2026-10-24~ 재수집: 대구각 엔진 수집기(pipeline/tourapi.py·tools/tourapi_harvest.py), 공급자 응답만"
+    }
+  }
+}
