@@ -2,6 +2,17 @@
   "about": "TourAPI 원응답 캐시 묶음 — tools/tourapi_harvest.py --unpack으로 data/cache/tourapi/에 되돌린다. 사실 확인·병합 도구의 입력이며 화면에 그대로 싣지 않는다(overview 포함).",
   "packed_on": "2026-10-24",
   "archives": {
+    "barrier_free.tar.gz": {
+      "service": "bf",
+      "files": 294,
+      "by_operation": {
+        "areaBasedList": 4,
+        "detailCommon": 145,
+        "detailWithTour": 145
+      },
+      "newest": "2026-10-24",
+      "collected": "2026-10-24~ 재수집: 대구각 엔진 수집기(pipeline/tourapi.py·tools/tourapi_harvest.py), 공급자 응답만"
+    },
     "chsservice2.tar.gz": {
       "service": "chs",
       "files": 1293,
