@@ -1,6 +1,6 @@
 {
   "about": "TourAPI 원응답 캐시 묶음 — tools/tourapi_harvest.py --unpack으로 data/cache/tourapi/에 되돌린다. 사실 확인·병합 도구의 입력이며 화면에 그대로 싣지 않는다(overview 포함).",
-  "packed_on": "2026-10-24",
+  "packed_on": "2026-10-25",
   "archives": {
     "barrier_free.tar.gz": {
       "service": "bf",
@@ -109,15 +109,19 @@
     },
     "korservice2.tar.gz": {
       "service": "kor",
-      "files": 93,
+      "files": 2893,
       "by_operation": {
         "areaBasedList": 28,
         "areaBasedSyncList": 58,
+        "detailCommon": 700,
+        "detailImage": 700,
+        "detailInfo": 700,
+        "detailIntro": 700,
         "lclsSystmCode": 1,
         "ldongCode": 2,
         "searchFestival": 4
       },
-      "newest": "2026-10-24",
+      "newest": "2026-10-25",
       "collected": "2026-10-24~ 재수집: 대구각 엔진 수집기(pipeline/tourapi.py·tools/tourapi_harvest.py), 공급자 응답만"
     },
     "photo_gallery.tar.gz": {
