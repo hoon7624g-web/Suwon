@@ -5666,7 +5666,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -5846,7 +5846,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011458",
@@ -5858,7 +5860,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -6026,7 +6028,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011432",
@@ -6038,7 +6042,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -6212,7 +6216,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025429",
@@ -6224,7 +6230,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -6398,7 +6404,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011441",
@@ -6410,7 +6418,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -6590,7 +6598,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011483",
@@ -6602,7 +6612,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -6776,7 +6786,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011444",
@@ -6788,7 +6800,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -6962,7 +6974,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011480",
@@ -6974,7 +6988,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -7148,7 +7162,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025437",
@@ -7157,7 +7173,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -7307,7 +7323,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011477",
@@ -7319,7 +7337,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -7493,7 +7511,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025420",
@@ -7505,7 +7525,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -7679,7 +7699,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011464",
@@ -7691,7 +7713,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -7865,7 +7887,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011468",
@@ -7877,7 +7901,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -8051,7 +8075,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011450",
@@ -8063,7 +8089,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -8237,7 +8263,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011465",
@@ -8249,7 +8277,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -8423,7 +8451,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011453",
@@ -8435,7 +8465,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -8609,7 +8639,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011430",
@@ -8621,7 +8653,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -8795,7 +8827,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011478",
@@ -8807,7 +8841,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -8981,7 +9015,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011474",
@@ -8993,7 +9029,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -9167,7 +9203,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2894571",
@@ -9176,7 +9214,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -9354,7 +9392,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025434",
@@ -9366,7 +9406,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -9540,7 +9580,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011438",
@@ -9552,7 +9594,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -9726,7 +9768,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011470",
@@ -9738,7 +9782,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -9912,7 +9956,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025421",
@@ -9924,7 +9970,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -10104,7 +10150,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025422",
@@ -10116,7 +10164,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -10290,7 +10338,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011451",
@@ -10302,7 +10352,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -10476,7 +10526,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011437",
@@ -10488,7 +10540,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -10662,7 +10714,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011427",
@@ -10674,7 +10728,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -10848,7 +10902,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025435",
@@ -10860,7 +10916,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -11034,7 +11090,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011423",
@@ -11046,7 +11104,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -11220,7 +11278,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-132105",
@@ -11415,7 +11475,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -11589,7 +11649,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2753658",
@@ -11772,7 +11834,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -11946,7 +12008,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025436",
@@ -11958,7 +12022,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -12132,7 +12196,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011411",
@@ -12141,7 +12207,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -12322,7 +12388,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011475",
@@ -12334,7 +12402,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -12508,7 +12576,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011413",
@@ -12608,7 +12678,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -12782,7 +12852,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011456",
@@ -12794,7 +12866,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -12968,7 +13040,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011467",
@@ -12980,7 +13054,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -13154,7 +13228,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011433",
@@ -13166,7 +13242,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -13340,7 +13416,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-3335600",
@@ -13563,7 +13641,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -13737,7 +13815,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025426",
@@ -13749,7 +13829,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -13923,7 +14003,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011425",
@@ -13935,7 +14017,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -14109,7 +14191,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011431",
@@ -14121,7 +14205,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -14295,7 +14379,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011485",
@@ -14307,7 +14393,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -14487,7 +14573,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025423",
@@ -14499,7 +14587,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -14673,7 +14761,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011476",
@@ -14685,7 +14775,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -14865,7 +14955,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011460",
@@ -14877,7 +14969,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -15051,7 +15143,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011421",
@@ -15063,7 +15157,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -15237,7 +15331,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2918379",
@@ -15246,7 +15342,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -15412,7 +15508,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2914520",
@@ -15421,7 +15519,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -15595,7 +15693,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2907813",
@@ -15604,7 +15704,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -15770,7 +15870,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2922762",
@@ -15779,7 +15881,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -15937,7 +16039,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4008155",
@@ -15949,7 +16053,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -16129,7 +16233,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2912578",
@@ -16138,7 +16244,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -16318,7 +16424,9 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011442",
@@ -16330,7 +16438,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -16504,7 +16612,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011466",
@@ -16516,7 +16626,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -16690,7 +16800,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2931729",
@@ -16699,7 +16811,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -16872,7 +16984,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025432",
@@ -16884,7 +16998,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -17058,7 +17172,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2752967",
@@ -17473,7 +17589,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -17647,7 +17763,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2752643",
@@ -17854,7 +17972,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -18028,7 +18146,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011417",
@@ -18040,7 +18160,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -18214,7 +18334,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011482",
@@ -18226,7 +18348,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -18400,7 +18522,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025427",
@@ -18412,7 +18536,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -18586,7 +18710,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011479",
@@ -18598,7 +18724,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -18772,7 +18898,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025430",
@@ -18784,7 +18912,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -18964,7 +19092,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011471",
@@ -18976,7 +19106,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -19150,7 +19280,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025428",
@@ -19162,7 +19294,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -19342,7 +19474,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025431",
@@ -19354,7 +19488,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -19528,7 +19662,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011455",
@@ -19540,7 +19676,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -19714,7 +19850,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011439",
@@ -19726,7 +19864,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -19900,7 +20038,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011481",
@@ -19912,7 +20052,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -20086,7 +20226,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011419",
@@ -20098,7 +20240,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -20272,7 +20414,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025424",
@@ -20284,7 +20428,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -20452,7 +20596,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011487",
@@ -20464,7 +20610,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -20638,7 +20784,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011469",
@@ -20650,7 +20798,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -20824,7 +20972,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-1770188",
@@ -30812,7 +30962,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -30985,7 +31135,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2924792",
@@ -30994,7 +31146,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -31181,7 +31333,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2931378",
@@ -31190,7 +31344,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -31370,7 +31524,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2926928",
@@ -31379,7 +31535,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -31566,7 +31722,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2924774",
@@ -31575,7 +31733,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -31756,7 +31914,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2925515",
@@ -31765,7 +31925,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -31952,7 +32112,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2925518",
@@ -31961,7 +32123,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -32148,7 +32310,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2926789",
@@ -32157,7 +32321,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -32338,7 +32502,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025395",
@@ -32347,7 +32513,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -32522,7 +32688,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2925834",
@@ -32531,7 +32699,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -32718,7 +32886,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2753389",
@@ -32916,7 +33086,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -33097,7 +33267,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2914012",
@@ -33106,7 +33278,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -33286,7 +33458,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2926817",
@@ -33295,7 +33469,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -33481,7 +33655,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025398",
@@ -33490,7 +33666,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -33640,7 +33816,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025394",
@@ -33649,7 +33827,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -33821,7 +33999,9 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2927033",
@@ -33830,7 +34010,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -34016,7 +34196,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2926113",
@@ -34025,7 +34207,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -34205,7 +34387,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2925849",
@@ -34214,7 +34398,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -34400,7 +34584,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2925842",
@@ -34409,7 +34595,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -34596,7 +34782,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2926814",
@@ -34605,7 +34793,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -34786,7 +34974,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2926013",
@@ -34795,7 +34985,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -34981,7 +35171,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2926368",
@@ -34990,7 +35182,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -35176,7 +35368,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011316",
@@ -35185,7 +35379,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -35371,7 +35565,9 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2914420",
@@ -35380,7 +35576,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -35558,7 +35754,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2914267",
@@ -35567,7 +35765,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -35753,7 +35951,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2926406",
@@ -35762,7 +35962,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -35949,7 +36149,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011320",
@@ -35958,7 +36160,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -36133,7 +36335,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2925840",
@@ -36142,7 +36346,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -36328,7 +36532,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2929338",
@@ -36337,7 +36543,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -36524,7 +36730,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2925874",
@@ -36533,7 +36741,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -36720,7 +36928,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011324",
@@ -36729,7 +36939,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -36909,7 +37119,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2927054",
@@ -36918,7 +37130,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -37105,7 +37317,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2925852",
@@ -37114,7 +37328,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -37301,7 +37515,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2925525",
@@ -37310,7 +37526,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -37496,7 +37712,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011290",
@@ -37505,7 +37723,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -37678,7 +37896,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-132353",
@@ -37900,7 +38120,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -38080,7 +38300,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2925865",
@@ -38089,7 +38311,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -38276,7 +38498,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2926074",
@@ -38285,7 +38509,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -38471,7 +38695,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2925885",
@@ -38480,7 +38706,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -38666,7 +38892,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011319",
@@ -38675,7 +38903,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -38850,7 +39078,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2927026",
@@ -38859,7 +39089,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -39039,7 +39269,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025396",
@@ -39048,7 +39280,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -39229,7 +39461,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-3305322",
@@ -39238,7 +39472,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -39412,7 +39646,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2908842",
@@ -39421,7 +39657,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -39587,7 +39823,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4008146",
@@ -39596,7 +39834,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -39746,7 +39984,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-3307097",
@@ -39755,7 +39995,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -39921,7 +40161,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2912762",
@@ -39930,7 +40172,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -40104,7 +40346,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4008147",
@@ -40113,7 +40357,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -40263,7 +40507,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-3307021",
@@ -40272,7 +40518,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -40422,7 +40668,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-3307334",
@@ -40431,7 +40679,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -40605,7 +40853,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2927008",
@@ -40614,7 +40864,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -40800,7 +41050,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2916312",
@@ -40809,7 +41061,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -40989,7 +41241,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2931037",
@@ -40998,7 +41252,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -41176,7 +41430,9 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2931871",
@@ -41185,7 +41441,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -41371,7 +41627,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2929306",
@@ -41380,7 +41638,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -41566,7 +41824,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2927047",
@@ -41575,7 +41835,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -41762,7 +42022,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2931376",
@@ -41771,7 +42033,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -41951,7 +42213,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2926512",
@@ -41960,7 +42224,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -42141,7 +42405,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2926974",
@@ -42150,7 +42416,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -42331,7 +42597,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2926877",
@@ -42340,7 +42608,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -42520,7 +42788,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2927055",
@@ -42529,7 +42799,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -42716,7 +42986,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2925881",
@@ -42725,7 +42997,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -42906,7 +43178,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2926891",
@@ -42915,7 +43189,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -43090,7 +43364,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2923422",
@@ -43099,7 +43375,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -43286,7 +43562,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2925877",
@@ -43295,7 +43573,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -43475,7 +43753,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011322",
@@ -43484,7 +43764,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -43659,7 +43939,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2925887",
@@ -43668,7 +43950,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -43854,7 +44136,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2903804",
@@ -43863,7 +44147,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -44043,7 +44327,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2847042",
@@ -63711,7 +63997,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -63891,7 +64177,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2916328",
@@ -64104,7 +64392,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -64284,7 +64572,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011499",
@@ -64293,7 +64583,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -64474,7 +64764,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011490",
@@ -64486,7 +64778,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -64666,7 +64958,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2924770",
@@ -64675,7 +64969,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -64855,7 +65149,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2918717",
@@ -64867,7 +65163,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -65047,7 +65343,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2909892",
@@ -65059,7 +65357,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -65239,7 +65537,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2912754",
@@ -65251,7 +65551,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -65431,7 +65731,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2753679",
@@ -65629,7 +65931,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -65804,7 +66106,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2918606",
@@ -65816,7 +66120,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -65996,7 +66300,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025444",
@@ -66005,7 +66311,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -66171,7 +66477,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011498",
@@ -66180,7 +66488,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -66354,7 +66662,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2905441",
@@ -66363,7 +66673,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -66550,7 +66860,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2911614",
@@ -66562,7 +66874,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -66742,7 +67054,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2918497",
@@ -66754,7 +67068,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -66934,7 +67248,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025438",
@@ -66946,7 +67262,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -67126,7 +67442,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2931868",
@@ -67138,7 +67456,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -67318,7 +67636,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2753395",
@@ -67914,7 +68234,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -68094,7 +68414,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2918712",
@@ -68106,7 +68428,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -68286,7 +68608,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2918648",
@@ -68298,7 +68622,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -68478,7 +68802,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2924767",
@@ -68490,7 +68816,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -68670,7 +68996,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011489",
@@ -68679,7 +69007,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -68853,7 +69181,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025439",
@@ -68865,7 +69195,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -69039,7 +69369,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2589025",
@@ -69919,7 +70251,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -70099,7 +70431,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2924006",
@@ -70111,7 +70445,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -70291,7 +70625,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025440",
@@ -70303,7 +70639,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -70483,7 +70819,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2918643",
@@ -70495,7 +70833,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -70675,7 +71013,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2926872",
@@ -70687,7 +71027,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -70867,7 +71207,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2907527",
@@ -70876,7 +71218,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -71062,7 +71404,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2918645",
@@ -71071,7 +71415,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -71251,7 +71595,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2925649",
@@ -71260,7 +71606,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -71440,7 +71786,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2907173",
@@ -71449,7 +71797,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -71623,7 +71971,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2902354",
@@ -71632,7 +71982,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -71806,7 +72156,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4008156",
@@ -71815,7 +72167,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -71989,7 +72341,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4008158",
@@ -71998,7 +72352,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -72172,7 +72526,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2918281",
@@ -72181,7 +72537,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -72355,7 +72711,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4008157",
@@ -72364,7 +72722,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -72538,7 +72896,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2906298",
@@ -72547,7 +72907,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -72721,7 +73081,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-3307711",
@@ -72730,7 +73092,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -72904,7 +73266,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2906286",
@@ -72913,7 +73277,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -73093,7 +73457,9 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025442",
@@ -73102,7 +73468,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -73277,7 +73643,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025443",
@@ -73286,7 +73654,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -73466,7 +73834,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2752971",
@@ -73695,7 +74065,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -73875,7 +74245,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2918684",
@@ -73887,7 +74259,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -74067,7 +74439,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2910218",
@@ -74079,7 +74453,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -74259,7 +74633,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2931597",
@@ -74271,7 +74647,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -74451,7 +74827,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011491",
@@ -74463,7 +74841,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -74637,7 +75015,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2752650",
@@ -74889,7 +75269,7 @@
       "modern-history"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -75069,7 +75449,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2918711",
@@ -75081,7 +75463,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -75261,7 +75643,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2903425",
@@ -75270,7 +75654,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -75445,7 +75829,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-3351843",
@@ -99123,7 +99509,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -99293,7 +99679,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2925133",
@@ -99305,7 +99693,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -99475,7 +99863,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011333",
@@ -99487,7 +99877,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -99645,7 +100035,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025401",
@@ -99654,7 +100046,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -99813,7 +100205,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011386",
@@ -99825,7 +100219,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -99990,7 +100384,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2843518",
@@ -100002,7 +100398,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -100176,7 +100572,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2903844",
@@ -100188,7 +100586,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -100359,7 +100757,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011325",
@@ -100371,7 +100771,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -100529,7 +100929,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2753656",
@@ -100736,7 +101138,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -100900,7 +101302,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011370",
@@ -100912,7 +101316,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -101076,7 +101480,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2911813",
@@ -101088,7 +101494,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -101258,7 +101664,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2929053",
@@ -101270,7 +101678,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -101440,7 +101848,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011394",
@@ -101452,7 +101862,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -101617,7 +102027,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2931634",
@@ -101629,7 +102041,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -101799,7 +102211,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025415",
@@ -101808,7 +102222,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -101973,7 +102387,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011407",
@@ -101985,7 +102401,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -102150,7 +102566,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2926567",
@@ -102162,7 +102580,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -102332,7 +102750,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2926554",
@@ -102344,7 +102764,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -102514,7 +102934,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2931812",
@@ -102526,7 +102948,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -102697,7 +103119,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2926556",
@@ -102709,7 +103133,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -102880,7 +103304,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025412",
@@ -102892,7 +103318,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -103057,7 +103483,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011375",
@@ -103069,7 +103497,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -103233,7 +103661,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025414",
@@ -103245,7 +103675,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -103410,7 +103840,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011399",
@@ -103422,7 +103854,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -103587,7 +104019,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2928482",
@@ -103599,7 +104033,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -103763,7 +104197,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011345",
@@ -103775,7 +104211,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -103933,7 +104369,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011331",
@@ -103945,7 +104383,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -104103,7 +104541,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4054293",
@@ -104476,7 +104916,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -104646,7 +105086,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025417",
@@ -104655,7 +105097,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -104813,7 +105255,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011398",
@@ -104825,7 +105269,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -104990,7 +105434,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2915249",
@@ -105002,7 +105448,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -105172,7 +105618,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2926562",
@@ -105184,7 +105632,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -105355,7 +105803,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011327",
@@ -105367,7 +105817,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -105525,7 +105975,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011347",
@@ -105537,7 +105989,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -105695,7 +106147,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025400",
@@ -105707,7 +106161,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -105871,7 +106325,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011349",
@@ -105883,7 +106339,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -106047,7 +106503,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011389",
@@ -106059,7 +106517,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -106224,7 +106682,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025405",
@@ -106236,7 +106696,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -106401,7 +106861,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011408",
@@ -106410,7 +106872,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -106575,7 +107037,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025402",
@@ -106584,7 +107048,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -106735,7 +107199,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025399",
@@ -106747,7 +107213,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -106911,7 +107377,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025403",
@@ -106923,7 +107391,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -107087,7 +107555,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2930975",
@@ -107099,7 +107569,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -107269,7 +107739,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025404",
@@ -107281,7 +107753,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -107445,7 +107917,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011396",
@@ -107457,7 +107931,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -107621,7 +108095,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025406",
@@ -107633,7 +108109,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -107797,7 +108273,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025407",
@@ -107809,7 +108287,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -107974,7 +108452,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011403",
@@ -107986,7 +108466,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -108150,7 +108630,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011410",
@@ -108159,7 +108641,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -108317,7 +108799,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025418",
@@ -108326,7 +108810,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -108484,7 +108968,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011400",
@@ -108496,7 +108982,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -108660,7 +109146,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011337",
@@ -108672,7 +109160,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -108836,7 +109324,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011335",
@@ -108848,7 +109338,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -109012,7 +109502,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2915154",
@@ -109024,7 +109516,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -109194,7 +109686,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-3305342",
@@ -109203,7 +109697,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -109361,7 +109855,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4008150",
@@ -109373,7 +109869,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -109537,7 +110033,9 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-3307289",
@@ -109546,7 +110044,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -109704,7 +110202,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4008149",
@@ -109713,7 +110213,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -109863,7 +110363,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2911752",
@@ -109872,7 +110374,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -110022,7 +110524,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2924761",
@@ -110031,7 +110535,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -110205,7 +110709,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2928891",
@@ -110214,7 +110720,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -110372,7 +110878,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-3306668",
@@ -110381,7 +110889,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -110539,7 +111047,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025419",
@@ -110548,7 +111058,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -110700,7 +111210,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011384",
@@ -110712,7 +111224,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -110877,7 +111389,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025408",
@@ -110889,7 +111403,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -111054,7 +111568,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011405",
@@ -111066,7 +111582,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -111224,7 +111740,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2930802",
@@ -111233,7 +111751,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -111383,7 +111901,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2931817",
@@ -111392,7 +111912,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -111552,7 +112072,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2925771",
@@ -111564,7 +112086,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -111735,7 +112257,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2907044",
@@ -111747,7 +112271,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -111917,7 +112441,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025409",
@@ -111929,7 +112455,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -112093,7 +112619,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2928200",
@@ -112105,7 +112633,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -112275,7 +112803,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011402",
@@ -112287,7 +112817,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -112451,7 +112981,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025410",
@@ -112463,7 +112995,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -112628,7 +113160,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2927407",
@@ -112640,7 +113174,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -112810,7 +113344,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2926540",
@@ -112822,7 +113358,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -112993,7 +113529,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2916145",
@@ -113005,7 +113543,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -113175,7 +113713,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2929218",
@@ -113187,7 +113727,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -113358,7 +113898,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025413",
@@ -113370,7 +113912,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -113535,7 +114077,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2927588",
@@ -113547,7 +114091,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -113717,7 +114261,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2753682",
@@ -113726,7 +114272,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -113885,7 +114431,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2915411",
@@ -113897,7 +114445,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -114068,7 +114616,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4011329",
@@ -114080,7 +114630,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -114238,7 +114788,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025411",
@@ -114250,7 +114802,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -114415,7 +114967,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-4025416",
@@ -114424,7 +114978,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -114589,7 +115143,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2900555",
@@ -114598,7 +115154,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -114769,7 +115325,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2901039",
@@ -114778,7 +115336,7 @@
     "kind": "attraction",
     "category": "쇼핑",
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -114942,7 +115500,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2915108",
@@ -114954,7 +115514,7 @@
       "alleys-culture"
     ],
     "tier": "basic",
-    "status": "draft",
+    "status": "published",
     "official": {},
     "original": {},
     "map_ids": {
@@ -115124,7 +115684,9 @@
       "checked_at": "2026-10-23"
     },
     "faq": [],
-    "summary_auto": true
+    "summary_auto": true,
+    "approved_at": "2026-10-26",
+    "approved_by": "운영자 공개 승인(페이지별 검수 전)"
   },
   {
     "id": "tourapi-2849901",
