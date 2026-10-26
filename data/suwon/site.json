@@ -40,6 +40,10 @@
     "es",
     "ru"
   ],
+  "intl": {
+    "require_complete": true,
+    "_note": "사용자 지시 2026-10-24: 외국어 판은 모든 값을 번역표(data/suwon/<언어>/table.json)로 옮긴다. 번역 없는 레코드·이름표·이름이 있으면 빌드와 검증이 실패하고 빠진 목록을 낸다(pipeline/intl_check.py, tools/intl_table.py). 값을 빼거나 소리 옮김으로 채우지 않는다."
+  },
   "locales": {
     "ja": {
       "city": "水原",

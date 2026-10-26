@@ -1,7 +1,7 @@
 {
   "tourapi-4074940": {
     "name_ko": "PLAY your TRIP",
-    "name_fr": "PLAY your TRIP",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "PLAY your TRIP",
     "fr_contentid": "",
@@ -11,7 +11,7 @@
   },
   "tourapi-2747097": {
     "name_ko": "광교마루길",
-    "name_fr": "Gwanggyomarugil",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gwanggyomarugil",
     "fr_contentid": "",
@@ -21,7 +21,7 @@
   },
   "tourapi-125577": {
     "name_ko": "노송지대",
-    "name_fr": "Nosongjidae",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Nosongjidae",
     "fr_contentid": "",
@@ -31,7 +31,7 @@
   },
   "tourapi-3428384": {
     "name_ko": "대유평공원",
-    "name_fr": "Daeyupyeonggongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Daeyupyeonggongwon",
     "fr_contentid": "",
@@ -41,7 +41,7 @@
   },
   "tourapi-2613660": {
     "name_ko": "만석거공원",
-    "name_fr": "Manseokgeo Park",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Manseokgeogongwon",
     "fr_contentid": "",
@@ -51,7 +51,7 @@
   },
   "tourapi-3351831": {
     "name_ko": "만석공원",
-    "name_fr": "Manseok Park",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Manseokgongwon",
     "fr_contentid": "",
@@ -61,7 +61,7 @@
   },
   "tourapi-2781841": {
     "name_ko": "밤밭청개구리공원",
-    "name_fr": "Bambatcheonggaegurigongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Bambatcheonggaegurigongwon",
     "fr_contentid": "",
@@ -71,7 +71,7 @@
   },
   "tourapi-2745742": {
     "name_ko": "보현선원",
-    "name_fr": "Bohyeonseonwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Bohyeonseonwon",
     "fr_contentid": "",
@@ -91,7 +91,7 @@
   },
   "tourapi-125555": {
     "name_ko": "수원 화성",
-    "name_fr": "Suwon Hwaseong Fortress",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwon Hwaseong",
     "fr_contentid": "",
@@ -111,7 +111,7 @@
   },
   "tourapi-3081125": {
     "name_ko": "일월호수공원",
-    "name_fr": "Irwolhosugongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Irwolhosugongwon",
     "fr_contentid": "",
@@ -121,7 +121,7 @@
   },
   "tourapi-2741599": {
     "name_ko": "장안공원",
-    "name_fr": "Jangangongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Jangangongwon",
     "fr_contentid": "",
@@ -131,7 +131,7 @@
   },
   "tourapi-482135": {
     "name_ko": "청련암",
-    "name_fr": "Cheongnyeonam",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Cheongnyeonam",
     "fr_contentid": "",
@@ -141,7 +141,7 @@
   },
   "tourapi-2741606": {
     "name_ko": "효행공원",
-    "name_fr": "Hyohaenggongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Hyohaenggongwon",
     "fr_contentid": "",
@@ -151,7 +151,7 @@
   },
   "tourapi-130831": {
     "name_ko": "경기도교육청중앙도서관",
-    "name_fr": "Gyeonggidogyoyukcheongjungangdoseogwan",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gyeonggidogyoyukcheongjungangdoseogwan",
     "fr_contentid": "",
@@ -161,7 +161,7 @@
   },
   "tourapi-3427294": {
     "name_ko": "경기도행정역사관",
-    "name_fr": "Gyeonggidohaengjeongyeoksagwan",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gyeonggidohaengjeongyeoksagwan",
     "fr_contentid": "",
@@ -181,7 +181,7 @@
   },
   "tourapi-3562537": {
     "name_ko": "복합문화공간 111씨엠(111CM)",
-    "name_fr": "Bokhammunhwagonggan 111ssiem(111CM)",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Bokhammunhwagonggan 111ssiem(111CM)",
     "fr_contentid": "",
@@ -191,7 +191,7 @@
   },
   "tourapi-3075454": {
     "name_ko": "수원SK아트리움",
-    "name_fr": "SuwonSKateurium",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "SuwonSKateurium",
     "fr_contentid": "",
@@ -201,7 +201,7 @@
   },
   "tourapi-130711": {
     "name_ko": "수원시립만석전시관",
-    "name_fr": "Suwonsirimmanseokjeonsigwan",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwonsirimmanseokjeonsigwan",
     "fr_contentid": "",
@@ -211,7 +211,7 @@
   },
   "tourapi-130826": {
     "name_ko": "슬기샘어린이도서관",
-    "name_fr": "Seulgisaemeorinidoseogwan",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Seulgisaemeorinidoseogwan",
     "fr_contentid": "",
@@ -221,7 +221,7 @@
   },
   "tourapi-3081953": {
     "name_ko": "한누리아트홀",
-    "name_fr": "Hannuriateuhol",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Hannuriateuhol",
     "fr_contentid": "",
@@ -231,7 +231,7 @@
   },
   "tourapi-1925403": {
     "name_ko": "해우재",
-    "name_fr": "Haewoojae Museum (Mr. Toilet House)",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Haeujae",
     "fr_contentid": "",
@@ -241,7 +241,7 @@
   },
   "tourapi-1835368": {
     "name_ko": "서호천길",
-    "name_fr": "Seohocheongil",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Seohocheongil",
     "fr_contentid": "",
@@ -251,7 +251,7 @@
   },
   "tourapi-3057776": {
     "name_ko": "수원KT위즈파크",
-    "name_fr": "Suwon KT Wiz Park",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "SuwonKTwijeupakeu",
     "fr_contentid": "",
@@ -271,7 +271,7 @@
   },
   "tourapi-3081940": {
     "name_ko": "점핑파크 정자점",
-    "name_fr": "Jeompingpakeu Jeongjajeom",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Jeompingpakeu Jeongjajeom",
     "fr_contentid": "",
@@ -281,7 +281,7 @@
   },
   "tourapi-132105": {
     "name_ko": "반딧불이 연무시장",
-    "name_fr": "Banditburi Yeonmusijang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Banditburi Yeonmusijang",
     "fr_contentid": "",
@@ -291,7 +291,7 @@
   },
   "tourapi-2753658": {
     "name_ko": "북수원시장",
-    "name_fr": "Buksuwonsijang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Buksuwonsijang",
     "fr_contentid": "",
@@ -311,7 +311,7 @@
   },
   "tourapi-2752967": {
     "name_ko": "장안문거북시장",
-    "name_fr": "Janganmungeobuksijang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Janganmungeobuksijang",
     "fr_contentid": "",
@@ -321,7 +321,7 @@
   },
   "tourapi-2752977": {
     "name_ko": "정자시장",
-    "name_fr": "Jeongjasijang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Jeongjasijang",
     "fr_contentid": "",
@@ -331,7 +331,7 @@
   },
   "tourapi-2752643": {
     "name_ko": "조원시장",
-    "name_fr": "Jowonsijang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Jowonsijang",
     "fr_contentid": "",
@@ -341,7 +341,7 @@
   },
   "tourapi-1770188": {
     "name_ko": "모텔나무",
-    "name_fr": "Motellamu",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Motellamu",
     "fr_contentid": "",
@@ -351,7 +351,7 @@
   },
   "tourapi-3533132": {
     "name_ko": "시월재",
-    "name_fr": "Siwoljae",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Siwoljae",
     "fr_contentid": "",
@@ -361,7 +361,7 @@
   },
   "tourapi-3083959": {
     "name_ko": "탑클라우드호텔 수원점",
-    "name_fr": "Tapkeullaudeuhotel Suwonjeom",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Tapkeullaudeuhotel Suwonjeom",
     "fr_contentid": "",
@@ -371,7 +371,7 @@
   },
   "tourapi-2844721": {
     "name_ko": "광교헌농원",
-    "name_fr": "Gwanggyoheonnongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gwanggyoheonnongwon",
     "fr_contentid": "",
@@ -381,7 +381,7 @@
   },
   "tourapi-2846370": {
     "name_ko": "그집 해장국",
-    "name_fr": "Geujip Haejangguk",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Geujip Haejangguk",
     "fr_contentid": "",
@@ -391,7 +391,7 @@
   },
   "tourapi-2844733": {
     "name_ko": "그집쭈꾸미볶음",
-    "name_fr": "Geujipjjukkumibokkeum",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Geujipjjukkumibokkeum",
     "fr_contentid": "",
@@ -401,7 +401,7 @@
   },
   "tourapi-807896": {
     "name_ko": "길림성",
-    "name_fr": "Gillimseong",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gillimseong",
     "fr_contentid": "",
@@ -411,7 +411,7 @@
   },
   "tourapi-2745736": {
     "name_ko": "리틀본수원갈비집",
-    "name_fr": "Riteulbonsuwongalbijip",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Riteulbonsuwongalbijip",
     "fr_contentid": "",
@@ -421,7 +421,7 @@
   },
   "tourapi-2835369": {
     "name_ko": "명성돼지갈비",
-    "name_fr": "Myeongseongdwaejigalbi",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Myeongseongdwaejigalbi",
     "fr_contentid": "",
@@ -431,7 +431,7 @@
   },
   "tourapi-2835388": {
     "name_ko": "바다로간코끼리꼬창",
-    "name_fr": "Badarogankokkirikkochang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Badarogankokkirikkochang",
     "fr_contentid": "",
@@ -441,7 +441,7 @@
   },
   "tourapi-2751109": {
     "name_ko": "백세삼계탕 수원파장본점",
-    "name_fr": "Baeksesamgyetang Suwonpajangbonjeom",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Baeksesamgyetang Suwonpajangbonjeom",
     "fr_contentid": "",
@@ -451,7 +451,7 @@
   },
   "tourapi-2754026": {
     "name_ko": "백세짬뽕 수원본점",
-    "name_fr": "Baeksejjamppong Suwonbonjeom",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Baeksejjamppong Suwonbonjeom",
     "fr_contentid": "",
@@ -461,7 +461,7 @@
   },
   "tourapi-2781827": {
     "name_ko": "백운주말농장",
-    "name_fr": "Baegunjumallongjang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Baegunjumallongjang",
     "fr_contentid": "",
@@ -471,7 +471,7 @@
   },
   "tourapi-2873600": {
     "name_ko": "북문 유치회관",
-    "name_fr": "Bungmun Yuchihoegwan",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Bungmun Yuchihoegwan",
     "fr_contentid": "",
@@ -481,7 +481,7 @@
   },
   "tourapi-2844760": {
     "name_ko": "북수원화로",
-    "name_fr": "Buksuwonhwaro",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Buksuwonhwaro",
     "fr_contentid": "",
@@ -491,7 +491,7 @@
   },
   "tourapi-133041": {
     "name_ko": "삼풍가든",
-    "name_fr": "Sampunggadeun",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Sampunggadeun",
     "fr_contentid": "",
@@ -501,7 +501,7 @@
   },
   "tourapi-2830470": {
     "name_ko": "서동진의커피랩 본점",
-    "name_fr": "Seodongjinuikeopiraep Bonjeom",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Seodongjinuikeopiraep Bonjeom",
     "fr_contentid": "",
@@ -511,7 +511,7 @@
   },
   "tourapi-2916318": {
     "name_ko": "송죽약방",
-    "name_fr": "Songjugyakbang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Songjugyakbang",
     "fr_contentid": "",
@@ -521,7 +521,7 @@
   },
   "tourapi-602559": {
     "name_ko": "송풍가든",
-    "name_fr": "Songpunggadeun",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Songpunggadeun",
     "fr_contentid": "",
@@ -531,7 +531,7 @@
   },
   "tourapi-2835405": {
     "name_ko": "신사강정육점식당",
-    "name_fr": "Sinsagangjeongyukjeomsikdang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Sinsagangjeongyukjeomsikdang",
     "fr_contentid": "",
@@ -541,7 +541,7 @@
   },
   "tourapi-2838706": {
     "name_ko": "아늑",
-    "name_fr": "Aneuk",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Aneuk",
     "fr_contentid": "",
@@ -551,7 +551,7 @@
   },
   "tourapi-2848130": {
     "name_ko": "예전각설렁탕",
-    "name_fr": "Yejeongakseolleongtang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Yejeongakseolleongtang",
     "fr_contentid": "",
@@ -561,7 +561,7 @@
   },
   "tourapi-2848097": {
     "name_ko": "우리동네 스시카야",
-    "name_fr": "Uridongne Seusikaya",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Uridongne Seusikaya",
     "fr_contentid": "",
@@ -571,7 +571,7 @@
   },
   "tourapi-2844774": {
     "name_ko": "우리동네스시신조",
-    "name_fr": "Uridongneseusisinjo",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Uridongneseusisinjo",
     "fr_contentid": "",
@@ -581,7 +581,7 @@
   },
   "tourapi-2753976": {
     "name_ko": "우전옥간장게장",
-    "name_fr": "Ujeonokganjanggejang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Ujeonokganjanggejang",
     "fr_contentid": "",
@@ -591,7 +591,7 @@
   },
   "tourapi-3354946": {
     "name_ko": "일월수목원 카페 데이지원",
-    "name_fr": "Irwolsumogwon Kape Deijiwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Irwolsumogwon Kape Deijiwon",
     "fr_contentid": "",
@@ -601,7 +601,7 @@
   },
   "tourapi-3081946": {
     "name_ko": "장안농원",
-    "name_fr": "Jangannongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Jangannongwon",
     "fr_contentid": "",
@@ -611,7 +611,7 @@
   },
   "tourapi-2751121": {
     "name_ko": "제철쌈밥",
-    "name_fr": "Jecheolssambap",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Jecheolssambap",
     "fr_contentid": "",
@@ -621,7 +621,7 @@
   },
   "tourapi-3445980": {
     "name_ko": "타임체임버바이스템커피 수원스타필드점",
-    "name_fr": "Taimcheimbeobaiseutemkeopi Suwonseutapildeujeom",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Taimcheimbeobaiseutemkeopi Suwonseutapildeujeom",
     "fr_contentid": "",
@@ -631,7 +631,7 @@
   },
   "tourapi-2929831": {
     "name_ko": "파치 성대점",
-    "name_fr": "Pachi Seongdaejeom",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Pachi Seongdaejeom",
     "fr_contentid": "",
@@ -641,7 +641,7 @@
   },
   "tourapi-2844781": {
     "name_ko": "풍어생선구이정식",
-    "name_fr": "Pungeosaengseonguijeongsik",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Pungeosaengseonguijeongsik",
     "fr_contentid": "",
@@ -651,7 +651,7 @@
   },
   "tourapi-2835421": {
     "name_ko": "형제농원",
-    "name_fr": "Hyeongjenongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Hyeongjenongwon",
     "fr_contentid": "",
@@ -661,7 +661,7 @@
   },
   "tourapi-2846661": {
     "name_ko": "홍남매칼국수",
-    "name_fr": "Hongnammaekalguksu",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Hongnammaekalguksu",
     "fr_contentid": "",
@@ -671,7 +671,7 @@
   },
   "tourapi-2754720": {
     "name_ko": "고렴공원",
-    "name_fr": "Goryeomgongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Goryeomgongwon",
     "fr_contentid": "",
@@ -681,7 +681,7 @@
   },
   "tourapi-2739465": {
     "name_ko": "당수체육공원",
-    "name_fr": "Dangsucheyukgongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Dangsucheyukgongwon",
     "fr_contentid": "",
@@ -691,7 +691,7 @@
   },
   "tourapi-2745729": {
     "name_ko": "대부둑공원",
-    "name_fr": "Daebudukgongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Daebudukgongwon",
     "fr_contentid": "",
@@ -701,7 +701,7 @@
   },
   "tourapi-2742299": {
     "name_ko": "마중공원",
-    "name_fr": "Majunggongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Majunggongwon",
     "fr_contentid": "",
@@ -711,7 +711,7 @@
   },
   "tourapi-2739425": {
     "name_ko": "무궁화동산",
-    "name_fr": "Mugunghwadongsan",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Mugunghwadongsan",
     "fr_contentid": "",
@@ -721,7 +721,7 @@
   },
   "tourapi-2739473": {
     "name_ko": "수원올림픽공원",
-    "name_fr": "Suwonollimpikgongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwonollimpikgongwon",
     "fr_contentid": "",
@@ -731,7 +731,7 @@
   },
   "tourapi-2739462": {
     "name_ko": "여기산공원",
-    "name_fr": "Yeogisangongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Yeogisangongwon",
     "fr_contentid": "",
@@ -741,7 +741,7 @@
   },
   "tourapi-3075475": {
     "name_ko": "오목천체육공원(서수원체육공원)",
-    "name_fr": "Omokcheoncheyukgongwon (Seosuwoncheyukgongwon)",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Omokcheoncheyukgongwon (Seosuwoncheyukgongwon)",
     "fr_contentid": "",
@@ -751,7 +751,7 @@
   },
   "tourapi-2742282": {
     "name_ko": "오목호수공원",
-    "name_fr": "Omokhosugongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Omokhosugongwon",
     "fr_contentid": "",
@@ -761,7 +761,7 @@
   },
   "tourapi-2746031": {
     "name_ko": "용화사",
-    "name_fr": "Yonghwasa",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Yonghwasa",
     "fr_contentid": "",
@@ -771,7 +771,7 @@
   },
   "tourapi-2741603": {
     "name_ko": "중보들공원",
-    "name_fr": "Jungbodeulgongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Jungbodeulgongwon",
     "fr_contentid": "",
@@ -781,7 +781,7 @@
   },
   "tourapi-3427162": {
     "name_ko": "타임빌라스 수원",
-    "name_fr": "Taimbillaseu Suwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Taimbillaseu Suwon",
     "fr_contentid": "",
@@ -791,7 +791,7 @@
   },
   "tourapi-3081843": {
     "name_ko": "경기도업사이클플라자",
-    "name_fr": "Gyeonggidoeopsaikeulpeullaja",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gyeonggidoeopsaikeulpeullaja",
     "fr_contentid": "",
@@ -801,7 +801,7 @@
   },
   "tourapi-2747132": {
     "name_ko": "경기상상캠퍼스",
-    "name_fr": "Gyeonggi Sangsang Campus",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gyeonggisangsangkaempeoseu",
     "fr_contentid": "",
@@ -811,7 +811,7 @@
   },
   "tourapi-2747134": {
     "name_ko": "고색뉴지엄",
-    "name_fr": "Gosaengnyujieom",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gosaengnyujieom",
     "fr_contentid": "",
@@ -821,7 +821,7 @@
   },
   "tourapi-2944481": {
     "name_ko": "국립농업박물관",
-    "name_fr": "National Agricultural Museum",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gungnimnongeopbangmulgwan",
     "fr_contentid": "",
@@ -831,7 +831,7 @@
   },
   "tourapi-130837": {
     "name_ko": "서수원도서관",
-    "name_fr": "Seosuwondoseogwan",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Seosuwondoseogwan",
     "fr_contentid": "",
@@ -841,7 +841,7 @@
   },
   "tourapi-3075791": {
     "name_ko": "수원메쎄",
-    "name_fr": "Suwonmesse",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwonmesse",
     "fr_contentid": "",
@@ -851,7 +851,7 @@
   },
   "tourapi-129718": {
     "name_ko": "수원문화원",
-    "name_fr": "Suwonmunhwawon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwonmunhwawon",
     "fr_contentid": "",
@@ -861,7 +861,7 @@
   },
   "tourapi-130825": {
     "name_ko": "지혜샘어린이도서관",
-    "name_fr": "Jihyesaemeorinidoseogwan",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Jihyesaemeorinidoseogwan",
     "fr_contentid": "",
@@ -871,7 +871,7 @@
   },
   "tourapi-2745948": {
     "name_ko": "서수원주민편익시설",
-    "name_fr": "Seosuwonjuminpyeoniksiseol",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Seosuwonjuminpyeoniksiseol",
     "fr_contentid": "",
@@ -881,7 +881,7 @@
   },
   "tourapi-2909927": {
     "name_ko": "솔내음캠핑장",
-    "name_fr": "Sollaeeumkaempingjang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Sollaeeumkaempingjang",
     "fr_contentid": "",
@@ -891,7 +891,7 @@
   },
   "tourapi-3078246": {
     "name_ko": "수원체력단련장",
-    "name_fr": "Suwoncheryeokdallyeonjang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwoncheryeokdallyeonjang",
     "fr_contentid": "",
@@ -901,7 +901,7 @@
   },
   "tourapi-2753389": {
     "name_ko": "권선종합시장",
-    "name_fr": "Gwonseonjonghapsijang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gwonseonjonghapsijang",
     "fr_contentid": "",
@@ -911,7 +911,7 @@
   },
   "tourapi-132353": {
     "name_ko": "수원 농수산물도매시장",
-    "name_fr": "Suwon Nongsusanmuldomaesijang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwon Nongsusanmuldomaesijang",
     "fr_contentid": "",
@@ -921,7 +921,7 @@
   },
   "tourapi-2847042": {
     "name_ko": "호텔 세인트",
-    "name_fr": "Hotel Seinteu",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Hotel Seinteu",
     "fr_contentid": "",
@@ -931,7 +931,7 @@
   },
   "tourapi-2846969": {
     "name_ko": "호텔아마레",
-    "name_fr": "Hoteramare",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Hoteramare",
     "fr_contentid": "",
@@ -941,7 +941,7 @@
   },
   "tourapi-2876387": {
     "name_ko": "10593 베이글커피하우스",
-    "name_fr": "10593 Beigeulkeopihauseu",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "10593 Beigeulkeopihauseu",
     "fr_contentid": "",
@@ -951,7 +951,7 @@
   },
   "tourapi-2831373": {
     "name_ko": "경성집",
-    "name_fr": "Gyeongseongjip",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gyeongseongjip",
     "fr_contentid": "",
@@ -961,7 +961,7 @@
   },
   "tourapi-2844739": {
     "name_ko": "금정참치 본점",
-    "name_fr": "Geumjeongchamchi Bonjeom",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Geumjeongchamchi Bonjeom",
     "fr_contentid": "",
@@ -971,7 +971,7 @@
   },
   "tourapi-2747109": {
     "name_ko": "기와집",
-    "name_fr": "Giwajip",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Giwajip",
     "fr_contentid": "",
@@ -981,7 +981,7 @@
   },
   "tourapi-2831004": {
     "name_ko": "남수원갈비",
-    "name_fr": "Namsuwongalbi",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Namsuwongalbi",
     "fr_contentid": "",
@@ -991,7 +991,7 @@
   },
   "tourapi-2745722": {
     "name_ko": "넓은뜰",
-    "name_fr": "Neolbeuntteul",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Neolbeuntteul",
     "fr_contentid": "",
@@ -1001,7 +1001,7 @@
   },
   "tourapi-2873654": {
     "name_ko": "다래식당",
-    "name_fr": "Daraesikdang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Daraesikdang",
     "fr_contentid": "",
@@ -1011,7 +1011,7 @@
   },
   "tourapi-2844749": {
     "name_ko": "돈까스여행",
-    "name_fr": "Donkkaseuyeohaeng",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Donkkaseuyeohaeng",
     "fr_contentid": "",
@@ -1021,7 +1021,7 @@
   },
   "tourapi-2873484": {
     "name_ko": "마포해장",
-    "name_fr": "Mapohaejang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Mapohaejang",
     "fr_contentid": "",
@@ -1031,7 +1031,7 @@
   },
   "tourapi-2867025": {
     "name_ko": "말로우 플레이스",
-    "name_fr": "Mallou Peulleiseu",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Mallou Peulleiseu",
     "fr_contentid": "",
@@ -1041,7 +1041,7 @@
   },
   "tourapi-3354928": {
     "name_ko": "메모리",
-    "name_fr": "Memori",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Memori",
     "fr_contentid": "",
@@ -1051,7 +1051,7 @@
   },
   "tourapi-2873631": {
     "name_ko": "메밀정원",
-    "name_fr": "Memiljeongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Memiljeongwon",
     "fr_contentid": "",
@@ -1061,7 +1061,7 @@
   },
   "tourapi-2868856": {
     "name_ko": "명가네순대국",
-    "name_fr": "Myeongganesundaeguk",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Myeongganesundaeguk",
     "fr_contentid": "",
@@ -1071,7 +1071,7 @@
   },
   "tourapi-2867048": {
     "name_ko": "박네집송탄부대찌개 무공닭갈비",
-    "name_fr": "Bangnejipsongtanbudaejjigae Mugongdakgalbi",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Bangnejipsongtanbudaejjigae Mugongdakgalbi",
     "fr_contentid": "",
@@ -1081,7 +1081,7 @@
   },
   "tourapi-2829072": {
     "name_ko": "삐에스몽테제빵소",
-    "name_fr": "Ppieseumongtejeppangso",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Ppieseumongtejeppangso",
     "fr_contentid": "",
@@ -1091,7 +1091,7 @@
   },
   "tourapi-2831490": {
     "name_ko": "서수원숯불갈비",
-    "name_fr": "Seosuwonsutbulgalbi",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Seosuwonsutbulgalbi",
     "fr_contentid": "",
@@ -1101,7 +1101,7 @@
   },
   "tourapi-2873500": {
     "name_ko": "석산정",
-    "name_fr": "Seoksanjeong",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Seoksanjeong",
     "fr_contentid": "",
@@ -1111,7 +1111,7 @@
   },
   "tourapi-3458446": {
     "name_ko": "소롯",
-    "name_fr": "Sorot",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Sorot",
     "fr_contentid": "",
@@ -1121,7 +1121,7 @@
   },
   "tourapi-2629006": {
     "name_ko": "송할머니옻닭",
-    "name_fr": "Songhalmeoniotdak",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Songhalmeoniotdak",
     "fr_contentid": "",
@@ -1131,7 +1131,7 @@
   },
   "tourapi-4110195": {
     "name_ko": "수복헌",
-    "name_fr": "Subokheon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Subokheon",
     "fr_contentid": "",
@@ -1141,7 +1141,7 @@
   },
   "tourapi-2765454": {
     "name_ko": "수인닭발집",
-    "name_fr": "Suindakbaljip",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suindakbaljip",
     "fr_contentid": "",
@@ -1151,7 +1151,7 @@
   },
   "tourapi-2754001": {
     "name_ko": "아낙네",
-    "name_fr": "Anangne",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Anangne",
     "fr_contentid": "",
@@ -1161,7 +1161,7 @@
   },
   "tourapi-2831410": {
     "name_ko": "열구자",
-    "name_fr": "Yeolguja",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Yeolguja",
     "fr_contentid": "",
@@ -1171,7 +1171,7 @@
   },
   "tourapi-3415003": {
     "name_ko": "오렌지베이글",
-    "name_fr": "Orenjibeigeul",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Orenjibeigeul",
     "fr_contentid": "",
@@ -1181,7 +1181,7 @@
   },
   "tourapi-2868656": {
     "name_ko": "우동일번가",
-    "name_fr": "Udongilbeonga",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Udongilbeonga",
     "fr_contentid": "",
@@ -1191,7 +1191,7 @@
   },
   "tourapi-2831365": {
     "name_ko": "은미정&은미찬",
-    "name_fr": "Eunmijeong&Eunmichan",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Eunmijeong&Eunmichan",
     "fr_contentid": "",
@@ -1201,7 +1201,7 @@
   },
   "tourapi-2873459": {
     "name_ko": "이리부농",
-    "name_fr": "Iribunong",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Iribunong",
     "fr_contentid": "",
@@ -1211,7 +1211,7 @@
   },
   "tourapi-2866447": {
     "name_ko": "이서방왕족발보쌈 수원본점",
-    "name_fr": "Iseobangwangjokbalbossam Suwonbonjeom",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Iseobangwangjokbalbossam Suwonbonjeom",
     "fr_contentid": "",
@@ -1221,7 +1221,7 @@
   },
   "tourapi-2753968": {
     "name_ko": "장터설렁탕",
-    "name_fr": "Jangteoseolleongtang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Jangteoseolleongtang",
     "fr_contentid": "",
@@ -1231,7 +1231,7 @@
   },
   "tourapi-2868543": {
     "name_ko": "짜마차이나호매실본점",
-    "name_fr": "Jjamachainahomaesilbonjeom",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Jjamachainahomaesilbonjeom",
     "fr_contentid": "",
@@ -1241,7 +1241,7 @@
   },
   "tourapi-2746015": {
     "name_ko": "초가집",
-    "name_fr": "Chogajip",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Chogajip",
     "fr_contentid": "",
@@ -1251,7 +1251,7 @@
   },
   "tourapi-2588610": {
     "name_ko": "초암골",
-    "name_fr": "Choamgol",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Choamgol",
     "fr_contentid": "",
@@ -1261,7 +1261,7 @@
   },
   "tourapi-2831393": {
     "name_ko": "최씨화로",
-    "name_fr": "Choessihwaro",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Choessihwaro",
     "fr_contentid": "",
@@ -1271,7 +1271,7 @@
   },
   "tourapi-2831418": {
     "name_ko": "칠보회관",
-    "name_fr": "Chilbohoegwan",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Chilbohoegwan",
     "fr_contentid": "",
@@ -1281,7 +1281,7 @@
   },
   "tourapi-2873710": {
     "name_ko": "카페 7",
-    "name_fr": "Kape 7",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Kape 7",
     "fr_contentid": "",
@@ -1291,7 +1291,7 @@
   },
   "tourapi-2829911": {
     "name_ko": "카페 하이라이트",
-    "name_fr": "Kape Hairaiteu",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Kape Hairaiteu",
     "fr_contentid": "",
@@ -1301,7 +1301,7 @@
   },
   "tourapi-3456360": {
     "name_ko": "카페아고",
-    "name_fr": "Kapeago",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Kapeago",
     "fr_contentid": "",
@@ -1311,7 +1311,7 @@
   },
   "tourapi-2828475": {
     "name_ko": "포커스온나우",
-    "name_fr": "Pokeoseuonnau",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Pokeoseuonnau",
     "fr_contentid": "",
@@ -1321,7 +1321,7 @@
   },
   "tourapi-3454743": {
     "name_ko": "하남미소명품한우",
-    "name_fr": "Hanammisomyeongpumhanu",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Hanammisomyeongpumhanu",
     "fr_contentid": "",
@@ -1331,7 +1331,7 @@
   },
   "tourapi-2831021": {
     "name_ko": "한양설렁탕",
-    "name_fr": "Hanyangseolleongtang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Hanyangseolleongtang",
     "fr_contentid": "",
@@ -1341,7 +1341,7 @@
   },
   "tourapi-2781824": {
     "name_ko": "한우이야기",
-    "name_fr": "Hanuiyagi",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Hanuiyagi",
     "fr_contentid": "",
@@ -1351,7 +1351,7 @@
   },
   "tourapi-2906356": {
     "name_ko": "한장어",
-    "name_fr": "Hanjangeo",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Hanjangeo",
     "fr_contentid": "",
@@ -1361,7 +1361,7 @@
   },
   "tourapi-3356157": {
     "name_ko": "호랑",
-    "name_fr": "Horang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Horang",
     "fr_contentid": "",
@@ -1371,7 +1371,7 @@
   },
   "tourapi-3494623": {
     "name_ko": "XR버스 1795행",
-    "name_fr": "XRbeoseu 1795haeng",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "XRbeoseu 1795haeng",
     "fr_contentid": "",
@@ -1381,7 +1381,7 @@
   },
   "tourapi-129191": {
     "name_ko": "나혜석거리",
-    "name_fr": "Nahyeseokgeori",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Nahyeseokgeori",
     "fr_contentid": "",
@@ -1391,7 +1391,7 @@
   },
   "tourapi-2613657": {
     "name_ko": "동북공심돈",
-    "name_fr": "Dongbukgongsimdon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Dongbukgongsimdon",
     "fr_contentid": "",
@@ -1411,7 +1411,7 @@
   },
   "tourapi-316296": {
     "name_ko": "봉녕사",
-    "name_fr": "Suwon Bongnyeongsa Temple",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Bongnyeongsa",
     "fr_contentid": "",
@@ -1421,7 +1421,7 @@
   },
   "tourapi-2613659": {
     "name_ko": "봉돈",
-    "name_fr": "Bongdon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Bongdon",
     "fr_contentid": "",
@@ -1431,7 +1431,7 @@
   },
   "tourapi-2781854": {
     "name_ko": "서호공원",
-    "name_fr": "Seoho Park",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Seohogongwon",
     "fr_contentid": "",
@@ -1441,7 +1441,7 @@
   },
   "tourapi-2739474": {
     "name_ko": "서호꽃뫼공원",
-    "name_fr": "Seoho Kkotmoe Park",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Seohokkonmoegongwon",
     "fr_contentid": "",
@@ -1451,7 +1451,7 @@
   },
   "tourapi-2667588": {
     "name_ko": "수원 공방거리",
-    "name_fr": "Suwon Workshop Street",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwon Gongbanggeori",
     "fr_contentid": "",
@@ -1461,7 +1461,7 @@
   },
   "tourapi-3033796": {
     "name_ko": "수원 구 부국원",
-    "name_fr": "Suwon Gu Bugugwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwon Gu Bugugwon",
     "fr_contentid": "",
@@ -1471,7 +1471,7 @@
   },
   "tourapi-2946407": {
     "name_ko": "수원 지동벽화마을",
-    "name_fr": "Suwon Jidongbyeokhwamaeul",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwon Jidongbyeokhwamaeul",
     "fr_contentid": "",
@@ -1481,7 +1481,7 @@
   },
   "tourapi-3081123": {
     "name_ko": "수원 현충탑",
-    "name_fr": "Suwon Hyeonchungtap",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwon Hyeonchungtap",
     "fr_contentid": "",
@@ -1491,7 +1491,7 @@
   },
   "tourapi-736662": {
     "name_ko": "수원 화령전",
-    "name_fr": "Suwon Hwaryeongjeon Shrine",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwon Hwaryeongjeon",
     "fr_contentid": "",
@@ -1501,7 +1501,7 @@
   },
   "tourapi-486986": {
     "name_ko": "수원사",
-    "name_fr": "Suwonsa",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwonsa",
     "fr_contentid": "",
@@ -1531,7 +1531,7 @@
   },
   "tourapi-264400": {
     "name_ko": "수원향교",
-    "name_fr": "Suwonhyanggyo Confucian School",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwonhyanggyo",
     "fr_contentid": "",
@@ -1541,7 +1541,7 @@
   },
   "tourapi-2480899": {
     "name_ko": "수원화성 관광특구",
-    "name_fr": "Suwon Hwaseong Special Tourist Zone",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwonhwaseong Gwangwangteukgu",
     "fr_contentid": "",
@@ -1551,7 +1551,7 @@
   },
   "tourapi-4067984": {
     "name_ko": "수원화성 성곽길",
-    "name_fr": "Suwon Hwaseong Fortress Wall Trail",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwonhwaseong Seonggwakgil",
     "fr_contentid": "",
@@ -1561,7 +1561,7 @@
   },
   "tourapi-2745735": {
     "name_ko": "숙지공원",
-    "name_fr": "Sukjigongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Sukjigongwon",
     "fr_contentid": "",
@@ -1571,7 +1571,7 @@
   },
   "tourapi-1064469": {
     "name_ko": "연무대(동장대)",
-    "name_fr": "Yeonmudae (Dongjangdae)",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Yeonmudae (Dongjangdae)",
     "fr_contentid": "",
@@ -1581,7 +1581,7 @@
   },
   "tourapi-3489886": {
     "name_ko": "왕의 골목여행",
-    "name_fr": "Wangui Golmogyeohaeng",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Wangui Golmogyeohaeng",
     "fr_contentid": "",
@@ -1591,7 +1591,7 @@
   },
   "tourapi-126618": {
     "name_ko": "인계예술공원",
-    "name_fr": "Ingyeyesulgongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Ingyeyesulgongwon",
     "fr_contentid": "",
@@ -1601,7 +1601,7 @@
   },
   "tourapi-264390": {
     "name_ko": "장안문",
-    "name_fr": "Janganmun Gate",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Janganmun",
     "fr_contentid": "",
@@ -1611,7 +1611,7 @@
   },
   "tourapi-264392": {
     "name_ko": "창룡문",
-    "name_fr": "Changnyongmun Gate",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Changnyongmun",
     "fr_contentid": "",
@@ -1621,7 +1621,7 @@
   },
   "tourapi-125512": {
     "name_ko": "팔달공원",
-    "name_fr": "Paldalgongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Paldalgongwon",
     "fr_contentid": "",
@@ -1631,7 +1631,7 @@
   },
   "tourapi-264386": {
     "name_ko": "팔달문",
-    "name_fr": "Paldalmun Gate",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Paldalmun",
     "fr_contentid": "",
@@ -1641,7 +1641,7 @@
   },
   "tourapi-482258": {
     "name_ko": "팔달사",
-    "name_fr": "Paldalsa Temple",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Paldalsa",
     "fr_contentid": "",
@@ -1651,7 +1651,7 @@
   },
   "tourapi-2714556": {
     "name_ko": "팔달산",
-    "name_fr": "Paldalsan",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Paldalsan",
     "fr_contentid": "",
@@ -1681,7 +1681,7 @@
   },
   "tourapi-2741604": {
     "name_ko": "화서공원",
-    "name_fr": "Hwaseogongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Hwaseogongwon",
     "fr_contentid": "",
@@ -1691,7 +1691,7 @@
   },
   "tourapi-264388": {
     "name_ko": "화서문(華西門)",
-    "name_fr": "Hwaseomun Gate",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Hwaseomun(華西門)",
     "fr_contentid": "",
@@ -1701,7 +1701,7 @@
   },
   "tourapi-264402": {
     "name_ko": "화성어차",
-    "name_fr": "Hwaseong Fortress Tourist Trolley",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Hwaseongeocha",
     "fr_contentid": "",
@@ -1711,7 +1711,7 @@
   },
   "tourapi-129437": {
     "name_ko": "화성행궁",
-    "name_fr": "Hwaseong Haenggung Palace",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Hwaseonghaenggung",
     "fr_contentid": "",
@@ -1731,7 +1731,7 @@
   },
   "tourapi-128985": {
     "name_ko": "효원공원",
-    "name_fr": "Hyowongongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Hyowongongwon",
     "fr_contentid": "",
@@ -1741,7 +1741,7 @@
   },
   "tourapi-750947": {
     "name_ko": "효원공원 월화원",
-    "name_fr": "Wolhwawon Garden (Hyowon Park)",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Hyowongongwon Wolhwawon",
     "fr_contentid": "",
@@ -1751,7 +1751,7 @@
   },
   "tourapi-264408": {
     "name_ko": "효원의 종·서장대",
-    "name_fr": "Bell of Hyowon & Seojangdae Command Post",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Hyowonui Jong·Seojangdae",
     "fr_contentid": "",
@@ -1761,7 +1761,7 @@
   },
   "tourapi-3084989": {
     "name_ko": "경기문화재단 아트홀(구 다산홀)",
-    "name_fr": "Gyeonggimunhwajaedan Ateuhol (Gu Dasanhol)",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gyeonggimunhwajaedan Ateuhol (Gu Dasanhol)",
     "fr_contentid": "",
@@ -1771,7 +1771,7 @@
   },
   "tourapi-130489": {
     "name_ko": "경기아트센터",
-    "name_fr": "Gyeonggiateusenteo",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gyeonggiateusenteo",
     "fr_contentid": "",
@@ -1781,7 +1781,7 @@
   },
   "tourapi-2630998": {
     "name_ko": "미리내마술극단 은하수홀",
-    "name_fr": "Mirinaemasulgeukdan Eunhasuhol",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Mirinaemasulgeukdan Eunhasuhol",
     "fr_contentid": "",
@@ -1791,7 +1791,7 @@
   },
   "tourapi-3351028": {
     "name_ko": "수원 월드컵경기장 축구박물관",
-    "name_fr": "Suwon Woldeukeopgyeonggijang Chukgubangmulgwan",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwon Woldeukeopgyeonggijang Chukgubangmulgwan",
     "fr_contentid": "",
@@ -1801,7 +1801,7 @@
   },
   "tourapi-130829": {
     "name_ko": "수원선경도서관",
-    "name_fr": "Suwonseongyeongdoseogwan",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwonseongyeongdoseogwan",
     "fr_contentid": "",
@@ -1821,7 +1821,7 @@
   },
   "tourapi-130828": {
     "name_ko": "수원시립중앙도서관",
-    "name_fr": "Suwonsiripjungangdoseogwan",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwonsiripjungangdoseogwan",
     "fr_contentid": "",
@@ -1831,7 +1831,7 @@
   },
   "tourapi-4039864": {
     "name_ko": "수원시미디어센터",
-    "name_fr": "Suwonsimidieosenteo",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwonsimidieosenteo",
     "fr_contentid": "",
@@ -1841,7 +1841,7 @@
   },
   "tourapi-130095": {
     "name_ko": "수원시민회관",
-    "name_fr": "Suwonsiminhoegwan",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwonsiminhoegwan",
     "fr_contentid": "",
@@ -1851,7 +1851,7 @@
   },
   "tourapi-130094": {
     "name_ko": "수원야외음악당",
-    "name_fr": "Suwon Outdoor Music Hall",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwonyaoeeumakdang",
     "fr_contentid": "",
@@ -1871,7 +1871,7 @@
   },
   "tourapi-3304086": {
     "name_ko": "정조테마공연장",
-    "name_fr": "Jeongjo Theme Performance Hall",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Jeongjotemagongyeonjang",
     "fr_contentid": "",
@@ -1881,7 +1881,7 @@
   },
   "tourapi-2553414": {
     "name_ko": "해움미술관",
-    "name_fr": "Haeummisulgwan",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Haeummisulgwan",
     "fr_contentid": "",
@@ -1891,7 +1891,7 @@
   },
   "tourapi-1835388": {
     "name_ko": "중복들길(서호공원입구 ~ 배양교)",
-    "name_fr": "Jungbokdeulgil (Seohogongwonipgu – Baeyanggyo)",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Jungbokdeulgil (Seohogongwonipgu ~ Baeyanggyo)",
     "fr_contentid": "",
@@ -1901,7 +1901,7 @@
   },
   "tourapi-131719": {
     "name_ko": "수원월드컵경기장",
-    "name_fr": "Suwon World Cup Stadium",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwonwoldeukeopgyeonggijang",
     "fr_contentid": "",
@@ -1911,7 +1911,7 @@
   },
   "tourapi-2714220": {
     "name_ko": "플라잉 수원",
-    "name_fr": "Flying Suwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Peullaing Suwon",
     "fr_contentid": "",
@@ -1921,7 +1921,7 @@
   },
   "tourapi-2916328": {
     "name_ko": "AK플라자 수원",
-    "name_fr": "AK Plaza - Suwon Succursale",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "AKpeullaja Suwon",
     "fr_contentid": "",
@@ -1941,7 +1941,7 @@
   },
   "tourapi-2753395": {
     "name_ko": "매산시장",
-    "name_fr": "Maesansijang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Maesansijang",
     "fr_contentid": "",
@@ -1951,7 +1951,7 @@
   },
   "tourapi-1177952": {
     "name_ko": "못골종합시장 (못골시장)",
-    "name_fr": "Motgol Market",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Motgoljonghapsijang (Motgolsijang)",
     "fr_contentid": "",
@@ -1961,7 +1961,7 @@
   },
   "tourapi-2753669": {
     "name_ko": "미나리광시장",
-    "name_fr": "Minarigwangsijang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Minarigwangsijang",
     "fr_contentid": "",
@@ -1971,7 +1971,7 @@
   },
   "tourapi-2589025": {
     "name_ko": "수원 남문시장",
-    "name_fr": "Suwon Nammun Market",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwon Nammunsijang",
     "fr_contentid": "",
@@ -1981,7 +1981,7 @@
   },
   "tourapi-132352": {
     "name_ko": "수원 영동시장",
-    "name_fr": "Suwon Yeongdong Market",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwon Yeongdongsijang",
     "fr_contentid": "",
@@ -1991,7 +1991,7 @@
   },
   "tourapi-2753666": {
     "name_ko": "수원역전시장",
-    "name_fr": "Suwonyeokjeonsijang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwonyeokjeonsijang",
     "fr_contentid": "",
@@ -2001,7 +2001,7 @@
   },
   "tourapi-3083201": {
     "name_ko": "스모어 팩토리",
-    "name_fr": "Seumoeo Paektori",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Seumoeo Paektori",
     "fr_contentid": "",
@@ -2011,7 +2011,7 @@
   },
   "tourapi-2752971": {
     "name_ko": "지동시장",
-    "name_fr": "Jidong Market",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Jidongsijang",
     "fr_contentid": "",
@@ -2021,7 +2021,7 @@
   },
   "tourapi-2752650": {
     "name_ko": "팔달문시장",
-    "name_fr": "Paldalmun Market",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Paldalmunsijang",
     "fr_contentid": "",
@@ -2031,7 +2031,7 @@
   },
   "tourapi-3351843": {
     "name_ko": "화서시장",
-    "name_fr": "Hwaseosijang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Hwaseosijang",
     "fr_contentid": "",
@@ -2041,7 +2041,7 @@
   },
   "tourapi-3105334": {
     "name_ko": "133파티룸 한옥스테이점",
-    "name_fr": "133patirum Hanokseuteijeom",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "133patirum Hanokseuteijeom",
     "fr_contentid": "",
@@ -2051,7 +2051,7 @@
   },
   "tourapi-2846932": {
     "name_ko": "Dune45호텔",
-    "name_fr": "Dune45hotel",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Dune45hotel",
     "fr_contentid": "",
@@ -2061,7 +2061,7 @@
   },
   "tourapi-2849741": {
     "name_ko": "S STAY HOTEL",
-    "name_fr": "S STAY HOTEL",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "S STAY HOTEL",
     "fr_contentid": "",
@@ -2071,7 +2071,7 @@
   },
   "tourapi-2849981": {
     "name_ko": "넘버25 수원화성행궁점",
-    "name_fr": "Neombeo25 Suwonhwaseonghaenggungjeom",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Neombeo25 Suwonhwaseonghaenggungjeom",
     "fr_contentid": "",
@@ -2081,7 +2081,7 @@
   },
   "tourapi-3511808": {
     "name_ko": "노보텔 앰배서더 수원",
-    "name_fr": "Nobotel Aembaeseodeo Suwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Nobotel Aembaeseodeo Suwon",
     "fr_contentid": "",
@@ -2101,7 +2101,7 @@
   },
   "tourapi-2918709": {
     "name_ko": "도노 1796 호텔",
-    "name_fr": "Dono 1796 Hotel",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Dono 1796 Hotel",
     "fr_contentid": "",
@@ -2111,7 +2111,7 @@
   },
   "tourapi-971242": {
     "name_ko": "라마다프라자 수원호텔",
-    "name_fr": "Ramadapeuraja Suwonhotel",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Ramadapeuraja Suwonhotel",
     "fr_contentid": "",
@@ -2121,7 +2121,7 @@
   },
   "tourapi-2445211": {
     "name_ko": "르본수원실크로드호텔",
-    "name_fr": "Reubonsuwonsilkeurodeuhotel",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Reubonsuwonsilkeurodeuhotel",
     "fr_contentid": "",
@@ -2131,7 +2131,7 @@
   },
   "tourapi-143140": {
     "name_ko": "수원 코리아 호텔",
-    "name_fr": "Suwon Koria Hotel",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwon Koria Hotel",
     "fr_contentid": "",
@@ -2141,7 +2141,7 @@
   },
   "tourapi-3438561": {
     "name_ko": "스테이용궁",
-    "name_fr": "Seuteiyonggung",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Seuteiyonggung",
     "fr_contentid": "",
@@ -2151,7 +2151,7 @@
   },
   "tourapi-2849935": {
     "name_ko": "아이비 스테이",
-    "name_fr": "Aibi Seutei",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Aibi Seutei",
     "fr_contentid": "",
@@ -2161,7 +2161,7 @@
   },
   "tourapi-3102131": {
     "name_ko": "여여재",
-    "name_fr": "Yeoyeojae",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Yeoyeojae",
     "fr_contentid": "",
@@ -2171,7 +2171,7 @@
   },
   "tourapi-2848421": {
     "name_ko": "오르세호텔",
-    "name_fr": "Oreusehotel",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Oreusehotel",
     "fr_contentid": "",
@@ -2181,7 +2181,7 @@
   },
   "tourapi-986600": {
     "name_ko": "이비스 앰배서더 수원",
-    "name_fr": "Ibiseu Aembaeseodeo Suwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Ibiseu Aembaeseodeo Suwon",
     "fr_contentid": "",
@@ -2191,7 +2191,7 @@
   },
   "tourapi-2927029": {
     "name_ko": "해든호텔 하이엔드",
-    "name_fr": "Haedeunhotel Haiendeu",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Haedeunhotel Haiendeu",
     "fr_contentid": "",
@@ -2201,7 +2201,7 @@
   },
   "tourapi-2849962": {
     "name_ko": "해시호텔",
-    "name_fr": "Haesihotel",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Haesihotel",
     "fr_contentid": "",
@@ -2211,7 +2211,7 @@
   },
   "tourapi-2918752": {
     "name_ko": "호텔 166",
-    "name_fr": "Hotel 166",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Hotel 166",
     "fr_contentid": "",
@@ -2221,7 +2221,7 @@
   },
   "tourapi-2848435": {
     "name_ko": "호텔 아르떼",
-    "name_fr": "Hotel Areutte",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Hotel Areutte",
     "fr_contentid": "",
@@ -2231,7 +2231,7 @@
   },
   "tourapi-2848429": {
     "name_ko": "호텔더스타일",
-    "name_fr": "Hoteldeoseutail",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Hoteldeoseutail",
     "fr_contentid": "",
@@ -2241,7 +2241,7 @@
   },
   "tourapi-2607118": {
     "name_ko": "(신)대원옥",
-    "name_fr": "(Sin)Daewonok",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "(Sin)Daewonok",
     "fr_contentid": "",
@@ -2251,7 +2251,7 @@
   },
   "tourapi-2747099": {
     "name_ko": "100년한우",
-    "name_fr": "100nyeonhanu",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "100nyeonhanu",
     "fr_contentid": "",
@@ -2261,7 +2261,7 @@
   },
   "tourapi-2892852": {
     "name_ko": "91커피",
-    "name_fr": "91keopi",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "91keopi",
     "fr_contentid": "",
@@ -2271,7 +2271,7 @@
   },
   "tourapi-2892876": {
     "name_ko": "955카페",
-    "name_fr": "955kape",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "955kape",
     "fr_contentid": "",
@@ -2281,7 +2281,7 @@
   },
   "tourapi-602895": {
     "name_ko": "가보정갈비",
-    "name_fr": "Gabojeonggalbi",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gabojeonggalbi",
     "fr_contentid": "",
@@ -2291,7 +2291,7 @@
   },
   "tourapi-2892936": {
     "name_ko": "경안당",
-    "name_fr": "Gyeongandang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gyeongandang",
     "fr_contentid": "",
@@ -2301,7 +2301,7 @@
   },
   "tourapi-2747096": {
     "name_ko": "고기랑",
-    "name_fr": "Gogirang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gogirang",
     "fr_contentid": "",
@@ -2311,7 +2311,7 @@
   },
   "tourapi-2747116": {
     "name_ko": "고등반점",
-    "name_fr": "Godeungbanjeom",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Godeungbanjeom",
     "fr_contentid": "",
@@ -2321,7 +2321,7 @@
   },
   "tourapi-3355253": {
     "name_ko": "골디스",
-    "name_fr": "Goldiseu",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Goldiseu",
     "fr_contentid": "",
@@ -2331,7 +2331,7 @@
   },
   "tourapi-3356102": {
     "name_ko": "꿍냐우 행궁점",
-    "name_fr": "Kkungnyau Haenggungjeom",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Kkungnyau Haenggungjeom",
     "fr_contentid": "",
@@ -2341,7 +2341,7 @@
   },
   "tourapi-2765607": {
     "name_ko": "더유로피언",
-    "name_fr": "Deoyuropieon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Deoyuropieon",
     "fr_contentid": "",
@@ -2351,7 +2351,7 @@
   },
   "tourapi-133048": {
     "name_ko": "두꺼비집",
-    "name_fr": "Dukkeobijip",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Dukkeobijip",
     "fr_contentid": "",
@@ -2361,7 +2361,7 @@
   },
   "tourapi-2893055": {
     "name_ko": "라이크 노 아더",
-    "name_fr": "Raikeu No Adeo",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Raikeu No Adeo",
     "fr_contentid": "",
@@ -2371,7 +2371,7 @@
   },
   "tourapi-2893073": {
     "name_ko": "레드브릭커피하우스",
-    "name_fr": "Redeubeurikkeopihauseu",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Redeubeurikkeopihauseu",
     "fr_contentid": "",
@@ -2381,7 +2381,7 @@
   },
   "tourapi-2846626": {
     "name_ko": "로마경양식",
-    "name_fr": "Romagyeongyangsik",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Romagyeongyangsik",
     "fr_contentid": "",
@@ -2391,7 +2391,7 @@
   },
   "tourapi-2893147": {
     "name_ko": "르빵드파리앤브런치하우스 행궁점",
-    "name_fr": "Reuppangdeupariaenbeureonchihauseu Haenggungjeom",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Reuppangdeupariaenbeureonchihauseu Haenggungjeom",
     "fr_contentid": "",
@@ -2401,7 +2401,7 @@
   },
   "tourapi-2745738": {
     "name_ko": "마초",
-    "name_fr": "Macho",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Macho",
     "fr_contentid": "",
@@ -2411,7 +2411,7 @@
   },
   "tourapi-2745740": {
     "name_ko": "마포본가",
-    "name_fr": "Mapobonga",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Mapobonga",
     "fr_contentid": "",
@@ -2421,7 +2421,7 @@
   },
   "tourapi-2875136": {
     "name_ko": "만수전복",
-    "name_fr": "Mansujeonbok",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Mansujeonbok",
     "fr_contentid": "",
@@ -2431,7 +2431,7 @@
   },
   "tourapi-1847681": {
     "name_ko": "매일김치담그는집",
-    "name_fr": "Maeilgimchidamgeuneunjip",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Maeilgimchidamgeuneunjip",
     "fr_contentid": "",
@@ -2441,7 +2441,7 @@
   },
   "tourapi-2893186": {
     "name_ko": "매트그린",
-    "name_fr": "Maeteugeurin",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Maeteugeurin",
     "fr_contentid": "",
@@ -2451,7 +2451,7 @@
   },
   "tourapi-2893218": {
     "name_ko": "메모리아마넷",
-    "name_fr": "Memoriamanet",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Memoriamanet",
     "fr_contentid": "",
@@ -2461,7 +2461,7 @@
   },
   "tourapi-3358922": {
     "name_ko": "모나미 카레",
-    "name_fr": "Monami Kare",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Monami Kare",
     "fr_contentid": "",
@@ -2471,7 +2471,7 @@
   },
   "tourapi-2867036": {
     "name_ko": "모이커피클래식",
-    "name_fr": "Moikeopikeullaesik",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Moikeopikeullaesik",
     "fr_contentid": "",
@@ -2481,7 +2481,7 @@
   },
   "tourapi-3413591": {
     "name_ko": "몽테드",
-    "name_fr": "Mong Ted",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Mongtedeu",
     "fr_contentid": "",
@@ -2491,7 +2491,7 @@
   },
   "tourapi-808072": {
     "name_ko": "무등산",
-    "name_fr": "Mudeungsan",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Mudeungsan",
     "fr_contentid": "",
@@ -2501,7 +2501,7 @@
   },
   "tourapi-2867393": {
     "name_ko": "미나미참치",
-    "name_fr": "Minamichamchi",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Minamichamchi",
     "fr_contentid": "",
@@ -2511,7 +2511,7 @@
   },
   "tourapi-2850331": {
     "name_ko": "미식가의주방",
-    "name_fr": "Misikgauijubang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Misikgauijubang",
     "fr_contentid": "",
@@ -2521,7 +2521,7 @@
   },
   "tourapi-2765531": {
     "name_ko": "백청우칼국수",
-    "name_fr": "Baekcheongukalguksu",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Baekcheongukalguksu",
     "fr_contentid": "",
@@ -2531,7 +2531,7 @@
   },
   "tourapi-602854": {
     "name_ko": "본수원갈비",
-    "name_fr": "Bonsuwon Galbi",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Bonsuwongalbi",
     "fr_contentid": "",
@@ -2541,7 +2541,7 @@
   },
   "tourapi-2893243": {
     "name_ko": "본지르르",
-    "name_fr": "Bonjireureu",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Bonjireureu",
     "fr_contentid": "",
@@ -2551,7 +2551,7 @@
   },
   "tourapi-3355255": {
     "name_ko": "삼춘옥",
-    "name_fr": "Samchunok",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Samchunok",
     "fr_contentid": "",
@@ -2561,7 +2561,7 @@
   },
   "tourapi-2876341": {
     "name_ko": "센텀커피",
-    "name_fr": "Senteomkeopi",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Senteomkeopi",
     "fr_contentid": "",
@@ -2571,7 +2571,7 @@
   },
   "tourapi-2867652": {
     "name_ko": "수원만두",
-    "name_fr": "Suwonmandu",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwonmandu",
     "fr_contentid": "",
@@ -2581,7 +2581,7 @@
   },
   "tourapi-2893530": {
     "name_ko": "슬로우써니사이드",
-    "name_fr": "Seullousseonisaideu",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Seullousseonisaideu",
     "fr_contentid": "",
@@ -2591,7 +2591,7 @@
   },
   "tourapi-2867627": {
     "name_ko": "시골집우렁이쌈밥",
-    "name_fr": "Sigoljibureongissambap",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Sigoljibureongissambap",
     "fr_contentid": "",
@@ -2601,7 +2601,7 @@
   },
   "tourapi-2867168": {
     "name_ko": "어구미 본점",
-    "name_fr": "Eogumi Bonjeom",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Eogumi Bonjeom",
     "fr_contentid": "",
@@ -2611,7 +2611,7 @@
   },
   "tourapi-2765517": {
     "name_ko": "어반벨리801",
-    "name_fr": "Eobanbelli801",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Eobanbelli801",
     "fr_contentid": "",
@@ -2621,7 +2621,7 @@
   },
   "tourapi-2893531": {
     "name_ko": "언올드첨",
-    "name_fr": "Eonoldeucheom",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Eonoldeucheom",
     "fr_contentid": "",
@@ -2631,7 +2631,7 @@
   },
   "tourapi-2867885": {
     "name_ko": "연밀",
-    "name_fr": "Yeonmil",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Yeonmil",
     "fr_contentid": "",
@@ -2641,7 +2641,7 @@
   },
   "tourapi-274367": {
     "name_ko": "연포갈비",
-    "name_fr": "Yeonpo Galbi",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Yeonpogalbi",
     "fr_contentid": "",
@@ -2651,7 +2651,7 @@
   },
   "tourapi-3355366": {
     "name_ko": "열두알우동집",
-    "name_fr": "Yeolduarudongjip",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Yeolduarudongjip",
     "fr_contentid": "",
@@ -2661,7 +2661,7 @@
   },
   "tourapi-2867891": {
     "name_ko": "영천식당",
-    "name_fr": "Yeongcheonsikdang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Yeongcheonsikdang",
     "fr_contentid": "",
@@ -2671,7 +2671,7 @@
   },
   "tourapi-2848162": {
     "name_ko": "예박사",
-    "name_fr": "Yebaksa",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Yebaksa",
     "fr_contentid": "",
@@ -2681,7 +2681,7 @@
   },
   "tourapi-2753978": {
     "name_ko": "오리대가",
-    "name_fr": "Oridaega",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Oridaega",
     "fr_contentid": "",
@@ -2691,7 +2691,7 @@
   },
   "tourapi-2867664": {
     "name_ko": "옥동이",
-    "name_fr": "Okdongi",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Okdongi",
     "fr_contentid": "",
@@ -2701,7 +2701,7 @@
   },
   "tourapi-2867501": {
     "name_ko": "운멜로 1호점",
-    "name_fr": "Unmello 1hojeom",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Unmello 1hojeom",
     "fr_contentid": "",
@@ -2711,7 +2711,7 @@
   },
   "tourapi-2753972": {
     "name_ko": "유치회관",
-    "name_fr": "Yuchihoegwan",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Yuchihoegwan",
     "fr_contentid": "",
@@ -2721,7 +2721,7 @@
   },
   "tourapi-2765414": {
     "name_ko": "이모네손칼국수",
-    "name_fr": "Imonesonkalguksu",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Imonesonkalguksu",
     "fr_contentid": "",
@@ -2731,7 +2731,7 @@
   },
   "tourapi-2868632": {
     "name_ko": "이화정",
-    "name_fr": "Ihwajeong",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Ihwajeong",
     "fr_contentid": "",
@@ -2741,7 +2741,7 @@
   },
   "tourapi-2892528": {
     "name_ko": "일상엔",
-    "name_fr": "Ilsangen",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Ilsangen",
     "fr_contentid": "",
@@ -2751,7 +2751,7 @@
   },
   "tourapi-133405": {
     "name_ko": "입주집",
-    "name_fr": "Ipjujip",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Ipjujip",
     "fr_contentid": "",
@@ -2761,7 +2761,7 @@
   },
   "tourapi-4054880": {
     "name_ko": "정지영커피로스터즈 행궁본점",
-    "name_fr": "Jeongjiyeongkeopiroseuteojeu Haenggungbonjeom",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Jeongjiyeongkeopiroseuteojeu Haenggungbonjeom",
     "fr_contentid": "",
@@ -2771,7 +2771,7 @@
   },
   "tourapi-2868608": {
     "name_ko": "조대감부대찌개",
-    "name_fr": "Jodaegambudaejjigae",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Jodaegambudaejjigae",
     "fr_contentid": "",
@@ -2781,7 +2781,7 @@
   },
   "tourapi-3355152": {
     "name_ko": "조마담칼국수",
-    "name_fr": "Jomadamkalguksu",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Jomadamkalguksu",
     "fr_contentid": "",
@@ -2791,7 +2791,7 @@
   },
   "tourapi-2873447": {
     "name_ko": "진미통닭",
-    "name_fr": "Jinmitongdak",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Jinmitongdak",
     "fr_contentid": "",
@@ -2801,7 +2801,7 @@
   },
   "tourapi-2904242": {
     "name_ko": "채상궁 수원본점",
-    "name_fr": "Chaesanggung Suwonbonjeom",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Chaesanggung Suwonbonjeom",
     "fr_contentid": "",
@@ -2811,7 +2811,7 @@
   },
   "tourapi-2906138": {
     "name_ko": "카페 도안",
-    "name_fr": "Kape Doan",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Kape Doan",
     "fr_contentid": "",
@@ -2821,7 +2821,7 @@
   },
   "tourapi-2851839": {
     "name_ko": "카페 디아즈",
-    "name_fr": "Kape Diajeu",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Kape Diajeu",
     "fr_contentid": "",
@@ -2831,7 +2831,7 @@
   },
   "tourapi-2765417": {
     "name_ko": "카페메이븐",
-    "name_fr": "Kapemeibeun",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Kapemeibeun",
     "fr_contentid": "",
@@ -2841,7 +2841,7 @@
   },
   "tourapi-2875180": {
     "name_ko": "콜링우드",
-    "name_fr": "Kollingudeu",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Kollingudeu",
     "fr_contentid": "",
@@ -2851,7 +2851,7 @@
   },
   "tourapi-2905573": {
     "name_ko": "태리주택",
-    "name_fr": "Taerijutaek",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Taerijutaek",
     "fr_contentid": "",
@@ -2861,7 +2861,7 @@
   },
   "tourapi-3445870": {
     "name_ko": "트레저가든",
-    "name_fr": "Teurejeogadeun",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Teurejeogadeun",
     "fr_contentid": "",
@@ -2871,7 +2871,7 @@
   },
   "tourapi-3355128": {
     "name_ko": "팔달제과",
-    "name_fr": "Paldaljegwa",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Paldaljegwa",
     "fr_contentid": "",
@@ -2881,7 +2881,7 @@
   },
   "tourapi-2892874": {
     "name_ko": "팜투하녹",
-    "name_fr": "Pamtuhanok",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Pamtuhanok",
     "fr_contentid": "",
@@ -2891,7 +2891,7 @@
   },
   "tourapi-134966": {
     "name_ko": "한국관",
-    "name_fr": "Hangukgwan",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Hangukgwan",
     "fr_contentid": "",
@@ -2901,7 +2901,7 @@
   },
   "tourapi-3443160": {
     "name_ko": "홍라드 인계나혜석점",
-    "name_fr": "Hongnadeu Ingyenahyeseokjeom",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Hongnadeu Ingyenahyeseokjeom",
     "fr_contentid": "",
@@ -2911,7 +2911,7 @@
   },
   "tourapi-2469037": {
     "name_ko": "히말라야정원",
-    "name_fr": "Himallayajeongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Himallayajeongwon",
     "fr_contentid": "",
@@ -2931,7 +2931,7 @@
   },
   "tourapi-2739469": {
     "name_ko": "광교중앙공원",
-    "name_fr": "Gwanggyojunganggongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gwanggyojunganggongwon",
     "fr_contentid": "",
@@ -2941,7 +2941,7 @@
   },
   "tourapi-2662855": {
     "name_ko": "광교호수공원",
-    "name_fr": "Gwanggyo Lake Park",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gwanggyohosugongwon",
     "fr_contentid": "",
@@ -2951,7 +2951,7 @@
   },
   "tourapi-2930334": {
     "name_ko": "광교호수공원 반려견 놀이터",
-    "name_fr": "Gwanggyohosugongwon Ballyeogyeon Noriteo",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gwanggyohosugongwon Ballyeogyeon Noriteo",
     "fr_contentid": "",
@@ -2961,7 +2961,7 @@
   },
   "tourapi-2872885": {
     "name_ko": "글빛누리공원",
-    "name_fr": "Geulbinnurigongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Geulbinnurigongwon",
     "fr_contentid": "",
@@ -2971,7 +2971,7 @@
   },
   "tourapi-2739476": {
     "name_ko": "매탄공원",
-    "name_fr": "Maetangongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Maetangongwon",
     "fr_contentid": "",
@@ -2981,7 +2981,7 @@
   },
   "tourapi-2781860": {
     "name_ko": "물봉선어린이공원",
-    "name_fr": "Mulbongseoneorinigongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Mulbongseoneorinigongwon",
     "fr_contentid": "",
@@ -2991,7 +2991,7 @@
   },
   "tourapi-2781864": {
     "name_ko": "반달공원",
-    "name_fr": "Bandalgongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Bandalgongwon",
     "fr_contentid": "",
@@ -3001,7 +3001,7 @@
   },
   "tourapi-2745741": {
     "name_ko": "반야사",
-    "name_fr": "Banyasa",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Banyasa",
     "fr_contentid": "",
@@ -3011,7 +3011,7 @@
   },
   "tourapi-2781847": {
     "name_ko": "방죽공원",
-    "name_fr": "Bangjukgongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Bangjukgongwon",
     "fr_contentid": "",
@@ -3021,7 +3021,7 @@
   },
   "tourapi-2462893": {
     "name_ko": "삼성이노베이션뮤지엄",
-    "name_fr": "Samsung Innovation Museum",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Samseonginobeisyeonmyujieom",
     "fr_contentid": "",
@@ -3031,7 +3031,7 @@
   },
   "tourapi-2745732": {
     "name_ko": "성죽공원",
-    "name_fr": "Seongjukgongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Seongjukgongwon",
     "fr_contentid": "",
@@ -3041,7 +3041,7 @@
   },
   "tourapi-2742316": {
     "name_ko": "수원어린이교통공원",
-    "name_fr": "Suwoneorinigyotonggongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwoneorinigyotonggongwon",
     "fr_contentid": "",
@@ -3051,7 +3051,7 @@
   },
   "tourapi-3057779": {
     "name_ko": "신동수변공원",
-    "name_fr": "Sindongsubyeongongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Sindongsubyeongongwon",
     "fr_contentid": "",
@@ -3061,7 +3061,7 @@
   },
   "tourapi-736630": {
     "name_ko": "심온선생묘",
-    "name_fr": "Simonseonsaengmyo",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Simonseonsaengmyo",
     "fr_contentid": "",
@@ -3071,7 +3071,7 @@
   },
   "tourapi-2998800": {
     "name_ko": "영흥수목원",
-    "name_fr": "Yeongheung Arboretum",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Yeongheungsumogwon",
     "fr_contentid": "",
@@ -3081,7 +3081,7 @@
   },
   "tourapi-3426388": {
     "name_ko": "영흥숲공원",
-    "name_fr": "Yeongheungsupgongwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Yeongheungsupgongwon",
     "fr_contentid": "",
@@ -3091,7 +3091,7 @@
   },
   "tourapi-130919": {
     "name_ko": "경기대학교소성박물관",
-    "name_fr": "Gyeonggidaehakgyososeongbangmulgwan",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gyeonggidaehakgyososeongbangmulgwan",
     "fr_contentid": "",
@@ -3101,7 +3101,7 @@
   },
   "tourapi-3564769": {
     "name_ko": "경기도서관",
-    "name_fr": "Gyeonggidoseogwan",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gyeonggidoseogwan",
     "fr_contentid": "",
@@ -3111,7 +3111,7 @@
   },
   "tourapi-3033137": {
     "name_ko": "광교어린이천문대",
-    "name_fr": "Gwanggyoeorinicheonmundae",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gwanggyoeorinicheonmundae",
     "fr_contentid": "",
@@ -3121,7 +3121,7 @@
   },
   "tourapi-4076762": {
     "name_ko": "광교푸른숲도서관",
-    "name_fr": "Gwanggyopureunsupdoseogwan",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gwanggyopureunsupdoseogwan",
     "fr_contentid": "",
@@ -3131,7 +3131,7 @@
   },
   "tourapi-130744": {
     "name_ko": "국립지도박물관",
-    "name_fr": "National Map Museum",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gungnipjidobangmulgwan",
     "fr_contentid": "",
@@ -3141,7 +3141,7 @@
   },
   "tourapi-130827": {
     "name_ko": "바른샘어린이도서관",
-    "name_fr": "Bareunsaemeorinidoseogwan",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Bareunsaemeorinidoseogwan",
     "fr_contentid": "",
@@ -3151,7 +3151,7 @@
   },
   "tourapi-130816": {
     "name_ko": "수원 영통도서관",
-    "name_fr": "Suwon Yeongtongdoseogwan",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwon Yeongtongdoseogwan",
     "fr_contentid": "",
@@ -3161,7 +3161,7 @@
   },
   "tourapi-2379222": {
     "name_ko": "수원광교박물관",
-    "name_fr": "Suwon Gwanggyo Museum",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwongwanggyobangmulgwan",
     "fr_contentid": "",
@@ -3181,7 +3181,7 @@
   },
   "tourapi-3029071": {
     "name_ko": "수원시립아트스페이스광교",
-    "name_fr": "Suwonsiribateuseupeiseugwanggyo",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwonsiribateuseupeiseugwanggyo",
     "fr_contentid": "",
@@ -3191,7 +3191,7 @@
   },
   "tourapi-2703375": {
     "name_ko": "수원컨벤션센터",
-    "name_fr": "Suwonkeonbensyeonsenteo",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwonkeonbensyeonsenteo",
     "fr_contentid": "",
@@ -3201,7 +3201,7 @@
   },
   "tourapi-130943": {
     "name_ko": "아주대학교도구박물관",
-    "name_fr": "Ajudaehakgyodogubangmulgwan",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Ajudaehakgyodogubangmulgwan",
     "fr_contentid": "",
@@ -3211,7 +3211,7 @@
   },
   "tourapi-2714652": {
     "name_ko": "아쿠아플라넷 광교",
-    "name_fr": "Aqua Planet Gwanggyo",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Akuapeullanet Gwanggyo",
     "fr_contentid": "",
@@ -3221,7 +3221,7 @@
   },
   "tourapi-2753042": {
     "name_ko": "광교호수공원 가족캠핑장",
-    "name_fr": "Gwanggyohosugongwon Gajokkaempingjang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gwanggyohosugongwon Gajokkaempingjang",
     "fr_contentid": "",
@@ -3231,7 +3231,7 @@
   },
   "tourapi-3057778": {
     "name_ko": "로라비트",
-    "name_fr": "Rorabiteu",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Rorabiteu",
     "fr_contentid": "",
@@ -3241,7 +3241,7 @@
   },
   "tourapi-3057775": {
     "name_ko": "바운스슈퍼파크 수원영통센터",
-    "name_fr": "Baunseusyupeopakeu Suwonyeongtongsenteo",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Baunseusyupeopakeu Suwonyeongtongsenteo",
     "fr_contentid": "",
@@ -3251,7 +3251,7 @@
   },
   "tourapi-131767": {
     "name_ko": "수원체육문화센터",
-    "name_fr": "Suwoncheyungmunhwasenteo",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Suwoncheyungmunhwasenteo",
     "fr_contentid": "",
@@ -3261,7 +3261,7 @@
   },
   "tourapi-2753656": {
     "name_ko": "구매탄시장",
-    "name_fr": "Gumaetansijang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gumaetansijang",
     "fr_contentid": "",
@@ -3271,7 +3271,7 @@
   },
   "tourapi-4054293": {
     "name_ko": "롯데몰 광교점",
-    "name_fr": "LOTTE Mall Gwanggyo",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Rotdemol Gwanggyojeom",
     "fr_contentid": "",
@@ -3281,7 +3281,7 @@
   },
   "tourapi-2926530": {
     "name_ko": "롯데아울렛 광교점",
-    "name_fr": "Rotdeaullet Gwanggyojeom",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Rotdeaullet Gwanggyojeom",
     "fr_contentid": "",
@@ -3291,7 +3291,7 @@
   },
   "tourapi-2849901": {
     "name_ko": "아모르앤심포니호텔",
-    "name_fr": "Amoreuaensimponihotel",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Amoreuaensimponihotel",
     "fr_contentid": "",
@@ -3301,7 +3301,7 @@
   },
   "tourapi-2752981": {
     "name_ko": "코트야드 바이 메리어트 수원",
-    "name_fr": "Koteuyadeu Bai Merieoteu Suwon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Koteuyadeu Bai Merieoteu Suwon",
     "fr_contentid": "",
@@ -3311,7 +3311,7 @@
   },
   "tourapi-2747216": {
     "name_ko": "335키친 광교아브뉴프랑점",
-    "name_fr": "335kichin Gwanggyoabeunyupeurangjeom",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "335kichin Gwanggyoabeunyupeurangjeom",
     "fr_contentid": "",
@@ -3321,7 +3321,7 @@
   },
   "tourapi-2844697": {
     "name_ko": "가원",
-    "name_fr": "Gawon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gawon",
     "fr_contentid": "",
@@ -3331,7 +3331,7 @@
   },
   "tourapi-2848359": {
     "name_ko": "갈풍집",
-    "name_fr": "Galpungjip",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Galpungjip",
     "fr_contentid": "",
@@ -3341,7 +3341,7 @@
   },
   "tourapi-2848347": {
     "name_ko": "고기잡이 수원본점",
-    "name_fr": "Gogijabi Suwonbonjeom",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gogijabi Suwonbonjeom",
     "fr_contentid": "",
@@ -3351,7 +3351,7 @@
   },
   "tourapi-2835351": {
     "name_ko": "광교갈비",
-    "name_fr": "Gwanggyogalbi",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gwanggyogalbi",
     "fr_contentid": "",
@@ -3361,7 +3361,7 @@
   },
   "tourapi-2855712": {
     "name_ko": "광교벌교집",
-    "name_fr": "Gwanggyobeolgyojip",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gwanggyobeolgyojip",
     "fr_contentid": "",
@@ -3371,7 +3371,7 @@
   },
   "tourapi-2848323": {
     "name_ko": "구스타브",
-    "name_fr": "Guseutabeu",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Guseutabeu",
     "fr_contentid": "",
@@ -3381,7 +3381,7 @@
   },
   "tourapi-2846949": {
     "name_ko": "군포해물탕",
-    "name_fr": "Gunpohaemultang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gunpohaemultang",
     "fr_contentid": "",
@@ -3391,7 +3391,7 @@
   },
   "tourapi-2846354": {
     "name_ko": "그로또",
-    "name_fr": "Geurotto",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Geurotto",
     "fr_contentid": "",
@@ -3401,7 +3401,7 @@
   },
   "tourapi-2754744": {
     "name_ko": "금화루",
-    "name_fr": "Geumhwaru",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Geumhwaru",
     "fr_contentid": "",
@@ -3411,7 +3411,7 @@
   },
   "tourapi-2829013": {
     "name_ko": "김성민커피",
-    "name_fr": "Gimseongminkeopi",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Gimseongminkeopi",
     "fr_contentid": "",
@@ -3421,7 +3421,7 @@
   },
   "tourapi-2892978": {
     "name_ko": "꼬따꼬뜨",
-    "name_fr": "Kkottakkotteu",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Kkottakkotteu",
     "fr_contentid": "",
@@ -3431,7 +3431,7 @@
   },
   "tourapi-2846416": {
     "name_ko": "노대감감자탕매탄본점",
-    "name_fr": "Nodaegamgamjatangmaetanbonjeom",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Nodaegamgamjatangmaetanbonjeom",
     "fr_contentid": "",
@@ -3441,7 +3441,7 @@
   },
   "tourapi-2867549": {
     "name_ko": "노란황태 본점",
-    "name_fr": "Noranhwangtae Bonjeom",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Noranhwangtae Bonjeom",
     "fr_contentid": "",
@@ -3451,7 +3451,7 @@
   },
   "tourapi-3470706": {
     "name_ko": "달구운바람 돼지갈비 영통망포점",
-    "name_fr": "Dalguunbaram Dwaejigalbi Yeongtongmangpojeom",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Dalguunbaram Dwaejigalbi Yeongtongmangpojeom",
     "fr_contentid": "",
@@ -3461,7 +3461,7 @@
   },
   "tourapi-2872836": {
     "name_ko": "대박횟집",
-    "name_fr": "Daebakhoetjip",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Daebakhoetjip",
     "fr_contentid": "",
@@ -3471,7 +3471,7 @@
   },
   "tourapi-2745734": {
     "name_ko": "도기",
-    "name_fr": "Dogi",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Dogi",
     "fr_contentid": "",
@@ -3481,7 +3481,7 @@
   },
   "tourapi-2893042": {
     "name_ko": "도미닉커피랩",
-    "name_fr": "Dominikkeopiraep",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Dominikkeopiraep",
     "fr_contentid": "",
@@ -3491,7 +3491,7 @@
   },
   "tourapi-2846434": {
     "name_ko": "동산참숯갈비",
-    "name_fr": "Dongsanchamsutgalbi",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Dongsanchamsutgalbi",
     "fr_contentid": "",
@@ -3501,7 +3501,7 @@
   },
   "tourapi-2892923": {
     "name_ko": "듀쿠플(DU COUPLE)",
-    "name_fr": "Dyukupeul(DU COUPLE)",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Dyukupeul(DU COUPLE)",
     "fr_contentid": "",
@@ -3511,7 +3511,7 @@
   },
   "tourapi-2846605": {
     "name_ko": "땡이네소곱창",
-    "name_fr": "Ttaenginesogopchang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Ttaenginesogopchang",
     "fr_contentid": "",
@@ -3521,7 +3521,7 @@
   },
   "tourapi-2893108": {
     "name_ko": "레이지하우스",
-    "name_fr": "Reijihauseu",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Reijihauseu",
     "fr_contentid": "",
@@ -3531,7 +3531,7 @@
   },
   "tourapi-2829069": {
     "name_ko": "르디투어",
-    "name_fr": "Reuditueo",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Reuditueo",
     "fr_contentid": "",
@@ -3541,7 +3541,7 @@
   },
   "tourapi-2846649": {
     "name_ko": "멘야고코로",
-    "name_fr": "Menyagokoro",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Menyagokoro",
     "fr_contentid": "",
@@ -3551,7 +3551,7 @@
   },
   "tourapi-3444598": {
     "name_ko": "미소텐동",
-    "name_fr": "Misoten-dong",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Misoten-dong",
     "fr_contentid": "",
@@ -3561,7 +3561,7 @@
   },
   "tourapi-2753981": {
     "name_ko": "버들치",
-    "name_fr": "Beodeulchi",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Beodeulchi",
     "fr_contentid": "",
@@ -3571,7 +3571,7 @@
   },
   "tourapi-2906078": {
     "name_ko": "벌교집",
-    "name_fr": "Beolgyojip",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Beolgyojip",
     "fr_contentid": "",
@@ -3581,7 +3581,7 @@
   },
   "tourapi-2868834": {
     "name_ko": "벌교추어탕",
-    "name_fr": "Beolgyochueotang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Beolgyochueotang",
     "fr_contentid": "",
@@ -3591,7 +3591,7 @@
   },
   "tourapi-2868679": {
     "name_ko": "봉화칼국수",
-    "name_fr": "Bonghwakalguksu",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Bonghwakalguksu",
     "fr_contentid": "",
@@ -3601,7 +3601,7 @@
   },
   "tourapi-2765543": {
     "name_ko": "삼포가는길",
-    "name_fr": "Sampoganeungil",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Sampoganeungil",
     "fr_contentid": "",
@@ -3611,7 +3611,7 @@
   },
   "tourapi-2875152": {
     "name_ko": "상원회관",
-    "name_fr": "Sangwonhoegwan",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Sangwonhoegwan",
     "fr_contentid": "",
@@ -3621,7 +3621,7 @@
   },
   "tourapi-2867866": {
     "name_ko": "새벽집",
-    "name_fr": "Saebyeokjip",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Saebyeokjip",
     "fr_contentid": "",
@@ -3631,7 +3631,7 @@
   },
   "tourapi-2893524": {
     "name_ko": "서린낙지",
-    "name_fr": "Seorinnakji",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Seorinnakji",
     "fr_contentid": "",
@@ -3641,7 +3641,7 @@
   },
   "tourapi-2781831": {
     "name_ko": "서울24시감자탕해장국",
-    "name_fr": "Seoul24sigamjatanghaejangguk",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Seoul24sigamjatanghaejangguk",
     "fr_contentid": "",
@@ -3651,7 +3651,7 @@
   },
   "tourapi-2867876": {
     "name_ko": "세비야식당",
-    "name_fr": "Sebiyasikdang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Sebiyasikdang",
     "fr_contentid": "",
@@ -3661,7 +3661,7 @@
   },
   "tourapi-2906110": {
     "name_ko": "수타원",
-    "name_fr": "Sutawon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Sutawon",
     "fr_contentid": "",
@@ -3671,7 +3671,7 @@
   },
   "tourapi-2867413": {
     "name_ko": "스시스이렌",
-    "name_fr": "Seusiseuiren",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Seusiseuiren",
     "fr_contentid": "",
@@ -3681,7 +3681,7 @@
   },
   "tourapi-2765462": {
     "name_ko": "스시유카이",
-    "name_fr": "Seusiyukai",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Seusiyukai",
     "fr_contentid": "",
@@ -3691,7 +3691,7 @@
   },
   "tourapi-3354836": {
     "name_ko": "시화연풍",
-    "name_fr": "Sihwayeonpung",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Sihwayeonpung",
     "fr_contentid": "",
@@ -3701,7 +3701,7 @@
   },
   "tourapi-2875164": {
     "name_ko": "신동순대국",
-    "name_fr": "Sindongsundaeguk",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Sindongsundaeguk",
     "fr_contentid": "",
@@ -3711,7 +3711,7 @@
   },
   "tourapi-2753992": {
     "name_ko": "신라갈비",
-    "name_fr": "Sillagalbi",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Sillagalbi",
     "fr_contentid": "",
@@ -3721,7 +3721,7 @@
   },
   "tourapi-2867433": {
     "name_ko": "썬프란시스코마켓",
-    "name_fr": "Sseonpeuransiseukomaket",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Sseonpeuransiseukomaket",
     "fr_contentid": "",
@@ -3731,7 +3731,7 @@
   },
   "tourapi-2829999": {
     "name_ko": "아미스타",
-    "name_fr": "Amiseuta",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Amiseuta",
     "fr_contentid": "",
@@ -3741,7 +3741,7 @@
   },
   "tourapi-2893534": {
     "name_ko": "에이프런",
-    "name_fr": "Eipeureon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Eipeureon",
     "fr_contentid": "",
@@ -3751,7 +3751,7 @@
   },
   "tourapi-3355495": {
     "name_ko": "영흥수목원 카페 버터플라이",
-    "name_fr": "Yeongheungsumogwon Kape Beoteopeullai",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Yeongheungsumogwon Kape Beoteopeullai",
     "fr_contentid": "",
@@ -3761,7 +3761,7 @@
   },
   "tourapi-2848239": {
     "name_ko": "예랑",
-    "name_fr": "Yerang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Yerang",
     "fr_contentid": "",
@@ -3771,7 +3771,7 @@
   },
   "tourapi-2754009": {
     "name_ko": "오늘의초밥",
-    "name_fr": "Oneuruichobap",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Oneuruichobap",
     "fr_contentid": "",
@@ -3781,7 +3781,7 @@
   },
   "tourapi-2848107": {
     "name_ko": "오봉베르",
-    "name_fr": "Obongbereu",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Obongbereu",
     "fr_contentid": "",
@@ -3791,7 +3791,7 @@
   },
   "tourapi-2867471": {
     "name_ko": "올리브 1999",
-    "name_fr": "Ollibeu 1999",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Ollibeu 1999",
     "fr_contentid": "",
@@ -3801,7 +3801,7 @@
   },
   "tourapi-2893540": {
     "name_ko": "와이엠엠디",
-    "name_fr": "Waiememdi",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Waiememdi",
     "fr_contentid": "",
@@ -3811,7 +3811,7 @@
   },
   "tourapi-2765438": {
     "name_ko": "윤돈",
-    "name_fr": "Yundon",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Yundon",
     "fr_contentid": "",
@@ -3821,7 +3821,7 @@
   },
   "tourapi-2753967": {
     "name_ko": "정진식당",
-    "name_fr": "Jeongjinsikdang",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Jeongjinsikdang",
     "fr_contentid": "",
@@ -3831,7 +3831,7 @@
   },
   "tourapi-2753966": {
     "name_ko": "제주할망돈가",
-    "name_fr": "Jejuhalmangdonga",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Jejuhalmangdonga",
     "fr_contentid": "",
@@ -3841,7 +3841,7 @@
   },
   "tourapi-2847005": {
     "name_ko": "좋은소식",
-    "name_fr": "Joeunsosik",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Joeunsosik",
     "fr_contentid": "",
@@ -3851,7 +3851,7 @@
   },
   "tourapi-2751138": {
     "name_ko": "천상한우",
-    "name_fr": "Cheonsanghanu",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Cheonsanghanu",
     "fr_contentid": "",
@@ -3861,7 +3861,7 @@
   },
   "tourapi-2867518": {
     "name_ko": "춘천에서 온 숯닭",
-    "name_fr": "Chuncheoneseo On Sutdak",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Chuncheoneseo On Sutdak",
     "fr_contentid": "",
@@ -3871,7 +3871,7 @@
   },
   "tourapi-2892653": {
     "name_ko": "카페 그루비",
-    "name_fr": "Kape Geurubi",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Kape Geurubi",
     "fr_contentid": "",
@@ -3881,7 +3881,7 @@
   },
   "tourapi-2892681": {
     "name_ko": "카페 리핑",
-    "name_fr": "Kape Riping",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Kape Riping",
     "fr_contentid": "",
@@ -3891,7 +3891,7 @@
   },
   "tourapi-2892706": {
     "name_ko": "커피 바이브",
-    "name_fr": "Keopi Baibeu",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Keopi Baibeu",
     "fr_contentid": "",
@@ -3901,7 +3901,7 @@
   },
   "tourapi-2806730": {
     "name_ko": "콜스커피",
-    "name_fr": "Kolseukeopi",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Kolseukeopi",
     "fr_contentid": "",
@@ -3911,7 +3911,7 @@
   },
   "tourapi-2906226": {
     "name_ko": "텔온",
-    "name_fr": "Teron",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Teron",
     "fr_contentid": "",
@@ -3921,7 +3921,7 @@
   },
   "tourapi-3443259": {
     "name_ko": "티크닉 앨리웨이 광교점",
-    "name_fr": "Tikeunik Aelliwei Gwanggyojeom",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Tikeunik Aelliwei Gwanggyojeom",
     "fr_contentid": "",
@@ -3931,7 +3931,7 @@
   },
   "tourapi-2765420": {
     "name_ko": "포동이네",
-    "name_fr": "Podongine",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Podongine",
     "fr_contentid": "",
@@ -3941,7 +3941,7 @@
   },
   "tourapi-2804503": {
     "name_ko": "피켈",
-    "name_fr": "Pikel",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Pikel",
     "fr_contentid": "",
@@ -3951,7 +3951,7 @@
   },
   "tourapi-2893125": {
     "name_ko": "피크닉타이거",
-    "name_fr": "Pikeuniktaigeo",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Pikeuniktaigeo",
     "fr_contentid": "",
@@ -3961,7 +3961,7 @@
   },
   "tourapi-2841995": {
     "name_ko": "하얀풍차제과점 망포점",
-    "name_fr": "Hayanpungchajegwajeom Mangpojeom",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Hayanpungchajegwajeom Mangpojeom",
     "fr_contentid": "",
@@ -3971,7 +3971,7 @@
   },
   "tourapi-2851901": {
     "name_ko": "한우갑",
-    "name_fr": "Hanugap",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Hanugap",
     "fr_contentid": "",
@@ -3981,7 +3981,7 @@
   },
   "tourapi-2848015": {
     "name_ko": "행궁정찬",
-    "name_fr": "Haenggungjeongchan",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Haenggungjeongchan",
     "fr_contentid": "",
@@ -3991,7 +3991,7 @@
   },
   "tourapi-3025574": {
     "name_ko": "헤르츠",
-    "name_fr": "Hereucheu",
+    "name_fr": "",
     "name_fr_source": "translated",
     "name_rr": "Hereucheu",
     "fr_contentid": "",

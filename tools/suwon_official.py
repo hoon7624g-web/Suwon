@@ -69,13 +69,13 @@ OFFICIAL_PAGES = [
     {"provider": "수원문화재단 화성어차 상세안내", "url": SWCF_OCHAE, "checked_at": CHECKED, "places": [
         {"id": "tourapi-264402", "name": "화성어차", "confirms": ["usetime", "restdate", "usefee"], "facts": {
             "infocenter": "연무대 매표소 031-5191-4686 / 수원문화재단 관광운영팀 031-290-3634",
-            "reservation": "총 36석 — 온라인예매 36석(다음 달 말일까지), 현장예매 잔여석(당일 매표소 판매)",
+            "reservation": "온라인예매 36석(다음 달 말일까지 예매 가능), 현장예매 잔여석(당일 매표소 판매)",
             "pet": "반려동물 탑승 불가(시각장애인 보조견·안내견은 탑승 가능)"}},
     ]},
     {"provider": "수원문화재단 XR버스 1795행 상세안내", "url": SWCF_XR, "checked_at": CHECKED, "places": [
         {"id": "tourapi-3494623", "name": "XR버스 1795행", "confirms": ["usetime", "restdate", "usefee"], "facts": {
             "infocenter": "수원시 관광과 031-5191-2190 / 수원문화재단 관광운영팀 031-290-3636",
-            "reservation": "'터치수원' 앱으로만 예약(탑승 시 QR 체크인)"}},
+            "reservation": "터치수원 앱 예약 필수(탑승 시 QR 체크인)"}},
     ]},
     {"provider": "플라잉수원 홈페이지", "url": FLY, "checked_at": CHECKED, "places": [
         {"id": "tourapi-2714220", "name": "플라잉 수원", "confirms": ["usetime", "infocenter"], "facts": {

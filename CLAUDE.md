@@ -1,6 +1,6 @@
 # CLAUDE.md — 수원각 (수원 여행 실증 사이트)
 
-> 이 파일이 최우선 지시다. 기준 엔진: 군산각 `6a26206c4`(`hoon7624g-web/gunsan`, `https://gunsan.webforai.kr`) · 마스터 프롬프트 v1.0(`docs/master/region_master_prompt.md`) · 다도시 확장 구조(`pipeline/city.py`)
+> 이 파일이 최우선 지시다. 기준 엔진: 영주각 `fa940df4`(`hoon7624g-web/yeougju`, 2026-10-26 파일마다 3-way 이식) ← 군산각 `6a26206c4`(`hoon7624g-web/gunsan`, `https://gunsan.webforai.kr`) · 마스터 프롬프트 v1.0(`docs/master/region_master_prompt.md`) · 다도시 확장 구조(`pipeline/city.py`)
 > 작업 기록: `docs/handover/suwon_log.md` · 보고서: `docs/handover/suwon_report.md` · 데이터 표준: `docs/02_page_standard.md` · 이용조건: `docs/rights.md`
 
 ## 1. 무엇을 만드는가
@@ -38,6 +38,7 @@
     - 해외에서 본 수원(`/abroad/`): 외신·해외 매체 기사와 SNS 게시물은 원문·사진을 옮기지 않고 우리가 쓴 한 줄 소개(`note`) + 원문 링크 + 짧은 원문 인용(`<blockquote lang cite>`)으로만 싣는다.
 11. **AI 그림(일러스트)**: 배경·캠페인 그림·장식으로만 쓰고 alt는 '일러스트: '로 시작한다. 소개 페이지에 생성형 AI 고지를 적는다. 장소 사진 자리와 장소 구조화 데이터에는 쓰지 않는다.
 12. **화면에 확인일을 표시하지 않는다**. 구조화 데이터의 날짜는 남긴다.
+13. **외국어 판은 번역표로만 만든다**(사용자 지시 2026-10-24): 8개 언어의 모든 값(장소 사실·요약·FAQ·출처 표기, 가이드·코스·행사, 이름, 화면 문구)은 `data/suwon/<언어>/table.json` 번역표에서 온다. 소리 옮김(로마자·가타카나·키릴)은 고유명사 표기에만 쓰고, 기관·부서 이름은 뜻으로 옮긴다. 번역표에 없는 값이 있으면 빌드와 검증이 실패하고 빠진 목록을 낸다(`site.json` `intl.require_complete`, `pipeline/intl_check.py`). 값을 빼거나 '번역 안 됨' 안내로 대신하지 않는다. 장소의 공식 외국어 이름은 TourAPI 언어별 서비스 원응답에서만 가져온다(영어 `tools/en_names.py`, 그 밖 `tools/en_content.py names --lang <코드> --offline`).
 
 ## 4. 하지 말 것
 - 검증 규칙을 완화해서 통과시키지 않는다. 테스트·문서 분량을 목표로 삼지 않는다.
@@ -67,6 +68,12 @@ python tools/tourapi_bulk.py --data data/suwon --details --add-new --events --ga
 python tools/harvest_merge.py --data data/suwon --photos --pet --camping --add-camps --apply           # 5. 관광사진·반려동물·고캠핑 병합
 python tools/tourapi_bulk.py --data data/suwon --barrier-free --max-calls 600                          # 6. 무장애 여행 정보 병합
 python tools/image_sizes.py --data data/suwon                            # 7. 사진 크기 기록
+
+# 외국어 판 번역 (작업 브랜치 claude/keen-maxwell-rul4fa, 한국어가 바뀐 뒤 빌드 전에; <코드> = en·ja·zh-hans·zh-hant·de·fr·es·ru)
+python tools/intl_table.py extract --data data/suwon --lang <코드> --out todo.json   # 번역표에 없는 단위·이름({id: {kind, ko, where}})
+python tools/intl_table.py fill --data data/suwon --lang <코드> answers.json         # 번역({id: 번역}, 자리표시 {name}·{m1}·{w1}·{t1}·{p1} 유지)을 표에 넣기
+python tools/intl_table.py apply --data data/suwon --lang <코드> --merge             # 검사(짝·문체·글자·소리 옮김) 통과 뒤 data/suwon/<코드>/에 반영
+python tools/intl_table.py report --data data/suwon                                 # 언어별 소리 옮김·낡은 번역·번역 없음 수
 
 # 빌드·검증
 python -m pipeline.build --data data/suwon --out dist-preview --mode preview

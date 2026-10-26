@@ -168,9 +168,8 @@ def public_name(name: str, category: str) -> str:
 
 
 def guideline_name(p: dict) -> str:
-    if p.get("kind") == "attraction":
-        return public_name(p["name"], p.get("category") or "")
-    return business_name(p["name"])
+    name = public_name(p["name"], p.get("category") or "") if p.get("kind") == "attraction" else business_name(p["name"])
+    return re.sub(r"\s*[~∼～〜]\s*", " - ", name)   # a range in the name ('서호공원입구 ~ 배양교'): ASCII only
 
 
 def row_for(p: dict, city=None) -> dict:

@@ -209,7 +209,9 @@ def closed_text(raw) -> dict | None:
         if OPEN_PLAIN.match(c) or present.is_open_value(c) or present.OPENISH.search(c):
             opened.append(c)
         elif present.CLOSED_HINT.search(c) or present.WEEKLY.search(c) or present.PARTIAL_RX.search(c):
-            closed.append(tidy(END_WORDS.sub("", c)))
+            bare = END_WORDS.sub("", c)
+            # '시장이 정하는 휴관일': the word is the noun a modifier needs, not a trailing '휴무' — it stays
+            closed.append(tidy(c if re.search(r"(?:는|한|된|인)\s*$", bare) else bare))
     if opened and closed:
         return None
     if opened:
@@ -861,6 +863,13 @@ def food_summary(pl: Place) -> tuple[list[str], bool]:
     return got, thin
 
 
+def stay_clock(raw) -> str:
+    """A check-in or check-out value for a sentence: its lines without list marks, joined by ', ' ('- 일요일~금요일
+    14:00- 토요일 15:00' -> '일요일~금요일 14:00, 토요일 15:00')."""
+    lines = [re.sub(r"^\s*-\s*", "", x) for x in present.clean_lines(raw)]
+    return clock_text(squash_ws(", ".join(x for x in lines if x)))
+
+
 def stay_type(pl: Place) -> str:
     t = present.kind_type(pl.e, {}, city=pl.city)
     if t in ("", "숙박업소", "모텔·호텔·리조트", "그 밖의 숙소", "기타", "숙박"):
@@ -888,8 +897,8 @@ def stay_summary(pl: Place) -> tuple[list[str], bool]:
     rtype = tidy(f.get("roomtype")) if f.get("roomtype") and len(squash_ws(f.get("roomtype"))) <= 12 \
         and not pl.contested("roomtype") else ""
     typ = stay_type(pl)
-    ci = clock_text(squash_ws(f.get("checkin"))) if f.get("checkin") and not pl.contested("checkin") else ""
-    co = clock_text(squash_ws(f.get("checkout"))) if f.get("checkout") and not pl.contested("checkout") else ""
+    ci = stay_clock(f.get("checkin")) if f.get("checkin") and not pl.contested("checkin") else ""
+    co = stay_clock(f.get("checkout")) if f.get("checkout") and not pl.contested("checkout") else ""
     if rooms:
         what = f"{rtype} 객실 {rooms}" if rtype else f"객실 {rooms}"
         out.append(f"{pl.N('은/는')} {josa(what, '을/를')} 갖춘 {typ}입니다." if not closure
@@ -1061,8 +1070,8 @@ def faq_candidates(pl: Place) -> list[tuple[str, str, str]]:
         elif seat:
             add(f"{N} 좌석은 몇 석인가요?", f"좌석은 {seat}입니다.", pl.source("seat"))
     if pl.kind == "stay":
-        ci = clock_text(squash_ws(f.get("checkin"))) if f.get("checkin") and not pl.contested("checkin") else ""
-        co = clock_text(squash_ws(f.get("checkout"))) if f.get("checkout") and not pl.contested("checkout") else ""
+        ci = stay_clock(f.get("checkin")) if f.get("checkin") and not pl.contested("checkin") else ""
+        co = stay_clock(f.get("checkout")) if f.get("checkout") and not pl.contested("checkout") else ""
         if ci:
             add(f"{N} 체크인은 몇 시부터인가요?", f"체크인은 {ci}" + (f", 체크아웃은 {co}입니다." if co else "입니다."), pl.source("checkin"))
         cook = cooking(f.get("cooking")) if f.get("cooking") and not pl.contested("cooking") else ""
