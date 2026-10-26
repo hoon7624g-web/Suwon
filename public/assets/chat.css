@@ -68,6 +68,12 @@ html.chat-lock, html.chat-lock body { overflow: hidden; }
 .chat-card .icon { width: 18px; height: 18px; color: var(--link); }
 .chat-links[dir=rtl] .chat-card .icon { transform: scaleX(-1); }
 
+/* the course planner with the trip conditions the question stated (Korean pages): one pill under the answer */
+.chat-plan-w { margin-top: 12px; }
+.chat-plan { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px 0 18px; border-radius: 980px; background: var(--blue); color: #fff; font: 700 15px/1.25 var(--font); text-decoration: none; }
+.chat-plan:hover { background: var(--blue-hi); color: #fff; text-decoration: none; }
+.chat-plan .icon { width: 18px; height: 18px; }
+
 /* errors: what happened, and a retry (none when retrying cannot help) */
 .chat-err { margin-top: 8px; padding: 12px 14px; border-radius: 14px; background: #fff2f2; box-shadow: inset 0 0 0 1px rgba(201, 37, 44, .25); }
 .chat-err p { font-size: 15px; line-height: 1.5; }

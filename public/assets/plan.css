@@ -61,6 +61,23 @@
 
 /* ---------------------------------------------------------------- the form */
 .trp-form { padding-top: clamp(24px, 4vw, 48px); padding-bottom: clamp(32px, 5vw, 64px); display: grid; gap: 16px; scroll-margin-top: calc(var(--mh) + 8px); }
+/* a grid item is as wide as its widest line by default: the form's boxes never grow past the column (round-6 final
+   verifier: a fix button of four needs in the conditions box made the page 511px wide at 390) */
+.trp-form > * { min-width: 0; }
+/* conditions handed over from the assistant (plan.js): one line above the form, brought under the header by the page's
+   scroll-padding. Its room is laid out from the first paint when the address carries the form's keys (html.trp-handing,
+   plan.html.j2's head script) — the hidden copy of its words sizes it — so nothing moves when plan.js puts the words in;
+   the tint comes with them. A plain visit has no box. */
+.trp-handed-w { display: none; }
+.trp-handing .trp-handed-w { display: block; }
+.trp-handed-box { display: grid; margin-top: clamp(20px, 3vw, 32px); padding: 12px 16px; border-radius: var(--r-s);
+  color: var(--sea-deep); font-size: 15px; font-weight: 700; line-height: 1.5; word-break: keep-all; }
+.trp-handed-box > * { grid-area: 1 / 1; min-width: 0; }
+.trp-handed-ghost { visibility: hidden; }
+.trp-undated .trp-handed-ghost [data-dated], html:not(.trp-undated) .trp-handed-ghost [data-undated] { display: none; }
+.trp-handed { margin: 0; }
+.trp-handed-box:has(.trp-handed:not(:empty)) { background: var(--tint); }
+.trp-handing .trp-handed-w + .trp-form { padding-top: 16px; }
 .trp-step { border: 0; margin: 0; padding: clamp(18px, 3vw, 28px); background: var(--trp-card); border-radius: var(--trp-r);
   box-shadow: inset 0 0 0 1px var(--hair), var(--shadow-1); min-width: 0; }
 .trp-step legend { float: left; width: 100%; display: flex; align-items: center; gap: 10px; margin: 0 0 16px; font-size: clamp(19px, 2.2vw, 22px);
@@ -124,11 +141,31 @@
 .trp-budget .trp-hint { grid-column: 1 / -1; }
 .trp-note { margin-top: 16px; }
 
-/* go */
-.trp-go { position: sticky; bottom: 0; z-index: 5; display: grid; gap: 10px; justify-items: center; padding: 16px clamp(16px, 3vw, 28px) calc(16px + env(safe-area-inset-bottom));
-  margin: 0 calc(var(--m) * -1); background: rgba(255, 255, 255, .92); backdrop-filter: saturate(1.6) blur(14px); -webkit-backdrop-filter: saturate(1.6) blur(14px);
-  box-shadow: 0 -10px 30px -18px rgba(20, 52, 99, .35); text-align: center; }
-@media (min-width: 900px) { .trp-go { position: static; margin: 8px 0 0; border-radius: var(--trp-r); background: linear-gradient(135deg, var(--tint) 0%, #fff 70%); box-shadow: inset 0 0 0 1px var(--hair); } }
+/* go. From 900px one box: the summary, the button, the notice. On phones the box gives way (display: contents) and
+   only the button's bar stays at the screen's foot (review 2026-10-22: the whole box was 159px at 390×844, with the
+   52px header 25% of the screen — CLAUDE.md 7 allows 15%). The bar takes what the header leaves of 15% of the
+   screen: the button 44–56px, the padding 2–8px (390×844: 72px, 360×740: 57px, 375×667: 48px); the summary and the
+   short notice sit in the page just above it. */
+.trp-go { display: grid; gap: 10px; justify-items: center; text-align: center; }
+.trp-go-bar { display: grid; gap: 6px; justify-items: center; }
+@media (max-width: 899px) {
+  .trp-go { display: contents; }
+  .trp-go > .trp-sum, .trp-go > .trp-fine-s { text-align: center; }
+  .trp-go > .trp-fine-s { margin-top: -8px; }   /* with the summary: one block above the bar */
+  .trp-go-bar { --go-pad: clamp(2px, calc((15svh - var(--mh) - 44px) / 2 - 1px), 8px);
+    position: sticky; bottom: 0; z-index: 5; margin: 0 calc(var(--m) * -1); padding: var(--go-pad) clamp(16px, 3vw, 28px) calc(var(--go-pad) + env(safe-area-inset-bottom));
+    background: rgba(255, 255, 255, .92); backdrop-filter: saturate(1.6) blur(14px); -webkit-backdrop-filter: saturate(1.6) blur(14px);
+    box-shadow: 0 -10px 30px -18px rgba(20, 52, 99, .35); text-align: center; }
+  .trp-go-bar .trp-submit { min-height: clamp(44px, calc(15svh - var(--mh) - 2 * var(--go-pad) - 2px), 56px); }
+}
+@media (min-width: 900px) {
+  .trp-go { margin: 8px 0 0; padding: 16px clamp(16px, 3vw, 28px); border-radius: var(--trp-r); background: linear-gradient(135deg, var(--tint) 0%, #fff 70%); box-shadow: inset 0 0 0 1px var(--hair); }
+  .trp-go-bar { display: contents; }
+  .trp-go .trp-err { order: 1; }   /* last in the box, as before */
+}
+/* the assistant's round button steps aside while the button is on screen (plan.js html.trp-go-on), as on the homes
+   while their question box is (css/49-chat.css .has-ask): on phones it covered the bar's right end */
+html.trp-go-on .chat-fab { opacity: 0; visibility: hidden; pointer-events: none; }
 .trp-sum { margin: 0; color: var(--ink-2); font-size: 14.5px; line-height: 1.5; word-break: keep-all; }
 .trp-submit { min-height: 60px; padding: 0 30px 0 14px; font-size: 18px; box-shadow: 0 14px 28px -14px rgba(47, 111, 201, .65);
   background: linear-gradient(135deg, var(--sea) 0%, var(--sea-hi) 100%); }
@@ -139,9 +176,26 @@
 .trp-hubs { margin-top: 4px; }
 @media (min-width: 720px) { .trp-hubs { grid-template-columns: 1fr 1fr; } .trp-hubs .trp-field:first-child { grid-column: auto; } }
 .trp-err { margin: 0; color: var(--red); font-weight: 700; font-size: 14px; }
+/* conditions no plan can meet (planner preflight): the causes and their fixes, above the button */
+.trp-prob { margin: 16px 0 0; padding: 16px clamp(16px, 3vw, 24px); border-radius: var(--trp-r); background: #FFF6DF; box-shadow: inset 0 0 0 1px #E8C66A; color: var(--ink); scroll-margin: 96px 0 160px; }
+.trp-prob h3 { margin: 0 0 6px; font-size: 18px; outline: none; }
+.trp-prob h3:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 6px; }
+.trp-prob-m { margin: 0 0 10px; color: var(--ink-2); }
+.trp-prob-l { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.trp-prob-l p { margin: 0 0 6px; line-height: 1.55; word-break: keep-all; }
+.trp-prob-fixes { display: flex; flex-wrap: wrap; gap: 8px; }
+.trp-prob { overflow-wrap: anywhere; }
+/* a fix's label may name several needs ("'유모차'·'휠체어'·… 조건 빼기"): it wraps inside the column, never widens it */
+.trp .trp-prob-fix, .trp .trp-prob-go { min-height: 44px; max-width: 100%; height: auto; padding-block: 8px; white-space: normal;
+  text-align: start; word-break: keep-all; line-height: 1.4; }
+.trp-prob-done:not(:empty) { margin: 12px 0 8px; font-weight: 700; color: var(--sea-deep); word-break: keep-all; }
+.trp-prob-go[hidden] { display: none; }
 
 /* ---------------------------------------------------------------- working */
-.trp-work { padding-top: 24px; padding-bottom: 48px; scroll-margin-top: calc(var(--mh) + 8px); }
+/* at least a screen tall: scrolled to, it hides what is below it, so the course that takes its place moves nothing the
+   reader saw (round-6 verifier: the banner and the footer under it were pushed out — a layout shift on every plan) */
+.trp-work { padding-top: 24px; padding-bottom: 48px; scroll-margin-top: calc(var(--mh) + 8px); min-height: 100vh; }
+@supports (min-height: 100svh) { .trp-work { min-height: 100svh; } }
 .trp-work-in { display: grid; gap: 20px; align-items: center; padding: clamp(20px, 4vw, 40px); border-radius: var(--trp-r); background: linear-gradient(135deg, var(--tint) 0%, #fff 80%);
   box-shadow: inset 0 0 0 1px var(--hair); }
 @media (min-width: 720px) { .trp-work-in { grid-template-columns: auto 1fr; } }
@@ -167,6 +221,7 @@
 .trp-r-art img { width: 96px; height: auto; }
 .trp-r-head h2 { margin: 0 0 8px; font-size: clamp(24px, 3.4vw, 34px); letter-spacing: -.03em; line-height: 1.25; outline: none; word-break: keep-all; }
 .trp-r-sum { margin: 0 0 8px; font-size: 16.5px; line-height: 1.6; color: var(--ink-2); word-break: keep-all; }
+.trp-r-code { margin: 0 0 8px; font-size: 15px; line-height: 1.55; color: var(--ink-2); word-break: keep-all; }
 .trp-r-cond { margin: 0 0 12px; font-size: 14px; color: var(--ink-3); line-height: 1.5; }
 .trp-badges { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
 .trp-badges li { padding: 6px 12px; border-radius: var(--r-pill); font-size: 13.5px; font-weight: 700; background: var(--bg-2); color: var(--ink-2); }
@@ -231,6 +286,34 @@
 .trp-closed span:last-child { color: var(--red); }
 .trp-warn { list-style: none; margin: 10px 0 0; padding: 10px 12px; border-radius: 12px; background: #FFF3D6; color: #5E3A00; font-size: 13.5px; line-height: 1.5; }
 .trp-warn li + li { margin-top: 4px; }
+/* a stop's own buttons (operator 2026-10-23, mockup A): under the facts a dashed hairline, then three outlined pills in
+   the style of the legs' 카카오맵 길찾기 link — at the left on wide screens, across the card on one line on phones */
+.trp-acts { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 0; padding: 10px 0 0; border-top: 1px dashed var(--hair); }
+.trp-acts[inert] { visibility: hidden; }   /* while the AI refines the course sent first: its room kept, nothing moves */
+.trp-act { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; padding: 0 14px; border: 0;
+  border-radius: var(--r-pill); background: #fff; color: var(--sea-deep); font: inherit; font-size: 13.5px; font-weight: 700; line-height: 1.2;
+  white-space: nowrap; cursor: pointer; box-shadow: inset 0 0 0 1.5px var(--g2); }
+.trp-act:hover { background: var(--tint); }
+.trp-act-drop { color: var(--ink-2); }
+.trp-act[aria-pressed="true"] { background: var(--tint); color: var(--sea-deep); box-shadow: inset 0 0 0 2px var(--sea); }
+.trp-act[aria-pressed="true"] .trp-act-ic path:first-child { fill: currentColor; }
+.trp-act[aria-disabled="true"] { background: var(--bg-2); color: var(--ink-3); box-shadow: inset 0 0 0 1.5px var(--hair); cursor: not-allowed; }
+.trp-act-ic { width: 16px; height: 16px; flex: none; }
+.trp-act-ic svg { display: block; width: 100%; height: 100%; }
+.trp-acting .trp-act:not([aria-busy]) { opacity: .55; pointer-events: none; }   /* one change at a time */
+.trp-act[aria-busy="true"] { background: var(--tint); cursor: progress; }
+/* phones: one line across the card, 다른 곳으로 taking the room left; a screen too narrow for the three wraps them
+   rather than run one into the next (review: at 360px 고정됨 squeezed 다른 곳으로 past its pill, at 320px over 빼기) */
+@media (max-width: 599px) {
+  .trp-body > .trp-acts { grid-column: 1 / -1; }
+  .trp-act { flex: none; padding: 0 12px; }
+  .trp-act[data-act="swap"] { flex: 1 1 auto; }
+  .trp-acts-2 .trp-act { flex: 1 1 0; }
+}
+@media (max-width: 389px) {
+  .trp-acts { gap: 4px; }
+  .trp-act { gap: 4px; padding: 0 9px; }
+}
 
 /* legs */
 .trp-leg { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 12px; align-items: center; padding: 4px 0; position: relative; }
@@ -245,6 +328,9 @@
 .trp-leg-go:hover { background: var(--tint); }
 .trp-leg-bad .trp-leg-in { background: #FFF3D6; }
 .trp-leg-bad .trp-leg-note { color: #5E3A00 !important; font-weight: 700; }
+/* a leg without a car the site cannot confirm (plan.js legRow l.open): a thing to check, not a fault */
+.trp-leg-open .trp-leg-in { background: #EEF4FB; }
+.trp-leg-open .trp-leg-note { color: #1F3D66 !important; font-weight: 700; }
 
 /* side: map, fees, checks */
 .trp-side { display: grid; gap: 16px; }
@@ -369,6 +455,10 @@
 .trp-fail-edit { margin: 0 0 14px; padding: 16px; }
 .trp-fail-edit img { width: 64px; height: auto; }
 .trp-fail p { margin: 0 0 12px; color: var(--ink-2); }
+/* the tab could not keep the course (plan.js save, UX05): said above the result, in the 'to check' colours */
+.trp-save-note { margin-top: 16px; margin-bottom: 0; padding: 12px 16px; border-radius: 12px; background: #FFF6DF; color: #6A4500; font-size: 14.5px; line-height: 1.55; }
+.trp-need-note p { margin: 4px 0 0; }
+.trp-need-note .trp-need-tail { color: var(--ink-3); }
 /* what the code says about the plan (review 2026-10-17: the checks first, each in its own state, never one badge) */
 .trp-status { margin: 16px 0 0; padding: clamp(16px, 3vw, 24px); border-radius: var(--trp-r); background: #fff; box-shadow: inset 0 0 0 1px var(--hair), var(--shadow-1); border-left: 6px solid var(--sea); }
 .trp-status.is-check { border-left-color: #E0A100; }
@@ -388,17 +478,25 @@
 .trp-st4-v { display: flex; align-items: flex-start; gap: 8px; color: var(--ink); word-break: keep-all; }
 .trp-st4-v .trp-mark { width: 20px; height: 20px; font-size: 12px; margin-top: 1px; }
 .trp-st4 li.is-check { background: #FFF6DF; }
+/* information, not a problem (operator 2026-10-18): the data does not say, or it holds for any plan */
+.trp-st4 li.is-info .trp-mark { background: #5B6B82; font-family: Georgia, serif; font-style: italic; }
 .trp-st4 li.is-bad { background: #FDECEC; }
 @media (max-width: 599px) { .trp-st4 li { grid-template-columns: 28px minmax(0, 1fr); } .trp-st4 li .pic { --pic: 28px !important; } .trp-st4-v { grid-column: 2; } }
-.trp-top { margin-top: 12px; font-size: 14px; color: var(--ink-2); }
-.trp-top p { margin: 0 0 4px; font-weight: 700; }
-.trp-top ul { margin: 0 0 6px; padding-left: 20px; line-height: 1.5; }
-.trp-top a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; color: var(--sea-deep); }
 .trp-diff { margin: 12px 0 0; padding: 14px 18px; border-radius: 16px; background: var(--tint); }
 .trp-diff h3 { margin: 0 0 6px; font-size: 16px; }
 .trp-diff ul { margin: 0; padding-left: 20px; font-size: 14.5px; line-height: 1.55; color: var(--ink-2); }
 .trp-r-sum .trp-ai, .trp-notes .trp-ai { display: inline-block; vertical-align: 2px; }
 .trp-warn li.bad { color: #8E1A20; font-weight: 700; }
+/* outside evaluation 2026-10-18: the stops the site put in, the travel-time line once a day, the one-tap fixes of an
+   unmet plan, a distance tile that has no total */
+.trp-site { flex: none; margin-top: 2px; padding: 1px 7px; border-radius: 6px; background: var(--tint2); color: var(--sea-deep); font-size: 11.5px; font-weight: 700; }
+.trp-tl-note { display: flex; align-items: flex-start; gap: 8px; margin: 0 0 12px; padding: 10px 12px; border-radius: 14px; background: var(--g0);
+  font-size: 13.5px; line-height: 1.5; color: var(--ink-2); word-break: keep-all; }
+.trp-tl-note .pic { --pic: 28px !important; flex: none; }
+.trp-qfix { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 12px 0 0; padding: 12px; border-radius: 14px; background: #FDF1F1; }
+.trp-qfix-h { width: 100%; margin: 0; font-size: 14px; font-weight: 700; color: #8E1A20; }
+.trp .trp-qf { min-height: 44px; padding: 0 16px; font-size: 14.5px; }
+.trp-kpi-x { display: block; font-size: 16px; line-height: 1.35; letter-spacing: 0; word-break: keep-all; }
 
 /* keeping and passing the plan on */
 .trp-r-acts { flex-wrap: wrap; gap: 10px; align-items: flex-start; justify-content: space-between; }
@@ -428,7 +526,7 @@
 .trp-nd i { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; font-style: normal; font-weight: 700; font-size: 12px; color: #fff; background: var(--sea); }
 .trp-nd.is-near i { background: #2A7F62; }
 .trp-nd.is-no { background: #FDECEC; color: #8E1A20; } .trp-nd.is-no i { background: var(--red); }
-.trp-nd.is-unknown { background: #FFF6DF; color: #6A4500; } .trp-nd.is-unknown i { background: #8A5A00; }
+.trp-nd.is-unknown, .trp-nd.is-cond { background: #FFF6DF; color: #6A4500; } .trp-nd.is-unknown i, .trp-nd.is-cond i { background: #8A5A00; }
 .trp-nd.is-na i { background: var(--g2); color: var(--ink-2); }
 .trp-nd:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 
@@ -444,11 +542,80 @@
 .trp-conds li::before { background: #E0A100; }
 .trp-v-ok { background: var(--tint); color: var(--sea-deep); }
 .trp-meter.open span { background: repeating-linear-gradient(135deg, var(--sea) 0 6px, #6E9BD8 6px 10px); }
+/* '가기 전에 알아 둘 것': closed until opened */
+.trp-check-c > summary { min-height: 44px; margin-bottom: 0; cursor: pointer; list-style: none; }
+.trp-check-c > summary::-webkit-details-marker { display: none; }
+.trp-check-c > summary::after { content: "펼치기"; margin-left: auto; font-size: 13px; font-weight: 400; color: var(--ink-3); }
+.trp-check-c[open] > summary { margin-bottom: 8px; }
+.trp-check-c[open] > summary::after { content: "접기"; }
+.trp-check-c > summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 8px; }
 .trp-qg + .trp-qg { margin-top: 10px; }
 .trp-qg h4 { margin: 0 0 4px; font-size: 14px; color: var(--ink-2); }
 .trp-qg.bad h4 { color: #8E1A20; }
 
+/* the course sent first and the AI's (operator 2026-10-19): one line over the course whose size never changes — every
+   phase's words and every button's label are laid in the same cells, unseen (.trp-early-g) —; the toast at the
+   screen's foot when the AI's course comes while the reader is further down (fixed: nothing moves) */
+/* everything from the line's top, the words' first line level with the button's middle and the mark beside it: words
+   of one line where the cell holds two (a phone) never move when they change (round-6 final verifier: centred, the
+   words moved half a line at 390 — CLS 0.00046 at the swap and the 'kept' redraw) */
+.trp-early { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: start; gap: 8px 12px; margin: 16px 0 0;
+  padding: 10px 12px 10px 14px; border-radius: 16px; background: var(--tint); box-shadow: inset 0 0 0 1px var(--hair); }
+.trp-early-m { display: inline-grid; place-items: center; box-sizing: border-box; width: 24px; height: 24px; border-radius: 50%;
+  font-size: 13px; font-weight: 700; color: #fff; background: var(--sea); }
+.trp-early.is-info .trp-early-m { background: #5B6B82; font-family: Georgia, serif; font-style: italic; }
+.trp-early.is-busy .trp-early-m { background: none; border: 3px solid var(--tint2); border-top-color: var(--sea); }
+@media (prefers-reduced-motion: no-preference) { .trp-early.is-busy .trp-early-m { animation: trp-spin 1s linear infinite; } }
+@keyframes trp-spin { to { transform: rotate(360deg); } }
+.trp-early-s, .trp-early-a { display: grid; align-items: center; min-width: 0; }
+.trp-early-s { align-items: start; padding-top: 11px; }   /* (44px − a line of 15px × 1.45) / 2 */
+.trp-early > .trp-early-m { margin-top: 10px; }
+.trp-early-s > *, .trp-early-a > * { grid-area: 1 / 1; }
+.trp-early-g { visibility: hidden; pointer-events: none; }
+.trp-early-t { margin: 0; font-size: 15px; line-height: 1.45; font-weight: 700; color: var(--sea-deep); word-break: keep-all; }
+.trp .trp-early-b { min-height: 44px; padding: 0 16px; font-size: 14.5px; white-space: nowrap; }
+@media (max-width: 719px) {
+  .trp-early { grid-template-columns: auto minmax(0, 1fr); }
+  .trp-early-a { grid-column: 1 / -1; justify-self: start; }
+  .trp-early-t { font-size: 14.5px; }
+  .trp-early-s { padding-top: 0; }   /* the button on a row of its own: the words from the top, the mark by their first line */
+  .trp-early > .trp-early-m { margin-top: -1px; }
+}
+/* a heading the page moves the focus to (the result's, a failure's) is not a control: no ring, also when it comes
+   with no tap before it (a shared link opened) */
+.trp h2[tabindex="-1"]:focus-visible, .trp h3[tabindex="-1"]:focus-visible { outline: none; }
+.trp-shared { align-items: start; }
+.trp-shared .trp-early-m { margin-top: 1px; }
+.trp-shared-in { display: grid; gap: 2px; min-width: 0; }
+.trp-shared-n { margin: 0; font-size: 14px; line-height: 1.5; color: var(--ink-2); word-break: keep-all; }
+/* above the assistant's round button on phones (css/49-chat.css .chat-fab: 68px at 18px from the foot), centred clear
+   of it from 1024px */
+.trp-toast { position: fixed; left: 50%; bottom: calc(max(18px, calc(env(safe-area-inset-bottom) + 10px)) + 80px); z-index: 60;
+  transform: translateX(-50%); box-sizing: border-box; width: min(calc(100% - 32px), 460px); display: flex; align-items: center; gap: 10px;
+  padding: 8px 8px 8px 16px; border-radius: 18px; background: #fff; box-shadow: var(--shadow-2), inset 0 0 0 1px var(--hair); }
+@media (min-width: 1024px) { .trp-toast { bottom: 28px; } }
+.trp-toast p { flex: 1 1 auto; min-width: 0; margin: 0; font-weight: 700; line-height: 1.4; color: var(--sea-deep); word-break: keep-all; }
+.trp .trp-toast-go { min-height: 44px; padding: 0 16px; font-size: 14.5px; }
+.trp-toast-x { width: 44px; height: 44px; border: 0; border-radius: 50%; background: var(--g0); color: var(--ink-2); font-size: 22px; line-height: 1; cursor: pointer; }
+/* a shared plan: what today's data flags since it was made — information, not a fault */
+.trp-changed { margin: 12px 0 0; padding: 14px 18px; border-radius: 16px; background: #F3F5F8; box-shadow: inset 0 0 0 1px var(--hair); }
+.trp-changed h3 { margin: 0 0 6px; font-size: 16px; color: var(--ink); }
+.trp-changed ul { margin: 0; padding-left: 20px; font-size: 14.5px; line-height: 1.55; color: var(--ink-2); }
+.trp-changed .trp-hint { margin-top: 6px; }
+.trp-status.is-info { border-left-color: #5B6B82; }
+.trp-status.is-info > h3 .trp-mark { background: #5B6B82; font-family: Georgia, serif; font-style: italic; }
+/* a plan the page draws on load (a share link, a reload of this tab's plan): its room — a screen — from the first paint
+   (html.trp-holding, plan.html.j2) to the moment it is drawn (.trp-hold, plan.js), as for the working view: what is
+   under it never comes into view to be pushed out (round-6 verifier: CLS 0.74–0.91 opening a link, on a paste, on a
+   reload) */
+html.trp-holding .trp-result[hidden] { display: block !important; visibility: hidden; }   /* (over the base [hidden] rule) */
+html.trp-holding .trp-result, .trp-result.trp-hold, .trp-opening { min-height: 100vh; }
+@supports (min-height: 100svh) { html.trp-holding .trp-result, .trp-result.trp-hold, .trp-opening { min-height: 100svh; } }
+.trp-opening { box-sizing: border-box; padding: 32px 16px; color: var(--ink-2); }
+.trp-x-url { box-sizing: border-box; width: 100%; min-height: 44px; padding: 0 12px; border: 1px solid var(--g2); border-radius: 12px; font: inherit; font-size: 14px; }
+
 @media print {
+  .trp-toast { display: none !important; }
   .trp-hero, .trp-form, .trp-work, .trp-edit, .trp-r-acts, .trp-days, .trp-map, .mast, .site-foot { display: none !important; }
   .trp-result { background: none; }
   .trp-result .wrap > :not(.trp-r-head):not(.trp-print) { display: none !important; }   /* every day as text */

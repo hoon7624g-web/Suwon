@@ -1,4 +1,4 @@
-# 수원각 robots.txt (생성 2026-10-24)
+# 수원각 robots.txt (생성 2026-10-26)
 # 검색·답변 엔진과 사용자 요청 크롤러: 허용
 User-agent: OAI-SearchBot
 User-agent: ChatGPT-User

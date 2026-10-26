@@ -1,18 +1,154 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <title>수원각 — 수원 칼럼·가이드·코스·행사</title>
+    <title>수원각 — 수원 가이드·코스·행사</title>
     <link>https://suwon.webforai.kr/</link>
     <description>수원각은 수원의 관광지·맛집(음식점)·숙소·여행 코스·축제·영상을 한곳에 모은 여행 정보 사이트입니다. 장소마다 이용시간·쉬는 날·요금·주차·길찾기와 값별 출처를 적었습니다.</description>
     <language>ko</language>
     <lastBuildDate>Sat, 24 Oct 2026 09:00:00 +0900</lastBuildDate>
     <item>
-      <title>수원화성·화성행궁·방화수류정 성곽 명소와 상시 개방 무료 관광지는 어디일까요?</title>
-      <link>https://suwon.webforai.kr/guides/suwon-hwaseong-fortress-haenggung/</link>
-      <guid isPermaLink="true">https://suwon.webforai.kr/guides/suwon-hwaseong-fortress-haenggung/</guid>
-      <category>가이드</category>
-      <description>이 사이트에 실린 수원화성·화성행궁·사대문·각루·성곽 관련 명소는 20곳이며, 연중무휴·무료로 개방하는 수원 관광지는 50곳입니다. 아래 주요 10곳의 이용시간과 쉬는 날, 입장요금 기준을 한눈에 비교할 수 있습니다.</description>
-      <pubDate>Wed, 21 Oct 2026 09:00:00 +0900</pubDate>
+      <title>2026 수원연극축제 기간·장소</title>
+      <link>https://suwon.webforai.kr/events/suwonyeongeukchukje/</link>
+      <guid isPermaLink="true">https://suwon.webforai.kr/events/suwonyeongeukchukje/</guid>
+      <category>행사·축제</category>
+      <description>2026 수원연극축제 기간: 2026년 5월 16일(토)~5월 17일(일) · 장소: 경기상상캠퍼스. 요금: 무료.</description>
+      <pubDate>Sat, 24 Oct 2026 09:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>2026 수원특례시 반려동물 한마음축제 기간·장소</title>
+      <link>https://suwon.webforai.kr/events/suwonteungnyesi-ballyeodongmul-hanmaeumchukje/</link>
+      <guid isPermaLink="true">https://suwon.webforai.kr/events/suwonteungnyesi-ballyeodongmul-hanmaeumchukje/</guid>
+      <category>행사·축제</category>
+      <description>2026 수원특례시 반려동물 한마음축제 기간: 2026년 10월 24일(토) · 장소: 광교중앙공원. 요금: 무료.</description>
+      <pubDate>Sat, 24 Oct 2026 09:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>2026 수원재즈페스티벌 기간·장소</title>
+      <link>https://suwon.webforai.kr/events/suwonjaejeupeseutibeol/</link>
+      <guid isPermaLink="true">https://suwon.webforai.kr/events/suwonjaejeupeseutibeol/</guid>
+      <category>행사·축제</category>
+      <description>2026 수원재즈페스티벌 기간: 2026년 9월 18일(금)~9월 19일(토) · 장소: 광교호수공원 재미난 밭(스포츠 클라이밍장).</description>
+      <pubDate>Sat, 24 Oct 2026 09:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>2026 수원화성문화제 기간·장소</title>
+      <link>https://suwon.webforai.kr/events/suwonhwaseongmunhwaje/</link>
+      <guid isPermaLink="true">https://suwon.webforai.kr/events/suwonhwaseongmunhwaje/</guid>
+      <category>행사·축제</category>
+      <description>2026 수원화성문화제 기간: 2026년 10월 4일(일)~10월 11일(일) · 장소: 수원화성 일원.</description>
+      <pubDate>Sat, 24 Oct 2026 09:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>2026 수원화성 미디어아트 기간·장소</title>
+      <link>https://suwon.webforai.kr/events/suwonhwaseong-midieoateu/</link>
+      <guid isPermaLink="true">https://suwon.webforai.kr/events/suwonhwaseong-midieoateu/</guid>
+      <category>행사·축제</category>
+      <description>2026 수원화성 미디어아트 기간: 2026년 9월 19일(토)~10월 6일(화) · 장소: 수원화성 화서문, 장안공원, 장안문 일원.</description>
+      <pubDate>Sat, 24 Oct 2026 09:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>2026 수원 국가유산야행 기간·장소</title>
+      <link>https://suwon.webforai.kr/events/suwon-gukgayusanyahaeng/</link>
+      <guid isPermaLink="true">https://suwon.webforai.kr/events/suwon-gukgayusanyahaeng/</guid>
+      <category>행사·축제</category>
+      <description>2026 수원 국가유산야행 기간: 2026년 8월 14일(금)~8월 30일(일) · 장소: 수원화성 일원.</description>
+      <pubDate>Sat, 24 Oct 2026 09:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>2026 서가콘서트 : 셜록홈즈 기간·장소</title>
+      <link>https://suwon.webforai.kr/events/seogakonseoteu-syeollokhomjeu/</link>
+      <guid isPermaLink="true">https://suwon.webforai.kr/events/seogakonseoteu-syeollokhomjeu/</guid>
+      <category>행사·축제</category>
+      <description>2026 서가콘서트 : 셜록홈즈 기간: 2026년 9월 8일(화) · 장소: 경기아트센터 소극장.</description>
+      <pubDate>Sat, 24 Oct 2026 09:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>2026 만석거 새빛축제 기간·장소</title>
+      <link>https://suwon.webforai.kr/events/manseokgeo-saebitchukje/</link>
+      <guid isPermaLink="true">https://suwon.webforai.kr/events/manseokgeo-saebitchukje/</guid>
+      <category>행사·축제</category>
+      <description>2026 만석거 새빛축제 기간: 2026년 4월 3일(금)~4월 12일(일) · 장소: 만석거(만석공원) 일원. 요금: 무료.</description>
+      <pubDate>Sat, 24 Oct 2026 09:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>2026 꼬마농부의 컬러 팜 대모험 기간·장소</title>
+      <link>https://suwon.webforai.kr/events/kkomanongbuui-keolleo-pam-daemoheom/</link>
+      <guid isPermaLink="true">https://suwon.webforai.kr/events/kkomanongbuui-keolleo-pam-daemoheom/</guid>
+      <category>행사·축제</category>
+      <description>2026 꼬마농부의 컬러 팜 대모험 기간: 2026년 5월 5일(화)~5월 9일(토) · 장소: 국립농업박물관. 요금: 무료.</description>
+      <pubDate>Sat, 24 Oct 2026 09:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>2026 컬처라운지 경기, 장(場) 기간·장소</title>
+      <link>https://suwon.webforai.kr/events/keolcheoraunji-gyeonggi-jang/</link>
+      <guid isPermaLink="true">https://suwon.webforai.kr/events/keolcheoraunji-gyeonggi-jang/</guid>
+      <category>행사·축제</category>
+      <description>2026 컬처라운지 경기, 장(場) 기간: 2026년 4월 18일(토)~12월 15일(화) · 장소: 컬처라운지 경기 장. 요금: 무료.</description>
+      <pubDate>Sat, 24 Oct 2026 09:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>2026 화성행궁 야간개장 기간·장소</title>
+      <link>https://suwon.webforai.kr/events/hwaseonghaenggung-yagangaejang/</link>
+      <guid isPermaLink="true">https://suwon.webforai.kr/events/hwaseonghaenggung-yagangaejang/</guid>
+      <category>행사·축제</category>
+      <description>2026 화성행궁 야간개장 기간: 2026년 5월 1일(금)~11월 1일(일) · 장소: 화성행궁.</description>
+      <pubDate>Sat, 24 Oct 2026 09:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>2026 경기미 김밥페스타 기간·장소</title>
+      <link>https://suwon.webforai.kr/events/gyeonggimi-gimbappeseuta/</link>
+      <guid isPermaLink="true">https://suwon.webforai.kr/events/gyeonggimi-gimbappeseuta/</guid>
+      <category>행사·축제</category>
+      <description>2026 경기미 김밥페스타 기간: 2026년 6월 13일(토)~6월 14일(일) · 장소: 수원컨벤션센터 B홀. 요금: 무료.</description>
+      <pubDate>Sat, 24 Oct 2026 09:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>2026 경기미 디저트 페스타 기간·장소</title>
+      <link>https://suwon.webforai.kr/events/gyeonggimi-dijeoteu-peseuta/</link>
+      <guid isPermaLink="true">https://suwon.webforai.kr/events/gyeonggimi-dijeoteu-peseuta/</guid>
+      <category>행사·축제</category>
+      <description>2026 경기미 디저트 페스타 기간: 2026년 11월 21일(토)~11월 22일(일) · 장소: 수원 메쎄 제1전시장. 요금: 무료.</description>
+      <pubDate>Sat, 24 Oct 2026 09:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>2026 경기인형극제 in 수원 기간·장소</title>
+      <link>https://suwon.webforai.kr/events/gyeonggiinhyeonggeukje-in-suwon/</link>
+      <guid isPermaLink="true">https://suwon.webforai.kr/events/gyeonggiinhyeonggeukje-in-suwon/</guid>
+      <category>행사·축제</category>
+      <description>2026 경기인형극제 in 수원 2026년 7월 16일(목)~7월 22일(수), 경기아트센터 소극장 일원.</description>
+      <pubDate>Sat, 24 Oct 2026 09:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>2026 경기도 문화사계 &#34;봄&#34; 경기 상상해 봄 페스타 기간·장소</title>
+      <link>https://suwon.webforai.kr/events/gyeonggido-munhwasagye-bom-gyeonggi-sangsanghae-bom-peseuta/</link>
+      <guid isPermaLink="true">https://suwon.webforai.kr/events/gyeonggido-munhwasagye-bom-gyeonggi-sangsanghae-bom-peseuta/</guid>
+      <category>행사·축제</category>
+      <description>2026 경기도 문화사계 &#34;봄&#34; 경기 상상해 봄 페스타 기간: 2026년 3월 28일(토)~3월 29일(일) · 장소: 경기상상캠퍼스.</description>
+      <pubDate>Sat, 24 Oct 2026 09:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>2026 대한민국 AI 콘텐츠 어워즈 기간·장소</title>
+      <link>https://suwon.webforai.kr/events/daehanminguk-ai-kontencheu-eowojeu/</link>
+      <guid isPermaLink="true">https://suwon.webforai.kr/events/daehanminguk-ai-kontencheu-eowojeu/</guid>
+      <category>행사·축제</category>
+      <description>2026 대한민국 AI 콘텐츠 어워즈 기간: 2026년 10월 15일(목)~10월 16일(금) · 장소: 수원 롯데시네마. 요금: 무료.</description>
+      <pubDate>Sat, 24 Oct 2026 09:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>2026 뷰티썸 수원 기간·장소</title>
+      <link>https://suwon.webforai.kr/events/byutisseom-suwon/</link>
+      <guid isPermaLink="true">https://suwon.webforai.kr/events/byutisseom-suwon/</guid>
+      <category>행사·축제</category>
+      <description>2026 뷰티썸 수원 기간: 2026년 11월 5일(목)~11월 7일(토) · 장소: 수원컨벤션센터 1층 전시홀.</description>
+      <pubDate>Sat, 24 Oct 2026 09:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>2026 불취무귀야시장 시즌2 기간·장소</title>
+      <link>https://suwon.webforai.kr/events/bulchwimugwiyasijang-sijeun-2/</link>
+      <guid isPermaLink="true">https://suwon.webforai.kr/events/bulchwimugwiyasijang-sijeun-2/</guid>
+      <category>행사·축제</category>
+      <description>2026 불취무귀야시장 시즌2 기간: 2026년 10월 10일(토)~10월 31일(토) · 장소: 팔달문 고객지원센터 광장 / 지동교 일원.</description>
+      <pubDate>Sat, 24 Oct 2026 09:00:00 +0900</pubDate>
     </item>
     <item>
       <title>아이와 함께 가기 편한 수원 수목원·아쿠아플라넷·박물관·공원 명소는 어디일까요?</title>
@@ -20,7 +156,7 @@
       <guid isPermaLink="true">https://suwon.webforai.kr/guides/suwon-with-kids/</guid>
       <category>가이드</category>
       <description>수목원·호수·공원·아쿠아플라넷·천문대·박물관·미술관이 이름에 포함된 수원 관광지는 52곳이며, 박물관·미술관·도서관 등 문화시설은 43곳입니다. 아래 주요 10곳의 운영시간과 휴관일·입장요금 조건을 먼저 대조할 수 있습니다.</description>
-      <pubDate>Wed, 21 Oct 2026 09:00:00 +0900</pubDate>
+      <pubDate>Fri, 23 Oct 2026 09:00:00 +0900</pubDate>
     </item>
     <item>
       <title>비 오는 날 둘러보기 편한 수원 박물관·미술관·별마당도서관·문화시설은 어디일까요?</title>
@@ -28,71 +164,73 @@
       <guid isPermaLink="true">https://suwon.webforai.kr/guides/suwon-indoor-museums/</guid>
       <category>가이드</category>
       <description>이 사이트에 수록된 수원 박물관·미술관·도서관·아트센터 등 문화시설은 모두 43곳이며, 박물관·미술관·전시관·도서관·해우재·아쿠아플라넷이 이름에 포함된 실내외 문화 관광지는 34곳입니다. 아래 주요 10곳의 관람시간과 정기 휴관일, 입장료 기준을 비교할 수 있습니다.</description>
-      <pubDate>Wed, 21 Oct 2026 09:00:00 +0900</pubDate>
+      <pubDate>Fri, 23 Oct 2026 09:00:00 +0900</pubDate>
     </item>
     <item>
-      <title>월요일에 영업하는 수원 왕갈비·통닭·칼국수·행리단길 카페는 어디일까요?</title>
-      <link>https://suwon.webforai.kr/guides/monday-open-restaurants-suwon/</link>
-      <guid isPermaLink="true">https://suwon.webforai.kr/guides/monday-open-restaurants-suwon/</guid>
+      <title>수원화성·화성행궁·방화수류정 성곽 명소와 상시 개방 무료 관광지는 어디일까요?</title>
+      <link>https://suwon.webforai.kr/guides/suwon-hwaseong-fortress-haenggung/</link>
+      <guid isPermaLink="true">https://suwon.webforai.kr/guides/suwon-hwaseong-fortress-haenggung/</guid>
       <category>가이드</category>
-      <description>이 사이트에 실린 수원 음식점 가운데 쉬는 날 정보에 월요일 휴무가 없는 곳은 180곳입니다. 갈비·한우·고기구이 55곳, 통닭·칼국수·해장국·만두 35곳, 커피·베이커리·디저트 59곳 가운데 주요 10곳의 메뉴와 영업시간을 비교할 수 있습니다.</description>
-      <pubDate>Wed, 21 Oct 2026 09:00:00 +0900</pubDate>
+      <description>이 사이트에 실린 수원화성·화성행궁·사대문·각루·성곽 관련 명소는 20곳이며, 연중무휴·무료로 개방하는 수원 관광지는 51곳입니다. 아래 주요 10곳의 이용시간과 쉬는 날, 입장요금 기준을 한눈에 비교할 수 있습니다.</description>
+      <pubDate>Fri, 23 Oct 2026 09:00:00 +0900</pubDate>
     </item>
     <item>
       <title>수원 호텔·한옥스테이·숙소 27곳은 어떻게 고를까요?</title>
       <link>https://suwon.webforai.kr/guides/suwon-hotels-hanok-stays/</link>
       <guid isPermaLink="true">https://suwon.webforai.kr/guides/suwon-hotels-hanok-stays/</guid>
       <category>가이드</category>
-      <description>이 사이트에 수록된 수원 호텔·한옥스테이·숙소는 모두 27곳이며, 주차 안내가 기재된 숙소는 26곳입니다. 아래 주요 10곳의 입실·퇴실 시각과 객실·주차 조건을 비교할 수 있습니다.</description>
-      <pubDate>Wed, 21 Oct 2026 09:00:00 +0900</pubDate>
+      <description>이 사이트에 수록된 수원 호텔·한옥스테이·숙소는 모두 27곳이며, 주차 안내가 기재된 숙소는 27곳입니다. 아래 주요 10곳의 입실·퇴실 시각과 객실·주차 조건을 비교할 수 있습니다.</description>
+      <pubDate>Fri, 23 Oct 2026 09:00:00 +0900</pubDate>
     </item>
     <item>
-      <title>1코스 | 수원화성·화성행궁·방화수류정·행리단길 성곽 기행</title>
-      <link>https://suwon.webforai.kr/courses/hwaseong-haenggung-heritage/</link>
-      <guid isPermaLink="true">https://suwon.webforai.kr/courses/hwaseong-haenggung-heritage/</guid>
-      <category>여행 코스</category>
-      <description>1코스 | 수원화성·화성행궁·방화수류정·행리단길 성곽 기행</description>
-      <pubDate>Wed, 21 Oct 2026 09:00:00 +0900</pubDate>
+      <title>월요일에 영업하는 수원 왕갈비·통닭·칼국수·행리단길 카페는 어디일까요?</title>
+      <link>https://suwon.webforai.kr/guides/monday-open-restaurants-suwon/</link>
+      <guid isPermaLink="true">https://suwon.webforai.kr/guides/monday-open-restaurants-suwon/</guid>
+      <category>가이드</category>
+      <description>이 사이트에 실린 수원 음식점 가운데 쉬는 날 정보에 월요일 휴무가 없는 곳은 176곳입니다. 갈비·한우·고기구이 54곳, 통닭·칼국수·해장국·만두 23곳, 커피·베이커리·디저트 42곳 가운데 주요 10곳의 메뉴와 영업시간을 비교할 수 있습니다.</description>
+      <pubDate>Fri, 23 Oct 2026 09:00:00 +0900</pubDate>
     </item>
     <item>
-      <title>2코스 | 연무대·플라잉수원·팔달문·전통시장·통닭거리 도보 여행</title>
+      <title>2코스 연무대·플라잉수원·팔달문·전통시장·통닭거리 도보 여행</title>
       <link>https://suwon.webforai.kr/courses/yeonmudae-paldalmun-market/</link>
       <guid isPermaLink="true">https://suwon.webforai.kr/courses/yeonmudae-paldalmun-market/</guid>
       <category>여행 코스</category>
-      <description>2코스 | 연무대·플라잉수원·팔달문·전통시장·통닭거리 도보 여행</description>
-      <pubDate>Wed, 21 Oct 2026 09:00:00 +0900</pubDate>
+      <description>처음 5곳은 출발지에서 직선 1km 안에 모여 있고, 가장 긴 구간은 플라잉 수원에서 수원화성박물관까지 직선 820m입니다.</description>
     </item>
     <item>
-      <title>3코스 | 광교호수공원·아쿠아플라넷·광교박물관·수원박물관 나들이</title>
-      <link>https://suwon.webforai.kr/courses/gwanggyo-lake-aquaplanet/</link>
-      <guid isPermaLink="true">https://suwon.webforai.kr/courses/gwanggyo-lake-aquaplanet/</guid>
-      <category>여행 코스</category>
-      <description>3코스 | 광교호수공원·아쿠아플라넷·광교박물관·수원박물관 나들이</description>
-      <pubDate>Wed, 21 Oct 2026 09:00:00 +0900</pubDate>
-    </item>
-    <item>
-      <title>4코스 | 일월수목원·국립농업박물관·서호공원·경기상상캠퍼스 생태 산책</title>
-      <link>https://suwon.webforai.kr/courses/irwol-seoho-sangsang/</link>
-      <guid isPermaLink="true">https://suwon.webforai.kr/courses/irwol-seoho-sangsang/</guid>
-      <category>여행 코스</category>
-      <description>4코스 | 일월수목원·국립농업박물관·서호공원·경기상상캠퍼스 생태 산책</description>
-      <pubDate>Wed, 21 Oct 2026 09:00:00 +0900</pubDate>
-    </item>
-    <item>
-      <title>5코스 | 만석공원·노송지대·해우재·광교마루길 장안 힐링 코스</title>
-      <link>https://suwon.webforai.kr/courses/manseok-haeujae-jangan/</link>
-      <guid isPermaLink="true">https://suwon.webforai.kr/courses/manseok-haeujae-jangan/</guid>
-      <category>여행 코스</category>
-      <description>5코스 | 만석공원·노송지대·해우재·광교마루길 장안 힐링 코스</description>
-      <pubDate>Wed, 21 Oct 2026 09:00:00 +0900</pubDate>
-    </item>
-    <item>
-      <title>6코스 | 효원공원 월화원·영흥수목원·삼성이노베이션뮤지엄 도심 정원 기행</title>
+      <title>6코스 효원공원 월화원·영흥수목원·삼성이노베이션뮤지엄 도심 정원 기행</title>
       <link>https://suwon.webforai.kr/courses/wolhwawon-yeongheung-art/</link>
       <guid isPermaLink="true">https://suwon.webforai.kr/courses/wolhwawon-yeongheung-art/</guid>
       <category>여행 코스</category>
-      <description>6코스 | 효원공원 월화원·영흥수목원·삼성이노베이션뮤지엄 도심 정원 기행</description>
-      <pubDate>Wed, 21 Oct 2026 09:00:00 +0900</pubDate>
+      <description>처음 4곳은 출발지에서 직선 1km 안에 모여 있고, 가장 긴 구간은 영흥수목원에서 수원시립미술관까지 직선 5.7km입니다.</description>
+    </item>
+    <item>
+      <title>5코스 만석공원·노송지대·해우재·광교마루길 장안 힐링 코스</title>
+      <link>https://suwon.webforai.kr/courses/manseok-haeujae-jangan/</link>
+      <guid isPermaLink="true">https://suwon.webforai.kr/courses/manseok-haeujae-jangan/</guid>
+      <category>여행 코스</category>
+      <description>가장 긴 구간은 해우재에서 봉녕사까지 직선 6.1km입니다.</description>
+    </item>
+    <item>
+      <title>4코스 일월수목원·국립농업박물관·서호공원·경기상상캠퍼스 생태 산책</title>
+      <link>https://suwon.webforai.kr/courses/irwol-seoho-sangsang/</link>
+      <guid isPermaLink="true">https://suwon.webforai.kr/courses/irwol-seoho-sangsang/</guid>
+      <category>여행 코스</category>
+      <description>가장 긴 구간은 경기상상캠퍼스에서 별마당도서관 스타필드 수원점까지 직선 2.5km입니다.</description>
+    </item>
+    <item>
+      <title>1코스 수원화성·화성행궁·방화수류정·행리단길 성곽 기행</title>
+      <link>https://suwon.webforai.kr/courses/hwaseong-haenggung-heritage/</link>
+      <guid isPermaLink="true">https://suwon.webforai.kr/courses/hwaseong-haenggung-heritage/</guid>
+      <category>여행 코스</category>
+      <description>경유지 8곳은 화성행궁에서 출발해 행리단길에서 끝납니다.</description>
+    </item>
+    <item>
+      <title>3코스 광교호수공원·아쿠아플라넷·광교박물관·수원박물관 나들이</title>
+      <link>https://suwon.webforai.kr/courses/gwanggyo-lake-aquaplanet/</link>
+      <guid isPermaLink="true">https://suwon.webforai.kr/courses/gwanggyo-lake-aquaplanet/</guid>
+      <category>여행 코스</category>
+      <description>가장 긴 구간은 수원광교박물관에서 수원박물관까지 직선 1.4km입니다.</description>
     </item>
   </channel>
 </rss>

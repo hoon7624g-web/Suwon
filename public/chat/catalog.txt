@@ -1,388 +1,670 @@
 # Site catalog of 수원각 (https://suwon.webforai.kr). One line = one page of this site.
 # Line letter: P place, G guide, C course, E event series, V video topic page, T theme list, S site page. The second field is the page path: pass it to get_pages as is, and link the page as https://suwon.webforai.kr + path. A name in brackets is the place's English name (attractions and official English names; any other place's English name is its Korean name romanized, and its page has it); '다른 이름' = other names of the same place; '연중무휴' alone = open all year.
 # A place line is short: name, type, 구·군 (the district of its address) and only these first-screen facts — 관광지: 휴무, 요금; 음식점: 메뉴, 휴무; 숙소: 없음 (휴무 = closed days, 요금 = admission fee, 메뉴 = signature dishes). A fact missing from a line is not evidence that the site lacks it: hours, parking, phone, check-in, the full fee table and the sources are in the place's page (get_pages). '외' = the page has more. '두 출처 다름' = two sources give different values and the page shows both (방문 전 전화 확인). 지정 = official designations the page lists.
+# The full lines of the places this question most likely needs come in the site_data block whose source is "lines", given after this catalog, one per place: P path | name | type | where (읍·면·동 and travel area) | the place's summary sentence | every first-screen key fact as the page shows it — 관광지: 시간 (hours), 휴무, 요금, 주차 (parking), 전화 (phone); 음식점: 시간, 휴무, 메뉴, 주차, 전화; 숙소: 체크인, 체크아웃, 주차, 객실 (rooms), 전화 — | 지정. One of these key facts missing from a full line = the site has no value for it. A place without a full line in that block: read its page (get_pages) before you state any fact it does not show here.
 
-## 관광지 163곳 — 목록 /places/
-P /places/gyeonggidaehakgyososeongbangmulgwan/ | 경기대학교소성박물관 | 박물관·미술관·전시 | 영통구 | 휴무 매주 토, 일요일 휴무일
-P /places/gyeonggidogyoyukcheongjungangdoseogwan/ | 경기도교육청중앙도서관 | 문화시설 | 장안구 | 휴무 매주 월요일 휴무일
-P /places/gyeonggidoseogwan/ | 경기도서관 | 문화시설 | 영통구 | 휴무 매주 월요일 휴무일
-P /places/gyeonggidoeopsaikeulpeullaja/ | 경기도업사이클플라자 | 문화시설 | 권선구 | 휴무 매주 월요일 휴무일
-P /places/gyeonggidohaengjeongyeoksagwan/ | 경기도행정역사관 | 문화시설 | 장안구 | 휴무 매주 토, 일요일 휴무일
-P /places/gyeonggimunhwajaedan-ateuhol/ | 경기문화재단 아트홀(구 다산홀) | 박물관·미술관·전시 | 팔달구 | 휴무 매주 주말, 공휴일 (대관 일정별 개방); 요금 프로그램별 상이
-P /places/gyeonggisangsangkaempeoseu/ | 경기상상캠퍼스 (Gyeonggi Sangsang Campus) | 문화시설 | 권선구 | 휴무 매주 월요일 휴무일
-P /places/gyeonggiateusenteo/ | 경기아트센터 | 박물관·미술관·전시 | 팔달구 | 연중무휴
-P /places/goryeomgongwon/ | 고렴공원 | 호수·수목원·공원·산 | 권선구 | 연중무휴; 요금 무료
-P /places/gosaengnyujieom/ | 고색뉴지엄 | 문화시설 | 권선구 | 휴무 매주 월요일 휴무일
-P /places/gwanggyo-peuraibureukeujeonmangdae/ | 광교 프라이부르크전망대 (Gwanggyo Freiburg Observatory) | 수목원·숲·공원 | 영통구 | 연중무휴
+## 관광지 444곳 — 목록 /places/
+P /places/gaelleoriabaekhwajeom-gwanggyojeom/ | 갤러리아백화점 광교점 | 박물관·미술관·전시 | 영통구 | 휴무 홈페이지 참조
+P /places/gaelleoksi-ak-peullaja-suwonjeom/ | 갤럭시 AK플라자 수원점 | 시장·쇼핑 | 팔달구 | 휴무 월1회 월요일
+P /places/gaelleoksi-taimbillaseu-suwonjeom/ | 갤럭시 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절, 월1회 월요일
+P /places/gaelleoksiraipeuseutail-ak-baekhwajeom-suwonjeom/ | 갤럭시라이프스타일 AK백화점 수원점 | 시장·쇼핑 | 팔달구
+P /places/gaelleoksiraipeuseutail-taimbillaseu-suwonjeom/ | 갤럭시라이프스타일 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절, 월1회 월요일
+P /places/geseu-ak-peullaja-suwonjeom/ | 게스 AK플라자 수원점 | 시장·쇼핑 | 팔달구
+P /places/geseu-rotdemol-gwanggyojeom/ | 게스 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/geseu-taimbillaseu-suwonjeom/ | 게스 타임빌라스 수원점 | 시장·쇼핑 | 권선구
+P /places/gyeonggidaehakgyososeongbangmulgwan/ | 경기대학교소성박물관 | 박물관·미술관·전시 | 영통구 | 휴무 매주 토요일~일요일 외; 요금 무료
+P /places/gyeonggidogyoyukcheongjungangdoseogwan/ | 경기도교육청중앙도서관 | 문화시설 | 장안구 | 휴무 매주 월요일 / 공휴일; 요금 무료
+P /places/gyeonggidoseogwan/ | 경기도서관 | 문화시설 | 영통구 | 휴무 매월 둘째, 넷째 월요일, 1월 1일, 설·추석 당일; 요금 무료
+P /places/gyeonggidoeopsaikeulpeullaja/ | 경기도업사이클플라자 | 문화시설 | 권선구 | 휴무 매주 월요일, 1월 1일, 설·추석 당일; 요금 무료
+P /places/gyeonggidohaengjeongyeoksagwan/ | 경기도행정역사관 | 문화시설 | 장안구 | 휴무 매주 토요일, 일요일; 요금 무료
+P /places/gyeonggimunhwajaedan-ateuhol/ | 경기문화재단 아트홀(구 다산홀) | 박물관·미술관·전시 | 팔달구 | 휴무 매주 토요일 / 일요
+P /places/gyeonggisangsangkaempeoseu/ | 경기상상캠퍼스 | 문화시설 | 권선구 | 휴무 매주 월요일, 1월 1일, 설·추석 당일; 요금 무료 외
+P /places/gyeonggiateusenteo/ | 경기아트센터 | 박물관·미술관·전시 | 팔달구 | 연중무휴; 요금 공연에 따라 상이
+P /places/goryeomgongwon/ | 고렴공원 | 호수·수목원·공원·산 | 권선구 | 연중무휴
+P /places/gosaengnyujieom/ | 고색뉴지엄 | 문화시설 | 권선구 | 휴무 매주 월요일, 설·추석 연휴전시 미운영시 일요일 휴관, 공휴일; 요금 무료
+P /places/goldeunguseu-taimbillaseu-suwonjeom/ | 골든구스 타임빌라스 수원점 | 시장·쇼핑 | 권선구
+P /places/goldeundyu-ak-peullaja-suwonjeom/ | 골든듀 AK플라자 수원점 | 시장·쇼핑 | 팔달구
+P /places/goldeundyu-gaelleoriabaekhwajeom-gwanggyojeom/ | 골든듀 갤러리아백화점 광교점 | 박물관·미술관·전시 | 영통구 | 휴무 월1회
+P /places/gwanggyo-peuraibureukeujeonmangdae/ | 광교 프라이부르크전망대 | 영통구 | 연중무휴; 요금 무료
 P /places/gwanggyomarugil/ | 광교마루길 | 수목원·숲·공원 | 장안구 | 연중무휴; 요금 무료
-P /places/gwanggyoeorinicheonmundae/ | 광교어린이천문대 | 문화시설 | 영통구 | 휴무 매주 일, 월요일 휴무일
+P /places/gwanggyoeorinicheonmundae/ | 광교어린이천문대 | 문화시설 | 영통구 | 휴무 매주 월요일~일요일 / 법정공휴일; 요금 프로그램 별로 상이함으로 자세한 사항은 홈페이지 참조 외
 P /places/gwanggyojunganggongwon/ | 광교중앙공원 | 호수·수목원·공원·산 | 영통구 | 연중무휴; 요금 무료
-P /places/gwanggyopureunsupdoseogwan/ | 광교푸른숲도서관 | 문화시설 | 영통구 | 휴무 매주 금요일 휴무일
-P /places/gwanggyohosugongwon/ | 광교호수공원 (Gwanggyo Lake Park) | 호수·수목원·공원·산 | 영통구 | 연중무휴
-P /places/gwanggyohosugongwon-gajokkaempingjang/ | 광교호수공원 가족캠핑장 | 호수·수목원·공원·산 | 영통구
-P /places/gwanggyohosugongwon-ballyeogyeon-noriteo/ | 광교호수공원 반려견 놀이터 | 호수·수목원·공원·산 | 영통구 | 휴무 매주 월요일 휴무일; 요금 무료
-P /places/gumaetansijang/ | 구매탄시장 | 전통시장·공방·체험·레포츠 | 영통구 | 연중무휴
-P /places/gungnimnongeopbangmulgwan/ | 국립농업박물관 (National Agricultural Museum) | 박물관·미술관·전시 | 권선구 | 휴무 매주 월요일 휴무일
-P /places/gungnipjidobangmulgwan/ | 국립지도박물관 (National Map Museum) | 박물관·미술관·전시 | 영통구 | 휴무 매주 금, 목요일 휴무일, 토, 일, 월, 화, 수
-P /places/gwonseonjonghapsijang/ | 권선종합시장 | 전통시장·공방·체험·레포츠 | 권선구 | 연중무휴
+P /places/gwanggyopureunsupdoseogwan/ | 광교푸른숲도서관 | 문화시설 | 영통구 | 휴무 매주 금요일 / 공휴일; 요금 [도서관] - 무료 [푸른숲책뜰] - 10,000원(1회 3시간 이내)
+P /places/gwanggyohosugongwon/ | 광교호수공원 | 호수·수목원·공원·산 | 영통구 | 연중무휴; 요금 무료
+P /places/gwanggyohosugongwon-gajokkaempingjang/ | 광교호수공원 가족캠핑장 | 호수·수목원·공원·산 | 영통구 | 휴무 매월 마지막주 월요일 (단, 월요일이 법정공휴일인 경우 다음날 휴장)
+P /places/gwanggyohosugongwon-ballyeogyeon-noriteo/ | 광교호수공원 반려견 놀이터 | 호수·수목원·공원·산 | 영통구 | 휴무 매주 월요일 (단, 동절기 강설 및 우천 시 휴장); 요금 무료
+P /places/gumaetansijang/ | 구매탄시장 | 전통시장·공방·체험·레포츠 | 영통구 | 휴무 매월 셋째 일요일
+P /places/gujji-taimbillaseu-suwonjeom/ | 구찌 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절, 월1회 월요일
+P /places/gungnimnongeopbangmulgwan/ | 국립농업박물관 | 박물관·미술관·전시 | 권선구 | 휴무 매주 월요일, 1월 1일, 설·추석 당일; 요금 무료 외
+P /places/gungnipjidobangmulgwan/ | 국립지도박물관 | 박물관·미술관·전시 | 영통구 | 휴무 1월 1일 / 설·추석 연휴; 요금 무료
+P /places/gwonseonjonghapsijang/ | 권선종합시장 | 전통시장·공방·체험·레포츠 | 권선구 | 휴무 점포 별로 상이함
 P /places/geulbinnurigongwon/ | 글빛누리공원 | 호수·수목원·공원·산 | 영통구 | 연중무휴; 요금 무료
-P /places/nahyeseokgeori/ | 나혜석거리 | 행리단길·시장·체험 | 팔달구 | 연중무휴; 요금 무료
-P /places/nammullodeosijang/ | 남문로데오시장 (Nammun Rodeo Market) | 전통시장·공방·체험·레포츠 | 팔달구 | 연중무휴
-P /places/nosongjidae/ | 노송지대 | 호수·수변·야경 | 장안구 | 연중무휴; 요금 무료
-P /places/dangsucheyukgongwon/ | 당수체육공원 | 호수·수목원·공원·산 | 권선구 | 연중무휴; 요금 무료
+P /places/geumgang-taimbillaseu-suwonjeom/ | 금강 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절, 월1회 월요일
+P /places/geumgangjehwa-ak-peullaja-suwonjeom/ | 금강제화 AK플라자 수원점 | 시장·쇼핑 | 팔달구
+P /places/naiseukeullap-rotdemol-gwanggyojeom/ | 나이스클랍 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/naiki-rotdemol-gwanggyojeom/ | 나이키 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절, 월1회 월요일
+P /places/naiki-seuwim-rotdemol-gwanggyojeom/ | 나이키 스윔 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/naiki-taimbillaseu-suwonjeom/ | 나이키 타임빌라스 수원점 | 시장·쇼핑 | 권선구
+P /places/nahyeseokgeori/ | 나혜석거리 | 행리단길·시장·체험 | 팔달구 | 연중무휴
+P /places/nammullodeosijang/ | 남문로데오시장 | 전통시장·공방·체험·레포츠 | 팔달구 | 휴무 점포별로 상이함
+P /places/neicheoripeobeullik-suwonnammunjeom/ | 네이처리퍼블릭 수원남문점 | 시장·쇼핑 | 팔달구 | 휴무 명절
+P /places/nepa-ak-peullaja-suwonjeom/ | 네파 AK플라자 수원점 | 시장·쇼핑 | 팔달구
+P /places/nepa-rotdemol-gwanggyojeom/ | 네파 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/nepa-seutapildeu-suwonjeom/ | 네파 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/nepa-taimbillaseu-suwonjeom/ | 네파 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절, 월1회 월요일
+P /places/noreudiseukeu-rotdemol-gwanggyojeom/ | 노르디스크 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절, 월1회
+P /places/nobeuraendeu-suwoncheoncheonjeom/ | 노브랜드 수원천천점 | 시장·쇼핑 | 장안구 | 휴무 2,4주 일요일
+P /places/nobeuraendeu-suwonhomaesil-2-jeom/ | 노브랜드 수원호매실2점 | 시장·쇼핑 | 권선구 | 휴무 2,4주 일요일
+P /places/nobeuraendeu-suwonhomaesil-3-hojeom/ | 노브랜드 수원호매실3호점 | 시장·쇼핑 | 권선구 | 휴무 2,4주 일요일
+P /places/nobeuraendeu-suwonhwaseojeom/ | 노브랜드 수원화서점 | 시장·쇼핑 | 팔달구 | 휴무 2,4주 일요일
+P /places/nosongjidae/ | 노송지대 | 수원화성·역사·박물관 | 장안구 | 연중무휴; 요금 무료
+P /places/noseupeiseu-rotdemol-gwanggyojeom/ | 노스페이스 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/noseupeiseu-suwonnammunjeom/ | 노스페이스 수원남문점 | 시장·쇼핑 | 팔달구
+P /places/noseupeiseu-seutapildeu-suwonjeom/ | 노스페이스 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/noseupeiseu-taimbillaseu-suwonjeom/ | 노스페이스 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절, 월1회 월요일
+P /places/nonpiksyeon-seutapildeu-suwonjeom/ | 논픽션 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/notto-seutapildeu-suwonjeom/ | 놋토 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/nyukoaaullet-dongsuwonjeom/ | 뉴코아아울렛 동수원점 | 시장·쇼핑 | 팔달구 | 휴무 명절
+P /places/danielteuruseu-seutapildeu-suwonjeom/ | 다니엘트루스 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/dabichiangyeong-gwanggyojungangyeokjeom/ | 다비치안경 광교중앙역점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/dainapit-rotdemol-gwanggyojeom/ | 다이나핏 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 월1회 월요일
+P /places/dainapit-seutapildeu-suwonjeom/ | 다이나핏 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/dakseugudu-taimbillaseu-suwonjeom/ | 닥스구두 타임빌라스 수원점 | 시장·쇼핑 | 권선구
+P /places/dakseunamseong-ak-peullaja-suwonjeom/ | 닥스남성 AK플라자 수원점 | 시장·쇼핑 | 팔달구
+P /places/dakseusyujeu-rotdemol-gwanggyojeom/ | 닥스슈즈 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/dakseuhaendeubaek-taimbillaseu-suwonjeom/ | 닥스핸드백 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절, 월1회 월요일
+P /places/dakteomatin-seutapildeu-suwonjeom/ | 닥터마틴 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/dangsucheyukgongwon/ | 당수체육공원 | 호수·수목원·공원·산 | 권선구 | 연중무휴; 요금 무료 (일부 시설 유료) 외
 P /places/daebudukgongwon/ | 대부둑공원 | 호수·수목원·공원·산 | 권선구 | 연중무휴; 요금 무료
-P /places/daeyupyeonggongwon/ | 대유평공원 | 호수·수목원·공원·산 | 장안구 | 연중무휴; 요금 무료
+P /places/daeyupyeonggongwon/ | 대유평공원 | 호수·수목원·공원·산 | 장안구
+P /places/deo-renoma-rotdemol-gwanggyojeom/ | 더 레노마 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/deoaijatkeolleksyeon-rotdemol-gwanggyojeom/ | 더아이잗컬렉션 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/demu-rotdemol-gwanggyojeom/ | 데무 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/denbi-rotdemol-gwanggyojeom/ | 덴비 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절, 월1회
 P /places/dongbukgongsimdon/ | 동북공심돈 | 수원화성·성곽·행궁 | 팔달구 | 연중무휴; 요금 무료
+P /places/diseukeobeori-ak-peullaja-suwonjeom/ | 디스커버리 AK플라자 수원점 | 시장·쇼핑 | 팔달구
+P /places/diseukeobeori-rotdemol-gwanggyojeom/ | 디스커버리 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/diseukeobeori-seutapildeu-suwonjeom/ | 디스커버리 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/diol-hwajangpum-taimbillaseu-suwonjeom/ | 디올 화장품 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절, 월1회 월요일
+P /places/raipeuwokeu-rotdemol-gwanggyojeom/ | 라이프워크 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/raipeuwokeu-taimbillaseu-suwonjeom/ | 라이프워크 타임빌라스 수원점 | 시장·쇼핑 | 권선구
+P /places/rakoseute-seutapildeu-suwonjeom/ | 라코스테 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/rakoseuteumeon-taimbillaseu-suwonjeom/ | 라코스테우먼 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절, 월1회 월요일
+P /places/rakpoteu-seutapildeu-suwonjeom/ | 락포트 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/raep-rotdemol-gwanggyojeom/ | 랩 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/renomasyeocheu-rotdemol-gwanggyojeom/ | 레노마셔츠 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
 P /places/rorabiteu/ | 로라비트 | 전통시장·공방·체험·레포츠 | 영통구 | 연중무휴
-P /places/rotdemol-gwanggyojeom/ | 롯데몰 광교점 (LOTTE Mall Gwanggyo) | 시장·쇼핑 | 영통구 | 연중무휴
-P /places/rotdeaullet-gwanggyojeom/ | 롯데아울렛 광교점 | 시장·쇼핑 | 영통구 | 연중무휴
+P /places/roideu-seutapildeu-suwonjeom/ | 로이드 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/rojeobibie-gaelleoriabaekhwajeom-gwanggyojeom/ | 로저비비에 갤러리아백화점 광교점 | 박물관·미술관·전시 | 영통구
+P /places/roksittang-taimbillaseu-suwonjeom/ | 록시땅 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절, 월1회 월요일
+P /places/ronjin-ak-peullaja-suwonjeom/ | 론진 AK플라자 수원점 | 시장·쇼핑 | 팔달구 | 휴무 명절
+P /places/ronjin-gaelleoriabaekhwajeom-gwanggyojeom/ | 론진 갤러리아백화점 광교점 | 박물관·미술관·전시 | 영통구
+P /places/rotdemateu-cheoncheonjeom/ | 롯데마트 천천점 | 시장·쇼핑 | 장안구 | 휴무 명절
+P /places/rotdemateu-taimbillaseu-suwonjeom/ | 롯데마트 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 2,4주 일요일
+P /places/rotdemol-gwanggyojeom/ | 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/rotdeaullet-gwanggyojeom/ | 롯데아울렛 광교점 | 시장·쇼핑 | 영통구 | 휴무 2주 월요일
+P /places/rotdehaimateu-megaseutoeo-rotdemol-gwanggyojeom/ | 롯데하이마트 메가스토어 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/rotdehaimateu-seosuwonjeom/ | 롯데하이마트 서수원점 | 시장·쇼핑 | 권선구 | 휴무 명절
+P /places/rotdehaimateu-suwonjeom/ | 롯데하이마트 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절
+P /places/rotdehaimateu-hansaemgwanggyojeom/ | 롯데하이마트 한샘광교점 | 시장·쇼핑 | 영통구
+P /places/rudipeurojekteu-seutapildeu-suwonjeom/ | 루디프로젝트 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/rujeuaellaunji-taimbillaseu-suwonjeom/ | 루즈앤라운지 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절, 월1회 월요일
+P /places/rulluremon-taimbillaseu-suwonjeom/ | 룰루레몬 타임빌라스 수원점 | 시장·쇼핑 | 권선구
+P /places/ribaiseu-seutapildeu-suwonjeom/ | 리바이스 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/marittepeurangsowajeobeo-seutapildeu-suwonjeom/ | 마리떼프랑소와저버 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/masimodutti-seutapildeu-suwonjeom/ | 마시모두띠 스타필드 수원점 | 시장·쇼핑 | 장안구 | 휴무 명절
+P /places/maeseuteuro-ak-peullaja-suwonjeom/ | 마에스트로 AK플라자 수원점 | 시장·쇼핑 | 팔달구
+P /places/maikeulkoeoseu-seutapildeu-suwonjeom/ | 마이클코어스 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/maindeubeuritji-seutapildeu-suwonjeom/ | 마인드브릿지 스타필드 수원점 | 시장·쇼핑 | 장안구
 P /places/majunggongwon/ | 마중공원 | 호수·수목원·공원·산 | 권선구 | 연중무휴; 요금 무료
-P /places/manseokgeogongwon/ | 만석거공원 (Manseokgeo Park) | 호수·수목원·공원·산 | 장안구 | 연중무휴; 요금 무료
-P /places/manseokgongwon/ | 만석공원 (Manseok Park) | 호수·수목원·공원·산 | 장안구
-P /places/maesansijang/ | 매산시장 | 전통시장·공방·체험·레포츠 | 팔달구 | 휴무 연중무휴 (점포별 상이)
-P /places/maetangongwon/ | 매탄공원 | 호수·수목원·공원·산 | 영통구
-P /places/motgoljonghapsijang/ | 못골종합시장 (못골시장) (Motgol Market) | 전통시장·공방·체험·레포츠 | 팔달구 | 연중무휴
-P /places/mugunghwadongsan/ | 무궁화동산 | 수목원·숲·공원 | 권선구 | 연중무휴; 요금 무료
-P /places/mulbongseoneorinigongwon/ | 물봉선어린이공원 | 호수·수목원·공원·산 | 영통구 | 연중무휴; 요금 무료
-P /places/minarigwangsijang/ | 미나리광시장 | 전통시장·공방·체험·레포츠 | 팔달구 | 연중무휴
-P /places/mirinaemasulgeukdan-eunhasuhol/ | 미리내마술극단 은하수홀 | 문화시설 | 팔달구 | 휴무 매주 일요일 휴무일
-P /places/bareunsaemeorinidoseogwan/ | 바른샘어린이도서관 | 문화시설 | 영통구 | 휴무 매주 월요일 휴무일
+P /places/mahageurideu-seutapildeu-suwonjeom/ | 마하그리드 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/mandarinadeok-seutapildeu-suwonjeom/ | 만다리나덕 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/manseokgeogongwon/ | 만석거공원 | 호수·수목원·공원·산 | 장안구 | 연중무휴; 요금 무료
+P /places/manseokgongwon/ | 만석공원 | 호수·수목원·공원·산 | 장안구
+P /places/malbongolpeu-seutapildeu-suwonjeom/ | 말본골프 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/maesansijang/ | 매산시장 | 전통시장·공방·체험·레포츠 | 팔달구 | 휴무 점포 별로 상이함
+P /places/maetangongwon/ | 매탄공원 | 호수·수목원·공원·산 | 영통구 | 연중무휴; 요금 무료
+P /places/meteurositi-taimbillaseu-suwonjeom/ | 메트로시티 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 월1회 월요일
+P /places/modeonhauseu-rotdemol-gwanggyojeom/ | 모던하우스 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/mojoeseupin-rotdemol-gwanggyojeom/ | 모조에스핀 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/molliseupetsyap-seutapildeu-suwonjeom/ | 몰리스펫샵 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/motgoljonghapsijang/ | 못골종합시장 (못골시장) | 전통시장·공방·체험·레포츠 | 팔달구 | 휴무 연중무휴 / 점포 별 상이
+P /places/mongbeullang-taimbillaseu-suwonjeom/ | 몽블랑 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절, 월1회 월요일
+P /places/mugunghwadongsan/ | 무궁화동산 | 수목원·숲·공원 | 권선구 | 연중무휴; 요금 연간회원제로 전화 예약 가능
+P /places/munyamunya-rotdemol-gwanggyojeom/ | 무냐무냐 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/mulbongseoneorinigongwon/ | 물봉선어린이공원 | 호수·수목원·공원·산 | 영통구 | 휴무 매주 월요일 / 우천 시; 요금 무료
+P /places/minarigwangsijang/ | 미나리광시장 | 전통시장·공방·체험·레포츠 | 팔달구 | 휴무 점포 별로 상이함
+P /places/mirinaemasulgeukdan-eunhasuhol/ | 미리내마술극단 은하수홀 | 문화시설 | 팔달구 | 연중무휴; 요금 교육 및 강연에 따라 상이하므로 홈페이지 참고 외
+P /places/misope-taimbillaseu-suwonjeom/ | 미소페 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절, 월1회 월요일
+P /places/miumiu-gaelleoriabaekhwajeom-gwanggyojeom/ | 미우미우 갤러리아백화점 광교점 | 박물관·미술관·전시 | 영통구
+P /places/mille-gaelleoriabaekhwajeom-gwanggyojeom/ | 밀레 갤러리아백화점 광교점 | 박물관·미술관·전시 | 영통구
+P /places/bareunsaemeorinidoseogwan/ | 바른샘어린이도서관 | 문화시설 | 영통구 | 휴무 매주 월요일 / 공휴일; 요금 무료
+P /places/bassoommeu-ak-peullaja-suwonjeom/ | 바쏘옴므 AK플라자 수원점 | 시장·쇼핑 | 팔달구
 P /places/baunseusyupeopakeu-suwonyeongtongsenteo/ | 바운스슈퍼파크 수원영통센터 | 전통시장·공방·체험·레포츠 | 영통구 | 연중무휴
 P /places/bandalgongwon/ | 반달공원 | 호수·수목원·공원·산 | 영통구 | 연중무휴; 요금 무료
 P /places/banditburi-yeonmusijang/ | 반딧불이 연무시장 | 전통시장·공방·체험·레포츠 | 장안구 | 연중무휴
 P /places/banyasa/ | 반야사 | 수원화성·역사·박물관 | 영통구 | 연중무휴; 요금 무료
+P /places/ballensiaga-taimbillaseu-suwonjeom/ | 발렌시아가 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절
 P /places/bambatcheonggaegurigongwon/ | 밤밭청개구리공원 | 호수·수목원·공원·산 | 장안구 | 연중무휴; 요금 무료
 P /places/bangjukgongwon/ | 방죽공원 | 호수·수목원·공원·산 | 영통구 | 연중무휴; 요금 무료
-P /places/banghwasuryujeong/ | 방화수류정(동북각루) (Banghwasuryujeong Pavilion) | 수원화성·성곽·행궁 | 팔달구 | 연중무휴; 요금 무료
-P /places/byeolmadangdoseogwan-seutapildeu-suwonjeom/ | 별마당도서관 스타필드 수원점 (Starfield Library Suwon) | 문화시설 | 장안구 | 연중무휴
-P /places/bohyeonseonwon/ | 보현선원 | 수목원·숲·공원 | 장안구
-P /places/bokhammunhwagonggan-111-ssiem/ | 복합문화공간 111씨엠(111CM) | 문화시설 | 장안구 | 휴무 매주 월요일 휴무일
-P /places/bongnyeongsa/ | 봉녕사 (Suwon Bongnyeongsa Temple) | 수원화성·역사·박물관 | 팔달구 | 연중무휴; 요금 무료
+P /places/banghwasuryujeong/ | 방화수류정(동북각루) | 수원화성·성곽·행궁 | 팔달구 | 연중무휴; 요금 무료
+P /places/beokeorujin-ak-peullaja-suwonjeom/ | 버커루진 AK플라자 수원점 | 시장·쇼핑 | 팔달구
+P /places/benebene-seutapildeu-suwonjeom/ | 베네베네 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/belluti-gaelleoriabaekhwajeom-gwanggyojeom/ | 벨루티 갤러리아백화점 광교점 | 박물관·미술관·전시 | 영통구 | 휴무 명절
+P /places/byeolmadangdoseogwan-seutapildeu-suwonjeom/ | 별마당도서관 스타필드 수원점 | 문화시설 | 장안구 | 연중무휴; 요금 무료
+P /places/bohyeonseonwon/ | 보현선원 | 장안구 | 연중무휴; 요금 무료
+P /places/bokhammunhwagonggan-111-ssiem/ | 복합문화공간 111씨엠(111CM) | 문화시설 | 장안구 | 휴무 매주 월요일, 설·추석 연휴, 법정공휴일
+P /places/bongnyeongsa/ | 봉녕사 | 수원화성·역사·박물관 | 팔달구 | 연중무휴; 요금 무료
 P /places/bongdon/ | 봉돈 | 수원화성·성곽·행궁 | 팔달구 | 연중무휴; 요금 무료
-P /places/buksuwonsijang/ | 북수원시장 | 전통시장·공방·체험·레포츠 | 장안구 | 휴무 연중무휴 (점포별 상이)
-P /places/buksuwononcheon/ | 북수원온천 (Puksuwon Spaplex) | 수목원·숲·공원 | 장안구 | 연중무휴
-P /places/samseonginobeisyeonmyujieom/ | 삼성이노베이션뮤지엄 (Samsung Innovation Museum) | 박물관·미술관·전시 | 영통구 | 휴무 매주 일요일 휴무일
-P /places/seosuwondoseogwan/ | 서수원도서관 | 문화시설 | 권선구 | 휴무 매주 금요일 휴무일
-P /places/seosuwonjuminpyeoniksiseol/ | 서수원주민편익시설 | 전통시장·공방·체험·레포츠 | 권선구 | 휴무 매주 일요일 휴무일
-P /places/seohogongwon/ | 서호공원 (Seoho Park) | 호수·수목원·공원·산 | 팔달구 | 연중무휴; 요금 무료
-P /places/seohokkonmoegongwon/ | 서호꽃뫼공원 (Seoho Kkotmoe Park) | 호수·수목원·공원·산 | 팔달구 | 연중무휴; 요금 무료
-P /places/seohocheongil/ | 서호천길 | 호수·수목원·공원·산 | 장안구 | 연중무휴; 요금 무료
+P /places/buksuwonsijang/ | 북수원시장 | 전통시장·공방·체험·레포츠 | 장안구 | 휴무 점포 별로 상이함
+P /places/buksuwononcheon/ | 북수원온천 | 장안구 | 연중무휴; 요금 대인 12,000원, 경로(만65세 이상) 9,000원 외
+P /places/bulgari-gaelleoriabaekhwajeom-gwanggyojeom/ | 불가리 갤러리아백화점 광교점 | 박물관·미술관·전시 | 영통구 | 휴무 명절
+P /places/beurukseubeuradeoseu-seutapildeu-suwonjeom/ | 브룩스브라더스 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/beullaegyakeu-ak-peullaja-suwonjeom/ | 블랙야크 AK플라자 수원점 | 시장·쇼핑 | 팔달구
+P /places/beullaegyakeu-rotdemol-gwanggyojeom/ | 블랙야크 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절, 월2회 월요일
+P /places/beullaegyakeu-taimbillaseu-suwonjeom/ | 블랙야크 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절, 월1회 월요일
+P /places/bineoseu-rotdemol-gwanggyojeom/ | 비너스 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/bineoseu-taimbillaseu-suwonjeom/ | 비너스 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절, 월1회 월요일
+P /places/binpol-ak-peullaja-suwonjeom/ | 빈폴 AK플라자 수원점 | 시장·쇼핑 | 팔달구
+P /places/binpolmaen-taimbillaseu-suwonjeom/ | 빈폴맨 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절, 월1회 월요일
+P /places/sarangyakguk/ | 사랑약국 | 시장·쇼핑 | 팔달구
+P /places/sallomon-seutapildeu-suwonjeom/ | 살로몬 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/samseongseutoeo-ak-peullaja-suwonjeom/ | 삼성스토어 AK플라자 수원점 | 시장·쇼핑 | 팔달구
+P /places/samseongseutoeo-buksuwon/ | 삼성스토어 북수원 | 시장·쇼핑 | 장안구 | 휴무 명절
+P /places/samseongseutoeo-seosuwon/ | 삼성스토어 서수원 | 시장·쇼핑 | 권선구 | 휴무 명절
+P /places/samseongseutoeo-suwonsamseongjeongimobail/ | 삼성스토어 수원삼성전기모바일 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/samseongseutoeo-yeongtong/ | 삼성스토어 영통 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/samseonginobeisyeonmyujieom/ | 삼성이노베이션뮤지엄 | 박물관·미술관·전시 | 영통구 | 휴무 매주 일요일 외; 요금 무료
+P /places/seosuwondoseogwan/ | 서수원도서관 | 문화시설 | 권선구 | 휴무 매주 금요일 / 법정공휴일; 요금 무료
+P /places/seosuwonjuminpyeoniksiseol/ | 서수원주민편익시설 | 전통시장·공방·체험·레포츠 | 권선구 | 휴무 매주 일요일 / 공휴일
+P /places/seohogongwon/ | 서호공원 | 호수·수목원·공원·산 | 팔달구 | 연중무휴; 요금 무료
+P /places/seohokkonmoegongwon/ | 서호꽃뫼공원 | 호수·수목원·공원·산 | 팔달구 | 연중무휴; 요금 무료
+P /places/seohocheongil/ | 서호천길 | 호수·수목원·공원·산 | 장안구 | 연중무휴
 P /places/seongjukgongwon/ | 성죽공원 | 호수·수목원·공원·산 | 영통구 | 연중무휴; 요금 무료
-P /places/sollaeeumkaempingjang/ | 솔내음캠핑장 | 전통시장·공방·체험·레포츠 | 권선구
-P /places/suwon-gongbanggeori/ | 수원 공방거리 (Suwon Workshop Street) | 전통시장·공방·체험·레포츠 | 팔달구 | 휴무 연중무휴 (매장별 상이); 요금 거리 관람 무료 (체험 프로그램별 유료)
-P /places/suwon-gu-bugugwon/ | 수원 구 부국원 | 수목원·숲·공원 | 팔달구 | 휴무 매주 월요일 휴무일
-P /places/suwon-nammunsijang/ | 수원 남문시장 (Suwon Nammun Market) | 전통시장·공방·체험·레포츠 | 팔달구 | 연중무휴
-P /places/suwon-nongsusanmuldomaesijang/ | 수원 농수산물도매시장 | 전통시장·공방·체험·레포츠 | 권선구 | 휴무 매주 일요일 휴무일
-P /places/suwon-yeongdongsijang/ | 수원 영동시장 (Suwon Yeongdong Market) | 전통시장·공방·체험·레포츠 | 팔달구 | 연중무휴
-P /places/suwon-yeongtongdoseogwan/ | 수원 영통도서관 | 문화시설 | 영통구 | 휴무 매월 첫째·셋째 월요일, 법정공휴일; 요금 무료
-P /places/suwon-woldeukeopgyeonggijang-chukgubangmulgwan/ | 수원 월드컵경기장 축구박물관 | 박물관·미술관·전시 | 팔달구 | 휴무 매주 월요일 휴무일
+P /places/sereujiotakini-seutapildeu-suwonjeom/ | 세르지오타키니 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/sollaeeumkaempingjang/ | 솔내음캠핑장 | 전통시장·공방·체험·레포츠 | 권선구 | 연중무휴
+P /places/syome-gaelleoriabaekhwajeom-gwanggyojeom/ | 쇼메 갤러리아백화점 광교점 | 박물관·미술관·전시 | 영통구 | 휴무 명절
+P /places/suwon-gongbanggeori/ | 수원 공방거리 | 전통시장·공방·체험·레포츠 | 팔달구 | 연중무휴; 요금 무료
+P /places/suwon-gu-bugugwon/ | 수원 구 부국원 | 팔달구 | 휴무 매주 월요일 / 법정공휴일
+P /places/suwon-nammunsijang/ | 수원 남문시장 | 전통시장·공방·체험·레포츠 | 팔달구 | 휴무 점포별로 상이함
+P /places/suwon-nongsusanmuldomaesijang/ | 수원 농수산물도매시장 | 전통시장·공방·체험·레포츠 | 권선구 | 휴무 청과부류 매주 일요일, 수산부류 매월 첫째, 셋째 일요일
+P /places/suwon-yeongdongsijang/ | 수원 영동시장 | 전통시장·공방·체험·레포츠 | 팔달구 | 휴무 점포 별로 상이함 외
+P /places/suwon-yeongtongdoseogwan/ | 수원 영통도서관 | 문화시설 | 영통구 | 휴무 월요일, 법정 공휴일이 일요일이면 휴관, 공휴일(일요일 제외); 요금 무료
+P /places/suwon-woldeukeopgyeonggijang-chukgubangmulgwan/ | 수원 월드컵경기장 축구박물관 | 박물관·미술관·전시 | 팔달구 | 휴무 매주 월요일, 1월 1일, 설·추석 당일; 요금 무료
 P /places/suwon-jidongbyeokhwamaeul/ | 수원 지동벽화마을 | 전통시장·공방·체험·레포츠 | 팔달구 | 연중무휴; 요금 무료
-P /places/suwon-hyeonchungtap/ | 수원 현충탑 | 호수·수변·야경 | 팔달구 | 연중무휴; 요금 무료
-P /places/suwon-hwaryeongjeon/ | 수원 화령전 (Suwon Hwaryeongjeon Shrine) | 호수·수변·야경 | 팔달구 | 연중무휴; 요금 무료
-P /places/suwon-hwaseong/ | 수원 화성 (Suwon Hwaseong Fortress) | 호수·수변·야경 | 장안구 | 연중무휴; 요금 무료
-P /places/suwon-kt-wijeupakeu/ | 수원KT위즈파크 (Suwon KT Wiz Park) | 전통시장·공방·체험·레포츠 | 장안구 | 연중무휴
-P /places/suwon-sk-ateurium/ | 수원SK아트리움 | 박물관·미술관·전시 | 장안구 | 휴무 매주 토, 일요일 휴무일
-P /places/suwongwanggyobangmulgwan/ | 수원광교박물관 (Suwon Gwanggyo Museum) | 박물관·미술관·전시 | 영통구 | 휴무 매주 월요일 휴무일
+P /places/suwon-hyeonchungtap/ | 수원 현충탑 | 수원화성·역사·박물관 | 팔달구 | 연중무휴
+P /places/suwon-hwaryeongjeon/ | 수원 화령전 | 수원화성·역사·박물관 | 팔달구 | 연중무휴; 요금 일반 2,000원, 개인 외
+P /places/suwon-hwaseong/ | 수원 화성 | 수원화성·역사·박물관 | 장안구 | 연중무휴; 요금 무료
+P /places/suwon-kt-wijeupakeu/ | 수원KT위즈파크 | 전통시장·공방·체험·레포츠 | 장안구 | 휴무 매주 월요일 외
+P /places/suwon-sk-ateurium/ | 수원SK아트리움 | 박물관·미술관·전시 | 장안구 | 휴무 공연 일정에 따라 상이함; 요금 공연 별로 상이함
+P /places/suwongwanggyobangmulgwan/ | 수원광교박물관 | 박물관·미술관·전시 | 영통구 | 휴무 매주 월요일, 그 밖에 시장이 정하는 휴관일; 요금 일반 2,000원 외
 P /places/suwonmesse/ | 수원메쎄 | 문화시설 | 권선구 | 연중무휴
-P /places/suwonmunhwawon/ | 수원문화원 | 문화시설 | 권선구 | 휴무 매주 토, 일요일 휴무일
-P /places/suwonbangmulgwan/ | 수원박물관 (Suwon Museum) | 박물관·미술관·전시 | 영통구 | 휴무 매주 월요일 휴무일
-P /places/suwonsa/ | 수원사 | 수원화성·역사·박물관 | 팔달구 | 연중무휴
-P /places/suwonseongyeongdoseogwan/ | 수원선경도서관 | 문화시설 | 팔달구 | 휴무 매주 월요일 휴무일
-P /places/suwonsirimmanseokjeonsigwan/ | 수원시립만석전시관 | 박물관·미술관·전시 | 장안구 | 휴무 매주 월요일 휴무일
-P /places/suwonsirimmisulgwan/ | 수원시립미술관 (Suwon Museum of Art) | 박물관·미술관·전시 | 팔달구 | 연중무휴
-P /places/suwonsiribateuseupeiseugwanggyo/ | 수원시립아트스페이스광교 | 박물관·미술관·전시 | 영통구 | 휴무 매주 월요일 휴무일
-P /places/suwonsiripjungangdoseogwan/ | 수원시립중앙도서관 | 박물관·미술관·전시 | 팔달구 | 휴무 매주 금요일 휴무일
-P /places/suwonsimidieosenteo/ | 수원시미디어센터 | 문화시설 | 팔달구 | 휴무 매주 월요일 휴무일
-P /places/suwonsiminhoegwan/ | 수원시민회관 | 문화시설 | 팔달구
-P /places/suwonyaoeeumakdang/ | 수원야외음악당 (Suwon Outdoor Music Hall) | 문화시설 | 팔달구
-P /places/suwoneorinigyotonggongwon/ | 수원어린이교통공원 | 호수·수목원·공원·산 | 영통구 | 휴무 연중무휴 (실내 교육장 주말·공휴일 휴무); 요금 무료
-P /places/suwonyeokjeonsijang/ | 수원역전시장 | 박물관·미술관·전시 | 팔달구 | 휴무 연중무휴 (점포별 상이)
+P /places/suwonmunhwawon/ | 수원문화원 | 문화시설 | 권선구 | 휴무 매주 일요일
+P /places/suwonbangmulgwan/ | 수원박물관 | 박물관·미술관·전시 | 영통구 | 휴무 매주 월요일(단, 월요일이 법정공휴일인 경우 다음날 휴관); 요금 일반 2,000원 외
+P /places/suwonsa/ | 수원사 | 팔달구 | 연중무휴; 요금 무료 외
+P /places/suwonseongyeongdoseogwan/ | 수원선경도서관 | 문화시설 | 팔달구 | 휴무 매주 월요일 / 공휴일; 요금 무료
+P /places/suwonsirimmanseokjeonsigwan/ | 수원시립만석전시관 | 박물관·미술관·전시 | 장안구 | 휴무 매주 월요일 (월요일이 공휴일인 경우 그 다음날 휴관); 요금 일반 4,000원 외
+P /places/suwonsirimmisulgwan/ | 수원시립미술관 | 박물관·미술관·전시 | 팔달구 | 휴무 매주 월요일 (단, 월요일이 공휴일인 경우 그 다음날 휴관); 요금 일반 4,000원 외
+P /places/suwonsiribateuseupeiseugwanggyo/ | 수원시립아트스페이스광교 | 박물관·미술관·전시 | 영통구 | 휴무 매주 월요일 (단, 월요일이 공휴일이면 다음 날 휴관); 요금 무료
+P /places/suwonsiripjungangdoseogwan/ | 수원시립중앙도서관 | 박물관·미술관·전시 | 팔달구 | 휴무 매주 금요일 외; 요금 무료
+P /places/suwonsimidieosenteo/ | 수원시미디어센터 | 문화시설 | 팔달구 | 휴무 매주 월요일 외; 요금 무료 외
+P /places/suwonsiminhoegwan/ | 수원시민회관 | 문화시설 | 팔달구 | 휴무 매주 월요일; 요금 공연에 따라 상이
+P /places/suwonyaoeeumakdang/ | 수원야외음악당 | 문화시설 | 팔달구 | 휴무 공연에 따라 상이; 요금 공연에 따라 상이
+P /places/suwoneorinigyotonggongwon/ | 수원어린이교통공원 | 호수·수목원·공원·산 | 영통구 | 연중무휴; 요금 무료
+P /places/suwonyeokjeonsijang/ | 수원역전시장 | 박물관·미술관·전시 | 팔달구 | 휴무 매월 첫째, 셋째 일요일 외
 P /places/suwonollimpikgongwon/ | 수원올림픽공원 | 호수·수목원·공원·산 | 권선구 | 연중무휴; 요금 무료
-P /places/suwonwoldeukeopgyeonggijang/ | 수원월드컵경기장 (Suwon World Cup Stadium) | 전통시장·공방·체험·레포츠 | 팔달구
-P /places/suwonjeontongmunhwagwan/ | 수원전통문화관 (Suwon Traditional Culture Center) | 수원화성·역사·박물관 | 팔달구 | 연중무휴
-P /places/suwoncheryeokdallyeonjang/ | 수원체력단련장 | 전통시장·공방·체험·레포츠 | 권선구 | 휴무 동절기 휴장일 별도 공지
-P /places/suwoncheyungmunhwasenteo/ | 수원체육문화센터 | 전통시장·공방·체험·레포츠 | 영통구 | 휴무 매주 일요일 휴무일
-P /places/suwonkeonbensyeonsenteo/ | 수원컨벤션센터 | 문화시설 | 영통구 | 휴무 매주 토, 일요일 휴무일
-P /places/suwontongdakgeori/ | 수원통닭거리 (Suwon Chicken Street) | 전통시장·공방·체험·레포츠 | 팔달구 | 요금 점포별로 상이함
-P /places/suwonhyanggyo/ | 수원향교 (Suwonhyanggyo Confucian School) | 호수·수변·야경 | 팔달구 | 휴무 매주 토, 일요일 휴무일
-P /places/suwonhwaseong-gwangwangteukgu/ | 수원화성 관광특구 (Suwon Hwaseong Special Tourist Zone) | 수원화성·성곽·행궁 | 팔달구 | 연중무휴
-P /places/suwonhwaseong-seonggwakgil/ | 수원화성 성곽길 (Suwon Hwaseong Fortress Wall Trail) | 수원화성·성곽·행궁 | 팔달구 | 휴무 매주 일요일 휴무일
-P /places/suwonhwaseongbangmulgwan/ | 수원화성박물관 (Suwon Hwaseong Museum) | 수원화성·성곽·행궁 | 팔달구 | 휴무 매주 월요일 휴무일
+P /places/suwonwoldeukeopgyeonggijang/ | 수원월드컵경기장 | 전통시장·공방·체험·레포츠 | 팔달구 | 연중무휴
+P /places/suwonjeontongmunhwagwan/ | 수원전통문화관 | 수원화성·역사·박물관 | 팔달구 | 휴무 매주 월요일; 요금 무료
+P /places/suwoncheryeokdallyeonjang/ | 수원체력단련장 | 전통시장·공방·체험·레포츠 | 권선구 | 휴무 홈페이지 참조 및 전화 문의 요망
+P /places/suwoncheyungmunhwasenteo/ | 수원체육문화센터 | 전통시장·공방·체험·레포츠 | 영통구 | 휴무 매주 일요일
+P /places/suwonkeonbensyeonsenteo/ | 수원컨벤션센터 | 문화시설 | 영통구 | 연중무휴; 요금 행사별 상이
+P /places/suwontongdakgeori/ | 수원통닭거리 | 전통시장·공방·체험·레포츠 | 팔달구 | 휴무 점포별로 상이함; 요금 점포별로 상이함
+P /places/suwonhyanggyo/ | 수원향교 | 수원화성·역사·박물관 | 팔달구 | 휴무 매주 토요일~일요일 / 법정공휴일; 요금 무료
+P /places/suwonhwaseong-gwangwangteukgu/ | 수원화성 관광특구 | 수원화성·성곽·행궁 | 팔달구 | 연중무휴; 요금 무료, 수원화성 입장료 외
+P /places/suwonhwaseong-seonggwakgil/ | 수원화성 성곽길 | 수원화성·성곽·행궁 | 팔달구 | 연중무휴; 요금 무료
+P /places/suwonhwaseongbangmulgwan/ | 수원화성박물관 | 수원화성·성곽·행궁 | 팔달구 | 휴무 매주 월요일, 그 밖에 시장이 정하는 휴관일 외; 요금 어른 2,000원, 개인 외
 P /places/sukjigongwon/ | 숙지공원 | 호수·수목원·공원·산 | 팔달구 | 연중무휴; 요금 무료
+P /places/swijeumiseu-rotdemol-gwanggyojeom/ | 쉬즈미스 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/swijeumiseu-seutapildeu-suwonjeom/ | 쉬즈미스 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/syuseupa-seutapildeu-suwonjeom/ | 슈스파 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/syukommaboni-taimbillaseu-suwonjeom/ | 슈콤마보니 타임빌라스 수원점 | 시장·쇼핑 | 권선구
+P /places/seunoupikeu-seutapildeu-suwonjeom/ | 스노우피크 스타필드 수원점 | 시장·쇼핑 | 장안구
 P /places/seumoeo-paektori/ | 스모어 팩토리 | 시장·쇼핑 | 팔달구 | 연중무휴
-P /places/seumop-suwon/ | 스몹 수원 (Smob - Suwon Branch) | 전통시장·공방·체험·레포츠 | 장안구 | 연중무휴; 요금 성인 26,000원 외
-P /places/seutapildeu-suwon/ | 스타필드 수원 (Starfield Suwon) | 시장·쇼핑 | 장안구 | 연중무휴
-P /places/seulgisaemeorinidoseogwan/ | 슬기샘어린이도서관 | 문화시설 | 장안구 | 휴무 매주 월요일 휴무일
-P /places/sindongsubyeongongwon/ | 신동수변공원 | 호수·수목원·공원·산 | 영통구
-P /places/simonseonsaengmyo/ | 심온선생묘 | 호수·수변·야경 | 영통구 | 연중무휴; 요금 무료
-P /places/ajudaehakgyodogubangmulgwan/ | 아주대학교도구박물관 | 박물관·미술관·전시 | 영통구 | 휴무 매주 토, 일요일 휴무일
-P /places/akuapeullanet-gwanggyo/ | 아쿠아플라넷 광교 (Aqua Planet Gwanggyo) | 전통시장·공방·체험·레포츠 | 영통구 | 연중무휴
+P /places/seumop-suwon/ | 스몹 수원 | 전통시장·공방·체험·레포츠 | 장안구 | 연중무휴
+P /places/seuwarobeuseuki-taimbillaseu-suwonjeom/ | 스와로브스키 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절, 월1회 월요일
+P /places/seuwachi-seutapildeu-suwonjeom/ | 스와치 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/seukechyeoseu-rotdemol-gwanggyojeom/ | 스케쳐스 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/seukechyeoseu-taimbillaseu-suwonjeom/ | 스케쳐스 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절, 월1회 월요일
+P /places/seutamongtteure-ak-peullaja-suwonjeom/ | 스타몽뜨레 AK플라자 수원점 | 시장·쇼핑 | 팔달구
+P /places/seutapildeu-suwon/ | 스타필드 수원 | 시장·쇼핑 | 장안구 | 연중무휴
+P /places/seutaendeuoil-seutapildeu-suwonjeom/ | 스탠드오일 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/seutonhenji-ak-peullaja-suwonjeom/ | 스톤헨지 AK플라자 수원점 | 시장·쇼핑 | 팔달구
+P /places/seutonhenji-taimbillaseu-suwonjeom/ | 스톤헨지 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절, 월1회 월요일
+P /places/seupao-ak-peullaja-suwonjeom/ | 스파오 AK플라자 수원점 | 시장·쇼핑 | 팔달구 | 휴무 명절
+P /places/seupao-seutapildeu-suwonjeom/ | 스파오 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/seulgisaemeorinidoseogwan/ | 슬기샘어린이도서관 | 문화시설 | 장안구 | 휴무 매주 월요일 / 공휴일; 요금 무료
+P /places/sindongsubyeongongwon/ | 신동수변공원 | 호수·수목원·공원·산 | 영통구 | 연중무휴
+P /places/simonseonsaengmyo/ | 심온선생묘 | 영통구 | 연중무휴; 요금 무료
+P /places/ssaemsonaiteu-rotdemol-gwanggyojeom/ | 쌤소나이트 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/ssaemsonaiteu-seutapildeu-suwonjeom/ | 쌤소나이트 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/sseoseudeiaillaendeu-rotdemol-gwanggyojeom/ | 써스데이아일랜드 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/sseoseudeiaillaendeu-seutapildeu-suwonjeom/ | 써스데이아일랜드 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/adidaseu-rotdemol-gwanggyojeom/ | 아디다스 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/adidaseu-seutapildeu-suwonjeom/ | 아디다스 스타필드 수원점 | 시장·쇼핑 | 장안구 | 휴무 명절
+P /places/arena-rotdemol-gwanggyojeom/ | 아레나 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/areuket-seutapildeu-suwonjeom/ | 아르켓 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/aideo-ak-peullaja-suwonjeom/ | 아이더 AK플라자 수원점 | 시장·쇼핑 | 팔달구
+P /places/aideo-rotdemol-gwanggyojeom/ | 아이더 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절, 월1회
+P /places/aijatbaba-ak-peullaja-suwonjeom/ | 아이잗바바 AK플라자 수원점 | 시장·쇼핑 | 팔달구
+P /places/ajudaehakgyodogubangmulgwan/ | 아주대학교도구박물관 | 박물관·미술관·전시 | 영통구 | 휴무 주말, 공휴일, 개교기념일(4월 12일); 요금 무료
+P /places/akuapeullanet-gwanggyo/ | 아쿠아플라넷 광교 | 전통시장·공방·체험·레포츠 | 영통구 | 연중무휴; 요금 성인 30,000원 외
+P /places/ateubakseu-gwanggyoabeunyupeurangjeom/ | 아트박스 광교아브뉴프랑점 | 박물관·미술관·전시 | 영통구
+P /places/ateubakseu-suwonyeokjeom/ | 아트박스 수원역점 | 박물관·미술관·전시 | 팔달구 | 휴무 명절
+P /places/ateubakseu-suwoningyejeom/ | 아트박스 수원인계점 | 박물관·미술관·전시 | 팔달구
+P /places/ateubakseu-yeongtongjeom/ | 아트박스 영통점 | 박물관·미술관·전시 | 영통구
+P /places/apeurikaangyeong-taimbillaseu-suwonjeom/ | 아프리카안경 타임빌라스 수원점 | 시장·쇼핑 | 권선구
+P /places/andareu-rotdemol-gwanggyojeom/ | 안다르 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절, 월1회
+P /places/alleksandeo-maekkwin-gaelleoriabaekhwajeom-gwanggyojeom/ | 알렉산더 맥퀸 갤러리아백화점 광교점 | 박물관·미술관·전시 | 영통구 | 휴무 명절, 월1회 월요일
+P /places/eseutidyupong-seutapildeu-suwonjeom/ | 에스티듀퐁 스타필드 수원점 | 시장·쇼핑 | 장안구 | 휴무 월2회
+P /places/eitsekeonjeu-ak-baekhwajeom-suwonjeom/ | 에잇세컨즈 AK백화점 수원점 | 시장·쇼핑 | 팔달구
+P /places/eitsekeonjeu-seutapildeu-suwonjeom/ | 에잇세컨즈 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/eitsekeonjeu-taimbillaseu-suwonjeom/ | 에잇세컨즈 타임빌라스 수원점 | 시장·쇼핑 | 권선구
+P /places/eteuro-taimbillaseu-suwonjeom/ | 에트로 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절
 P /places/yeogisangongwon/ | 여기산공원 | 호수·수목원·공원·산 | 권선구 | 연중무휴; 요금 무료
-P /places/yeonmudae/ | 연무대(동장대) | 수원화성·성곽·행궁 | 팔달구 | 연중무휴
-P /places/yeongheungsumogwon/ | 영흥수목원 (Yeongheung Arboretum) | 호수·수목원·공원·산 | 영통구 | 휴무 매주 월요일 휴무일
-P /places/yeongheungsupgongwon/ | 영흥숲공원 | 호수·수목원·공원·산 | 영통구 | 연중무휴; 요금 숲공원 무료 (수목원 별도 유료)
-P /places/omokcheoncheyukgongwon/ | 오목천체육공원(서수원체육공원) | 호수·수목원·공원·산 | 권선구 | 연중무휴; 요금 무료 (일부 체육시설 예약제)
+P /places/yeonmudae/ | 연무대(동장대) | 수원화성·성곽·행궁 | 팔달구 | 연중무휴; 요금 무료
+P /places/yeongheungsumogwon/ | 영흥수목원 | 호수·수목원·공원·산 | 영통구 | 휴무 매주 월요일 (단, 월요일이 공휴일인 경우 그 다음 첫 번째 평일); 요금 일반 4,000원, 개인 외
+P /places/yeongheungsupgongwon/ | 영흥숲공원 | 호수·수목원·공원·산 | 영통구 | 휴무 매주 월요일
+P /places/orenjeu-seutapildeu-suwonjeom/ | 오렌즈 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/omega-gaelleoriabaekhwajeom-gwanggyojeom/ | 오메가 갤러리아백화점 광교점 | 박물관·미술관·전시 | 영통구 | 휴무 명절
+P /places/omokcheoncheyukgongwon/ | 오목천체육공원(서수원체육공원) | 호수·수목원·공원·산 | 권선구 | 휴무 [다목적구장] 일요일, 법정공휴일, 대체공휴일; 요금 무료
 P /places/omokhosugongwon/ | 오목호수공원 | 호수·수목원·공원·산 | 권선구 | 연중무휴; 요금 무료
-P /places/wangui-golmogyeohaeng/ | 왕의 골목여행 | 행리단길·시장·체험 | 팔달구 | 연중무휴; 요금 무료
-P /places/yonghwasa/ | 용화사 | 수원화성·역사·박물관 | 권선구
-P /places/ingyeyesulgongwon/ | 인계예술공원 | 호수·수목원·공원·산 | 팔달구
-P /places/irwolsumogwon/ | 일월수목원 (Suwon Arboretum Irwol) | 호수·수목원·공원·산 | 장안구 | 휴무 매주 월요일 휴무일
-P /places/irwolhosugongwon/ | 일월호수공원 | 호수·수목원·공원·산 | 장안구 | 연중무휴; 요금 무료
+P /places/onaenon-rotdemol-gwanggyojeom/ | 온앤온 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/ollibeuyeong-gwanggyoaelliweijeom/ | 올리브영 광교앨리웨이점 | 시장·쇼핑 | 영통구
+P /places/ollibeuyeong-dongsuwonjeom/ | 올리브영 동수원점 | 시장·쇼핑 | 팔달구
+P /places/ollibeuyeong-rotdemol-gwanggyojeom/ | 올리브영 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 2,4주 일요일
+P /places/ollibeuyeong-suwon-ak-yeoksajeom/ | 올리브영 수원AK역사점 | 시장·쇼핑 | 팔달구 | 휴무 정기휴무일
+P /places/ollibeuyeong-suwon-ak-taunjungangjeom/ | 올리브영 수원AK타운중앙점 | 시장·쇼핑 | 팔달구
+P /places/ollibeuyeong-suwongyeonggidaejeom/ | 올리브영 수원경기대점 | 시장·쇼핑 | 영통구
+P /places/ollibeuyeong-suwongwonseonjeom/ | 올리브영 수원권선점 | 시장·쇼핑 | 권선구
+P /places/ollibeuyeong-suwongeumgokjeom/ | 올리브영 수원금곡점 | 시장·쇼핑 | 권선구
+P /places/ollibeuyeong-suwonmangposageorijeom/ | 올리브영 수원망포사거리점 | 시장·쇼핑 | 영통구
+P /places/ollibeuyeong-suwonmangpojeom/ | 올리브영 수원망포점 | 시장·쇼핑 | 영통구
+P /places/ollibeuyeong-suwonmaegyojeom/ | 올리브영 수원매교점 | 시장·쇼핑 | 팔달구
+P /places/ollibeuyeong-suwonmaetanjeom/ | 올리브영 수원매탄점 | 시장·쇼핑 | 영통구
+P /places/ollibeuyeong-suwonseongdaejeom/ | 올리브영 수원성대점 | 시장·쇼핑 | 장안구
+P /places/ollibeuyeong-suwonsicheongyeokjeom/ | 올리브영 수원시청역점 | 시장·쇼핑 | 팔달구
+P /places/ollibeuyeong-suwonelpoteumoljeom/ | 올리브영 수원엘포트몰점 | 시장·쇼핑 | 영통구 | 휴무 정기휴무일
+P /places/ollibeuyeong-suwonyeokjeom/ | 올리브영 수원역점 | 시장·쇼핑 | 팔달구
+P /places/ollibeuyeong-suwonyeongtongyeokjeom/ | 올리브영 수원영통역점 | 시장·쇼핑 | 영통구
+P /places/ollibeuyeong-suwonyeongtongjeom/ | 올리브영 수원영통점 | 시장·쇼핑 | 영통구
+P /places/ollibeuyeong-suwonomokcheonjeom/ | 올리브영 수원오목천점 | 시장·쇼핑 | 권선구
+P /places/ollibeuyeong-suwoningyejeom/ | 올리브영 수원인계점 | 시장·쇼핑 | 팔달구
+P /places/ollibeuyeong-suwonjangangucheongsageorijeom/ | 올리브영 수원장안구청사거리점 | 시장·쇼핑 | 장안구
+P /places/ollibeuyeong-suwonjeongjajeom/ | 올리브영 수원정자점 | 시장·쇼핑 | 장안구
+P /places/ollibeuyeong-suwonjungangjeom/ | 올리브영 수원중앙점 | 시장·쇼핑 | 팔달구
+P /places/ollibeuyeong-suwoncheoncheonjeom/ | 올리브영 수원천천점 | 시장·쇼핑 | 장안구
+P /places/ollibeuyeong-suwontapdongjeom/ | 올리브영 수원탑동점 | 시장·쇼핑 | 권선구
+P /places/ollibeuyeong-suwonteomineoljeom/ | 올리브영 수원터미널점 | 시장·쇼핑 | 권선구
+P /places/ollibeuyeong-suwonhomaesilsageorijeom/ | 올리브영 수원호매실사거리점 | 시장·쇼핑 | 권선구
+P /places/ollibeuyeong-suwonhomaesiljeom/ | 올리브영 수원호매실점 | 시장·쇼핑 | 권선구
+P /places/ollibeuyeong-seutapildeusuwonjeom/ | 올리브영 스타필드수원점 | 시장·쇼핑 | 장안구 | 휴무 정기휴무일
+P /places/ollibeuyeong-taimbillaseu-suwonjeom/ | 올리브영 타임빌라스 수원점 | 시장·쇼핑 | 권선구
+P /places/ollibeuyeong-hompeulleoseudongsuwonjeom/ | 올리브영 홈플러스동수원점 | 시장·쇼핑 | 팔달구 | 휴무 2,4주 일요일
+P /places/ollibeuyeong-hompeulleoseubuksuwonjeom/ | 올리브영 홈플러스북수원점 | 시장·쇼핑 | 장안구 | 휴무 2,4주 일요일
+P /places/oljen-rotdemol-gwanggyojeom/ | 올젠 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/waideuaenggeul-rotdemol-gwanggyojeom/ | 와이드앵글 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/wakoru-taimbillaseu-suwonjeom/ | 와코루 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절, 월1회 월요일
+P /places/wangui-golmogyeohaeng/ | 왕의 골목여행 | 행리단길·시장·체험 | 팔달구 | 휴무 설·추석 당일, 우천 시, 혹서기; 요금 무료
+P /places/yonghwasa/ | 용화사 | 수원화성·역사·박물관 | 권선구 | 연중무휴; 요금 무료
+P /places/wonteu-suwonyeokjeom/ | 원트 수원역점 | 시장·쇼핑 | 팔달구
+P /places/wilseun-seutapildeu-suwonjeom/ | 윌슨 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/yunikeullo-rotdemol-gwanggyojeom/ | 유니클로 롯데몰 광교점 | 시장·쇼핑 | 영통구
+P /places/yunikeullo-suwonmangpojeom/ | 유니클로 수원망포점 | 시장·쇼핑 | 영통구
+P /places/yunikeullo-seutapildeu-suwonjeom/ | 유니클로 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/yunikeullo-taimbillaseu-suwonjeom/ | 유니클로 타임빌라스 수원점 | 시장·쇼핑 | 권선구
+P /places/iniseupeuri-suwonseongdaejeom/ | 이니스프리 수원성대점 | 시장·쇼핑 | 장안구 | 휴무 명절
+P /places/imateu-gwanggyojeom/ | 이마트 광교점 | 시장·쇼핑 | 영통구
+P /places/imateu-seosuwonjeom/ | 이마트 서수원점 | 시장·쇼핑 | 권선구 | 휴무 2,4주 일요일
+P /places/ingyeyesulgongwon/ | 인계예술공원 | 호수·수목원·공원·산 | 팔달구 | 연중무휴; 요금 무료
+P /places/illekteuromateu-seutapildeusuwonjeom/ | 일렉트로마트 스타필드수원점 | 시장·쇼핑 | 장안구
+P /places/irwolsumogwon/ | 일월수목원 | 호수·수목원·공원·산 | 장안구 | 휴무 매주 월요일 (단, 월요일이 공휴일인 경우 그 다음날); 요금 일반 4,000원, 개인 외
+P /places/irwolhosugongwon/ | 일월호수공원 | 호수·수목원·공원·산 | 장안구 | 연중무휴
+P /places/inmisya-taimbillaseu-suwonjeom/ | 잇미샤 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절, 월1회 월요일
 P /places/jangangongwon/ | 장안공원 | 호수·수목원·공원·산 | 장안구 | 연중무휴; 요금 무료
-P /places/janganmun/ | 장안문 (Janganmun Gate) | 수원화성·성곽·행궁 | 팔달구 | 연중무휴; 요금 무료
-P /places/janganmungeobuksijang/ | 장안문거북시장 | 수원화성·성곽·행궁 | 장안구 | 휴무 연중무휴 (점포별 상이)
+P /places/janganmun/ | 장안문 | 수원화성·성곽·행궁 | 팔달구 | 연중무휴; 요금 무료
+P /places/janganmungeobuksijang/ | 장안문거북시장 | 수원화성·성곽·행궁 | 장안구 | 휴무 점포 별로 상이함
 P /places/jeompingpakeu-jeongjajeom/ | 점핑파크 정자점 | 전통시장·공방·체험·레포츠 | 장안구 | 연중무휴
-P /places/jeongjasijang/ | 정자시장 | 전통시장·공방·체험·레포츠 | 장안구
-P /places/jeongjotemagongyeonjang/ | 정조테마공연장 (Jeongjo Theme Performance Hall) | 문화시설 | 팔달구 | 휴무 매주 월요일 휴무일
-P /places/jowonsijang/ | 조원시장 | 전통시장·공방·체험·레포츠 | 장안구 | 휴무 연중무휴 (점포별 상이)
-P /places/jungbodeulgongwon/ | 중보들공원 | 호수·수목원·공원·산 | 권선구
-P /places/jungbokdeulgil/ | 중복들길(서호공원입구 ~ 배양교) | 호수·수목원·공원·산 | 팔달구 | 연중무휴; 요금 무료
-P /places/jidongsijang/ | 지동시장 (Jidong Market) | 전통시장·공방·체험·레포츠 | 팔달구 | 휴무 매주 월요일 휴무일
-P /places/jihyesaemeorinidoseogwan/ | 지혜샘어린이도서관 | 문화시설 | 권선구 | 휴무 매주 월요일 휴무일
-P /places/changnyongmun/ | 창룡문 (Changnyongmun Gate) | 수원화성·성곽·행궁 | 팔달구 | 연중무휴; 요금 무료
+P /places/jeonggwanjang-lounge-maesallobonjeom/ | 정관장LOUNGE 매산로본점 | 시장·쇼핑 | 팔달구 | 휴무 명절
+P /places/jeongjasijang/ | 정자시장 | 전통시장·공방·체험·레포츠 | 장안구 | 휴무 점포별로 상이함
+P /places/jeongjotemagongyeonjang/ | 정조테마공연장 | 문화시설 | 팔달구 | 휴무 매주 월요일
+P /places/jeieseutina-seutapildeu-suwonjeom/ | 제이에스티나 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/jeieseutina-taimbillaseu-suwonjeom/ | 제이에스티나 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절, 월1회 월요일
+P /places/jeijeijigoteu-taimbillaseu-suwonjeom/ | 제이제이지고트 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절, 월1회 월요일
+P /places/jowonsijang/ | 조원시장 | 전통시장·공방·체험·레포츠 | 장안구 | 휴무 점포별로 상이함
+P /places/jungbodeulgongwon/ | 중보들공원 | 호수·수목원·공원·산 | 권선구 | 연중무휴; 요금 무료
+P /places/jungbokdeulgil/ | 중복들길(서호공원입구 ~ 배양교) | 호수·수목원·공원·산 | 팔달구 | 요금 무료
+P /places/jigoteu-rotdemol-gwanggyojeom/ | 지고트 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/jidongsijang/ | 지동시장 | 전통시장·공방·체험·레포츠 | 팔달구 | 휴무 점포 별로 상이함
+P /places/jiodano-rotdemol-gwanggyojeom/ | 지오다노 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/jiodano-seutapildeu-suwonjeom/ | 지오다노 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/jiodano-taimbillaseu-suwonjeom/ | 지오다노 타임빌라스 수원점 | 시장·쇼핑 | 권선구
+P /places/jiosongjio-rotdemol-gwanggyojeom/ | 지오송지오 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/jihyesaemeorinidoseogwan/ | 지혜샘어린이도서관 | 문화시설 | 권선구 | 휴무 매주 월요일 외; 요금 무료
+P /places/jilseutyueoteu-taimbillaseu-suwonjeom/ | 질스튜어트 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 월 1회
+P /places/chalseuaenkiseu-seutapildeu-suwonjeom/ | 찰스앤키스 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/chamyaksa-suwonseutayakguk-seutapildeu-suwonjeom/ | 참약사 수원스타약국 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/changnyongmun/ | 창룡문 | 수원화성·성곽·행궁 | 팔달구 | 연중무휴; 요금 무료
+P /places/chyamseu-ak-peullaja-suwonjeom/ | 챰스 AK플라자 수원점 | 시장·쇼핑 | 팔달구
 P /places/cheongnyeonam/ | 청련암 | 수원화성·역사·박물관 | 장안구 | 연중무휴; 요금 무료
-P /places/taimbillaseu-suwon/ | 타임빌라스 수원 | 수목원·숲·공원 | 권선구 | 연중무휴
-P /places/paldalgongwon/ | 팔달공원 | 호수·수목원·공원·산 | 팔달구
-P /places/paldalmun/ | 팔달문 (Paldalmun Gate) | 수원화성·성곽·행궁 | 팔달구 | 연중무휴; 요금 무료
-P /places/paldalmunsijang/ | 팔달문시장 (Paldalmun Market) | 수원화성·성곽·행궁 | 팔달구 | 연중무휴
-P /places/paldalsa/ | 팔달사 (Paldalsa Temple) | 수원화성·역사·박물관 | 팔달구 | 연중무휴; 요금 무료
+P /places/kanggol-taimbillaseu-suwonjeom/ | 캉골 타임빌라스 수원점 | 시장·쇼핑 | 권선구
+P /places/kanggolkijeu-seutapildeu-suwonjeom/ | 캉골키즈 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/kaelbinkeullain-jin-rotdemol-gwanggyojeom/ | 캘빈클라인 진 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/kaelbinkeullain-jin-eondeoweeo-taimbillaseu-suwonjeom/ | 캘빈클라인 진 언더웨어 타임빌라스 수원점 | 시장·쇼핑 | 권선구
+P /places/kaelbinkeullaineondeoweeo-seutapildeu-suwonjeom/ | 캘빈클라인언더웨어 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/keobeonat-seutapildeu-suwonjeom/ | 커버낫 스타필드 수원점 | 시장·쇼핑 | 장안구 | 휴무 명절
+P /places/keoseuteommellou-taimbillaseu-suwonjeom/ | 커스텀멜로우 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절, 월1회 월요일
+P /places/keonbeoseu-seutapildeu-suwonjeom/ | 컨버스 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/keolleombia-rotdemol-gwanggyojeom/ | 컬럼비아 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/kodak-rotdemol-gwanggyojeom/ | 코닥 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 월2회 월요일
+P /places/kodejeukeombain-seutapildeu-suwonjeom/ | 코데즈컴바인 스타필드 수원점 | 시장·쇼핑 | 장안구 | 휴무 명절
+P /places/kodeugeurapi-seutapildeu-suwonjeom/ | 코드그라피 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/koorongseupocheu-ak-peullaja-suwonjeom/ | 코오롱스포츠 AK플라자 수원점 | 시장·쇼핑 | 팔달구
+P /places/koorongseupocheu-rotdemol-gwanggyojeom/ | 코오롱스포츠 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/koorongseupocheu-seutapildeu-suwonjeom/ | 코오롱스포츠 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/kochi-ak-peullaja-suwonjeom/ | 코치 AK플라자 수원점 | 시장·쇼핑 | 팔달구
+P /places/kulteu-ak-peullaja-suwonjeom/ | 쿨트 AK플라자 수원점 | 시장·쇼핑 | 팔달구
+P /places/keullarangseu-taimbillaseu-suwonjeom/ | 클라랑스 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 월 1회
+P /places/kireusi-seutapildeu-suwonjeom/ | 키르시 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/killogaendeoseun-rotdemol-gwanggyojeom/ | 킨록앤더슨 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/tamijin-taimbillaseu-suwonjeom/ | 타미진 타임빌라스 수원점 | 시장·쇼핑 | 권선구
+P /places/tamihilpigeo-rotdemol-gwanggyojeom/ | 타미힐피거 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/taim-rotdemol-gwanggyojeom/ | 타임 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/taimbillaseu-suwon/ | 타임빌라스 수원 | 권선구 | 연중무휴
+P /places/taptenbaelleonseu-taimbillaseu-suwonjeom/ | 탑텐밸런스 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절, 월1회 월요일
+P /places/taegeuhoieo-ak-peullaja-suwonjeom/ | 태그호이어 AK플라자 수원점 | 시장·쇼핑 | 팔달구
+P /places/taendi-taimbillaseu-suwonjeom/ | 탠디 타임빌라스 수원점 | 시장·쇼핑 | 권선구
+P /places/tempeo-rotdemol-gwanggyojeom/ | 템퍼 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절, 월1회
+P /places/tomboi-rotdemol-gwanggyojeom/ | 톰보이 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/teureideoseu-holseilkeulleop-seutapildeu-suwonjeom/ | 트레이더스 홀세일클럽 스타필드 수원점 | 시장·쇼핑 | 장안구 | 휴무 명절
+P /places/teuwi-seutapildeu-suwonjeom/ | 트위 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/teuwi-taimbillaseu-suwonjeom/ | 트위 타임빌라스 수원점 | 시장·쇼핑 | 권선구
+P /places/pandora-taimbillaseu-suwonjeom/ | 판도라 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절, 월1회 월요일
+P /places/pantajium/ | 판타지움 | 시장·쇼핑 | 영통구 | 휴무 연중무휴 외
+P /places/paldalgongwon/ | 팔달공원 | 호수·수목원·공원·산 | 팔달구 | 연중무휴
+P /places/paldalmun/ | 팔달문 | 수원화성·성곽·행궁 | 팔달구 | 연중무휴; 요금 수원화성 무료, 화성행궁 어른 2,000원 외
+P /places/paldalmunsijang/ | 팔달문시장 | 수원화성·성곽·행궁 | 팔달구 | 휴무 점포별로 상이함
+P /places/paldalmunollibiayakguk/ | 팔달문올리비아약국 | 수원화성·성곽·행궁 | 팔달구 | 휴무 명절
+P /places/paldalsa/ | 팔달사 | 수원화성·역사·박물관 | 팔달구 | 연중무휴; 요금 무료
 P /places/paldalsan/ | 팔달산 | 호수·수목원·공원·산 | 팔달구 | 연중무휴; 요금 무료
-P /places/peullaing-suwon/ | 플라잉 수원 (Flying Suwon) | 전통시장·공방·체험·레포츠 | 팔달구 | 연중무휴
-P /places/hannuriateuhol/ | 한누리아트홀 | 박물관·미술관·전시 | 장안구 | 휴무 매주 일요일, 공휴일; 요금 공연별 상이
-P /places/haeujae/ | 해우재 (Haewoojae Museum (Mr. Toilet House)) | 박물관·미술관·전시 | 장안구 | 연중무휴
-P /places/haeummisulgwan/ | 해움미술관 | 박물관·미술관·전시 | 팔달구 | 휴무 매주 월요일 휴무일
-P /places/haenggungdong-byeokhwamaeul/ | 행궁동 벽화마을 (Haenggung-dong Mural Village) | 호수·수변·야경 | 팔달구
-P /places/haengnidangil/ | 행리단길 (Haengnidan Street) | 전통시장·공방·체험·레포츠 | 팔달구 | 휴무 연중무휴 (점포별 상이); 요금 무료
+P /places/paenteom-rotdemol-gwanggyojeom/ | 팬텀 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/pendi-gaelleoriabaekhwajeom-gwanggyojeom/ | 펜디 갤러리아백화점 광교점 | 박물관·미술관·전시 | 영통구
+P /places/pollodenim-seutapildeu-suwonjeom/ | 폴로데님 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/polloralpeurorennamseong-taimbillaseu-suwonjeom/ | 폴로랄프로렌남성 타임빌라스 수원점 | 시장·쇼핑 | 권선구
+P /places/puma-seutapildeu-suwonjeom/ | 푸마 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/peullaing-suwon/ | 플라잉 수원 | 전통시장·공방·체험·레포츠 | 팔달구 | 연중무휴; 요금 성인 24,000원 외
+P /places/ping-rotdemol-gwanggyojeom/ | 핑 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/hannuriateuhol/ | 한누리아트홀 | 박물관·미술관·전시 | 장안구 | 휴무 매주 월요일; 요금 공연 별로 상이함
+P /places/hansamin-yeongtongjeom/ | 한삼인 영통점 | 시장·쇼핑 | 영통구 | 휴무 일요일
+P /places/hatteuraekseu-gwanggyojeom/ | 핫트랙스 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/haeujae/ | 해우재 | 박물관·미술관·전시 | 장안구 | 휴무 매주 월요일 (단, 월요일이 공휴일인 경우 다음날 휴관), 1월 1일 외; 요금 무료
+P /places/haeummisulgwan/ | 해움미술관 | 박물관·미술관·전시 | 팔달구 | 휴무 매주 월요일 / 법정공휴일; 요금 - 성인(만 19세~64세) 2,000원 외
+P /places/haenggungdong-byeokhwamaeul/ | 행궁동 벽화마을 | 수원화성·역사·박물관 | 팔달구 | 연중무휴; 요금 무료
+P /places/haengnidangil/ | 행리단길 | 전통시장·공방·체험·레포츠 | 팔달구 | 연중무휴; 요금 무료
+P /places/hejiseu-seutapildeu-suwonjeom/ | 헤지스 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/hejiseugolpeu-ak-peullaja-suwonjeom/ | 헤지스골프 AK플라자 수원점 | 시장·쇼핑 | 팔달구
+P /places/hollikahollika-suwollodeojeom/ | 홀리카홀리카 수원로데오점 | 시장·쇼핑 | 팔달구
+P /places/hompeulleoseu-megapudeumaket-suwonyeongtongjeom/ | 홈플러스 메가푸드마켓 수원영통점 | 시장·쇼핑 | 영통구 | 휴무 명절, 정기휴무일
 P /places/hwaseogongwon/ | 화서공원 | 호수·수목원·공원·산 | 팔달구 | 연중무휴; 요금 무료
-P /places/hwaseomun/ | 화서문(華西門) (Hwaseomun Gate) | 수원화성·성곽·행궁 | 팔달구 | 연중무휴; 요금 무료
-P /places/hwaseosijang/ | 화서시장 | 전통시장·공방·체험·레포츠 | 팔달구 | 연중무휴
-P /places/hwaseongeocha/ | 화성어차 (Hwaseong Fortress Tourist Trolley) | 수원화성·성곽·행궁 | 팔달구 | 연중무휴
-P /places/hwaseonghaenggung/ | 화성행궁 (Hwaseong Haenggung Palace) | 수원화성·성곽·행궁 | 팔달구 | 휴무 연중무휴 (야간개장은 월·화 휴무); 요금 성인 2,000원 외
-P /places/hwahongmun/ | 화홍문(華虹門) (Hwahongmun Gate)) | 수원화성·성곽·행궁 | 팔달구 | 연중무휴; 요금 무료
-P /places/hyowongongwon/ | 효원공원 | 호수·수목원·공원·산 | 팔달구 | 연중무휴
-P /places/hyowongongwon-wolhwawon/ | 효원공원 월화원 (Wolhwawon Garden (Hyowon Park)) | 호수·수목원·공원·산 | 팔달구 | 연중무휴
-P /places/hyowonui-jong-seojangdae/ | 효원의 종·서장대 (Bell of Hyowon & Seojangdae Command Post) | 수원화성·성곽·행궁 | 팔달구 | 연중무휴; 요금 성곽 관람 무료 (효원의 종 타종 체험 유료)
+P /places/hwaseomun/ | 화서문(華西門) | 수원화성·성곽·행궁 | 팔달구 | 연중무휴; 요금 무료
+P /places/hwaseosijang/ | 화서시장 | 전통시장·공방·체험·레포츠 | 팔달구 | 휴무 점포마다 상이
+P /places/hwaseongeocha/ | 화성어차 | 수원화성·성곽·행궁 | 팔달구 | 휴무 매주 월요일; 요금 일반 6,000원, 개인 외
+P /places/hwaseonghaenggung/ | 화성행궁 | 수원화성·성곽·행궁 | 팔달구 | 연중무휴; 요금 어른 2,000원, 개인 외
+P /places/hwahongmun/ | 화홍문(華虹門) | 수원화성·성곽·행궁 | 팔달구 | 연중무휴; 요금 무료
+P /places/hyowongongwon/ | 효원공원 | 호수·수목원·공원·산 | 팔달구 | 연중무휴; 요금 무료
+P /places/hyowongongwon-wolhwawon/ | 효원공원 월화원 | 호수·수목원·공원·산 | 팔달구 | 연중무휴; 요금 무료
+P /places/hyowonui-jong-seojangdae/ | 효원의 종·서장대 | 수원화성·성곽·행궁 | 팔달구 | 연중무휴; 요금 [서장대] 무료 [효원의 종] - 1회 3타(1~2인) 1,000원 외
 P /places/hyohaenggongwon/ | 효행공원 | 호수·수목원·공원·산 | 장안구 | 연중무휴; 요금 무료
-P /places/ak-peullaja-suwon/ | AK플라자 수원 (AK Plaza - Suwon Branch) | 시장·쇼핑 | 팔달구 | 연중무휴
-P /places/play-your-trip/ | PLAY your TRIP | 수목원·숲·공원 | 장안구 | 휴무 매주 일요일 휴무일
-P /places/xr-beoseu-1795-haeng/ | XR버스 1795행 | 행리단길·시장·체험 | 팔달구 | 휴무 매주 월요일; 요금 성인 10,000원 외
+P /places/hwilla-rotdemol-gwanggyojeom/ | 휠라 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/abc-mateu-gs-ak-peullaja-suwonjeom/ | ABC마트 GS AK플라자 수원점 | 시장·쇼핑 | 팔달구
+P /places/abc-mateu-gs-seutapildeu-suwonjeom/ | ABC마트 GS 스타필드 수원점 | 시장·쇼핑 | 장안구 | 휴무 명절
+P /places/abc-mateu-se-rotdemol-gwanggyojeom/ | ABC마트 SE 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/ak-peullaja-suwon/ | AK플라자 수원 | 시장·쇼핑 | 팔달구
+P /places/cc-kollekteu-rotdemol-gwanggyojeom/ | CC콜렉트 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/cos-gaelleoriabaekhwajeom-gwanggyojeom/ | COS 갤러리아백화점 광교점 | 박물관·미술관·전시 | 영통구
+P /places/cos-seutapildeu-suwonjeom/ | COS 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/jaju-elpoteumol-gwanggyojeom/ | JAJU 엘포트몰 광교점 | 시장·쇼핑 | 영통구
+P /places/k2-ak-peullaja-suwonjeom/ | K2 AK플라자 수원점 | 시장·쇼핑 | 팔달구
+P /places/k2-rotdemol-gwanggyojeom/ | K2 롯데몰 광교점 | 시장·쇼핑 | 영통구 | 휴무 명절
+P /places/lap-seutapildeu-suwonjeom/ | LAP 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/lf-aullet-seosuwonjeom/ | LF아울렛 서수원점 | 시장·쇼핑 | 권선구 | 휴무 명절
+P /places/lg-jeonja-beseuteusyap-suwonbonjeom/ | LG전자 베스트샵 수원본점 | 시장·쇼핑 | 팔달구 | 휴무 명절
+P /places/lg-jeonja-beseuteusyap-taimbillaseu-suwonjeom/ | LG전자 베스트샵 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절, 월1회 월요일
+P /places/lee-seutapildeu-suwonjeom/ | Lee 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/mlb-seutapildeu-suwonjeom/ | MLB 스타필드 수원점 | 시장·쇼핑 | 장안구 | 휴무 명절
+P /places/muji-seutapildeu-suwonjeom/ | MUJI 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/muji-taimbillaseu-suwonjeom/ | MUJI 타임빌라스 수원점 | 시장·쇼핑 | 권선구
+P /places/nba-seutapildeu-suwonjeom/ | NBA 스타필드 수원점 | 시장·쇼핑 | 장안구
+P /places/play-your-trip/ | PLAY your TRIP | 장안구 | 요금 무료
+P /places/soup-taimbillaseu-suwonjeom/ | SOUP 타임빌라스 수원점 | 시장·쇼핑 | 권선구 | 휴무 명절, 월1회 월요일
+P /places/xr-beoseu-1795-haeng/ | XR버스 1795행 | 행리단길·시장·체험 | 팔달구 | 휴무 매주 월요일~화요일; 요금 무료 외
+P /places/zara-taimbillaseu-suwonjeom/ | ZARA 타임빌라스 수원점 | 시장·쇼핑 | 권선구
 
 ## 음식점 210곳 — 목록 /food/
-P /places/gabojeonggalbi/ | 가보정갈비 | 한식 | 팔달구 | 메뉴 국내산한우양념갈비 (1인분) 79,000원; 연중무휴
-P /places/gawon/ | 가원 | 한식 | 영통구 | 메뉴 국내산한우 양념갈비 정식 (1인분)(점심특선) 39,000원; 연중무휴
-P /places/galpungjip/ | 갈풍집 | 한식 | 영통구 | 메뉴 프라임토시살구이 25,000원; 연중무휴
-P /places/gyeongseongjip/ | 경성집 | 한식 | 권선구 | 메뉴 설농탕 11,000원; 연중무휴
-P /places/gyeongandang/ | 경안당 | 카페 | 팔달구 | 메뉴 딸기 아인슈페너 9,500원; 휴무 매주 월요일 휴무일
-P /places/gogirang/ | 고기랑 | 한식 | 팔달구 | 메뉴 소생갈비 (300g) 43,000원; 연중무휴
-P /places/gogijabi-suwonbonjeom/ | 고기잡이 수원본점 | 한식 | 영통구 | 휴무 매주 일요일 휴무일
-P /places/godeungbanjeom/ | 고등반점 | 중식 | 팔달구 | 메뉴 간짜장 9,000원; 연중무휴
-P /places/goldiseu/ | 골디스 | 카페 | 팔달구 | 메뉴 클래식아메리카노 5,000원; 연중무휴
-P /places/gwanggyogalbi/ | 광교갈비 | 한식 | 영통구 | 메뉴 제주흑돼지 양념갈비 21,500원; 휴무 매주 월요일 휴무일
-P /places/gwanggyobeolgyojip/ | 광교벌교집 | 한식 | 영통구 | 메뉴 보리굴비정식(1인) 27,000원; 연중무휴
-P /places/gwanggyoheonnongwon/ | 광교헌농원 | 한식 | 장안구 | 메뉴 보리밥 9,000원; 연중무휴
-P /places/guseutabeu/ | 구스타브 | 카페 | 영통구 | 메뉴 흑임자크림라떼 6,500원; 연중무휴
-P /places/gunpohaemultang/ | 군포해물탕 | 한식 | 영통구 | 메뉴 해물탕 (소)(2인기준) 75,000원; 연중무휴
-P /places/geurotto/ | 그로또 | 서양식 | 영통구 | 메뉴 멕시코 크림 파스타 20,000원; 연중무휴
-P /places/geujip-haejangguk/ | 그집 해장국 | 한식 | 장안구 | 메뉴 그집 해장국 8,000원; 휴무 매주 일, 월요일 휴무일
-P /places/geujipjjukkumibokkeum/ | 그집쭈꾸미볶음 | 한식 | 장안구 | 메뉴 쭈꾸미볶음 13,000원; 연중무휴
-P /places/geumjeongchamchi-bonjeom/ | 금정참치 본점 | 일식 | 권선구 | 메뉴 오마카세 1인 52,000원; 휴무 매주 일요일 휴무일
-P /places/geumhwaru/ | 금화루 | 중식 | 영통구 | 메뉴 짜장면 9,000원; 연중무휴
-P /places/giwajip/ | 기와집 | 한식 | 권선구 | 메뉴 장어 1kg (2인분) 69,000원; 연중무휴
-P /places/gillimseong/ | 길림성 | 중식 | 장안구 | 메뉴 유니짜장 9,000원; 연중무휴
-P /places/gimseongminkeopi/ | 김성민커피 | 카페 | 영통구 | 메뉴 바스크치즈케이크 8,000원; 연중무휴
-P /places/kkottakkotteu/ | 꼬따꼬뜨 | 서양식 | 영통구 | 메뉴 콰트로 포르마지 뇨끼 19,500원; 휴무 매주 일요일 휴무일
-P /places/kkungnyau-haenggungjeom/ | 꿍냐우 행궁점 | 기타외국식 | 팔달구 | 메뉴 양지 소고기 쌀국수 11,900원; 연중무휴
-P /places/namsuwongalbi/ | 남수원갈비 | 한식 | 권선구 | 메뉴 남수원왕갈비(280g) 17,000원; 연중무휴
-P /places/neolbeuntteul/ | 넓은뜰 | 한식 | 권선구 | 메뉴 특급밥상 43,000원; 연중무휴
-P /places/nodaegamgamjatangmaetanbonjeom/ | 노대감감자탕매탄본점 | 한식 | 영통구 | 메뉴 묵은지뼈찜 (소) 30,000원; 연중무휴
-P /places/noranhwangtae-bonjeom/ | 노란황태 본점 | 한식 | 영통구 | 메뉴 황태구이정식 20,000원; 연중무휴
-P /places/daraesikdang/ | 다래식당 | 한식 | 권선구 | 메뉴 동태찌개(1인분)(2인이상) 12,000원; 연중무휴
-P /places/dalguunbaram-dwaejigalbi-yeongtongmangpojeom/ | 달구운바람 돼지갈비 영통망포점 | 한식 | 영통구 | 메뉴 원적외선 직화 돼지 양념구이(280g) 21,000원; 연중무휴
-P /places/daebakhoetjip/ | 대박횟집 | 한식 | 영통구 | 메뉴 회정식 (1인) 20,000원; 휴무 매주 일요일 휴무일
-P /places/deoyuropieon/ | 더유로피언 | 서양식 | 팔달구 | 메뉴 트러플 크림 홈메이드 뇨끼 23,000원; 연중무휴
-P /places/dogi/ | 도기 | 카페 | 영통구 | 메뉴 아메리카노 6,000원; 연중무휴
-P /places/dominikkeopiraep/ | 도미닉커피랩 | 카페 | 영통구 | 메뉴 코코넛라떼 6,500원; 연중무휴
-P /places/donkkaseuyeohaeng/ | 돈까스여행 | 한식 | 권선구 | 메뉴 얼큰뚝배기 우동+돈까스 15,000원; 연중무휴
-P /places/dongsanchamsutgalbi/ | 동산참숯갈비 | 한식 | 영통구 | 메뉴 멍석돼지갈비 19,000원; 연중무휴
-P /places/dukkeobijip/ | 두꺼비집 | 한식 | 팔달구 | 메뉴 부대찌개 11,000원; 연중무휴
-P /places/dyukupeul/ | 듀쿠플(DU COUPLE) | 제과 | 영통구 | 메뉴 딸기타르트 (3호) 49,000원; 휴무 매주 일요일 휴무일
-P /places/ttaenginesogopchang/ | 땡이네소곱창 | 한식 | 영통구 | 메뉴 황소곱창 (1인분) 25,000원; 휴무 매주 일요일 휴무일
-P /places/raikeu-no-adeo/ | 라이크 노 아더 | 카페 | 팔달구 | 메뉴 아메리카노 1,700원; 연중무휴
-P /places/redeubeurikkeopihauseu/ | 레드브릭커피하우스 | 카페 | 팔달구 | 메뉴 시그니처라떼(ICE) 6,500원; 연중무휴
-P /places/reijihauseu/ | 레이지하우스 | 카페 | 영통구 | 메뉴 Americano(House blend) 5,000원; 휴무 매주 화요일 휴무일
-P /places/romagyeongyangsik/ | 로마경양식 | 서양식 | 팔달구 | 메뉴 왕돈까스 17,000원; 휴무 매주 월요일 휴무일
-P /places/reuditueo/ | 르디투어 | 카페 | 영통구 | 메뉴 에스프레소 5,300원; 연중무휴
-P /places/reuppangdeupariaenbeureonchihauseu-haenggungjeom/ | 르빵드파리앤브런치하우스 행궁점 | 카페 | 팔달구 | 메뉴 에스프레소 콘파냐 4,800원; 연중무휴
-P /places/riteulbonsuwongalbijip/ | 리틀본수원갈비집 | 한식 | 장안구 | 메뉴 갈비탕 12,000원; 휴무 매주 월요일 휴무일
-P /places/macho/ | 마초 | 일식 | 팔달구 | 메뉴 미니 숙성사시미 (1인) 25,000원; 연중무휴
-P /places/mapobonga/ | 마포본가 | 한식 | 팔달구 | 메뉴 돼지양념구이 (280g) 18,000원; 연중무휴
-P /places/mapohaejang/ | 마포해장 | 한식 | 권선구 | 메뉴 양곱탕(양+곱창) 15,000원; 연중무휴
-P /places/mansujeonbok/ | 만수전복 | 한식 | 팔달구 | 메뉴 전복영양냄비밥 (2인이상)(점심특선) 13,000원; 휴무 매주 일요일 휴무일
-P /places/mallou-peulleiseu/ | 말로우 플레이스 | 한식 | 권선구 | 메뉴 말로우슈페너 6,000원; 연중무휴
-P /places/maeilgimchidamgeuneunjip/ | 매일김치담그는집 | 한식 | 팔달구 | 메뉴 소양념갈비살 (대) 73,000원; 휴무 매주 월요일 휴무일
-P /places/maeteugeurin/ | 매트그린 | 카페 | 팔달구 | 메뉴 바스크 치즈 케이크 6,500원; 휴무 매주 화요일 휴무일
-P /places/memori/ | 메모리 | 카페 | 권선구 | 연중무휴
-P /places/memoriamanet/ | 메모리아마넷 | 카페 | 팔달구 | 메뉴 아인슈페너 (밀크) 6,000원; 휴무 매주 월요일 휴무일
-P /places/memiljeongwon/ | 메밀정원 | 한식 | 권선구 | 메뉴 아메리카노 (HOT) 5,000원; 연중무휴
-P /places/menyagokoro/ | 멘야고코로 | 일식 | 영통구 | 메뉴 니쿠마제멘 13,000원; 휴무 매주 일요일 휴무일
-P /places/myeongganesundaeguk/ | 명가네순대국 | 한식 | 권선구 | 메뉴 순대국 · 모둠순대 · 머리고기; 휴무 매주 일요일
-P /places/myeongseongdwaejigalbi/ | 명성돼지갈비 | 한식 | 장안구 | 메뉴 돼지갈비 (1인분 300g) 17,000원; 연중무휴
-P /places/monami-kare/ | 모나미 카레 | 서양식 | 팔달구 | 메뉴 가라아게 네코카레 13,900원; 휴무 매주 월요일 휴무일
-P /places/moikeopikeullaesik/ | 모이커피클래식 | 카페 | 팔달구 | 메뉴 모래사막 7,000원; 연중무휴
-P /places/mongtedeu/ | 몽테드 (Mong Ted) | 카페 | 팔달구 | 메뉴 아몽드 라떼 (ICE) 6,300원; 휴무 매주 수요일 휴무일
-P /places/mudeungsan/ | 무등산 | 한식 | 팔달구 | 메뉴 청국장 20,000원; 연중무휴
-P /places/minamichamchi/ | 미나미참치 | 일식 | 팔달구 | 메뉴 B코스 65,000원; 휴무 매주 일요일 휴무일
-P /places/misotendong/ | 미소텐동 | 일식 | 영통구 | 메뉴 에비텐동 13,900원; 휴무 매주 금요일 휴무일, 매주 월요일 휴무일
-P /places/misikgauijubang/ | 미식가의주방 | 서양식 | 팔달구 | 메뉴 만조 양송이 크림 파스타 (일 한정판매) 23,200원; 연중무휴
-P /places/badarogankokkirikkochang/ | 바다로간코끼리꼬창 | 한식 | 장안구 | 메뉴 모듬회 (소) 45,000원; 휴무 매주 월, 화요일 휴무일
-P /places/bangnejipsongtanbudaejjigae-mugongdakgalbi/ | 박네집송탄부대찌개 무공닭갈비 | 한식 | 권선구 | 메뉴 부대찌개 (1인분/공기밥 포함) 10,000원; 연중무휴
-P /places/baeksesamgyetang-suwonpajangbonjeom/ | 백세삼계탕 수원파장본점 | 한식 | 장안구 | 메뉴 상황삼계탕 19,000원; 연중무휴
-P /places/baeksejjamppong-suwonbonjeom/ | 백세짬뽕 수원본점 | 중식 | 장안구 | 메뉴 백세짬뽕 12,000원; 연중무휴
-P /places/baegunjumallongjang/ | 백운주말농장 | 한식 | 장안구 | 메뉴 숯불바베큐 (1접시) 25,000원; 연중무휴
-P /places/baekcheongukalguksu/ | 백청우칼국수 | 한식 | 팔달구 | 메뉴 해물칼국수 12,000원; 연중무휴
-P /places/beodeulchi/ | 버들치 | 한식 | 영통구 | 메뉴 한상차림; 휴무 매주 월요일 휴무일
-P /places/beolgyojip/ | 벌교집 | 한식 | 영통구 | 메뉴 보리굴비정식(1인) 27,000원; 연중무휴
-P /places/beolgyochueotang/ | 벌교추어탕 | 한식 | 영통구 | 메뉴 추어탕 12,000원; 연중무휴
-P /places/bonsuwongalbi/ | 본수원갈비 | 한식 | 팔달구 | 메뉴 생갈비 70,000원; 연중무휴
-P /places/bonjireureu/ | 본지르르 | 카페 | 팔달구 | 메뉴 아메리카노 5,500원; 연중무휴
-P /places/bonghwakalguksu/ | 봉화칼국수 | 한식 | 영통구 | 메뉴 바지락칼국수 10,000원; 휴무 매주 일요일 휴무일
-P /places/bungmun-yuchihoegwan/ | 북문 유치회관 | 한식 | 장안구 | 메뉴 해장국 10,000원; 연중무휴
-P /places/buksuwonhwaro/ | 북수원화로 | 한식 | 장안구 | 메뉴 한돈갈비 (260g) (갈비+목살) 20,000원; 연중무휴
-P /places/ppieseumongtejeppangso/ | 삐에스몽테제빵소 | 카페 | 권선구 | 메뉴 쌀소금빵 2,800원; 연중무휴
-P /places/samchunok/ | 삼춘옥 | 한식 | 팔달구 | 메뉴 소머리국밥 13,000원; 연중무휴
-P /places/sampoganeungil/ | 삼포가는길 | 한식 | 영통구 | 메뉴 명태찜 (소) 38,000원; 연중무휴
-P /places/sampunggadeun/ | 삼풍가든 | 한식 | 장안구 | 메뉴 수원양념갈비 · 생갈비 · 갈비탕; 연중무휴
-P /places/sangwonhoegwan/ | 상원회관 | 한식 | 영통구 | 메뉴 업진 (500g) 135,000원; 연중무휴
-P /places/saebyeokjip/ | 새벽집 | 한식 | 영통구 | 메뉴 살치살 (150g) 60,000원; 휴무 매주 일요일 휴무일
-P /places/seodongjinuikeopiraep-bonjeom/ | 서동진의커피랩 본점 | 카페 | 장안구 | 메뉴 아메리카노 or 에스프레소 라킨 5,800원; 연중무휴
-P /places/seorinnakji/ | 서린낙지 | 한식 | 영통구 | 연중무휴
-P /places/seosuwonsutbulgalbi/ | 서수원숯불갈비 | 한식 | 권선구 | 메뉴 수제돼지갈비 15,000원; 휴무 매주 월요일 휴무일
-P /places/seoul-24-sigamjatanghaejangguk/ | 서울24시감자탕해장국 | 한식 | 영통구 | 메뉴 뼈해장국 10,000원; 연중무휴
-P /places/seoksanjeong/ | 석산정 | 한식 | 권선구 | 메뉴 곤드레솥밥정식 19,000원; 연중무휴
-P /places/sebiyasikdang/ | 세비야식당 | 서양식 | 영통구 | 메뉴 문어오븐구이 44,000원; 연중무휴
-P /places/senteomkeopi/ | 센텀커피 | 카페 | 팔달구 | 메뉴 아메리카노 · 카페라떼 · 디저트; 연중무휴
-P /places/sorot/ | 소롯 | 한식 | 권선구 | 연중무휴
-P /places/songjugyakbang/ | 송죽약방 | 중식 | 장안구 | 메뉴 마파두부밥 9,000원; 휴무 매주 월요일 휴무일
-P /places/songpunggadeun/ | 송풍가든 | 한식 | 장안구 | 메뉴 드라이에이징 한우 등심 150g 62,000원; 연중무휴
-P /places/songhalmeoniotdak/ | 송할머니옻닭 | 한식 | 권선구 | 메뉴 옻닭 17,000원; 휴무 매주 일요일 휴무일
-P /places/subokheon/ | 수복헌 | 찻집 | 권선구 | 메뉴 아이스수복정차(대표메뉴) 10,000원; 연중무휴
-P /places/suwonmandu/ | 수원만두 | 중식 | 팔달구 | 메뉴 군만두 9,000원; 연중무휴
-P /places/suindakbaljip/ | 수인닭발집 | 한식 | 권선구 | 메뉴 파전 18,000원; 휴무 매주 일요일 휴무일
-P /places/sutawon/ | 수타원 | 카페 | 영통구 | 메뉴 소갈비짬뽕 15,000원; 연중무휴
-P /places/seusiseuiren/ | 스시스이렌 | 일식 | 영통구 | 휴무 매주 일, 월요일 휴무일
-P /places/seusiyukai/ | 스시유카이 | 일식 | 영통구 | 메뉴 흰살(광어, 우럭, 도미 외; 연중무휴
-P /places/seullousseonisaideu/ | 슬로우써니사이드 | 카페 | 팔달구 | 메뉴 에그 쉬림프 샌드위치 14,000원; 휴무 매주 화요일 휴무일
-P /places/sigoljibureongissambap/ | 시골집우렁이쌈밥 | 한식 | 팔달구 | 메뉴 우렁쌈밥 12,000원; 휴무 매주 일요일 휴무일
-P /places/sihwayeonpung/ | 시화연풍 | 카페 | 영통구 | 메뉴 에스프레소; 휴무 매주 월요일 (박물관 휴관일)
-P /places/sindongsundaeguk/ | 신동순대국 | 한식 | 영통구 | 메뉴 순대국(보) 9,900원; 연중무휴
-P /places/sillagalbi/ | 신라갈비 | 한식 | 영통구 | 메뉴 왕생갈비 (1인분) 70,000원; 연중무휴
-P /places/sinsagangjeongyukjeomsikdang/ | 신사강정육점식당 | 한식 | 장안구 | 메뉴 삼겹살(200g) 19,000원; 연중무휴
-P /places/sseonpeuransiseukomaket/ | 썬프란시스코마켓 | 카페 | 영통구 | 메뉴 매운 새우 로제 리가토니 18,000원; 연중무휴
-P /places/anangne/ | 아낙네 | 한식 | 권선구 | 메뉴 완도 광어 (대) 85,000원; 연중무휴
-P /places/aneuk/ | 아늑 | 서양식 | 장안구 | 메뉴 스파이시 까르보나라 8,900원; 연중무휴
-P /places/amiseuta/ | 아미스타 | 카페 | 영통구 | 메뉴 유기농우유 5,000원; 휴무 매주 일요일 휴무일
-P /places/eogumi-bonjeom/ | 어구미 본점 | 한식 | 팔달구 | 메뉴 갈치조림 (1인) 20,000원; 연중무휴
-P /places/eobanbelli-801/ | 어반벨리801 | 카페 | 팔달구 | 메뉴 수플레팬케이크 (딸기) 18,000원; 연중무휴
-P /places/eonoldeucheom/ | 언올드첨 | 카페 | 팔달구 | 메뉴 아메리카노 5,000원; 연중무휴
-P /places/eipeureon/ | 에이프런 | 카페 | 영통구 | 메뉴 스모크 살몬 아보카도 에그 베네딕트 18,000원; 연중무휴
-P /places/yeonmil/ | 연밀 | 중식 | 팔달구 | 메뉴 새우육즙만두 (8개) 14,000원; 휴무 매주 월, 화요일 휴무일
-P /places/yeonpogalbi/ | 연포갈비 | 한식 | 팔달구 | 메뉴 양념갈비 (450g) 58,000원; 연중무휴
-P /places/yeolguja/ | 열구자 | 한식 | 권선구 | 메뉴 청국장 13,000원; 연중무휴
-P /places/yeolduarudongjip/ | 열두알우동집 | 일식 | 팔달구 | 메뉴 닭튀김 우동 12,000원; 연중무휴
-P /places/yeongcheonsikdang/ | 영천식당 | 한식 | 팔달구 | 메뉴 육회비빔밥 13,000원; 휴무 매주 일요일 휴무일
-P /places/yeongheungsumogwon-kape-beoteopeullai/ | 영흥수목원 카페 버터플라이 | 카페 | 영통구 | 메뉴 시그니처오월에이드 6,500원; 휴무 매주 월요일 휴무일
-P /places/yerang/ | 예랑 | 한식 | 영통구 | 메뉴 특정식 35,000원; 휴무 매주 일요일 휴무일
-P /places/yebaksa/ | 예박사 | 한식 | 팔달구 | 메뉴 양념소갈비살 (900g) 70,000원; 연중무휴
-P /places/yejeongakseolleongtang/ | 예전각설렁탕 | 한식 | 장안구 | 메뉴 특설렁탕 11,000원; 연중무휴
-P /places/oneuruichobap/ | 오늘의초밥 | 일식 | 영통구 | 메뉴 오늘의초밥 18,000원; 연중무휴
-P /places/orenjibeigeul/ | 오렌지베이글 | 카페 | 권선구 | 메뉴 오렌지카노(ONLY ICE) 7,000원; 연중무휴
-P /places/oridaega/ | 오리대가 | 한식 | 팔달구 | 메뉴 오리진흙구이 98,000원; 휴무 매주 월요일 휴무일
-P /places/obongbereu/ | 오봉베르 | 카페 | 영통구 | 메뉴 아메리카노 4,500원; 연중무휴
-P /places/okdongi/ | 옥동이 | 중식 | 팔달구 | 메뉴 탕수육 (소) 19,000원; 휴무 매주 월요일 휴무일
-P /places/ollibeu-1999/ | 올리브 1999 | 서양식 | 영통구 | 메뉴 로제스파게티 20,000원; 연중무휴
-P /places/waiememdi/ | 와이엠엠디 | 카페 | 영통구 | 메뉴 아메리카노 5,000원; 연중무휴
-P /places/udongilbeonga/ | 우동일번가 | 일식 | 권선구 | 메뉴 붓가케우동 9,000원; 휴무 매주 일, 월요일 휴무일
-P /places/uridongne-seusikaya/ | 우리동네 스시카야 | 한식 | 장안구 | 메뉴 초밥 1,890원; 연중무휴
-P /places/uridongneseusisinjo/ | 우리동네스시신조 | 일식 | 장안구 | 메뉴 한접시 1,750원; 연중무휴
-P /places/ujeonokganjanggejang/ | 우전옥간장게장 | 한식 | 장안구 | 메뉴 게장정식 (1인) 38,000원; 휴무 매주 월요일 휴무일
-P /places/unmello-1-hojeom/ | 운멜로 1호점 | 서양식 | 팔달구 | 메뉴 풍기 크레마 16,000원; 연중무휴
-P /places/yuchihoegwan/ | 유치회관 | 한식 | 팔달구 | 메뉴 해장국 12,000원; 연중무휴
-P /places/yundon/ | 윤돈 | 일식 | 영통구 | 메뉴 상로스카츠 정식 15,000원; 휴무 매주 일요일 휴무일
-P /places/eunmijeong-and-eunmichan/ | 은미정&은미찬 | 한식 | 권선구 | 메뉴 한우우거지 해장국 11,000원; 연중무휴
-P /places/iribunong/ | 이리부농 | 카페 | 권선구 | 메뉴 에스프레소 4,500원; 휴무 매주 월요일 휴무일
-P /places/imonesonkalguksu/ | 이모네손칼국수 | 한식 | 팔달구 | 메뉴 칼국수 9,000원; 연중무휴
-P /places/iseobangwangjokbalbossam-suwonbonjeom/ | 이서방왕족발보쌈 수원본점 | 한식 | 권선구 | 메뉴 불족발 41,000원; 연중무휴
-P /places/ihwajeong/ | 이화정 | 한식 | 팔달구 | 메뉴 소불고기정식 18,000원; 휴무 매주 일요일 휴무일
-P /places/ilsangen/ | 일상엔 | 카페 | 팔달구 | 메뉴 바닐라빈라떼 7,000원; 연중무휴
-P /places/irwolsumogwon-kape-deijiwon/ | 일월수목원 카페 데이지원 | 카페 | 장안구 | 메뉴 데이지콘 어니스트 밀크 (HOT) 6,000원; 휴무 매주 월요일 휴무일
-P /places/ipjujip/ | 입주집 | 한식 | 팔달구 | 메뉴 모듬한판 (600g) 65,000원; 휴무 매주 일요일 휴무일
-P /places/jangannongwon/ | 장안농원 | 한식 | 장안구 | 메뉴 오리백숙 · 닭백숙 · 도토리묵; 휴무 매주 화요일
-P /places/jangteoseolleongtang/ | 장터설렁탕 | 서양식 | 권선구 | 메뉴 설렁탕 14,000원; 연중무휴
-P /places/jeongjiyeongkeopiroseuteojeu-haenggungbonjeom/ | 정지영커피로스터즈 행궁본점 | 카페 | 팔달구 | 메뉴 코코넛 7,000원; 연중무휴
-P /places/jeongjinsikdang/ | 정진식당 | 한식 | 영통구 | 메뉴 명품제주오겹살(180g) 20,000원; 휴무 매주 일요일 휴무일
-P /places/jejuhalmangdonga/ | 제주할망돈가 | 한식 | 영통구 | 메뉴 오겹살(180g) 19,000원; 연중무휴
-P /places/jecheolssambap/ | 제철쌈밥 | 한식 | 장안구 | 메뉴 돼지불고기 10,000원; 연중무휴
-P /places/jodaegambudaejjigae/ | 조대감부대찌개 | 한식 | 팔달구 | 메뉴 조대감부대찌개 12,000원; 연중무휴
-P /places/jomadamkalguksu/ | 조마담칼국수 | 한식 | 팔달구 | 메뉴 조개칼국수 11,000원; 연중무휴
-P /places/joeunsosik/ | 좋은소식 | 일식 | 영통구 | 메뉴 좋은소식동(참치, 참돔, 광어 외; 휴무 매주 일, 월, 화요일 휴무일
-P /places/jinmitongdak/ | 진미통닭 | 한식 | 팔달구 | 메뉴 후라이드 20,000원; 휴무 매주 월요일 휴무일
-P /places/jjamachainahomaesilbonjeom/ | 짜마차이나호매실본점 | 중식 | 권선구 | 메뉴 삼선짬뽕 13,000원; 연중무휴
-P /places/chaesanggung-suwonbonjeom/ | 채상궁 수원본점 | 한식 | 팔달구 | 메뉴 보쌈+오리샤브+손칼국수 25,000원; 연중무휴
-P /places/cheonsanghanu/ | 천상한우 | 한식 | 영통구 | 메뉴 올인원코스 100,000원; 연중무휴
-P /places/chogajip/ | 초가집 | 한식 | 권선구 | 메뉴 낙지덮밥 (2인이상) 14,000원; 연중무휴
-P /places/choamgol/ | 초암골 | 한식 | 권선구 | 메뉴 산양삼전복삼계탕 27,000원; 휴무 매주 일요일 휴무일
-P /places/choessihwaro/ | 최씨화로 | 한식 | 권선구 | 메뉴 최씨 스페셜 정식 (2인 이상) 22,000원; 연중무휴
-P /places/chuncheoneseo-on-sutdak/ | 춘천에서 온 숯닭 | 한식 | 영통구 | 메뉴 소금닭갈비 (330g) 16,000원; 연중무휴
-P /places/chilbohoegwan/ | 칠보회관 | 한식 | 권선구 | 연중무휴
-P /places/kape-7/ | 카페 7 | 카페 | 권선구 | 메뉴 아이스크림 7,000원; 연중무휴
-P /places/kape-geurubi/ | 카페 그루비 | 카페 | 영통구 | 메뉴 카페라떼 6,500원; 연중무휴
-P /places/kape-doan/ | 카페 도안 | 카페 | 팔달구 | 메뉴 아메리카노 5,000원; 연중무휴
-P /places/kape-diajeu/ | 카페 디아즈 | 카페 | 팔달구 | 메뉴 아메리카노 5,500원; 연중무휴
-P /places/kape-riping/ | 카페 리핑 | 카페 | 영통구 | 메뉴 버터크림라떼 7,000원; 연중무휴
-P /places/kape-hairaiteu/ | 카페 하이라이트 | 카페 | 권선구 | 메뉴 생망고빙수 컬렉션 29,500원; 연중무휴
-P /places/kapemeibeun/ | 카페메이븐 | 카페 | 팔달구 | 메뉴 [브런치 주문시 아메리카노 1,000원]; 연중무휴
-P /places/kapeago/ | 카페아고 | 카페 | 권선구 | 연중무휴
-P /places/keopi-baibeu/ | 커피 바이브 | 카페 | 영통구 | 메뉴 아메리카노 4,500원; 연중무휴
-P /places/kollingudeu/ | 콜링우드 | 카페 | 팔달구 | 메뉴 망고 케이크; 연중무휴
-P /places/kolseukeopi/ | 콜스커피 | 카페 | 영통구 | 메뉴 수제 티라미수 7,000원; 휴무 매주 토요일 휴무일, 매주 월요일 휴무일
-P /places/taimcheimbeobaiseutemkeopi-suwonseutapildeujeom/ | 타임체임버바이스템커피 수원스타필드점 | 카페 | 장안구 | 연중무휴
-P /places/taerijutaek/ | 태리주택 | 서양식 | 팔달구 | 메뉴 테리주택 스테이크 (250g) 37,000원; 연중무휴
-P /places/teron/ | 텔온 | 카페 | 영통구 | 메뉴 아메리카노 · 브런치 플레이트; 연중무휴
-P /places/teurejeogadeun/ | 트레저가든 | 카페 | 팔달구 | 메뉴 루꼴라 부라타 피자 28,000원; 연중무휴
-P /places/tikeunik-aelliwei-gwanggyojeom/ | 티크닉 앨리웨이 광교점 | 카페 | 영통구 | 메뉴 크림티 세트 12,000원; 연중무휴
-P /places/pachi-seongdaejeom/ | 파치 성대점 | 서양식 | 장안구 | 메뉴 트러플 풍기크림 10,500원; 휴무 매주 토요일 휴무일
-P /places/paldaljegwa/ | 팔달제과 | 제과 | 팔달구 | 메뉴 소금빵 3,200원; 휴무 매주 월, 화요일 휴무일
-P /places/pamtuhanok/ | 팜투하녹 | 카페 | 팔달구 | 메뉴 새우 샐러드 10,900원; 연중무휴
-P /places/podongine/ | 포동이네 | 일식 | 영통구 | 메뉴 도로초밥 (12P) 29,000원; 연중무휴
-P /places/pokeoseuonnau/ | 포커스온나우 | 카페 | 권선구 | 메뉴 에그 오픈샌드위치 11,500원; 연중무휴
-P /places/pungeosaengseonguijeongsik/ | 풍어생선구이정식 | 한식 | 장안구 | 메뉴 고등어구이 17,000원; 연중무휴
-P /places/pikel/ | 피켈 | 카페 | 영통구 | 메뉴 고소각 땅콩카라멜 라떼 (HOT) 6,000원; 휴무 매주 일, 월요일 휴무일
-P /places/pikeuniktaigeo/ | 피크닉타이거 | 카페 | 영통구 | 메뉴 플레인 수플레 16,000원; 휴무 매주 화요일 휴무일
-P /places/hanammisomyeongpumhanu/ | 하남미소명품한우 | 한식 | 권선구 | 메뉴 미소생갈비 솥밥정식(점심특선) 35,000원; 연중무휴
-P /places/hayanpungchajegwajeom-mangpojeom/ | 하얀풍차제과점 망포점 | 카페 | 영통구 | 메뉴 화이트롤 6,900원; 연중무휴
-P /places/hangukgwan/ | 한국관 | 한식 | 팔달구 | 메뉴 한우생갈비살(1인) 68,000원; 연중무휴
-P /places/hanyangseolleongtang/ | 한양설렁탕 | 한식 | 권선구 | 메뉴 마늘설렁탕 14,000원; 휴무 매주 일요일 휴무일
-P /places/hanugap/ | 한우갑 | 한식 | 영통구 | 메뉴 생등심 (150g) 65,000원; 휴무 매주 일요일 휴무일
-P /places/hanuiyagi/ | 한우이야기 | 한식 | 권선구 | 메뉴 한우갈비탕 9,000원; 연중무휴
-P /places/hanjangeo/ | 한장어 | 한식 | 권선구 | 메뉴 민물장어 (1kg) 52,000원; 연중무휴
-P /places/haenggungjeongchan/ | 행궁정찬 | 한식 | 영통구 | 메뉴 행궁진찬(1인) 58,000원; 연중무휴
-P /places/hereucheu/ | 헤르츠 | 카페 | 영통구 | 메뉴 드립 커피 7,000원; 연중무휴
-P /places/hyeongjenongwon/ | 형제농원 | 한식 | 장안구 | 메뉴 숯불바베큐 22,000원; 연중무휴
-P /places/horang/ | 호랑 | 카페 | 권선구 | 메뉴 아메리카노 4,000원; 연중무휴
-P /places/hongnammaekalguksu/ | 홍남매칼국수 | 한식 | 장안구 | 메뉴 칼국수 9,000원; 휴무 매주 월요일 휴무일
-P /places/hongnadeu-ingyenahyeseokjeom/ | 홍라드 인계나혜석점 | 카페 | 팔달구 | 메뉴 전남친토스트 6,800원; 연중무휴
-P /places/himallayajeongwon/ | 히말라야정원 | 기타외국식 | 팔달구 | 메뉴 치킨 마크니 12,500원; 연중무휴
-P /places/daewonok/ | (신)대원옥 | 한식 | 팔달구 | 메뉴 평양냉면 16,000원; 휴무 매주 월요일 휴무일
-P /places/100-nyeonhanu/ | 100년한우 | 한식 | 팔달구 | 메뉴 불꽃숙성등심 (150g) 35,000원; 연중무휴
-P /places/10593-beigeulkeopihauseu/ | 10593 베이글커피하우스 | 카페 | 권선구 | 메뉴 베리클라우드 6,500원; 연중무휴
-P /places/335-kichin-gwanggyoabeunyupeurangjeom/ | 335키친 광교아브뉴프랑점 | 한식 | 영통구 | 메뉴 소고기 샤브샤브 (평일점심) 18,900원; 연중무휴
-P /places/91-keopi/ | 91커피 | 카페 | 팔달구 | 메뉴 91라떼 6,500원; 연중무휴
-P /places/955-kape/ | 955카페 | 카페 | 팔달구 | 메뉴 아메리카노 4,500원; 연중무휴
+P /places/gabojeonggalbi/ | 가보정갈비 | 한식 | 팔달구 | 메뉴 한우 양념갈비; 연중무휴
+P /places/gawon/ | 가원 | 한식 | 영통구 | 메뉴 한우 생갈비; 연중무휴
+P /places/galpungjip/ | 갈풍집 | 한식 | 영통구 | 메뉴 맬콤갈비살; 연중무휴
+P /places/gyeongseongjip/ | 경성집 | 한식 | 권선구 | 메뉴 옛설농탕; 연중무휴
+P /places/gyeongandang/ | 경안당 | 카페 | 팔달구 | 메뉴 오미자; 연중무휴
+P /places/gogirang/ | 고기랑 | 한식 | 팔달구 | 메뉴 생삼겹살; 연중무휴
+P /places/gogijabi-suwonbonjeom/ | 고기잡이 수원본점 | 한식 | 영통구 | 메뉴 민어코스; 연중무휴
+P /places/godeungbanjeom/ | 고등반점 | 중식 | 팔달구 | 메뉴 탕수육; 휴무 설·추석 당일
+P /places/goldiseu/ | 골디스 | 카페 | 팔달구 | 연중무휴
+P /places/gwanggyogalbi/ | 광교갈비 | 한식 | 영통구 | 메뉴 제주흑돼지 양념갈비; 휴무 매주 월요일
+P /places/gwanggyobeolgyojip/ | 광교벌교집 | 한식 | 영통구 | 메뉴 불고기뚝배기; 연중무휴
+P /places/gwanggyoheonnongwon/ | 광교헌농원 | 한식 | 장안구 | 메뉴 닭볶음탕; 연중무휴
+P /places/guseutabeu/ | 구스타브 | 카페 | 영통구 | 메뉴 구스타브 에이드; 휴무 매주 월요일
+P /places/gunpohaemultang/ | 군포해물탕 | 한식 | 영통구 | 메뉴 해물탕; 휴무 매주 일요일
+P /places/geurotto/ | 그로또 | 서양식 | 영통구 | 메뉴 멕시코 크림 파스타; 연중무휴
+P /places/geujip-haejangguk/ | 그집 해장국 | 한식 | 장안구 | 메뉴 해장국; 휴무 매주 일요일 / 월요일
+P /places/geujipjjukkumibokkeum/ | 그집쭈꾸미볶음 | 한식 | 장안구 | 메뉴 주꾸미볶음; 연중무휴
+P /places/geumjeongchamchi-bonjeom/ | 금정참치 본점 | 일식 | 권선구 | 메뉴 오마카세; 휴무 매주 일요일
+P /places/geumhwaru/ | 금화루 | 중식 | 영통구 | 메뉴 짜장면; 연중무휴
+P /places/giwajip/ | 기와집 | 한식 | 권선구 | 메뉴 풍천민물장어구이; 연중무휴
+P /places/gillimseong/ | 길림성 | 중식 | 장안구 | 메뉴 짜장면; 휴무 명절 당일
+P /places/gimseongminkeopi/ | 김성민커피 | 카페 | 영통구 | 메뉴 바스크치즈; 연중무휴
+P /places/kkottakkotteu/ | 꼬따꼬뜨 | 서양식 | 영통구 | 메뉴 콰트로 포르마지오 뇨끼; 휴무 매주 일요일
+P /places/kkungnyau-haenggungjeom/ | 꿍냐우 행궁점 | 기타외국식 | 팔달구 | 연중무휴
+P /places/namsuwongalbi/ | 남수원갈비 | 한식 | 권선구 | 메뉴 남수원왕갈비; 연중무휴
+P /places/neolbeuntteul/ | 넓은뜰 | 한식 | 권선구 | 메뉴 황제밥상; 연중무휴
+P /places/nodaegamgamjatangmaetanbonjeom/ | 노대감감자탕매탄본점 | 한식 | 영통구 | 메뉴 뼈다귀감자탕; 연중무휴
+P /places/noranhwangtae-bonjeom/ | 노란황태 본점 | 한식 | 영통구 | 메뉴 황태식혜비빔냉면; 연중무휴
+P /places/daraesikdang/ | 다래식당 | 한식 | 권선구 | 메뉴 동태찌개; 연중무휴
+P /places/dalguunbaram-dwaejigalbi-yeongtongmangpojeom/ | 달구운바람 돼지갈비 영통망포점 | 한식 | 영통구 | 메뉴 원적외선 직화 돼지양념구이; 연중무휴
+P /places/daebakhoetjip/ | 대박횟집 | 한식 | 영통구 | 메뉴 대박특회정식; 휴무 매주 일요일
+P /places/deoyuropieon/ | 더유로피언 | 서양식 | 팔달구 | 메뉴 시그니처 바질 부라타 치즈 피자; 연중무휴
+P /places/dogi/ | 도기 | 카페 | 영통구 | 메뉴 아메리카노; 연중무휴
+P /places/dominikkeopiraep/ | 도미닉커피랩 | 카페 | 영통구 | 메뉴 코코넛 라떼; 연중무휴
+P /places/donkkaseuyeohaeng/ | 돈까스여행 | 한식 | 권선구 | 메뉴 여행돈가스; 연중무휴
+P /places/dongsanchamsutgalbi/ | 동산참숯갈비 | 한식 | 영통구 | 메뉴 명석돼지; 연중무휴
+P /places/dukkeobijip/ | 두꺼비집 | 한식 | 팔달구 | 메뉴 부대찌개; 휴무 명절 연휴
+P /places/dyukupeul/ | 듀쿠플(DU COUPLE) | 제과 | 영통구 | 메뉴 딸기 생크림케이크; 휴무 매주 일요일
+P /places/ttaenginesogopchang/ | 땡이네소곱창 | 한식 | 영통구 | 메뉴 황소곱창; 휴무 매주 일요일 / 공휴일
+P /places/raikeu-no-adeo/ | 라이크 노 아더 | 카페 | 팔달구 | 메뉴 아몬드밤라떼; 연중무휴
+P /places/redeubeurikkeopihauseu/ | 레드브릭커피하우스 | 카페 | 팔달구 | 메뉴 아메리카노; 연중무휴
+P /places/reijihauseu/ | 레이지하우스 | 카페 | 영통구 | 메뉴 바닐라 플랫화이트; 휴무 매주 화요일
+P /places/romagyeongyangsik/ | 로마경양식 | 서양식 | 팔달구 | 메뉴 왕돈까스; 휴무 메주 월요일 / 설·추석 연휴
+P /places/reuditueo/ | 르디투어 | 카페 | 영통구 | 메뉴 아메리카노; 연중무휴
+P /places/reuppangdeupariaenbeureonchihauseu-haenggungjeom/ | 르빵드파리앤브런치하우스 행궁점 | 카페 | 팔달구 | 메뉴 청포도 요거트 파이; 연중무휴
+P /places/riteulbonsuwongalbijip/ | 리틀본수원갈비집 | 한식 | 장안구 | 메뉴 갈비탕; 휴무 매주 월요일 / 화요일
+P /places/macho/ | 마초 | 일식 | 팔달구 | 메뉴 흰살숙성초밥; 연중무휴
+P /places/mapobonga/ | 마포본가 | 한식 | 팔달구 | 메뉴 돼지양념구이; 연중무휴
+P /places/mapohaejang/ | 마포해장 | 한식 | 권선구 | 메뉴 해장국; 연중무휴
+P /places/mansujeonbok/ | 만수전복 | 한식 | 팔달구 | 메뉴 전복회; 휴무 매주 일요일
+P /places/mallou-peulleiseu/ | 말로우 플레이스 | 한식 | 권선구 | 메뉴 말로우슈페너; 연중무휴
+P /places/maeilgimchidamgeuneunjip/ | 매일김치담그는집 | 한식 | 팔달구 | 메뉴 소양념갈비살; 휴무 매주 월요일
+P /places/maeteugeurin/ | 매트그린 | 카페 | 팔달구 | 메뉴 크럼블; 휴무 매주 화요일
+P /places/memori/ | 메모리 | 카페 | 권선구 | 휴무 매주 월요일
+P /places/memoriamanet/ | 메모리아마넷 | 카페 | 팔달구 | 메뉴 아메리카노; 휴무 매주 월요일
+P /places/memiljeongwon/ | 메밀정원 | 한식 | 권선구 | 메뉴 메밀정식; 연중무휴
+P /places/menyagokoro/ | 멘야고코로 | 일식 | 영통구 | 메뉴 마제멘; 휴무 매주 일요일
+P /places/myeongganesundaeguk/ | 명가네순대국 | 한식 | 권선구 | 메뉴 순대국; 휴무 매주 월요일 / 화요일
+P /places/myeongseongdwaejigalbi/ | 명성돼지갈비 | 한식 | 장안구 | 메뉴 돼지갈비; 연중무휴
+P /places/monami-kare/ | 모나미 카레 | 서양식 | 팔달구 | 연중무휴
+P /places/moikeopikeullaesik/ | 모이커피클래식 | 카페 | 팔달구 | 메뉴 모래사막; 휴무 설·추석 당일
+P /places/mongtedeu/ | 몽테드 | 카페 | 팔달구 | 메뉴 소금빵; 휴무 매주 수요일 / 법정공휴일
+P /places/mudeungsan/ | 무등산 | 한식 | 팔달구 | 메뉴 무등산정식; 연중무휴
+P /places/minamichamchi/ | 미나미참치 | 일식 | 팔달구 | 메뉴 코스요리; 휴무 매주 일요일
+P /places/misotendong/ | 미소텐동 | 일식 | 영통구 | 메뉴 미소텐동, 아나고텐동; 휴무 명절 당일
+P /places/misikgauijubang/ | 미식가의주방 | 서양식 | 팔달구 | 메뉴 만조 양송이 크림 리조또; 연중무휴
+P /places/badarogankokkirikkochang/ | 바다로간코끼리꼬창 | 한식 | 장안구 | 메뉴 모듬회; 휴무 매주 월요일
+P /places/bangnejipsongtanbudaejjigae-mugongdakgalbi/ | 박네집송탄부대찌개 무공닭갈비 | 한식 | 권선구 | 메뉴 부대찌개; 휴무 1,3번째 월요일
+P /places/baeksesamgyetang-suwonpajangbonjeom/ | 백세삼계탕 수원파장본점 | 한식 | 장안구 | 메뉴 상황삼계탕; 연중무휴
+P /places/baeksejjamppong-suwonbonjeom/ | 백세짬뽕 수원본점 | 중식 | 장안구 | 메뉴 백세짬뽕; 연중무휴
+P /places/baegunjumallongjang/ | 백운주말농장 | 한식 | 장안구 | 메뉴 숯불바베큐; 연중무휴
+P /places/baekcheongukalguksu/ | 백청우칼국수 | 한식 | 팔달구 | 메뉴 해물칼국수; 연중무휴
+P /places/beodeulchi/ | 버들치 | 한식 | 영통구 | 메뉴 한상차림; 휴무 매주 월요일
+P /places/beolgyojip/ | 벌교집 | 한식 | 영통구 | 메뉴 꼬막비빔밥; 연중무휴
+P /places/beolgyochueotang/ | 벌교추어탕 | 한식 | 영통구 | 메뉴 추어탕; 연중무휴
+P /places/bonsuwongalbi/ | 본수원갈비 | 한식 | 팔달구 | 메뉴 생갈비; 휴무 설·추석 연휴
+P /places/bonjireureu/ | 본지르르 | 카페 | 팔달구 | 메뉴 아메리카노; 연중무휴
+P /places/bonghwakalguksu/ | 봉화칼국수 | 한식 | 영통구 | 메뉴 바지락칼국수; 휴무 매주 일요일
+P /places/bungmun-yuchihoegwan/ | 북문 유치회관 | 한식 | 장안구 | 메뉴 해장국; 휴무 1월 1일 / 설·추석 연휴
+P /places/buksuwonhwaro/ | 북수원화로 | 한식 | 장안구 | 메뉴 한돈갈비; 연중무휴
+P /places/ppieseumongtejeppangso/ | 삐에스몽테제빵소 | 카페 | 권선구 | 메뉴 쌀소금빵; 연중무휴
+P /places/samchunok/ | 삼춘옥 | 한식 | 팔달구 | 연중무휴
+P /places/sampoganeungil/ | 삼포가는길 | 한식 | 영통구 | 메뉴 명태찜; 휴무 설·추석 연휴
+P /places/sampunggadeun/ | 삼풍가든 | 한식 | 장안구 | 메뉴 생갈비; 휴무 명절연휴
+P /places/sangwonhoegwan/ | 상원회관 | 한식 | 영통구 | 메뉴 특수모듬; 연중무휴
+P /places/saebyeokjip/ | 새벽집 | 한식 | 영통구 | 메뉴 꽃등심; 연중무휴
+P /places/seodongjinuikeopiraep-bonjeom/ | 서동진의커피랩 본점 | 카페 | 장안구 | 메뉴 아메리카노; 연중무휴
+P /places/seorinnakji/ | 서린낙지 | 한식 | 영통구 | 메뉴 낙지모음요리; 연중무휴
+P /places/seosuwonsutbulgalbi/ | 서수원숯불갈비 | 한식 | 권선구 | 메뉴 명품 한우 꽃등심; 휴무 매주 월요일 (단, 월요일이 공휴일인 경우 정상 영업)
+P /places/seoul-24-sigamjatanghaejangguk/ | 서울24시감자탕해장국 | 한식 | 영통구 | 메뉴 묵은지 감자탕; 연중무휴
+P /places/seoksanjeong/ | 석산정 | 한식 | 권선구 | 메뉴 왕생갈비; 연중무휴
+P /places/sebiyasikdang/ | 세비야식당 | 서양식 | 영통구 | 메뉴 문어 오븐구이; 연중무휴
+P /places/senteomkeopi/ | 센텀커피 | 카페 | 팔달구 | 메뉴 아메리카노; 연중무휴
+P /places/sorot/ | 소롯 | 한식 | 권선구 | 휴무 법정휴무일
+P /places/songjugyakbang/ | 송죽약방 | 중식 | 장안구 | 메뉴 마파두부밥
+P /places/songpunggadeun/ | 송풍가든 | 한식 | 장안구 | 메뉴 투뿔 한우 특수부위 안창살; 연중무휴
+P /places/songhalmeoniotdak/ | 송할머니옻닭 | 한식 | 권선구 | 메뉴 옻닭; 휴무 매주 일요일
+P /places/subokheon/ | 수복헌 | 찻집 | 권선구 | 메뉴 수복정차; 연중무휴
+P /places/suwonmandu/ | 수원만두 | 중식 | 팔달구 | 메뉴 군만두; 연중무휴
+P /places/suindakbaljip/ | 수인닭발집 | 한식 | 권선구 | 메뉴 닭발; 휴무 매주 일요일
+P /places/sutawon/ | 수타원 | 카페 | 영통구 | 메뉴 소갈비짬뽕; 연중무휴
+P /places/seusiseuiren/ | 스시스이렌 | 일식 | 영통구 | 메뉴 오마카세; 휴무 매주 일요일 / 월요일
+P /places/seusiyukai/ | 스시유카이 | 일식 | 영통구 | 메뉴 오마카세; 연중무휴
+P /places/seullousseonisaideu/ | 슬로우써니사이드 | 카페 | 팔달구 | 메뉴 뱅거스앤매쉬 브렉퍼스트; 휴무 매주 화요일
+P /places/sigoljibureongissambap/ | 시골집우렁이쌈밥 | 한식 | 팔달구 | 메뉴 우렁쌈밥; 휴무 매주 일요일
+P /places/sihwayeonpung/ | 시화연풍 | 카페 | 영통구 | 연중무휴
+P /places/sindongsundaeguk/ | 신동순대국 | 한식 | 영통구 | 메뉴 순대국; 연중무휴
+P /places/sillagalbi/ | 신라갈비 | 한식 | 영통구 | 메뉴 왕생갈비; 연중무휴
+P /places/sinsagangjeongyukjeomsikdang/ | 신사강정육점식당 | 한식 | 장안구 | 메뉴 삼겹살; 연중무휴
+P /places/sseonpeuransiseukomaket/ | 썬프란시스코마켓 | 카페 | 영통구 | 메뉴 클램차우더와 치즈 브레드; 연중무휴
+P /places/anangne/ | 아낙네 | 한식 | 권선구 | 메뉴 해산물 물회; 연중무휴
+P /places/aneuk/ | 아늑 | 서양식 | 장안구 | 메뉴 스파이시까르보나라; 연중무휴
+P /places/amiseuta/ | 아미스타 | 카페 | 영통구 | 메뉴 아메리카노; 휴무 설·추석 연휴
+P /places/eogumi-bonjeom/ | 어구미 본점 | 한식 | 팔달구 | 메뉴 고등어구이정식; 휴무 명절 연휴
+P /places/eobanbelli-801/ | 어반벨리801 | 카페 | 팔달구 | 메뉴 제주감귤 수플레; 연중무휴
+P /places/eonoldeucheom/ | 언올드첨 | 카페 | 팔달구 | 메뉴 아메리카노; 연중무휴
+P /places/eipeureon/ | 에이프런 | 카페 | 영통구 | 메뉴 로쏘 머쉬룸 베이컨 에그 베네딕트; 연중무휴
+P /places/yeonmil/ | 연밀 | 중식 | 팔달구 | 메뉴 새우육즙만두; 휴무 매주 화요일
+P /places/yeonpogalbi/ | 연포갈비 | 한식 | 팔달구 | 메뉴 양념갈비; 연중무휴
+P /places/yeolguja/ | 열구자 | 한식 | 권선구 | 메뉴 갑오징어볶음세트; 연중무휴
+P /places/yeolduarudongjip/ | 열두알우동집 | 일식 | 팔달구 | 연중무휴
+P /places/yeongcheonsikdang/ | 영천식당 | 한식 | 팔달구 | 메뉴 한우투뿔등심; 휴무 매주 일요일
+P /places/yeongheungsumogwon-kape-beoteopeullai/ | 영흥수목원 카페 버터플라이 | 카페 | 영통구 | 휴무 매주 월요일 휴무
+P /places/yerang/ | 예랑 | 한식 | 영통구 | 메뉴 궁정식; 휴무 매주 일요일
+P /places/yebaksa/ | 예박사 | 한식 | 팔달구 | 메뉴 양념 소 갈비살; 연중무휴
+P /places/yejeongakseolleongtang/ | 예전각설렁탕 | 한식 | 장안구 | 메뉴 설렁탕; 연중무휴
+P /places/oneuruichobap/ | 오늘의초밥 | 일식 | 영통구 | 메뉴 오늘의초밥; 휴무 매주 목요일
+P /places/orenjibeigeul/ | 오렌지베이글 | 카페 | 권선구 | 메뉴 쪽파베이컨크림 베이글; 연중무휴
+P /places/oridaega/ | 오리대가 | 한식 | 팔달구 | 메뉴 능이전복오리백숙; 휴무 매주 월요일 / 설·추석 연휴
+P /places/obongbereu/ | 오봉베르 | 카페 | 영통구 | 메뉴 아메리카노; 연중무휴
+P /places/okdongi/ | 옥동이 | 중식 | 팔달구 | 메뉴 바지락짬뽕; 휴무 매주 월요일
+P /places/ollibeu-1999/ | 올리브 1999 | 서양식 | 영통구 | 메뉴 뼈등심 돈가스; 연중무휴
+P /places/waiememdi/ | 와이엠엠디 | 카페 | 영통구 | 메뉴 토피커피; 연중무휴
+P /places/udongilbeonga/ | 우동일번가 | 일식 | 권선구 | 메뉴 가케우동; 휴무 매주 일요일 /월요일
+P /places/uridongne-seusikaya/ | 우리동네 스시카야 | 한식 | 장안구 | 메뉴 초밥; 연중무휴
+P /places/uridongneseusisinjo/ | 우리동네스시신조 | 일식 | 장안구 | 메뉴 초밥; 휴무 설·추석 연휴
+P /places/ujeonokganjanggejang/ | 우전옥간장게장 | 한식 | 장안구 | 메뉴 게장무한리필; 휴무 매주 월요일
+P /places/unmello-1-hojeom/ | 운멜로 1호점 | 서양식 | 팔달구 | 메뉴 풍기크레마 리조또; 연중무휴
+P /places/yuchihoegwan/ | 유치회관 | 한식 | 팔달구 | 메뉴 해장국; 연중무휴
+P /places/yundon/ | 윤돈 | 일식 | 영통구 | 메뉴 상로스카츠; 휴무 매주 일요일
+P /places/eunmijeong-and-eunmichan/ | 은미정&은미찬 | 한식 | 권선구 | 메뉴 한우우거지 해장국; 연중무휴
+P /places/iribunong/ | 이리부농 | 카페 | 권선구 | 메뉴 이리부농 크림; 휴무 매주 월요일
+P /places/imonesonkalguksu/ | 이모네손칼국수 | 한식 | 팔달구 | 메뉴 손칼국수; 연중무휴
+P /places/iseobangwangjokbalbossam-suwonbonjeom/ | 이서방왕족발보쌈 수원본점 | 한식 | 권선구 | 메뉴 족발; 연중무휴
+P /places/ihwajeong/ | 이화정 | 한식 | 팔달구 | 메뉴 돌솥밥한상; 휴무 매주 일요일
+P /places/ilsangen/ | 일상엔 | 카페 | 팔달구 | 메뉴 바노피 타르트; 연중무휴
+P /places/irwolsumogwon-kape-deijiwon/ | 일월수목원 카페 데이지원 | 카페 | 장안구 | 휴무 매주 월요일
+P /places/ipjujip/ | 입주집 | 한식 | 팔달구 | 메뉴 모듬한판; 휴무 매주 일요일
+P /places/jangannongwon/ | 장안농원 | 한식 | 장안구 | 메뉴 보리밥
+P /places/jangteoseolleongtang/ | 장터설렁탕 | 서양식 | 권선구 | 메뉴 설렁탕; 연중무휴
+P /places/jeongjiyeongkeopiroseuteojeu-haenggungbonjeom/ | 정지영커피로스터즈 행궁본점 | 카페 | 팔달구 | 메뉴 코코넛커피; 연중무휴
+P /places/jeongjinsikdang/ | 정진식당 | 한식 | 영통구 | 메뉴 명품제주오겹살; 휴무 매주 일요일 / 설·추석 연휴
+P /places/jejuhalmangdonga/ | 제주할망돈가 | 한식 | 영통구 | 메뉴 제주 오겹살; 연중무휴
+P /places/jecheolssambap/ | 제철쌈밥 | 한식 | 장안구 | 메뉴 법성포 황금 보리굴비 밥상; 연중무휴
+P /places/jodaegambudaejjigae/ | 조대감부대찌개 | 한식 | 팔달구 | 메뉴 조대감부대찌개; 휴무 매주 토요일
+P /places/jomadamkalguksu/ | 조마담칼국수 | 한식 | 팔달구
+P /places/joeunsosik/ | 좋은소식 | 일식 | 영통구 | 메뉴 우니사케동; 휴무 매주 일요일~화요일
+P /places/jinmitongdak/ | 진미통닭 | 한식 | 팔달구 | 메뉴 통닭; 휴무 매주 월요일
+P /places/jjamachainahomaesilbonjeom/ | 짜마차이나호매실본점 | 중식 | 권선구 | 메뉴 동파육; 연중무휴
+P /places/chaesanggung-suwonbonjeom/ | 채상궁 수원본점 | 한식 | 팔달구 | 메뉴 소고기샤브샤브; 연중무휴
+P /places/cheonsanghanu/ | 천상한우 | 한식 | 영통구 | 메뉴 스페셜한마리; 휴무 매주 일요일
+P /places/chogajip/ | 초가집 | 한식 | 권선구 | 메뉴 낙지덮밥; 휴무 설·추석 당일
+P /places/choamgol/ | 초암골 | 한식 | 권선구 | 메뉴 동충하초뽕나무 삼계탕; 휴무 매주 일요일 / 설·추석 연휴
+P /places/choessihwaro/ | 최씨화로 | 한식 | 권선구 | 메뉴 최씨 스페셜 한우 모둠; 연중무휴
+P /places/chuncheoneseo-on-sutdak/ | 춘천에서 온 숯닭 | 한식 | 영통구 | 메뉴 간장닭갈비; 연중무휴
+P /places/chilbohoegwan/ | 칠보회관 | 한식 | 권선구 | 메뉴 냉동삼겹살; 휴무 매주 월요일
+P /places/kape-7/ | 카페 7 | 카페 | 권선구 | 메뉴 플레인와플; 연중무휴
+P /places/kape-geurubi/ | 카페 그루비 | 카페 | 영통구 | 메뉴 아메리카노; 연중무휴
+P /places/kape-doan/ | 카페 도안 | 카페 | 팔달구 | 메뉴 브루잉; 연중무휴
+P /places/kape-diajeu/ | 카페 디아즈 | 카페 | 팔달구 | 메뉴 딸기 생크림 케이크; 연중무휴
+P /places/kape-riping/ | 카페 리핑 | 카페 | 영통구 | 메뉴 딸기 수플레; 연중무휴
+P /places/kape-hairaiteu/ | 카페 하이라이트 | 카페 | 권선구 | 메뉴 코코넛 라떼; 연중무휴
+P /places/kapemeibeun/ | 카페메이븐 | 카페 | 팔달구 | 메뉴 메이븐 라자냐; 연중무휴
+P /places/kapeago/ | 카페아고 | 카페 | 권선구 | 메뉴 딸기 산도, 샤인머스켓 산도 외; 연중무휴
+P /places/keopi-baibeu/ | 커피 바이브 | 카페 | 영통구 | 메뉴 라테피크; 연중무휴
+P /places/kollingudeu/ | 콜링우드 | 카페 | 팔달구 | 메뉴 생딸기케이크; 연중무휴
+P /places/kolseukeopi/ | 콜스커피 | 카페 | 영통구 | 메뉴 리스트레또; 휴무 매주 월요일
+P /places/taimcheimbeobaiseutemkeopi-suwonseutapildeujeom/ | 타임체임버바이스템커피 수원스타필드점 | 카페 | 장안구 | 메뉴 코코바닐라, 리치화이트 외; 연중무휴
+P /places/taerijutaek/ | 태리주택 | 서양식 | 팔달구 | 메뉴 태리주택 스테이크; 연중무휴
+P /places/teron/ | 텔온 | 카페 | 영통구 | 메뉴 시그니처 바닐라; 휴무 매주 수요일
+P /places/teurejeogadeun/ | 트레저가든 | 카페 | 팔달구 | 메뉴 찹 스테잌, 갈비 크림 리조또; 연중무휴
+P /places/tikeunik-aelliwei-gwanggyojeom/ | 티크닉 앨리웨이 광교점 | 카페 | 영통구 | 휴무 설날 추석 당일 휴무
+P /places/pachi-seongdaejeom/ | 파치 성대점 | 서양식 | 장안구 | 메뉴 투움바; 휴무 매주 토요일
+P /places/paldaljegwa/ | 팔달제과 | 제과 | 팔달구
+P /places/pamtuhanok/ | 팜투하녹 | 카페 | 팔달구 | 메뉴 팜투라떼; 연중무휴
+P /places/podongine/ | 포동이네 | 일식 | 영통구 | 메뉴 특선초밥; 연중무휴
+P /places/pokeoseuonnau/ | 포커스온나우 | 카페 | 권선구 | 메뉴 오픈샌드위치 3종; 연중무휴
+P /places/pungeosaengseonguijeongsik/ | 풍어생선구이정식 | 한식 | 장안구 | 메뉴 갈치구이; 연중무휴
+P /places/pikel/ | 피켈 | 카페 | 영통구 | 메뉴 슈크림브륄레 라떼; 휴무 매주 월요일
+P /places/pikeuniktaigeo/ | 피크닉타이거 | 카페 | 영통구 | 메뉴 플레인수플레; 연중무휴
+P /places/hanammisomyeongpumhanu/ | 하남미소명품한우 | 한식 | 권선구 | 메뉴 한우 우거지탕, 한우 갈비탕 외; 연중무휴
+P /places/hayanpungchajegwajeom-mangpojeom/ | 하얀풍차제과점 망포점 | 카페 | 영통구 | 메뉴 화이트롤; 연중무휴
+P /places/hangukgwan/ | 한국관 | 한식 | 팔달구 | 메뉴 수원양념왕갈비; 연중무휴
+P /places/hanyangseolleongtang/ | 한양설렁탕 | 한식 | 권선구 | 메뉴 마늘설렁탕; 휴무 매주 일요일
+P /places/hanugap/ | 한우갑 | 한식 | 영통구 | 메뉴 생등심; 휴무 매주 일요일
+P /places/hanuiyagi/ | 한우이야기 | 한식 | 권선구 | 메뉴 육사시미; 연중무휴
+P /places/hanjangeo/ | 한장어 | 한식 | 권선구 | 메뉴 민물장어; 연중무휴
+P /places/haenggungjeongchan/ | 행궁정찬 | 한식 | 영통구 | 메뉴 행궁진찬; 연중무휴
+P /places/hereucheu/ | 헤르츠 | 카페 | 영통구 | 메뉴 드립 커피; 연중무휴
+P /places/hyeongjenongwon/ | 형제농원 | 한식 | 장안구 | 메뉴 숯불바베큐; 연중무휴
+P /places/horang/ | 호랑 | 카페 | 권선구 | 휴무 화요일 휴무
+P /places/hongnammaekalguksu/ | 홍남매칼국수 | 한식 | 장안구 | 메뉴 칼국수; 휴무 매주 월요일
+P /places/hongnadeu-ingyenahyeseokjeom/ | 홍라드 인계나혜석점 | 카페 | 팔달구 | 메뉴 브라운크로플/곰돌이말차슈페너/옥수수크림커피; 연중무휴
+P /places/himallayajeongwon/ | 히말라야정원 | 기타외국식 | 팔달구 | 메뉴 버터치킨카레 (치킨마크니); 연중무휴
+P /places/daewonok/ | (신)대원옥 | 한식 | 팔달구 | 메뉴 평양냉면; 휴무 매주 월요일
+P /places/100-nyeonhanu/ | 100년한우 | 한식 | 팔달구 | 메뉴 투뿔숙성등심; 연중무휴
+P /places/10593-beigeulkeopihauseu/ | 10593 베이글커피하우스 | 카페 | 권선구 | 메뉴 아메리카노; 연중무휴
+P /places/335-kichin-gwanggyoabeunyupeurangjeom/ | 335키친 광교아브뉴프랑점 | 한식 | 영통구 | 메뉴 소고기 샤브샤브; 연중무휴
+P /places/91-keopi/ | 91커피 | 카페 | 팔달구 | 메뉴 91라떼; 연중무휴
+P /places/955-kape/ | 955카페 | 카페 | 팔달구 | 메뉴 곰의 라임 오렌지나무; 휴무 매달 첫번째 월요일
 
 ## 숙소 27곳 — 목록 /stays/
 P /places/neombeo-25-suwonhwaseonghaenggungjeom/ | 넘버25 수원화성행궁점 | 숙박업소 | 팔달구
 P /places/nobotel-aembaeseodeo-suwon/ | 노보텔 앰배서더 수원 | 숙박업소 | 팔달구
-P /places/deohyusik-aneukhotel-suwon-ingyejeom/ | 더휴식 아늑호텔 수원 인계점 (The Hyoosik Aank Hotel Suwon Ingye) | 숙박업소 | 팔달구
+P /places/deohyusik-aneukhotel-suwon-ingyejeom/ | 더휴식 아늑호텔 수원 인계점 | 숙박업소 | 팔달구
 P /places/dono-1796-hotel/ | 도노 1796 호텔 | 숙박업소 | 팔달구
 P /places/ramadapeuraja-suwonhotel/ | 라마다프라자 수원호텔 | 숙박업소 | 팔달구
 P /places/reubonsuwonsilkeurodeuhotel/ | 르본수원실크로드호텔 | 숙박업소 | 팔달구
@@ -409,39 +691,39 @@ P /places/dune45-hotel/ | Dune45호텔 | 숙박업소 | 팔달구
 P /places/s-stay-hotel/ | S STAY HOTEL | 숙박업소 | 팔달구
 
 ## 가이드 5편 — 목록 /guides/ (제목이 답하는 질문, 그다음 짧은 답)
-G /guides/suwon-hwaseong-fortress-haenggung/ | 수원화성·화성행궁·방화수류정 성곽 명소와 상시 개방 무료 관광지는 어디일까요? | 이 사이트에 실린 수원화성·화성행궁·사대문·각루·성곽 관련 명소는 20곳이며, 연중무휴·무료로 개방하는 수원 관광지는 50곳입니다.
+G /guides/suwon-hwaseong-fortress-haenggung/ | 수원화성·화성행궁·방화수류정 성곽 명소와 상시 개방 무료 관광지는 어디일까요? | 이 사이트에 실린 수원화성·화성행궁·사대문·각루·성곽 관련 명소는 20곳이며, 연중무휴·무료로 개방하는 수원 관광지는 51곳입니다.
 G /guides/suwon-with-kids/ | 아이와 함께 가기 편한 수원 수목원·아쿠아플라넷·박물관·공원 명소는 어디일까요? | 수목원·호수·공원·아쿠아플라넷·천문대·박물관·미술관이 이름에 포함된 수원 관광지는 52곳이며, 박물관·미술관·도서관 등 문화시설은 43곳입니다.
 G /guides/suwon-indoor-museums/ | 비 오는 날 둘러보기 편한 수원 박물관·미술관·별마당도서관·문화시설은 어디일까요? | 이 사이트에 수록된 수원 박물관·미술관·도서관·아트센터 등 문화시설은 모두 43곳이며, 박물관·미술관·전시관·도서관·해우재·아쿠아플라넷이 이름에 포함된 실내외 문화 관광지는 …
-G /guides/monday-open-restaurants-suwon/ | 월요일에 영업하는 수원 왕갈비·통닭·칼국수·행리단길 카페는 어디일까요? | 이 사이트에 실린 수원 음식점 가운데 쉬는 날 정보에 월요일 휴무가 없는 곳은 180곳입니다.
-G /guides/suwon-hotels-hanok-stays/ | 수원 호텔·한옥스테이·숙소 27곳은 어떻게 고를까요? | 이 사이트에 수록된 수원 호텔·한옥스테이·숙소는 모두 27곳이며, 주차 안내가 기재된 숙소는 26곳입니다.
+G /guides/monday-open-restaurants-suwon/ | 월요일에 영업하는 수원 왕갈비·통닭·칼국수·행리단길 카페는 어디일까요? | 이 사이트에 실린 수원 음식점 가운데 쉬는 날 정보에 월요일 휴무가 없는 곳은 176곳입니다.
+G /guides/suwon-hotels-hanok-stays/ | 수원 호텔·한옥스테이·숙소 27곳은 어떻게 고를까요? | 이 사이트에 수록된 수원 호텔·한옥스테이·숙소는 모두 27곳이며, 주차 안내가 기재된 숙소는 27곳입니다.
 
 ## 여행 코스 6개 — 목록 /courses/
 C /courses/hwaseong-haenggung-heritage/ | 1코스 수원화성·화성행궁·방화수류정·행리단길 성곽 기행 (코스여행), 당일 | 경유지 8곳: 화성행궁 > 수원 화령전 > 효원의 종·서장대 > 화서문(華西門) > 장안문 > 화홍문(華虹門) > 방화수류정(동북각루) > 행리단길
-C /courses/yeonmudae-paldalmun-market/ | 2코스 연무대·플라잉수원·팔달문·전통시장·통닭거리 도보 여행 (코스여행), 당일 | 경유지 8곳: 연무대(동장대) > 동북공심돈 > 창룡문 > 플라잉 수원 > 수원화성박물관 > 팔달문 > 지동시장 > 수원통닭거리 | 월요일 휴관 2곳
-C /courses/gwanggyo-lake-aquaplanet/ | 3코스 광교호수공원·아쿠아플라넷·광교박물관·수원박물관 나들이 (코스여행), 당일 | 경유지 7곳: 광교호수공원 > 광교 프라이부르크전망대 > 아쿠아플라넷 광교 > 수원시립아트스페이스광교 > 경기도서관 > 수원광교박물관 > 수원박물관 | 월요일 휴관 4곳
+C /courses/yeonmudae-paldalmun-market/ | 2코스 연무대·플라잉수원·팔달문·전통시장·통닭거리 도보 여행 (코스여행), 당일 | 경유지 8곳: 연무대(동장대) > 동북공심돈 > 창룡문 > 플라잉 수원 > 수원화성박물관 > 팔달문 > 지동시장 > 수원통닭거리 | 월요일 휴관 1곳
+C /courses/gwanggyo-lake-aquaplanet/ | 3코스 광교호수공원·아쿠아플라넷·광교박물관·수원박물관 나들이 (코스여행), 당일 | 경유지 7곳: 광교호수공원 > 광교 프라이부르크전망대 > 아쿠아플라넷 광교 > 수원시립아트스페이스광교 > 경기도서관 > 수원광교박물관 > 수원박물관 | 월요일 휴관 3곳
 C /courses/irwol-seoho-sangsang/ | 4코스 일월수목원·국립농업박물관·서호공원·경기상상캠퍼스 생태 산책 (코스여행), 당일 | 경유지 6곳: 일월수목원 > 일월호수공원 > 서호공원 > 국립농업박물관 > 경기상상캠퍼스 > 별마당도서관 스타필드 수원점 | 월요일 휴관 3곳
-C /courses/manseok-haeujae-jangan/ | 5코스 만석공원·노송지대·해우재·광교마루길 장안 힐링 코스 (코스여행), 당일 | 경유지 6곳: 만석공원 > 수원시립만석전시관 > 노송지대 > 해우재 > 봉녕사 > 광교마루길 | 월요일 휴관 1곳
-C /courses/wolhwawon-yeongheung-art/ | 6코스 효원공원 월화원·영흥수목원·삼성이노베이션뮤지엄 도심 정원 기행 (코스여행), 당일 | 경유지 7곳: 효원공원 월화원 > 효원공원 > 경기아트센터 > 나혜석거리 > 삼성이노베이션뮤지엄 > 영흥수목원 > 수원시립미술관 | 월요일 휴관 1곳
+C /courses/manseok-haeujae-jangan/ | 5코스 만석공원·노송지대·해우재·광교마루길 장안 힐링 코스 (코스여행), 당일 | 경유지 6곳: 만석공원 > 수원시립만석전시관 > 노송지대 > 해우재 > 봉녕사 > 광교마루길 | 월요일 휴관 2곳
+C /courses/wolhwawon-yeongheung-art/ | 6코스 효원공원 월화원·영흥수목원·삼성이노베이션뮤지엄 도심 정원 기행 (코스여행), 당일 | 경유지 7곳: 효원공원 월화원 > 효원공원 > 경기아트센터 > 나혜석거리 > 삼성이노베이션뮤지엄 > 영흥수목원 > 수원시립미술관 | 월요일 휴관 2곳
 
 ## 행사·축제 18개 (회차 날짜는 정확한 값, 오늘 기준 진행·예정·종료는 직접 판단) — 목록 /events/
-E /events/bulchwimugwiyasijang-sijeun-2/ | 불취무귀야시장 시즌2 | 최근 회차 2026-10-10~10-31 · 장소 수원남문시장·팔달문시장 일원 · 요금 입장 무료(먹거리·체험 별도)
-E /events/byutisseom-suwon/ | 뷰티썸 수원 | 최근 회차 2026-11-05~11-07 · 장소 수원컨벤션센터 전시장 · 요금 사전등록 무료(현장 구매 별도)
-E /events/daehanminguk-ai-kontencheu-eowojeu/ | 대한민국 AI 콘텐츠 어워즈 | 최근 회차 2026-10-15~10-16 · 장소 수원메쎄·타임빌라스 수원 일원 · 요금 무료
-E /events/gyeonggido-munhwasagye-bom-gyeonggi-sangsanghae-bom-peseuta/ | 경기도 문화사계 "봄" 경기 상상해 봄 페스타 | 최근 회차 2026-03-28~03-29 · 장소 경기상상캠퍼스 일원 · 요금 무료
-E /events/gyeonggiinhyeonggeukje-in-suwon/ | 경기인형극제 in 수원 | 최근 회차 2026-07-16~07-22 · 장소 경기상상캠퍼스·수원 일원 · 요금 공연별 상이(야외 프로그램 무료)
-E /events/gyeonggimi-dijeoteu-peseuta/ | 경기미 디저트 페스타 | 최근 회차 2026-11-21~11-22 · 장소 수원메쎄 일원 · 요금 무료(사전 등록 시)
-E /events/gyeonggimi-gimbappeseuta/ | 경기미 김밥페스타 | 최근 회차 2026-06-13~06-14 · 장소 수원컨벤션센터 일원 · 요금 무료
-E /events/hwaseonghaenggung-yagangaejang/ | 화성행궁 야간개장 | 최근 회차 2026-05-01~11-01 · 장소 화성행궁 일원 · 요금 성인 2,000원 · 청소년 1,500원 외
-E /events/keolcheoraunji-gyeonggi-jang/ | 컬처라운지 경기, 장(場) | 최근 회차 2026-04-18~12-15 · 장소 경기도청·경기도서관 광교 일원 · 요금 무료
-E /events/kkomanongbuui-keolleo-pam-daemoheom/ | 꼬마농부의 컬러 팜 대모험 | 최근 회차 2026-05-05~05-09 · 장소 국립농업박물관 일원 · 요금 무료(일부 체험 예약제)
-E /events/manseokgeo-saebitchukje/ | 만석거 새빛축제 | 최근 회차 2026-04-03~04-12 · 장소 만석공원(만석거) 일원 · 요금 무료
-E /events/seogakonseoteu-syeollokhomjeu/ | 서가콘서트 : 셜록홈즈 | 최근 회차 2026-09-08 · 장소 경기아트센터 소극장 · 요금 전석 20,000원
-E /events/suwon-gukgayusanyahaeng/ | 수원 국가유산야행 | 최근 회차 2026-08-14~08-30 · 장소 화성행궁·방화수류정·행궁동 일원 · 요금 무료(일부 체험 유료)
-E /events/suwonhwaseong-midieoateu/ | 수원화성 미디어아트 | 최근 회차 2026-09-19~10-06 · 장소 수원화성 화서문·장안문·장안공원 일원 · 요금 무료(일부 관람석 유료)
-E /events/suwonhwaseongmunhwaje/ | 수원화성문화제 | 최근 회차 2026-10-04~10-11 · 장소 화성행궁·행궁광장·수원화성 일원 · 요금 무료(일부 프로그램 유료)
-E /events/suwonjaejeupeseutibeol/ | 수원재즈페스티벌 | 최근 회차 2026-09-18~09-19 · 장소 광교호수공원 재미난밭 일원 · 요금 무료
-E /events/suwonteungnyesi-ballyeodongmul-hanmaeumchukje/ | 수원특례시 반려동물 한마음축제 | 최근 회차 2026-10-24 · 장소 광교중앙공원 일원 · 요금 무료
-E /events/suwonyeongeukchukje/ | 수원연극축제 | 최근 회차 2026-05-16~05-17 · 장소 경기상상캠퍼스 일원 · 요금 무료
+E /events/bulchwimugwiyasijang-sijeun-2/ | 불취무귀야시장 시즌2 | 최근 회차 2026-10-10~10-31 · 시간 17:00~22:00 · 장소 팔달문 고객지원센터 광장 / 지동교 일원 · 요금 무료 · 문의 031-8001-1101
+E /events/byutisseom-suwon/ | 뷰티썸 수원 | 최근 회차 2026-11-05~11-07 · 시간 10:00~17:00 · 장소 수원컨벤션센터 1층 전시홀 · 요금 10,000원 (사전 등록 시 무료) · 문의 02-6121-6229
+E /events/daehanminguk-ai-kontencheu-eowojeu/ | 대한민국 AI 콘텐츠 어워즈 | 최근 회차 2026-10-15~10-16 · 시간 11:00~21:00 · 장소 수원 롯데시네마 · 요금 무료 · 문의 070-7575-2351
+E /events/gyeonggido-munhwasagye-bom-gyeonggi-sangsanghae-bom-peseuta/ | 경기도 문화사계 "봄" 경기 상상해 봄 페스타 | 최근 회차 2026-03-28~03-29 · 시간 10:00~18:00 · 장소 경기상상캠퍼스 · 요금 무료 · 문의 031-956-8318
+E /events/gyeonggiinhyeonggeukje-in-suwon/ | 경기인형극제 in 수원 | 최근 회차 2026-07-16~07-22 · 시간 10:30~17:00 · 장소 경기아트센터 소극장 / 경기아트센터 컨벤션홀 / 경기문화재단 예술인의집(다목적홀) · 요금 - 20,000원- 얼리버드 할인가 14,000원 · 문의 070-4681-0675
+E /events/gyeonggimi-dijeoteu-peseuta/ | 경기미 디저트 페스타 | 최근 회차 2026-11-21~11-22 · 시간 11:00~17:00 · 장소 수원 메쎄 제1전시장 · 요금 무료 · 문의 031-774-3312
+E /events/gyeonggimi-gimbappeseuta/ | 경기미 김밥페스타 | 최근 회차 2026-06-13~06-14 · 시간 11:00~17:00 · 장소 수원컨벤션센터 B홀 · 요금 무료 · 문의 031-774-3312
+E /events/hwaseonghaenggung-yagangaejang/ | 화성행궁 야간개장 | 최근 회차 2026-05-01~11-01 · 시간 18:00~21:30 · 장소 화성행궁 · 요금 - 성인 2,000원- 청소년/군인 1,500원- 어린이 1,000원 · 문의 031-290-3600
+E /events/keolcheoraunji-gyeonggi-jang/ | 컬처라운지 경기, 장(場) | 최근 회차 2026-04-18~12-15 · 시간 10:00~18:00 · 장소 컬처라운지 경기 장 · 요금 무료 · 문의 031-259-4724
+E /events/kkomanongbuui-keolleo-pam-daemoheom/ | 꼬마농부의 컬러 팜 대모험 | 최근 회차 2026-05-05~05-09 · 시간 10:00~18:00 (입장 마감 17:00) · 장소 국립농업박물관 · 요금 무료 · 문의 031-324-9114~5
+E /events/manseokgeo-saebitchukje/ | 만석거 새빛축제 | 최근 회차 2026-04-03~04-12 · 시간 18:30~21:10 · 장소 만석거(만석공원) 일원 · 요금 무료 · 문의 031-5191-3084
+E /events/seogakonseoteu-syeollokhomjeu/ | 서가콘서트 : 셜록홈즈 | 최근 회차 2026-09-08 · 시간 19:30~21:00 · 장소 경기아트센터 소극장 · 요금 - R석 35,000원- S석 25,000원※ 기타 할인권종은 공식 외 · 문의 031-230-3268
+E /events/suwon-gukgayusanyahaeng/ | 수원 국가유산야행 | 최근 회차 2026-08-14~08-30 · 시간 18:00~22:00 · 장소 수원화성 일원 · 요금 입장료 무료(일부 체험프로그램 유료) · 문의 031-290-3562~5
+E /events/suwonhwaseong-midieoateu/ | 수원화성 미디어아트 | 최근 회차 2026-09-19~10-06 · 시간 18:00~22:00 · 장소 수원화성 화서문, 장안공원, 장안문 일원 · 요금 입장료 무료 (일부 좌석 유료) · 문의 031-290-3622 / 031-5191-3084
+E /events/suwonhwaseongmunhwaje/ | 수원화성문화제 | 최근 회차 2026-10-04~10-11 · 시간 12:00~21:00 · 장소 수원화성 일원 · 요금 무료(일부 사전예약 프로그램의 경우 유료) · 문의 031-5191-3647
+E /events/suwonjaejeupeseutibeol/ | 수원재즈페스티벌 | 최근 회차 2026-09-18~09-19 · 시간 17:30~21:30 · 장소 광교호수공원 재미난 밭(스포츠 클라이밍장) · 요금 무료 · 문의 070-4945-9580
+E /events/suwonteungnyesi-ballyeodongmul-hanmaeumchukje/ | 수원특례시 반려동물 한마음축제 | 최근 회차 2026-10-24 · 시간 10:00~17:00 · 장소 광교중앙공원 · 요금 무료 · 문의 031-5191-3328
+E /events/suwonyeongeukchukje/ | 수원연극축제 | 최근 회차 2026-05-16~05-17 · 시간 11:00~22:00 · 장소 경기상상캠퍼스 · 요금 무료 · 문의 031-5191-2768
 
 ## 영상 41편 — 주제별 페이지 (영상 하나하나는 search_site로 찾는다)
 V /videos/yeohaeng-koseu/ | 여행 코스 영상 5편(공식 채널 0편)
@@ -455,12 +737,12 @@ V /videos/kape-dijeoteu/ | 카페·디저트 영상 2편(공식 채널 0편)
 V /videos/chukje-yagan/ | 축제·야간개장 영상 3편(공식 채널 2편)
 
 ## 테마와 사이트 페이지
-T /themes/alleys-culture/ | 행리단길·시장·체험 여행지 37곳 | 행리단길, 수원통닭거리, 팔달문 전통시장, 화성어차·플라잉수원·아쿠아플라넷 등 골목과 체험
-T /themes/islands-sea/ | 호수·수변·야경 여행지 26곳 | 광교호수공원, 방화수류정 용연, 서호공원, 만석공원 등 수원의 호수와 수변 야경 명소
-T /themes/modern-history/ | 수원화성·역사·박물관 여행지 42곳 | 유네스코 세계문화유산 수원화성과 화성행궁, 수원화성박물관·수원시립미술관·삼성이노베이션뮤지엄 등 역사와 전시
-T /themes/parks-nature/ | 수목원·숲·공원 여행지 68곳 | 일월수목원, 영흥수목원, 광교산, 칠보산, 효원공원 월화원 등 도심 속 정원과 숲길
-S / | 홈 — 수원각: 관광지 163곳·음식점 210곳·숙소 27곳, 가이드 5편·코스 6개·행사 18개·영상 41편
-S /places/ | 관광지 목록 163곳 (유형·권역으로 거르기, 지도)
+T /themes/alleys-culture/ | 행리단길·시장·체험 여행지 199곳 | 행리단길, 수원통닭거리, 팔달문 전통시장, 화성어차·플라잉수원·아쿠아플라넷 등 골목과 체험
+T /themes/islands-sea/ | 호수·수변·야경 여행지 11곳 | 광교호수공원, 방화수류정 용연, 서호공원, 만석공원 등 수원의 호수와 수변 야경 명소
+T /themes/modern-history/ | 수원화성·역사·박물관 여행지 71곳 | 유네스코 세계문화유산 수원화성과 화성행궁, 수원화성박물관·수원시립미술관·삼성이노베이션뮤지엄 등 역사와 전시
+T /themes/parks-nature/ | 수목원·숲·공원 여행지 44곳 | 일월수목원, 영흥수목원, 광교산, 칠보산, 효원공원 월화원 등 도심 속 정원과 숲길
+S / | 홈 — 수원각: 관광지 444곳·음식점 210곳·숙소 27곳, 가이드 5편·코스 6개·행사 18개·영상 41편
+S /places/ | 관광지 목록 444곳 (유형·권역으로 거르기, 지도)
 S /food/ | 음식점 목록 210곳 (대표 메뉴·영업시간·쉬는 날)
 S /stays/ | 숙소 목록 27곳 (체크인·체크아웃·주차·문의)
 S /guides/ | 목적별 가이드 5편
