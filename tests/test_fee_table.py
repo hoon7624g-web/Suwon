@@ -1,6 +1,6 @@
 """pipeline/fee_table.py — a place's fee value read as the table a visitor pays (the first city's review 2026-10-17,
 AI 코스 만들기 집중 평가 CE01·CE03: the planner prices every visit from these tables itself). The engine cases first,
-then the city's own TourAPI fee values as data/daegu/places.json holds them (2026-10-18): what reads as a table, what
+then this city's own fee values as data/suwon/places.json holds them: what reads as a table, what
 stays 확인 필요, and the rows that must never become an adult's entry price."""
 import json
 from pathlib import Path
@@ -108,7 +108,7 @@ def test_city_values_that_stay_check_needed():
 
 
 def test_every_published_fee_value_of_the_city_reads_without_an_adult_less_table():
-    """All of data/daegu/places.json: a table always has an adult's price, a free value no table, ages only beside a
+    """All of this city's data/suwon/places.json: a table always has an adult's price, a free value no table, ages only beside a
     table; an adult's price is one the value itself writes."""
     places = json.loads((ROOT / "data" / "suwon" / "places.json").read_text("utf-8"))
     seen = 0
@@ -123,4 +123,4 @@ def test_every_published_fee_value_of_the_city_reads_without_an_adult_less_table
             assert "성인" in r["tab"] and f"{r['tab']['성인']:,}원" in v.replace("\n", " "), (p["name"], r)
         assert set(r) <= {"free", "note", "tab", "tl", "fr", "ag"}, p["name"]
         assert ("fr" not in r and "ag" not in r) or "tab" in r, p["name"]
-    assert seen > 50
+    assert seen >= 30          # the scan sees the city's fee values (41 published places on 2026-10-24)

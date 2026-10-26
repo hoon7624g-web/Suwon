@@ -1,6 +1,6 @@
 """Read-only rights inventory; it does not grant rights or change source records.
 
-    python tools/rights_report.py --data data/daegu --raw data/raw/daegu \
+    python tools/rights_report.py --data data/suwon --raw data/raw/daegu \
         --out reports/rights_report.md
 
 The optional raw folder contains rights_evidence.json (and details_crawl.json).

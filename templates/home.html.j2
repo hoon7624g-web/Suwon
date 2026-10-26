@@ -6,7 +6,7 @@
 {% import "_pic.html.j2" as pk %}
 {% import "_abroad.html.j2" as ab %}
 {#- The home page. UI4 (owner 2026-10-14, after the AIO2O proposal demo for KT Skylife — its design language only;
-    docs/handover/specs/ui4_mapping.md, skyref_study.md, home_redesign.md): a LIGHT opening — a soft sea-blue gradient,
+    the first site's UI4 specs): a LIGHT opening — a soft sea-blue gradient,
     at the left the eyebrow pill (h.opening.kicker), the H1, one plain lede, the primary pill button and the slide
     controls (pause · ‹ n/N › · progress, '소식 전체'), at the right one big rounded card per news item
     (present.home_news: its real TourAPI photo, credited under it — KOGL-3 whole on a tinted frame, never cropped —
@@ -57,7 +57,7 @@
       <p class="ho-k"><span class="ho-dot" aria-hidden="true"></span>{{ h.opening.kicker }}</p>
       <h1 id="h-home" class="op-h1 hk-h1">{{ (site.region ~ ' 여행의 모든 것') if site.region else site.site_name }}</h1>
       <p class="ho-lede">관광지·음식점·숙소의 여는 시간과 요금, 가는 길을 한곳에 모았습니다.</p>
-      <div class="ho-cta{{ ' ho-cta-2' if has_plan }}">{% if has_plan %}<a class="btn-sea" href="/plan/" data-track="plan_cta">내 일정 만들기<span class="arr" aria-hidden="true">→</span></a>{% endif %}{% if courses %}<a class="btn-sea{{ ' btn-sea-w' if has_plan }}" href="/courses/" data-track="course_click">{{ '공식 코스 보기' if course_src.official else '코스 보기' }}<span class="arr" aria-hidden="true">→</span></a>{% else %}<a class="btn-sea{{ ' btn-sea-w' if has_plan }}" href="/places/">가볼만한 곳 보기<span class="arr" aria-hidden="true">→</span></a>{% endif %}</div>
+      <div class="ho-cta{{ ' ho-cta-2' if has_plan }}">{% if has_plan %}<a class="btn-sea" href="/plan/" data-track="plan_cta">내 일정 만들기<span class="arr" aria-hidden="true">→</span></a>{% endif %}{% if courses %}<a class="btn-sea{{ ' btn-sea-w' if has_plan }}" href="/courses/" data-track="course_click">{{ site.locality or site.region }} 추천 코스<span class="arr" aria-hidden="true">→</span></a>{% else %}<a class="btn-sea{{ ' btn-sea-w' if has_plan }}" href="/places/">가볼만한 곳 보기<span class="arr" aria-hidden="true">→</span></a>{% endif %}</div>
       {% if N > 1 %}<div class="ho-ctl">
         <div class="hv-ctl">
           <button type="button" class="hv-c hv-pause" data-hcar-pause aria-label="소식 자동 넘김 멈추기" data-label-play="소식 자동 넘김 시작" data-label-pause="소식 자동 넘김 멈추기">{{ ui.icon('pause', 'icon i-pause') }}{{ ui.icon('resume', 'icon i-play') }}</button>

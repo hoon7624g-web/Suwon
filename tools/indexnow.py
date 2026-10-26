@@ -1,11 +1,11 @@
 """IndexNow 알림 — production 빌드의 sitemap URL을 IndexNow(빙·네이버·얀덱스 등 공유)에 알린다. 사람이 실행한다.
 
-    python -m pipeline.build --data data/daegu --out dist-prod --mode production
-    python -m pipeline.validate --data data/daegu --out dist-prod --mode production
-    python tools/indexnow.py --data data/daegu --out dist-prod                     # 미리 보기: 키 파일을 쓰고 보낼 내용을 출력
+    python -m pipeline.build --data data/suwon --out dist-prod --mode production
+    python -m pipeline.validate --data data/suwon --out dist-prod --mode production
+    python tools/indexnow.py --data data/suwon --out dist-prod                     # 미리 보기: 키 파일을 쓰고 보낼 내용을 출력
     (dist-prod를 배포하고 https://<도메인>/<키>.txt 가 열리는지 확인한 뒤)
-    python tools/indexnow.py --data data/daegu --out dist-prod --send              # 실제 전송, 공급자 응답을 그대로 출력
-    python tools/indexnow.py --data data/daegu --out dist-prod --since 2026-10-20  # sitemap lastmod가 이 날짜 이후인 URL만
+    python tools/indexnow.py --data data/suwon --out dist-prod --send              # 실제 전송, 공급자 응답을 그대로 출력
+    python tools/indexnow.py --data data/suwon --out dist-prod --since 2026-10-20  # sitemap lastmod가 이 날짜 이후인 URL만
 
 준비(사람이 정한다 — CLAUDE.md 3절 7항):
 - --data 폴더의 site.json에 `site_url`(공개 도메인)과 `"indexnow_key"`를 넣는다. 키는 8~128자의 영문·숫자·'-'이다.
@@ -138,7 +138,7 @@ def post_json(url: str, payload: dict, timeout: float = 30) -> tuple[int, str]:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--out", required=True, type=Path, help="production 빌드 폴더(예: dist-prod)")
-    parser.add_argument("--data", required=True, type=Path, help="도시 데이터 폴더(예: data/daegu): site_url·indexnow_key")
+    parser.add_argument("--data", required=True, type=Path, help="도시 데이터 폴더(예: data/suwon): site_url·indexnow_key")
     parser.add_argument("--since", default="", help="sitemap lastmod가 이 날짜(YYYY-MM-DD) 이후인 URL만")
     parser.add_argument("--endpoint", default=ENDPOINT)
     parser.add_argument("--send", action="store_true", help="실제로 보낸다(없으면 미리 보기)")

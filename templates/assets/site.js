@@ -26,7 +26,8 @@
                                     data-label-play / data-label-pause). CSS stops the CSS motion, motion.js reads
                                     .is-paused (the opening's slides and their credit lines [data-cap] are motion.js's)
    Lists (filters with URL state: ?type=…&region=…&theme=…&check=1&view=map)
-     [data-filters]                 filter bar (a `hidden` attribute on it is removed: shown only with JS)
+     [data-filters]                 filter bar (a `hidden` attribute on it is removed: shown only with JS); a chip row
+                                    that scrolls sideways (.f-row, a phone) opens scrolled to its pressed chip
        button[data-f=K][data-v=V]   toggle (aria-pressed); V="" means all. K is any key (type, region, theme …)
        select[data-f=K]             the same as a list
        input[type=checkbox][data-f=check][value=FLAG]   keep items that carry data-FLAG
@@ -44,8 +45,20 @@
                                     (data-Ks, e.g. data-themes, also answers key K). The values are the Korean ones
                                     in every version, so a[hreflang] links to the same list in another language
                                     (the language menu, the footer) carry the filter query
-     [data-filter-group]            group (or .lg-group) hidden when none of its items is shown
+     faceted counts                 a chip's .tn (and the check box label's) is the number of items the list would show
+                                    with that chip and the other groups' filters; one that would show none reads 0 and
+                                    gets .is-zero (drawn faint, still a working button in the tab order). Every live
+                                    count keeps its build-time number's width (data-w), so no chip changes width
+     .band-data a[href="#GROUP"]    the desktop band's count per 권역: its group's shown items; at 0 .is-zero and no
+                                    href (the group is hidden) until it shows items again
+     [data-filter-group]            group (or .lg-group) hidden when none of its items is shown; the count in its
+                                    heading ([data-group-n] or .lg-g .tn) is its shown items
      [data-empty]                   shown when nothing matches
+     [data-f-undo] [data-f-reset]   shown with it: this file puts one button per filter whose removal alone brings
+                                    items back (data-one "{v} 조건 해제", v = the chip's label) before the reset of
+                                    every filter; a press restores the list and takes the focus to the count line
+     .list-map [data-geo-off]       after the map caption: the shown items without coordinates (data-tpl, {n}; hidden
+                                    at 0)
      [data-f-more] + [data-f-panel] the '필터' button opens the panel of further filters (aria-expanded); the panel
                                     starts open when the URL sets one of its filters; [data-f-badge] counts them
      details[data-map-fold]         folded list map (also .map-fold): opening it draws the map
@@ -54,7 +67,17 @@
    Map page
      [data-region-tabs] a[data-region]   (also .region-tabs) 권역 tabs; [data-region-sec=NAME] sections
      [data-kinds] button[data-kind]      kind toggles; rows [data-kind-row=KIND]; [data-dong] (or .dong) groups
-     [data-segmap] button[data-view]     list | map on narrow screens: [data-map-grid] (or .map-grid) .show-map
+                                         Faceted counts as on the lists: a tab's .tn = its rows of the kinds shown, a
+                                         toggle's = its rows in the chosen 권역 (.is-zero at 0); a section or 동 with no
+                                         row shown is hidden, its heading's count is the shown rows
+     [data-map-empty] + [data-map-undo]  nothing shown: the sentence and the buttons that bring rows back — the
+                                         권역 (data-one) and each hidden kind (data-kind-one) that alone would, then
+                                         [data-map-reset] (every 권역, every kind)
+     [data-map-result]                   the count line (in a role="status" element): the shown rows, data-tpl {n}
+                                         plus data-of {m} while filtered
+     [data-segmap] button[data-view]     list | map on narrow screens: [data-map-grid] (or .map-grid) .show-map; its
+                                         .tn and .map-side [data-geo-cap] / [data-geo-off] count the shown rows with
+                                         and without a point (data-pt)
      [data-pt=ID]                        rows that light their marker
    Carousels (Apple galleries: home answers / places / islands, place photos, guide mini cards)
      [data-gallery] [data-gal-view] a native scroll-snap row (.car-track > li, .gal-track > li or .mcs > li); the round
@@ -137,6 +160,10 @@
   win.addEventListener("resize", kick);
   win.addEventListener("pageshow", kick);
   function afterLoad(fn) { if (doc.readyState === "complete") fn(); else win.addEventListener("load", fn); }
+  // a live count (a chip's .tn, '지도 n', the band's number per 권역) keeps the width of its build-time number, the
+  // largest it can read (a faceted count only falls from the whole list's): data-w draws an invisible copy of it
+  // (css/30-info.css .tn[data-w]), so a chip never narrows and the chips after it never move when its number changes
+  function holdWidth(el) { if (el && !el.hasAttribute("data-w")) el.setAttribute("data-w", el.textContent.trim()); }
 
   // ------------------------------------------------------------ modules: map.js, course.js, search.js
   function attach(name) {
@@ -232,9 +259,10 @@
   // questions; owner 2026-10-14: the site search is the header's) and answers in the conversation panel right under
   // the card ([data-ask-log][data-ask-more]); the English home asks and answers inside its centre card (.ask-card). The
   // box is in the first paint; chat.js and chat.css are not: focus in the box ([data-ask-zone] / .ask-card) loads them
-  // in the background. A question — Enter or the button with text in the field, or a plain click on a starter — asks
-  // the assistant (chat.js dock mode, gsChat.ask / stop / busy): the conversation [data-ask-log] is shown at once,
-  // inside this input event (its height is fixed in the first-paint CSS: the only shift, and the reader's own), a
+  // in the background. A question — Enter or the button with text in the field, or a plain click, Enter or Space on a
+  // starter (a button with JS: role=button) — asks the assistant (chat.js dock mode, gsChat.ask / stop / busy): the
+  // conversation [data-ask-log] is shown at once, inside this input event (its height is fixed in the first-paint CSS:
+  // the only shift, and the reader's own), a
   // panel of its own comes into view (smoothly unless the reader prefers reduced motion; on a touch screen the
   // keyboard closes first), then the module loads and asks. If it cannot load, the Korean box submits to the site
   // search (/search/?q=) and a starter follows its link; other languages say so in the box. While an answer comes the
@@ -336,6 +364,24 @@
       var chat = chatNow();
       if (chat && chat.busy()) return;
       askWith(a.getAttribute("data-ask"), function () { win.location.href = a.href; });
+    });
+    // With JS a starter asks, as the floating panel's chips do — so it is a button to assistive technology and to
+    // Space as well as Enter (the external evaluation of 2026-10-18 read the home's '#' tags as links to guides); a
+    // modifier click still opens the page that answers it, and once the assistant says it is not connected
+    // (data-chat-off, chat.js) the starters are links again. Without JS they are links, and the card says so.
+    var starters = $all("a[data-ask]", askCard);
+    var starterRoles = function () {
+      var off = askCard.hasAttribute("data-chat-off");
+      starters.forEach(function (a) { if (off) a.removeAttribute("role"); else a.setAttribute("role", "button"); });
+    };
+    starterRoles();
+    if ("MutationObserver" in win) new MutationObserver(starterRoles).observe(askCard, { attributes: true, attributeFilter: ["data-chat-off"] });
+    askCard.addEventListener("keydown", function (e) {
+      if (e.key !== " " || e.isComposing) return;
+      var a = e.target.closest && e.target.closest('a[data-ask][role="button"]');
+      if (!a) return;
+      e.preventDefault();   // not a scroll: the button's own key
+      a.click();
     });
     // the launcher: the box instead of the panel (it is not a dialog here). From 1024px it stays where it is, visible
     // from the first paint (owner 2026-10-14: '첫 화면부터 우측 하단에 챗봇 잘 보이게'); below 1024px it steps aside
@@ -502,6 +548,16 @@
     // rows with coordinates (data-geo) are the list map's places: the 지도 button's count and the map's caption
     // ([data-geo-cap]: its plural forms in data-forms, else its number replaced) follow the filter
     var mapN = box.querySelector('[data-view="map"] .tn'), caps = $all(".list-map [data-geo-cap]");
+    var offs = $all(".list-map [data-geo-off]");
+    // the desktop band's count per 권역 (.band-data, links to the groups) follows the filter too: each entry reads its
+    // group's shown items; one whose group shows none is drawn faint (.is-zero) and stops being a link (its target is
+    // hidden) until the group shows items again
+    var bands = $all(".band-data a[href^='#']").map(function (a) {
+      var href = a.getAttribute("href"), id = href.slice(1);
+      try { id = decodeURIComponent(id); } catch (e) { /* as written */ }
+      var g = groups.filter(function (x) { return x.id === id; })[0];
+      return g ? { a: a, g: g, href: href, num: a.querySelector(".num, b") } : null;
+    }).filter(Boolean);
     var hasGeo = items.some(function (it) { return it.hasAttribute("data-geo"); });
     var folds = grid ? $all("details[data-map-fold], details.map-fold", grid) : [];
     // the language menu and the footer's language links keep the filters when they lead to this list in another
@@ -545,15 +601,108 @@
       badge.hidden = !n;
       badge.textContent = n ? String(n) : "";
     };
+    // the filters each item fails: the keys whose chosen value it lacks, and CHECK when the check box's flag is set and
+    // the item lacks it. An item is shown when it fails none; for the faceted counts it counts toward a chip of key K
+    // when it fails at most K
+    var CHECK = {};
+    controls.forEach(function (c) {
+      if (c.tagName !== "SELECT") holdWidth((c === check ? (c.closest("label") || c.parentNode) : c).querySelector(".tn"));
+    });
+    holdWidth(mapN);
+    bands.forEach(function (b) { holdWidth(b.num); });
+    var misses = function () {
+      var flag = check ? check.value : "";
+      return items.map(function (it) {
+        var m = keys.filter(function (k) { return state[k] && !has(attrOf(it, k), state[k]); });
+        if (state.check && flag && !it.hasAttribute("data-" + flag)) m.push(CHECK);
+        return m;
+      });
+    };
+    var only = function (m, k) { return !m.length || (m.length === 1 && m[0] === k); };
+    // a chip's own words without its count (the '<값> 조건 해제' buttons): the check box's label without the box
+    var wordsOf = function (el) {
+      return Array.prototype.map.call(el.childNodes, function (x) {
+        return x.nodeType === 1 && x.classList.contains("tn") ? "" : x.textContent;
+      }).join("").replace(/\s+/g, " ").trim();
+    };
+    // faceted counts (outside evaluation 2026-10-18: after '박물관·전시' left 11 places, the 권역 and theme chips still
+    // counted the whole list): each chip's number is the items the list would show if that chip were chosen together
+    // with the other groups' filters — every active filter but its own group's, plus its own value (a group's 전체
+    // chip: none) —; the check box counts its flag among the items every chip filter keeps. A chip that would show
+    // nothing reads 0 and is drawn faint (.is-zero, css/30-info.css) yet stays an ordinary button in the tab order:
+    // choosing it is allowed (the zero-result panel then offers the way back), its name carries the 0 for a screen
+    // reader, and aria-disabled would announce as dead a control that still works. A chip that is on is never faint.
+    var facet = function (miss) {
+      var flag = check ? check.value : "";
+      controls.forEach(function (c) {
+        var isCheck = c === check, host = isCheck ? (c.closest("label") || c.parentNode) : c;
+        var tn = c.tagName === "SELECT" ? null : host.querySelector(".tn");
+        if (!tn) return;
+        var k = isCheck ? CHECK : keyOf(c), v = isCheck ? "" : valOf(c), n = 0;
+        items.forEach(function (it, i) {
+          if (only(miss[i], k) && (isCheck ? !!flag && it.hasAttribute("data-" + flag) : !v || has(attrOf(it, k), v))) n++;
+        });
+        tn.textContent = String(n);
+        host.classList.toggle("is-zero", !n && !(isCheck ? state.check : (state[k] || "") === v));
+      });
+    };
+    // nothing shown: one button per filter whose removal alone brings items back (so every button restores the list
+    // in one press; when three or more filters each still leave nothing, only the reset remains), in the bar's
+    // order, then the reset of every filter (the template's [data-f-reset]). The view (목록 | 지도) stays.
+    var undo = scope.querySelector("[data-f-undo]"), resetBtn = undo && undo.querySelector("[data-f-reset]");
+    var restore = function () {
+      apply(true);
+      // the pressed button left with the panel: the focus goes to the count line, which reads the new number
+      var line = result ? (result.closest(".f-result") || result) : box;
+      if (!line.hasAttribute("tabindex")) line.setAttribute("tabindex", "-1");
+      line.focus();
+    };
+    var drawUndo = function (miss, n) {
+      if (!undo) return;
+      undo.hidden = n > 0;
+      $all("[data-f-undo-k]", undo).forEach(function (b) { b.parentNode.removeChild(b); });
+      if (n > 0) return;
+      var tpl = undo.getAttribute("data-one") || "{v}";
+      var add = function (k, label) {
+        if (!miss.some(function (m) { return m.length === 1 && m[0] === k; })) return;
+        var b = doc.createElement("button");
+        b.type = "button";
+        b.textContent = tpl.replace("{v}", label);
+        b.setAttribute("data-f-undo-k", k === CHECK ? "check" : k);
+        b.addEventListener("click", function () { if (k === CHECK) state.check = false; else state[k] = ""; restore(); });
+        undo.insertBefore(b, resetBtn || null);
+      };
+      keys.forEach(function (k) {
+        if (!state[k]) return;
+        var chip = controls.filter(function (c) { return c.tagName === "BUTTON" && keyOf(c) === k && valOf(c) === state[k]; })[0];
+        add(k, chip ? wordsOf(chip) : state[k]);
+      });
+      if (state.check && check) add(CHECK, wordsOf(check.closest("label") || check.parentNode));
+    };
+    if (resetBtn) resetBtn.addEventListener("click", function () {
+      keys.forEach(function (k) { state[k] = ""; });
+      state.check = false;
+      restore();
+    });
     var apply = function (push) {
-      var n = 0, flag = check ? check.value : "";
-      items.forEach(function (it) {
-        var ok = keys.every(function (k) { return !state[k] || has(attrOf(it, k), state[k]); }) &&
-          (!state.check || !flag || it.hasAttribute("data-" + flag));
+      var n = 0, miss = misses();
+      items.forEach(function (it, i) {
+        var ok = !miss[i].length;
         it.hidden = !ok;
         if (ok) n++;
       });
-      groups.forEach(function (g) { g.hidden = !items.some(function (it) { return !it.hidden && g.contains(it); }); });
+      groups.forEach(function (g) {
+        var k = items.filter(function (it) { return !it.hidden && g.contains(it); }).length;
+        g.hidden = !k;
+        var gn = g.querySelector("[data-group-n], .lg-g .tn");
+        if (gn && k) gn.textContent = gn.textContent.replace(/\d[\d,]*/, String(k));
+      });
+      bands.forEach(function (b) {
+        var k = items.filter(function (it) { return !it.hidden && b.g.contains(it); }).length;
+        if (b.num) b.num.textContent = String(k);
+        b.a.classList.toggle("is-zero", !k);
+        if (k) b.a.setAttribute("href", b.href); else b.a.removeAttribute("href");
+      });
       if (empty) empty.hidden = n > 0;
       if (result) result.textContent = countLine(n, items.length);
       if (countEl) countEl.textContent = String(n);
@@ -564,12 +713,19 @@
           var fs = formsOf(c);
           c.textContent = fs ? pick(fs, ng).replace("{n}", ng) : c.textContent.replace(/\d[\d,]*/, String(ng));
         });
+        offs.forEach(function (o) {
+          var tpl = o.getAttribute("data-tpl");
+          if (tpl) o.textContent = tpl.replace("{n}", n - ng);
+          o.hidden = n === ng;
+        });
       }
       controls.forEach(function (c) {
         if (c === check) { c.checked = state.check; return; }
         if (c.tagName === "SELECT") { c.value = state[keyOf(c)]; return; }
         c.setAttribute("aria-pressed", String((state[keyOf(c)] || "") === valOf(c)));
       });
+      facet(miss);
+      drawUndo(miss, n);
       $all("[data-view]", box).forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-view") === state.view)); });
       if (grid) grid.classList.toggle("show-map", state.view === "map");
       // the map view of a folded list map (fewer than 30% with coordinates): the fold opens (its summary is not
@@ -613,6 +769,23 @@
         moreBtn.setAttribute("aria-expanded", String(open));
       });
     }
+    // a list opened with a filter (?type=…, or come back to): a row the phone swipes shows its pressed chip — the row
+    // scrolls sideways to bring it to the middle, the page does not move (review 2026-10-18, fourth round: a list opened
+    // with ?type=… showed its pressed chip out of sight at the row's end). A row that wraps (a mouse) has nothing to
+    // scroll. Again once the web fonts are in (UI review 2026-10-19: measured in the fallback font, the long English row
+    // of /en/places/ left its last chip under the faded end when Pretendard came)
+    var showPressed = function () {
+      $all(".f-row", box).forEach(function (row) {
+        var on = row.querySelector('[aria-pressed="true"], [aria-current="true"]');
+        if (!on || row.scrollWidth <= row.clientWidth) return;
+        var r = row.getBoundingClientRect(), c = on.getBoundingClientRect();
+        if (c.left >= r.left && c.right <= r.right - 36) return;   // in view, not under the faded end (css/30-info.css)
+        row.scrollLeft += c.left - r.left - (r.width - c.width) / 2;
+      });
+    };
+    showPressed();
+    try { if (doc.fonts) doc.fonts.ready.then(showPressed); } catch (e) { /* no font API */ }
+    win.addEventListener("pageshow", function (e) { if (e.persisted) showPressed(); });
     if (state.view === "map") emit("gs:showmap", {});
     items.forEach(function (it) {
       if (!it.id) return;
@@ -636,13 +809,104 @@
     var kinds = doc.querySelector("[data-kinds]"), seg = doc.querySelector("[data-segmap]");
     var mg = doc.querySelector("[data-map-grid], .map-grid");
     var cur = { region: "", kinds: { attraction: true, stay: true, food: true } };
+    // every row once: its kind, its 권역 (the section it sits in) and whether it is a point of the map (data-pt)
+    var mrows = $all("[data-kind-row]").map(function (li) {
+      var sec = li.closest("[data-region-sec]");
+      return { li: li, k: li.getAttribute("data-kind-row"), r: sec ? sec.getAttribute("data-region-sec") : "", pt: li.hasAttribute("data-pt") };
+    });
+    var inRegion = function (x, r) { return !r || x.r === r; };
+    var mEmpty = doc.querySelector("[data-map-empty]"), mUndo = doc.querySelector("[data-map-undo]");
+    var mReset = mUndo && mUndo.querySelector("[data-map-reset]"), mapCount = seg && seg.querySelector('[data-view="map"] .tn');
+    var setN = function (el, n) { if (el) el.textContent = el.textContent.replace(/\d[\d,]*/, String(n)); };
+    // the count line (role="status": a change is announced, 0 among them): data-tpl {n}, data-of {m} while filtered
+    var mResult = doc.querySelector("[data-map-result]");
+    $all("a[data-region] .tn", tabs).concat(kinds ? $all("button[data-kind] .tn", kinds) : []).forEach(holdWidth);
+    holdWidth(mapCount);
     var draw = function () {
-      $all("a[data-region]", tabs).forEach(function (a) { a.setAttribute("aria-current", String((a.getAttribute("data-region") || "") === cur.region)); });
-      $all("[data-region-sec]").forEach(function (s) { s.hidden = !!cur.region && s.getAttribute("data-region-sec") !== cur.region; });
-      $all("[data-kind-row]").forEach(function (li) { li.hidden = !cur.kinds[li.getAttribute("data-kind-row")]; });
-      $all("[data-dong], .dong").forEach(function (d) { d.hidden = !d.querySelector("[data-kind-row]:not([hidden])"); });
+      $all("a[data-region]", tabs).forEach(function (a) {
+        var r = a.getAttribute("data-region") || "", n = mrows.filter(function (x) { return inRegion(x, r) && cur.kinds[x.k]; }).length;
+        a.setAttribute("aria-current", String(r === cur.region));
+        // faceted, as on the lists: a tab counts its rows of the kinds shown, a kind toggle its rows in the chosen 권역
+        setN(a.querySelector(".tn"), n);
+        a.classList.toggle("is-zero", !n && r !== cur.region);
+      });
+      if (kinds) $all("button[data-kind]", kinds).forEach(function (b) {
+        var k = b.getAttribute("data-kind"), n = mrows.filter(function (x) { return x.k === k && inRegion(x, cur.region); }).length;
+        b.setAttribute("aria-pressed", String(!!cur.kinds[k]));
+        setN(b.querySelector(".tn"), n);
+        b.classList.toggle("is-zero", !n && !cur.kinds[k]);
+      });
+      var shown = 0, onMap = 0;
+      mrows.forEach(function (x) {
+        var ok = cur.kinds[x.k] && inRegion(x, cur.region);
+        x.li.hidden = !ok;
+        if (ok) { shown++; if (x.pt) onMap++; }
+      });
+      $all("[data-dong], .dong").forEach(function (d) {
+        var n = d.querySelectorAll("[data-kind-row]:not([hidden])").length;
+        d.hidden = !n;
+        if (n) setN(d.querySelector("[data-group-n]"), n);
+      });
+      // a 권역 section with no row shown (the kinds left none) is hidden with the others
+      $all("[data-region-sec]").forEach(function (s) {
+        var n = s.querySelectorAll("[data-kind-row]:not([hidden])").length;
+        s.hidden = !n;
+        if (n) setN(s.querySelector("[data-group-n]"), n);
+      });
+      setN(mapCount, onMap);
+      if (mResult) {
+        mResult.textContent = (mResult.getAttribute("data-tpl") || "{n}").replace("{n}", shown) +
+          (shown === mrows.length ? "" : (mResult.getAttribute("data-of") || "").replace("{m}", mrows.length));
+      }
+      $all(".map-side [data-geo-cap]").forEach(function (c) { setN(c, onMap); });
+      $all(".map-side [data-geo-off]").forEach(function (o) {
+        var tpl = o.getAttribute("data-tpl");
+        if (tpl) o.textContent = tpl.replace("{n}", shown - onMap);
+        o.hidden = shown === onMap;
+      });
+      drawMapUndo(shown);
       emit("gs:region", { region: cur.region, kinds: cur.kinds });
     };
+    // nothing shown: the 권역 (when the kinds shown have rows elsewhere) and each hidden kind (when it has rows in the
+    // chosen 권역) get a button that alone brings rows back, then the reset of both; a press takes the focus to the
+    // control it changed (the 전체 tab after a reset)
+    var mapRestore = function (focusEl) { draw(); if (focusEl) focusEl.focus(); };
+    var regionTab = function (r) { return $all("a[data-region]", tabs).filter(function (a) { return (a.getAttribute("data-region") || "") === r; })[0]; };
+    var clearRegion = function () {
+      cur.region = "";
+      try { history.replaceState(null, "", location.pathname); } catch (err) { /* file:// */ }
+    };
+    var drawMapUndo = function (shown) {
+      if (mEmpty) mEmpty.hidden = shown > 0;
+      if (!mUndo) return;
+      mUndo.hidden = shown > 0;
+      $all("[data-map-undo-k]", mUndo).forEach(function (b) { b.parentNode.removeChild(b); });
+      if (shown > 0) return;
+      var add = function (key, text, fn) {
+        var b = doc.createElement("button");
+        b.type = "button";
+        b.textContent = text;
+        b.setAttribute("data-map-undo-k", key);
+        b.addEventListener("click", fn);
+        mUndo.insertBefore(b, mReset || null);
+      };
+      if (cur.region && mrows.some(function (x) { return cur.kinds[x.k]; })) {
+        add("region", (mUndo.getAttribute("data-one") || "{v}").replace("{v}", cur.region), function () { clearRegion(); mapRestore(regionTab("")); });
+      }
+      (kinds ? $all("button[data-kind]", kinds) : []).forEach(function (kb) {
+        var k = kb.getAttribute("data-kind");
+        if (cur.kinds[k] || !mrows.some(function (x) { return x.k === k && inRegion(x, cur.region); })) return;
+        add(k, (mUndo.getAttribute("data-kind-one") || "{v}").replace("{v}", wordsOfKind(kb)), function () { cur.kinds[k] = true; mapRestore(kb); });
+      });
+    };
+    var wordsOfKind = function (b) {
+      return Array.prototype.map.call(b.childNodes, function (x) { return x.nodeType === 1 ? "" : x.textContent; }).join("").trim();
+    };
+    if (mReset) mReset.addEventListener("click", function () {
+      clearRegion();
+      Object.keys(cur.kinds).forEach(function (k) { cur.kinds[k] = true; });
+      mapRestore(regionTab(""));
+    });
     var byId = {};
     $all("[data-region-sec]").forEach(function (s) { if (s.id) byId[s.id] = s.getAttribute("data-region-sec"); });
     tabs.addEventListener("click", function (e) {
@@ -658,7 +922,6 @@
       if (!b) return;
       var k = b.getAttribute("data-kind");
       cur.kinds[k] = !cur.kinds[k];
-      b.setAttribute("aria-pressed", String(cur.kinds[k]));
       draw();
     });
     if (seg) seg.addEventListener("click", function (e) {

@@ -38,9 +38,9 @@ pipeline/maplinks.py가 이 ID로 링크를 만든다.
 checked_at, matched_name, distance_m, basis, url, query}. 이 도구가 전에 쓴 ID가 다시 확인되지 않으면 지우고,
 사람이 넣은 ID(출처 없음)는 그대로 둔다. 결과 전체는 --report(JSON)에 남긴다.
 
-  KAKAO_REST_KEY=... python tools/kakao_places.py --data data/daegu            # 미리보기(dry-run)
-  python tools/kakao_places.py --data data/daegu --key-file <파일> --apply      # places.json에 반영
-  python tools/kakao_places.py --data data/daegu --offline --apply             # 캐시만으로 다시 반영
+  KAKAO_REST_KEY=... python tools/kakao_places.py --data data/suwon            # 미리보기(dry-run)
+  python tools/kakao_places.py --data data/suwon --key-file <파일> --apply      # places.json에 반영
+  python tools/kakao_places.py --data data/suwon --offline --apply             # 캐시만으로 다시 반영
 
 도시 값은 코드에 없다: 지역어·주소·검색어는 --data의 site.json(pipeline.city.City)에서 온다.
 """
@@ -683,7 +683,7 @@ def run(data: Path, key: str, max_calls: int, offline: bool, refresh: bool, do_a
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--data", type=Path, required=True, help="도시 데이터 폴더(site.json·places.json이 있는 곳, 예: data/daegu)")
+    ap.add_argument("--data", type=Path, required=True, help="도시 데이터 폴더(site.json·places.json이 있는 곳, 예: data/suwon)")
     ap.add_argument("--key-file", type=Path, help="키가 든 파일(없으면 환경 변수 KAKAO_REST_KEY)")
     ap.add_argument("--max-calls", type=int, default=DEFAULT_MAX_CALLS, help="실행당 실제 호출 상한")
     ap.add_argument("--cache", type=Path, default=Path("data/cache/kakao"))

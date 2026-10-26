@@ -1,8 +1,8 @@
 """AVIF/WebP renditions of the AI art (owner decision 2026-10-13, CLAUDE.md 4; pipeline/art.py).
 
-    python tools/art_media.py --data data/daegu              # encode what is missing for every picture in <data>/art.json
-    python tools/art_media.py --data data/daegu --dry-run    # list what would be made, change nothing
-    python tools/art_media.py --data data/daegu --force      # re-encode every picture whose original is on this computer
+    python tools/art_media.py --data data/suwon              # encode what is missing for every picture in <data>/art.json
+    python tools/art_media.py --data data/suwon --dry-run    # list what would be made, change nothing
+    python tools/art_media.py --data data/suwon --force      # re-encode every picture whose original is on this computer
 
 A city without <data>/art.json has no pictures: nothing is made (pipeline/art.py then draws no art slot).
 
@@ -136,7 +136,7 @@ def over_budget(art_id: str, entry: dict) -> int | None:
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--data", type=Path, required=True, help="도시 데이터 폴더(art.json이 있는 곳, 예: data/daegu)")
+    ap.add_argument("--data", type=Path, required=True, help="도시 데이터 폴더(art.json이 있는 곳, 예: data/suwon)")
     ap.add_argument("--src", type=Path, default=SRC_DIR, help="where the originals are (git-ignored)")
     ap.add_argument("--out", type=Path, default=art.ART_DIR)
     ap.add_argument("--dry-run", action="store_true")

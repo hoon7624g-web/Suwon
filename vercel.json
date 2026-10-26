@@ -27,12 +27,29 @@
       "destination": "/api/plan"
     }
   ],
-  "git": {
-    "deploymentEnabled": {
-      "local/*": false
-    }
-  },
   "redirects": [
+    {
+      "source": "/:path((?!(?:d1771aa12264159a398d02ebee823397\\.txt|api/(?:chat|plan)/?)$).*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "suwon-hoon7624g-webs-projects.vercel.app"
+        }
+      ],
+      "destination": "https://suwon.webforai.kr/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path((?!(?:d1771aa12264159a398d02ebee823397\\.txt|api/(?:chat|plan)/?)$).*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "suwon-git-main-hoon7624g-webs-projects.vercel.app"
+        }
+      ],
+      "destination": "https://suwon.webforai.kr/:path*",
+      "permanent": true
+    },
     {
       "source": "/places/suwon-sollaeeum-kaempingjang/",
       "destination": "/places/sollaeeumkaempingjang/",
@@ -53,5 +70,10 @@
       "destination": "/:lang/places/suwon-kt-wijeupakeu/",
       "permanent": true
     }
-  ]
+  ],
+  "git": {
+    "deploymentEnabled": {
+      "local/*": false
+    }
+  }
 }

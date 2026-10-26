@@ -1,9 +1,9 @@
 """TourAPI raw harvest: fill the response cache for every TourAPI service this key may use, in parallel, and keep it.
 
-    python tools/tourapi_harvest.py --data data/daegu                       # every service below, inside the caps
-    python tools/tourapi_harvest.py --data data/daegu --service kor --service eng
-    python tools/tourapi_harvest.py --data data/daegu --pack                # cache -> data/raw/<city>/tourapi/*.tar.gz
-    python tools/tourapi_harvest.py --data data/daegu --unpack              # data/raw/<city>/tourapi/*.tar.gz -> cache
+    python tools/tourapi_harvest.py --data data/suwon                       # every service below, inside the caps
+    python tools/tourapi_harvest.py --data data/suwon --service kor --service eng
+    python tools/tourapi_harvest.py --data data/suwon --pack                # cache -> data/raw/<city>/tourapi/*.tar.gz
+    python tools/tourapi_harvest.py --data data/suwon --unpack              # data/raw/<city>/tourapi/*.tar.gz -> cache
 
 Why: the development key allows about 1,000 calls per operation per day and the container's cache (data/cache/,
 not committed) is lost with the container. This tool only fetches and stores answers; it changes no site data.

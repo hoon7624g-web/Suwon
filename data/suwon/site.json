@@ -773,28 +773,34 @@
       ]
     },
     "production_aliases": [
-      "https://suwon.vercel.app",
-      "https://suwon.webforai.kr"
+      "https://suwon.webforai.kr",
+      "https://suwon-hoon7624g-webs-projects.vercel.app",
+      "https://suwon-git-main-hoon7624g-webs-projects.vercel.app"
     ],
     "previous_sites": []
   },
   "plan": {
     "hubs": [
       {
-        "key": "suwon-station",
-        "name": "수원역(KTX·1호선·수인분당선)"
+        "key": "station",
+        "name": "수원역(KTX·1호선·수인분당선)",
+        "basis": "권역·좌표가 사이트 자료에 없음 — 여유는 기본 30분만 둔다."
       },
       {
-        "key": "gwanggyo-station",
-        "name": "광교중앙역(신분당선)"
+        "key": "gwanggyo",
+        "name": "광교중앙역(신분당선)",
+        "basis": "권역·좌표가 사이트 자료에 없음 — 여유는 기본 30분만 둔다."
       },
       {
-        "key": "bus-terminal",
-        "name": "수원종합버스터미널"
+        "key": "bus",
+        "name": "수원종합버스터미널",
+        "basis": "권역·좌표가 사이트 자료에 없음 — 여유는 기본 30분만 둔다."
       }
     ],
     "resident_label": "수원 시민·인근 출발",
-    "note_example": "예: 점심은 수원왕갈비나 통닭거리에서 먹고 싶어요. 오후엔 화성행궁과 방화수류정을 걷고 싶어요."
+    "note_example": "예: 점심은 수원왕갈비나 통닭거리에서 먹고 싶어요. 오후엔 화성행궁과 방화수류정을 걷고 싶어요.",
+    "transit_strict": true,
+    "_transit_strict": "차 없는 일정: data/suwon에 장소별 근처 정류장·노선 자료(nearby.json)가 없다 — 걸어서 가는 구간(직선 1.2km 이하)만 일정에 두고, 역·터미널에서 첫 장소까지와 날을 넘기는 이동은 확인할 것으로 남긴다(외부 검토 C05·C08, SUWON-05)."
   },
   "abroad": {
     "keywords": [

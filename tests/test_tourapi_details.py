@@ -40,6 +40,10 @@ def test_tourapi_facts_maps_intro_info_and_common():
     assert f["homepage"] == "https://ex.kr" and f["address"] == "대구광역시 중구 샘플로 240" and f["creditcard"] == "가능"
     food = tourapi_facts({}, {"opentimefood": "11:00~21:00", "kidsfacility": "0", "firstmenu": "짬뽕"}, [], "39")
     assert food == {"usetime": "11:00~21:00", "menu": "짬뽕"}  # 0/1 flag '0' is not a fact
+    # a number written with a space or an en dash between its parts is the hyphenated number (QA 2026-10-24 YJ-10)
+    spaced = tourapi_facts({}, {"infocenterlodging": "054 000-0000", "reservationlodging": "054–000-1111, 1588-0000"},
+                           [], "32")
+    assert spaced["infocenter"] == "054-000-0000" and spaced["reservation"] == "054-000-1111, 1588-0000"
 
 
 def test_merge_adds_with_source_confirms_agreement_and_keeps_both_on_conflict():

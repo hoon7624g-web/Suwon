@@ -8,14 +8,35 @@
     while it works, then draws the plan from the site's own place data (/plan/places.json, plan.plan_places): times,
     each place's photo (TourAPI, credited) or its kind's 3D picture, the day's state the code checked, the first-screen
     facts, the legs (straight-line distance, shared bus routes, a Kakao Map directions link — the map app gives the
-    time), a numbered map per day (map.js course map, drawn when the plan comes: window.GSMapStart), the fee total,
-    what still needs checking, and an edit box. Choices: pipeline/plan.py PLAN_CHOICES and the city's hubs and likes
-    (site.json plan); pictures: PLAN_RESULT_PICS (cloned from <template>); mascots: plan_vm (the planner's own poses).
-    data-site / data-site-name: what the saved and copied plan names; data-tickets: the site keeps combined tickets'
-    tables (the fee card says so). A utility page: noindex, not in the sitemap,
-    Korean only. -#}
+    time), a numbered map per day (map.js course map), the fee total, what still needs checking, and an edit box.
+    Choices: pipeline/plan.py PLAN_CHOICES and the city's hubs and likes (site.json plan); pictures: PLAN_RESULT_PICS
+    (cloned from <template>); mascots: plan_vm (the planner's own poses). data-site / data-site-name: what the saved and
+    copied plan names; data-tickets: the site keeps combined tickets' tables (the fee card says so). A utility page:
+    noindex, not in the sitemap, Korean only.
+    Operator 2026-10-19: the course the site builds from its data comes first (SSE 'early') and the AI's replaces it;
+    a plan passes on as a link (/plan/#p=…, chatbot/plan_share.js — the plan in the address, nothing stored), opened
+    here by plan.js (docs/handover/plan_share.md). -#}
 {% set C = choices %}
-{% block head %}<link rel="stylesheet" href="/assets/plan.css">{% endblock %}
+{#- before the first paint: an address that carries the form's keys (the assistant's hand-over, plan.js fromAddress)
+    marks <html> 'trp-handing', so the line over the form has its room from the start (plan.css); one with no date the
+    form can take (none said, or one gone by: the assistant never guesses a day — '월요일' is no date) also
+    'trp-undated', which picks the line's words that ask for a date (review 2026-10-22: the line said every value came
+    from the conversation while the date, the people and the ages were the form's defaults) -#}
+{#- a share link (#p=…, plan.js): the plan leaves the address before anything else reads it — first in <head>
+    (base.html.j2 head_first), ahead of the tag manager's snippet and of every stylesheet: an inline script after a
+    stylesheet waits for it, while the tag manager's script, once it has come (from the cache: at once), runs without
+    waiting, and the tags record the page's address — a plan (its people, ages, needs) is not theirs to keep (round-6
+    verifier). plan.js takes it from window.__trpLink. The same on popstate and hashchange — a link pasted into a tab
+    already on /plan/ changes only the fragment: these listeners come before any tag's own, so a history-change page
+    view never sees the plan either (round-6 final verifier: a later popstate listener read the link) -#}
+{% block head_first %}<script>(function(){function t(){if(location.hash.indexOf('#p=')===0){window.__trpLink=location.hash;try{history.replaceState(history.state,'',location.pathname+location.search)}catch(e){}}}t();addEventListener('popstate',t);addEventListener('hashchange',t)})()</script>{% endblock %}
+{#- before the first paint, too: a plan the page will draw as soon as its script runs — a share link, or the plan this
+    tab kept (a reload; the address carries no form keys) — marks <html> 'trp-holding', so the result's room (a screen)
+    is laid out from the start and nothing under it moves when the course comes (round-6 verifier: the crumbs and the
+    footer were pushed out, CLS 0.74–0.91). The same reading of the tab's plan as plan.js: a date from today on, or a
+    shared plan -#}
+{% block head %}<link rel="stylesheet" href="/assets/plan.css">
+<script>(function(d,h){var t=new Date(),z=function(n){return(n<10?'0':'')+n},y=function(x){return x.getFullYear()+'-'+z(x.getMonth()+1)+'-'+z(x.getDate())},iso=y(t),s=location.search;if(/[?&](date|days|start|end|from|to|move|with|adults|seniors|kids|prefs|needs|note)=/.test(s)){h.add('trp-handing');var m=/[?&]date=(\d{4}-\d{2}-\d{2})(?:&|$)/.exec(s);if(!m||m[1]<iso||m[1]>y(new Date(t.getTime()+180*86400000)))h.add('trp-undated');return}if(window.__trpLink){h.add('trp-holding');return}try{var k=JSON.parse(sessionStorage.getItem('gs-plan')||'null');if(k&&k.plan&&k.plan.days&&k.conditions&&(k.conditions.date>=iso||k.shared))h.add('trp-holding')}catch(e){}})(document,document.documentElement.classList);</script>{% endblock %}
 {% block main_class %}{% endblock %}
 {% block bodyclass %}pg-plan{% endblock %}
 {% block content %}
@@ -50,13 +71,24 @@
 </section>
 <noscript><p class="wrap trp-nojs">코스 만들기는 자바스크립트가 켜져 있어야 동작합니다. <a href="/courses/">공식 코스 {{ n_courses }}개</a>와 <a href="/guides/">가이드 {{ n_guides }}편</a>에서도 일정을 찾을 수 있습니다.</p></noscript>
 
+{#- the line over the form when the assistant hands a reader over: plan.js puts its words in (a status region: they
+    come after it is in the page, so they are read out). Its room is laid out from the first paint under html.trp-handing
+    (review 2026-10-18, fourth round: added after the paint it pushed the form down, CLS 0.11–0.13 on 360–390px phones);
+    the hidden copy of the words gives the box their height at every width. A plain visit has no box. Two sets of words
+    (review 2026-10-22): a date carried, or none (html.trp-undated, the head script: the date is left empty and the
+    line asks for one); both say that what the assistant could not read is the form's default — 'not read', not 'not
+    said': it never reads the number of people, and a child's age only in digits (k4b review: '대화에 없던 조건' left
+    '어른 3명' said and not carried under a line implying it was) -#}
+<div class="wrap trp-handed-w"><div class="trp-handed-box"><span class="trp-handed-ghost" aria-hidden="true"><span data-dated>대화에서 읽은 조건만 채웠어요. 읽지 못한 조건(인원·아이 나이·예산 등)은 기본값이니 확인하고 코스 만들기를 누르세요.</span><span data-undated>대화에서 읽은 조건만 채웠어요. 날짜는 읽지 못해 비워 뒀으니 골라 주세요. 그 밖에 읽지 못한 조건(인원·아이 나이·예산 등)은 기본값이에요.</span></span><p class="trp-handed" role="status" data-plan-handed></p></div></div>
 <form class="wrap trp-form" id="trp-form" data-plan-form novalidate>
   <fieldset class="trp-step">
     <legend><span class="trp-n">1</span>언제 가세요?</legend>
     <div class="trp-when">
       <label class="trp-field"><span>출발하는 날</span><input type="date" name="date" required data-plan-date></label>
-      <label class="trp-field"><span>하루 시작</span><select name="start">{% for h in range(7, 15) %}<option value="{{ '%02d' % h }}:00"{% if h == 10 %} selected{% endif %}>{{ h }}:00</option>{% endfor %}</select></label>
-      <label class="trp-field"><span>하루 끝</span><select name="end">{% for h in range(15, 23) %}<option value="{{ h }}:00"{% if h == 18 %} selected{% endif %}>{{ h }}:00</option>{% endfor %}</select></label>
+      {#- every half hour (outside tester 2026-10-23: a 10:30 train could not be entered): a start 07:00–14:00, an end
+          15:00–22:00, by the minute of the day; the server takes any HH:MM 06:00–23:00 three hours apart -#}
+      <label class="trp-field"><span>하루 시작</span><select name="start">{% for m in range(7 * 60, 14 * 60 + 1, 30) %}<option value="{{ '%02d:%02d' % (m // 60, m % 60) }}"{% if m == 10 * 60 %} selected{% endif %}>{{ m // 60 }}:{{ '%02d' % (m % 60) }}</option>{% endfor %}</select></label>
+      <label class="trp-field"><span>하루 끝</span><select name="end">{% for m in range(15 * 60, 22 * 60 + 1, 30) %}<option value="{{ '%02d:%02d' % (m // 60, m % 60) }}"{% if m == 18 * 60 %} selected{% endif %}>{{ m // 60 }}:{{ '%02d' % (m % 60) }}</option>{% endfor %}</select></label>
     </div>
     {#- where the trip starts and ends (the first city's review 2026-10-17: a station at 10:00 asked in words, the first
         museum at 10:00): a station or a terminal of site.json plan.hubs — the plan leaves a margin after the start and
@@ -64,8 +96,10 @@
     {% if C.hubs %}<div class="trp-when trp-hubs">
       <label class="trp-field"><span>어디서 출발하세요?</span><select name="from"><option value="">정하지 않음(숙소·집 등)</option>{% for v, label in C.hubs %}<option value="{{ v }}">{{ label }}</option>{% endfor %}</select></label>
       <label class="trp-field"><span>마지막 날 어디로 가세요?</span><select name="to"><option value="">정하지 않음</option>{% for v, label in C.hubs %}<option value="{{ v }}">{{ label }}</option>{% endfor %}</select></label>
-    </div>
-    <p class="trp-hint">출발 시각은 '하루 시작', 도착 시각은 '하루 끝'으로 봅니다. 그 사이 이동 시간은 사이트에 없어 여유만 둡니다.</p>{% endif %}
+    </div>{% endif %}
+    {#- what the two times mean (2026-10-24 I07: the check holds every day to both — before, the first day to the start and
+        the last to the end only, while the form said '하루') -#}
+    <p class="trp-hint">여러 날이면 날마다 하루 시작부터 하루 끝까지 짜고, 숙소는 하루 끝 뒤에 둡니다. 저녁 식사까지 넣으려면 하루 끝을 저녁 뒤로 고르세요. 역·터미널을 고르면 첫날 출발 시각은 하루 시작, 마지막 날 도착 시각은 하루 끝으로 보고 그 사이 이동 여유를 둡니다(이동 시간은 사이트에 없음).</p>
     <div class="trp-cards trp-cards-3" role="radiogroup" aria-label="기간">
       {% for v, label, pic, g in C.days %}<label class="trp-card"><input type="radio" name="days" value="{{ v }}"{% if loop.first %} checked{% endif %}><span class="trp-card-in">{{ pk.pic(pic, g, 72) }}<b>{{ label }}</b></span></label>{% endfor %}
     </div>
@@ -74,8 +108,11 @@
   <fieldset class="trp-step">
     <legend><span class="trp-n">2</span>어떻게 다니세요?</legend>
     <div class="trp-cards trp-cards-2" role="radiogroup" aria-label="이동 수단">
-      {% for v, label, pic, g in C.move %}<label class="trp-card"><input type="radio" name="move" value="{{ v }}"{% if v == 'transit' %} checked{% endif %}><span class="trp-card-in">{{ pk.pic(pic, g, 72) }}<b>{{ label }}</b>{% if v == 'transit' %}<small>근처 정류장과 노선이 있는 곳 위주</small>{% else %}<small>주차 정보가 있는 곳 위주</small>{% endif %}</span></label>{% endfor %}
+      {% for v, label, pic, g in C.move %}<label class="trp-card"><input type="radio" name="move" value="{{ v }}"{% if v == 'transit' %} checked{% endif %}><span class="trp-card-in">{{ pk.pic(pic, g, 72) }}<b>{{ label }}</b>{% if v == 'transit' %}<small>{% if transit_strict %}걸어서 이어지는 곳끼리 묶어요{% else %}근처 정류장과 노선이 있는 곳 위주{% endif %}</small>{% else %}<small>주차 정보가 있는 곳 위주</small>{% endif %}</span></label>{% endfor %}
     </div>
+    {#- a city whose data names no bus stop or route for its places (site.json plan.transit_strict): what a trip without
+        a car is, said before it is made (outside review 2026-10-24 C05·C08) -#}
+    {% if transit_strict %}<p class="trp-hint">차 없이 가면 이 사이트에는 장소별 정류장·노선 자료가 없어, 하루 일정을 걸어서 이어지는 곳(직선 1.2km 이내)끼리 묶어요. 역·터미널에서 첫 장소까지, 숙소에서 다음 날 첫 장소까지는 확인된 대중교통이 없어 '가기 전 확인'으로 남겨요.</p>{% endif %}
   </fieldset>
 
   <fieldset class="trp-step">
@@ -93,7 +130,7 @@
   </fieldset>
 
   <fieldset class="trp-step">
-    <legend><span class="trp-n">4</span>무엇을 좋아하세요? <small>최대 4개</small></legend>
+    <legend><span class="trp-n">4</span>무엇을 좋아하세요? <small>선택 · 최대 4개</small></legend>
     <div class="trp-cards trp-cards-chips" data-max="4">
       {% for v, label, pic, g in C.prefs %}<label class="trp-card trp-chip"><input type="checkbox" name="prefs" value="{{ v }}"><span class="trp-card-in">{{ pk.pic(pic, g, 56) }}<b>{{ label }}</b></span></label>{% endfor %}
     </div>
@@ -102,8 +139,11 @@
   <fieldset class="trp-step">
     <legend><span class="trp-n">5</span>꼭 필요한 게 있나요? <small>선택</small></legend>
     <div class="trp-cards trp-cards-chips">
-      {% for v, label, pic, g in C.needs %}<label class="trp-card trp-chip"><input type="checkbox" name="needs" value="{{ v }}"><span class="trp-card-in">{{ pk.pic(pic, g, 56) }}<b>{{ label }}</b></span></label>{% endfor %}
+      {% for v, label, pic, g in C.needs %}<label class="trp-card trp-chip"><input type="checkbox" name="needs" value="{{ v }}"{% if need_notes and need_notes[v] %} data-need-note="{{ need_notes[v].replace('{n}', (need_n or {}).get(v, 0)|string) }}"{% if v in (need_n or {}) %} data-need-n="{{ need_n[v] }}"{% endif %}{% endif %}><span class="trp-card-in">{{ pk.pic(pic, g, 56) }}<b>{{ label }}</b></span></label>{% endfor %}
     </div>
+    {#- UI-A01 (2026-10-24): the moment a need is picked, how many places to visit the site's data says fit it — a place it
+        says nothing of is not one the need does not fit (plan.js needNotes; no script: nothing shown) -#}
+    <div class="trp-hint trp-need-note" data-need-notes data-tail="{{ need_tail }}" aria-live="polite" hidden></div>
   </fieldset>
 
   <fieldset class="trp-step">
@@ -117,12 +157,17 @@
     <label class="trp-field trp-note"><span>하고 싶은 말</span><textarea name="note" maxlength="200" rows="2" placeholder="{{ note_example }}"></textarea></label>
   </fieldset>
 
+  {#- the button's box. On phones (plan.css, below 900px) only the button's bar stays at the screen's foot — the summary
+      and the short notice sit in the page just above it — so the fixed areas stay within 15% of the screen (CLAUDE.md
+      7; review 2026-10-22: the whole box was 159px at 390×844, with the header 25%); from 900px one box as before -#}
   <div class="trp-go">
     <p class="trp-sum" data-plan-sum aria-live="polite"></p>
-    <button type="submit" class="btn trp-submit">{{ pk.pic('icon-plan', 'spark', 40, '', false) }}<span>AI로 코스 만들기</span></button>
-    <p class="trp-fine">하루 코스는 보통 20~40초, 2박 3일은 1분 넘게 걸릴 수 있습니다. 고른 조건은 코스를 만드는 데만 쓰고 서버에 저장하지 않으며, 이 탭에서만 임시로 보관합니다. 일정은 Anthropic의 Claude가 이 사이트 자료로 만들고, 휴무·운영시간·입장료·조건은 사이트의 코드가 검사합니다(<a href="/about/#plan">자세히</a>).</p>
-    <p class="trp-fine-s">Anthropic Claude가 사이트 자료로 만들어요 · 20초~1분 남짓 · 서버에 저장하지 않음(<a href="/about/#plan">자세히</a>)</p>
-    <p class="trp-err" data-plan-formerr role="alert" hidden></p>
+    <p class="trp-fine-s">먼저 짠 코스는 바로 · Anthropic Claude가 다듬는 데 20초~1분 · 서버에 저장하지 않음(<a href="/about/#plan">자세히</a>)</p>
+    <div class="trp-go-bar">
+      <button type="submit" class="btn trp-submit">{{ pk.pic('icon-plan', 'spark', 40, '', false) }}<span>AI로 코스 만들기</span></button>
+      <p class="trp-err" data-plan-formerr role="alert" hidden></p>
+    </div>
+    <p class="trp-fine">사이트 자료로 짠 코스가 먼저 바로 나오고, AI가 조건에 맞게 다듬은 코스는 하루 코스 보통 20~40초, 2박 3일은 1분 넘게 걸릴 수 있습니다. 고른 조건은 코스를 만드는 데만 쓰고 서버에 저장하지 않으며, 이 탭에서만 임시로 보관합니다. 일정은 Anthropic의 Claude가 이 사이트 자료로 만들고, 휴무·운영시간·입장료·조건은 사이트의 코드가 검사합니다(<a href="/about/#plan">자세히</a>).</p>
   </div>
 </form>
 

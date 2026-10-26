@@ -11,6 +11,8 @@
                   scrolls away and only the local bar stays stuck (body.has-lnav) — place, course, event, guide
       head        extra <head> tags (e.g. md.preload(ph), a preconnect); page.preload {type, srcset, sizes, media}
                   or {href, media} is printed here already
+      head_first  a script that must run before anything else in <head>, the tag manager included (plan.html.j2: a
+                  share link's #p= fragment leaves the address before any tag can read it)
       crumbs      the breadcrumb line above the footer (default: page.crumbs)
     Context used here: site, page, page_kind, noindex, banner, mode, nav [(label, href)], nav_current, ctxbtn
     (label, href) | None, has_search, has_videos, tourapi_used, wordmark (pipeline/present.common_vm, page_chrome).
@@ -29,6 +31,7 @@
 <html lang="{{ lang }}">
 <head>
 <meta charset="utf-8">
+{% block head_first %}{% endblock %}
 {% if site.gtm_id and mode == 'production' %}<!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

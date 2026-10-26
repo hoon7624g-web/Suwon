@@ -190,9 +190,9 @@ def update_site_json() -> None:
     }
     site["plan"] = {
         "hubs": [
-            {"key": "suwon-station", "name": "수원역(KTX·1호선·수인분당선)"},
-            {"key": "gwanggyo-station", "name": "광교중앙역(신분당선)", "place": "tourapi-2662855"},
-            {"key": "bus-terminal", "name": "수원종합버스터미널"},
+            {"key": "station", "name": "수원역(KTX·1호선·수인분당선)"},
+            {"key": "gwanggyo", "name": "광교중앙역(신분당선)", "place": "tourapi-2662855"},
+            {"key": "bus", "name": "수원종합버스터미널"},
         ],
         "resident_label": "수원 시민·인근 출발",
     }

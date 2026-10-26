@@ -1,7 +1,7 @@
 """검수 시트(CSV) 만들기 — 사람이 판정(OK/수정)과 메모를 적고, tools/apply_review.py가 그 표시만 반영한다.
 
-    python tools/make_review_sheet.py --data data/daegu                      # -> docs/handover/review_sheet.csv
-    python tools/make_review_sheet.py --data data/daegu --base https://preview.example
+    python tools/make_review_sheet.py --data data/suwon                      # -> docs/handover/review_sheet.csv
+    python tools/make_review_sheet.py --data data/suwon --base https://preview.example
 
 - 대상(한 줄에 하나): full 장소(tier=full, duplicate_of 없음) · 가이드 전부 · 코스 전부 · 행사 전부.
 - 열: 구분, ID, 이름, 미리보기 URL, 핵심 사실, 출처 링크, 현재 상태, 판정(빈칸), 메모(빈칸).
@@ -188,7 +188,7 @@ def write_sheet(rows: list[dict], out: Path) -> None:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--data", required=True, type=Path, help="도시 데이터 폴더(예: data/daegu)")
+    parser.add_argument("--data", required=True, type=Path, help="도시 데이터 폴더(예: data/suwon)")
     parser.add_argument("--out", default=DEFAULT_SHEET, type=Path, help="시트 파일(기본: %(default)s)")
     parser.add_argument("--base", help="미리보기 주소(기본: site.json의 site_url)")
     args = parser.parse_args(argv)

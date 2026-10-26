@@ -1,8 +1,8 @@
 """공개 전 점검표 — production을 임시 폴더에 빌드·검증하고, 사람이 할 일을 docs/handover/launch_checklist.md로 쓴다.
 
-    python tools/launch_check.py --data data/daegu                 # 점검표를 쓴다(이 파일 말고는 아무것도 바꾸지 않음)
-    python tools/launch_check.py --data data/daegu --stdout        # 쓰지 않고 출력만
-    python tools/launch_check.py --data data/daegu --md docs/handover/launch_checklist.md
+    python tools/launch_check.py --data data/suwon                 # 점검표를 쓴다(이 파일 말고는 아무것도 바꾸지 않음)
+    python tools/launch_check.py --data data/suwon --stdout        # 쓰지 않고 출력만
+    python tools/launch_check.py --data data/suwon --md docs/handover/launch_checklist.md
 
 - production 빌드·검증은 임시 폴더에서 한다: `python -m pipeline.build --mode production` →
   `python -m pipeline.validate --mode production --report <임시>`. data/·public/·reports/·site.json은 건드리지 않는다.
@@ -524,8 +524,11 @@ def owner_rows(O: dict) -> list[tuple[str, str, str]]:
          "허용(지금 동작, 플랫폼이 미리보기를 자를 수 있음) / 3유형만 있으면 og:image 없음. 변경 금지 조건 때문에 정하기 전까지 1유형 우선."),
         ("지도 제공자", f"{O['map']}" + (f" · JavaScript 키 `kakao_js_key` {_filled(site.get('kakao_js_key'))}"
                                          if O["map"] == "카카오맵" else ""),
-         "카카오맵(군산 엔진, 운영자 결정 2026-10-14). 카카오 개발자 콘솔에 등록한 웹 도메인에서만 지도가 뜬다 — "
-         "`kakao_js_key`를 넣고, 공개 주소(`site_url`)가 바뀌면 그 주소를 콘솔의 웹 도메인에 더한다."),
+         ("카카오맵(첫 사이트 엔진, 운영자 결정 2026-10-14). 카카오 개발자 콘솔에 등록한 웹 도메인에서만 지도가 뜬다 — "
+          "`kakao_js_key`를 넣고, 공개 주소(`site_url`)가 바뀌면 그 주소를 콘솔의 웹 도메인에 더한다.")
+         if O["map"] == "카카오맵" else
+         ("지금 지도 제공자 그대로 / 카카오맵으로 바꾸기(사람이 정함: 카카오 개발자 콘솔에 공개 주소를 웹 도메인으로 등록하고 "
+          "`kakao_js_key`를 넣는다). 오픈스트리트맵 타일을 직접 쓰면 그 타일 서버의 이용 정책을 운영 트래픽 기준으로 확인한다.")),
         ("글꼴 라이선스", O["font"],
          "글꼴을 새로 들이면 라이선스 파일(OFL.txt 등)을 글꼴 파일과 같은 폴더에 둔다(Pretendard처럼). 출처 페이지 표기도 사람이 확인."),
         (f"{site.get('locality') or site.get('region', '')} 위키백과·위키데이터 sameAs",
@@ -563,7 +566,7 @@ def run(data: Path, md: Path | None, questions: Path) -> str:
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--data", type=Path, required=True, help="도시 데이터 폴더(예: data/daegu)")
+    ap.add_argument("--data", type=Path, required=True, help="도시 데이터 폴더(예: data/suwon)")
     ap.add_argument("--md", type=Path, default=DEFAULT_MD)
     ap.add_argument("--questions", type=Path, default=DEFAULT_QUESTIONS)
     ap.add_argument("--stdout", action="store_true", help="파일을 쓰지 않고 출력만")

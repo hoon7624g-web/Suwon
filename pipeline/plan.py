@@ -3,7 +3,7 @@ on its own page, very visible, many cute 3D pictures. The page asks /api/plan/ (
 from the site's own place data: the model's words are only the title, the summary, a reason per stop and the notes;
 every fact on a card is a value of the place's first screen, every photo a TourAPI KOGL-1/3 photo with its credit
 (CLAUDE.md 3.4), and a place with no photo gets its kind's 3D picture (never an illustration in a photo's place,
-CLAUDE.md 4). See docs/handover/planner.md.
+CLAUDE.md 4). The server side: chatbot/planner.js (its header).
 
 The city's values are site.json `plan` (plan_config), nothing of a city is written here:
 
@@ -16,6 +16,16 @@ The city's values are site.json `plan` (plan_config), nothing of a city is writt
     prefs           [{key, label, prompt, pic, glyph}] the 좋아하는 것 cards (label), the words the model reads (prompt),
                     the card's 3D picture ID and line glyph; default DEFAULT_PREFS.
     note_example    the placeholder of the form's 하고 싶은 말 box (an example wish, no facts); default NOTE_EXAMPLE.
+    hubs[].region   the travel area (권역, as the place pages name it) a hub is in — the margin after it before a stop
+                    in another area is longer (chatbot/plan_state.hubMargin); with its basis in hubs[].basis.
+    far             {area: {car, transit}} minutes: a leg into or out of that travel area keeps at least this margin
+                    (an island reached by one bus an hour); none: 30 / 45 minutes between any two areas.
+    pref_regions    {pref key: [areas]} a liking read by the travel area a page names (islands); pref_types {pref key:
+                    [the city's type labels]} a liking read by the city's own list labels besides the engine's classes.
+    hub_guides      [{hub?, region?, path, label}] the site's bus guidance for a hub's leg without a car, first match.
+    transit_strict  true: without a car the data names no bus stop or route for the city's places, so a leg longer
+                    than a walk is sent back and the way to the first stop and back is a check (chatbot/planner.js).
+    rules           the city's own lines for the planner's rules (English, facts only from the site's guides).
 
 plan_meta() hands the server the same values with each hub's page and point (docs.json meta.plan); plan_places() and
 plan_vm() make the page's data and context; problems() is what validate reports about the block.
@@ -65,7 +75,18 @@ PLAN_CHOICES = {
 PLAN_RESULT_PICS = ("kind-attraction", "kind-food", "kind-stay", "kind-cafe", "kind-museum", "kind-experience",
                     "theme-modern-history", "theme-islands-sea", "theme-parks-nature", "theme-alleys-culture",
                     "transit-bus", "sit-walk", "fact-parking", "plan-budget", "plan-swap", "icon-map", "fact-hours",
-                    "fact-closed", "fact-fee", "cond-wheelchair")
+                    "fact-closed", "fact-fee", "cond-wheelchair", "icon-course")
+# what the form says when a need is picked: the count of places to visit the site's data says fit it ({n}:
+# pipeline/chat_index.need_counts) — a place it says nothing of is not one the need does not fit
+PLAN_NEED_NOTES = {
+    "rain": "비 와도 실내 위주: 실내라고 사이트 자료에 있는 관광지 {n}곳",
+    "stroller": "유모차: 출입구 자료로 접근할 수 있다고 나온 관광지 {n}곳",
+    "wheelchair": "휠체어: 출입구 자료로 접근할 수 있다고 나온 관광지 {n}곳",
+    "parking": "주차 편한 곳: 주차할 수 있다(또는 근처 공영주차장)고 사이트 자료에 있는 관광지 {n}곳",
+    "free": "입장료 없는 곳 위주: 무료라고 사이트 자료에 있는 관광지 {n}곳",
+    "lesswalk": "걷기 적게: 걷는 거리는 사이트 자료로 잴 수 없어 구간 직선거리만 적어요",
+}
+PLAN_NEED_TAIL = "사이트에 자료가 있는 곳의 수예요. 자료가 없는 곳은 이용할 수 없다는 뜻이 아니라 사이트에 정보가 없다는 뜻이에요 — 방문 전 전화로 확인하세요."
 PLAN_QUICK_EDITS = [("비가 오면 실내 위주로 바꿔 주세요", "비 오면 실내로", "sit-rainy"),
                     ("걷는 거리를 줄여 주세요", "덜 걷게", "sit-walk"),
                     ("점심 맛집을 다른 곳으로 바꿔 주세요", "점심 바꾸기", "icon-food"),
@@ -74,13 +95,15 @@ PLAN_QUICK_EDITS = [("비가 오면 실내 위주로 바꿔 주세요", "비 오
 
 
 def plan_config(site: dict) -> dict:
-    """site.json `plan`, checked loosely (problems() says what is wrong): {hubs [{key, name, place}], prefs [{key,
-    label, prompt, pic, glyph}], resident_label, note_example}. Entries that cannot be used are left out."""
+    """site.json `plan`, checked loosely (problems() says what is wrong): {hubs [{key, name, place, region}], prefs
+    [{key, label, prompt, pic, glyph}], resident_label, note_example, far, pref_regions, pref_types, hub_guides,
+    transit_strict, rules}. Entries that cannot be used are left out."""
     raw = site.get("plan") if isinstance(site.get("plan"), dict) else {}
     hubs = []
     for h in raw.get("hubs") or []:
         if isinstance(h, dict) and KEY_RX.match(str(h.get("key") or "")) and squash_ws(h.get("name")):
-            hubs.append({"key": h["key"], "name": squash_ws(h["name"]), "place": squash_ws(h.get("place"))})
+            hubs.append({"key": h["key"], "name": squash_ws(h["name"]), "place": squash_ws(h.get("place")),
+                         "region": squash_ws(h.get("region"))})
     prefs = []
     for p in raw.get("prefs") or []:
         if isinstance(p, dict) and KEY_RX.match(str(p.get("key") or "")) and squash_ws(p.get("label")):
@@ -89,8 +112,23 @@ def plan_config(site: dict) -> dict:
                           "pic": squash_ws(p.get("pic")), "glyph": squash_ws(p.get("glyph")) or "pin"})
     if not prefs:
         prefs = [{"key": k, "label": lab, "prompt": pr, "pic": pic, "glyph": g} for k, lab, pr, pic, g in DEFAULT_PREFS]
+    far = {}
+    for area, v in (raw.get("far") or {}).items() if isinstance(raw.get("far"), dict) else ():
+        if squash_ws(area) and isinstance(v, dict) and all(isinstance(v.get(k), int) and 0 <= v[k] <= 600 for k in ("car", "transit")):
+            far[squash_ws(area)] = {"car": v["car"], "transit": v["transit"]}
+
+    def by_key(name):
+        raw_map = raw.get(name) if isinstance(raw.get(name), dict) else {}
+        return {k: [squash_ws(x) for x in v if squash_ws(x)] for k, v in raw_map.items()
+                if KEY_RX.match(str(k)) and isinstance(v, list) and any(squash_ws(x) for x in v)}
+    guides = [{k: squash_ws(g.get(k)) for k in ("hub", "region", "path", "label") if squash_ws(g.get(k))}
+              for g in raw.get("hub_guides") or [] if isinstance(g, dict)
+              and str(g.get("path") or "").startswith("/") and squash_ws(g.get("label"))]
+    rules = [squash_ws(r) for r in raw.get("rules") or [] if isinstance(r, str) and squash_ws(r)]
     return {"hubs": hubs, "prefs": prefs[:PREFS_MAX], "resident_label": squash_ws(raw.get("resident_label")),
-            "note_example": squash_ws(raw.get("note_example")) or NOTE_EXAMPLE}
+            "note_example": squash_ws(raw.get("note_example")) or NOTE_EXAMPLE, "far": far,
+            "pref_regions": by_key("pref_regions"), "pref_types": by_key("pref_types"), "hub_guides": guides,
+            "transit_strict": raw.get("transit_strict") is True, "rules": rules}
 
 
 def problems(site: dict, published: dict[str, dict]) -> list[str]:
@@ -123,17 +161,28 @@ def problems(site: dict, published: dict[str, dict]) -> list[str]:
             out.append(f"{what} 중복: {', '.join(twice)}")
     if len(pkeys) > PREFS_MAX:
         out.append(f"plan.prefs는 {PREFS_MAX}개까지")
+    for area, v in (raw.get("far") or {}).items() if isinstance(raw.get("far"), dict) else ():
+        if not (isinstance(v, dict) and all(isinstance(v.get(k), int) and 0 <= v[k] <= 600 for k in ("car", "transit"))):
+            out.append(f"plan.far {area}: {{car, transit}} 분(0~600 정수)이어야 함")
+    for g in raw.get("hub_guides") or []:
+        if not (isinstance(g, dict) and str(g.get("path") or "").startswith("/") and squash_ws(g.get("label"))):
+            out.append(f"plan.hub_guides 항목은 {{hub?, region?, path(/…), label}}: {g!r}")
+        elif squash_ws(g.get("hub")) and squash_ws(g["hub"]) not in keys:
+            out.append(f"plan.hub_guides: hub {g['hub']}가 plan.hubs에 없음")
+    if "transit_strict" in raw and not isinstance(raw["transit_strict"], bool):
+        out.append("plan.transit_strict는 true/false")
     return out
 
 
 def plan_meta(S) -> dict:
-    """docs.json meta.plan (chatbot/plan_prompt.js, planner.js): {hubs {key: {name, path?, g?}}, prefs {key: the
-    words the model reads}, resident} — a hub that is a place of the site carries its page and point."""
+    """docs.json meta.plan (chatbot/city.js readPlan): {hubs {key: {name, path?, g?, region?}}, prefs {key: the words
+    the model reads}, resident, far, pref_regions, pref_types, hub_guides, transit_strict, rules} — a hub that is a
+    place of the site carries its page and point."""
     cfg = plan_config(S.site)
     by_id = {e["id"]: e for e in S.entities}
     hubs = {}
     for h in cfg["hubs"]:
-        row: dict = {"name": h["name"]}
+        row: dict = {"name": h["name"], **({"region": h["region"]} if h["region"] else {})}
         e = by_id.get(h["place"]) if h["place"] else None
         if e:
             row["path"] = e["_path"]
@@ -141,7 +190,35 @@ def plan_meta(S) -> dict:
             if isinstance(geo.get("lat"), (int, float)) and isinstance(geo.get("lng"), (int, float)):
                 row["g"] = [round(geo["lat"], 6), round(geo["lng"], 6)]
         hubs[h["key"]] = row
-    return {"hubs": hubs, "prefs": {p["key"]: p["prompt"] for p in cfg["prefs"]}, "resident": cfg["resident_label"]}
+    return {"hubs": hubs, "prefs": {p["key"]: p["prompt"] for p in cfg["prefs"]}, "resident": cfg["resident_label"],
+            **{k: cfg[k] for k in ("far", "pref_regions", "pref_types", "hub_guides", "rules") if cfg[k]},
+            **({"transit_strict": True} if cfg["transit_strict"] else {})}
+
+
+# the engine's classes of a place to visit (chatbot/plan_geo.js FLOORS, plan_state.js INDOOR/OUTDOOR and PREF_TYPES
+# read them): a city whose list labels are other words (site.json list_filters.attraction_groups) has each place
+# classed by its source category and name with the engine's own groups (pipeline/build.ATTRACTION_GROUPS) — a TourAPI
+# 문화시설 that names a museum or an exhibition hall is 박물관·전시, any other 문화시설, 레포츠 and 쇼핑 as they are, else
+# the engine group the words find, else none (the planner then knows nothing of indoors or outdoors)
+PLAN_CLASSES = ("박물관·전시", "체험", "레포츠", "문화유산", "문화시설", "골목과 문화", "시장·쇼핑", "자연·야외", "산업·회의 시설")
+MUSEUM_RX = re.compile(r"박물관|전시관|기념관|미술관|과학관|홍보관")
+
+
+def plan_class(e: dict, S) -> str:
+    """The engine class (PLAN_CLASSES) of a place to visit, '' when none fits; its own type when that is one."""
+    t = e.get("_type") or ""
+    if e.get("kind") != "attraction" or t in PLAN_CLASSES:
+        return t
+    from . import build as B
+    cat = squash_ws(e.get("category"))
+    if cat == "문화시설":
+        return "박물관·전시" if MUSEUM_RX.search(f"{cat} {e.get('name', '')}") else "문화시설"
+    if cat == "레포츠":
+        return "레포츠"
+    if cat in ("쇼핑", "시장") or cat.startswith("쇼핑"):
+        return "시장·쇼핑"
+    g = B.category_group(e, B.ATTRACTION_GROUPS, getattr(S, "mountain", None) or B.mountain_rx(list(B.MOUNTAIN_NOT)))
+    return g if g in PLAN_CLASSES else ""
 
 
 def plan_places(S) -> dict:
@@ -201,6 +278,7 @@ def plan_vm(S) -> dict:
         files = [f for f, *_ in (have.get(name) or {}).get("webp", [])]
         return {"name": name, "kind": "medium" if f"{name}-200.webp" in files else "small"}
     return {"choices": choices, "result_pics": PLAN_RESULT_PICS, "quick_edits": PLAN_QUICK_EDITS,
+            "need_notes": PLAN_NEED_NOTES, "need_tail": PLAN_NEED_TAIL, "transit_strict": cfg["transit_strict"],
             "n_places": len(S.entities), "n_courses": len(S.courses), "n_guides": len(S.guides),
             "region": S.site.get("region") or "", "note_example": cfg["note_example"],
             "has_tickets": bool((getattr(S, "tickets", None) or {}).get("tickets")),

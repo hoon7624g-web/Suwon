@@ -1,11 +1,11 @@
 """The site's 3D clay pictures (owner 2026-10-14) as small WebP/AVIF files with transparency.
 
-    python tools/icon_media.py --data data/daegu              # make what is missing from incoming/icons/ (the originals)
-    python tools/icon_media.py --data data/daegu --force      # make every file again
-    python tools/icon_media.py --data data/daegu --dry-run    # list what would be made, change nothing
+    python tools/icon_media.py --data data/suwon              # make what is missing from incoming/icons/ (the originals)
+    python tools/icon_media.py --data data/suwon --force      # make every file again
+    python tools/icon_media.py --data data/suwon --dry-run    # list what would be made, change nothing
 
 Originals: incoming/icons/<ID>.png — 1024×1024 PNGs from ChatGPT, named by the fixed IDs of
-the first site's docs/handover/gpt_image_prompts_3d_2026-10-14.md (<data>/icons.json lists them). Git-ignored like
+the first site's 3D picture list (docs/handover/gpt_image_prompts_3d_2026-10-14.md there) (<data>/icons.json lists them). Git-ignored like
 incoming/mascot/; the files made from them are committed. A PNG without transparency (a pure white background, the
 prompt's fallback) has its near-white pixels (all channels >= WHITE_CUT) made transparent first.
 Cleaning and cutting are tools/mascot_media.py's (alpha snapped, cut to the figure with an even margin, centred on a
@@ -88,7 +88,7 @@ def make(src_dir: Path = SRC_DIR, out_dir: Path = OUT_DIR, registry: Path | None
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    ap.add_argument("--data", type=Path, required=True, help="도시 데이터 폴더(icons.json이 있는 곳, 예: data/daegu)")
+    ap.add_argument("--data", type=Path, required=True, help="도시 데이터 폴더(icons.json이 있는 곳, 예: data/suwon)")
     ap.add_argument("--force", action="store_true")
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args(argv)

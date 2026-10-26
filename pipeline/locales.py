@@ -682,6 +682,8 @@ SEARCH_WORDS = {
            "menu": "Dish: ", "other": "Also: ", "via": "Stops: ", "des": "Listed: ", "of": "{n} of {m}",
            "sug": "Did you mean: ", "ask": "Ask the AI chat",
            "all": "Show every place ({n})", "browse": "Browse the lists",
+           "scope": "Finds places by name, dish or area, and guides; ask the AI chat your travel questions.",
+           "related": "Related guides", "syn": "Also searched: ",
            "diet": "This site has no halal, vegetarian, vegan or allergy information on its restaurants. Ask the"
                    " restaurant before you go; when the site has its phone number, it is on the restaurant's page."},
     "ja": {"bar": "場所・料理・地域を検索", "go": "検索", "close": "検索を閉じる", "open": "検索",
@@ -692,6 +694,8 @@ SEARCH_WORDS = {
            "menu": "料理：", "other": "別名：", "via": "経由：", "des": "指定：", "of": "{m}件中{n}件",
            "sug": "もしかして：", "ask": "AIチャットに聞く",
            "all": "すべての場所を表示（{n}か所）", "browse": "一覧から探す",
+           "scope": "場所の名前・料理・地域・ガイドを探せます。旅行の質問はAIチャットへどうぞ。",
+           "related": "関連ガイド", "syn": "あわせて検索：",
            "diet": "このサイトには飲食店のハラール・ベジタリアン・ヴィーガン・アレルギーの情報がありません。"
                    "訪れる前にお店に直接確認してください。電話番号がわかる場合は、そのお店のページに載っています。"},
     "zh-hans": {"bar": "搜索地点、菜品、地区", "go": "搜索", "close": "关闭搜索", "open": "搜索",
@@ -702,6 +706,8 @@ SEARCH_WORDS = {
                 "menu": "菜品：", "other": "别名：", "via": "途经：", "des": "认定：", "of": "{m}条中的{n}条",
                 "sug": "您是不是要找：", "ask": "询问AI助手",
                 "all": "显示全部地点（{n}个）", "browse": "按列表查找",
+                "scope": "按名称、菜品、地区查找地点和指南；旅行问题请问AI助手。",
+                "related": "相关指南", "syn": "同时搜索：",
                 "diet": "本网站没有餐厅的清真、素食或过敏原信息。前往前请直接向餐厅确认；本网站有餐厅电话时，可在该餐厅的页面上找到。"},
     "zh-hant": {"bar": "搜尋地點、菜色、地區", "go": "搜尋", "close": "關閉搜尋", "open": "搜尋",
                 "label": "地點名稱、菜色、地區，或路線、指南、活動名稱", "ph": "名稱、菜色或地區",
@@ -711,6 +717,8 @@ SEARCH_WORDS = {
                 "menu": "菜色：", "other": "別名：", "via": "途經：", "des": "認定：", "of": "{m}筆中的{n}筆",
                 "sug": "您是不是要找：", "ask": "詢問AI助手",
                 "all": "顯示全部地點（{n}處）", "browse": "依列表查找",
+                "scope": "依名稱、菜色、地區查找地點和指南；旅行問題請問AI助手。",
+                "related": "相關指南", "syn": "同時搜尋：",
                 "diet": "本網站沒有餐廳的清真、素食或過敏原資訊。前往前請直接向餐廳確認；本網站有餐廳電話時，可在該餐廳的頁面上找到。"},
     "de": {"bar": "Orte, Gerichte, Viertel suchen", "go": "Suchen", "close": "Suche schließen", "open": "Suche",
            "label": "Ortsname, Gericht, Viertel, Route, Ratgeber oder Veranstaltung", "ph": "Name, Gericht oder Viertel",
@@ -720,6 +728,8 @@ SEARCH_WORDS = {
            "menu": "Gericht: ", "other": "Auch: ", "via": "Stationen: ", "des": "Ausgezeichnet: ", "of": "{n} von {m}",
            "sug": "Meinten Sie: ", "ask": "Den KI-Chat fragen",
            "all": "Alle Orte zeigen ({n})", "browse": "In den Listen suchen",
+           "scope": "Findet Orte nach Name, Gericht oder Viertel und Ratgeber; Reisefragen beantwortet der KI-Chat.",
+           "related": "Passende Ratgeber", "syn": "Auch gesucht: ",
            "diet": "Diese Website hat zu ihren Restaurants keine Angaben zu halal, vegetarisch, vegan oder Allergenen."
                    " Fragen Sie vor dem Besuch im Restaurant nach; hat die Website seine Telefonnummer, steht sie"
                    " auf der Seite des Restaurants."},
@@ -733,6 +743,9 @@ SEARCH_WORDS = {
            "des": "Labellisé : ", "of": "{n} sur {m}",
            "sug": "Vouliez-vous dire : ", "ask": "Demander au chat IA",
            "all": "Afficher tous les lieux ({n})", "browse": "Parcourir les listes",
+           "scope": "Trouve les lieux par nom, plat ou quartier, et les guides ; posez vos questions de voyage"
+                    " au chat IA.",
+           "related": "Guides liés", "syn": "Recherché aussi : ",
            "diet": "Ce site n’a aucune information halal, végétarienne, végane ou sur les allergènes pour ses restaurants."
                    " Renseignez-vous auprès du restaurant avant d’y aller ; quand le site a son numéro de téléphone,"
                    " il figure sur la page du restaurant."},
@@ -745,6 +758,8 @@ SEARCH_WORDS = {
            "of": "{n} de {m}",
            "sug": "Quizá quiso decir: ", "ask": "Preguntar al chat IA",
            "all": "Ver todos los lugares ({n})", "browse": "Buscar en las listas",
+           "scope": "Busca lugares por nombre, plato o barrio, y guías; haga sus preguntas de viaje al chat IA.",
+           "related": "Guías relacionadas", "syn": "También se buscó: ",
            "diet": "Este sitio no tiene información halal, vegetariana, vegana ni sobre alérgenos de sus restaurantes."
                    " Consulte al restaurante antes de ir; cuando el sitio tiene su teléfono, figura en la página"
                    " del restaurante."},
@@ -757,6 +772,9 @@ SEARCH_WORDS = {
            "of": "{n} из {m}",
            "sug": "Возможно, вы искали: ", "ask": "Спросить ИИ-чат",
            "all": "Показать все места ({n})", "browse": "Искать по спискам",
+           "scope": "Ищет места по названию, блюду или району, а также путеводители; вопросы о поездке"
+                    " задайте ИИ-чату.",
+           "related": "Связанные путеводители", "syn": "Также искали: ",
            "diet": "На этом сайте нет сведений о халяльной, вегетарианской или веганской еде и об аллергенах в"
                    " ресторанах. Уточните в ресторане перед визитом; если на сайте есть его телефон, он указан"
                    " на странице ресторана."},
@@ -857,35 +875,51 @@ NEAR_WORDS = {
 # the words of templates/_filters.html.j2 for Korean and every version (hand-written like NEAR_WORDS, so a version never
 # drops out of the build for a missing string). The chips' own labels are the data's (type, 권역, theme and check
 # labels from strings.json); the filter VALUES are the Korean ones in every version (one URL vocabulary: ?type=한식 …).
-# of: after the count while a filter is set ({m} = every place of the list).
+# of: after the count while a filter is set ({m} = every place of the list). clear_one / clear_all: the buttons of the
+# zero-result panel (the first site's outside evaluation 2026-10-18, fc51ca0ec: two filters left only a sentence) — one
+# per filter that brings rows back on its own ({v} = that chip's label in this version) and the reset of every filter.
+# off_map: after the map caption, the shown places without coordinates ({n}; worded without a plural form, so one
+# string serves 1 and 23 alike).
 LIST_WORDS = {
     "ko": {"dish": "메뉴", "all_dishes": "모든 메뉴", "type": "유형", "all": "전체", "filters": "필터", "view": "보기", "list": "목록", "map": "지도", "area": "권역",
            "all_areas": "모든 권역", "theme": "테마", "all_themes": "모든 테마",
-           "empty": "조건에 맞는 곳이 없습니다. 필터를 바꿔 보세요.", "of": " (전체 {m}곳 중)"},
+           "empty": "조건에 맞는 곳이 없습니다. 필터를 바꿔 보세요.", "of": " (전체 {m}곳 중)",
+           "clear_one": "{v} 조건 해제", "clear_all": "전체 조건 초기화", "off_map": "지도에 없는 {n}곳은 목록에서"},
     "en": {"dish": "Dish", "all_dishes": "All dishes", "type": "Type", "all": "All", "filters": "Filters", "view": "View", "list": "List", "map": "Map", "area": "Area",
            "all_areas": "All areas", "theme": "Theme", "all_themes": "All themes",
-           "empty": "No places match these filters. Try changing them.", "of": " (of {m})"},
+           "empty": "No places match these filters. Try changing them.", "of": " (of {m})",
+           "clear_one": "Remove filter: {v}", "clear_all": "Clear all filters", "off_map": "Not on the map: {n} (see the list)"},
     "ja": {"dish": "メニュー", "all_dishes": "すべてのメニュー", "type": "種類", "all": "すべて", "filters": "絞り込み", "view": "表示", "list": "一覧", "map": "地図", "area": "エリア",
            "all_areas": "すべてのエリア", "theme": "テーマ", "all_themes": "すべてのテーマ",
-           "empty": "条件に合う場所がありません。絞り込みを変えてください。", "of": "（全{m}か所中）"},
+           "empty": "条件に合う場所がありません。絞り込みを変えてください。", "of": "（全{m}か所中）",
+           "clear_one": "「{v}」を解除", "clear_all": "条件をすべて解除", "off_map": "地図にない{n}か所は一覧で"},
     "zh-hans": {"dish": "菜品", "all_dishes": "全部菜品", "type": "类型", "all": "全部", "filters": "筛选", "view": "查看方式", "list": "列表", "map": "地图", "area": "区域",
                 "all_areas": "全部区域", "theme": "主题", "all_themes": "全部主题",
-                "empty": "没有符合条件的地点，请更改筛选条件。", "of": "（共{m}个）"},
+                "empty": "没有符合条件的地点，请更改筛选条件。", "of": "（共{m}个）",
+                "clear_one": "取消“{v}”", "clear_all": "清除全部筛选条件", "off_map": "不在地图上的{n}个地点请见列表"},
     "zh-hant": {"dish": "菜品", "all_dishes": "全部菜品", "type": "類型", "all": "全部", "filters": "篩選", "view": "檢視方式", "list": "列表", "map": "地圖", "area": "區域",
                 "all_areas": "全部區域", "theme": "主題", "all_themes": "全部主題",
-                "empty": "沒有符合條件的地點，請變更篩選條件。", "of": "（共{m}處）"},
+                "empty": "沒有符合條件的地點，請變更篩選條件。", "of": "（共{m}處）",
+                "clear_one": "取消「{v}」", "clear_all": "清除全部篩選條件", "off_map": "不在地圖上的{n}處地點請見列表"},
     "de": {"dish": "Gericht", "all_dishes": "Alle Gerichte", "type": "Art", "all": "Alle", "filters": "Filter", "view": "Ansicht", "list": "Liste", "map": "Karte", "area": "Gebiet",
            "all_areas": "Alle Gebiete", "theme": "Thema", "all_themes": "Alle Themen",
-           "empty": "Keine Orte passen zu diesen Filtern. Ändern Sie die Auswahl.", "of": " (von {m})"},
+           "empty": "Keine Orte passen zu diesen Filtern. Ändern Sie die Auswahl.", "of": " (von {m})",
+           "clear_one": "Filter entfernen: {v}", "clear_all": "Alle Filter zurücksetzen",
+           "off_map": "Nicht auf der Karte: {n} (siehe Liste)"},
     "fr": {"dish": "Plat", "all_dishes": "Tous les plats", "type": "Type", "all": "Tous", "filters": "Filtres", "view": "Affichage", "list": "Liste", "map": "Carte",
            "area": "Secteur", "all_areas": "Tous les secteurs", "theme": "Thème", "all_themes": "Tous les thèmes",
-           "empty": "Aucun lieu ne correspond à ces filtres. Modifiez-les.", "of": " (sur {m})"},
+           "empty": "Aucun lieu ne correspond à ces filtres. Modifiez-les.", "of": " (sur {m})",
+           "clear_one": "Retirer le filtre : {v}", "clear_all": "Effacer tous les filtres",
+           "off_map": "Hors de la carte : {n} (voir la liste)"},
     "es": {"dish": "Plato", "all_dishes": "Todos los platos", "type": "Tipo", "all": "Todos", "filters": "Filtros", "view": "Vista", "list": "Lista", "map": "Mapa", "area": "Zona",
            "all_areas": "Todas las zonas", "theme": "Tema", "all_themes": "Todos los temas",
-           "empty": "Ningún lugar coincide con estos filtros. Pruebe a cambiarlos.", "of": " (de {m})"},
+           "empty": "Ningún lugar coincide con estos filtros. Pruebe a cambiarlos.", "of": " (de {m})",
+           "clear_one": "Quitar el filtro: {v}", "clear_all": "Quitar todos los filtros",
+           "off_map": "Fuera del mapa: {n} (ver la lista)"},
     "ru": {"dish": "Блюдо", "all_dishes": "Все блюда", "type": "Тип", "all": "Все", "filters": "Фильтры", "view": "Вид", "list": "Список", "map": "Карта", "area": "Район",
            "all_areas": "Все районы", "theme": "Тема", "all_themes": "Все темы",
-           "empty": "Нет мест, подходящих под эти фильтры. Измените их.", "of": " (из {m})"},
+           "empty": "Нет мест, подходящих под эти фильтры. Измените их.", "of": " (из {m})",
+           "clear_one": "Убрать фильтр: {v}", "clear_all": "Сбросить все фильтры", "off_map": "Нет на карте: {n} (см. список)"},
 }
 
 

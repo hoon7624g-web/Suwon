@@ -264,11 +264,12 @@ def test_language_menu_links_counterparts_or_homes(site):
     # a Korean page without a twin in those versions: each version's list of the same kind, saying it is not translated
     # there in that version's words (QA 2026-10-15 SRC-03b; until then each version's home, with no note)
     stale = re.search(r'<details class="lang-menu".*?</details>', _ko_page(site, STALE).read_text("utf-8"), re.S).group(0)
-    for c in NEW:   # the stale place is an attraction: the version's 'Things to do' list
+    for c in NEW:   # the stale place is an attraction: the version's 'Things to do' list (its label is WORD here)
         assert (f'<a class="mast-lang" href="/{c}/places/" hreflang="{LC.get(c).html}" lang="{LC.get(c).html}">'
-                f'{LC.get(c).label}</a>') in stale, c
-    # the phone panel and the footer link the list too
-    assert len(re.findall(r'<li><a href="/ru/places/" hreflang="ru" lang="ru">Русский</a></li>',
+                f'{LC.get(c).label}<small class="lang-note">{WORD[c]} · {LC.get(c).untranslated}</small></a>'
+                ) in stale, c
+    # the phone panel and the footer carry the same note
+    assert len(re.findall(r'<li><a href="/ru/places/" hreflang="ru" lang="ru">Русский<small class="lang-note">',
                           _ko_page(site, STALE).read_text("utf-8"))) == 2
     # a version's page: its own item current, Korean = the Korean twin, the others their twins
     ja = (out / "ja" / "places" / slug / "index.html").read_text("utf-8")
@@ -300,17 +301,17 @@ def test_language_menu_sends_a_missing_page_to_the_list_with_a_note(site):
     guides = json.loads((data / "guides.json").read_text("utf-8"))
     ko_slug = next(g["slug"] for g in guides if g["id"] == "guide-02")   # no version translates it (en_min: guide-13)
     items = _menu_items(out / "guides" / ko_slug / "index.html")
-    assert items["en"][0] == "/en/guides/"
+    assert items["en"] == ("/en/guides/", "Guides · not translated")
     for c in NEW:
-        assert items[LC.get(c).html][0] == f"/{c}/guides/", c
-    hub = next(g["slug"] for g in guides if g["id"] == GUIDE)                 # every version has it
-    assert all(href != f"/{c}/guides/" for c, (href, _) in
+        assert items[LC.get(c).html] == (f"/{c}/guides/", html.escape(f"{WORD[c]} · {LC.get(c).untranslated}")), c
+    hub = next(g["slug"] for g in guides if g["id"] == GUIDE)                 # every version has it: no note
+    assert all(not note and href != f"/{c}/guides/" for c, (href, note) in
                ((c, _menu_items(out / "guides" / hub / "index.html")[LC.get(c).html]) for c in NEW))
-    # a Korean-only page: each version's home
+    # a Korean-only page: each version's home, with the word for home
     items = _menu_items(out / "map" / "index.html")
-    assert items["en"][0] == "/en/"
+    assert items["en"] == ("/en/", "Home · not translated")
     for c in NEW:
-        assert items[LC.get(c).html][0] == f"/{c}/", c
+        assert items[LC.get(c).html] == (f"/{c}/", html.escape(f"{WORD[c]} · {LC.get(c).untranslated}")), c
     assert "lang-note" not in (out / "404.html").read_text("utf-8")
 
 
@@ -474,6 +475,24 @@ def test_missing_language_and_incomplete_strings(tmp_path, capsys):
     errors, warnings, _ = validate(data, out, "sample")
     assert errors == [], errors[:5]
     assert any("/es/" in w and "chrome" in w for w in warnings)
+
+
+def test_complete_policy_stops_the_build_on_a_missing_translation(tmp_path, capsys):
+    """site.json intl.require_complete (user instruction 2026-10-24): a version without the translation of a published
+    record stops the build and names what is missing — the record is not left out, its name not filled by sound."""
+    data = tmp_path / "data"
+    shutil.copytree(SAMPLE, data)
+    site = json.loads((data / "site.json").read_text("utf-8"))
+    site["operator"]["contact"] = "corrections@test.invalid"
+    site["languages"] = ["ko", "ja"]
+    site["intl"] = {"require_complete": True}
+    (data / "site.json").write_text(json.dumps(site, ensure_ascii=False), "utf-8")
+    pid = json.loads((data / "places.json").read_text("utf-8"))[0]["id"]
+    write_translations(data, ["ja"], stale=None, places=(pid,), guide=None, course=None, series=None)
+    capsys.readouterr()
+    with pytest.raises(SystemExit, match="외국어 판 번역이 모자라"):
+        build(data, tmp_path / "dist", "sample")
+    assert "오류: ja: 번역이 없는 places" in capsys.readouterr().err
 
 
 def test_validator_catches_wrong_script_on_a_page(site, tmp_path):

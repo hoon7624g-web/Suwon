@@ -74,6 +74,24 @@ MODES = {
 # Short labels for the title, from the key fact rows a page actually shows (P1-1). checkout/spendtime: no label.
 TITLE_LABELS = {"usetime": "이용시간", "usetime_restdate": "영업시간", "restdate": "쉬는 날", "usefee": "요금",
                 "parking": "주차", "parking_seats": "주차", "parkingfee": "주차", "checkin": "체크인", "menu": "메뉴"}
+# A restaurant's title says what people search for a restaurant (the first site's Search Console 2026-10-22, f6018ea10): its
+# hours as 영업시간 and its dish before the closed day — '○○ 영업시간·메뉴·쉬는 날'. The other kinds keep the key-row order.
+FOOD_TITLE_ORDER = ("usetime", "usetime_restdate", "menu", "restdate", "parking", "parking_seats", "parkingfee", "usefee")
+
+
+def title_keys(kind: str, keys: list[str]) -> list[str]:
+    """The key-row keys in the order the title names them (FOOD_TITLE_ORDER for a restaurant)."""
+    if kind != "food":
+        return list(keys)
+    rank = {k: i for i, k in enumerate(FOOD_TITLE_ORDER)}
+    return sorted(keys, key=lambda k: rank.get(k, len(rank)))
+
+
+def title_label(kind: str, key: str) -> str:
+    """The title's word for a key row: a restaurant's 이용시간 is its 영업시간."""
+    return "영업시간" if kind == "food" and key == "usetime" else TITLE_LABELS[key]
+
+
 KO_WEEKDAYS = "월화수목금토일"
 SEARCH_BOTS = ["OAI-SearchBot", "ChatGPT-User", "Claude-SearchBot", "Claude-User", "PerplexityBot",
                "Perplexity-User", "Googlebot", "Bingbot", "Yeti", "Daumoa"]
@@ -806,6 +824,9 @@ def place_line(head: str, rows: list[dict], limit: int = DESC_MAX) -> str:
     out = squash_ws(head)
     for r, value in settled_facts(rows):
         label = "전화" if r["key"] == "infocenter" else r["label"]  # the first screen's key line calls it 전화
+        # one value of two parts ('가능, 요금 무료') keeps them together: in a list of '<label> <value>' items the second
+        # part would read as an item of its own ('…, 주차 가능, 요금 무료' as if the admission were free)
+        value = value.replace(", ", "·")
         nxt = f"{out}, {label} {value}"
         if len(nxt) + 1 <= limit:
             out = nxt
@@ -813,6 +834,9 @@ def place_line(head: str, rows: list[dict], limit: int = DESC_MAX) -> str:
 
 
 DESC_SHORT = 40      # under this a description takes one more whole sentence or fact while it fits
+# a place description still under this after its facts takes the phone, then the summary's next sentence, while they
+# fit (the first site's Search Console 2026-10-22: place descriptions using under 60 of the 80 characters — a short snippet)
+DESC_FILL = 60
 FIGURE = re.compile(r"\d+(?:[:.,]\d+)*")
 WORD = re.compile(r"[0-9A-Za-z가-힣]+(?:[:.,]\d+)*")
 # how a summary says a value in its own words (compared without spaces): '쉬는 날 없이 상시 개방합니다' says 연중무휴
@@ -842,9 +866,10 @@ def said_already(key: str, value: str, said: str) -> bool:
 def answer_description(summary: str, fallback: str, key_rows: list[dict], limit: int = DESC_MAX,
                        head: str = "", extra_rows: list[dict] | tuple = ()) -> str:
     """A place page's description, within `limit`; a sentence is never cut, no boilerplate tail.
-    - The summary's first sentence when it fits (the next one too while under DESC_SHORT), plus up to two short (≤30
+    - The summary's first sentence when it fits (the next one too while under DESC_SHORT), plus up to three short (≤30
       chars) key-row values that no other source contradicts and the summary does not already say, each only while the
-      total fits; still under DESC_SHORT, an extra row (the phone the first screen shows) the same way.
+      total fits; still under DESC_FILL, an extra row (the phone the first screen shows) the same way, then the
+      summary's next whole sentences while they fit.
     - A first sentence longer than `limit`: the place's fact line instead (place_line: head + key rows + extra rows);
       still under DESC_SHORT, the summary's next whole sentences while they fit. Without a head, the fallback sentence."""
     sentences = summary_sentences(squash_ws(summary)) or [fallback]
@@ -854,17 +879,19 @@ def answer_description(summary: str, fallback: str, key_rows: list[dict], limit:
             return fallback
         out = place_line(head, list(key_rows) + list(extra_rows), limit)
         for nxt in sentences[1:]:
-            if len(out) >= DESC_SHORT or len(out) + 1 + len(nxt) > limit:
+            if len(out) >= DESC_FILL or len(out) + 1 + len(nxt) > limit:
                 break
             out = f"{out} {nxt}"
-        return out
+        return with_call(out, limit)
+    used = 1
     for nxt in sentences[1:]:
         if len(out) >= DESC_SHORT or len(out) + 1 + len(nxt) > limit:
             break
-        out = f"{out} {nxt}"
+        out, used = f"{out} {nxt}", used + 1
+    out = with_call(out, limit)   # the call line of a kept conflict comes before the fact rows
     added, said = 0, out
     for r, value in settled_facts(key_rows):
-        if added == 2:
+        if added == 3:
             break
         sentence = f"{r['label']}: {value}."
         if len(out) + 1 + len(sentence) > limit:
@@ -874,9 +901,27 @@ def answer_description(summary: str, fallback: str, key_rows: list[dict], limit:
         out, added = f"{out} {sentence}", added + 1
     for r, value in settled_facts(extra_rows):
         sentence = f"{'전화' if r['key'] == 'infocenter' else r['label']}: {value}."
-        if len(out) < DESC_SHORT and len(out) + 1 + len(sentence) <= limit and not said_already(r["key"], value, said):
+        if len(out) < DESC_FILL and len(out) + 1 + len(sentence) <= limit and not said_already(r["key"], value, said):
             out = f"{out} {sentence}"
-    return out
+    for nxt in sentences[used:]:   # still short: the summary's next whole sentence
+        if len(out) >= DESC_FILL or len(out) + 1 + len(nxt) > limit:
+            break
+        out = f"{out} {nxt}"
+    return with_call(out, limit)
+
+
+DIFFERS, DIFFERS_CALL = "출처마다 다릅니다.", "출처마다 달라 방문 전에 전화로 확인해야 합니다."
+
+
+def with_call(text: str, limit: int) -> str:
+    """A description that keeps a summary's '…은 출처마다 다릅니다.' but not the sentence that carried the call line
+    (tools/place_text says it once, after the last value that differs) gets the call on its last such sentence, while
+    it fits (CLAUDE.md 3.2: two sources that differ are shown with '방문 전 전화 확인')."""
+    if DIFFERS not in text or "방문 전에 전화로 확인" in text or "방문 전 전화 확인" in text:
+        return text
+    i = text.rfind(DIFFERS)
+    out = text[:i] + DIFFERS_CALL + text[i + len(DIFFERS):]
+    return out if len(out) <= limit else text
 
 
 def guide_description(g: dict, S, limit: int = DESC_MAX) -> str:
@@ -976,8 +1021,9 @@ def entity_ctx(e: dict, S: State) -> dict:
     list_cfg = LISTS.get(kind, LISTS["attraction"])
     crumbs = [("홈", S.site_url + "/"), (list_cfg["title"], S.abs(list_cfg["path"])), (e["name"], e["_url"])]
     # a seat count alone ('30석') answers no parking question: no '주차' in the title
-    labels = list(dict.fromkeys(TITLE_LABELS[r["key"]] for r in key_rows if r["key"] in TITLE_LABELS
-                                and not (r["key"] == "parking_seats" and parking_seats_half(e) == "seats")))[:3]
+    title_rows = [r["key"] for r in key_rows if r["key"] in TITLE_LABELS
+                  and not (r["key"] == "parking_seats" and parking_seats_half(e) == "seats")]
+    labels = list(dict.fromkeys(title_label(kind, k) for k in title_keys(kind, title_rows)))[:3]
     title = f"{titled_name(e, city, S.shared_names)} {'·'.join(labels) or '방문 정보·지도'}"  # base adds ' | site_name'
     summary = e.get("summary") or ""
     # no summary: where it is ('OO광역시 한빛구 한빛동1가', City.place_line) — a stock sentence, so never indexable
@@ -1128,6 +1174,77 @@ def _src_note(src: dict) -> str:
     """'출처: 한국관광공사 TourAPI' — the provider only; 확인일 stays in the data and JSON-LD, never in the text
     (operator decision 2026-10-09: no visible check dates)."""
     return f"출처: {src.get('provider') or '출처 미기재'}"
+
+
+def _rss_date(iso: str | None) -> str:
+    """RFC 2822 date ('Sat, 24 Oct 2026 09:00:00 +0900') from a data YYYY-MM-DD date; '' when none."""
+    if not iso or not re.match(r"^\d{4}-\d{2}-\d{2}", str(iso)):
+        return ""
+    d = dt.date.fromisoformat(str(iso)[:10])
+    wk = ("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")[d.weekday()]
+    mo = ("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")[d.month - 1]
+    return f"{wk}, {d.day:02d} {mo} {d.year} 09:00:00 +0900"
+
+
+def rss_xml(S: State) -> str:
+    """RSS 2.0 feed (/rss.xml, the first site's 3077a6aee; base.html.j2 links it from the Korean pages) of the
+    published guides, courses and event series, newest data date first. The channel title names only the kinds the
+    feed holds; the texts are the pages' own summaries (no new wording here)."""
+    region = S.site.get("region", "")
+    desc = squash_ws(S.site.get("description")) or f"{region} 여행 정보와 가이드·코스를 전합니다."
+    entries: list[tuple[str, str, str, str, str]] = []
+    for g in S.guides:
+        entries.append((g.get("_page_date") or "", g["_url"], g["title"],
+                        squash_ws(present.decaution(g.get("summary"))), g.get("category") or "가이드"))
+    for c in S.courses:
+        lede = present.course_stop_details(S.course_vms[c["slug"]])["lede"] if c["slug"] in S.course_vms else ""
+        summary = lede if c.get("summary_auto") else squash_ws(c.get("summary"))
+        entries.append((c.get("_page_date") or "", c["_url"], display_value("course_name", c["name"]),
+                        squash_ws(summary), "여행 코스"))
+    for sr in S.series:
+        ev = sr["newest"]
+        entries.append((sr.get("checked") or "", sr["_url"], f"{ev['_title']} 기간·장소",
+                        event_description(ev, sr["name"]), "행사·축제"))
+    kinds = [k for k, has in (("가이드", S.guides), ("코스", S.courses), ("행사", S.series)) if has]
+    title = f"{S.site['site_name']} — {region} {'·'.join(kinds)}" if region and kinds else S.site["site_name"]
+    entries.sort(key=lambda x: (x[0], x[1]), reverse=True)
+    last_iso = max((x[0] for x in entries if x[0]), default="")
+    head = ['<?xml version="1.0" encoding="UTF-8"?>',
+            '<rss version="2.0">',
+            "  <channel>",
+            f"    <title>{escape(title)}</title>",
+            f"    <link>{escape(S.site_url + '/')}</link>",
+            f"    <description>{escape(desc)}</description>",
+            "    <language>ko</language>"]
+    if _rss_date(last_iso):
+        head.append(f"    <lastBuildDate>{_rss_date(last_iso)}</lastBuildDate>")
+    items = []
+    for iso, url, it_title, it_desc, cat in entries:
+        pub = f"\n      <pubDate>{_rss_date(iso)}</pubDate>" if _rss_date(iso) else ""
+        items.append("    <item>\n"
+                     f"      <title>{escape(it_title)}</title>\n"
+                     f"      <link>{escape(url)}</link>\n"
+                     f'      <guid isPermaLink="true">{escape(url)}</guid>\n'
+                     f"      <category>{escape(cat)}</category>\n"
+                     f"      <description>{escape(it_desc)}</description>{pub}\n"
+                     "    </item>")
+    return "\n".join(head + items + ["  </channel>", "</rss>", ""])
+
+
+def copy_root_files(data_dir: Path, out: Path) -> list[str]:
+    """Files a person puts in <data>/root_files/ (a search engine's ownership file such as naver<hash>.html) go to
+    the site root of a production build as they are — public/ is rebuilt from scratch, so a file added there by hand
+    would be lost. Only plain files directly in the folder; one that would replace a built file is refused."""
+    src = Path(data_dir) / "root_files"
+    copied = []
+    for f in sorted(src.iterdir()) if src.is_dir() else []:
+        if not f.is_file() or f.name.startswith("."):
+            continue
+        if (out / f.name).exists():
+            raise SystemExit(f"root_files/{f.name}: 빌드가 만든 파일과 이름이 같습니다")
+        shutil.copyfile(f, out / f.name)
+        copied.append(f.name)
+    return copied
 
 
 def llms_txt(S: State) -> tuple[str, str]:
@@ -1313,6 +1430,10 @@ ABROAD_PLATFORMS = {"instagram": "Instagram", "threads": "Threads", "x": "X", "f
 # /abroad/ groups its articles by who published them, in this order
 ABROAD_SOURCES = (("press", "언론 기사"), ("official", "공공 매체"), ("travel", "여행 매체·가이드북"), ("blog", "해외 여행 블로그"),
                   ("research", "연구"))
+# source_type of a reference work in another language — an encyclopedia entry, a heritage listing's page (QA 2026-10-24
+# item 06): not a piece an outlet published, so not under '외신·해외 매체', not the home's news, no publication date;
+# /abroad/ lists them apart as '외국어 참고자료' (and a place page's media block so names them)
+ABROAD_REFERENCE = ("reference", "외국어 참고자료")
 
 
 def load_abroad(data_dir: Path, statuses=("published",)) -> list[dict]:
@@ -1328,8 +1449,9 @@ def load_abroad(data_dir: Path, statuses=("published",)) -> list[dict]:
             continue
         if a.get("kind") == "post" and a.get("platform") not in ABROAD_PLATFORMS:
             continue
+        ref = a.get("source_type") == ABROAD_REFERENCE[0]   # a reference page's lead picture has its own licence
         items.append({**a, "place_slugs": list(a.get("place_slugs") or []),
-                      "image": a["image"] if str(a.get("image") or "").startswith("https://") else "",
+                      "image": a["image"] if str(a.get("image") or "").startswith("https://") and not ref else "",
                       "platform_label": ABROAD_PLATFORMS.get(a.get("platform"), "")})
     return sorted(items, key=lambda a: a.get("date") or "", reverse=True)   # '' (undated) sorts last
 
@@ -1793,20 +1915,25 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
         # near the screen). Korean only, like every page added after 2026-10-09.
         path = "/abroad/"
         crumbs = [("홈", S.site_url + "/"), ("해외에서 본 " + region, S.abs(path))]
-        articles = [a for a in S.abroad if a.get("kind") == "article"]
+        refs = [a for a in S.abroad if a.get("kind") == "article" and a.get("source_type") == ABROAD_REFERENCE[0]]
+        articles = [a for a in S.abroad if a.get("kind") == "article" and a not in refs]
         posts = [a for a in S.abroad if a.get("kind") == "post"]
-        # the counts the page shows, in one sentence within DESC_MAX (the outlet names are on the page, not in here)
-        desc = (f"{region} 관련 외신·해외 매체 기사 {len(articles)}건과 외국어 영상 {len(S.abroad_videos)}편"
-                + (f", SNS 게시물 {len(posts)}건" if posts else "") + "을 원문 링크와 함께 모았습니다.")
-        page = _simple_page(S, path, f"해외에서 본 {region} — 외신 기사·외국어 영상" + ("·SNS" if posts else ""),
-                            desc, crumbs, None, videos=bool(S.abroad_videos))
+        # the counts the page shows, in one sentence within DESC_MAX (the outlet names are on the page, not in here);
+        # only the parts it has — no '기사 0건' when its articles are reference works
+        parts = [p for p, n in ((f"외신·해외 매체 기사 {len(articles)}건", articles), (f"외국어 참고자료 {len(refs)}건", refs),
+                                (f"외국어 영상 {len(S.abroad_videos)}편", S.abroad_videos), (f"SNS 게시물 {len(posts)}건", posts)) if n]
+        desc = f"{region} 관련 " + ", ".join(parts) + "을 원문 링크와 함께 모았습니다."
+        heads = [w for w, n in (("외신 기사", articles), ("외국어 영상", S.abroad_videos), ("SNS", posts),
+                                ("외국어 참고자료", refs)) if n]
+        page = _simple_page(S, path, f"해외에서 본 {region} — " + "·".join(heads), desc, crumbs, None,
+                            videos=bool(S.abroad_videos))
         checked = latest(*(a.get("checked_at") for a in S.abroad), *(v.get("checked_at") for v in S.abroad_videos),
                          *(h["checked"] for h in S.abroad_highlights))
         groups = [{"id": f"ab-{k}", "key": k, "title": label,
                    "items": [a for a in articles if (a.get("source_type") or "press") == k]} for k, label in ABROAD_SOURCES]
         hl = abroad_highlights_vm(S) if S.abroad_highlights else None
         _render(env, S, out, "abroad.html.j2", path, page, "abroad", checked, articles=articles, posts=posts,
-                article_groups=[g for g in groups if g["items"]],
+                article_groups=[g for g in groups if g["items"]], refs=refs, refs_title=ABROAD_REFERENCE[1],
                 abroad_videos=S.abroad_videos, places=S.ent_by_slug, highlights=hl)
         if hl:   # the viewer (templates/_abroad_hl.html.j2 dialog) arrives with highlights.js on the first press
             viewer = env.get_template("_abroad_hl.html.j2").module.dialog(hl)
@@ -1824,8 +1951,10 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
         page = _simple_page(S, path, f"{region} 여행 검색 — 장소·대표 메뉴·동·코스",
                             f"{region}의 장소 이름, 대표 메뉴, 동 이름, 코스·가이드·행사 이름으로 찾습니다.", crumbs,
                             robots="noindex, follow")
+        # the query words, the city and the planner (built just below, under the same condition) for search.js
         _render(env, S, out, "search.html.j2", path, page, "search", None, in_sitemap=False,
-                directory=present.search_directory(S), n_index=len(index))
+                directory=present.search_directory(S), n_index=len(index),
+                search_data=present.search_form_data(region, "/plan/" if S.entities else ""))
 
     if S.entities:
         # /plan/: the AI course planner (pipeline/plan.py; chatbot/planner.js answers /api/plan/). The page draws a plan
@@ -1839,7 +1968,9 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
         page = _simple_page(S, path, f"AI 코스 만들기 — 조건대로 짜는 {region} 여행 일정",
                             f"날짜·이동 수단·동행·취향을 고르면 {region}의 장소 정보로 일정을 짜고, 휴무·운영시간·입장료 합계를 "
                             "사이트 자료로 확인합니다.", crumbs, robots="noindex, follow")
-        _render(env, S, out, "plan.html.j2", path, page, "plan", None, in_sitemap=False, **plan.plan_vm(S))
+        # (each need's count of places to visit the data says fit it: the form shows it when the need is picked)
+        _render(env, S, out, "plan.html.j2", path, page, "plan", None, in_sitemap=False, **plan.plan_vm(S),
+                need_n=chat_index.plan_need_counts(S))
 
     path = "/about/"
     crumbs = [("홈", S.site_url + "/"), ("소개·출처", S.abs(path))]
@@ -1922,10 +2053,20 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
         if st.get("missing_strings"):
             print(f"경고: {code} strings.json에 없는 이름표 {len(st['missing_strings'])}개(대신 키를 표시) "
                   f"{st['missing_strings'][:5]}", file=sys.stderr)
+        if st.get("name_misses"):
+            print(f"경고: {code} 번역된 이름이 없어 소리 옮김으로 대신한 이름 {len(st['name_misses'])}개 "
+                  f"{st['name_misses'][:5]}", file=sys.stderr)
     for code, missing in S.intl.skipped.items():  # data/<region>/<code> exists but its UI words are incomplete
         S.stats.setdefault("intl_skipped", {})[code] = len(missing)
         print(f"경고: {code} strings.json에 화면 문구(chrome.*) {len(missing)}개가 없어 이 언어 페이지를 만들지 않음 "
               f"(예: {missing[:3]}) — tools/en_content.py prepare --lang {code}의 strings 묶음", file=sys.stderr)
+    # site.json intl.require_complete: a version missing a translation stops the build (no page is left out and no
+    # value or name is filled by its sound in its place) — the list says what to translate
+    incomplete = en_site.completeness_problems(S)
+    if incomplete:
+        for x in incomplete:
+            print(f"오류: {x}", file=sys.stderr)
+        raise SystemExit(f"외국어 판 번역이 모자라 빌드를 멈춥니다({len(incomplete)}건, site.json intl.require_complete)")
 
     # assets: the partials in templates/assets/css become one /assets/style.css (see site_css); the folder itself
     # is not published. AI art renditions (templates/assets/art, pipeline/art.py) go out only when a page uses them.
@@ -1939,9 +2080,12 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
     (out / "assets" / "style.css").write_text(site_css(art.slot_css_needed(out)), "utf-8")
     (out / "robots.txt").write_text(robots_txt(S), "utf-8")
     (out / "sitemap.xml").write_text(sitemap_xml(S), "utf-8")
+    (out / "rss.xml").write_text(rss_xml(S), "utf-8")
     short, full = llms_txt(S)
     (out / "llms.txt").write_text(short, "utf-8")
     (out / "llms-full.txt").write_text(full, "utf-8")
+    if mode == "production":   # search-engine ownership files a person keeps in <data>/root_files/
+        S.stats["root_files"] = copy_root_files(data_dir, out)
     # the site assistant's knowledge (pipeline/chat_index.py): /chat/catalog.txt, docs.json, index.json — api/chat.js
     # reads them from public/chat/ (vercel.json includeFiles)
     S.stats["chat"] = chat_index.export(S, out)

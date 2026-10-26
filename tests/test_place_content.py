@@ -1,6 +1,6 @@
 """tools/place_content.py: 작성자용 사실표(prepare), 기계 검사(check), 반영(merge).
 
-The data folder is a tmp copy: this city's site.json (read, never written) and three fake '[샘플]' places. City words in
+The data folder is a tmp copy: a 구·군 city's site.json (tests/fixtures/metro, read, never written) and three fake '[샘플]' places. City words in
 the sentences below come from that site.json (CITY.admin_line, CITY.districts), never from this file.
 """
 import ast
@@ -16,7 +16,7 @@ from tests import test_no_city_literals as literals
 from tools import place_content as pc
 
 ROOT = Path(__file__).resolve().parent.parent
-SITE = ROOT / "tests" / "fixtures" / "metro" / "site.json"
+SITE = ROOT / "tests" / "fixtures" / "metro" / "site.json"   # a 구·군 city config
 CITY = citymod.of(json.loads(SITE.read_text("utf-8")))
 ADMIN, GU = CITY.admin_line, CITY.districts[0]
 PARK, FOOD, STAY = "[샘플] 한빛공원", "[샘플] 누리식당", "[샘플] 다온스테이"
@@ -308,6 +308,6 @@ def test_the_tool_names_no_city():
     path = ROOT / "tools" / "place_content.py"
     consts = [(f"{path.name}:{n.lineno}", n.value) for n in ast.walk(ast.parse(path.read_text("utf-8")))
               if isinstance(n, ast.Constant) and isinstance(n.value, str)]
-    patterns = [getattr(literals, n) for n in dir(literals) if n.endswith("_RX")]   # the first city's and this one's
-    assert len(consts) > 50 and len(patterns) == 2
+    patterns = [getattr(literals, n) for n in dir(literals) if n.endswith("_RX")]   # the first city's, Daegu's and this one's
+    assert len(consts) > 50 and len(patterns) == 3
     assert [h for rx in patterns for h in literals.hits(rx, consts)] == []

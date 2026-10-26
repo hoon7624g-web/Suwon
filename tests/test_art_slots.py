@@ -1,4 +1,4 @@
-"""The AI art slots of the owner's second picture list (docs/handover/image_prompts_round2_2026-10-13.md, groups
+"""The AI art slots of the owner's second picture list (the first site's docs/handover/image_prompts_round2_2026-10-13.md, not in this repository; groups
 H·I·J·K·L·M·N·P·Q·S): theme.head, videos.head, course.banner, area, events.month, events.kind, abroad.group,
 og.<lang>, en.guide.banner and about.head, built through the one AI art system (pipeline/art.py,
 templates/_art.html.j2, css/49-art.css).
@@ -32,7 +32,7 @@ SAMPLE = ROOT / "data" / "sample"
 
 
 # ------------------------------------------------------------------ the slot tables and the event kinds
-# (the first site's owner picture list, docs/handover/image_prompts_round2_2026-10-13.md, and the checks of its
+# (the first site's owner picture list — not in this repository — and the checks of its
 # rows against that site's guide, course and theme ids are not part of this repository)
 def test_slot_names_follow_the_city_data():
     """videos.head.<key> and area.<key> take the keys the city's site.json gives (video_topics slugs, region anchor

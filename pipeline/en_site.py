@@ -560,6 +560,9 @@ class Site:
         self.hashes, self.recs = hashes, recs
         self.home = loc.home
         self.misses: set[str] = set()
+        # Korean names this version wrote by their sound because it had no translated form (fallback_name): an
+        # error when site.json intl.require_complete is on (build and validate list them)
+        self.name_misses: set[str] = set()
         self._cv: dict[str, dict] = {}     # course view models, each computed once (Site.cv)
 
         def current(kind: str, key: str) -> dict | None:
@@ -677,9 +680,17 @@ class Site:
             return "" if self.course_src["official"] else "_courses"
         return "_none"
 
-    def fallback_name(self, ko: str) -> str:
-        """A name with no translated form: Revised Romanization (Kontsevich Cyrillic in Russian)."""
+    def transcribe(self, ko: str) -> str:
+        """A proper noun written by its sound on purpose (a bus stop shown next to its Korean): Revised Romanization
+        (Kontsevich Cyrillic in Russian)."""
         return LC.kontsevich(ko) if self.loc.code == "ru" else romanize(ko)
+
+    def fallback_name(self, ko: str) -> str:
+        """A name with no translated form: its sound (transcribe), and the Korean is listed in name_misses — the
+        build and validate fail on it under site.json intl.require_complete (tools/intl_table.py fills the table)."""
+        if squash_ws(ko):
+            self.name_misses.add(squash_ws(ko))
+        return self.transcribe(ko)
 
     def first_sentence(self, text: str | None) -> str:
         return (sentences(text, self.loc) or [""])[0]
@@ -1318,11 +1329,21 @@ class Site:
             n = row["n"]
             start, end = notices.span(n)
             dates = loc.date(start) if start == end else f"{loc.date(start)}{'–' if loc.cjk else ' – '}{loc.date(end)}"
-            if n["kind"] == "hours":
+            last = self.t.s("notice_last_entry", time=n["last_entry"]) if n.get("last_entry") else ""
+            if notices.open_ended(n):   # a closure with no announced end: from its first day, reopening not announced
+                text = self.t.s("notice_closed_works" if n.get("reason") == "works" else "notice_closed_from",
+                                date=loc.date(start))
+            elif n["kind"] == "hours":
                 text = self.t.s("notice_hours", dates=dates, start=n["from"], end=n["to"])
-                if n.get("last_entry"):
-                    last = self.t.s("notice_last_entry", time=n["last_entry"])
+                if last:
                     text += f"（{last}）" if loc.cjk else f" ({last})"
+            elif n["kind"] == "free":
+                text = self.t.s("notice_free", dates=dates)
+                hours = f"{n['from']}–{n['to']}" + (f", {last}" if last else "") if n.get("from") and n.get("to") else ""
+                if hours:
+                    text += f"（{hours}）" if loc.cjk else f" ({hours})"
+                if n.get("extra_fee"):
+                    text += f" · {self.t.s('notice_fee_extra')}"
             else:
                 text = self.t.s(f"notice_{n['kind']}", dates=dates)
             out.append({"id": n["id"], "text": text, "provider": self.provider(n["provider"]), "url": n["url"]})
@@ -1606,7 +1627,7 @@ class Site:
         if mv is None:
             return None
         by_n = {s["n"]: s for s in stops}
-        romanized = lambda ko: {"ko": ko, "rr": self.fallback_name(re.sub(r"[()]", " ", ko)).strip()}  # noqa: E731
+        romanized = lambda ko: {"ko": ko, "rr": self.transcribe(re.sub(r"[()]", " ", ko)).strip()}  # noqa: E731
         bus = lambda rows: [{"n": r["n"], "name": by_n[r["n"]]["place_name"] or by_n[r["n"]]["name"],  # noqa: E731
                              "path": by_n[r["n"]]["path"], "id": r["id"],
                              "bus": [{**b, "stop": romanized(b["name"])} for b in r["bus"]]} for r in rows]
@@ -1966,34 +1987,40 @@ def _title(base: str, labels: list[str], limit: int = 70, loc: LC.Locale = EN) -
 
 
 def answer_description(summary: str, rows: list[dict], limit: int = 160, loc: LC.Locale = EN) -> str:
-    """The summary's first sentence (the next one too while short), then up to two short fact values no other
-    source contradicts ('Hours: 09:00–18:00.'). Whole sentences and whole values only; a first sentence longer
-    than the limit is cut back to its first clause (or its last whole word)."""
+    """The summary's first sentence (the next one too while short), then up to three short fact values no other
+    source contradicts ('Hours: 09:00–18:00.'; a value the page lists line by line is joined with '; ' / '、' when
+    it stays short). Whole sentences and whole values only; a first sentence longer than the limit is cut back to its
+    longest run of whole clauses that fits (or its last whole word). the first site's Search Console 2026-10-22 (f6018ea10,
+    639ff4c7a): a one-line description drew no click, so a short one takes the page's facts."""
     ss = sentences(summary, loc)
     stop, join = ("。", "") if loc.cjk else (".", " ")
     out = ss[0] if ss else ""
     if len(out) > limit:
+        # the longest run of whole clauses that fits — not the first clause alone, which left 'Urimil.' for
+        # 'Urimil, in Seosu-myeon, has …' (the first site's evaluation 2026-10-21: 39 descriptions under 30 characters)
+        bounds = [m.start() for m in re.finditer(r"[、，；]" if loc.cjk else r",\s|;\s|\s—\s", out)]
+        fit = [b for b in bounds if b <= limit - 1]
+        cut = out[: fit[-1]] if fit else ""
         if loc.cjk:
-            cut = re.split(r"[、，；]", out)[0]
-            out = cut if len(cut) <= limit - 1 else out[: limit - 1]
+            out = cut if len(cut) >= 20 else out[: limit - 1]
             return out.rstrip("、，；。") + stop
-        cut = re.split(r",\s|;\s|\s—\s", out)[0]
-        out = cut if len(cut) <= limit - 1 else out[: limit - 1].rsplit(" ", 1)[0]
+        out = cut if len(cut) >= 40 else out[: limit - 1].rsplit(" ", 1)[0]
         return out.rstrip(".,;") + "."
-    short = 30 if loc.cjk else 60
+    short = 45 if loc.cjk else 90
     for nxt in ss[1:]:
         if len(out) >= short or len(out) + len(join) + len(nxt) > limit:
             break
         out = f"{out}{join}{nxt}"
     added = 0
     for r in rows:
-        if added == 2:
+        if added == 3:
             break
         if r["conflict"] or r["key"] in ("address", "infocenter", "homepage", "reservationurl") or not r["text"]:
             continue
-        v = squash_ws(r["text"]).rstrip(".。")
+        lines = [re.sub(r"^[-•·*]\s*", "", squash_ws(x)) for x in str(r["text"]).split("\n") if squash_ws(x)]
+        v = ("、" if loc.cjk else "; ").join(lines).rstrip(".。")
         s = f"{r['label']}{loc.colon}{v}{stop}"
-        if "\n" in r["text"] or len(v) > 30 or len(out) + len(join) + len(s) > limit or v in out:
+        if len(v) > (30 if len(lines) == 1 else 45) or len(out) + len(join) + len(s) > limit or v in out:
             continue
         out, added = f"{out}{join}{s}", added + 1
     return out
@@ -2083,10 +2110,12 @@ class Pages:
         cfg = site.lists()[vm["kind"]]
         crumbs = self.crumbs((cfg["nav"], self.abs(cfg["path"])), (p["name"], p["url"]))
         labels: list[str] = []
-        for r in vm["practical"]:
-            if r["key"] == "parking_seats" and parking_seats_half(e) == "seats":
+        from .build import title_keys
+        keys = [r["key"] for r in vm["practical"]]
+        for key in title_keys(vm["kind"], keys):   # a restaurant: hours, its dish, then the closed day (the Korean title)
+            if key == "parking_seats" and parking_seats_half(e) == "seats":
                 continue   # a seat count alone answers no parking question (the Korean title: build.entity_ctx)
-            lab = site.T(f"TITLE_LABELS.{r['key']}")
+            lab = site.T(f"TITLE_LABELS.{key}")
             if lab and lab not in labels:
                 labels.append(lab)
         qualified = p["name"] if site.region in p["name"] else t.s("name_in_region", name=p["name"], r=site.region)
@@ -2291,8 +2320,8 @@ class Pages:
         (present.other_names). Without JS the page lists every place by kind, alphabetically. A utility page:
         noindex, not in the sitemap."""
         site, t, loc = self.site, self.t, self.loc
-        if not site.places:
-            return
+        # built even while this version has no place page yet (every one waiting for its translation): every page's
+        # masthead links here, and the guides, courses and events are still found
         home = site.home
         en = getattr(self.S, "en", None) if loc.code != "en" else None
         en_series = {x["slug"]: x for x in (en.series if en else [])}
@@ -2353,9 +2382,13 @@ class Pages:
                 "robots": "noindex, follow"}
         words = {"kinds": {"attraction": t.s("cat_attraction"), "food": t.s("cat_food"), "stay": t.s("cat_stay"),
                            "course": t.s("courses"), "guide": t.s("guides"), "event": t.s("events")},
-                 **{k: w[k] for k in ("none", "menu", "other", "via", "des", "of", "sug", "diet")}}
+                 **{k: w[k] for k in ("none", "menu", "other", "via", "des", "of", "sug", "diet", "related", "syn")}}
+        # the query words (Korean: this version's rows carry the Korean names) and the city in both versions; no
+        # planner here (/plan/ is Korean only)
+        city = " ".join(dict.fromkeys(x for x in (self.S.site.get("region"), site.region) if x))
+        data = present.search_form_data(city)
         self.render("en/search.html.j2", path, page, "search", None, in_sitemap=False, kinds=kinds, n_index=len(rows),
-                    words=json.dumps(words, ensure_ascii=False), sw=w)
+                    words=json.dumps(words, ensure_ascii=False), sw=w, search_data=data)
 
     def home_news(self, EV: dict) -> list[dict]:
         """The opening's news cards in this version (owner 2026-10-14: the other versions take the Korean home's
@@ -2547,6 +2580,40 @@ class Pages:
                     news=self.home_news(EV), services=self.home_services(counts, lists, len(EV["upcoming"])))
 
 
+def completeness_problems(S) -> list[str]:
+    """site.json intl.require_complete (City.intl_complete): what keeps a version listed in `languages` from being
+    whole — not built (no data/<city>/<code>/places.json, or UI words missing), a published Korean record with no
+    current translation (stale or missing), a label strings.json lacks, a name written by its sound because the
+    version had no translated form. Empty when the switch is off. The build and validate fail on any of them."""
+    if not S.city.intl_complete:
+        return []
+    if not (S.entities or S.guides or S.courses or S.events):   # nothing Korean to translate (a city with no data)
+        return []
+    intl = getattr(S, "intl", None) or Intl({})
+    out: list[str] = []
+    fix = "python tools/intl_table.py extract --data <도시 데이터> --lang {code}로 빠진 단위를 뽑아 번역표를 채운 뒤 apply --merge"
+    for code in S.city.languages:
+        if code == "ko":
+            continue
+        site = intl.sites.get(code)
+        if site is None:
+            miss = intl.skipped.get(code)
+            out.append(f"{code}: 판을 만들지 못함 — " + (f"strings.json 화면 문구 {len(miss)}개 없음 (예: {miss[:3]})"
+                                                    if miss else f"data/<도시>/{code}/places.json 없음"))
+            continue
+        for what, groups in (("한국어가 바뀐 뒤 다시 번역하지 않은(낡은)", site.stale), ("번역이 없는", site.untranslated)):
+            for kind, keys in groups.items():
+                if keys:
+                    out.append(f"{code}: {what} {kind} {len(keys)}건: {', '.join(map(str, keys[:12]))} — "
+                               + fix.format(code=code))
+        if code != "en" and site.misses:
+            out.append(f"{code}: strings.json에 없는 이름표 {len(site.misses)}개: {sorted(site.misses)[:12]}")
+        if site.name_misses:
+            out.append(f"{code}: 번역된 이름이 없어 소리 옮김으로 대신한 이름 {len(site.name_misses)}개: "
+                       f"{sorted(site.name_misses)[:12]} — " + fix.format(code=code))
+    return out
+
+
 def render(site: Site, env, out: Path, intl: Intl | None = None) -> dict:
     """Every page of one version; returns the build line's stats (pages, indexable, stale records skipped)."""
     pg = Pages(site, env, out, intl)
@@ -2566,6 +2633,7 @@ def render(site: Site, env, out: Path, intl: Intl | None = None) -> dict:
             "untranslated": {k: len(v) for k, v in site.untranslated.items()}}
     if site.loc.code != "en":
         out_["missing_strings"] = sorted(site.misses)
+    out_["name_misses"] = sorted(site.name_misses)
     return out_
 
 

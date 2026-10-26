@@ -1,5 +1,6 @@
-"""pipeline.city: site.json -> City (design 1.4, 3.1, 3.5, 3.6). The Daegu config (data/daegu), the sample's
-(data/sample, the first city's values) and the metro fixture (tests/fixtures/metro) must all load without problems."""
+"""pipeline.city: site.json -> City (design 1.4, 3.1, 3.5, 3.6). This city's config (data/suwon), the sample's
+(data/sample, the first city's values) and the metro fixture (tests/fixtures/metro: a 구·군 city, the Daegu config this
+engine was generalized on — its district rules are tested through it) must all load without problems."""
 import json
 import re
 from pathlib import Path
@@ -12,16 +13,17 @@ from pipeline.slugs import SLUG_RE
 from pipeline.textutil import display_address
 
 ROOT = Path(__file__).resolve().parent.parent
-SITES = {"daegu": ROOT / "tests" / "fixtures" / "metro", "suwon": ROOT / "data" / "suwon", "sample": ROOT / "data" / "sample", "metro": ROOT / "tests" / "fixtures" / "metro"}
+SITES = {"city": ROOT / "data" / "suwon", "sample": ROOT / "data" / "sample", "metro": ROOT / "tests" / "fixtures" / "metro"}
 
 
 def site_of(name):
     return json.loads((SITES[name] / "site.json").read_text("utf-8"))
 
 
-DAEGU = citymod.from_site(site_of("daegu"))
+CITY = citymod.from_site(site_of("city"))
 SAMPLE = citymod.from_site(site_of("sample"))
 METRO = citymod.from_site(site_of("metro"))
+DAEGU = citymod.from_site(site_of("metro"))     # the 구·군 config (its own object: the cache is per dict)
 
 
 # ---------------------------------------------------------------- loading
@@ -32,16 +34,23 @@ def test_configs_load_without_problems(name):
     assert c.region and c.region_admin and c.locality
 
 
-def test_daegu_config_values():
+def test_city_config_values():
+    # this city (data/suwon): a 시 in a 도 with its 구 (site.json districts), its 권역 anchors, every version switched on
+    assert CITY.districts == tuple(site_of("city")["districts"]) and CITY.region_mode == "anchors" and CITY.far is None
+    assert CITY.languages == tuple(site_of("city")["languages"]) and CITY.languages[0] == "ko"
+    assert CITY.admin_line == f"{site_of("city")['region_admin']} {site_of("city")['locality']}"
+    assert [a["key"] for a in CITY.anchors] == [a["key"] for a in site_of("city")["regions"]["anchors"]]
+    assert CITY.view()["search_examples"] == site_of("city")["search_examples"]
+    # the 구·군 config (tests/fixtures/metro)
     assert DAEGU.districts == ("중구", "동구", "서구", "남구", "북구", "수성구", "달서구", "달성군", "군위군")
     assert DAEGU.region_mode == "district" and DAEGU.slug_collision == "district" \
-        and DAEGU.languages == tuple(site_of("daegu")["languages"]) and DAEGU.languages[0] == "ko"   # the versions switched on (2026-10-16: en, ja)
+        and DAEGU.languages == tuple(site_of("metro")["languages"]) and DAEGU.languages[0] == "ko"
     assert DAEGU.admin_line == "대구광역시" and SAMPLE.admin_line == "전북특별자치도 군산시"
     assert DAEGU.region_label == "구·군" and DAEGU.none_label == "구·군 미기재" and DAEGU.far is None
     assert SAMPLE.region_mode == "anchors" and SAMPLE.far == {"m": 12000, "label": "먼 섬"} and SAMPLE.anchors == ()
     assert DAEGU.site_url == "https://metro.test" and METRO.districts == DAEGU.districts
     assert DAEGU.view() == {"admin_line": "대구광역시", "region": "대구", "region_label": "구·군", "area_label": "동·읍·면",
-                            "region_mode": "district", "search_examples": ["막창", "서문시장", "수성못"], "districts": list(DAEGU.districts),
+                            "region_mode": "district", "search_examples": site_of("metro")["search_examples"], "districts": list(DAEGU.districts),
                             "none_label": "구·군 미기재", "far_label": ""}
 
 
@@ -55,13 +64,13 @@ def test_required_keys_and_the_per_object_cache():
             citymod.from_site({k: v for k, v in base.items() if k != key})
     with pytest.raises(citymod.CityConfigError):
         citymod.from_site({**base, "region": "  "})
-    site = site_of("daegu")
+    site = site_of("metro")
     assert citymod.of(site) is citymod.of(site)
-    assert citymod.of(site_of("daegu")) is not citymod.of(site)          # an equal dict is another object
+    assert citymod.of(site_of("metro")) is not citymod.of(site)          # an equal dict is another object
 
 
 def test_problems_catch_inconsistent_config():
-    bad = {**site_of("daegu"), "districts": ["중구", "중구"], "languages": ["en"], "id_prefix": "Daegu_",
+    bad = {**site_of("metro"), "districts": ["중구", "중구"], "languages": ["en"], "id_prefix": "Daegu_",
            "slug_policy": {"collision": "random"}, "video_topics": [{"title": "먹거리", "slug": "먹거리"}],
            "official_domains": [{"domain": "https://x.kr", "name": ""}], "categories": {"stay": {}},
            "regions": {"mode": "zones", "anchors": [{"key": "원도심", "name": "", "place_id": ""}], "far": {"m": 0}}}
@@ -69,7 +78,7 @@ def test_problems_catch_inconsistent_config():
     for part in ("districts 중복", "languages", "id_prefix", "slug_policy", "video_topics slug", "official_domains",
                  "categories 키", "regions.mode", "anchors key", "anchors name", "anchors place_id", "regions.far"):
         assert part in text, part
-    empty = {**site_of("daegu"), "districts": []}
+    empty = {**site_of("metro"), "districts": []}
     assert "districts가 비어 있음" in "\n".join(citymod.from_site(empty).problems())
 
 
@@ -257,18 +266,25 @@ def test_designations_with_a_city():
         ("gunsan_matjip", "군산맛집 2026"), ("baeknyeon", "백년가게"), ("mobeom", "모범음식점"),
         ("hyangto", "향토음식점 2026"), ("jjamppong_street", "짬뽕 특화거리"), ("goodprice", "착한가격업소"),
         ("ansim", "안심식당"), ("unknown", "unknown 목록")]
-    # Daegu: the national four in order with its own lists between them (site.json designations.order), every other
-    # type last, its label without brackets
+    # this city (data/suwon designations.order): the national lists in its order with its own types between them,
+    # every other type last with its label
+    got = schema.designations(e, city=CITY)
+    order = site_of("city")["designations"]["order"]
+    assert [d["type"] for d in got][:4] == [t for t in order if t in {x["type"] for x in DESIGNATIONS}]
+    assert [CITY.designation_rank(t) for t in order] == list(range(len(order)))
+    assert CITY.designation_rank("low_sodium") == len(order)
+    assert CITY.designation_short_label("ansim") == "안심식당"
+    assert {d["type"] for d in got[4:]} == {"hyangto", "gunsan_matjip", "jjamppong_street", "unknown"}
+    # the 구·군 config (no designations block): the national four in order, every other type last, its label
+    # without brackets
     got = schema.designations(e, city=DAEGU)
     assert [d["type"] for d in got][:4] == ["baeknyeon", "mobeom", "goodprice", "ansim"]
-    assert [DAEGU.designation_rank(t) for t in ("baeknyeon", "mobeom", "good_stay", "goodprice", "women_safe_stay",
-                                                "ansim", "low_sodium")] == list(range(7))
-    assert DAEGU.designation_short_label("good_stay") == "우수숙박시설" and DAEGU.designation_rank("hyangto") == 7
     assert {d["type"] for d in got[4:]} == {"hyangto", "gunsan_matjip", "jjamppong_street", "unknown"}
     assert schema.designation_short({"type": "gunsan_matjip", "label": "OO맛집(2026, OO시 지정)", "year": 2026},
                                     city=DAEGU) == "OO맛집"
     assert DAEGU.designation_rank("baeknyeon") == 0 and DAEGU.designation_short_label("ansim") == "안심식당"
     assert SAMPLE.designation_show_year("hyangto") and not DAEGU.designation_show_year("hyangto")
+    assert CITY.designation_show_year("hyangto") == ("hyangto" in site_of("city")["designations"]["show_year"])
 
 
 def test_categories_with_a_city():

@@ -72,6 +72,18 @@ def homepage_url(value: str | None) -> str:
     return "" if any(low.startswith(h) for h in MAP_HOSTS) else url
 
 
+# A phone number written with a space or an en/em dash between its parts ('054 637-9121', '054–631-3332',
+# '054-638–7008' — TourAPI and city pages, QA 2026-10-24 YJ-10): read as the hyphenated number. Only the separators
+# between the area code, the exchange and the line number change; a value with no such number stays as it is.
+_SPACED_PHONE = re.compile(r"(?<![\d-])(0\d{1,2})[\s\u2013\u2014-]+(\d{3,4})[\s\u2013\u2014-]+(\d{4})(?![\d-])")
+
+
+def hyphenate_phones(value: str | None) -> str:
+    """'054 637-9121' -> '054-637-9121'; '054–631-3332' -> '054-631-3332'; anything else unchanged."""
+    text = str(value or "")
+    return _SPACED_PHONE.sub(r"\1-\2-\3", text) if re.search(r"[\s\u2013\u2014]", text) else text
+
+
 def extract_phone(value: str | None) -> str:
     """The first cleanly delimited phone number in `value`, else "" (a truncated number is worse than none)."""
     m = _PHONE.search(value or "")
@@ -446,6 +458,20 @@ def parking_text(raw: str | None) -> str:
     return text
 
 
+def parking_compatible(a: str | None, b: str | None) -> bool:
+    """Two sources' parking values that hold together (QA 2026-10-24 YJ-09): one says parking is possible ('가능',
+    '가능(150대)', '주차가능'), the other only what it costs ('무료', '유료') — no contradiction, so neither is flagged as
+    '출처마다 다름'. '불가능' against '자체 주차장', '무료' against '유료' still are."""
+    def kind(t):
+        t = squash_ws(parking_text(t))
+        if re.fullmatch(r"(?:주차\s*)?(?:요금\s*)?(?:무료|유료)", t):
+            return "fee"
+        if re.match(r"^(?:주차\s*)?가능", t) and not re.search(r"불가|유료|무료", t):
+            return "yes"
+        return ""
+    return {kind(a), kind(b)} == {"fee", "yes"}
+
+
 def course_display_name(name: str | None) -> str:
     """'A코스 | 근대~섬' -> 'A코스 근대~섬' (the source's separator pipe is not shown)."""
     return squash_ws(re.sub(r"\s*\|\s*", " ", str(name or "")))
@@ -468,6 +494,8 @@ def display_value(key: str, raw) -> str:
         return tidy_punct(dash_times(parking_text(text)))
     if key in ("checkin", "checkout"):
         text = clock_text(text)
+    if key in ("infocenter", "reservation"):   # a number written with a space or a dash between its groups is shown
+        text = hyphenate_phones(text)           # (and linked) as one: '054 637-9121' -> '054-637-9121'
     return "\n".join(tidy_punct(dash_times(x)) for x in restore_lines(text))
 
 
@@ -508,3 +536,35 @@ def link_url(raw: str | None) -> str:
     """The link target the page uses for a stored homepage/booking value ('' when the value is not a URL);
     a dangling '?' is dropped. Templates, present.value_view, display_value and the validator share it."""
     return web_url(squash_ws(raw).rstrip("?"))
+
+
+# ---------------------------------------------------------------------------------------------- clock words
+# an hours value written in words for the clock ('AM 10시 ~ PM 10시', '오전 8시~ 오후 23시', '오전10-오후10시', '9시~18시',
+# '오후 8시 30분'): the same times as HH:MM, for the course planner's reading of the hours (chat_index plan_facts — the
+# page shows the value as the source writes it). 오후·PM adds 12 to an hour under 12; 오전·AM 12 is 00. '1시간' (an
+# hour's length), '24시간' and a number with no 시 are left alone.
+_CLOCK_WORD = re.compile(
+    r"(?:(?P<ap>오전|오후|AM|PM|am|pm|a\.m\.|p\.m\.)\s*)?(?<![\d:.])(?P<h>\d{1,2})"
+    r"(?:\s*:\s*(?P<m1>\d{2})|\s*시(?!간|즌|대|경)(?:\s*(?P<m2>\d{1,2})\s*분|\s*반)?|(?=\s*[~∼～〜\-–]\s*(?:오전|오후|AM|PM|am|pm)))")
+
+
+def clock_hours(text: str | None) -> str:
+    """'AM 10시 ~ PM 10시' → '10:00 ~ 22:00', '오전10-오후10시' → '10:00-22:00', '9시~18시' → '09:00~18:00'; a value with no
+    clock words as it is."""
+    s = str(text or "")
+
+    def one(m: re.Match) -> str:
+        ap = (m.group("ap") or "").lower().replace(".", "")
+        word = m.group(0)
+        if not ap and ":" in word:   # already a clock time
+            return word
+        h = int(m.group("h"))
+        mi = int(m.group("m1") or m.group("m2") or (30 if word.rstrip().endswith("반") else 0))
+        if h > 24 or mi > 59 or (ap and h > 23 and ap in ("오후", "pm")):
+            return word
+        if ap in ("오후", "pm") and h < 12:
+            h += 12
+        elif ap in ("오전", "am") and h == 12:
+            h = 0
+        return f"{h:02d}:{mi:02d}"
+    return _CLOCK_WORD.sub(one, s)

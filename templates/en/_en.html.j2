@@ -148,11 +148,12 @@
     versions also give map.js their words (data-words: zoom buttons, 'whole course', the failure line) — English is
     map.js's own. geo_forms (a list map): the caption's plural forms ({n}), so site.js keeps its count in step with
     the list's filter ([data-geo-cap]). The caption credits OpenStreetMap (t.map_credit: the tile licence) -#}
-{% macro mapfig(data, label, cls='', caption='', credit=true, geo_forms=none) -%}
+{#- tail: markup after the caption (a list map's places without coordinates, _filters.off_map) -#}
+{% macro mapfig(data, label, cls='', caption='', credit=true, geo_forms=none, tail='') -%}
 {% set json = (data|tojson_attr)|replace('&', '&amp;')|replace("'", '&#39;')|replace('<', '&lt;')|replace('>', '&gt;') %}
 <figure class="mapfig{% if cls %} {{ cls }}{% endif %}">
 <div class="map" role="region" aria-label="{{ label }}" data-points='{{ json|safe }}' data-leaflet-css="/assets/vendor/leaflet/leaflet.css" data-leaflet-js="/assets/vendor/leaflet/leaflet.js" data-lenis-prevent{% if loc.code != 'en' %} data-words="{{ t.map_words() }}"{% endif %}><p class="map-off">{{ t.map_text }}</p></div>
-<figcaption>{% if caption %}{% if geo_forms %}<span data-geo-cap data-forms="{{ geo_forms|tojson_attr }}">{{ caption }}</span>{% else %}{{ caption }}{% endif %}{% if credit %} · {% endif %}{% endif %}{% if credit %}{{ t.map_credit }}{% endif %}</figcaption>
+<figcaption>{% if caption %}{% if geo_forms %}<span data-geo-cap data-forms="{{ geo_forms|tojson_attr }}">{{ caption }}</span>{% else %}{{ caption }}{% endif %}{{ tail }}{% if credit %} · {% endif %}{% endif %}{% if credit %}{{ t.map_credit }}{% endif %}</figcaption>
 </figure>
 {%- endmacro %}
 

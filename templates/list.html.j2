@@ -39,6 +39,7 @@
 <div class="wrap list-grid{% if not L.map_open %} map-folded{% endif %}">
   <div class="list-main">
     {{ fb.bar(L.filters, cityv.region_label) }}
+    {{ fb.zero(L.filters) }}
 
     <div class="ledger" data-ledger>
       <div class="lg-head" aria-hidden="true"><span>{{ L.title }}</span>{% for k, lab in L.slot_cols %}<span>{{ lab }}</span>{% endfor %}</div>
@@ -48,7 +49,6 @@
         <ol class="recs">{% for it in g.recs %}{{ p1.rec(it, L.kind) }}{% endfor %}</ol>
       </section>
       {% endfor %}
-      <p class="empty" data-empty hidden>{{ L.filters.w.empty }}</p>
     </div>
     {% if L.n_photo %}{% set lics = [] %}{% for g in L.groups %}{% for it in g.recs %}{% if it.photo and it.photo.type not in lics %}{% set _ = lics.append(it.photo.type) %}{% endif %}{% endfor %}{% endfor %}
     <p class="note list-foot">사진 출처: 한국관광공사 · 공공누리 제{{ lics|sort|join('·') }}유형</p>{% endif %}
@@ -56,11 +56,12 @@
   </div>
   {% if L.n_geo %}
   <aside class="list-map" id="list-map" aria-label="{{ L.title }} 지도">
+    {% set off = fb.off_map(L.filters.n_off, L.filters.w) %}
     {% if L.map_open %}
-    {{ p1.placemap({'list': L.points, 'far_label': cityv.far_label, 'none_label': cityv.none_label}, label ~ ' 지도', 'list-mapfig', '좌표가 있는 ' ~ L.n_geo ~ '곳만 표시') }}
+    {{ p1.placemap({'list': L.points, 'far_label': cityv.far_label, 'none_label': cityv.none_label}, label ~ ' 지도', 'list-mapfig', '좌표가 있는 ' ~ L.n_geo ~ '곳만 표시', off) }}
     {% else %}
-    <details class="map-fold"><summary>지도 보기 <span class="muted" data-geo-cap>좌표가 있는 {{ L.n_geo }}곳만 표시</span></summary>
-    {{ p1.placemap({'list': L.points, 'far_label': cityv.far_label, 'none_label': cityv.none_label}, label ~ ' 지도', 'list-mapfig', '좌표가 있는 ' ~ L.n_geo ~ '곳만 표시') }}
+    <details class="map-fold"><summary>지도 보기 <span class="muted"><span data-geo-cap>좌표가 있는 {{ L.n_geo }}곳만 표시</span>{{ off }}</span></summary>
+    {{ p1.placemap({'list': L.points, 'far_label': cityv.far_label, 'none_label': cityv.none_label}, label ~ ' 지도', 'list-mapfig', '좌표가 있는 ' ~ L.n_geo ~ '곳만 표시', off) }}
     </details>
     {% endif %}
   </aside>

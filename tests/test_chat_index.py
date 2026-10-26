@@ -20,7 +20,7 @@ from pipeline.build import State, build
 from pipeline.schema import FACT_ORDER, FIT_ORDER
 
 ROOT = Path(__file__).resolve().parent.parent
-DAEGU = ROOT / "data" / "suwon"
+CITY = ROOT / "data" / "suwon"
 SAMPLE = ROOT / "data" / "sample"
 LETTERS = ("P ", "G ", "C ", "E ", "V ", "T ", "S ")
 
@@ -33,12 +33,13 @@ def _state(data: Path, mode: str = "production") -> State:
 
 @pytest.fixture(scope="module")
 def real(tmp_path_factory):
-    S = _state(DAEGU)
+    S = _state(CITY)
     out = tmp_path_factory.mktemp("chat")
     stats = chat_index.export(S, out)
     d = out / "chat"
     return {"S": S, "stats": stats, "dir": d, "catalog": (d / "catalog.txt").read_text("utf-8"),
-            "docs": json.loads((d / "docs.json").read_text("utf-8")), "index": json.loads((d / "index.json").read_text("utf-8"))}
+            "docs": json.loads((d / "docs.json").read_text("utf-8")), "index": json.loads((d / "index.json").read_text("utf-8")),
+            "lines": json.loads((d / "lines.json").read_text("utf-8"))}
 
 
 def _lines(catalog: str) -> dict[str, str]:
@@ -85,7 +86,7 @@ def test_place_lines_carry_their_facts_and_both_values_where_sources_differ(real
             text = chat_index._slot_text(s)
             # every slot with its short label, but '연중무휴' that names itself (the catalog header says so)
             assert text == "연중무휴" or text.startswith(f"{label} "), (e["id"], text)
-            assert text in line, (e["id"], text)
+            assert chat_index.month_ranges(text) in line, (e["id"], text)   # '3~8월' is '3월~8월' there
             if s.get("conflict"):
                 assert f"{label} 두 출처 다름: " in line
                 for v in s["vals"]:
@@ -100,7 +101,7 @@ def test_place_lines_carry_their_facts_and_both_values_where_sources_differ(real
             row = B.fact_row(e, k)
             if row and any(not a["also"] for a in row["alternatives"]):
                 assert "다른 출처 값" in doc and "방문 전 전화 확인" in doc, e["id"]
-    assert seen > 100
+    assert seen > len(S.entities)    # more slots than places: most places show several
 
 
 def test_every_fact_names_its_source_and_check_date(real):
@@ -128,11 +129,37 @@ def test_every_fact_names_its_source_and_check_date(real):
         kf = present.key_facts(e, "hero")
         if kf["missing"]:
             assert "사이트에 없는 값(확인 필요): " + "·".join(kf["missing"]) in doc
-    assert with_url >= 0   # most values are TourAPI's (an API, no page of its own); a facility's own page is linked
+    assert with_url >= 1   # most values are TourAPI's (an API, no page of its own); a facility's own page is linked
 
 
-def test_nearby_parking_stops_and_stations_name_their_sources(real):
-    S, docs, ext = real["S"], real["docs"]["docs"], set(real["docs"]["ext"])
+def _nearby_city(tmp_path: Path) -> Path:
+    """tests/test_guide_content's fake city (four '[샘플]' places of a 구·군 city, nearby.json + parking_lots.json),
+    its places published: this city has no nearby files yet (data/<city> without nearby.json, parking_lots.json)."""
+    import shutil
+    from tests import test_guide_content as G
+    d = tmp_path / "data"
+    d.mkdir()
+    shutil.copy(G.SITE, d / "site.json")
+    places = G.places()
+    for p in places:
+        if not p.get("duplicate_of"):
+            p.update(status="published", approved_at="2026-10-20")
+    G.write(d / "places.json", places)
+    G.write(d / "parking_lots.json", G.parking_lots())
+    near = G.nearby()   # each dataset's address and the day this site checked it, as a real nearby.json _meta has them
+    for k, url in (("parking", "https://www.data.go.kr/data/15012896/standard.do"),
+                   ("bus", "https://www.data.go.kr/data/15067528/fileData.do"), ("rail", "https://www.data.go.kr/x")):
+        near["_meta"][k].update(url=url, checked_at="2026-10-11")
+    G.write(d / "nearby.json", near)
+    return d
+
+
+def test_nearby_parking_stops_and_stations_name_their_sources(real, tmp_path):
+    data = _nearby_city(tmp_path)
+    S = _state(data, "preview")
+    chat_index.export(S, tmp_path / "out")
+    exported = json.loads((tmp_path / "out" / "chat" / "docs.json").read_text("utf-8"))
+    docs, ext = exported["docs"], set(exported["ext"])
     kinds = {"lots": 0, "stops": 0, "rails": 0}
     for e in S.entities:
         acc = present.access_vm(S, e)
@@ -154,7 +181,9 @@ def test_nearby_parking_stops_and_stations_name_their_sources(real):
         for url in re.findall(r"https?://\S+", src):
             assert url in ext, url
         assert "(출처 확인 " in src, e["id"]
-    assert all(n >= 0 for n in kinds.values()), kinds
+    assert all(n >= 1 for n in kinds.values()), kinds
+    # this city's places without nearby files: no doc claims a nearby lot, stop or station
+    assert not [k for k, d in real["docs"]["docs"].items() if d["k"] == "place" and "근처 공영주차장(" in d["x"]]
 
 
 def test_dates_by_kind_and_course_values(real):
@@ -174,13 +203,26 @@ def test_dates_by_kind_and_course_values(real):
             assert f"- {chat_index._clean(f['label'])}: {chat_index._clean(f['value'])}" in doc
         for x in c.get("facts_sources") or []:
             assert x["url"] in doc and x["url"] in ext
-    # a tour bus course: its values (fares, departures) in the doc, its hero values on the catalog line
-    tour = next((c for c in S.courses if any(f.get("hero") for f in c.get("facts") or [])), None)
-    if tour:
-        line = _lines(real["catalog"])[tour["_path"]]
-        for f in tour["facts"]:
-            if f.get("hero"):
-                assert f"{f['label']} {f.get('short') or f['value']}" in line
+    # a tour bus course (tests/test_course_sources TEST_COURSE on the gunsan_subset fixture; this city's courses have no
+    # fares or departures): its values in the doc, its hero values on the catalog line
+    import shutil
+    import tempfile
+    from tests.test_course_sources import DATA as SUBSET, TEST_COURSE
+    with tempfile.TemporaryDirectory() as tmp:
+        data = Path(tmp) / "data"
+        shutil.copytree(SUBSET, data)
+        courses = json.loads((data / "courses.json").read_text("utf-8"))
+        (data / "courses.json").write_text(json.dumps(courses + [TEST_COURSE], ensure_ascii=False), "utf-8")
+        T = _state(data, "preview")
+        chat_index.export(T, Path(tmp) / "out")
+        catalog = (Path(tmp) / "out" / "chat" / "catalog.txt").read_text("utf-8")
+        tdocs = json.loads((Path(tmp) / "out" / "chat" / "docs.json").read_text("utf-8"))["docs"]
+    tour = next(c for c in T.courses if c["id"] == TEST_COURSE["id"])
+    line = _lines(catalog)[tour["_path"]]
+    for f in tour["facts"]:
+        assert f"- {chat_index._clean(f['label'])}: {chat_index._clean(f['value'])}" in tdocs[tour["_path"]]["x"]
+        if f.get("hero"):
+            assert f"{f['label']} {f.get('short') or f['value']}" in line
 
 
 def test_the_about_doc_says_what_the_chat_sends_where(real):
@@ -198,7 +240,7 @@ def test_the_about_doc_says_what_the_chat_sends_where(real):
 def test_the_city_s_words_come_from_site_json(real):
     """chat_config / chat_meta / ui_config: the region and the assistant in each language, the example questions,
     the extra origins — from site.json chatbot; a city without that object gets neutral fallbacks, never another's."""
-    site = json.loads((DAEGU / "site.json").read_text("utf-8"))
+    site = json.loads((CITY / "site.json").read_text("utf-8"))
     cfg = chat_index.chat_config(site)
     assert set(cfg["region"]) == set(chat_index.LANGS) and cfg["region"]["ko"] == site["region"]
     assert cfg["assistant"]["ko"] == site["chatbot"]["assistant_name"]["ko"]
@@ -207,16 +249,24 @@ def test_the_city_s_words_come_from_site_json(real):
     meta = real["docs"]["meta"]
     assert {k: v for k, v in meta.items() if k != "plan"} == chat_index.chat_meta(site)
     # the course planner's city values (site.json plan, pipeline/plan.py plan_meta): the hubs by name only (no hub is a
-    # place record of the site), the engine's likes, no resident label while the city has no combined ticket
-    assert meta["plan"]["hubs"] == {h["key"]: {"name": h["name"]} for h in site["plan"]["hubs"]}
+    # place record of the site) with the travel area site.json gives them, the engine's likes, the resident label
+    # site.json gives (none: ''), the strict way without a car and the hubs' bus guides as site.json has them
+    assert meta["plan"]["hubs"] == {h["key"]: {"name": h["name"], **({"region": h["region"]} if h.get("region") else {})}
+                                    for h in site["plan"]["hubs"]}
+    assert meta["plan"].get("transit_strict", False) == site["plan"].get("transit_strict", False)
+    assert meta["plan"].get("hub_guides", []) == site["plan"].get("hub_guides", [])
     assert "islands" not in meta["plan"]["prefs"] and meta["plan"]["prefs"]["history"].startswith("역사·문화")
-    assert meta["plan"]["resident"] == (site.get("plan") or {}).get("resident_label", "") and "tickets" not in real["docs"]
-    assert meta["site"] == site["site_url"] and meta["site_name"] == site["site_name"] and meta["tel"] == ["119", "112", "1330"]
+    assert meta["plan"]["resident"] == site["plan"].get("resident_label", "") and "tickets" not in real["docs"]
+    # the short numbers of site.json emergency (this city lists 119·112·1330), none without one
+    tels = [re.sub(r"[^\d+]", "", str(x.get("tel") or "")) for x in (site.get("emergency") or {}).get("lines") or []]
+    assert meta["site"] == site["site_url"] and meta["site_name"] == site["site_name"] and meta["tel"] == tels
     assert real["docs"]["site"] == meta["site"]
     # the browser's part, in the page's language (else English)
     ko, de, xx = (chat_index.ui_config(site, x) for x in ("ko", "de", "xx"))
-    assert ko == {"site": site["site_url"], "name": cfg["assistant"]["ko"], "region": site["region"], "chips": cfg["chips"]["ko"]}
-    assert de["name"] == cfg["assistant"]["de"] and de["chips"] == cfg["chips"]["de"]
+    # Korean pages carry the planner's hubs (key → name, site.json plan.hubs) for the planner's door (chat.js planQuery)
+    assert ko == {"site": site["site_url"], "name": cfg["assistant"]["ko"], "region": site["region"], "chips": cfg["chips"]["ko"],
+                  "hubs": {h["key"]: h["name"] for h in site["plan"]["hubs"]}}
+    assert de["name"] == cfg["assistant"]["de"] and de["chips"] == cfg["chips"]["de"] and "hubs" not in de
     assert xx == chat_index.ui_config(site, "en")
     assert chat_index.ui_config(site, "zh-hant")["chips"] == cfg["chips"]["zh-Hant"]
     # the sample data (no chatbot object): its own region, no chips, no extra origin
@@ -306,7 +356,11 @@ def test_bytes_do_not_depend_on_the_build_date(real, tmp_path, monkeypatch):
         def today(cls):
             return cls(2031, 7, 1)
     monkeypatch.setattr(B, "dt", SimpleNamespace(date=Later, timedelta=dt.timedelta, datetime=dt.datetime))
-    S = _state(DAEGU)
+    # a dated facility notice ends on its `until` day by design (pipeline/notices.py): read them as on the real build
+    # day, so everything else is still checked for the build date leaking in
+    real_active, real_day = B.notices.active, real["S"].today
+    monkeypatch.setattr(B.notices, "active", lambda items, today: real_active(items, real_day))
+    S = _state(CITY)
     assert S.today == "2031-07-01"
     chat_index.export(S, tmp_path)
     for name in ("catalog.txt", "docs.json", "index.json"):
@@ -402,10 +456,15 @@ def test_abroad_items_are_in_the_knowledge(real):
         return
     line = _lines(real["catalog"])["/abroad/"]
     arts = [a for a in S.abroad if a["kind"] == "article"]
-    assert f"해외 기사 {len(arts)}건" in line and "search_site kind abroad" in line
+    # a reference work in another language (source_type reference — an encyclopedia entry, a heritage listing; QA
+    # 2026-10-24 item 06) is counted and labelled apart: not a foreign outlet's piece
+    refs = [a for a in arts if a.get("source_type") == "reference"]
+    assert f"해외 기사 {len(arts) - len(refs)}건" in line and "search_site kind abroad" in line
+    assert (f"외국어 참고자료(백과사전·세계유산 등재 문서) {len(refs)}건" in line) == bool(refs)
     for a in S.abroad:
         d = docs[f"abroad:{a['id']}"]
         assert d["k"] == "abroad" and d["u"] == "/abroad/" and f"원문 주소: {a['url']}" in d["x"]
+        assert ("매체 기사가 아님" in d["x"]) == (a in refs)
         assert f"게시일: {a.get('date') or '모름'}" in d["x"] and f"언어: {a.get('lang') or '모름'}" in d["x"]
     ja = [a for a in arts if a.get("lang") == "ja"]
     if ja:
@@ -415,12 +474,17 @@ def test_abroad_items_are_in_the_knowledge(real):
         assert f"abroad:{newest['id']}" in docs["/abroad/"]["x"]
 
 
-def test_a_long_guide_gives_each_place_and_its_faq_a_doc_of_their_own(real):
+def test_a_long_guide_gives_each_place_and_its_faq_a_doc_of_their_own(real, tmp_path, monkeypatch):
     """QA 2026-10-17: asked for the bus back from the cable car, the assistant said the site had no way back — the bus
     guide's place reasons and FAQ came after the 6,000 characters get_pages reads. A guide doc that would pass
     GUIDE_DOC_FIT lists its places by name; each place's reason (with the place's link) and the FAQ are docs
-    of their own, keyed by the page's own anchors (li#gi-<slug>, #h-faq). A short guide keeps everything in its doc."""
-    S, docs = real["S"], real["docs"]["docs"]
+    of their own, keyed by the page's own anchors (li#gi-<slug>, #h-faq). A short guide keeps everything in its doc.
+    This city's guides are all short at GUIDE_DOC_FIT: the fit is lowered to 2,500 characters so they fall on both
+    sides (1,700–3,200 characters of doc each)."""
+    S = real["S"]
+    monkeypatch.setattr(chat_index, "GUIDE_DOC_FIT", 2500)
+    chat_index.export(S, tmp_path)
+    docs = json.loads((tmp_path / "chat" / "docs.json").read_text("utf-8"))["docs"]
     split = short = 0
     for g in S.guides:
         d = docs[g["_path"]]
@@ -439,7 +503,7 @@ def test_a_long_guide_gives_each_place_and_its_faq_a_doc_of_their_own(real):
             short += 1
             for t, _ in places:
                 assert t["_path"] in d["x"], (g["id"], t["slug"])
-    assert short
+    assert split and short
 
 
 def test_service_notices_are_catalog_lines_with_their_post(real, tmp_path):
@@ -476,10 +540,15 @@ def test_place_docs_carry_what_the_planner_checks_with(real):
     places = [d for d in docs.values() if d["k"] == "place"]
     assert all(d["f"]["kd"] in ("attraction", "food", "stay") for d in places)
     assert sum(1 for d in places if "g" in d["f"]) > 0.9 * len(places)
-    arb = by_title["화성행궁"]["f"]
-    assert arb["fee"]["tab"] == {"성인": 2000, "청소년·군인": 1500, "어린이": 1000} and arb["fee"]["p"] == "수원시 문화관광"
-    assert by_title["XR버스 1795행"]["f"]["fee"]["tab"] == {"성인": 10000, "청소년·군인": 7000, "어린이": 5000}
-    assert by_title["밤밭청개구리공원"]["f"]["fee"]["free"] is True
+    fees = [d["f"]["fee"] for d in places if d["f"].get("fee")]
+    tables = [f for f in fees if f.get("tab")]
+    # a table: an adult's price the value itself writes, its source named
+    assert tables and all("성인" in f["tab"] and f"{f['tab']['성인']:,}원" in f["t"].replace("\n", " ") and f["p"] for f in tables)
+    # another source's differing value beside it (the planner checks against both); a free value is no table
+    assert any(f.get("alt") and all(a["p"] and a["t"] for a in f["alt"]) for f in fees)
+    assert any(f.get("free") is True and "tab" not in f for f in fees)
+    # a value that reads as no table (a range, a programme's fees): its text and source only, 확인 필요 for a plan
+    assert any(set(f) == {"t", "p"} for f in fees)
     # month ranges name both months ('3~10월' → '3월~10월', the form checkPlan reads a season by)
     assert not [x["t"] for d in places for x in d["f"].get("h", []) if chat_index.MONTH_RANGE.search(x["t"])]
     assert chat_index.month_ranges("3~10월 09:00~18:00 / 11~2월 09:00~17:00") == "3월~10월 09:00~18:00 / 11월~2월 09:00~17:00"
@@ -491,13 +560,75 @@ def test_a_restaurant_carries_its_tourapi_class_so_a_plan_can_pick_a_cafe(real):
     catalog and the planner's facts (f.ty) read TourAPI's own class (schema.FOOD_LCLS) — a café stop needs a 카페·찻집·제과."""
     from pipeline.schema import CAFE_TYPES, FOOD_LCLS
     docs = real["docs"]["docs"]
-    food = [d for d in docs.values() if d["k"] == "place" and d["f"]["kd"] == "food"]
-    assert food and all(d["f"].get("ty") in FOOD_LCLS.values() for d in food)
-    cafes = [d for d in food if d["f"]["ty"] in CAFE_TYPES]
-    assert len(cafes) >= 5
-    assert by_title(docs, "10593 베이글커피하우스")["f"]["ty"] == "카페"
-    assert re.search(r"^P /places/[^|]+ \| 10593 베이글커피하우스 \| 카페", real["catalog"], re.M)
+    food = [(k, d) for k, d in docs.items() if d["k"] == "place" and d["f"]["kd"] == "food"]
+    assert food and all(d["f"].get("ty") in FOOD_LCLS.values() for _, d in food)
+    cafes = [(k, d) for k, d in food if d["f"]["ty"] in CAFE_TYPES]
+    assert len(cafes) >= 5      # 6 of this city's 56 restaurants (2026-10-24)
+    for path, d in cafes:       # the catalog line names the class the planner picks a café by
+        assert re.search(rf"^P {re.escape(path)} \| {re.escape(d['t'])}(?: \([^)]*\))? \| {d['f']['ty']}(?: \||$)",
+                         real["catalog"], re.M), d["t"]
 
 
 def by_title(docs, title):
     return next(d for d in docs.values() if d["k"] == "place" and d["t"] == title)
+
+
+def test_lines_json_holds_every_place_s_full_line_with_every_first_screen_fact(real):
+    """lines.json (the first site's catalog diet, 41ac859b5): every place's full line, keyed by its page path, in the
+    catalog's order as core — the catalog's short line keeps only CATALOG_SLOTS, the full line every hero slot (hours,
+    parking, phone …) exactly as the first screen gives it, both values where sources differ; under LINES_BUDGET."""
+    S, docs, L = real["S"], real["docs"]["docs"], real["lines"]
+    full, catalog = L["lines"], _lines(real["catalog"])
+    assert L["v"] == chat_index.VERSION and set(full) == {e["_path"] for e in S.entities}
+    assert L["core"] == [p for p, line in catalog.items() if line.startswith("P ")]
+    assert all(k in docs for k in full)
+    longer = 0
+    for e in S.entities:
+        line = full[e["_path"]]
+        assert line.startswith(f"P {e['_path']} | {e['name']}"), line
+        slots = present.key_facts(e, "hero")["slots"]
+        assert chat_index.month_ranges("; ".join(chat_index._slot_text(x) for x in slots)) in line or not slots, line
+        longer += len(line) > len(catalog[e["_path"]])
+    assert longer > len(S.entities) // 2    # most places have more facts than their short catalog line shows
+    assert real["stats"]["lines"] == len(full) and real["stats"]["lines_tokens_est"] == chat_index.lines_tokens(full)
+    assert chat_index.lines_tokens(full) < chat_index.LINES_BUDGET
+    # the catalog's header says where the full lines come from
+    assert 'site_data block whose source is "lines"' in real["catalog"]
+
+
+
+def test_event_lines_carry_the_newest_hours_and_phone(real):
+    """The paid check of 2026-10-24: asked for this weekend's events, the model answered from the catalog alone and
+    called the hours and the phone '사이트에 없음' — the newest edition's hours and phone are on the event's line."""
+    lines = _lines(real["catalog"])
+    timed = 0
+    for sr in real["S"].series:
+        ev, line = sr["newest"], lines[sr["_path"]]
+        if ev.get("playtime"):
+            timed += 1
+            assert f" · 시간 {chat_index._cap(chat_index._clean(ev['playtime']), chat_index.SLOT_MAX)}" in line, line
+        if ev.get("tel"):
+            assert f" · 문의 {chat_index._clean(ev['tel'])}" in line, line
+    assert timed >= 1
+
+
+def test_a_guide_names_both_values_of_a_place_whose_sources_differ(real):
+    """The paid check of 2026-10-24: through the rainy-day guide the answer gave 소수박물관's TourAPI hours alone — a
+    guide's reason was written from one source, so a place whose first-screen facts differ by source has both values,
+    with their providers and the call line, beside its reason in the guide's doc (or its own section doc)."""
+    S, docs = real["S"], real["docs"]["docs"]
+    seen = 0
+    for g in S.guides:
+        for it in g.get("items") or []:
+            t = S.ent_by_slug.get(it.get("place_slug") or "")
+            differ = [x for x in present.key_facts(t, "hero")["slots"] if x.get("conflict")] if t else []
+            if not differ:
+                continue
+            seen += 1
+            text = docs.get(f"{g['_path']}#gi-{t['slug']}", docs[g["_path"]])["x"]
+            for x in differ:
+                assert chat_index.month_ranges(chat_index._slot_text(x)) in text, (g["id"], t["slug"])
+                for v in x["vals"]:
+                    assert v["provider"] in text
+            assert "출처마다 값이 달라 방문 전 전화 확인" in text
+    assert seen >= 1

@@ -108,6 +108,10 @@ class City:
     title_suffixes: tuple[str, ...] = ()
     id_prefix: str = ""
     languages: tuple[str, ...] = ("ko",)
+    # site.json intl.require_complete: every language version must hold a current translation of every published
+    # Korean record and string — the build and validate fail and list what is missing (no page left out, no name
+    # filled by its sound; user instruction 2026-10-24). Off: a stale or missing record only skips that page.
+    intl_complete: bool = False
     raw: dict = field(default_factory=dict, repr=False)
     _memo: dict = field(default_factory=dict, repr=False)
 
@@ -264,7 +268,7 @@ class City:
         that only mentions the short region name ('XX은 OO에서 …') is not one."""
         key = ("taut", name or "")
         if key not in self._memo:
-            self._memo[key] = re.compile(rf"^{re.escape(name or '')}\s*(은|는)\s*(?:{self._w})[^.]*?(있는|위치한)[^.]*?입니다\.$")
+            self._memo[key] = re.compile(rf"^{re.escape(name or '')}\s*(은|는)\s*(?:{self._w})[^.]*?(있는|위치한|자리한|자리 잡은|자리잡은)[^.]*?입니다\.$")
         return self._memo[key]
 
     @property
@@ -503,6 +507,7 @@ def from_site(site: dict) -> City:
         title_suffixes=_strs(tour.get("title_suffixes")),
         id_prefix=squash_ws(site.get("id_prefix")),
         languages=_strs(site.get("languages")) or ("ko",),
+        intl_complete=bool((site.get("intl") if isinstance(site.get("intl"), dict) else {}).get("require_complete")),
         raw=site,
     )
 

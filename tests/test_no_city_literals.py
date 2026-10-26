@@ -1,13 +1,16 @@
 """No city's own words in the engine (WP7, design 6.2): every city value comes from data/<city>/site.json through
 pipeline/city.py (CLAUDE.md 4). Checked:
 - pipeline/*.py: every string constant (ast, docstrings included; comments are not checked) — none of the first
-  city's words (Gunsan) and none of this city's (Daegu: the city, its 9 구·군) either;
-- templates/**/*.j2 (the body, {# #} comments stripped) and templates/assets/*.js: none of the first city's words;
+  city's words (Gunsan), none of the city the engine was generalized on (Daegu: the city, its 9 구·군) and none of
+  this city's (read from data/<city>/site.json: its names, 구·군 and search examples);
+- templates/**/*.j2 (the body, {# #} comments stripped), templates/assets/*.js, chatbot/*.js and api/*.js: none of
+  the first city's words, none of this city's;
 - tools/*.py: no path or name of the first city's site.
 The one exception is the national table of dated administrative renames (textutil.ADDRESS_RENAMES): a fact about the
 country's addresses, not a city setting. Its entries are pinned below so it cannot become a place to hide city words.
 """
 import ast
+import json
 import re
 from pathlib import Path
 
@@ -16,11 +19,37 @@ ROOT = Path(__file__).resolve().parent.parent
 # the first city's words (the engine came from the Gunsan site), and its province's old and new names
 GUNSAN_WORDS = ("군산", "고군산", "선유도", "은파", "새만금", "비응", "짬뽕", "경암동", "초원사진관", "근대역사박물관", "빈해원",
                 "이성당", "장미동", "월명", "gunsan", "Gunsan", "Jeonbuk", "전북특별자치도", "전라북도")
-# this city's words: its name and the 9 구·군 (site.json districts) — they belong in data/daegu/site.json only
+# the city the engine was generalized on (pipeline/city.py): its name and its 9 구·군 — they belong in its site.json
 DAEGU_WORDS = ("대구", "daegu", "Daegu", "중구", "동구", "서구", "남구", "북구", "수성구", "달서구", "달성군", "군위군", "군위",
                "달성")
 GUNSAN_RX = re.compile("|".join(re.escape(w) for w in GUNSAN_WORDS), re.I)
 DAEGU_RX = re.compile("|".join(re.escape(w) for w in DAEGU_WORDS), re.I)
+
+# this city: every data/<city>/site.json but the sample's (the first city's values, checked above)
+CITY_SITES = sorted(d / "site.json" for d in (ROOT / "data").iterdir()
+                    if d.name != "sample" and (d / "site.json").is_file())
+
+
+def city_words(site: dict) -> set[str]:
+    """A city's own words from its site.json: its names (Korean, English, the site's), its 구·군, its search examples
+    and the region names the assistant uses in every language."""
+    words = {site.get(k) for k in ("region", "region_en", "locality", "site_name", "site_name_en")}
+    words |= set(site.get("districts") or ()) | set(site.get("search_examples") or ())
+    words |= set(((site.get("chatbot") or {}).get("region_names") or {}).values())
+    return {w.strip() for w in words if isinstance(w, str) and len(w.strip()) >= 2}
+
+
+def words_rx(words) -> re.Pattern:
+    """A Korean word not inside another Korean word ('영주' is the city, '공영주차장' is not), a Latin word on a word
+    boundary, any other script as written."""
+    def one(w):
+        if re.match(r"[가-힣]", w):
+            return r"(?<![가-힣])" + re.escape(w)
+        return (r"\b" + re.escape(w) + r"\b") if re.match(r"[A-Za-z]", w) else re.escape(w)
+    return re.compile("|".join(one(w) for w in sorted(words, key=len, reverse=True)), re.I)
+
+
+CITY_RX = words_rx(set().union(*(city_words(json.loads(p.read_text("utf-8"))) for p in CITY_SITES)) or {"\0"})
 
 # (file, top-level name) whose string constants are exempt, with the reason. Exactly one entry.
 ALLOWED = {("pipeline/textutil.py", "ADDRESS_RENAMES"):
@@ -73,6 +102,29 @@ def test_engine_names_no_gunsan_word():
 def test_engine_names_no_daegu_word():
     found = hits(DAEGU_RX, [(f"{p.name}:{line}", s) for p in PIPELINE for line, s in string_constants(p)])
     assert found == []
+
+
+def test_engine_names_no_word_of_this_city():
+    """This city's words (data/<city>/site.json) are in none of the engine's modules, templates and scripts: a city
+    value is read from site.json (pipeline/city.py), never written into the engine (CLAUDE.md 4)."""
+    assert CITY_SITES, "no data/<city>/site.json"
+    templates = sorted((ROOT / "templates").rglob("*.j2"))
+    scripts = sorted((ROOT / "templates" / "assets").glob("*.js")) + sorted((ROOT / "chatbot").glob("*.js")) \
+        + sorted((ROOT / "api").glob("*.js"))
+    for site_json in CITY_SITES:
+        words = city_words(json.loads(site_json.read_text("utf-8")))
+        assert words, site_json
+        rx = words_rx(words)
+        found = hits(rx, [(f"{p.name}:{line}", s) for p in PIPELINE for line, s in string_constants(p)])
+        found += hits(rx, [(p.relative_to(ROOT).as_posix(), template_body(p)) for p in templates])
+        found += hits(rx, [(p.relative_to(ROOT).as_posix(), p.read_text("utf-8")) for p in scripts])
+        assert found == [], (site_json.parent.name, found)
+
+
+def test_the_city_word_pattern():
+    rx = words_rx({"영주", "Yeongju", "栄州"})
+    assert rx.search("영주 여행") and rx.search("경상북도 영주시") and rx.search("Yeongju-si") and rx.search("栄州旅行")
+    assert not rx.search("공영주차장") and not rx.search("운영주체") and not rx.search("Yeongjugak2")
 
 
 def test_the_one_exception_is_the_national_rename_table():

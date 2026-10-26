@@ -1,4 +1,4 @@
-"""AEO/GEO spec (docs/handover/aeo_geo_spec.md): markup equals visible text, honest dates, answer-first titles,
+"""AEO/GEO spec (the first site's docs/handover/aeo_geo_spec.md, not in this repository): markup equals visible text, honest dates, answer-first titles,
 event leaf pages, typed values only from exact source strings, production URL gate."""
 import datetime as real_dt
 import json

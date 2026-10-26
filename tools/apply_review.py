@@ -1,8 +1,8 @@
 """검수 시트 반영 — 사람이 판정 칸에 OK라고 적은 행만 status=reviewed·reviewed_at=날짜로 바꾼다.
 
-    python tools/apply_review.py --data data/daegu                                  # 미리 보기(기본, 쓰지 않음)
-    python tools/apply_review.py --data data/daegu --apply                          # 반영
-    python tools/apply_review.py --data data/daegu --sheet docs/handover/review_sheet.csv --date 2026-10-20 --apply
+    python tools/apply_review.py --data data/suwon                                  # 미리 보기(기본, 쓰지 않음)
+    python tools/apply_review.py --data data/suwon --apply                          # 반영
+    python tools/apply_review.py --data data/suwon --sheet docs/handover/review_sheet.csv --date 2026-10-20 --apply
 
 - 판정이 OK(앞뒤 공백·대소문자 무시)인 행: 지금 status가 draft·reviewed일 때만 reviewed + reviewed_at(기본 오늘).
   published는 건드리지 않고, 어떤 행도 published로 바꾸지 않는다(공개는 사람이 정한다 — CLAUDE.md 3절 7항).
@@ -176,7 +176,7 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--sheet", default=Path("docs/handover/review_sheet.csv"), type=Path,
                         help="검수 시트(기본: %(default)s, tools/make_review_sheet.py가 만든 파일)")
-    parser.add_argument("--data", required=True, type=Path, help="도시 데이터 폴더(예: data/daegu)")
+    parser.add_argument("--data", required=True, type=Path, help="도시 데이터 폴더(예: data/suwon)")
     parser.add_argument("--date", default=dt.date.today().isoformat(), help="reviewed_at 값(YYYY-MM-DD, 기본 오늘)")
     parser.add_argument("--apply", action="store_true", help="파일에 쓴다(없으면 미리 보기만)")
     args = parser.parse_args(argv)

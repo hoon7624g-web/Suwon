@@ -81,8 +81,11 @@ def test_launcher_in_every_language_is_named_by_its_visible_label_and_carries_th
         assert re.search(r"AI|KI|IA|ИИ", label) and " — " in name, (lang, name)
         data = chat_data(html)
         key = lang if lang in cb["chips"] else "en"
-        assert data == {"site": site["site_url"], "name": cb["assistant_name"][key], "region": cb["region_names"][key],
-                        "chips": cb["chips"][key]}, lang
+        want = {"site": site["site_url"], "name": cb["assistant_name"][key], "region": cb["region_names"][key],
+                "chips": cb["chips"][key]}
+        if lang == "ko":   # the course planner's language: the hubs its hand-over reads (chat.js planQuery)
+            want["hubs"] = {h["key"]: h["name"] for h in site["plan"]["hubs"]}
+        assert data == want, lang
         if lang != "ko":
             assert not re.search(r"[가-힣]", html), lang                 # a page in another language carries no Hangul
     ko = tpl.render(lang="ko", site=site)
@@ -202,11 +205,13 @@ def test_no_city_word_in_the_assistant_s_code():
     texts.append(("templates/_chat.html.j2", template_body(ROOT / "templates" / "_chat.html.j2")))
     texts += [("templates/assets/chat.css", (ASSETS / "chat.css").read_text("utf-8")),
               ("templates/assets/css/49-chat.css", (ASSETS / "css" / "49-chat.css").read_text("utf-8"))]
-    # the course planner (2026-10-18, docs/handover/planner.md) is the same function family: its server files, its page
+    # the course planner (2026-10-18, chatbot/planner.js) is the same function family: its server files, its page
     # and its doors name no city either — hubs, likes, the site's name and address come from site.json plan / meta
     texts += [(f"templates/{n}", template_body(ROOT / "templates" / n)) for n in ("plan.html.j2", "_plan_cta.html.j2")]
     texts += [(f"templates/assets/{n}", (ASSETS / n).read_text("utf-8")) for n in ("plan.js", "plan.css", "css/46-plan-cta.css")]
-    assert len(files) == 10   # knowledge · prompt · server · planner · plan_prompt · plan_fees · plan_state, api/chat · api/plan, chat.js
+    # knowledge · prompt · server · city · planner · plan_prompt · plan_fees · plan_state · plan_build · plan_geo · plan_share,
+    # api/chat · api/plan, chat.js
+    assert len(files) == 14
     assert hits(GUNSAN_RX, texts) == [] and hits(DAEGU_RX, texts) == []
     # no public address either: the site's address and the extra origins are docs.json meta
     for where, text in texts:

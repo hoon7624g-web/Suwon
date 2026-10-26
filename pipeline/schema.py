@@ -46,7 +46,7 @@ FACT_ORDER = (
     "infocenter", "homepage", "creditcard",
 )
 FIT_ORDER = ("babycarriage", "pet", "kidsfacility", "expagerange", "useseason",
-             "accessible_parking", "wheelchair", "accessible_toilet", "accessible_route")
+             "accessible_parking", "wheelchair", "accessible_toilet", "accessible_route", "accessibility")
 FACT_LABELS = {
     "address": "주소",
     "usetime": "이용시간",
@@ -70,6 +70,8 @@ FACT_LABELS = {
     "wheelchair": "휠체어 대여",
     "accessible_toilet": "장애인 화장실",
     "accessible_route": "주 출입 접근로",
+    # a city's barrier-free page (e.g. its 열린관광지 list): what the site offers, one line from that page
+    "accessibility": "무장애 편의",
     # TourAPI detailIntro2·detailInfo2 fields added in round 3 (tools/tourapi_details.py)
     "openperiod": "운영 기간",
     "discount": "할인",

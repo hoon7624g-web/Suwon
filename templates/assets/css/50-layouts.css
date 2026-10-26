@@ -195,7 +195,12 @@
 .f-kinds button[aria-pressed="true"] { background: #fff; color: var(--sea-deep); box-shadow: inset 0 0 0 1.5px var(--sea); font-weight: 700; }
 .f-kinds button[aria-pressed="true"]:hover { background: var(--bg-2); }
 .f-kinds button[aria-pressed="false"] .mk { opacity: .45; }
+/* their counts (faceted by site.js: the kind's places in the chosen group) stay grey on the white 'on' chip */
+.f-kinds button[aria-pressed="true"] .tn { color: var(--ink-3); font-weight: 400; }
 .seg-map { margin-top: 10px; }
+/* the count line (role="status") and, on phones, the 목록 | 지도 switch beside it */
+.map-tools { margin-top: 10px; }
+.map-tools .seg-map { margin-top: 0; }
 .region { margin-top: 36px; scroll-margin-top: calc(var(--bar) + 16px); }
 .region-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 2px 18px; }
 .region-head h2 { font: 700 clamp(26px, 2.4vw, 34px)/1.2 var(--font); letter-spacing: -.03em; }

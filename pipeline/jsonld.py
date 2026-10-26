@@ -21,7 +21,8 @@ import re
 
 from .city import of as city_of
 from .schema import FACT_LABELS, designations, node_types, schema_type, serves_cuisine
-from .textutil import clock_text, contact_org, display_address, display_value, extract_phones, phone_intl, squash_ws
+from .textutil import (clock_text, contact_org, display_address, display_value, extract_phones, parking_compatible,
+                       phone_intl, squash_ws)
 
 CITY_NODE_ID = "#city"  # the City node's fragment on the home page; pipeline/en_site uses the same id
 
@@ -208,6 +209,24 @@ def conflicted(e: dict, key: str) -> bool:
                for alt in (e.get("fact_alternatives") or {}).get(key) or [])
 
 
+CONFLICT_NOTE = "출처마다 다름 · 방문 전 전화 확인"   # the facts table's flag line for a value the sources give differently
+
+
+def contested_values(e: dict, key: str) -> list[str]:
+    """The other sources' values of facts[key] that differ from it (relation 'also' adds, it does not contradict), as
+    the page shows them, without repeats."""
+    primary = shown_value(key, (e.get("facts") or {}).get(key))
+    out = []
+    for alt in (e.get("fact_alternatives") or {}).get(key) or []:
+        if alt.get("relation") == "also" or (key == "parking" and parking_compatible(
+                (e.get("facts") or {}).get(key), alt.get("value"))):
+            continue
+        v = shown_value(key, alt.get("value"))
+        if v and v != primary and v not in out:
+            out.append(v)
+    return out
+
+
 def _hhmm(h: str, m: str) -> str:
     """'9', '00' -> '09:00'; "" for a value that is not a clock time (e.g. '24:00' in '00:00~24:00', which is
     not a valid schema.org Time — such hours stay in additionalProperty as the source wrote them)."""
@@ -336,8 +355,18 @@ def entity_node(e: dict, site: dict, site_url: str, page_url: str, images: list[
     if hours:
         node["openingHoursSpecification"] = hours
     typed = {"usetime", "restdate"} if hours else set()
-    props = [{"@type": "PropertyValue", "name": FACT_LABELS[k], "value": shown_value(k, facts[k])}
-             for k in PROP_KEYS if facts.get(k) and k not in typed]
+    props = []
+    for k in PROP_KEYS:
+        if not facts.get(k) or k in typed:
+            continue
+        props.append({"@type": "PropertyValue", "name": FACT_LABELS[k], "value": shown_value(k, facts[k])})
+        # sources that give another value (CLAUDE.md 3.2): each one as well, every value with the page's flag line, so a
+        # reader of the structured data does not take one source's value as settled
+        others = contested_values(e, k)
+        if others:
+            props[-1]["description"] = CONFLICT_NOTE
+            props += [{"@type": "PropertyValue", "name": FACT_LABELS[k], "value": v, "description": CONFLICT_NOTE}
+                      for v in others]
     if props:
         node["additionalProperty"] = props
     features = []
@@ -378,8 +407,11 @@ def place_graph(e, site, site_url, page_url, title, crumbs, images, same_as, bas
 
 def guide_graph(g, site_url, page_url, crumbs, about: list[dict], item_urls: list[str],
                 date_modified: str = "", site: dict | None = None) -> dict:
+    # the guide is part of the site (the first site's 7d022f47f): the WebSite node the home page states, by its @id and name
+    ws_ref = {"@type": "WebSite", "@id": f"{site_url}/#website", "name": site["site_name"]} \
+        if site and site.get("site_name") else {"@id": f"{site_url}/#website"}
     art = {"@type": "Article", "@id": f"{page_url}#article", "headline": g["title"][:110],
-           "mainEntityOfPage": page_url, "inLanguage": "ko-KR",
+           "mainEntityOfPage": page_url, "inLanguage": "ko-KR", "isPartOf": ws_ref,
            "author": author_node(site, site_url), "publisher": org_ref(site_url)}
     if g.get("summary"):
         art["description"] = g["summary"]

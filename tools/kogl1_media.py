@@ -1,7 +1,7 @@
 """Resized AVIF/WebP derivatives of KOGL-1 photos — only those a page crops, zooms or shows full-bleed.
 
-    python tools/kogl1_media.py --data data/daegu               # download what is missing, encode, write manifest
-    python tools/kogl1_media.py --data data/daegu --dry-run     # list what would be made, change nothing
+    python tools/kogl1_media.py --data data/suwon               # download what is missing, encode, write manifest
+    python tools/kogl1_media.py --data data/suwon --dry-run     # list what would be made, change nothing
 
 Options: --data DIR (required: the city's data folder), --out DIR, --cache DIR, --max-downloads N (default 200),
 --dry-run, --force (re-encode existing derivatives), --keep-stale (do not delete derivatives no longer wanted).
@@ -161,7 +161,7 @@ def run(data_dir: Path, out: Path = media.MEDIA_DIR, cache: Path = ROOT / "data"
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--data", type=Path, required=True, help="the city's data folder (e.g. data/daegu)")
+    ap.add_argument("--data", type=Path, required=True, help="the city's data folder (e.g. data/suwon)")
     ap.add_argument("--out", type=Path, default=media.MEDIA_DIR)
     ap.add_argument("--cache", type=Path, default=ROOT / "data" / "cache" / "kogl1-src")
     ap.add_argument("--max-downloads", type=int, default=200)

@@ -1,8 +1,8 @@
 """운영자 공개 승인 반영 — 운영자가 공개를 결정한 레코드를 status=published로 바꾸고 approved_at·approved_by를 남긴다.
 
-    python tools/approve_publication.py --data data/daegu --date 2026-10-20                 # 미리 보기(기본, 쓰지 않음)
-    python tools/approve_publication.py --data data/daegu --date 2026-10-20 --apply         # 반영
-    python tools/approve_publication.py --data data/daegu --date 2026-10-20 --hold <id> ... --apply  # 이 ID들은 공개하지 않음
+    python tools/approve_publication.py --data data/suwon --date 2026-10-20                 # 미리 보기(기본, 쓰지 않음)
+    python tools/approve_publication.py --data data/suwon --date 2026-10-20 --apply         # 반영
+    python tools/approve_publication.py --data data/suwon --date 2026-10-20 --hold <id> ... --apply  # 이 ID들은 공개하지 않음
 
 - 장소: 미리보기 선별(reports/review_build_selection.json의 selected — 요약과 주소 외 실용 정보가 있는 곳, 코스·가이드가
   가리키는 곳)만. 가이드·코스·행사: 제외(exclude)·중복이 아닌 것 전부.
@@ -28,7 +28,7 @@ def _dump(path: Path, data) -> None:
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--data", type=Path, required=True, help="도시 데이터 폴더(예: data/daegu)")
+    ap.add_argument("--data", type=Path, required=True, help="도시 데이터 폴더(예: data/suwon)")
     ap.add_argument("--selection", type=Path, default=ROOT / "reports" / "review_build_selection.json")
     ap.add_argument("--date", required=True)
     ap.add_argument("--by", default="운영자 공개 승인(페이지별 검수 전)")

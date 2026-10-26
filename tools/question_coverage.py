@@ -1,6 +1,6 @@
 """Report fixed-question evidence coverage using stored originals only.
 
-    python tools/question_coverage.py --data data/daegu --questions measurement/questions.csv \\
+    python tools/question_coverage.py --data data/suwon --questions measurement/questions.csv \\
         --rules measurement/question_rules.json
 
 This is a review aid, not generated travel advice or a publication approval.
@@ -468,7 +468,7 @@ def run(questions_path: Path, data: Path, raw_courses_path: Path | None, reports
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--data", type=Path, required=True, help="도시 데이터 폴더(예: data/daegu)")
+    parser.add_argument("--data", type=Path, required=True, help="도시 데이터 폴더(예: data/suwon)")
     parser.add_argument("--questions", type=Path, default=Path("measurement/questions.csv"))
     parser.add_argument("--rules", type=Path, help="질문별 점검 규칙 JSON(기본: 질문표 옆 question_rules.json)")
     parser.add_argument("--raw", type=Path, help="수집 원자료 폴더(기본: data/raw/<site.json id_prefix>)")

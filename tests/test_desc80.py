@@ -52,10 +52,12 @@ def test_place_first_sentence_kept_and_facts_added_only_within_80():
     assert out == f"{first} 이용시간: 09:00–18:00."                       # the value as the page shows it
     assert len(f"{first} 이용시간: 09:00–18:00. 주차요금: 무료.") > DESC_MAX
     assert "매주 월요일" not in out and "연중무휴" not in out and "…" not in out
-    # with room, up to two facts
+    # with room, up to three facts (the first site's Search Console 2026-10-22: a short snippet takes the page's facts
+    # while it stays within 80)
     out = answer_description("근대건축관은 옛 조선은행 군산지점 건물입니다. 두 번째 문장은 아주 길어서 이 설명에 들어갈 자리가 없으므로 "
                              "사실 값이 뒤에 붙고 이 문장은 통째로 빠집니다.", "", rows)
-    assert out == "근대건축관은 옛 조선은행 군산지점 건물입니다. 이용시간: 09:00–18:00. 이용요금: 성인 500원."
+    assert out == "근대건축관은 옛 조선은행 군산지점 건물입니다. 이용시간: 09:00–18:00. 이용요금: 성인 500원. 주차요금: 무료."
+    assert len(out) <= DESC_MAX
 
 
 def test_a_fact_the_summary_already_says_is_not_repeated():
@@ -241,4 +243,83 @@ def test_every_korean_page_of_the_public_build_fits_in_80(public):
             assert len(text) <= DESC_MAX, (f, key, len(text), text)
             assert "…" not in text, (f, text)
         assert p.meta.get("og:description", "") == p.meta.get("description", "")
-    assert n > 100
+    published = sum(1 for x in json.loads((DATA / "places.json").read_text("utf-8")) if x.get("status") == "published")
+    assert published > 100 and n > published     # every published place's page, and the lists, guides, courses
+
+
+def test_food_title_says_hours_and_dish_first():
+    """The first site's Search Console 2026-10-22: a restaurant's title names 영업시간, then its dish, then the closed
+    day; the other kinds keep the key-row order and 이용시간."""
+    from pipeline.build import title_keys, title_label
+    keys = ["usetime", "restdate", "parking", "menu"]
+    assert [title_label("food", k) for k in title_keys("food", keys)][:3] == ["영업시간", "메뉴", "쉬는 날"]
+    assert [title_label("attraction", k) for k in title_keys("attraction", keys)][:3] == ["이용시간", "쉬는 날", "주차"]
+
+
+def test_short_description_takes_the_phone_then_the_next_sentence():
+    first = "월명공원은 시내 한가운데 있는 산책 공원으로 수시탑까지 숲길이 이어집니다."
+    nxt = "봄에는 벚꽃이 핍니다."
+    assert 40 <= len(first) and len(f"{first} 전화: 063-454-3337.") < 60     # ≥ DESC_SHORT, still under DESC_FILL
+    phone = [row("infocenter", "문의", "063-454-3337")]
+    out = answer_description(f"{first} {nxt}", "", [], extra_rows=phone)
+    assert out == f"{first} 전화: 063-454-3337. {nxt}" and len(out) <= DESC_MAX
+    # without a phone the next sentence alone fills it
+    assert answer_description(f"{first} {nxt}", "", []) == f"{first} {nxt}"
+
+
+def test_intl_description_joins_a_short_listed_value():
+    from pipeline.en_site import answer_description as en_desc
+    rows = [{"key": "usetime", "label": "Hours", "text": "- 11:10–22:00\n- Break 15:00–17:00", "conflict": False}]
+    out = en_desc("Ojuk is a restaurant on Hanbat-ro in Naun-dong.", rows, 160)
+    assert out == "Ojuk is a restaurant on Hanbat-ro in Naun-dong. Hours: 11:10–22:00; Break 15:00–17:00."
+
+
+def test_intl_long_first_sentence_keeps_its_longest_fitting_clauses():
+    """'Urimil, in Seosu-myeon, has …' became 'Urimil.' (first clause only): the longest run of whole clauses within
+    the limit is kept instead."""
+    from pipeline.en_site import answer_description as en_desc
+    long = ("Urimil, in Seosu-myeon, has a dining hall for groups of up to 120 people, a garden with a pond and "
+            "a farm shop that sells the rice and soybean paste it makes, and it opens for lunch on weekdays only.")
+    out = en_desc(long, [], 160)
+    assert out == ("Urimil, in Seosu-myeon, has a dining hall for groups of up to 120 people, a garden with a pond and "
+                   "a farm shop that sells the rice and soybean paste it makes.")
+    assert len(out) <= 160
+
+
+def test_guide_article_is_part_of_the_site():
+    """A guide's Article names the site it belongs to (the first site's 7d022f47f): isPartOf the WebSite node the home
+    page states, by its @id and name."""
+    from pipeline.jsonld import guide_graph
+    site = {"site_name": "한빛각", "brand": {}, "operator": {}}
+    g = guide_graph({"title": "가이드", "summary": "요약입니다."}, "https://x.test", "https://x.test/guides/a/",
+                    [("홈", "https://x.test/")], [], [], site=site)
+    art = next(n for n in g["@graph"] if n.get("@type") == "Article")
+    assert art["isPartOf"] == {"@type": "WebSite", "@id": "https://x.test/#website", "name": "한빛각"}
+def test_search_script_on_the_public_build_finds_every_row_it_found_before_the_query_words(public):
+    """tests/js/search.test.js on this build's search pages and indexes (every version; ported from the first site's
+    review round 3, 2026-10-18): the rows found for every name, menu item, area, guide-title word and the review's
+    queries include every row the script before the query words found (tests/fixtures/search_before_concepts.js); a
+    word next to a concept stays a condition; concept words only where they stand as words or word starts; the
+    evaluation query and the related guides; a menu's price shown whole. Nothing skipped: this build's forms carry
+    the query words. (Here because this module already builds the city's real data.)"""
+    import os
+    import subprocess
+    node = shutil.which("node")
+    if not node:
+        pytest.skip("Node.js is not installed")
+    r = subprocess.run([node, "--test", str(ROOT / "tests" / "js" / "search.test.js")], cwd=ROOT,
+                       env={**os.environ, "SEARCH_SITE_DIR": str(public)}, capture_output=True, text=True,
+                       encoding="utf-8", errors="replace", timeout=600)
+    assert r.returncode == 0, r.stdout[-6000:] + "\n" + r.stderr[-3000:]
+    assert re.search(r"(?:#|ℹ) fail 0", r.stdout) and re.search(r"(?:#|ℹ) skipped 0", r.stdout), r.stdout[-2000:]
+
+
+def test_a_conflict_kept_without_its_call_line_gets_the_call():
+    """A description that keeps '…은 출처마다 다릅니다.' but cuts the summary's later sentence that carried the call line
+    ends that conflict with '방문 전에 전화로 확인해야 합니다' (CLAUDE.md 3.2), while it fits."""
+    from pipeline.build import with_call
+    s = "[샘플]관은 쉬는 날 없이 운영합니다. 이용시간은 출처마다 다릅니다. 주차: 가능."
+    assert with_call(s, DESC_MAX) == "[샘플]관은 쉬는 날 없이 운영합니다. 이용시간은 출처마다 달라 방문 전에 전화로 확인해야 합니다. 주차: 가능."
+    assert with_call(s, len(s)) == s   # no room: unchanged
+    called = "요금은 출처마다 달라 방문 전에 전화로 확인해야 합니다. 이용시간은 출처마다 다릅니다."
+    assert with_call(called, DESC_MAX) == called

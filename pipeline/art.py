@@ -28,7 +28,7 @@ and manifest.json {ID: {"w", "h", "avif": [[name, width, bytes], …], "webp": [
 publishes to /assets/art/ only the files a built page refers to (copy_used), so a picture whose slot does not exist
 yet ('개편 뒤 연결') adds nothing.
 
-The slots (known_slot(); data/<region>/art.json _notes, docs/handover/image_prompts_round2_2026-10-13.md):
+The slots (known_slot(); data/<region>/art.json _notes, the first site's docs/handover/image_prompts_round2_2026-10-13.md, not in this repository):
 home.card.*, list.head.*, guide.banner.<guide id>, en.guide.banner.<guide id>, intl.guide.banner.<guide id> (the
 banner without words: every other language, English where it has no en banner), og.*, page.404, search.empty,
 theme.head.<theme slug>, videos.head.<topic slug> (site.json video_topics, build.video_groups), course.banner.<course
@@ -85,7 +85,7 @@ OG_IMAGE = {"og:image", "og:image:url", "og:image:secure_url", "twitter:image", 
 # any other node (an ImageObject, a place, an Event, a TouristTrip, an Article …) is reported
 PAGE_NODES = frozenset({"WebPage", "CollectionPage", "AboutPage", "SearchResultsPage", "WebSite"})
 
-# K events.kind.<kind> (docs/handover/image_prompts_round2_2026-10-13.md K): the picture of an event card without a
+# K events.kind.<kind> (the first site's image prompt list, group K): the picture of an event card without a
 # photo. events.json has no kind field, so the kind is the first row whose words appear in the event's series name
 # (else its name); none: 'other'. The engine's words are generic festival words, no city's own event or place names;
 # a city adds its own words per kind in site.json event_kinds {kind: [words]} (they are tried first).
@@ -326,7 +326,7 @@ def data_problems(data_dir: Path, art_dir: Path | None = None) -> list[str]:
                 problems.append(f"{where}: slot {slot}은 {slot_lang(slot)} 페이지 전용 — langs는 [\"{slot_lang(slot)}\"]")
             if meta.get("status") == "연결" and not known_slot(slot):
                 problems.append(f"{where}: '연결'인데 사이트에 없는 자리: {slot} — slot 이름 확인"
-                                "(docs/handover/image_prompts_round2_2026-10-13.md), 자리가 아직 없으면 status '개편 뒤 연결'")
+                                "(첫 사이트의 그림 목록), 자리가 아직 없으면 status '개편 뒤 연결'")
             elif meta.get("status") == "연결" and (fam := id_slot(slot)) and fam[1] not in ids[fam[0]]:
                 name, _, what = ID_SLOTS[fam[0]]
                 problems.append(f"{where}: '연결'인데 사이트에 없는 자리: {slot} — {name}에 없는 {what}: {fam[1]} "

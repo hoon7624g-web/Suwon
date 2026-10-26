@@ -10,6 +10,13 @@ comes from site.json (`site_url`, `site_name`, `region`, and the `chatbot` objec
                  values with their providers where two sources differ) — the rest is in docs.json. It is the cached
                  part of the system prompt: deterministic (sorted, no build date) and under CATALOG_BUDGET estimated
                  tokens (estimate_tokens) so the cached prefix stays well inside the cheaper price tier.
+    lines.json   {v, lines: {key: full line}, core: [keys]} (the first site's 41ac859b5, the catalog diet): every place's full line —
+                 the catalog line's fields, where it is (읍·면·동 and travel area), the summary sentence, every
+                 first-screen key fact exactly as present.key_facts gives them (both values with their providers where
+                 two sources differ), 지정 — keyed by its docs.json key (the page path); core = the place keys whose
+                 short line is in catalog.txt, in catalog order. The chat sends the lines a question most likely needs
+                 as a second data block (chatbot/knowledge.js relevantLines), so the catalog itself stays short:
+                 LINES_BUDGET is the ceiling of every line together, never sent whole.
     docs.json    {v, site, meta, docs: {key: {t title, k kind, e English path, l {hreflang: that version's path}, n
                  {hreflang: that version's name}, u page, h heading, a other names, x text}}, alias, ext}: what
                  get_pages returns. key = the page path (a guide section: the guide path + '#h-b<n>', the section's
@@ -37,7 +44,7 @@ from pathlib import Path
 from . import fee_table, jsonld, notices, plan, present, tickets
 from .schema import FACT_ORDER, FIT_ORDER, KIND_LABELS, designations, food_class
 from .romanize import romanize
-from .textutil import display_address, squash_ws, web_url
+from .textutil import clock_hours, display_address, squash_ws, web_url
 
 CHAT_DIR = "chat"
 VERSION = 1
@@ -46,6 +53,8 @@ VERSION = 1
 # set 100K estimated (2026-10-17 '상한을 10만으로 해', after 153 stays were published; 50K before): a catalog near it
 # makes the cached prefix (tools + rules + catalog) cost more per question — the warning says when it is crossed
 CATALOG_BUDGET = 100_000
+LINES_BUDGET = 600_000       # estimated tokens of every lines.json line together (lines_tokens): never sent whole, so
+                             # this is the region's size limit, not a prompt's (chatbot/knowledge.js SLICE_TOKENS is)
 DOC_LIMIT = 9_000            # characters of one doc's text (get_pages caps what it returns again, chatbot/knowledge.js)
 GUIDE_DOC_FIT = 5_800        # a guide doc longer than this (get_pages reads 6,000) gives its places and FAQ docs of their own
 KIND_ORDER = ("attraction", "food", "stay")
@@ -114,12 +123,22 @@ def chat_meta(site: dict) -> dict:
 def ui_config(site: dict, lang: str = "ko") -> dict:
     """The browser's part (templates/_chat.html.j2 puts it on the launcher as data-chat, chat.js reads it): the site
     address (a link to it opens on the deployment the reader is on), the assistant's name and the region's name in the
-    page's language (else English), and that language's example questions (none when not configured)."""
+    page's language (else English), and that language's example questions (none when not configured). On Korean pages
+    (the course planner's language) also the city's hubs {key: name} of site.json plan.hubs: the stations and terminals
+    a question's arrival or departure time is attached to when the answer hands its conditions to /plan/ (chat.js
+    planQuery)."""
     cfg = chat_config(site)
     lang = next((x for x in LANGS if x.lower() == str(lang or "").lower()), "en")
     pick = lambda d: d.get(lang) or d.get("en") or d.get("ko", "")
-    return {"site": squash_ws(site.get("site_url")).rstrip("/"), "name": pick(cfg["assistant"]),
-            "region": pick(cfg["region"]), "chips": cfg["chips"].get(lang, [])}
+    out = {"site": squash_ws(site.get("site_url")).rstrip("/"), "name": pick(cfg["assistant"]),
+           "region": pick(cfg["region"]), "chips": cfg["chips"].get(lang, [])}
+    if lang == "ko":
+        plan = site.get("plan") if isinstance(site.get("plan"), dict) else {}
+        hubs = {squash_ws(h.get("key")): squash_ws(h.get("name")) for h in plan.get("hubs") or []
+                if isinstance(h, dict) and re.fullmatch(r"[a-z0-9]+", squash_ws(h.get("key"))) and squash_ws(h.get("name"))}
+        if hubs:
+            out["hubs"] = hubs
+    return out
 
 
 # ---------------------------------------------------------------- tokens (search) and the token estimate (budget)
@@ -160,6 +179,11 @@ def estimate_tokens(text: str) -> int:
 # one month in a Spanish answer ('3–10 de octubre', review 2026-10-17 L08). The docs, the catalog and the facts
 # check_plan reads (plan_facts) name both months ('3월~10월', the form chatbot/knowledge.js checkPlan reads a season by)
 MONTH_RANGE = re.compile(r"(?<![\d.\-/월])(1[0-2]|[1-9])\s*~\s*(1[0-2]|[1-9])월")
+
+
+def lines_tokens(lines: dict[str, str]) -> int:
+    """The estimate of every lines.json line together (one per row, in key order): what LINES_BUDGET bounds."""
+    return estimate_tokens("\n".join(lines[k] for k in sorted(lines)))
 
 
 def month_ranges(text: str) -> str:
@@ -275,6 +299,102 @@ def _versions(S) -> list[tuple[str, object]]:
     return [("en", en)] if en is not None else []
 
 
+# words that say so — the inside not to be viewed ('내부 관람 불가', '내부 관람이 되지 않'), not opened or shown ('실내 개방은
+# 하지 않음', '실내는 공개하지 않'), only the outside to be viewed ('외관만 볼 수', '외부에서만 관람', '외부,정원만 관람',
+# '바깥과 정원만 관람'). Conservative: a building's inside described, an exhibition 'in the building' are not read
+OUTSIDE_ONLY = re.compile(
+    r"(?:내부|실내)\s*관람\s*(?:이|은|을)?\s*(?:불가|금지|할\s*수\s*없|되지\s*않|안\s*됨)"
+    r"|(?:내부|실내)(?:는|은|를|을)\s*(?:관람할|볼|들어가\s*볼)\s*수\s*없"
+    r"|(?:내부|실내)(?:는|은)?\s*(?:공개|개방)(?:은|는)?\s*(?:하지\s*않|되지\s*않|안\s*함)"
+    r"|(?:내부|실내)\s*(?:비공개|미공개|미개방)"
+    r"|외관만\s*(?:관람|볼\s*수|감상|구경)"
+    r"|(?:외부|바깥|건물\s*밖)(?:에서)?\s*(?:[,·]\s*|(?:과|와|및)\s*)?(?:정원\s*)?만\s*(?:관람|볼\s*수|감상|구경)")
+
+
+def outside_only(e: dict, S=None) -> list[dict]:
+    """[{p provider, w the words}] where the place's own data says its inside is not open to visitors (OUTSIDE_ONLY), or
+    []. Read only from what the place page shows as its own: every source's general fact values (FACT_ORDER — not the
+    fit and access fields, which speak of a pram, a wheelchair or a pet) and its FAQ answers. Never the TourAPI
+    overview or the city's original text (CLAUDE.md 3.3, 3.4), nor a dated notice, nor a summary."""
+    from . import build as B
+    hits: list[dict] = []
+
+    def read(provider: str, text) -> None:
+        m = OUTSIDE_ONLY.search(_clean(text))
+        if m and not any(h["p"] == provider and h["w"] == m.group(0) for h in hits):
+            hits.append({"p": provider, "w": m.group(0)})
+
+    for k in FACT_ORDER:
+        row = B.fact_row(e, k)
+        if not row:
+            continue
+        if row["value"]:
+            read(row["source"].get("provider", ""), row["value"])
+        for a in row["alternatives"]:
+            read(a.get("provider", ""), a["value"])
+    for x in e.get("faq") or []:
+        if x.get("q") and x.get("a"):
+            read(squash_ws(x.get("source")), x["a"])
+    return hits
+
+
+# what chatbot/plan_state.js needAt reads (its 'ok', or 'near' for parking), for the places the planner can put in (an
+# attraction page with a point). The form shows the count when the need is picked: a place the data says nothing of is
+# not a place the need does not fit (a city with no access route on any of its places had every wheelchair trip
+# refused with nothing said before). tests/test_plan_page.py checks the two read the same.
+ROUTE_OK = re.compile(r"턱이\s*없|단차가?\s*없|무단차|경사로|엘리베이터\s*설치|휠체어\s*접근\s*가능|평지")
+ROUTE_NO = re.compile(r"(?:경사로|엘리베이터|승강기)[^·,]*?(?:있지\s*않|없음|없어)|계단만|접근\s*불가|턱이\s*있")
+ROUTE_ROUGH = re.compile(r"완만하지\s*않|가파[르른]|흙|돌\)?\s*구간|자갈|비포장|공사|어려울\s*수|어렵|다소|일부\s*구간|차량으로\s*(?:만\s*)?접근")
+STROLLER_ROUGH = re.compile(r"가파[르른]|어려울\s*수|어렵")
+RAIN_SHUT = re.compile(r"(?:우천|강우|비\s*(?:가|이)?\s*오는\s*날)\s*(?:시|때)?\s*(?:에는?|엔)?\s*(?:휴장|휴무|휴관|휴업|휴원|미운영|운영\s*(?:하지\s*않|중단|안\s*함)|쉼|쉽니다|쉬)")
+INDOOR_TYPE = re.compile(r"박물관|전시|문화시설|미술관")
+NEEDS_COUNTED = ("rain", "stroller", "wheelchair", "parking", "free")
+
+
+def need_fits(need: str, f: dict) -> bool:
+    """Whether a place's planner facts (Knowledge.plan_facts, docs.json f) fit a need as plan_state.needAt reads them for
+    a visit: 'ok' (parking: 'ok' or 'near') — never 'cond' (a route by car only), 'unknown' or 'no'."""
+    if need == "rain":
+        if any(RAIN_SHUT.search(c.get("t") or "") for c in f.get("c") or []) or f.get("ex"):
+            return False
+        return bool(INDOOR_TYPE.search(f.get("ty") or ""))
+    if need in ("stroller", "wheelchair"):
+        reads = []
+        for a in (x for x in f.get("ac") or [] if x.get("k") == "accessible_route"):
+            t = a.get("t") or ""
+            rough = ROUTE_ROUGH if need == "wheelchair" else STROLLER_ROUGH
+            reads.append("no" if ROUTE_NO.search(t) else "unknown" if rough.search(t) else "ok" if ROUTE_OK.search(t) else "unknown")
+        return bool(reads) and all(r == "ok" for r in reads)
+    if need == "parking":
+        near = isinstance(f.get("pkn"), dict) and "m" in f["pkn"]   # (needAt: pkn.m !== undefined)
+        pk = f.get("pk") or ""
+        if pk and "불가" in pk:
+            return near
+        return bool(pk and re.search(r"가능|구비|있음|무료", pk)) or near
+    if need == "free":
+        return bool((f.get("fee") or {}).get("free"))
+    return False
+
+
+def need_counts(docs: dict) -> dict:
+    """{need: the attraction pages with a point whose facts fit it} over docs.json 'docs' (key → {k, f})."""
+    places = [d["f"] for d in docs.values() if d.get("k") == "place" and (d.get("f") or {}).get("kd") == "attraction" and (d.get("f") or {}).get("g")]
+    return {n: sum(1 for f in places if need_fits(n, f)) for n in NEEDS_COUNTED}
+
+
+def plan_need_counts(S) -> dict:
+    """need_counts for the build's own places (the pages the knowledge has: S.lists' attractions)."""
+    k = Knowledge(S)
+    docs = {e["_path"]: {"k": "place", "f": k.plan_facts(e)} for e in S.lists.get("attraction") or []}
+    return need_counts(docs)
+
+
+def _is_ref(a: dict) -> bool:
+    """An abroad.json article that is a reference work in another language (build.ABROAD_REFERENCE), not a piece an
+    outlet published."""
+    return a.get("source_type") == "reference"
+
+
 class Knowledge:
     """Everything the three files hold, computed from a build State (pipeline.build.State, S.en loaded)."""
 
@@ -308,6 +428,8 @@ class Knowledge:
             for ko, path in {**(getattr(site, "event_links", {}) or {}), **(site.ko2en or {})}.items():
                 self.twins.setdefault(ko, {})[hl] = [path, names.get(ko, "")]
         self.lines: list[str] = []
+        self.full: dict[str, str] = {}      # lines.json lines: a place's full line by its path
+        self.core: list[str] = []           # the place keys whose short line is in the catalog, in catalog order
         self.docs: dict[str, dict] = {}
         self.ext: set[str] = set()
         self.video_topic: dict[str, dict] = {}
@@ -361,6 +483,12 @@ class Knowledge:
             "not evidence that the site lacks it: hours, parking, phone, check-in, the full fee table and the sources "
             "are in the place's page (get_pages). '외' = the page has more. '두 출처 다름' = two sources give different "
             "values and the page shows both (방문 전 전화 확인). 지정 = official designations the page lists.",
+            "# The full lines of the places this question most likely needs come in the site_data block whose source is "
+            "\"lines\", given after this catalog, one per place: P path | name | type | where (읍·면·동 and travel area) | "
+            "the place's summary sentence | every first-screen key fact as the page shows it — 관광지: 시간 (hours), 휴무, "
+            "요금, 주차 (parking), 전화 (phone); 음식점: 시간, 휴무, 메뉴, 주차, 전화; 숙소: 체크인, 체크아웃, 주차, 객실 (rooms), "
+            "전화 — | 지정. One of these key facts missing from a full line = the site has no value for it. A place without "
+            "a full line in that block: read its page (get_pages) before you state any fact it does not show here.",
             "",
         ]
         for kind in KIND_ORDER:
@@ -370,6 +498,9 @@ class Knowledge:
             out.append(f"## {KIND_HEAD[kind]} {len(items)}곳 — 목록 {present.LIST_PATH[kind]}")
             out += [self.place(e) for e in items]
             out.append("")
+            for e in items:   # the full line (lines.json): every place the catalog lists has one
+                self.full[e["_path"]] = month_ranges(self.full_place(e))
+                self.core.append(e["_path"])
         if S.guides:
             out.append(f"## 가이드 {len(S.guides)}편 — 목록 /guides/ (제목이 답하는 질문, 그다음 짧은 답)")
             out += [self.guide(g) for g in sorted(S.guides, key=lambda g: g["id"])]
@@ -425,6 +556,26 @@ class Knowledge:
         parts = [f"P {e['_path']}", title, e.get("_type") or food_class(e), district, facts,
                  "지정 " + "·".join(d["short"] for d in ds) if ds else ""]
         self.place_doc(e, self.en_path(e["_path"]), en_name)
+        return SEP.join(p for p in parts if p)
+
+    def full_place(self, e: dict) -> str:
+        """A place's full line (lines.json): the catalog line's name and type, where it is (읍·면·동 or road, and travel
+        area), the summary's line, every first-screen key fact (present.key_facts 'hero'), 지정."""
+        name = e["name"]
+        line_name = self.en_line_names.get(e["id"], "")
+        title = f"{name} ({line_name})" if line_name else name
+        alt = jsonld.alternate_names(e)
+        if alt:
+            title += " · 다른 이름 " + ", ".join(alt)
+        none = getattr(getattr(self.S, "city", None), "none_label", "")
+        region = e.get("_region") if e.get("_region") and e.get("_region") != none else ""
+        where = " · ".join(x for x in (e.get("_area") or e.get("_road") or e.get("_district") or "",
+                                       f"{region} 권역" if region else "") if x)
+        slots = "; ".join(_slot_text(s) for s in present.key_facts(e, "hero")["slots"])
+        ds = designations(e, city=self.S.city)
+        parts = [f"P {e['_path']}", title, e.get("_type") or food_class(e), where or "-",
+                 _short_line(_clean(e.get("_line")), GUIDE_LINE_MAX) if e.get("_line") else "", slots,
+                 "지정 " + "·".join(d["short"] for d in ds) if ds else ""]
         return SEP.join(p for p in parts if p)
 
     def place_doc(self, e: dict, en: str, en_name: str) -> None:
@@ -551,13 +702,16 @@ class Knowledge:
             if slot["key"] not in ("hours", "closed"):
                 continue
             row = B.fact_row(e, slot["src_key"]) if slot["src_key"] in FACT_ORDER + FIT_ORDER else None
+            # (hours written in clock words — 'AM 10시 ~ PM 10시', '오전 8시~ 오후 23시' — as HH:MM: textutil.clock_hours;
+            # the page shows the value as the source writes it)
             if row and row["value"] and slot["key"] == "hours":
-                texts = [{"p": row["source"].get("provider", ""), "t": month_ranges(_clean(row["value"]))}]
-                texts += [{"p": a.get("provider", ""), "t": month_ranges(_clean(a["value"]))}
+                texts = [{"p": row["source"].get("provider", ""), "t": month_ranges(clock_hours(_clean(row["value"])))}]
+                texts += [{"p": a.get("provider", ""), "t": month_ranges(clock_hours(_clean(a["value"])))}
                           for a in row["alternatives"] if not a["also"]]
             else:   # closed days as the first screen splits them, and hours a combined field gives
+                clock = clock_hours if slot["key"] == "hours" else (lambda t: t)
                 texts = [{"p": v.get("provider") or slot.get("provider") or "",
-                          "t": month_ranges(", ".join(x for x in (v.get("main"), v.get("sub")) if x))}
+                          "t": month_ranges(clock(", ".join(x for x in (v.get("main"), v.get("sub")) if x)))}
                          for v in (slot["vals"] or [slot])]
             texts = [x for x in texts if x["t"]]
             if texts:
@@ -569,20 +723,29 @@ class Knowledge:
         notes = []
         for row in e.get("_notices") or []:
             n = row["n"]
-            start = str(n.get("start") or n.get("date") or "")
-            notes.append({k: v for k, v in {"k": n["kind"], "s": start, "e": str(n.get("end") or start),
+            start, end = notices.effect_span(n)   # an open-ended closure applies through its `until`
+            notes.append({k: v for k, v in {"k": n["kind"], "s": start, "e": end,
                                              "f": n.get("from"), "t": n.get("to"), "l": n.get("last_entry")}.items() if v})
         if notes:
             out["n"] = notes
         out["kd"] = e["kind"]
-        if e.get("_type") or food_class(e):   # a restaurant's TourAPI class when its category is generic: 카페, 제과, 한식 …
-            out["ty"] = e.get("_type") or food_class(e)
+        # a place to visit by the engine's class (plan.plan_class: indoors, outdoors, a liking, the least time a stop
+        # keeps) with the city's own list label beside it when that is another word (ct: a liking the city reads by its
+        # labels, plan.pref_types); a restaurant's TourAPI class when its category is generic: 카페, 제과, 한식 …
+        ty = plan.plan_class(e, self.S) if e["kind"] == "attraction" else (e.get("_type") or food_class(e))
+        if ty:
+            out["ty"] = ty
+        if e["kind"] == "attraction" and e.get("_type") and e["_type"] != ty:
+            out["ct"] = e["_type"]
         row = B.fact_row(e, "usefee")
         if row and (row["value"] or row["alternatives"]):
             fee = fee_table.parse(row["value"]) if row["value"] else {}
             fee["t"] = _clean(row["value"]) if row["value"] else ""
             fee["p"] = row["source"].get("provider", "") if row["value"] else ""
-            alt = [{"p": a.get("provider", ""), "t": _clean(a["value"])} for a in row["alternatives"] if not a["also"]]
+            # every other source's value, an added one ('also', marked a:1) too: a free day a notice adds beside the
+            # fee table is what tells the planner which days both sources make free
+            alt = [{"p": a.get("provider", ""), "t": _clean(a["value"]), **({"a": 1} if a["also"] else {})}
+                   for a in row["alternatives"]]
             if alt:
                 fee["alt"] = alt
             out["fee"] = fee
@@ -593,8 +756,10 @@ class Knowledge:
                 continue
             if row["value"]:
                 access.append({"k": key, "t": _clean(row["value"]), "p": row["source"].get("provider", "")})
+            # (the access route: a second source's words too, though marked as not contradicting — the planner reads
+            # each source's words on its own and shows both when they read differently)
             access += [{"k": key, "t": _clean(a["value"]), "p": a.get("provider", "")} for a in row["alternatives"]
-                       if not a["also"]]
+                       if not a["also"] or key == "accessible_route"]
         if access:
             out["ac"] = access
         row = B.fact_row(e, "parking")
@@ -606,6 +771,11 @@ class Knowledge:
         row = B.fact_row(e, "checkin")
         if row and row["value"]:
             out["ci"] = _clean(row["value"])
+        # the inside not open to visitors, by the data's own words (outside_only): the planner counts it an outdoor
+        # stop and says so where the hours would read as not known
+        ex = outside_only(e, self.S)
+        if ex:
+            out["ex"] = ex
         return out
 
     @staticmethod
@@ -673,8 +843,17 @@ class Knowledge:
             t = self.S.ent_by_slug.get(it.get("place_slug") or "")
             name = t["name"] if t else _clean(it.get("name"))
             if name:
-                items.append((name, t["_path"] if t else "", present.decaution(_clean(it.get("reason"))),
-                              f"gi-{t['slug']}" if t else f"gi-{i}"))
+                reason = present.decaution(_clean(it.get("reason")))
+                # a guide's reason was written from one source: where the place's sources differ, both values follow
+                # it (the paid check of 2026-10-24: an answer through a guide gave 소수박물관's TourAPI hours alone)
+                differ = [_slot_text(x) for x in present.key_facts(t, "hero")["slots"] if x.get("conflict")] if t else []
+                if differ:
+                    reason = (f"{reason} " if reason else "") + ("[장소 페이지 값 — " + "; ".join(differ)
+                                                                + " · 출처마다 값이 달라 방문 전 전화 확인]")
+                shut = present.closure_notice(t) if t else ""
+                if shut:   # closed until further notice: the guide's reason (its usual hours) does not hold now
+                    reason = f"[공지: {shut}] " + reason
+                items.append((name, t["_path"] if t else "", reason, f"gi-{t['slug']}" if t else f"gi-{i}"))
         faqs = [f"- Q {_clean(x['q'])} A {present.decaution(_clean(x['a']))}"
                 for x in g.get("faq") or [] if x.get("q") and x.get("a")]
         src = ("출처: " + "; ".join(f"{_clean(s.get('name') or s.get('title'))} {s.get('url') or ''}".strip()
@@ -716,7 +895,8 @@ class Knowledge:
         head = cv["display"] + (f" ({cv['group']})" if cv.get("group") else "") + (f", {cv['duration']}" if cv.get("duration") else "")
         hero = "; ".join(f"{_clean(f.get('label'))} {_clean(f.get('short') or f.get('value'))}"
                          for f in c.get("facts") or [] if f.get("hero"))
-        parts = [f"C {c['_path']}", head, f"경유지 {len(stops)}곳: " + " > ".join(stops), hero, cv.get("closed_note") or ""]
+        parts = [f"C {c['_path']}", head, f"경유지 {len(stops)}곳: " + " > ".join(stops), hero, cv.get("closed_note") or "",
+                 "; ".join(f"운영 중단: {x['name']}" for x in cv.get("shut") or [])]
         L = [f"{head} — 여행 코스", "요약: " + _clean(cv.get("lede"))]
         if c.get("facts"):
             L.append("이용 안내(코스의 값):")
@@ -742,6 +922,8 @@ class Knowledge:
                  + (", 이용 안내에 적힌 시각만 있다." if c.get("facts") else "."))
         if cv.get("closed_note"):
             L.append(f"쉬는 날 주의: {cv['closed_note']}")
+        for x in cv.get("shut") or []:   # a stop closed until further notice: the course cannot be done as listed
+            L.append(f"운영 중단 경유지: {x['name']} {x['path']} — {x['text']} (공지 기준, 그 경유지는 일정에서 뺀다)")
         if cv.get("orig_url"):
             L.append(f"출처: {cv['orig_name']} {cv['orig_url']}")
             self.keep_url(cv["orig_url"])
@@ -756,7 +938,12 @@ class Knowledge:
         ev = sr["newest"]
         place = _clean(ev.get("place_name"))
         fee = _clean(ev.get("fee"))
-        latest = f"최근 회차 {_period(ev)}" + (f" · 장소 {place}" if place else "") + (f" · 요금 {_cap(fee, SLOT_MAX)}" if fee else "")
+        # the newest edition's hours and phone on the line too (the paid check of 2026-10-24: asked for this weekend's
+        # events, the model answered from the catalog alone and called the hours and the phone '사이트에 없음')
+        hours, tel = _clean(ev.get("playtime")), _clean(ev.get("tel"))
+        latest = (f"최근 회차 {_period(ev)}" + (f" · 시간 {_cap(hours, SLOT_MAX)}" if hours else "")
+                  + (f" · 장소 {place}" if place else "") + (f" · 요금 {_cap(fee, SLOT_MAX)}" if fee else "")
+                  + (f" · 문의 {tel}" if tel else ""))
         if sr.get("newest_alt_labels"):
             latest += f" · {'·'.join(sr['newest_alt_labels'])} 두 출처 다름"
         past = ", ".join(_when(x.get("start_date"))[:7] for x in sr.get("past") or [])
@@ -832,7 +1019,9 @@ class Knowledge:
     def abroad_item(self, a: dict) -> None:
         post = a.get("kind") == "post"
         title = _clean(a.get("title")) or _short_line(_clean(a.get("note")), 60)
-        L = [f"{title} — {'SNS 게시물 (' + (a.get('platform_label') or a.get('platform') or '') + ')' if post else '해외 기사'}"]
+        what = ("SNS 게시물 (" + (a.get("platform_label") or a.get("platform") or "") + ")" if post
+                else "외국어 참고자료 (백과사전 항목·세계유산 등재 문서 — 매체 기사가 아님)" if _is_ref(a) else "해외 기사")
+        L = [f"{title} — {what}"]
         L.append(f"{'계정' if post else '매체'}: {_clean(a.get('author') if post else a.get('outlet'))}")
         if not post and a.get("title"):
             L.append(f"원문 제목(원문 그대로): {_clean(a['title'])}")
@@ -855,7 +1044,8 @@ class Knowledge:
         S = self.S
         for a in S.abroad:
             self.abroad_item(a)
-        arts = [a for a in S.abroad if a.get("kind") != "post"]
+        arts = [a for a in S.abroad if a.get("kind") != "post" and not _is_ref(a)]
+        refs = [a for a in S.abroad if a.get("kind") != "post" and _is_ref(a)]
         posts = [a for a in S.abroad if a.get("kind") == "post"]
 
         def by(items, key):
@@ -864,15 +1054,16 @@ class Knowledge:
                 c[a.get(key) or "?"] = c.get(a.get(key) or "?", 0) + 1
             return "·".join(f"{k} {v}" for k, v in sorted(c.items(), key=lambda kv: -kv[1]))
         head = (f"해외에서 본 {S.city.region}: 해외 기사 {len(arts)}건(언어 {by(arts, 'lang')}), SNS 게시물 {len(posts)}건"
-                f"({by(posts, 'platform_label')}; 언어 {by(posts, 'lang')})")
+                f"({by(posts, 'platform_label')}; 언어 {by(posts, 'lang')})"
+                + (f", 외국어 참고자료(백과사전·세계유산 등재 문서) {len(refs)}건(언어 {by(refs, 'lang')})" if refs else ""))
         if S.abroad_videos:
             head += f", 외국어 영상 {len(S.abroad_videos)}편"
         L = [head + " — 최신순. 항목마다 원문 제목·매체·언어·게시일·원문 주소·우리 소개는 abroad:<id>를 get_pages로"]
-        for a in arts + posts:
+        for a in arts + posts + refs:
             who = _clean(a.get("author") if a.get("kind") == "post" else a.get("outlet"))
             what = _clean(a.get("title")) or _short_line(_clean(a.get("note")), 40)
             L.append(f"- {a.get('date') or '날짜 없음'} · {a.get('lang') or '?'} · "
-                     f"{a.get('platform_label') or '기사'} · {who}: {what} — abroad:{a['id']}")
+                     f"{a.get('platform_label') or ('참고자료' if _is_ref(a) else '기사')} · {who}: {what} — abroad:{a['id']}")
         self.add_doc("/abroad/", f"해외에서 본 {S.city.region}", "page", "\n".join(L), self.en_path("/abroad/"))
         return SEP.join(["S /abroad/", head + " (하나하나는 search_site kind abroad)"])
 
@@ -985,6 +1176,9 @@ class Knowledge:
     def catalog(self) -> str:
         return month_ranges("\n".join(self.lines).rstrip("\n")) + "\n"
 
+    def lines_json(self) -> dict:
+        return {"v": VERSION, "lines": dict(sorted(self.full.items())), "core": list(self.core)}
+
     def docs_json(self) -> dict:
         alias = {}
         for key, d in self.docs.items():
@@ -1027,17 +1221,20 @@ def dumps(obj) -> str:
 
 
 def export(S, out: Path) -> dict:
-    """Write <out>/chat/catalog.txt, docs.json and index.json (UTF-8, LF line ends on every system) and return the
-    sizes for the build stats."""
+    """Write <out>/chat/catalog.txt, lines.json, docs.json and index.json (UTF-8, LF line ends on every system) and
+    return the sizes for the build stats (lines_* = lines.json: every place's full line)."""
     k = Knowledge(S).build()
     target = Path(out) / CHAT_DIR
     target.mkdir(parents=True, exist_ok=True)
     catalog = k.catalog()
-    files = {"catalog.txt": catalog, "docs.json": dumps(k.docs_json()) + "\n", "index.json": dumps(k.index_json()) + "\n"}
+    files = {"catalog.txt": catalog, "lines.json": dumps(k.lines_json()) + "\n", "docs.json": dumps(k.docs_json()) + "\n",
+             "index.json": dumps(k.index_json()) + "\n"}
     for name, text in files.items():
         (target / name).write_bytes(text.encode("utf-8"))
     places = sum(1 for line in k.lines if line.startswith("P "))
     return {"catalog_lines": sum(1 for line in k.lines if line[:2] in ("P ", "G ", "C ", "E ", "V ", "T ", "S ")),
             "places": places, "catalog_chars": len(catalog), "catalog_bytes": len(catalog.encode("utf-8")),
-            "catalog_tokens_est": estimate_tokens(catalog), "docs": len(k.docs),
+            "catalog_tokens_est": estimate_tokens(catalog), "lines": len(k.full),
+            "lines_bytes": len(files["lines.json"].encode("utf-8")), "lines_tokens_est": lines_tokens(k.full),
+            "docs": len(k.docs),
             "docs_bytes": len(files["docs.json"].encode("utf-8")), "index_bytes": len(files["index.json"].encode("utf-8"))}

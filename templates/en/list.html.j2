@@ -31,6 +31,7 @@
 <div class="wrap list-grid{% if not L.map_open %} map-folded{% endif %}">
   <div class="list-main">
     {{ fb.bar(L.filters) }}
+    {{ fb.zero(L.filters) }}
 
     <div class="ledger" data-ledger>
       <div class="lg-head" aria-hidden="true"><span>{{ cfg.nav }}</span>{% for k, lab in L.cols %}<span>{{ lab }}</span>{% endfor %}</div>
@@ -51,18 +52,17 @@
         </ol>
       </section>
       {% endfor %}
-      <p class="empty" data-empty hidden>{{ L.filters.w.empty }}</p>
     </div>
     {% if L.n_photo %}<p class="note list-foot">{{ t.f('photos_is', name=t.kto) }} · {{ L.lics|join(loc.list_sep) }}</p>{% endif %}
   </div>
   {% if L.n_geo %}
   <aside class="list-map" id="list-map" aria-label="{{ t.sec_map }}">
-    {% set cap = t.sn('map_only_n', L.n_geo) %}{% set cap_forms = t.forms('map_only_n') %}
+    {% set cap = t.sn('map_only_n', L.n_geo) %}{% set cap_forms = t.forms('map_only_n') %}{% set off = fb.off_map(L.filters.n_off, L.filters.w) %}
     {% if L.map_open %}
-    {{ E.mapfig({'list': L.points, 'far_label': L.far_label, 'none_label': L.none_label}, t.s('list_map', name=h1), 'list-mapfig', cap, true, cap_forms) }}
+    {{ E.mapfig({'list': L.points, 'far_label': L.far_label, 'none_label': L.none_label}, t.s('list_map', name=h1), 'list-mapfig', cap, true, cap_forms, off) }}
     {% else %}
-    <details class="map-fold"><summary>{{ t.show_map }} <span class="muted" data-geo-cap data-forms="{{ cap_forms|tojson_attr }}">{{ cap }}</span></summary>
-    {{ E.mapfig({'list': L.points, 'far_label': L.far_label, 'none_label': L.none_label}, t.s('list_map', name=h1), 'list-mapfig', cap, true, cap_forms) }}
+    <details class="map-fold"><summary>{{ t.show_map }} <span class="muted"><span data-geo-cap data-forms="{{ cap_forms|tojson_attr }}">{{ cap }}</span>{{ off }}</span></summary>
+    {{ E.mapfig({'list': L.points, 'far_label': L.far_label, 'none_label': L.none_label}, t.s('list_map', name=h1), 'list-mapfig', cap, true, cap_forms, off) }}
     </details>
     {% endif %}
   </aside>

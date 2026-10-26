@@ -1,6 +1,6 @@
 """The 3D picture registry (owner 2026-10-14: '사이트 전수점검해서 모든 부분을 GPT 생성 이미지로 마스코트도 고려해서
-아기자기하게'). One data-driven mapping from a picture ID (docs/handover/gpt_image_prompts_3d_2026-10-14.md, the audit
-docs/handover/specs/icon_audit.md) to its derived files, its label and its interim glyph:
+아기자기하게'). One data-driven mapping from a picture ID (the first site's 3D picture list and icon audit, not in this
+repository; data/<city>/icons.json) to its derived files, its label and its interim glyph:
 
   data/<region>/icons.json        {"icons": {id: {"glyph", "label", "group"}}} — which pictures exist as slots
   templates/assets/icons/         <id>-<px>.avif|webp + manifest.json, made by tools/icon_media.py from the

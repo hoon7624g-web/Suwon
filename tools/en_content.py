@@ -6,7 +6,7 @@
     python tools/en_content.py check <dir>/<lang>-03.output.json [...] [--data data/<city>]  # exit 1 on findings
     python tools/en_content.py merge --data data/<city> <dir>/<lang>-*.output.json  # data/<city>/<lang>/{places,…}.json
 
---data: the city's data folder (data/daegu …), required for names, prepare and merge; every city value (the region,
+--data: the city's data folder (data/suwon …), required for names, prepare and merge; every city value (the region,
 the TourAPI codes, the English address tail, the region groups, the list hubs) comes from its site.json through
 pipeline.city — none is written here (CLAUDE.md 4). A merged version is built only when site.json `languages` lists
 its code and data/<city>/<code>/places.json exists (pipeline/en_site.py); names alone does not switch it on. Every
@@ -648,6 +648,11 @@ def _numbers(text: str) -> tuple[set[str], set[str]]:
 def _ko_days(text: str) -> tuple[set[str], set[str]]:
     """(stated weekdays, weekdays a faithful English may also name: ranges' insides, 주말, 평일)."""
     stated, allowed = set(), set()
+    # '목. 금. 토. 일 요일' and '목·금 요일' are one chain; '목요일~월요일' is the range '목~월요일'
+    text = re.sub(r"(?<![가-힣])([월화수목금토일])\s*\.\s*(?=[월화수목금토일](?:\s*[.·]\s*[월화수목금토일])*\s?요일)",
+                  r"\1·", text)
+    text = re.sub(r"((?:[월화수목금토일]·)+[월화수목금토일])\s+요일", r"\1요일", text)
+    text = re.sub(r"([월화수목금토일])요일\s*([~∼～\-])\s*(?=[월화수목금토일]요일)", r"\1\2", text)
 
     def chain(s: str):
         days = [KO_WEEK.index(c) for c in s if c in KO_WEEK]
@@ -697,9 +702,15 @@ def _en_days(text: str) -> tuple[set[str], set[str]]:
     return named, covered
 
 
+# the first hour of a range written without its 시 ('오전10-오후10시', '10~18시'): an hour like the second
+KO_HOUR_RANGE = re.compile(r"((?:오전|오후|낮|밤|저녁|새벽|아침)?\s*)(?<![\d.:])(\d{1,2})\s*([-~∼～–])\s*"
+                           r"(?=(?:오전|오후|낮|밤|저녁|새벽|아침)?\s*\d{1,2}시(?!간))")
+
+
 def _times_ko(text: str) -> tuple[list[set[str]], str]:
     """Each Korean time as the set of 24-hour forms it may be written as; the text with the times taken out."""
     found: list[set[str]] = []
+    text = KO_HOUR_RANGE.sub(lambda m: f"{m.group(1)}{m.group(2)}시{m.group(3)}", text)
 
     def hm(h: int, m: int) -> str:
         return f"{h:02d}:{m:02d}"
@@ -1847,21 +1858,21 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
     a0 = sub.add_parser("names")
-    a0.add_argument("--data", type=Path, required=True, help="도시 데이터 폴더(예: data/daegu)")
+    a0.add_argument("--data", type=Path, required=True, help="도시 데이터 폴더(예: data/suwon)")
     a0.add_argument("--lang", default="en", choices=LC.CODES)
     a0.add_argument("--max-calls", type=int, default=40)
     a0.add_argument("--offline", action="store_true", help="캐시만 쓴다(네트워크 호출 없음)")
     a1 = sub.add_parser("prepare")
     a1.add_argument("--out", type=Path, required=True)
     a1.add_argument("--batch", type=int, default=40)
-    a1.add_argument("--data", type=Path, required=True, help="도시 데이터 폴더(예: data/daegu)")
+    a1.add_argument("--data", type=Path, required=True, help="도시 데이터 폴더(예: data/suwon)")
     a1.add_argument("--lang", default="en", choices=LC.CODES)
     a2 = sub.add_parser("check")
     a2.add_argument("paths", nargs="+", type=Path)
     a2.add_argument("--data", type=Path, default=None, help="도시 데이터 폴더: en/names.json의 이름을 홍보어 검사에서 뺀다")
     a3 = sub.add_parser("merge")
     a3.add_argument("paths", nargs="+", type=Path)
-    a3.add_argument("--data", type=Path, required=True, help="도시 데이터 폴더(예: data/daegu)")
+    a3.add_argument("--data", type=Path, required=True, help="도시 데이터 폴더(예: data/suwon)")
     a = ap.parse_args(argv)
     DATA = a.data
     if a.cmd == "names":

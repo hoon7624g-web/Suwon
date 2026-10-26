@@ -1,8 +1,8 @@
 """TourAPI 연결 진단 — 키·네트워크·서비스 버전 문제를 한 번에 가린다.
 
     python tools/tourapi_doctor.py                                    # .env 또는 환경 변수 TOURAPI_KEY 사용
-    python tools/tourapi_doctor.py --data data/daegu                  # 검색어 기본값 = site.json의 region
-    python tools/tourapi_doctor.py --data data/daegu --check-region   # ldongCode2의 구·군 목록과 빠진 구·군
+    python tools/tourapi_doctor.py --data data/suwon                  # 검색어 기본값 = site.json의 region
+    python tools/tourapi_doctor.py --data data/suwon --check-region   # ldongCode2의 구·군 목록과 빠진 구·군
     python tools/tourapi_doctor.py --keyword 박물관
     python tools/tourapi_doctor.py --json                             # 결과를 JSON으로(에이전트용)
 

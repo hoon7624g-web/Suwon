@@ -111,13 +111,14 @@
 {{ chnotes(ns, place) }}
 {%- endmacro %}
 
-{% macro placemap(data, label, cls='', caption='') -%}
+{% macro placemap(data, label, cls='', caption='', tail='') -%}
 {#- the JSON sits in a single-quoted attribute, so its double quotes stay as they are (a 283-point map is 74KB with
-    every quote escaped, 58KB without); & ' < > are escaped by hand -#}
+    every quote escaped, 58KB without); & ' < > are escaped by hand. tail: markup after the caption (the list and
+    /map/ captions' '지도에 없는 n곳은 목록에서', _filters.off_map) -#}
 {% set json = (data|tojson_attr)|replace('&', '&amp;')|replace("'", '&#39;')|replace('<', '&lt;')|replace('>', '&gt;') %}
 <figure class="mapfig{% if cls %} {{ cls }}{% endif %}">
 <div class="map" role="region" aria-label="{{ label }}" data-points='{{ json|safe }}' data-leaflet-css="/assets/vendor/leaflet/leaflet.css" data-leaflet-js="/assets/vendor/leaflet/leaflet.js" data-lenis-prevent><p class="map-off">이 지도의 장소는 이 페이지에 글로도 적었습니다.</p></div>
-<figcaption>{% if caption %}<span data-geo-cap>{{ caption }}</span> · {% endif %}지도 © OpenStreetMap contributors</figcaption>
+<figcaption>{% if caption %}<span data-geo-cap>{{ caption }}</span>{{ tail }} · {% endif %}지도 © OpenStreetMap contributors</figcaption>
 </figure>
 {%- endmacro %}
 

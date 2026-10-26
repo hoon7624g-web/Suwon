@@ -6,9 +6,10 @@ translations' ko_hash). One entry:
 
     {"id": "museum-2026-10-06",                      unique, used as data-notice on the pages
      "place_ids": ["tourapi-305395", "tourapi-1379526"],  the museum and each branch the post names (published places)
-     "kind": "closed",                               open | closed | hours
+     "kind": "closed",                               open | closed | hours | free (입장 무료)
      "date": "2026-10-06"  — or "start" / "end"      ISO dates (a range: start ≤ end)
-     "from": "18:00", "to": "22:00", "last_entry": "21:40"   kind 'hours' only (last_entry optional)
+     "from": "18:00", "to": "22:00", "last_entry": "21:40"   kind 'hours' (and optionally 'free'; last_entry optional)
+     "extra_fee": true                               kind 'free': the programmes inside still charge (체험료 별도)
      "provider": "한빛시립박물관 홈페이지", "url": "<the post>", "checked_at": "<date we read it>",
      "until": "2026-10-06"}                          the last day the notice is shown (usually its last date)
 
@@ -16,6 +17,11 @@ Pages print only fixed words (pipeline/intl_text.py notice_*; the Korean below) 
 the link — no text of the post, so nothing needs translating and nothing of the facility's text is republished.
 A notice whose `until` is before the build date is dropped automatically (active()). A person reads the facility's
 board and writes the entries here.
+
+A closure with no announced end (a folk village closed '공사 완료 시까지', QA 2026-10-24 YJ-01): "kind": "closed",
+"start", no "end", "open_end": true and optionally "reason": "works" (공사). It reads '2025년 11월 12일(수)부터 공사로
+운영 중단 · 재개일 미정'; `until` is then the day a person checks the board again (the notice keeps applying through it
+— effect_span()) — the end date is never guessed.
 """
 from __future__ import annotations
 
@@ -24,7 +30,8 @@ import json
 import re
 from pathlib import Path
 
-KINDS = ("open", "closed", "hours")
+KINDS = ("open", "closed", "hours", "free")
+REASONS = {"works": "공사로 "}   # open-ended closures: the fixed words for why (no text of the post)
 HHMM = re.compile(r"^(?:[01]\d|2[0-4]):[0-5]\d$")
 KO_WD = "월화수목금토일"
 KO_WORD = {"open": "개관", "closed": "휴관"}
@@ -46,10 +53,21 @@ def _iso(value) -> dt.date | None:
         return None
 
 
+def open_ended(n: dict) -> bool:
+    """A closure from a date with no announced end (open_end, no end date)."""
+    return bool(n.get("open_end")) and n.get("kind") == "closed" and not n.get("end") and not n.get("date")
+
+
 def span(n: dict) -> tuple[str, str]:
-    """(start, end) ISO dates of a notice ('date' is a one-day notice)."""
+    """(start, end) ISO dates of a notice ('date' is a one-day notice; an open-ended one: end '')."""
     start = str(n.get("start") or n.get("date") or "")
-    return start, str(n.get("end") or start)
+    return start, "" if open_ended(n) else str(n.get("end") or start)
+
+
+def effect_span(n: dict) -> tuple[str, str]:
+    """(start, last day it applies): an open-ended closure applies through its `until` (the day it is checked again)."""
+    start, end = span(n)
+    return start, end or str(n.get("until") or start)
 
 
 def problems(items: list[dict], places: dict[str, dict]) -> list[str]:
@@ -72,15 +90,24 @@ def problems(items: list[dict], places: dict[str, dict]) -> list[str]:
         if n.get("kind") not in KINDS:
             out.append(f"{w}: kind는 {'/'.join(KINDS)} 가운데 하나")
         start, end = span(n)
-        if not (_iso(start) and _iso(end)) or start > end:
+        if n.get("open_end") and not open_ended(n):
+            out.append(f"{w}: open_end는 end 없는 closed(start만)에만")
+        if open_ended(n):
+            if not _iso(start):
+                out.append(f"{w}: 날짜(start)가 올바르지 않음")
+            elif n.get("until") and _iso(n["until"]) and str(n["until"]) < start:
+                out.append(f"{w}: until이 start보다 이름")
+        elif not (_iso(start) and _iso(end)) or start > end:
             out.append(f"{w}: 날짜(date 또는 start·end)가 올바르지 않음")
+        if n.get("reason") and n["reason"] not in REASONS:
+            out.append(f"{w}: reason은 {'/'.join(REASONS)} 가운데 하나")
         for f in ("checked_at", "until"):
             if n.get(f) and not _iso(n[f]):
                 out.append(f"{w}: {f} 날짜 형식(YYYY-MM-DD) 아님")
-        if n.get("kind") == "hours":
+        if n.get("kind") == "hours" or (n.get("kind") == "free" and (n.get("from") or n.get("to"))):
             for f in ("from", "to"):
                 if not HHMM.match(str(n.get(f) or "")):
-                    out.append(f"{w}: hours에는 {f} 시각(HH:MM)이 필요")
+                    out.append(f"{w}: {n.get('kind')}에는 {f} 시각(HH:MM)이 필요")
             if n.get("last_entry") and not HHMM.match(str(n["last_entry"])):
                 out.append(f"{w}: last_entry 시각(HH:MM) 아님")
         ids = n.get("place_ids") or []
@@ -109,16 +136,25 @@ def ko_date(iso: str, year: bool = True) -> str:
 
 def ko_dates(n: dict) -> str:
     start, end = span(n)
+    if not end:
+        return f"{ko_date(start)}부터"
     if start == end:
         return ko_date(start)
     return f"{ko_date(start)}–{ko_date(end, year=end[:4] != start[:4])}"
 
 
 def ko_text(n: dict) -> str:
-    """'2026년 10월 6일(화) 휴관', '2026년 10월 9일(금)–10월 11일(일) 18:00–22:00 운영(입장 마감 21:40)'."""
+    """'2026년 10월 6일(화) 휴관', '2026년 10월 9일(금)–10월 11일(일) 18:00–22:00 운영(입장 마감 21:40)',
+    '2026년 10월 28일(수) 입장 무료 09:00–18:00(입장 마감 17:00) · 체험료 별도',
+    '2025년 11월 12일(수)부터 공사로 운영 중단 · 재개일 미정'."""
+    last = f"(입장 마감 {n['last_entry']})" if n.get("last_entry") else ""
     if n["kind"] == "hours":
-        last = f"(입장 마감 {n['last_entry']})" if n.get("last_entry") else ""
         return f"{ko_dates(n)} {n['from']}–{n['to']} 운영{last}"
+    if n["kind"] == "free":
+        hours = f" {n['from']}–{n['to']}{last}" if n.get("from") and n.get("to") else ""
+        return f"{ko_dates(n)} 입장 무료{hours}{' · 체험료 별도' if n.get('extra_fee') else ''}"
+    if open_ended(n):
+        return f"{ko_dates(n)} {REASONS.get(n.get('reason') or '', '')}운영 중단 · 재개일 미정"
     return f"{ko_dates(n)} {KO_WORD[n['kind']]}"
 
 

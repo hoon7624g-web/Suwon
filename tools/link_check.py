@@ -1,6 +1,6 @@
 """External link check for the homepage / booking addresses the site links (the first site's QA 2026-10-15 SRC-02c).
 
-    python tools/link_check.py --data data/daegu [--max 150] [--timeout 15] [--guides] [--apply]
+    python tools/link_check.py --data data/suwon [--max 150] [--timeout 15] [--guides] [--apply]
 
 Run it by hand about once a month from a Korean network, before tools/build_public.py: many Korean government and
 hotel sites reset connections or show a firewall page to foreign addresses, which says nothing about the site.
@@ -208,7 +208,7 @@ def run(data: Path, max_n: int = 150, timeout: float = 15, guides: bool = False,
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--data", type=Path, required=True, help="도시 데이터 폴더(예: data/daegu)")
+    ap.add_argument("--data", type=Path, required=True, help="도시 데이터 폴더(예: data/suwon)")
     ap.add_argument("--max", type=int, default=150, help="이번 실행에서 확인할 주소 수 상한")
     ap.add_argument("--timeout", type=float, default=15)
     ap.add_argument("--guides", action="store_true", help="공개 가이드의 출처 주소도 확인")

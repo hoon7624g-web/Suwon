@@ -31,7 +31,7 @@ check-guide — 가이드 JSON(가이드 하나, 가이드 목록, 또는 {"guid
     '담긴 가까운 정류장·역'에 대한 것이다. course는 공개 코스의 경유지(place_slug로 이은 곳). 데이터에 없는 노선·역·
     지정 유형·지정 목록·코스는 조건 오류다(오타가 0곳으로 세어지지 않게).
   - 숫자: 제목·라벨·요약·본문·items 사유·FAQ·answer의 숫자 묶음은 모두 (a) 참조 장소의 이름·사실 값·다른 출처 값·
-    분류·주소·TourAPI 소개문, 참조 행사의 값, (b) 검사를 통과한 counts의 n과 기준값(closes_after·opens_before·near.m·
+    분류·주소·TourAPI 소개문·화면에 나가는 공지(notices.json: 운영 중단·특별 운영일의 날짜), 참조 행사의 값, (b) 검사를 통과한 counts의 n과 기준값(closes_after·opens_before·near.m·
     *_within의 m·bus_route·rail_line·rail_station의 숫자), (c) items 개수, (d) 구·군 수, (e) 참조 장소의 근처 줄
     (present.lot_row·rail_row가 화면에 내는 값: 주차장 이름·유형·주소·면수·무료/유료·운영시간·요금 판마다의 분·원·
     문의 전화, 다른 출처 값; 정류장 이름·노선 번호; 화면의 역 이름·호선·출구 번호; 줄마다 직선 m — 단, 가는 길을 말하는
@@ -42,7 +42,8 @@ check-guide — 가이드 JSON(가이드 하나, 가이드 목록, 또는 {"guid
     (rows·kinds·file_rows)와 기준일, (h) sources에 적은 교통 자료(transit.json — 도시의 교통 수집 도구가 만든다: 블록의
     source url이 sources에 있을 때만)의 시간표 날짜·대수(전체·등급·등급 계열)·출발/도착 시각·요금·열차 번호·소요 시간과
     시내버스 노선 번호·기점/종점·방면, 탈 정류장에서 참조 장소 근처 정류장까지(돌아올 때는 그 정류장에서 탈 정류장까지)의
-    정류장 수에 있어야 한다. m·km가 붙은 숫자는 참조 장소끼리의 직선거리와 근처 줄의 m(반올림
+    정류장 수, 또는 (i) sources에 적은 공식 페이지 표(transit.json tables — 페이지 url이 sources에 있을 때만: 그 표의 행에
+    있는 숫자·시각·전화번호)에 있어야 한다. m·km가 붙은 숫자는 참조 장소끼리의 직선거리와 근처 줄의 m(반올림
     표기, (e)와 같은 글에서만)도 된다. 'N곳'(두 곳 같은 한글 수 포함)은 개수 주장이라 (b)·(c)이거나 참조 사실·코스
     facts에 'N곳'으로 있거나 코스 경유지 수·인용한 목록의 행 수여야 한다. 시각(HH:MM)과 전화번호는 숫자 낱낱이 아니라
     통째로 참조 장소·행사·근처 줄((e)와 같은 글에서만)·코스의 값(또는 counts의 기준 시각)에 있어야 한다.
@@ -71,6 +72,7 @@ from types import SimpleNamespace
 if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+from pipeline import notices as noticesmod
 from pipeline import present
 from pipeline.schema import SOURCE_COMMENTARY, summary_sentences
 from pipeline.schema import designations as shown_designations
@@ -210,6 +212,13 @@ class Data:
         self._access_state.access_names = present.access_names(self._access_state)
         self._lists: list[dict] | None = None
         self._memo: dict = {}
+        # the notices still shown (notices.json: a closure, special hours, a free day): a place's notice is one of its
+        # values — a guide that names the place may give its dates
+        self.notices = noticesmod.active(noticesmod.load(self.path), dt.date.today().isoformat())
+
+    def notices_of(self, p: dict) -> list[str]:
+        """The place's shown notices as the pages word them (notices.ko_text)."""
+        return [noticesmod.ko_text(n) for n in noticesmod.for_place(self.notices, p.get("id") or "")]
 
     def radius(self, section: str) -> int:
         """The radius nearby.json was made with (_meta.<parking|bus|rail>.radius_m)."""
@@ -803,13 +812,19 @@ def _span(a: str, b: str) -> int | None:
     return m + 1440 if m < 0 else m
 
 
+AREA_PAREN = re.compile(r"(?<![\d-])(0\d{1,3})\)\s*(?=\d{3,4}-\d{4})")
+
+
 def transit_grounding(D: Data, sources: list[dict], places: list[dict]) -> dict:
     """What a guide may cite from data/<city>/transit.json (the city's transit import tool), only for the blocks whose
     source url the guide's sources name: a timetable's date, the number of trains or buses and of distinct departure
     times (all, per grade, per grade family — 'KTX' and its variants), every departure and arrival time, fare, train
     number and journey time (minutes, hours and minutes); a city bus route's number, ends, notes and direction notes and,
     from each boarding stop of the block, the number of stops to every later stop that is a boarding stop or a stop near
-    a referenced place (D.access), and from each of those stops back to a later boarding stop. {numbers, times, names}."""
+    a referenced place (D.access), and from each of those stops back to a later boarding stop; and from an official
+    page's table (`tables`: [{name, url, provider, modified, checked_at, rows, names}] — the rows as the page prints
+    them: a timetable's route rows, a fare table, a phone line) every number, clock time and phone in its rows.
+    {numbers, times, phones, names}."""
     T = load_json(D.path / "transit.json", {}) or {}
     urls = {_text(s.get("url")) for s in sources} - {""}
     numbers: set[str] = set()
@@ -845,6 +860,15 @@ def transit_grounding(D: Data, sources: list[dict], places: list[dict]) -> dict:
                 if m is not None:
                     numbers |= {str(m), str(m // 60), str(m % 60)}
                 names += [_text(r.get("grade")), _text(r.get("dep_terminal")), _text(r.get("arr_terminal"))]
+    phones: set[str] = set()
+    for tb in T.get("tables") or []:   # an official page's table values, its rows as the page prints them
+        if not isinstance(tb, dict) or _text(tb.get("url")) not in urls:
+            continue
+        for r in (_text(x) for x in tb.get("rows") or []):
+            numbers |= _nums(r)
+            times |= _times(r)
+            phones |= _phones(AREA_PAREN.sub(r"\1-", r))   # '054)632-7788' as the page writes it
+        names += [_text(tb.get("name")), *(_text(x) for x in tb.get("names") or [])]
     blk = T.get("bus") or {}
     if _text((blk.get("source") or {}).get("url")) in urls:
         board = set(blk.get("stops") or [])
@@ -863,7 +887,7 @@ def transit_grounding(D: Data, sources: list[dict], places: list[dict]) -> dict:
                         if seq[j][2] in ends:
                             numbers.add(str(j - i))
                             names += [a[2], seq[j][2]]
-    return {"numbers": numbers, "times": times, "names": [n for n in dict.fromkeys(names) if n]}
+    return {"numbers": numbers, "times": times, "phones": phones, "names": [n for n in dict.fromkeys(names) if n]}
 
 
 def grounding(D: Data, places: list[dict], courses: list[dict], lists: list[dict]) -> dict:
@@ -1106,6 +1130,7 @@ def check_guide(g: dict, D: Data, *, others: list[dict] | None = None) -> list[s
     values = [_text(v) for p in refs.values() for v in (p.get("facts") or {}).values()]
     values += [_text(a.get("value")) for p in refs.values() for alts in (p.get("fact_alternatives") or {}).values()
                for a in alts or []]
+    values += [t for p in refs.values() for t in D.notices_of(p)]   # a closure's or a special day's dates
     hay = names + values + [_text(p.get("category")) for p in refs.values()]
     hay += [" ".join((D.derived(p)["district"], D.derived(p)["area"], D.derived(p)["road"])) for p in refs.values()]
     overviews = [squash_ws((p.get("tourapi") or {}).get("overview")) for p in refs.values()]
@@ -1128,6 +1153,7 @@ def check_guide(g: dict, D: Data, *, others: list[dict] | None = None) -> list[s
     tg = transit_grounding(D, sources, list(refs.values()))   # transit.json, when the sources cite its providers
     known |= extra["numbers"] | tg["numbers"]
     clock |= tg["times"]
+    phones |= tg["phones"]
     extra["names"] = list(extra["names"]) + tg["names"]
     gos |= extra["go"]
     clock |= extra["times"]

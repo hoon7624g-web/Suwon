@@ -31,7 +31,7 @@ from difflib import SequenceMatcher
 from pipeline import slugs
 from pipeline.present import TIME_KEYS, time_set
 from pipeline.schema import TOURAPI_LICENSE_MAP, license_allowed
-from pipeline.textutil import homepage_url, normalize_name, squash_ws, strip_html
+from pipeline.textutil import homepage_url, hyphenate_phones, normalize_name, squash_ws, strip_html
 from pipeline.tourapi import CONTENT_TYPES, INTRO_FIELDS, KIND_BY_TYPE
 
 PROVIDER = "한국관광공사 TourAPI"
@@ -176,7 +176,7 @@ def tourapi_facts(common: dict, intro: dict, info: list[dict], ctype: str) -> di
             facts[key] = value
     for key in ("infocenter", "reservation"):  # '063-443-1981063-443-4819': two numbers sent glued together
         if facts.get(key):
-            facts[key] = GLUED_PHONES.sub(r"\1, ", facts[key])
+            facts[key] = hyphenate_phones(GLUED_PHONES.sub(r"\1, ", facts[key]))  # '054 637-9121' too
     tel = clean(common.get("tel"))
     if "infocenter" not in facts and tel:
         name = clean(common.get("telname"))

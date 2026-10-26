@@ -2,7 +2,7 @@
 over it (tests/fixtures/build_en_min.py: 8 English place records, the food hub guide, one course, one event series),
 in which one Korean summary was edited after translation (its English record is then stale and must not be
 rendered). Places and records are looked up by id; every English page uses the slug its Korean record stores. Also:
-the English site is off without site.json languages "en" or without data/<city>/en/places.json (data/daegu, the
+the English site is off without site.json languages "en" or without data/<city>/en/places.json (this city's data, the
 sample), the city words come from site.json, and a 구·군 city (tests/fixtures/metro) gets its groups and place lines in
 English. The other versions: tests/test_intl_site.py."""
 import json
@@ -28,7 +28,8 @@ ROOT = Path(__file__).resolve().parent.parent
 SUBSET = ROOT / "tests" / "fixtures" / "gunsan_subset"
 EN_MIN = ROOT / "tests" / "fixtures" / "en_min"
 SAMPLE = ROOT / "data" / "sample"
-DAEGU = ROOT / "data" / "suwon"
+CITY = ROOT / "data" / "suwon"          # this city's data (its English records, all 9 versions)
+METRO = ROOT / "tests" / "fixtures" / "metro"   # a 구·군 city config
 STALE_ID = "gunsan-305395"      # 근대역사박물관: its Korean summary is edited in the copy
 PLAIN_ID = "gunsan-305372"      # 은파호수공원: no designation
 CONFLICT_ID = "gunsan-1379526"  # 군산근대건축관: hours two sources give differently
@@ -146,7 +147,7 @@ def test_hreflang_pairs_are_reciprocal(site):
         pages["/" + f.relative_to(out).as_posix()] = (p.canonical, p.alternates)
     assert hreflang_problems(pages) == []
     ko = scan_file(ko_page(out, PLAIN_ID))
-    en_path = "/" + en_page(out, f"place:{PLAIN_ID}").parent.relative_to(out).as_posix() + "/"
+    en_path = "/" + str(en_page(out, f"place:{PLAIN_ID}").parent.relative_to(out)) + "/"
     assert dict(ko.alternates)["en"].endswith(en_path)
     assert dict(ko.alternates)["x-default"] == dict(ko.alternates)["ko"] == ko.canonical
     en = scan_file(out / en_path.strip("/") / "index.html")
@@ -163,7 +164,8 @@ def test_stale_record_is_not_rendered(site):
     p = scan_file(ko)
     assert p.alternates == []                                          # no English twin: no hreflang
     # the English link falls back to the place's own English list, saying so (QA 2026-10-15 SRC-03b; it was /en/)
-    assert '<a class="mast-lang" href="/en/places/" hreflang="en" lang="en">English</a>' in ko.read_text("utf-8")
+    assert ('<a class="mast-lang" href="/en/places/" hreflang="en" lang="en">English'
+            '<small class="lang-note">Things to do · not translated</small></a>') in ko.read_text("utf-8")
     lists = (out / "en" / "places" / "index.html").read_text("utf-8")
     assert stale not in lists
     for f in _html_files(out):
@@ -184,7 +186,7 @@ def test_sitemap_has_only_indexable_english_urls(site):
     assert noindex == [en_page(out, f"place:{NOINDEX_ID}")]
     assert site["stats"]["en"]["places"] - site["stats"]["en"]["places_indexable"] == len(noindex) == 1
     llms = (out / "llms.txt").read_text("utf-8")
-    hub = "/" + en_page(out, f"guide:{HUB_GUIDE}").parent.relative_to(out).as_posix() + "/"
+    hub = "/" + str(en_page(out, f"guide:{HUB_GUIDE}").parent.relative_to(out)) + "/"
     assert "## English" in llms and hub in llms
     for f in noindex:
         assert "/en/places/" + f.parent.name + "/" not in llms
@@ -301,7 +303,8 @@ def test_event_series_slugs_match_the_build():
 def test_english_addresses_from_the_city_config():
     """address_en reads the address with the city's configuration (City.parse_address) and ends it with the city's
     English names; '' when a part is not read — never a guessed one."""
-    daegu = citymod.from_site(json.loads((ROOT / "tests" / "fixtures" / "metro" / "site.json").read_text("utf-8")))
+    daegu = citymod.from_site(json.loads((METRO / "site.json").read_text("utf-8")))
+    city = citymod.from_site(json.loads((CITY / "site.json").read_text("utf-8")))
     gunsan = citymod.from_site(json.loads((SUBSET / "site.json").read_text("utf-8")))
     assert address_en("대구광역시 중구 동성로2길 80 (삼덕동1가)", daegu) == \
         "80 Dongseong-ro 2-gil (Samdeok-dong 1-ga), Jung-gu, Daegu"
@@ -311,6 +314,14 @@ def test_english_addresses_from_the_city_config():
         "382 Wolmyeong-ro (Miwon-dong), Gunsan-si, Jeonbuk State"
     assert address_en("전북특별자치도 임피면 임피향교길 46", gunsan) == ""            # the 시 is not written
     assert address_en("대구광역시 중구 동성로2길 80", gunsan) == ""                   # another city
+    # a 시 in a 도 (this city's config): its 읍·면 and 동, then the 시 and the 도 in the config's English names
+    site = json.loads((CITY / "site.json").read_text("utf-8"))
+    tail = f"{site['locality_en']}, {site['region_admin_en']}"
+    admin = f"{site['region_admin']} {site['locality']}"
+    assert address_en(f"{admin} 샘플로103번길 31-32 (가흥동)", city) == f"31-32 Saempeul-ro 103beon-gil (Gaheung-dong), {tail}"
+    assert address_en(f"{admin} 풍기읍 샘플로 57-21", city) == f"57-21 Saempeul-ro, Punggi-eup, {tail}"
+    assert address_en(f"{admin} 샘플로 1 샘플 건물", city) == ""                     # a building name: not read
+    assert address_en("대구광역시 중구 동성로2길 80", city) == ""                     # another city
 
 
 def test_city_words_come_from_site_json(tmp_path):
@@ -381,27 +392,29 @@ def test_sample_build_has_no_english_site(tmp_path):
     assert errors == []
 
 
-@pytest.mark.parametrize("case", ["daegu", "daegu_empty_en", "en_records_without_switch", "switch_without_places"])
+@pytest.mark.parametrize("case", ["city", "city_empty_en", "en_records_without_switch", "switch_without_places"])
 def test_english_site_is_off_without_the_switch_and_records(case, tmp_path):
     """/en/ is built only when site.json languages lists "en" and data/<city>/en/places.json exists: a copy of
-    data/daegu with its English records and the switch off (languages ["ko"]), a copy with an en/ folder without
+    this city's data with its English records and the switch off (languages ["ko"]), a copy with an en/ folder without
     places.json and "en" switched on, the en_min records with the switch off, and the switch on without
-    en/places.json — no /en/ pages, no hreflang, no English link."""
-    if case == "daegu":
+    en/places.json — no /en/ pages, no hreflang, no English link (an outside link to an English page — the
+    emergency notice's VisitKorea pages — may say hreflang="en" on its <a>)."""
+    if case == "city":
         data = tmp_path / "data"
-        shutil.copytree(DAEGU, data)
+        shutil.copytree(CITY, data)
         s = json.loads((data / "site.json").read_text("utf-8"))
         s["languages"] = ["ko"]
-        s.pop("emergency", None)
         (data / "site.json").write_text(json.dumps(s, ensure_ascii=False), "utf-8")
-    elif case == "daegu_empty_en":
+    elif case == "city_empty_en":
         data = tmp_path / "data"
-        shutil.copytree(DAEGU, data)
+        shutil.copytree(CITY, data)
         (data / "en").mkdir(exist_ok=True)              # the city holds en/names.json and its records …
         (data / "en" / "places.json").unlink(missing_ok=True)   # … but without places.json there is no English site
         s = json.loads((data / "site.json").read_text("utf-8"))
         s["languages"] = ["ko", "en"]
-        s.pop("emergency", None)
+        # the switch alone, not the completeness rule (site.json intl.require_complete stops this build with the list
+        # of what is missing: tests/test_intl_site.py::test_complete_policy_stops_the_build_on_a_missing_translation)
+        s["intl"] = {"require_complete": False}
         (data / "site.json").write_text(json.dumps(s, ensure_ascii=False), "utf-8")
     elif case == "en_records_without_switch":
         data = en_min_data(tmp_path / "data", languages=["ko"])
@@ -414,7 +427,8 @@ def test_english_site_is_off_without_the_switch_and_records(case, tmp_path):
     assert "en" not in stats and not (out / "en").exists()
     for f in out.rglob("*.html"):
         html = f.read_text("utf-8")
-        assert "hreflang" not in html and 'class="mast-lang"' not in html, f
+        assert not re.search(r"<link[^>]*hreflang=", html) and 'class="mast-lang"' not in html, f
+        assert 'href="/en/' not in html and "data-langmenu" not in html, f
     errors, _, _ = validate(data, out, "preview")
     assert errors == [], errors[:5]
 
@@ -513,3 +527,40 @@ def test_about_page_says_once_that_the_site_takes_no_bookings(site):
         about = unescape((out / ("" if code == "ko" else code) / "about" / "index.html").read_text("utf-8"))
         assert about.count(LC.BOOK_WORDS[code]["about"]) == 1, code
     assert not [f for f in out.rglob("*.html") if "booking_click" in f.read_text("utf-8")]
+
+
+def test_every_english_place_page_keeps_its_address_in_jsonld(tmp_path):
+    """A place with event cards kept its address, phone and hours out of its English JSON-LD (the event loop's
+    record replaced the place's: the first site's evaluation 2026-10-21; this city's buseoksa and 7 more places × 8
+    versions). Here the en_min event series is held at 근대역사박물관: every English place page whose Korean page has
+    a PostalAddress has one too, that place's page (with its event card) among them, with its phone and hours."""
+    data = en_min_data(tmp_path / "data")
+    slug = KO_PLACES[STALE_ID]["slug"]
+    events = json.loads((data / "events.json").read_text("utf-8"))
+    for ev in events:
+        ev["place_slug"] = slug
+    (data / "events.json").write_text(json.dumps(events, ensure_ascii=False), "utf-8")
+    out = tmp_path / "out"
+    build(data, out, "preview")
+    missing, checked, carded = [], 0, []
+    for ko in sorted((out / "places").glob("*/index.html")):
+        s = ko.read_text("utf-8")
+        m = re.search(r'<link rel="alternate" hreflang="en" href="https?://[^/]+(/en/places/[^"]+)"', s)
+        if not m or "PostalAddress" not in s:
+            continue
+        en = out / m.group(1).strip("/") / "index.html"
+        if not en.exists():
+            continue
+        checked += 1
+        html = en.read_text("utf-8")
+        if 'href="/en/events/#' in html:
+            carded.append(html)
+        if "PostalAddress" not in html:
+            missing.append(m.group(1))
+    assert checked >= 5 and len(carded) == 1 and not missing, (checked, len(carded), missing[:5])
+    node = next(n for raw in scan_file(en_page(out, f"place:{STALE_ID}")).jsonld_raw
+                for n in json.loads(raw).get("@graph", [json.loads(raw)]) if str(n.get("@id", "")).endswith("#place"))
+    ko_node = next(n for raw in scan_file(ko_page(out, STALE_ID)).jsonld_raw
+                   for n in json.loads(raw).get("@graph", [json.loads(raw)]) if str(n.get("@id", "")).endswith("#place"))
+    for key in ("address", "telephone", "openingHours"):
+        assert bool(node.get(key)) == bool(ko_node.get(key)), key

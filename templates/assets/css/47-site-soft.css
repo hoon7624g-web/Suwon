@@ -3,8 +3,8 @@
    demo by AIO2O) lends its DESIGN LANGUAGE only: light grounds, white cards with hairline borders and ~24px radii,
    small sea-blue eyebrow labels, bold section titles, arrow-circle buttons, pill chips, segmented tabs, soft tinted
    panels instead of loud colour blocks, soft 3D pictures on pale tinted circles (templates/_pic.html.j2). Brand colour
-   = 바다 파랑 (docs/handover/specs/ui4_mapping.md (b), 00-tokens.css); lime / lavender / sky retire.
-   Specs: docs/handover/specs/soft_look.md.
+   = 바다 파랑 (the first site's UI4 palette, 00-tokens.css); lime / lavender / sky retire.
+   Specs: the first site's soft-look spec (not in this repository).
 
    Contrast (WCAG, measured): white on sea #2F6FC9 4.96 · on sea-hi #255DAF 6.43 · sea on #fff 4.96 / on bg-2 4.61 /
    on g0 4.60 · sea-deep #1D4F96 on tint #EAF2FC 7.13 / tint2 6.41 / g1 6.83 · ink #172033 on white 16.27 / tint 14.41
@@ -45,6 +45,10 @@
 .band-data li a { min-height: 64px; border-radius: 18px; background: #fff; box-shadow: inset 0 0 0 1px var(--hair); color: var(--ink-3); }
 .band-data b { color: var(--sea); }
 .band-data a:hover { background: var(--tint); box-shadow: inset 0 0 0 1px var(--tint2); color: var(--ink-2); }
+/* a group the filters leave empty (site.js: its number 0, no href while its group is hidden): faint like a 0 chip — a
+   dashed ring drawn inside (an outline: the entry keeps its size), the grey number, no hover */
+.band-data a.is-zero, .band-data a.is-zero:hover { background: #fff; box-shadow: none; outline: 1px dashed var(--ink-3); outline-offset: -1px; color: var(--ink-3); cursor: default; }
+.band-data a.is-zero b { color: var(--ink-3); }
 
 /* ---------------------------------------------------------------- buttons: filled sea, 14px corners; outline = hairline */
 .btn { border-radius: 14px; font-weight: 700; background: var(--sea); }

@@ -14,9 +14,10 @@
 <section class="pg-hero band-s list-head" aria-labelledby="h-list">
   <div class="wrap">
     <h1 id="h-list" class="h-list">{{ sw.h1.format(r=region) }}</h1>
-    <form class="search" action="{{ loc.home }}search/" method="get" role="search" data-search data-index="{{ loc.home }}search/index.json" data-words="{{ words }}">
+    <form class="search" action="{{ loc.home }}search/" method="get" role="search" data-search data-index="{{ loc.home }}search/index.json" data-words="{{ words }}"{% for k, v in (search_data or {})|dictsort %} data-{{ k }}="{{ v }}"{% endfor %}>
       <label class="search-l" for="q">{{ sw.label }}</label>
-      <div class="search-row"><input id="q" name="q" type="search" autocomplete="off" enterkeyhint="search" spellcheck="false" placeholder="{{ sw.ph }}"><button type="submit" class="btn">{{ sw.go }}</button></div>
+      <div class="search-row"><input id="q" name="q" type="search" autocomplete="off" enterkeyhint="search" spellcheck="false" placeholder="{{ sw.ph }}" aria-describedby="q-note"><button type="submit" class="btn">{{ sw.go }}</button></div>
+      <p class="search-note" id="q-note">{{ sw.scope }}</p>
     </form>
     <div class="results" data-results aria-live="polite"></div>
     <div class="res-help" data-none-help hidden>

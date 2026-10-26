@@ -19,7 +19,7 @@
 {% import "_near.html.j2" as nb %}
 {% set fn = p.notes|length > 1 %}
 {#- the media block (영상 · 소식 · 해외 기사 · SNS): its parts name the heading and the page-nav link -#}
-{% set abroad = p.e._abroad or [] %}{% set ab_art = abroad|selectattr('kind', 'equalto', 'article')|list %}{% set ab_post = abroad|selectattr('kind', 'equalto', 'post')|list %}{% set media_parts = (['영상'] if p.videos else []) + (['소식'] if (media or {}).news else []) + (['해외 기사'] if ab_art else []) + (['SNS'] if ab_post else []) %}
+{% set abroad = p.e._abroad or [] %}{% set ab_all = abroad|selectattr('kind', 'equalto', 'article')|list %}{% set ab_ref = ab_all|selectattr('source_type', 'equalto', 'reference')|list %}{% set ab_art = ab_all|rejectattr('source_type', 'equalto', 'reference')|list %}{% set ab_post = abroad|selectattr('kind', 'equalto', 'post')|list %}{% set media_parts = (['영상'] if p.videos else []) + (['소식'] if (media or {}).news else []) + (['해외 기사'] if ab_art else []) + (['SNS'] if ab_post else []) + (['외국어 참고자료'] if ab_ref else []) %}
 {% set nm = p.name %}
 {% set lead = p.hero_k1 or p.hero_k3 %}
 {% set kind_word = {'attraction': '볼거리', 'stay': '숙소', 'food': '음식점'}[p.kind] %}
@@ -105,7 +105,7 @@
         {% if strip %}
         <div class="car car-ph" data-gallery>
           <div class="car-view" data-gal-view><ul class="strip car-track">{% for ph in strip %}<li>{{ ui.figure(ph, nm, loop.index + 1, p.photos|length, '', false, '(min-width: 1024px) 460px, 340px', false, false) }}</li>{% endfor %}</ul></div>
-          <div class="car-foot car-foot-s"><p class="strip-credit">출처: 한국관광공사 · {{ strip|map(attribute='lic')|unique|join(', ') }}</p>{% if strip|length > 1 %}{{ ui.carnav('사진') }}{% endif %}</div>
+          <div class="car-foot car-foot-s"><p class="strip-credit">출처: {{ strip|map(attribute='credit')|select|unique|join(', ') or '한국관광공사' }} · {{ strip|map(attribute='lic')|unique|join(', ') }}</p>{% if strip|length > 1 %}{{ ui.carnav('사진') }}{% endif %}</div>
         </div>
         {% endif %}
       </section>
@@ -191,9 +191,11 @@
       {% if p.videos %}<ul class="vids">{% for v in p.videos %}{{ ui.video(v, p.e.id, [], false, 'li') }}{% endfor %}</ul>
       {% if has_videos %}<p class="note"><a href="/videos/">영상 모아 보기</a></p>{% endif %}{% endif %}
       {% if news %}<ul class="xlinks">{% for n in news %}<li><a href="{{ n.url }}" rel="noopener" data-track="news_click" data-place="{{ p.e.id }}">{{ n.title }}</a><span class="same-t">{{ n.publisher }}{% if n.date %} · <span class="tn">{{ n.date }}</span>{% endif %}</span></li>{% endfor %}</ul>{% endif %}
-      {% if abroad %}<h3 class="ab-sub">해외에서 본 {{ nm }}</h3>
-      <ul class="ab-list ab-in">{% for a in ab_art %}{{ ab.article(a, false, false) }}{% endfor %}{% for a in ab_post %}{{ ab.post(a, false) }}{% endfor %}</ul>
-      <p class="note"><a href="/abroad/">해외에서 본 {{ site.region }} 모아 보기</a></p>{% endif %}
+      {% if ab_art or ab_post %}<h3 class="ab-sub">해외에서 본 {{ nm }}</h3>
+      <ul class="ab-list ab-in">{% for a in ab_art %}{{ ab.article(a, false, false) }}{% endfor %}{% for a in ab_post %}{{ ab.post(a, false) }}{% endfor %}</ul>{% endif %}
+      {% if ab_ref %}<h3 class="ab-sub">외국어 참고자료</h3>
+      <ul class="ab-list ab-in">{% for a in ab_ref %}{{ ab.article(a, false, false) }}{% endfor %}</ul>{% endif %}
+      {% if abroad %}<p class="note"><a href="/abroad/">해외에서 본 {{ site.region }} 모아 보기</a></p>{% endif %}
     </div>
   </section>
   {% endif %}
@@ -220,7 +222,7 @@
         {% for s in sources if s.label == '공식 홈페이지' %}<div><dt>공식 홈페이지</dt><dd><a href="{{ s.url }}" rel="noopener" data-track="official_click" data-place="{{ p.e.id }}">{{ s.url|replace('https://', '')|replace('http://', '') }}</a></dd></div>{% endfor %}
         {% if p.photos %}<div><dt>사진</dt><dd>한국관광공사 · {{ p.photos|map(attribute='lic')|unique|join(', ') }}</dd></div>{% endif %}
       </dl>
-      <p class="note"><a href="/about/#correction">틀린 정보 알리기</a></p>
+      <p class="note">{{ site.site_name }}({{ site.region }} 여행 정보 사이트) 정리 · <a href="/about/#correction">틀린 정보 알리기</a></p>
     </div>
   </section>
 </article>

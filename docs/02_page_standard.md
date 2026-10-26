@@ -111,7 +111,7 @@
 | 바다 게스트하우스 (같은 이름이 중구에 이미 있음, `district`) | `bada-geseuteuhauseu-jung-gu` |
 
 ### 4-6. 도시 설정 `site.json` — `pipeline/city.py`가 읽는다
-도시마다 다른 값은 코드에 두지 않고 `data/<도시>/site.json`에 둔다(키별 뜻·대구 값은 `docs/handover/daegu_port_design.md` 1.2절).
+도시마다 다른 값은 코드에 두지 않고 `data/<도시>/site.json`에 둔다(키별 뜻은 `pipeline/city.py`, 새 도시 이식은 `docs/handover/porting_to_new_city.md`).
 - 필수: `site_url`, `region`(짧은 이름 `대구`), `region_admin`(시·도 `대구광역시`), `locality`(City 노드 이름; 광역시는 시·도와 같다). 영어판 이름 `site_name_en`·`region_en`·`region_admin_en`·`locality_en`.
 - 주소: `districts`(구·군 공식 순서), `address_aliases`(해석할 때만 시·도로 읽는 앞말 `대구시`·`대구`), `region_homographs`(도시 이름처럼 보이지만 아닌 단어 `대구탕` 등). 옛 행정 이름(`경상북도 군위군`→`대구광역시 군위군`)은 `textutil`의 전국 개칭표가 바꿔 보인다.
 - 무리 짓기: `regions{mode: district|anchors, label, area_label, anchors[{key, name, place_id}], far{m, label}|null, none_label}`, `dist_anchors`(place id).

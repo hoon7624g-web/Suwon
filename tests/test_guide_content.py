@@ -1,6 +1,6 @@
 """tools/guide_content.py: 작성자용 장소 목록(catalog), 개수(count), 가이드 검사(check-guide), 반영(merge).
 
-The data folder is a tmp copy: this city's site.json (read, never written), four fake '[샘플]' places, one hidden
+The data folder is a tmp copy: a 구·군 city's site.json (tests/fixtures/metro, read, never written), four fake '[샘플]' places, one hidden
 duplicate, one event and one stored guide, plus fake official data outside places: nearby.json + parking_lots.json
 (근처 공영주차장·정류장·역), designations on the places with their raw lists (tmp/raw/data/designations), and
 courses.json (two published courses, one draft). City words come from that site.json (CITY.admin_line, CITY.districts).
@@ -21,7 +21,7 @@ from tests import test_no_city_literals as literals
 from tools import guide_content as gc
 
 ROOT = Path(__file__).resolve().parent.parent
-SITE = ROOT / "tests" / "fixtures" / "metro" / "site.json"
+SITE = ROOT / "tests" / "fixtures" / "metro" / "site.json"   # a 구·군 city config
 CITY = citymod.of(json.loads(SITE.read_text("utf-8")))
 ADMIN, GU = CITY.admin_line, CITY.districts[0]
 TOUR = "한국관광공사 TourAPI"
@@ -473,6 +473,26 @@ def test_transit_blocks_ground_only_when_their_source_is_cited(data):
     assert "body[1].text 근거 없는 숫자 ['26', '29']" in issues(data, bad)
 
 
+TABLE_URL = "https://www.example.go.kr/page.do?mnu_uid=1"
+
+
+def test_official_table_rows_ground_only_when_the_page_is_cited(data):
+    """transit.json tables (an official page's table values as the page prints them) ground the numbers, clock times
+    and phones of their rows ('054)632-7788' as 054-632-7788) — only when the guide's sources name the page's url."""
+    write(data / "transit.json", {"tables": [{"name": "[샘플] 시내버스 노선안내", "url": TABLE_URL, "rows": [
+        "27번 | [샘플] 터미널 ↔ [샘플] 산사 | 10회 | [샘플] 산사 출발 07:10, 20:20", "역 : 054)632-7788"]}]})
+    g = good()
+    g["sources"] += [{"name": "[샘플] 시내버스 노선안내", "url": TABLE_URL}]
+    g["body"][1]["text"] += " 시내버스 27번은 하루 10회 다니고 [샘플] 산사에서 20:20에 마지막으로 떠나며, 역 전화는 054-632-7788입니다."
+    assert issues(data, g) == []
+    bad = copy.deepcopy(g)
+    bad["sources"] = [s for s in bad["sources"] if s["url"] != TABLE_URL]
+    found = issues(data, bad)
+    assert "body[1].text 근거 없는 숫자 ['27', '632', '7788']" in found
+    assert "body[1].text 참조 장소의 값에 없는 시각 ['20:20']" in found
+    assert "body[1].text 참조 장소의 값에 없는 전화번호 ['054-632-7788']" in found
+
+
 def test_nearby_rows_ground_only_a_text_about_getting_there(data):
     """A referenced place carries up to six nearby rows; their values ground a text only when it is about getting
     there (an access word or a row's name), so they never ground an unrelated number, time or phone elsewhere."""
@@ -740,7 +760,7 @@ def test_the_tool_names_no_city():
     consts = [(f"{path.name}:{n.lineno}", n.value) for n in ast.walk(ast.parse(path.read_text("utf-8")))
               if isinstance(n, ast.Constant) and isinstance(n.value, str)]
     patterns = [getattr(literals, n) for n in dir(literals) if n.endswith("_RX")]
-    assert len(consts) > 50 and len(patterns) == 2
+    assert len(consts) > 50 and len(patterns) == 3
     assert [h for rx in patterns for h in literals.hits(rx, consts)] == []
 
 

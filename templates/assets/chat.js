@@ -4,7 +4,7 @@
    never in the first paint.
    window.gsChat = {open(opener), restore(), close(), ask(q, from), stop(), busy(), dock}.
 
-   - The city's words come from the launcher (templates/_chat.html.j2: data-chat = {site, name, region, chips} in the
+   - The city's words come from the launcher (templates/_chat.html.j2: data-chat = {site, name, region, chips, hubs} in the
      page's language, from site.json through pipeline/chat_index.py ui_config): the assistant's name, the region's
      name in the texts below ({region}), the example questions, and the public address (a link to it opens on the
      deployment the reader is on). Nothing of a city is written here.
@@ -12,14 +12,26 @@
      text · done {links, fix, cut} · error {code}. meta: the answer is drawn with its own lang (when the server is sure
      of it) and direction (an Arabic answer right to left, its phone numbers and dates as left-to-right runs), and its
      cards name their kind in the language of the pages they open (site). Text is drawn once per animation frame.
-     Links in an answer stay plain while it is written and become links when 'done' has checked them (fix: a page that
-     does not exist, or an outside address the site's data does not carry, stays plain text). Model text is only ever
-     put in the page as text nodes, never as HTML.
+     Links in an answer stay plain while it is written and
+     become links when 'done' has checked them (fix: a page that does not exist, or an outside address the site's data
+     does not carry, stays plain text). Model text is only ever put in the page as text nodes, never as HTML.
+   - The course planner's door (Korean pages of a site that has /plan/, the header's data-track="plan_cta" link): a
+     question that clearly states trip conditions — a date, 당일·1박 2일, 차 없이 or 자가용, a child, 비·유모차·휠체어·
+     주차·덜 걷기, a time it arrives at or leaves a hub of the city (site.json plan.hubs, data-chat hubs; planQuery: a
+     conservative reader that leaves out what it
+     is not sure of) — gets under its finished answer (not a stopped or cut one) one link, '이 조건으로 AI 코스
+     만들기', to /plan/ with those conditions, over the ones its earlier questions in the conversation stated, as URL
+     parameters (GA4 plan_cta, chat_where).
+   - Errors in the page's language, one text per code (err; every code the server sends reads as one of them: ERR_AS).
    - A cut answer (done.cut) offers 'continue' on the last answer: POST {…, continue: true} with the cut answer as the
      last message; the rest streams into the same answer. Earlier answers go back with their checked links as page
      paths, cut to 2,000 characters keeping the links of the cut part; a question the reader stopped is left out.
-   - The conversation and the open state live in sessionStorage 'gs-chat' (this tab only); 'new chat' clears it.
-     Nothing is stored on the server.
+   - The conversation and the open state live in sessionStorage 'gs-chat' (this tab only); 'new chat' clears it. It
+     keeps the first question and answer and the last 22 messages, and the conversation's questions for the planner's
+     door (q). The log follows a growing answer only until its question reaches the top, and a conversation opened
+     again shows its last question (the answer's conclusion in view).
+     Nothing is stored on the server: the conversation stays in this tab (sessionStorage) and each question goes to
+     Anthropic to be answered — the notice under the box says so in every language (operator 2026-10-18).
    - Two views, one per page. The panel: wide screens a card at the bottom right, non-modal; phones a full-height
      sheet, modal (the page behind is inert, Tab stays inside); Esc closes and focus returns to the launcher; Enter
      sends, Shift+Enter breaks the line. The dock (a page with [data-chat-dock] — the Korean home's centre card with
@@ -43,8 +55,8 @@
   "use strict";
   if (window.gsChat) return;
   var doc = document, root = doc.documentElement, win = window;
-  var KEY = "gs-chat", API = "/api/chat/", MAX_Q = 800, KEEP = 24, SEND_PRIOR = 12, ANSWER_CHARS = 2000;
-  // the city's words, from the launcher (data-chat): {site, name, region, chips}
+  var KEY = "gs-chat", API = "/api/chat/", MAX_Q = 800, KEEP = 24, KEEP_Q = 60, SEND_PRIOR = 12, ANSWER_CHARS = 2000;
+  // the city's words, from the launcher (data-chat): {site, name, region, chips, hubs (Korean pages)}
   var CFG = {};
   try { CFG = JSON.parse((doc.querySelector("[data-chat]") || { getAttribute: function () { return ""; } }).getAttribute("data-chat") || "{}") || {}; } catch (e) { CFG = {}; }
   var SITE = typeof CFG.site === "string" ? CFG.site.replace(/\/+$/, "") : "";
@@ -56,7 +68,8 @@
       placeholder: "{region} 여행, 무엇이 궁금하세요?", label: "질문", send: "보내기", stop: "멈추기", newChat: "새 대화", conv: "대화",
       close: "닫기", retry: "다시 시도", stopped: "답을 멈췄습니다.", cut: "답이 길어 여기서 끊겼습니다.", more: "이어서 보기",
       thinking: "답을 찾는 중…", you: "질문", ai: "답", pages: "관련 페이지", newTab: "(새 창)",
-      foot: "이름·전화번호 같은 개인정보는 쓰지 마세요. 대화는 서버에 저장하지 않습니다(이 탭을 닫으면 지워짐).", search: "/search/", searchLabel: "사이트 검색으로 찾기",
+      foot: "이름·전화번호 같은 개인정보는 쓰지 마세요. 대화는 이 탭에만 임시 보관되고, 질문은 답을 만들기 위해 Anthropic으로 전송됩니다.", search: "/search/", searchLabel: "사이트 검색으로 찾기",
+      plan: "이 조건으로 AI 코스 만들기",
       kinds: { place: "장소", guide: "가이드", course: "코스", event: "행사", video: "영상", abroad: "해외 기사", page: "페이지", book: "예약하기" },
       err: { not_configured: "챗봇이 아직 연결되지 않았습니다.", rate_limited: "질문이 너무 잦습니다. 1분 뒤 다시 물어보세요.",
         daily_limit: "하루에 물을 수 있는 질문 수를 넘었습니다. 내일 다시 물어보세요.",
@@ -72,7 +85,7 @@
       placeholder: "Ask about travelling in {region}", label: "Question", send: "Send", stop: "Stop", newChat: "New chat", conv: "Conversation",
       close: "Close", retry: "Try again", stopped: "Answer stopped.", cut: "The answer was cut off here.", more: "Continue",
       thinking: "Looking it up…", you: "You", ai: "Answer", pages: "Pages", newTab: "(new tab)",
-      foot: "Don't type personal details such as names or phone numbers. Chats are not stored on our server (they stay in this tab until you close it).", search: "", searchLabel: "",
+      foot: "Don't type personal details such as names or phone numbers. Chats stay only in this tab, and questions are sent to Anthropic to be answered.", search: "", searchLabel: "",
       kinds: { place: "Place", guide: "Guide", course: "Course", event: "Event", video: "Video", abroad: "Article", page: "Page", book: "Book" },
       err: { not_configured: "The assistant is not connected yet.", rate_limited: "Too many questions. Please wait a minute.",
         daily_limit: "You have reached the daily number of questions. Please ask again tomorrow.",
@@ -87,37 +100,37 @@
       placeholder: "{region}旅行について質問してください", label: "質問", send: "送信", stop: "停止", newChat: "新しい会話", conv: "会話", close: "閉じる",
       retry: "もう一度", stopped: "回答を停止しました。", cut: "回答はここで途切れました。", more: "続きを表示", thinking: "調べています…", you: "質問",
       ai: "回答", pages: "関連ページ", newTab: "（新しいタブ）",
-      foot: "名前や電話番号などの個人情報は入力しないでください。会話はサーバーに保存されません（このタブを閉じると消えます）。",
+      foot: "名前や電話番号などの個人情報は入力しないでください。会話はこのタブにだけ一時保存され、質問は回答のためAnthropicに送信されます。",
       kinds: { place: "スポット", guide: "ガイド", course: "コース", event: "イベント", video: "動画", abroad: "記事", page: "ページ", book: "予約する" },
       err: { not_configured: "アシスタントはまだ接続されていません。", rate_limited: "質問が多すぎます。1分ほどお待ちください。",
         daily_limit: "1日に質問できる回数を超えました。明日またお試しください。",
         too_long: "質問は800文字までです。", busy: "現在回答できません。しばらくしてからお試しください。",
         timeout: "時間がかかりすぎたため停止しました。", refusal: "この質問にはお答えできません。",
-        truncated: "回答が長すぎて止まりました。質問を分けてください。", network: "接続が切れました。", error: "回答を取得できませんでした。" },
+        truncated: "回答が長すぎて止まりました。質問を分けてください。", network: "接続が切れました。インターネット接続を確認してください。", error: "回答を取得できませんでした。" },
     },
     "zh-Hans": {
       title: "{name}", note: "AI根据本站信息回答 · 出发前请确认",
       intro: "用本站的信息查找景点、美食、住宿、路线和活动，每个回答都附有相关页面链接。",
       placeholder: "关于{region}旅行，想问什么？", label: "问题", send: "发送", stop: "停止", newChat: "新对话", conv: "对话", close: "关闭",
       retry: "重试", stopped: "已停止回答。", cut: "回答在这里被截断。", more: "继续回答", thinking: "正在查找…", you: "提问", ai: "回答",
-      pages: "相关页面", newTab: "（新标签页）", foot: "请勿输入姓名、电话号码等个人信息。对话不会保存在服务器上（关闭此标签页即清除）。",
+      pages: "相关页面", newTab: "（新标签页）", foot: "请勿输入姓名、电话号码等个人信息。对话只临时保存在此标签页，提问会发送给Anthropic以生成回答。",
       kinds: { place: "景点", guide: "指南", course: "路线", event: "活动", video: "视频", abroad: "文章", page: "页面", book: "预订" },
       err: { not_configured: "助手尚未连接。", rate_limited: "提问过于频繁，请一分钟后再试。",
         daily_limit: "已达到每天可提问的次数上限，请明天再问。", too_long: "问题最多800个字符。",
         busy: "现在无法回答，请稍后再试。", timeout: "回答时间过长，已停止。", refusal: "无法回答这个问题。",
-        truncated: "回答过长被截断，请把问题拆开提问。", network: "连接已断开。", error: "未能获取回答。" },
+        truncated: "回答过长被截断，请把问题拆开提问。", network: "连接已断开，请检查网络连接。", error: "未能获取回答。" },
     },
     "zh-Hant": {
       title: "{name}", note: "AI根據本站資訊回答 · 出發前請確認",
       intro: "用本站的資訊查找景點、美食、住宿、路線和活動，每個回答都附有相關頁面連結。",
       placeholder: "關於{region}旅行，想問什麼？", label: "問題", send: "傳送", stop: "停止", newChat: "新對話", conv: "對話", close: "關閉",
       retry: "重試", stopped: "已停止回答。", cut: "回答在這裡被截斷。", more: "繼續回答", thinking: "正在查找…", you: "提問", ai: "回答",
-      pages: "相關頁面", newTab: "（新分頁）", foot: "請勿輸入姓名、電話號碼等個人資訊。對話不會儲存在伺服器上（關閉此分頁即清除）。",
+      pages: "相關頁面", newTab: "（新分頁）", foot: "請勿輸入姓名、電話號碼等個人資訊。對話只暫存在此分頁，提問會傳送給Anthropic以產生回答。",
       kinds: { place: "景點", guide: "指南", course: "路線", event: "活動", video: "影片", abroad: "文章", page: "頁面", book: "預訂" },
       err: { not_configured: "助手尚未連線。", rate_limited: "提問過於頻繁，請一分鐘後再試。",
         daily_limit: "已達到每天可提問的次數上限，請明天再問。", too_long: "問題最多800個字元。",
         busy: "現在無法回答，請稍後再試。", timeout: "回答時間過長，已停止。", refusal: "無法回答這個問題。",
-        truncated: "回答過長被截斷，請把問題拆開提問。", network: "連線已中斷。", error: "未能取得回答。" },
+        truncated: "回答過長被截斷，請把問題拆開提問。", network: "連線已中斷，請檢查網路連線。", error: "未能取得回答。" },
     },
     de: {
       title: "{name}", note: "KI antwortet mit den Angaben dieser Website · vor dem Besuch prüfen",
@@ -125,13 +138,13 @@
       placeholder: "Ihre Frage zu {region}", label: "Frage", send: "Senden", stop: "Stopp", newChat: "Neuer Chat", conv: "Unterhaltung",
       close: "Schließen", retry: "Erneut versuchen", stopped: "Antwort gestoppt.", cut: "Die Antwort wurde hier abgeschnitten.", more: "Weiterschreiben",
       thinking: "Suche …", you: "Frage", ai: "Antwort", pages: "Seiten", newTab: "(neuer Tab)",
-      foot: "Bitte keine persönlichen Daten wie Namen oder Telefonnummern eingeben. Chats werden nicht auf unserem Server gespeichert (sie bleiben in diesem Tab, bis Sie ihn schließen).",
+      foot: "Bitte keine persönlichen Daten wie Namen oder Telefonnummern eingeben. Chats bleiben nur vorübergehend in diesem Tab, und Fragen werden zur Beantwortung an Anthropic gesendet.",
       kinds: { place: "Ort", guide: "Ratgeber", course: "Route", event: "Veranstaltung", video: "Video", abroad: "Artikel", page: "Seite", book: "Buchen" },
       err: { not_configured: "Der Assistent ist noch nicht verbunden.", rate_limited: "Zu viele Fragen. Bitte warten Sie eine Minute.",
         daily_limit: "Die Zahl der Fragen für heute ist erreicht. Bitte fragen Sie morgen wieder.",
         too_long: "Eine Frage darf höchstens 800 Zeichen haben.", busy: "Gerade ist keine Antwort möglich. Bitte später erneut versuchen.",
         timeout: "Die Antwort dauerte zu lange und wurde abgebrochen.", refusal: "Diese Frage kann nicht beantwortet werden.",
-        truncated: "Die Antwort wurde abgeschnitten. Bitte fragen Sie enger.", network: "Die Verbindung wurde unterbrochen.",
+        truncated: "Die Antwort wurde abgeschnitten. Bitte fragen Sie enger.", network: "Die Verbindung wurde unterbrochen. Bitte prüfen Sie Ihre Internetverbindung.",
         error: "Keine Antwort erhalten." },
     },
     fr: {
@@ -140,13 +153,13 @@
       placeholder: "Votre question sur {region}", label: "Question", send: "Envoyer", stop: "Arrêter", newChat: "Nouvelle conversation", conv: "Conversation",
       close: "Fermer", retry: "Réessayer", stopped: "Réponse arrêtée.", cut: "La réponse a été coupée ici.", more: "Continuer", thinking: "Recherche…",
       you: "Question", ai: "Réponse", pages: "Pages", newTab: "(nouvel onglet)",
-      foot: "N'indiquez pas de données personnelles (nom, téléphone). Les conversations ne sont pas enregistrées sur notre serveur (elles restent dans cet onglet jusqu'à sa fermeture).",
+      foot: "N'indiquez pas de données personnelles (nom, téléphone). Les conversations restent seulement dans cet onglet, et les questions sont envoyées à Anthropic pour la réponse.",
       kinds: { place: "Lieu", guide: "Guide", course: "Circuit", event: "Événement", video: "Vidéo", abroad: "Article", page: "Page", book: "Réserver" },
       err: { not_configured: "L'assistant n'est pas encore connecté.", rate_limited: "Trop de questions. Patientez une minute.",
         daily_limit: "Vous avez atteint le nombre de questions pour aujourd'hui. Revenez demain.",
         too_long: "Une question compte au plus 800 caractères.", busy: "Impossible de répondre pour le moment. Réessayez plus tard.",
         timeout: "La réponse a pris trop de temps et a été arrêtée.", refusal: "Impossible de répondre à cette question.",
-        truncated: "La réponse a été coupée. Posez une question plus précise.", network: "La connexion a été interrompue.",
+        truncated: "La réponse a été coupée. Posez une question plus précise.", network: "La connexion a été interrompue. Vérifiez votre connexion Internet.",
         error: "Aucune réponse reçue." },
     },
     es: {
@@ -155,13 +168,13 @@
       placeholder: "Su pregunta sobre {region}", label: "Pregunta", send: "Enviar", stop: "Detener", newChat: "Nueva conversación", conv: "Conversación",
       close: "Cerrar", retry: "Reintentar", stopped: "Respuesta detenida.", cut: "La respuesta se cortó aquí.", more: "Continuar", thinking: "Buscando…",
       you: "Pregunta", ai: "Respuesta", pages: "Páginas", newTab: "(nueva pestaña)",
-      foot: "No escriba datos personales como nombres o teléfonos. Las conversaciones no se guardan en nuestro servidor (permanecen en esta pestaña hasta que la cierre).",
+      foot: "No escriba datos personales como nombres o teléfonos. Las conversaciones solo quedan en esta pestaña, y las preguntas se envían a Anthropic para responder.",
       kinds: { place: "Lugar", guide: "Guía", course: "Ruta", event: "Evento", video: "Vídeo", abroad: "Artículo", page: "Página", book: "Reservar" },
       err: { not_configured: "El asistente aún no está conectado.", rate_limited: "Demasiadas preguntas. Espere un minuto.",
         daily_limit: "Ha alcanzado el número de preguntas de hoy. Vuelva a preguntar mañana.",
         too_long: "Una pregunta puede tener hasta 800 caracteres.", busy: "Ahora no es posible responder. Inténtelo más tarde.",
         timeout: "La respuesta tardó demasiado y se detuvo.", refusal: "No se puede responder a esta pregunta.",
-        truncated: "La respuesta se cortó. Haga una pregunta más concreta.", network: "Se perdió la conexión.",
+        truncated: "La respuesta se cortó. Haga una pregunta más concreta.", network: "Se perdió la conexión. Compruebe su conexión a internet.",
         error: "No se obtuvo respuesta." },
     },
     ru: {
@@ -170,13 +183,13 @@
       placeholder: "Ваш вопрос о поездке в {region}", label: "Вопрос", send: "Отправить", stop: "Остановить", newChat: "Новый чат", conv: "Диалог",
       close: "Закрыть", retry: "Повторить", stopped: "Ответ остановлен.", cut: "Ответ оборвался здесь.", more: "Продолжить", thinking: "Ищу…",
       you: "Вопрос", ai: "Ответ", pages: "Страницы", newTab: "(новая вкладка)",
-      foot: "Не вводите личные данные, например имя или телефон. Переписка не сохраняется на нашем сервере (она остаётся в этой вкладке, пока вы её не закроете).",
+      foot: "Не вводите личные данные, например имя или телефон. Переписка временно хранится только в этой вкладке, а вопросы отправляются в Anthropic для ответа.",
       kinds: { place: "Место", guide: "Гид", course: "Маршрут", event: "Событие", video: "Видео", abroad: "Статья", page: "Страница", book: "Забронировать" },
       err: { not_configured: "Помощник ещё не подключён.", rate_limited: "Слишком много вопросов. Подождите минуту.",
         daily_limit: "Лимит вопросов на сегодня исчерпан. Спросите снова завтра.",
         too_long: "Вопрос — не длиннее 800 символов.", busy: "Сейчас ответить нельзя. Попробуйте позже.",
         timeout: "Ответ занял слишком много времени и был остановлен.", refusal: "На этот вопрос ответить нельзя.",
-        truncated: "Ответ оборвался. Задайте вопрос уже.", network: "Соединение прервано.", error: "Не удалось получить ответ." },
+        truncated: "Ответ оборвался. Задайте вопрос уже.", network: "Соединение прервано. Проверьте подключение к интернету.", error: "Не удалось получить ответ." },
     },
   };
 
@@ -190,7 +203,13 @@
   }
   var lang = pickLang(root.getAttribute("lang"));
   var T = Object.assign({}, STR.en, STR[lang]);
-  if (lang !== "ko" && lang !== "en") T.about = STR.en.about;
+  // the note's link: the page about the assistant in the reader's language when the page links that version's own
+  // about page (a page under /ja/ that links /ja/about/ → '/ja/about/#chatbot'; UX01 2026-10-24: every language but
+  // Korean and English went to the English page though /ja/about/ has #chatbot) — else the English one
+  if (lang !== "ko" && lang !== "en") {
+    var own = "/" + (win.location.pathname.split("/")[1] || "") + "/about/";
+    T.about = own !== "//about/" && doc.querySelector('a[href="' + own + '"]') ? own + "#chatbot" : STR.en.about;
+  }
   // the assistant's and the region's names in the page's language (data-chat), never another city's
   function named(t) {
     return String(t).replace("{name}", String(CFG.name || "")).replace("{region}", String(CFG.region || "")).replace(/\s{2,}/g, " ").trim();
@@ -221,16 +240,33 @@
     if (!s || s.v !== 1 || !Array.isArray(s.msgs)) s = { v: 1, open: false, msgs: [] };
     s.msgs = s.msgs.filter(function (m) { return m && (m.r === "u" || m.r === "a") && typeof m.t === "string"; });
     s.msgs.forEach(function (m) { if (m.r === "a" && m.p) { m.p = false; m.s = true; } });   // left the page mid-answer
+    s.q = askedOf(s);
     return s;
   }
+  // every question of the conversation, in order, for the planner's door (planQuery reads them all: a condition said
+  // early holds unless a later question changes it). Kept beside the messages, which keep only the first exchange and
+  // the last KEEP - 2 (review 2026-10-22: after 13 questions a page change lost the conditions of the earliest ones):
+  // each question at most MAX_Q characters (ask refuses longer), at most KEEP_Q of them — the first and the latest. A
+  // conversation stored before this keeps the questions of its messages.
+  function askedOf(s) {
+    var q = Array.isArray(s.q) ? s.q.filter(function (t) { return typeof t === "string"; })
+      : s.msgs.filter(function (m) { return m.r === "u"; }).map(function (m) { return m.t; });
+    return capQ(q.map(function (t) { return Array.from(t).slice(0, MAX_Q).join(""); }));
+  }
+  function capQ(q) { return q.length > KEEP_Q ? q.slice(0, 1).concat(q.slice(-(KEEP_Q - 1))) : q; }
   var state = load();
   function save() {
     if (storageOff) return;
-    var msgs = state.msgs.slice(-KEEP).map(function (m) {
+    // a long conversation keeps its first question and answer, as payload() sends them — the trip's conditions are
+    // usually set there — and the last KEEP - 2 messages (review 2026-10-22: a page change after 13 questions dropped
+    // the first exchange, and the next question went to the model without it)
+    var all = state.msgs, kept = all.slice(-KEEP);
+    if (all.length > KEEP && all[0].r === "u" && all[1].r === "a") kept = all.slice(0, 2).concat(all.slice(-(KEEP - 2)));
+    var msgs = kept.map(function (m) {
       return m.r === "u" ? { r: "u", t: m.t } : { r: "a", t: m.t, l: m.l || [], f: m.f || null, e: m.e || "", s: !!m.s, c: !!m.c, p: !!m.p,
-        lg: m.lg || "", dr: m.dr || "", ls: m.ls || "" };
+        lg: m.lg || "", dr: m.dr || "", ls: m.ls || "", pq: m.pq || "" };
     });
-    try { win.sessionStorage.setItem(KEY, JSON.stringify({ v: 1, open: !!state.open, msgs: msgs })); } catch (e) { storageOff = true; }
+    try { win.sessionStorage.setItem(KEY, JSON.stringify({ v: 1, open: !!state.open, msgs: msgs, q: state.q })); } catch (e) { storageOff = true; }
   }
 
   // ------------------------------------------------------------ small DOM helpers (text only, never HTML)
@@ -644,7 +680,7 @@
       grow();
       if (!quiet || sheetMQ.matches) (sheetMQ.matches ? ui.title : ui.input).focus({ preventScroll: true });
       if (!quiet) track("chat_open");
-      ui.log.scrollTop = ui.log.scrollHeight;
+      toLast();
     });
   }
   function openDock() {
@@ -655,7 +691,7 @@
       render();
       if (state.msgs.length) showDock();
       mode(busy ? "stop" : "send");
-      ui.log.scrollTop = ui.log.scrollHeight;
+      toLast();
       if (ui.input2 && !ui.box.hidden) ui.input2.focus({ preventScroll: true });   // the conversation's own box
       track("chat_open");
     });
@@ -673,6 +709,7 @@
   function reset() {
     if (busy) stop();
     state.msgs = [];
+    state.q = [];   // a new conversation: the old one's conditions never reach its planner door
     save();
     root.classList.remove("chat-has");
     render();
@@ -724,12 +761,22 @@
     if (m.s) li.append(h("p", { class: "chat-note2", text: T.stopped }));
     if (m.e) li.append(errEl(m));
     if (!m.p && m.l && m.l.length) li.append(linksEl(m.l, m));
+    // the question stated trip conditions: the planner with the conversation's, under a finished answer — not one the
+    // reader stopped, nor one cut that may still go on
+    if (m.pq && PLAN && !m.p && !m.s && !m.c && m.t && !m.e) li.append(planEl(m.pq));
+  }
+  // every code the server can send (chatbot/server.js) reads as one of these, in the page's language: the knowledge or
+  // the key failing is 'busy' (not the reader's doing), a body over 64KB a question too long, the rest a plain failure
+  var ERR_AS = { unavailable: "busy", too_large: "too_long", empty: "error", bad_request: "error", forbidden_origin: "error",
+    method_not_allowed: "error" };
+  function errText(code) {
+    return T.err[ERR_AS[code] || code] || T.err.error;
   }
   function errEl(m) {
-    var box = h("div", { class: "chat-err" }, [h("p", { text: T.err[m.e] || T.err.error })]);
+    var box = h("div", { class: "chat-err" }, [h("p", { text: errText(m.e) })]);
     if (m.e === "not_configured" || m.e === "daily_limit") {   // no retry that would be refused again: the site search
       if (T.search) box.append(h("p", {}, [h("a", { href: T.search, text: T.searchLabel })]));
-    } else if (m.e !== "too_long" && m.e !== "refusal") {
+    } else if (m.e !== "too_long" && m.e !== "too_large" && m.e !== "refusal") {
       var b = h("button", { type: "button", class: "chat-retry", text: T.retry });
       b.addEventListener("click", function () { retry(m); });
       box.append(b);
@@ -756,13 +803,31 @@
     var l = ui.log;
     return l.scrollHeight - l.scrollTop - l.clientHeight < 96;
   }
+  // where the log is scrolled to put the question of answer m at its top (a little room above it); none: Infinity
+  function qTop(m) {
+    var i = state.msgs.indexOf(m), u = i > 0 ? state.msgs[i - 1] : null;
+    if (!u || u.r !== "u" || !u.el || !u.el.isConnected) return Infinity;
+    return Math.max(0, u.el.getBoundingClientRect().top - ui.log.getBoundingClientRect().top + ui.log.scrollTop - 8);
+  }
+  // a growing answer is followed down only until its question reaches the log's top (review 2026-10-22): the answer's
+  // first sentences — its conclusion — stay in view while the rest and its cards come in under them. A reader who has
+  // scrolled on past the question is followed to the end.
+  function follow(m) {
+    var l = ui.log, end = l.scrollHeight - l.clientHeight, top = qTop(m);
+    l.scrollTop = l.scrollTop > top + 1 ? end : Math.min(end, top);
+  }
+  // a conversation opened again: at its last question, or the end when the rest fits under it
+  function toLast() {
+    var l = ui.log, last = state.msgs[state.msgs.length - 1];
+    l.scrollTop = Math.min(l.scrollHeight - l.clientHeight, last ? qTop(last) : Infinity);
+  }
   function paint(m, now) {
     if (now) {
       if (raf) win.cancelAnimationFrame(raf);
       raf = 0;
       var stick = nearEnd();
       fill(m);
-      if (stick) ui.log.scrollTop = ui.log.scrollHeight;
+      if (stick) follow(m);
       return;
     }
     if (raf) return;
@@ -770,14 +835,201 @@
       raf = 0;
       var stick = nearEnd();
       fill(m);
-      if (stick) ui.log.scrollTop = ui.log.scrollHeight;
+      if (stick) follow(m);
     });
   }
   function announce(m) {
-    var text = m.e ? T.err[m.e] || T.err.error : plain(m.t) + (m.s ? " " + T.stopped : "");
+    var text = m.e ? errText(m.e) : plain(m.t) + (m.s ? " " + T.stopped : "");
     ui.live.textContent = "";
     ui.live.lang = !m.e && m.lg ? m.lg : lang;   // read out in the answer's language
     win.setTimeout(function () { ui.live.textContent = (T.ai + ": " + text).slice(0, 700); }, 60);
+  }
+
+  // ------------------------------------------------------------ the course planner's door under an answer
+  /* plan-query: begin — pure functions; tests/js/chat.test.js reads them from between these two marks */
+  // The trip conditions a Korean question clearly states, as the course planner's URL parameters (the contract
+  // templates/assets/plan.js reads: date=YYYY-MM-DD & days=1..3 & start=HH:MM & end=HH:MM & move=car|transit & with=…
+  // & kids=8,5 & needs=… & from=… & to=… — from and to a hub's key of site.json plan.hubs). A conservative reader (review 2026-10-18, third
+  // round): it fills only the keys below and leaves out what it is not sure of; the reader picks the rest on /plan/.
+  //   date      one explicit date ('2026-10-19', '2026년 10월 19일', '10월 19일': this year's, else next year's), real,
+  //             from today to the planner's last day (180 days on), and the weekday written after it (if any) that
+  //             day's. Two different dates, or a bare day joined to it by 이나·또는·,·~·부터 ('10월 19일이나 20일'), are
+  //             no date; so is a day said relatively (내일·모레·글피·오늘·이번 주(말)·다음 주(말)·이번·다음 달·주말에) in a
+  //             question that writes no date, which clears the date an earlier question gave (review 2026-10-18, fourth
+  //             round); a question that writes one keeps it ('10월 31일 주말에', '내일(10월 19일)'). 내일로 (Korail's
+  //             pass) is not 내일 — unless the day is moved to it ('내일로 바꿀게요·미룰게요')
+  //   days      당일치기·당일 여행/코스 1, 'N박 M일' M (1–3)
+  //   start/end only a time attached to one of the city's hubs (`hubs`: {key: name}, site.json plan.hubs as data-chat
+  //             gives them): '<time> <hub> 도착' or '<hub> <time> 도착' starts the day there (from), '<time> <hub>
+  //             출발' or '<hub>에서 <time> 출발' ends it (to) — the reader leaves the city there.
+  //             오전·아침·새벽 and 오후·낮·저녁·밤 are read; a bare 1–6 o'clock is left out, and no other time is read
+  //             ('5시까지 하나요?', '서울에서 8시 출발'). After the conversation is merged, as the planner's form offers
+  //             them (templates/plan.html.j2: a start every half hour 07:00–14:00, an end every half hour 15:00–22:00):
+  //             a start rounded up to its half hour, an end down to its (the day never begins before the reader is
+  //             there nor ends after they leave) — an arrival after 06:00 is at least the form's first start 07:00, a
+  //             departure before 23:00 at most its last end 22:00, as on the hour —, else left out, and the two three
+  //             hours or more apart. A later question that changes the way of moving (car to transit or back, not one
+  //             that leaves it unclear) drops the hubs and times the earlier ones gave
+  //   move · with=kids (and kids, the ages written as N살·N세, 0–17, not a rule's '5세 이하') · needs (rain, stroller,
+  //             wheelchair, parking, lesswalk): a mention counts only in a clause (cut at . , ? ! 그리고 하지만 는데)
+  //             with no negation (없이 없어 없는 필요 없 빼고 말고 안 않 못 제외); with one the key is left out ('아이
+  //             없이', '유모차는 필요 없어요', '대중교통 말고 자차로'). Said 'without' in themselves: '차 없이' (자차·자가용
+  //             ·렌터카 … 없이·없어) is transit, as are 뚜벅이·대중교통; '많이 못 걷는' is lesswalk. 자가용·자차·렌터카·
+  //             차로 are car. A child: 아이·아기·유아·초등학생·유치원생·자녀·아들·딸·딸내미 (not 딸린·딸기·아기자기·아이스·유아차)
+  // Two readings of one key (two dates, 차 없이 and 자가용, 당일치기 and 1박 2일) leave it out. `today` is Korea's date
+  // (YYYY-MM-DD). planParams gives one question's keys: a value, or null where it speaks of a key but not clearly —
+  // which clears what an earlier question said of it.
+  // The city's hubs as patterns: each name (its brackets left out: '한빛역(KTX)' is 한빛역) with any spacing between
+  // its letters, a 역 not followed by 사 (역사 is a history); a key without a name is left out.
+  function hubPatterns(hubs) {
+    var out = {};
+    Object.keys(hubs || {}).forEach(function (key) {
+      var name = String(hubs[key] || "").replace(/\([^)]*\)/g, "").replace(/\s+/g, "");
+      if (!/^[a-z0-9]+$/.test(key) || !name) return;
+      out[key] = Array.from(name).map(function (ch) { return ch.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }).join("\\s*")
+        + (/역$/.test(name) ? "(?!사)" : "");
+    });
+    return out;
+  }
+  function planParams(q, today, hubs) {
+    var s = String(q || "").replace(/\s+/g, " "), said = {}, m, i;
+    var put = function (key, v) { said[key] = key in said && said[key] !== v ? null : v; };
+    var pad = function (n) { return (n < 10 ? "0" : "") + n; };
+    var iso = function (y, mo, d) {
+      var t = new Date(Date.UTC(y, mo - 1, d));
+      return t.getUTCFullYear() === y && t.getUTCMonth() === mo - 1 && t.getUTCDate() === d ? y + "-" + pad(mo) + "-" + pad(d) : "";
+    };
+    // the date: up to the planner's last day (plan.js: 180 days on); a relative day is none — only where the question
+    // writes no date ('10월 31일 주말에', '내일(10월 19일)' are that date); 내일로 is Korail's pass, not tomorrow, unless
+    // the day is moved to it
+    var t0 = today.split("-"), last = new Date(Date.UTC(+t0[0], +t0[1] - 1, +t0[2] + 180)).toISOString().slice(0, 10);
+    var dated = false;
+    var drx = /(?:(20\d{2})\s*년\s*)?(\d{1,2})\s*월\s*(\d{1,2})\s*일|(20\d{2})[-./](\d{1,2})[-./](\d{1,2})(?!\d)/g;
+    while ((m = drx.exec(s)) !== null) {
+      dated = true;
+      var year = m[1] || m[4], mo = +(m[2] || m[5]), d = +(m[3] || m[6]);
+      var date = iso(+(year || today.slice(0, 4)), mo, d);
+      if (date && date < today && !year) date = iso(+today.slice(0, 4) + 1, mo, d);
+      var after = s.slice(m.index + m[0].length);
+      var w = /^\s*(?:\(\s*([일월화수목금토])(?:요일)?\s*\)|([일월화수목금토])요일)/.exec(after);
+      if (w && date && "일월화수목금토".indexOf(w[1] || w[2]) !== new Date(date + "T12:00:00Z").getUTCDay()) date = "";
+      if (/^\s*(?:\([^)]*\)\s*|[일월화수목금토]요일\s*)?(?:이나|또는|,|~|∼|～|-|부터)\s*\d{1,2}\s*일/.test(after)) date = "";
+      put("date", date && date >= today && date <= last ? date : null);
+    }
+    if (!dated && /내일(?!로(?!\s*(?:바꾸|바꿀|바꿔|바꾼|미루|미룰|미뤄|미룬|옮기|옮길|옮겨|옮긴|변경|당기|당길|당겨|당긴)))|모레|글피|오늘(?!날)|주말에|(?:이번|다음)\s*(?:주말?|달)(?=$|[^가-힣]|[에엔은는도쯤부까중이로])/.test(s)) put("date", null);
+    // how many days
+    if (/당일(?:치기|\s*(?:여행|코스|일정|나들이|투어)|로)/.test(s)) put("days", 1);
+    var nrx = /(\d{1,2})\s*박\s*(\d{1,2})\s*일/g;
+    while ((m = nrx.exec(s)) !== null) put("days", +m[2] >= 1 && +m[2] <= 3 ? +m[2] : null);
+    // the day's start and end: an arrival at one of the city's hubs starts it there, a departure from one ends it there
+    var T = "(?:(오전|오후|아침|낮|저녁|밤|새벽)(?:\\s*에)?\\s*)?(\\d{1,2})(?:\\s*시(?!간)(?:\\s*(\\d{1,2})\\s*분|\\s*(반))?|:([0-5]\\d))";
+    var AT = "(?:\\s*(?:쯤|경))?(?:\\s*에)?\\s*";
+    var HUBS = hubPatterns(hubs);
+    var clock = function (x) {   // the minutes of a time T matched, or null when its hour is not sure
+      var ap = x[1] || "", h = +x[2], min = x[3] ? +x[3] : x[4] ? 30 : x[5] ? +x[5] : 0;
+      if (/오전|아침|새벽/.test(ap)) h = h <= 11 ? h : -1;
+      else if (ap === "낮") h = h === 12 || h === 10 || h === 11 ? h : h >= 1 && h <= 5 ? h + 12 : -1;
+      else if (ap === "오후") h = h === 12 ? 12 : h >= 1 && h <= 11 ? h + 12 : -1;
+      else if (ap) h = h >= 1 && h <= 11 ? h + 12 : -1;   // 저녁·밤: 12시 is midnight
+      else if (h <= 6) h = -1;   // a bare 1–6 o'clock: the morning or the afternoon
+      if (ap === "밤" && h >= 0 && h < 18) h = -1;   // 밤 1–5시 and 밤 12시 are the small hours
+      return h >= 0 && h <= 23 && min <= 59 ? h * 60 + min : null;
+    };
+    Object.keys(HUBS).forEach(function (hub) {
+      var H = HUBS[hub];
+      // '오후 5시까지 <역>에 도착' is when the reader must be back at the hub: the day's end there, not its start
+      [[T + AT + H + "\\s*(?:에|으로|로)?\\s*도착", "start", "from"],
+        [H + "\\s*(?:에\\s*)?" + T + AT + "도착", "start", "from"],
+        [T + AT + "까지\\s*" + H + "\\s*(?:에|으로|로)?\\s*(?:도착|돌아)", "end", "to"],
+        [H + "\\s*(?:에\\s*|으로\\s*|로\\s*)?" + T + AT + "까지\\s*(?:도착|돌아)", "end", "to"],
+        [T + AT + H + "\\s*(?:에서\\s*)?출발", "end", "to"],
+        [H + "\\s*(?:에서\\s*)?" + T + AT + "출발", "end", "to"]].forEach(function (x) {
+        var rx = new RegExp(x[0], "g"), t;
+        while ((t = rx.exec(s)) !== null) {
+          put(x[1], clock(t));
+          put(x[2], hub);
+        }
+      });
+    });
+    // car or not, a child, what the trip needs: each clause that mentions one, unless the clause has a negation
+    var NEG = /없이|없어|없는|필요\s*없|빼고|말고|않|제외|(?:^|[^가-힣])안(?=\s|$)|(?:^|[^가-힣])못|지\s*못/;
+    var NO_CAR = /(?:자가용|자차|자동차|렌터카|렌트카|(?:^|[^가-힣])차)\s*(?:[이가은는도]\s*)?없[가-힣]*/g;
+    var LESS = /(?:(?:많이|오래|멀리)\s*(?:못|안)\s*(?:걷|걸(?:어|을|으|었))|걷기\s*(?:가\s*)?(?:힘|어려|불편|싫)|(?:덜|적게|조금만)\s*(?:걷|걸(?:어|을|으|었)))[가-힣]*/g;
+    var CAR = /자가용|자차|렌터카|렌트카|(?:^|[^가-힣])(?:자동)?차로/;
+    var KIDS = /아이(?=[와랑하들가를는도의만에()·\s\d]|$)|아기(?!자기)|유아(?!차)|초등학?생|유치원생|자녀|아들|딸(?![린려리릴렸기꾹깍랑])/;
+    var NEEDS = [["rain", /(?:^|[^가-힣])비\s*(?:가\s*|도\s*)?(?:오|와|올|내리|예보|소식)|우천|장마/], ["stroller", /유모차|유아차/],
+      ["wheelchair", /휠체어/], ["parking", /주차장?\s*(?:이\s*|가\s*|하기\s*)?(?:편|쉬|넉넉|여유|넓)/], ["lesswalk", LESS]];
+    var clauses = String(q || "").split(/[.,?!\n]|그리고|하지만|는데/);
+    for (i = 0; i < clauses.length; i += 1) {
+      var c = clauses[i].replace(/\s+/g, " ");
+      var no = NEG.test(c.replace(NO_CAR, " ").replace(LESS, " "));   // '차 없이', '많이 못 걷는' say no 'no'
+      var transit = c.search(NO_CAR) >= 0 || /대중교통|뚜벅이/.test(c), car = CAR.test(c.replace(NO_CAR, " "));
+      if (transit || car) put("move", no || (transit && car) ? null : transit ? "transit" : "car");
+      if (KIDS.test(c)) put("child", no ? null : true);
+      for (var n = 0; n < NEEDS.length; n += 1) if (c.search(NEEDS[n][1]) >= 0) put(NEEDS[n][0], no ? null : true);
+    }
+    // the children's ages, as written: '8살', '5세' (not a rule's '5세 이하', '3~12세')
+    if (said.child === true) {
+      var ages = [], arx = /(^|\D)(\d{1,2})\s*(?:살|세(?![기대트]))/g;
+      while ((m = arx.exec(s)) !== null) {
+        var at = m.index + m[1].length;
+        var rule = /^\s*(?:이하|이상|미만|초과|부터|까지)/.test(s.slice(m.index + m[0].length)) || /[~∼-]\s*$/.test(s.slice(0, at));
+        if (!rule && +m[2] <= 17 && ages.length < 6) ages.push(+m[2]);
+      }
+      if (ages.length) said.ages = ages.join(",");
+    } else if (said.child === null) said.ages = null;
+    return said;
+  }
+  // The conversation's conditions for the planner: its questions (oldest first, or one question) merged key by key, a
+  // later one over the earlier ones (null clears; another way of moving drops the hubs and times said before it), then
+  // the day put in the planner's form. Returns the query without '?', '' when the last question says nothing of any key.
+  function planQuery(qs, today, hubs) {
+    var list = [].concat(qs), p = {}, own = {}, i, k;
+    for (i = 0; i < list.length; i += 1) {
+      own = planParams(list[i], today, hubs);
+      if (own.move && p.move && own.move !== p.move) p.from = p.to = p.start = p.end = null;
+      for (k in own) if (Object.prototype.hasOwnProperty.call(own, k)) p[k] = own[k];
+    }
+    if (p.child !== true) p.ages = null;
+    // the planner's form (templates/plan.html.j2): a start on the half hour (rounded up: the reader is there by then —
+    // 10:20 → 10:30, 10:40 → 11:00) and an end on the half hour (rounded down: still there — 17:50 → 17:30), three
+    // hours or more apart (plan.js) — else neither —, each kept only where the form offers it: a start 07:00–14:00, an
+    // end 15:00–22:00
+    var on = function (x) { return typeof x === "number"; };
+    if (on(p.start)) p.start = Math.ceil(p.start / 30) * 30;
+    if (on(p.end)) p.end = Math.floor(p.end / 30) * 30;
+    // the form's first start and last end keep what rounding on the hour gave them: an arrival after 06:00 starts the
+    // day at 07:00, a departure before 23:00 ends it at 22:00 (06:30 → 07:00, 22:30 → 22:00 — the half hour left them out)
+    if (p.start === 6 * 60 + 30) p.start = 7 * 60;
+    if (p.end === 22 * 60 + 30) p.end = 22 * 60;
+    if (on(p.start) && on(p.end) && p.end - p.start < 180) p.start = p.end = null;
+    if (on(p.start) && (p.start < 7 * 60 || p.start > 14 * 60)) p.start = null;
+    if (on(p.end) && (p.end < 15 * 60 || p.end > 22 * 60)) p.end = null;
+    var pad = function (n) { return (n < 10 ? "0" : "") + n; };
+    var hm = function (x) { return on(x) ? pad(Math.floor(x / 60)) + ":" + pad(x % 60) : null; };
+    var needs = ["rain", "stroller", "wheelchair", "parking", "lesswalk"].filter(function (x) { return p[x] === true; });
+    var out = [["date", p.date], ["days", p.days], ["start", hm(p.start)], ["end", hm(p.end)], ["move", p.move],
+      ["with", p.child === true ? "kids" : null], ["kids", p.ages], ["needs", needs.join(",")], ["from", p.from], ["to", p.to]]
+      .filter(function (x) { return x[1] !== null && x[1] !== undefined && x[1] !== ""; })
+      .map(function (x) { return x[0] + "=" + x[1]; });
+    return Object.keys(own).length && out.length ? out.join("&") : "";
+  }
+  /* plan-query: end */
+
+  // the planner is on this site's Korean pages only: the header links it (base.html.j2, data-track="plan_cta") when
+  // the site has it — then a Korean question that states trip conditions gets the door under its answer
+  var planNav = lang === "ko" ? doc.querySelector('a[data-track="plan_cta"][href]') : null;
+  var PLAN = planNav ? planNav.getAttribute("href").split(/[?#]/)[0] : "";
+  function seoulToday() {
+    try {
+      return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Seoul", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+    } catch (e) {
+      return new Date(Date.now() + 9 * 3600000).toISOString().slice(0, 10);
+    }
+  }
+  function planEl(pq) {
+    return h("p", { class: "chat-plan-w" }, [h("a", { href: PLAN + "?" + pq, class: "chat-plan", "data-track": "plan_cta",
+      "data-chat-where": WHERE }, [h("span", { text: T.plan }), svg("arrow")])]);
   }
 
   // ------------------------------------------------------------ asking
@@ -835,7 +1087,11 @@
     [ui.input, ui.input2].forEach(function (el) { if (el && (!ui.dock || el.value.trim() === q)) el.value = ""; });
     grow();
     state.msgs.push({ r: "u", t: q });
-    var m = { r: "a", t: "", p: true, st: T.thinking, l: [], f: null, e: "" };
+    // the trip conditions of this question, over those its earlier questions in this conversation stated (all of
+    // them, also those the stored messages no longer keep: state.q)
+    state.q = capQ(state.q.concat(q));
+    var asked = state.q.slice();
+    var m = { r: "a", t: "", p: true, st: T.thinking, l: [], f: null, e: "", pq: PLAN ? planQuery(asked, seoulToday(), CFG.hubs) : "" };
     state.msgs.push(m);
     root.classList.add("chat-has");
     save();
@@ -859,6 +1115,7 @@
     // the site search — the failed exchange leaves the conversation and the question goes to /search/
     var i = state.msgs.indexOf(m), u = i > 0 && state.msgs[i - 1].r === "u" ? state.msgs[i - 1] : null;
     if (i >= 0) state.msgs.splice(u ? i - 1 : i, u ? 2 : 1);
+    if (u && state.q.lastIndexOf(u.t) >= 0) state.q.splice(state.q.lastIndexOf(u.t), 1);
     save();
     if (!state.msgs.length) root.classList.remove("chat-has");
     mode("send");
@@ -889,30 +1146,48 @@
     paint(m, true);
     run(m, true);
   }
+  // a refusal with no code of ours in it (the platform's own page): the Vercel Firewall's 429 is the minute's limit, a
+  // 504 the function running out of time, any other 5xx the service being down for now — never 'not configured', which
+  // the function always says in JSON (else the home's card would turn into the search for the rest of the page)
   function httpCode(status) {
-    if (status === 503) return "not_configured";
     if (status === 429) return "rate_limited";
     if (status === 413) return "too_long";
+    if (status === 504) return "timeout";
+    if (status >= 500) return "busy";
     return "error";
   }
+  // nothing from the answer this long — not one byte since the last: the request is stopped as timed out, the question
+  // kept for '다시 시도' (UX04 2026-10-24: with no answer the button said '멈추기' after 65 seconds and nothing else
+  // happened). Past the server's own limit for a whole answer (chatbot/server.js requestMs, 90 s — then it sends its
+  // 'timeout'; one model call may stay silent up to callMs 45 s and be tried once more): it never cuts an answer the
+  // server may still send, as plan.js LIMIT_S is past the planner's 55 s
+  var IDLE_MS = 100000;
   function run(m, more) {
     busy = true;
     mode("stop");
     ctrl = new AbortController();
-    var c = ctrl;
+    var c = ctrl, idle = false, timer = 0;
+    var arm = function () {
+      win.clearTimeout(timer);
+      timer = win.setTimeout(function () { idle = true; c.abort(); }, IDLE_MS);
+    };
+    arm();
     return win.fetch(API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload(m, more)),
       signal: c.signal, credentials: "same-origin" })
       .then(function (res) {
+        arm();
         if (!res.ok || !res.body) {
           return res.json().then(function (j) { m.e = (j && j.code) || httpCode(res.status); }, function () { m.e = httpCode(res.status); });
         }
-        return readSSE(res.body, function (ev) { onEvent(m, ev, more); }).then(function () { if (!m.d && !m.e) m.e = "error"; });
+        return readSSE(res.body, function (ev) { onEvent(m, ev, more); }, arm).then(function () { if (!m.d && !m.e) m.e = "error"; });
       })
       .catch(function (err) {
-        if (err && err.name === "AbortError") m.s = true;
+        if (idle) m.e = "timeout";
+        else if (err && err.name === "AbortError") m.s = true;
         else m.e = "network";
       })
       .then(function () {
+        win.clearTimeout(timer);
         busy = false;
         ctrl = null;
         m.p = false;
@@ -974,7 +1249,7 @@
       m.d = true;
     }
   }
-  function readSSE(body, cb) {
+  function readSSE(body, cb, onChunk) {
     var reader = body.getReader(), dec = new TextDecoder(), buf = "";
     function block(b) {
       var data = b.split("\n").filter(function (l) { return l.indexOf("data:") === 0; })
@@ -990,6 +1265,7 @@
           if (buf.trim()) block(buf);
           return undefined;
         }
+        if (onChunk) onChunk();
         buf += dec.decode(r.value, { stream: true });
         var i;
         while ((i = buf.indexOf("\n\n")) >= 0) {

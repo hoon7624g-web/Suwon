@@ -1,7 +1,7 @@
 """Build a curated noindex preview without editing source data.
 
-    python tools/build_review.py --data data/daegu                     # -> dist-preview/, reports/review_build_*
-    python tools/build_review.py --data data/daegu --out /tmp/review
+    python tools/build_review.py --data data/suwon                     # -> dist-preview/, reports/review_build_*
+    python tools/build_review.py --data data/suwon --out /tmp/review
 
 A place is selected when its summary is written and it has visit information beyond the address
 (full-tier places are always kept). Places that a course stop or a guide item points to (place_slug) are
@@ -151,7 +151,7 @@ def run(data: Path, out: Path, report_dir: Path):
 
 def parser() -> argparse.ArgumentParser:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--data", type=Path, required=True, help="도시 데이터 폴더(예: data/daegu)")
+    ap.add_argument("--data", type=Path, required=True, help="도시 데이터 폴더(예: data/suwon)")
     ap.add_argument("--out", type=Path, default=Path("dist-preview"), help="미리보기 출력 폴더(기본: %(default)s)")
     ap.add_argument("--report-dir", type=Path, default=Path("reports"))
     return ap

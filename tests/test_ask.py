@@ -149,7 +149,7 @@ def test_the_korean_card_is_the_assistant_only_and_searches_without_js():
     to /search/ (without JS it searches; no role=search: with JS it is not a search) with the question field and ONE
     submit button '물어보기' carrying both of its labels (ask / stop) in one cell: no '검색' button, no formaction. A
     line shown only without JS says the box searches then. The starters are links to the pages that answer them; one
-    plain line says chats are not stored and links the help page. The panel: hidden and empty until the reader asks,
+    plain line says chats stay in this tab and questions go to Anthropic, and links the help page. The panel: hidden and empty until the reader asks,
     with the follow-up box's placeholder and the line that the answers are AI-written from this site's data and can be
     wrong. No machine-like wording (docs/handover 2026-10-14: not 'AI 여행 도우미', not '무엇이든 물어보세요')."""
     mod = make_env().get_template("_ask.html.j2").module
@@ -166,7 +166,16 @@ def test_the_korean_card_is_the_assistant_only_and_searches_without_js():
     assert '<p class="hk-nojs">' in html and "사이트 검색" in html.split('<p class="hk-nojs">', 1)[1].split("</p>")[0]
     assert '<a class="hk-pill" href="/guides/a/" data-ask="막창 먹는 곳">막창 먹는 곳</a>' in html
     assert '<a class="hk-pill" href="/events/" data-ask="이번 달 행사·축제">' in html
-    assert "대화는 서버에 저장하지 않습니다" in html and 'href="/about/#chatbot"' in html
+    # what happens to a conversation, as it is (the first site's operator 2026-10-18): kept in this tab only, the
+    # questions sent to Anthropic — never a bare '저장하지 않습니다'
+    assert "대화는 이 탭에만 임시 보관되고 질문은 Anthropic으로 전송됩니다" in html and 'href="/about/#chatbot"' in html
+    assert "대화는 서버에 저장하지 않습니다" not in html and "대화는 저장하지 않습니다" not in html
+    chat_js = (ROOT / "templates" / "assets" / "chat.js").read_text("utf-8")
+    feet = re.findall(r'foot: "([^"]*)"', chat_js)
+    assert len(feet) == 9 and all("Anthropic" in f for f in feet), feet
+    ask = (ROOT / "templates" / "_ask.html.j2").read_text("utf-8")
+    assert ask.count("'terms': ") >= 9 and ask.count("Anthropic") >= 9
+    assert "not stored" not in ask and "保存されません" not in ask and "不会保存" not in ask
     assert 'class="hk-mascot"' in html and 'alt=""' in html and "/assets/mascot/mascot-hello-96.avif 1x" in html
     assert html.index('class="hk-head"') < html.index('<form class="hk-box"') < html.index('class="hk-pills"')
     assert "AI 여행 도우미" not in html and "무엇이든" not in html

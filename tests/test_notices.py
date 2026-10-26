@@ -84,8 +84,32 @@ def test_validate_catches_an_expired_notice_on_a_page_a_missing_one_and_bad_data
     assert any("provider 없음" in x for x in errors) and any("공개하지 않는 장소 sample-0999" in x for x in errors)
 
 
+WORKS = {"id": "village-works", "place_ids": ["a"], "kind": "closed", "start": "2025-11-12", "open_end": True,
+         "reason": "works", "provider": "OO촌 홈페이지 공지", "url": POST, "checked_at": "2026-10-24", "until": "2027-01-31"}
+FREE = {"id": "culture-day", "place_ids": ["a"], "kind": "free", "date": "2026-10-28", "extra_fee": True,
+        "provider": "OO 홈페이지 이용요금", "url": POST, "checked_at": "2026-10-24", "until": "2026-10-28"}
+
+
+def test_a_closure_with_no_announced_end_and_a_free_day():
+    """QA 2026-10-24 YJ-01·YJ-05: a closure '공사 완료 시까지' has no end date — it is never guessed; it reads from its
+    first day with the fixed words and applies through `until` (the day it is checked again); a free-admission day."""
+    places = {"a": {"status": "published"}}
+    assert notices.problems([WORKS, FREE], places) == []
+    assert notices.span(WORKS) == ("2025-11-12", "") and notices.effect_span(WORKS) == ("2025-11-12", "2027-01-31")
+    assert notices.ko_text(WORKS) == "2025년 11월 12일(수)부터 공사로 운영 중단 · 재개일 미정"
+    assert notices.ko_text(FREE) == "2026년 10월 28일(수) 입장 무료 · 체험료 별도"
+    assert notices.ko_text(dict(FREE, extra_fee=False, **{"from": "09:00", "to": "18:00", "last_entry": "17:00"})) \
+        == "2026년 10월 28일(수) 입장 무료 09:00–18:00(입장 마감 17:00)"
+    assert [n["id"] for n in notices.active([WORKS, FREE], "2026-10-29")] == ["village-works"]
+    assert notices.active([WORKS], "2027-02-01") == []                       # past its re-check day: checked again
+    assert notices.problems([dict(WORKS, kind="hours")], places)            # open_end is for a closure only
+    assert notices.problems([dict(WORKS, reason="weather")], places)        # fixed words only
+    assert notices.problems([dict(WORKS, until="2025-01-01")], places)      # until before the start
+    assert notices.problems([dict(FREE, **{"from": "9시"})], places)        # a free day's hours are HH:MM
+
+
 def test_the_real_notices_file_is_valid():
-    data = ROOT / "data" / "suwon"        # no notices.json yet: nothing to show, nothing wrong
+    data = ROOT / "data" / "suwon"
     items = notices.load(data)
     places = {p["id"]: p for p in json.loads((data / "places.json").read_text("utf-8"))}
     assert isinstance(items, list) and notices.problems(items, places) == []

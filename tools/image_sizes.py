@@ -1,7 +1,7 @@
 """Record the intrinsic size and byte length of every licensed photo the site shows.
 
-    python tools/image_sizes.py --data data/daegu                  # probe photos not yet in the file
-    python tools/image_sizes.py --data data/daegu --refresh        # probe every photo again
+    python tools/image_sizes.py --data data/suwon                  # probe photos not yet in the file
+    python tools/image_sizes.py --data data/suwon --refresh        # probe every photo again
 
 Options: --data DIR (required: the city's data folder), --out FILE (default DIR/image_sizes.json), --refresh,
 --limit N (most requests in one run, default 2000), --workers N.
@@ -147,7 +147,7 @@ def run(data_dir: Path, out: Path | None = None, refresh: bool = False, limit: i
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--data", type=Path, required=True, help="the city's data folder (e.g. data/daegu)")
+    ap.add_argument("--data", type=Path, required=True, help="the city's data folder (e.g. data/suwon)")
     ap.add_argument("--out", type=Path, default=None)
     ap.add_argument("--refresh", action="store_true", help="probe recorded photos again")
     ap.add_argument("--limit", type=int, default=2000, help="most requests in one run")

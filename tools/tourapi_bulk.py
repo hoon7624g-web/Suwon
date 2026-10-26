@@ -1,13 +1,13 @@
 """TourAPI bulk enrichment: the city's list per content type, matched locally (few calls).
 
-    python tools/tourapi_bulk.py --data data/daegu --max-calls 900                       # list, coordinates, photos
-    python tools/tourapi_bulk.py --data data/daegu --details --add-new --events --max-calls 900
-    python tools/tourapi_bulk.py --data data/daegu --add-new --district 중구 --district 수성구  # some 구·군 first
-    python tools/tourapi_bulk.py --data data/daegu --gallery --max-calls 900              # detailImage2 photos
-    python tools/tourapi_bulk.py --data data/daegu --offline                             # cache only
-    python tools/tourapi_bulk.py --data data/daegu --courses --max-calls 300             # 여행코스(25) → tourapi_courses.json
-    python tools/tourapi_bulk.py --data data/daegu --barrier-free --max-calls 600        # 무장애 여행 정보, alone
-    python tools/tourapi_bulk.py --data data/daegu --nearby-only     # nearby again from stored coordinates, no calls
+    python tools/tourapi_bulk.py --data data/suwon --max-calls 900                       # list, coordinates, photos
+    python tools/tourapi_bulk.py --data data/suwon --details --add-new --events --max-calls 900
+    python tools/tourapi_bulk.py --data data/suwon --add-new --district 중구 --district 수성구  # some 구·군 first
+    python tools/tourapi_bulk.py --data data/suwon --gallery --max-calls 900              # detailImage2 photos
+    python tools/tourapi_bulk.py --data data/suwon --offline                             # cache only
+    python tools/tourapi_bulk.py --data data/suwon --courses --max-calls 300             # 여행코스(25) → tourapi_courses.json
+    python tools/tourapi_bulk.py --data data/suwon --barrier-free --max-calls 600        # 무장애 여행 정보, alone
+    python tools/tourapi_bulk.py --data data/suwon --nearby-only     # nearby again from stored coordinates, no calls
 
 Options
   --data DIR        the city's data folder (required; site.json there says which city)
@@ -18,6 +18,7 @@ Options
   --add-new         TourAPI-only places (types 12·14·28·32·38·39) as draft/basic records with a stored slug
   --events          searchFestival2 from 1 January this year (runs before --details/--add-new: time-sensitive)
   --district NAME   repeatable: --details and --add-new only for these 구·군 (names of site.json districts)
+  --kind KIND       repeatable: --details, --gallery and --add-new only for places of this kind (attraction/food/stay)
   --courses         TourAPI 여행코스 only (contentTypeId 25), alone: areaBasedList2 per 구·군 (every page), then per course
                     detailCommon2 · detailIntro2 (distance, taketime, schedule, theme) · detailInfo2 (the sub-stops in
                     order: subnum, subname, subcontentid). Writes <data>/tourapi_courses.json for a later, person-checked
@@ -385,7 +386,7 @@ def district_filter(names, city) -> frozenset:
 
 
 def run(data_dir: Path, max_calls: int, offline: bool, gallery: bool = False, details: bool = False,
-        add_new: bool = False, events: bool = False, refresh: bool = False, districts=()) -> dict:
+        add_new: bool = False, events: bool = False, refresh: bool = False, districts=(), kinds=()) -> dict:
     import datetime as dt
     from tools.tourapi_details import (NEW_PLACE_TYPES, alternate_name, clean, duplicate_candidates, event_key,
                                        festival_event, merge_facts, new_place, tourapi_facts)
@@ -458,13 +459,14 @@ def run(data_dir: Path, max_calls: int, offline: bool, gallery: bool = False, de
         elif cand.get("firstimage"):
             stats["image_other_type"] += 1
     in_scope = lambda district: not only or district in only
+    of_kind = lambda kind: not kinds or kind in kinds   # --kind: details / gallery / new places of these kinds only
     detail_log: list[str] = []
     stage = "gallery"
     try:
         if gallery:
             stats["gallery_added"], stats["gallery_errors"] = 0, []
             for p in places:
-                if p.get("duplicate_of") or not (p.get("tourapi") or {}).get("match_basis"):
+                if p.get("duplicate_of") or not (p.get("tourapi") or {}).get("match_basis") or not of_kind(p.get("kind")):
                     continue
                 try:
                     stats["gallery_added"] += add_gallery(api, p, allowed, city)
@@ -532,7 +534,7 @@ def run(data_dir: Path, max_calls: int, offline: bool, gallery: bool = False, de
             d = stats["details"] = {"done": 0, "added": {}, "confirmed": {}, "conflicts": [], "alternate_names": 0,
                                     "errors": []}
             matched = sorted((p for p in places if not p.get("duplicate_of") and (p.get("tourapi") or {}).get("contentid")
-                              and in_scope(place_district(p, city))), key=_priority)
+                              and in_scope(place_district(p, city)) and of_kind(p.get("kind"))), key=_priority)
             for p in matched:
                 t = p["tourapi"]
                 cid, ctype = str(t["contentid"]), str(t.get("contenttypeid") or "")
@@ -573,7 +575,8 @@ def run(data_dir: Path, max_calls: int, offline: bool, gallery: bool = False, de
                                LIST_TYPES.index(str(it.get("contenttypeid"))), it.get("title", ""))
             todo = sorted((it for it in items if str(it.get("contenttypeid")) in NEW_PLACE_TYPES
                            and str(it["contentid"]) not in have and str(it["contentid"]) not in same
-                           and in_scope(item_district(it, city))), key=rank)
+                           and in_scope(item_district(it, city))
+                           and of_kind(KIND_BY_TYPE.get(str(it.get("contenttypeid"))))), key=rank)
             for it in todo:
                 cid = str(it["contentid"])
                 if cid in have:  # added earlier in this run
@@ -917,7 +920,7 @@ def run_barrier_free(data_dir: Path, max_calls: int, offline: bool = False, refr
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--data", type=Path, required=True, help="도시 데이터 폴더(site.json이 있는 곳, 예: data/daegu)")
+    ap.add_argument("--data", type=Path, required=True, help="도시 데이터 폴더(site.json이 있는 곳, 예: data/suwon)")
     ap.add_argument("--max-calls", type=int, default=120, help="이번 실행의 실호출 상한(캐시는 세지 않음)")
     mode = ap.add_mutually_exclusive_group()
     mode.add_argument("--offline", action="store_true", help="캐시만 쓴다(네트워크 호출 없음)")
@@ -931,6 +934,9 @@ def main(argv=None) -> int:
     ap.add_argument("--events", action="store_true", help="searchFestival2(올해 1월 1일부터, 모든 쪽)로 행사 갱신")
     ap.add_argument("--district", action="append", default=[], metavar="NAME",
                     help="--details·--add-new 대상을 이 구·군으로 거른다(여러 번 줄 수 있음, site.json districts의 이름)")
+    ap.add_argument("--kind", action="append", default=[], choices=("attraction", "food", "stay"),
+                    help="--details·--gallery·--add-new 대상을 이 유형으로 거른다(여러 번 줄 수 있음) — 호출 상한 안에서 숙소 "
+                         "체크인·음식점 사진처럼 한 유형만 채울 때")
     ap.add_argument("--courses", action="store_true",
                     help="여행코스(25)만: 목록·detailCommon2·detailIntro2·detailInfo2 → <data>/tourapi_courses.json "
                          "(places·courses·events는 바꾸지 않음, 다른 수집 옵션과 함께 쓰지 않음)")
@@ -960,7 +966,7 @@ def main(argv=None) -> int:
             stats = run_courses(a.data, a.max_calls, a.offline, a.refresh, a.district)
         else:
             stats = run(a.data, a.max_calls, a.offline, a.gallery, a.details, a.add_new, a.events, a.refresh,
-                        a.district)
+                        a.district, a.kind)
     except (ConfigError, CityConfigError, TourAPIConfigError) as err:
         print(f"[설정 오류] {err}", file=sys.stderr)
         return 2

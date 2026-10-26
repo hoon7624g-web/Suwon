@@ -17,7 +17,12 @@ html.is-scrolled .mast::before { box-shadow: 0 1px 0 rgba(0, 0, 0, .08); }
 .mast-in { position: relative; display: flex; align-items: center; gap: 2px; height: 100%; }
 .wordmark { display: inline-flex; align-items: baseline; gap: 8px; min-height: 44px; align-self: center; color: var(--ink); text-decoration: none; margin-right: auto; padding-top: 12px; }
 .wordmark:hover { text-decoration: none; color: var(--ink); }
-.wm-a { font: 700 19px/1 var(--font); letter-spacing: -.03em; white-space: nowrap; }
+/* a long name shrinks with an ellipsis instead of pushing the bar's buttons past a 360px screen (the first site's
+   55b6e23be: a ○○각 name or the sample build's longer name); the symbol keeps its size */
+.wordmark { min-width: 0; }
+.wordmark .wm-a, .wordmark .wm-b { min-width: 0; overflow: hidden; text-overflow: ellipsis; padding-bottom: .2em; margin-bottom: -.2em; }   /* room for g·y below the line */
+.wordmark .wm-sym { flex-shrink: 0; }
+.wm-a { font: 700 19px/1 var(--font); letter-spacing: -.03em; white-space: nowrap; color: #1E2B24; }
 .wm-em { color: var(--brand); }   /* 각 / gak (present.wordmark, operator 2026-10-17): the symbol's brick, 6.12:1 on the bar, 5.70:1 on the footer */
 .wm-sym { display: inline-flex; align-self: center; margin: -12px 0 0; }   /* the symbol beside the name: centred on the bar (the wordmark sits 12px low for the name's baseline) */
 .wm-sym svg { display: block; width: auto; height: 28px; }

@@ -1,6 +1,6 @@
 /* ================================================================ Korean home, UI4 (owner 2026-10-14, after the AIO2O
    proposal demo for KT Skylife — its design language only: layout, parts, spacing, type, radii, colour roles, motion;
-   docs/handover/specs/ui4_mapping.md, skyref_study.md, home_redesign.md; templates/home.html.j2). body.pg-h4.
+   the first site's UI4 specs; templates/home.html.j2). body.pg-h4.
    1. .ho      the LIGHT opening: a soft sea-blue gradient (g0 → white, a g1 glow behind the picture side). Left: the
                eyebrow pill, the H1, one lede, the sea pill button, the slide controls (one white pill: pause, ‹ n/N ›,
                a 6 s progress line) and '소식 전체'. Right (from 1024px): ONE big rounded white card per news item —

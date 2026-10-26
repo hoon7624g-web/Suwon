@@ -1,7 +1,8 @@
-"""Courses from several official sources (tools/import_courses_daegu.py and the engine parts it relies on): a stop's
+"""Courses from several official sources (and the engine parts they rely on): a stop's
 stored kind, the source's 일정 numbers, a stop outside the city searched under its own area, a part_of stop shown by
 its own name, a bus tour's facts (departures, fares, booking) under '이용 안내', groups in file order, the public-data
-licence label, the home's 대표 장소 counted per course, and courses.json being exactly what the importer makes."""
+licence label, the home's 대표 장소 counted per course, and this city's courses.json against the official course pages
+it was made from (data/raw/<city>/info_pages.json)."""
 import json
 import re
 import shutil
@@ -214,3 +215,39 @@ def test_daegu_city_tour_costs_follow_each_course_image():
         assert cost.endswith("(생기면 본인 부담)")
     assert not any("점심" in next(f["value"] for f in stored[k]["facts"] if f["label"] == "따로 내는 돈")
                    for k in ("daegu-course-citytour-tour-6-1", "daegu-course-citytour-tour-6-2"))
+# ------------------------------------------------------------------ this city's courses file
+CITY = ROOT / "data" / "suwon"
+
+
+def _city_courses():
+    courses = json.loads((CITY / "courses.json").read_text("utf-8"))
+    places = {p["slug"]: p for p in json.loads((CITY / "places.json").read_text("utf-8"))}
+    return courses, places
+
+
+def test_city_courses_link_published_places_and_keep_their_source():
+    """Every stop of this city's courses links a published place with its link basis (or says why it is unlinked);
+    a published course has the operator's approval; the course names its source and that source's licence."""
+    courses, places = _city_courses()
+    assert courses
+    for c in courses:
+        for st in c["stops"]:
+            if st.get("place_slug"):
+                assert st["place_slug"] in places, (c["id"], st["name"], st["place_slug"])
+                assert places[st["place_slug"]]["status"] == "published", (c["id"], st["name"])
+                assert st["link_basis"], (c["id"], st["name"])
+            else:
+                assert st.get("unlinked") and st.get("unlinked_reason"), (c["id"], st["name"])
+        assert c["status"] != "published" or c.get("approved_at"), c["id"]
+        assert c["original"]["source_name"] and c["original"]["license"] in LICENSE_LABELS, c["id"]
+
+
+def test_city_day_courses_name_no_day():
+    """A 당일 course's stops carry no 1일차·2일차; an overnight one carries them in order (never back)."""
+    courses, _ = _city_courses()
+    for c in courses:
+        days = [st.get("day") or "" for st in c["stops"]]
+        if c["duration"] == "당일":
+            assert set(days) == {""}, c["id"]
+        else:
+            assert days == sorted(days) and "" not in days, c["id"]

@@ -332,6 +332,33 @@ def test_verification_meta_only_in_production_when_set(tmp_path):
     assert not any(k in meta for k in ("google-site-verification", "msvalidate.01", "naver-site-verification"))
 
 
+def test_rss_feed_and_root_files_survive_a_rebuild(tmp_path):
+    """public/ is rebuilt from scratch: /rss.xml comes from the data (guides, courses, event series, each a page of
+    the build, newest first) and a search engine's ownership file kept in <data>/root_files/ reaches the root of a
+    production build only, byte for byte (operator 2026-10-24 added both to public/ by hand; a rebuild lost them)."""
+    import xml.etree.ElementTree as ET
+    data = data_with(tmp_path, json.loads((SAMPLE / "places.json").read_text("utf-8")))
+    (data / "root_files").mkdir()
+    (data / "root_files" / "naverabc123.html").write_bytes(b"naver-site-verification: naverabc123.html")
+    for mode in ("preview", "production"):
+        out = tmp_path / mode
+        build(data, out, mode)
+        assert (out / "naverabc123.html").exists() == (mode == "production")
+        root = ET.parse(out / "rss.xml").getroot()
+        links = [el.findtext("link") for el in root.iter("item")]
+        assert links and all((out / u.split("://", 1)[1].split("/", 1)[1].split("#")[0] / Path("index.html")).is_file()
+                             for u in links), links
+        dates = [el.findtext("pubDate") or "" for el in root.iter("item")]
+        assert root.find("channel/language").text == "ko" and len(dates) == len(links)
+    assert (tmp_path / "production" / "naverabc123.html").read_bytes() == b"naver-site-verification: naverabc123.html"
+    errors = validate(data, tmp_path / "production", "production")[0]
+    assert not [e for e in errors if "rss.xml" in e or "naverabc123" in e], errors
+    (tmp_path / "production" / "rss.xml").write_text("<rss><channel><item><link>https://elsewhere.example/x/</link>"
+                                                     "</item></channel></rss>", "utf-8")
+    errors = validate(data, tmp_path / "production", "production")[0]
+    assert any("rss.xml" in e and "site_url과 다른 주소" in e for e in errors), errors
+
+
 def test_collected_at_falls_back_to_latest_original_and_is_never_shown(tmp_path):
     # The footer / about / course index / llms.txt '원문 수집일' line is gone (operator decision 2026-10-09: no visible
     # check or collection dates). The date is still worked out (State.collected_at) and kept in the data.

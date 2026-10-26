@@ -1,11 +1,11 @@
 """A metropolitan city (tests/fixtures/metro: nine 구·군, address aliases, regions.mode district — design 3): the
 preview build validates, every published path is ASCII, places carry their 구·군 and 동·읍·면 from the address, the
 structured data's address names the 시·도 and the 구·군, neighbours and map searches stay inside the 구·군, and an
-empty city (data/daegu's site.json alone) builds with only the operator's production errors left. WP7: the built HTML, scripts and
+empty city (this city's site.json alone: tests/test_empty_city.empty_city) builds and passes production with the
+operator's values. WP7: the built HTML, scripts and
 data name nothing of the first city (the engine's origin), and every path, fragment id, canonical, og:url, sitemap
 <loc>, JSON-LD @id / url and search-index path is ASCII."""
 import json
-import shutil
 import re
 from pathlib import Path
 from urllib.parse import quote, urlsplit
@@ -18,7 +18,6 @@ from pipeline.validate import scan_file, validate
 
 ROOT = Path(__file__).resolve().parent.parent
 METRO = ROOT / "tests" / "fixtures" / "metro"
-DAEGU = ROOT / "data" / "suwon"
 
 
 @pytest.fixture(scope="module")
@@ -173,9 +172,8 @@ def test_new_place_slugs_take_the_district_on_a_clash_and_hyphenate_admin_words(
 
 
 def test_empty_city_builds_and_passes_production_with_the_operator_values(tmp_path):
-    data = tmp_path / "daegu"                     # the Daegu config with no data files (data/daegu itself now has data)
-    data.mkdir()
-    shutil.copy(DAEGU / "site.json", data / "site.json")
+    from tests.test_empty_city import empty_city
+    data = empty_city(tmp_path, "none")           # this city's config with no data files (data/<city> itself has data)
     out = tmp_path / "preview"
     build(data, out, "preview")
     errors, warns, _ = validate(data, out, "preview")
@@ -183,8 +181,8 @@ def test_empty_city_builds_and_passes_production_with_the_operator_values(tmp_pa
     out = tmp_path / "prod"
     build(data, out, "production")
     errors, _, _ = validate(data, out, "production")
-    # the operator set operator.contact and the GA4 launch exception on 2026-10-11 (site.json launch_exceptions):
-    # the config alone now passes production validation
+    # the operator set operator.contact and the GA4 launch exception (site.json launch_exceptions): the config
+    # alone passes production validation
     assert errors == []
     places = (out / "places" / "index.html").read_text("utf-8")       # (Q10) the empty list: noindex, no sitemap
     assert '<meta name="robots" content="noindex, follow">' in places

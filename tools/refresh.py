@@ -1,9 +1,9 @@
 """주간 갱신 한 번에 — TourAPI 다시 받기 → 공개 사이트 빌드(public/, production) → 품질 리포트.
 
-    python tools/refresh.py --data data/daegu              # 캐시 우선: 캐시에 없는 응답만 호출(실행당 상한 400회)
-    python tools/refresh.py --data data/daegu --fresh      # 응답을 새로 받는다(TourAPI 캐시 refresh 모드, 상한 --max-calls)
-    python tools/refresh.py --data data/daegu --offline    # 네트워크 없이 캐시로만
-    python tools/refresh.py --data data/daegu --dry-run    # 할 일만 출력하고 아무것도 실행하지 않는다
+    python tools/refresh.py --data data/suwon              # 캐시 우선: 캐시에 없는 응답만 호출(실행당 상한 400회)
+    python tools/refresh.py --data data/suwon --fresh      # 응답을 새로 받는다(TourAPI 캐시 refresh 모드, 상한 --max-calls)
+    python tools/refresh.py --data data/suwon --offline    # 네트워크 없이 캐시로만
+    python tools/refresh.py --data data/suwon --dry-run    # 할 일만 출력하고 아무것도 실행하지 않는다
 
 단계(모두 저장소 루트에서 실행, <data>는 --data로 준 폴더)
 0. TourAPI 연결 확인: `python tools/tourapi_doctor.py --data <data> --json`(검색어는 site.json의 region). 안 되면 공급자 메시지를 키만 가려 그대로 보여 주고,
@@ -211,7 +211,7 @@ def run(a) -> int:
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--data", type=Path, required=True, help="도시 데이터 폴더(예: data/daegu)")
+    ap.add_argument("--data", type=Path, required=True, help="도시 데이터 폴더(예: data/suwon)")
     ap.add_argument("--out", type=Path, default=Path("public"))
     ap.add_argument("--report-dir", type=Path, default=Path("reports"))
     ap.add_argument("--max-calls", type=int, default=DEFAULT_MAX_CALLS)

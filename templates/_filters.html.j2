@@ -48,6 +48,23 @@
 </div>
 {%- endmacro %}
 
+{#- the zero-result panel, between the bar and the ledger (so the phone's 지도 view, which hides the ledger, shows it
+    too): the sentence, then site.js puts one '<값> 조건 해제' button per filter that brings rows back on its own
+    (data-one: {v} = the chip's label in this version) before the reset of every filter. Hidden until nothing matches;
+    never shown without JS (the list is then complete). The chips' counts are the whole list's in the page; site.js
+    turns them into faceted counts (each chip: the rows the list would show with that chip and the other groups'
+    filters; one that would show nothing reads 0 — the first site's outside evaluation 2026-10-18, fc51ca0ec). -#}
+{% macro zero(F) -%}
+<p class="empty" data-empty hidden>{{ F.w.empty }}</p>
+<div class="f-undo" data-f-undo data-one="{{ F.w.clear_one }}" hidden><button type="button" data-f-reset>{{ F.w.clear_all }}</button></div>
+{%- endmacro %}
+
+{#- after a map's '좌표가 있는 n곳' caption: the places of the page that are not on the map — n with words.off_map
+    ({n}); site.js keeps it to the shown rows (data-tpl) and hides it at 0. Nothing when every place has coordinates. -#}
+{% macro off_map(n, words) -%}
+{% if n %}<span data-geo-off data-tpl=" · {{ words.off_map }}"> · {{ words.off_map|replace('{n}', n|string) }}</span>{% endif %}
+{%- endmacro %}
+
 {#- the filter keys of one list row (present.list_vm item; en_site.list_vm passes the same keys): empty ones left out;
     data-geo marks a row that is a point of the list map (site.js counts the shown ones: '지도 n', the map caption) -#}
 {% macro rec_attrs(it) -%}

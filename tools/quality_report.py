@@ -1,8 +1,8 @@
 """사이트 정보 품질 리포트 — '정보가 실제로 들어갔는가'를 매 라운드 같은 기준으로 잰다.
 
-    python tools/quality_report.py --data data/daegu --out public
-    python tools/quality_report.py --data data/daegu --out dist-preview --json   # 에이전트용
-    python tools/quality_report.py --data data/daegu --out public --md reports/quality_latest.md
+    python tools/quality_report.py --data data/suwon --out public
+    python tools/quality_report.py --data data/suwon --out dist-preview --json   # 에이전트용
+    python tools/quality_report.py --data data/suwon --out public --md reports/quality_latest.md
 
 - 표준 라이브러리와 pipeline(schema·city·textutil)만 쓴다. 데이터와 빌드 결과(--out)만 읽고 아무것도 고치지 않는다.
 - '화면에 나간 장소' = --out/places/<slug>/index.html 이 있는 장소. 데이터 전체가 아니라 사람이 보는 범위를 잰다.
@@ -233,7 +233,7 @@ def to_md(rep: dict) -> str:
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--data", type=Path, required=True, help="도시 데이터 폴더(예: data/daegu)")
+    ap.add_argument("--data", type=Path, required=True, help="도시 데이터 폴더(예: data/suwon)")
     ap.add_argument("--out", type=Path, default=Path("public"))
     ap.add_argument("--today", default=dt.date.today().isoformat())
     ap.add_argument("--json", action="store_true")

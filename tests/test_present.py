@@ -1175,7 +1175,11 @@ def test_home_opening_markup_carousel_and_links(home_world):
     else:
         assert 'class="ho-bg"' not in opening
     assert '<p class="ho-k"><span class="ho-dot" aria-hidden="true"></span>' in opening
-    assert 'href="/courses/" data-track="course_click">' in opening
+    # the planner's button first, then the course one in its white variant (군산각 the same, 2026-10-21)
+    cta = re.escape(f'{S.site.get("locality") or region} 추천 코스')
+    assert re.search(r'<div class="ho-cta ho-cta-2"><a class="btn-sea" href="/plan/" data-track="plan_cta">내 일정 만들기'
+                     rf'<span class="arr" aria-hidden="true">→</span></a><a class="btn-sea btn-sea-w" href="/courses/"'
+                     rf' data-track="course_click">{cta}<span class="arr"', opening)
     # the carousel: the box holds the controls and the cards
     assert re.search(rf'<div class="wrap ho-in" data-hcar aria-roledescription="carousel" aria-label="지금 {re.escape(region)} 소식">',
                      opening)
@@ -2217,3 +2221,22 @@ def test_nowrap_address_keeps_short_hyphenated_words_whole():
     long = "a" * 10 + "-" + "b" * 10
     assert '<span class="nw">' not in str(present.nowrap_address(long))
     assert str(present.nowrap_address("<b>")) == "&lt;b&gt;"                # escaped, never markup from data
+
+
+def test_home_more_services_and_first_visit_guide():
+    """site.json home.more_services adds built guides to the home's compact service row after 지도 (a guide that is
+    not built is left out); home.first_visit_guide names the '처음 가는 <region>' guide by id."""
+    from types import SimpleNamespace as NS
+    g = lambda i, t: {"id": i, "title": t, "_path": f"/guides/{i}/"}  # noqa: E731
+    city = NS(home={"getting_here": {"label": "가는 법", "guide_id": "g9"}, "first_visit_guide": "g1",
+                    "more_services": [{"label": "주차·편의", "guide_id": "g3", "pic": "fact-parking"},
+                                      {"label": "[샘플] 없는 가이드", "guide_id": "gx"}]},
+              region="[샘플]", locality="[샘플]")
+    S = NS(city=city, site={}, guides=[g("g1", "[샘플] 처음이면 어디부터 가나요?"), g("g3", "[샘플] 주차"),
+                                       g("g9", "[샘플] 가는 법")],
+           lists={"attraction": [{}], "food": [], "stay": []}, courses=[{}], entities=[{}], events=[], videos=[], abroad=[])
+    rows = present.home_services(S)
+    assert [r["label"] for r in rows] == ["가볼만한 곳", "가는 법", "코스", "지도", "주차·편의"]
+    assert rows[-1]["href"] == "/guides/g3/" and rows[-1]["pic"] == "fact-parking" and not rows[-1]["core"]
+    assert rows[1]["href"] == "/guides/g9/" and rows[1]["core"]
+    assert present.home_starts(S)[0] == {"label": "처음 가는 [샘플]", "href": "/guides/g1/", "track": "guide_click"}

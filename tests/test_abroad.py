@@ -1,6 +1,7 @@
 """해외에서 본 <도시> (/abroad/, owner 2026-10-13): our note + the link for articles (with the outlet's og:image from its
 own address, never in JSON-LD), a card for social posts (no third-party script in the HTML — site.js loads the embed
 near the screen), only published items, and the place page's block."""
+import datetime
 import json
 import re
 import shutil
@@ -165,6 +166,39 @@ def test_home_sns_row_links_each_post_to_its_card(tmp_path):
     for h in hrefs:
         assert f'id="{h.split("#")[1]}"' in page
     assert page.index('id="ab-sns"') < page.index('class="wrap ab-wrap"')   # the wall comes first
+
+
+def test_reference_works_are_listed_apart_and_are_not_the_home_news(tmp_path):
+    """An encyclopedia entry or a heritage listing (source_type reference, build.ABROAD_REFERENCE; QA 2026-10-24 item
+    06): its own '외국어 참고자료' section on /abroad/, not under the outlets' pieces, never the home's news even when
+    dated, no picture (a reference page's lead image has its own licence and credit), and the place block names it."""
+    data = abroad_data(tmp_path)
+    raw = json.loads((data / "abroad.json").read_text("utf-8"))
+    today = datetime.date.today()
+    raw["items"][0]["date"] = (today - datetime.timedelta(days=30)).isoformat()   # a1, the press piece: this year's
+    raw["items"].append({"id": "r1", "kind": "article", "source_type": "reference", "outlet": "Wikipedia (EN)", "lang": "en",
+                         "url": "https://en.wikipedia.org/wiki/Example_village", "title": "Example village - Wikipedia",
+                         "date": (today - datetime.timedelta(days=3)).isoformat(), "note": "철길마을을 다룬 영문 백과사전 항목입니다.",
+                         "place_slugs": ["gyeongam-railroad-village"], "status": "published",
+                         "image": "https://upload.wikimedia.org/example.jpg"})
+    (data / "abroad.json").write_text(json.dumps(raw, ensure_ascii=False), "utf-8")
+    out = tmp_path / "out"
+    build(data, out, "sample")
+    page = (out / "abroad" / "index.html").read_text("utf-8")
+    press = page[page.index('id="ab-articles"'):page.index('id="ab-refs"')]
+    refs = page[page.index('id="ab-refs"'):]
+    assert "Walking the old tracks" in press and "Example village" not in press
+    assert "Example village - Wikipedia" in refs and 'href="#ab-refs"' in page
+    assert "upload.wikimedia.org" not in page                       # no picture of a reference work
+    desc = re.search(r'<meta name="description" content="([^"]*)"', page).group(1)
+    assert "외국어 참고자료 1건" in desc and "기사 2건" in desc, desc
+    home = (out / "index.html").read_text("utf-8")
+    assert "https://news.example.org/gunsan-railroad" in home       # an outlet's piece of this year is the home's news
+    assert "en.wikipedia.org" not in home                           # a reference work is not, whatever its date
+    place = (out / "places" / "gyeongam-railroad-village" / "index.html").read_text("utf-8")
+    assert "외국어 참고자료" in place and "https://en.wikipedia.org/wiki/Example_village" in place
+    errors, _, _ = validate(data, out, "sample")
+    assert errors == [], errors[:5]
 
 
 def test_no_abroad_page_without_items(tmp_path):

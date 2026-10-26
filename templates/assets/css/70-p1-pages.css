@@ -49,6 +49,8 @@
    first paint — the `hidden` attribute keeps it out without JS (site.js removes it), html.js lays it out at once, so
    nothing moves when site.js runs */
 html.js .filters[data-filters][hidden] { display: block !important; }
+/* nothing matches the filters: the ledger's column heads go with the rows (the zero-result panel above says why) */
+.ledger:not(:has(.rec:not([hidden]))) > .lg-head { display: none; }
 .list-empty { padding-bottom: var(--sec); }
 .list-empty .empty { padding-top: 0; }
 .list-empty a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; }

@@ -47,6 +47,7 @@
         </div>
         <ol class="co-strip only-narrow" aria-label="경유지 순서">{% for s in co.stops %}<li><a href="#s{{ s.n }}"><span class="tn">{{ s.n }}</span>{{ s.short }}</a></li>{% endfor %}</ol>
         {% if lede %}<p class="lede" data-block="summary">{{ lede }}</p>{% endif %}
+        {% for x in co.shut or [] %}<p class="kf-ntc co-ntc"><span class="ntc-k">공지</span> 경유지 <a href="{{ x.path }}">{{ x.name }}</a>: {{ x.text }}</p>{% endfor %}
         {% if co.orig_name %}<p class="note">경유지 순서: {% if co.orig_url %}<a href="{{ co.orig_url }}" rel="noopener" data-track="official_click">{{ co.orig_name }} 코스 안내</a>{% else %}{{ co.orig_name }} 코스 안내{% endif %}</p>{% endif %}
         {#- 예약하기: the services of the stops' guides and places (pipeline/booking.py course_targets) -#}
         {{ ui.book(co.booking, co.bw, '', true) }}

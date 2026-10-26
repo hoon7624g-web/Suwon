@@ -13,7 +13,8 @@
 <section class="pg-hero band-s list-head" aria-labelledby="h-list">
   <div class="wrap">
     <h1 id="h-list" class="h-list">{{ site.region }}에서 찾기</h1>
-    {{ ui.search_form('q', '', '장소 이름, 대표 메뉴, 동 이름, 코스·가이드·행사 이름', ('예: ' ~ cityv.search_examples|join(', ')) if cityv.search_examples else '장소·메뉴·동네', true) }}
+    {{ ui.search_form('q', '', '장소 이름, 대표 메뉴, 동 이름, 코스·가이드·행사 이름', ('예: ' ~ cityv.search_examples|join(', ')) if cityv.search_examples else '장소·메뉴·동네', true,
+                      '장소 이름·메뉴·동네·가이드를 찾고, 여행 질문은 AI 챗봇에게 물어보세요.', search_data or {}) }}
     <div class="results" data-results aria-live="polite"></div>
     <div class="res-help" data-none-help hidden>
       <nav class="res-lists" aria-label="목록에서 찾기"><p class="res-help-l">목록에서 찾기</p><ul>{% for label, href in nav if href in ('/places/', '/food/', '/stays/', '/courses/', '/guides/', '/events/') %}<li><a href="{{ href }}">{{ label }}</a></li>{% endfor %}</ul></nav>

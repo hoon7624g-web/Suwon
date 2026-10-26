@@ -1,8 +1,8 @@
 """Merge harvested TourAPI answers (tools/tourapi_harvest.py cache) into the place data — no network calls.
 
-    python tools/harvest_merge.py --data data/daegu --photos            # dry run: what would change (report only)
-    python tools/harvest_merge.py --data data/daegu --photos --apply    # write places.json
-    python tools/harvest_merge.py --data data/daegu --pet --apply
+    python tools/harvest_merge.py --data data/suwon --photos            # dry run: what would change (report only)
+    python tools/harvest_merge.py --data data/suwon --photos --apply    # write places.json
+    python tools/harvest_merge.py --data data/suwon --pet --apply
 
 --photos  관광사진 정보(PhotoGalleryService1, 공공누리 제1유형): a photo joins a place when its title names the place —
           the title (or the part inside or outside its brackets) equals the place's name, its TourAPI title or the part

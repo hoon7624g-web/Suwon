@@ -111,7 +111,7 @@ from urllib.parse import unquote, urlsplit
 
 from collections import Counter
 
-from . import art, ask, booking, chat_index, en_site, notices, plan, present, relations, tickets
+from . import art, ask, booking, chat_index, en_site, intl_check, notices, plan, present, relations, tickets
 from . import locales as LC
 from .build import DESC_MAX, HL_VIEWER, LISTS, MODES, State, fact_row, index_counts, load_abroad
 from .jsonld import AMENITY_VALUES, amenity_value
@@ -1733,6 +1733,21 @@ def chat_problems(S, out: Path, strict: bool) -> tuple[list[str], list[str]]:
                if line[:2] in ("P ", "G ", "C ", "E ", "V ", "T ", "S ") and line.split(" | ")[0][2:] not in pages]
     if missing:
         errors.append(f"catalog.txt 줄의 페이지가 docs.json에 없음 {len(missing)}건 (예: {', '.join(missing[:3])})")
+    # lines.json (the full place lines the chat picks per question, chatbot/knowledge.js relevantLines): it parses,
+    # every line is a doc's, and all of them together stay under LINES_BUDGET
+    if (d / "lines.json").is_file():
+        try:
+            lines = (json.loads((d / "lines.json").read_text("utf-8")) or {}).get("lines") or {}
+        except (OSError, ValueError) as ex:
+            errors.append(f"{chat_index.CHAT_DIR}/lines.json을 읽지 못함: {ex}")
+            lines = {}
+        orphan = [k for k in lines if k not in pages]
+        if orphan:
+            errors.append(f"lines.json 줄의 페이지가 docs.json에 없음 {len(orphan)}건 (예: {', '.join(orphan[:3])})")
+        if strict and chat_index.lines_tokens(lines) > chat_index.LINES_BUDGET:
+            warns.append(f"lines.json 추정 {chat_index.lines_tokens(lines):,}토큰 > 상한 {chat_index.LINES_BUDGET:,}")
+    elif strict:
+        errors.append(f"{chat_index.CHAT_DIR}/lines.json 없음 — 챗봇이 장소의 전체 줄을 받지 못함")
     est = chat_index.estimate_tokens(catalog)
     if strict and est > chat_index.CATALOG_BUDGET:
         warns.append(f"catalog.txt 추정 {est:,}토큰 > 예산 {chat_index.CATALOG_BUDGET:,} — 캐시 앞부분이 Haiku 5.5의 100K 가격 구간에 "
@@ -1825,6 +1840,13 @@ def validate(data_dir: Path, out: Path, mode: str = "production") -> tuple[list[
         E("ask.json", problem)
     for where, problem in notice_problems(S, out):
         E(where, problem)
+    # a summary the generator wrote around a closure with no end (tools/place_text.py summary_notices): once that
+    # notice is no longer shown, the summary still says the place is closed — it is written again from the data
+    current = {n["id"] for n in S.notices}
+    for e in S.entities:
+        gone = [nid for nid in e.get("summary_notices") or [] if nid not in current]
+        if gone:
+            W(e.get("_path") or e["id"], f"요약이 끝난 공지({', '.join(gone)})를 말함 — tools/place_text.py로 요약·FAQ를 다시 만들 것")
     # combined tickets (pipeline/tickets.py): published places, and every price and rule written in its source's table
     for problem in tickets.problems(S.tickets, {p["id"]: p for p in S.entities_all}, {e["id"] for e in S.entities},
                                     plan.plan_config(S.site)["resident_label"]):
@@ -1979,6 +2001,10 @@ def validate(data_dir: Path, out: Path, mode: str = "production") -> tuple[list[
                 W(g["title"], f"가이드가 비공개/없는 장소를 참조: {it['place_slug']}")
         if strict and not (g.get("reviewed_at") or g.get("approved_at")):
             E(g["title"], "published 가이드에 reviewed_at·approved_at 없음")
+    for c in S.courses:   # a stop's place_slug that names no published place shows the stop unlinked
+        for st in c.get("stops") or []:
+            if st.get("place_slug") and st["place_slug"] not in S.ent_by_slug:
+                W(c.get("name") or c.get("id"), f"코스 경유지가 비공개/없는 장소를 참조: {st['place_slug']}")
 
     # Event leaf pages (CLAUDE.md 3.2): every value that differs between sources is shown with the confirm line,
     # and the programme list is on the page.
@@ -2003,7 +2029,12 @@ def validate(data_dir: Path, out: Path, mode: str = "production") -> tuple[list[
         E("booking.json", problem)
     book_expect, book_allowed = booking_expectations(S, out), booking.allowed_urls(S)
     # Every HTML file: internal links, URL paths, placeholders, noindex consistency
-    html_files = sorted(out.rglob("*.html"))
+    # a search engine's ownership file copied from <data>/root_files (build.copy_root_files) is not a page
+    root_files = {f.name for f in (Path(data_dir) / "root_files").glob("*") if f.is_file()} if mode == "production" else set()
+    for name in sorted(root_files):
+        if not (out / name).is_file():
+            E(f"root_files/{name}", "공개 빌드 루트에 없음")
+    html_files = sorted(f for f in out.rglob("*.html") if not (f.parent == out and f.name in root_files))
     lang_pages: dict[str, tuple[str, list]] = {}   # rel -> (canonical, hreflang links), for the hreflang checks
     art_used: set[str] = set()                     # the AI art renditions the pages show
     # canonicals of noindex pages, never in sitemap.xml or llms.txt in production — place pages and the other
@@ -2075,6 +2106,21 @@ def validate(data_dir: Path, out: Path, mode: str = "production") -> tuple[list[
     for code, missing in S.intl.skipped.items():
         W(f"/{code}/", f"data/<지역>/{code}/strings.json에 화면 문구(chrome.*) {len(missing)}개가 없어 이 언어 페이지를 "
                        f"만들지 않음 (예: {missing[:3]})")
+    # site.json intl.require_complete (user instruction 2026-10-24): every version whole — every published record and
+    # string translated (en_site.completeness_problems), and no stored value or string writing a Korean word by its
+    # sound in place of a translation (pipeline/intl_check.report; proper nouns aside)
+    if S.city.intl_complete:
+        for problem in en_site.completeness_problems(S):
+            E("/", f"외국어 판 번역 모자람: {problem}")
+        codes = [c for c in S.city.languages if c != "ko" and (Path(data_dir) / c / "places.json").is_file()]
+        for code, r in intl_check.report(Path(data_dir), codes).items():
+            sound = r["values_with_sound"] + r["strings_with_sound"]
+            stats[f"{code}_sound_copies"] = sound
+            if sound:
+                E(f"/{code}/", f"번역 대신 한국어를 소리대로 옮긴 값 {sound}개 (예: {r['examples'][:5]}) — "
+                               f"data/<지역>/{code}/table.json에서 번역하고 tools/intl_table.py apply --merge")
+            for kind_key in r["missing_ids"] + r["stale_ids"]:
+                E(f"/{code}/", f"현재 한국어의 번역이 없거나 낡음: {kind_key}")
     built = {s.loc.html for s in S.intl.sites.values()} | {"ko", "x-default"}
     for rel, (_, alts) in lang_pages.items():   # a hreflang to a version this build does not have
         for h in sorted({h for h, _ in alts} - built):
@@ -2111,6 +2157,27 @@ def validate(data_dir: Path, out: Path, mode: str = "production") -> tuple[list[
                     E("sitemap.xml", f"noindex 페이지가 들어 있음: {u}")
         except ET.ParseError as ex:
             E("sitemap.xml", f"XML 오류: {ex}")
+    # rss.xml (pipeline/build.rss_xml): well formed, every link on this site and every item a page of this build
+    # that may be indexed (the same rule as sitemap.xml)
+    rss = out / "rss.xml"
+    if not rss.exists():
+        E("rss.xml", "없음")
+    else:
+        try:
+            rroot = ET.parse(rss).getroot()
+            stats["rss_items"] = sum(1 for _ in rroot.iter("item"))
+            bad_rss = [el.text for el in rroot.iter("link") if not (el.text or "").startswith(S.site_url)]
+            if bad_rss:
+                E("rss.xml", f"site_url과 다른 주소 {len(bad_rss)}건")
+            for el in rroot.iter("item"):
+                u = (el.findtext("link") or "").strip()
+                path = site_path(u, S.site_url)
+                if path is None or not (out / path.strip("/") / "index.html").is_file():
+                    E("rss.xml", f"이 빌드에 없는 페이지: {u}")
+                elif strict and u in noindex_urls:
+                    E("rss.xml", f"noindex 페이지가 들어 있음: {u}")
+        except ET.ParseError as ex:
+            E("rss.xml", f"XML 오류: {ex}")
     if not (out / "llms.txt").exists():
         W("llms.txt", "없음")
     for name, text in llms.items():

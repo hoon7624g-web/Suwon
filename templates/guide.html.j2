@@ -141,7 +141,7 @@
     <h2 id="h-src" class="rail-label">출처</h2>
     <div class="rail-body">
       {% if G.sources %}<ul class="src-list src-compact">{% for s in G.sources %}<li><a href="{{ s.url }}" rel="noopener" data-track="official_click">{{ s.name }}</a></li>{% endfor %}</ul>{% endif %}
-      <p class="note"><a href="/about/#correction">틀린 정보 알리기</a></p>
+      <p class="note">{{ site.site_name }}({{ site.region }} 여행 정보 사이트) 정리 · <a href="/about/#correction">틀린 정보 알리기</a></p>
     </div>
   </section>
 </article>
