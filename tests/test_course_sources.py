@@ -227,7 +227,8 @@ def _city_courses():
 
 def test_city_courses_link_published_places_and_keep_their_source():
     """Every stop of this city's courses links a published place with its link basis (or says why it is unlinked);
-    a published course has the operator's approval; the course names its source and that source's licence."""
+    a published course has the operator's approval; a course from a source names it and its licence (none for
+    the courses this site made from its places — TourAPI holds no 여행코스 for this city)."""
     courses, places = _city_courses()
     assert courses
     for c in courses:
@@ -239,7 +240,9 @@ def test_city_courses_link_published_places_and_keep_their_source():
             else:
                 assert st.get("unlinked") and st.get("unlinked_reason"), (c["id"], st["name"])
         assert c["status"] != "published" or c.get("approved_at"), c["id"]
-        assert c["original"]["source_name"] and c["original"]["license"] in LICENSE_LABELS, c["id"]
+        # a course from a source names it and its licence; a course this site made from its places names none
+        orig = c.get("original") or {}
+        assert not orig or (orig.get("source_name") and orig.get("license") in LICENSE_LABELS), c["id"]
 
 
 def test_city_day_courses_name_no_day():

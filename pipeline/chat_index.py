@@ -713,7 +713,8 @@ class Knowledge:
                 texts = [{"p": v.get("provider") or slot.get("provider") or "",
                           "t": month_ranges(clock(", ".join(x for x in (v.get("main"), v.get("sub")) if x)))}
                          for v in (slot["vals"] or [slot])]
-            texts = [x for x in texts if x["t"]]
+            # (hours with no time in them — '전화 문의' — give the planner nothing to read: it says the hours are unknown)
+            texts = [x for x in texts if x["t"] and (slot["key"] != "hours" or re.search(r"\d", x["t"]))]
             if texts:
                 out["h" if slot["key"] == "hours" else "c"] = texts
         acc = present.access_vm(self.S, e) or {}

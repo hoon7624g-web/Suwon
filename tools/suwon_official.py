@@ -56,6 +56,8 @@ OFFICIAL_PAGES = [
         {"id": "tourapi-129437", "name": "화성행궁", "confirms": ["restdate", "usefee"], "differ": ["usetime"],
          "facts": {"usetime": "09:00~18:00 (입장마감은 관람시간 1시간 전)", "pet": NO_PET_GUIDE}},
         {"id": "tourapi-736662", "name": "수원 화령전", "confirms": ["usefee"]},
+        # TourAPI gives 서장대 the palace's address and point (정조로 825); the page's 서장대 안내소 is on 팔달산
+        {"id": "tourapi-264408", "name": "효원의 종·서장대", "facts": {"address": "수원시 팔달구 팔달산로 108 (고등동)"}},
         {"id": "tourapi-264402", "name": "화성어차", "confirms": ["usefee"]},
         {"id": "tourapi-3494623", "name": "XR버스 1795행", "confirms": ["usefee"]},
     ]},

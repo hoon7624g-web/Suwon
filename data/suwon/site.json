@@ -246,9 +246,7 @@
     127.15
   ],
   "course_move": {
-    "guides_first": [
-      "guide-03"
-    ],
+    "guides_first": [],
     "guides_last": [],
     "route_by_guide": {}
   },
@@ -456,7 +454,7 @@
         ],
         "photo": [
           "tourapi-2613658",
-          0
+          1
         ]
       },
       {
@@ -477,7 +475,7 @@
         "figs": [],
         "photo": [
           "tourapi-2613664",
-          0
+          1
         ]
       },
       {
@@ -498,7 +496,7 @@
         "figs": [],
         "photo": [
           "tourapi-2662855",
-          0
+          1
         ]
       }
     ],
@@ -524,38 +522,38 @@
     "media": {
       "cover": [
         "tourapi-125555",
-        0
+        1
       ],
       "hero": [
         [
           "tourapi-125555",
-          0
+          1
         ],
         [
           "tourapi-129437",
-          0
+          2
         ],
         [
           "tourapi-2613658",
-          0
+          1
         ],
         [
           "tourapi-2662855",
-          0
+          1
         ],
         [
           "tourapi-750947",
-          0
+          1
         ],
         [
           "tourapi-3076051",
-          0
+          3
         ]
       ],
       "gallery": [
         [
           "tourapi-3351831",
-          0
+          1
         ],
         [
           "tourapi-1925403",
@@ -563,7 +561,7 @@
         ],
         [
           "tourapi-2613664",
-          0
+          1
         ],
         [
           "tourapi-4067984",
@@ -571,18 +569,15 @@
         ],
         [
           "tourapi-2589025",
-          0
+          1
         ],
         [
           "tourapi-2752650",
-          0
+          1
         ]
       ]
     },
-    "getting_here": {
-      "label": "실내·문화 가이드",
-      "guide_id": "guide-03"
-    }
+    "_getting_here": "가는 법 칸 없음(2026-10-26): 수원 교통 공식 출처로 쓴 가이드가 없어 칸을 두지 않는다 — 실내 가이드(guide-03)를 '가는 법'·버스 그림으로 잇던 것을 뺐다(점검 노트 C06). 실내 가이드는 home.answers의 '비 오는 날·실내'로 그대로 열린다."
   },
   "tourapi": {
     "base_url": "https://apis.data.go.kr/B551011/KorService2",

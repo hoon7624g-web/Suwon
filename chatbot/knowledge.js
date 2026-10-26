@@ -272,6 +272,9 @@ export function lastAt(text) {
 const RANGE_G = /(\d{1,2}):(\d{2})\s*[~–-]\s*(\d{1,2}):(\d{2})/gu;
 // a range that is a break of the day, never a session ('준비시간 14:00~16:30', '점심시간 12:00~13:00', '쉬는시간 …')
 const BREAK_HEAD = /(?:준비|브레이크|break|점심|휴게|쉬는)\s*(?:시간|타임|time)?\s*[:：]?\s*[-–]?\s*$/iu;
+// a weekday list before a range ('수요일 10:00~18:00', '월·화·수요일 / 일요일 10:00~21:00', '토·일요일 및 공휴일 11:00~22:00')
+const DAYS_RX = "[월화수목금토일](?:\\s*[·,、]\\s*[월화수목금토일])*\\s*요일";
+const BY_DAY = new RegExp(`(${DAYS_RX}(?:\\s*[/,]\\s*${DAYS_RX})*)(?:\\s*(?:및|,|/|·)?\\s*(?:법정)?\\s*공휴일)?\\s*[:：]?\\s*(\\d{1,2}:\\d{2}\\s*[~–-]\\s*\\d{1,2}:\\d{2})`, "gu");
 // words between two ranges that make them alternatives (by weekday, by season, by month), never sessions of one day
 const SPLIT_LABEL = /[월화수목금토일]\s*요일|[월화수목금토일]\s*[~,·]\s*[월화수목금토일]|평일|주말|휴일|하절기|동절기|춘추|여름|겨울|성수기|비수기|\d\s*월|시즌/u;
 /** The sessions of one day an hours value gives ('[1회차]- 09:30~13:00 (입장 마감 12:30) [2회차]- 14:00~17:30 (입장 마감
@@ -1308,7 +1311,8 @@ export class Knowledge {
     // not read), then the weekday's own hours when the value gives hours by weekday; {seg, open, close, last} or
     // {seg, why} when the date's hours cannot be read from it
     const hoursFor = (raw) => {
-      const text = spell(raw);
+      // (평일·주중·주말 as their weekdays, for the hours only: a closed rule's '다음 평일' stays as it is)
+      const text = spell(raw).replace(/평일|주중/gu, "월·화·수·목·금요일").replace(/주말/gu, "토·일요일");
       let seg = text;
       const ranges = [...text.matchAll(/(1[0-2]|[1-9])월\s*~\s*(1[0-2]|[1-9])월/gu)];
       if (ranges.length) {
@@ -1336,10 +1340,12 @@ export class Knowledge {
         return { seg: text.trim(), open, close, last: before !== null ? close - before : null, season: `${hhmm(open)}~${hhmm(close)}` };
       }
       const TIME = /(\d{1,2}):(\d{2})\s*[~–-]\s*(\d{1,2}):(\d{2})/u;
-      const byDay = [...seg.matchAll(/([월화수목금토일](?:\s*[·,、]\s*[월화수목금토일])*)\s*요일\s*[:：]?\s*(\d{1,2}:\d{2}\s*[~–-]\s*\d{1,2}:\d{2})/gu)];
+      // weekdays before a range, several lists joined by '/' ('화·수·목·금요일 / 일요일 10:00~21:00') and a 공휴일 beside
+      // them ('토·일요일 및 공휴일 11:00~22:00' — 평일·주중·주말 read as their weekdays)
+      const byDay = [...seg.matchAll(BY_DAY)];
       let range = TIME.exec(seg);
       if (byDay.length && day) {
-        const hit = byDay.find((m) => m[1].includes(WD[wd]));
+        const hit = byDay.find((m) => m[1].replace(/요일/gu, "").includes(WD[wd]));
         if (!hit) return { seg, why: `${WD[wd]}요일 시간이 이 값에 없음` };
         range = TIME.exec(hit[2]);
         seg = hit[0];

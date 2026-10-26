@@ -1664,7 +1664,9 @@ test("real knowledge: every kind is there, searches find the right pages, the ci
   const titles = (q, n = 5) => k.search(q).slice(0, n).map((h) => h.title).join(" / ");
   assert.match(titles("월요일 음식점", 8), /월요일/);
   assert.match(titles("반려동물 동반"), /반려동물/);
-  assert.match(titles("유모차 대여 관광지"), /유모차|아이와/);
+  // a stroller question finds pages whose values say 유모차 (TourAPI 유모차 대여, 2026-10-26: no title names it)
+  const strollers = k.search("유모차 대여 관광지").slice(0, 5);
+  assert.ok(strollers.length === 5 && strollers.every((h) => /유모차/.test(JSON.stringify(k.docs[h.key]))), titles("유모차 대여 관광지"));
   assert.ok(k.search("갈비", { kind: "place" }).length >= 3);
   assert.ok(k.search("화성행궁")[0].title.includes("화성행궁"));
   for (const q of ["수원화성·화성행궁 가볼 만한 곳 알려줘", "비 오는 날 수원 실내 관광지는 어디인가요?", "수원 왕갈비·통닭거리 식당은 어디에 있나요?", "아이와 함께 갈 만한 수원 명소 추천해 줘"]) {

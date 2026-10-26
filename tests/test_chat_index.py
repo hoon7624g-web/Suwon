@@ -479,10 +479,10 @@ def test_a_long_guide_gives_each_place_and_its_faq_a_doc_of_their_own(real, tmp_
     guide's place reasons and FAQ came after the 6,000 characters get_pages reads. A guide doc that would pass
     GUIDE_DOC_FIT lists its places by name; each place's reason (with the place's link) and the FAQ are docs
     of their own, keyed by the page's own anchors (li#gi-<slug>, #h-faq). A short guide keeps everything in its doc.
-    This city's guides are all short at GUIDE_DOC_FIT: the fit is lowered to 2,500 characters so they fall on both
-    sides (1,700–3,200 characters of doc each)."""
+    This city's guides are all short at GUIDE_DOC_FIT: the fit is lowered to 1,800 characters so they fall on both
+    sides (1,500–2,100 characters of doc each, 2026-10-26)."""
     S = real["S"]
-    monkeypatch.setattr(chat_index, "GUIDE_DOC_FIT", 2500)
+    monkeypatch.setattr(chat_index, "GUIDE_DOC_FIT", 1800)
     chat_index.export(S, tmp_path)
     docs = json.loads((tmp_path / "chat" / "docs.json").read_text("utf-8"))["docs"]
     split = short = 0

@@ -13,8 +13,9 @@ facts는 건드리지 않는다(CLAUDE.md 3절 7항).
 - 출처마다 값이 다르면(present.contested — 화면이 '출처마다 다름'을 붙이는 값) 한쪽을 고르지 않는다. 요약·FAQ 모두
   두 값을 출처와 함께 쓰고 '방문 전에 전화로 확인해야 합니다'를 붙인다. 값이 길면 '출처마다 달라'만 쓴다.
 - 종료일 없는 휴관 공지(notices.json open_end)가 있는 장소는 요약 첫 문장과 첫 FAQ가 그 공지이고 평소 값은 그 뒤에
-  둔다. 그 공지 id를 summary_notices에 남긴다(공지가 끝나면 pipeline.validate가 '다시 생성' 경고를 낸다). 날짜가 정해진
-  공지(하루 무료 개방 등)는 지나면 낡으므로 요약·FAQ에 쓰지 않는다 — 화면의 공지 줄이 보인다.
+  둔다. 그 공지 id를 summary_notices에 남긴다(공지가 끝나면 pipeline.validate가 '다시 생성' 경고를 낸다). 기간이 정해진
+  휴관(7일 이상)과 바뀐 운영 시간(야간 개장 등, kind hours)도 공지가 보이는 동안 요약 첫 문장과 첫 FAQ에 쓰고 같은 자리에
+  남긴다. 하루짜리 공지(하루 무료 개방 등)는 요약·FAQ에 쓰지 않는다 — 화면의 공지 줄이 보인다.
 - 요약: 답부터 쓰는 존댓말 평서문 1~3문장. 그 장소만의 값(체험·판매 품목·장날·대표 메뉴·좌석·객실·지정·운영 시간·
   요금 중 하나 이상)을 넣는다. 위치만 말하는 상투구를 쓰지 않는다. 쓸 값이 주소·홈페이지뿐이면 짧은 한 문장에
   summary_thin=true(색인에서 빠진다).
@@ -289,9 +290,15 @@ def parking_info(e: dict) -> dict | None:
         if not fee_raw:
             return None
     out = {"yes": None, "count": "", "fee": "", "near": False, "text": "", "more": ""}
+    said = re.match(r"^주차\s*가능\s*,?\s*", t)   # '주차가능 유료 추가 요금 …': the label is no part of the sentence
+    if said:
+        t = t[said.end():]
+        out["yes"] = True
+        if not t:
+            return out
     if t:
         no = re.search(r"불가|없음", t) and not re.search(r"(?<!불)가능|이용\s*가능|있음", t.replace("불가능", ""))
-        out["yes"] = False if no else True
+        out["yes"] = True if said else (False if no else True)
         m = re.search(r"(\d+)\s*대(?!형)", t) or re.search(r"주차장\s*(?:보유)?\s*\(\s*(\d+)\s*\)", t)
         out["count"] = m.group(1) if m else ""
         if re.search(r"\d+\s*대\s*이상", t):
@@ -312,8 +319,14 @@ def parking_info(e: dict) -> dict | None:
         if fee == "무료":
             out["fee"] = "무료"
         else:
-            m = re.search(r"(승용차|소형|일반)\s*([\d,]+원)", fee) or re.search(r"([가-힣]+)\s*([\d,]+원)", fee)
-            out["fee"] = f"{m.group(1)} {m.group(2)} 등" if m else ""
+            # the table's first price as written ('최초 30분 1,000원', '30분 무료', '6시간 이내 무료') — never a cap or
+            # an extra charge on its own ('최대 18,000원', '이후 10분당 500원'), nor a unit as a label ('분 1,000원')
+            m = re.search(r"(?:승용차|소형|일반)?\s*(?:1회\s*)?\(?최초\s*\d+\s*(?:분|시간)\)?\s*[\d,]+원", fee)
+            first = m.group(0).strip() if m else next(
+                (x for x in re.split(r"\s*(?:/|·|\s-\s?|^-\s?|(?<=[원료])\s*-)\s*", fee)
+                 if re.search(r"원|무료", x) and len(x) <= 30 and not re.search(r"\[|\]|상이|참조|발생|추가|이후|초과", x)
+                 and not re.match(r"(?:1일|일일|최대)", x)), "")
+            out["fee"] = f"{tidy(first)} 등" if first else ("유료" if re.search(r"\d원", fee) else "")
         if out["yes"] is None and out["fee"]:
             out["yes"] = True
     return out
@@ -440,6 +453,9 @@ class Place:
         self.name = squash_ws(e.get("name"))
         self.kind = e.get("kind") or "attraction"
         self.closures = [n for n in notices if noticesmod.open_ended(n)]
+        # a dated closure of a week or more, or changed hours (a night opening): the summary's first sentence and the
+        # first FAQ while it is shown (summary_notices; pipeline.validate asks to regenerate once it is gone)
+        self.dated = [] if self.closures else [n for n in notices if dated_notice(n)]
         self.facts_used: set[str] = set()
 
     def N(self, pair: str) -> str:
@@ -624,6 +640,31 @@ def fee_sentence(pl: Place, subject: bool, limit: int = CONFLICT_MAX) -> str:
     if x.get("free_for"):
         s = join2(s, f"{josa(x['free_for'], '은/는')} 무료입니다.") or s
     return s
+
+
+DATED_CLOSURE_DAYS = 7
+
+
+def dated_notice(n: dict) -> bool:
+    """A notice the summary leads with: a closure from one date to another of DATED_CLOSURE_DAYS or more, or changed
+    hours ('hours'). A one-day free entry or closure stays on the page's notice line only."""
+    if noticesmod.open_ended(n):
+        return False
+    start, end = noticesmod.span(n)
+    if n.get("kind") == "hours":
+        return True
+    days = (dt.date.fromisoformat(end) - dt.date.fromisoformat(start)).days + 1 if start and end else 0
+    return n.get("kind") == "closed" and days >= DATED_CLOSURE_DAYS
+
+
+def dated_sentence(pl: Place, n: dict) -> str:
+    """'<이름>은 2026년 11월 1일(일)–2027년 1월 31일(일)에 쉰다고 공지했습니다.' / '<이름>은 2026년 10월 30일(금)–11월 1일(일)에
+    09:00–21:30에 운영합니다(입장 마감 21:00).' — the notice's own dates and times (pipeline/notices.py ko_dates)."""
+    when = noticesmod.ko_dates(n)
+    if n.get("kind") == "closed":
+        return f"{pl.N('은/는')} {when}에 쉰다고 공지했습니다."
+    last = f", 입장은 {n['last_entry']}에 마감합니다" if n.get("last_entry") else ""
+    return f"{pl.N('은/는')} {when}에 {n['from']}–{n['to']} {'운영하고' if last else '운영합니다'}{last}."
 
 
 def closure_sentence(pl: Place) -> tuple[str, str]:
@@ -900,6 +941,15 @@ def faq_candidates(pl: Place) -> list[tuple[str, str, str]]:
             n["url"])
     if pl.closures:   # closed until further notice: every other answer would read as if it were open now
         return out
+    for n in pl.dated:
+        when = noticesmod.ko_dates(n)
+        if n.get("kind") == "closed":
+            add(f"{pl.N('은/는')} {when}에도 문을 여나요?",
+                f"아니요. 그 기간에 쉰다는 공지가 있습니다. 가기 전에 공지를 확인하세요.", n["url"])
+        else:
+            last = f" 입장은 {n['last_entry']}에 마감합니다." if n.get("last_entry") else ""
+            add(f"{pl.N('은/는')} {when}에 몇 시까지 운영하나요?",
+                f"{n['from']}–{n['to']} 운영합니다.{last} 가기 전에 공지를 확인하세요.", n["url"])
     r = hours_reading(pl) if pl.kind != "stay" else None
     if r and pl.kind == "attraction":
         wk = present.week_closure(f.get("restdate")) if f.get("restdate") else None
@@ -928,8 +978,11 @@ def faq_candidates(pl: Place) -> list[tuple[str, str, str]]:
         add(f"{pl.N('은/는')} 몇 시에 문을 여나요?" if pl.kind != "food" else f"{pl.N('은/는')} 몇 시까지 영업하나요?",
             ans, pl.source(r["key"]))
     elif r and r["h"] and r["h"]["text"] and not r["h"]["single"] and "," in r["h"]["text"] and pl.kind == "attraction":
-        add(f"{N} 이용시간은 철마다 다른가요?" if re.search(r"월|절기", r["h"]["text"]) else f"{N} 이용시간은 요일마다 다른가요?",
-            f"네, {r['h']['text']}입니다.", pl.source(r["key"]))
+        # the question names what the times differ by, and only when the value says it (a lunch break is neither)
+        by = "철마다" if re.search(r"\d\s*월|절기", r["h"]["text"]) else (
+            "요일마다" if re.search(r"[월화수목금토일]요일|[월화수목금토일]\s*~|평일|주말|공휴일", r["h"]["text"]) else "")
+        if by:
+            add(f"{N} 이용시간은 {by} 다르나요?", f"네, {r['h']['text']}입니다.", pl.source(r["key"]))
     if r and r["entry"]:
         e = r["entry"]
         add(f"{pl.N('은/는')} 몇 시까지 입장할 수 있나요?",
@@ -1091,7 +1144,13 @@ def write_place(e: dict, *, city, notices: list[dict], used_q: set, used_t: dict
         sents, thin = stay_summary(pl)
     else:
         sents, thin = attraction_summary(pl)
-    sents = [squash_ws(s) for s in sents if s and squash_ws(s).endswith("다.")]
+    if pl.dated:
+        lead = [dated_sentence(pl, n) for n in pl.dated]
+        rest = [x for x in sents if x]
+        if rest and rest[0].startswith(pl.name):   # the usual values follow under their own subject: '평소에는 …'
+            rest[0] = "평소에는 " + rest[0][len(pl.N("은/는")):].lstrip() if rest[0].startswith(pl.N("은/는")) else rest[0]
+        sents = (lead + rest)[:SUMMARY_MAX]
+    sents = [squash_ws(s) for s in sents if s and squash_ws(s).endswith("다.") and not re.search(r"[\[\]]", s)]
     flagged = [i for i, s in enumerate(sents) if s.endswith(f"출처마다 달라 {CALL}.")]
     for i in flagged[:-1]:   # the call line once, after the last value that differs
         sents[i] = sents[i][: -len(f"달라 {CALL}.")] + "다릅니다."
@@ -1120,7 +1179,7 @@ def write_place(e: dict, *, city, notices: list[dict], used_q: set, used_t: dict
         t = template(q, pl.name)
         capped = used_t.get(t, 0) >= TEMPLATE_CAP and not (need_one and not faqs and (q, a, src) == next(
             (c for c in cands if pc._qkey(c[0]) not in used_q and c[1]), None))
-        if k in keys or k in used_q or len(faqs) >= limit or not a or capped:
+        if k in keys or k in used_q or len(faqs) >= limit or not a or capped or re.search(r"[\[\]]", a):
             continue
         item = {"id": e["id"], "summary": summary, "faq": [{"q": q, "a": a, "source": src}]}
         if pc.check_item(item, sheet, city=city, place=e) and not pc.check_item({**item, "faq": []}, sheet, city=city, place=e):
@@ -1129,7 +1188,7 @@ def write_place(e: dict, *, city, notices: list[dict], used_q: set, used_t: dict
         keys.add(k)
         used_t[t] = used_t.get(t, 0) + 1
     issues = pc.check_item({"id": e["id"], "summary": summary, "faq": faqs, "thin": thin}, sheet, city=city, place=e)
-    return {"summary": summary, "faq": faqs, "thin": thin, "notices": [n["id"] for n in pl.closures],
+    return {"summary": summary, "faq": faqs, "thin": thin, "notices": [n["id"] for n in pl.closures + pl.dated],
             "issues": issues, "keys": keys}
 
 

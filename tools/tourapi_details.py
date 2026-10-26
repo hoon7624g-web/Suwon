@@ -437,6 +437,8 @@ def festival_event(item: dict, intro: dict, common: dict, today: str) -> dict:
     for key, field in (("playtime", "playtime"), ("fee", "usetimefestival"), ("sponsor", "sponsor1"),
                        ("tel", "sponsor1tel"), ("agelimit", "agelimit")):
         value = clean(intro.get(field))
+        if key == "tel":   # two numbers the provider wrote without a break ('031-290-3622031-5191-3084')
+            value = re.sub(r"(\d{2,4}-\d{3,4}-\d{4})(?=0\d{1,3}-)", r"\1 / ", value)
         if value:
             ev[key] = value
     homepage = homepage_url(common.get("homepage") or intro.get("eventhomepage"))
