@@ -1,0 +1,74 @@
+[
+  {
+    "id": "hwaseonghaenggung-culture-day-2026-10-28",
+    "place_ids": [
+      "tourapi-129437"
+    ],
+    "kind": "free",
+    "date": "2026-10-28",
+    "from": "09:00",
+    "to": "18:00",
+    "provider": "수원문화재단 수원화성관광 관람안내",
+    "url": "https://www.swcf.or.kr/?p=65",
+    "checked_at": "2026-10-26",
+    "until": "2026-10-28"
+  },
+  {
+    "id": "suma-culture-day-2026-10-28",
+    "place_ids": [
+      "tourapi-2033483"
+    ],
+    "kind": "free",
+    "date": "2026-10-28",
+    "provider": "수원시립미술관 관람안내",
+    "url": "https://suma.suwon.go.kr/views/info.do",
+    "checked_at": "2026-10-26",
+    "until": "2026-10-28"
+  },
+  {
+    "id": "suwon-arboretum-night-2026-10-30",
+    "place_ids": [
+      "tourapi-3076051",
+      "tourapi-2998800"
+    ],
+    "kind": "hours",
+    "start": "2026-10-30",
+    "end": "2026-10-31",
+    "from": "09:30",
+    "to": "21:00",
+    "last_entry": "20:30",
+    "provider": "수원시 문화행사 안내",
+    "url": "https://www.suwon.go.kr/culture/ingCultureView.do?ctrSeqNo=2138",
+    "checked_at": "2026-10-26",
+    "until": "2026-10-31"
+  },
+  {
+    "id": "hwaseonghaenggung-night-2026-10-30",
+    "place_ids": [
+      "tourapi-129437"
+    ],
+    "kind": "hours",
+    "start": "2026-10-30",
+    "end": "2026-11-01",
+    "from": "09:00",
+    "to": "21:30",
+    "last_entry": "21:00",
+    "provider": "수원문화재단 화성행궁 야간개장",
+    "url": "https://www.swcf.or.kr/?p=260",
+    "checked_at": "2026-10-26",
+    "until": "2026-11-01"
+  },
+  {
+    "id": "flying-suwon-closed-2026-11",
+    "place_ids": [
+      "tourapi-2714220"
+    ],
+    "kind": "closed",
+    "start": "2026-11-01",
+    "end": "2027-01-31",
+    "provider": "플라잉수원 홈페이지 운영 안내",
+    "url": "https://www.flyingsuwon.com/",
+    "checked_at": "2026-10-26",
+    "until": "2027-01-31"
+  }
+]

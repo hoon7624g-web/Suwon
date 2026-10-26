@@ -24,7 +24,7 @@
 | 지도 | 오픈소스 지도(Leaflet + OpenStreetMap) 기본. 도메인 연결 및 카카오 개발자 콘솔 등록 후 카카오맵 전환 가능 |
 
 ## 3. 지켜야 할 규칙
-1. **사실은 출처 데이터에서만** 가져온다(TourAPI·수원시 문화관광 공식 자료·해당 시설 공식 홈페이지). 없는 값은 블록마다 "확인 필요: 요금·주차"처럼 한 번만 쓴다. 추정이나 일반 지식으로 채우지 않는다.
+1. **사실은 출처 데이터에서만** 가져온다(TourAPI·수원시 문화관광 공식 자료·해당 시설 공식 홈페이지). 카카오맵·네이버 장소 정보, 블로그, 리뷰, 일반 지식은 값의 출처가 아니다(카카오 장소 ID는 길찾기 링크에만 쓴다). 공식 페이지 값은 페이지마다 주소와 확인일을 남기고(`tools/suwon_official.py`, 읽은 줄은 `data/raw/suwon/official_pages.json`), 이름만 보고 기본값(연중무휴·무료·상시 개방·인근 공영주차장·체크인 15:00 등)을 짓지 않는다. 없는 값은 블록마다 "확인 필요: 요금·주차"처럼 한 번만 쓴다. 추정이나 일반 지식으로 채우지 않는다.
 2. **필드별 출처**: 필드마다 출처와 확인일을 남긴다(`fact_sources`). 두 출처 값이 다르면 둘 다 보여 주고(`fact_alternatives`) "방문 전 전화 확인"을 붙인다. 한쪽을 임의로 고르지 않는다.
 3. **시 원문과 사진**: 수원문화관광(`suwon.go.kr/web/visitsuwon/`) 및 수원문화재단(`swcf.or.kr`)은 페이지별 공공누리 표시가 없거나 제한적이므로 군산과 같은 규칙을 적용한다 — 원문은 링크로만, 설명은 우리 문장으로(원문과 15자 이상 연속 일치 금지), 표의 값(시간·요금·메뉴·지정 업소)은 값 그대로 써도 된다. 확인 결과는 `docs/rights.md`에 적는다.
 4. **TourAPI 이미지**: `cpyrhtDivCd`가 Type1·Type3인 것만, "출처: 한국관광공사". Type3은 자르기·확대·보정 금지. 홈 첫 화면처럼 자르기가 필요한 곳은 제1유형만. overview 문장은 게재하지 않고 사실 확인용으로만 쓴다.
@@ -49,6 +49,15 @@
 ```bash
 python -m pip install -r requirements.txt
 python -m pytest
+
+# 수집한 원응답으로 다시 만들기 (호출 0: data/raw/suwon/tourapi/*.tar.gz → data/cache/tourapi/, 캐시는 커밋하지 않는다)
+python tools/tourapi_harvest.py --data data/suwon --unpack
+python tools/tourapi_bulk.py --data data/suwon --offline --details --add-new --events   # 상세·새 장소(draft)·행사
+python tools/harvest_merge.py --data data/suwon --photos --pet --apply                   # 관광사진·반려동물
+python tools/tourapi_bulk.py --data data/suwon --offline --barrier-free                  # 무장애 여행 정보
+python tools/suwon_official.py --data data/suwon --apply                                 # 시설 공식 페이지 표 값(페이지 주소·확인일)
+python tools/suwon_enrich.py                                                             # 중복·테마·행사 장소·요약·FAQ(tools/place_text.py)
+# 기간이 있는 시설 공지(임시 휴장·야간 개장·무료 개방)는 data/suwon/notices.json에 사람이 적는다(pipeline/notices.py 형식)
 
 # TourAPI 진단 및 수집 (TOURAPI_KEY가 .env 또는 환경 변수에 있을 때)
 python tools/tourapi_doctor.py --data data/suwon --keyword 화성행궁       # 1. 키·연결 진단
