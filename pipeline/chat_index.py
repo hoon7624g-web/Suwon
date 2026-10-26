@@ -736,6 +736,11 @@ class Knowledge:
         ty = plan.plan_class(e, self.S) if e["kind"] == "attraction" else (e.get("_type") or food_class(e))
         if ty:
             out["ty"] = ty
+        # outdoors by TourAPI's own class when the type words say neither (plan.outdoor_lcls — plan_state.needAt,
+        # plan_geo.isOutdoor: the rain's one outdoor stop a day)
+        od = plan.outdoor_lcls(e, ty) if e["kind"] == "attraction" else ""
+        if od:
+            out["od"] = od
         if e["kind"] == "attraction" and e.get("_type") and e["_type"] != ty:
             out["ct"] = e["_type"]
         row = B.fact_row(e, "usefee")
@@ -1202,9 +1207,19 @@ class Knowledge:
     def index_json(self) -> dict:
         out = {}
         for key, d in sorted(self.docs.items()):
-            head = tokens(f"{d['t']} {key if key.startswith('/') else ''}")
+            # (a kind word — 음식점, 관광지, 숙소 — in a first line is every place's of that kind, and in the home's or a list
+            # page's title every such place's count: it reads as body there, or a query naming the kind ranks all of them
+            # above the page titled with the rest of the query — 수원각 2026-10-26: '월요일 음식점' gave eight restaurants
+            # that close on a Monday, the Monday-open guide below them; 단양각: the restaurant list above the restaurants
+            # open that day. A place's own name keeps every word of it)
             lines = d["x"].split("\n", 3)
-            head += [t for t in tokens(lines[0]) if t not in head]
+            title, first = d["t"], lines[0]
+            for word in KIND_LABELS.values():
+                first = first.replace(word, " ")
+                if d.get("k") == "page":
+                    title = title.replace(word, " ")
+            head = tokens(f"{title} {key if key.startswith('/') else ''}")
+            head += [t for t in tokens(first) if t not in head]
             # a place's other names count as its title: searching an old name finds the place first
             alt = next((x[len("다른 이름: "):] for x in lines[1:3] if x.startswith("다른 이름: ")), "")
             head += [t for t in tokens(alt) if t not in head]

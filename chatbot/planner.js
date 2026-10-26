@@ -2537,6 +2537,36 @@ function freeClaim(text, fees, kb) {
   return null;
 }
 
+// what a title, summary sentence or note says the plan holds that its stops can be read against (QA 2026-10-26 F04:
+// '점심과 카페를 거쳐' over four stops with no café; '두 날 모두 한 권역에서 실내 장소만' over a day in two 권역 with
+// outdoor stops — both kept, nothing flagged): a café, one 권역, indoor places only
+const CAFE_SAID = /카페/u;
+// (a café the sentence says is left out: '카페는 영업 정보가 없어 넣지 않았어요', '카페 대신', '카페 없이')
+const CAFE_NOT = /카페[^.!?]{0,24}?(?:넣지|빼|뺐|제외|대신|못\s*넣|안\s*넣)|카페\s*없이/u;
+const ONE_AREA = /(?:한|같은|하나의|한\s*곳의)\s*(?:권역|지역|동네)|권역\s*(?:하나|한\s*곳)/u;
+const INDOOR_ONLY = /실내(?:\s*(?:장소|관람지|명소|시설|공간|코스))?\s*(?:만|로만)|(?:모두|전부|모든\s*곳(?:이|을|은)?)\s*실내/u;
+/** The first sentence of `text` that says of the plan what its stops do not hold — {said, why} — or null. */
+export function planClaim(text, plan, kb) {
+  const stops = plan.days.flatMap((d) => d.stops);
+  const doc = (s) => kb.docs[s.page] || {};
+  for (const t of String(text || "").split(/(?<=[.!?。])\s+/u)) {
+    // (not a stop's own name: 'OO 카페거리')
+    if (CAFE_SAID.test(t) && !CAFE_NOT.test(t) && !stops.some((s) => s.role === "cafe" || isCafe(doc(s)) || String(s.name || "").includes("카페"))) {
+      return { said: "카페", why: "일정에 카페가 없는데 카페를 거친다고 쓴다" };
+    }
+    const many = plan.days.find((d) => new Set(d.stops.map((s) => regionOf(doc(s))).filter(Boolean)).size > 1);
+    if (ONE_AREA.test(t) && many) {
+      const areas = [...new Set(many.stops.map((s) => regionOf(doc(s))).filter(Boolean))];
+      return { said: ONE_AREA.exec(t)[0], why: `${plan.days.length > 1 ? `${plan.days.indexOf(many) + 1}일차가 ` : ""}${areas.join("·")} 권역에 걸치는데 한 권역이라고 쓴다` };
+    }
+    const out = stops.filter((s) => s.role === "visit" && needAt("rain", (doc(s).f || {}), "visit").state !== "ok");
+    if (INDOOR_ONLY.test(t) && out.length) {
+      return { said: INDOOR_ONLY.exec(t)[0], why: `실내라고 자료에 없는 곳(${out.map((s) => s.name).join("·")})이 있는데 실내만이라고 쓴다` };
+    }
+  }
+  return null;
+}
+
 // the check's words for the model, as the reader reads them: no field names, no instruction to the planner
 const FOR_MODEL = / — (?:일정에서 뺀다|출발지에서 오는 여유를 둔다|돌아갈 여유를 둔다|무료이거나 더 싼 곳으로 바꾼다|여유를 늘리거나 가까운 곳으로 바꾼다|이 구간을 따로 한 줄.*|그 시간에 여는 음식점을 넣는다|가까운 장소를 넣거나 앞뒤 장소를 늘린다|그날 마지막에 둔다|체크인 뒤로 둔다|맞는 곳으로 바꾼다|하루 \d+곳까지로 줄인다)$/u;
 export const readerFlag = (t) => String(t).replace(/\(role stay\)/gu, "").replace(/독자가 정한 /gu, "고른 ").replace(FOR_MODEL, "")
@@ -2547,7 +2577,8 @@ export const readerFlag = (t) => String(t).replace(/\(role stay\)/gu, "").replac
 export const hubLegs = (plan, c, kb = null) => hubLegsOf(plan, c, hubNames(), kb);
 
 /** The model's sentences read against the pages: numbers the pages do not have, words that claim a check, a plan
- *  called free that its fees do not back (freeClaim). Returns errors (Korean, for the model). */
+ *  called free that its fees do not back (freeClaim), a café, one 권역 or indoor places only its stops do not hold
+ *  (planClaim). Returns errors (Korean, for the model). */
 export function textIssues(plan, c, kb, fees) {
   const errors = [];
   const own = (key) => ((kb.docs[key] || {}).x || "");
@@ -2570,6 +2601,9 @@ export function textIssues(plan, c, kb, fees) {
     // (a plan called free with paid or unpriced visits — outside test 2026-10-23: '무료 장소 위주' over 24,000원)
     const free = freeClaim(text, fees, kb);
     if (free) errors.push(`${what}: ${free.why} 무료라고 쓴다('${free.said}') — 무료라는 말은 방문지가 모두 무료일 때만 쓴다(입장료를 줄여 달라면 입장료가 있는 곳을 무료이거나 더 싼 곳으로 바꾼다)`);
+    // (a café, one 권역 or indoor places only, said of a plan whose stops do not hold it: planClaim)
+    const held = planClaim(text, plan, kb);
+    if (held) errors.push(`${what}: ${held.why}('${held.said}') — 일정에 있는 것만 쓴다`);
   }
   return errors;
 }
@@ -2587,7 +2621,7 @@ export function trimText(plan, c, kb, fees) {
   const ok = (text, src) => { const g = grounded(text, src); return !g.bad.length && !g.words.length && !g.claim; };
   for (const d of plan.days) for (const s of d.stops) if (!ok(s.why, `${own(s.page)}\n${plain}`)) s.why = "";
   // (the plan's words — title, summary, notes — that call it free when its fees do not back it go too: freeClaim)
-  const fair = (text) => ok(text, all) && !freeClaim(text, fees, kb);
+  const fair = (text) => ok(text, all) && !freeClaim(text, fees, kb) && !planClaim(text, plan, kb);
   plan.summary = dropSentences(plan.summary, fair);
   plan.notes = plan.notes.filter(fair);
   if (plan.title && !fair(plan.title)) plan.title = codeText(plan, c, kb).title;

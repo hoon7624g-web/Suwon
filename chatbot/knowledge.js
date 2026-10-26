@@ -272,9 +272,6 @@ export function lastAt(text) {
 const RANGE_G = /(\d{1,2}):(\d{2})\s*[~–-]\s*(\d{1,2}):(\d{2})/gu;
 // a range that is a break of the day, never a session ('준비시간 14:00~16:30', '점심시간 12:00~13:00', '쉬는시간 …')
 const BREAK_HEAD = /(?:준비|브레이크|break|점심|휴게|쉬는)\s*(?:시간|타임|time)?\s*[:：]?\s*[-–]?\s*$/iu;
-// a weekday list before a range ('수요일 10:00~18:00', '월·화·수요일 / 일요일 10:00~21:00', '토·일요일 및 공휴일 11:00~22:00')
-const DAYS_RX = "[월화수목금토일](?:\\s*[·,、]\\s*[월화수목금토일])*\\s*요일";
-const BY_DAY = new RegExp(`(${DAYS_RX}(?:\\s*[/,]\\s*${DAYS_RX})*)(?:\\s*(?:및|,|/|·)?\\s*(?:법정)?\\s*공휴일)?\\s*[:：]?\\s*(\\d{1,2}:\\d{2}\\s*[~–-]\\s*\\d{1,2}:\\d{2})`, "gu");
 // words between two ranges that make them alternatives (by weekday, by season, by month), never sessions of one day
 const SPLIT_LABEL = /[월화수목금토일]\s*요일|[월화수목금토일]\s*[~,·]\s*[월화수목금토일]|평일|주말|휴일|하절기|동절기|춘추|여름|겨울|성수기|비수기|\d\s*월|시즌/u;
 /** The sessions of one day an hours value gives ('[1회차]- 09:30~13:00 (입장 마감 12:30) [2회차]- 14:00~17:30 (입장 마감
@@ -299,6 +296,107 @@ export function sessionsIn(seg, before = null) {
     const last = own !== null ? own : before !== null ? x.close - before : null;
     return { open: x.open, close: x.close, last, ...(named ? { name: `${+named[1]}회차` } : {}) };
   });
+}
+// one range of an hours value, anywhere in it
+const RANGE_1 = /\d{1,2}:\d{2}\s*[~–-]\s*\d{1,2}:\d{2}/u;
+// a day word of an hours value — 평일·주중, 주말, 공휴일, a weekday with or without 요일 — standing as a word, never inside
+// one ('일반자료실', '수목원', '요금', '3월', '매일'), a particle after it allowed ('일요일만', '주말은', '주말 및 공휴일')
+const DAY_TOKEN_G = /(?<![가-힣0-9])(평일|주중|주말|공휴일|[월화수목금토일](?:요일)?)(?=$|[^가-힣]|(?:만|은|는|및|에|엔|부터|까지)(?![가-힣]))/gu;
+const WD_ORDER = "일월화수목금토";   // getUTCDay order
+/** The day groups of an hours value: [{at, end, words, days: Set of getUTCDay numbers, holiday}] — a run of day words
+ *  with only separators between them ('평일, 일요일', '목. 금. 토. 일 요일', '주말/공휴일', '[평일]'); two weekdays with a
+ *  tilde between them are the days from one to the other ('화 ~ 일'). */
+export function dayGroups(text) {
+  const t = String(text || "");
+  const out = [];
+  for (const m of t.matchAll(DAY_TOKEN_G)) {
+    const w = m[1];
+    const one = (x) => WD_ORDER.indexOf(x[0]);
+    const days = w === "평일" || w === "주중" ? [1, 2, 3, 4, 5] : w === "주말" ? [0, 6] : w === "공휴일" ? [] : [one(w)];
+    const last = out[out.length - 1];
+    const gap = last ? t.slice(last.end, m.index) : "";
+    if (last && /^\s*[~∼～〜]\s*$/u.test(gap) && days.length === 1 && w !== "공휴일" && last.single !== undefined) {
+      for (let d = (last.single + 1) % 7, n = 0; n < 7; d = (d + 1) % 7, n += 1) {
+        last.days.add(d);
+        if (d === days[0]) break;
+      }
+    } else if (last && /^[\s,·/、.및&+]*$/u.test(gap)) {
+      days.forEach((d) => last.days.add(d));
+      last.holiday ||= w === "공휴일";
+    } else {
+      out.push({ at: m.index, end: m.index + w.length, words: w, days: new Set(days), holiday: w === "공휴일",
+        ...(days.length === 1 && w !== "공휴일" ? { single: days[0] } : {}) });
+      continue;
+    }
+    last.end = m.index + w.length;
+    last.words = t.slice(last.at, last.end);
+    last.single = days.length === 1 && w !== "공휴일" ? days[0] : undefined;
+  }
+  return out;
+}
+// what follows a day group that makes it no hours of its own: a closed day, a day left out, the only days it opens
+const DAY_NOTE = /^\s*(?:요일)?\s*(?:은|는|에는|엔|에)?\s*(?:만\s*(?:영업|운영|개방|개관|오픈)|제외|휴무|휴관|휴업|휴장|휴점|휴일|쉼|쉽|정기)/u;
+/** The weekdays a value says the place opens on only ('(매주 목. 금. 토. 일 요일만 영업)', '주말만 운영'): the day group
+ *  (dayGroups) or null — QA 2026-10-26 F05: 카페, 선비꽃 went in a Monday at 12:10, its hours read and the '만 영업' not. */
+export function onlyDays(text) {
+  const t = String(text || "");
+  return dayGroups(t).find((g) => /^\s*(?:요일)?\s*(?:에)?\s*만\s*(?:영업|운영|개방|개관|오픈)/u.test(t.slice(g.end))) || null;
+}
+/** The part of an hours value for one day when it gives hours by day group — '- 평일 09:00~21:00- 주말 09:00~18:00',
+ *  '[평일]- 11:30~22:00 - 준비시간 … [주말]- …', '10:30 ~ 22:00(평일), 10:00 ~ 22:00(주말)', '- 평일, 일요일 10:00~18:00 -
+ *  토요일 10:00~19:00', '월요일 09:00~18:00 화·수·목·금·토·일요일 09:00~21:30': {seg} the day's part (its group and what
+ *  follows to the next group; the hours before the first group for a day no group names), {why} when the value has
+ *  hours by day and none for that day, or null when it has none by day. wd: getUTCDay of the date; holiday: a public
+ *  holiday (a group naming 공휴일 holds then). QA 2026-10-26 F03: 국립세종도서관 '평일 09:00~21:00 / 주말 09:00~18:00' was
+ *  read as 09:00~21:00 on a Sunday — the first range, whatever the day. */
+export function dayPart(text, wd, holiday = false) {
+  const t = String(text || "");
+  const heads = dayGroups(t).filter((g) => !DAY_NOTE.test(t.slice(g.end)));
+  const parts = [];
+  heads.forEach((g, i) => {
+    const trail = /(\d{1,2}:\d{2}\s*[~–-]\s*\d{1,2}:\d{2})\s*[(（]\s*$/u.exec(t.slice(0, g.at));
+    if (trail && /^\s*[)）]/u.test(t.slice(g.end))) {
+      parts.push({ g, at: trail.index, seg: `${g.words} ${trail[1]}` });
+      return;
+    }
+    const body = t.slice(g.end, i + 1 < heads.length ? heads[i + 1].at : t.length);
+    if (RANGE_1.test(body)) parts.push({ g, at: g.at, seg: g.words + body });
+  });
+  if (!parts.length) return null;
+  const tidy = (x) => x.replace(/[\s\-–/|,·[(（※]+$/u, "").trim();
+  if (holiday) {
+    const own = parts.find((p) => p.g.holiday);
+    if (own) return { seg: tidy(own.seg) };
+    // (a holiday on a value by the week's halves alone — '평일 …/주말 …': which half holds then is not in it, to check)
+    if (parts.some((p) => /평일|주중|주말/u.test(p.g.words))) return { why: "공휴일 — 평일·주말 어느 쪽 시간인지 이 값에 없음" };
+  }
+  // (a weekday named on its own comes before the group it is also in: '- 평일 11:30~22:00 … - 금요일 11:30~22:30' on a Friday)
+  const pick = parts.filter((p) => p.g.days.has(wd)).sort((a, b) => a.g.days.size - b.g.days.size)[0];
+  if (pick) return { seg: tidy(pick.seg) };
+  // the hours before the first day group hold on the days no group names ('11:00 ~ 17:00 / 토요일 12:00 ~ 19:00') — never
+  // when that part names a day, a closed day or a season itself
+  const lead = t.slice(0, Math.min(...parts.map((p) => p.at)));
+  if (RANGE_1.test(lead) && !dayGroups(lead).length && !/하절기|동절기|여름|겨울|성수기|비수기|휴무|휴관|휴일|휴업|휴장/u.test(lead)) {
+    return { seg: tidy(lead) };
+  }
+  return { why: `${WD_ORDER[wd]}요일${holiday ? "(공휴일)" : ""} 시간이 이 값에 없음` };
+}
+// a room's or hall's own hours in a value ('[인문예술자료실/일반자료실]- 평일 … [어린이자료실]-09:00~18:00'): a bracketed name
+// ending as a room or a hall does — never a day, a season, a session, a break or a heading of the value
+const ROOM_HEAD_G = /\[([^\]\d]{2,40})\]/gu;
+const ROOM_NAME = /(?:실|관|장|원|센터|홀|존|코너|라운지|매장|카페|식당)$/u;
+const ROOM_NOT = /시간|타임|마감|주문|휴무|휴관|안내|참고|요금|주차/u;
+/** The rooms of a value with hours of their own: [{name, seg}] (two or more, each with a range), or null. */
+export function roomParts(text) {
+  const t = String(text || "");
+  const heads = [...t.matchAll(ROOM_HEAD_G)].filter((m) => {
+    const name = m[1].replace(/\s+/gu, "");
+    return ROOM_NAME.test(name) && !ROOM_NOT.test(name) && !dayGroups(m[1]).length;
+  });
+  if (heads.length < 2) return null;
+  const parts = heads.map((m, i) => ({ name: m[1].trim(), seg: t.slice(m.index + m[0].length, i + 1 < heads.length ? heads[i + 1].index : t.length) }))
+    .filter((x) => RANGE_1.test(x.seg));
+  return parts.length >= 2 ? parts : null;
 }
 /** The gaps between the sessions of a value (sessionsIn), as breaks the planner keeps out of: [from, to, words] — from
  *  the session's last entry when it has one (a visit starting after it cannot get in), to the next session's start. */
@@ -1311,8 +1409,10 @@ export class Knowledge {
     // not read), then the weekday's own hours when the value gives hours by weekday; {seg, open, close, last} or
     // {seg, why} when the date's hours cannot be read from it
     const hoursFor = (raw) => {
-      // (평일·주중·주말 as their weekdays, for the hours only: a closed rule's '다음 평일' stays as it is)
-      const text = spell(raw).replace(/평일|주중/gu, "월·화·수·목·금요일").replace(/주말/gu, "토·일요일");
+      const text = spell(raw);
+      // the weekdays only it opens on ('(매주 목. 금. 토. 일 요일만 영업)'): another day is no day it opens (QA 2026-10-26 F05)
+      const only = day ? onlyDays(text) : null;
+      if (only && !only.days.has(wd) && !(holiday && only.holiday)) return { seg: text, shut: `${only.words}만 영업` };
       let seg = text;
       const ranges = [...text.matchAll(/(1[0-2]|[1-9])월\s*~\s*(1[0-2]|[1-9])월/gu)];
       if (ranges.length) {
@@ -1339,31 +1439,41 @@ export class Knowledge {
         const before = entryBefore(text);
         return { seg: text.trim(), open, close, last: before !== null ? close - before : null, season: `${hhmm(open)}~${hhmm(close)}` };
       }
-      const TIME = /(\d{1,2}):(\d{2})\s*[~–-]\s*(\d{1,2}):(\d{2})/u;
-      // weekdays before a range, several lists joined by '/' ('화·수·목·금요일 / 일요일 10:00~21:00') and a 공휴일 beside
-      // them ('토·일요일 및 공휴일 11:00~22:00' — 평일·주중·주말 read as their weekdays)
-      const byDay = [...seg.matchAll(BY_DAY)];
-      let range = TIME.exec(seg);
-      if (byDay.length && day) {
-        const hit = byDay.find((m) => m[1].replace(/요일/gu, "").includes(WD[wd]));
-        if (!hit) return { seg, why: `${WD[wd]}요일 시간이 이 값에 없음` };
-        range = TIME.exec(hit[2]);
-        seg = hit[0];
-      }
-      if (!range) return { seg, why: "시각을 읽을 수 없음" };
-      // ('입장은 종료 30분 전까지', '관람종료 1시간 전까지' hold in every season and every session)
+      // ('입장은 종료 30분 전까지', '관람종료 1시간 전까지' hold in every season, every session and every room)
       const before = entryBefore(text);
-      // the sessions of the day ('[1회차] 09:30~13:00 (입장 마감 12:30) [2회차] 14:00~17:30 …'): every range, each with its
-      // own last entry — never only the first (never for a weekday's own hours: one range)
-      const sessions = byDay.length && day ? null : sessionsIn(seg, before);
-      if (sessions) {
-        const z = sessions[sessions.length - 1];
-        return { seg: seg.trim(), open: sessions[0].open, close: z.close, last: z.last, sessions };
-      }
-      const open = +range[1] * 60 + +range[2];
-      const close = +range[3] * 60 + +range[4];
-      const own = lastAt(seg);
-      return { seg: seg.trim(), open, close, last: own !== null ? own : before !== null ? close - before : null };
+      // one day's hours of a part of the value: the part for the date's day when it gives hours by day group (평일·주말·
+      // 공휴일·weekdays — dayPart; never the first range whatever the day: QA 2026-10-26 F03), then its sessions or its range
+      const readDay = (part) => {
+        let s = part;
+        const byDay = day ? dayPart(s, wd, !!holiday) : null;
+        if (byDay && byDay.why) return { seg: s, why: byDay.why };
+        if (byDay) s = byDay.seg;
+        const range = /(\d{1,2}):(\d{2})\s*[~–-]\s*(\d{1,2}):(\d{2})/u.exec(s);
+        if (!range) return { seg: s, why: "시각을 읽을 수 없음" };
+        // the sessions of the day ('[1회차] 09:30~13:00 (입장 마감 12:30) [2회차] 14:00~17:30 …'): every range, each with its
+        // own last entry — never only the first (never for a day group's own hours: one range)
+        const sessions = byDay ? null : sessionsIn(s, before);
+        if (sessions) {
+          const z = sessions[sessions.length - 1];
+          return { seg: s.trim(), open: sessions[0].open, close: z.close, last: z.last, sessions };
+        }
+        const open = +range[1] * 60 + +range[2];
+        const close = +range[3] * 60 + +range[4];
+        const own = lastAt(s);
+        return { seg: s.trim(), open, close, last: own !== null ? own : before !== null ? close - before : null };
+      };
+      // rooms with hours of their own ('[인문예술자료실/일반자료실]- 평일 09:00~21:00- 주말 09:00~18:00[어린이자료실]-09:00~18:00'):
+      // each room's hours that day; the place is open from the earliest opening to the latest closing, and a visit
+      // outside one room's hours is the reader's to check (QA 2026-10-26 F03: a weekday visit after 18:00 passed with
+      // nothing said of the children's room closing then)
+      const rooms = roomParts(seg);
+      if (!rooms) return readDay(seg);
+      const read = rooms.map((x) => ({ name: x.name, ...readDay(x.seg) })).filter((x) => !x.why);
+      if (!read.length) return { seg, why: `시설별 시간 가운데 ${day ? `${WD[wd]}요일` : "그날"} 시간을 읽을 수 없음` };
+      const open = Math.min(...read.map((x) => x.open));
+      const close = Math.max(...read.map((x) => x.close));
+      const z = read.find((x) => x.close === close);
+      return { seg: seg.trim(), open, close, last: z.last, rooms: read.map((x) => ({ name: x.name, open: x.open, close: x.close, last: x.last })) };
     };
     const rows = [];
     const stopsOut = [];   // per stop: {key, name, day: 'open' | 'closed' | 'unknown', notes, flags, checks}
@@ -1457,6 +1567,12 @@ export class Knowledge {
         const unread = [];
         for (const h of todayHours ? [{ p: "날짜별 공지", t: "", r: todayHours }] : f.h || []) {
           const r = h.r || hoursFor(h.t);
+          // (a weekday the value says it does not open on — '목·금·토·일요일만 영업': closed that day, as a closed day is)
+          if (r.shut) {
+            flag(`${date}(${WD[wd]})은 영업하는 요일이 아님(${h.p} '${h.t}') — 일정에서 뺀다`);
+            dayState = "closed";
+            continue;
+          }
           if (r.why && outsideWords(h.t)) {
             notes.push(`이용시간 — ${h.p}: ${OUTSIDE_WORDS}(자료: '${h.t}')`);
             continue;
@@ -1498,6 +1614,12 @@ export class Knowledge {
             if (s !== null && s < r.open) bad.push(`시작 ${at(s)} 여는 시각 ${hhmm(r.open)}보다 이름`);
             if (e !== null && r.close > r.open && e > r.close) bad.push(`끝 ${at(e)} 닫는 시각 ${hhmm(r.close)}보다 늦음`);
             if (s !== null && r.last !== null && s > r.last) bad.push(`시작 ${at(s)} 입장·주문 마감 ${hhmm(r.last)}보다 늦음`);
+            // (rooms with hours of their own: the visit within the place's hours but outside a room's — that room's
+            // hours to check, never a flag: which room the reader goes to is not known)
+            const outRooms = (r.rooms || []).filter((x) => (s !== null && (s < x.open || (x.last !== null && s > x.last))) || (e !== null && e > x.close));
+            if (!bad.length && outRooms.length) {
+              checks.push(`이용시간 — ${h.p}: 시설마다 시간이 다름 — ${outRooms.map((x) => `${x.name} ${hhmm(x.open)}~${hhmm(x.close)}`).join(" · ")}은 계획한 시각과 맞지 않음, 갈 시설의 그날 시간 확인 필요`);
+            }
           }
           notes.push(`그날 시간 — ${h.p}: ${r.seg}${r.last !== null && !/마감/u.test(r.seg) ? ` (입장 마감 ${hhmm(r.last)})` : ""}${bad.length ? ` → ${bad.join(", ")}` : " → 계획한 시각은 이 시간 안"}`);
           if (bad.length) flag(`${h.p} 기준 ${bad.join(", ")}`);
@@ -1512,7 +1634,8 @@ export class Knowledge {
         // 2회 / 일': whether it opens at the planned time is to check (review 2026-10-21 S13: 20:30 at a place whose
         // value says 11:00~20:00 went as '그날 운영' with nothing to check). Worded '이용시간 — …' so plan_geo.dayInfo
         // keeps the day's state; not for a value that says it is always open, one the 예약 line above has, or a stay)
-        if (!hours.length && !todayHours && f.kd !== "stay") {
+        // (nor on a day the place is closed: a value with no hours for its closed weekday says nothing to check)
+        if (!hours.length && !todayHours && f.kd !== "stay" && dayState !== "closed") {
           for (const h of unread.filter((x) => !/상시|24\s*시간|연중\s*개방/u.test(x.t)
             && !(/예약/u.test(x.t) && !/\d{1,2}\s*:\s*\d{2}|\d{1,2}\s*시/u.test(x.t)))) {
             checks.push(`이용시간 — ${h.p}: '${h.t}' — 그날 시각을 하나로 읽지 못해 계획한 시각에 여는지 확인 필요`);

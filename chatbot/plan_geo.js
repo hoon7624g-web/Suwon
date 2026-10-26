@@ -328,10 +328,11 @@ function hardStateOf(c, f, role) {
   }
   return worst;
 }
-// an outdoor type (자연·야외, 레포츠), or a place whose inside is not open to visitors by its own data (plan_state.isOutside:
+// an outdoor type (자연·야외, 레포츠), a place TourAPI's own class puts outdoors (f.od — pipeline/plan.outdoor_lcls: 폭포,
+// 계곡, 도시공원, 분수, 다리 …), or a place whose inside is not open to visitors by its own data (plan_state.isOutside:
 // '내부 관람 불가', '외부,정원만 관람') — for the rain it is the day's one short
 // outdoor stop at most, never an indoor one and never one the code swaps in
-export const isOutdoor = (f) => /자연·야외|레포츠/u.test(f.ty || "") || isOutside(f);
+export const isOutdoor = (f) => /자연·야외|레포츠/u.test(f.ty || "") || !!f.od || isOutside(f);
 /** Whether a place may go in where the code puts one, for the hard needs the reader picked: a visit only when the data
  *  says it fits every one ('ok' — what buildDay adds), a meal, a café or a stay when the data does not say 'no'
  *  (round-5 verifier: a paid museum and a place the data says nothing of for the wheelchair went in as fills). */

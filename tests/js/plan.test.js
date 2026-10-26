@@ -2272,9 +2272,10 @@ test("7th round, the live check's meals: the model's 15:00 lunch and 20:00 dinne
 
 test("7th round, the live check's 짬뽕 lunch at 10:30 is the lunch: no second lunch at 12:10, the museum keeps its 90 minutes", async () => {
   const { plan } = await liveRun("03_1n2d_complex");
-  // the model's 10:00–11:20 (cut to the restaurant's 10:30 opening) moved to 11:30 would leave the reader two hours
-  // after the terminal's 09:30 with nothing — it stays, the day's lunch
-  assert.deepEqual(mealsOf(plan.days[0]), [["빈해원", "10:30", "11:20"], ["삼거리매운탕", "18:00", "19:00"]]);
+  // the model's 10:00–11:20 moved to 11:30 would leave the reader two hours after the terminal's 09:30 with nothing — it
+  // stays, the day's lunch; 2026-10-31 is a Saturday, and TourAPI's '[주말]- 10:00~20:00' opens it at 10:00 (QA 2026-10-26
+  // F03: the weekday '[평일]- 10:30~20:00', the value's first range, was read on every day and cut it to 10:30)
+  assert.deepEqual(mealsOf(plan.days[0]), [["빈해원", "10:00", "11:20"], ["삼거리매운탕", "18:00", "19:00"]]);
   const museum = plan.days[0].stops.find((s) => s.name === "근대역사박물관");
   assert.deepEqual([museum.start, museum.end], ["11:40", "13:10"]);
   assert.equal(plan.fixed.some((t) => /^1일차 점심/u.test(t)), false);

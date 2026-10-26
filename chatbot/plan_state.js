@@ -68,6 +68,9 @@ export function needAt(need, f, role, fee, move = "") {
     if (isOutside(f)) return { state: "no", text: `${OUTSIDE_WORDS}(${outsideSrc(f)})` };
     if (INDOOR.test(f.ty || "")) return { state: "ok", text: `실내(${f.ty})` };
     if (OUTDOOR.test(f.ty || "")) return { state: "no", text: `야외(${f.ty})` };
+    // outdoors by TourAPI's own class when the type words say neither (docs.json f.od — pipeline/plan.outdoor_lcls;
+    // QA 2026-10-26 F01: 폭포·계곡, 분수·다리 read as '실내인지 자료 없음' and past the one-outdoor-stop rule)
+    if (f.od) return { state: "no", text: `야외(한국관광공사 분류: ${f.od})` };
     return { state: "unknown", text: `실내인지 자료 없음${f.ty ? `(${f.ty})` : ""}` };
   }
   if (need === "stroller" || need === "wheelchair") {

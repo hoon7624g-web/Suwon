@@ -204,6 +204,50 @@ PLAN_CLASSES = ("박물관·전시", "체험", "레포츠", "문화유산", "문
 MUSEUM_RX = re.compile(r"박물관|전시관|기념관|미술관|과학관|홍보관")
 
 
+# TourAPI's own classification (lclsSystm3, the record's tourapi.lcls; names from lclsSystmCode2) of a place outdoors:
+# 자연관광 but caves, 도시공원, 거리·마을·둘레길, landmarks one stands outside of (다리, 분수, 동상, 댐, 등대, 조형물), camping,
+# 역사유적지 but modern buildings, 역사유물, water and air sports but swimming. A place the planner's type words do not
+# call indoors or outdoors reads as outdoors for the rain by it (QA 2026-10-26 F01: 희방폭포·죽계구곡 went in an indoor
+# day as '실내인지 자료 없음', past the one-outdoor-stop rule). Nothing here names a city: the codes are the nation's.
+OUTDOOR_LCLS = {
+    **{f"NA01{n:02d}00": w for n, w in enumerate(("산, 고개, 오름, 봉우리", "숲", "폭포", "계곡", "약수터"), 1)},
+    **{f"NA02{n:02d}00": w for n, w in enumerate(("강", "호수", "저수지", "연못·늪", "섬", "염전", "항구/포구", "해안절경",
+                                                   "해변. 해수욕장"), 1)},
+    **{f"NA03{n:02d}00": w for n, w in ((2, "희귀동.식물"), (3, "기암괴석"), (4, "생태습지"), (5, "기타자연생태"))},
+    **{f"NA04{n:02d}00": w for n, w in enumerate(("국립공원", "도립공원", "군립공원", "지질공원", "생태관광지", "자연휴양림",
+                                                   "수목원ㆍ정원"), 1)},
+    "NA050100": "기타자연관광",
+    **{f"VE01{n:02d}00": w for n, w in ((3, "다리 / 대교"), (4, "분수"), (5, "동상"), (7, "댐"), (8, "등대"),
+                                         (9, "기타 건축/조형물"))},
+    **{f"VE03{n:02d}00": w for n, w in enumerate(("시민공원", "소공원", "어린이공원", "근린공원", "주제공원"), 1)},
+    **{f"VE04{n:02d}00": w for n, w in enumerate(("골목길, 문화거리", "마을관광지", "둘레길"), 1)},
+    **{f"AC05{n:02d}00": w for n, w in enumerate(("일반야영장", "오토캠핑장", "카라반", "글램핑장"), 1)},
+    **{f"HS01{n:02d}00": w for n, w in enumerate(("고궁", "성ㆍ산성ㆍ성곽", "문", "고택", "생가", "민속마을", "사적지", "고분, 능",
+                                                   "사당", "선사유적지"), 1)},
+    "HS011200": "기타역사유적지",
+    **{f"HS02{n:02d}00": w for n, w in enumerate(("탑ㆍ비석ㆍ기념탑", "선사유물", "불상", "기타역사유물"), 1)},
+    **{f"LS02{n:02d}00": w for n, w in enumerate(("윈드서핑/제트스키", "카약/카누", "요트", "스노쿨링/스킨스쿠버다이빙", "민물낚시",
+                                                   "바다낚시", None, "래프팅", "수상오토바이", "수상자전거", "조정", "워터슬레드",
+                                                   "패러세일", "기타수상레저스포츠"), 1) if w},
+    **{f"LS03{n:02d}00": w for n, w in enumerate(("스카이다이빙", "초경량비행", "헹글라이딩/패러글라이딩", "열기구",
+                                                   "무인비행장치(드론)", "기타항공레저스포츠"), 1)},
+}
+# the planner's type words for indoors and for outdoors (chatbot/plan_state.js INDOOR, OUTDOOR — the same words)
+INDOOR_CLASS = re.compile(r"박물관|전시|문화시설|미술관")
+OUTDOOR_CLASS = re.compile(r"자연·야외|레포츠")
+
+
+def outdoor_lcls(e: dict, ty: str = "") -> str:
+    """The TourAPI class name (OUTDOOR_LCLS) of a place to visit that its type `ty` (plan_class) calls neither indoors
+    nor outdoors, or ''."""
+    if e.get("kind") != "attraction" or INDOOR_CLASS.search(ty or "") or OUTDOOR_CLASS.search(ty or ""):
+        return ""
+    code = (e.get("tourapi") or {}).get("lcls") or ""
+    if isinstance(code, list):   # tourapi_bulk keeps the three levels: the last is the place's own
+        code = code[-1] if code else ""
+    return OUTDOOR_LCLS.get(str(code).strip(), "")
+
+
 def plan_class(e: dict, S) -> str:
     """The engine class (PLAN_CLASSES) of a place to visit, '' when none fits; its own type when that is one."""
     t = e.get("_type") or ""
