@@ -51,7 +51,7 @@ if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from pipeline import locales as LC
-from pipeline.city import of as city_of
+from pipeline.city import NATIONAL_PROVIDER_SHORT, of as city_of
 from pipeline.en_source import _admin, _load, current_hashes
 from pipeline.romanize import HANGUL, romanize
 from pipeline.intl_check import KINDS, SLOT, TRAIL_LABEL, forms_of, load_table, mask_names, report, translit  # noqa: F401
@@ -106,6 +106,8 @@ class Masker:
         t = squash_ws(text)
         if not HANGUL.search(t):
             return t, slots
+        # a name inside the national provider's name ('한국관' in '한국관광공사') is not that place
+        t = t.replace(NATIONAL_PROVIDER_SHORT, "\ue002")
         names = [(n, "name") for n in self.own] + [(m, "m") for m in self.mentions]
         names.sort(key=lambda x: len(x[0]), reverse=True)
         marks: dict[str, str] = {}
@@ -143,7 +145,7 @@ class Masker:
             return "" + k + ""
 
         t = TIME.sub(clock, t)
-        return t.replace("", "{").replace("", "}"), slots
+        return t.replace("", "{").replace("", "}").replace("", NATIONAL_PROVIDER_SHORT), slots
 
 
 # ------------------------------------------------------------------ one version

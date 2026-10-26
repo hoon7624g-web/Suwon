@@ -15,6 +15,7 @@ import json
 import re
 from pathlib import Path
 
+from .city import NATIONAL_PROVIDER_SHORT
 from .romanize import _ADMIN, _admin, _rr_cap, _syllables, romanize
 from .schema import FACT_LABELS, FIT_ORDER, FACT_ORDER
 from .slugs import YEAR_PREFIX, series_slug
@@ -169,7 +170,8 @@ class Glossary:
         self.terms = dict(sorted(terms.items(), key=lambda kv: -len(kv[0])))
 
     def mentions(self, texts: list[str], skip: tuple = ()) -> list[dict]:
-        hay = " ".join(t for t in texts if t)
+        # '한국관' (a place) inside '한국관광공사' (the national provider) names no place
+        hay = " ".join(t for t in texts if t).replace(NATIONAL_PROVIDER_SHORT, " ")
         found, taken = [], []
         for ko, en in self.terms.items():
             if ko in skip or ko not in hay:
