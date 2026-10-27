@@ -576,7 +576,8 @@ MONTHS.update({"jan": 1, "feb": 2, "mar": 3, "apr": 4, "jun": 6, "jul": 7, "aug"
 EN_MONTH = re.compile(r"\b(January|February|March|April|May|June|July|August|September|October|November|December|"
                       r"Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sept|Sep|Oct|Nov|Dec)\b\.?")
 DAYS_EN = ("monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday")
-EN_DAY = re.compile(r"\b(Mon|Tues?|Wed|Thu(?:rs?)?|Fri|Sat|Sun)(?:day)?s?\b\.?|\b(Wednes|Satur)days?\b")
+# a hyphenated romanized name is not a weekday: Yi Sun-sin (이순신)
+EN_DAY = re.compile(r"\b(Mon|Tues?|Wed|Thu(?:rs?)?|Fri|Sat|Sun)(?:day)?s?\b(?!-[a-z])\.?|\b(Wednes|Satur)days?\b")
 KO_WEEK = "월화수목금토일"
 KO_DAY_CHAIN = re.compile(r"((?:[월화수목금토일]\s*[·,~∼～\-]\s*)*[월화수목금토일])요일")
 KO_DAY_BARE = re.compile(r"(?<![가-힣])([월화수목금토일](?:\s*[·,~∼～\-]\s*[월화수목금토일])+)(?=[은는에]|[^가-힣]|$)")
@@ -1072,7 +1073,9 @@ def check(paths: list[Path]) -> list[str]:
                 names_ = (src.get(key), item.get(key) if isinstance(item, dict) else "",
                           *[m.get(lang) for m in src.get("mentions") or []])
                 own = (src.get("name"), src.get(key)) if isinstance(src.get(key), str) else ()
-                found = checker(item, src, LangCheck(lang, tuple(squash_ws(n) for n in names_ if isinstance(n, str)), own))
+                given = tuple((m.get("ko"), m.get(lang)) for m in src.get("mentions") or [])
+                found = checker(item, src, LangCheck(lang, tuple(squash_ws(n) for n in names_ if isinstance(n, str)), own,
+                                                     given))
             issues += [f"{path.name} {iid} {x}" for x in found]
             for f in item.get("faq") or []:
                 q = squash_ws((f or {}).get("q")).lower()
@@ -1460,7 +1463,8 @@ def style_l(text: str, code: str, prose: bool = True, names: tuple = ()) -> list
             issues.append("ASCII period after Chinese/Japanese text (use 。)")
         if re.search(rf"\([^()]*[{cjk}][^()]*\)", t):
             issues.append("ASCII brackets around Chinese/Japanese text (use （）)")
-    issues += LC.script_problems(t, code, prose)
+    # the names are given ('Отель SONO Calm Yeosu', TourAPI's own Russian name): their script is not the translation's
+    issues += LC.script_problems(unnamed, code, prose)
     if prose:
         for s in loc.sentences(squash_ws(t)):
             n = len(re.sub(r"\s", "", s)) if loc.cjk else len(s.split())
@@ -1473,13 +1477,15 @@ def style_l(text: str, code: str, prose: bool = True, names: tuple = ()) -> list
 class LangCheck:
     """check() for one language other than English: the pair checks and the name rules of its batches."""
 
-    def __init__(self, code: str, names: tuple = (), own: tuple = ()):
+    def __init__(self, code: str, names: tuple = (), own: tuple = (), given: tuple = ()):
         self.code = code
         self.loc = LC.get(code)
         self.names = names
         # (Korean name, official name of the language): the official TourAPI name is given, not translated, so the
         # numbers it carries ('12人座獨木舟渡口' for 킹카누 나루터) or leaves out ('(2, 7일)') are not the translation's
         self.own = own if len(own) == 2 and all(squash_ws(x) for x in own) else ()
+        # the same for the places a guide or course mentions ('姑蘇洞1004壁画村' for 고소동 천사벽화마을)
+        self.given = tuple(p for p in given if len(p) == 2 and all(isinstance(x, str) and squash_ws(x) for x in p))
 
     def pair(self, where: str, ko: str, text, prose: bool = True) -> list[str]:
         if not isinstance(text, str):
@@ -1487,11 +1493,14 @@ class LangCheck:
         if squash_ws(ko) and not squash_ws(text):
             return [f"{where}: empty"]
         ko_p, tx_p = ko, text
-        if self.own:
+        given = sorted(((self.own,) if self.own else ()) + self.given, key=lambda p: -len(p[0]))
+        if given:
             # Chinese prose writes the name's brackets full-width ('春川風物市場（2, 7日）' for '(2, 7日)')
             wide = str.maketrans("（），", "(),")
-            ko_p = (ko or "").replace(self.own[0], " Zq ")
-            tx_p = text.translate(wide).replace(self.own[1].translate(wide), " Zq ")
+            ko_p, tx_p = ko or "", text.translate(wide)
+            for k, t in given:   # only a name the sentence writes on both sides ('{m1}' was the official name)
+                if k in ko_p and t.translate(wide) in tx_p:
+                    ko_p, tx_p = ko_p.replace(k, " Zq "), tx_p.replace(t.translate(wide), " Zq ")
         return [f"{where}: {x}" for x in parity_l(ko_p, tx_p, self.code) + style_l(text, self.code, prose, self.names)]
 
     def name(self, item: dict, inp: dict) -> list[str]:

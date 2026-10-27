@@ -431,3 +431,30 @@ def test_the_official_name_is_given_not_translated_so_its_numbers_are_not_compar
     # a name the translator wrote (no official one) keeps its numbers in the comparison
     assert LangCheck("de").pair("faq", "춘천 풍물시장(2, 7일)에서는 무엇을 파나요?",
                                 "Was wird auf dem Volksflohmarkt Chuncheon verkauft?")
+
+
+def test_a_mentioned_place_s_official_name_is_given_too():
+    """2026-10-27: a course that names 고소동 천사벽화마을 writes its official Japanese name '姑蘇洞1004壁画村'."""
+    from tools.en_content import LangCheck
+    given = LangCheck("ja", given=(("고소동 천사벽화마을", "姑蘇洞1004壁画村"),))
+    assert given.pair("name", "2코스 진남관·고소동 천사벽화마을 역사 기행", "2コース 鎮南館・姑蘇洞1004壁画村 歴史紀行") == []
+    assert given.pair("name", "2코스 진남관·고소동 천사벽화마을 역사 기행", "5コース 鎮南館・姑蘇洞1004壁画村 歴史紀行")
+    assert LangCheck("ja").pair("name", "2코스 진남관·고소동 천사벽화마을 역사 기행", "2コース 鎮南館・姑蘇洞1004壁画村 歴史紀行")
+
+
+def test_a_given_name_s_latin_letters_are_not_latin_left_in_russian():
+    """2026-10-27: TourAPI's own Russian name 'Отель SONO Calm Yeosu' keeps Latin letters; the question around it is
+    Russian. Latin the translator left is still found."""
+    from tools.en_content import style_l
+    q = "Отель SONO Calm Yeosu: с какого времени заезд?"
+    assert style_l(q, "ru", True, ("Отель SONO Calm Yeosu",)) == []
+    assert style_l(q, "ru", True)
+    assert style_l("Отель SONO Calm Yeosu: from what time is the check-in?", "ru", True, ("Отель SONO Calm Yeosu",))
+
+
+def test_a_hyphenated_romanized_name_is_not_a_weekday():
+    """2026-10-27: 'Yi Sun-sin' (이순신) in a place name is not Sunday; a weekday still counts."""
+    from tools.en_content import parity
+    assert parity("여수 이순신공원은 쉬는 날 없이 상시 개방합니다.", "Yeosu Yi Sun-sin Park is always open with no closing day.") == []
+    assert parity("매주 월요일에 쉽니다.", "It is closed every Sunday.")
+
