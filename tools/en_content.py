@@ -654,6 +654,8 @@ def _ko_days(text: str) -> tuple[set[str], set[str]]:
                   r"\1·", text)
     text = re.sub(r"((?:[월화수목금토일]·)+[월화수목금토일])\s+요일", r"\1요일", text)
     text = re.sub(r"([월화수목금토일])요일\s*([~∼～\-])\s*(?=[월화수목금토일]요일)", r"\1\2", text)
+    # a value the source cut off ('매주 토요일 / 일요', TourAPI) still names its last day
+    text = re.sub(r"(?<![가-힣])([월화수목금토일])요\s*$", r"\1요일", text)
 
     def chain(s: str):
         days = [KO_WEEK.index(c) for c in s if c in KO_WEEK]

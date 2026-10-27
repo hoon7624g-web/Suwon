@@ -458,3 +458,11 @@ def test_a_hyphenated_romanized_name_is_not_a_weekday():
     assert parity("여수 이순신공원은 쉬는 날 없이 상시 개방합니다.", "Yeosu Yi Sun-sin Park is always open with no closing day.") == []
     assert parity("매주 월요일에 쉽니다.", "It is closed every Sunday.")
 
+
+def test_a_weekday_cut_off_at_the_end_of_a_value_is_still_that_day():
+    """2026-10-27: TourAPI gives '매주 토요일 / 일요' (cut off); every version writes Sunday. A word ending in 요 is not."""
+    from tools.en_content import parity, parity_l
+    assert parity("매주 토요일 / 일요", "Every Saturday / Sunday") == []
+    assert parity_l("매주 토요일 / 일요", "Jeden Samstag / Sonntag", "de") == []
+    assert parity("매주 토요일 / 일요", "Every Saturday / Monday")
+    assert parity("수요가 많습니다.", "Demand is high.") == []
