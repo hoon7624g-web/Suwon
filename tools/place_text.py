@@ -54,6 +54,7 @@ TEMPLATE_CAP = 10        # a question worded the same apart from the place name 
 VARIES = re.compile(r"([가-힣]+(?:\s*(?:및|과|와|,)\s*[가-힣]+?)?)\s*(?:별로|별|마다)\s*(?:[가-힣]+\s*){0,2}?(?:상이|다름|다릅|달라)")
 ADULT_WORDS = re.compile(r"어른|성인|대인|청소년|어린이|소인|경로|유아|군인|일반")
 WELL_FORMED = re.compile(r"^(?:\d{1,3}(?:,\d{3})+|\d{1,3})원(?:\s*\([\d,]+원\))?$|^무료$")
+RANGE_HEAD = re.compile(r"\s*((?:\d{1,3}(?:,\d{3})+|\d{1,3})원)\s*~\s*$")
 OPEN_PLAIN = re.compile(r"^(?:휴무일?\s*[:：]?\s*)?(?:없음|휴무\s*없음|무휴|연중\s*무휴|년중\s*무휴|연중무휴)$")
 END_WORDS = re.compile(r"(?:(?<=\s)|(?<=요일)|(?<=당일)|(?<=연휴)|(?<=명절))(?:정기\s*)?(?:휴무일?|휴관일?|휴일|휴장)\s*$")
 
@@ -255,7 +256,12 @@ def fee_text(raw) -> dict | None:
     ft = present.fee_table("\n".join(lines))
     if ft:
         g = ft["groups"][0]
-        good = [x for x in g["rows"] if WELL_FORMED.match(squash_ws(x["price"]))]   # '13,2000원' is a typo in the source
+        # '- 숲속의 집 60,000원~100,000원' reads as who '숲속의 집 60,000원~' and price '100,000원': the range is the price
+        rows = []
+        for x in g["rows"]:
+            m = RANGE_HEAD.search(x["who"])
+            rows.append({**x, "who": x["who"][:m.start()], "price": f"{m.group(1)}~{x['price']}"} if m else x)
+        good = [x for x in rows if all(WELL_FORMED.match(squash_ws(p)) for p in x["price"].split("~"))]   # '13,2000원' is a typo in the source
         if not good:
             return None
         items = [f"{who(x['who'])} {tidy(x['price'])}" for x in good[:4]]

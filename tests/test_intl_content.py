@@ -415,3 +415,19 @@ def test_russian_wednesday_is_the_day_not_middle_school():
     from tools.en_content import _l_days
     assert _l_days("Учащиеся средней школы, среди них, Министерство окружающей среды", "ru") == (set(), set())
     assert _l_days("закрыто в среду", "ru")[0] == {"wednesday"} == _l_days("по средам", "ru")[0]
+
+
+def test_the_official_name_is_given_not_translated_so_its_numbers_are_not_compared():
+    """2026-10-27: TourAPI's own names may carry a number the Korean name has not ('12人座獨木舟渡口' for 킹카누 나루터)
+    or leave one out ('Volksflohmarkt Chuncheon' for 춘천 풍물시장(2, 7일)); the rest of the sentence still counts."""
+    from tools.en_content import LangCheck
+    own = LangCheck("zh-hant", own=("킹카누 나루터", "12人座獨木舟渡口"))
+    assert own.pair("summary", "킹카누 나루터는 10:00~18:00에 문을 엽니다.", "12人座獨木舟渡口營業時間為10:00–18:00。") == []
+    assert own.pair("summary", "킹카누 나루터는 휠체어 4대를 빌려 줍니다.", "12人座獨木舟渡口可借輪椅。")   # a dropped 4 still fails
+    wide = LangCheck("zh-hant", own=("춘천 풍물시장(2, 7일)", "春川風物市場(2, 7日)"))
+    assert wide.pair("faq", "춘천 풍물시장(2, 7일)에서는 무엇을 파나요?", "春川風物市場（2, 7日）販售哪些商品？") == []
+    market = LangCheck("de", own=("춘천 풍물시장(2, 7일)", "Volksflohmarkt Chuncheon"))
+    assert market.pair("faq", "춘천 풍물시장(2, 7일)에서는 무엇을 파나요?", "Was wird auf dem Volksflohmarkt Chuncheon verkauft?") == []
+    # a name the translator wrote (no official one) keeps its numbers in the comparison
+    assert LangCheck("de").pair("faq", "춘천 풍물시장(2, 7일)에서는 무엇을 파나요?",
+                                "Was wird auf dem Volksflohmarkt Chuncheon verkauft?")

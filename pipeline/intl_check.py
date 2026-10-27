@@ -120,9 +120,9 @@ def translit(ko: str, text: str, code: str, proper=(), forms=None) -> list[tuple
     if code == "ja":   # a katakana run that is the whole sound copy (not a part of a longer loanword)
         runs = set(re.findall(r"[ァ-ヺー]+", text))
         return [(w, f) for w, f in forms if f in runs]
-    if code == "ru":
-        hay = text.lower()
-        return [(w, f) for w, f in forms if f in hay]
+    if code == "ru":   # a word that is the sound copy, with a case ending at most ('ханока'), not a part of another
+        toks = re.findall(r"[^\W\d_]+", text.lower())   # word ('понедельникам' is not 번에, 'приготовление' not 이곳)
+        return [(w, f) for w, f in forms if any(t.startswith(f) and len(t) - len(f) <= 3 for t in toks)]
     toks = re.findall(r"[^\W\d_]+", text.lower())   # whole words: 'ragoût' is not 'rago' (라고)
     grams = set(toks) | {a + b for a, b in zip(toks, toks[1:])} | {a + b + c for a, b, c in zip(toks, toks[1:], toks[2:])}
     return [(w, f) for w, f in forms if f in grams]

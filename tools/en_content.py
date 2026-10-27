@@ -1071,7 +1071,8 @@ def check(paths: list[Path]) -> list[str]:
                 key = LC.get(lang).name_key
                 names_ = (src.get(key), item.get(key) if isinstance(item, dict) else "",
                           *[m.get(lang) for m in src.get("mentions") or []])
-                found = checker(item, src, LangCheck(lang, tuple(squash_ws(n) for n in names_ if isinstance(n, str))))
+                own = (src.get("name"), src.get(key)) if isinstance(src.get(key), str) else ()
+                found = checker(item, src, LangCheck(lang, tuple(squash_ws(n) for n in names_ if isinstance(n, str)), own))
             issues += [f"{path.name} {iid} {x}" for x in found]
             for f in item.get("faq") or []:
                 q = squash_ws((f or {}).get("q")).lower()
@@ -1472,17 +1473,26 @@ def style_l(text: str, code: str, prose: bool = True, names: tuple = ()) -> list
 class LangCheck:
     """check() for one language other than English: the pair checks and the name rules of its batches."""
 
-    def __init__(self, code: str, names: tuple = ()):
+    def __init__(self, code: str, names: tuple = (), own: tuple = ()):
         self.code = code
         self.loc = LC.get(code)
         self.names = names
+        # (Korean name, official name of the language): the official TourAPI name is given, not translated, so the
+        # numbers it carries ('12人座獨木舟渡口' for 킹카누 나루터) or leaves out ('(2, 7일)') are not the translation's
+        self.own = own if len(own) == 2 and all(squash_ws(x) for x in own) else ()
 
     def pair(self, where: str, ko: str, text, prose: bool = True) -> list[str]:
         if not isinstance(text, str):
             return [f"{where}: missing"] if squash_ws(ko) else []
         if squash_ws(ko) and not squash_ws(text):
             return [f"{where}: empty"]
-        return [f"{where}: {x}" for x in parity_l(ko, text, self.code) + style_l(text, self.code, prose, self.names)]
+        ko_p, tx_p = ko, text
+        if self.own:
+            # Chinese prose writes the name's brackets full-width ('春川風物市場（2, 7日）' for '(2, 7日)')
+            wide = str.maketrans("（），", "(),")
+            ko_p = (ko or "").replace(self.own[0], " Zq ")
+            tx_p = text.translate(wide).replace(self.own[1].translate(wide), " Zq ")
+        return [f"{where}: {x}" for x in parity_l(ko_p, tx_p, self.code) + style_l(text, self.code, prose, self.names)]
 
     def name(self, item: dict, inp: dict) -> list[str]:
         key, loc = self.loc.name_key, self.loc
