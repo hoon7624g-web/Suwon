@@ -214,6 +214,32 @@ def slot_photos(S) -> dict:
     return out
 
 
+def cover_problems(S) -> list[str]:
+    """Why the home's full-bleed opening photo (site.json home.media.cover) would not be shown, or []. The template drops a cover
+    without its AVIF derivative without a word (2026-10-28: 세종각·목포각 lost theirs — merged TourAPI photos moved
+    the place's photos, so the configured photo number named another photo, one tools/kogl1_media.py never encoded).
+    pipeline/validate.py reports these as errors in production, warnings otherwise."""
+    home = S.city.home
+    m = home.get("media") if isinstance(home.get("media"), dict) else {}
+    if not m.get("cover"):
+        return []
+    r = _ref(m["cover"])
+    if r is None:
+        return [f"홈 표지 사진: 사진 자리 형식 오류 {m['cover']!r}([place_id, n])"]
+    key, n = r
+    e = next((x for x in S.entities if x.get("id") == key), None)
+    if not e:   # a build with no places yet (a new city, tests/test_empty_city) has no cover to show (fix2)
+        return [f"홈 표지 사진: 장소 없음 {key}"] if S.entities else []
+    ph, why = _photo(e, key, n, True, "표지 사진")
+    if why:
+        return [why]
+    if not ph.get("avif"):
+        ready = [f"#{i}" for i, p in enumerate(e.get("_photos") or []) if p.get("type") == 1 and p.get("avif")]
+        hint = f"변환본 있는 사진: {', '.join(ready)}" if ready else "tools/kogl1_media.py로 변환본을 만든다"
+        return [f"홈 표지 사진: {e['name']}({key} #{n}, {ph.get('url')})에 변환본(AVIF)이 없어 첫 화면 배경이 빠짐 — {hint}"]
+    return []
+
+
 def wanted(S) -> dict:
     """{url: slot} for every KOGL-1 photo that gets derivatives (no warning here: present reports the slots); slot
     'cover' (the full-bleed home opening: up to 1280w, a fuller encode — it fills a wide screen, the LCP image),
