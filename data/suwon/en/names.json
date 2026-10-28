@@ -3998,5 +3998,1985 @@
     "addr_en": "60 Daehak-ro (Iui-dong), Yeongtong-gu, Suwon-si, Gyeonggi-do",
     "match_m": null,
     "match_basis": ""
+  },
+  "tourapi-2926515": {
+    "name_ko": "ABC마트 GS AK플라자 수원점",
+    "name_en": "ABC-MART GS AK Plaza Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "ABCmateu GS AKpeullaja Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011472": {
+    "name_ko": "ABC마트 GS 스타필드 수원점",
+    "name_en": "ABC-MART GS Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "ABCmateu GS Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3306986": {
+    "name_ko": "ABC마트 SE 롯데몰 광교점",
+    "name_en": "ABC-MART SE Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "ABCmateu SE Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2925133": {
+    "name_ko": "CC콜렉트 롯데몰 광교점",
+    "name_en": "CC Collect Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "CCkollekteu Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011333": {
+    "name_ko": "COS 갤러리아백화점 광교점",
+    "name_en": "COS Galleria Department Store Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "COS Gaelleoriabaekhwajeom Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011458": {
+    "name_ko": "COS 스타필드 수원점",
+    "name_en": "COS Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "COS Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025401": {
+    "name_ko": "JAJU 엘포트몰 광교점",
+    "name_en": "JAJU L-Port Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "JAJU Elpoteumol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2918700": {
+    "name_ko": "K2 AK플라자 수원점",
+    "name_en": "K2 AK Plaza Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "K2 AKpeullaja Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011386": {
+    "name_ko": "K2 롯데몰 광교점",
+    "name_en": "K2 Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "K2 Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011432": {
+    "name_ko": "LAP 스타필드 수원점",
+    "name_en": "LAP Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "LAP Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025397": {
+    "name_ko": "LF아울렛 서수원점",
+    "name_en": "LF Outlet Seosuwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "LFaullet Seosuwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011499": {
+    "name_ko": "LG전자 베스트샵 수원본점",
+    "name_en": "LG Electronics BestShop Suwon Main Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "LGjeonja Beseuteusyap Suwonbonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2924792": {
+    "name_ko": "LG전자 베스트샵 타임빌라스 수원점",
+    "name_en": "LG Electronics BestShop Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "LGjeonja Beseuteusyap Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025429": {
+    "name_ko": "Lee 스타필드 수원점",
+    "name_en": "Lee Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Lee Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011441": {
+    "name_ko": "MLB 스타필드 수원점",
+    "name_en": "MLB Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "MLB Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011483": {
+    "name_ko": "MUJI 스타필드 수원점",
+    "name_en": "MUJI Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "MUJI Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2931378": {
+    "name_ko": "MUJI 타임빌라스 수원점",
+    "name_en": "MUJI Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "MUJI Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011444": {
+    "name_ko": "NBA 스타필드 수원점",
+    "name_en": "NBA Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "NBA Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2926928": {
+    "name_ko": "SOUP 타임빌라스 수원점",
+    "name_en": "SOUP Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "SOUP Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2924774": {
+    "name_ko": "ZARA 타임빌라스 수원점",
+    "name_en": "ZARA Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "ZARA Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2843518": {
+    "name_ko": "갤러리아백화점 광교점",
+    "name_en": "Galleria Department Store Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Gaelleoriabaekhwajeom Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011490": {
+    "name_ko": "갤럭시 AK플라자 수원점",
+    "name_en": "Galaxy AK Plaza Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Gaelleoksi AKpeullaja Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2925515": {
+    "name_ko": "갤럭시 타임빌라스 수원점",
+    "name_en": "Galaxy Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Gaelleoksi Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2924770": {
+    "name_ko": "갤럭시라이프스타일 AK백화점 수원점",
+    "name_en": "Galaxy Lifestyle AK Department Store Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Gaelleoksiraipeuseutail AKbaekhwajeom Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2925518": {
+    "name_ko": "갤럭시라이프스타일 타임빌라스 수원점",
+    "name_en": "Galaxy Lifestyle Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Gaelleoksiraipeuseutail Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2918717": {
+    "name_ko": "게스 AK플라자 수원점",
+    "name_en": "Guess AK Plaza Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Geseu AKpeullaja Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2903844": {
+    "name_ko": "게스 롯데몰 광교점",
+    "name_en": "Guess Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Geseu Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2926789": {
+    "name_ko": "게스 타임빌라스 수원점",
+    "name_en": "Guess Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Geseu Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025395": {
+    "name_ko": "골든구스 타임빌라스 수원점",
+    "name_en": "Golden Goose Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Goldeunguseu Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2909892": {
+    "name_ko": "골든듀 AK플라자 수원점",
+    "name_en": "Goldendew AK Plaza Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Goldeundyu AKpeullaja Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011325": {
+    "name_ko": "골든듀 갤러리아백화점 광교점",
+    "name_en": "Goldendew Galleria Department Store Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Goldeundyu Gaelleoriabaekhwajeom Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2925834": {
+    "name_ko": "구찌 타임빌라스 수원점",
+    "name_en": "Gucci Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Gujji Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011321": {
+    "name_ko": "금강 타임빌라스 수원점",
+    "name_en": "Kumkang Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Geumgang Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2912754": {
+    "name_ko": "금강제화 AK플라자 수원점",
+    "name_en": "Kumkang Shoes AK Plaza Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Geumgangjehwa AKpeullaja Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011372": {
+    "name_ko": "나이스클랍 롯데몰 광교점",
+    "name_en": "Nice Claup Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Naiseukeullap Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011370": {
+    "name_ko": "나이키 롯데몰 광교점",
+    "name_en": "Nike Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Naiki Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2911813": {
+    "name_ko": "나이키 스윔 롯데몰 광교점",
+    "name_en": "Nike Swim Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Naiki Seuwim Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2914012": {
+    "name_ko": "나이키 타임빌라스 수원점",
+    "name_en": "Nike Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Naiki Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2893684": {
+    "name_ko": "네이처리퍼블릭 수원남문점",
+    "name_en": "Nature Republic Suwon Nammun Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Neicheoripeobeullik Suwonnammunjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2918606": {
+    "name_ko": "네파 AK플라자 수원점",
+    "name_en": "Nepa AK Plaza Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Nepa AKpeullaja Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2929053": {
+    "name_ko": "네파 롯데몰 광교점",
+    "name_en": "Nepa Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Nepa Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011480": {
+    "name_ko": "네파 스타필드 수원점",
+    "name_en": "Nepa Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Nepa Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2926817": {
+    "name_ko": "네파 타임빌라스 수원점",
+    "name_en": "Nepa Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Nepa Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011394": {
+    "name_ko": "노르디스크 롯데몰 광교점",
+    "name_en": "Nordisk Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Noreudiseukeu Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025437": {
+    "name_ko": "노브랜드 수원천천점",
+    "name_en": "No Brand Suwon Cheoncheon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Nobeuraendeu Suwoncheoncheonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025398": {
+    "name_ko": "노브랜드 수원호매실2점",
+    "name_en": "No Brand Suwon Homaesil Branch 2",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Nobeuraendeu Suwonhomaesil2jeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025394": {
+    "name_ko": "노브랜드 수원호매실3호점",
+    "name_en": "No Brand Suwon Homaesil Branch No. 3",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Nobeuraendeu Suwonhomaesil3hojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025444": {
+    "name_ko": "노브랜드 수원화서점",
+    "name_en": "No Brand Suwon Hwaseo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Nobeuraendeu Suwonhwaseojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2931634": {
+    "name_ko": "노스페이스 롯데몰 광교점",
+    "name_en": "The North Face Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Noseupeiseu Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011498": {
+    "name_ko": "노스페이스 수원남문점",
+    "name_en": "The North Face Suwon Nammun Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Noseupeiseu Suwonnammunjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011477": {
+    "name_ko": "노스페이스 스타필드 수원점",
+    "name_en": "The North Face Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Noseupeiseu Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2927033": {
+    "name_ko": "노스페이스 타임빌라스 수원점",
+    "name_en": "The North Face Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Noseupeiseu Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025420": {
+    "name_ko": "논픽션 스타필드 수원점",
+    "name_en": "Nonfiction Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Nonpiksyeon Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011464": {
+    "name_ko": "놋토 스타필드 수원점",
+    "name_en": "Notto Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Notto Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2905441": {
+    "name_ko": "뉴코아아울렛 동수원점",
+    "name_en": "NewCore Outlet Dongsuwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Nyukoaaullet Dongsuwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011468": {
+    "name_ko": "다니엘트루스 스타필드 수원점",
+    "name_en": "Daniel Truth Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Danielteuruseu Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025415": {
+    "name_ko": "다비치안경 광교중앙역점",
+    "name_en": "Davich Optical Gwanggyo Jungang Station Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Dabichiangyeong Gwanggyojungangyeokjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011407": {
+    "name_ko": "다이나핏 롯데몰 광교점",
+    "name_en": "Dynafit Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Dainapit Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011450": {
+    "name_ko": "다이나핏 스타필드 수원점",
+    "name_en": "Dynafit Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Dainapit Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2926113": {
+    "name_ko": "닥스구두 타임빌라스 수원점",
+    "name_en": "DAKS Shoes Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Dakseugudu Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2911614": {
+    "name_ko": "닥스남성 AK플라자 수원점",
+    "name_en": "DAKS Men AK Plaza Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Dakseunamseong AKpeullaja Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2926567": {
+    "name_ko": "닥스슈즈 롯데몰 광교점",
+    "name_en": "DAKS Shoes Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Dakseusyujeu Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2925849": {
+    "name_ko": "닥스핸드백 타임빌라스 수원점",
+    "name_en": "DAKS Handbags Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Dakseuhaendeubaek Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011465": {
+    "name_ko": "닥터마틴 스타필드 수원점",
+    "name_en": "Dr. Martens Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Dakteomatin Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2926554": {
+    "name_ko": "더 레노마 롯데몰 광교점",
+    "name_en": "The Renoma Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Deo Renoma Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2931812": {
+    "name_ko": "더아이잗컬렉션 롯데몰 광교점",
+    "name_en": "The Izzat Collection Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Deoaijatkeolleksyeon Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2926556": {
+    "name_ko": "데무 롯데몰 광교점",
+    "name_en": "Demoo Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Demu Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025412": {
+    "name_ko": "덴비 롯데몰 광교점",
+    "name_en": "Denby Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Denbi Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2918497": {
+    "name_ko": "디스커버리 AK플라자 수원점",
+    "name_en": "Discovery AK Plaza Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Diseukeobeori AKpeullaja Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011375": {
+    "name_ko": "디스커버리 롯데몰 광교점",
+    "name_en": "Discovery Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Diseukeobeori Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011453": {
+    "name_ko": "디스커버리 스타필드 수원점",
+    "name_en": "Discovery Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Diseukeobeori Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2925842": {
+    "name_ko": "디올 화장품 타임빌라스 수원점",
+    "name_en": "Dior Cosmetics Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Diol Hwajangpum Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025414": {
+    "name_ko": "라이프워크 롯데몰 광교점",
+    "name_en": "Lifework Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Raipeuwokeu Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2926814": {
+    "name_ko": "라이프워크 타임빌라스 수원점",
+    "name_en": "Lifework Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Raipeuwokeu Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011430": {
+    "name_ko": "라코스테 스타필드 수원점",
+    "name_en": "Lacoste Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Rakoseute Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2926013": {
+    "name_ko": "라코스테우먼 타임빌라스 수원점",
+    "name_en": "Lacoste Women Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Rakoseuteumeon Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011478": {
+    "name_ko": "락포트 스타필드 수원점",
+    "name_en": "Rockport Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Rakpoteu Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011399": {
+    "name_ko": "랩 롯데몰 광교점",
+    "name_en": "LAP Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Raep Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2928482": {
+    "name_ko": "레노마셔츠 롯데몰 광교점",
+    "name_en": "Renoma Shirts Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Renomasyeocheu Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011474": {
+    "name_ko": "로이드 스타필드 수원점",
+    "name_en": "Lloyd Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Roideu Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011345": {
+    "name_ko": "로저비비에 갤러리아백화점 광교점",
+    "name_en": "Roger Vivier Galleria Department Store Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Rojeobibie Gaelleoriabaekhwajeom Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2926368": {
+    "name_ko": "록시땅 타임빌라스 수원점",
+    "name_en": "L'Occitane Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Roksittang Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025438": {
+    "name_ko": "론진 AK플라자 수원점",
+    "name_en": "Longines AK Plaza Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ronjin AKpeullaja Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011331": {
+    "name_ko": "론진 갤러리아백화점 광교점",
+    "name_en": "Longines Galleria Department Store Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ronjin Gaelleoriabaekhwajeom Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2894571": {
+    "name_ko": "롯데마트 천천점",
+    "name_en": "Lotte Mart Cheoncheon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Rotdemateu Cheoncheonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011316": {
+    "name_ko": "롯데마트 타임빌라스 수원점",
+    "name_en": "Lotte Mart Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Rotdemateu Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3307681": {
+    "name_ko": "롯데하이마트 메가스토어 롯데몰 광교점",
+    "name_en": "Lotte Hi-Mart Megastore Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Rotdehaimateu Megaseutoeo Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2914420": {
+    "name_ko": "롯데하이마트 서수원점",
+    "name_en": "Lotte Hi-Mart Seosuwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Rotdehaimateu Seosuwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2914267": {
+    "name_ko": "롯데하이마트 수원점",
+    "name_en": "Lotte Hi-Mart Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Rotdehaimateu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025417": {
+    "name_ko": "롯데하이마트 한샘광교점",
+    "name_en": "Lotte Hi-Mart Hanssem Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Rotdehaimateu Hansaemgwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025434": {
+    "name_ko": "루디프로젝트 스타필드 수원점",
+    "name_en": "Rudy Project Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Rudipeurojekteu Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2926406": {
+    "name_ko": "루즈앤라운지 타임빌라스 수원점",
+    "name_en": "Rouge & Lounge Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Rujeuaellaunji Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011320": {
+    "name_ko": "룰루레몬 타임빌라스 수원점",
+    "name_en": "Lululemon Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Rulluremon Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011438": {
+    "name_ko": "리바이스 스타필드 수원점",
+    "name_en": "Levi's Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ribaiseu Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011470": {
+    "name_ko": "마리떼프랑소와저버 스타필드 수원점",
+    "name_en": "Marithe Francois Girbaud Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Marittepeurangsowajeobeo Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025421": {
+    "name_ko": "마시모두띠 스타필드 수원점",
+    "name_en": "Massimo Dutti Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Masimodutti Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2931868": {
+    "name_ko": "마에스트로 AK플라자 수원점",
+    "name_en": "Maestro AK Plaza Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Maeseuteuro AKpeullaja Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025422": {
+    "name_ko": "마이클코어스 스타필드 수원점",
+    "name_en": "Michael Kors Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Maikeulkoeoseu Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011451": {
+    "name_ko": "마인드브릿지 스타필드 수원점",
+    "name_en": "Mind Bridge Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Maindeubeuritji Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011437": {
+    "name_ko": "마하그리드 스타필드 수원점",
+    "name_en": "Mahagrid Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Mahageurideu Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011427": {
+    "name_ko": "만다리나덕 스타필드 수원점",
+    "name_en": "Mandarina Duck Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Mandarinadeok Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025435": {
+    "name_ko": "말본골프 스타필드 수원점",
+    "name_en": "Malbon Golf Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Malbongolpeu Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2925840": {
+    "name_ko": "메트로시티 타임빌라스 수원점",
+    "name_en": "Metrocity Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Meteurositi Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011398": {
+    "name_ko": "모던하우스 롯데몰 광교점",
+    "name_en": "Modern House Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Modeonhauseu Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2915249": {
+    "name_ko": "모조에스핀 롯데몰 광교점",
+    "name_en": "Mojo.S.Phine Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Mojoeseupin Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011423": {
+    "name_ko": "몰리스펫샵 스타필드 수원점",
+    "name_en": "Molly's Pet Shop Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Molliseupetsyap Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2929338": {
+    "name_ko": "몽블랑 타임빌라스 수원점",
+    "name_en": "Montblanc Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Mongbeullang Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2926562": {
+    "name_ko": "무냐무냐 롯데몰 광교점",
+    "name_en": "Munya Munya Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Munyamunya Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2925874": {
+    "name_ko": "미소페 타임빌라스 수원점",
+    "name_en": "Misope Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Misope Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011327": {
+    "name_ko": "미우미우 갤러리아백화점 광교점",
+    "name_en": "Miu Miu Galleria Department Store Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Miumiu Gaelleoriabaekhwajeom Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011347": {
+    "name_ko": "밀레 갤러리아백화점 광교점",
+    "name_en": "Millet Galleria Department Store Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Mille Gaelleoriabaekhwajeom Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2900592": {
+    "name_ko": "바쏘옴므 AK플라자 수원점",
+    "name_en": "Basso Homme AK Plaza Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Bassoommeu AKpeullaja Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011324": {
+    "name_ko": "발렌시아가 타임빌라스 수원점",
+    "name_en": "Balenciaga Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ballensiaga Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2918712": {
+    "name_ko": "버커루진 AK플라자 수원점",
+    "name_en": "Buckaroo Jeans AK Plaza Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Beokeorujin AKpeullaja Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011462": {
+    "name_ko": "베네베네 스타필드 수원점",
+    "name_en": "Benebene Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Benebene Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025400": {
+    "name_ko": "벨루티 갤러리아백화점 광교점",
+    "name_en": "Berluti Galleria Department Store Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Belluti Gaelleoriabaekhwajeom Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011349": {
+    "name_ko": "불가리 갤러리아백화점 광교점",
+    "name_en": "Bulgari Galleria Department Store Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Bulgari Gaelleoriabaekhwajeom Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011429": {
+    "name_ko": "브룩스브라더스 스타필드 수원점",
+    "name_en": "Brooks Brothers Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Beurukseubeuradeoseu Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2918648": {
+    "name_ko": "블랙야크 AK플라자 수원점",
+    "name_en": "Blackyak AK Plaza Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Beullaegyakeu AKpeullaja Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011389": {
+    "name_ko": "블랙야크 롯데몰 광교점",
+    "name_en": "Blackyak Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Beullaegyakeu Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2927054": {
+    "name_ko": "블랙야크 타임빌라스 수원점",
+    "name_en": "Blackyak Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Beullaegyakeu Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025405": {
+    "name_ko": "비너스 롯데몰 광교점",
+    "name_en": "Venus Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Bineoseu Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2925852": {
+    "name_ko": "비너스 타임빌라스 수원점",
+    "name_en": "Venus Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Bineoseu Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2924767": {
+    "name_ko": "빈폴 AK플라자 수원점",
+    "name_en": "Beanpole AK Plaza Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Binpol AKpeullaja Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2925525": {
+    "name_ko": "빈폴맨 타임빌라스 수원점",
+    "name_en": "Beanpole Men Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Binpolmaen Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011489": {
+    "name_ko": "사랑약국",
+    "name_en": "Sarang Pharmacy",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Sarangyakguk",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025436": {
+    "name_ko": "살로몬 스타필드 수원점",
+    "name_en": "Salomon Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Sallomon Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025439": {
+    "name_ko": "삼성스토어 AK플라자 수원점",
+    "name_en": "Samsung Store AK Plaza Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Samseongseutoeo AKpeullaja Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011411": {
+    "name_ko": "삼성스토어 북수원",
+    "name_en": "Samsung Store Buksuwon",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Samseongseutoeo Buksuwon",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011290": {
+    "name_ko": "삼성스토어 서수원",
+    "name_en": "Samsung Store Seosuwon",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Samseongseutoeo Seosuwon",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011408": {
+    "name_ko": "삼성스토어 수원삼성전기모바일",
+    "name_en": "Samsung Store Suwon Samsung Electro-Mechanics Mobile",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Samseongseutoeo Suwonsamseongjeongimobail",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025402": {
+    "name_ko": "삼성스토어 영통",
+    "name_en": "Samsung Store Yeongtong",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Samseongseutoeo Yeongtong",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011475": {
+    "name_ko": "세르지오타키니 스타필드 수원점",
+    "name_en": "Sergio Tacchini Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Sereujiotakini Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025399": {
+    "name_ko": "쇼메 갤러리아백화점 광교점",
+    "name_en": "Chaumet Galleria Department Store Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Syome Gaelleoriabaekhwajeom Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025403": {
+    "name_ko": "쉬즈미스 롯데몰 광교점",
+    "name_en": "She's Miss Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Swijeumiseu Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025425": {
+    "name_ko": "쉬즈미스 스타필드 수원점",
+    "name_en": "She's Miss Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Swijeumiseu Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011456": {
+    "name_ko": "슈스파 스타필드 수원점",
+    "name_en": "Shoespa Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Syuseupa Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2926110": {
+    "name_ko": "슈콤마보니 타임빌라스 수원점",
+    "name_en": "Suecomma Bonnie Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Syukommaboni Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011467": {
+    "name_ko": "스노우피크 스타필드 수원점",
+    "name_en": "Snow Peak Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Seunoupikeu Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2925865": {
+    "name_ko": "스와로브스키 타임빌라스 수원점",
+    "name_en": "Swarovski Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Seuwarobeuseuki Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011433": {
+    "name_ko": "스와치 스타필드 수원점",
+    "name_en": "Swatch Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Seuwachi Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2930975": {
+    "name_ko": "스케쳐스 롯데몰 광교점",
+    "name_en": "Skechers Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Seukechyeoseu Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2926074": {
+    "name_ko": "스케쳐스 타임빌라스 수원점",
+    "name_en": "Skechers Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Seukechyeoseu Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2910679": {
+    "name_ko": "스타몽뜨레 AK플라자 수원점",
+    "name_en": "Star Montre AK Plaza Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Seutamongtteure AKpeullaja Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011435": {
+    "name_ko": "스탠드오일 스타필드 수원점",
+    "name_en": "Stand Oil Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Seutaendeuoil Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2924006": {
+    "name_ko": "스톤헨지 AK플라자 수원점",
+    "name_en": "Stonehenge AK Plaza Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Seutonhenji AKpeullaja Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2925885": {
+    "name_ko": "스톤헨지 타임빌라스 수원점",
+    "name_en": "Stonehenge Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Seutonhenji Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025440": {
+    "name_ko": "스파오 AK플라자 수원점",
+    "name_en": "SPAO AK Plaza Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Seupao AKpeullaja Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025426": {
+    "name_ko": "스파오 스타필드 수원점",
+    "name_en": "SPAO Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Seupao Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025404": {
+    "name_ko": "쌤소나이트 롯데몰 광교점",
+    "name_en": "Samsonite Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ssaemsonaiteu Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011425": {
+    "name_ko": "쌤소나이트 스타필드 수원점",
+    "name_en": "Samsonite Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ssaemsonaiteu Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011396": {
+    "name_ko": "써스데이아일랜드 롯데몰 광교점",
+    "name_en": "Thursday Island Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Sseoseudeiaillaendeu Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011431": {
+    "name_ko": "써스데이아일랜드 스타필드 수원점",
+    "name_en": "Thursday Island Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Sseoseudeiaillaendeu Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025406": {
+    "name_ko": "아디다스 롯데몰 광교점",
+    "name_en": "Adidas Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Adidaseu Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011485": {
+    "name_ko": "아디다스 스타필드 수원점",
+    "name_en": "Adidas Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Adidaseu Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025407": {
+    "name_ko": "아레나 롯데몰 광교점",
+    "name_en": "Arena Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Arena Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025423": {
+    "name_ko": "아르켓 스타필드 수원점",
+    "name_en": "Arket Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Areuket Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2918643": {
+    "name_ko": "아이더 AK플라자 수원점",
+    "name_en": "Eider AK Plaza Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Aideo AKpeullaja Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011403": {
+    "name_ko": "아이더 롯데몰 광교점",
+    "name_en": "Eider Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Aideo Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2926872": {
+    "name_ko": "아이잗바바 AK플라자 수원점",
+    "name_en": "Izzat Baba AK Plaza Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Aijatbaba AKpeullaja Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011410": {
+    "name_ko": "아트박스 광교아브뉴프랑점",
+    "name_en": "Artbox Gwanggyo Avenue France Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ateubakseu Gwanggyoabeunyupeurangjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2907527": {
+    "name_ko": "아트박스 수원역점",
+    "name_en": "Artbox Suwon Station Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ateubakseu Suwonyeokjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2918645": {
+    "name_ko": "아트박스 수원인계점",
+    "name_en": "Artbox Suwon Ingye Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ateubakseu Suwoningyejeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025418": {
+    "name_ko": "아트박스 영통점",
+    "name_en": "Artbox Yeongtong Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ateubakseu Yeongtongjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011319": {
+    "name_ko": "아프리카안경 타임빌라스 수원점",
+    "name_en": "Africa Optical Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Apeurikaangyeong Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011400": {
+    "name_ko": "안다르 롯데몰 광교점",
+    "name_en": "Andar Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Andareu Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011337": {
+    "name_ko": "알렉산더 맥퀸 갤러리아백화점 광교점",
+    "name_en": "Alexander McQueen Galleria Department Store Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Alleksandeo Maekkwin Gaelleoriabaekhwajeom Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011476": {
+    "name_ko": "에스티듀퐁 스타필드 수원점",
+    "name_en": "S.T. Dupont Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Eseutidyupong Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2925649": {
+    "name_ko": "에잇세컨즈 AK백화점 수원점",
+    "name_en": "Eight Seconds AK Department Store Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Eitsekeonjeu AKbaekhwajeom Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011460": {
+    "name_ko": "에잇세컨즈 스타필드 수원점",
+    "name_en": "Eight Seconds Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Eitsekeonjeu Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2927026": {
+    "name_ko": "에잇세컨즈 타임빌라스 수원점",
+    "name_en": "Eight Seconds Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Eitsekeonjeu Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025396": {
+    "name_ko": "에트로 타임빌라스 수원점",
+    "name_en": "Etro Timevillas Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Eteuro Taimbillaseu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011421": {
+    "name_ko": "오렌즈 스타필드 수원점",
+    "name_en": "Olens Starfield Suwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Orenjeu Seutapildeu Suwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4011335": {
+    "name_ko": "오메가 갤러리아백화점 광교점",
+    "name_en": "Omega Galleria Department Store Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Omega Gaelleoriabaekhwajeom Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2915154": {
+    "name_ko": "온앤온 롯데몰 광교점",
+    "name_en": "On & On Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Onaenon Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3305342": {
+    "name_ko": "올리브영 광교앨리웨이점",
+    "name_en": "Olive Young Gwanggyo Alleyway Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ollibeuyeong Gwanggyoaelliweijeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2907173": {
+    "name_ko": "올리브영 동수원점",
+    "name_en": "Olive Young Dongsuwon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ollibeuyeong Dongsuwonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4008150": {
+    "name_ko": "올리브영 롯데몰 광교점",
+    "name_en": "Olive Young Lotte Mall Gwanggyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ollibeuyeong Rotdemol Gwanggyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2902354": {
+    "name_ko": "올리브영 수원AK역사점",
+    "name_en": "Olive Young Suwon AK Station Building Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ollibeuyeong SuwonAKyeoksajeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4008156": {
+    "name_ko": "올리브영 수원AK타운중앙점",
+    "name_en": "Olive Young Suwon AK Town Jungang Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ollibeuyeong SuwonAKtaunjungangjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3307289": {
+    "name_ko": "올리브영 수원경기대점",
+    "name_en": "Olive Young Suwon Kyonggi University Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ollibeuyeong Suwongyeonggidaejeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3305322": {
+    "name_ko": "올리브영 수원권선점",
+    "name_en": "Olive Young Suwon Gwonseon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ollibeuyeong Suwongwonseonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2908842": {
+    "name_ko": "올리브영 수원금곡점",
+    "name_en": "Olive Young Suwon Geumgok Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ollibeuyeong Suwongeumgokjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4008149": {
+    "name_ko": "올리브영 수원망포사거리점",
+    "name_en": "Olive Young Suwon Mangpo Intersection Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ollibeuyeong Suwonmangposageorijeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2911752": {
+    "name_ko": "올리브영 수원망포점",
+    "name_en": "Olive Young Suwon Mangpo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ollibeuyeong Suwonmangpojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4008158": {
+    "name_ko": "올리브영 수원매교점",
+    "name_en": "Olive Young Suwon Maegyo Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ollibeuyeong Suwonmaegyojeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2924761": {
+    "name_ko": "올리브영 수원매탄점",
+    "name_en": "Olive Young Suwon Maetan Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ollibeuyeong Suwonmaetanjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2918379": {
+    "name_ko": "올리브영 수원성대점",
+    "name_en": "Olive Young Suwon Sungkyunkwan University Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ollibeuyeong Suwonseongdaejeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2918281": {
+    "name_ko": "올리브영 수원시청역점",
+    "name_en": "Olive Young Suwon City Hall Station Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ollibeuyeong Suwonsicheongyeokjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2928891": {
+    "name_ko": "올리브영 수원엘포트몰점",
+    "name_en": "Olive Young Suwon L-Port Mall Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ollibeuyeong Suwonelpoteumoljeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4008157": {
+    "name_ko": "올리브영 수원역점",
+    "name_en": "Olive Young Suwon Station Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ollibeuyeong Suwonyeokjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3306668": {
+    "name_ko": "올리브영 수원영통역점",
+    "name_en": "Olive Young Suwon Yeongtong Station Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ollibeuyeong Suwonyeongtongyeokjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4025419": {
+    "name_ko": "올리브영 수원영통점",
+    "name_en": "Olive Young Suwon Yeongtong Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ollibeuyeong Suwonyeongtongjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-4008146": {
+    "name_ko": "올리브영 수원오목천점",
+    "name_en": "Olive Young Suwon Omokcheon Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ollibeuyeong Suwonomokcheonjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2906298": {
+    "name_ko": "올리브영 수원인계점",
+    "name_en": "Olive Young Suwon Ingye Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ollibeuyeong Suwoningyejeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2914520": {
+    "name_ko": "올리브영 수원장안구청사거리점",
+    "name_en": "Olive Young Suwon Jangan-gu Office Intersection Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ollibeuyeong Suwonjangangucheongsageorijeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-2907813": {
+    "name_ko": "올리브영 수원정자점",
+    "name_en": "Olive Young Suwon Jeongja Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ollibeuyeong Suwonjeongjajeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
+  },
+  "tourapi-3307711": {
+    "name_ko": "올리브영 수원중앙점",
+    "name_en": "Olive Young Suwon Jungang Branch",
+    "name_en_source": "translated (table: specific part romanized + English generic, MCST guideline)",
+    "name_rr": "Ollibeuyeong Suwonjungangjeom",
+    "en_contentid": "",
+    "addr_en": "",
+    "match_m": null,
+    "match_basis": ""
   }
 }
