@@ -854,12 +854,15 @@ def style(en: str, prose: bool = True) -> list[str]:
     return issues
 
 
-def _pair(where: str, ko: str, en, prose: bool = True) -> list[str]:
+def _pair(where: str, ko: str, en, prose: bool = True, own: tuple = ()) -> list[str]:
     if not isinstance(en, str):
         return [f"{where}: missing"] if squash_ws(ko) else []
     if squash_ws(ko) and not squash_ws(en):
         return [f"{where}: empty"]
-    return [f"{where}: {x}" for x in parity(ko, en) + style(en, prose)]
+    ko_p, en_p = ko, en
+    if own and own[0] in (ko or "") and own[1] in en:   # the given name is not compared ('Thursday Island …')
+        ko_p, en_p = ko.replace(own[0], " Zq "), en.replace(own[1], " Zq ")
+    return [f"{where}: {x}" for x in parity(ko_p, en_p) + style(en, prose)]
 
 
 def _list(where: str, ko: list, en) -> tuple[list, list[str]]:
@@ -880,8 +883,14 @@ def check_place(item: dict, inp: dict, L: "LangCheck | None" = None) -> list[str
     note = L.loc.conflict if L else CONFLICT_NOTE
     if L:
         issues += L.name(item, inp)
-    elif item.get("name_en") != inp["name_en"]:
-        issues.append(f"name_en must be exactly '{inp['name_en']}' (got '{item.get('name_en')}')")
+    else:
+        if item.get("name_en") != inp["name_en"]:
+            issues.append(f"name_en must be exactly '{inp['name_en']}' (got '{item.get('name_en')}')")
+        # the English name is given (names.json), like an official one: its words and numbers are not the sentence's
+        own = (squash_ws(inp.get("name")), squash_ws(inp.get("name_en")))
+        if all(own):
+            def _pair_(w, ko, en, prose=True):
+                return _pair(w, ko, en, prose, own)
     issues += _pair_("summary", inp["summary"], item.get("summary"))
     got = {f.get("key"): f for f in item.get("facts") or [] if isinstance(f, dict)}
     for f in inp["facts"]:

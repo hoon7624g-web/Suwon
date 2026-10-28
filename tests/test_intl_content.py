@@ -475,3 +475,13 @@ def test_a_time_right_after_a_label_s_colon_is_a_time():
     assert parity_l("09:30~17:30 (입장마감:17:00)", "09:30–17:30 (dernière entrée : 17:00)", "fr") == []
     assert parity("09:30~17:30 (입장마감:17:00)", "09:30–17:30 (last admission: 16:00)")
 
+
+def test_the_given_english_name_is_not_compared_as_a_sentence():
+    """2026-10-28: the brand 'Thursday Island' (써스데이아일랜드) is a name, not a weekday; a stated day still counts."""
+    from tools.en_content import _pair
+    own = ("써스데이아일랜드 롯데몰 광교점", "Thursday Island Lotte Mall Gwanggyo Branch")
+    ko = "써스데이아일랜드 롯데몰 광교점은 10:30~22:00에 문을 엽니다."
+    assert _pair("summary", ko, "Thursday Island Lotte Mall Gwanggyo Branch opens 10:30–22:00.", True, own) == []
+    assert _pair("summary", ko, "Thursday Island Lotte Mall Gwanggyo Branch opens 10:30–22:00.")
+    assert _pair("summary", ko, "Thursday Island Lotte Mall Gwanggyo Branch opens 10:30–22:00 on Monday.", True, own)
+
