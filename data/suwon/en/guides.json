@@ -1,65 +1,65 @@
 {
   "guide-01": {
     "slug": "suwon-hwaseong-fortress-haenggung",
-    "label": "Suwon Hwaseong · Haenggung · Fortress",
-    "title": "Which Suwon Hwaseong, Hwaseong Haenggung, and Banghwasuryujeong fortress sights and free year-round attractions can you visit?",
-    "summary": "This site lists 20 Suwon Hwaseong, Hwaseong Haenggung, gate, pavilion, and fortress attractions, including 50 Suwon attractions open all year with free admission. Compare the hours, closed days, and fees of 10 key spots below.",
+    "label": "Suwon Hwaseong Fortress, Haenggung Palace, and Fortress Walls",
+    "title": "Where are the fortress sights such as Suwon Hwaseong Fortress, Hwaseong Haenggung Palace, and Banghwasuryujeong Pavilion, and the free attractions that are always open?",
+    "summary": "This site lists 20 sights related to Suwon Hwaseong Fortress, Hwaseong Haenggung Palace, the four main gates, the corner pavilions, and the fortress walls, and 51 Suwon attractions open year-round and free of charge. Below, you can compare the hours, closing days, and admission fees of 10 key places at a glance.",
     "body": [
       {
-        "heading": "20 Suwon Hwaseong & Haenggung Fortress Sights and 50 Free Year-Round Attractions",
-        "text": "According to Korea Tourism Organization TourAPI records, 20 Suwon attractions are associated with Suwon Hwaseong Fortress, Hwaseong Haenggung Palace, the four gates. In addition, Banghwasuryujeong, Yeonmudae, Hwahongmun, Seojangdae, and Hwaryeongjeon, and 50 attractions are open all year for free."
+        "heading": "20 sights of Suwon Hwaseong Fortress, Hwaseong Haenggung Palace, and the fortress walls, and 51 free attractions open year-round",
+        "text": "In Korea Tourism Organization TourAPI data, there are 20 fortress-related sights, including Suwon Hwaseong Fortress and Hwaseong Haenggung Palace; Janganmun Gate, Paldalmun Gate, Hwaseomun Gate, and Changnyongmun Gate; and Banghwasuryujeong Pavilion, Yeonmudae, Hwahongmun Gate, Seojangdae, and Hwaryeongjeon. Of all Suwon attractions, 51 are open year-round and free of charge."
       },
       {
-        "heading": "Checking Open Fortress Wall Sections and Ticketing Deadlines for Palace & Rides",
-        "text": "While the Suwon Hwaseong fortress trail and outer gates remain open all year for free, Hwaseong Haenggung Palace, the Hwaseong Trolley, and. In addition, the Flying Suwon helium balloon enforce ticketing cutoffs and weather or closing rules, so check the 10 places below before departure."
+        "heading": "Check the always-open fortress sections and the ticket sales times of the palace and activity facilities",
+        "text": "Suwon Hwaseong Fortress Wall Trail and the outside of the four main gates are open year-round free of charge. However, Hwaseong Haenggung Palace, Hwaseong Fortress Tourist Trolley, and the Flying Suwon tethered helium balloon have their own ticket sales cutoffs and weather and closure conditions. It is therefore safer to compare the operating rules of the 10 places below before you set out."
       }
     ],
     "items": [
       {
         "place_slug": "suwon-hwaseong",
-        "reason": "Located in the Yeonghwa-dong area (hours: 00:00 – 24:00; closed days: Open all year)."
+        "reason": "Suwon Hwaseong Fortress is always open, with no closing days. Admission is free, and parking is available."
       },
       {
         "place_slug": "hwaseonghaenggung",
-        "reason": "Located in the Namchang-dong area (hours: 09:00–18:00 (Yagangaejang Sijeun 18:00–21:30 Byeoldo Unyeong); closed days: Open all year (Yagangaejangeun Monday, Tuesday Hyumu))."
+        "reason": "Hwaseong Haenggung Palace is open 09:00–21:30 from Friday, October 30 to Sunday, November 1, 2026, and last admission is at 21:00. Normally, it operates with no closing days."
       },
       {
         "place_slug": "banghwasuryujeong",
-        "reason": "Located in the Maehyang-dong area (hours: Always open (Nugak Naebu Churip 09:00–18:00); closed days: Open all year)."
+        "reason": "Banghwasuryujeong Pavilion is always open, with no closing days. Admission is free, and parking is available."
       },
       {
         "place_slug": "janganmun",
-        "reason": "Located in the Jangan-dong area (hours: Always open (Seonggwak Tambangno Ilchul–22:00); closed days: Open all year)."
+        "reason": "Janganmun Gate is open 09:00–18:00 in the summer season (March–October) and 09:00–17:00 in the winter season (November–February), and it is open year-round. Admission is free."
       },
       {
         "place_slug": "paldalmun",
-        "reason": "Located in the Paldal-ro 2-ga area (hours: 09:00 – 18:00; closed days: Open all year)."
+        "reason": "Paldalmun Gate is open 09:00–18:00 in the summer season (March–October) and 09:00–17:00 in the winter season (November–February), and it is open year-round. Suwon Hwaseong Fortress is free of charge."
       },
       {
         "place_slug": "hwaseomun",
-        "reason": "Located in the Jangan-dong area (hours: Always open; closed days: Open all year)."
+        "reason": "Hwaseomun Gate is always open, with no closing days. Admission is free."
       },
       {
         "place_slug": "changnyongmun",
-        "reason": "Located in the Namsu-dong area (hours: Always open; closed days: Open all year)."
+        "reason": "Changnyongmun Gate is always open, with no closing days. Admission is free, and parking is available."
       },
       {
         "place_slug": "yeonmudae",
-        "reason": "Located in the Maehyang-dong area (hours: 10:00 – 17:00; closed days: Open all year)."
+        "reason": "Yeonmudae (Dongjangdae) is always open, with no closing days. Admission is free, and parking is available."
       },
       {
         "place_slug": "hwahongmun",
-        "reason": "Located in the Paldal-gu area (hours: Always open; closed days: Open all year)."
+        "reason": "Hwahongmun Gate) is open 09:00–18:00 in the summer season (March–October) and 09:00–17:00 in the winter season (November–February), and it is open year-round. Admission is free, and parking is available (Hwahongmun Public Parking Lot, 497 cars)."
       },
       {
         "place_slug": "hyowonui-jong-seojangdae",
-        "reason": "Located in the Namchang-dong area (hours: 09:00–18:00 (Seonggwakgil Always open ); closed days: Open all year)."
+        "reason": "Bell of Hyowon & Seojangdae Command Post is always open, with no closing days. Parking is available."
       }
     ],
     "faq": [
       {
-        "q": "How many Suwon Hwaseong and Haenggung fortress sights and free year-round attractions are in Suwon?",
-        "a": "There are 20 Suwon Hwaseong, Haenggung, gate, and pavilion attractions, and 50 attractions are open all year for free.",
+        "q": "How many sights related to Suwon Hwaseong Fortress, Haenggung Palace, and the fortress walls, and how many free attractions open year-round, are there in Suwon?",
+        "a": "There are 20 sights related to Suwon Hwaseong Fortress, Hwaseong Haenggung Palace, the four main gates, and the corner pavilions, and 51 attractions that are open year-round and free.",
         "source": "한국관광공사 TourAPI"
       }
     ],
@@ -69,70 +69,70 @@
         "url": "https://api.visitkorea.or.kr/"
       }
     ],
-    "ko_hash": "93c35614c0e5d3d6",
-    "translated_at": "2026-10-23"
+    "ko_hash": "23cc05f8a14617b9",
+    "translated_at": "2026-10-28"
   },
   "guide-02": {
     "slug": "suwon-with-kids",
     "label": "With Kids",
-    "title": "Which arboretums, aquariums, museums, and parks in Suwon are convenient to visit with kids?",
-    "summary": "In Suwon, 52 attractions include arboretums, lakes, parks, Aqua Planet, observatories, museums, and art galleries, and 43 are cultural facilities such as museums and libraries. Compare the hours and visitor conditions of 10 key spots below.",
+    "title": "Which arboretums, Aqua Planet, museums, and parks in Suwon are easy to visit with children?",
+    "summary": "There are 52 Suwon attractions with arboretum, lake, park, Aqua Planet, observatory, museum, or art museum in their names, and 43 cultural facilities such as museums, art museums, and libraries. Below, you can first compare the hours, closing days, and admission fees of 10 key places.",
     "body": [
       {
-        "heading": "52 Arboretums, Lakes, Parks, Aquariums & Museums and 43 Cultural Facilities",
-        "text": "Based on Korea Tourism Organization TourAPI records, 52 Suwon attractions include arboretums, lakes, parks, Aqua Planet, observatories, museums, or art galleries in. In addition, their names, and 43 cultural facilities such as agricultural museums, map museums, children's libraries, and art centers are recorded."
+        "heading": "52 arboretum, lake, museum, and Aqua Planet sights and 43 cultural facilities",
+        "text": "In Korea Tourism Organization TourAPI data, 52 Suwon attractions have arboretum, lake, park, or museum in their names, such as Suwon Arboretum Irwol, Yeongheung Arboretum, Gwanggyo Lake Park, Aqua Planet Gwanggyo, and National Agricultural Museum. The data also lists 43 places classified as cultural facilities."
       },
       {
-        "heading": "Checking Closed Mondays, Advance Reservations & Last Entry Times",
-        "text": "Irwol and Yeongheung Arboretums and municipal museums close every Monday, while Samsung Innovation Museum and children's experience halls require advance online booking. In addition, or close ticketing early, so review the 10 places below before visiting."
+        "heading": "Check regular Monday closures and whether advance booking is needed",
+        "text": "Many places, such as Suwon Arboretum Irwol, Yeongheung Arboretum, National Agricultural Museum, Suwon Hwaseong Museum, and Suwon Gwanggyo Museum, are closed every Monday, and Samsung Innovation Museum is visited on weekdays after booking on its website. Check the hours and closing days of the 10 places below before you visit."
       }
     ],
     "items": [
       {
         "place_slug": "irwolsumogwon",
-        "reason": "Located in the Cheoncheon-dong area (hours: 09:30 – 17:30; closed days: every Monday Hyumuil)."
+        "reason": "Suwon Arboretum Irwol is open 09:30–21:00 from Friday, October 30 to Saturday, October 31, 2026, and last admission is at 20:30. Suwon Arboretum Irwol is open 09:30–17:30 and is closed every Monday (if Monday is a public holiday, the following day)."
       },
       {
         "place_slug": "yeongheungsumogwon",
-        "reason": "Located in the Yeongtong-dong area (hours: 09:30 – 17:30; closed days: every Monday Hyumuil)."
+        "reason": "Yeongheung Arboretum is open 09:30–21:00 from Friday, October 30 to Saturday, October 31, 2026, and last admission is at 20:30. Yeongheung Arboretum is open 09:30–17:30 (ticket sales end 17:00) and is closed every Monday (if Monday is a public holiday, the first weekday after it)."
       },
       {
         "place_slug": "akuapeullanet-gwanggyo",
-        "reason": "Located in the Ha-dong area (hours: 10:30 – 19:30; closed days: Open all year)."
+        "reason": "Aqua Planet Gwanggyo is open 10:30–19:30 (ticket sales end 18:30) and is open year-round. Admission includes 30,000 won for adults, and it is free for infants under 36 months."
       },
       {
         "place_slug": "gwanggyohosugongwon",
-        "reason": "Located in the Ha-dong area (hours: 00:00 – 24:00; closed days: Open all year)."
+        "reason": "Gwanggyo Lake Park is always open, with no closing days. Admission is free, and parking is available."
       },
       {
         "place_slug": "gungnimnongeopbangmulgwan",
-        "reason": "Located in the Seodun-dong area (hours: 10:00 – 18:00; closed days: every Monday Hyumuil)."
+        "reason": "National Agricultural Museum is open 10:00–18:00 and is closed every Monday, on January 1, and on Lunar New Year and Chuseok days. Last admission is at 17:00."
       },
       {
         "place_slug": "haeujae",
-        "reason": "Located in the Imok-dong area (hours: 10:00 – 18:00; closed days: Open all year)."
+        "reason": "Haewoojae Museum (Mr. Toilet House) is open 10:00–18:00 in the summer season (March–October, last admission 17:30) and 10:00–17:00 in the winter season (November–February, last admission 16:30). It is closed every Monday (if Monday is a public holiday, it closes the next day), on January 1, and during the Seollal and Chuseok holidays. Admission is free."
       },
       {
         "place_slug": "samseonginobeisyeonmyujieom",
-        "reason": "Located in the Maetan-dong area (hours: 13:00 – 14:00; closed days: every Sunday Hyumuil)."
+        "reason": "Samsung Innovation Museum is open 13:00–14:00 on weekdays and 10:00–17:00 on Saturday, and it is closed every Sunday, on legal public holidays, and on substitute holidays. Admission is free."
       },
       {
         "place_slug": "suwonhwaseongbangmulgwan",
-        "reason": "Located in the Maehyang-dong area (hours: 09:00 – 18:00; closed days: every Monday Hyumuil)."
+        "reason": "Suwon Hwaseong Museum is open 09:00–18:00 (ticket sales end 17:00) and is closed every Monday and on other closing days set by the mayor. Individual admission is 2,000 won for adults and 1,000 won for youth/military. It is free for children, seniors, state guests, foreign delegations and their entourages, and others."
       },
       {
         "place_slug": "suwongwanggyobangmulgwan",
-        "reason": "Located in the Iui-dong area (hours: 09:00 – 18:00; closed days: every Monday Hyumuil)."
+        "reason": "Suwon Gwanggyo Museum is open 09:00–18:00 and is closed every Monday and on other closing days set by the mayor. Last admission is at 17:00."
       },
       {
         "place_slug": "gwanggyoeorinicheonmundae",
-        "reason": "Located in the Iui-dong area (hours: 15:00 – 24:00; closed days: every Sunday, Monday Hyumuil)."
+        "reason": "Gwanggyo Eorinicheonmundae is open 14:30–23:30 (break time 17:00–18:00), and it is closed every Monday–Sunday and on legal public holidays. Parking is available and free."
       }
     ],
     "faq": [
       {
-        "q": "How many arboretum, lake, park, aquarium, and museum attractions and cultural facilities are in Suwon?",
-        "a": "There are 52 arboretum, lake, park, aquarium, observatory, and museum attractions, and 43 cultural facilities.",
+        "q": "How many arboretum, lake, park, museum, and Aqua Planet sights, and how many cultural facilities, are there in Suwon?",
+        "a": "There are 52 arboretum, lake, park, Aqua Planet, observatory, museum, and art museum sights, and 43 cultural facilities.",
         "source": "한국관광공사 TourAPI"
       }
     ],
@@ -142,70 +142,70 @@
         "url": "https://api.visitkorea.or.kr/"
       }
     ],
-    "ko_hash": "5654bc7aea71390a",
-    "translated_at": "2026-10-23"
+    "ko_hash": "5c72e6e5bde70c1a",
+    "translated_at": "2026-10-28"
   },
   "guide-03": {
     "slug": "suwon-indoor-museums",
-    "label": "Rainy Day · Indoor",
-    "title": "Which museums, art galleries, libraries, and indoor cultural spaces in Suwon are convenient for a rainy day?",
-    "summary": "This site lists 43 cultural facilities in Suwon along with 34 museum, art gallery, library, exhibition, and aquarium attractions. Compare the hours, regular closed days, and admission fees of 10 key indoor spots below.",
+    "label": "Rainy Days · Indoors",
+    "title": "Which museums, art museums, Starfield Library, and cultural facilities in Suwon are easy to visit on a rainy day?",
+    "summary": "This site lists 43 cultural facilities in Suwon, such as museums, art museums, libraries, and art centers. Of the indoor and outdoor cultural attractions, 34 have museum, art museum, exhibition hall, library, Haewoojae Museum (Mr. Toilet House), or Aqua Planet in their names. Below, you can compare the viewing hours, regular closing days, and admission fees of 10 key places.",
     "body": [
       {
-        "heading": "43 Cultural Facilities and 34 Museums, Galleries, Libraries & Indoor Venues",
-        "text": "Under Korea Tourism Organization TourAPI categories, 43 Suwon venues are registered as cultural facilities, and 34 attractions include museums, art galleries, libraries, exhibition halls, cultural centers, or Aqua Planet in their names."
+        "heading": "43 cultural facilities such as museums, art museums, and libraries, and 34 exhibition and cultural sights",
+        "text": "Under Korea Tourism Organization TourAPI categories, 43 Suwon sights are registered as cultural facilities. There are 34 exhibition and library sights, such as Suwon Hwaseong Museum, Suwon Museum of Art, National Agricultural Museum, Starfield Library Suwon, Gyeonggi Library, Haewoojae Museum (Mr. Toilet House), and Aqua Planet Gwanggyo."
       },
       {
-        "heading": "Comparing Opening Hours, Monday Closures & Free Admission",
-        "text": "Major venues such as Suwon Hwaseong Museum, Suwon Museum, Suwon Museum of Art, and the National Agricultural Museum close on Mondays or. In addition, the first Monday of the month and stop ticket sales before closing time, while Starfield Library Suwon and Aqua Planet Gwanggyo stay open year-round, so compare the 10 places below."
+        "heading": "Compare opening hours, Monday closures, and free admission",
+        "text": "Many public museums and art museums are closed every Monday, while Starfield Library Suwon and Aqua Planet Gwanggyo are open year-round. Compare the closing days and fees of the 10 places below in advance to plan your route."
       }
     ],
     "items": [
       {
         "place_slug": "suwonhwaseongbangmulgwan",
-        "reason": "Located in the Maehyang-dong area (hours: 09:00 – 18:00; closed days: every Monday Hyumuil)."
+        "reason": "Suwon Hwaseong Museum is open 09:00–18:00 (ticket sales end 17:00) and is closed every Monday and on other closing days set by the mayor. Individual admission is 2,000 won for adults and 1,000 won for youth/military. It is free for children, seniors, state guests, foreign delegations and their entourages, and others."
       },
       {
         "place_slug": "suwonsirimmisulgwan",
-        "reason": "Located in the Sinpung-dong area (hours: 10:00 – 19:00; closed days: Open all year)."
+        "reason": "Suwon Museum of Art is open 10:00–19:00 in the summer season (March–October, last admission 18:00) and 10:00–18:00 in the winter season (November–February, last admission 17:00). It is closed every Monday (if Monday is a public holiday, it closes the following day). Parking is available, and parking fees include 1,000 won for the first 30 minutes."
       },
       {
         "place_slug": "suwonbangmulgwan",
-        "reason": "Located in the Iui-dong area (hours: 09:00 – 18:00; closed days: every Monday Hyumuil)."
+        "reason": "Suwon Museum is open 09:00–18:00 (ticket sales end 17:00) and is closed every Monday (if Monday is a legal public holiday, it closes the next day). Admission is 2,000 won for general visitors, among other rates."
       },
       {
         "place_slug": "suwongwanggyobangmulgwan",
-        "reason": "Located in the Iui-dong area (hours: 09:00 – 18:00; closed days: every Monday Hyumuil)."
+        "reason": "Suwon Gwanggyo Museum is open 09:00–18:00 and is closed every Monday and on other closing days set by the mayor. Last admission is at 17:00."
       },
       {
         "place_slug": "gungnimnongeopbangmulgwan",
-        "reason": "Located in the Seodun-dong area (hours: 10:00 – 18:00; closed days: every Monday Hyumuil)."
+        "reason": "National Agricultural Museum is open 10:00–18:00 and is closed every Monday, on January 1, and on Lunar New Year and Chuseok days. Last admission is at 17:00."
       },
       {
         "place_slug": "haeujae",
-        "reason": "Located in the Imok-dong area (hours: 10:00 – 18:00; closed days: Open all year)."
+        "reason": "Haewoojae Museum (Mr. Toilet House) is open 10:00–18:00 in the summer season (March–October, last admission 17:30) and 10:00–17:00 in the winter season (November–February, last admission 16:30). It is closed every Monday (if Monday is a public holiday, it closes the next day), on January 1, and during the Seollal and Chuseok holidays. Admission is free."
       },
       {
         "place_slug": "byeolmadangdoseogwan-seutapildeu-suwonjeom",
-        "reason": "Located in the Jeongja-dong area (hours: 10:00 – 22:00; closed days: Open all year)."
+        "reason": "Starfield Library Suwon is open year-round, 10:00–22:00. Admission is free."
       },
       {
         "place_slug": "gyeonggidoseogwan",
-        "reason": "Located in the Iui-dong area (hours: 10:00 – 21:00; closed days: every Monday Hyumuil)."
+        "reason": "Gyeonggi Library is open 10:00–21:00 on weekdays and 10:00–18:00 on weekends. It is closed on the second and fourth Mondays of every month, on January 1, and on Seollal and Chuseok days. Admission is free."
       },
       {
         "place_slug": "akuapeullanet-gwanggyo",
-        "reason": "Located in the Ha-dong area (hours: 10:30 – 19:30; closed days: Open all year)."
+        "reason": "Aqua Planet Gwanggyo is open 10:30–19:30 (ticket sales end 18:30) and is open year-round. Admission includes 30,000 won for adults, and it is free for infants under 36 months."
       },
       {
         "place_slug": "gyeonggisangsangkaempeoseu",
-        "reason": "Located in the Seodun-dong area (hours: 10:00 – 18:00; closed days: every Monday Hyumuil)."
+        "reason": "Gyeonggi Sangsang Campus is closed every Monday, on January 1, and on Seollal and Chuseok days, and it is open 10:00–18:00. Admission is free."
       }
     ],
     "faq": [
       {
-        "q": "How many places in Suwon are classified as cultural facilities and how many are museum, gallery, or library attractions?",
-        "a": "There are 43 attractions registered as cultural facilities in Suwon, and 34 attractions related to museums, art galleries, libraries, exhibition halls, and aquariums.",
+        "q": "How many places in Suwon are classified as cultural facilities, such as museums, art museums, and libraries?",
+        "a": "There are 43 Suwon attractions registered as cultural facilities, and 34 sights related to museums, art museums, exhibition halls, libraries, Haewoojae Museum (Mr. Toilet House), or Aqua Planet.",
         "source": "한국관광공사 TourAPI"
       }
     ],
@@ -215,70 +215,70 @@
         "url": "https://api.visitkorea.or.kr/"
       }
     ],
-    "ko_hash": "f6847d43bea34097",
-    "translated_at": "2026-10-23"
+    "ko_hash": "9ea0ed6649e6de30",
+    "translated_at": "2026-10-28"
   },
   "guide-05": {
     "slug": "monday-open-restaurants-suwon",
-    "label": "Open Monday · Dining",
-    "title": "Which Suwon wang-galbi, fried chicken, kalguksu, and cafe spots in Suwon are open on Monday?",
-    "summary": "Among Suwon restaurants on this site, 180 do not close on Monday. Across 55 Suwon wang-galbi, Korean beef, and grilled meat restaurants, 35 fried chicken, kalguksu, naengmyeon, haejangguk, and dumpling spots, and 59 coffee and bakery cafes, compare 10 key places below.",
+    "label": "Open on Mondays · Places to Eat",
+    "title": "Which Suwon king-size galbi, whole fried chicken, kalguksu, and Haengnidan Street café spots are open on Mondays?",
+    "summary": "Of the Suwon restaurants on this site, 176 do not list Monday among their closing days. You can compare the menus and hours of 10 key places among 54 galbi, hanwoo, and grilled meat restaurants, 23 fried chicken, kalguksu, haejangguk, and dumpling spots, and 42 coffee, bakery, and dessert places.",
     "body": [
       {
-        "heading": "180 Places Open Monday and 55 Galbi & Grill, 35 Chicken & Noodle & 59 Bakery Spots",
-        "text": "Based on Korea Tourism Organization TourAPI and Kakao Map records, 180 Suwon restaurants and cafes do not list Monday as a regular closing day. By menu, 55 serve wang-galbi, beef or pork ribs, Korean beef, bulgogi, or pork belly, 35 serve cauldron fried chicken, kalguksu, naengmyeon. In addition, haejangguk, seolleongtang, sundae, or dumplings, and 59 serve coffee, bakery items, cakes, or desserts."
+        "heading": "176 places open on Mondays: 54 Suwon galbi and grill restaurants, 23 fried chicken, noodle, and rice soup spots, and 42 cafés",
+        "text": "In Korea Tourism Organization TourAPI data, 176 Suwon restaurants and cafés do not list Monday among their regular closing days. By menu, 54 serve Suwon king-size galbi, hanwoo, bulgogi, pork belly, or duck; 23 serve fried chicken, kalguksu, cold noodles, haejangguk, seolleongtang, or dumplings; and 42 serve coffee, bakery goods, or desserts."
       },
       {
-        "heading": "Checking Afternoon Break Times and Last-Order Cutoffs",
-        "text": "Major Suwon wang-galbi restaurants, fried chicken shops on Suwon Chicken Street, and cafes along Haengnidan-gil and Gwanggyo Cafe Street often have weekday. In addition, break times or last-order cutoffs, so check the 10 places below before visiting."
+        "heading": "Check break times and last order times",
+        "text": "Suwon restaurants specializing in marinated and fresh galbi, long-running eateries on Suwon Chicken Street, and cafés on Haengnidan Street and in Gwanggyo may have afternoon break times or close when ingredients run out. Check the hours and phone numbers of the 10 places below before you visit."
       }
     ],
     "items": [
       {
         "place_slug": "gabojeonggalbi",
-        "reason": "Located in the Ingye-dong area (main dish: Gungnaesan Korean beef (Hanwoo) Marinated short ribs ( 1 Inbun) 79,000 won; hours: 11:30 – 21:30)."
+        "reason": "The signature dish at Gabojeong Galbi is marinated hanwoo short ribs; the menu also includes fresh hanwoo short ribs, hanwoo striploin, hanwoo beef tartare, and more. Hours are 11:30–21:30 on weekdays, 11:00–22:00 on Saturday, and 11:00–21:30 on Sunday, and it is open every day of the year."
       },
       {
         "place_slug": "bonsuwongalbi",
-        "reason": "Located in the Uman-dong area (main dish: Fresh beef short ribs 70,000 won; menu: Fresh beef short ribs 70,000 won , Marinated. In addition, short ribs 65,000 won , Beef short rib soup 20,000 won , Cold broth noodles (mul-naengmyeon) 12,000 won , Spicy mixed cold noodles 12,000 won)."
+        "reason": "The signature dish at Bonsuwon Galbi is fresh galbi; the menu also includes marinated galbi, short rib soup, cold noodles, and more. Hours on Monday and Sunday are 11:30–21:00 (last order 20:00) and 11:30–21:30 (last order 20:30), and it is closed during the Seollal and Chuseok holidays."
       },
       {
         "place_slug": "riteulbonsuwongalbijip",
-        "reason": "Located in the Yeonghwa-dong area (main dish: Beef short rib soup 12,000 won; hours: 11:00 – 20:30)."
+        "reason": "The signature dish at Riteulbon Suwon Galbi Jip is short rib soup; the menu also includes marinated beef rib finger meat, fresh beef rib finger meat, soybean paste stew, and more. Hours are 11:00–20:30 (last order 19:30), and it is closed every Monday and Tuesday."
       },
       {
         "place_slug": "jinmitongdak",
-        "reason": "Located in the Namsu-dong area (main dish: Huraideu 20,000 won; menu: Huraideu 20,000 won , Whole fried chicken (tongdak) 20,000 won . In addition, Sweet and spicy fried chicken 21,000 won , Banban 21,000 won)."
+        "reason": "The signature dish at Jinmi Tongdak is whole fried chicken; the menu also includes fried, seasoned, half-and-half, and more. It is closed every Monday and open 11:00–23:00 on other days."
       },
       {
         "place_slug": "bungmun-yuchihoegwan",
-        "reason": "Located in the Yeonghwa-dong area (main dish: Haejangguk 10,000 won; menu: Haejangguk 10,000 won , Sulguk 12,000 won , Boiled pork slices 30,000 won , Haejangguk (Teuk) 12,000 won)."
+        "reason": "The signature dish at Bungmun Yuchi Hoegwan is haejangguk (hangover soup); the menu also includes drinking soup, boiled meat slices, and more. Hours are 07:00–22:00 (last order 21:30), and it is closed on January 1 and during the Seollal and Chuseok holidays."
       },
       {
         "place_slug": "yuchihoegwan",
-        "reason": "Located in the Ingye-dong area (main dish: Haejangguk 12,000 won; menu: Haejangguk 12,000 won , Boiled pork slices ( spaces ). In addition, 40,000 won , Boiled pork slices Muchim 40,000 won , Boiled pork slices (Soa) 20,000 won)."
+        "reason": "The signature dish at Yuchi Hoegwan is haejangguk (hangover soup); the menu also includes boiled meat slices, seasoned boiled meat salad, and more. It is open every day of the year, 00:00–24:00."
       },
       {
         "place_slug": "yeonpogalbi",
-        "reason": "Located in the Buksu-dong area (main dish: Marinated short ribs ( 450 g) 58,000 won; hours: 11:20 – 21:30)."
+        "reason": "The signature dish at Yeonpo Galbi is marinated galbi; the menu also includes fresh sirloin, fresh galbi, galbi set meal, and more. Hours are 11:20–21:00, with last order at 20:00, and it is open every day of the year."
       },
       {
         "place_slug": "sillagalbi",
-        "reason": "Located in the Woncheon-dong area (main dish: Wang Fresh beef short ribs ( 1 Inbun) 70,000 won; hours: 11:30 – 22:00)."
+        "reason": "The signature dish at Silla Galbi is king-size fresh galbi; the menu also includes king-size marinated galbi, fresh hanwoo galbi, hanwoo striploin, and more. Hours are 11:30–22:00 Monday–Saturday and 11:00–21:30 on Sunday, and it is open every day of the year."
       },
       {
         "place_slug": "jeongjiyeongkeopiroseuteojeu-haenggungbonjeom",
-        "reason": "Located in the Sinpung-dong area (main dish: Kokoneot 7,000 won; hours: 12:00 – 22:00)."
+        "reason": "The signature item at Jeongjiyeong Coffee Roseuteojeu Haenggung Main Branch is coconut coffee; the menu also includes flat white, Americano, hand drip coffee, and more. Hours are 11:00–22:00 (last order 21:50), and it is open every day of the year."
       },
       {
         "place_slug": "yeonmil",
-        "reason": "Located in the Paldal-ro 1-ga area (main dish: Saeuyukjeummandu ( 8 items ) 14,000 won; hours: 11:30 – 21:00)."
+        "reason": "The signature dish at Yeonmil is shrimp soup dumplings; the menu also includes meat soup dumplings, steamed pumpkin dumplings, hand-torn noodle soup, and more. It is closed every Tuesday and open 11:30–21:00 on other days."
       }
     ],
     "faq": [
       {
-        "q": "How many restaurants in Suwon are open on Monday, and how many specialize in galbi and grilled meat, chicken and noodles, and coffee and bakery items?",
-        "a": "There are 180 restaurants without a Monday closure, along with 55 wang-galbi, Korean beef, and grilled meat spots, 35 fried chicken, noodle, soup, and dumpling restaurants, and 59 coffee and bakery places.",
+        "q": "In Suwon, how many restaurants are open on Mondays, and how many of them are galbi and grill, fried chicken, noodle, and rice soup, or coffee and bakery places?",
+        "a": "There are 176 restaurants not closed on Mondays: 54 galbi, hanwoo, and grill restaurants, 23 fried chicken, kalguksu, haejangguk, and dumpling spots, and 42 coffee, bakery, and dessert places.",
         "source": "한국관광공사 TourAPI"
       }
     ],
@@ -288,70 +288,70 @@
         "url": "https://api.visitkorea.or.kr/"
       }
     ],
-    "ko_hash": "a12856407115de7e",
-    "translated_at": "2026-10-23"
+    "ko_hash": "10d27a57ece246bb",
+    "translated_at": "2026-10-28"
   },
   "guide-06": {
     "slug": "suwon-hotels-hanok-stays",
-    "label": "Hotels · Hanok · Stays",
-    "title": "How can you compare 27 hotels, hanok stays, and guesthouses in Suwon?",
-    "summary": "This site lists 27 hotels, hanok stays, guesthouses, and motels in Suwon, including 26 stays with parking guidance. Compare the check-in and check-out times and room capacities of 10 key stays below.",
+    "label": "Hotels, Hanok, and Other Stays",
+    "title": "How do you choose among the 27 hotels, hanok stays, and other lodgings in Suwon?",
+    "summary": "This site lists 27 hotels, hanok stays, and other lodgings in Suwon, and 27 of them include parking information. Below, you can compare the check-in and check-out times and the room and parking conditions of 10 key places.",
     "body": [
       {
-        "heading": "27 Hotels, Hanok Stays & Guesthouses and 26 Stays with Parking Info",
-        "text": "Based on Korea Tourism Organization TourAPI records, 27 lodging facilities are registered in Suwon across Suwon Station, Ingye-dong, Gwanggyo Convention Center, and Haenggung-dong, and 26 stays list parking availability."
+        "heading": "27 hotels and hanok stays, and 27 lodgings with parking information",
+        "text": "In Korea Tourism Organization TourAPI data, 27 lodgings are registered in Suwon, and 27 of them list a private parking lot or a nearby public parking lot."
       },
       {
-        "heading": "Comparing Check-In & Check-Out Times and On-Site Facilities",
-        "text": "Business hotels near Suwon Station, Gwanggyo, and Ingye-dong and traditional hanok stays inside the Hwaseong fortress walls differ in check-in and check-out. In addition, times, room counts, and dining or seminar facilities, so compare the fact tables of the 10 stays below."
+        "heading": "Compare check-in and check-out times by area: Suwon Station, Gwanggyo, and Haenggung-dong",
+        "text": "Business hotels near Suwon Station and Gwanggyo Convention Center and hanok stays near Hwaseong Haenggung Palace and Yeonmudae differ in check-in and check-out times, amenities, and parking. Compare the detailed fact tables of the 10 places below against your schedule."
       }
     ],
     "items": [
       {
         "place_slug": "nobotel-aembaeseodeo-suwon",
-        "reason": "Located in the Maesan-ro 1-ga area (parking: Sukso Nae Tusukgaek Free parking lot use Available , Gogeup Balletpaking Seobiseu Wanbi)."
+        "reason": "Nobotel Aembaeseodeo Suwon is a lodging with 287 guest rooms. Check-in is at 15:00, and check-out is at 12:00."
       },
       {
         "place_slug": "koteuyadeu-bai-merieoteu-suwon",
-        "reason": "Located in the Ha-dong area (parking: Tusukgaek Selpeu Jucha Free , rooms Dang 1 spaces Jiha 1 F Jucha Available , parking lot Jiha 5 F Available)."
+        "reason": "Koteuyadeu Bai Merieoteu Suwon is a lodging with 288 guest rooms. Check-in is at 15:00, and check-out is at 12:00."
       },
       {
         "place_slug": "ramadapeuraja-suwonhotel",
-        "reason": "Located in the Ingye-dong area (parking: Jiha 4 F Jucha Available , parking lot Ipgu Jobeum, Jucha Sigan Jehan None)."
+        "reason": "Ramadapeuraja Suwon Hotel is a lodging with 287 guest rooms. Check-in is at 15:00, and check-out is at 12:00."
       },
       {
         "place_slug": "ibiseu-aembaeseodeo-suwon",
-        "reason": "Located in the Ingye-dong area (category: Sukbak)."
+        "reason": "Ibiseu Aembaeseodeo Suwon is a lodging with 215 guest rooms. Check-in is at 14:00, and check-out is at 12:00."
       },
       {
         "place_slug": "dono-1796-hotel",
-        "reason": "Located in the Jangan-dong area (parking: Free Jucha)."
+        "reason": "Check-in at Dono 1796 Hotel is 15:00, and check-out is 12:00. Parking is available."
       },
       {
         "place_slug": "yeoyeojae",
-        "reason": "Located in the Sinpung-dong area (check-in: 15:00; check-out: 11:00)."
+        "reason": "Yeoyeojae is a lodging with 2 guest rooms, Western-style and Korean-style. Check-in is at 16:00, and check-out is at 12:00."
       },
       {
         "place_slug": "siwoljae",
-        "reason": "Located in the Yeonmu-dong area (check-in: 15:00; check-out: 11:00)."
+        "reason": "Siwoljae is a lodging with 1 Korean-style guest room. Check-in is at 15:00, and check-out is at 11:00."
       },
       {
         "place_slug": "133-patirum-hanokseuteijeom",
-        "reason": "Located in the Paldal-ro 2-ga area (check-in: 15:00; check-out: 11:00)."
+        "reason": "133 Patirum Hanok Seutei Branch is a lodging with 1 Korean-style guest room. Check-in is at 18:00, and check-out is at 11:00."
       },
       {
         "place_slug": "reubonsuwonsilkeurodeuhotel",
-        "reason": "Located in the Ingye-dong area (category: Sukbak)."
+        "reason": "Reubon Suwon Silkeurodeu Hotel is a lodging with 90 guest rooms. Check-in is at 15:00, and check-out is at 11:30."
       },
       {
         "place_slug": "hotel-areutte",
-        "reason": "Located in the Ingye-dong area (parking: Hotel Geonmul Nae Tawojucha Available , Sukbakgaek Charyang Jucha Available , Free Ballet Seobiseu Jegong)."
+        "reason": "Check-in at Hotel Areutte is 14:00 Sunday–Friday and 15:00 on Saturday; check-out is 11:00 Sunday–Friday and 12:00 on Saturday. Parking is available."
       }
     ],
     "faq": [
       {
-        "q": "How many total lodging facilities and stays with parking guidance are registered in Suwon?",
-        "a": "There are 27 hotels, hanok stays, and guesthouses in total, and 26 stays list parking information.",
+        "q": "How many lodgings are registered in Suwon in total, and how many have parking information?",
+        "a": "There are 27 lodgings, including hotels and hanok stays, and 27 of them have parking information.",
         "source": "한국관광공사 TourAPI"
       }
     ],
@@ -361,7 +361,7 @@
         "url": "https://api.visitkorea.or.kr/"
       }
     ],
-    "ko_hash": "a9958a1f4519d517",
-    "translated_at": "2026-10-23"
+    "ko_hash": "e090e2a9577a1863",
+    "translated_at": "2026-10-28"
   }
 }

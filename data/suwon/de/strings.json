@@ -2098,5 +2098,77 @@
   "provider:수원시": {
     "ko": "수원시",
     "de": "Stadt Suwon"
+  },
+  "FACT_LABELS.accessibility": {
+    "ko": "무장애 편의",
+    "de": "Barrierefreie Ausstattung"
+  },
+  "provider:한국관광공사 반려동물 동반여행(TourAPI)": {
+    "ko": "한국관광공사 반려동물 동반여행(TourAPI)",
+    "de": "Koreanische Tourismusorganisation – Reisen mit Haustieren (TourAPI)"
+  },
+  "provider:한국관광공사 무장애 여행 정보(TourAPI)": {
+    "ko": "한국관광공사 무장애 여행 정보(TourAPI)",
+    "de": "Koreanische Tourismusorganisation – Informationen zum barrierefreien Reisen (TourAPI)"
+  },
+  "provider:일월수목원 관람안내": {
+    "ko": "일월수목원 관람안내",
+    "de": "Irwol Arboretum – Besucherinformationen"
+  },
+  "provider:수원문화재단 XR버스 1795행 상세안내": {
+    "ko": "수원문화재단 XR버스 1795행 상세안내",
+    "de": "Kulturstiftung Suwon – Details zum XR-Bus 1795"
+  },
+  "provider:수원문화재단 화성어차 상세안내": {
+    "ko": "수원문화재단 화성어차 상세안내",
+    "de": "Kulturstiftung Suwon – Details zum Hwaseong-Zug"
+  },
+  "provider:수원문화재단 수원화성관광 관람안내": {
+    "ko": "수원문화재단 수원화성관광 관람안내",
+    "de": "Kulturstiftung Suwon – Besucherinformationen zum Tourismus an der Festung Suwon Hwaseong"
+  },
+  "provider:수원문화재단 수원화성관광 주차안내": {
+    "ko": "수원문화재단 수원화성관광 주차안내",
+    "de": "Kulturstiftung Suwon – Parkinformationen zum Tourismus an der Festung Suwon Hwaseong"
+  },
+  "provider:수원화성박물관 관람안내": {
+    "ko": "수원화성박물관 관람안내",
+    "de": "Museum der Festung Suwon Hwaseong – Besucherinformationen"
+  },
+  "provider:플라잉수원 홈페이지": {
+    "ko": "플라잉수원 홈페이지",
+    "de": "Website von Flying Suwon"
+  },
+  "provider:수원문화재단 플라잉 수원 상세안내": {
+    "ko": "수원문화재단 플라잉 수원 상세안내",
+    "de": "Kulturstiftung Suwon – Details zu Flying Suwon"
+  },
+  "provider:영흥수목원 관람안내": {
+    "ko": "영흥수목원 관람안내",
+    "de": "Yeongheung-Arboretum – Besucherinformationen"
+  },
+  "provider:수원광교박물관 관람안내": {
+    "ko": "수원광교박물관 관람안내",
+    "de": "Suwon-Gwanggyo-Museum – Besucherinformationen"
+  },
+  "provider:수원박물관 관람안내": {
+    "ko": "수원박물관 관람안내",
+    "de": "Suwon-Museum – Besucherinformationen"
+  },
+  "chrome.notice_free": {
+    "en": "{dates}: free admission",
+    "de": "{dates}: Eintritt frei"
+  },
+  "chrome.notice_fee_extra": {
+    "en": "programme fees extra",
+    "de": "Programmgebühren zusätzlich"
+  },
+  "chrome.notice_closed_works": {
+    "en": "from {date}: closed for construction — reopening date not announced",
+    "de": "ab {date}: wegen Bauarbeiten geschlossen – Wiedereröffnungstermin nicht bekannt gegeben"
+  },
+  "chrome.notice_closed_from": {
+    "en": "from {date}: closed — reopening date not announced",
+    "de": "ab {date}: geschlossen – Wiedereröffnungstermin nicht bekannt gegeben"
   }
 }

@@ -1,14 +1,14 @@
 {
   "gyeonggido-munhwasagye-bom-gyeonggi-sangsanghae-bom-peseuta": {
-    "series_name": "Quatre saisons culturelles du Gyeonggi : Festa de printemps Sangsang",
+    "series_name": "Quatre saisons culturelles de la province de Gyeonggi, « Printemps » : festival « Imaginez Gyeonggi au printemps »",
     "newest": {
-      "name": "Quatre saisons culturelles du Gyeonggi : Festa de printemps Sangsang",
-      "place_name": "Secteur du campus Gyeonggi Sangsang",
+      "name": "Quatre saisons culturelles de la province de Gyeonggi, « Printemps » : festival « Imaginez Gyeonggi au printemps »",
+      "place_name": "Campus Sangsang de Gyeonggi",
       "address": "166 Seodun-ro (Seodun-dong), Gwonseon-gu, Suwon-si, Gyeonggi-do",
       "fee": "Gratuit",
-      "sponsor": "Province du Gyeonggi / Fondation culturelle du Gyeonggi",
+      "playtime": "10:00–18:00",
+      "sponsor": "Province de Gyeonggi",
       "tel": "031-956-8318",
-      "summary": "Quatre saisons culturelles du Gyeonggi : Festa de printemps Sangsang est un événement organisé à Suwon du 2026-03-28 au 2026-03-29. Le lieu est Secteur du campus Gyeonggi Sangsang (166 Seodun-ro (Seodun-dong), Gwonseon-gu, Suwon-si, Gyeonggi-do). Il est organisé par Province du Gyeonggi / Fondation culturelle du Gyeonggi avec un tarif Gratuit (renseignements : 031-956-8318).",
       "notes": [],
       "id": "event-tourapi-3512510"
     },
@@ -18,21 +18,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "Organisation du tourisme de Corée TourAPI"
+      "한국관광공사 TourAPI": "TourAPI de l'Office national du tourisme coréen"
     },
-    "ko_hash": "d743b84791559c72",
-    "translated_at": "2026-10-23"
+    "ko_hash": "10e98528800a9b31",
+    "translated_at": "2026-10-28"
   },
   "manseokgeo-saebitchukje": {
-    "series_name": "Festival Saebit de Manseokgeo",
+    "series_name": "Festival des nouvelles lumières de Manseokgeo",
     "newest": {
-      "name": "Festival Saebit de Manseokgeo",
-      "place_name": "Secteur du parc Manseok (réservoir Manseokgeo)",
+      "name": "Festival des nouvelles lumières de Manseokgeo",
+      "place_name": "Environs de Manseokgeo (Parc Manseok)",
       "address": "1085 Jeongjo-ro (Songjuk-dong), Jangan-gu, Suwon-si, Gyeonggi-do",
       "fee": "Gratuit",
-      "sponsor": "Ville de Suwon",
+      "playtime": "18:30–21:10",
+      "sponsor": "Service du tourisme de la ville de Suwon",
       "tel": "031-5191-3084",
-      "summary": "Festival Saebit de Manseokgeo est un événement organisé à Suwon du 2026-04-03 au 2026-04-12. Le lieu est Secteur du parc Manseok (réservoir Manseokgeo) (1085 Jeongjo-ro (Songjuk-dong), Jangan-gu, Suwon-si, Gyeonggi-do). Il est organisé par Ville de Suwon avec un tarif Gratuit (renseignements : 031-5191-3084).",
       "notes": [],
       "id": "event-tourapi-3492561"
     },
@@ -42,21 +42,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "Organisation du tourisme de Corée TourAPI"
+      "한국관광공사 TourAPI": "TourAPI de l'Office national du tourisme coréen"
     },
-    "ko_hash": "c9793e0b8e73deb8",
-    "translated_at": "2026-10-23"
+    "ko_hash": "2f4b1c206df439c8",
+    "translated_at": "2026-10-28"
   },
   "keolcheoraunji-gyeonggi-jang": {
-    "series_name": "Salon culturel du Gyeonggi : Jang",
+    "series_name": "Culture Lounge Gyeonggi, « Jang » (le lieu de rencontre)",
     "newest": {
-      "name": "Salon culturel du Gyeonggi : Jang",
-      "place_name": "Secteur de l'hôtel de province et de la bibliothèque du Gyeonggi à Gwanggyo",
-      "address": "Docheongno Jiha36 (Iui-dong) Jiha, Suwon-si, Gyeonggi-do",
+      "name": "Culture Lounge Gyeonggi, « Jang » (le lieu de rencontre)",
+      "place_name": "Culture Lounge Gyeonggi Jang",
+      "address": "Underground, B36 Docheong-ro (Iui-dong), Yeongtong-gu, Suwon-si, Gyeonggi-do",
       "fee": "Gratuit",
-      "sponsor": "Province du Gyeonggi / Fondation culturelle du Gyeonggi",
+      "playtime": "10:00–18:00",
+      "sponsor": "Province de Gyeonggi",
       "tel": "031-259-4724",
-      "summary": "Salon culturel du Gyeonggi : Jang est un événement organisé à Suwon du 2026-04-18 au 2026-12-15. Le lieu est Secteur de l'hôtel de province et de la bibliothèque du Gyeonggi à Gwanggyo (Docheongno Jiha36 (Iui-dong) Jiha, Suwon-si, Gyeonggi-do). Il est organisé par Province du Gyeonggi / Fondation culturelle du Gyeonggi avec un tarif Gratuit (renseignements : 031-259-4724).",
       "notes": [],
       "id": "event-tourapi-4058556"
     },
@@ -66,21 +66,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "Organisation du tourisme de Corée TourAPI"
+      "한국관광공사 TourAPI": "TourAPI de l'Office national du tourisme coréen"
     },
-    "ko_hash": "120c191da4e684a1",
-    "translated_at": "2026-10-23"
+    "ko_hash": "823ecbe8e8fe96f8",
+    "translated_at": "2026-10-28"
   },
   "hwaseonghaenggung-yagangaejang": {
-    "series_name": "Ouverture nocturne du palais Hwaseong Haenggung",
+    "series_name": "Ouverture nocturne de Palais Hwaseong Haenggung",
     "newest": {
-      "name": "2026 Ouverture nocturne du palais Hwaseong Haenggung",
-      "place_name": "Secteur du palais Hwaseong Haenggung",
+      "name": "Ouverture nocturne de Palais Hwaseong Haenggung 2026",
+      "place_name": "Palais Hwaseong Haenggung",
       "address": "825 Jeongjo-ro (Namchang-dong), Paldal-gu, Suwon-si, Gyeonggi-do",
-      "fee": "Adultes 2 000 wons · Jeunes 1 500 wons · Enfants 1 000 wons (Hanbok Chagyong Si gratuit )",
-      "sponsor": "Ville de Suwon / Fondation culturelle de Suwon",
+      "fee": "- Adultes 2 000 wons - Jeunes / militaires 1 500 wons - Enfants 1 000 wons",
+      "playtime": "18:00–21:30",
+      "sponsor": "Ville de Suwon",
       "tel": "031-290-3600",
-      "summary": "2026 Ouverture nocturne du palais Hwaseong Haenggung est un événement organisé à Suwon du 2026-05-01 au 2026-11-01. Le lieu est Secteur du palais Hwaseong Haenggung (825 Jeongjo-ro (Namchang-dong), Paldal-gu, Suwon-si, Gyeonggi-do). Il est organisé par Ville de Suwon / Fondation culturelle de Suwon avec un tarif Adultes 2 000 wons · Jeunes 1 500 wons. De plus, pour ce lieu : Enfants 1 000 wons (Hanbok Chagyong Si gratuit ) (renseignements : 031-290-3600).",
       "notes": [],
       "id": "event-tourapi-2657619"
     },
@@ -90,21 +90,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "Organisation du tourisme de Corée TourAPI"
+      "한국관광공사 TourAPI": "TourAPI de l'Office national du tourisme coréen"
     },
-    "ko_hash": "30a8a5c3e7445166",
-    "translated_at": "2026-10-23"
+    "ko_hash": "f6584dea4767b952",
+    "translated_at": "2026-10-28"
   },
   "kkomanongbuui-keolleo-pam-daemoheom": {
-    "series_name": "Grande aventure de la ferme colorée des petits fermiers",
+    "series_name": "La grande aventure du petit fermier à la ferme des couleurs",
     "newest": {
-      "name": "Grande aventure de la ferme colorée des petits fermiers",
-      "place_name": "Secteur du musée national de l'agriculture",
+      "name": "La grande aventure du petit fermier à la ferme des couleurs",
+      "place_name": "Musée national de l'agriculture",
       "address": "154 Suin-ro (Seodun-dong), Gwonseon-gu, Suwon-si, Gyeonggi-do",
-      "fee": "gratuit (Ilbu Cheheom Yeyakje)",
+      "fee": "Gratuit",
+      "playtime": "10:00–18:00 (dernière entrée 17:00)",
       "sponsor": "Musée national de l'agriculture",
       "tel": "031-324-9114–5",
-      "summary": "Grande aventure de la ferme colorée des petits fermiers est un événement organisé à Suwon du 2026-05-05 au 2026-05-09. Le lieu est Secteur du musée national de l'agriculture (154 Suin-ro (Seodun-dong), Gwonseon-gu, Suwon-si, Gyeonggi-do). Il est organisé par Musée national de l'agriculture avec un tarif gratuit (Ilbu Cheheom Yeyakje) (renseignements : 031-324-9114–5).",
       "notes": [],
       "id": "event-tourapi-3114685"
     },
@@ -114,21 +114,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "Organisation du tourisme de Corée TourAPI"
+      "한국관광공사 TourAPI": "TourAPI de l'Office national du tourisme coréen"
     },
-    "ko_hash": "4c7225f2d33665fe",
-    "translated_at": "2026-10-23"
+    "ko_hash": "b974c10059212e7c",
+    "translated_at": "2026-10-28"
   },
   "suwonyeongeukchukje": {
     "series_name": "Festival de théâtre de Suwon",
     "newest": {
       "name": "Festival de théâtre de Suwon",
-      "place_name": "Secteur du campus Gyeonggi Sangsang",
-      "address": "166 Seodun-ro (Seodun-dong) Gyeonggisangsangkaempeoseu, Suwon-si, Gyeonggi-do",
+      "place_name": "Campus Sangsang de Gyeonggi",
+      "address": "Gyeonggi Sangsang Campus, 166 Seodun-ro (Seodun-dong), Gwonseon-gu, Suwon-si, Gyeonggi-do",
       "fee": "Gratuit",
-      "sponsor": "Ville de Suwon / Fondation culturelle de Suwon",
+      "playtime": "11:00–22:00",
+      "sponsor": "Ville spéciale de Suwon",
       "tel": "031-5191-2768",
-      "summary": "Festival de théâtre de Suwon est un événement organisé à Suwon du 2026-05-16 au 2026-05-17. Le lieu est Secteur du campus Gyeonggi Sangsang (166 Seodun-ro (Seodun-dong) Gyeonggisangsangkaempeoseu, Suwon-si, Gyeonggi-do). Il est organisé par Ville de Suwon / Fondation culturelle de Suwon avec un tarif Gratuit (renseignements : 031-5191-2768).",
       "notes": [],
       "id": "event-tourapi-577335"
     },
@@ -138,21 +138,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "Organisation du tourisme de Corée TourAPI"
+      "한국관광공사 TourAPI": "TourAPI de l'Office national du tourisme coréen"
     },
-    "ko_hash": "f458f599e53c2fa1",
-    "translated_at": "2026-10-23"
+    "ko_hash": "31c4f3f4e077606d",
+    "translated_at": "2026-10-28"
   },
   "gyeonggimi-gimbappeseuta": {
-    "series_name": "Festa du gimbap au riz du Gyeonggi",
+    "series_name": "Festival du gimbap au riz de Gyeonggi",
     "newest": {
-      "name": "Festa du gimbap au riz du Gyeonggi",
-      "place_name": "Secteur du palais des congrès de Suwon",
+      "name": "Festival du gimbap au riz de Gyeonggi",
+      "place_name": "Hall B de Centre des congrès de Suwon",
       "address": "140 Gwanggyojungang-ro (Ha-dong), Yeongtong-gu, Suwon-si, Gyeonggi-do",
       "fee": "Gratuit",
-      "sponsor": "Province du Gyeonggi / Institut agroalimentaire du Gyeonggi",
+      "playtime": "11:00–17:00",
+      "sponsor": "Province de Gyeonggi",
       "tel": "031-774-3312",
-      "summary": "Festa du gimbap au riz du Gyeonggi est un événement organisé à Suwon du 2026-06-13 au 2026-06-14. Le lieu est Secteur du palais des congrès de Suwon (140 Gwanggyojungang-ro (Ha-dong), Yeongtong-gu, Suwon-si, Gyeonggi-do). Il est organisé par Province du Gyeonggi / Institut agroalimentaire du Gyeonggi avec un tarif Gratuit (renseignements : 031-774-3312).",
       "notes": [],
       "id": "event-tourapi-3486730"
     },
@@ -162,21 +162,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "Organisation du tourisme de Corée TourAPI"
+      "한국관광공사 TourAPI": "TourAPI de l'Office national du tourisme coréen"
     },
-    "ko_hash": "d842c2c868ab79eb",
-    "translated_at": "2026-10-23"
+    "ko_hash": "b8820021492b37f7",
+    "translated_at": "2026-10-28"
   },
   "gyeonggiinhyeonggeukje-in-suwon": {
-    "series_name": "Festival de marionnettes du Gyeonggi à Suwon",
+    "series_name": "Festival de marionnettes de Gyeonggi à Suwon",
     "newest": {
-      "name": "2026 Festival de marionnettes du Gyeonggi à Suwon",
-      "place_name": "Secteur du campus Gyeonggi Sangsang et de Suwon",
+      "name": "Festival de marionnettes de Gyeonggi 2026 à Suwon",
+      "place_name": "Petit théâtre de Centre des arts de Gyeonggi / salle des congrès de Centre des arts de Gyeonggi / Maison des artistes de la Fondation culturelle de Gyeonggi (salle polyvalente)",
       "address": "166 Seodun-ro (Seodun-dong), Gwonseon-gu, Suwon-si, Gyeonggi-do",
-      "fee": "Gongyeonbyeol Sangi(Yaoe Peurogeuraem gratuit )",
-      "sponsor": "Comité du festival de marionnettes du Gyeonggi / Fondation culturelle du Gyeonggi",
+      "fee": "- 20 000 wons - Tarif réduit en prévente 14 000 wons",
+      "playtime": "10:30–17:00",
+      "sponsor": "Association de promotion du théâtre de marionnettes de Gyeonggi",
       "tel": "070-4681-0675",
-      "summary": "2026 Festival de marionnettes du Gyeonggi à Suwon est un événement organisé à Suwon du 2026-07-16 au 2026-07-22. Le lieu est Secteur du campus Gyeonggi Sangsang et de Suwon (166 Seodun-ro (Seodun-dong), Gwonseon-gu, Suwon-si, Gyeonggi-do). Il est organisé par Comité du festival de marionnettes du Gyeonggi / Fondation culturelle du Gyeonggi avec un tarif Gongyeonbyeol Sangi(Yaoe Peurogeuraem gratuit ) (renseignements : 070-4681-0675).",
       "notes": [],
       "id": "event-tourapi-1825520"
     },
@@ -186,21 +186,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "Organisation du tourisme de Corée TourAPI"
+      "한국관광공사 TourAPI": "TourAPI de l'Office national du tourisme coréen"
     },
-    "ko_hash": "40940879bd0faf49",
-    "translated_at": "2026-10-23"
+    "ko_hash": "7dc7158d11019d42",
+    "translated_at": "2026-10-28"
   },
   "suwon-gukgayusanyahaeng": {
-    "series_name": "Promenade nocturne du patrimoine de Suwon",
+    "series_name": "Promenade nocturne du patrimoine national de Suwon",
     "newest": {
-      "name": "Promenade nocturne du patrimoine de Suwon",
-      "place_name": "Secteur du palais Hwaseong Haenggung, du pavillon Banghwasuryujeong et de Haenggung-dong",
-      "address": "392 Suwoncheon-roBeongil, Suwon-si, Gyeonggi-do",
-      "fee": "gratuit (Ilbu Cheheom Payant )",
-      "sponsor": "Ville de Suwon / Fondation culturelle de Suwon",
+      "name": "Promenade nocturne du patrimoine national de Suwon",
+      "place_name": "Environs de la forteresse Hwaseong de Suwon",
+      "address": "Suwoncheon-ro 392beon-gil, Suwon-si, Gyeonggi-do",
+      "fee": "Entrée gratuite (certaines activités payantes)",
+      "playtime": "18:00–22:00",
+      "sponsor": "Ville spéciale de Suwon",
       "tel": "031-290-3562–5",
-      "summary": "Promenade nocturne du patrimoine de Suwon est un événement organisé à Suwon du 2026-08-14 au 2026-08-30. Le lieu est Secteur du palais Hwaseong Haenggung, du pavillon Banghwasuryujeong et de Haenggung-dong (392 Suwoncheon-roBeongil, Suwon-si, Gyeonggi-do). Il est organisé par Ville de Suwon / Fondation culturelle de Suwon avec un tarif gratuit (Ilbu Cheheom Payant ) (renseignements : 031-290-3562–5).",
       "notes": [],
       "id": "event-tourapi-1916616"
     },
@@ -210,21 +210,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "Organisation du tourisme de Corée TourAPI"
+      "한국관광공사 TourAPI": "TourAPI de l'Office national du tourisme coréen"
     },
-    "ko_hash": "1fe3f1afe7dc5708",
-    "translated_at": "2026-10-23"
+    "ko_hash": "fa85d515c565f7ad",
+    "translated_at": "2026-10-28"
   },
   "seogakonseoteu-syeollokhomjeu": {
-    "series_name": "Concert de la bibliothèque : Sherlock Holmes",
+    "series_name": "Concert Seoga : Sherlock Holmes",
     "newest": {
-      "name": "2026 Concert de la bibliothèque : Sherlock Holmes",
-      "place_name": "Petit théâtre du Centre des arts du Gyeonggi",
+      "name": "Concert Seoga 2026 : Sherlock Holmes",
+      "place_name": "Petit théâtre de Centre des arts de Gyeonggi",
       "address": "20 Hyowon-ro 307beon-gil (Ingye-dong), Paldal-gu, Suwon-si, Gyeonggi-do",
-      "fee": "Jeonseok 20 000 wons",
-      "sponsor": "Centre des arts du Gyeonggi",
+      "fee": "- Places R 35 000 wons - Places S 25 000 wons ※ Pour les autres tarifs réduits, consultez le site web officiel.",
+      "playtime": "19:30–21:00",
+      "sponsor": "Centre des arts de Gyeonggi (fondation)",
       "tel": "031-230-3268",
-      "summary": "2026 Concert de la bibliothèque : Sherlock Holmes est un événement organisé à Suwon du 2026-09-08 au 2026-09-08. Le lieu est Petit théâtre du Centre des arts du Gyeonggi (20 Hyowon-ro 307beon-gil (Ingye-dong), Paldal-gu, Suwon-si, Gyeonggi-do). Il est organisé par Centre des arts du Gyeonggi avec un tarif Jeonseok 20 000 wons (renseignements : 031-230-3268).",
       "notes": [],
       "id": "event-tourapi-4095402"
     },
@@ -234,21 +234,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "Organisation du tourisme de Corée TourAPI"
+      "한국관광공사 TourAPI": "TourAPI de l'Office national du tourisme coréen"
     },
-    "ko_hash": "20e0877f2d11fc3d",
-    "translated_at": "2026-10-23"
+    "ko_hash": "5be649bafa98c81d",
+    "translated_at": "2026-10-28"
   },
   "suwonjaejeupeseutibeol": {
     "series_name": "Festival de jazz de Suwon",
     "newest": {
       "name": "Festival de jazz de Suwon",
-      "place_name": "Secteur de la pelouse Jaeminan au parc du lac Gwanggyo",
+      "place_name": "« Champ amusant » de Parc du lac Gwanggyo (mur d'escalade sportive)",
       "address": "165 Gwanggyohosu-ro (Ha-dong), Yeongtong-gu, Suwon-si, Gyeonggi-do",
       "fee": "Gratuit",
-      "sponsor": "Ville de Suwon / Fondation culturelle de Suwon",
+      "playtime": "17:30–21:30",
+      "sponsor": "Ville de Suwon",
       "tel": "070-4945-9580",
-      "summary": "Festival de jazz de Suwon est un événement organisé à Suwon du 2026-09-18 au 2026-09-19. Le lieu est Secteur de la pelouse Jaeminan au parc du lac Gwanggyo (165 Gwanggyohosu-ro (Ha-dong), Yeongtong-gu, Suwon-si, Gyeonggi-do). Il est organisé par Ville de Suwon / Fondation culturelle de Suwon avec un tarif Gratuit (renseignements : 070-4945-9580).",
       "notes": [],
       "id": "event-tourapi-2616316"
     },
@@ -258,21 +258,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "Organisation du tourisme de Corée TourAPI"
+      "한국관광공사 TourAPI": "TourAPI de l'Office national du tourisme coréen"
     },
-    "ko_hash": "be542614324eb122",
-    "translated_at": "2026-10-23"
+    "ko_hash": "8e4e9aef97e3d12f",
+    "translated_at": "2026-10-28"
   },
   "suwonhwaseong-midieoateu": {
-    "series_name": "Spectacle d'art média de la forteresse Suwon Hwaseong",
+    "series_name": "Art numérique de la forteresse Hwaseong de Suwon",
     "newest": {
-      "name": "Spectacle d'art média de la forteresse Suwon Hwaseong",
-      "place_name": "Secteur des portes Hwaseomun et Janganmun et du parc Jangan",
+      "name": "Art numérique de la forteresse Hwaseong de Suwon",
+      "place_name": "Environs de la porte Hwaseomun de la forteresse Hwaseong de Suwon, de Parc Jangan et de Porte Janganmun",
       "address": "334 Jangan-dong, Paldal-gu, Suwon-si, Gyeonggi-do",
-      "fee": "gratuit (Ilbu Gwallamseok Payant )",
-      "sponsor": "Ville de Suwon / Fondation culturelle de Suwon",
-      "tel": "031-290-3622, 031-5191-3084",
-      "summary": "Spectacle d'art média de la forteresse Suwon Hwaseong est un événement organisé à Suwon du 2026-09-19 au 2026-10-06. Le lieu est Secteur des portes Hwaseomun et Janganmun et du parc Jangan (334 Jangan-dong, Paldal-gu, Suwon-si, Gyeonggi-do). Il est organisé par Ville de Suwon / Fondation culturelle de Suwon avec un tarif gratuit (Ilbu Gwallamseok Payant ) (renseignements : 031-290-3622, 031-5191-3084).",
+      "fee": "Entrée gratuite (certaines places payantes)",
+      "playtime": "18:00–22:00",
+      "sponsor": "Mairie de Suwon",
+      "tel": "031-290-3622 / 031-5191-3084",
       "notes": [],
       "id": "event-tourapi-2751090"
     },
@@ -282,21 +282,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "Organisation du tourisme de Corée TourAPI"
+      "한국관광공사 TourAPI": "TourAPI de l'Office national du tourisme coréen"
     },
-    "ko_hash": "eb895beddb47a6b7",
-    "translated_at": "2026-10-23"
+    "ko_hash": "8ed9cb500ce7f6b0",
+    "translated_at": "2026-10-28"
   },
   "suwonhwaseongmunhwaje": {
-    "series_name": "Festival culturel de la forteresse Suwon Hwaseong",
+    "series_name": "Festival culturel de la forteresse Hwaseong de Suwon",
     "newest": {
-      "name": "Festival culturel de la forteresse Suwon Hwaseong",
-      "place_name": "Secteur du palais Hwaseong Haenggung, de l'esplanade Haenggung et de Suwon Hwaseong",
-      "address": "825 Jeongjo-ro (Namchang-dong) Haenggunggwangjang, Suwon-si, Gyeonggi-do",
-      "fee": "gratuit (Ilbu Peurogeuraem Payant )",
-      "sponsor": "Ville de Suwon / Fondation culturelle de Suwon",
+      "name": "Festival culturel de la forteresse Hwaseong de Suwon",
+      "place_name": "Environs de la forteresse Hwaseong de Suwon",
+      "address": "Haenggung Plaza, 825 Jeongjo-ro (Namchang-dong), Paldal-gu, Suwon-si, Gyeonggi-do",
+      "fee": "Gratuit (payant pour certains programmes sur réservation préalable)",
+      "playtime": "12:00–21:00",
+      "sponsor": "Ville de Suwon, Comité d'organisation du Festival culturel de la forteresse Hwaseong de Suwon, Fondation culturelle de Suwon",
       "tel": "031-5191-3647",
-      "summary": "Festival culturel de la forteresse Suwon Hwaseong est un événement organisé à Suwon du 2026-10-04 au 2026-10-11. Le lieu est Secteur du palais Hwaseong Haenggung, de l'esplanade Haenggung et de Suwon Hwaseong (825 Jeongjo-ro (Namchang-dong) Haenggunggwangjang, Suwon-si, Gyeonggi-do). Il est organisé par Ville de Suwon / Fondation culturelle de Suwon avec un tarif gratuit (Ilbu Peurogeuraem Payant ) (renseignements : 031-5191-3647).",
       "notes": [],
       "id": "event-tourapi-914138"
     },
@@ -306,21 +306,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "Organisation du tourisme de Corée TourAPI"
+      "한국관광공사 TourAPI": "TourAPI de l'Office national du tourisme coréen"
     },
-    "ko_hash": "6246ff052a52caf2",
-    "translated_at": "2026-10-23"
+    "ko_hash": "0acf6eede6a6b878",
+    "translated_at": "2026-10-28"
   },
   "bulchwimugwiyasijang-sijeun-2": {
-    "series_name": "Marché de nuit Bulchwimugwi saison 2",
+    "series_name": "Marché de nuit « Pas de retour sans ivresse », saison 2",
     "newest": {
-      "name": "Marché de nuit Bulchwimugwi saison 2",
-      "place_name": "Secteur des marchés Nammun et Paldalmun de Suwon",
+      "name": "Marché de nuit « Pas de retour sans ivresse », saison 2",
+      "place_name": "Place du centre d'accueil des clients de Porte Paldalmun / environs du pont Jidong",
       "address": "9 Paldalmun-ro (Paldal-ro 2-ga), Paldal-gu, Suwon-si, Gyeonggi-do",
-      "fee": "admission gratuit (Meokgeori·Cheheom Byeoldo)",
-      "sponsor": "Ville de Suwon / Association des commerçants du marché Paldalmun",
+      "fee": "Gratuit",
+      "playtime": "17:00–22:00",
+      "sponsor": "Ville spéciale de Suwon",
       "tel": "031-8001-1101",
-      "summary": "Marché de nuit Bulchwimugwi saison 2 est un événement organisé à Suwon du 2026-10-10 au 2026-10-31. Le lieu est Secteur des marchés Nammun et Paldalmun de Suwon (9 Paldalmun-ro (Paldal-ro 2-ga), Paldal-gu, Suwon-si, Gyeonggi-do). Il est organisé par Ville de Suwon / Association des commerçants du marché Paldalmun avec un tarif admission gratuit (Meokgeori·Cheheom Byeoldo) (renseignements : 031-8001-1101).",
       "notes": [],
       "id": "event-tourapi-4099101"
     },
@@ -330,21 +330,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "Organisation du tourisme de Corée TourAPI"
+      "한국관광공사 TourAPI": "TourAPI de l'Office national du tourisme coréen"
     },
-    "ko_hash": "c6f12011b86a7dfb",
-    "translated_at": "2026-10-23"
+    "ko_hash": "32e591e625cf4f09",
+    "translated_at": "2026-10-28"
   },
   "daehanminguk-ai-kontencheu-eowojeu": {
-    "series_name": "Prix coréens des contenus IA",
+    "series_name": "Prix des contenus IA de Corée",
     "newest": {
-      "name": "2026 Prix coréens des contenus IA",
-      "place_name": "Secteur de Suwon Messe et Timevillas Suwon",
-      "address": "134 Sehwa-ro (Seodun-dong) 4F, Suwon-si, Gyeonggi-do",
+      "name": "Prix des contenus IA de Corée 2026",
+      "place_name": "Lotte Cinema Suwon",
+      "address": "4F, 134 Sehwa-ro (Seodun-dong), Gwonseon-gu, Suwon-si, Gyeonggi-do",
       "fee": "Gratuit",
-      "sponsor": "Province du Gyeonggi / Agence des contenus du Gyeonggi",
+      "playtime": "11:00–21:00",
+      "sponsor": "Province de Gyeonggi",
       "tel": "070-7575-2351",
-      "summary": "2026 Prix coréens des contenus IA est un événement organisé à Suwon du 2026-10-15 au 2026-10-16. Le lieu est Secteur de Suwon Messe et Timevillas Suwon (134 Sehwa-ro (Seodun-dong) 4F, Suwon-si, Gyeonggi-do). Il est organisé par Province du Gyeonggi / Agence des contenus du Gyeonggi avec un tarif Gratuit (renseignements : 070-7575-2351).",
       "notes": [],
       "id": "event-tourapi-3343831"
     },
@@ -354,21 +354,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "Organisation du tourisme de Corée TourAPI"
+      "한국관광공사 TourAPI": "TourAPI de l'Office national du tourisme coréen"
     },
-    "ko_hash": "cbed08e81b4da135",
-    "translated_at": "2026-10-23"
+    "ko_hash": "35673664b6c5c44f",
+    "translated_at": "2026-10-28"
   },
   "suwonteungnyesi-ballyeodongmul-hanmaeumchukje": {
-    "series_name": "Festival des animaux de compagnie de la ville de Suwon",
+    "series_name": "Festival « Un seul cœur » des animaux de compagnie de la Ville spéciale de Suwon",
     "newest": {
-      "name": "Festival des animaux de compagnie de la ville de Suwon",
-      "place_name": "Secteur du parc central de Gwanggyo",
-      "address": "216 Gwanggyojungang-ro (Ha-dong) Gwanggyojunganggongwon, Suwon-si, Gyeonggi-do",
+      "name": "Festival « Un seul cœur » des animaux de compagnie de la Ville spéciale de Suwon",
+      "place_name": "Parc central de Gwanggyo",
+      "address": "Gwanggyo Central Park, 216 Gwanggyojungang-ro (Ha-dong), Yeongtong-gu, Suwon-si, Gyeonggi-do",
       "fee": "Gratuit",
+      "playtime": "10:00–17:00",
       "sponsor": "Ville de Suwon",
       "tel": "031-5191-3328",
-      "summary": "Festival des animaux de compagnie de la ville de Suwon est un événement organisé à Suwon du 2026-10-24 au 2026-10-24. Le lieu est Secteur du parc central de Gwanggyo (216 Gwanggyojungang-ro (Ha-dong) Gwanggyojunganggongwon, Suwon-si, Gyeonggi-do). Il est organisé par Ville de Suwon avec un tarif Gratuit (renseignements : 031-5191-3328).",
       "notes": [],
       "id": "event-tourapi-4132933"
     },
@@ -378,21 +378,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "Organisation du tourisme de Corée TourAPI"
+      "한국관광공사 TourAPI": "TourAPI de l'Office national du tourisme coréen"
     },
-    "ko_hash": "e4ecbb94c75c4888",
-    "translated_at": "2026-10-23"
+    "ko_hash": "c46db3d592903d7b",
+    "translated_at": "2026-10-28"
   },
   "byutisseom-suwon": {
-    "series_name": "Beautysum Suwon",
+    "series_name": "Beautyssum Suwon",
     "newest": {
-      "name": "2026 Beautysum Suwon",
-      "place_name": "Hall d'exposition du palais des congrès de Suwon",
+      "name": "Beautyssum Suwon 2026",
+      "place_name": "Hall d'exposition du 1er étage de Centre des congrès de Suwon",
       "address": "140 Gwanggyojungang-ro (Ha-dong), Yeongtong-gu, Suwon-si, Gyeonggi-do",
-      "fee": "Sajeondeungnok gratuit (Hyeonjang Gumae Byeoldo)",
-      "sponsor": "Ville de Suwon / Palais des congrès de Suwon",
+      "fee": "10 000 wons (gratuit avec inscription préalable)",
+      "playtime": "10:00–17:00",
+      "sponsor": "Ville de Suwon",
       "tel": "02-6121-6229",
-      "summary": "2026 Beautysum Suwon est un événement organisé à Suwon du 2026-11-05 au 2026-11-07. Le lieu est Hall d'exposition du palais des congrès de Suwon (140 Gwanggyojungang-ro (Ha-dong), Yeongtong-gu, Suwon-si, Gyeonggi-do). Il est organisé par Ville de Suwon / Palais des congrès de Suwon avec un tarif Sajeondeungnok gratuit (Hyeonjang Gumae Byeoldo) (renseignements : 02-6121-6229).",
       "notes": [],
       "id": "event-tourapi-3552019"
     },
@@ -402,21 +402,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "Organisation du tourisme de Corée TourAPI"
+      "한국관광공사 TourAPI": "TourAPI de l'Office national du tourisme coréen"
     },
-    "ko_hash": "78390d603281b8f2",
-    "translated_at": "2026-10-23"
+    "ko_hash": "5075f5419e8d50a4",
+    "translated_at": "2026-10-28"
   },
   "gyeonggimi-dijeoteu-peseuta": {
-    "series_name": "Festa des desserts au riz du Gyeonggi",
+    "series_name": "Festival des desserts au riz de Gyeonggi",
     "newest": {
-      "name": "Festa des desserts au riz du Gyeonggi",
-      "place_name": "Secteur du parc des expositions Suwon Messe",
+      "name": "Festival des desserts au riz de Gyeonggi",
+      "place_name": "Hall d'exposition n° 1 de Suwon Messe",
       "address": "37 Sehwa-ro 134beon-gil (Seodun-dong), Gwonseon-gu, Suwon-si, Gyeonggi-do",
-      "fee": "gratuit (Sajeon Deungnok Si)",
-      "sponsor": "Province du Gyeonggi / Institut agroalimentaire du Gyeonggi",
+      "fee": "Gratuit",
+      "playtime": "11:00–17:00",
+      "sponsor": "Province de Gyeonggi",
       "tel": "031-774-3312",
-      "summary": "Festa des desserts au riz du Gyeonggi est un événement organisé à Suwon du 2026-11-21 au 2026-11-22. Le lieu est Secteur du parc des expositions Suwon Messe (37 Sehwa-ro 134beon-gil (Seodun-dong), Gwonseon-gu, Suwon-si, Gyeonggi-do). Il est organisé par Province du Gyeonggi / Institut agroalimentaire du Gyeonggi avec un tarif gratuit (Sajeon Deungnok Si) (renseignements : 031-774-3312).",
       "notes": [],
       "id": "event-tourapi-3368470"
     },
@@ -426,9 +426,9 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "Organisation du tourisme de Corée TourAPI"
+      "한국관광공사 TourAPI": "TourAPI de l'Office national du tourisme coréen"
     },
-    "ko_hash": "f86443f54a0e1902",
-    "translated_at": "2026-10-23"
+    "ko_hash": "e63fa7d66459d693",
+    "translated_at": "2026-10-28"
   }
 }

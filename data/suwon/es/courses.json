@@ -1,8 +1,8 @@
 {
   "suwon-course-1": {
     "slug": "hwaseong-haenggung-heritage",
-    "name": "Ruta 1 | Fortaleza Suwon Hwaseong, palacio Hwaseong Haenggung y pabellón Banghwasuryujeong",
-    "group": "Ruta de viaje",
+    "name": "Ruta 1: recorrido por la muralla de Suwon Hwaseong, Palacio Hwaseonghaenggung, Banghwasuryujeong y Calle Haengnidan-gil",
+    "group": "Itinerarios",
     "duration": "Excursión de un día",
     "summary": "",
     "stops": [
@@ -12,12 +12,12 @@
         "place_slug": "hwaseonghaenggung"
       },
       {
-        "name": "Suwon Hwaryeongjeon Shrine",
+        "name": "Santuario Hwaryeongjeon de Suwon",
         "note": "",
         "place_slug": "suwon-hwaryeongjeon"
       },
       {
-        "name": "Bell of Hyowon & Seojangdae Command Post",
+        "name": "Campana de Hyowon y Seojangdae",
         "note": "",
         "place_slug": "hyowonui-jong-seojangdae"
       },
@@ -48,12 +48,12 @@
       }
     ],
     "ko_hash": "44c05c8f6416f89a",
-    "translated_at": "2026-10-23"
+    "translated_at": "2026-10-28"
   },
   "suwon-course-2": {
     "slug": "yeonmudae-paldalmun-market",
-    "name": "Ruta 2 | Puerta Paldalmun, mercados Nammun y Motgol, calle del pollo frito y Haengnidan-gil",
-    "group": "Ruta de viaje",
+    "name": "Ruta 2: paseo a pie por Yeonmudae, Flying Suwon, Puerta Paldalmun, los mercados tradicionales y la calle del pollo frito",
+    "group": "Itinerarios",
     "duration": "Excursión de un día",
     "summary": "",
     "stops": [
@@ -63,12 +63,12 @@
         "place_slug": "yeonmudae"
       },
       {
-        "name": "Dongbukgongsimdon",
+        "name": "Atalaya Dongbuk Gongsimdon",
         "note": "",
         "place_slug": "dongbukgongsimdon"
       },
       {
-        "name": "Changnyongmun Gate",
+        "name": "Puerta Changnyongmun",
         "note": "",
         "place_slug": "changnyongmun"
       },
@@ -88,7 +88,7 @@
         "place_slug": "paldalmun"
       },
       {
-        "name": "Jidong Market",
+        "name": "Mercado Jidong",
         "note": "",
         "place_slug": "jidongsijang"
       },
@@ -99,17 +99,17 @@
       }
     ],
     "ko_hash": "27045435818760d4",
-    "translated_at": "2026-10-23"
+    "translated_at": "2026-10-28"
   },
   "suwon-course-3": {
     "slug": "gwanggyo-lake-aquaplanet",
-    "name": "Ruta 3 | Yeonmudae, globo Flying Suwon, Museo de Hwaseong y templo Bongnyeongsa",
-    "group": "Ruta de viaje",
+    "name": "Ruta 3: excursión a Parque del Lago Gwanggyo, Aqua Planet, el Museo de Gwanggyo y Museo de Suwon",
+    "group": "Itinerarios",
     "duration": "Excursión de un día",
     "summary": "",
     "stops": [
       {
-        "name": "Gwanggyo Lake Park",
+        "name": "Parque del Lago Gwanggyo",
         "note": "",
         "place_slug": "gwanggyohosugongwon"
       },
@@ -124,17 +124,17 @@
         "place_slug": "akuapeullanet-gwanggyo"
       },
       {
-        "name": "Suwonsiribateuseupeiseugwanggyo",
+        "name": "Espacio de Arte Municipal Gwanggyo de Suwon",
         "note": "",
         "place_slug": "suwonsiribateuseupeiseugwanggyo"
       },
       {
-        "name": "Gyeonggidoseogwan",
+        "name": "Biblioteca de Gyeonggi-do",
         "note": "",
         "place_slug": "gyeonggidoseogwan"
       },
       {
-        "name": "Suwon Gwanggyo Museum",
+        "name": "Museo Gwanggyo de Suwon",
         "note": "",
         "place_slug": "suwongwanggyobangmulgwan"
       },
@@ -144,13 +144,13 @@
         "place_slug": "suwonbangmulgwan"
       }
     ],
-    "ko_hash": "4e8421930bcdc930",
-    "translated_at": "2026-10-23"
+    "ko_hash": "176ef0a49695336d",
+    "translated_at": "2026-10-28"
   },
   "suwon-course-4": {
     "slug": "irwol-seoho-sangsang",
-    "name": "Ruta 4 | Parque del Lago Gwanggyo, Aqua Planet Gwanggyo y Museo de Suwon",
-    "group": "Ruta de viaje",
+    "name": "Ruta 4: paseo ecológico por Arboreto Irwol, Museo Nacional de Agricultura, Parque Seoho y Campus Sangsang de Gyeonggi",
+    "group": "Itinerarios",
     "duration": "Excursión de un día",
     "summary": "",
     "stops": [
@@ -160,22 +160,22 @@
         "place_slug": "irwolsumogwon"
       },
       {
-        "name": "Irwolhosugongwon",
+        "name": "Parque del Lago Irwol",
         "note": "",
         "place_slug": "irwolhosugongwon"
       },
       {
-        "name": "Seoho Park",
+        "name": "Parque Seoho",
         "note": "",
         "place_slug": "seohogongwon"
       },
       {
-        "name": "National Agricultural Museum",
+        "name": "Museo Nacional de Agricultura",
         "note": "",
         "place_slug": "gungnimnongeopbangmulgwan"
       },
       {
-        "name": "Gyeonggi Sangsang Campus",
+        "name": "Campus Sangsang de Gyeonggi",
         "note": "",
         "place_slug": "gyeonggisangsangkaempeoseu"
       },
@@ -185,23 +185,23 @@
         "place_slug": "byeolmadangdoseogwan-seutapildeu-suwonjeom"
       }
     ],
-    "ko_hash": "d984df49756853d4",
-    "translated_at": "2026-10-23"
+    "ko_hash": "73e08f13437af63b",
+    "translated_at": "2026-10-28"
   },
   "suwon-course-5": {
     "slug": "manseok-haeujae-jangan",
-    "name": "Ruta 5 | Arboreto Irwol, Starfield Suwon, Parque Manseok y Haewoojae en Jangan-gu",
-    "group": "Ruta de viaje",
+    "name": "Ruta 5: ruta de descanso por Jangan: Parque Manseok, Nosongjidae, Haewoojae y Sendero Gwanggyo Marugil",
+    "group": "Itinerarios",
     "duration": "Excursión de un día",
     "summary": "",
     "stops": [
       {
-        "name": "Manseok Park",
+        "name": "Parque Manseok",
         "note": "",
         "place_slug": "manseokgongwon"
       },
       {
-        "name": "Suwonsirimmanseokjeonsigwan",
+        "name": "Sala de Exposiciones Municipal Manseok de Suwon",
         "note": "",
         "place_slug": "suwonsirimmanseokjeonsigwan"
       },
@@ -211,48 +211,48 @@
         "place_slug": "nosongjidae"
       },
       {
-        "name": "Haewoojae Museum (Mr. Toilet House)",
+        "name": "Haewoojae",
         "note": "",
         "place_slug": "haeujae"
       },
       {
-        "name": "Suwon Bongnyeongsa Temple",
+        "name": "Templo Bongnyeongsa",
         "note": "",
         "place_slug": "bongnyeongsa"
       },
       {
-        "name": "Gwanggyomarugil",
+        "name": "Sendero Gwanggyo Marugil",
         "note": "",
         "place_slug": "gwanggyomarugil"
       }
     ],
-    "ko_hash": "209ad7503d46b9f4",
-    "translated_at": "2026-10-23"
+    "ko_hash": "93eeb281c8fb0a23",
+    "translated_at": "2026-10-28"
   },
   "suwon-course-6": {
     "slug": "wolhwawon-yeongheung-art",
-    "name": "Ruta 6 | Parque Seoho, Museo Agrícola Nacional, campus Sangsang y jardín Wolhwawon",
-    "group": "Ruta de viaje",
+    "name": "Ruta 6: recorrido por los jardines urbanos de Jardín Wolhwawon del Parque Hyowon, Arboreto Yeongheung y Samsung Innovation Museum",
+    "group": "Itinerarios",
     "duration": "Excursión de un día",
     "summary": "",
     "stops": [
       {
-        "name": "Wolhwawon Garden (Hyowon Park)",
+        "name": "Jardín Wolhwawon del Parque Hyowon",
         "note": "",
         "place_slug": "hyowongongwon-wolhwawon"
       },
       {
-        "name": "Hyowongongwon",
+        "name": "Parque Hyowon",
         "note": "",
         "place_slug": "hyowongongwon"
       },
       {
-        "name": "Gyeonggiateusenteo",
+        "name": "Centro de Arte de Gyeonggi",
         "note": "",
         "place_slug": "gyeonggiateusenteo"
       },
       {
-        "name": "Nahyeseokgeori",
+        "name": "Calle Na Hyeseok",
         "note": "",
         "place_slug": "nahyeseokgeori"
       },
@@ -262,7 +262,7 @@
         "place_slug": "samseonginobeisyeonmyujieom"
       },
       {
-        "name": "Yeongheung Arboretum",
+        "name": "Arboreto Yeongheung",
         "note": "",
         "place_slug": "yeongheungsumogwon"
       },
@@ -272,7 +272,7 @@
         "place_slug": "suwonsirimmisulgwan"
       }
     ],
-    "ko_hash": "62025c256cf5a24c",
-    "translated_at": "2026-10-23"
+    "ko_hash": "89c049ac40d92875",
+    "translated_at": "2026-10-28"
   }
 }

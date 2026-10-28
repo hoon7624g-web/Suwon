@@ -2098,5 +2098,77 @@
   "provider:수원시": {
     "ko": "수원시",
     "fr": "Ville de Suwon"
+  },
+  "FACT_LABELS.accessibility": {
+    "ko": "무장애 편의",
+    "fr": "Équipements sans obstacles"
+  },
+  "provider:한국관광공사 반려동물 동반여행(TourAPI)": {
+    "ko": "한국관광공사 반려동물 동반여행(TourAPI)",
+    "fr": "Office national du tourisme coréen, voyages avec animaux de compagnie (TourAPI)"
+  },
+  "provider:한국관광공사 무장애 여행 정보(TourAPI)": {
+    "ko": "한국관광공사 무장애 여행 정보(TourAPI)",
+    "fr": "Office national du tourisme coréen, informations de voyage sans obstacles (TourAPI)"
+  },
+  "provider:일월수목원 관람안내": {
+    "ko": "일월수목원 관람안내",
+    "fr": "Arboretum Ilwol, informations de visite"
+  },
+  "provider:수원문화재단 XR버스 1795행 상세안내": {
+    "ko": "수원문화재단 XR버스 1795행 상세안내",
+    "fr": "Fondation culturelle de Suwon, informations détaillées sur le bus XR « destination 1795 »"
+  },
+  "provider:수원문화재단 화성어차 상세안내": {
+    "ko": "수원문화재단 화성어차 상세안내",
+    "fr": "Fondation culturelle de Suwon, informations détaillées sur le petit train touristique de la forteresse Hwaseong"
+  },
+  "provider:수원문화재단 수원화성관광 관람안내": {
+    "ko": "수원문화재단 수원화성관광 관람안내",
+    "fr": "Fondation culturelle de Suwon, tourisme à la forteresse Hwaseong de Suwon : informations de visite"
+  },
+  "provider:수원문화재단 수원화성관광 주차안내": {
+    "ko": "수원문화재단 수원화성관광 주차안내",
+    "fr": "Fondation culturelle de Suwon, tourisme à la forteresse Hwaseong de Suwon : informations sur le stationnement"
+  },
+  "provider:수원화성박물관 관람안내": {
+    "ko": "수원화성박물관 관람안내",
+    "fr": "Musée de la forteresse Hwaseong de Suwon, informations de visite"
+  },
+  "provider:플라잉수원 홈페이지": {
+    "ko": "플라잉수원 홈페이지",
+    "fr": "Site web de Flying Suwon"
+  },
+  "provider:수원문화재단 플라잉 수원 상세안내": {
+    "ko": "수원문화재단 플라잉 수원 상세안내",
+    "fr": "Fondation culturelle de Suwon, informations détaillées sur Flying Suwon"
+  },
+  "provider:영흥수목원 관람안내": {
+    "ko": "영흥수목원 관람안내",
+    "fr": "Arboretum Yeongheung, informations de visite"
+  },
+  "provider:수원광교박물관 관람안내": {
+    "ko": "수원광교박물관 관람안내",
+    "fr": "Musée de Gwanggyo de Suwon, informations de visite"
+  },
+  "provider:수원박물관 관람안내": {
+    "ko": "수원박물관 관람안내",
+    "fr": "Musée de Suwon, informations de visite"
+  },
+  "chrome.notice_free": {
+    "en": "{dates}: free admission",
+    "fr": "{dates} : entrée gratuite"
+  },
+  "chrome.notice_fee_extra": {
+    "en": "programme fees extra",
+    "fr": "frais de programme en supplément"
+  },
+  "chrome.notice_closed_works": {
+    "en": "from {date}: closed for construction — reopening date not announced",
+    "fr": "à partir du {date} : fermé pour travaux — date de réouverture non annoncée"
+  },
+  "chrome.notice_closed_from": {
+    "en": "from {date}: closed — reopening date not announced",
+    "fr": "à partir du {date} : fermé — date de réouverture non annoncée"
   }
 }

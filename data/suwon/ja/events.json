@@ -1,14 +1,14 @@
 {
   "gyeonggido-munhwasagye-bom-gyeonggi-sangsanghae-bom-peseuta": {
-    "series_name": "京畿道文化四季「春」京畿想像春フェスタ",
+    "series_name": "京畿道文化四季「春」京畿・想像の春フェスタ",
     "newest": {
-      "name": "京畿道文化四季「春」京畿想像春フェスタ",
-      "place_name": "京畿想像キャンパス一帯",
+      "name": "京畿道文化四季「春」京畿・想像の春フェスタ",
+      "place_name": "京畿サンサンキャンパス",
       "address": "166 Seodun-ro (Seodun-dong), Gwonseon-gu, Suwon-si, Gyeonggi-do",
       "fee": "無料",
-      "sponsor": "京畿道／京畿文化財団",
+      "playtime": "10:00–18:00",
+      "sponsor": "京畿道",
       "tel": "031-956-8318",
-      "summary": "京畿道文化四季「春」京畿想像春フェスタは2026-03-28から2026-03-29まで水原で開催される行事です。会場は京畿想像キャンパス一帯（キョンキト スウォヌシ クォンソンク ソトゥンロ 166 （ソトゥントン））です。主催は京畿道／京畿文化財団で、料金は無料、問合せは031-956-8318です。",
       "notes": [],
       "id": "event-tourapi-3512510"
     },
@@ -20,19 +20,19 @@
     "sources": {
       "한국관광공사 TourAPI": "韓国観光公社 TourAPI"
     },
-    "ko_hash": "d743b84791559c72",
-    "translated_at": "2026-10-23"
+    "ko_hash": "10e98528800a9b31",
+    "translated_at": "2026-10-28"
   },
   "manseokgeo-saebitchukje": {
-    "series_name": "万石渠セビッ祭り",
+    "series_name": "万石渠新しい光祭り",
     "newest": {
-      "name": "万石渠セビッ祭り",
-      "place_name": "万石公園（万石渠）一帯",
+      "name": "万石渠新しい光祭り",
+      "place_name": "万石渠（万石公園）一帯",
       "address": "1085 Jeongjo-ro (Songjuk-dong), Jangan-gu, Suwon-si, Gyeonggi-do",
       "fee": "無料",
-      "sponsor": "水原特例市",
+      "playtime": "18:30–21:10",
+      "sponsor": "水原市観光課",
       "tel": "031-5191-3084",
-      "summary": "万石渠セビッ祭りは2026-04-03から2026-04-12まで水原で開催される行事です。会場は万石公園（万石渠）一帯（キョンキト スウォヌシ チャンアンク チョンチョロ 1085 （ソンチュクトン））です。主催は水原特例市で、料金は無料、問合せは031-5191-3084です。",
       "notes": [],
       "id": "event-tourapi-3492561"
     },
@@ -44,19 +44,19 @@
     "sources": {
       "한국관광공사 TourAPI": "韓国観光公社 TourAPI"
     },
-    "ko_hash": "c9793e0b8e73deb8",
-    "translated_at": "2026-10-23"
+    "ko_hash": "2f4b1c206df439c8",
+    "translated_at": "2026-10-28"
   },
   "keolcheoraunji-gyeonggi-jang": {
     "series_name": "カルチャーラウンジ京畿「場」",
     "newest": {
       "name": "カルチャーラウンジ京畿「場」",
-      "place_name": "京畿道庁・京畿図書館（光教）一帯",
-      "address": "Docheongno Jiha36 (Iui-dong) Jiha, Suwon-si, Gyeonggi-do",
+      "place_name": "カルチャーラウンジ京畿 場",
+      "address": "Underground, B36 Docheong-ro (Iui-dong), Yeongtong-gu, Suwon-si, Gyeonggi-do",
       "fee": "無料",
-      "sponsor": "京畿道／京畿文化財団",
+      "playtime": "10:00–18:00",
+      "sponsor": "京畿道",
       "tel": "031-259-4724",
-      "summary": "カルチャーラウンジ京畿「場」は2026-04-18から2026-12-15まで水原で開催される行事です。会場は京畿道庁・京畿図書館（光教）一帯（キョンキト スウォヌシ ヨントンク トチョンロ チハ 36 （イウィトン） チハ）です。主催は京畿道／京畿文化財団で、料金は無料、問合せは031-259-4724です。",
       "notes": [],
       "id": "event-tourapi-4058556"
     },
@@ -68,19 +68,19 @@
     "sources": {
       "한국관광공사 TourAPI": "韓国観光公社 TourAPI"
     },
-    "ko_hash": "120c191da4e684a1",
-    "translated_at": "2026-10-23"
+    "ko_hash": "823ecbe8e8fe96f8",
+    "translated_at": "2026-10-28"
   },
   "hwaseonghaenggung-yagangaejang": {
     "series_name": "華城行宮夜間開場",
     "newest": {
       "name": "2026 華城行宮夜間開場",
-      "place_name": "華城行宮一帯",
+      "place_name": "華城行宮",
       "address": "825 Jeongjo-ro (Namchang-dong), Paldal-gu, Suwon-si, Gyeonggi-do",
-      "fee": "大人 2,000ウォン · 青少年 1,500ウォン · 子供 1,000ウォン （ハンポク チャクヨン シ 無料 ）",
-      "sponsor": "水原特例市／水原文化財団",
+      "fee": "- 大人 2,000ウォン- 青少年/軍人 1,500ウォン- 子ども 1,000ウォン",
+      "playtime": "18:00–21:30",
+      "sponsor": "水原市",
       "tel": "031-290-3600",
-      "summary": "2026 華城行宮夜間開場は2026-05-01から2026-11-01まで水原で開催される行事です。会場は華城行宮一帯（キョンキト スウォヌシ パルタルク チョンチョロ 825 （ナムチャントン））です。主催は水原特例市／水原文化財団でです。料金は大人 2,000ウォン · 青少年 1,500ウォン · 子供 1,000ウォン （ハンポク チャクヨン シ 無料 ）、問合せは031-290-3600です。",
       "notes": [],
       "id": "event-tourapi-2657619"
     },
@@ -92,19 +92,19 @@
     "sources": {
       "한국관광공사 TourAPI": "韓国観光公社 TourAPI"
     },
-    "ko_hash": "30a8a5c3e7445166",
-    "translated_at": "2026-10-23"
+    "ko_hash": "f6584dea4767b952",
+    "translated_at": "2026-10-28"
   },
   "kkomanongbuui-keolleo-pam-daemoheom": {
     "series_name": "ちびっこ農夫のカラーファーム大冒険",
     "newest": {
       "name": "ちびっこ農夫のカラーファーム大冒険",
-      "place_name": "国立農業博物館一帯",
+      "place_name": "国立農業博物館",
       "address": "154 Suin-ro (Seodun-dong), Gwonseon-gu, Suwon-si, Gyeonggi-do",
-      "fee": "無料 （イルプ チェホム イェヤクチェ）",
+      "fee": "無料",
+      "playtime": "10:00–18:00（入場締切 17:00）",
       "sponsor": "国立農業博物館",
       "tel": "031-324-9114–5",
-      "summary": "ちびっこ農夫のカラーファーム大冒険は2026-05-05から2026-05-09まで水原で開催される行事です。会場は国立農業博物館一帯（キョンキト スウォヌシ クォンソンク スインロ 154 （ソトゥントン））です。主催は国立農業博物館で、料金は無料 （イルプ チェホム イェヤクチェ）、問合せは031-324-9114–5です。",
       "notes": [],
       "id": "event-tourapi-3114685"
     },
@@ -116,19 +116,19 @@
     "sources": {
       "한국관광공사 TourAPI": "韓国観光公社 TourAPI"
     },
-    "ko_hash": "4c7225f2d33665fe",
-    "translated_at": "2026-10-23"
+    "ko_hash": "b974c10059212e7c",
+    "translated_at": "2026-10-28"
   },
   "suwonyeongeukchukje": {
     "series_name": "水原演劇祭",
     "newest": {
       "name": "水原演劇祭",
-      "place_name": "京畿想像キャンパス一帯",
-      "address": "166 Seodun-ro (Seodun-dong) Gyeonggisangsangkaempeoseu, Suwon-si, Gyeonggi-do",
+      "place_name": "京畿サンサンキャンパス",
+      "address": "Gyeonggi Sangsang Campus, 166 Seodun-ro (Seodun-dong), Gwonseon-gu, Suwon-si, Gyeonggi-do",
       "fee": "無料",
-      "sponsor": "水原特例市／水原文化財団",
+      "playtime": "11:00–22:00",
+      "sponsor": "水原特例市",
       "tel": "031-5191-2768",
-      "summary": "水原演劇祭は2026-05-16から2026-05-17まで水原で開催される行事です。会場は京畿想像キャンパス一帯（キョンキト スウォヌシ クォンソンク ソトゥンロ 166 （ソトゥントン） キョンキサンサンケムポス）です。主催は水原特例市／水原文化財団で、料金は無料、問合せは031-5191-2768です。",
       "notes": [],
       "id": "event-tourapi-577335"
     },
@@ -140,19 +140,19 @@
     "sources": {
       "한국관광공사 TourAPI": "韓国観光公社 TourAPI"
     },
-    "ko_hash": "f458f599e53c2fa1",
-    "translated_at": "2026-10-23"
+    "ko_hash": "31c4f3f4e077606d",
+    "translated_at": "2026-10-28"
   },
   "gyeonggimi-gimbappeseuta": {
     "series_name": "京畿米キンパフェスタ",
     "newest": {
       "name": "京畿米キンパフェスタ",
-      "place_name": "水原コンベンションセンター一帯",
+      "place_name": "水原コンベンションセンター Bホール",
       "address": "140 Gwanggyojungang-ro (Ha-dong), Yeongtong-gu, Suwon-si, Gyeonggi-do",
       "fee": "無料",
-      "sponsor": "京畿道／京畿道農水産振興院",
+      "playtime": "11:00–17:00",
+      "sponsor": "京畿道",
       "tel": "031-774-3312",
-      "summary": "京畿米キンパフェスタは2026-06-13から2026-06-14まで水原で開催される行事です。会場は水原コンベンションセンター一帯（キョンキト スウォヌシ ヨントンク クァンキョチュンアンロ 140 （ハトン））です。主催は京畿道／京畿道農水産振興院で、料金は無料、問合せは031-774-3312です。",
       "notes": [],
       "id": "event-tourapi-3486730"
     },
@@ -164,19 +164,19 @@
     "sources": {
       "한국관광공사 TourAPI": "韓国観光公社 TourAPI"
     },
-    "ko_hash": "d842c2c868ab79eb",
-    "translated_at": "2026-10-23"
+    "ko_hash": "b8820021492b37f7",
+    "translated_at": "2026-10-28"
   },
   "gyeonggiinhyeonggeukje-in-suwon": {
     "series_name": "京畿人形劇祭 in 水原",
     "newest": {
       "name": "2026 京畿人形劇祭 in 水原",
-      "place_name": "京畿想像キャンパス・水原一帯",
+      "place_name": "京畿アートセンター小劇場 / 京畿アートセンターコンベンションホール / 京畿文化財団 芸術人の家（多目的ホール）",
       "address": "166 Seodun-ro (Seodun-dong), Gwonseon-gu, Suwon-si, Gyeonggi-do",
-      "fee": "コンヨンピョル サンイ（ヤウェ プロクレム 無料 ）",
-      "sponsor": "京畿人形劇祭組織委員会／京畿文化財団",
+      "fee": "- 20,000ウォン- アーリーバード割引価格 14,000ウォン",
+      "playtime": "10:30–17:00",
+      "sponsor": "社団法人 京畿人形劇振興会",
       "tel": "070-4681-0675",
-      "summary": "2026 京畿人形劇祭 in 水原は2026-07-16から2026-07-22まで水原で開催される行事です。会場は京畿想像キャンパス・水原一帯（キョンキト スウォヌシ クォンソンク ソトゥンロ 166 （ソトゥントン））です。主催は京畿人形劇祭組織委員会／京畿文化財団で、料金はコンヨンピョル サンイ（ヤウェ プロクレム 無料 ）、問合せは070-4681-0675です。",
       "notes": [],
       "id": "event-tourapi-1825520"
     },
@@ -188,19 +188,19 @@
     "sources": {
       "한국관광공사 TourAPI": "韓国観光公社 TourAPI"
     },
-    "ko_hash": "40940879bd0faf49",
-    "translated_at": "2026-10-23"
+    "ko_hash": "7dc7158d11019d42",
+    "translated_at": "2026-10-28"
   },
   "suwon-gukgayusanyahaeng": {
     "series_name": "水原国家遺産夜行",
     "newest": {
       "name": "水原国家遺産夜行",
-      "place_name": "華城行宮・訪花随柳亭・行宮洞一帯",
-      "address": "392 Suwoncheon-roBeongil, Suwon-si, Gyeonggi-do",
-      "fee": "無料 （イルプ チェホム 有料 ）",
-      "sponsor": "水原特例市／水原文化財団",
+      "place_name": "水原華城一帯",
+      "address": "Suwoncheon-ro 392beon-gil, Suwon-si, Gyeonggi-do",
+      "fee": "入場料無料（一部の体験プログラムは有料）",
+      "playtime": "18:00–22:00",
+      "sponsor": "水原特例市",
       "tel": "031-290-3562–5",
-      "summary": "水原国家遺産夜行は2026-08-14から2026-08-30まで水原で開催される行事です。会場は華城行宮・訪花随柳亭・行宮洞一帯（キョンキト スウォヌシ スウォヌチョンロ 392 ポンキル）です。主催は水原特例市／水原文化財団で、料金は無料 （イルプ チェホム 有料 ）、問合せは031-290-3562–5です。",
       "notes": [],
       "id": "event-tourapi-1916616"
     },
@@ -212,8 +212,8 @@
     "sources": {
       "한국관광공사 TourAPI": "韓国観光公社 TourAPI"
     },
-    "ko_hash": "1fe3f1afe7dc5708",
-    "translated_at": "2026-10-23"
+    "ko_hash": "fa85d515c565f7ad",
+    "translated_at": "2026-10-28"
   },
   "seogakonseoteu-syeollokhomjeu": {
     "series_name": "書架コンサート：シャーロック・ホームズ",
@@ -221,10 +221,10 @@
       "name": "2026 書架コンサート：シャーロック・ホームズ",
       "place_name": "京畿アートセンター小劇場",
       "address": "20 Hyowon-ro 307beon-gil (Ingye-dong), Paldal-gu, Suwon-si, Gyeonggi-do",
-      "fee": "チョンソク 20,000ウォン",
-      "sponsor": "京畿アートセンター",
+      "fee": "- R席 35,000ウォン- S席 25,000ウォン※ その他の割引券種は公式サイトを参照",
+      "playtime": "19:30–21:00",
+      "sponsor": "（財）京畿アートセンター",
       "tel": "031-230-3268",
-      "summary": "2026 書架コンサート：シャーロック・ホームズは2026-09-08から2026-09-08まで水原で開催される行事です。会場は京畿アートセンター小劇場（キョンキト スウォヌシ パルタルク ヒョウォヌロ 307 ポンキル 20 （インイェトン））です。主催は京畿アートセンターで、料金はチョンソク 20,000ウォン、問合せは031-230-3268です。",
       "notes": [],
       "id": "event-tourapi-4095402"
     },
@@ -236,19 +236,19 @@
     "sources": {
       "한국관광공사 TourAPI": "韓国観光公社 TourAPI"
     },
-    "ko_hash": "20e0877f2d11fc3d",
-    "translated_at": "2026-10-23"
+    "ko_hash": "5be649bafa98c81d",
+    "translated_at": "2026-10-28"
   },
   "suwonjaejeupeseutibeol": {
     "series_name": "水原ジャズフェスティバル",
     "newest": {
       "name": "水原ジャズフェスティバル",
-      "place_name": "光教湖水公園チェミナン広場一帯",
+      "place_name": "クァンギョ湖水公園 楽しい畑（スポーツクライミング場）",
       "address": "165 Gwanggyohosu-ro (Ha-dong), Yeongtong-gu, Suwon-si, Gyeonggi-do",
       "fee": "無料",
-      "sponsor": "水原特例市／水原文化財団",
+      "playtime": "17:30–21:30",
+      "sponsor": "水原市",
       "tel": "070-4945-9580",
-      "summary": "水原ジャズフェスティバルは2026-09-18から2026-09-19まで水原で開催される行事です。会場は光教湖水公園チェミナン広場一帯（キョンキト スウォヌシ ヨントンク クァンキョホスロ 165 （ハトン））です。主催は水原特例市／水原文化財団で、料金は無料、問合せは070-4945-9580です。",
       "notes": [],
       "id": "event-tourapi-2616316"
     },
@@ -260,19 +260,19 @@
     "sources": {
       "한국관광공사 TourAPI": "韓国観光公社 TourAPI"
     },
-    "ko_hash": "be542614324eb122",
-    "translated_at": "2026-10-23"
+    "ko_hash": "8e4e9aef97e3d12f",
+    "translated_at": "2026-10-28"
   },
   "suwonhwaseong-midieoateu": {
     "series_name": "水原華城メディアアート",
     "newest": {
       "name": "水原華城メディアアート",
-      "place_name": "水原華城の華西門・長安門・長安公園一帯",
+      "place_name": "水原華城 華西門、長安公園、長安門一帯",
       "address": "334 Jangan-dong, Paldal-gu, Suwon-si, Gyeonggi-do",
-      "fee": "無料 （イルプ クァンラムソク 有料 ）",
-      "sponsor": "水原特例市／水原文化財団",
-      "tel": "031-290-3622, 031-5191-3084",
-      "summary": "水原華城メディアアートは2026-09-19から2026-10-06まで水原で開催される行事です。会場は水原華城の華西門・長安門・長安公園一帯（キョンキト スウォヌシ パルタルク チャンアントン 334）です。主催は水原特例市／水原文化財団で、料金は無料 （イルプ クァンラムソク 有料 ）、問合せは031-290-3622, 031-5191-3084です。",
+      "fee": "入場料無料（一部の席は有料）",
+      "playtime": "18:00–22:00",
+      "sponsor": "水原市役所",
+      "tel": "031-290-3622 / 031-5191-3084",
       "notes": [],
       "id": "event-tourapi-2751090"
     },
@@ -284,19 +284,19 @@
     "sources": {
       "한국관광공사 TourAPI": "韓国観光公社 TourAPI"
     },
-    "ko_hash": "eb895beddb47a6b7",
-    "translated_at": "2026-10-23"
+    "ko_hash": "8ed9cb500ce7f6b0",
+    "translated_at": "2026-10-28"
   },
   "suwonhwaseongmunhwaje": {
     "series_name": "水原華城文化祭",
     "newest": {
       "name": "水原華城文化祭",
-      "place_name": "華城行宮・行宮広場・水原華城一帯",
-      "address": "825 Jeongjo-ro (Namchang-dong) Haenggunggwangjang, Suwon-si, Gyeonggi-do",
-      "fee": "無料 （イルプ プロクレム 有料 ）",
-      "sponsor": "水原特例市／水原文化財団",
+      "place_name": "水原華城一帯",
+      "address": "Haenggung Plaza, 825 Jeongjo-ro (Namchang-dong), Paldal-gu, Suwon-si, Gyeonggi-do",
+      "fee": "無料（一部の事前予約プログラムは有料）",
+      "playtime": "12:00–21:00",
+      "sponsor": "水原市、水原華城文化祭推進委員会、水原文化財団",
       "tel": "031-5191-3647",
-      "summary": "水原華城文化祭は2026-10-04から2026-10-11まで水原で開催される行事です。会場は華城行宮・行宮広場・水原華城一帯（キョンキト スウォヌシ パルタルク チョンチョロ 825 （ナムチャントン） ヘンクンクァンチャン）です。主催は水原特例市／水原文化財団で、料金は無料 （イルプ プロクレム 有料 ）、問合せは031-5191-3647です。",
       "notes": [],
       "id": "event-tourapi-914138"
     },
@@ -308,19 +308,19 @@
     "sources": {
       "한국관광공사 TourAPI": "韓国観光公社 TourAPI"
     },
-    "ko_hash": "6246ff052a52caf2",
-    "translated_at": "2026-10-23"
+    "ko_hash": "0acf6eede6a6b878",
+    "translated_at": "2026-10-28"
   },
   "bulchwimugwiyasijang-sijeun-2": {
-    "series_name": "不酔無帰夜市シーズン2",
+    "series_name": "不酔無帰夜市 シーズン2",
     "newest": {
-      "name": "不酔無帰夜市シーズン2",
-      "place_name": "水原南門市場・八達門市場一帯",
+      "name": "不酔無帰夜市 シーズン2",
+      "place_name": "八達門顧客支援センター広場 / 池洞橋一帯",
       "address": "9 Paldalmun-ro (Paldal-ro 2-ga), Paldal-gu, Suwon-si, Gyeonggi-do",
-      "fee": "入場 無料 （モクコリ·チェホム ピョルト）",
-      "sponsor": "水原特例市／八達門伝統市場商人会",
+      "fee": "無料",
+      "playtime": "17:00–22:00",
+      "sponsor": "水原特例市",
       "tel": "031-8001-1101",
-      "summary": "不酔無帰夜市シーズン2は2026-10-10から2026-10-31まで水原で開催される行事です。会場は水原南門市場・八達門市場一帯（キョンキト スウォヌシ パルタルク パルタルムンロ 9 （パルタルロ 2 カ））です。主催は水原特例市／八達門伝統市場商人会で、料金は入場 無料 （モクコリ·チェホム ピョルト）、問合せは031-8001-1101です。",
       "notes": [],
       "id": "event-tourapi-4099101"
     },
@@ -332,19 +332,19 @@
     "sources": {
       "한국관광공사 TourAPI": "韓国観光公社 TourAPI"
     },
-    "ko_hash": "c6f12011b86a7dfb",
-    "translated_at": "2026-10-23"
+    "ko_hash": "32e591e625cf4f09",
+    "translated_at": "2026-10-28"
   },
   "daehanminguk-ai-kontencheu-eowojeu": {
     "series_name": "大韓民国AIコンテンツアワード",
     "newest": {
       "name": "2026 大韓民国AIコンテンツアワード",
-      "place_name": "水原メッセ・タイムヴィラス水原一帯",
-      "address": "134 Sehwa-ro (Seodun-dong) 4F, Suwon-si, Gyeonggi-do",
+      "place_name": "水原ロッテシネマ",
+      "address": "4F, 134 Sehwa-ro (Seodun-dong), Gwonseon-gu, Suwon-si, Gyeonggi-do",
       "fee": "無料",
-      "sponsor": "京畿道／京畿コンテンツ振興院",
+      "playtime": "11:00–21:00",
+      "sponsor": "京畿道",
       "tel": "070-7575-2351",
-      "summary": "2026 大韓民国AIコンテンツアワードは2026-10-15から2026-10-16まで水原で開催される行事です。会場は水原メッセ・タイムヴィラス水原一帯（キョンキト スウォヌシ クォンソンク セファロ 134 （ソトゥントン） 4 階）です。主催は京畿道／京畿コンテンツ振興院で、料金は無料、問合せは070-7575-2351です。",
       "notes": [],
       "id": "event-tourapi-3343831"
     },
@@ -356,19 +356,19 @@
     "sources": {
       "한국관광공사 TourAPI": "韓国観光公社 TourAPI"
     },
-    "ko_hash": "cbed08e81b4da135",
-    "translated_at": "2026-10-23"
+    "ko_hash": "35673664b6c5c44f",
+    "translated_at": "2026-10-28"
   },
   "suwonteungnyesi-ballyeodongmul-hanmaeumchukje": {
-    "series_name": "水原特例市ペット共生フェスティバル",
+    "series_name": "水原特例市 ペット一心祭り",
     "newest": {
-      "name": "水原特例市ペット共生フェスティバル",
-      "place_name": "光教中央公園一帯",
-      "address": "216 Gwanggyojungang-ro (Ha-dong) Gwanggyojunganggongwon, Suwon-si, Gyeonggi-do",
+      "name": "水原特例市 ペット一心祭り",
+      "place_name": "クァンギョ中央公園",
+      "address": "Gwanggyo Central Park, 216 Gwanggyojungang-ro (Ha-dong), Yeongtong-gu, Suwon-si, Gyeonggi-do",
       "fee": "無料",
-      "sponsor": "水原特例市",
+      "playtime": "10:00–17:00",
+      "sponsor": "水原市",
       "tel": "031-5191-3328",
-      "summary": "水原特例市ペット共生フェスティバルは2026-10-24から2026-10-24まで水原で開催される行事です。会場は光教中央公園一帯（キョンキト スウォヌシ ヨントンク クァンキョチュンアンロ 216 （ハトン） クァンキョチュンアンコンウォヌ）です。主催は水原特例市で、料金は無料、問合せは031-5191-3328です。",
       "notes": [],
       "id": "event-tourapi-4132933"
     },
@@ -380,19 +380,19 @@
     "sources": {
       "한국관광공사 TourAPI": "韓国観光公社 TourAPI"
     },
-    "ko_hash": "e4ecbb94c75c4888",
-    "translated_at": "2026-10-23"
+    "ko_hash": "c46db3d592903d7b",
+    "translated_at": "2026-10-28"
   },
   "byutisseom-suwon": {
-    "series_name": "ビューティサム水原",
+    "series_name": "ビューティーサム水原",
     "newest": {
-      "name": "2026 ビューティサム水原",
-      "place_name": "水原コンベンションセンター展示場",
+      "name": "2026 ビューティーサム水原",
+      "place_name": "水原コンベンションセンター 1階展示ホール",
       "address": "140 Gwanggyojungang-ro (Ha-dong), Yeongtong-gu, Suwon-si, Gyeonggi-do",
-      "fee": "サチョントゥンロク 無料 （ヒョンチャン クメ ピョルト）",
-      "sponsor": "水原特例市／水原コンベンションセンター",
+      "fee": "10,000ウォン（事前登録で無料）",
+      "playtime": "10:00–17:00",
+      "sponsor": "水原市",
       "tel": "02-6121-6229",
-      "summary": "2026 ビューティサム水原は2026-11-05から2026-11-07まで水原で開催される行事です。会場は水原コンベンションセンター展示場（キョンキト スウォヌシ ヨントンク クァンキョチュンアンロ 140 （ハトン））です。主催は水原特例市／水原コンベンションセンターで、料金はサチョントゥンロク 無料 （ヒョンチャン クメ ピョルト）、問合せは02-6121-6229です。",
       "notes": [],
       "id": "event-tourapi-3552019"
     },
@@ -404,19 +404,19 @@
     "sources": {
       "한국관광공사 TourAPI": "韓国観光公社 TourAPI"
     },
-    "ko_hash": "78390d603281b8f2",
-    "translated_at": "2026-10-23"
+    "ko_hash": "5075f5419e8d50a4",
+    "translated_at": "2026-10-28"
   },
   "gyeonggimi-dijeoteu-peseuta": {
     "series_name": "京畿米デザートフェスタ",
     "newest": {
       "name": "京畿米デザートフェスタ",
-      "place_name": "水原メッセ一帯",
+      "place_name": "水原メッセ 第1展示場",
       "address": "37 Sehwa-ro 134beon-gil (Seodun-dong), Gwonseon-gu, Suwon-si, Gyeonggi-do",
-      "fee": "無料 （サチョン トゥンロク シ）",
-      "sponsor": "京畿道／京畿道農水産振興院",
+      "fee": "無料",
+      "playtime": "11:00–17:00",
+      "sponsor": "京畿道",
       "tel": "031-774-3312",
-      "summary": "京畿米デザートフェスタは2026-11-21から2026-11-22まで水原で開催される行事です。会場は水原メッセ一帯（キョンキト スウォヌシ クォンソンク セファロ 134 ポンキル 37 （ソトゥントン））です。主催は京畿道／京畿道農水産振興院で、料金は無料 （サチョン トゥンロク シ）、問合せは031-774-3312です。",
       "notes": [],
       "id": "event-tourapi-3368470"
     },
@@ -428,7 +428,7 @@
     "sources": {
       "한국관광공사 TourAPI": "韓国観光公社 TourAPI"
     },
-    "ko_hash": "f86443f54a0e1902",
-    "translated_at": "2026-10-23"
+    "ko_hash": "e63fa7d66459d693",
+    "translated_at": "2026-10-28"
   }
 }

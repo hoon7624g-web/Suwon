@@ -1,14 +1,14 @@
 {
   "gyeonggido-munhwasagye-bom-gyeonggi-sangsanghae-bom-peseuta": {
-    "series_name": "京畿道文化四季“春”京畿想象春庆典",
+    "series_name": "京畿道文化四季“春”京畿想象之春庆典",
     "newest": {
-      "name": "京畿道文化四季“春”京畿想象春庆典",
-      "place_name": "京畿想象校园一带",
+      "name": "京畿道文化四季“春”京畿想象之春庆典",
+      "place_name": "京畿想象校园",
       "address": "166 Seodun-ro (Seodun-dong), Gwonseon-gu, Suwon-si, Gyeonggi-do",
       "fee": "免费",
-      "sponsor": "京畿道 / 京畿文化财团",
+      "playtime": "10:00–18:00",
+      "sponsor": "京畿道",
       "tel": "031-956-8318",
-      "summary": "京畿道文化四季“春”京畿想象春庆典是于2026-03-28至2026-03-29在水原举办的活动。地点位于京畿想象校园一带（Gyeonggido Suwonsi Gwonseongu。此外，Seodullo 166 （Seodun-dong））。主办方为京畿道 / 京畿文化财团，费用为免费，咨询电话为031-956-8318。",
       "notes": [],
       "id": "event-tourapi-3512510"
     },
@@ -18,21 +18,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "韩国观光公社 TourAPI"
+      "한국관광공사 TourAPI": "韩国观光公社TourAPI"
     },
-    "ko_hash": "d743b84791559c72",
-    "translated_at": "2026-10-23"
+    "ko_hash": "10e98528800a9b31",
+    "translated_at": "2026-10-28"
   },
   "manseokgeo-saebitchukje": {
-    "series_name": "万石渠新光庆典",
+    "series_name": "万石渠新光节",
     "newest": {
-      "name": "万石渠新光庆典",
-      "place_name": "万石公园（万石渠）一带",
+      "name": "万石渠新光节",
+      "place_name": "万石渠（万石公园）一带",
       "address": "1085 Jeongjo-ro (Songjuk-dong), Jangan-gu, Suwon-si, Gyeonggi-do",
       "fee": "免费",
-      "sponsor": "水原特例市",
+      "playtime": "18:30–21:10",
+      "sponsor": "水原市观光科",
       "tel": "031-5191-3084",
-      "summary": "万石渠新光庆典是于2026-04-03至2026-04-12在水原举办的活动。地点位于万石公园（万石渠）一带（Gyeonggido Suwonsi Jangangu。此外，Jeongjoro 1085 （Songjuk-dong））。主办方为水原特例市，费用为免费，咨询电话为031-5191-3084。",
       "notes": [],
       "id": "event-tourapi-3492561"
     },
@@ -42,21 +42,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "韩国观光公社 TourAPI"
+      "한국관광공사 TourAPI": "韩国观光公社TourAPI"
     },
-    "ko_hash": "c9793e0b8e73deb8",
-    "translated_at": "2026-10-23"
+    "ko_hash": "2f4b1c206df439c8",
+    "translated_at": "2026-10-28"
   },
   "keolcheoraunji-gyeonggi-jang": {
-    "series_name": "京畿文化客厅“场”",
+    "series_name": "文化休息室京畿，场",
     "newest": {
-      "name": "京畿文化客厅“场”",
-      "place_name": "京畿道厅与京畿图书馆光教一带",
-      "address": "Docheongno Jiha36 (Iui-dong) Jiha, Suwon-si, Gyeonggi-do",
+      "name": "文化休息室京畿，场",
+      "place_name": "文化休息室京畿 场",
+      "address": "Underground, B36 Docheong-ro (Iui-dong), Yeongtong-gu, Suwon-si, Gyeonggi-do",
       "fee": "免费",
-      "sponsor": "京畿道 / 京畿文化财团",
+      "playtime": "10:00–18:00",
+      "sponsor": "京畿道",
       "tel": "031-259-4724",
-      "summary": "京畿文化客厅“场”是于2026-04-18至2026-12-15在水原举办的活动。地点位于京畿道厅与京畿图书馆光教一带（Gyeonggido Suwonsi Yeongtonggu。此外，Docheongno Jiha 36 （Iui-dong） Jiha）。主办方为京畿道 / 京畿文化财团，费用为免费，咨询电话为031-259-4724。",
       "notes": [],
       "id": "event-tourapi-4058556"
     },
@@ -66,21 +66,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "韩国观光公社 TourAPI"
+      "한국관광공사 TourAPI": "韩国观光公社TourAPI"
     },
-    "ko_hash": "120c191da4e684a1",
-    "translated_at": "2026-10-23"
+    "ko_hash": "823ecbe8e8fe96f8",
+    "translated_at": "2026-10-28"
   },
   "hwaseonghaenggung-yagangaejang": {
     "series_name": "华城行宫夜间开放",
     "newest": {
       "name": "2026 华城行宫夜间开放",
-      "place_name": "华城行宫一带",
+      "place_name": "华城行宫",
       "address": "825 Jeongjo-ro (Namchang-dong), Paldal-gu, Suwon-si, Gyeonggi-do",
-      "fee": "成人 2,000韩元 · 青少年 1,500韩元 · 儿童 1,000韩元 （Hanbok Chagyong Si 免费 ）",
-      "sponsor": "水原特例市 / 水原文化财团",
+      "fee": "- 成人 2,000韩元 - 青少年/军人 1,500韩元 - 儿童 1,000韩元",
+      "playtime": "18:00–21:30",
+      "sponsor": "水原市",
       "tel": "031-290-3600",
-      "summary": "2026 华城行宫夜间开放是于2026-05-01至2026-11-01在水原举办的活动。地点位于华城行宫一带（Gyeonggido Suwonsi Paldalgu Jeongjoro。此外，825 （Namchang-dong））。主办方为水原特例市 / 水原文化财团。费用为成人 2,000韩元 · 青少年 1,500韩元。儿童 1,000韩元 （Hanbok Chagyong Si 免费 ），咨询电话为031-290-3600。",
       "notes": [],
       "id": "event-tourapi-2657619"
     },
@@ -90,21 +90,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "韩国观光公社 TourAPI"
+      "한국관광공사 TourAPI": "韩国观光公社TourAPI"
     },
-    "ko_hash": "30a8a5c3e7445166",
-    "translated_at": "2026-10-23"
+    "ko_hash": "f6584dea4767b952",
+    "translated_at": "2026-10-28"
   },
   "kkomanongbuui-keolleo-pam-daemoheom": {
-    "series_name": "小农夫色彩农场大冒险",
+    "series_name": "小农夫的彩色农场大冒险",
     "newest": {
-      "name": "小农夫色彩农场大冒险",
-      "place_name": "国立农业博物馆一带",
+      "name": "小农夫的彩色农场大冒险",
+      "place_name": "国立农业博物馆",
       "address": "154 Suin-ro (Seodun-dong), Gwonseon-gu, Suwon-si, Gyeonggi-do",
-      "fee": "免费 （Ilbu Cheheom Yeyakje）",
+      "fee": "免费",
+      "playtime": "10:00–18:00（停止入场 17:00）",
       "sponsor": "国立农业博物馆",
       "tel": "031-324-9114–5",
-      "summary": "小农夫色彩农场大冒险是于2026-05-05至2026-05-09在水原举办的活动。地点位于国立农业博物馆一带（Gyeonggido Suwonsi Gwonseongu Suillo。此外，154 （Seodun-dong））。主办方为国立农业博物馆，费用为免费 （Ilbu Cheheom Yeyakje），咨询电话为031-324-9114–5。",
       "notes": [],
       "id": "event-tourapi-3114685"
     },
@@ -114,21 +114,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "韩国观光公社 TourAPI"
+      "한국관광공사 TourAPI": "韩国观光公社TourAPI"
     },
-    "ko_hash": "4c7225f2d33665fe",
-    "translated_at": "2026-10-23"
+    "ko_hash": "b974c10059212e7c",
+    "translated_at": "2026-10-28"
   },
   "suwonyeongeukchukje": {
     "series_name": "水原戏剧节",
     "newest": {
       "name": "水原戏剧节",
-      "place_name": "京畿想象校园一带",
-      "address": "166 Seodun-ro (Seodun-dong) Gyeonggisangsangkaempeoseu, Suwon-si, Gyeonggi-do",
+      "place_name": "京畿想象校园",
+      "address": "Gyeonggi Sangsang Campus, 166 Seodun-ro (Seodun-dong), Gwonseon-gu, Suwon-si, Gyeonggi-do",
       "fee": "免费",
-      "sponsor": "水原特例市 / 水原文化财团",
+      "playtime": "11:00–22:00",
+      "sponsor": "水原特例市",
       "tel": "031-5191-2768",
-      "summary": "水原戏剧节是于2026-05-16至2026-05-17在水原举办的活动。地点位于京畿想象校园一带（Gyeonggido Suwonsi Gwonseongu。此外，Seodullo 166 （Seodun-dong） Gyeonggisangsangkaempeoseu）。主办方为水原特例市 / 水原文化财团，费用为免费，咨询电话为031-5191-2768。",
       "notes": [],
       "id": "event-tourapi-577335"
     },
@@ -138,21 +138,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "韩国观光公社 TourAPI"
+      "한국관광공사 TourAPI": "韩国观光公社TourAPI"
     },
-    "ko_hash": "f458f599e53c2fa1",
-    "translated_at": "2026-10-23"
+    "ko_hash": "31c4f3f4e077606d",
+    "translated_at": "2026-10-28"
   },
   "gyeonggimi-gimbappeseuta": {
-    "series_name": "京畿大米紫菜包饭节",
+    "series_name": "京畿米紫菜包饭节",
     "newest": {
-      "name": "京畿大米紫菜包饭节",
-      "place_name": "水原会展中心一带",
+      "name": "京畿米紫菜包饭节",
+      "place_name": "水原会展中心 B厅",
       "address": "140 Gwanggyojungang-ro (Ha-dong), Yeongtong-gu, Suwon-si, Gyeonggi-do",
       "fee": "免费",
-      "sponsor": "京畿道 / 京畿道农水产振兴院",
+      "playtime": "11:00–17:00",
+      "sponsor": "京畿道",
       "tel": "031-774-3312",
-      "summary": "京畿大米紫菜包饭节是于2026-06-13至2026-06-14在水原举办的活动。地点位于水原会展中心一带（Gyeonggido Suwonsi Yeongtonggu。此外，Gwanggyojungangno 140 （Hadong））。主办方为京畿道 / 京畿道农水产振兴院，费用为免费，咨询电话为031-774-3312。",
       "notes": [],
       "id": "event-tourapi-3486730"
     },
@@ -162,21 +162,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "韩国观光公社 TourAPI"
+      "한국관광공사 TourAPI": "韩国观光公社TourAPI"
     },
-    "ko_hash": "d842c2c868ab79eb",
-    "translated_at": "2026-10-23"
+    "ko_hash": "b8820021492b37f7",
+    "translated_at": "2026-10-28"
   },
   "gyeonggiinhyeonggeukje-in-suwon": {
-    "series_name": "水原京畿木偶剧节",
+    "series_name": "京畿木偶剧节 in 水原",
     "newest": {
-      "name": "2026 水原京畿木偶剧节",
-      "place_name": "京畿想象校园与水原一带",
+      "name": "2026 京畿木偶剧节 in 水原",
+      "place_name": "京畿艺术中心小剧场 / 京畿艺术中心会议厅 / 京畿文化财团艺术人之家（多功能厅）",
       "address": "166 Seodun-ro (Seodun-dong), Gwonseon-gu, Suwon-si, Gyeonggi-do",
-      "fee": "Gongyeonbyeol Sangi（Yaoe Peurogeuraem 免费 ）",
-      "sponsor": "京畿木偶剧节组委会 / 京畿文化财团",
+      "fee": "- 20,000韩元 - 早鸟优惠价 14,000韩元",
+      "playtime": "10:30–17:00",
+      "sponsor": "社团法人京畿木偶剧振兴会",
       "tel": "070-4681-0675",
-      "summary": "2026 水原京畿木偶剧节是于2026-07-16至2026-07-22在水原举办的活动。地点位于京畿想象校园与水原一带（Gyeonggido Suwonsi Gwonseongu。此外，Seodullo 166 （Seodun-dong））。主办方为京畿木偶剧节组委会 / 京畿文化财团。费用为Gongyeonbyeol Sangi（Yaoe Peurogeuraem 免费 ），咨询电话为070-4681-0675。",
       "notes": [],
       "id": "event-tourapi-1825520"
     },
@@ -186,21 +186,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "韩国观光公社 TourAPI"
+      "한국관광공사 TourAPI": "韩国观光公社TourAPI"
     },
-    "ko_hash": "40940879bd0faf49",
-    "translated_at": "2026-10-23"
+    "ko_hash": "7dc7158d11019d42",
+    "translated_at": "2026-10-28"
   },
   "suwon-gukgayusanyahaeng": {
     "series_name": "水原国家遗产夜行",
     "newest": {
       "name": "水原国家遗产夜行",
-      "place_name": "华城行宫、访花随柳亭与行宫洞一带",
-      "address": "392 Suwoncheon-roBeongil, Suwon-si, Gyeonggi-do",
-      "fee": "免费 （Ilbu Cheheom 收费 ）",
-      "sponsor": "水原特例市 / 水原文化财团",
+      "place_name": "水原华城一带",
+      "address": "Suwoncheon-ro 392beon-gil, Suwon-si, Gyeonggi-do",
+      "fee": "门票免费（部分体验项目收费）",
+      "playtime": "18:00–22:00",
+      "sponsor": "水原特例市",
       "tel": "031-290-3562–5",
-      "summary": "水原国家遗产夜行是于2026-08-14至2026-08-30在水原举办的活动。地点位于华城行宫、访花随柳亭与行宫洞一带（Gyeonggido Suwonsi Suwoncheollo 392 Beongil）。主办方为水原特例市 / 水原文化财团，费用为免费 （Ilbu Cheheom 收费 ），咨询电话为031-290-3562–5。",
       "notes": [],
       "id": "event-tourapi-1916616"
     },
@@ -210,10 +210,10 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "韩国观光公社 TourAPI"
+      "한국관광공사 TourAPI": "韩国观光公社TourAPI"
     },
-    "ko_hash": "1fe3f1afe7dc5708",
-    "translated_at": "2026-10-23"
+    "ko_hash": "fa85d515c565f7ad",
+    "translated_at": "2026-10-28"
   },
   "seogakonseoteu-syeollokhomjeu": {
     "series_name": "书架音乐会：夏洛克·福尔摩斯",
@@ -221,10 +221,10 @@
       "name": "2026 书架音乐会：夏洛克·福尔摩斯",
       "place_name": "京畿艺术中心小剧场",
       "address": "20 Hyowon-ro 307beon-gil (Ingye-dong), Paldal-gu, Suwon-si, Gyeonggi-do",
-      "fee": "Jeonseok 20,000韩元",
-      "sponsor": "京畿艺术中心",
+      "fee": "- R席 35,000韩元 - S席 25,000韩元 ※ 其他优惠票种请参阅官网",
+      "playtime": "19:30–21:00",
+      "sponsor": "（财团法人）京畿艺术中心",
       "tel": "031-230-3268",
-      "summary": "2026 书架音乐会：夏洛克·福尔摩斯是于2026-09-08至2026-09-08在水原举办的活动。地点位于京畿艺术中心小剧场（Gyeonggido Suwonsi Paldalgu Hyowollo。此外，307 Beongil 20 （Ingye-dong））。主办方为京畿艺术中心，费用为Jeonseok 20,000韩元，咨询电话为031-230-3268。",
       "notes": [],
       "id": "event-tourapi-4095402"
     },
@@ -234,21 +234,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "韩国观光公社 TourAPI"
+      "한국관광공사 TourAPI": "韩国观光公社TourAPI"
     },
-    "ko_hash": "20e0877f2d11fc3d",
-    "translated_at": "2026-10-23"
+    "ko_hash": "5be649bafa98c81d",
+    "translated_at": "2026-10-28"
   },
   "suwonjaejeupeseutibeol": {
     "series_name": "水原爵士音乐节",
     "newest": {
       "name": "水原爵士音乐节",
-      "place_name": "光教湖水公园趣味草坪一带",
+      "place_name": "光教湖水公园趣味田（运动攀岩场）",
       "address": "165 Gwanggyohosu-ro (Ha-dong), Yeongtong-gu, Suwon-si, Gyeonggi-do",
       "fee": "免费",
-      "sponsor": "水原特例市 / 水原文化财团",
+      "playtime": "17:30–21:30",
+      "sponsor": "水原市",
       "tel": "070-4945-9580",
-      "summary": "水原爵士音乐节是于2026-09-18至2026-09-19在水原举办的活动。地点位于光教湖水公园趣味草坪一带（Gyeonggido Suwonsi Yeongtonggu。此外，Gwanggyohosuro 165 （Hadong））。主办方为水原特例市 / 水原文化财团，费用为免费，咨询电话为070-4945-9580。",
       "notes": [],
       "id": "event-tourapi-2616316"
     },
@@ -258,21 +258,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "韩国观光公社 TourAPI"
+      "한국관광공사 TourAPI": "韩国观光公社TourAPI"
     },
-    "ko_hash": "be542614324eb122",
-    "translated_at": "2026-10-23"
+    "ko_hash": "8e4e9aef97e3d12f",
+    "translated_at": "2026-10-28"
   },
   "suwonhwaseong-midieoateu": {
-    "series_name": "水原华城媒体艺术展",
+    "series_name": "水原华城媒体艺术",
     "newest": {
-      "name": "水原华城媒体艺术展",
-      "place_name": "水原华城华西门、长安门与长安公园一带",
+      "name": "水原华城媒体艺术",
+      "place_name": "水原华城华西门、长安公园、长安门一带",
       "address": "334 Jangan-dong, Paldal-gu, Suwon-si, Gyeonggi-do",
-      "fee": "免费 （Ilbu Gwallamseok 收费 ）",
-      "sponsor": "水原特例市 / 水原文化财团",
-      "tel": "031-290-3622, 031-5191-3084",
-      "summary": "水原华城媒体艺术展是于2026-09-19至2026-10-06在水原举办的活动。地点位于水原华城华西门、长安门与长安公园一带（Gyeonggido Suwonsi Paldalgu。此外，Jangan-dong 334）。主办方为水原特例市 / 水原文化财团，费用为免费 （Ilbu Gwallamseok 收费 ）。咨询电话为031-290-3622, 031-5191-3084。",
+      "fee": "门票免费（部分座位收费）",
+      "playtime": "18:00–22:00",
+      "sponsor": "水原市政府",
+      "tel": "031-290-3622 / 031-5191-3084",
       "notes": [],
       "id": "event-tourapi-2751090"
     },
@@ -282,21 +282,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "韩国观光公社 TourAPI"
+      "한국관광공사 TourAPI": "韩国观光公社TourAPI"
     },
-    "ko_hash": "eb895beddb47a6b7",
-    "translated_at": "2026-10-23"
+    "ko_hash": "8ed9cb500ce7f6b0",
+    "translated_at": "2026-10-28"
   },
   "suwonhwaseongmunhwaje": {
     "series_name": "水原华城文化节",
     "newest": {
       "name": "水原华城文化节",
-      "place_name": "华城行宫、行宫广场与水原华城一带",
-      "address": "825 Jeongjo-ro (Namchang-dong) Haenggunggwangjang, Suwon-si, Gyeonggi-do",
-      "fee": "免费 （Ilbu Peurogeuraem 收费 ）",
-      "sponsor": "水原特例市 / 水原文化财团",
+      "place_name": "水原华城一带",
+      "address": "Haenggung Plaza, 825 Jeongjo-ro (Namchang-dong), Paldal-gu, Suwon-si, Gyeonggi-do",
+      "fee": "免费（部分需提前预约的项目收费）",
+      "playtime": "12:00–21:00",
+      "sponsor": "水原市、水原华城文化节推进委员会、水原文化财团",
       "tel": "031-5191-3647",
-      "summary": "水原华城文化节是于2026-10-04至2026-10-11在水原举办的活动。地点位于华城行宫、行宫广场与水原华城一带（Gyeonggido Suwonsi Paldalgu。此外，Jeongjoro 825 （Namchang-dong） Haenggunggwangjang）。主办方为水原特例市 / 水原文化财团，费用为免费 （Ilbu Peurogeuraem 收费 ），咨询电话为031-5191-3647。",
       "notes": [],
       "id": "event-tourapi-914138"
     },
@@ -306,21 +306,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "韩国观光公社 TourAPI"
+      "한국관광공사 TourAPI": "韩国观光公社TourAPI"
     },
-    "ko_hash": "6246ff052a52caf2",
-    "translated_at": "2026-10-23"
+    "ko_hash": "0acf6eede6a6b878",
+    "translated_at": "2026-10-28"
   },
   "bulchwimugwiyasijang-sijeun-2": {
-    "series_name": "不醉无归夜市第2季",
+    "series_name": "不醉无归夜市 第2季",
     "newest": {
-      "name": "不醉无归夜市第2季",
-      "place_name": "水原南门市场与八达门市场一带",
+      "name": "不醉无归夜市 第2季",
+      "place_name": "八达门顾客支援中心广场 / Jidong桥一带",
       "address": "9 Paldalmun-ro (Paldal-ro 2-ga), Paldal-gu, Suwon-si, Gyeonggi-do",
-      "fee": "入场 免费 （Meokgeori·Cheheom Byeoldo）",
-      "sponsor": "水原特例市 / 八达门传统市场商人会",
+      "fee": "免费",
+      "playtime": "17:00–22:00",
+      "sponsor": "水原特例市",
       "tel": "031-8001-1101",
-      "summary": "不醉无归夜市第2季是于2026-10-10至2026-10-31在水原举办的活动。地点位于水原南门市场与八达门市场一带（Gyeonggido Suwonsi Paldalgu。此外，Paldalmullo 9 （Paldallo 2 Ga））。主办方为水原特例市 / 八达门传统市场商人会。费用为入场 免费 （Meokgeori·Cheheom Byeoldo），咨询电话为031-8001-1101。",
       "notes": [],
       "id": "event-tourapi-4099101"
     },
@@ -330,21 +330,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "韩国观光公社 TourAPI"
+      "한국관광공사 TourAPI": "韩国观光公社TourAPI"
     },
-    "ko_hash": "c6f12011b86a7dfb",
-    "translated_at": "2026-10-23"
+    "ko_hash": "32e591e625cf4f09",
+    "translated_at": "2026-10-28"
   },
   "daehanminguk-ai-kontencheu-eowojeu": {
     "series_name": "大韩民国AI内容大奖",
     "newest": {
       "name": "2026 大韩民国AI内容大奖",
-      "place_name": "水原Messe与水原Timevillas一带",
-      "address": "134 Sehwa-ro (Seodun-dong) 4F, Suwon-si, Gyeonggi-do",
+      "place_name": "水原乐天影院",
+      "address": "4F, 134 Sehwa-ro (Seodun-dong), Gwonseon-gu, Suwon-si, Gyeonggi-do",
       "fee": "免费",
-      "sponsor": "京畿道 / 京畿内容振兴院",
+      "playtime": "11:00–21:00",
+      "sponsor": "京畿道",
       "tel": "070-7575-2351",
-      "summary": "2026 大韩民国AI内容大奖是于2026-10-15至2026-10-16在水原举办的活动。地点位于水原Messe与水原Timevillas一带（Gyeonggido Suwonsi。Gwonseongu Sehwaro 134 （Seodun-dong） 4 层）。主办方为京畿道 / 京畿内容振兴院，费用为免费，咨询电话为070-7575-2351。",
       "notes": [],
       "id": "event-tourapi-3343831"
     },
@@ -354,21 +354,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "韩国观光公社 TourAPI"
+      "한국관광공사 TourAPI": "韩国观光公社TourAPI"
     },
-    "ko_hash": "cbed08e81b4da135",
-    "translated_at": "2026-10-23"
+    "ko_hash": "35673664b6c5c44f",
+    "translated_at": "2026-10-28"
   },
   "suwonteungnyesi-ballyeodongmul-hanmaeumchukje": {
-    "series_name": "水原特例市伴侣动物同心节",
+    "series_name": "水原特例市宠物同心庆典",
     "newest": {
-      "name": "水原特例市伴侣动物同心节",
-      "place_name": "光教中央公园一带",
-      "address": "216 Gwanggyojungang-ro (Ha-dong) Gwanggyojunganggongwon, Suwon-si, Gyeonggi-do",
+      "name": "水原特例市宠物同心庆典",
+      "place_name": "光教中央公园",
+      "address": "Gwanggyo Central Park, 216 Gwanggyojungang-ro (Ha-dong), Yeongtong-gu, Suwon-si, Gyeonggi-do",
       "fee": "免费",
-      "sponsor": "水原特例市",
+      "playtime": "10:00–17:00",
+      "sponsor": "水原市",
       "tel": "031-5191-3328",
-      "summary": "水原特例市伴侣动物同心节是于2026-10-24至2026-10-24在水原举办的活动。地点位于光教中央公园一带（Gyeonggido Suwonsi Yeongtonggu。此外，Gwanggyojungangno 216 （Hadong） Gwanggyojunganggongwon）。主办方为水原特例市，费用为免费，咨询电话为031-5191-3328。",
       "notes": [],
       "id": "event-tourapi-4132933"
     },
@@ -378,21 +378,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "韩国观光公社 TourAPI"
+      "한국관광공사 TourAPI": "韩国观光公社TourAPI"
     },
-    "ko_hash": "e4ecbb94c75c4888",
-    "translated_at": "2026-10-23"
+    "ko_hash": "c46db3d592903d7b",
+    "translated_at": "2026-10-28"
   },
   "byutisseom-suwon": {
-    "series_name": "水原Beautysum美妆展",
+    "series_name": "Beautyssum水原",
     "newest": {
-      "name": "2026 水原Beautysum美妆展",
-      "place_name": "水原会展中心展厅",
+      "name": "2026 Beautyssum水原",
+      "place_name": "水原会展中心 1层展厅",
       "address": "140 Gwanggyojungang-ro (Ha-dong), Yeongtong-gu, Suwon-si, Gyeonggi-do",
-      "fee": "Sajeondeungnok 免费 （Hyeonjang Gumae Byeoldo）",
-      "sponsor": "水原特例市 / 水原会展中心",
+      "fee": "10,000韩元（提前登记免费）",
+      "playtime": "10:00–17:00",
+      "sponsor": "水原市",
       "tel": "02-6121-6229",
-      "summary": "2026 水原Beautysum美妆展是于2026-11-05至2026-11-07在水原举办的活动。地点位于水原会展中心展厅（Gyeonggido Suwonsi Yeongtonggu。此外，Gwanggyojungangno 140 （Hadong））。主办方为水原特例市 / 水原会展中心。费用为Sajeondeungnok 免费 （Hyeonjang Gumae Byeoldo），咨询电话为02-6121-6229。",
       "notes": [],
       "id": "event-tourapi-3552019"
     },
@@ -402,21 +402,21 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "韩国观光公社 TourAPI"
+      "한국관광공사 TourAPI": "韩国观光公社TourAPI"
     },
-    "ko_hash": "78390d603281b8f2",
-    "translated_at": "2026-10-23"
+    "ko_hash": "5075f5419e8d50a4",
+    "translated_at": "2026-10-28"
   },
   "gyeonggimi-dijeoteu-peseuta": {
-    "series_name": "京畿大米甜点节",
+    "series_name": "京畿米甜点节",
     "newest": {
-      "name": "京畿大米甜点节",
-      "place_name": "水原Messe展览中心一带",
+      "name": "京畿米甜点节",
+      "place_name": "水原Messe第1展馆",
       "address": "37 Sehwa-ro 134beon-gil (Seodun-dong), Gwonseon-gu, Suwon-si, Gyeonggi-do",
-      "fee": "免费 （Sajeon Deungnok Si）",
-      "sponsor": "京畿道 / 京畿道农水产振兴院",
+      "fee": "免费",
+      "playtime": "11:00–17:00",
+      "sponsor": "京畿道",
       "tel": "031-774-3312",
-      "summary": "京畿大米甜点节是于2026-11-21至2026-11-22在水原举办的活动。地点位于水原Messe展览中心一带（Gyeonggido Suwonsi Gwonseongu。此外，Sehwaro 134 Beongil 37 （Seodun-dong））。主办方为京畿道 / 京畿道农水产振兴院，费用为免费 （Sajeon Deungnok Si），咨询电话为031-774-3312。",
       "notes": [],
       "id": "event-tourapi-3368470"
     },
@@ -426,9 +426,9 @@
     "usual": [],
     "editions": [],
     "sources": {
-      "한국관광공사 TourAPI": "韩国观光公社 TourAPI"
+      "한국관광공사 TourAPI": "韩国观光公社TourAPI"
     },
-    "ko_hash": "f86443f54a0e1902",
-    "translated_at": "2026-10-23"
+    "ko_hash": "e63fa7d66459d693",
+    "translated_at": "2026-10-28"
   }
 }

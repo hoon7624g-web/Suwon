@@ -1,8 +1,8 @@
 {
   "suwon-course-1": {
     "slug": "hwaseong-haenggung-heritage",
-    "name": "路線1｜水原華城·華城行宮·訪花隨柳亭王宮城郭漫步",
-    "group": "路線旅行",
+    "name": "第1路線 水原華城、華城行宮、訪花隨柳亭、行理團路城郭之旅",
+    "group": "路線旅遊",
     "duration": "一日遊",
     "summary": "",
     "stops": [
@@ -12,7 +12,7 @@
         "place_slug": "hwaseonghaenggung"
       },
       {
-        "name": "水原 華寧殿",
+        "name": "水原華寧殿",
         "note": "",
         "place_slug": "suwon-hwaryeongjeon"
       },
@@ -48,12 +48,12 @@
       }
     ],
     "ko_hash": "44c05c8f6416f89a",
-    "translated_at": "2026-10-23"
+    "translated_at": "2026-10-28"
   },
   "suwon-course-2": {
     "slug": "yeonmudae-paldalmun-market",
-    "name": "路線2｜八達門·南門與池洞市場·水原炸雞街·行理團路街巷之旅",
-    "group": "路線旅行",
+    "name": "第2路線 鍊武臺、Flying水原、八達門、傳統市場、炸雞街徒步之旅",
+    "group": "路線旅遊",
     "duration": "一日遊",
     "summary": "",
     "stops": [
@@ -99,12 +99,12 @@
       }
     ],
     "ko_hash": "27045435818760d4",
-    "translated_at": "2026-10-23"
+    "translated_at": "2026-10-28"
   },
   "suwon-course-3": {
     "slug": "gwanggyo-lake-aquaplanet",
-    "name": "路線3｜練武臺·飛越水原熱氣球·水原華城博物館·奉寧寺東城郭漫遊",
-    "group": "路線旅行",
+    "name": "第3路線 光教湖水公園、Aqua Planet、光教博物館、水原博物館遊覽",
+    "group": "路線旅遊",
     "duration": "一日遊",
     "summary": "",
     "stops": [
@@ -119,17 +119,17 @@
         "place_slug": "gwanggyo-peuraibureukeujeonmangdae"
       },
       {
-        "name": "光教Aqua Planet水族館",
+        "name": "Aqua Planet光教",
         "note": "",
         "place_slug": "akuapeullanet-gwanggyo"
       },
       {
-        "name": "水原市 Ribateuseupeiseu 光教",
+        "name": "水原市立藝術空間光教",
         "note": "",
         "place_slug": "suwonsiribateuseupeiseugwanggyo"
       },
       {
-        "name": "Gyeonggi 圖書館",
+        "name": "京畿圖書館",
         "note": "",
         "place_slug": "gyeonggidoseogwan"
       },
@@ -144,13 +144,13 @@
         "place_slug": "suwonbangmulgwan"
       }
     ],
-    "ko_hash": "4e8421930bcdc930",
-    "translated_at": "2026-10-23"
+    "ko_hash": "176ef0a49695336d",
+    "translated_at": "2026-10-28"
   },
   "suwon-course-4": {
     "slug": "irwol-seoho-sangsang",
-    "name": "路線4｜光教湖水公園·光教Aqua Planet水族館·水原博物館水畔之旅",
-    "group": "路線旅行",
+    "name": "第4路線 日月樹木園、國立農業博物館、西湖公園、京畿想像校園生態散步",
+    "group": "路線旅遊",
     "duration": "一日遊",
     "summary": "",
     "stops": [
@@ -160,7 +160,7 @@
         "place_slug": "irwolsumogwon"
       },
       {
-        "name": "Irwolhosu 公園",
+        "name": "日月湖水公園",
         "note": "",
         "place_slug": "irwolhosugongwon"
       },
@@ -185,13 +185,13 @@
         "place_slug": "byeolmadangdoseogwan-seutapildeu-suwonjeom"
       }
     ],
-    "ko_hash": "d984df49756853d4",
-    "translated_at": "2026-10-23"
+    "ko_hash": "73e08f13437af63b",
+    "translated_at": "2026-10-28"
   },
   "suwon-course-5": {
     "slug": "manseok-haeujae-jangan",
-    "name": "路線5｜日月樹木園·水原Starfield·萬石公園·解憂齋長安區漫步",
-    "group": "路線旅行",
+    "name": "第5路線 萬石公園、老松地帶、解憂齋、光教Maru路長安療癒路線",
+    "group": "路線旅遊",
     "duration": "一日遊",
     "summary": "",
     "stops": [
@@ -201,7 +201,7 @@
         "place_slug": "manseokgongwon"
       },
       {
-        "name": "水原市 Rimmanseok 展覽館",
+        "name": "水原市立萬石展示館",
         "note": "",
         "place_slug": "suwonsirimmanseokjeonsigwan"
       },
@@ -221,23 +221,23 @@
         "place_slug": "bongnyeongsa"
       },
       {
-        "name": "光教 Marugil",
+        "name": "光教Maru路",
         "note": "",
         "place_slug": "gwanggyomarugil"
       }
     ],
-    "ko_hash": "209ad7503d46b9f4",
-    "translated_at": "2026-10-23"
+    "ko_hash": "93eeb281c8fb0a23",
+    "translated_at": "2026-10-28"
   },
   "suwon-course-6": {
     "slug": "wolhwawon-yeongheung-art",
-    "name": "路線6｜西湖公園·國立農業博物館·京畿想像校園·粵華苑園林漫遊",
-    "group": "路線旅行",
+    "name": "第6路線 孝園公園粵華苑、靈興樹木園、三星創新博物館市區庭園之旅",
+    "group": "路線旅遊",
     "duration": "一日遊",
     "summary": "",
     "stops": [
       {
-        "name": "孝園公園 粵華苑",
+        "name": "孝園公園粵華苑",
         "note": "",
         "place_slug": "hyowongongwon-wolhwawon"
       },
@@ -252,7 +252,7 @@
         "place_slug": "gyeonggiateusenteo"
       },
       {
-        "name": "Nahyeseokgeori",
+        "name": "羅蕙錫街",
         "note": "",
         "place_slug": "nahyeseokgeori"
       },
@@ -272,7 +272,7 @@
         "place_slug": "suwonsirimmisulgwan"
       }
     ],
-    "ko_hash": "62025c256cf5a24c",
-    "translated_at": "2026-10-23"
+    "ko_hash": "89c049ac40d92875",
+    "translated_at": "2026-10-28"
   }
 }

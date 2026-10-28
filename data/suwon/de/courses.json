@@ -1,9 +1,9 @@
 {
   "suwon-course-1": {
     "slug": "hwaseong-haenggung-heritage",
-    "name": "Route 1 | Festung Suwon Hwaseong, Palast Hwaseong Haenggung und Pavillon Banghwasuryujeong",
-    "group": "Reiseroute",
-    "duration": "Tagestour",
+    "name": "Route 1: Festungstour über die Festung Suwon Hwaseong, Palast Hwaseong Haenggung, den Pavillon Banghwasuryujeong und Straße Haengnidan-gil",
+    "group": "Reiserouten",
+    "duration": "Tagesausflug",
     "summary": "",
     "stops": [
       {
@@ -12,22 +12,22 @@
         "place_slug": "hwaseonghaenggung"
       },
       {
-        "name": "Suwon Hwaryeongjeon Shrine",
+        "name": "Hwaryeongjeon-Schrein Suwon",
         "note": "",
         "place_slug": "suwon-hwaryeongjeon"
       },
       {
-        "name": "Bell of Hyowon & Seojangdae Command Post",
+        "name": "Hyowon-Glocke · Seojangdae",
         "note": "",
         "place_slug": "hyowonui-jong-seojangdae"
       },
       {
-        "name": "Hwaseomun Gate",
+        "name": "Tor Hwaseomun",
         "note": "",
         "place_slug": "hwaseomun"
       },
       {
-        "name": "Janganmun Gate",
+        "name": "Tor Janganmun",
         "note": "",
         "place_slug": "janganmun"
       },
@@ -48,13 +48,13 @@
       }
     ],
     "ko_hash": "44c05c8f6416f89a",
-    "translated_at": "2026-10-23"
+    "translated_at": "2026-10-28"
   },
   "suwon-course-2": {
     "slug": "yeonmudae-paldalmun-market",
-    "name": "Route 2 | Paldalmun-Tor, Nammun- und Motgol-Markt, Hähnchenstraße und Haengnidan-gil",
-    "group": "Reiseroute",
-    "duration": "Tagestour",
+    "name": "Route 2: Spaziergang über Yeonmudae, Flying Suwon, Tor Paldalmun, traditionelle Märkte und die Chicken-Straße",
+    "group": "Reiserouten",
+    "duration": "Tagesausflug",
     "summary": "",
     "stops": [
       {
@@ -63,12 +63,12 @@
         "place_slug": "yeonmudae"
       },
       {
-        "name": "Dongbukgongsimdon",
+        "name": "Dongbuk-Gongsimdon (Nordost-Wachturm)",
         "note": "",
         "place_slug": "dongbukgongsimdon"
       },
       {
-        "name": "Changnyongmun Gate",
+        "name": "Tor Changnyongmun",
         "note": "",
         "place_slug": "changnyongmun"
       },
@@ -83,12 +83,12 @@
         "place_slug": "suwonhwaseongbangmulgwan"
       },
       {
-        "name": "Paldalmun Gate",
+        "name": "Tor Paldalmun",
         "note": "",
         "place_slug": "paldalmun"
       },
       {
-        "name": "Jidong Market",
+        "name": "Jidong-Markt",
         "note": "",
         "place_slug": "jidongsijang"
       },
@@ -99,13 +99,13 @@
       }
     ],
     "ko_hash": "27045435818760d4",
-    "translated_at": "2026-10-23"
+    "translated_at": "2026-10-28"
   },
   "suwon-course-3": {
     "slug": "gwanggyo-lake-aquaplanet",
-    "name": "Route 3 | Yeonmudae, Flying Suwon, Hwaseong-Museum und Tempel Bongnyeongsa",
-    "group": "Reiseroute",
-    "duration": "Tagestour",
+    "name": "Route 3: Ausflug zu Seenpark Gwanggyo, Aqua Planet, Gwanggyo-Museum und Suwon-Museum",
+    "group": "Reiserouten",
+    "duration": "Tagesausflug",
     "summary": "",
     "stops": [
       {
@@ -124,17 +124,17 @@
         "place_slug": "akuapeullanet-gwanggyo"
       },
       {
-        "name": "Suwonsiribateuseupeiseugwanggyo",
+        "name": "Städtischer Art Space Gwanggyo Suwon",
         "note": "",
         "place_slug": "suwonsiribateuseupeiseugwanggyo"
       },
       {
-        "name": "Gyeonggidoseogwan",
+        "name": "Gyeonggi-Bibliothek",
         "note": "",
         "place_slug": "gyeonggidoseogwan"
       },
       {
-        "name": "Suwon Gwanggyo Museum",
+        "name": "Suwon-Gwanggyo-Museum",
         "note": "",
         "place_slug": "suwongwanggyobangmulgwan"
       },
@@ -144,14 +144,14 @@
         "place_slug": "suwonbangmulgwan"
       }
     ],
-    "ko_hash": "4e8421930bcdc930",
-    "translated_at": "2026-10-23"
+    "ko_hash": "176ef0a49695336d",
+    "translated_at": "2026-10-28"
   },
   "suwon-course-4": {
     "slug": "irwol-seoho-sangsang",
-    "name": "Route 4 | Gwanggyo-Seepark, Aqua Planet Gwanggyo und Stadtmuseum Suwon",
-    "group": "Reiseroute",
-    "duration": "Tagestour",
+    "name": "Route 4: Naturspaziergang über Irwol Arboretum, Nationales Landwirtschaftsmuseum, Seoho-Park und Gyeonggi Sangsang Campus",
+    "group": "Reiserouten",
+    "duration": "Tagesausflug",
     "summary": "",
     "stops": [
       {
@@ -160,17 +160,17 @@
         "place_slug": "irwolsumogwon"
       },
       {
-        "name": "Irwolhosugongwon",
+        "name": "Irwol-See-Park",
         "note": "",
         "place_slug": "irwolhosugongwon"
       },
       {
-        "name": "Seoho Park",
+        "name": "Seoho-Park",
         "note": "",
         "place_slug": "seohogongwon"
       },
       {
-        "name": "National Agricultural Museum",
+        "name": "Nationales Landwirtschaftsmuseum",
         "note": "",
         "place_slug": "gungnimnongeopbangmulgwan"
       },
@@ -185,74 +185,74 @@
         "place_slug": "byeolmadangdoseogwan-seutapildeu-suwonjeom"
       }
     ],
-    "ko_hash": "d984df49756853d4",
-    "translated_at": "2026-10-23"
+    "ko_hash": "73e08f13437af63b",
+    "translated_at": "2026-10-28"
   },
   "suwon-course-5": {
     "slug": "manseok-haeujae-jangan",
-    "name": "Route 5 | Irwol-Arboretum, Starfield Suwon, Manseok-Park und Haewoojae in Jangan-gu",
-    "group": "Reiseroute",
-    "duration": "Tagestour",
+    "name": "Route 5: Erholungsroute in Jangan über Manseok-Park, Nosongjidae (Alter Kiefernhain), Haewoojae und Gwanggyo-Maru-Weg",
+    "group": "Reiserouten",
+    "duration": "Tagesausflug",
     "summary": "",
     "stops": [
       {
-        "name": "Manseok Park",
+        "name": "Manseok-Park",
         "note": "",
         "place_slug": "manseokgongwon"
       },
       {
-        "name": "Suwonsirimmanseokjeonsigwan",
+        "name": "Städtische Manseok-Ausstellungshalle Suwon",
         "note": "",
         "place_slug": "suwonsirimmanseokjeonsigwan"
       },
       {
-        "name": "Nosongjidae",
+        "name": "Nosongjidae (Alter Kiefernhain)",
         "note": "",
         "place_slug": "nosongjidae"
       },
       {
-        "name": "Haewoojae Museum (Mr. Toilet House)",
+        "name": "Haewoojae",
         "note": "",
         "place_slug": "haeujae"
       },
       {
-        "name": "Suwon Bongnyeongsa Temple",
+        "name": "Bongnyeongsa-Tempel",
         "note": "",
         "place_slug": "bongnyeongsa"
       },
       {
-        "name": "Gwanggyomarugil",
+        "name": "Gwanggyo-Maru-Weg",
         "note": "",
         "place_slug": "gwanggyomarugil"
       }
     ],
-    "ko_hash": "209ad7503d46b9f4",
-    "translated_at": "2026-10-23"
+    "ko_hash": "93eeb281c8fb0a23",
+    "translated_at": "2026-10-28"
   },
   "suwon-course-6": {
     "slug": "wolhwawon-yeongheung-art",
-    "name": "Route 6 | Seoho-Park, Landwirtschaftsmuseum, Gyeonggi Sangsang Campus und Garten Wolhwawon",
-    "group": "Reiseroute",
-    "duration": "Tagestour",
+    "name": "Route 6: Gartentour in der Stadt über Wolhwawon-Garten im Hyowon-Park, Yeongheung-Arboretum und Samsung Innovation Museum",
+    "group": "Reiserouten",
+    "duration": "Tagesausflug",
     "summary": "",
     "stops": [
       {
-        "name": "Wolhwawon Garden (Hyowon Park)",
+        "name": "Wolhwawon-Garten im Hyowon-Park",
         "note": "",
         "place_slug": "hyowongongwon-wolhwawon"
       },
       {
-        "name": "Hyowongongwon",
+        "name": "Hyowon-Park",
         "note": "",
         "place_slug": "hyowongongwon"
       },
       {
-        "name": "Gyeonggiateusenteo",
+        "name": "Gyeonggi Arts Center",
         "note": "",
         "place_slug": "gyeonggiateusenteo"
       },
       {
-        "name": "Nahyeseokgeori",
+        "name": "Na-Hye-seok-Straße",
         "note": "",
         "place_slug": "nahyeseokgeori"
       },
@@ -262,7 +262,7 @@
         "place_slug": "samseonginobeisyeonmyujieom"
       },
       {
-        "name": "Yeongheung Arboretum",
+        "name": "Yeongheung-Arboretum",
         "note": "",
         "place_slug": "yeongheungsumogwon"
       },
@@ -272,7 +272,7 @@
         "place_slug": "suwonsirimmisulgwan"
       }
     ],
-    "ko_hash": "62025c256cf5a24c",
-    "translated_at": "2026-10-23"
+    "ko_hash": "89c049ac40d92875",
+    "translated_at": "2026-10-28"
   }
 }

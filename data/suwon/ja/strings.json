@@ -1970,5 +1970,77 @@
   "provider:수원시": {
     "ko": "수원시",
     "ja": "水原市"
+  },
+  "FACT_LABELS.accessibility": {
+    "ko": "무장애 편의",
+    "ja": "バリアフリー設備"
+  },
+  "provider:한국관광공사 반려동물 동반여행(TourAPI)": {
+    "ko": "한국관광공사 반려동물 동반여행(TourAPI)",
+    "ja": "韓国観光公社 ペット同伴旅行（TourAPI）"
+  },
+  "provider:한국관광공사 무장애 여행 정보(TourAPI)": {
+    "ko": "한국관광공사 무장애 여행 정보(TourAPI)",
+    "ja": "韓国観光公社 バリアフリー旅行情報（TourAPI）"
+  },
+  "provider:일월수목원 관람안내": {
+    "ko": "일월수목원 관람안내",
+    "ja": "日月樹木園 観覧案内"
+  },
+  "provider:수원문화재단 XR버스 1795행 상세안내": {
+    "ko": "수원문화재단 XR버스 1795행 상세안내",
+    "ja": "水原文化財団 XRバス1795行き 詳細案内"
+  },
+  "provider:수원문화재단 화성어차 상세안내": {
+    "ko": "수원문화재단 화성어차 상세안내",
+    "ja": "水原文化財団 華城御車 詳細案内"
+  },
+  "provider:수원문화재단 수원화성관광 관람안내": {
+    "ko": "수원문화재단 수원화성관광 관람안내",
+    "ja": "水原文化財団 水原華城観光 観覧案内"
+  },
+  "provider:수원문화재단 수원화성관광 주차안내": {
+    "ko": "수원문화재단 수원화성관광 주차안내",
+    "ja": "水原文化財団 水原華城観光 駐車案内"
+  },
+  "provider:수원화성박물관 관람안내": {
+    "ko": "수원화성박물관 관람안내",
+    "ja": "水原華城博物館 観覧案内"
+  },
+  "provider:플라잉수원 홈페이지": {
+    "ko": "플라잉수원 홈페이지",
+    "ja": "フライング水原 公式サイト"
+  },
+  "provider:수원문화재단 플라잉 수원 상세안내": {
+    "ko": "수원문화재단 플라잉 수원 상세안내",
+    "ja": "水原文化財団 フライング水原 詳細案内"
+  },
+  "provider:영흥수목원 관람안내": {
+    "ko": "영흥수목원 관람안내",
+    "ja": "ヨンフン樹木園 観覧案内"
+  },
+  "provider:수원광교박물관 관람안내": {
+    "ko": "수원광교박물관 관람안내",
+    "ja": "水原クァンギョ博物館 観覧案内"
+  },
+  "provider:수원박물관 관람안내": {
+    "ko": "수원박물관 관람안내",
+    "ja": "水原博物館 観覧案内"
+  },
+  "chrome.notice_free": {
+    "en": "{dates}: free admission",
+    "ja": "{dates}：入場無料"
+  },
+  "chrome.notice_fee_extra": {
+    "en": "programme fees extra",
+    "ja": "プログラム料金は別途"
+  },
+  "chrome.notice_closed_works": {
+    "en": "from {date}: closed for construction — reopening date not announced",
+    "ja": "{date}から：工事のため休業（再開日未定）"
+  },
+  "chrome.notice_closed_from": {
+    "en": "from {date}: closed — reopening date not announced",
+    "ja": "{date}から：休業（再開日未定）"
   }
 }

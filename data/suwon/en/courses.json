@@ -1,8 +1,8 @@
 {
   "suwon-course-1": {
     "slug": "hwaseong-haenggung-heritage",
-    "name": "Course 1 | Suwon Hwaseong Fortress, Hwaseong Haenggung Palace & Banghwasuryujeong Heritage Walk",
-    "group": "Travel Course",
+    "name": "Course 1: Suwon Hwaseong Fortress · Hwaseong Haenggung Palace · Banghwasuryujeong · Haengnidan Street Fortress Tour",
+    "group": "Itineraries",
     "duration": "Day trip",
     "summary": "",
     "stops": [
@@ -48,12 +48,12 @@
       }
     ],
     "ko_hash": "44c05c8f6416f89a",
-    "translated_at": "2026-10-23"
+    "translated_at": "2026-10-28"
   },
   "suwon-course-2": {
     "slug": "yeonmudae-paldalmun-market",
-    "name": "Course 2 | Paldalmun Gate, Nammun & Motgol Markets, Chicken Street & Haengnidan-gil Alley Outing",
-    "group": "Travel Course",
+    "name": "Course 2: Yeonmudae · Flying Suwon · Paldalmun Gate · Traditional Markets · Chicken Street Walking Tour",
+    "group": "Itineraries",
     "duration": "Day trip",
     "summary": "",
     "stops": [
@@ -99,12 +99,12 @@
       }
     ],
     "ko_hash": "27045435818760d4",
-    "translated_at": "2026-10-23"
+    "translated_at": "2026-10-28"
   },
   "suwon-course-3": {
     "slug": "gwanggyo-lake-aquaplanet",
-    "name": "Course 3 | Yeonmudae, Flying Suwon, Hwaseong Museum & Bongnyeongsa Eastern Rampart Walk",
-    "group": "Travel Course",
+    "name": "Course 3: Gwanggyo Lake Park · Aqua Planet · Gwanggyo Museum · Suwon Museum Outing",
+    "group": "Itineraries",
     "duration": "Day trip",
     "summary": "",
     "stops": [
@@ -124,12 +124,12 @@
         "place_slug": "akuapeullanet-gwanggyo"
       },
       {
-        "name": "Suwonsiribateuseupeiseugwanggyo",
+        "name": "Suwon Sirip Art Seupeiseu Gwanggyo",
         "note": "",
         "place_slug": "suwonsiribateuseupeiseugwanggyo"
       },
       {
-        "name": "Gyeonggidoseogwan",
+        "name": "Gyeonggi Library",
         "note": "",
         "place_slug": "gyeonggidoseogwan"
       },
@@ -144,13 +144,13 @@
         "place_slug": "suwonbangmulgwan"
       }
     ],
-    "ko_hash": "4e8421930bcdc930",
-    "translated_at": "2026-10-23"
+    "ko_hash": "176ef0a49695336d",
+    "translated_at": "2026-10-28"
   },
   "suwon-course-4": {
     "slug": "irwol-seoho-sangsang",
-    "name": "Course 4 | Gwanggyo Lake Park, Aqua Planet Gwanggyo & Suwon Museum Waterside Outing",
-    "group": "Travel Course",
+    "name": "Course 4: Suwon Arboretum Irwol · National Agricultural Museum · Seoho Park · Gyeonggi Sangsang Campus Ecology Walk",
+    "group": "Itineraries",
     "duration": "Day trip",
     "summary": "",
     "stops": [
@@ -160,7 +160,7 @@
         "place_slug": "irwolsumogwon"
       },
       {
-        "name": "Irwolhosugongwon",
+        "name": "Irwolhosu Park",
         "note": "",
         "place_slug": "irwolhosugongwon"
       },
@@ -185,13 +185,13 @@
         "place_slug": "byeolmadangdoseogwan-seutapildeu-suwonjeom"
       }
     ],
-    "ko_hash": "d984df49756853d4",
-    "translated_at": "2026-10-23"
+    "ko_hash": "73e08f13437af63b",
+    "translated_at": "2026-10-28"
   },
   "suwon-course-5": {
     "slug": "manseok-haeujae-jangan",
-    "name": "Course 5 | Irwol Arboretum, Starfield Suwon, Manseok Park & Haewoojae in Jangan-gu",
-    "group": "Travel Course",
+    "name": "Course 5: Manseok Park · Nosongjidae · Haewoojae Museum (Mr. Toilet House) · Gwanggyo Marugil Jangan Healing Course",
+    "group": "Itineraries",
     "duration": "Day trip",
     "summary": "",
     "stops": [
@@ -201,7 +201,7 @@
         "place_slug": "manseokgongwon"
       },
       {
-        "name": "Suwonsirimmanseokjeonsigwan",
+        "name": "Suwon Sirimmanseok Exhibition Hall",
         "note": "",
         "place_slug": "suwonsirimmanseokjeonsigwan"
       },
@@ -221,18 +221,18 @@
         "place_slug": "bongnyeongsa"
       },
       {
-        "name": "Gwanggyomarugil",
+        "name": "Gwanggyo Marugil",
         "note": "",
         "place_slug": "gwanggyomarugil"
       }
     ],
-    "ko_hash": "209ad7503d46b9f4",
-    "translated_at": "2026-10-23"
+    "ko_hash": "93eeb281c8fb0a23",
+    "translated_at": "2026-10-28"
   },
   "suwon-course-6": {
     "slug": "wolhwawon-yeongheung-art",
-    "name": "Course 6 | Seoho Park, National Agricultural Museum, Sangsang Campus & Wolhwawon Garden",
-    "group": "Travel Course",
+    "name": "Course 6: Wolhwawon Garden (Hyowon Park) · Yeongheung Arboretum · Samsung Innovation Museum City Garden Tour",
+    "group": "Itineraries",
     "duration": "Day trip",
     "summary": "",
     "stops": [
@@ -242,17 +242,17 @@
         "place_slug": "hyowongongwon-wolhwawon"
       },
       {
-        "name": "Hyowongongwon",
+        "name": "Hyowon Park",
         "note": "",
         "place_slug": "hyowongongwon"
       },
       {
-        "name": "Gyeonggiateusenteo",
+        "name": "Gyeonggi Art Center",
         "note": "",
         "place_slug": "gyeonggiateusenteo"
       },
       {
-        "name": "Nahyeseokgeori",
+        "name": "Nahyeseok Street",
         "note": "",
         "place_slug": "nahyeseokgeori"
       },
@@ -272,7 +272,7 @@
         "place_slug": "suwonsirimmisulgwan"
       }
     ],
-    "ko_hash": "62025c256cf5a24c",
-    "translated_at": "2026-10-23"
+    "ko_hash": "89c049ac40d92875",
+    "translated_at": "2026-10-28"
   }
 }

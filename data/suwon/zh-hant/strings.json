@@ -1970,5 +1970,77 @@
   "provider:수원시": {
     "ko": "수원시",
     "zh_hant": "水原市"
+  },
+  "FACT_LABELS.accessibility": {
+    "ko": "무장애 편의",
+    "zh_hant": "無障礙設施"
+  },
+  "provider:한국관광공사 반려동물 동반여행(TourAPI)": {
+    "ko": "한국관광공사 반려동물 동반여행(TourAPI)",
+    "zh_hant": "韓國觀光公社 攜帶寵物旅遊（TourAPI）"
+  },
+  "provider:한국관광공사 무장애 여행 정보(TourAPI)": {
+    "ko": "한국관광공사 무장애 여행 정보(TourAPI)",
+    "zh_hant": "韓國觀光公社 無障礙旅遊資訊（TourAPI）"
+  },
+  "provider:일월수목원 관람안내": {
+    "ko": "일월수목원 관람안내",
+    "zh_hant": "日月樹木園參觀指南"
+  },
+  "provider:수원문화재단 XR버스 1795행 상세안내": {
+    "ko": "수원문화재단 XR버스 1795행 상세안내",
+    "zh_hant": "水原文化財團 XR巴士1795行 詳細介紹"
+  },
+  "provider:수원문화재단 화성어차 상세안내": {
+    "ko": "수원문화재단 화성어차 상세안내",
+    "zh_hant": "水原文化財團 華城御車 詳細介紹"
+  },
+  "provider:수원문화재단 수원화성관광 관람안내": {
+    "ko": "수원문화재단 수원화성관광 관람안내",
+    "zh_hant": "水原文化財團 水原華城觀光 參觀指南"
+  },
+  "provider:수원문화재단 수원화성관광 주차안내": {
+    "ko": "수원문화재단 수원화성관광 주차안내",
+    "zh_hant": "水原文化財團 水原華城觀光 停車指南"
+  },
+  "provider:수원화성박물관 관람안내": {
+    "ko": "수원화성박물관 관람안내",
+    "zh_hant": "水原華城博物館參觀指南"
+  },
+  "provider:플라잉수원 홈페이지": {
+    "ko": "플라잉수원 홈페이지",
+    "zh_hant": "Flying水原官方網站"
+  },
+  "provider:수원문화재단 플라잉 수원 상세안내": {
+    "ko": "수원문화재단 플라잉 수원 상세안내",
+    "zh_hant": "水原文化財團 Flying水原 詳細介紹"
+  },
+  "provider:영흥수목원 관람안내": {
+    "ko": "영흥수목원 관람안내",
+    "zh_hant": "靈興樹木園參觀指南"
+  },
+  "provider:수원광교박물관 관람안내": {
+    "ko": "수원광교박물관 관람안내",
+    "zh_hant": "水原光教博物館參觀指南"
+  },
+  "provider:수원박물관 관람안내": {
+    "ko": "수원박물관 관람안내",
+    "zh_hant": "水原博物館參觀指南"
+  },
+  "chrome.notice_free": {
+    "en": "{dates}: free admission",
+    "zh_hant": "{dates}：免費入場"
+  },
+  "chrome.notice_fee_extra": {
+    "en": "programme fees extra",
+    "zh_hant": "活動另行收費"
+  },
+  "chrome.notice_closed_works": {
+    "en": "from {date}: closed for construction — reopening date not announced",
+    "zh_hant": "{date}起：因施工休館，重新開放日期未公布"
+  },
+  "chrome.notice_closed_from": {
+    "en": "from {date}: closed — reopening date not announced",
+    "zh_hant": "{date}起：休館，重新開放日期未公布"
   }
 }

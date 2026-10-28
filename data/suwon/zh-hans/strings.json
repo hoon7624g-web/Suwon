@@ -1970,5 +1970,77 @@
   "provider:수원시": {
     "ko": "수원시",
     "zh_hans": "水原市"
+  },
+  "FACT_LABELS.accessibility": {
+    "ko": "무장애 편의",
+    "zh_hans": "无障碍设施"
+  },
+  "provider:한국관광공사 반려동물 동반여행(TourAPI)": {
+    "ko": "한국관광공사 반려동물 동반여행(TourAPI)",
+    "zh_hans": "韩国观光公社携宠旅行（TourAPI）"
+  },
+  "provider:한국관광공사 무장애 여행 정보(TourAPI)": {
+    "ko": "한국관광공사 무장애 여행 정보(TourAPI)",
+    "zh_hans": "韩国观光公社无障碍旅行信息（TourAPI）"
+  },
+  "provider:일월수목원 관람안내": {
+    "ko": "일월수목원 관람안내",
+    "zh_hans": "日月树木园参观指南"
+  },
+  "provider:수원문화재단 XR버스 1795행 상세안내": {
+    "ko": "수원문화재단 XR버스 1795행 상세안내",
+    "zh_hans": "水原文化财团XR巴士1795行详细介绍"
+  },
+  "provider:수원문화재단 화성어차 상세안내": {
+    "ko": "수원문화재단 화성어차 상세안내",
+    "zh_hans": "水原文化财团华城御车详细介绍"
+  },
+  "provider:수원문화재단 수원화성관광 관람안내": {
+    "ko": "수원문화재단 수원화성관광 관람안내",
+    "zh_hans": "水原文化财团水原华城观光参观指南"
+  },
+  "provider:수원문화재단 수원화성관광 주차안내": {
+    "ko": "수원문화재단 수원화성관광 주차안내",
+    "zh_hans": "水原文化财团水原华城观光停车指南"
+  },
+  "provider:수원화성박물관 관람안내": {
+    "ko": "수원화성박물관 관람안내",
+    "zh_hans": "水原华城博物馆参观指南"
+  },
+  "provider:플라잉수원 홈페이지": {
+    "ko": "플라잉수원 홈페이지",
+    "zh_hans": "Flying Suwon官网"
+  },
+  "provider:수원문화재단 플라잉 수원 상세안내": {
+    "ko": "수원문화재단 플라잉 수원 상세안내",
+    "zh_hans": "水原文化财团Flying Suwon详细介绍"
+  },
+  "provider:영흥수목원 관람안내": {
+    "ko": "영흥수목원 관람안내",
+    "zh_hans": "Yeongheung树木园参观指南"
+  },
+  "provider:수원광교박물관 관람안내": {
+    "ko": "수원광교박물관 관람안내",
+    "zh_hans": "水原光教博物馆参观指南"
+  },
+  "provider:수원박물관 관람안내": {
+    "ko": "수원박물관 관람안내",
+    "zh_hans": "水原博物馆参观指南"
+  },
+  "chrome.notice_free": {
+    "en": "{dates}: free admission",
+    "zh_hans": "{dates}：免费入场"
+  },
+  "chrome.notice_fee_extra": {
+    "en": "programme fees extra",
+    "zh_hans": "项目费用另计"
+  },
+  "chrome.notice_closed_works": {
+    "en": "from {date}: closed for construction — reopening date not announced",
+    "zh_hans": "{date}起因施工闭馆，重新开放日期未公布"
+  },
+  "chrome.notice_closed_from": {
+    "en": "from {date}: closed — reopening date not announced",
+    "zh_hans": "{date}起闭馆，重新开放日期未公布"
   }
 }

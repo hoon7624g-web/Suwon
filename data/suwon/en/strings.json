@@ -722,5 +722,61 @@
   "provider:수원시": {
     "ko": "수원시",
     "en": "Suwon"
+  },
+  "FACT_LABELS.accessibility": {
+    "ko": "무장애 편의",
+    "en": "Barrier-free amenities"
+  },
+  "provider:한국관광공사 반려동물 동반여행(TourAPI)": {
+    "ko": "한국관광공사 반려동물 동반여행(TourAPI)",
+    "en": "Korea Tourism Organization Pet-Friendly Travel (TourAPI)"
+  },
+  "provider:한국관광공사 무장애 여행 정보(TourAPI)": {
+    "ko": "한국관광공사 무장애 여행 정보(TourAPI)",
+    "en": "Korea Tourism Organization barrier-free travel information (TourAPI)"
+  },
+  "provider:일월수목원 관람안내": {
+    "ko": "일월수목원 관람안내",
+    "en": "Suwon Arboretum Irwol visitor guide"
+  },
+  "provider:수원문화재단 XR버스 1795행 상세안내": {
+    "ko": "수원문화재단 XR버스 1795행 상세안내",
+    "en": "Suwon Cultural Foundation XR Bus 1795 details"
+  },
+  "provider:수원문화재단 화성어차 상세안내": {
+    "ko": "수원문화재단 화성어차 상세안내",
+    "en": "Suwon Cultural Foundation Hwaseong Fortress Tourist Trolley details"
+  },
+  "provider:수원문화재단 수원화성관광 관람안내": {
+    "ko": "수원문화재단 수원화성관광 관람안내",
+    "en": "Suwon Cultural Foundation Suwon Hwaseong Tour visitor guide"
+  },
+  "provider:수원문화재단 수원화성관광 주차안내": {
+    "ko": "수원문화재단 수원화성관광 주차안내",
+    "en": "Suwon Cultural Foundation Suwon Hwaseong Tour parking guide"
+  },
+  "provider:수원화성박물관 관람안내": {
+    "ko": "수원화성박물관 관람안내",
+    "en": "Suwon Hwaseong Museum visitor guide"
+  },
+  "provider:플라잉수원 홈페이지": {
+    "ko": "플라잉수원 홈페이지",
+    "en": "Flying Suwon website"
+  },
+  "provider:수원문화재단 플라잉 수원 상세안내": {
+    "ko": "수원문화재단 플라잉 수원 상세안내",
+    "en": "Suwon Cultural Foundation Flying Suwon details"
+  },
+  "provider:영흥수목원 관람안내": {
+    "ko": "영흥수목원 관람안내",
+    "en": "Yeongheung Arboretum visitor guide"
+  },
+  "provider:수원광교박물관 관람안내": {
+    "ko": "수원광교박물관 관람안내",
+    "en": "Suwon Gwanggyo Museum visitor guide"
+  },
+  "provider:수원박물관 관람안내": {
+    "ko": "수원박물관 관람안내",
+    "en": "Suwon Museum visitor guide"
   }
 }
