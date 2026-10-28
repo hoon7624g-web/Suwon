@@ -228,8 +228,8 @@ def cover_problems(S) -> list[str]:
         return [f"홈 표지 사진: 사진 자리 형식 오류 {m['cover']!r}([place_id, n])"]
     key, n = r
     e = next((x for x in S.entities if x.get("id") == key), None)
-    if not e:
-        return [f"홈 표지 사진: 장소 없음 {key}"]
+    if not e:   # a build with no places yet (a new city, tests/test_empty_city) has no cover to show (fix2)
+        return [f"홈 표지 사진: 장소 없음 {key}"] if S.entities else []
     ph, why = _photo(e, key, n, True, "표지 사진")
     if why:
         return [why]

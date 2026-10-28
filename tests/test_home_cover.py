@@ -34,3 +34,9 @@ def test_kogl3_cover_is_refused():
 
 def test_unknown_place():
     assert media.cover_problems(state(["zz", 0], [k1("a")])) == ["홈 표지 사진: 장소 없음 zz"]
+
+
+def test_empty_build_has_no_cover_to_check():
+    s = state(["p1", 0], [])
+    s.entities = []          # a new city before its places (tests/test_empty_city)
+    assert media.cover_problems(s) == []
