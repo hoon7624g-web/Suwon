@@ -1505,11 +1505,17 @@ def validate_intl(S, site, data_dir: Path, out: Path, strict: bool, E, W, sitema
         if code != "en":
             for problem in LC.script_problems(HANGUL.sub(" ", " ".join(p.foreign)), code, prose=False):
                 E(rel, f"글자·언어: {problem}")
+            # the page's own names are given (TourAPI's 'Отель SONO Calm Yeosu'), not prose: their script is not checked
+            given = sorted({str((recs[stores[k]].get(key) or {}).get(loc.name_key) or "").strip()
+                            for k, _, key in (r.partition(":") for r in p.records) if k in stores} - {""},
+                           key=len, reverse=True)
             for blk in ("summary", "details", "faq"):
                 prose = p.blocks.get(blk, "")
                 for note in p.notes:   # a citation line ('出典：…市文化観光') is a label of names, not prose
                     if note.strip():
                         prose = prose.replace(note, " ")
+                for n in given:
+                    prose = prose.replace(n, " ")
                 for problem in LC.script_problems(HANGUL.sub(" ", prose), code, prose=True):
                     E(rel, f"글자·언어({blk}): {problem}")
     for ko_path, l_path in site.ko2en.items():
