@@ -466,3 +466,12 @@ def test_a_weekday_cut_off_at_the_end_of_a_value_is_still_that_day():
     assert parity_l("매주 토요일 / 일요", "Jeden Samstag / Sonntag", "de") == []
     assert parity("매주 토요일 / 일요", "Every Saturday / Monday")
     assert parity("수요가 많습니다.", "Demand is high.") == []
+
+
+def test_a_time_right_after_a_label_s_colon_is_a_time():
+    """2026-10-27: '(입장마감:17:00)' (TourAPI) is last entry at 17:00, written as in the source or spaced."""
+    from tools.en_content import parity, parity_l
+    assert parity("09:30~17:30 (입장마감:17:00)", "09:30–17:30 (last admission: 17:00)") == []
+    assert parity_l("09:30~17:30 (입장마감:17:00)", "09:30–17:30 (dernière entrée : 17:00)", "fr") == []
+    assert parity("09:30~17:30 (입장마감:17:00)", "09:30–17:30 (last admission: 16:00)")
+

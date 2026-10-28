@@ -556,8 +556,9 @@ BRITISH = re.compile(r"\b(centres?|colours?|metres?|kilometres?|programmes?|trav
                      r"harbours?|neighbourhoods?|theatres?|favourites?|organis(?:e|ed|es|ing|ation)|catalogue|licence|"
                      r"jewellery|grey|storeys?|car parks?|tyres?|cheques?)\b", re.I)
 AMPM = re.compile(r"\b\d{1,2}(?::\d{2})?\s*(?:a\.?m\.?|p\.?m\.?)(?![a-z])", re.I)
-EN_TIME = re.compile(r"(?<![\d:])(\d{1,2}):(\d{2})(?![\d:])")
-KO_TIME = re.compile(r"(?<![\d:])(\d{1,2}):(\d{2})(?![\d:])")
+# a time after a label's colon ('입장마감:17:00') is a time; one after a time's (09:00:00) is not
+EN_TIME = re.compile(r"(?<!\d)(?<!\d:)(\d{1,2}):(\d{2})(?![\d:])")
+KO_TIME = re.compile(r"(?<!\d)(?<!\d:)(\d{1,2}):(\d{2})(?![\d:])")
 KO_HOUR = re.compile(r"(오전|오후|낮|밤|저녁|새벽|아침)?\s*(?<![\d.])(\d{1,2})시"
                      r"(?=$|[^가-힣]|까지|부터|에|반|쯤|경|전|후|이후|이전|와|과|로|이나|정각|께|\s*\d{1,2}\s*분|"
                      r"이고|입니다|이며|이다|이에요|예요|이라|이었|였|(?:가|은|는|도|을|를)(?![가-힣]))"
