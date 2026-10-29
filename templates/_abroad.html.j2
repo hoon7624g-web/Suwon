@@ -20,7 +20,7 @@
 <li class="ab-item{% if a.image %} has-thumb{% endif %}">
   {% if a.image %}<a class="ab-thumb" href="{{ a.url }}" rel="noopener" tabindex="-1" aria-hidden="true" data-track="abroad_click"><img src="{{ a.image }}" alt="" width="240" height="160" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a>{% endif %}
   <div class="ab-body">
-  <p class="ab-meta"><span class="ab-src"{% if a.lang and a.lang not in ("ko", "en") %} lang="{{ a.lang }}"{% endif %}>{{ a.outlet }}</span>{% if a.date %} · <time datetime="{{ a.date }}" class="tn">{{ when(a.date) }}</time>{% endif %}{% if a.lang and a.lang != 'ko' %} · <span>{{ {'en': '영어', 'ja': '일본어', 'zh': '중국어'}.get(a.lang, a.lang) }}</span>{% endif %}</p>
+  <p class="ab-meta"><span class="ab-src"{% if a.lang and a.lang not in ("ko", "en") %} lang="{{ a.lang }}"{% endif %}>{{ a.outlet }}</span>{% if a.date %} · <time datetime="{{ a.date }}" class="tn">{{ when(a.date) }}</time>{% endif %}{% if a.lang and a.lang != 'ko' %} · <span>{{ {'en': '영어', 'ja': '일본어', 'zh': '중국어', 'zh-Hans': '중국어 간체', 'zh-Hant': '중국어 번체', 'zh-CN': '중국어 간체', 'zh-TW': '중국어 번체', 'zh-HK': '중국어 번체', 'de': '독일어', 'fr': '프랑스어', 'es': '스페인어', 'it': '이탈리아어', 'nl': '네덜란드어', 'pt': '포르투갈어', 'ru': '러시아어', 'vi': '베트남어', 'th': '태국어', 'id': '인도네시아어', 'ms': '말레이어', 'tl': '필리핀어'}.get(a.lang, a.lang) }}</span>{% endif %}</p>
   <p class="ab-title"><a href="{{ a.url }}" rel="noopener"{% if a.lang %} lang="{{ a.lang }}"{% endif %} data-track="abroad_click">{{ a.title or a.outlet }}<span class="arr" aria-hidden="true">↗</span></a></p>
   <p class="ab-note">{{ a.note }}</p>
   {% if quote_on and a._quote %}<blockquote class="ab-q" lang="{{ a._quote.lang }}" cite="{{ a.url }}"><p>{{ a._quote.text }}</p></blockquote>{% endif %}

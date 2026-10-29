@@ -32,7 +32,7 @@
 {#- source(a, lang): outlet (a post: service · account) · language · date, as stored in abroad.json; lang is the
     quotation's language for a post (abroad.json keeps none for posts) -#}
 {% macro source(a, lang='') -%}
-{% set lg = a.lang or lang %}<span class="ab-src"{% if a.kind != 'post' and a.lang and a.lang not in ('ko', 'en') %} lang="{{ a.lang }}"{% endif %}>{{ a.outlet if a.kind != 'post' else a.platform_label }}</span>{% if a.kind == 'post' and a.author %} · <span{% if lg and lg not in ('ko', 'en') %} lang="{{ lg }}"{% endif %}>{{ a.author }}</span>{% endif %}{% if lg and lg != 'ko' %} · <span>{{ {'en': '영어', 'ja': '일본어', 'zh': '중국어', 'fr': '프랑스어'}.get(lg, lg) }}</span>{% endif %}{% if a.date %} · <time datetime="{{ a.date }}" class="tn">{{ ab.when(a.date) }}</time>{% endif %}
+{% set lg = a.lang or lang %}<span class="ab-src"{% if a.kind != 'post' and a.lang and a.lang not in ('ko', 'en') %} lang="{{ a.lang }}"{% endif %}>{{ a.outlet if a.kind != 'post' else a.platform_label }}</span>{% if a.kind == 'post' and a.author %} · <span{% if lg and lg not in ('ko', 'en') %} lang="{{ lg }}"{% endif %}>{{ a.author }}</span>{% endif %}{% if lg and lg != 'ko' %} · <span>{{ {'en': '영어', 'ja': '일본어', 'zh': '중국어', 'zh-Hans': '중국어 간체', 'zh-Hant': '중국어 번체', 'zh-CN': '중국어 간체', 'zh-TW': '중국어 번체', 'zh-HK': '중국어 번체', 'de': '독일어', 'fr': '프랑스어', 'es': '스페인어', 'it': '이탈리아어', 'nl': '네덜란드어', 'pt': '포르투갈어', 'ru': '러시아어', 'vi': '베트남어', 'th': '태국어', 'id': '인도네시아어', 'ms': '말레이어', 'tl': '필리핀어'}.get(lg, lg) }}</span>{% endif %}{% if a.date %} · <time datetime="{{ a.date }}" class="tn">{{ ab.when(a.date) }}</time>{% endif %}
 {%- endmacro %}
 
 {% macro row(hl, region) -%}
