@@ -2,5 +2,215 @@
   "_notes": [
     "해외에서 본 수원(/abroad/): 2026-10-24 운영자 긴급 조치로 항목을 모두 뺐다(원문 대조 확인 0건). 다시 실을 때는 사람이 원문을 열어 확인한 기사만 넣는다."
   ],
-  "items": []
+  "items": [
+    {
+      "id": "unesco-whc-hwaseong-fortress",
+      "kind": "article",
+      "url": "https://whc.unesco.org/en/list/817",
+      "note": "1997년 세계유산에 오른 수원 화성의 유네스코 공식 등재 문서로, 정조가 18세기 말에 쌓은 6km 가까운 성벽과 네 성문, 포루 같은 방어 시설을 설명합니다.",
+      "place_slugs": [
+        "suwon-hwaseong"
+      ],
+      "date": "",
+      "status": "draft",
+      "checked_at": "2026-10-29",
+      "source_type": "reference",
+      "outlet": "UNESCO World Heritage Centre",
+      "title": "Hwaseong Fortress",
+      "lang": "en"
+    },
+    {
+      "id": "lonelyplanet-best-day-trips-from-seoul",
+      "kind": "article",
+      "url": "https://www.lonelyplanet.com/articles/best-day-trips-from-seoul",
+      "note": "서울에서 다녀올 만한 당일 여행지 다섯 곳 가운데 하나로 수원을 꼽아 수원 화성 성곽과 장안문, 화성행궁을 소개한 론리플래닛 기사입니다.",
+      "place_slugs": [
+        "suwon-hwaseong",
+        "janganmun",
+        "hwaseonghaenggung"
+      ],
+      "date": "2020-12-16",
+      "status": "draft",
+      "checked_at": "2026-10-29",
+      "source_type": "travel",
+      "outlet": "Lonely Planet",
+      "title": "The 5 best day trips from Seoul",
+      "lang": "en"
+    },
+    {
+      "id": "scmp-2012-suwon-toilet-park",
+      "kind": "article",
+      "url": "https://www.scmp.com/news/asia/article/1080226/south-korean-toilet-park-stark-relief-your-usual-museum",
+      "note": "화장실을 주제로 한 수원의 화장실문화공원(해우재)과 그 전시를 짧게 소개한 기사로, 가디언이 쓴 글을 사우스차이나모닝포스트가 실었습니다.",
+      "place_slugs": [
+        "haeujae"
+      ],
+      "date": "2012-11-12",
+      "status": "draft",
+      "checked_at": "2026-10-29",
+      "source_type": "press",
+      "outlet": "South China Morning Post",
+      "title": "South Korean toilet park in stark relief to your usual museum",
+      "lang": "en",
+      "image": "https://cdn.i-scmp.com/sites/default/files/styles/og_image_scmp_generic/public/2012/11/11/fc516dd79352ed5dfb6a74fc6e7ad639.jpg?itok=JSh8LGx8"
+    },
+    {
+      "id": "cnn-50-beautiful-places-south-korea",
+      "kind": "article",
+      "url": "https://edition.cnn.com/travel/article/south-korea-beautiful-places/index.html",
+      "note": "CNN 트래블이 고른 한국의 아름다운 곳 50곳을 소개한 기사로, 수원 화성의 방화수류정이 그 가운데 하나로 들어 있습니다.",
+      "place_slugs": [
+        "banghwasuryujeong",
+        "suwon-hwaseong"
+      ],
+      "date": "2017-07-12",
+      "status": "draft",
+      "checked_at": "2026-10-29",
+      "source_type": "travel",
+      "outlet": "CNN",
+      "title": "50 beautiful places to visit in South Korea",
+      "lang": "en"
+    },
+    {
+      "id": "rappler-2017-suwon",
+      "kind": "article",
+      "url": "https://www.rappler.com/life-and-style/travel/174400-south-korea-suwon-city-hiking-food-tripping",
+      "note": "필리핀 매체 래플러의 필자가 수원 화성 성곽길을 걸으며 장안문, 화성행궁, 화홍문, 수원화성박물관, 연무대 국궁 체험을 소개한 여행기입니다.",
+      "place_slugs": [
+        "suwon-hwaseong",
+        "janganmun",
+        "hwaseonghaenggung",
+        "hwahongmun",
+        "suwonhwaseongbangmulgwan",
+        "yeonmudae"
+      ],
+      "date": "2017-07-01",
+      "status": "draft",
+      "checked_at": "2026-10-29",
+      "source_type": "press",
+      "outlet": "Rappler",
+      "title": "South Korea beyond Seoul: Fortress-hiking and food tripping in Suwon City",
+      "lang": "en"
+    },
+    {
+      "id": "middleclass-2024-suwon-day-trip",
+      "kind": "article",
+      "url": "https://middleclass.sg/travel/suwon-day-trip-itinerary/",
+      "note": "싱가포르 생활 매체 MiddleClass가 서울에서 가는 법과 화성행궁, 화홍문·방화수류정 같은 수원 당일 여행 일정과 밤 풍경을 정리한 기사입니다.",
+      "place_slugs": [
+        "hwaseonghaenggung",
+        "hwahongmun",
+        "banghwasuryujeong"
+      ],
+      "date": "2024-09-19",
+      "status": "draft",
+      "checked_at": "2026-10-29",
+      "source_type": "travel",
+      "outlet": "MiddleClass",
+      "title": "Suwon Day Trip Itinerary: What To Do in Suwon, Popular Cafes & More",
+      "lang": "en",
+      "image": "https://middleclass.sg/wp-content/uploads/2022/02/Suwon-Day-Trip-FB-Cover.jpg"
+    },
+    {
+      "id": "grrrltraveler-suwon-48-hours",
+      "kind": "article",
+      "url": "https://grrrltraveler.com/what-to-do-in-suwon-in-48-hours",
+      "note": "여행 블로거가 팔달문, 화성 성곽길, 화성행궁, 연무대 국궁 체험, 해우재를 묶어 수원 이틀 일정을 소개한 영문 글입니다.",
+      "place_slugs": [
+        "paldalmun",
+        "suwon-hwaseong",
+        "hwaseonghaenggung",
+        "yeonmudae",
+        "haeujae"
+      ],
+      "date": "2014-04-04",
+      "status": "draft",
+      "checked_at": "2026-10-29",
+      "source_type": "blog",
+      "outlet": "GRRRLTRAVELER",
+      "title": "Travel Guide Korea: What to do in Suwon in 48 hours",
+      "lang": "en",
+      "image": "https://grrrltraveler.com/wp-content/uploads/2014/04/48hrs-Suwon-Wall.jpg"
+    },
+    {
+      "id": "arukikata-suwon-hwaseong",
+      "kind": "article",
+      "url": "https://www.arukikata.co.jp/webmagazine/236187/",
+      "note": "일본 여행 안내서 '지구를 걷는 법' 편집실이 수원 화성과 화성어차, 플라잉 수원, 드라마 촬영지인 지동 벽화마을을 소개한 일본어 기사입니다.",
+      "place_slugs": [
+        "suwon-hwaseong",
+        "hwaseongeocha",
+        "peullaing-suwon",
+        "suwon-jidongbyeokhwamaeul"
+      ],
+      "date": "2026-03-05",
+      "status": "draft",
+      "checked_at": "2026-10-29",
+      "source_type": "travel",
+      "outlet": "地球の歩き方",
+      "title": "【韓国・水原】ソウルからたった30分！世界遺産の城郭都市で韓ドラロケ地巡りと王カルビを満喫",
+      "lang": "ja",
+      "image": "https://www.arukikata.co.jp/wp-content/uploads/Suwon_R_2026_0305_1138.jpeg"
+    },
+    {
+      "id": "newt-suwon-hwaseong",
+      "kind": "article",
+      "url": "https://newt.net/kor/mag-48787493617",
+      "note": "한국에 살아 본 필자가 화성행궁, 팔달문, 화홍문, 연무대, 장안문 등 수원 화성의 볼거리와 가는 법, 좋은 계절을 정리한 기사입니다.",
+      "place_slugs": [
+        "hwaseonghaenggung",
+        "paldalmun",
+        "hwahongmun",
+        "yeonmudae",
+        "janganmun"
+      ],
+      "date": "2023-12-11",
+      "status": "draft",
+      "checked_at": "2026-10-29",
+      "source_type": "travel",
+      "outlet": "NEWT（ニュート）",
+      "title": "水原華城は韓国・水原にある世界遺産の絶景スポット！ドラマロケ地や見どころを解説",
+      "lang": "ja",
+      "image": "https://images.microcms-assets.io/assets/14d13bd618dc45c7b684223c0ca9d033/895667849bb84b5e987457739ad3b92c/thomas-roger-lux-Jo3ztGDvc5I-unsplash.jpg"
+    },
+    {
+      "id": "skyticket-suwon-hwaseong",
+      "kind": "article",
+      "url": "https://skyticket.jp/guide/110347/",
+      "note": "드라마 '대장금' 촬영지로 알려진 화성행궁과 수원 화성 성곽, 화서문·서장대 일대의 전망을 소개한 일본어 여행 안내 기사입니다.",
+      "place_slugs": [
+        "hwaseonghaenggung",
+        "suwon-hwaseong",
+        "hwaseomun",
+        "hyowonui-jong-seojangdae"
+      ],
+      "date": "2017-02-25",
+      "status": "draft",
+      "checked_at": "2026-10-29",
+      "source_type": "travel",
+      "outlet": "skyticket 観光ガイド",
+      "title": "「チャングムの誓い」ロケ地としても有名な韓国の世界遺産・水原華城",
+      "lang": "ja",
+      "image": "https://skyticket.jp/guide/wp-content/uploads/shutterstock_731940217-e1517895746300.jpg?imwidth=1200"
+    },
+    {
+      "id": "traveljp-2015-suwon-lightup",
+      "kind": "article",
+      "url": "https://www.travel.co.jp/guide/article/12140/",
+      "note": "저녁 무렵 수원에 도착해 성곽 위에서 해넘이를 보고 화홍문과 성벽 조명까지 즐기는 방법을 소개한 일본어 여행 기사입니다.",
+      "place_slugs": [
+        "suwon-hwaseong",
+        "hwahongmun",
+        "paldalmun"
+      ],
+      "date": "2015-09-25",
+      "status": "draft",
+      "checked_at": "2026-10-29",
+      "source_type": "travel",
+      "outlet": "トラベルjp",
+      "title": "夕方から楽しむ！韓国・京畿道の世界遺産「水原華城」のライトアップ",
+      "lang": "ja",
+      "image": "https://img-cdn.guide.travel.co.jp/c_1200_750/article/607/20150916005424/260AF333200C480D9105BED44F4D1471.jpg"
+    }
+  ]
 }

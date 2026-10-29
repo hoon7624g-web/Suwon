@@ -2,5 +2,51 @@
   "_notes": [
     "해외에서 본 수원(/abroad/) 하이라이트: 2026-10-24 운영자 긴급 조치로 모두 뺐다(원문에 없는 인용). 인용은 원문에서 글자 그대로 옮기고 tools/abroad_quotes.py로 확인한 것만 넣는다."
   ],
-  "items": []
+  "items": [
+    {
+      "id": "lonelyplanet-best-day-trips-from-seoul",
+      "label_ko": "수원 화성",
+      "quote": "With scenic views and a rich history, this UNESCO World Heritage site is a must-visit.",
+      "quote_lang": "en",
+      "quote_checked": "2026-10-29",
+      "basis_ko": "Lonely Planet의 서울 근교 당일 여행지 기사(필자 Charles Usher). 수원 화성을 경치와 역사를 갖춘 꼭 가 볼 세계유산으로 소개하고 화성행궁도 함께 다룸. 비판 없음.",
+      "checked": "2026-10-29"
+    },
+    {
+      "id": "rappler-2017-suwon",
+      "label_ko": "역사 도시",
+      "quote": "If you enjoy that blend of the old and new in South Korea’s capital, you’ll enjoy Suwon City as well – a historical wonder that’s a mere subway ride away from Seoul.",
+      "quote_lang": "en",
+      "quote_checked": "2026-10-29",
+      "basis_ko": "필리핀 매체 Rappler 기사(필자 Ceej Tantengco). 서울의 옛것과 새것이 어우러진 모습을 좋아한다면 지하철로 갈 수 있는 수원도 좋아할 것이라 씀. 단서: 성곽길 초입 계단이 힘들다고 적음.",
+      "checked": "2026-10-29"
+    },
+    {
+      "id": "middleclass-2024-suwon-day-trip",
+      "label_ko": "수원의 밤",
+      "quote": "We highly recommend staying to explore Suwon at night, which we feel is a beautiful representation of the city.",
+      "quote_lang": "en",
+      "quote_checked": "2026-10-29",
+      "basis_ko": "싱가포르 생활 매체 MiddleClass 기사(필자 Songyu Goh). 수원은 밤까지 머물며 둘러보기를 권하고 화홍문·방화수류정 야경을 소개함. 단서: 카페·식당 소개가 많음(우리 소개에는 넣지 않음).",
+      "checked": "2026-10-29"
+    },
+    {
+      "id": "arukikata-suwon-hwaseong",
+      "label_ko": "성곽 건축",
+      "quote": "韓国ドラマ『宮廷女官チャングムの誓い』や『イ･サン』の舞台として有名ですが、建築そのものも“世界で最も美しい軍事施設”と称されています。",
+      "quote_lang": "ja",
+      "quote_checked": "2026-10-29",
+      "basis_ko": "地球の歩き方 편집실 기사. 수원 화성이 드라마 무대로 유명할 뿐 아니라 건축 자체가 '세계에서 가장 아름다운 군사 시설'로 불린다고 소개함. 단서: 초회 게재 2022-07-28, 공개일 2026-03-05로 다시 실림. 갈비집 소개가 있음(우리 소개에는 넣지 않음).",
+      "checked": "2026-10-29"
+    },
+    {
+      "id": "traveljp-2015-suwon-lightup",
+      "label_ko": "성곽 노을",
+      "quote": "石垣から眺める夕陽はとても美しいので必見です！",
+      "quote_lang": "ja",
+      "quote_checked": "2026-10-29",
+      "basis_ko": "トラベルjp 기사. 저녁 무렵 수원 화성 성곽 위에서 보는 노을이 아주 아름다우니 꼭 보라고 하고 화홍문·성벽 조명을 소개함. 단서: 2015년 글이라 운영 시간은 지금과 다를 수 있음.",
+      "checked": "2026-10-29"
+    }
+  ]
 }
