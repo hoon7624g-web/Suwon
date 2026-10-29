@@ -31,3 +31,4 @@
 - `py tools/build_public.py --data data/suwon --out public`: 총 3,814 페이지 생성, `qa_errors: 0`, `dead_links: 0`, `en_stale_skipped: 0`, `intl_untranslated: 0`.
 - `py tools/quality_report.py --data data/suwon --out public --md docs/handover/suwon_quality.md` 리포트 생성 완료.
 - `pytest` 및 `node --test` 전체 자동화 테스트 스위트 실행 및 GitHub `origin main` 푸시 진행.
+- 2026-10-29: 질문형 가이드 8편(guide-07~14: 월요일 휴관·휠체어 대여·전통시장·반려동물 동반 가능/불가·주차 요금·이른 아침 식당·23:00 넘어 여는 식당·입장료)을 draft로 추가(check-guide 통과, 공개·번역은 운영자 결정 뒤). guide-04 번호는 2026-10-24에 내린 가이드 것이라 비워 둠.
