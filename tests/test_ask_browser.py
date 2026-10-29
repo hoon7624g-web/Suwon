@@ -292,9 +292,9 @@ def test_the_opening_asks_and_the_panel_below_answers(browser, site, width, heig
     assert box["y"] >= 0 and box["y"] + box["height"] <= height
     assert page.evaluate("document.querySelector('.hq').contains(document.getElementById('ask-q'))")
     assert page.evaluate("document.querySelector('.hq').nextElementSibling.matches('.hk-conv')")
-    # the launcher: at load from 1024px (owner 2026-10-14); below it steps aside while this box is on screen (operator
-    # 2026-10-15: at 390x844 it covered the box's '#' tags)
-    assert page.locator(".chat-fab").is_visible() == (width >= 1024)
+    # the launcher steps aside while this box is on screen (operator 2026-10-15 below 1024px: at 390x844 it covered the
+    # box's '#' tags; operator 2026-10-21 at every width: 'hide … initial floating widgets' on the PC home too)
+    assert not page.locator(".chat-fab").is_visible()
     later = ".foot"
     page.fill("#ask-q", "은파 주차")
     above = {s: doc_top(page, s) for s in ("#h-home", ".hk-box", ".hk-note")}
@@ -428,13 +428,12 @@ def test_without_chat_js_the_box_searches_and_a_starter_follows_its_link(browser
 def test_the_launcher_is_there_from_the_start_and_goes_to_the_box(browser, site, width, height):
     ctx, page, errors = open_home(browser, site, width, height)
     fab = page.locator(".chat-fab")
-    if width < 1024:
-        # operator 2026-10-15: below 1024px it steps aside while the home's question box is on screen — hidden, out
-        # of the tab order — and is there once the box has left the screen
-        assert not fab.is_visible() and page.evaluate("getComputedStyle(document.querySelector('.chat-fab')).visibility") == "hidden"
-        page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-        page.wait_for_timeout(400)
-    assert fab.is_visible()                                          # from the first paint, on the home too
+    # it steps aside while the home's question box is on screen — hidden, out of the tab order — and is there once the
+    # box has left the screen (operator 2026-10-15 below 1024px, 2026-10-21 at every width)
+    assert not fab.is_visible() and page.evaluate("getComputedStyle(document.querySelector('.chat-fab')).visibility") == "hidden"
+    page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+    page.wait_for_timeout(400)
+    assert fab.is_visible()                                          # once the box is off screen, on the home too
     b = fab.bounding_box()
     assert b["height"] == (84 if width >= 1024 else 68) and b["y"] + b["height"] <= height - 16 and b["x"] + b["width"] <= width - 16
     assert fab.get_attribute("aria-haspopup") is None                # here it goes to the box, it opens no dialog
@@ -449,7 +448,7 @@ def test_the_launcher_is_there_from_the_start_and_goes_to_the_box(browser, site,
     page.wait_for_timeout(1000)
     assert page.evaluate("document.activeElement.id") == "ask-q" and in_viewport(page, ".hk-box")
     assert page.locator("#chat").count() == 0 and page.locator("[data-ask-log]").is_hidden()
-    assert fab.is_visible() == (width >= 1024)                       # the box is on screen again (operator 2026-10-15)
+    assert not fab.is_visible()                                      # the box is on screen again (operator 2026-10-15, 10-21)
     assert errors == []
     ctx.close()
 
@@ -462,16 +461,19 @@ def test_the_launcher_brings_the_conversation_and_the_panel_keeps_it(browser, si
     page.wait_for_selector(".ask-log .chat-a .chat-card")
     fab = page.locator(".chat-fab")
     page.wait_for_timeout(800)
-    assert fab.is_visible()                                          # never steps aside (owner 2026-10-14)
+    # on the home it is there exactly while the question box is off screen (operator 2026-10-21: the PC home too)
+    out = "document.documentElement.classList.contains('ask-out')"
+    assert fab.is_visible() == page.evaluate(out)
     page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
     page.wait_for_timeout(500)
-    assert fab.is_visible()
+    assert page.evaluate(out) and fab.is_visible()
     fab.click()
     page.wait_for_timeout(100 if reduced == "reduce" else 1200)
     assert in_viewport(page, "[data-ask-log]")                       # the conversation, in view
     assert page.evaluate("document.activeElement.id") == "ask-q2" and page.locator("#chat").count() == 0
     assert "은파 주차" in page.inner_text("[data-ask-log]")
-    assert fab.is_visible()
+    page.wait_for_timeout(400)                                       # the fade
+    assert fab.is_visible() == page.evaluate(out)
     # another page: the launcher opens the floating panel with the same conversation (sessionStorage)
     page.goto(site + "/places/")
     page.locator(".chat-fab").click()
@@ -482,6 +484,10 @@ def test_the_launcher_brings_the_conversation_and_the_panel_keeps_it(browser, si
     page.goto(site + "/")
     page.wait_for_load_state("load")
     assert page.locator("[data-ask-log]").is_hidden()                # nothing restored while the page loads
+    assert not page.locator(".chat-fab").is_visible()                # aside while the box is on screen (2026-10-21)
+    page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+    page.wait_for_function(out, timeout=3000)
+    page.wait_for_timeout(400)
     page.locator(".chat-fab").click()
     page.wait_for_selector("[data-ask-log] .chat-card")
     page.wait_for_timeout(100 if reduced == "reduce" else 1200)
