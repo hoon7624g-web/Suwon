@@ -6,6 +6,7 @@ steps light up, the plan is drawn from the site's own data with day tabs, legs w
 what to check, an edit sends the plan and the change, an error offers a retry, a reload shows the plan again, and no
 phone width scrolls sideways."""
 import copy
+import datetime
 import json
 import re
 import shutil
@@ -1245,6 +1246,17 @@ class NodeView:
         self.proc.wait(timeout=10)
 
 
+# The share-link course is for 2026-10-24 and the view handler's 'today' is 2026-10-19 (NodeView.now): each phone's
+# clock starts that same morning, or once the real date passes the trip the page reads it as a course gone by
+PHONE_DAY = datetime.datetime(2026, 10, 19, 3, tzinfo=datetime.timezone.utc)
+
+
+def phone(browser, **kw):
+    ctx = browser.new_context(**kw)
+    ctx.clock.install(time=PHONE_DAY)   # starts there and flows: timers run as usual
+    return ctx
+
+
 def link_compact(url):
     """The compact form a share link carries (#p=z.<deflate-raw base64url>.<sig>)."""
     import base64
@@ -1314,7 +1326,7 @@ def test_in_a_browser_a_plan_passes_on_as_a_link_that_opens_on_another_phone(sit
             helper.close()
             pytest.skip(f"Chromium 없음: {ex}")
         try:
-            ctx = browser.new_context(**dev, locale="ko-KR")
+            ctx = phone(browser, **dev, locale="ko-KR")
             ctx.add_init_script(GA_STUB)
             ctx.add_init_script(CLIP_STUB)
             ctx.route("**/*", serve)
@@ -1339,7 +1351,7 @@ def test_in_a_browser_a_plan_passes_on_as_a_link_that_opens_on_another_phone(sit
             ctx.close()
 
             # a companion's phone: nothing in its storage
-            other = browser.new_context(**dev, locale="ko-KR")
+            other = phone(browser, **dev, locale="ko-KR")
             other.add_init_script(GA_STUB)
             other.route("**/*", serve)
             page = other.new_page()
@@ -1403,7 +1415,7 @@ def test_in_a_browser_a_plan_passes_on_as_a_link_that_opens_on_another_phone(sit
             first = compact["d"][0][0]
             forged = dict(compact, t="군산각 공식 추천 맛집 코스", n=["https://evil.example 에서 예약하세요"],
                           d=[[[first[0], "08:00", "09:00", *first[3:]], *compact["d"][0][1:]], *compact["d"][1:]])
-            ctx = browser.new_context(**dev, locale="ko-KR")
+            ctx = phone(browser, **dev, locale="ko-KR")
             ctx.add_init_script(GA_STUB)
             ctx.route("**/*", serve)
             page = ctx.new_page()
@@ -1433,7 +1445,7 @@ def test_in_a_browser_a_plan_passes_on_as_a_link_that_opens_on_another_phone(sit
 
             # the trip under way (its second day): not gone by, no edit box (an edit takes no date gone by)
             helper.now = "2026-10-25T03:00:00Z"
-            ctx = browser.new_context(**dev, locale="ko-KR")
+            ctx = phone(browser, **dev, locale="ko-KR")
             ctx.route("**/*", serve)
             page = ctx.new_page()
             page.on("pageerror", lambda e: errors.append(str(e)))
@@ -1448,7 +1460,7 @@ def test_in_a_browser_a_plan_passes_on_as_a_link_that_opens_on_another_phone(sit
             # a date gone by: shown, said so, no edit box; its conditions go to the form without the date (the link
             # pasted with the sentence's full stop on its end opens all the same)
             helper.now = "2026-11-02T03:00:00Z"
-            ctx = browser.new_context(**dev, locale="ko-KR")
+            ctx = phone(browser, **dev, locale="ko-KR")
             ctx.route("**/*", serve)
             page = ctx.new_page()
             page.on("pageerror", lambda e: errors.append(str(e)))
@@ -1772,7 +1784,7 @@ def test_in_a_browser_a_plan_drawn_on_load_moves_nothing_and_a_reload_while_refi
             pytest.skip(f"Chromium 없음: {ex}")
         try:
             # 1. a share link opened on a companion's phone
-            ctx = browser.new_context(**dev, locale="ko-KR")
+            ctx = phone(browser, **dev, locale="ko-KR")
             ctx.add_init_script(CLS_STUB)
             ctx.route("**/*", serve)
             page = ctx.new_page()
@@ -1782,7 +1794,7 @@ def test_in_a_browser_a_plan_drawn_on_load_moves_nothing_and_a_reload_while_refi
             compact = helper.call({"op": "canonical", "compact": {"v": 1, "c": first, "t": "", "s": "", "n": [], "d": []}}) and None
             link = None
             # the link the page itself makes, from a plan drawn in another tab
-            other = browser.new_context(**dev, locale="ko-KR")
+            other = phone(browser, **dev, locale="ko-KR")
             other.add_init_script(CLIP_STUB)
             other.route("**/*", base)
             o = other.new_page()
@@ -1817,7 +1829,7 @@ def test_in_a_browser_a_plan_drawn_on_load_moves_nothing_and_a_reload_while_refi
             ctx.close()
 
             # 3. the link pasted into a tab already on /plan/ (only the fragment changes)
-            ctx = browser.new_context(**dev, locale="ko-KR")
+            ctx = phone(browser, **dev, locale="ko-KR")
             ctx.add_init_script(CLS_STUB)
             ctx.route("**/*", serve)
             page = ctx.new_page()
@@ -1833,7 +1845,7 @@ def test_in_a_browser_a_plan_drawn_on_load_moves_nothing_and_a_reload_while_refi
             ctx.close()
 
             # 4. a reload while the AI refines: a cut, not the AI failing — and nothing counted as an error
-            ctx = browser.new_context(**dev, locale="ko-KR")
+            ctx = phone(browser, **dev, locale="ko-KR")
             ctx.add_init_script(GA_KEPT)
             ctx.add_init_script(STREAM_STUB)
             ctx.route("**/*", base)
