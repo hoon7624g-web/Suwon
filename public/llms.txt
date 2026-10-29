@@ -731,3 +731,138 @@
 
 ## 이용 안내
 - [출처·이용 안내](https://suwon.webforai.kr/about/): 원문 이용조건, 사진, 운영 주체, 정정 요청
+
+## English
+- [Suwongak](https://suwon.webforai.kr/en/): Suwon attractions, restaurants and places to stay with hours, prices, parking and directions; travel courses and festival dates.
+- [Which Suwon king-size galbi, whole fried chicken, kalguksu, and Haengnidan Street café spots are open on Mondays?](https://suwon.webforai.kr/en/guides/monday-open-restaurants-suwon/): Of the Suwon restaurants on this site, 176 do not list Monday among their closing days.
+- [How do you choose among the 27 hotels, hanok stays, and other lodgings in Suwon?](https://suwon.webforai.kr/en/guides/suwon-hotels-hanok-stays/): This site lists 27 hotels, hanok stays, and other lodgings in Suwon, and 27 of them include parking information.
+- [Where are the fortress sights such as Suwon Hwaseong Fortress, Hwaseong Haenggung Palace, and Banghwasuryujeong Pavilion, and the free attractions that are always open?](https://suwon.webforai.kr/en/guides/suwon-hwaseong-fortress-haenggung/): This site lists 20 sights related to Suwon Hwaseong Fortress, Hwaseong Haenggung Palace, the four main gates, the corner pavilions, and the fortress walls, and 51 Suwon attractions open year-round and free of charge.
+- [Things to Do in Suwon](https://suwon.webforai.kr/en/places/): 444 attractions
+- [Where to Eat in Suwon](https://suwon.webforai.kr/en/food/): 210 restaurants
+- [Where to Stay in Suwon](https://suwon.webforai.kr/en/stays/): 27 stays
+- [Suwon travel courses](https://suwon.webforai.kr/en/courses/): 6 courses
+- [Suwon festivals and events](https://suwon.webforai.kr/en/events/): dates, venues and fees
+- [About and sources](https://suwon.webforai.kr/en/about/): sources, photo licenses, corrections
+- [Aqua Planet Gwanggyo](https://suwon.webforai.kr/en/places/akuapeullanet-gwanggyo/): Aqua Planet Gwanggyo is open 10:30–19:30 (ticket sales end 18:30) and is open year-round.
+- [Banghwasuryujeong Pavilion](https://suwon.webforai.kr/en/places/banghwasuryujeong/): Banghwasuryujeong Pavilion is always open, with no closing days.
+- [Bell of Hyowon & Seojangdae Command Post](https://suwon.webforai.kr/en/places/hyowonui-jong-seojangdae/): Bell of Hyowon & Seojangdae Command Post is always open, with no closing days.
+- [Changnyongmun Gate](https://suwon.webforai.kr/en/places/changnyongmun/): Changnyongmun Gate is always open, with no closing days.
+- [Dongbukgongsimdon](https://suwon.webforai.kr/en/places/dongbukgongsimdon/): Dongbukgongsimdon is always open, with no closing days.
+- [Flying Suwon](https://suwon.webforai.kr/en/places/peullaing-suwon/): Flying Suwon has announced that it will be closed from Sunday, November 1, 2026 to Sunday, January 31, 2027.
+- [Gwanggyo Freiburg Observatory](https://suwon.webforai.kr/en/places/gwanggyo-peuraibureukeujeonmangdae/): Gwanggyo Freiburg Observatory is open 06:00–22:00 all year round.
+- [Gwanggyo Lake Park](https://suwon.webforai.kr/en/places/gwanggyohosugongwon/): Gwanggyo Lake Park is always open, with no closing days.
+- [Gwanggyo Marugil](https://suwon.webforai.kr/en/places/gwanggyomarugil/): Gwanggyo Marugil is always open, with no closing days.
+- [Gyeonggi Art Center](https://suwon.webforai.kr/en/places/gyeonggiateusenteo/): Gyeonggi Art Center operates with no closing days.
+- [Gyeonggi Library](https://suwon.webforai.kr/en/places/gyeonggidoseogwan/): Gyeonggi Library is open 10:00–21:00 on weekdays and 10:00–18:00 on weekends.
+- [Gyeonggi Sangsang Campus](https://suwon.webforai.kr/en/places/gyeonggisangsangkaempeoseu/): Gyeonggi Sangsang Campus is closed every Monday, on January 1, and on Seollal and Chuseok days, and it is open 10:00–18:00.
+- [Haewoojae Museum (Mr. Toilet House)](https://suwon.webforai.kr/en/places/haeujae/): Haewoojae Museum (Mr. Toilet House) is open 10:00–18:00 in the summer season (March–October, last admission 17:30) and 10:00–17:00 in the winter season (November–February, last admission 16:30).
+- [Hwahongmun Gate)](https://suwon.webforai.kr/en/places/hwahongmun/): Hwahongmun Gate) is open 09:00–18:00 in the summer season (March–October) and 09:00–17:00 in the winter season (November–February), and it is open year-round.
+- [Hwaseomun Gate](https://suwon.webforai.kr/en/places/hwaseomun/): Hwaseomun Gate is always open, with no closing days.
+- [Hwaseong Haenggung Palace](https://suwon.webforai.kr/en/places/hwaseonghaenggung/): Hwaseong Haenggung Palace is open 09:00–21:30 from Friday, October 30 to Sunday, November 1, 2026, and last admission is at 21:00.
+- [Hyowon Park](https://suwon.webforai.kr/en/places/hyowongongwon/): Hyowon Park is open 09:00–22:00 all year round.
+- [Irwolhosu Park](https://suwon.webforai.kr/en/places/irwolhosugongwon/): Irwolhosu Park is always open, with no closing days.
+- [Janganmun Gate](https://suwon.webforai.kr/en/places/janganmun/): Janganmun Gate is open 09:00–18:00 in the summer season (March–October) and 09:00–17:00 in the winter season (November–February), and it is open year-round.
+- [Jidong Market](https://suwon.webforai.kr/en/places/jidongsijang/): Opening hours at Jidong Market vary by shop.
+- [Manseok Park](https://suwon.webforai.kr/en/places/manseokgongwon/): Manseok Park is at 1088 Jeongjo-ro (Songjuk-dong), Jangan-gu, and is always open.
+- [Nahyeseok Street](https://suwon.webforai.kr/en/places/nahyeseokgeori/): Nahyeseok Street is at 25-2 Gwongwang-ro 188beon-gil (Ingye-dong), Paldal-gu, and is always open, with no closing days.
+- [National Agricultural Museum](https://suwon.webforai.kr/en/places/gungnimnongeopbangmulgwan/): National Agricultural Museum is open 10:00–18:00 and is closed every Monday, on January 1, and on Lunar New Year's Day and Chuseok Day.
+- [Nosongjidae](https://suwon.webforai.kr/en/places/nosongjidae/): Nosongjidae is always open, with no closing days.
+- [Samsung Innovation Museum](https://suwon.webforai.kr/en/places/samseonginobeisyeonmyujieom/): Samsung Innovation Museum is open 13:00–14:00 on weekdays and 10:00–17:00 on Saturday, and it is closed every Sunday, on legal public holidays, and on substitute holidays.
+- [Seoho Park](https://suwon.webforai.kr/en/places/seohogongwon/): Seoho Park is always open, with no closing days.
+- [Starfield Library Suwon](https://suwon.webforai.kr/en/places/byeolmadangdoseogwan-seutapildeu-suwonjeom/): Starfield Library Suwon is open 10:00–22:00 all year round.
+- [Suwon Arboretum Irwol](https://suwon.webforai.kr/en/places/irwolsumogwon/): Suwon Arboretum Irwol is open 09:30–21:00 from Friday, October 30 to Saturday, October 31, 2026, and last admission is at 20:30.
+- [Suwon Bongnyeongsa Temple](https://suwon.webforai.kr/en/places/bongnyeongsa/): Suwon Bongnyeongsa Temple is open 09:00–17:00 all year round.
+- [Suwon Chicken Street](https://suwon.webforai.kr/en/places/suwontongdakgeori/): Opening hours at Suwon Chicken Street vary by shop.
+- [Suwon Hwaryeongjeon Shrine](https://suwon.webforai.kr/en/places/suwon-hwaryeongjeon/): Suwon Hwaryeongjeon Shrine is open 09:00–18:00 in the summer season (March–October) and 09:00–17:00 in the winter season (November–February), and it is open year-round.
+- [Suwon Hwaseong Museum](https://suwon.webforai.kr/en/places/suwonhwaseongbangmulgwan/): Suwon Hwaseong Museum is open 09:00–18:00 (ticket sales end 17:00) and is closed every Monday and on other closing days set by the mayor.
+- [Suwon Museum](https://suwon.webforai.kr/en/places/suwonbangmulgwan/): Suwon Museum is open 09:00–18:00 (ticket sales end 17:00) and is closed every Monday (if Monday is a legal public holiday, it closes the next day).
+- [Suwon Museum of Art](https://suwon.webforai.kr/en/places/suwonsirimmisulgwan/): Suwon Museum of Art is open 10:00–19:00 in the summer season (March–October, last admission 18:00) and 10:00–18:00 in the winter season (November–February, last admission 17:00).
+- [Suwon Sirimmanseok Exhibition Hall](https://suwon.webforai.kr/en/places/suwonsirimmanseokjeonsigwan/): Suwon Sirimmanseok Exhibition Hall is open 10:00–19:00 in the summer season (March–October) and 10:00–18:00 in the winter season (November–February).
+- [Suwon Sirip Art Seupeiseu Gwanggyo](https://suwon.webforai.kr/en/places/suwonsiribateuseupeiseugwanggyo/): Suwon Sirip Art Seupeiseu Gwanggyo is open 10:00–18:00 and is closed every Monday (if Monday is a public holiday, it closes the next day).
+- [Wolhwawon Garden (Hyowon Park)](https://suwon.webforai.kr/en/places/hyowongongwon-wolhwawon/): Wolhwawon Garden (Hyowon Park) is open 09:00–22:00 all year round.
+- [Yeongheung Arboretum](https://suwon.webforai.kr/en/places/yeongheungsumogwon/): Yeongheung Arboretum is open 09:30–21:00 from Friday, October 30 to Saturday, October 31, 2026, and last admission is at 20:30.
+- [Yeonmudae (Dongjangdae)](https://suwon.webforai.kr/en/places/yeonmudae/): Yeonmudae (Dongjangdae) is always open, with no closing days.
+- [Haengnidan Street](https://suwon.webforai.kr/en/places/haengnidangil/): Haengnidan Street is always open, with no closing days.
+- [Paldalmun Gate](https://suwon.webforai.kr/en/places/paldalmun/): Paldalmun Gate is open 09:00–18:00 in the summer season (March–October) and 09:00–17:00 in the winter season (November–February), and it is open year-round.
+- [Suwon Gwanggyo Museum](https://suwon.webforai.kr/en/places/suwongwanggyobangmulgwan/): Suwon Gwanggyo Museum is open 09:00–18:00 and is closed every Monday and on other closing days set by the mayor.
+- [(Sin) Daewonok](https://suwon.webforai.kr/en/places/daewonok/): The signature dish at (Sin) Daewonok is Pyongyang-style cold noodles; the menu also includes spicy mixed cold noodles, boiled meat slices, mung bean pancakes, and more.
+- [100 Nyeon Hanu](https://suwon.webforai.kr/en/places/100-nyeonhanu/): The signature dish at 100 Nyeon Hanu is aged double-plus grade sirloin; the menu also includes hanwoo rib finger meat, flame-grilled sirloin, Handon pork ribs, and more.
+- [10593 Beigeul Coffee House](https://suwon.webforai.kr/en/places/10593-beigeulkeopihauseu/): The signature item at 10593 Beigeul Coffee House is Americano; the menu also includes almond cloud, Ppama shake, coco pine shake, and more.
+- [335 Kitchen Gwanggyo Abeunyupeurangjeom](https://suwon.webforai.kr/en/places/335-kichin-gwanggyoabeunyupeurangjeom/): The signature dish at 335 Kitchen Gwanggyo Abeunyupeurangjeom is beef shabu-shabu; the menu also includes spicy abalone and green onion stew, Vietnamese rice paper rolls, and more.
+- [91 Coffee](https://suwon.webforai.kr/en/places/91-keopi/): The signature item at 91 Coffee is the 91 latte; the menu also includes Häagen-Dazs latte, matcha secco, homemade milk tea, and more.
+- [955 Cafe](https://suwon.webforai.kr/en/places/955-kape/): The signature item at 955 Cafe is The Bear's Lime Orange Tree; the menu also includes homemade vanilla bean latte, passion fruit crimson iced tea, Americano, and more.
+- [AK Plaza - Suwon Branch](https://suwon.webforai.kr/en/places/ak-peullaja-suwon/): AK Plaza - Suwon Branch is open 10:30–20:00.
+- [Aibi Seutei](https://suwon.webforai.kr/en/places/aibi-seutei/): Aibi Seutei is a lodging with 67 guest rooms.
+- [Ajudaehakgyodogu Museum](https://suwon.webforai.kr/en/places/ajudaehakgyodogubangmulgwan/): Ajudaehakgyodogu Museum is closed on public holidays and on the university founding anniversary (April 12) and is open 10:00–17:00.
+- [Ami Star](https://suwon.webforai.kr/en/places/amiseuta/): The signature item at Ami Star is Americano; the menu also includes espresso, cappuccino, café latte, and more.
+- [Amoreuaensimponi Hotel](https://suwon.webforai.kr/en/places/amoreuaensimponihotel/): Amoreuaensimponi Hotel is a lodging with 128 guest rooms.
+- [Anangne](https://suwon.webforai.kr/en/places/anangne/): The signature dish at Anangne is seafood cold raw fish soup; the menu also includes spicy braised monkfish, spicy braised seafood, cold raw fish soup, and more.
+- [Badarogankokkirikkochang](https://suwon.webforai.kr/en/places/badarogankokkirikkochang/): The signature dish at Badarogankokkirikkochang is assorted sashimi; the menu also includes spicy fish bone stew.
+- [Baegunjumallongjang](https://suwon.webforai.kr/en/places/baegunjumallongjang/): The signature dish at Baegunjumallongjang is charcoal barbecue; the menu also includes barley rice, seafood green onion pancake, herbal boiled chicken, and more.
+- [Baekcheongu Kalguksu](https://suwon.webforai.kr/en/places/baekcheongukalguksu/): The signature dish at Baekcheongu Kalguksu is seafood kalguksu (knife-cut noodle soup); the menu also includes seafood dumpling hot pot, steamed dumplings, seafood abalone kalguksu, and more.
+- [Baekse Jjamppong Suwon Main Branch](https://suwon.webforai.kr/en/places/baeksejjamppong-suwonbonjeom/): The signature dish at Baekse Jjamppong Suwon Main Branch is Baekse jjamppong; the menu also includes brisket jjamppong, Baekse-style jjajang, clear jjamppong, and more.
+- [Baeksesamgyetang Suwon Pajang Main Branch](https://suwon.webforai.kr/en/places/baeksesamgyetang-suwonpajangbonjeom/): The signature dish at Baeksesamgyetang Suwon Pajang Main Branch is sanghwang mushroom samgyetang (ginseng chicken soup); the menu also includes herbal samgyetang, abalone and sanghwang mushroom chicken porridge, pressed chicken feet slices, and more.
+- [Bambatcheonggaeguri Park](https://suwon.webforai.kr/en/places/bambatcheonggaegurigongwon/): Bambatcheonggaeguri Park is always open, with no closing days.
+
+## 日本語
+- [水原閣](https://suwon.webforai.kr/ja/): 水原の観光地・飲食店・宿泊施設の営業時間・料金・駐車場・道案内、旅行コースと祭りの日程。
+- [月曜日に営業している水原の王カルビ・丸鶏の揚げ物・カルグクス・ヘンニダンギルのカフェはどこでしょうか？](https://suwon.webforai.kr/ja/guides/monday-open-restaurants-suwon/): このサイトに載っている水原の飲食店のうち、休みの日の情報に月曜日の休業がないところは176か所です。
+- [水原のホテル・韓屋ステイ・宿泊施設27か所は、どう選べばよいでしょうか？](https://suwon.webforai.kr/ja/guides/suwon-hotels-hanok-stays/): このサイトに収録された水原のホテル・韓屋ステイ・宿泊施設は全部で27か所で、駐車案内が記載された宿泊施設は27か所です。
+- [水原華城・華城行宮・訪花随柳亭の城郭スポットと、常時開放の無料観光地はどこでしょうか？](https://suwon.webforai.kr/ja/guides/suwon-hwaseong-fortress-haenggung/): このサイトに載っている水原華城・華城行宮・四大門・角楼・城郭関連のスポットは20か所です。
+- [水原の見どころ](https://suwon.webforai.kr/ja/places/): 観光地444か所
+- [水原のグルメ](https://suwon.webforai.kr/ja/food/): 飲食店210か所
+- [水原の宿泊施設](https://suwon.webforai.kr/ja/stays/): 宿泊施設27か所
+
+## 中文(简体)
+- [水原阁](https://suwon.webforai.kr/zh-hans/): 水原景点、餐厅与住宿的开放时间、费用、停车和路线；旅游路线与庆典日期。
+- [周一营业的水原大排骨、整鸡、刀切面、行理团路咖啡馆有哪些？](https://suwon.webforai.kr/zh-hans/guides/monday-open-restaurants-suwon/): 本网站收录的水原餐厅中，休息日信息里没有周一休息的共176家。
+- [水原的酒店、韩屋住宿等27家住宿设施该如何选择？](https://suwon.webforai.kr/zh-hans/guides/suwon-hotels-hanok-stays/): 本网站收录的水原酒店、韩屋住宿等住宿设施共27家，标有停车信息的共27家。
+- [水原华城、华城行宫、访花随柳亭等城郭名胜和随时免费开放的景点有哪些？](https://suwon.webforai.kr/zh-hans/guides/suwon-hwaseong-fortress-haenggung/): 本网站收录的水原华城、华城行宫、四大门、角楼及城郭相关名胜共20处，全年无休、免费开放的水原景点共51处。
+- [水原游玩](https://suwon.webforai.kr/zh-hans/places/): 444个景点
+- [水原美食](https://suwon.webforai.kr/zh-hans/food/): 210家餐厅
+- [水原住宿](https://suwon.webforai.kr/zh-hans/stays/): 27家住宿
+
+## 中文(繁體)
+- [水原閣](https://suwon.webforai.kr/zh-hant/): 水原景點、餐廳與住宿的開放時間、費用、停車和路線；旅遊路線與慶典日期。
+- [週一營業的水原大排骨、炸雞、刀切麵、行理團路咖啡廳有哪些？](https://suwon.webforai.kr/zh-hant/guides/monday-open-restaurants-suwon/): 本網站收錄的水原餐廳中，公休資訊未列週一公休的有176處。
+- [水原的飯店、韓屋住宿等27處住宿該如何挑選？](https://suwon.webforai.kr/zh-hant/guides/suwon-hotels-hanok-stays/): 本網站收錄的水原飯店、韓屋住宿等住宿共27處，有停車資訊的住宿有27處。
+- [水原華城、華城行宮、訪花隨柳亭等城郭景點與全天開放的免費景點有哪些？](https://suwon.webforai.kr/zh-hant/guides/suwon-hwaseong-fortress-haenggung/): 本網站收錄的水原華城、華城行宮、四大門、角樓等城郭相關景點有20處。
+- [水原景點](https://suwon.webforai.kr/zh-hant/places/): 444處景點
+- [水原美食](https://suwon.webforai.kr/zh-hant/food/): 210家餐廳
+- [水原住宿](https://suwon.webforai.kr/zh-hant/stays/): 27處住宿
+
+## Deutsch
+- [Suwongak](https://suwon.webforai.kr/de/): Sehenswürdigkeiten, Restaurants und Unterkünfte in Suwon mit Öffnungszeiten, Preisen, Parkplätzen und Anfahrt; Reiserouten und Festtermine.
+- [Welche Lokale für große Rippen, Brathähnchen und Kalguksu sowie Cafés an der Straße Haengnidan-gil in Suwon sind am Montag geöffnet?](https://suwon.webforai.kr/de/guides/monday-open-restaurants-suwon/): Von den Restaurants in Suwon auf dieser Website haben 176 keinen Montag als Ruhetag angegeben.
+- [Wie wählt man unter den 27 Hotels, Hanok-Aufenthalten und Unterkünften in Suwon?](https://suwon.webforai.kr/de/guides/suwon-hotels-hanok-stays/): Diese Website führt insgesamt 27 Hotels, Hanok-Aufenthalte und Unterkünfte in Suwon; für 27 Unterkünfte sind Parkhinweise angegeben.
+- [Welche Orte an der Festungsmauer wie die Festung Suwon Hwaseong, Palast Hwaseong Haenggung und der Pavillon Banghwasuryujeong sowie jederzeit zugängliche kostenlose Sehenswürdigkeiten gibt es?](https://suwon.webforai.kr/de/guides/suwon-hwaseong-fortress-haenggung/): Diese Website führt 20 Orte rund um die Festung Suwon Hwaseong, Palast Hwaseong Haenggung, die vier Haupttore, die Ecktürme und die Festungsmauer.
+- [Sehenswertes in Suwon](https://suwon.webforai.kr/de/places/): 444 Sehenswürdigkeiten
+- [Essen in Suwon](https://suwon.webforai.kr/de/food/): 210 Restaurants
+- [Übernachten in Suwon](https://suwon.webforai.kr/de/stays/): 27 Unterkünfte
+
+## Français
+- [Suwongak](https://suwon.webforai.kr/fr/): Sites touristiques, restaurants et hébergements à Suwon avec horaires, tarifs, stationnement et accès ; parcours de voyage et dates des festivals.
+- [À Suwon, quels restaurants de grandes côtes, de poulet frit et de nouilles coupées au couteau, et quels cafés de Haengnidan-gil sont ouverts le lundi ?](https://suwon.webforai.kr/fr/guides/monday-open-restaurants-suwon/): Parmi les restaurants de Suwon répertoriés sur ce site, 176 n'indiquent pas de fermeture le lundi dans leurs jours de fermeture.
+- [Comment choisir parmi les 27 hôtels, séjours en hanok et hébergements de Suwon ?](https://suwon.webforai.kr/fr/guides/suwon-hotels-hanok-stays/): Ce site répertorie 27 hôtels, séjours en hanok et hébergements à Suwon, et 27 hébergements indiquent des informations sur le stationnement.
+- [Quels sont les sites des remparts (forteresse Hwaseong de Suwon, Palais Hwaseong Haenggung, pavillon Banghwasuryujeong) et les sites touristiques gratuits ouverts en permanence ?](https://suwon.webforai.kr/fr/guides/suwon-hwaseong-fortress-haenggung/): Ce site répertorie 20 lieux liés à la forteresse Hwaseong de Suwon, à Palais Hwaseong Haenggung, aux quatre grandes portes, aux pavillons d'angle et aux remparts.
+- [À voir et à faire à Suwon](https://suwon.webforai.kr/fr/places/): 444 sites touristiques
+- [Où manger à Suwon](https://suwon.webforai.kr/fr/food/): 210 restaurants
+- [Où dormir à Suwon](https://suwon.webforai.kr/fr/stays/): 27 hébergements
+
+## Español
+- [Suwongak](https://suwon.webforai.kr/es/): Atracciones, restaurantes y alojamientos en Suwon con horarios, precios, aparcamiento y cómo llegar; rutas de viaje y fechas de festivales.
+- [¿Qué locales de costilla grande, pollo frito entero, kalguksu y cafés de Calle Haengnidan-gil abren los lunes en Suwon?](https://suwon.webforai.kr/es/guides/monday-open-restaurants-suwon/): De los restaurantes de Suwon recogidos en este sitio, 176 no tienen el lunes entre sus días de cierre.
+- [¿Cómo elegir entre los 27 alojamientos de Suwon, entre hoteles, estancias en hanok y otros?](https://suwon.webforai.kr/es/guides/suwon-hotels-hanok-stays/): Este sitio recoge 27 alojamientos de Suwon, entre hoteles, estancias en hanok y otros, y 27 de ellos tienen información de aparcamiento.
+- [¿Dónde están los lugares de la muralla de Suwon Hwaseong, Palacio Hwaseonghaenggung y Banghwasuryujeong, y los lugares turísticos gratuitos siempre abiertos?](https://suwon.webforai.kr/es/guides/suwon-hwaseong-fortress-haenggung/): Este sitio recoge 20 lugares relacionados con Suwon Hwaseong, Palacio Hwaseonghaenggung, las cuatro puertas principales, los pabellones de esquina y la muralla, y 51 lugares turísticos de Suwon abiertos todo el año y gratuitos.
+- [Qué hacer en Suwon](https://suwon.webforai.kr/es/places/): 444 lugares turísticos
+- [Dónde comer en Suwon](https://suwon.webforai.kr/es/food/): 210 restaurantes
+- [Dónde alojarse en Suwon](https://suwon.webforai.kr/es/stays/): 27 alojamientos
+
+## Русский
+- [Сувонгак](https://suwon.webforai.kr/ru/): Регион Сувон: достопримечательности, рестораны и жильё с часами работы, ценами, парковкой и схемой проезда; маршруты и даты фестивалей.
+- [Где в Сувоне по понедельникам открыты заведения с большими рёбрышками кальби, жареной курицей, лапшой кальгуксу и кафе на Улица Хэннидан-киль?](https://suwon.webforai.kr/ru/guides/monday-open-restaurants-suwon/): Среди ресторанов Сувона на этом сайте 176 таких, у которых в сведениях о выходных нет закрытия по понедельникам.
+- [Как выбрать среди 27 отелей, ханок-стэй и других мест проживания в Сувоне?](https://suwon.webforai.kr/ru/guides/suwon-hotels-hanok-stays/): На этом сайте 27 отелей, ханок-стэй и других мест проживания в Сувоне; информация о парковке указана у 27 из них.
+- [Где в Сувоне места у крепостных стен — крепость Хвасон, Дворец Хвасон-хэнгун, павильон Панхвасурюджон — и бесплатные достопримечательности, открытые всегда?](https://suwon.webforai.kr/ru/guides/suwon-hwaseong-fortress-haenggung/): На этом сайте 20 мест, связанных с крепостью Хвасон, Дворец Хвасон-хэнгун, четырьмя главными воротами, угловыми башнями и крепостными стенами.
+- [Сувон: что посмотреть](https://suwon.webforai.kr/ru/places/): 444 достопримечательности
+- [Сувон: где поесть](https://suwon.webforai.kr/ru/food/): 210 ресторанов
+- [Сувон: где остановиться](https://suwon.webforai.kr/ru/stays/): 27 вариантов жилья
