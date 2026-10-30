@@ -725,23 +725,24 @@ E /events/suwonjaejeupeseutibeol/ | 수원재즈페스티벌 | 최근 회차 202
 E /events/suwonteungnyesi-ballyeodongmul-hanmaeumchukje/ | 수원특례시 반려동물 한마음축제 | 최근 회차 2026-10-24 · 시간 10:00~17:00 · 장소 광교중앙공원 · 요금 무료 · 문의 031-5191-3328
 E /events/suwonyeongeukchukje/ | 수원연극축제 | 최근 회차 2026-05-16~05-17 · 시간 11:00~22:00 · 장소 경기상상캠퍼스 · 요금 무료 · 문의 031-5191-2768
 
-## 영상 41편 — 주제별 페이지 (영상 하나하나는 search_site로 찾는다)
-V /videos/yeohaeng-koseu/ | 여행 코스 영상 5편(공식 채널 0편)
-V /videos/suwon-hwaseong-haenggung/ | 수원화성·화성행궁 영상 8편(공식 채널 0편)
-V /videos/haengnidan-banghwasuryujeong/ | 행리단길·방화수류정 영상 5편(공식 채널 0편)
-V /videos/gwanggyo-hosu/ | 광교호수공원·아쿠아플라넷 영상 3편(공식 채널 0편)
-V /videos/sumogwon-gongwon/ | 수목원·공원·광교산 영상 3편(공식 채널 0편)
-V /videos/bangmulgwan-misulgwan/ | 박물관·미술관 영상 7편(공식 채널 0편)
-V /videos/wanggalbi-tongdak-sijang/ | 왕갈비·통닭·전통시장 영상 5편(공식 채널 1편)
+## 영상 151편 — 주제별 페이지 (영상 하나하나는 search_site로 찾는다)
+V /videos/yeohaeng-koseu/ | 여행 코스 영상 24편(공식 채널 14편)
+V /videos/suwon-hwaseong-haenggung/ | 수원화성·화성행궁 영상 44편(공식 채널 24편)
+V /videos/haengnidan-banghwasuryujeong/ | 행리단길·방화수류정 영상 22편(공식 채널 10편)
+V /videos/gwanggyo-hosu/ | 광교호수공원·아쿠아플라넷 영상 6편(공식 채널 3편)
+V /videos/sumogwon-gongwon/ | 수목원·공원·광교산 영상 7편(공식 채널 4편)
+V /videos/bangmulgwan-misulgwan/ | 박물관·미술관 영상 10편(공식 채널 3편)
+V /videos/wanggalbi-tongdak-sijang/ | 왕갈비·통닭·전통시장 영상 14편(공식 채널 8편)
 V /videos/kape-dijeoteu/ | 카페·디저트 영상 2편(공식 채널 0편)
-V /videos/chukje-yagan/ | 축제·야간개장 영상 3편(공식 채널 2편)
+V /videos/chukje-yagan/ | 축제·야간개장 영상 21편(공식 채널 17편)
+V /videos/other/ | 그 밖의 영상 1편(공식 채널 0편)
 
 ## 테마와 사이트 페이지
 T /themes/alleys-culture/ | 행리단길·시장·체험 여행지 199곳 | 행리단길, 수원통닭거리, 팔달문 전통시장, 화성어차·플라잉수원·아쿠아플라넷 등 골목과 체험
 T /themes/islands-sea/ | 호수·수변·야경 여행지 11곳 | 광교호수공원, 방화수류정 용연, 서호공원, 만석공원 등 수원의 호수와 수변 야경 명소
 T /themes/modern-history/ | 수원화성·역사·박물관 여행지 71곳 | 유네스코 세계문화유산 수원화성과 화성행궁, 수원화성박물관·수원시립미술관·삼성이노베이션뮤지엄 등 역사와 전시
 T /themes/parks-nature/ | 수목원·숲·공원 여행지 44곳 | 일월수목원, 영흥수목원, 광교산, 칠보산, 효원공원 월화원 등 도심 속 정원과 숲길
-S / | 홈 — 수원각: 관광지 444곳·음식점 210곳·숙소 27곳, 가이드 5편·코스 6개·행사 18개·영상 41편
+S / | 홈 — 수원각: 관광지 444곳·음식점 210곳·숙소 27곳, 가이드 5편·코스 6개·행사 18개·영상 151편
 S /places/ | 관광지 목록 444곳 (유형·권역으로 거르기, 지도)
 S /food/ | 음식점 목록 210곳 (대표 메뉴·영업시간·쉬는 날)
 S /stays/ | 숙소 목록 27곳 (체크인·체크아웃·주차·문의)
@@ -750,6 +751,6 @@ S /courses/ | 여행 코스 6개
 S /events/ | 행사·축제 일정 18개 (월별 기간·장소)
 S /map/ | 지도·권역: 수원화성·화성행궁·행리단길·팔달문·전통시장·통닭거리·광교호수공원·박물관·영통·만석공원·광교산·장안·일월수목원·서호공원·권선
 S /search/ | 검색: 장소 이름·다른 이름·대표 메뉴·동 이름·코스·가이드·행사 이름으로 찾는다
-S /videos/ | 영상 41편, 주제별 (공식 채널 표시, 누를 때만 YouTube 불러옴)
+S /videos/ | 영상 151편, 주제별 (공식 채널 표시, 누를 때만 YouTube 불러옴)
 S /about/ | 소개·출처: 운영 에이아이오투오, 공식 사이트 아님(독립 운영), 출처 한국관광공사 TourAPI, 정정 요청 shyun@o2o.kr, 사이트 안내 챗봇 설명 /about/#chatbot
 S /about/#emergency | 긴급 연락처(출처 확인 2026-10-15): 119 소방·구급차, 112 경찰, 1330 관광안내·통역(전화·채팅) 해외 +82-2-1330; 통역: 연결 뒤 'English please'·'Interpreter please'
