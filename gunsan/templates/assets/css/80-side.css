@@ -67,80 +67,178 @@
 .sd-ev-t { font: 700 14.5px/1.4 var(--font); letter-spacing: -.02em; word-break: keep-all; overflow-wrap: anywhere; }
 .sd-go { position: absolute; right: 16px; top: 50%; width: 8px; height: 8px; margin-top: -4px; border: solid var(--ink-3); border-width: 0 2px 2px 0; transform: rotate(-45deg); }
 
-/* ---------------------------------------------------------------- 날씨각's weather module (_side.html.j2 weather,
-   assets/weather.js; operator 2026-10-31). Built: the title and the link to weather.o2o.kr. With JS the module keeps
-   the room of its filled state from the first paint, so nothing moves when the answer comes after load (or when it
-   does not: the link stays, in the same room). Contrast: ink on g0 15+; ink-2 on g0 8+; ink-3 on g0 5.22; sea-deep
-   7+. Icons: currentColor (the sun 4.6:1 amber, the rest ink-3 / sea-deep). */
-.wx { position: relative; display: flex; flex-direction: column; gap: 8px; padding: 12px 14px; color: var(--ink); }
-.wx-h { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin: 0; }
+/* ---------------------------------------------------------------- 날씨각's weather card (_side.html.j2 weather,
+   assets/weather.js; operator 2026-10-31 '날씨각 실제 디자인으로 위젯을 가져오라니까?'): 날씨각's own first-screen card
+   (weather.o2o.kr, the operator's service), its look taken from its app — the sky of the hour (morning peach, day
+   blue, a grey day when cloudy, sunset violet, night navy with stars and shooting stars), the round sun or the moon in
+   its phase holding '지금 날씨 점수' and the score in Bagel Fat One, its CSS clouds, the bubble in Jua, the summary, the
+   status line and the four cells (the one it is now white). Two sizes: .wx-home (the homes, under the first screen,
+   the card at 날씨각's size on a phone; from 700px the sky spans the column and the card's content keeps 날씨각's width
+   in its middle) and .wx-side (the panel: the same card small — the sun or moon with the score, the bubble, the
+   cells). Built: the card's name and the link to weather.o2o.kr ('군산 날씨 보기'), in the page's own style — all a
+   reader without JavaScript gets. With JS the card keeps its drawn size from the first paint (nothing moves when the
+   answers come after load, nor when they do not: the link then sits in the middle of the same room), in the sky the
+   clock says (html[data-wxt], base.html.j2) until the answer says its own. The drawn card is one link (its 자세히 보기
+   covers it: one target, one focus ring round the card).
+   Contrast (날씨각's colours, adjusted where they fall short): ink #28304a on the day skies ≥ 8; white on night 9+;
+   secondary words 85% (the day's status words 75%: ≥ 4.9 on the grey day); the cells' names 75% day · 85% night ·
+   100% sunset (4.7, the sunset sky's foot a shade deeper than 날씨각's); '지금' #c2471b on white 4.99; warn #a8401a day
+   ≥ 4.56 · #ffb38a night 6.7 · #ffd2b8 sunset 4.5. Reduced motion: no drop-in, float, shooting star, twinkle or
+   falling rain; a card off the screen rests (.is-off). */
+.wx { position: relative; color: var(--ink); }
+.wx-h { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; margin: 0; padding: 12px 14px; }
 .wx-t { font: 700 13.5px/1.3 var(--font); color: var(--sea-deep); letter-spacing: -.01em; }
-.wx-iss { font: 400 12px/1.3 var(--font); color: var(--ink-3); white-space: nowrap; }
-.wx-b { display: flex; flex-direction: column; gap: 6px; }
-.wx-b:empty { display: none; }
-.wx-now { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 8px; margin: 0; }
-.wx-ic { display: inline-flex; }
-.wx-svg { display: block; width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; color: var(--ink-3); }
-.wx-now .wx-svg { width: 30px; height: 30px; }
-.wx-k-sun, .wx-k-sunset { color: #B35C00; }   /* 4.6:1 on g0 */
-.wx-k-moon, .wx-k-rain, .wx-k-snow { color: var(--sea-deep); }
-.wx-tmp { font: 700 26px/1 var(--font); letter-spacing: -.03em; }
-.wx-sky { font: 700 14px/1.3 var(--font); color: var(--ink-2); }
-.wx-rp { font: 400 13px/1.3 var(--font); color: var(--ink-2); }
-.wx-hl { margin: 0; font: 400 13px/1.45 var(--font); color: var(--ink-2); word-break: keep-all; }
-.wx-strip { display: grid; grid-auto-flow: column; grid-auto-columns: 51px; gap: 4px; margin: 2px 0 0; padding: 0; list-style: none; }
-.wx-strip li { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 4px 0; border-radius: 10px; background: #fff; font: 400 12px/1.2 var(--font); color: var(--ink-3); }
-.wx-strip .wx-svg { width: 18px; height: 18px; }
-.wx-strip b { font: 700 13px/1.2 var(--font); color: var(--ink); }
-.wx-go { display: inline-flex; align-items: center; gap: 4px; align-self: flex-start; min-height: 24px; font: 700 12.5px/1.3 var(--font); color: var(--sea-deep); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; }
+.wx-dt, .wx-ar { display: none; }
+.wx-go { display: inline-flex; align-items: center; gap: 4px; min-height: 24px; font: 700 12.5px/1.3 var(--font); color: var(--sea-deep); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; }
 .wx-go:hover { color: var(--ink); }
 .wx-x { width: 13px; height: 13px; stroke-width: 2; }
-.wx.is-ready .wx-go { font-weight: 400; color: var(--ink-3); }
-/* the kept room (with JS): the filled module's height; built or failed, the link sits in it */
-html.js .wx-side { height: 132px; }
-html.js .wx-side.wx-intl { height: 110px; }   /* no headline in the other versions */
-html.js .wx-home { min-height: 226px; }
-html.js .wx-home.wx-intl { min-height: 200px; }
-/* the link sits at the module's foot whatever fills it: absolutely placed, one 20px line — the answer coming in (or a font
-   arriving) never moves it */
-html.js .wx { padding-bottom: 42px; }
-html.js .wx-go { position: absolute; left: 14px; bottom: 10px; height: 24px; min-height: 0; margin: 0; line-height: 24px; white-space: nowrap; }
-html.js .wx-home .wx-go { left: 18px; }
-@media (max-width: 1023px) {   /* a 44px target below 1024px */
-  .wx-go { min-height: 44px; }
-  html.js .wx-home { padding-bottom: 56px; }
-  html.js .wx-home .wx-go { bottom: 6px; height: 44px; line-height: 44px; }
-}
-/* while the answer is on its way: two quiet bars in the room (no motion); gone when it comes or does not */
-html.js .wx:not(.is-ready):not(.is-failed) .wx-b:empty { display: flex; gap: 6px; }
+.wx-b:empty { display: none; }
+.hwx { margin-top: 8px; margin-bottom: 8px; }
+.wx-home { border: 1px solid var(--hair); border-radius: 24px; background: var(--g0); }
+.wx-home .wx-h { padding: 16px 18px; }
+.wx-home .wx-t { font-size: 15px; }
+@media (max-width: 1023px) { .wx-go { min-height: 44px; } }
+
+/* ---- with JS: the sky card */
+:where(html.js .wx) { --wx-bg: linear-gradient(#9fd3ff, #cfe9ff 55%, #f1f8ff); --wx-fg: #28304a; --wx-strip: rgba(255, 255, 255, .42);
+  --wx-skel: rgba(255, 255, 255, .5); --wx-o1: .85; --wx-o2: .75; --wx-o3: .75; --wx-warn: #a8401a; }
+html.js .wx { isolation: isolate; overflow: hidden; display: flex; flex-direction: column; padding: 12px 16px; border: 0; border-radius: 28px;
+  background: var(--wx-bg); color: var(--wx-fg); }
+.wx[data-t=morning], html[data-wxt=morning] .wx:not([data-t]) { --wx-bg: linear-gradient(#ffd9b8, #ffe9d4 40%, #dff0ff); }
+.wx:is([data-t=morning], [data-t=day]):is([data-sky=cloudy], [data-sky=rain], [data-sky=snow], [data-sky=sleet]) {
+  --wx-bg: linear-gradient(#a9bbd0, #cbd7e4 55%, #eef2f7); }
+.wx[data-t=sunset], html[data-wxt=sunset] .wx:not([data-t]) { --wx-bg: linear-gradient(#4c42b0, #6a48b0 45%, #8e4482);
+  --wx-fg: #fff; --wx-strip: rgba(255, 255, 255, .14); --wx-skel: rgba(255, 255, 255, .16); --wx-o2: .85; --wx-o3: 1; --wx-warn: #ffd2b8; }
+.wx[data-t=night], html[data-wxt=night] .wx:not([data-t]) { --wx-bg: linear-gradient(#141b3d, #27306a 60%, #3d3f86);
+  --wx-fg: #fff; --wx-strip: rgba(255, 255, 255, .14); --wx-skel: rgba(255, 255, 255, .14); --wx-o2: .85; --wx-o3: .85; --wx-warn: #ffb38a; }
+html.js .wx-home { height: 401px; }
+html.js .wx-home.wx-intl { height: 356px; }
+/* the head: the card's name in 날씨각's white pill, the date, the link */
+html.js .wx .wx-h { flex: none; flex-direction: row; align-items: center; gap: 0; height: 32px; padding: 0; }
+html.js .wx .wx-t { flex: none; display: inline-flex; align-items: center; height: 24px; margin: 0 3px; padding: 0 10px; border-radius: 999px;
+  background: #fff; color: #28304a; box-shadow: 0 0 0 3px var(--wx-strip), 0 4px 12px rgba(40, 48, 74, .1);
+  font: 700 13px/1 WxJua, var(--font); font-synthesis: none; letter-spacing: 0; white-space: nowrap; }
+html.js .wx .wx-dt { display: block; flex: 0 1 auto; min-width: 0; margin-left: 10px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  font: 700 13px/1.5 var(--font); opacity: var(--wx-o1); }
+html.js .wx .wx-go { visibility: hidden; }
+html.js .wx.is-ready .wx-go { visibility: visible; flex: none; display: inline-flex; gap: 3px; height: 30px; min-height: 0; margin-left: auto; padding: 0 12px;
+  border-radius: 999px; background: var(--wx-strip); color: inherit; font: 700 13px/1 var(--font); text-decoration: none; }
+html.js .wx.is-ready .wx-go .wx-x { display: none; }
+html.js .wx.is-ready .wx-ar { display: inline; margin-left: 2px; font-size: 15px; line-height: 1; }
+/* the drawn card is the link's target: its 자세히 보기 covers it, one focus ring round the card */
+html.js .wx.is-ready .wx-go::after { content: ""; position: absolute; inset: 0; z-index: 5; border-radius: 0; }
+html.js .wx-home.is-ready .wx-go::after { border-radius: 28px; }
+html.js .wx.is-ready .wx-go:hover { background: rgba(255, 255, 255, .62); color: #28304a; }
+html.js .wx.is-ready .wx-go:focus-visible { outline: none; }
+html.js .wx.is-ready .wx-go:focus-visible::after { outline: 3px solid var(--focus); outline-offset: -3px; }
+/* no answer: the link to 날씨각, a white pill in the middle of the kept room */
+html.js .wx.is-failed .wx-go { visibility: visible; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 2;
+  min-height: 44px; padding: 0 18px; border-radius: 999px; background: #fff; color: #28304a; font: 700 14px/1.3 var(--font);
+  text-decoration: none; white-space: nowrap; box-shadow: 0 4px 12px rgba(40, 48, 74, .12); }
+html.js .wx.is-failed .wx-go:hover { color: var(--sea-deep); text-decoration: underline; }
+/* the body: the sky, the words, the cells */
+html.js .wx .wx-b { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: space-between; min-height: 0; }
 html.js .wx:not(.is-ready):not(.is-failed) .wx-b:empty::before, html.js .wx:not(.is-ready):not(.is-failed) .wx-b:empty::after {
-  content: ""; display: block; height: 14px; border-radius: 7px; background: var(--g1); }
-html.js .wx:not(.is-ready):not(.is-failed) .wx-b:empty::before { width: 56%; height: 26px; border-radius: 10px; }
-html.js .wx:not(.is-ready):not(.is-failed) .wx-b:empty::after { width: 78%; }
+  content: ""; position: absolute; z-index: 0; background: var(--wx-skel); }
+html.js .wx:not(.is-ready):not(.is-failed) .wx-b:empty::before { top: 52px; left: 50%; width: 128px; height: 128px; margin-left: -64px; border-radius: 50%; }
+html.js .wx:not(.is-ready):not(.is-failed) .wx-b:empty::after { left: 16px; right: 16px; bottom: 12px; height: 86px; max-width: 440px; margin: 0 auto; border-radius: 18px; background: var(--wx-strip); }
+.wx-stars, .wx-fx { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.wx-stars { opacity: 0; }
+.wx[data-t=night] .wx-stars { opacity: 1; }
+.wx-stars i { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: #fff; box-shadow: 0 0 6px #fff; }
+.wx-shoot { display: none; position: absolute; width: var(--len, 90px); height: 1.5px; border-radius: 2px; opacity: 0; background: linear-gradient(90deg, rgba(255, 255, 255, 0), #fff); }
+.wx-drop, .wx-flake { position: absolute; top: var(--top); }
+.wx-drop { width: 2px; height: 18px; border-radius: 2px; background: linear-gradient(rgba(0, 0, 0, 0), rgba(80, 130, 200, .7)); }
+.wx:is([data-t=sunset], [data-t=night]) .wx-drop { background: linear-gradient(rgba(0, 0, 0, 0), rgba(220, 230, 255, .7)); }
+.wx-flake { width: 7px; height: 7px; border-radius: 50%; background: #fff; box-shadow: 0 0 4px rgba(120, 150, 200, .5); --drift: 18px; }
+.wx-sky, .wx-say, .wx-strip { position: relative; width: 100%; max-width: 440px; margin-left: auto; margin-right: auto; }
+.wx-sky { flex: none; height: 9.125em; font-size: 16px; }
+/* 날씨각's clouds (CSS: a pill with two round puffs), in front of the sun or moon */
+.wx-cl { position: absolute; z-index: 1; }
+.wx-c1 { top: 2.25em; left: 5%; width: 5.25em; height: 2em; --d: .1s; --f: 6s; }
+.wx-c2 { top: 6em; left: 63%; width: 6em; height: 2.25em; --d: .25s; --f: 6.4s; }
+.wx-c3 { top: 1.875em; left: 72%; width: 4em; height: 1.75em; --d: .4s; --f: 5.4s; }
+.wx-cb, .wx-cb::before, .wx-cb::after { position: absolute; border-radius: 999px; background: #fff; }
+.wx-cb { inset: 0; box-shadow: inset 0 -.75em 1.125em rgba(160, 190, 230, .45), 0 1em 1.75em rgba(40, 70, 120, .13); }
+.wx-cb::before, .wx-cb::after { content: ""; aspect-ratio: 1; box-shadow: inset 0 -.625em 1em rgba(160, 190, 230, .35); }
+.wx-cb::before { width: 46%; top: -58%; left: 16%; }
+.wx-cb::after { width: 36%; top: -36%; left: 50%; }
+.wx[data-t=night] .wx-cb, .wx[data-t=night] .wx-cb::before, .wx[data-t=night] .wx-cb::after { background: #c9cdf0; }
+/* the sun (or, in the evening and at night, the moon) with the score */
+.wx-ob { position: absolute; top: .5em; left: 50%; width: 8em; height: 8em; margin-left: -4em; --d: 0s; --f: 5.6s; }
+.wx-orb { position: relative; display: grid; place-items: center; width: 100%; height: 100%; border-radius: 50%; text-align: center; color: #5c1f08;
+  background: radial-gradient(circle at 34% 30%, #fff5cf, #ffc86e 30%, #ff8e4e 68%, #ee6436);
+  box-shadow: inset -1.125em -1.5em 2.5em rgba(170, 50, 20, .34), inset 1em 1.125em 1.75em rgba(255, 255, 255, .55), 0 1.875em 3.5em rgba(240, 106, 58, .32); }
+.wx[data-t=sunset] .wx-orb { color: #4a2442; background: radial-gradient(circle at 34% 30%, #fff4e6, #ffd9b8 32%, #f7a991 68%, #e07a8f);
+  box-shadow: inset -1.125em -1.5em 2.5em rgba(150, 50, 90, .3), inset 1em 1.125em 1.75em rgba(255, 255, 255, .55), 0 0 3.75em rgba(255, 150, 110, .5); }
+.wx[data-t=night] .wx-orb { color: #2b2a5c; background: radial-gradient(circle at 34% 30%, #fff, #e7e3ff 35%, #b9b0f2 72%, #8f86d9);
+  box-shadow: inset -1.125em -1.5em 2.5em rgba(60, 50, 140, .3), inset 1em 1.125em 1.75em rgba(255, 255, 255, .6), 0 0 3.75em rgba(190, 180, 255, .45); }
+.wx:is([data-sky=cloudy], [data-sky=rain], [data-sky=snow], [data-sky=sleet]) .wx-orb { filter: saturate(.7) brightness(.96); }
+.wx .wx-orb.wx-moon { background: none; box-shadow: none; filter: none; }
+.wx-mo { position: absolute; top: -25%; left: -25%; width: 150%; height: 150%; max-width: none; pointer-events: none; }
+.wx-sc { position: relative; display: flex; flex-direction: column; align-items: center; margin: 0; }
+.wx-sc small { display: block; font: 700 12px/1.5 WxJua, var(--font); font-synthesis: none; letter-spacing: 0; }
+.wx-sc b { display: block; font: 700 3.25em/.95 WxBagel, WxJua, var(--font); font-synthesis: none; letter-spacing: 0; }
+.wx-moon.is-lit .wx-sc { text-shadow: 0 0 6px #fff, 0 0 12px #fff; }
+.wx-moon.is-dim .wx-sc { color: #fff; text-shadow: 0 1px 8px rgba(10, 14, 40, .6); }
+/* the words: 날씨각's bubble, summary and status line (the other versions: the figures) */
+.wx-say { flex: none; height: 103px; overflow: hidden; text-align: center; }
+.wx-intl .wx-say { height: 58px; }
+.wx-bub { margin: 0; font: 700 24px/30px WxJua, var(--font); font-synthesis: none; letter-spacing: 0; }
+.wx-sum { margin: 2px 0 0; font: 700 15px/22.5px var(--font); opacity: var(--wx-o1); }
+.wx-st { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 6px; margin: 6px 0 0; font: 700 14px/21px WxJua, var(--font); font-synthesis: none; letter-spacing: 0; }
+.wx-si { white-space: nowrap; }
+.wx-si b { font-weight: inherit; }
+.wx-sl { opacity: var(--wx-o2); }
+.wx-dot { opacity: .3; }
+.wx-si.is-warn { color: var(--wx-warn); }
+.wx-si.is-warn .wx-sl { opacity: 1; }
+/* the four cells: 아침 · 낮 · 저녁 · 밤, the one it is now white */
+.wx-strip { flex: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; margin-top: 10px; padding: 3px; list-style: none;
+  border-radius: 18px; background: var(--wx-strip); }
+.wx-strip li { display: flex; flex-direction: column; align-items: center; min-width: 0; padding: 6px 0; border-radius: 14px; }
+.wx-cn { max-width: 100%; overflow: hidden; font: 700 13px/19.5px var(--font); opacity: var(--wx-o3); white-space: nowrap; }
+.wx-ic { display: block; width: 22px; height: 22px; margin: 2px 0; object-fit: contain; }
+.wx-tc { font: 700 15px/22.5px WxJua, var(--font); font-synthesis: none; letter-spacing: 0; }
+.wx-strip li.is-now { background: #fff; color: #28304a; box-shadow: 0 4px 12px rgba(40, 48, 74, .1); }
+.wx-strip li.is-now .wx-cn { color: #c2471b; opacity: 1; }
+/* the panel's card: the same, small */
+html.js .wx-side { height: 246px; padding: 10px 12px; border-radius: 0; }
+html.js .wx-side.wx-intl { height: 220px; }
+html.js .wx-side .wx-h { height: 24px; }
+html.js .wx-side .wx-t { height: 20px; margin: 0 2px; padding: 0 8px; box-shadow: 0 0 0 2px var(--wx-strip); font-size: 11.5px; }
+html.js .wx-side .wx-dt { display: none; }
+html.js .wx-side.is-ready .wx-go { height: 24px; padding: 0 9px; font-size: 11.5px; }
+html.js .wx-side.is-ready .wx-ar { font-size: 13px; }
+html.js .wx-side:not(.is-ready):not(.is-failed) .wx-b:empty::before { top: 39px; width: 88px; height: 88px; margin-left: -44px; }
+html.js .wx-side:not(.is-ready):not(.is-failed) .wx-b:empty::after { left: 12px; right: 12px; bottom: 10px; height: 69px; border-radius: 14px; }
+.wx-side .wx-sky { font-size: 11px; }
+.wx-side .wx-sc small { font-size: 9.5px; line-height: 1.35; }
+.wx-side .wx-say { height: 26px; }
+.wx-side .wx-bub { overflow: hidden; font-size: 17px; line-height: 26px; text-overflow: ellipsis; white-space: nowrap; }
+.wx-side .wx-strip { gap: 3px; margin-top: 6px; border-radius: 14px; }
+.wx-side .wx-strip li { padding: 4px 0; border-radius: 11px; }
+.wx-side .wx-cn { font-size: 11px; line-height: 16px; }
+.wx-side .wx-ic { width: 18px; height: 18px; margin: 1px 0; }
+.wx-side .wx-tc { font-size: 13px; line-height: 19px; }
+/* motion (날씨각's): the sun or moon and the clouds drop in (the homes' card, under the first screen) and float; the
+   night's shooting stars and twinkling; falling rain and snow — none with reduced motion, none while off the screen */
 @media (prefers-reduced-motion: no-preference) {
   .wx.is-ready .wx-b { animation: wx-in .45s var(--ease-out) both; }
+  .wx-home :is(.wx-cl, .wx-ob) { animation: wx-drop 1.05s cubic-bezier(.22, .9, .3, 1) var(--d, 0s) backwards; }
+  .wx :is(.wx-cb, .wx-orb) { animation: wx-float var(--f, 4.8s) ease-in-out calc(var(--d, 0s) + 1.05s) infinite; }
+  .wx[data-t=night] .wx-shoot { display: block; animation: wx-shoot var(--dur, 8s) ease-in var(--dl, 0s) infinite; }
+  .wx[data-t=night] .wx-tw { animation: wx-twinkle 5s ease-in-out var(--dl, 0s) infinite; }
+  .wx-drop, .wx-flake { top: -24px; animation: wx-fall var(--dur) linear var(--dl) infinite; }
+  .wx.is-off * { animation-play-state: paused !important; }
 }
-@keyframes wx-in { from { opacity: 0; transform: translateY(4px); } }
-/* the homes' module, under the first screen (one place, phones too): a card in the page's own style */
-.hwx { margin-top: 8px; margin-bottom: 8px; }
-.wx-home { border: 1px solid var(--hair); border-radius: 24px; background: var(--g0); padding: 16px 18px; }
-.wx-home .wx-t { font-size: 15px; }
-@media (min-width: 700px) {
-  html.js .wx-home { min-height: 160px; }
-  html.js .wx-home.wx-intl { min-height: 150px; }
-  .wx-home.is-ready { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto auto 1fr; column-gap: 28px; }
-  .wx-home.is-ready .wx-h { grid-column: 1; }
-  .wx-home.is-ready .wx-b { display: contents; }
-  .wx-home.is-ready .wx-now { grid-column: 1; grid-row: 2; }
-  .wx-home.is-ready .wx-hl { grid-column: 1; grid-row: 3; }
-  .wx-home.is-ready .wx-strip { grid-column: 2; grid-row: 1 / 4; align-self: center; margin: 0; }
-  .wx-home .wx-strip { grid-auto-columns: 64px; }
-  .wx-home .wx-strip li { padding: 8px 0; }
-}
-@media (min-width: 1024px) {   /* the link a 24px line again: a little less room */
-  html.js .wx-home { min-height: 156px; }
-  html.js .wx-home.wx-intl { min-height: 140px; }
-}
+@keyframes wx-in { from { opacity: 0; } }
+@keyframes wx-drop { 0% { opacity: 0; transform: translateY(-60vh) rotate(-10deg); } 55% { opacity: 1; }
+  72% { transform: translateY(0) rotate(2deg) scale(1.04, .96); } 86% { transform: translateY(-10px); } to { opacity: 1; transform: none; } }
+@keyframes wx-float { 0%, to { transform: translateY(0); } 50% { transform: translateY(-.5625em) rotate(1.2deg); } }
+@keyframes wx-shoot { 0%, 86% { opacity: 0; transform: rotate(-24deg) translate(0); } 89% { opacity: 1; } to { opacity: 0; transform: rotate(-24deg) translate(-240px); } }
+@keyframes wx-twinkle { 0%, to { opacity: .25; } 50% { opacity: 1; } }
+@keyframes wx-fall { to { transform: translate(var(--drift, -8px), 440px); } }
 
 /* ---------------------------------------------------------------- the menu (below 1200px): the same groups */
 .menu-panel .sd-acts { margin: 4px 0 10px; }

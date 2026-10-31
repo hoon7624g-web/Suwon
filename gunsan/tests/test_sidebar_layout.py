@@ -7,9 +7,11 @@ sunset, next event), the two actions and the tab groups — every link of the ol
 and in the phone menu alike; the page's group open and its link aria-current; the panel never covers the page, stays
 while the page scrolls and scrolls inside itself; nothing scrolls sideways at 360–1440px; the phone bar stays ≤ 15% of
 the screen and its menu opens without JavaScript; the other versions carry the same groups in their own words. The
-weather module holds no value in the HTML, asks after the page has loaded, fills its kept room (nothing moves),
-shows the Korean headline only on Korean pages, and leaves its link to weather.o2o.kr when the answer fails or JS is
-off. Browser checks: Playwright + Chromium (skipped where missing), every request answered here."""
+weather card — 날씨각's own first-screen card (operator 2026-10-31 '날씨각 실제 디자인으로'; 날씨각 is the operator's: no
+source words in any version) — holds no value in the HTML, asks after the page has loaded, is drawn from the feed and
+the day's slots in its kept room (nothing moves), shows 날씨각's Korean words only on Korean pages, is one link to
+weather.o2o.kr, and leaves that link when an answer fails or JS is off. Browser checks: Playwright + Chromium (skipped
+where missing), every request answered here."""
 import json
 import mimetypes
 import re
@@ -21,11 +23,13 @@ import pytest
 
 from pipeline import locales as LC
 from pipeline.build import build
-from conftest import route_weather, weather_answer
+from conftest import feed_answer, route_weather, weather_answer
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA, SAMPLE = ROOT / "data" / "gunsan", ROOT / "data" / "sample"
 HANGUL = re.compile(r"[가-힣]")
+# the words 'source' and the service's name, in every version (operator 2026-10-31 '출처: 날씨각 표기 필요없어 우리 회사 거야')
+SOURCE = re.compile(r"날씨각|Nalssigak|출처|[Ss]ource|Quelle|Fuente|Источник|出典|来源|來源")
 PLACE = "/places/이성당/"
 PAGES = ("/", PLACE, "/food/", "/guides/", "/courses/", "/map/", "/plan/", "/abroad/", "/events/", "/sun/", "/en/", "/ja/")
 
@@ -135,8 +139,14 @@ def test_the_other_versions_carry_the_groups_in_their_words(built):
     assert set(LC.SIDE_WORDS) == {"ko", *LC.ORDER}
     for code, words in LC.SIDE_WORDS.items():
         assert set(LC.SIDE_KEYS) <= set(words), code
-        assert {"sun", "moon", "cloud", "sunset", "rain", "snow"} <= set(words["sky"]), code
-        assert "{r}" in words["wx_title"] and "{p}" in words["wx_rain"] and "{t}" in words["wx_issued"], code
+        assert {"sun", "sun_cloud", "cloud", "rain", "snow", "moon"} <= set(words["sky"]), code
+        assert set(words["wx_slots"]) == {"morning", "day", "sunset", "night", "now"} and all(words["wx_slots"].values()), code
+        assert "{r}" in words["wx_title"] and "{r}" in words["wx_go"] and "{t}" in words["wx_feels"] and "{p}" in words["wx_hum"], code
+        assert words["wx_more"] and words["wx_score"], code
+        wx = json.dumps({k: v for k, v in words.items() if k.startswith("wx_") or k == "sky"}, ensure_ascii=False)
+        assert not SOURCE.search(wx), (code, wx)
+        if code != "ko":
+            assert not HANGUL.search(wx), code
     for code in LC.ORDER:
         loc, W = LC.get(code), LC.SIDE_WORDS[code]
         html = page_html(built, f"/{code}/")
@@ -159,22 +169,25 @@ def test_the_other_versions_carry_the_groups_in_their_words(built):
 
 
 def test_the_weather_module_holds_no_value_in_the_html(built):
-    """날씨각's module (operator 2026-10-31): the panel's (every page) and the home's (under the first screen) carry the
-    API address, the words and the link to weather.o2o.kr — never a temperature, a rain chance or the headline: the
-    page is static and would grow stale. Nor does anything else the build writes (llms.txt, the chat's files)."""
+    """날씨각's card (operator 2026-10-31): the panel's (every page) and the home's (under the first screen) carry the two
+    API addresses (the feed, the day's slots), the words and the link to weather.o2o.kr ('군산 날씨 보기' — no source
+    words, in no version) — never a temperature, a score or a sentence of 날씨각's: the page is static and would grow
+    stale. Nor does anything else the build writes (llms.txt, the chat's files)."""
     for path in ("/", PLACE, "/en/", "/ja/"):
         html = page_html(built, path)
-        mods = re.findall(r'<div class="wx wx-(side|home) wx-(ko|intl)" data-wx="([^"]+)" data-wx-w="([^"]+)">(.*?data-wx-go>.*?</a>)',
-                          html, re.S)
+        mods = re.findall(r'<div class="wx wx-(side|home) wx-(ko|intl)" data-wx="([^"]+)" data-wx-day="([^"]+)" '
+                          r'data-wx-w="([^"]+)">(.*?data-wx-go>.*?</a>)', html, re.S)
         assert [m[0] for m in mods] == (["side", "home"] if path in ("/", "/en/", "/ja/") else ["side"]), path
-        for kind, lang, api, words, inner in mods:
+        code = path.strip("/").split("/")[0] if path.startswith(("/en/", "/ja/")) else "ko"
+        for kind, lang, feed, api, words, inner in mods:
+            assert feed == "https://weather.o2o.kr/v1/feed?region=5213000000"
             assert api == "https://weather.o2o.kr/v1/weather/today?region=5213000000"
             assert lang == ("ko" if path in ("/", PLACE) else "intl")
             w = json.loads(unescape(words))
-            assert w["ko"] is (lang == "ko") and "{p}" in w["rain"]
-            assert "°" not in inner and "%" not in inner and "발표" not in inner, (path, inner)
+            assert w["ko"] is (lang == "ko") and w["slots"] == LC.SIDE_WORDS[code]["wx_slots"] and w["lang"]
+            assert "°" not in inner and "%" not in inner and "지금은" not in inner, (path, inner)
             assert '<a class="wx-go" href="https://weather.o2o.kr/" rel="noopener" data-wx-go>' in inner
-        code = path.strip("/").split("/")[0] if path.startswith(("/en/", "/ja/")) else "ko"
+            assert not SOURCE.search(unescape(inner) + unescape(words)), (path, inner)
         region = "군산" if code == "ko" else LC.get(code).city if code != "en" else "Gunsan"
         assert LC.SIDE_WORDS[code]["wx_go"].format(r=region) in unescape(html), path
     for f in ("llms.txt", "llms-full.txt"):
@@ -182,6 +195,10 @@ def test_the_weather_module_holds_no_value_in_the_html(built):
             assert "weather.o2o.kr" not in (built / f).read_text("utf-8"), f
     home = page_html(built, "/")
     assert "weather.js" not in home   # attached by site.js after load, never in the HTML
+    # 날씨각's icons go out with the build (copied from 날씨각, small webp)
+    for ic in ("sun", "sun_cloud", "cloud", "rain", "snow", "moon"):
+        f = built / "assets" / "wx" / f"{ic}.webp"
+        assert f.is_file() and f.stat().st_size < 6000, ic
 
 
 def test_the_sample_build_keeps_its_menu(sample):
@@ -344,58 +361,113 @@ def test_nothing_scrolls_sideways(browser, built):
         ctx.close()
 
 
+CARD = """sel => { const b = document.querySelector(sel), r = b.getBoundingClientRect();
+  return {h: r.height, t: b.getAttribute('data-t'), sky: b.getAttribute('data-sky'), ready: b.classList.contains('is-ready'),
+          inside: [...b.querySelectorAll('*')].every(e => { const q = e.getBoundingClientRect();
+            return !q.height || getComputedStyle(e).position === 'absolute' || q.bottom <= r.bottom + .5; }),
+          link: (() => { const e = document.elementFromPoint(r.left + r.width / 2, r.top + r.height * .6);
+            return e && e.closest('a') ? e.closest('a').href : ''; })()}; }"""
+
+
+def cells(page, sel):
+    return page.evaluate(f"""[...document.querySelectorAll('{sel} .wx-strip li')].map(li => [li.querySelector('.wx-cn').textContent,
+      li.querySelector('.wx-tc').textContent, li.classList.contains('is-now'), li.querySelector('img').getAttribute('src'),
+      li.querySelector('img').alt])""")
+
+
 def test_the_weather_module_fills_its_room_after_load(browser, built):
-    """The panel's module (1440) and the home's (390, under the first screen): asked once, after the page has loaded
-    (a module asks when it nears the screen); the slot nearest now — figure, sky word, rain chance —, the headline
-    (Korean only), the time strip (the home's), '14:00 발표' and the source link; the module's box keeps its height, so
-    nothing moves; no console error."""
+    """The panel's card (1440) and the home's (390, under the first screen): asked once each (the feed and the day's
+    slots), after the page has loaded (a card asks when it nears the screen); drawn as 날씨각 draws it — the night sky
+    (the feed's sky_mode) with the moon in its phase, '지금 날씨 점수' and the score, the bubble (the home: the summary
+    and the status line too), the four cells 아침 · 낮 · 저녁 · 지금 (the slot 날씨각 takes for each — the last at or
+    before 7 · 13 · 18 h; '지금' the feed's temperature, white) with 날씨각's icons; the card is one link to
+    weather.o2o.kr; no source words; its box keeps its height, so nothing moves; no console error."""
     ctx, page, errors, calls = open_page(browser, built, "/", 1440)
     page.wait_for_selector(".wx-side.is-ready", timeout=8000)
     box = page.locator(".wx-side")
-    assert page.evaluate("window.__wx") == ["complete"] and len(calls) == 1
-    temps = {f"{int(s['temp_c'])}°" for s in weather_answer()["slots"]}
-    assert box.locator(".wx-tmp").inner_text() in temps
-    assert box.locator(".wx-sky").inner_text() in LC.SIDE_WORDS["ko"]["sky"].values()
-    assert re.fullmatch(r"강수확률 \d+%", box.locator(".wx-rp").inner_text())
-    assert box.locator(".wx-hl").inner_text() == "낮 최고 17°, 저녁 9°"
-    assert box.locator(".wx-iss").inner_text() == "14:00 발표" and box.locator(".wx-go").inner_text().strip() == "출처 날씨각"
-    assert box.locator(".wx-go").get_attribute("href") == "https://weather.o2o.kr/"
-    assert box.bounding_box()["height"] == 132 and page.evaluate("[...document.querySelectorAll('.wx-side *')]"
-                                                                 ".every(e => e.getBoundingClientRect().bottom <= document.querySelector('.wx-side').getBoundingClientRect().bottom + .5)")
+    assert page.evaluate("window.__wx") == ["complete", "complete"] and len(calls) == 2, calls
+    assert {c.split("?")[0] for c in calls} == {"https://weather.o2o.kr/v1/feed", "https://weather.o2o.kr/v1/weather/today"}
+    c = page.evaluate(CARD, ".wx-side")
+    assert c["t"] == "night" and c["h"] == 246 and c["inside"] and c["link"] == "https://weather.o2o.kr/", c
+    assert box.locator(".wx-sc small").inner_text() == "지금 날씨 점수" and box.locator(".wx-sc b").inner_text() == "60"
+    assert box.locator(".wx-moon .wx-mo").count() == 1   # the moon (기우는 달, 64%) at night
+    assert box.locator(".wx-bub").inner_text() == "지금은 러닝각!" and box.locator(".wx-sum, .wx-st").count() == 0
+    sky = LC.SIDE_WORDS["ko"]["sky"]
+    got = cells(page, ".wx-side")
+    assert [(g[0], g[1], g[2]) for g in got] == [("아침", "12°", False), ("낮", "14°", False), ("저녁", "16°", False),
+                                                 ("지금", "10°", True)], got
+    assert all(g[3].startswith("/assets/wx/") and g[3].endswith(".webp") and g[4] in sky.values() for g in got), got
+    go = box.locator(".wx-go")
+    assert go.get_attribute("href") == "https://weather.o2o.kr/" and "자세히 보기" in go.inner_text()
+    assert not SOURCE.search(box.inner_text()), box.inner_text()
+    # the panel is the first screen: its card floats, but does not drop in
+    assert page.evaluate("getComputedStyle(document.querySelector('.wx-side .wx-ob')).animationName") == "none"
+    assert page.evaluate("getComputedStyle(document.querySelector('.wx-side .wx-orb')).animationName") == "wx-float"
     assert [x for x in page.evaluate("window.__ls") if x["v"] > 0.001] == [], page.evaluate("window.__ls")
     assert own(errors) == [], errors
     ctx.close()
-    # the home on a phone (the module right under the first screen): asked after load, it fills the room it kept
+    # the home on a phone (the card right under the first screen): asked after load, drawn in the room it kept
     ctx, page, errors, calls = open_page(browser, built, "/", 390, 844)
-    h0 = page.evaluate("[document.querySelector('.wx-home').getBoundingClientRect().height, "
-                       "document.querySelector('.wx-home').classList.contains('is-ready')]")
+    h0 = page.evaluate(CARD, ".wx-home")
     page.wait_for_selector(".wx-home.is-ready", timeout=8000)
     page.wait_for_timeout(300)
-    assert page.evaluate("window.__wx") == ["complete"] and len(calls) == 1
-    assert h0[1] or page.locator(".wx-home").bounding_box()["height"] == h0[0], h0
-    assert page.locator(".wx-home .wx-hl").inner_text() == "낮 최고 17°, 저녁 9°"
-    assert page.locator(".wx-home .wx-strip li").count() <= 5
-    page.evaluate("window.scrollTo(0, document.querySelector('.wx-home').getBoundingClientRect().top + scrollY - 300)")
-    page.wait_for_timeout(300)
-    box = page.locator(".wx-home").bounding_box()
-    assert page.evaluate("[...document.querySelectorAll('.wx-home *')].every(e => e.getBoundingClientRect().bottom"
-                         " <= document.querySelector('.wx-home').getBoundingClientRect().bottom + .5)"), box
+    assert page.evaluate("window.__wx") == ["complete", "complete"] and len(calls) == 2
+    page.evaluate("window.scrollTo(0, document.querySelector('.wx-home').getBoundingClientRect().top + scrollY - 100)")
+    page.wait_for_timeout(1300)   # past the drop-in
+    c = page.evaluate(CARD, ".wx-home")
+    assert c["h"] == 401 and (h0["ready"] or h0["h"] == 401) and c["inside"] and c["link"] == "https://weather.o2o.kr/", (h0, c)
+    home = page.locator(".wx-home")
+    assert home.locator(".wx-bub").inner_text() == "지금은 러닝각!"
+    assert home.locator(".wx-sum").inner_text() == "오후 7시 10°, 바람 살랑"
+    assert re.sub(r"\s+", " ", home.locator(".wx-st").inner_text()) == "습도 보통 · 불쾌지수 쾌적 · 미세먼지 나쁨"
+    assert home.locator(".wx-si.is-warn").inner_text() == "미세먼지 나쁨"
+    assert [(g[0], g[1]) for g in cells(page, ".wx-home")] == [("아침", "12°"), ("낮", "14°"), ("저녁", "16°"), ("지금", "10°")]
+    assert re.search(r"\d+월 \d+일 [월화수목금토일]요일", home.locator(".wx-dt").inner_text())
+    assert not SOURCE.search(home.inner_text())
     assert [x for x in page.evaluate("window.__ls") if x["v"] > 0.001] == [], page.evaluate("window.__ls")
+    assert own(errors) == [], errors
+    ctx.close()
+
+
+def test_the_card_takes_the_sky_of_the_hour(browser, built):
+    """By day (the feed's sky_mode 'day'): the day sky, the round sun (no moon), the 낮 cell '지금' and the night's
+    cell 밤; a cloudy slot now draws 날씨각's clouds."""
+    ctx, page, errors, calls = open_page(browser, built, "/", 1440, weather=None)
+    slots = weather_answer()
+    for x in slots["slots"]:
+        x["sky"] = 3   # cloudy all day
+    route_weather(ctx, slots, feed=feed_answer(sky_mode="day"))
+    page.reload(wait_until="load")
+    page.wait_for_selector(".wx-side.is-ready", timeout=8000)
+    c = page.evaluate(CARD, ".wx-side")
+    assert c["t"] == "day" and c["sky"] == "cloudy" and c["h"] == 246, c
+    assert page.locator(".wx-side .wx-mo").count() == 0 and page.locator(".wx-side .wx-cl").count() == 3
+    got = cells(page, ".wx-side")
+    assert [(g[0], g[2]) for g in got] == [("아침", False), ("지금", True), ("저녁", False), ("밤", False)], got
+    assert all(g[3].endswith("/cloud.webp") for g in got), got
     assert own(errors) == [], errors
     ctx.close()
 
 
 @pytest.mark.parametrize("code", ("en", "ja"))
 def test_the_other_versions_show_figures_and_icons_only(browser, built, code):
+    """The other versions: the score, the figures, the icons and the cells' names in their words — none of 날씨각's
+    Korean words (bubble, summary, status), no source words."""
+    W = LC.SIDE_WORDS[code]
     ctx, page, errors, _ = open_page(browser, built, f"/{code}/", 1440)
     page.wait_for_selector(".wx-side.is-ready", timeout=8000)
     text = page.locator(".wx-side").inner_text()
-    assert not HANGUL.search(text) and page.locator(".wx-side .wx-hl").count() == 0, text
-    assert LC.SIDE_WORDS[code]["wx_src"] in text and LC.SIDE_WORDS[code]["wx_title"].format(r="")[:2].strip() in text
+    assert not HANGUL.search(text) and not SOURCE.search(text) and page.locator(".wx-side .wx-bub").count() == 0, text
+    assert page.locator(".wx-side .wx-sc small").inner_text() == W["wx_score"]
+    assert [g[0] for g in cells(page, ".wx-side")] == [W["wx_slots"][k] for k in ("morning", "day", "sunset", "now")]
+    assert page.evaluate(CARD, ".wx-side")["h"] == 220
     page.evaluate("window.scrollTo(0, document.querySelector('.wx-home').getBoundingClientRect().top + scrollY - 300)")
     page.wait_for_selector(".wx-home.is-ready", timeout=8000)
-    strip = page.locator(".wx-home .wx-strip").inner_text()
-    assert not HANGUL.search(strip) and (not strip or re.search(r"\d{2}:\d{2}", strip)), strip
+    home = page.locator(".wx-home").inner_text()
+    assert not HANGUL.search(home) and not SOURCE.search(home), home
+    assert page.locator(".wx-home .wx-bub").inner_text() == "10°"
+    assert page.locator(".wx-home .wx-sum").inner_text() == W["wx_feels"].format(t="10°") + " · " + W["wx_hum"].format(p=60)
+    assert page.evaluate(CARD, ".wx-home")["h"] == 356
     assert own(errors) == [], errors
     ctx.close()
 
@@ -405,21 +477,30 @@ def test_without_an_answer_or_js_the_link_stays(browser, built):
     ctx, page, errors, calls = open_page(browser, built, "/", 1440, weather="fail")
     page.wait_for_selector(".wx-side.is-failed", timeout=8000)
     go = page.locator(".wx-side .wx-go")
-    assert go.is_visible() and go.inner_text().strip() == "군산 날씨 보기 — 날씨각" and page.locator(".wx-side .wx-tmp").count() == 0
-    assert page.locator(".wx-side").bounding_box()["height"] == 132
+    assert go.is_visible() and go.inner_text().strip() == "군산 날씨 보기" and page.locator(".wx-side .wx-tc").count() == 0
+    assert page.locator(".wx-side").bounding_box()["height"] == 246
+    box = go.bounding_box()
+    assert box["height"] >= 44, box
     assert own(errors) == [], errors
     ctx.close()
-    # an answer that is not today's: the same
+    # answers that are not today's: the same
     ctx, page, errors, calls = open_page(browser, built, "/", 1440, weather=None)
-    route_weather(ctx, weather_answer("2000-01-01"))
+    route_weather(ctx, weather_answer("2000-01-01"), feed=feed_answer("2000-01-01"))
     page.reload(wait_until="load")
     page.wait_for_selector(".wx-side.is-failed", timeout=8000)
-    assert page.locator(".wx-side .wx-tmp").count() == 0
+    assert page.locator(".wx-side .wx-tc").count() == 0
     ctx.close()
-    # no JS: the title and the link, no kept room, nothing asked
+    # a feed without its hero (one answer only): the same
+    ctx, page, errors, calls = open_page(browser, built, "/", 1440, weather=None)
+    route_weather(ctx, feed=weather_answer())
+    page.reload(wait_until="load")
+    page.wait_for_selector(".wx-side.is-failed", timeout=8000)
+    ctx.close()
+    # no JS: the name and the link, no kept room, nothing asked
     ctx, page, errors, calls = open_page(browser, built, "/", 1440, js=False)
     page.wait_for_timeout(800)
     assert calls == [] and page.locator(".wx-side .wx-go").is_visible()
+    assert page.locator(".wx-side .wx-go").inner_text().strip() == "군산 날씨 보기"
     assert page.locator(".wx-side").bounding_box()["height"] < 100
     assert page.locator(".side-nav").is_visible() and page.locator(".mast #hs-q").is_visible()
     ctx.close()
@@ -446,7 +527,11 @@ def test_the_panels_sunrise_follows_the_visitors_day(browser, built):
 def test_reduced_motion_and_the_menu_pieces_keep_their_targets(browser, built):
     ctx, page, errors, _ = open_page(browser, built, "/", 1440, reduce=True)
     page.wait_for_selector(".wx-side.is-ready", timeout=8000)
-    assert page.evaluate("getComputedStyle(document.querySelector('.wx-side .wx-b')).animationName") == "none"
+    # no fade, float, drop-in, shooting star or twinkle
+    for sel in (".wx-side .wx-b", ".wx-side .wx-orb", ".wx-side .wx-cb", ".wx-side .wx-ob", ".wx-side .wx-stars i"):
+        if page.locator(sel).count():
+            assert page.evaluate(f"getComputedStyle(document.querySelector('{sel}')).animationName") == "none", sel
+    assert page.evaluate("[...document.querySelectorAll('.wx-side .wx-shoot')].every(e => getComputedStyle(e).display === 'none')")
     for sel in (".side .sg-a", ".side .sg-s", ".side .sd-act", ".side .sd-sun", ".side .sd-ev", ".mast .lang-btn"):
         box = page.locator(sel).first.bounding_box()
         assert box and box["height"] >= 44, sel

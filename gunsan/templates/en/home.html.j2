@@ -112,8 +112,9 @@
 {% endif %}
 {% if ASK %}{{ askm.panel_intl(loc.html) }}{% endif %}
 </div>
-{#- 날씨각's weather module (operator 2026-10-31), under the first screen: the same small module as the panel's
-    (templates/_side.html.j2 weather; its values come in the browser after load — none in this HTML) -#}
+{#- 날씨각's own card (operator 2026-10-31 '날씨각 실제 디자인으로'), under the first screen, at 날씨각's size (the panel's
+    is the same card small; templates/_side.html.j2 weather; its values come in the browser after load — none in this
+    HTML) -#}
 {% if side and side.wx %}<div class="wrap hwx">{{ sdm.weather(side.wx, 'home') }}</div>{% endif %}
 
 {% set T = namespace(i=0) %}

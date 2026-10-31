@@ -4799,24 +4799,30 @@ def page_chrome(page_kind: str, has_courses: bool) -> dict:
 # 행사), the two actions and the tab groups; below 1200px the bar stays and its menu opens the same groups
 # (templates/_side.html.j2, css/80-side.css). side_vm builds it once per build; side_state marks one page's group.
 # Every main-nav link (nav_items) is in one group, so nothing of the old bar is lost (tests/test_sidebar_layout.py).
-# 날씨각 (weather.o2o.kr, the operator's own service; operator 2026-10-31): its region code for the site's region. The
-# page carries no weather value — assets/weather.js asks the API in the browser after the page has loaded.
+# 날씨각 (weather.o2o.kr, the operator's own service; operator 2026-10-31 '날씨각 실제 디자인으로 위젯을 가져오라니까?'):
+# its region code for the site's region. The card is 날씨각's own first-screen card, drawn by assets/weather.js from two
+# answers asked in the browser after the page has loaded — the feed's hero (sky, score, its words, the moon) and the
+# day's three-hour slots (the four cells' figures); the page carries no weather value. No 'source' words: 날씨각 is
+# the operator's (the same day: '출처: 날씨각 표기 필요없어 우리 회사 거야').
+WEATHER_FEED = "https://weather.o2o.kr/v1/feed?region={code}"
 WEATHER_API = "https://weather.o2o.kr/v1/weather/today?region={code}"
 WEATHER_HOME = "https://weather.o2o.kr/"
 WEATHER_REGIONS = {"군산": "5213000000"}   # 행정표준코드 전북 군산시
 
 
 def weather_vm(region_ko: str, code: str, region_label: str) -> dict | None:
-    """The weather module's hook ({api, home, title, go, js}) in one version, or None for a region 날씨각 has no code
-    for. js: the words weather.js needs (rain, issued, src, sky) and ko (the Korean pages show the provider's slot
-    labels and its headline; the other versions the times and figures only)."""
+    """The weather card's hook ({feed, api, home, title, go, js}) in one version, or None for a region 날씨각 has no
+    code for. js: the words weather.js draws with (more, score, slots, feels, hum, sky), the version's language (its
+    date) and ko (the Korean pages show 날씨각's own sentences — bubble, summary, status; the other versions the score,
+    the figures, the icons and the cells' names in their words)."""
     rc = WEATHER_REGIONS.get(region_ko or "")
     if not rc:
         return None
     w = LC.SIDE_WORDS[code]
-    return {"api": WEATHER_API.format(code=rc), "home": WEATHER_HOME, "title": w["wx_title"].format(r=region_label),
-            "go": w["wx_go"].format(r=region_label),
-            "js": {"rain": w["wx_rain"], "issued": w["wx_issued"], "src": w["wx_src"], "sky": w["sky"],
+    return {"feed": WEATHER_FEED.format(code=rc), "api": WEATHER_API.format(code=rc), "home": WEATHER_HOME,
+            "title": w["wx_title"].format(r=region_label), "go": w["wx_go"].format(r=region_label),
+            "js": {"more": w["wx_more"], "score": w["wx_score"], "slots": w["wx_slots"], "feels": w["wx_feels"],
+                   "hum": w["wx_hum"], "sky": w["sky"], "lang": "ko" if code == "ko" else LC.get(code).html,
                    "ko": code == "ko"}}
 
 

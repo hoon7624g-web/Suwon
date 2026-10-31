@@ -783,7 +783,7 @@ index a802d061ca..8fbc997fa1 100644
      "region_name": "A course name with the city's name in front when the name lacks it.",
      "lede_both": "{near} and {longest} are two clauses this file gives (lede_near, lede_longest).",
 diff --git a/pipeline/locales.py b/pipeline/locales.py
-index 54f784c0ef..357e2e8ae6 100644
+index 54f784c0ef..0e148c9ebd 100644
 --- a/pipeline/locales.py
 +++ b/pipeline/locales.py
 @@ -858,6 +858,60 @@ LIST_WORDS = {
@@ -960,7 +960,7 @@ index 54f784c0ef..357e2e8ae6 100644
  # 예약하기 (step 1, 2026-10-16; pipeline/booking.py, templates/_ui.html.j2 book()): the button word, the guide and course
  # box's heading, the one note under the buttons, the page-nav link, the about pages' sentence and the names of the
  # booking services of data/<region>/booking.json, for Korean and every version — hand-written like NEAR_WORDS, so a
-@@ -1186,3 +1346,405 @@ SHARE_WORDS = {
+@@ -1186,3 +1346,420 @@ SHARE_WORDS = {
      "es": {"label": "Compartir", "copied": "Enlace copiado", "failed": "No se pudo copiar el enlace"},
      "ru": {"label": "Поделиться", "copied": "Ссылка скопирована", "failed": "Не удалось скопировать ссылку"},
  }
@@ -1306,68 +1306,83 @@ index 54f784c0ef..357e2e8ae6 100644
 +
 +# The tab panel (operator 2026-10-31 '적용하자' — the approved layout after travel.webforai.kr: from 1200px a panel at
 +# the left, below it the bar whose menu opens the same groups; templates/_side.html.j2, present.side_vm, en_site
-+# Pages.side): the groups' names, the wordmark's line, the day card's '다음 행사' and the weather module's words — every
-+# version, hand-written like COURSES_WORDS so a version never drops out of the build for a missing string. The weather
-+# words ('wx_*', templates/assets/weather.js) say what the provider's numbers are; the provider's own Korean sentences
-+# (headline, note) show on the Korean pages only. 'sky' names the provider's icon keys (sun · moon · cloud · sunset ·
-+# rain · snow); an unknown key gets the plain icon and no word. {r} the region in the version, {p} a percentage, {t} a
-+# time. Korean-only keys (the actions, 가는 법·시간표, 해 뜨고 지는 시각, 일출·일몰) live in "ko".
++# Pages.side): the groups' names, the wordmark's line, the day card's '다음 행사' and the weather card's words — every
++# version, hand-written like COURSES_WORDS so a version never drops out of the build for a missing string.
++# The weather card (날씨각's own first-screen card — weather.o2o.kr is the operator's service, operator 2026-10-31 '날씨각
++# 실제 디자인으로 … 출처 표기 필요없어 우리 회사 거야'; templates/assets/weather.js): no '출처'/'Source' words. wx_title the
++# card's name, wx_go the link a reader without JavaScript (or after a failed answer) gets, wx_more the drawn card's link,
++# wx_score the label in the sun / moon, wx_slots the four cells (아침 · 낮 · 저녁 · 밤, the one 날씨각 says it is now
++# '지금'), wx_feels · wx_hum the other versions' line of figures (날씨각's own Korean sentences — its bubble, summary and
++# status words — show on the Korean pages only), sky the icons' alt words (날씨각's sky keys). {r} the region in the
++# version, {t} a temperature ('9°'), {p} a percentage. Korean-only keys (the actions, 가는 법·시간표, 해 뜨고 지는 시각,
++# 일출·일몰) live in "ko".
 +SIDE_WORDS = {
 +    "ko": {"find": "찾기", "plan": "여행 계획", "events": "행사 달력", "read": "읽을거리", "about": "소개·출처",
 +           "tagline": "{r} 여행 정보", "next": "다음 행사", "plan_btn": "내 일정 만들기", "courses_btn": "추천 코스",
 +           "transport": "가는 법·시간표", "sun": "해 뜨고 지는 시각", "sunrise": "일출", "sunset": "일몰",
-+           "wx_title": "{r} 날씨", "wx_rain": "강수확률 {p}%", "wx_issued": "{t} 발표", "wx_src": "출처 날씨각",
-+           "wx_go": "{r} 날씨 보기 — 날씨각",
-+           "sky": {"sun": "맑음", "moon": "맑음", "cloud": "구름", "sunset": "노을", "rain": "비", "snow": "눈"}},
++           "wx_title": "{r} 날씨", "wx_go": "{r} 날씨 보기", "wx_more": "자세히 보기", "wx_score": "지금 날씨 점수",
++           "wx_slots": {"morning": "아침", "day": "낮", "sunset": "저녁", "night": "밤", "now": "지금"},
++           "wx_feels": "체감 {t}", "wx_hum": "습도 {p}%",
++           "sky": {"sun": "맑음", "sun_cloud": "구름 조금", "cloud": "흐림", "rain": "비", "snow": "눈", "moon": "맑음"}},
 +    "en": {"find": "Find", "plan": "Plan your trip", "events": "Events calendar", "read": "Read",
 +           "tagline": "{r} travel information", "next": "Next event",
-+           "wx_title": "{r} weather", "wx_rain": "Rain {p}%", "wx_issued": "Issued {t}", "wx_src": "Source: Nalssigak",
-+           "wx_go": "{r} weather on Nalssigak",
-+           "sky": {"sun": "Sunny", "moon": "Clear", "cloud": "Cloudy", "sunset": "Sunset", "rain": "Rain", "snow": "Snow"}},
++           "wx_title": "{r} weather", "wx_go": "See the weather in {r}", "wx_more": "Details", "wx_score": "Weather score",
++           "wx_slots": {"morning": "Morning", "day": "Day", "sunset": "Evening", "night": "Night", "now": "Now"},
++           "wx_feels": "Feels like {t}", "wx_hum": "Humidity {p}%",
++           "sky": {"sun": "Sunny", "sun_cloud": "Partly cloudy", "cloud": "Cloudy", "rain": "Rain", "snow": "Snow",
++                   "moon": "Clear"}},
 +    "ja": {"find": "探す", "plan": "旅の計画", "events": "イベントカレンダー", "read": "読みもの",
 +           "tagline": "{r}の旅行情報", "next": "次のイベント",
-+           "wx_title": "{r}の天気", "wx_rain": "降水確率 {p}%", "wx_issued": "{t}発表", "wx_src": "出典：Nalssigak",
-+           "wx_go": "{r}の天気を見る — Nalssigak",
-+           "sky": {"sun": "晴れ", "moon": "晴れ", "cloud": "くもり", "sunset": "夕焼け", "rain": "雨", "snow": "雪"}},
++           "wx_title": "{r}の天気", "wx_go": "{r}の天気を見る", "wx_more": "詳しく見る", "wx_score": "天気スコア",
++           "wx_slots": {"morning": "朝", "day": "昼", "sunset": "夕方", "night": "夜", "now": "いま"},
++           "wx_feels": "体感 {t}", "wx_hum": "湿度 {p}%",
++           "sky": {"sun": "晴れ", "sun_cloud": "晴れ時々くもり", "cloud": "くもり", "rain": "雨", "snow": "雪", "moon": "晴れ"}},
 +    "zh-hans": {"find": "查找", "plan": "旅行规划", "events": "活动日历", "read": "阅读",
 +                "tagline": "{r}旅游信息", "next": "下一场活动",
-+                "wx_title": "{r}天气", "wx_rain": "降水概率 {p}%", "wx_issued": "{t}发布", "wx_src": "来源：Nalssigak",
-+                "wx_go": "查看{r}天气 — Nalssigak",
-+                "sky": {"sun": "晴", "moon": "晴", "cloud": "多云", "sunset": "晚霞", "rain": "雨", "snow": "雪"}},
++                "wx_title": "{r}天气", "wx_go": "查看{r}天气", "wx_more": "查看详情", "wx_score": "天气评分",
++                "wx_slots": {"morning": "早上", "day": "白天", "sunset": "傍晚", "night": "夜间", "now": "现在"},
++                "wx_feels": "体感 {t}", "wx_hum": "湿度 {p}%",
++                "sky": {"sun": "晴", "sun_cloud": "多云", "cloud": "阴", "rain": "雨", "snow": "雪", "moon": "晴"}},
 +    "zh-hant": {"find": "查找", "plan": "旅行規劃", "events": "活動日曆", "read": "閱讀",
 +                "tagline": "{r}旅遊資訊", "next": "下一場活動",
-+                "wx_title": "{r}天氣", "wx_rain": "降雨機率 {p}%", "wx_issued": "{t}發布", "wx_src": "來源：Nalssigak",
-+                "wx_go": "查看{r}天氣 — Nalssigak",
-+                "sky": {"sun": "晴", "moon": "晴", "cloud": "多雲", "sunset": "晚霞", "rain": "雨", "snow": "雪"}},
++                "wx_title": "{r}天氣", "wx_go": "查看{r}天氣", "wx_more": "查看詳情", "wx_score": "天氣評分",
++                "wx_slots": {"morning": "早上", "day": "白天", "sunset": "傍晚", "night": "夜間", "now": "現在"},
++                "wx_feels": "體感 {t}", "wx_hum": "濕度 {p}%",
++                "sky": {"sun": "晴", "sun_cloud": "多雲", "cloud": "陰", "rain": "雨", "snow": "雪", "moon": "晴"}},
 +    "de": {"find": "Finden", "plan": "Reise planen", "events": "Veranstaltungskalender", "read": "Lesen",
 +           "tagline": "Reiseinfos zu {r}", "next": "Nächste Veranstaltung",
-+           "wx_title": "Wetter in {r}", "wx_rain": "Regen {p} %", "wx_issued": "Stand {t}", "wx_src": "Quelle: Nalssigak",
-+           "wx_go": "Wetter in {r} bei Nalssigak",
-+           "sky": {"sun": "Sonnig", "moon": "Klar", "cloud": "Bewölkt", "sunset": "Abendrot", "rain": "Regen",
-+                   "snow": "Schnee"}},
++           "wx_title": "Wetter in {r}", "wx_go": "Wetter in {r} ansehen", "wx_more": "Details", "wx_score": "Wetter-Score",
++           "wx_slots": {"morning": "Morgen", "day": "Mittag", "sunset": "Abend", "night": "Nacht", "now": "Jetzt"},
++           "wx_feels": "Gefühlt {t}", "wx_hum": "Luftfeuchte {p} %",
++           "sky": {"sun": "Sonnig", "sun_cloud": "Heiter bis wolkig", "cloud": "Bewölkt", "rain": "Regen", "snow": "Schnee",
++                   "moon": "Klar"}},
 +    "fr": {"find": "Trouver", "plan": "Préparer le voyage", "events": "Agenda des événements", "read": "À lire",
 +           "tagline": "Infos voyage à {r}", "next": "Prochain événement",
-+           "wx_title": "Météo à {r}", "wx_rain": "Pluie {p} %", "wx_issued": "Publié à {t}", "wx_src": "Source : Nalssigak",
-+           "wx_go": "Météo à {r} sur Nalssigak",
-+           "sky": {"sun": "Ensoleillé", "moon": "Dégagé", "cloud": "Nuageux", "sunset": "Coucher de soleil",
-+                   "rain": "Pluie", "snow": "Neige"}},
++           "wx_title": "Météo à {r}", "wx_go": "Voir la météo à {r}", "wx_more": "Détails", "wx_score": "Score météo",
++           "wx_slots": {"morning": "Matin", "day": "Midi", "sunset": "Soir", "night": "Nuit", "now": "Actuel"},
++           "wx_feels": "Ressenti {t}", "wx_hum": "Humidité {p} %",
++           "sky": {"sun": "Ensoleillé", "sun_cloud": "Éclaircies", "cloud": "Nuageux", "rain": "Pluie", "snow": "Neige",
++                   "moon": "Dégagé"}},
 +    "es": {"find": "Buscar", "plan": "Planear el viaje", "events": "Calendario de eventos", "read": "Para leer",
 +           "tagline": "Información de viaje de {r}", "next": "Próximo evento",
-+           "wx_title": "El tiempo en {r}", "wx_rain": "Lluvia {p} %", "wx_issued": "Emitido a las {t}",
-+           "wx_src": "Fuente: Nalssigak", "wx_go": "El tiempo en {r} en Nalssigak",
-+           "sky": {"sun": "Soleado", "moon": "Despejado", "cloud": "Nublado", "sunset": "Atardecer", "rain": "Lluvia",
-+                   "snow": "Nieve"}},
++           "wx_title": "El tiempo en {r}", "wx_go": "Ver el tiempo en {r}", "wx_more": "Detalles",
++           "wx_score": "Nota del tiempo",
++           "wx_slots": {"morning": "Mañana", "day": "Día", "sunset": "Tarde", "night": "Noche", "now": "Ahora"},
++           "wx_feels": "Sensación {t}", "wx_hum": "Humedad {p} %",
++           "sky": {"sun": "Soleado", "sun_cloud": "Parcialmente nublado", "cloud": "Nublado", "rain": "Lluvia",
++                   "snow": "Nieve", "moon": "Despejado"}},
 +    "ru": {"find": "Найти", "plan": "План поездки", "events": "Календарь событий", "read": "Почитать",
 +           "tagline": "{r}: информация для поездки", "next": "Ближайшее событие",
-+           "wx_title": "Погода: {r}", "wx_rain": "Осадки {p} %", "wx_issued": "Выпуск {t}", "wx_src": "Источник: Nalssigak",
-+           "wx_go": "Погода: {r} — Nalssigak",
-+           "sky": {"sun": "Солнечно", "moon": "Ясно", "cloud": "Облачно", "sunset": "Закат", "rain": "Дождь",
-+                   "snow": "Снег"}},
++           "wx_title": "Погода: {r}", "wx_go": "Смотреть погоду: {r}", "wx_more": "Подробнее", "wx_score": "Оценка погоды",
++           "wx_slots": {"morning": "Утро", "day": "День", "sunset": "Вечер", "night": "Ночь", "now": "Сейчас"},
++           "wx_feels": "Ощущается как {t}", "wx_hum": "Влажность {p} %",
++           "sky": {"sun": "Солнечно", "sun_cloud": "Переменная облачность", "cloud": "Облачно", "rain": "Дождь",
++                   "snow": "Снег", "moon": "Ясно"}},
 +}
-+SIDE_KEYS = ("find", "plan", "events", "read", "tagline", "next", "wx_title", "wx_rain", "wx_issued", "wx_src", "wx_go",
-+             "sky")   # every version has these (tests/test_sidebar_layout.py)
++SIDE_KEYS = ("find", "plan", "events", "read", "tagline", "next", "wx_title", "wx_go", "wx_more", "wx_score", "wx_slots",
++             "wx_feels", "wx_hum", "sky")   # every version has these (tests/test_sidebar_layout.py)
 diff --git a/pipeline/present.py b/pipeline/present.py
-index f4b58c1287..f25bd309ce 100644
+index f4b58c1287..b413d39d5f 100644
 --- a/pipeline/present.py
 +++ b/pipeline/present.py
 @@ -436,8 +436,11 @@ def fee_table(raw: str | None):
@@ -1909,7 +1924,7 @@ index f4b58c1287..f25bd309ce 100644
  
  
  def page_chrome(page_kind: str, has_courses: bool) -> dict:
-@@ -4478,6 +4793,127 @@ def page_chrome(page_kind: str, has_courses: bool) -> dict:
+@@ -4478,6 +4793,133 @@ def page_chrome(page_kind: str, has_courses: bool) -> dict:
      return {"nav_current": CURRENT.get(page_kind, ""), "ctxbtn": btn}
  
  
@@ -1919,24 +1934,30 @@ index f4b58c1287..f25bd309ce 100644
 +# 행사), the two actions and the tab groups; below 1200px the bar stays and its menu opens the same groups
 +# (templates/_side.html.j2, css/80-side.css). side_vm builds it once per build; side_state marks one page's group.
 +# Every main-nav link (nav_items) is in one group, so nothing of the old bar is lost (tests/test_sidebar_layout.py).
-+# 날씨각 (weather.o2o.kr, the operator's own service; operator 2026-10-31): its region code for the site's region. The
-+# page carries no weather value — assets/weather.js asks the API in the browser after the page has loaded.
++# 날씨각 (weather.o2o.kr, the operator's own service; operator 2026-10-31 '날씨각 실제 디자인으로 위젯을 가져오라니까?'):
++# its region code for the site's region. The card is 날씨각's own first-screen card, drawn by assets/weather.js from two
++# answers asked in the browser after the page has loaded — the feed's hero (sky, score, its words, the moon) and the
++# day's three-hour slots (the four cells' figures); the page carries no weather value. No 'source' words: 날씨각 is
++# the operator's (the same day: '출처: 날씨각 표기 필요없어 우리 회사 거야').
++WEATHER_FEED = "https://weather.o2o.kr/v1/feed?region={code}"
 +WEATHER_API = "https://weather.o2o.kr/v1/weather/today?region={code}"
 +WEATHER_HOME = "https://weather.o2o.kr/"
 +WEATHER_REGIONS = {"군산": "5213000000"}   # 행정표준코드 전북 군산시
 +
 +
 +def weather_vm(region_ko: str, code: str, region_label: str) -> dict | None:
-+    """The weather module's hook ({api, home, title, go, js}) in one version, or None for a region 날씨각 has no code
-+    for. js: the words weather.js needs (rain, issued, src, sky) and ko (the Korean pages show the provider's slot
-+    labels and its headline; the other versions the times and figures only)."""
++    """The weather card's hook ({feed, api, home, title, go, js}) in one version, or None for a region 날씨각 has no
++    code for. js: the words weather.js draws with (more, score, slots, feels, hum, sky), the version's language (its
++    date) and ko (the Korean pages show 날씨각's own sentences — bubble, summary, status; the other versions the score,
++    the figures, the icons and the cells' names in their words)."""
 +    rc = WEATHER_REGIONS.get(region_ko or "")
 +    if not rc:
 +        return None
 +    w = LC.SIDE_WORDS[code]
-+    return {"api": WEATHER_API.format(code=rc), "home": WEATHER_HOME, "title": w["wx_title"].format(r=region_label),
-+            "go": w["wx_go"].format(r=region_label),
-+            "js": {"rain": w["wx_rain"], "issued": w["wx_issued"], "src": w["wx_src"], "sky": w["sky"],
++    return {"feed": WEATHER_FEED.format(code=rc), "api": WEATHER_API.format(code=rc), "home": WEATHER_HOME,
++            "title": w["wx_title"].format(r=region_label), "go": w["wx_go"].format(r=region_label),
++            "js": {"more": w["wx_more"], "score": w["wx_score"], "slots": w["wx_slots"], "feels": w["wx_feels"],
++                   "hum": w["wx_hum"], "sky": w["sky"], "lang": "ko" if code == "ko" else LC.get(code).html,
 +                   "ko": code == "ko"}}
 +
 +
@@ -2037,7 +2058,7 @@ index f4b58c1287..f25bd309ce 100644
  # ----------------------------------------------------------------------------- the AI course planner (/plan/)
  # Operator 2026-10-17: 'AI 여행 코스 생성기' on its own page, very visible, many cute 3D pictures. The page asks
  # /api/plan/ (chatbot/planner.js) and draws the plan from the site's own place data (plan_places, /plan/places.json):
-@@ -4584,3 +5020,787 @@ def plan_vm(S) -> dict:
+@@ -4584,3 +5026,787 @@ def plan_vm(S) -> dict:
              "region": S.site.get("region") or "",
              "mascots": {"work": pose("mascot-plan", "mascot-think"), "done": pose("mascot-plan-done", "mascot-hello"),
                          "rain": pose("mascot-plan-rain", "mascot-point"), "sorry": pose("mascot-sorry", "mascot-sorry")}}
@@ -3923,10 +3944,10 @@ index 79775a7932..3e8302d085 100644
  
 diff --git a/templates/_side.html.j2 b/templates/_side.html.j2
 new file mode 100644
-index 0000000000..41119dfbe1
+index 0000000000..05cc60a8d3
 --- /dev/null
 +++ b/templates/_side.html.j2
-@@ -0,0 +1,58 @@
+@@ -0,0 +1,59 @@
 +{#- _side.html.j2 — the tab panel (operator 2026-10-31 '적용하자': the approved layout after travel.webforai.kr), shared by
 +    the Korean header (base.html.j2) and the other versions' (en/_chrome.html.j2). css/80-side.css lays it out.
 +    From 1200px the header is a white rounded panel at the left that stays while the page scrolls (it scrolls inside
@@ -3946,11 +3967,13 @@ index 0000000000..41119dfbe1
 +      date written out (in the panel weather.js moves it to the visitor's day; never '오늘' in the HTML), linked to /sun/,
 +      and the next
 +      event with its dates written out, linked to its page.
-+    weather(wx, variant): 날씨각's module (operator 2026-10-31). The HTML holds no weather value: its title and the link
-+      to weather.o2o.kr ('군산 날씨 보기 — 날씨각'), which is all a reader without JavaScript (or after a failed or late
-+      answer) gets. assets/weather.js (site.js attaches it after the page has loaded, when a module is on screen) asks
-+      the API and fills the kept room: the nearest slot's figure, sky icon and rain chance, the headline (Korean only),
-+      the next slots' times and figures, '발표 HH:MM' and the source link. -#}
++    weather(wx, variant): 날씨각's own first-screen card (operator 2026-10-31 '날씨각 실제 디자인으로'), 'home' (the
++      homes, under the first screen: the card as 날씨각 draws it) or 'side' (the panel: the same card, small — the sun or
++      moon with the score, the bubble, the four cells). The HTML holds no weather value: the card's name and the link
++      to weather.o2o.kr ('군산 날씨 보기' — no source words: 날씨각 is the operator's), which is all a reader without
++      JavaScript (or after a failed or late answer) gets. assets/weather.js (site.js attaches it after the page has
++      loaded, when a card is on screen) asks the feed (data-wx) and the day's slots (data-wx-day) and draws the card
++      in the room css/80-side.css keeps for it; the drawn card is one link (its 자세히 보기 covers it). -#}
 +{% import "_ui.html.j2" as ui %}
 +
 +{% macro groups(G, current, mode) -%}
@@ -3968,10 +3991,9 @@ index 0000000000..41119dfbe1
 +{%- endmacro %}
 +
 +{% macro weather(wx, variant) -%}
-+<div class="wx wx-{{ variant }} wx-{{ 'ko' if wx.js.ko else 'intl' }}" data-wx="{{ wx.api }}" data-wx-w="{{ wx.js|tojson_attr }}">
-+  <p class="wx-h"><span class="wx-t">{{ wx.title }}</span><span class="wx-iss tn" data-wx-iss></span></p>
++<div class="wx wx-{{ variant }} wx-{{ 'ko' if wx.js.ko else 'intl' }}" data-wx="{{ wx.feed }}" data-wx-day="{{ wx.api }}" data-wx-w="{{ wx.js|tojson_attr }}">
++  <p class="wx-h"><span class="wx-t">{{ wx.title }}</span><span class="wx-dt" data-wx-dt></span><a class="wx-go" href="{{ wx.home }}" rel="noopener" data-wx-go><span data-wx-gl>{{ wx.go }}</span>{{ ui.icon('external', 'icon wx-x') }}</a></p>
 +  <div class="wx-b" data-wx-b></div>
-+  <a class="wx-go" href="{{ wx.home }}" rel="noopener" data-wx-go>{{ wx.go }}{{ ui.icon('external', 'icon wx-x') }}</a>
 +</div>
 +{%- endmacro %}
 +
@@ -5303,10 +5325,10 @@ index 0000000000..62ab655d8b
 +}
 diff --git a/templates/assets/css/80-side.css b/templates/assets/css/80-side.css
 new file mode 100644
-index 0000000000..556e7fe40d
+index 0000000000..6e91c127a5
 --- /dev/null
 +++ b/templates/assets/css/80-side.css
-@@ -0,0 +1,237 @@
+@@ -0,0 +1,335 @@
 +/* 80-side — the tab panel (operator 2026-10-31 '적용하자': the approved layout after travel.webforai.kr;
 +   templates/_side.html.j2, base.html.j2, en/_chrome.html.j2). The tone stays (00-tokens: white, hairline borders, sea
 +   blue, Pretendard 400/700, radii 12 · 18 · 24 · 28).
@@ -5376,80 +5398,178 @@ index 0000000000..556e7fe40d
 +.sd-ev-t { font: 700 14.5px/1.4 var(--font); letter-spacing: -.02em; word-break: keep-all; overflow-wrap: anywhere; }
 +.sd-go { position: absolute; right: 16px; top: 50%; width: 8px; height: 8px; margin-top: -4px; border: solid var(--ink-3); border-width: 0 2px 2px 0; transform: rotate(-45deg); }
 +
-+/* ---------------------------------------------------------------- 날씨각's weather module (_side.html.j2 weather,
-+   assets/weather.js; operator 2026-10-31). Built: the title and the link to weather.o2o.kr. With JS the module keeps
-+   the room of its filled state from the first paint, so nothing moves when the answer comes after load (or when it
-+   does not: the link stays, in the same room). Contrast: ink on g0 15+; ink-2 on g0 8+; ink-3 on g0 5.22; sea-deep
-+   7+. Icons: currentColor (the sun 4.6:1 amber, the rest ink-3 / sea-deep). */
-+.wx { position: relative; display: flex; flex-direction: column; gap: 8px; padding: 12px 14px; color: var(--ink); }
-+.wx-h { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin: 0; }
++/* ---------------------------------------------------------------- 날씨각's weather card (_side.html.j2 weather,
++   assets/weather.js; operator 2026-10-31 '날씨각 실제 디자인으로 위젯을 가져오라니까?'): 날씨각's own first-screen card
++   (weather.o2o.kr, the operator's service), its look taken from its app — the sky of the hour (morning peach, day
++   blue, a grey day when cloudy, sunset violet, night navy with stars and shooting stars), the round sun or the moon in
++   its phase holding '지금 날씨 점수' and the score in Bagel Fat One, its CSS clouds, the bubble in Jua, the summary, the
++   status line and the four cells (the one it is now white). Two sizes: .wx-home (the homes, under the first screen,
++   the card at 날씨각's size on a phone; from 700px the sky spans the column and the card's content keeps 날씨각's width
++   in its middle) and .wx-side (the panel: the same card small — the sun or moon with the score, the bubble, the
++   cells). Built: the card's name and the link to weather.o2o.kr ('군산 날씨 보기'), in the page's own style — all a
++   reader without JavaScript gets. With JS the card keeps its drawn size from the first paint (nothing moves when the
++   answers come after load, nor when they do not: the link then sits in the middle of the same room), in the sky the
++   clock says (html[data-wxt], base.html.j2) until the answer says its own. The drawn card is one link (its 자세히 보기
++   covers it: one target, one focus ring round the card).
++   Contrast (날씨각's colours, adjusted where they fall short): ink #28304a on the day skies ≥ 8; white on night 9+;
++   secondary words 85% (the day's status words 75%: ≥ 4.9 on the grey day); the cells' names 75% day · 85% night ·
++   100% sunset (4.7, the sunset sky's foot a shade deeper than 날씨각's); '지금' #c2471b on white 4.99; warn #a8401a day
++   ≥ 4.56 · #ffb38a night 6.7 · #ffd2b8 sunset 4.5. Reduced motion: no drop-in, float, shooting star, twinkle or
++   falling rain; a card off the screen rests (.is-off). */
++.wx { position: relative; color: var(--ink); }
++.wx-h { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; margin: 0; padding: 12px 14px; }
 +.wx-t { font: 700 13.5px/1.3 var(--font); color: var(--sea-deep); letter-spacing: -.01em; }
-+.wx-iss { font: 400 12px/1.3 var(--font); color: var(--ink-3); white-space: nowrap; }
-+.wx-b { display: flex; flex-direction: column; gap: 6px; }
-+.wx-b:empty { display: none; }
-+.wx-now { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 8px; margin: 0; }
-+.wx-ic { display: inline-flex; }
-+.wx-svg { display: block; width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; color: var(--ink-3); }
-+.wx-now .wx-svg { width: 30px; height: 30px; }
-+.wx-k-sun, .wx-k-sunset { color: #B35C00; }   /* 4.6:1 on g0 */
-+.wx-k-moon, .wx-k-rain, .wx-k-snow { color: var(--sea-deep); }
-+.wx-tmp { font: 700 26px/1 var(--font); letter-spacing: -.03em; }
-+.wx-sky { font: 700 14px/1.3 var(--font); color: var(--ink-2); }
-+.wx-rp { font: 400 13px/1.3 var(--font); color: var(--ink-2); }
-+.wx-hl { margin: 0; font: 400 13px/1.45 var(--font); color: var(--ink-2); word-break: keep-all; }
-+.wx-strip { display: grid; grid-auto-flow: column; grid-auto-columns: 51px; gap: 4px; margin: 2px 0 0; padding: 0; list-style: none; }
-+.wx-strip li { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 4px 0; border-radius: 10px; background: #fff; font: 400 12px/1.2 var(--font); color: var(--ink-3); }
-+.wx-strip .wx-svg { width: 18px; height: 18px; }
-+.wx-strip b { font: 700 13px/1.2 var(--font); color: var(--ink); }
-+.wx-go { display: inline-flex; align-items: center; gap: 4px; align-self: flex-start; min-height: 24px; font: 700 12.5px/1.3 var(--font); color: var(--sea-deep); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; }
++.wx-dt, .wx-ar { display: none; }
++.wx-go { display: inline-flex; align-items: center; gap: 4px; min-height: 24px; font: 700 12.5px/1.3 var(--font); color: var(--sea-deep); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; }
 +.wx-go:hover { color: var(--ink); }
 +.wx-x { width: 13px; height: 13px; stroke-width: 2; }
-+.wx.is-ready .wx-go { font-weight: 400; color: var(--ink-3); }
-+/* the kept room (with JS): the filled module's height; built or failed, the link sits in it */
-+html.js .wx-side { height: 132px; }
-+html.js .wx-side.wx-intl { height: 110px; }   /* no headline in the other versions */
-+html.js .wx-home { min-height: 226px; }
-+html.js .wx-home.wx-intl { min-height: 200px; }
-+/* the link sits at the module's foot whatever fills it: absolutely placed, one 20px line — the answer coming in (or a font
-+   arriving) never moves it */
-+html.js .wx { padding-bottom: 42px; }
-+html.js .wx-go { position: absolute; left: 14px; bottom: 10px; height: 24px; min-height: 0; margin: 0; line-height: 24px; white-space: nowrap; }
-+html.js .wx-home .wx-go { left: 18px; }
-+@media (max-width: 1023px) {   /* a 44px target below 1024px */
-+  .wx-go { min-height: 44px; }
-+  html.js .wx-home { padding-bottom: 56px; }
-+  html.js .wx-home .wx-go { bottom: 6px; height: 44px; line-height: 44px; }
-+}
-+/* while the answer is on its way: two quiet bars in the room (no motion); gone when it comes or does not */
-+html.js .wx:not(.is-ready):not(.is-failed) .wx-b:empty { display: flex; gap: 6px; }
++.wx-b:empty { display: none; }
++.hwx { margin-top: 8px; margin-bottom: 8px; }
++.wx-home { border: 1px solid var(--hair); border-radius: 24px; background: var(--g0); }
++.wx-home .wx-h { padding: 16px 18px; }
++.wx-home .wx-t { font-size: 15px; }
++@media (max-width: 1023px) { .wx-go { min-height: 44px; } }
++
++/* ---- with JS: the sky card */
++:where(html.js .wx) { --wx-bg: linear-gradient(#9fd3ff, #cfe9ff 55%, #f1f8ff); --wx-fg: #28304a; --wx-strip: rgba(255, 255, 255, .42);
++  --wx-skel: rgba(255, 255, 255, .5); --wx-o1: .85; --wx-o2: .75; --wx-o3: .75; --wx-warn: #a8401a; }
++html.js .wx { isolation: isolate; overflow: hidden; display: flex; flex-direction: column; padding: 12px 16px; border: 0; border-radius: 28px;
++  background: var(--wx-bg); color: var(--wx-fg); }
++.wx[data-t=morning], html[data-wxt=morning] .wx:not([data-t]) { --wx-bg: linear-gradient(#ffd9b8, #ffe9d4 40%, #dff0ff); }
++.wx:is([data-t=morning], [data-t=day]):is([data-sky=cloudy], [data-sky=rain], [data-sky=snow], [data-sky=sleet]) {
++  --wx-bg: linear-gradient(#a9bbd0, #cbd7e4 55%, #eef2f7); }
++.wx[data-t=sunset], html[data-wxt=sunset] .wx:not([data-t]) { --wx-bg: linear-gradient(#4c42b0, #6a48b0 45%, #8e4482);
++  --wx-fg: #fff; --wx-strip: rgba(255, 255, 255, .14); --wx-skel: rgba(255, 255, 255, .16); --wx-o2: .85; --wx-o3: 1; --wx-warn: #ffd2b8; }
++.wx[data-t=night], html[data-wxt=night] .wx:not([data-t]) { --wx-bg: linear-gradient(#141b3d, #27306a 60%, #3d3f86);
++  --wx-fg: #fff; --wx-strip: rgba(255, 255, 255, .14); --wx-skel: rgba(255, 255, 255, .14); --wx-o2: .85; --wx-o3: .85; --wx-warn: #ffb38a; }
++html.js .wx-home { height: 401px; }
++html.js .wx-home.wx-intl { height: 356px; }
++/* the head: the card's name in 날씨각's white pill, the date, the link */
++html.js .wx .wx-h { flex: none; flex-direction: row; align-items: center; gap: 0; height: 32px; padding: 0; }
++html.js .wx .wx-t { flex: none; display: inline-flex; align-items: center; height: 24px; margin: 0 3px; padding: 0 10px; border-radius: 999px;
++  background: #fff; color: #28304a; box-shadow: 0 0 0 3px var(--wx-strip), 0 4px 12px rgba(40, 48, 74, .1);
++  font: 700 13px/1 WxJua, var(--font); font-synthesis: none; letter-spacing: 0; white-space: nowrap; }
++html.js .wx .wx-dt { display: block; flex: 0 1 auto; min-width: 0; margin-left: 10px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
++  font: 700 13px/1.5 var(--font); opacity: var(--wx-o1); }
++html.js .wx .wx-go { visibility: hidden; }
++html.js .wx.is-ready .wx-go { visibility: visible; flex: none; display: inline-flex; gap: 3px; height: 30px; min-height: 0; margin-left: auto; padding: 0 12px;
++  border-radius: 999px; background: var(--wx-strip); color: inherit; font: 700 13px/1 var(--font); text-decoration: none; }
++html.js .wx.is-ready .wx-go .wx-x { display: none; }
++html.js .wx.is-ready .wx-ar { display: inline; margin-left: 2px; font-size: 15px; line-height: 1; }
++/* the drawn card is the link's target: its 자세히 보기 covers it, one focus ring round the card */
++html.js .wx.is-ready .wx-go::after { content: ""; position: absolute; inset: 0; z-index: 5; border-radius: 0; }
++html.js .wx-home.is-ready .wx-go::after { border-radius: 28px; }
++html.js .wx.is-ready .wx-go:hover { background: rgba(255, 255, 255, .62); color: #28304a; }
++html.js .wx.is-ready .wx-go:focus-visible { outline: none; }
++html.js .wx.is-ready .wx-go:focus-visible::after { outline: 3px solid var(--focus); outline-offset: -3px; }
++/* no answer: the link to 날씨각, a white pill in the middle of the kept room */
++html.js .wx.is-failed .wx-go { visibility: visible; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 2;
++  min-height: 44px; padding: 0 18px; border-radius: 999px; background: #fff; color: #28304a; font: 700 14px/1.3 var(--font);
++  text-decoration: none; white-space: nowrap; box-shadow: 0 4px 12px rgba(40, 48, 74, .12); }
++html.js .wx.is-failed .wx-go:hover { color: var(--sea-deep); text-decoration: underline; }
++/* the body: the sky, the words, the cells */
++html.js .wx .wx-b { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: space-between; min-height: 0; }
 +html.js .wx:not(.is-ready):not(.is-failed) .wx-b:empty::before, html.js .wx:not(.is-ready):not(.is-failed) .wx-b:empty::after {
-+  content: ""; display: block; height: 14px; border-radius: 7px; background: var(--g1); }
-+html.js .wx:not(.is-ready):not(.is-failed) .wx-b:empty::before { width: 56%; height: 26px; border-radius: 10px; }
-+html.js .wx:not(.is-ready):not(.is-failed) .wx-b:empty::after { width: 78%; }
++  content: ""; position: absolute; z-index: 0; background: var(--wx-skel); }
++html.js .wx:not(.is-ready):not(.is-failed) .wx-b:empty::before { top: 52px; left: 50%; width: 128px; height: 128px; margin-left: -64px; border-radius: 50%; }
++html.js .wx:not(.is-ready):not(.is-failed) .wx-b:empty::after { left: 16px; right: 16px; bottom: 12px; height: 86px; max-width: 440px; margin: 0 auto; border-radius: 18px; background: var(--wx-strip); }
++.wx-stars, .wx-fx { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
++.wx-stars { opacity: 0; }
++.wx[data-t=night] .wx-stars { opacity: 1; }
++.wx-stars i { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: #fff; box-shadow: 0 0 6px #fff; }
++.wx-shoot { display: none; position: absolute; width: var(--len, 90px); height: 1.5px; border-radius: 2px; opacity: 0; background: linear-gradient(90deg, rgba(255, 255, 255, 0), #fff); }
++.wx-drop, .wx-flake { position: absolute; top: var(--top); }
++.wx-drop { width: 2px; height: 18px; border-radius: 2px; background: linear-gradient(rgba(0, 0, 0, 0), rgba(80, 130, 200, .7)); }
++.wx:is([data-t=sunset], [data-t=night]) .wx-drop { background: linear-gradient(rgba(0, 0, 0, 0), rgba(220, 230, 255, .7)); }
++.wx-flake { width: 7px; height: 7px; border-radius: 50%; background: #fff; box-shadow: 0 0 4px rgba(120, 150, 200, .5); --drift: 18px; }
++.wx-sky, .wx-say, .wx-strip { position: relative; width: 100%; max-width: 440px; margin-left: auto; margin-right: auto; }
++.wx-sky { flex: none; height: 9.125em; font-size: 16px; }
++/* 날씨각's clouds (CSS: a pill with two round puffs), in front of the sun or moon */
++.wx-cl { position: absolute; z-index: 1; }
++.wx-c1 { top: 2.25em; left: 5%; width: 5.25em; height: 2em; --d: .1s; --f: 6s; }
++.wx-c2 { top: 6em; left: 63%; width: 6em; height: 2.25em; --d: .25s; --f: 6.4s; }
++.wx-c3 { top: 1.875em; left: 72%; width: 4em; height: 1.75em; --d: .4s; --f: 5.4s; }
++.wx-cb, .wx-cb::before, .wx-cb::after { position: absolute; border-radius: 999px; background: #fff; }
++.wx-cb { inset: 0; box-shadow: inset 0 -.75em 1.125em rgba(160, 190, 230, .45), 0 1em 1.75em rgba(40, 70, 120, .13); }
++.wx-cb::before, .wx-cb::after { content: ""; aspect-ratio: 1; box-shadow: inset 0 -.625em 1em rgba(160, 190, 230, .35); }
++.wx-cb::before { width: 46%; top: -58%; left: 16%; }
++.wx-cb::after { width: 36%; top: -36%; left: 50%; }
++.wx[data-t=night] .wx-cb, .wx[data-t=night] .wx-cb::before, .wx[data-t=night] .wx-cb::after { background: #c9cdf0; }
++/* the sun (or, in the evening and at night, the moon) with the score */
++.wx-ob { position: absolute; top: .5em; left: 50%; width: 8em; height: 8em; margin-left: -4em; --d: 0s; --f: 5.6s; }
++.wx-orb { position: relative; display: grid; place-items: center; width: 100%; height: 100%; border-radius: 50%; text-align: center; color: #5c1f08;
++  background: radial-gradient(circle at 34% 30%, #fff5cf, #ffc86e 30%, #ff8e4e 68%, #ee6436);
++  box-shadow: inset -1.125em -1.5em 2.5em rgba(170, 50, 20, .34), inset 1em 1.125em 1.75em rgba(255, 255, 255, .55), 0 1.875em 3.5em rgba(240, 106, 58, .32); }
++.wx[data-t=sunset] .wx-orb { color: #4a2442; background: radial-gradient(circle at 34% 30%, #fff4e6, #ffd9b8 32%, #f7a991 68%, #e07a8f);
++  box-shadow: inset -1.125em -1.5em 2.5em rgba(150, 50, 90, .3), inset 1em 1.125em 1.75em rgba(255, 255, 255, .55), 0 0 3.75em rgba(255, 150, 110, .5); }
++.wx[data-t=night] .wx-orb { color: #2b2a5c; background: radial-gradient(circle at 34% 30%, #fff, #e7e3ff 35%, #b9b0f2 72%, #8f86d9);
++  box-shadow: inset -1.125em -1.5em 2.5em rgba(60, 50, 140, .3), inset 1em 1.125em 1.75em rgba(255, 255, 255, .6), 0 0 3.75em rgba(190, 180, 255, .45); }
++.wx:is([data-sky=cloudy], [data-sky=rain], [data-sky=snow], [data-sky=sleet]) .wx-orb { filter: saturate(.7) brightness(.96); }
++.wx .wx-orb.wx-moon { background: none; box-shadow: none; filter: none; }
++.wx-mo { position: absolute; top: -25%; left: -25%; width: 150%; height: 150%; max-width: none; pointer-events: none; }
++.wx-sc { position: relative; display: flex; flex-direction: column; align-items: center; margin: 0; }
++.wx-sc small { display: block; font: 700 12px/1.5 WxJua, var(--font); font-synthesis: none; letter-spacing: 0; }
++.wx-sc b { display: block; font: 700 3.25em/.95 WxBagel, WxJua, var(--font); font-synthesis: none; letter-spacing: 0; }
++.wx-moon.is-lit .wx-sc { text-shadow: 0 0 6px #fff, 0 0 12px #fff; }
++.wx-moon.is-dim .wx-sc { color: #fff; text-shadow: 0 1px 8px rgba(10, 14, 40, .6); }
++/* the words: 날씨각's bubble, summary and status line (the other versions: the figures) */
++.wx-say { flex: none; height: 103px; overflow: hidden; text-align: center; }
++.wx-intl .wx-say { height: 58px; }
++.wx-bub { margin: 0; font: 700 24px/30px WxJua, var(--font); font-synthesis: none; letter-spacing: 0; }
++.wx-sum { margin: 2px 0 0; font: 700 15px/22.5px var(--font); opacity: var(--wx-o1); }
++.wx-st { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 6px; margin: 6px 0 0; font: 700 14px/21px WxJua, var(--font); font-synthesis: none; letter-spacing: 0; }
++.wx-si { white-space: nowrap; }
++.wx-si b { font-weight: inherit; }
++.wx-sl { opacity: var(--wx-o2); }
++.wx-dot { opacity: .3; }
++.wx-si.is-warn { color: var(--wx-warn); }
++.wx-si.is-warn .wx-sl { opacity: 1; }
++/* the four cells: 아침 · 낮 · 저녁 · 밤, the one it is now white */
++.wx-strip { flex: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; margin-top: 10px; padding: 3px; list-style: none;
++  border-radius: 18px; background: var(--wx-strip); }
++.wx-strip li { display: flex; flex-direction: column; align-items: center; min-width: 0; padding: 6px 0; border-radius: 14px; }
++.wx-cn { max-width: 100%; overflow: hidden; font: 700 13px/19.5px var(--font); opacity: var(--wx-o3); white-space: nowrap; }
++.wx-ic { display: block; width: 22px; height: 22px; margin: 2px 0; object-fit: contain; }
++.wx-tc { font: 700 15px/22.5px WxJua, var(--font); font-synthesis: none; letter-spacing: 0; }
++.wx-strip li.is-now { background: #fff; color: #28304a; box-shadow: 0 4px 12px rgba(40, 48, 74, .1); }
++.wx-strip li.is-now .wx-cn { color: #c2471b; opacity: 1; }
++/* the panel's card: the same, small */
++html.js .wx-side { height: 246px; padding: 10px 12px; border-radius: 0; }
++html.js .wx-side.wx-intl { height: 220px; }
++html.js .wx-side .wx-h { height: 24px; }
++html.js .wx-side .wx-t { height: 20px; margin: 0 2px; padding: 0 8px; box-shadow: 0 0 0 2px var(--wx-strip); font-size: 11.5px; }
++html.js .wx-side .wx-dt { display: none; }
++html.js .wx-side.is-ready .wx-go { height: 24px; padding: 0 9px; font-size: 11.5px; }
++html.js .wx-side.is-ready .wx-ar { font-size: 13px; }
++html.js .wx-side:not(.is-ready):not(.is-failed) .wx-b:empty::before { top: 39px; width: 88px; height: 88px; margin-left: -44px; }
++html.js .wx-side:not(.is-ready):not(.is-failed) .wx-b:empty::after { left: 12px; right: 12px; bottom: 10px; height: 69px; border-radius: 14px; }
++.wx-side .wx-sky { font-size: 11px; }
++.wx-side .wx-sc small { font-size: 9.5px; line-height: 1.35; }
++.wx-side .wx-say { height: 26px; }
++.wx-side .wx-bub { overflow: hidden; font-size: 17px; line-height: 26px; text-overflow: ellipsis; white-space: nowrap; }
++.wx-side .wx-strip { gap: 3px; margin-top: 6px; border-radius: 14px; }
++.wx-side .wx-strip li { padding: 4px 0; border-radius: 11px; }
++.wx-side .wx-cn { font-size: 11px; line-height: 16px; }
++.wx-side .wx-ic { width: 18px; height: 18px; margin: 1px 0; }
++.wx-side .wx-tc { font-size: 13px; line-height: 19px; }
++/* motion (날씨각's): the sun or moon and the clouds drop in (the homes' card, under the first screen) and float; the
++   night's shooting stars and twinkling; falling rain and snow — none with reduced motion, none while off the screen */
 +@media (prefers-reduced-motion: no-preference) {
 +  .wx.is-ready .wx-b { animation: wx-in .45s var(--ease-out) both; }
++  .wx-home :is(.wx-cl, .wx-ob) { animation: wx-drop 1.05s cubic-bezier(.22, .9, .3, 1) var(--d, 0s) backwards; }
++  .wx :is(.wx-cb, .wx-orb) { animation: wx-float var(--f, 4.8s) ease-in-out calc(var(--d, 0s) + 1.05s) infinite; }
++  .wx[data-t=night] .wx-shoot { display: block; animation: wx-shoot var(--dur, 8s) ease-in var(--dl, 0s) infinite; }
++  .wx[data-t=night] .wx-tw { animation: wx-twinkle 5s ease-in-out var(--dl, 0s) infinite; }
++  .wx-drop, .wx-flake { top: -24px; animation: wx-fall var(--dur) linear var(--dl) infinite; }
++  .wx.is-off * { animation-play-state: paused !important; }
 +}
-+@keyframes wx-in { from { opacity: 0; transform: translateY(4px); } }
-+/* the homes' module, under the first screen (one place, phones too): a card in the page's own style */
-+.hwx { margin-top: 8px; margin-bottom: 8px; }
-+.wx-home { border: 1px solid var(--hair); border-radius: 24px; background: var(--g0); padding: 16px 18px; }
-+.wx-home .wx-t { font-size: 15px; }
-+@media (min-width: 700px) {
-+  html.js .wx-home { min-height: 160px; }
-+  html.js .wx-home.wx-intl { min-height: 150px; }
-+  .wx-home.is-ready { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto auto 1fr; column-gap: 28px; }
-+  .wx-home.is-ready .wx-h { grid-column: 1; }
-+  .wx-home.is-ready .wx-b { display: contents; }
-+  .wx-home.is-ready .wx-now { grid-column: 1; grid-row: 2; }
-+  .wx-home.is-ready .wx-hl { grid-column: 1; grid-row: 3; }
-+  .wx-home.is-ready .wx-strip { grid-column: 2; grid-row: 1 / 4; align-self: center; margin: 0; }
-+  .wx-home .wx-strip { grid-auto-columns: 64px; }
-+  .wx-home .wx-strip li { padding: 8px 0; }
-+}
-+@media (min-width: 1024px) {   /* the link a 24px line again: a little less room */
-+  html.js .wx-home { min-height: 156px; }
-+  html.js .wx-home.wx-intl { min-height: 140px; }
-+}
++@keyframes wx-in { from { opacity: 0; } }
++@keyframes wx-drop { 0% { opacity: 0; transform: translateY(-60vh) rotate(-10deg); } 55% { opacity: 1; }
++  72% { transform: translateY(0) rotate(2deg) scale(1.04, .96); } 86% { transform: translateY(-10px); } to { opacity: 1; transform: none; } }
++@keyframes wx-float { 0%, to { transform: translateY(0); } 50% { transform: translateY(-.5625em) rotate(1.2deg); } }
++@keyframes wx-shoot { 0%, 86% { opacity: 0; transform: rotate(-24deg) translate(0); } 89% { opacity: 1; } to { opacity: 0; transform: rotate(-24deg) translate(-240px); } }
++@keyframes wx-twinkle { 0%, to { opacity: .25; } 50% { opacity: 1; } }
++@keyframes wx-fall { to { transform: translate(var(--drift, -8px), 440px); } }
 +
 +/* ---------------------------------------------------------------- the menu (below 1200px): the same groups */
 +.menu-panel .sd-acts { margin: 4px 0 10px; }
@@ -6061,38 +6181,49 @@ index 0000000000..126b91b83b
 +})();
 diff --git a/templates/assets/weather.js b/templates/assets/weather.js
 new file mode 100644
-index 0000000000..7a35b64905
+index 0000000000..db9ac3e3f1
 --- /dev/null
 +++ b/templates/assets/weather.js
-@@ -0,0 +1,153 @@
-+/* 군산각 — the day card's live parts (templates/_side.html.j2; operator 2026-10-31): 날씨각's weather module (the tab
+@@ -0,0 +1,393 @@
++/* 군산각 — the day card's live parts (templates/_side.html.j2; operator 2026-10-31): 날씨각's weather card (the tab
 +   panel from 1200px, the homes under their first screen) and the panel's sunrise · sunset. site.js attaches this file
 +   after the page has loaded, when the browser is idle — nothing here competes with the first screen.
 +   - Sunrise · sunset ([data-sd-days] 'iso|rise|set|label;…', 한국천문연구원 via the build): the HTML shows the build day,
 +     its date written out; on the visitor's own date (Asia/Seoul) when the list has it, that day's label and times.
-+   - Weather ([data-wx]: the API address; data-wx-w the words — present.weather_vm, locales.SIDE_WORDS): asked once, when
-+     a module comes near the screen (the panel's from 1200px at once; a home's when the reader scrolls towards it; the
-+     panel is hidden below 1200px, so a phone page without the home's module never asks). The answer fills the
-+     module's kept room (css/80-side.css: nothing moves): the slot nearest now — its figure, sky icon and word, rain
-+     chance —, the provider's headline on the Korean pages only, the next slots' times and figures (the homes' module),
-+     '발표 HH:MM' and the source link. The other versions show figures, icons and times only (the provider's sentences are Korean). An
-+     answer that is late (8 s), fails, is not today's or has no slot leaves the module as built: its title and the
-+     link to weather.o2o.kr. No weather value is ever in the HTML (the page is static) — nor in search engines, the
-+     chat or the structured data. Text goes in through textContent only. Reduced motion: no fade. */
++   - Weather ([data-wx] the feed, [data-wx-day] the day's slots; data-wx-w the words — present.weather_vm,
++     locales.SIDE_WORDS). 날씨각 (weather.o2o.kr) is the operator's own service: the card is 날씨각's own first-screen
++     card, drawn as 날씨각 draws it (operator 2026-10-31 '날씨각 실제 디자인으로 위젯을 가져오라니까?'), with no source words.
++     Asked once, when a card comes near the screen (the panel's from 1200px at once; a home's when the reader scrolls
++     towards it; the panel is hidden below 1200px, so a phone page without the home's card never asks). From the two
++     answers: the sky (the feed's sky_mode — morning · day · sunset · night — over the sky of the slot nearest now:
++     clouds, rain, snow, a grey day), the sun or, in the evening and at night, the moon in its phase (moon_pct,
++     waxing or waning by moon_name) with '지금 날씨 점수' and the score; on the Korean pages 날씨각's own words (the
++     bubble '지금은 러닝각!', top1.summary, the status line), on the others the figures only (now, feels like,
++     humidity); the four cells — 아침 · 낮 · 저녁 · 밤, the one the feed says it is now '지금' (white, with the feed's
++     temperature now) — each the slot 날씨각 takes for it (the last at or before 7 · 13 · 18 · 22 h) with 날씨각's icon
++     (assets/wx/*.webp, copied from 날씨각) and figure. 날씨각's round fonts (Jua, Bagel Fat One) come from Google Fonts,
++     only the letters the card shows (&text=), and are added to the page only once they have loaded — the card is
++     drawn in them, or, when they are late (2.5 s), in the site's font, and never changes font afterwards. The card
++     fills the room css/80-side.css keeps for it (nothing moves). An answer that is late (8 s), fails or is not today's
++     (Asia/Seoul) leaves the card as built: its name and the link to weather.o2o.kr. No weather value is ever in the
++     HTML (the page is static) — nor in search engines, the chat or the structured data. Text goes in through
++     textContent only. Reduced motion: no drop-in, float, shooting stars, twinkling or falling rain. */
 +(function () {
 +  "use strict";
 +  var doc = document, win = window;
 +  var SVG = "http://www.w3.org/2000/svg";
 +  function $all(sel, el) { return Array.prototype.slice.call((el || doc).querySelectorAll(sel)); }
-+  function today() {
++  // the visitor's date and time in Korea
++  function seoul() {
 +    var o = {};
 +    try {
-+      new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Seoul", year: "numeric", month: "2-digit", day: "2-digit" })
-+        .formatToParts(new Date()).forEach(function (p) { o[p.type] = p.value; });
-+    } catch (e) { return ""; }
-+    return o.year && o.month && o.day ? o.year + "-" + o.month + "-" + o.day : "";
++      new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Seoul", year: "numeric", month: "2-digit", day: "2-digit",
++        hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date()).forEach(function (p) { o[p.type] = p.value; });
++    } catch (e) { return null; }
++    if (!(o.year && o.month && o.day)) return null;
++    return { iso: o.year + "-" + o.month + "-" + o.day, mo: +o.month, h: (+o.hour || 0) % 24, mi: +o.minute || 0 };
 +  }
-+  var day = today();
++  var T = seoul(), day = T ? T.iso : "";
 +
 +  // ------------------------------------------------------------ sunrise · sunset on the visitor's day
 +  $all("[data-sd-days]").forEach(function (a) {
@@ -6107,119 +6238,372 @@ index 0000000000..7a35b64905
 +
 +  // ------------------------------------------------------------ weather
 +  var boxes = $all("[data-wx]");
-+  if (!boxes.length || !win.fetch) return;
-+  // the provider's icon keys (sun · moon · cloud · sunset · rain · snow); any other key draws the cloud, with no word
-+  var PATHS = {
-+    sun: "M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0ZM12 2.5V5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8",
-+    moon: "M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z",
-+    cloud: "M7 18.5h10a4 4 0 0 0 .6-7.95A6 6 0 0 0 6.2 11.6 3.5 3.5 0 0 0 7 18.5Z",
-+    sunset: "M3 17.5h18M7 17.5a5 5 0 0 1 10 0M12 6.5v3M5.3 10.8l1.5 1.5M18.7 10.8l-1.5 1.5M8.5 21h7",
-+    rain: "M7 14.5h10a4 4 0 0 0 .6-7.95A6 6 0 0 0 6.2 7.6 3.5 3.5 0 0 0 7 14.5ZM9 17.5l-1 3M13 17.5l-1 3M17 17.5l-1 3",
-+    snow: "M7 14.5h10a4 4 0 0 0 .6-7.95A6 6 0 0 0 6.2 7.6 3.5 3.5 0 0 0 7 14.5ZM8.5 18.5h.01M12 20.5h.01M15.5 18.5h.01"
-+  };
-+  function icon(key) {
-+    var k = PATHS[key] ? key : "cloud";
-+    var s = doc.createElementNS(SVG, "svg");
-+    s.setAttribute("viewBox", "0 0 24 24");
-+    s.setAttribute("class", "wx-svg wx-k-" + (PATHS[key] ? key : "x"));
-+    s.setAttribute("aria-hidden", "true");
-+    s.setAttribute("focusable", "false");
-+    var p = doc.createElementNS(SVG, "path");
-+    p.setAttribute("d", PATHS[k]);
-+    s.appendChild(p);
-+    return s;
-+  }
++  if (!boxes.length) return;
++  if (!win.fetch) { boxes.forEach(function (b) { b.classList.add("is-failed"); }); return; }
++
++  // 날씨각's own tables (its app: the hero card)
++  var COLS = ["morning", "day", "sunset", "night"];
++  var HOUR = { morning: 7, day: 13, sunset: 18, night: 22 };
++  var ICON = { clear: "sun", partly: "sun_cloud", cloudy: "cloud", rain: "rain", snow: "snow", sleet: "snow" };
++  var CLOUDS = { clear: 0, partly: 2, cloudy: 3, rain: 3, snow: 3, sleet: 3 };
++  var WANING = ["기우는 달", "하현달", "그믐달"];
++  var SUNSET = [17.7, 18.2, 18.6, 19.1, 19.5, 19.9, 19.9, 19.5, 18.9, 18.2, 17.6, 17.3];   // its sky by the clock
++  var ICONS = "/assets/wx/";
++  function num(v) { return typeof v === "number" && isFinite(v); }
++  function deg(v) { return num(v) ? Math.round(v) + "°" : "–"; }
 +  function el(tag, cls, text) {
 +    var e = doc.createElement(tag);
 +    if (cls) e.className = cls;
 +    if (text != null) e.textContent = text;
 +    return e;
 +  }
-+  function num(v) { return typeof v === "number" && isFinite(v); }
-+  function deg(v) { return Math.round(v) + "°"; }
-+  function hhmm(iso) { var m = /T(\d{2}:\d{2})/.exec(iso || ""); return m ? m[1] : ""; }
-+
-+  var state = "";   // "" · "asking" · "ok" · "failed"
-+  var data = null;
 +  function words(box) {
 +    try { return JSON.parse(box.getAttribute("data-wx-w") || "{}"); } catch (e) { return {}; }
 +  }
-+  function slotsOf(j) {
-+    return (j.slots || []).filter(function (s) { return s && num(s.temp_c) && !isNaN(Date.parse(s.at)); });
++  function clockSky() {
++    if (!T) return "day";
++    var h = T.h + T.mi / 60, s = SUNSET[T.mo - 1] || 18.5;
++    return h >= 5 && h < 11 ? "morning" : h >= 11 && h < s + 1 ? (h < s - 2 ? "day" : "sunset") : "night";
 +  }
-+  function render(box) {
-+    var w = words(box), ko = !!w.ko, sky = w.sky || {};
-+    var slots = slotsOf(data), t = Date.now(), at = 0;
-+    slots.forEach(function (s, i) {
-+      if (Math.abs(Date.parse(s.at) - t) < Math.abs(Date.parse(slots[at].at) - t)) at = i;
++  // a slot's sky as 날씨각 reads it (rain_type: 2 rain · 3 sleet · 4 snow · 5 shower; sky: 2 partly · 3 cloudy)
++  function kind(s) {
++    if (!s) return "clear";
++    var r = s.rain_type, k = s.sky;
++    if (r === 2 || r === 5) return "rain";
++    if (r === 4) return "snow";
++    if (r === 3) return "sleet";
++    if (k === 3) return "cloudy";
++    if (k === 2) return "partly";
++    if (r == null && k == null) return { cloud: "cloudy", rain: "rain", snow: "snow" }[s.icon] || "clear";
++    return "clear";
++  }
++  // the slot for a cell: the last at or before its hour (one with a figure after it when that one has none)
++  function pick(slots, hour) {
++    var n = null;
++    slots.forEach(function (s) { if (s.hh <= hour) n = s; });
++    n = n || slots[0];
++    if (!num(n.temp_c)) n = slots.filter(function (s) { return s.hh > hour && num(s.temp_c); })[0] || n;
++    return n;
++  }
++  function nearest(slots) {
++    var t = Date.now(), have = slots.filter(function (s) { return num(s.temp_c); });
++    return have.reduce(function (a, s) { return Math.abs(s.ms - t) < Math.abs(a.ms - t) ? s : a; }, have[0]);
++  }
++  function usable(feed, today) {
++    var h = feed && feed.hero;
++    if (!h || typeof h !== "object" || !num(h.weather_score)) return null;
++    if (!today || typeof today !== "object") return null;
++    if (day && (String(h.now_at || "").slice(0, 10) !== day || today.day !== day)) return null;
++    var slots = (today.slots || []).filter(function (s) { return s && !isNaN(Date.parse(s.at)); }).map(function (s) {
++      var ms = Date.parse(s.at), k = new Date(ms + 324e5);   // its hour in Korea
++      return { ms: ms, hh: k.getUTCHours() + k.getUTCMinutes() / 60, temp_c: s.temp_c, sky: s.sky, rain_type: s.rain_type, icon: s.icon };
 +    });
-+    var s = slots[at];
++    if (!slots.some(function (s) { return num(s.temp_c); })) return null;
++    return { hero: h, slots: slots };
++  }
++
++  // 날씨각's moon (its app's own drawing: the disc, its seas and craters, the shade of its phase)
++  var SEAS = [[-.32, -.36, .3, .26], [.12, -.36, .17, .15], [.3, -.06, .2, .17], [-.56, .06, .26, .42], [.66, -.26, .1, .12],
++    [.52, .22, .13, .15], [-.14, .44, .18, .13], [-.46, .5, .1, .09]];
++  var CRATERS = [[.1, .72, .07], [.42, .52, .05], [-.66, -.5, .05], [.62, .52, .04], [-.2, .08, .04]];
++  var TONES = { night: { body: ["#fffcf2", "#f6ebcb", "#e0cc98"], shade: "#1a2050" },
++                dusk: { body: ["#fff8ee", "#ffe2cc", "#f2b9a2"], shade: "#4a2a63" } };
++  var uid = 0;
++  function node(tag, at, kids) {
++    var e = doc.createElementNS(SVG, tag);
++    Object.keys(at || {}).forEach(function (k) { e.setAttribute(k, at[k]); });
++    (kids || []).forEach(function (c) { if (c) e.appendChild(c); });
++    return e;
++  }
++  function shadePath(pct, r) {
++    var f = pct / 100;
++    return "M0," + (-r) + " A" + r + "," + r + " 0 0 0 0," + r + " A" + (r * Math.abs(1 - 2 * f)) + "," + r + " 0 0 " + (f < .5 ? 0 : 1) + " 0," + (-r);
++  }
++  function moon(pct, waxing, tone) {
++    var id = "wxm" + (++uid), a = TONES[tone], o = pct / 100, full = pct >= 99, nw = pct <= 1;
++    var stop = function (off, c, op) { return node("stop", op == null ? { offset: off, "stop-color": c } : { offset: off, "stop-color": c, "stop-opacity": op }); };
++    var defs = node("defs", {}, [
++      node("radialGradient", { id: id + "g" }, [stop("0.6", "#fff4cf", "0.55"), stop("0.8", "#ffe9a8", "0.16"), stop("1", "#ffe9a8", "0")]),
++      node("radialGradient", { id: id + "b", cx: "0.4", cy: "0.36", r: "0.72" }, [stop("0", a.body[0]), stop("0.6", a.body[1]), stop("1", a.body[2])]),
++      node("radialGradient", { id: id + "l" }, [stop("0.72", "#8a6f3c", "0"), stop("1", "#8a6f3c", "0.28")]),
++      node("clipPath", { id: id + "c" }, [node("circle", { r: "1" })]),
++      node("filter", { id: id + "f", x: "-0.2", y: "-0.2", width: "1.4", height: "1.4" }, [node("feGaussianBlur", { stdDeviation: "0.035" })])
++    ]);
++    var seas = node("g", { filter: "url(#" + id + "f)", fill: "#c4b287", opacity: "0.55" },
++      SEAS.map(function (e) { return node("ellipse", { cx: e[0], cy: e[1], rx: e[2], ry: e[3] }); }));
++    var disc = node("g", { "clip-path": "url(#" + id + "c)" }, [node("circle", { r: "1", fill: "url(#" + id + "b)" }), seas]
++      .concat(CRATERS.map(function (e) { return node("circle", { cx: e[0], cy: e[1], r: e[2], fill: "#efe2bd", stroke: "#cdbb8c", "stroke-width": "0.018", opacity: "0.8" }); }))
++      .concat([node("circle", { r: "1", fill: "url(#" + id + "l)" }),
++        full ? null : node("path", waxing ? { d: shadePath(pct, 1.04), fill: a.shade, opacity: "0.94", filter: "url(#" + id + "f)" }
++          : { d: shadePath(pct, 1.04), fill: a.shade, opacity: "0.94", filter: "url(#" + id + "f)", transform: "scale(-1,1)" })]));
++    return node("svg", { viewBox: "-1.5 -1.5 3 3", class: "wx-mo", "aria-hidden": "true", focusable: "false" }, [defs,
++      nw ? null : node("circle", { r: "1.5", fill: "url(#" + id + "g)", opacity: String(full ? 1 : .12 + .8 * o) }), disc,
++      nw ? node("circle", { r: "1", fill: "none", stroke: "#fff", "stroke-opacity": "0.18", "stroke-width": "0.025" }) : null]);
++  }
++  // the night sky: 날씨각's 26 stars (kept between the head and the words: a star by a letter reads as part of it,
++  // one behind the see-through link as a dot after it) and 3 shooting stars; rain and snow
++  function sky(kindNow) {
++    var s = el("div", "wx-stars");
++    s.setAttribute("aria-hidden", "true");
++    for (var i = 0; i < 26; i++) {
++      var st = el("i", i % 3 ? "" : "wx-tw");
++      st.style.left = (i * 37 % 100) + "%";
++      st.style.top = (12 + (i * 53 % 60) * .55).toFixed(1) + "%";
++      st.style.opacity = String(.4 + i * 7 % 6 / 10);
++      st.style.setProperty("--dl", (i * 0.7 % 5).toFixed(1) + "s");
++      s.appendChild(st);
++    }
++    [["6%", "80%", "90px", "7s", "1.5s"], ["20%", "52%", "70px", "9s", "4s"], ["34%", "94%", "80px", "11s", "6.5s"]].forEach(function (x) {
++      var sh = el("span", "wx-shoot");
++      sh.style.top = x[0];
++      sh.style.left = x[1];
++      sh.style.setProperty("--len", x[2]);
++      sh.style.setProperty("--dur", x[3]);
++      sh.style.setProperty("--dl", x[4]);
++      s.appendChild(sh);
++    });
++    var out = [s];
++    var rain = kindNow === "rain" || kindNow === "sleet", snow = kindNow === "snow" || kindNow === "sleet";
++    if (rain || snow) {
++      var f = el("div", "wx-fx");
++      f.setAttribute("aria-hidden", "true");
++      var add = function (n, cls, step, a, b, c, d) {
++        for (var i = 0; i < n; i++) {
++          var x = el("i", cls);
++          x.style.left = (i * step % 100) + "%";
++          x.style.setProperty("--top", (i * a % 90) + "%");
++          x.style.setProperty("--dl", (i * b % 100 / c) + "s");
++          x.style.setProperty("--dur", d(i) + "s");
++          f.appendChild(x);
++        }
++      };
++      if (rain) add(22, "wx-drop", 41, 29, 37, 100, function (i) { return .55 + i * 13 % 5 / 10; });
++      if (snow) add(16, "wx-flake", 47, 31, 53, 25, function (i) { return 3.2 + i * 7 % 5 / 2; });
++      out.push(f);
++    }
++    return out;
++  }
++  // the date as 날씨각 writes it ('10월 31일 토요일'); the other versions' short form ('Sat, Oct 31'), which fits the head
++  function dateWords(lang) {
++    var long = !lang || lang === "ko";
++    try {
++      return new Intl.DateTimeFormat(lang || "ko", { timeZone: "Asia/Seoul", month: long ? "long" : "short", day: "numeric",
++        weekday: long ? "long" : "short" }).format(new Date());
++    } catch (e) { return ""; }
++  }
++
++  // ------------------------------------------------------------ 날씨각's round fonts, only the letters the card shows
++  var FONTS = "https://fonts.googleapis.com/css2?family=";
++  function faces(family, as, text) {
++    // the stylesheet's faces (one or more, each with its unicode-range), loaded before they join the page; none when
++    // the stylesheet or a face does not come
++    var url = FONTS + family + "&text=" + encodeURIComponent(text) + "&display=swap";
++    return win.fetch(url, { mode: "cors", credentials: "omit" }).then(function (r) { return r.ok ? r.text() : ""; }).then(function (css) {
++      var out = [];
++      (css.match(/@font-face\s*{[^}]*}/g) || []).forEach(function (blk) {
++        var src = /src:\s*url\((https:\/\/fonts\.gstatic\.com\/[^)\s]+)\)\s*format\(['"]?woff2['"]?\)/.exec(blk);
++        var ur = /unicode-range:\s*([^;]+);/.exec(blk);
++        if (!src) return;
++        try { out.push(new win.FontFace(as, "url(" + src[1] + ") format('woff2')", ur ? { unicodeRange: ur[1].trim() } : {})); } catch (e) {}
++      });
++      return Promise.all(out.map(function (f) { return f.load(); }));
++    }).catch(function () { return []; });
++  }
++  function fonts(round, digits, done) {
++    var over = false;
++    var end = function (list) {
++      if (over) return;
++      over = true;
++      clearTimeout(t);
++      // they join the page now, before the card is drawn in them — never afterwards (nothing changes its letters)
++      (list || []).forEach(function (fs) { (fs || []).forEach(function (f) { try { doc.fonts.add(f); } catch (e) {} }); });
++      done();
++    };
++    var t = setTimeout(function () { end(null); }, 2500);
++    if (!win.FontFace || !doc.fonts || !win.Promise) return end(null);
++    Promise.all([faces("Jua", "WxJua", round), faces("Bagel+Fat+One", "WxBagel", digits)]).then(end);
++  }
++  function letters(s) {
++    var seen = {}, out = "";
++    s.replace(/\s+/g, "").split("").forEach(function (c) { if (!seen[c]) { seen[c] = 1; out += c; } });
++    return out;
++  }
++
++  // ------------------------------------------------------------ the card
++  function draw(box, D) {
++    var w = words(box), ko = !!w.ko, side = box.classList.contains("wx-side"), h = D.hero, slots = D.slots;
++    var S = w.slots || {}, SKY = w.sky || {};
++    var mode = HOUR[h.sky_mode] ? h.sky_mode : clockSky();
++    var now = nearest(slots), skyNow = kind(now);
 +    var body = box.querySelector("[data-wx-b]");
 +    if (!body) return;
-+    var now = el("p", "wx-now");
-+    var ic = el("span", "wx-ic");
-+    ic.appendChild(icon(s.icon));
-+    now.appendChild(ic);
-+    now.appendChild(el("b", "wx-tmp tn", deg(s.temp_c)));
-+    if (sky[s.icon]) now.appendChild(el("span", "wx-sky", sky[s.icon]));
-+    if (num(s.rain_prob) && w.rain) now.appendChild(el("span", "wx-rp tn", w.rain.replace("{p}", String(Math.round(s.rain_prob)))));
-+    body.appendChild(now);
-+    if (ko && typeof data.headline === "string" && data.headline.trim()) body.appendChild(el("p", "wx-hl", data.headline.trim()));
-+    // the next slots' times and figures: the homes' module (the panel's keeps to the slot nearest now)
-+    var next = box.classList.contains("wx-home") ? slots.slice(at + 1, at + 6) : [];
-+    if (next.length) {
-+      var ol = el("ol", "wx-strip");
-+      next.forEach(function (n) {
-+        var li = el("li");
-+        li.appendChild(el("span", "wx-st tn", ko && n.label ? n.label : hhmm(n.at)));
-+        li.appendChild(icon(n.icon));
-+        li.appendChild(el("b", "tn", deg(n.temp_c)));
-+        ol.appendChild(li);
-+      });
-+      body.appendChild(ol);
++    box.setAttribute("data-t", mode);
++    box.setAttribute("data-sky", skyNow);
++    var dt = box.querySelector("[data-wx-dt]");
++    if (dt && !side) dt.textContent = dateWords(w.lang);
++    sky(skyNow).forEach(function (x) { body.appendChild(x); });
++    // the sun, or the moon, with the score; 날씨각's clouds for the sky now
++    var stage = el("div", "wx-sky");
++    for (var i = 0; i < CLOUDS[skyNow]; i++) {
++      var c = el("span", "wx-cl wx-c" + (i + 1));
++      c.setAttribute("aria-hidden", "true");
++      c.appendChild(el("span", "wx-cb"));
++      stage.appendChild(c);
 +    }
-+    var iss = box.querySelector("[data-wx-iss]");
-+    if (iss && w.issued && hhmm(data.issued_at)) iss.textContent = w.issued.replace("{t}", hhmm(data.issued_at));
-+    var go = box.querySelector("[data-wx-go]");
-+    if (go && w.src) {
-+      var x = go.querySelector("svg");
-+      go.textContent = w.src;
-+      if (x) go.appendChild(x);
++    var mn = (mode === "sunset" || mode === "night") && h.moon_name && num(h.moon_pct)
++      ? { pct: Math.max(0, Math.min(100, h.moon_pct)), waning: WANING.indexOf(h.moon_name) > -1 } : null;
++    var orb = el("div", "wx-orb" + (mn ? " wx-moon " + (mn.pct >= 50 ? "is-lit" : "is-dim") : ""));
++    if (mn) orb.appendChild(moon(mn.pct, !mn.waning, mode === "sunset" ? "dusk" : "night"));
++    var ob = el("div", "wx-ob");
++    ob.appendChild(orb);
++    stage.appendChild(ob);
++    body.appendChild(stage);
++    var score = el("p", "wx-sc");
++    score.appendChild(el("small", "", w.score));
++    score.appendChild(el("b", "", String(Math.round(h.weather_score))));
++    orb.appendChild(score);
++    // the words: 날씨각's own (Korean) — or the figures (the other versions)
++    var say = el("div", "wx-say");
++    if (ko) {
++      if (typeof h.bubble === "string" && h.bubble.trim()) say.appendChild(el("p", "wx-bub", h.bubble.trim()));
++      var sum = h.top1 && typeof h.top1.summary === "string" ? h.top1.summary.trim() : "";
++      if (!side && sum) say.appendChild(el("p", "wx-sum", sum));
++      var st = (Array.isArray(h.status) ? h.status : []).filter(function (x) { return x && typeof x.label === "string" && typeof x.value === "string"; });
++      if (!side && st.length) {
++        var p = el("p", "wx-st");
++        st.forEach(function (x, i) {
++          if (i) { var dot = el("span", "wx-dot", "·"); dot.setAttribute("aria-hidden", "true"); p.appendChild(dot); }
++          var one = el("span", "wx-si" + (x.tone === "warn" ? " is-warn" : ""));
++          one.appendChild(el("span", "wx-sl", x.label));
++          one.appendChild(doc.createTextNode(" "));
++          one.appendChild(el("b", "", x.value));
++          p.appendChild(one);
++        });
++        say.appendChild(p);
++      }
++    } else if (!side) {
++      say.appendChild(el("p", "wx-bub", deg(h.temp_c)));
++      var fig = [];
++      if (num(h.feels_c) && w.feels) fig.push(w.feels.replace("{t}", deg(h.feels_c)));
++      if (num(h.humidity) && w.hum) fig.push(w.hum.replace("{p}", String(Math.round(h.humidity))));
++      if (fig.length) say.appendChild(el("p", "wx-sum", fig.join(" · ")));
++    }
++    if (say.childNodes.length) body.appendChild(say);
++    // the four cells: 아침 · 낮 · 저녁 · 밤, the one it is now '지금'
++    var ol = el("ol", "wx-strip");
++    COLS.forEach(function (k) {
++      var isNow = k === mode, s = isNow ? now : pick(slots, HOUR[k]), sk = kind(s);
++      var ic = k === "night" && sk === "clear" ? "moon" : ICON[sk];
++      var li = el("li", isNow ? "is-now" : "");
++      li.appendChild(el("span", "wx-cn", isNow ? S.now : S[k]));
++      var img = el("img", "wx-ic");
++      img.src = ICONS + ic + ".webp";
++      img.alt = SKY[ic] || "";
++      img.width = img.height = side ? 18 : 22;
++      img.decoding = "async";
++      li.appendChild(img);
++      li.appendChild(el("b", "wx-tc", deg(isNow && num(h.temp_c) ? h.temp_c : s && s.temp_c)));
++      ol.appendChild(li);
++    });
++    body.appendChild(ol);
++    // the link: the drawn card is one link to 날씨각 (its 자세히 보기 covers it)
++    var go = box.querySelector("[data-wx-gl]");
++    if (go && w.more) {
++      var t = box.querySelector(".wx-t");
++      go.textContent = "";
++      go.appendChild(el("span", "vh", (t ? t.textContent : "") + " "));
++      go.appendChild(doc.createTextNode(w.more));
++      var arr = el("span", "wx-ar", "›");
++      arr.setAttribute("aria-hidden", "true");
++      go.appendChild(arr);
 +    }
 +    box.classList.add("is-ready");
 +  }
-+  function finish(j) {
-+    if (state !== "asking") return;
-+    var ok = j && typeof j === "object" && (!day || j.day === day) && slotsOf(j).length > 0;
-+    state = ok ? "ok" : "failed";
-+    data = ok ? j : null;
++  // the letters the card will show in 날씨각's round font (Jua) and in its score font (Bagel Fat One)
++  function roundText(D) {
++    var h = D.hero, s = "";
 +    boxes.forEach(function (b) {
-+      if (ok) {
-+        try { render(b); } catch (e) { b.classList.add("is-failed"); }
-+      } else b.classList.add("is-failed");
++      var w = words(b), S = w.slots || {};
++      s += (b.querySelector(".wx-t") || {}).textContent || "";
++      s += (w.score || "") + (S.morning || "") + (S.day || "") + (S.sunset || "") + (S.night || "") + (S.now || "");
++      if (w.ko) {
++        s += typeof h.bubble === "string" ? h.bubble : "";
++        (Array.isArray(h.status) ? h.status : []).forEach(function (x) { s += (x && x.label || "") + (x && x.value || ""); });
++      }
++    });
++    return letters(s + "0123456789-–°·");
++  }
++
++  var state = "";   // "" · "asking" · "ok" · "failed"
++  function fail() { boxes.forEach(function (b) { b.classList.add("is-failed"); }); }
++  function finish(feed, today) {
++    if (state !== "asking") return;
++    var D = usable(feed, today);
++    if (!D) { state = "failed"; return fail(); }
++    state = "ok";
++    fonts(roundText(D), "0123456789", function () {
++      boxes.forEach(function (b) {
++        try { draw(b, D); } catch (e) {
++          var x = b.querySelector("[data-wx-b]");
++          if (x) x.textContent = "";
++          b.classList.remove("is-ready");
++          b.classList.add("is-failed");
++        }
++      });
 +    });
 +  }
 +  function ask() {
 +    if (state) return;
 +    state = "asking";
 +    var ctl = win.AbortController ? new AbortController() : null;
-+    var timer = setTimeout(function () { if (ctl) ctl.abort(); finish(null); }, 8000);
-+    win.fetch(boxes[0].getAttribute("data-wx"), { mode: "cors", credentials: "omit", signal: ctl ? ctl.signal : undefined })
-+      .then(function (r) { return r.ok ? r.json() : null; })
-+      .then(function (j) { clearTimeout(timer); finish(j); }, function () { clearTimeout(timer); finish(null); });
++    var timer = setTimeout(function () { if (ctl) ctl.abort(); finish(null, null); }, 8000);
++    var get = function (url) {
++      return win.fetch(url, { mode: "cors", credentials: "omit", signal: ctl ? ctl.signal : undefined })
++        .then(function (r) { return r.ok ? r.json() : null; });
++    };
++    Promise.all([get(boxes[0].getAttribute("data-wx")), get(boxes[0].getAttribute("data-wx-day"))])
++      .then(function (a) { clearTimeout(timer); finish(a[0], a[1]); }, function () { clearTimeout(timer); finish(null, null); });
 +  }
-+  // asked once a module comes near the screen: at once for the panel's (on screen from 1200px), when the reader
-+  // scrolls towards it for a home's (under the first screen); a module that is not shown (the panel below 1200px)
-+  // never comes near — until the window is widened
++  // asked once a card comes near the screen: at once for the panel's (on screen from 1200px), when the reader
++  // scrolls towards it for a home's (under the first screen); a card that is not shown (the panel below 1200px)
++  // never comes near — until the window is widened. A card off the screen rests (its motion paused).
 +  if (win.IntersectionObserver) {
 +    var io = new win.IntersectionObserver(function (seen) {
 +      if (seen.some(function (e) { return e.isIntersecting; })) { io.disconnect(); ask(); }
 +    }, { rootMargin: "300px 0px" });
 +    boxes.forEach(function (b) { io.observe(b); });
++    var rest = new win.IntersectionObserver(function (seen) {
++      seen.forEach(function (e) { e.target.classList.toggle("is-off", !e.isIntersecting); });
++    });
++    boxes.forEach(function (b) { rest.observe(b); });
 +  } else if (boxes.some(function (b) { return b.getClientRects().length > 0; })) ask();
 +})();
+diff --git a/templates/assets/wx/cloud.webp b/templates/assets/wx/cloud.webp
+new file mode 100644
+index 0000000000..f9ec3b65a1
+Binary files /dev/null and b/templates/assets/wx/cloud.webp differ
+diff --git a/templates/assets/wx/moon.webp b/templates/assets/wx/moon.webp
+new file mode 100644
+index 0000000000..700e8ac830
+Binary files /dev/null and b/templates/assets/wx/moon.webp differ
+diff --git a/templates/assets/wx/rain.webp b/templates/assets/wx/rain.webp
+new file mode 100644
+index 0000000000..faba5b3efd
+Binary files /dev/null and b/templates/assets/wx/rain.webp differ
+diff --git a/templates/assets/wx/snow.webp b/templates/assets/wx/snow.webp
+new file mode 100644
+index 0000000000..735bea207b
+Binary files /dev/null and b/templates/assets/wx/snow.webp differ
+diff --git a/templates/assets/wx/sun.webp b/templates/assets/wx/sun.webp
+new file mode 100644
+index 0000000000..e70190515e
+Binary files /dev/null and b/templates/assets/wx/sun.webp differ
+diff --git a/templates/assets/wx/sun_cloud.webp b/templates/assets/wx/sun_cloud.webp
+new file mode 100644
+index 0000000000..225d54ef19
+Binary files /dev/null and b/templates/assets/wx/sun_cloud.webp differ
 diff --git a/templates/base.html.j2 b/templates/base.html.j2
-index be998863b5..f561a822d5 100644
+index be998863b5..b6ac9d6e44 100644
 --- a/templates/base.html.j2
 +++ b/templates/base.html.j2
 @@ -1,4 +1,4 @@
@@ -6238,7 +6622,20 @@ index be998863b5..f561a822d5 100644
      Language: lang ('ko' when unset; 'en', 'ja', 'zh-Hans' … on the other versions, pipeline/en_site.py with the
      locale table pipeline/locales.py) sets <html lang>, og:locale (og_locale) and the body chrome (the other versions'
      header, crumbs and footer are in en/_chrome.html.j2, with their words t and locale loc). The head logic — title,
-@@ -109,6 +110,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+@@ -40,8 +41,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+ <!-- End Google Tag Manager -->
+ {% endif %}
+ <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+-{# set before the first paint: JS-only furniture is laid out from the start, so nothing appears or moves later #}
+-<script>document.documentElement.classList.add('js')</script>
++{# set before the first paint: JS-only furniture is laid out from the start, so nothing appears or moves later; data-wxt
++   is 날씨각's sky by the clock in Korea (assets/weather.js clockSky — morning · day · sunset · night), so the weather
++   card's kept room has the sky it will most likely have from the first paint (css/80-side.css) #}
++<script>(function(e){e.classList.add('js');var d=new Date(Date.now()+324e5),h=d.getUTCHours()+d.getUTCMinutes()/60,s=[17.7,18.2,18.6,19.1,19.5,19.9,19.9,19.5,18.9,18.2,17.6,17.3][d.getUTCMonth()];e.setAttribute('data-wxt',h>=5&&h<11?'morning':h>=11&&h<s+1?h<s-2?'day':'sunset':'night')})(document.documentElement)</script>
+ <title>{{ page.title }}{% if site.site_name and site.site_name not in page.title %} | {{ site.site_name }}{% endif %}</title>
+ {% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
+ <link rel="canonical" href="{{ page.canonical }}">
+@@ -109,6 +112,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','{{ site.ga4_id }}');gtag('config','G-S7G00ESKXD');</script>
  {% endif %}
  {% if (site.ga4_id or site.gtm_id) and mode == 'production' %}<script src="/assets/track.js" defer></script>{% endif %}
@@ -6251,7 +6648,7 @@ index be998863b5..f561a822d5 100644
  </head>
  {% set ln = self.lnav()|trim %}
  {% set bc = self.bodyclass()|trim %}
-@@ -121,36 +128,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+@@ -121,36 +130,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
  {#- the site's symbol beside its name (site.json brand_symbol, a file in assets/brand/; operator 2026-10-16: 군산각's
      lighthouse-bookmark) — decorative: the name next to it is the link text -#}
  {% set wm_sym %}{% if site.brand_symbol %}<span class="wm-sym" aria-hidden="true">{% include "assets/brand/" ~ site.brand_symbol %}</span>{% endif %}{% endset %}
@@ -6314,7 +6711,7 @@ index be998863b5..f561a822d5 100644
      {% if has_search %}{% set on_search = nav_current == '/search/' %}
      <a class="mast-search" href="/search/"{% if on_search %} aria-current="page"{% else %} data-hs-open{% endif %}>{{ ui.icon('search', 'icon') }}<span>검색</span></a>
      {% if not on_search %}<form class="hs" id="hs" action="/search/" method="get" role="search" data-hs>
-@@ -158,16 +172,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+@@ -158,16 +174,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
        <span class="hs-f"><input id="hs-q" name="q" type="search" maxlength="100" placeholder="장소·음식·지역 검색" autocomplete="off" enterkeyhint="search" spellcheck="false"><button type="submit" class="hs-go">{{ ui.icon('search', 'icon') }}<span class="vh">검색</span></button></span>
        <button type="button" class="hs-x" data-hs-close>{{ ui.icon('close', 'icon') }}<span class="vh">검색 닫기</span></button>
      </form>{% endif %}{% endif %}
@@ -6340,7 +6737,7 @@ index be998863b5..f561a822d5 100644
  </header>
  {% endif %}
  {{ ln }}
-@@ -196,7 +215,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+@@ -196,7 +217,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
        </div>
        <nav class="foot-col" aria-label="안내">
          <h2>안내</h2>
@@ -6589,7 +6986,7 @@ index 8d5b860bee..ba1ce0dcdf 100644
 +</div>
  {% endblock %}
 diff --git a/templates/en/home.html.j2 b/templates/en/home.html.j2
-index 4aeeef226e..c8b79f6d8c 100644
+index 4aeeef226e..5e9d98b295 100644
 --- a/templates/en/home.html.j2
 +++ b/templates/en/home.html.j2
 @@ -18,8 +18,9 @@
@@ -6619,12 +7016,13 @@ index 4aeeef226e..c8b79f6d8c 100644
    <div class="wrap ho-in"{% if N %} data-hcar aria-roledescription="carousel" aria-label="{{ HC.news }}"{% endif %}>
      <div class="ho-text">
        <p class="ho-k"><span class="ho-dot" aria-hidden="true"></span>{{ t.f('home_kicker', r=region) }}</p>
-@@ -111,6 +112,9 @@
+@@ -111,6 +112,10 @@
  {% endif %}
  {% if ASK %}{{ askm.panel_intl(loc.html) }}{% endif %}
  </div>
-+{#- 날씨각's weather module (operator 2026-10-31), under the first screen: the same small module as the panel's
-+    (templates/_side.html.j2 weather; its values come in the browser after load — none in this HTML) -#}
++{#- 날씨각's own card (operator 2026-10-31 '날씨각 실제 디자인으로'), under the first screen, at 날씨각's size (the panel's
++    is the same card small; templates/_side.html.j2 weather; its values come in the browser after load — none in this
++    HTML) -#}
 +{% if side and side.wx %}<div class="wrap hwx">{{ sdm.weather(side.wx, 'home') }}</div>{% endif %}
  
  {% set T = namespace(i=0) %}
@@ -6716,7 +7114,7 @@ index eb123af8d1..7886ad9f59 100644
    <section class="wrap chapter chapter-mid cv">
      {{ ui.week(G.week, 'h-week', '이 가이드 장소의 요일별 쉬는 날') }}
 diff --git a/templates/home.html.j2 b/templates/home.html.j2
-index 187673eb37..5f521ffef4 100644
+index 187673eb37..43604dd8c1 100644
 --- a/templates/home.html.j2
 +++ b/templates/home.html.j2
 @@ -6,6 +6,7 @@
@@ -6750,17 +7148,18 @@ index 187673eb37..5f521ffef4 100644
    <div class="wrap ho-in"{% if N %} data-hcar aria-roledescription="carousel" aria-label="지금 {{ site.region }} 소식"{% endif %}>
      <div class="ho-text">
        <p class="ho-k"><span class="ho-dot" aria-hidden="true"></span>{{ h.opening.kicker }}</p>
-@@ -125,6 +126,9 @@
+@@ -125,6 +126,10 @@
  {% endif %}
  {% if ASK %}{{ askm.panel() }}{% endif %}
  </div>
-+{#- 날씨각's weather module (operator 2026-10-31), under the first screen: the same small module as the panel's
-+    (templates/_side.html.j2 weather; its values come in the browser after load — none in this HTML) -#}
++{#- 날씨각's own card (operator 2026-10-31 '날씨각 실제 디자인으로'), under the first screen, at 날씨각's size (the panel's
++    is the same card small; templates/_side.html.j2 weather; its values come in the browser after load — none in this
++    HTML) -#}
 +{% if side and side.wx %}<div class="wrap hwx">{{ sdm.weather(side.wx, 'home') }}</div>{% endif %}
  
  {# 목적별 가이드: the answer tiles (figures checked against each guide's own text) and every guide #}
  {% if h.answers %}
-@@ -135,7 +139,9 @@
+@@ -135,7 +140,9 @@
      <div class="car-view" data-gal-view><ol class="answers answers-2 car-track">{% for a in h.answers %}{{ p2.answer(a) }}{% endfor %}</ol></div>
      <div class="wrap car-foot">{{ ui.carnav('답') }}</div>
    </div>
@@ -7121,10 +7520,10 @@ index 0000000000..4b82e40ede
 +{% endblock %}
 diff --git a/tests/conftest.py b/tests/conftest.py
 new file mode 100644
-index 0000000000..ee535f347f
+index 0000000000..ea250f5924
 --- /dev/null
 +++ b/tests/conftest.py
-@@ -0,0 +1,60 @@
+@@ -0,0 +1,90 @@
 +"""Shared test helpers."""
 +from pathlib import Path
 +
@@ -7161,10 +7560,12 @@ index 0000000000..ee535f347f
 +    return [e for e in errors if ONE_VALUE_PROSE not in e]
 +
 +
-+# 날씨각 (weather.o2o.kr, the tab panel's weather module — templates/_side.html.j2, assets/weather.js; operator
-+# 2026-10-31): the browser tests answer its API here, as they answer every other request, so nothing leaves the
-+# machine and a refused request does not log 'Failed to load resource' into the console their checks read. `day` is
-+# today in Korea (weather.js shows only today's answer); the slots are three hours apart, as the API's.
++# 날씨각 (weather.o2o.kr, the operator's own service — the weather card of the tab panel and the homes:
++# templates/_side.html.j2, assets/weather.js; operator 2026-10-31): the browser tests answer its two APIs here, as they
++# answer every other request, so nothing leaves the machine and a refused request does not log 'Failed to load
++# resource' into the console their checks read. `day` is today in Korea (weather.js draws only today's answers).
++# weather_answer: the day's slots (/v1/weather/today), three hours apart as the API's; feed_answer: the feed's hero
++# (/v1/feed) — the sky (sky_mode), the score, 날씨각's words, the moon.
 +def weather_answer(day: str | None = None) -> dict:
 +    import datetime as dt
 +    from zoneinfo import ZoneInfo
@@ -7177,14 +7578,42 @@ index 0000000000..ee535f347f
 +                       "icon": icons[i], "tone": 1, "note": "구름 많음"} for i, h in enumerate(range(0, 24, 3))]}
 +
 +
-+def route_weather(target, answer: dict | None = None, status: int = 200) -> None:
-+    """Answer weather.o2o.kr on a Playwright context or page (register it after a catch-all route: the last one wins)."""
++def feed_answer(day: str | None = None, sky_mode: str = "night") -> dict:
++    import datetime as dt
++    from zoneinfo import ZoneInfo
++    day = day or dt.datetime.now(ZoneInfo("Asia/Seoul")).date().isoformat()
++    return {"result": {"success": True, "code": 0, "desc": "SUCCESS"}, "region_code": "5213000000",
++            "region_name": "전북 군산시", "slot": sky_mode,
++            "hero": {"now_at": f"{day}T19:48:00.000000+09:00", "sky_mode": sky_mode, "temp_c": 10.0, "feels_c": 9.7,
++                     "humidity": 60, "discomfort": 52, "discomfort_label": "쾌적", "weather_score": 60,
++                     "weather_slots": {"morning": 74, "day": 79, "evening": 69, "night": 60},
++                     "top1": {"index_id": 9, "code": "running", "name": "러닝각", "icon": "running", "score": 82,
++                              "summary": "오후 7시 10°, 바람 살랑"},
++                     "bubble": "지금은 러닝각!", "moon_name": "기우는 달", "moon_pct": 64,
++                     "status": [{"icon": "muggy", "label": "습도", "value": "보통", "tone": "normal", "detail": "60%"},
++                                {"icon": "muggy", "label": "불쾌지수", "value": "쾌적", "tone": "normal", "detail": "52"},
++                                {"icon": "mask", "label": "미세먼지", "value": "나쁨", "tone": "warn", "detail": "초미세먼지"}]}}
++
++
++def weather_body(url: str, day: str | None = None, sky_mode: str = "night") -> dict:
++    """The answer 날씨각 gives at this address: the feed's or the day's slots."""
++    return feed_answer(day, sky_mode) if "/v1/feed" in url else weather_answer(day)
++
++
++def route_weather(target, answer: dict | None = None, status: int = 200, feed: dict | None = None) -> None:
++    """Answer weather.o2o.kr on a Playwright context or page (register it after a catch-all route: the last one wins):
++    the feed and the day's slots (answer / feed replace them). The card's round fonts (Google Fonts, asked only once
++    the card is drawn) get an empty stylesheet: the card is drawn in the site's font, nothing leaves the machine."""
 +    import json
 +
 +    def fulfill(route):
-+        route.fulfill(status=status, body=json.dumps(answer or weather_answer(), ensure_ascii=False),
++        url = route.request.url
++        body = (feed or feed_answer()) if "/v1/feed" in url else (answer or weather_answer())
++        route.fulfill(status=status, body=json.dumps(body, ensure_ascii=False),
 +                      headers={"content-type": "application/json", "access-control-allow-origin": "*"})
 +    target.route("https://weather.o2o.kr/**", fulfill)
++    target.route("https://fonts.googleapis.com/**", lambda route: route.fulfill(
++        status=200, body="", headers={"content-type": "text/css; charset=utf-8", "access-control-allow-origin": "*"}))
 diff --git a/tests/test_almanac_gunsan.py b/tests/test_almanac_gunsan.py
 new file mode 100644
 index 0000000000..76700ac33c
@@ -9624,10 +10053,10 @@ index 830d6751c7..ebfa97e00f 100644
  TOUR = "한국관광공사 TourAPI"
 diff --git a/tests/test_sidebar_layout.py b/tests/test_sidebar_layout.py
 new file mode 100644
-index 0000000000..0c9f5bba3d
+index 0000000000..5d8e4abb68
 --- /dev/null
 +++ b/tests/test_sidebar_layout.py
-@@ -0,0 +1,454 @@
+@@ -0,0 +1,539 @@
 +"""The tab panel (operator 2026-10-31 '적용하자': the approved layout after travel.webforai.kr; templates/_side.html.j2,
 +base.html.j2, en/_chrome.html.j2, css/80-side.css, present.side_vm, en_site Pages.side, locales.SIDE_WORDS) and
 +날씨각's weather module (assets/weather.js, the same day).
@@ -9637,9 +10066,11 @@ index 0000000000..0c9f5bba3d
 +and in the phone menu alike; the page's group open and its link aria-current; the panel never covers the page, stays
 +while the page scrolls and scrolls inside itself; nothing scrolls sideways at 360–1440px; the phone bar stays ≤ 15% of
 +the screen and its menu opens without JavaScript; the other versions carry the same groups in their own words. The
-+weather module holds no value in the HTML, asks after the page has loaded, fills its kept room (nothing moves),
-+shows the Korean headline only on Korean pages, and leaves its link to weather.o2o.kr when the answer fails or JS is
-+off. Browser checks: Playwright + Chromium (skipped where missing), every request answered here."""
++weather card — 날씨각's own first-screen card (operator 2026-10-31 '날씨각 실제 디자인으로'; 날씨각 is the operator's: no
++source words in any version) — holds no value in the HTML, asks after the page has loaded, is drawn from the feed and
++the day's slots in its kept room (nothing moves), shows 날씨각's Korean words only on Korean pages, is one link to
++weather.o2o.kr, and leaves that link when an answer fails or JS is off. Browser checks: Playwright + Chromium (skipped
++where missing), every request answered here."""
 +import json
 +import mimetypes
 +import re
@@ -9651,11 +10082,13 @@ index 0000000000..0c9f5bba3d
 +
 +from pipeline import locales as LC
 +from pipeline.build import build
-+from conftest import route_weather, weather_answer
++from conftest import feed_answer, route_weather, weather_answer
 +
 +ROOT = Path(__file__).resolve().parent.parent
 +DATA, SAMPLE = ROOT / "data" / "gunsan", ROOT / "data" / "sample"
 +HANGUL = re.compile(r"[가-힣]")
++# the words 'source' and the service's name, in every version (operator 2026-10-31 '출처: 날씨각 표기 필요없어 우리 회사 거야')
++SOURCE = re.compile(r"날씨각|Nalssigak|출처|[Ss]ource|Quelle|Fuente|Источник|出典|来源|來源")
 +PLACE = "/places/이성당/"
 +PAGES = ("/", PLACE, "/food/", "/guides/", "/courses/", "/map/", "/plan/", "/abroad/", "/events/", "/sun/", "/en/", "/ja/")
 +
@@ -9765,8 +10198,14 @@ index 0000000000..0c9f5bba3d
 +    assert set(LC.SIDE_WORDS) == {"ko", *LC.ORDER}
 +    for code, words in LC.SIDE_WORDS.items():
 +        assert set(LC.SIDE_KEYS) <= set(words), code
-+        assert {"sun", "moon", "cloud", "sunset", "rain", "snow"} <= set(words["sky"]), code
-+        assert "{r}" in words["wx_title"] and "{p}" in words["wx_rain"] and "{t}" in words["wx_issued"], code
++        assert {"sun", "sun_cloud", "cloud", "rain", "snow", "moon"} <= set(words["sky"]), code
++        assert set(words["wx_slots"]) == {"morning", "day", "sunset", "night", "now"} and all(words["wx_slots"].values()), code
++        assert "{r}" in words["wx_title"] and "{r}" in words["wx_go"] and "{t}" in words["wx_feels"] and "{p}" in words["wx_hum"], code
++        assert words["wx_more"] and words["wx_score"], code
++        wx = json.dumps({k: v for k, v in words.items() if k.startswith("wx_") or k == "sky"}, ensure_ascii=False)
++        assert not SOURCE.search(wx), (code, wx)
++        if code != "ko":
++            assert not HANGUL.search(wx), code
 +    for code in LC.ORDER:
 +        loc, W = LC.get(code), LC.SIDE_WORDS[code]
 +        html = page_html(built, f"/{code}/")
@@ -9789,22 +10228,25 @@ index 0000000000..0c9f5bba3d
 +
 +
 +def test_the_weather_module_holds_no_value_in_the_html(built):
-+    """날씨각's module (operator 2026-10-31): the panel's (every page) and the home's (under the first screen) carry the
-+    API address, the words and the link to weather.o2o.kr — never a temperature, a rain chance or the headline: the
-+    page is static and would grow stale. Nor does anything else the build writes (llms.txt, the chat's files)."""
++    """날씨각's card (operator 2026-10-31): the panel's (every page) and the home's (under the first screen) carry the two
++    API addresses (the feed, the day's slots), the words and the link to weather.o2o.kr ('군산 날씨 보기' — no source
++    words, in no version) — never a temperature, a score or a sentence of 날씨각's: the page is static and would grow
++    stale. Nor does anything else the build writes (llms.txt, the chat's files)."""
 +    for path in ("/", PLACE, "/en/", "/ja/"):
 +        html = page_html(built, path)
-+        mods = re.findall(r'<div class="wx wx-(side|home) wx-(ko|intl)" data-wx="([^"]+)" data-wx-w="([^"]+)">(.*?data-wx-go>.*?</a>)',
-+                          html, re.S)
++        mods = re.findall(r'<div class="wx wx-(side|home) wx-(ko|intl)" data-wx="([^"]+)" data-wx-day="([^"]+)" '
++                          r'data-wx-w="([^"]+)">(.*?data-wx-go>.*?</a>)', html, re.S)
 +        assert [m[0] for m in mods] == (["side", "home"] if path in ("/", "/en/", "/ja/") else ["side"]), path
-+        for kind, lang, api, words, inner in mods:
++        code = path.strip("/").split("/")[0] if path.startswith(("/en/", "/ja/")) else "ko"
++        for kind, lang, feed, api, words, inner in mods:
++            assert feed == "https://weather.o2o.kr/v1/feed?region=5213000000"
 +            assert api == "https://weather.o2o.kr/v1/weather/today?region=5213000000"
 +            assert lang == ("ko" if path in ("/", PLACE) else "intl")
 +            w = json.loads(unescape(words))
-+            assert w["ko"] is (lang == "ko") and "{p}" in w["rain"]
-+            assert "°" not in inner and "%" not in inner and "발표" not in inner, (path, inner)
++            assert w["ko"] is (lang == "ko") and w["slots"] == LC.SIDE_WORDS[code]["wx_slots"] and w["lang"]
++            assert "°" not in inner and "%" not in inner and "지금은" not in inner, (path, inner)
 +            assert '<a class="wx-go" href="https://weather.o2o.kr/" rel="noopener" data-wx-go>' in inner
-+        code = path.strip("/").split("/")[0] if path.startswith(("/en/", "/ja/")) else "ko"
++            assert not SOURCE.search(unescape(inner) + unescape(words)), (path, inner)
 +        region = "군산" if code == "ko" else LC.get(code).city if code != "en" else "Gunsan"
 +        assert LC.SIDE_WORDS[code]["wx_go"].format(r=region) in unescape(html), path
 +    for f in ("llms.txt", "llms-full.txt"):
@@ -9812,6 +10254,10 @@ index 0000000000..0c9f5bba3d
 +            assert "weather.o2o.kr" not in (built / f).read_text("utf-8"), f
 +    home = page_html(built, "/")
 +    assert "weather.js" not in home   # attached by site.js after load, never in the HTML
++    # 날씨각's icons go out with the build (copied from 날씨각, small webp)
++    for ic in ("sun", "sun_cloud", "cloud", "rain", "snow", "moon"):
++        f = built / "assets" / "wx" / f"{ic}.webp"
++        assert f.is_file() and f.stat().st_size < 6000, ic
 +
 +
 +def test_the_sample_build_keeps_its_menu(sample):
@@ -9974,58 +10420,113 @@ index 0000000000..0c9f5bba3d
 +        ctx.close()
 +
 +
++CARD = """sel => { const b = document.querySelector(sel), r = b.getBoundingClientRect();
++  return {h: r.height, t: b.getAttribute('data-t'), sky: b.getAttribute('data-sky'), ready: b.classList.contains('is-ready'),
++          inside: [...b.querySelectorAll('*')].every(e => { const q = e.getBoundingClientRect();
++            return !q.height || getComputedStyle(e).position === 'absolute' || q.bottom <= r.bottom + .5; }),
++          link: (() => { const e = document.elementFromPoint(r.left + r.width / 2, r.top + r.height * .6);
++            return e && e.closest('a') ? e.closest('a').href : ''; })()}; }"""
++
++
++def cells(page, sel):
++    return page.evaluate(f"""[...document.querySelectorAll('{sel} .wx-strip li')].map(li => [li.querySelector('.wx-cn').textContent,
++      li.querySelector('.wx-tc').textContent, li.classList.contains('is-now'), li.querySelector('img').getAttribute('src'),
++      li.querySelector('img').alt])""")
++
++
 +def test_the_weather_module_fills_its_room_after_load(browser, built):
-+    """The panel's module (1440) and the home's (390, under the first screen): asked once, after the page has loaded
-+    (a module asks when it nears the screen); the slot nearest now — figure, sky word, rain chance —, the headline
-+    (Korean only), the time strip (the home's), '14:00 발표' and the source link; the module's box keeps its height, so
-+    nothing moves; no console error."""
++    """The panel's card (1440) and the home's (390, under the first screen): asked once each (the feed and the day's
++    slots), after the page has loaded (a card asks when it nears the screen); drawn as 날씨각 draws it — the night sky
++    (the feed's sky_mode) with the moon in its phase, '지금 날씨 점수' and the score, the bubble (the home: the summary
++    and the status line too), the four cells 아침 · 낮 · 저녁 · 지금 (the slot 날씨각 takes for each — the last at or
++    before 7 · 13 · 18 h; '지금' the feed's temperature, white) with 날씨각's icons; the card is one link to
++    weather.o2o.kr; no source words; its box keeps its height, so nothing moves; no console error."""
 +    ctx, page, errors, calls = open_page(browser, built, "/", 1440)
 +    page.wait_for_selector(".wx-side.is-ready", timeout=8000)
 +    box = page.locator(".wx-side")
-+    assert page.evaluate("window.__wx") == ["complete"] and len(calls) == 1
-+    temps = {f"{int(s['temp_c'])}°" for s in weather_answer()["slots"]}
-+    assert box.locator(".wx-tmp").inner_text() in temps
-+    assert box.locator(".wx-sky").inner_text() in LC.SIDE_WORDS["ko"]["sky"].values()
-+    assert re.fullmatch(r"강수확률 \d+%", box.locator(".wx-rp").inner_text())
-+    assert box.locator(".wx-hl").inner_text() == "낮 최고 17°, 저녁 9°"
-+    assert box.locator(".wx-iss").inner_text() == "14:00 발표" and box.locator(".wx-go").inner_text().strip() == "출처 날씨각"
-+    assert box.locator(".wx-go").get_attribute("href") == "https://weather.o2o.kr/"
-+    assert box.bounding_box()["height"] == 132 and page.evaluate("[...document.querySelectorAll('.wx-side *')]"
-+                                                                 ".every(e => e.getBoundingClientRect().bottom <= document.querySelector('.wx-side').getBoundingClientRect().bottom + .5)")
++    assert page.evaluate("window.__wx") == ["complete", "complete"] and len(calls) == 2, calls
++    assert {c.split("?")[0] for c in calls} == {"https://weather.o2o.kr/v1/feed", "https://weather.o2o.kr/v1/weather/today"}
++    c = page.evaluate(CARD, ".wx-side")
++    assert c["t"] == "night" and c["h"] == 246 and c["inside"] and c["link"] == "https://weather.o2o.kr/", c
++    assert box.locator(".wx-sc small").inner_text() == "지금 날씨 점수" and box.locator(".wx-sc b").inner_text() == "60"
++    assert box.locator(".wx-moon .wx-mo").count() == 1   # the moon (기우는 달, 64%) at night
++    assert box.locator(".wx-bub").inner_text() == "지금은 러닝각!" and box.locator(".wx-sum, .wx-st").count() == 0
++    sky = LC.SIDE_WORDS["ko"]["sky"]
++    got = cells(page, ".wx-side")
++    assert [(g[0], g[1], g[2]) for g in got] == [("아침", "12°", False), ("낮", "14°", False), ("저녁", "16°", False),
++                                                 ("지금", "10°", True)], got
++    assert all(g[3].startswith("/assets/wx/") and g[3].endswith(".webp") and g[4] in sky.values() for g in got), got
++    go = box.locator(".wx-go")
++    assert go.get_attribute("href") == "https://weather.o2o.kr/" and "자세히 보기" in go.inner_text()
++    assert not SOURCE.search(box.inner_text()), box.inner_text()
++    # the panel is the first screen: its card floats, but does not drop in
++    assert page.evaluate("getComputedStyle(document.querySelector('.wx-side .wx-ob')).animationName") == "none"
++    assert page.evaluate("getComputedStyle(document.querySelector('.wx-side .wx-orb')).animationName") == "wx-float"
 +    assert [x for x in page.evaluate("window.__ls") if x["v"] > 0.001] == [], page.evaluate("window.__ls")
 +    assert own(errors) == [], errors
 +    ctx.close()
-+    # the home on a phone (the module right under the first screen): asked after load, it fills the room it kept
++    # the home on a phone (the card right under the first screen): asked after load, drawn in the room it kept
 +    ctx, page, errors, calls = open_page(browser, built, "/", 390, 844)
-+    h0 = page.evaluate("[document.querySelector('.wx-home').getBoundingClientRect().height, "
-+                       "document.querySelector('.wx-home').classList.contains('is-ready')]")
++    h0 = page.evaluate(CARD, ".wx-home")
 +    page.wait_for_selector(".wx-home.is-ready", timeout=8000)
 +    page.wait_for_timeout(300)
-+    assert page.evaluate("window.__wx") == ["complete"] and len(calls) == 1
-+    assert h0[1] or page.locator(".wx-home").bounding_box()["height"] == h0[0], h0
-+    assert page.locator(".wx-home .wx-hl").inner_text() == "낮 최고 17°, 저녁 9°"
-+    assert page.locator(".wx-home .wx-strip li").count() <= 5
-+    page.evaluate("window.scrollTo(0, document.querySelector('.wx-home').getBoundingClientRect().top + scrollY - 300)")
-+    page.wait_for_timeout(300)
-+    box = page.locator(".wx-home").bounding_box()
-+    assert page.evaluate("[...document.querySelectorAll('.wx-home *')].every(e => e.getBoundingClientRect().bottom"
-+                         " <= document.querySelector('.wx-home').getBoundingClientRect().bottom + .5)"), box
++    assert page.evaluate("window.__wx") == ["complete", "complete"] and len(calls) == 2
++    page.evaluate("window.scrollTo(0, document.querySelector('.wx-home').getBoundingClientRect().top + scrollY - 100)")
++    page.wait_for_timeout(1300)   # past the drop-in
++    c = page.evaluate(CARD, ".wx-home")
++    assert c["h"] == 401 and (h0["ready"] or h0["h"] == 401) and c["inside"] and c["link"] == "https://weather.o2o.kr/", (h0, c)
++    home = page.locator(".wx-home")
++    assert home.locator(".wx-bub").inner_text() == "지금은 러닝각!"
++    assert home.locator(".wx-sum").inner_text() == "오후 7시 10°, 바람 살랑"
++    assert re.sub(r"\s+", " ", home.locator(".wx-st").inner_text()) == "습도 보통 · 불쾌지수 쾌적 · 미세먼지 나쁨"
++    assert home.locator(".wx-si.is-warn").inner_text() == "미세먼지 나쁨"
++    assert [(g[0], g[1]) for g in cells(page, ".wx-home")] == [("아침", "12°"), ("낮", "14°"), ("저녁", "16°"), ("지금", "10°")]
++    assert re.search(r"\d+월 \d+일 [월화수목금토일]요일", home.locator(".wx-dt").inner_text())
++    assert not SOURCE.search(home.inner_text())
 +    assert [x for x in page.evaluate("window.__ls") if x["v"] > 0.001] == [], page.evaluate("window.__ls")
++    assert own(errors) == [], errors
++    ctx.close()
++
++
++def test_the_card_takes_the_sky_of_the_hour(browser, built):
++    """By day (the feed's sky_mode 'day'): the day sky, the round sun (no moon), the 낮 cell '지금' and the night's
++    cell 밤; a cloudy slot now draws 날씨각's clouds."""
++    ctx, page, errors, calls = open_page(browser, built, "/", 1440, weather=None)
++    slots = weather_answer()
++    for x in slots["slots"]:
++        x["sky"] = 3   # cloudy all day
++    route_weather(ctx, slots, feed=feed_answer(sky_mode="day"))
++    page.reload(wait_until="load")
++    page.wait_for_selector(".wx-side.is-ready", timeout=8000)
++    c = page.evaluate(CARD, ".wx-side")
++    assert c["t"] == "day" and c["sky"] == "cloudy" and c["h"] == 246, c
++    assert page.locator(".wx-side .wx-mo").count() == 0 and page.locator(".wx-side .wx-cl").count() == 3
++    got = cells(page, ".wx-side")
++    assert [(g[0], g[2]) for g in got] == [("아침", False), ("지금", True), ("저녁", False), ("밤", False)], got
++    assert all(g[3].endswith("/cloud.webp") for g in got), got
 +    assert own(errors) == [], errors
 +    ctx.close()
 +
 +
 +@pytest.mark.parametrize("code", ("en", "ja"))
 +def test_the_other_versions_show_figures_and_icons_only(browser, built, code):
++    """The other versions: the score, the figures, the icons and the cells' names in their words — none of 날씨각's
++    Korean words (bubble, summary, status), no source words."""
++    W = LC.SIDE_WORDS[code]
 +    ctx, page, errors, _ = open_page(browser, built, f"/{code}/", 1440)
 +    page.wait_for_selector(".wx-side.is-ready", timeout=8000)
 +    text = page.locator(".wx-side").inner_text()
-+    assert not HANGUL.search(text) and page.locator(".wx-side .wx-hl").count() == 0, text
-+    assert LC.SIDE_WORDS[code]["wx_src"] in text and LC.SIDE_WORDS[code]["wx_title"].format(r="")[:2].strip() in text
++    assert not HANGUL.search(text) and not SOURCE.search(text) and page.locator(".wx-side .wx-bub").count() == 0, text
++    assert page.locator(".wx-side .wx-sc small").inner_text() == W["wx_score"]
++    assert [g[0] for g in cells(page, ".wx-side")] == [W["wx_slots"][k] for k in ("morning", "day", "sunset", "now")]
++    assert page.evaluate(CARD, ".wx-side")["h"] == 220
 +    page.evaluate("window.scrollTo(0, document.querySelector('.wx-home').getBoundingClientRect().top + scrollY - 300)")
 +    page.wait_for_selector(".wx-home.is-ready", timeout=8000)
-+    strip = page.locator(".wx-home .wx-strip").inner_text()
-+    assert not HANGUL.search(strip) and (not strip or re.search(r"\d{2}:\d{2}", strip)), strip
++    home = page.locator(".wx-home").inner_text()
++    assert not HANGUL.search(home) and not SOURCE.search(home), home
++    assert page.locator(".wx-home .wx-bub").inner_text() == "10°"
++    assert page.locator(".wx-home .wx-sum").inner_text() == W["wx_feels"].format(t="10°") + " · " + W["wx_hum"].format(p=60)
++    assert page.evaluate(CARD, ".wx-home")["h"] == 356
 +    assert own(errors) == [], errors
 +    ctx.close()
 +
@@ -10035,21 +10536,30 @@ index 0000000000..0c9f5bba3d
 +    ctx, page, errors, calls = open_page(browser, built, "/", 1440, weather="fail")
 +    page.wait_for_selector(".wx-side.is-failed", timeout=8000)
 +    go = page.locator(".wx-side .wx-go")
-+    assert go.is_visible() and go.inner_text().strip() == "군산 날씨 보기 — 날씨각" and page.locator(".wx-side .wx-tmp").count() == 0
-+    assert page.locator(".wx-side").bounding_box()["height"] == 132
++    assert go.is_visible() and go.inner_text().strip() == "군산 날씨 보기" and page.locator(".wx-side .wx-tc").count() == 0
++    assert page.locator(".wx-side").bounding_box()["height"] == 246
++    box = go.bounding_box()
++    assert box["height"] >= 44, box
 +    assert own(errors) == [], errors
 +    ctx.close()
-+    # an answer that is not today's: the same
++    # answers that are not today's: the same
 +    ctx, page, errors, calls = open_page(browser, built, "/", 1440, weather=None)
-+    route_weather(ctx, weather_answer("2000-01-01"))
++    route_weather(ctx, weather_answer("2000-01-01"), feed=feed_answer("2000-01-01"))
 +    page.reload(wait_until="load")
 +    page.wait_for_selector(".wx-side.is-failed", timeout=8000)
-+    assert page.locator(".wx-side .wx-tmp").count() == 0
++    assert page.locator(".wx-side .wx-tc").count() == 0
 +    ctx.close()
-+    # no JS: the title and the link, no kept room, nothing asked
++    # a feed without its hero (one answer only): the same
++    ctx, page, errors, calls = open_page(browser, built, "/", 1440, weather=None)
++    route_weather(ctx, feed=weather_answer())
++    page.reload(wait_until="load")
++    page.wait_for_selector(".wx-side.is-failed", timeout=8000)
++    ctx.close()
++    # no JS: the name and the link, no kept room, nothing asked
 +    ctx, page, errors, calls = open_page(browser, built, "/", 1440, js=False)
 +    page.wait_for_timeout(800)
 +    assert calls == [] and page.locator(".wx-side .wx-go").is_visible()
++    assert page.locator(".wx-side .wx-go").inner_text().strip() == "군산 날씨 보기"
 +    assert page.locator(".wx-side").bounding_box()["height"] < 100
 +    assert page.locator(".side-nav").is_visible() and page.locator(".mast #hs-q").is_visible()
 +    ctx.close()
@@ -10076,7 +10586,11 @@ index 0000000000..0c9f5bba3d
 +def test_reduced_motion_and_the_menu_pieces_keep_their_targets(browser, built):
 +    ctx, page, errors, _ = open_page(browser, built, "/", 1440, reduce=True)
 +    page.wait_for_selector(".wx-side.is-ready", timeout=8000)
-+    assert page.evaluate("getComputedStyle(document.querySelector('.wx-side .wx-b')).animationName") == "none"
++    # no fade, float, drop-in, shooting star or twinkle
++    for sel in (".wx-side .wx-b", ".wx-side .wx-orb", ".wx-side .wx-cb", ".wx-side .wx-ob", ".wx-side .wx-stars i"):
++        if page.locator(sel).count():
++            assert page.evaluate(f"getComputedStyle(document.querySelector('{sel}')).animationName") == "none", sel
++    assert page.evaluate("[...document.querySelectorAll('.wx-side .wx-shoot')].every(e => getComputedStyle(e).display === 'none')")
 +    for sel in (".side .sg-a", ".side .sg-s", ".side .sd-act", ".side .sd-sun", ".side .sd-ev", ".mast .lang-btn"):
 +        box = page.locator(sel).first.bounding_box()
 +        assert box and box["height"] >= 44, sel

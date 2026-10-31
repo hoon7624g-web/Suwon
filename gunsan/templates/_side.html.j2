@@ -17,11 +17,13 @@
       date written out (in the panel weather.js moves it to the visitor's day; never '오늘' in the HTML), linked to /sun/,
       and the next
       event with its dates written out, linked to its page.
-    weather(wx, variant): 날씨각's module (operator 2026-10-31). The HTML holds no weather value: its title and the link
-      to weather.o2o.kr ('군산 날씨 보기 — 날씨각'), which is all a reader without JavaScript (or after a failed or late
-      answer) gets. assets/weather.js (site.js attaches it after the page has loaded, when a module is on screen) asks
-      the API and fills the kept room: the nearest slot's figure, sky icon and rain chance, the headline (Korean only),
-      the next slots' times and figures, '발표 HH:MM' and the source link. -#}
+    weather(wx, variant): 날씨각's own first-screen card (operator 2026-10-31 '날씨각 실제 디자인으로'), 'home' (the
+      homes, under the first screen: the card as 날씨각 draws it) or 'side' (the panel: the same card, small — the sun or
+      moon with the score, the bubble, the four cells). The HTML holds no weather value: the card's name and the link
+      to weather.o2o.kr ('군산 날씨 보기' — no source words: 날씨각 is the operator's), which is all a reader without
+      JavaScript (or after a failed or late answer) gets. assets/weather.js (site.js attaches it after the page has
+      loaded, when a card is on screen) asks the feed (data-wx) and the day's slots (data-wx-day) and draws the card
+      in the room css/80-side.css keeps for it; the drawn card is one link (its 자세히 보기 covers it). -#}
 {% import "_ui.html.j2" as ui %}
 
 {% macro groups(G, current, mode) -%}
@@ -39,10 +41,9 @@
 {%- endmacro %}
 
 {% macro weather(wx, variant) -%}
-<div class="wx wx-{{ variant }} wx-{{ 'ko' if wx.js.ko else 'intl' }}" data-wx="{{ wx.api }}" data-wx-w="{{ wx.js|tojson_attr }}">
-  <p class="wx-h"><span class="wx-t">{{ wx.title }}</span><span class="wx-iss tn" data-wx-iss></span></p>
+<div class="wx wx-{{ variant }} wx-{{ 'ko' if wx.js.ko else 'intl' }}" data-wx="{{ wx.feed }}" data-wx-day="{{ wx.api }}" data-wx-w="{{ wx.js|tojson_attr }}">
+  <p class="wx-h"><span class="wx-t">{{ wx.title }}</span><span class="wx-dt" data-wx-dt></span><a class="wx-go" href="{{ wx.home }}" rel="noopener" data-wx-go><span data-wx-gl>{{ wx.go }}</span>{{ ui.icon('external', 'icon wx-x') }}</a></p>
   <div class="wx-b" data-wx-b></div>
-  <a class="wx-go" href="{{ wx.home }}" rel="noopener" data-wx-go>{{ wx.go }}{{ ui.icon('external', 'icon wx-x') }}</a>
 </div>
 {%- endmacro %}
 

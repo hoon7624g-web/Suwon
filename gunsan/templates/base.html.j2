@@ -41,8 +41,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 {% endif %}
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-{# set before the first paint: JS-only furniture is laid out from the start, so nothing appears or moves later #}
-<script>document.documentElement.classList.add('js')</script>
+{# set before the first paint: JS-only furniture is laid out from the start, so nothing appears or moves later; data-wxt
+   is 날씨각's sky by the clock in Korea (assets/weather.js clockSky — morning · day · sunset · night), so the weather
+   card's kept room has the sky it will most likely have from the first paint (css/80-side.css) #}
+<script>(function(e){e.classList.add('js');var d=new Date(Date.now()+324e5),h=d.getUTCHours()+d.getUTCMinutes()/60,s=[17.7,18.2,18.6,19.1,19.5,19.9,19.9,19.5,18.9,18.2,17.6,17.3][d.getUTCMonth()];e.setAttribute('data-wxt',h>=5&&h<11?'morning':h>=11&&h<s+1?h<s-2?'day':'sunset':'night')})(document.documentElement)</script>
 <title>{{ page.title }}{% if site.site_name and site.site_name not in page.title %} | {{ site.site_name }}{% endif %}</title>
 {% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
 <link rel="canonical" href="{{ page.canonical }}">

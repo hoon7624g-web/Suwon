@@ -8,4 +8,4 @@
 - `gunsan_2026-10-31_code.diff`: 오늘 군산 코드 변경 전체(pipeline·templates·chatbot·tools·tests, 그림 제외).
 - `gunsan_commits.txt`: 오늘 군산 커밋 목록.
 쓰는 법: `git fetch origin port-kit-20261031 && git worktree add /tmp/kit origin/port-kit-20261031` 뒤 /tmp/kit 를 읽는다.
-날씨 위젯은 군산에서 '날씨각 실제 디자인'으로 다시 만드는 중이다 — 끝나면 이 브랜치를 갱신한다(안내서 7절 기준으로 먼저 만들어도 된다).
+날씨 위젯: 군산 커밋 c54bdeb5f3(ui(weather))이 최종본이다 — gunsan/templates/assets/weather.js, _side.html.j2, css/80-side.css, assets/wx/(날씨각 아이콘), present.weather_vm, locales.SIDE_WORDS.

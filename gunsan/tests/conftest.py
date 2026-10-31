@@ -34,10 +34,12 @@ def without_one_value_prose(errors: list[str]) -> list[str]:
     return [e for e in errors if ONE_VALUE_PROSE not in e]
 
 
-# 날씨각 (weather.o2o.kr, the tab panel's weather module — templates/_side.html.j2, assets/weather.js; operator
-# 2026-10-31): the browser tests answer its API here, as they answer every other request, so nothing leaves the
-# machine and a refused request does not log 'Failed to load resource' into the console their checks read. `day` is
-# today in Korea (weather.js shows only today's answer); the slots are three hours apart, as the API's.
+# 날씨각 (weather.o2o.kr, the operator's own service — the weather card of the tab panel and the homes:
+# templates/_side.html.j2, assets/weather.js; operator 2026-10-31): the browser tests answer its two APIs here, as they
+# answer every other request, so nothing leaves the machine and a refused request does not log 'Failed to load
+# resource' into the console their checks read. `day` is today in Korea (weather.js draws only today's answers).
+# weather_answer: the day's slots (/v1/weather/today), three hours apart as the API's; feed_answer: the feed's hero
+# (/v1/feed) — the sky (sky_mode), the score, 날씨각's words, the moon.
 def weather_answer(day: str | None = None) -> dict:
     import datetime as dt
     from zoneinfo import ZoneInfo
@@ -50,11 +52,39 @@ def weather_answer(day: str | None = None) -> dict:
                        "icon": icons[i], "tone": 1, "note": "구름 많음"} for i, h in enumerate(range(0, 24, 3))]}
 
 
-def route_weather(target, answer: dict | None = None, status: int = 200) -> None:
-    """Answer weather.o2o.kr on a Playwright context or page (register it after a catch-all route: the last one wins)."""
+def feed_answer(day: str | None = None, sky_mode: str = "night") -> dict:
+    import datetime as dt
+    from zoneinfo import ZoneInfo
+    day = day or dt.datetime.now(ZoneInfo("Asia/Seoul")).date().isoformat()
+    return {"result": {"success": True, "code": 0, "desc": "SUCCESS"}, "region_code": "5213000000",
+            "region_name": "전북 군산시", "slot": sky_mode,
+            "hero": {"now_at": f"{day}T19:48:00.000000+09:00", "sky_mode": sky_mode, "temp_c": 10.0, "feels_c": 9.7,
+                     "humidity": 60, "discomfort": 52, "discomfort_label": "쾌적", "weather_score": 60,
+                     "weather_slots": {"morning": 74, "day": 79, "evening": 69, "night": 60},
+                     "top1": {"index_id": 9, "code": "running", "name": "러닝각", "icon": "running", "score": 82,
+                              "summary": "오후 7시 10°, 바람 살랑"},
+                     "bubble": "지금은 러닝각!", "moon_name": "기우는 달", "moon_pct": 64,
+                     "status": [{"icon": "muggy", "label": "습도", "value": "보통", "tone": "normal", "detail": "60%"},
+                                {"icon": "muggy", "label": "불쾌지수", "value": "쾌적", "tone": "normal", "detail": "52"},
+                                {"icon": "mask", "label": "미세먼지", "value": "나쁨", "tone": "warn", "detail": "초미세먼지"}]}}
+
+
+def weather_body(url: str, day: str | None = None, sky_mode: str = "night") -> dict:
+    """The answer 날씨각 gives at this address: the feed's or the day's slots."""
+    return feed_answer(day, sky_mode) if "/v1/feed" in url else weather_answer(day)
+
+
+def route_weather(target, answer: dict | None = None, status: int = 200, feed: dict | None = None) -> None:
+    """Answer weather.o2o.kr on a Playwright context or page (register it after a catch-all route: the last one wins):
+    the feed and the day's slots (answer / feed replace them). The card's round fonts (Google Fonts, asked only once
+    the card is drawn) get an empty stylesheet: the card is drawn in the site's font, nothing leaves the machine."""
     import json
 
     def fulfill(route):
-        route.fulfill(status=status, body=json.dumps(answer or weather_answer(), ensure_ascii=False),
+        url = route.request.url
+        body = (feed or feed_answer()) if "/v1/feed" in url else (answer or weather_answer())
+        route.fulfill(status=status, body=json.dumps(body, ensure_ascii=False),
                       headers={"content-type": "application/json", "access-control-allow-origin": "*"})
     target.route("https://weather.o2o.kr/**", fulfill)
+    target.route("https://fonts.googleapis.com/**", lambda route: route.fulfill(
+        status=200, body="", headers={"content-type": "text/css; charset=utf-8", "access-control-allow-origin": "*"}))
