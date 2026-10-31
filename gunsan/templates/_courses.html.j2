@@ -1,0 +1,64 @@
+{#- _courses.html.j2 — the courses page of every version (operator 2026-10-31: '이런 곳들 UI도 좀 더 고도화할 방안 없나?'):
+    {% import "_courses.html.j2" as cc %}. CV = present.course_index_vm (Korean) or en_site Site.course_index (every
+    other version): groups [{id, heading, kind, range, cards}], lics, credit, w (the version's locales.COURSES_WORDS).
+    All words arrive filled in, so this markup is the same in every language.
+    nav(groups, label)   the group jump links under the page heading (one row of pills; it scrolls sideways on a phone)
+    group(g)             a group: eyebrow (by length / by theme), heading with its count, the stop range, its cards
+    card(k)              one course (present.course_card): the photo of one stop (TourAPI KOGL-1/3 only; a KOGL-3 photo
+                         is never cropped — the img.t3 guard of css/30-info.css; on a tint) or the course icon, the
+                         length / theme chip, the name (the card's one link: its ::after covers the card), the route
+                         band (ol of the first stops, '외 n곳' and the last — '선택 경유지' when the source marks it
+                         optional; names set with the ku filter, textutil.keep_units: '근대~고군산' never splits at '~';
+                         [data-draw] draws its line below the first screen, motion.js), the areas it passes
+                         through in order (ol; the arrows are CSS), its figures (dl) and the source line with the
+                         photo's caption and credit. The card itself is a [data-reveal] tile (below the first screen only).
+    notes(CV, map_href, map_label)  what the figures are, how areas and photos were chosen, and the photos' licences. -#}
+{% import "_ui.html.j2" as ui %}
+{% import "_pic.html.j2" as pk %}
+
+{% macro nav(groups, label) -%}
+<nav class="cc-nav" aria-label="{{ label }}"><ul>{% for g in groups %}<li><a href="#{{ g.id }}">{{ g.heading }} <span class="tn">{{ g.cards|length }}</span></a></li>{% endfor %}</ul></nav>
+{%- endmacro %}
+
+{% macro group(g) -%}
+<section class="cc-sec" id="{{ g.id }}" aria-labelledby="h-{{ g.id }}">
+  <header class="cc-sh">
+    <p class="eyebrow">{{ g.kind }}</p>
+    <h2 id="h-{{ g.id }}">{{ g.heading }} <span class="count tn">{{ g.cards|length }}</span></h2>
+    {% if g.range %}<p class="cc-range tn">{{ g.range }}</p>{% endif %}
+  </header>
+  <ol class="cc-grid{% if g.cards|length == 1 %} is-one{% endif %}">
+    {% for k in g.cards %}{{ card(k) }}{% endfor %}
+  </ol>
+</section>
+{%- endmacro %}
+
+{% macro card(k) -%}
+<li class="cc{% if not k.photo %} no-ph{% endif %}" data-reveal>
+  {% if k.photo %}<div class="cc-media t{{ k.photo.type }}">{{ ui.img(k.photo, '(min-width: 1100px) 380px, (min-width: 720px) 46vw, 112px', false, 'cc-img') }}</div>
+  {%- else %}<div class="cc-media cc-ico">{{ pk.pic('icon-course', 'route', 48) }}</div>{% endif %}
+  <div class="cc-head">
+    {% if k.chip %}<p class="cc-chip">{{ k.chip }}</p>{% endif %}
+    <h3 class="cc-name"><a href="{{ k.path }}" data-track="course_click">{% if k.code %}<span class="cc-code">{{ k.code }}</span> {% endif %}{{ k.name|ku }}</a></h3>
+  </div>
+  <ol class="cc-route" aria-label="{{ k.route_label }}" data-draw>
+    {%- for r in k.rows %}
+    {%- if r.more %}<li class="cr cr-more"><i aria-hidden="true"></i><span class="cr-nm">{{ r.text }}</span></li>
+    {%- else %}<li class="cr{% if r.pos %} cr-{{ r.pos }}{% endif %}" value="{{ r.n }}"><i class="tn">{{ r.n }}</i><span class="cr-nm">{{ r.name|ku }}</span>{% if r.opt %}<span class="cr-tag">{{ k.opt }}</span>{% elif r.pos == 'a' %}<span class="cr-tag">{{ k.start }}</span>{% elif r.pos == 'z' %}<span class="cr-tag">{{ k.end }}</span>{% endif %}</li>{% endif %}
+    {%- endfor %}
+  </ol>
+  <div class="cc-foot">
+    {% if k.areas %}<div class="cc-areas"><span class="cc-k">{{ k.areas_k }}</span><ol class="cc-arl">{% for a in k.areas %}<li><span class="cc-ar">{{ a }}</span></li>{% endfor %}</ol></div>{% endif %}
+    <dl class="cc-facts">{% for f in k.facts %}<div><dt>{{ f.k }}</dt><dd class="tn">{% if f.closed %}<span class="closed">{{ f.v }}</span>{% else %}{{ f.v }}{% endif %}</dd></div>{% endfor %}</dl>
+    <p class="cc-src">{{ k.src }}{% if k.photo %}<span class="cc-cr">{{ k.photo_cap }} · {{ k.credit }}</span>{% endif %}</p>
+  </div>
+</li>
+{%- endmacro %}
+
+{% macro notes(CV, map_href='', map_label='') -%}
+<div class="cc-notes">
+  <p class="note">{{ CV.w.note_line }}</p>
+  {% if CV.any_areas %}<p class="note">{{ CV.w.note_areas }}{% if map_href %} <a href="{{ map_href }}">{{ map_label }}</a>{% endif %}</p>{% endif %}
+  {% if CV.any_photo %}<p class="note">{{ CV.w.note_photo }} {{ CV.w.photos_src.format(name=CV.credit) }}{% if CV.lics %} · {{ CV.lics|join(' · ') }}{% endif %}</p>{% endif %}
+</div>
+{%- endmacro %}

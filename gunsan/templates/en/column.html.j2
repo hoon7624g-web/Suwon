@@ -1,0 +1,128 @@
+{% extends "base.html.j2" %}
+{#- The column page of every version but Korean: the Korean column (column.html.j2) in the version's words, laid out
+    as it is. The head: the kicker (the columns list, the category, the label, the reading time), the title as the H1,
+    the dek, the lead photo (Site.column_photo: a place with a page here; credit and licence under it) and the answer
+    card (the summary's first sentence big, the column's places as mini cards, the rest of the summary). Then the pull
+    quote and the body sections beside the map — each paragraph whole with its places linked (present.column_sections),
+    a section's quote in its own language (<blockquote lang cite>, the Korean record's: never translated) with its
+    source linked, the mini cards of the places it names (one-line rows for those already shown). Then the places with
+    their reasons and key facts, the sources, related columns. No dates on the page (operator decision 2026-10-09).
+    C = pipeline/en_site.Site.column_vm. -#}
+{% import "en/_en.html.j2" as E with context %}
+{% import "_media.html.j2" as md %}
+{% block main_class %}{% endblock %}
+{% block bodyclass %}pg-guide pg-column{% endblock %}
+{% block head %}{% if C.lead_photo and C.lead_photo.type == 1 %}{{ md.preload(C.lead_photo) }}{% endif %}{% endblock %}
+{% block lnav %}
+{% set links = [] %}
+{% if C.places %}{% set _ = links.append((t.s('sec_places'), '#h-items')) %}{% endif %}
+{% set _ = links.append((t.s('sec_sources'), '#h-src')) %}
+{% if C.related %}{% set _ = links.append((t.s('related_columns', r=region), '#h-related')) %}{% endif %}
+{{ ui.lnav(C.label or C.title, links, {'url': loc.home ~ 'columns/', 'label': t.s('all_columns')}, t.s('jump_column'), {'id': C.col.id, 'lang': loc.code}) }}
+{% endblock %}
+{% block content %}
+{% macro credit_en(cards) -%}
+{% set ls = cards|selectattr('photo')|map(attribute='photo.lic')|unique|list %}{% if ls %}{{ t.f('photos_is', name=t.kto) }} · {{ ls|join(loc.list_sep) }}{% endif %}
+{%- endmacro %}
+{% set types = C.places|selectattr('photo')|map(attribute='photo.lic')|unique|list %}
+<article class="guide col-article" data-record="column:{{ C.col.id }}">
+  {% if C.picks %}{{ ui.sprite(C.icons) }}{% endif %}
+  <header class="pg-hero gd-head col-hero">
+    <div class="wrap">
+      <p class="kicker"><a href="{{ loc.home }}columns/">{{ t.f('columns_h1', r=region) }}</a>{% if C.category %}<span>{{ C.category }}</span>{% endif %}{% if C.label %}<span>{{ C.label }}</span>{% endif %}<span class="tn">{{ t.n('min_read', C.reading_minutes) }}</span></p>
+      <h1 class="d1 d1-q vt-title">{{ C.title }}</h1>
+      {% if C.dek %}<p class="col-dek">{{ C.dek }}</p>{% endif %}
+      {% if C.lead_photo %}
+      <div class="col-hero-media">
+        {{ E.figure(C.lead_photo, C.lead_photo.place, 0, 0, 'col-hero-fig', true, '(min-width: 960px) 920px, 100vw', true, true) }}
+      </div>
+      {% endif %}
+      <div class="gd-ans">
+        <div class="summary" data-block="summary">{% if C.ans.first %}<p class="lede gd-ans-l {{ C.ans.size }}">{{ C.ans.html }}</p>{% if C.ans.rest %}<p class="dek gd-ans-r">{{ C.ans.rest_html }}</p>{% endif %}{% endif %}</div>
+        {% if C.picks %}
+        <div class="gd-picks">
+          {% set nb %}<b class="tn">{{ C.picks_total }}</b>{% endset %}
+          <p class="gd-picks-h"><span>{{ t.n('column_places_n', C.picks_total, n=nb) }}</span>{% if C.places %}<a href="#h-items">{{ t.full_list }}</a>{% endif %}</p>
+          {% set more = {'n': t.sn('n_more', C.picks_more), 'text': t.s('see_full_list'), 'href': '#h-items'} if C.picks_more and C.places else none %}
+          {{ ui.shelf(C.picks, t.s('places_in_column'), credit_en(C.picks), E.kfv, t.s('not_listed'), (t.s('prev_place'), t.s('next_place')), more=more) }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+
+  {% if C.sections or C.points %}
+  <div class="wrap gd-grid cv{% if C.points %} has-map{% endif %}{% if C.sections|length > 1 %} has-toc{% endif %}" id="h-body">
+    {% if C.sections|length > 1 %}{{ ui.gtoc(C.sections, t.s('toc_column'), t.s('toc_head')) }}{% endif %}
+    <div class="gd-body col-body">
+      {% if C.pull_quote %}
+      <blockquote class="col-pullquote">
+        <p>{{ t.f('in_quotes', q=C.pull_quote) }}</p>
+      </blockquote>
+      {% endif %}
+      {% for s in C.sections %}
+      <section class="gd-sec col-sec" aria-labelledby="{{ s.id }}" data-sec="{{ s.id }}" data-pts="{{ s.pts|join(' ') }}">
+        <p class="gd-sec-n tn" aria-hidden="true">{{ '%02d'|format(s.n) }}</p>
+        <h2 id="{{ s.id }}" class="h-sec" data-split>{{ s.heading }}</h2>
+        <div class="col-prose">
+          {% for p in s.paras %}
+          <p class="col-p">{{ p }}</p>
+          {% endfor %}
+        </div>
+        {% if s.quote %}
+        <blockquote class="col-fquote" lang="{{ s.quote.lang }}" cite="{{ s.quote.url }}">
+          <p>{{ s.quote.text }}</p>
+          <footer>— <a href="{{ s.quote.url }}" rel="noopener" data-track="abroad_click">{{ s.quote.source }}</a></footer>
+        </blockquote>
+        {% endif %}
+        {% if s.places %}{{ ui.shelf(s.places, t.s('places_in_section'), credit_en(s.places), E.kfv, t.s('not_listed'), (t.s('prev_place'), t.s('next_place')), 'mcs-sec', nav_js=true) }}{% endif %}
+        {% if s.again %}{{ ui.again(s.again, t.s('places_again')) }}{% endif %}
+      </section>
+      {% endfor %}
+    </div>
+    {% if C.points %}
+    <aside class="gd-map" aria-label="{{ t.column_map }}">
+      {{ E.mapfig({'guide': C.points, 'route': false}, t.s('column_map'), 'guide-mapfig', t.s('map_numbers')) }}
+    </aside>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {% if C.places %}
+  <section class="wrap chapter cv" aria-labelledby="h-items">
+    <div class="ch-head"><h2 id="h-items">{{ t.n('column_places_n', C.places|length) }}</h2></div>
+    <ol class="gitems">
+      {% for it in C.places %}
+      <li class="gitem">
+        <span class="gi-n tn">{{ it.n }}</span>
+        <div class="gi-main">
+          <p class="gi-name">{% if it.path %}<a href="{{ it.path }}" data-track="nearby_click" data-place="{{ it.p.e.id }}">{{ it.name }}</a>{% else %}<b>{{ it.name }}</b>{% if it.name_ko %} {{ E.ko(it.name_ko) }}{% endif %}{% endif %}{% set meta = [it.type, it.area]|select|list %}{% if meta %}<span class="gi-meta">{{ meta|join(' · ') }}</span>{% endif %}</p>
+          {% if it.reason %}<p class="gi-reason">{{ it.reason|telx }}</p>{% endif %}
+          {% if it.kf %}{{ E.kfrows(it.kf, it.p.e.id) }}{% endif %}
+        </div>
+        {% if it.photo %}<img class="gi-th t{{ it.photo.type }}" src="{{ it.photo.url }}"{% if it.photo.w and it.photo.h %} width="{{ it.photo.w }}" height="{{ it.photo.h }}"{% endif %} alt="{{ it.photo.alt }}" loading="lazy" decoding="async" data-kogl="{{ it.photo.type }}">{% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+    {% if types %}<p class="note">{{ t.f('photos_is', name=t.kto) }} · {{ types|join(loc.list_sep) }}</p>{% endif %}
+  </section>
+  {% endif %}
+
+  <section class="wrap chapter ch-rail ch-src cv" aria-labelledby="h-src">
+    <h2 id="h-src" class="rail-label">{{ t.sec_sources }}</h2>
+    <div class="rail-body">
+      {% if C.sources %}<ul class="src-list src-compact">{% for s in C.sources %}<li>{% if s.entry %}<span class="src-w"><a href="{{ s.url }}" rel="noopener" data-track="official_click">{{ s.name }}</a> · <a class="src-entry" href="{{ s.entry }}" hreflang="{{ s.entry_lang }}" lang="{{ s.entry_lang }}" rel="noopener" data-track="official_click">{{ s.entry_label }}</a></span>{% else %}<a href="{{ s.url }}" rel="noopener" data-track="official_click">{{ s.name }}</a>{% endif %}</li>{% endfor %}</ul>{% endif %}
+      <p class="note"><a href="{{ loc.home }}about/#corrections">{{ t.report_error }}</a></p>
+    </div>
+  </section>
+
+  {% if C.related %}
+  <section class="wrap chapter cv" id="h-related" aria-labelledby="h-related-t">
+    {{ ui.sec_head(t.s('columns'), t.s('related_columns', r=region), 'h-related-t', loc.home ~ 'columns/', t.s('all_columns')) }}
+    <div class="col-grid col-grid-rel">
+      {% for c in C.related %}{{ E.colcard(c, false) }}{% endfor %}
+    </div>
+  </section>
+  {% endif %}
+</article>
+{% endblock %}

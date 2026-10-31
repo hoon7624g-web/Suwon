@@ -1,0 +1,145 @@
+/* 74-today — the place page's day card (templates/_today.html.j2, present.today_vm; design boards ① 오늘의 상태 and
+   ② 오늘의 바다, approved by the operator 2026-10-31), every language. A white card on the grey band: the date row
+   (7 buttons, the chosen one sea blue and lifted), the status with its dot, the hours bar on one axis (06–22 at least;
+   a break is a gap), the line under it, then the sea card's tides (curve + table), sunset on its arc, the crowd
+   forecast on its own 0–100 scale and a beach's season. The sea card opens with a pale band and two rolling waves.
+   Motion: the bar's segments, the sun's arc and the tide curve draw with --p (motion.js [data-draw], 0 → 1; without
+   JS or under reduced motion --p is unset = 1, the final state); the status dot's ring, the chip's dot, the sun's glow,
+   the '지금' mark and the waves loop in CSS (transforms and opacity only) and stop under prefers-reduced-motion.
+   The card sits below the first screen; its heights are fixed where a day's content changes (no layout shift).
+   Colours: the UI4 tokens; the day states use green #1E7B45 (open: 4.70:1 on its tint #E7F5EC, dots only elsewhere),
+   --red (closed, 5.55:1 on #fff) and amber #B7791F (check: dots only). Sun card: #6B5A1E on #FFF8E1 6.36:1. Text
+   ink-3 on bg-2 5.23:1, sea-deep on tint2 6.41:1, white on sea 4.96:1. Touch targets ≥ 44px (the date buttons 58px). */
+.td { --ok: #1E7B45; --ok-bg: #E7F5EC; --chk: #B7791F; --sun-bg: #FFF8E1; --sun-ink: #6B5A1E;
+  position: relative; margin: 0 0 var(--s-bl); background: #fff; border-radius: var(--r-l); overflow: hidden;
+  box-shadow: 0 24px 48px -26px rgba(20, 52, 99, .45), 0 0 0 1.5px var(--g2); }
+.td:not(.td-sea)::before { content: ""; position: absolute; left: 0; top: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--sea) 0%, #8EC1FF 45%, var(--sea) 90%); }
+.td-in { display: flex; flex-direction: column; gap: 14px; padding: 18px 18px 16px; }
+.td p { margin: 0; }
+.td [hidden] { display: none !important; }
+.td-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.td-h { margin: 0; font: 700 13px/1.4 var(--font); letter-spacing: .04em; color: var(--sea-deep); }
+.td-chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: var(--r-pill); background: var(--ok-bg); color: var(--ok); font: 700 12px/1.4 var(--font); }
+.td-chip i, .td-sdot { position: relative; flex: none; border-radius: 50%; background: var(--ok); }
+.td-chip i { width: 7px; height: 7px; }
+.td-chip i::after, .td-sdot::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: inherit; animation: td-ring 1.8s var(--ease-out) infinite; }
+@keyframes td-ring { 0% { transform: scale(1); opacity: .55; } 70%, 100% { transform: scale(2.6); opacity: 0; } }
+
+/* ---------------------------------------------------------------- the date row */
+.td-days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+.td-day { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; min-height: 58px; padding: 6px 0; border: 0; border-radius: 14px; background: var(--bg-2); color: var(--ink); font: inherit; cursor: pointer; transition: background-color .25s var(--fb), color .25s var(--fb), transform .2s var(--fb), box-shadow .25s var(--fb); }
+.td-day:hover { background: var(--g1); }
+.td-dw { font-size: 11px; line-height: 1.3; color: var(--ink-3); white-space: nowrap; }
+.td-dn { font-size: 16px; line-height: 1.25; font-weight: 700; }
+.td-dd { width: 5px; height: 5px; margin-top: 2px; border-radius: 50%; background: transparent; }
+.td-day[data-st="open"] .td-dd, .td-day[data-st="always"] .td-dd { background: var(--ok); }
+.td-day[data-st="closed"] .td-dd { background: var(--red); }
+.td-day[data-st="check"] .td-dd, .td-day[data-st="hours"] .td-dd { background: var(--chk); }
+.td-day[aria-selected="true"] { background: var(--sea); color: #fff; transform: translateY(-2px); box-shadow: 0 10px 18px -10px rgba(47, 111, 201, .9); }
+.td-day[aria-selected="true"] .td-dw { color: #fff; }
+.td-day[aria-selected="true"] .td-dd { background: #fff; }
+.td-day[aria-selected="true"][data-st=""] .td-dd { background: transparent; }
+
+/* ---------------------------------------------------------------- the status, the bar, the line under it */
+.td-panel { display: flex; flex-direction: column; gap: 10px; }
+.td-st { display: flex; align-items: center; gap: 12px; }
+.td-sdot { width: 14px; height: 14px; }
+.td[data-st="closed"] .td-sdot { background: var(--red); }
+.td[data-st="check"] .td-sdot, .td[data-st="hours"] .td-sdot { background: var(--chk); }
+.td[data-st="check"] .td-sdot::after, .td[data-st="hours"] .td-sdot::after { animation: none; opacity: 0; }
+.td[data-st=""] .td-sdot { visibility: hidden; }
+.td-stx { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.td-lab { font: 700 13px/1.4 var(--font); color: var(--ink-3); }
+.td-head { font: 700 clamp(20px, 5.6vw, 24px)/1.3 var(--font); letter-spacing: -.02em; color: var(--ink); word-break: keep-all; overflow-wrap: anywhere; }
+.td[data-st="closed"] .td-head { color: var(--red); }
+.td-bar { display: flex; flex-direction: column; gap: 6px; }
+.td-track { position: relative; height: 34px; border-radius: 12px; background: var(--bg-2); }
+.td-grid { position: absolute; top: 0; bottom: 0; left: calc(var(--x) * 100%); width: 1px; background: var(--bg-3); }
+.td-seg { position: absolute; top: 5px; bottom: 5px; left: calc(var(--a) * 100%); width: calc((var(--b) - var(--a)) * 100%); min-width: 4px; border-radius: 9px; background: linear-gradient(90deg, var(--sea), #5B95E6); transform: scaleX(var(--p, 1)); transform-origin: left; transition: left .5s var(--ease-out), width .5s var(--ease-out); }
+.td-now { position: absolute; top: -6px; bottom: -6px; left: calc(var(--n, 0) * 100%); width: 2px; margin-left: -1px; border-radius: 2px; background: var(--ink); }
+.td-now::before, .td-now::after { content: ""; position: absolute; top: -3px; left: -5px; width: 12px; height: 12px; border-radius: 50%; background: var(--ink); }
+.td-now::after { animation: td-ring 1.6s ease-out infinite; }
+.td-ticks { position: relative; height: 15px; font-size: 11px; line-height: 15px; color: var(--ink-3); }
+.td-ticks span { position: absolute; left: calc(var(--x) * 100%); transform: translateX(-50%); }
+.td-ticks span:first-child { transform: none; }
+.td-ticks span:last-child { transform: translateX(-100%); }
+.td-live { min-height: 1.45em; font: 700 13px/1.45 var(--font); color: var(--sea-deep); }
+.td-sub { min-height: 1.5em; font-size: 13px; line-height: 1.5; color: var(--ink-2); word-break: keep-all; overflow-wrap: anywhere; }
+
+/* ---------------------------------------------------------------- the small cards: sunset, crowd, beach */
+.td-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.td-cards > * { display: flex; flex-direction: column; gap: 2px; min-width: 0; padding: 12px; border-radius: 16px; background: var(--bg-2); }
+.td-k { font: 700 12px/1.4 var(--font); color: var(--ink-3); }
+.td-v { font: 700 20px/1.3 var(--font); color: var(--ink); }
+.td-v2 { font: 700 14px/1.45 var(--font); color: var(--sea-deep); overflow-wrap: anywhere; }
+.td-wide { grid-column: 1 / -1; }
+.td-s { font-size: 12px; line-height: 1.45; color: var(--ink-3); }
+.td-sun { background: var(--sun-bg) !important; }
+.td-sun .td-k, .td-sun .td-s { color: var(--sun-ink); }
+.td-arc { display: block; width: min(100%, 140px); height: auto; margin: 2px 0 -2px; overflow: hidden; }
+.td-arcp { fill: none; stroke: #E9C46A; stroke-width: 2; stroke-dasharray: 1; stroke-dashoffset: calc(1 - var(--p, 1)); }
+.td-hz { stroke: #D9C9A0; stroke-width: 1.5; }
+.td-glow { fill: var(--chick); transform-box: fill-box; transform-origin: center; animation: td-glow 2.4s ease-in-out infinite; }
+.td-core { fill: #F4A100; }
+@keyframes td-glow { 0%, 100% { opacity: .4; transform: scale(1); } 50% { opacity: .85; transform: scale(1.3); } }
+.td-cr .td-v { font-size: 18px; color: var(--sea-deep); }
+.td-meter { position: relative; height: 10px; margin: 8px 0 6px; border-radius: var(--r-pill); background: var(--bg-3); overflow: hidden; }
+.td-meter i { position: absolute; left: 0; top: 0; bottom: 0; width: calc(var(--v, 0) * 100%); border-radius: inherit; background: var(--sea); transition: width .5s var(--ease-out); }
+.td-meter b { position: absolute; top: 0; bottom: 0; left: calc(var(--x) * 100%); width: 2px; background: #fff; }
+
+/* ---------------------------------------------------------------- the tides */
+.td-tide { display: flex; flex-direction: column; gap: 6px; padding: 12px 12px 10px; border-radius: 18px; background: var(--bg-2); }
+.td-th { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.td-h3 { margin: 0; font: 700 14px/1.4 var(--font); color: var(--ink); }
+.td-tst { font-size: 12px; line-height: 1.4; color: var(--ink-3); }
+.td-curve { display: block; width: 100%; height: 96px; }
+.td-cl { fill: none; stroke: var(--sea); stroke-width: 3; stroke-linecap: round; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: calc(1 - var(--p, 1)); }
+.td-cf { fill: var(--sea); opacity: .08; }
+.td-cb { stroke: var(--hair); vector-effect: non-scaling-stroke; }
+.td-cn { stroke: var(--ink); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.td-tt { width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.4; }
+.td-tt th { padding: 4px 6px; font-size: 12px; font-weight: 700; text-align: left; color: var(--ink-3); }
+.td-tt td { padding: 6px; border-top: 1px solid var(--hair); color: var(--ink-2); }
+.td-tt tr.is-high td:first-child { font-weight: 700; color: var(--sea-deep); }
+.td-tt td:last-child, .td-tt th:last-child { text-align: right; }
+.td-note { font-size: 12px; line-height: 1.5; color: var(--ink-3); }
+
+/* ---------------------------------------------------------------- foot: notes and sources */
+.td-foot { display: flex; flex-direction: column; gap: 4px; padding-top: 10px; border-top: 1px solid var(--hair); }
+.td-src { font-size: 12px; line-height: 1.5; color: var(--ink-3); overflow-wrap: anywhere; }
+.td-src a { color: var(--link); }
+
+/* ---------------------------------------------------------------- the sea card's band and waves (② 오늘의 바다) */
+.td-band { position: relative; height: 112px; overflow: hidden; background: linear-gradient(180deg, var(--tint2) 0%, var(--tint) 100%); }
+.td-band .td-h { position: absolute; left: 18px; top: 16px; }
+.td-band .td-lab { position: absolute; left: 18px; top: 36px; color: var(--ink-2); }
+.td-ball { position: absolute; right: 30px; top: 18px; width: 30px; height: 30px; border-radius: 50%; background: var(--chick); box-shadow: 0 0 0 8px rgba(255, 213, 74, .25); }
+.td-wave { position: absolute; left: 0; display: block; max-width: none; }
+.td-w2 { bottom: 14px; fill: #9DC3F2; opacity: .55; animation: td-wave2 9s linear infinite; }
+.td-w1 { bottom: 0; fill: var(--sea); animation: td-wave 6s linear infinite; }
+@keyframes td-wave { from { transform: translateX(0); } to { transform: translateX(-200px); } }
+@keyframes td-wave2 { from { transform: translateX(-200px); } to { transform: translateX(0); } }
+
+@media (min-width: 768px) {
+  .td-in { padding: 22px 24px 20px; }
+  .td-cards { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+}
+/* where the card sits (coordinator 2026-10-31: 2845px down a phone page was too far): a grid item of .pl-grid. Below
+   1024px the grid is a column (40-showcase.css) and the card comes first, right after the opening and before 방문 전
+   확인 (.pl-side, order -1) — still under the first screen; from 1024px it heads the left column and .pl-main moves to
+   the second row beside the sticky facts card (which spans both rows) */
+.pl-grid > .td { grid-column: 1 / span 7; grid-row: 1; min-width: 0; margin-right: clamp(0px, 2vw, 32px); }
+.pl-grid > .td ~ .pl-main { grid-row: 2; }
+@media (max-width: 1023px) {
+  .pl-grid > .td { order: -2; margin-right: 0; }
+}
+/* 영업 확인 in 방문 전 확인 (present.license_vm, 2026-10-31): two plain lines and their sources, never a badge or a grade */
+.biz { padding: 12px 0; border-top: 1px solid var(--hair); }
+.biz-l { margin: 0; font-size: 15px; line-height: 1.6; color: var(--ink-2); overflow-wrap: anywhere; }
+.biz-l b { font-weight: 700; color: var(--ink); }
+.biz-src { margin: 4px 0 0; font-size: 12px; line-height: 1.5; color: var(--ink-3); overflow-wrap: anywhere; }
+.biz-src a { color: var(--link); }
+@media (prefers-reduced-motion: reduce) {
+  .td-chip i::after, .td-sdot::after, .td-now::after, .td-glow, .td-wave { animation: none; }
+  .td-day, .td-seg, .td-meter i { transition: none; }
+}

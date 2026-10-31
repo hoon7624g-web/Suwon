@@ -1,0 +1,80 @@
+{% extends "base.html.j2" %}
+{% import "_ui.html.j2" as ui %}
+{% import "_media.html.j2" as md %}
+{% block main_class %}{% endblock %}
+{% block bodyclass %}pg-columns{% endblock %}
+{% block head %}{% if CV.lead and CV.lead.photo and CV.lead.photo.type == 1 %}{{ md.preload(CV.lead.photo) }}{% endif %}{% endblock %}
+
+{% block content %}
+<header class="pg-hero col-idx-hero">
+  <div class="wrap">
+    <p class="kicker"><span class="kicker-dot" aria-hidden="true"></span>{{ site.region }} 에디토리얼 · 칼럼 <span class="tn">{{ CV.total }}</span>편</p>
+    <h1 class="d1">{{ site.region }} 칼럼</h1>
+    <p class="lede">{{ site.region }}의 근대건축과 골목의 역사, 섬을 건너는 동선과 시간대별 미식, 그리고 해외 매체의 시선까지 깊이 있게 풀어쓴 칼럼 <span class="tn">{{ CV.total }}</span>편을 모았습니다.</p>
+    {% if CV.categories|length > 1 %}
+    <nav class="col-cat-nav" aria-label="칼럼 주제 분류">
+      {% for cat in CV.categories %}<a class="chip" href="#{{ cat.id }}">{{ cat.name }} <span class="tn">{{ cat.cards|length }}</span></a>{% endfor %}
+    </nav>
+    {% endif %}
+  </div>
+</header>
+
+{% if CV.lead %}
+{% set L = CV.lead %}
+<section class="sec sec-tight" aria-labelledby="h-lead-col">
+  <div class="wrap">
+    <h2 id="h-lead-col" class="vh">대표 칼럼</h2>
+    <article class="col-lead-card">
+      {% if L.photo %}
+      <div class="col-lead-media">
+        {{ ui.figure(L.photo, L.photo.place, 0, 0, 'col-lead-fig', true, '(min-width: 960px) 560px, 100vw', true, true) }}
+      </div>
+      {% endif %}
+      <div class="col-lead-body">
+        <p class="col-meta-top"><span class="col-badge">{{ L.category }}</span>{% if L.label %}<span>{{ L.label }}</span>{% endif %}<span class="tn">약 {{ L.reading_minutes }}분 읽기</span></p>
+        <h3 class="col-lead-title"><a href="{{ L.path }}">{{ L.title }}</a></h3>
+        <p class="col-lead-dek">{{ L.dek }}</p>
+        {% if L.pull_quote %}<blockquote class="col-lead-quote"><p>{{ L.pull_quote }}</p></blockquote>{% endif %}
+        <p class="col-lead-places">다루는 장소 <span class="tn">{{ L.n_items }}</span>곳 · {{ L.place_names|join(' · ') }}</p>
+        <p class="col-lead-more"><a class="btn btn-primary" href="{{ L.path }}">칼럼 전문 읽기 {{ ui.icon('arrow', 'icon') }}</a></p>
+      </div>
+    </article>
+  </div>
+</section>
+{% endif %}
+
+{% for cat in CV.categories %}
+<section class="sec" id="{{ cat.id }}" aria-labelledby="h-{{ cat.id }}">
+  <div class="wrap">
+    <header class="sec-h">
+      <div>
+        <p class="kicker">주제별 칼럼</p>
+        <h2 id="h-{{ cat.id }}">{{ cat.name }} <span class="tn">({{ cat.cards|length }}편)</span></h2>
+      </div>
+    </header>
+    <div class="col-grid">
+      {% for c in cat.cards %}
+      <article class="col-card">
+        {% if c.photo %}
+        <div class="col-card-media">
+          <a href="{{ c.path }}" tabindex="-1" aria-hidden="true">{{ ui.img(c.photo, '(min-width: 720px) 440px, 100vw', false, 'col-card-img') }}</a>
+          <p class="col-card-credit">{{ c.photo.place }} · {{ md.credit(c.photo) }}</p>
+        </div>
+        {% endif %}
+        <div class="col-card-body">
+          <p class="col-meta-top"><span class="col-badge">{{ c.category }}</span>{% if c.label %}<span>{{ c.label }}</span>{% endif %}</p>
+          <h3 class="col-card-title"><a href="{{ c.path }}">{{ c.title }}</a></h3>
+          <p class="col-card-dek">{{ c.dek }}</p>
+          {% if c.pull_quote %}<p class="col-card-pull">“{{ c.pull_quote }}”</p>{% endif %}
+          <footer class="col-card-foot">
+            <span class="tn">약 {{ c.reading_minutes }}분 읽기 · 장소 {{ c.n_items }}곳</span>
+            <span class="col-card-places">{{ c.place_names|join(' · ') }}</span>
+          </footer>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,135 @@
+{% extends "base.html.j2" %}
+{% import "_blog.html.j2" as blm %}
+{% import "_ui.html.j2" as ui %}
+{% import "_media.html.j2" as md %}
+{% block main_class %}{% endblock %}
+{% block bodyclass %}pg-guide pg-column{% endblock %}
+{% block head %}{% if C.lead_photo and C.lead_photo.type == 1 %}{{ md.preload(C.lead_photo) }}{% endif %}{% endblock %}
+
+{% block lnav %}
+{% set links = [] %}
+{% if C.sections %}{% set _ = links.append(('본문', '#h-body')) %}{% endif %}
+{% if C.places %}{% set _ = links.append(('장소', '#h-items')) %}{% endif %}
+{% if C.sources %}{% set _ = links.append(('출처', '#h-src')) %}{% endif %}
+{% if C.related %}{% set _ = links.append(('다른 칼럼', '#h-related')) %}{% endif %}
+{{ ui.lnav(C.label or C.title, links, {'url': '/columns/', 'label': '칼럼 목록'}, share={'id': C.col.id, 'lang': 'ko'}) }}
+{% endblock %}
+
+{% block content %}
+{% macro credit_ko(cards) -%}
+{% set ts = cards|selectattr('photo')|map(attribute='photo.type')|unique|sort|list %}{% if ts %}사진 출처: 한국관광공사 · 공공누리 {% for t in ts %}제{{ t }}유형{% if t == 3 %}(변경금지){% endif %}{% if not loop.last %}·{% endif %}{% endfor %}{% endif %}
+{%- endmacro %}
+{% set types = C.places|selectattr('photo')|map(attribute='photo.type')|unique|sort|list %}
+<article class="guide col-article">
+  {% if C.picks %}{{ ui.sprite(C.icons) }}{% endif %}
+  <header class="pg-hero gd-head col-hero">
+    <div class="wrap">
+      <p class="kicker"><a href="/columns/">{{ site.region }} 칼럼</a><span>{{ C.category }}</span>{% if C.label %}<span>{{ C.label }}</span>{% endif %}<span class="tn">약 {{ C.reading_minutes }}분 읽기</span></p>
+      <h1 class="d1 d1-q vt-title">{{ C.title }}</h1>
+      {% if C.dek %}<p class="col-dek">{{ C.dek }}</p>{% endif %}
+      {% if C.lead_photo %}
+      <div class="col-hero-media">
+        {{ ui.figure(C.lead_photo, C.lead_photo.place, 0, 0, 'col-hero-fig', true, '(min-width: 960px) 920px, 100vw', true, true) }}
+      </div>
+      {% endif %}
+      <div class="gd-ans">
+        <div class="summary" data-block="summary">{% if C.ans.first %}<p class="lede gd-ans-l {{ C.ans.size }}">{{ C.ans.html }}</p>{% if C.ans.rest %}<p class="dek gd-ans-r">{{ C.ans.rest_html }}</p>{% endif %}{% endif %}</div>
+        {% if C.picks %}
+        <div class="gd-picks">
+          <p class="gd-picks-h"><span>이 칼럼의 장소 <b class="tn">{{ C.picks_total }}</b>곳</span>{% if C.places %}<a href="#h-items">전체 목록</a>{% endif %}</p>
+          {% set more = {'n': '외 %d곳'|format(C.picks_more), 'text': '전체 목록 보기', 'href': '#h-items'} if C.picks_more and C.places else none %}
+          {{ ui.shelf(C.picks, '이 칼럼의 장소', credit_ko(C.picks), more=more) }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+
+  {% if C.sections or C.points %}
+  <div class="wrap gd-grid cv{% if C.points %} has-map{% endif %}{% if C.sections|length > 1 %} has-toc{% endif %}" id="h-body">
+    {% if C.sections|length > 1 %}{{ ui.gtoc(C.sections) }}{% endif %}
+    <div class="gd-body col-body">
+      {% if C.pull_quote %}
+      <blockquote class="col-pullquote">
+        <p>“{{ C.pull_quote }}”</p>
+      </blockquote>
+      {% endif %}
+      {% for s in C.sections %}
+      <section class="gd-sec col-sec" aria-labelledby="{{ s.id }}" data-sec="{{ s.id }}" data-pts="{{ s.pts|join(' ') }}">
+        <p class="gd-sec-n tn" aria-hidden="true">{{ '%02d'|format(s.n) }}</p>
+        <h2 id="{{ s.id }}" class="h-sec" data-split>{{ s.heading }}</h2>
+        <div class="col-prose">
+          {% for p in s.paras %}
+          <p class="col-p">{{ p }}</p>
+          {% endfor %}
+        </div>
+        {% if s.quote %}
+        <blockquote class="col-fquote" lang="{{ s.quote.lang }}" cite="{{ s.quote.url }}">
+          <p>{{ s.quote.text }}</p>
+          <footer>— <a href="{{ s.quote.url }}" rel="noopener" data-track="abroad_click">{{ s.quote.source }}</a></footer>
+        </blockquote>
+        {% endif %}
+        {% if s.places %}{{ ui.shelf(s.places, '이 단락에 나온 장소 ' ~ s.places|length ~ '곳', credit_ko(s.places), cls='mcs-sec', nav_js=true) }}{% endif %}
+        {% if s.again %}{{ ui.again(s.again, '이 단락에 나온 장소 중 위 카드에 있는 ' ~ s.again|length ~ '곳') }}{% endif %}
+      </section>
+      {% endfor %}
+    </div>
+    {% if C.points %}
+    <aside class="gd-map" aria-label="칼럼 장소 지도">
+      {{ ui.mapfig({'guide': C.points, 'route': false}, C.title ~ ' 장소 지도', 'guide-mapfig', '번호: 아래 목록 순서') }}
+    </aside>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {% if C.places %}
+  <section class="wrap chapter cv" aria-labelledby="h-items">
+    {{ ui.chead('이 칼럼의 장소 ' ~ C.places|length ~ '곳', 'h-items') }}
+    <ol class="gitems">
+      {% for it in C.places %}
+      <li class="gitem">
+        <span class="gi-n tn">{{ it.n }}</span>
+        <div class="gi-main">
+          <p class="gi-name">{% if it.path %}<a href="{{ it.path }}" data-track="nearby_click" data-place="{{ it.t.id }}">{{ it.name }}</a>{% else %}<b>{{ it.name }}</b>{% endif %}{% set meta = [it.type, it.dong]|select|list %}{% if meta %}<span class="gi-meta">{{ meta|join(' · ') }}</span>{% endif %}</p>
+          {% if it.reason %}<p class="gi-reason">{{ it.reason|decaution|tel }}</p>{% endif %}
+          {% if it.kf %}{{ ui.kfrows(it.kf, it.t.id) }}{% endif %}
+        </div>
+        {% if it.photo %}<img class="gi-th t{{ it.photo.type }}" src="{{ it.photo.url }}"{% if it.photo.w and it.photo.h %} width="{{ it.photo.w }}" height="{{ it.photo.h }}"{% endif %} alt="{{ it.alt }}" loading="lazy" decoding="async" data-kogl="{{ it.photo.type }}">{% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+    {% if types %}<p class="note">사진 출처: 한국관광공사 · 공공누리 {% for t in types %}제{{ t }}유형{% if t == 3 %}(변경금지){% endif %}{% if not loop.last %}·{% endif %}{% endfor %}</p>{% endif %}
+  </section>
+  {% endif %}
+
+  {% if blog_posts %}{{ blm.section(blog_posts, blog, blog.name ~ '에서 더 읽기') }}{% endif %}
+
+  <section class="wrap chapter ch-rail ch-src cv" aria-labelledby="h-src">
+    <h2 id="h-src" class="rail-label">출처</h2>
+    <div class="rail-body">
+      {% if C.sources %}<ul class="src-list src-compact">{% for s in C.sources %}<li><a href="{{ s.url }}" rel="noopener" data-track="official_click">{{ s.name }}</a></li>{% endfor %}</ul>{% endif %}
+      <p class="note">{{ site.site_name }}({{ site.region }} 여행 정보 사이트) 정리 · <a href="/about/#correction">틀린 정보 알리기</a></p>
+    </div>
+  </section>
+
+  {% if C.related %}
+  <section class="wrap chapter cv" id="h-related" aria-labelledby="h-related-t">
+    {{ ui.sec_head('이어서 읽기', '함께 읽으면 좋은 ' ~ site.region ~ ' 칼럼', 'h-related-t', '/columns/', '칼럼 모두 보기') }}
+    <div class="col-grid col-grid-rel">
+      {% for c in C.related %}
+      <article class="col-card">
+        <div class="col-card-body">
+          <p class="col-meta-top"><span class="col-badge">{{ c.category }}</span>{% if c.label %}<span>{{ c.label }}</span>{% endif %}</p>
+          <h3 class="col-card-title"><a href="{{ c.path }}">{{ c.title }}</a></h3>
+          <p class="col-card-dek">{{ c.dek }}</p>
+          <footer class="col-card-foot">
+            <span class="tn">약 {{ c.reading_minutes }}분 읽기 · 장소 {{ c.n_items }}곳</span>
+          </footer>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+</article>
+{% endblock %}

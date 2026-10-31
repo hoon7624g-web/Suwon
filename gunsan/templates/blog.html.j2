@@ -1,0 +1,32 @@
+{% extends "base.html.j2" %}
+{#- /blog/ 군산각 블로그 (operator 2026-10-30; cards with photos, operator the same day): the operator's Naver blog, every
+    post by the blog's own categories (the largest first, newest first inside) as a card (_blog.html.j2 card: a licensed
+    photo of a place it is about, the title as a link to the blog, the date and the places as links to this site's place
+    pages). The first BLOG_GROUP_OPEN of a category show; the rest fold under '더 보기' (a <details>: works without JS;
+    their lazy photos load when opened). No text or picture of the posts themselves is copied here. -#}
+{% import "_blog.html.j2" as bl %}
+{% block main_class %}{% endblock %}
+{% block bodyclass %}pg-blog{% endblock %}
+{% block content %}
+<section class="pg-hero band-s list-head" aria-labelledby="h-list">
+  <div class="wrap">
+    <h1 id="h-list" class="h-list">{{ B.name }}</h1>
+    <p class="lede">{{ site.site_name|josa('이/가') }} 네이버 블로그에 쓴 {{ site.region }} 여행 기록 {{ B.posts|length }}편을 주제별로 모았습니다. 제목을 누르면 블로그 글이 열리고, 글에 나온 장소는 이 사이트의 장소 페이지로 이어집니다.</p>
+    <p class="bl-home"><a href="{{ B.url }}" rel="noopener" data-track="blog_click">블로그에서 보기<span class="arr" aria-hidden="true">↗</span></a></p>
+    <nav class="v-nav" aria-label="이 페이지의 묶음">{% for g in groups %}<a href="#{{ g.id }}">{{ g.title }} <span class="tn">{{ g.rows|length }}</span></a>{% endfor %}</nav>
+  </div>
+</section>
+<div class="wrap bl-wrap">
+  {% for g in groups %}
+  <section class="bl-sec" id="{{ g.id }}" aria-labelledby="{{ g.id }}-h">
+    <h2 id="{{ g.id }}-h" class="ab-h">{{ g.title }} <span class="tn">{{ g.rows|length }}</span></h2>
+    <ul class="bl-grid">{% for r in g.rows[:open_n] %}{{ bl.card(r) }}{% endfor %}</ul>
+    {% if g.rows|length > open_n %}<details class="bl-more"><summary>{{ g.title }} {{ g.rows|length - open_n }}편 더 보기</summary>
+    <ul class="bl-grid">{% for r in g.rows[open_n:] %}{{ bl.card(r) }}{% endfor %}</ul></details>{% endif %}
+  </section>
+  {% endfor %}
+  <p class="note bl-note">블로그 글의 가격·시간은 글을 쓴 때의 기록입니다. 이용시간·쉬는 날·요금 같은 방문 정보는 장소 페이지에서 출처와 함께 확인하세요. 카드 사진은 블로그 사진이 아니라 글에 나온 장소나 그 근처 장소의 사진입니다. 블로그의 글과 사진은 이 사이트로 옮기지 않습니다.</p>
+  {% set types = groups|map(attribute='rows')|sum(start=[])|selectattr('photo')|map(attribute='photo.type')|unique|sort|list %}
+  {% if types %}<p class="note">사진 출처: 한국관광공사 · 공공누리 {% for t in types %}제{{ t }}유형{% if t == 3 %}(변경금지){% endif %}{% if not loop.last %}·{% endif %}{% endfor %}</p>{% endif %}
+</div>
+{% endblock %}

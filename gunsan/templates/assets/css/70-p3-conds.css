@@ -1,0 +1,88 @@
+/* ---------------------------------------------------------------- lists: 조건으로 찾기 (operator 2026-10-31, design ③
+   Filter.dc.html; _filters.html.j2 conds, pipeline/conditions.py, site.js). One row under the type chips and the
+   tools: a small '조건' label, then the condition chips — tinted, so they read apart from the white one-of-many type
+   chips; the chosen ones sea blue with a check that grows in; a phone swipes them in one row like the type chips, a
+   mouse sees them wrap (30-info's fine-pointer rule) — and '조건 지우기' at the end while one is on. The count line
+   keeps its place in the tools as .c-meter: the number big, its digits rolling into place (site.js), over the ratio bar of
+   the shown places (scaleX: nothing is laid out again; a fixed width beside the type chips from 761px, so no type chip
+   moves). Each shown row then gets the reasons of the chosen conditions as small tags that pop in (value · source).
+   Reduced motion: no roll (site.js), no growing, no pop. Contrast: chips sea-deep on tint 7.6:1 (their count too),
+   white on sea 4.9:1 when chosen; tags sea-deep on tint 7.6:1, their source ink-3 5.0:1. */
+.f-conds { display: flex; align-items: center; gap: 4px 10px; margin-top: 8px; }
+.f-conds .c-row { flex: 1 1 auto; min-width: 0; align-items: center; }
+.c-lab { flex: none; font-size: 13px; font-weight: 700; color: var(--ink-3); padding-right: 2px; }
+.f-row.c-row button { background: var(--tint); box-shadow: none; color: var(--sea-deep); }
+.f-row.c-row button .tn { color: var(--sea-deep); }
+.f-row.c-row button:hover { background: var(--tint2); box-shadow: none; }
+.f-row.c-row button[aria-pressed="true"] { background: var(--sea); color: #fff; box-shadow: 0 10px 18px -12px rgba(47, 111, 201, .95); }
+.f-row.c-row button[aria-pressed="true"] .tn { color: #fff; }
+.f-row.c-row button[aria-pressed="true"]:hover { background: var(--sea-hi); }
+.f-row.c-row button.is-zero { background: transparent; color: var(--ink-3); }
+.f-row.c-row button.is-zero .tn { color: var(--ink-3); }
+.c-ck { position: relative; flex: none; width: 0; height: 12px; margin-right: -6px; overflow: hidden; transition: width .25s var(--ease-out), margin-right .25s var(--ease-out); }
+.c-ck::before { content: ""; position: absolute; left: 3px; top: 0; width: 4px; height: 8px; border: solid currentColor; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.c-row button[aria-pressed="true"] .c-ck { width: 12px; margin-right: 0; }
+.f-row.c-row .c-clear { flex: none; min-height: 44px; margin-left: auto; padding: 0 6px; border: 0; border-radius: 10px; background: none; box-shadow: none; color: var(--link); font: 700 14px var(--font); white-space: nowrap; cursor: pointer; }
+.f-row.c-row .c-clear[hidden] { display: none; }
+.f-row.c-row .c-clear:hover { background: none; text-decoration: underline; }
+/* a touch screen swipes the row (to the screen's edge, its end faded, as the type row); a mouse sees it wrap */
+.f-conds .c-row { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 36px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 36px), transparent); padding-right: 30px; }
+@media (max-width: 760px) { .f-conds .c-row { margin-right: calc(-1 * var(--m)); padding-right: max(var(--m), 36px); } }
+@media (hover: hover) and (pointer: fine) {
+  .f-conds .c-row { -webkit-mask-image: none; mask-image: none; padding-right: 0; margin-right: 0; }
+}
+/* the count: the big number and '/ all' over the bar */
+.f-tools .c-meter { display: grid; row-gap: 5px; min-width: 0; margin-right: auto; }
+.c-meter .f-result { padding: 0; margin: 0; min-width: 0; color: var(--ink-3); font-size: 14px; line-height: 1.15; white-space: nowrap; border-radius: 6px; }
+.c-meter [data-result] { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.c-meter .f-w { display: none !important; }
+.c-n { font: 800 22px/1 var(--font); letter-spacing: -.02em; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+/* the new number's digits rise into place, each in its own band (site.js roll) */
+.c-rl { display: inline-block; clip-path: inset(0 -.1em); }
+.c-rl-i { display: inline-block; animation: c-roll .45s var(--ease-out) both; }
+@keyframes c-roll { from { transform: translateY(100%); } to { transform: none; } }
+.c-count { color: var(--ink-2); }
+.c-of { color: var(--ink-3); }
+.c-bar { display: block; height: 4px; border-radius: 999px; background: var(--bg-3); overflow: hidden; }
+.c-bar i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--sea), #5B95E6); transform-origin: 0 50%; transition: transform .5s var(--ease-out); }
+@media (max-width: 760px) { .f-tools .c-meter { flex: 1 1 4em; } }
+/* the narrowest phones: '/ all' under the number, so the count, 필터 and 목록 | 지도 keep one row */
+@media (max-width: 374px) { .c-meter .f-result { white-space: normal; } .c-of { display: block; margin-top: 2px; font-size: 13px; } }
+/* the row costs no more than it must (outside review 2026-10-17, test_present: the first result above 500px on a
+   phone, 650px on a 1440×900 desktop — unchanged): the condition row has no padding of its own (a focused chip draws
+   its ring inside); a phone's rows sit 4px apart, the tools row keeps only its controls' height and the first group
+   comes 8px under the bar; a desktop with a mouse draws the bar's chips 36px high (a touch screen keeps 44px), 6px
+   apart, and the ledger's column heads and first group follow closer */
+.f-conds .c-row { padding-top: 0; padding-bottom: 0; }
+.filters .f-conds .c-row button:focus-visible { outline-offset: -3px; }
+@media (max-width: 760px) {
+  .filters:has(.f-conds) { padding-top: 0; }
+  .filters:has(.f-conds) .f-top { row-gap: 4px; }
+  .filters:has(.f-conds) .f-tools { padding: 0; }
+  .f-conds { margin-top: 4px; }
+  .list-main:has(.f-conds) .lg-group:first-of-type { margin-top: 8px !important; }
+}
+@media (min-width: 761px) and (hover: hover) and (pointer: fine) {
+  .filters:has(.f-conds) { padding-top: 0; }
+  .filters:has(.f-conds) .f-row { padding-top: 0; padding-bottom: 0; row-gap: 6px; }
+  .filters:has(.f-conds) .f-row button, .f-row.c-row .c-clear { min-height: 36px; }
+  .f-conds { margin-top: 4px; }
+  .list-main:has(.f-conds) .lg-head { margin-top: 6px; }
+  .list-main:has(.f-conds) .lg-group:first-of-type { margin-top: 4px; }
+}
+@media (min-width: 761px) { .f-tools .c-meter { flex: none; width: 9.5em; } }
+/* the row's reasons (_filters.why): under its cells, across the row; the row's link still covers it (no pointer) */
+.rec-why { position: relative; z-index: 1; grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; pointer-events: none; }
+.rec-why[hidden], .rec-why > span[hidden] { display: none; }
+.rec-why > span { display: inline-flex; align-items: baseline; flex-wrap: wrap; column-gap: 4px; max-width: 100%; padding: 5px 10px 5px 8px; border-radius: 12px; background: var(--tint); color: var(--sea-deep); font-size: 13px; line-height: 1.4; }
+.rec-why > span::before { content: ""; flex: none; align-self: center; width: 4px; height: 8px; margin: -2px 3px 0 2px; border: solid currentColor; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.rec-why b { font-weight: 700; }
+.rec-why small { font-size: 11.5px; color: var(--ink-3); }
+.rec-why small::before { content: "· "; }
+@keyframes c-pop { 0% { opacity: 0; transform: scale(.6); } 70% { opacity: 1; transform: scale(1.06); } 100% { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .rec-why > span:not([hidden]) { animation: c-pop .35s var(--ease-bounce) both; }
+}
+/* the first apply draws the URL's state in place; reduced motion never moves */
+html.c-still .rec-why > span, html.c-still .c-bar i, html.c-still .c-ck { animation: none; transition: none; }
+@media (prefers-reduced-motion: reduce) { .c-bar i, .c-ck { transition: none; } .c-rl-i { animation: none; } }

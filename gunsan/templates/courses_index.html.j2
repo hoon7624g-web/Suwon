@@ -1,0 +1,24 @@
+{% extends "base.html.j2" %}
+{% import "_art.html.j2" as artm %}
+{% import "_courses.html.j2" as cc %}
+{#- /courses/: the official courses by length (당일 · 1박 2일 · 2박 3일), then by theme, each as a card (operator
+    2026-10-31; templates/_courses.html.j2, css/79-courses.css): one stop's photo, the chip, the name, the route band, the
+    areas, the figures and the source. CV = present.course_index_vm. The group pills sit under the heading on every
+    width; the AI plan banner follows. -#}
+{% block bodyclass %}pg-courses{% endblock %}
+{% block main_class %}{% endblock %}
+{% block content %}
+<section class="pg-hero band-s" aria-labelledby="h-list">{{ artm.band((art_slots or {}).get('list.head.courses')) }}
+  <div class="wrap">
+    <p class="eyebrow">{{ site.source.name }} 공식 코스</p>
+    <h1 id="h-list" class="h-list">{{ site.region }} 여행 코스 <span class="count tn">{{ n_courses }}개</span></h1>
+    <p class="list-lede">{{ site.source.name|josa('이/가') }} 안내하는 공식 여행 코스를 일정과 주제로 나눴습니다. 카드에서 출발지와 마지막 경유지, 지나는 권역을 보고 고른 뒤 코스 페이지에서 경유지마다 방문 정보와 길찾기를 확인하세요.</p>
+    {% if CV.groups|length > 1 %}{{ cc.nav(CV.groups, CV.w.nav) }}{% endif %}
+  </div>
+</section>
+{% if has_plan %}{% import "_plan_cta.html.j2" as pc %}<div class="wrap">{{ pc.banner(site.region, 'courses') }}</div>{% endif %}
+<div class="wrap cc-wrap">
+  {% for g in CV.groups %}{{ cc.group(g) }}{% endfor %}
+  {{ cc.notes(CV, '/map/', '권역을 나눈 기준 보기') }}
+</div>
+{% endblock %}

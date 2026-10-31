@@ -1,0 +1,230 @@
+{% extends "base.html.j2" %}
+{% import "_art.html.j2" as artm %}
+{#- <home>about/ of every version but Korean: what the version is, where its information comes from, how sources are shown,
+    photo licences, names and translation, corrections, the operator (its Korean name, lang="ko"). Facts only. The
+    head's AI art (about.head) in the version's language: beside the title from 900px, below the lede on phones. -#}
+{% block main_class %}{% endblock %}
+{% block bodyclass %}pg-about{% endblock %}
+{% block content %}
+{% set ah = (art_slots or {}).get('about.head') %}
+<header class="pg-hero{% if ah %} has-art-hero{% endif %}"><div class="wrap">
+{% set ko_link %}<a href="/" hreflang="ko" lang="ko">{{ ko_site_name }}</a>{% endset %}
+<h1 class="h-list vt-title">{{ t.about_site }}</h1>
+<p class="list-lede">{{ t.f('about_lede', site=site.site_name, ko_site=ko_link, r=region) }}</p>{{ artm.hero(ah, loc.code) }}
+</div></header>
+
+<section class="wrap chapter ch-rail" aria-labelledby="h-what">
+  {% macro b(n) %}<b class="tn">{{ n }}</b>{% endmacro %}
+  <h2 id="h-what" class="rail-label">{{ t.about_what }}</h2>
+  <div class="rail-body prose">
+    <p>{{ t.f('about_counts', places=b(n_places), indexed=n_index, guides=b(n_guides), courses=b(n_courses), series=b(n_series)) }}</p>
+    <p>{{ t.about_sync }}</p>
+  </div>
+</section>
+
+<section class="wrap chapter ch-rail" aria-labelledby="how">
+  <h2 id="how" class="rail-label">{{ t.how_made }}</h2>
+  <div class="rail-body prose">
+    <p>{{ t.about_how_1 }}</p>
+    <p>{% if site.fact_conflicts == 'primary' %}{{ t.f('about_how_2_one', missing=t.not_listed) }}{% else %}{{ t.f('about_how_2', note=loc.conflict, missing=t.not_listed) }}{% endif %}</p>
+    <p>{{ t.about_how_3 }}</p>
+    <p id="booking">{{ book_words[loc.code].about }}</p>
+  </div>
+</section>
+
+<section class="wrap chapter ch-rail" aria-labelledby="h-photos">
+  <h2 id="h-photos" class="rail-label">{{ t.sec_photos }}</h2>
+  <div class="rail-body prose">
+    <p>{{ t.f('about_photos', n1=lics[1] or 0, lic1=en.lic('KOGL-1'), n3=lics[3] or 0, lic3=en.lic('KOGL-3')) }}</p>
+    <p id="illustrations">{{ t.about_art }}</p>
+  </div>
+</section>
+
+<section class="wrap chapter ch-rail" aria-labelledby="h-names">
+  <h2 id="h-names" class="rail-label">{{ t.about_names_h }}</h2>
+  <div class="rail-body prose">
+    <p>{{ t.about_names }}</p>
+  </div>
+</section>
+
+{#- #emergency (operator 2026-10-15): the numbers and phrases of site.json emergency (KTO VisitKorea, linked), in this
+    version's words — an inline table like _ask.html.j2 ASK_S, so no version is left without it; {p} the provider
+    (t.kto_visitkorea), {l} the source pages; no check date (operator 2026-10-09). French: a no-break space before ':'. -#}
+{% if site.emergency %}{% set em = site.emergency %}
+{% set SOS_ALL = {
+  'en': {'h': 'Emergency numbers', 'lead': 'If someone collapses or is hurt, or there is a fire or a crime, call at once.',
+         'fire_ambulance': 'Fire and ambulance', 'police': 'Police',
+         'travel_helpline': 'Travel information and interpretation, by phone or chat', 'abroad': 'from abroad',
+         'interpreter': "No Korean? Once you are through, ask for 'English please' or 'Interpreter please' and an interpreter joins the call.",
+         'location': 'Say where you are: the name of a building nearby, or the location your phone shows (GPS).',
+         'kto_safety': 'emergency help for visitors', 'kto_1330': '1330 travel helpline',
+         'src': 'Source: {p} — {l}. This site gives no first-aid or medical advice.'},
+  'ja': {'h': '緊急連絡先', 'lead': '人が倒れた・けがをした、火事や犯罪にあったときは、すぐに電話してください。',
+         'fire_ambulance': '消防・救急車', 'police': '警察', 'travel_helpline': '観光案内・通訳（電話・チャット）', 'abroad': '海外から',
+         'interpreter': "韓国語が話せない場合は、電話がつながったら 'English please' または 'Interpreter please' と伝えると、通訳につないでもらえます。",
+         'location': 'いる場所は、近くの建物の名前やスマートフォンが示す位置（GPS）で伝えてください。',
+         'kto_safety': '外国人旅行者向けの安全情報', 'kto_1330': '1330 観光通訳案内',
+         'src': '出典：{p}（{l}、英語）。このサイトは応急処置や医療の案内はしていません。'},
+  'zh-Hans': {'h': '紧急联系电话', 'lead': '有人晕倒或受伤、发生火灾或遇到犯罪时，请立即拨打电话。',
+         'fire_ambulance': '消防·救护车', 'police': '警察', 'travel_helpline': '旅游咨询·翻译（电话·聊天）', 'abroad': '从海外拨打',
+         'interpreter': "不会说韩语时，电话接通后说 'English please' 或 'Interpreter please'，会为您转接翻译。",
+         'location': '请用附近建筑物的名称或手机显示的位置（GPS）告知您所在的地方。',
+         'kto_safety': '面向外国游客的安全信息', 'kto_1330': '1330 旅游翻译咨询',
+         'src': '来源：{p}（{l}，英文）。本站不提供急救或医疗建议。'},
+  'zh-Hant': {'h': '緊急聯絡電話', 'lead': '有人昏倒或受傷、發生火災或遇到犯罪時，請立即撥打電話。',
+         'fire_ambulance': '消防·救護車', 'police': '警察', 'travel_helpline': '旅遊諮詢·翻譯（電話·聊天）', 'abroad': '從海外撥打',
+         'interpreter': "不會說韓語時，電話接通後說 'English please' 或 'Interpreter please'，會為您轉接翻譯。",
+         'location': '請用附近建築物的名稱或手機顯示的位置（GPS）告知您所在的地方。',
+         'kto_safety': '給外國旅客的安全資訊', 'kto_1330': '1330 旅遊翻譯諮詢',
+         'src': '來源：{p}（{l}，英文）。本站不提供急救或醫療建議。'},
+  'de': {'h': 'Notrufnummern', 'lead': 'Bricht jemand zusammen oder ist verletzt, bei Feuer oder einer Straftat: sofort anrufen.',
+         'fire_ambulance': 'Feuerwehr und Rettungswagen', 'police': 'Polizei',
+         'travel_helpline': 'Reiseauskunft und Dolmetschen, per Telefon oder Chat', 'abroad': 'aus dem Ausland',
+         'interpreter': "Wenn Sie kein Koreanisch sprechen: Sagen Sie nach dem Verbinden 'English please' oder 'Interpreter please' – dann wird ein Dolmetscher zugeschaltet.",
+         'location': 'Sagen Sie, wo Sie sind: den Namen eines Gebäudes in der Nähe oder den Standort, den Ihr Handy anzeigt (GPS).',
+         'kto_safety': 'Sicherheitshinweise für ausländische Reisende', 'kto_1330': 'Reise-Hotline 1330',
+         'src': 'Quelle: {p} — {l} (Englisch). Diese Website gibt keine Ratschläge zu Erster Hilfe oder Medizin.'},
+  'fr': {'h': 'Numéros d’urgence', 'lead': 'Si quelqu’un s’effondre ou est blessé, en cas d’incendie ou de délit : appelez tout de suite.',
+         'fire_ambulance': 'Pompiers et ambulance', 'police': 'Police',
+         'travel_helpline': 'Informations touristiques et interprétariat, par téléphone ou chat', 'abroad': 'depuis l’étranger',
+         'interpreter': "Si vous ne parlez pas coréen, dites 'English please' ou 'Interpreter please' une fois en ligne : un interprète rejoint l’appel.",
+         'location': 'Indiquez où vous êtes : le nom d’un bâtiment proche, ou la position affichée par votre téléphone (GPS).',
+         'kto_safety': 'informations de sécurité pour les visiteurs étrangers', 'kto_1330': 'ligne d’assistance touristique 1330',
+         'src': 'Source : {p} — {l} (en anglais). Ce site ne donne aucun conseil de premiers secours ni médical.'},
+  'es': {'h': 'Números de emergencia', 'lead': 'Si alguien se desmaya o está herido, o hay un incendio o un delito, llame enseguida.',
+         'fire_ambulance': 'Bomberos y ambulancia', 'police': 'Policía',
+         'travel_helpline': 'Información turística e interpretación, por teléfono o chat', 'abroad': 'desde el extranjero',
+         'interpreter': "Si no habla coreano, diga 'English please' o 'Interpreter please' cuando le atiendan: le pasarán con un intérprete.",
+         'location': 'Indique dónde está: el nombre de un edificio cercano o la ubicación que muestra su teléfono (GPS).',
+         'kto_safety': 'información de seguridad para visitantes extranjeros', 'kto_1330': 'línea de ayuda turística 1330',
+         'src': 'Fuente: {p} — {l} (en inglés). Este sitio no da consejos de primeros auxilios ni médicos.'},
+  'ru': {'h': 'Экстренные номера', 'lead': 'Если человеку стало плохо или он ранен, при пожаре или преступлении — звоните сразу.',
+         'fire_ambulance': 'Пожарные и скорая помощь', 'police': 'Полиция',
+         'travel_helpline': 'Туристическая справка и перевод, по телефону или в чате', 'abroad': 'из-за рубежа',
+         'interpreter': "Если вы не говорите по-корейски, после соединения скажите 'English please' или 'Interpreter please' — вас соединят с переводчиком.",
+         'location': 'Сообщите, где вы: название ближайшего здания или место, которое показывает телефон (GPS).',
+         'kto_safety': 'сведения о безопасности для иностранных туристов', 'kto_1330': 'туристическая линия 1330',
+         'src': 'Источник: {p} — {l} (на английском). Этот сайт не даёт советов по первой помощи и медицине.'},
+} %}
+{% set S = SOS_ALL.get(loc.html) or SOS_ALL['en'] %}
+<section class="wrap chapter ch-rail" id="emergency" aria-labelledby="h-sos">
+  <h2 id="h-sos" class="rail-label">{{ S.h }}</h2>
+  <div class="rail-body prose">
+    <p>{{ S.lead }}</p>
+    <ul class="sos">
+      {% for x in em.lines %}<li><a class="sos-tel tn" href="tel:{{ x.tel }}" data-track="tel_click">{{ x.tel }}</a><span class="sos-what">{{ S[x.what] }}{% if x.abroad %} · {{ S.abroad }} <a href="tel:{{ x.abroad }}" data-track="tel_click">{{ x.abroad }}</a>{% endif %}</span></li>{% endfor %}
+    </ul>
+    {% for s in em.steps %}<p>{{ S[s.id] }}</p>{% endfor %}
+    {% set sos_links %}{% for k, s in em.sources.items() %}<a href="{{ s.url }}" rel="noopener"{% if loc.html != 'en' %} hreflang="en"{% endif %} data-track="official_click">{{ S[k] }}</a>{% if not loop.last %}, {% endif %}{% endfor %}{% endset %}
+    <p class="sos-src">{{ (S.src|e)|replace('{p}', t.kto_visitkorea)|replace('{l}', sos_links) }}</p>
+  </div>
+</section>
+{% endif %}
+
+{# the site assistant in the page's language (it was the English text on every version until 2026-10-24); the facts
+   are the server's: chatbot/server.js LIMITS.messages (the new question and the 12 before it), chatbot/prompt.js MODEL,
+   the launcher's label (_chat.html.j2) and the panel's 'new chat' word (assets/chat.js) #}
+{% set CHAT_ALL = {
+  'en': {'h': 'Site assistant', 'p': [
+    'The ‘AI chat’ button at the bottom right opens an assistant that answers only from this site\'s information: the values and sources on its place, guide, course and event pages, with a link to each page it uses. Where the site has no value it says so and points to the phone number or official website in the data.',
+    'Answers are written by Claude Haiku 5.5, an AI model by Anthropic. AI answers can be wrong: check the linked pages and the official sources before you go. It cannot book, pay or sign you up; it only links to official booking pages.',
+    'This site does not store conversations on its server. The conversation stays only in this browser tab and is cleared when you press ‘New chat’ or close the tab. Each time you ask, the new question, the conversation before it (the last 12 messages) and the address of the page you are on go through this site\'s server function to the Anthropic API, which writes the answer. The server log keeps only the outcome and usage numbers, never your questions or the answers. What happens to them at Anthropic follows Anthropic\'s policies, and this site cannot delete what has already been sent.',
+    'Please do not type personal details such as names or phone numbers: nothing masks them automatically. If you typed one by mistake, press ‘New chat’; otherwise it is sent again with the conversation the next time you ask.',
+  ]},
+  'ja': {'h': 'サイト案内チャットボット', 'p': [
+    '画面右下の「AIチャット」ボタンを押すと、このサイトに載っている情報だけで答える案内チャットボットが開きます。スポット・ガイド・コース・イベントのページにある値と出典をもとに答え、答えごとに使ったページへのリンクを付けます。サイトにない値は「記載がない」と伝えたうえで、データにある電話番号や公式ウェブサイトを案内します。',
+    '回答は、Anthropic社のAIモデル「Claude Haiku 5.5」が作成します。AIの回答は誤っていることがあるため、訪問前にリンク先のページと公式の案内で確認してください。予約・支払い・会員登録はできず、公式の予約ページへのリンクを示すだけです。',
+    'このサイトは会話をサーバーに保存しません。会話はいま見ているブラウザのタブにだけ一時的に残り、「新しい会話」を押すかタブを閉じると消えます。質問するたびに、新しい質問とその前の会話（直近12件のメッセージ）、見ているページのアドレスが、このサイトのサーバー機能を通じてAnthropic APIに送られ、そこで回答が作られます。サーバーの記録には処理結果と利用量の数値だけが残り、質問や回答の文章は残りません。Anthropic側での取り扱いはAnthropicのポリシーに従い、このサイトはすでに送信された内容を削除できません。',
+    '氏名や電話番号などの個人情報は入力しないでください。自動で伏せる機能はありません。誤って入力した場合は「新しい会話」を押してください。そのままにすると、次に質問するときに前の会話と一緒に再び送信されます。',
+  ]},
+  'zh-Hans': {'h': '网站导览助手', 'p': [
+    '点击页面右下角的“AI助手”按钮，会打开一个只根据本网站信息回答的导览助手。它以景点、指南、路线和活动页面上的数值及其来源为依据作答，并为每个回答附上所用页面的链接。网站上没有的数值，会说明没有，并提供资料中的电话号码或官方网站。',
+    '回答由Anthropic公司的AI模型Claude Haiku 5.5生成。AI的回答可能有误，出行前请通过链接的页面和官方信息确认。它不能预订、付款或注册会员，只提供官方预订页面的链接。',
+    '本网站不在服务器上保存对话。对话只临时保留在您正在使用的浏览器标签页中，点击“新对话”或关闭标签页后即被清除。每次提问时，新问题、此前的对话（最近12条消息）以及您所在页面的地址，会经由本网站的服务器函数发送到Anthropic API，并在那里生成回答。服务器日志只记录处理结果和用量数字，不记录问题和回答的文字。这些内容在Anthropic一方的处理与保存遵循Anthropic的政策，本网站无法删除已经发送的内容。',
+    '请不要输入姓名、电话号码等个人信息，本网站没有自动遮盖的功能。如果误输入了，请点击“新对话”；否则下次提问时，这些内容会与之前的对话一起再次发送。',
+  ]},
+  'zh-Hant': {'h': '網站導覽助手', 'p': [
+    '點選畫面右下角的「AI助手」按鈕，會開啟一個只根據本網站資訊回答的導覽助手。它以景點、指南、路線和活動頁面上的數值及其來源為依據作答，並為每個回答附上所用頁面的連結。網站上沒有的數值，會說明沒有，並提供資料中的電話號碼或官方網站。',
+    '回答由Anthropic公司的AI模型Claude Haiku 5.5產生。AI的回答可能有誤，出發前請透過連結的頁面和官方資訊確認。它無法預訂、付款或註冊會員，只提供官方預訂頁面的連結。',
+    '本網站不在伺服器上儲存對話。對話只暫時保留在您正在使用的瀏覽器分頁中，點選「新對話」或關閉分頁後即會清除。每次提問時，新問題、先前的對話（最近12則訊息）以及您所在頁面的網址，會經由本網站的伺服器函式傳送到Anthropic API，並在那裡產生回答。伺服器紀錄只保留處理結果和用量數字，不保留問題和回答的文字。這些內容在Anthropic一方的處理與保存依照Anthropic的政策，本網站無法刪除已經傳送的內容。',
+    '請不要輸入姓名、電話號碼等個人資料，本網站沒有自動遮蔽的功能。如果不小心輸入了，請點選「新對話」；否則下次提問時，這些內容會與先前的對話一起再次傳送。',
+  ]},
+  'de': {'h': 'Website-Assistent', 'p': [
+    'Die Schaltfläche „KI-Chat“ unten rechts öffnet einen Assistenten, der nur mit den Informationen dieser Website antwortet: den Werten und Quellen auf den Seiten zu Orten, Reiseführern, Routen und Veranstaltungen, mit einem Link zu jeder Seite, die er verwendet. Hat die Website keinen Wert, sagt er das und verweist auf die Telefonnummer oder die offizielle Website aus den Daten.',
+    'Die Antworten schreibt Claude Haiku 5.5, ein KI-Modell von Anthropic. KI-Antworten können falsch sein: Prüfen Sie vor dem Besuch die verlinkten Seiten und die offiziellen Quellen. Der Assistent kann nichts buchen, nichts bezahlen und Sie nirgends anmelden; er verlinkt nur auf offizielle Buchungsseiten.',
+    'Diese Website speichert keine Unterhaltungen auf ihrem Server. Die Unterhaltung bleibt nur in diesem Browser-Tab und wird gelöscht, wenn Sie auf „Neuer Chat“ klicken oder den Tab schließen. Bei jeder Frage gehen die neue Frage, die Unterhaltung davor (die letzten 12 Nachrichten) und die Adresse der Seite, auf der Sie sind, über die Serverfunktion dieser Website an die Anthropic-API, die die Antwort schreibt. Das Serverprotokoll speichert nur das Ergebnis und Nutzungszahlen, nie Ihre Fragen oder die Antworten. Was bei Anthropic damit geschieht, richtet sich nach den Richtlinien von Anthropic; bereits Gesendetes kann diese Website nicht löschen.',
+    'Bitte geben Sie keine persönlichen Daten wie Namen oder Telefonnummern ein: Nichts davon wird automatisch unkenntlich gemacht. Haben Sie versehentlich etwas eingegeben, klicken Sie auf „Neuer Chat“; sonst wird es bei Ihrer nächsten Frage mit der Unterhaltung erneut gesendet.',
+  ]},
+  'fr': {'h': 'Assistant du site', 'p': [
+    'Le bouton « Chat IA » en bas à droite ouvre un assistant qui répond uniquement à partir des informations de ce site : les valeurs et les sources de ses pages de lieux, de guides, de circuits et d’événements, avec un lien vers chaque page utilisée. Lorsque le site n’a pas de valeur, il le dit et indique le numéro de téléphone ou le site officiel figurant dans les données.',
+    'Les réponses sont rédigées par Claude Haiku 5.5, un modèle d’IA d’Anthropic. Les réponses d’une IA peuvent être erronées : vérifiez les pages liées et les sources officielles avant votre visite. L’assistant ne peut ni réserver, ni payer, ni vous inscrire ; il renvoie seulement vers les pages de réservation officielles.',
+    'Ce site n’enregistre pas les conversations sur son serveur. La conversation reste uniquement dans cet onglet du navigateur et est effacée lorsque vous appuyez sur « Nouvelle conversation » ou fermez l’onglet. À chaque question, la nouvelle question, la conversation qui précède (les 12 derniers messages) et l’adresse de la page où vous vous trouvez passent par la fonction serveur de ce site vers l’API d’Anthropic, qui rédige la réponse. Le journal du serveur ne conserve que le résultat et des chiffres d’utilisation, jamais vos questions ni les réponses. Leur traitement chez Anthropic suit les politiques d’Anthropic, et ce site ne peut pas supprimer ce qui a déjà été envoyé.',
+    'Merci de ne pas saisir de données personnelles comme des noms ou des numéros de téléphone : rien ne les masque automatiquement. Si vous en avez saisi par erreur, appuyez sur « Nouvelle conversation » ; sinon, elles seront renvoyées avec la conversation lors de votre prochaine question.',
+  ]},
+  'es': {'h': 'Asistente del sitio', 'p': [
+    'El botón «Chat IA» de la esquina inferior derecha abre un asistente que responde solo con la información de este sitio: los valores y las fuentes de sus páginas de lugares, guías, rutas y eventos, con un enlace a cada página que utiliza. Cuando el sitio no tiene un dato, lo dice e indica el número de teléfono o el sitio web oficial que figura en los datos.',
+    'Las respuestas las escribe Claude Haiku 5.5, un modelo de IA de Anthropic. Las respuestas de una IA pueden contener errores: compruebe las páginas enlazadas y las fuentes oficiales antes de su visita. No puede hacer reservas, pagos ni registros; solo enlaza a las páginas oficiales de reserva.',
+    'Este sitio no guarda las conversaciones en su servidor. La conversación se queda solo en esta pestaña del navegador y se borra al pulsar «Nueva conversación» o al cerrar la pestaña. Cada vez que pregunta, la nueva pregunta, la conversación anterior (los últimos 12 mensajes) y la dirección de la página en la que se encuentra pasan por la función de servidor de este sitio hasta la API de Anthropic, que redacta la respuesta. El registro del servidor solo guarda el resultado y cifras de uso, nunca sus preguntas ni las respuestas. Lo que ocurra con ellas en Anthropic se rige por las políticas de Anthropic, y este sitio no puede borrar lo que ya se ha enviado.',
+    'No escriba datos personales como nombres o números de teléfono: nada los oculta automáticamente. Si escribió alguno por error, pulse «Nueva conversación»; de lo contrario, se volverá a enviar con la conversación la próxima vez que pregunte.',
+  ]},
+  'ru': {'h': 'Помощник сайта', 'p': [
+    'Кнопка «ИИ-чат» в правом нижнем углу открывает помощника, который отвечает только на основе информации этого сайта: значений и источников на страницах мест, путеводителей, маршрутов и мероприятий, со ссылкой на каждую использованную страницу. Если на сайте значения нет, он так и говорит и указывает телефон или официальный сайт из данных.',
+    'Ответы пишет Claude Haiku 5.5 — модель ИИ компании Anthropic. Ответы ИИ могут быть ошибочными: перед поездкой проверьте страницы по ссылкам и официальные источники. Помощник не может бронировать, оплачивать или регистрировать вас; он только даёт ссылки на официальные страницы бронирования.',
+    'Этот сайт не хранит разговоры на своём сервере. Разговор остаётся только в этой вкладке браузера и удаляется, когда вы нажимаете «Новый чат» или закрываете вкладку. При каждом вопросе новый вопрос, предыдущий разговор (последние 12 сообщений) и адрес страницы, на которой вы находитесь, передаются через серверную функцию этого сайта в API Anthropic, где и составляется ответ. В журнале сервера сохраняются только результат обработки и показатели использования — ни ваши вопросы, ни ответы там не сохраняются. Дальнейшая обработка этих данных в Anthropic регулируется политикой Anthropic, и этот сайт не может удалить уже отправленное.',
+    'Пожалуйста, не вводите личные данные, например имена или номера телефонов: автоматически они не скрываются. Если вы ввели их по ошибке, нажмите «Новый чат»; иначе при следующем вопросе они будут отправлены снова вместе с разговором.',
+  ]},
+} %}
+{% set CH = CHAT_ALL.get(loc.html) or CHAT_ALL['en'] %}
+<section class="wrap chapter ch-rail" id="chatbot" aria-labelledby="h-chatbot">
+  <h2 id="h-chatbot" class="rail-label">{{ CH.h }}</h2>
+  <div class="rail-body prose">
+    {% for p in CH.p %}<p>{{ p }}</p>{% endfor %}
+  </div>
+</section>
+
+<section class="wrap chapter ch-rail" aria-labelledby="corrections">
+  {% set mail %}{% if site.operator.contact %}<a href="mailto:{{ site.operator.contact }}">{{ site.operator.contact }}</a>{% else %}{{ t.the_operator }}{% endif %}{% endset %}
+  {% set op %}{% if site.operator.name_en %}{{ site.operator.name_en }} (<span lang="ko">{{ site.operator.name }}</span>){% else %}<span lang="ko">{{ site.operator.name }}</span>{% endif %}{% endset %}
+  <h2 id="corrections" class="rail-label">{{ t.report_error }}</h2>
+  <div class="rail-body prose">
+    <p>{{ t.f('about_report', mail=mail) }}</p>
+    <p>{{ t.f('about_operator', op=op) }}</p>
+  </div>
+</section>
+
+{%- set op = site.operator %}
+{%- if op.business_no %}
+{#- the company that runs the site, as its official papers and its own site give it (operator 2026-10-17, the CEO's mail;
+    site.json operator.sources): names in Korean beside the English, addresses as the company's English site writes them -#}
+<section class="wrap chapter ch-rail" id="company" aria-labelledby="h-company">
+  <h2 id="h-company" class="rail-label">{{ t.co_heading }}</h2>
+  <div class="rail-body">
+    {%- set ed_role = (site.editor.role_en if loc.code == 'en' and site.editor else '') or t.editor_role %}
+    <dl class="src-dl co-dl">
+      <div><dt>{{ t.co_name }}</dt><dd>{% if op.name_en %}{{ op.name_en }} (<span lang="ko">{{ op.legal_name or op.name }}</span>){% else %}<span lang="ko">{{ op.legal_name or op.name }}</span>{% endif %}{% if loc.code == 'en' and op.about_en %}, {{ op.about_en }}{% endif %}</dd></div>
+      {% if op.ceo %}<div><dt>{{ t.co_ceo }}</dt><dd>{% if loc.code == 'en' and op.ceo_en %}{{ op.ceo_en }} (<span lang="ko">{{ op.ceo }}</span>){% else %}<span lang="ko">{{ op.ceo }}</span>{% if op.ceo_en %} ({{ op.ceo_en }}){% endif %}{% endif %}</dd></div>{% endif %}
+      <div><dt>{{ t.co_biz_no }}</dt><dd>{{ op.business_no }}</dd></div>
+      {% if op.corporate_no %}<div><dt>{{ t.co_corp_no }}</dt><dd>{{ op.corporate_no }}</dd></div>{% endif %}
+      {% if op.founded %}<div><dt>{{ t.co_founded }}</dt><dd>{{ loc.date_bare(op.founded) }}</dd></div>{% endif %}
+      {% if op.head_office_en %}<div><dt>{{ t.co_head_office }}</dt><dd>{{ op.head_office_en }}</dd></div>{% endif %}
+      {% if op.lab_en %}<div><dt>{{ t.co_lab }}</dt><dd>{{ op.lab_en }}</dd></div>{% endif %}
+      {% if op.tel or op.email %}<div><dt>{{ t.co_contact }}</dt><dd>{% if op.tel %}{{ t.co_tel }} <a href="tel:+82{{ op.tel|replace('-', '')|replace('0', '', 1) }}">{{ op.tel }}</a>{% endif %}{% if op.tel and op.email %} · {% endif %}{% if op.email %}<a href="mailto:{{ op.email }}">{{ op.email }}</a>{% endif %}</dd></div>{% endif %}
+      {% if site.editor and site.editor.name %}<div><dt>{{ ed_role }}</dt><dd><span lang="ko">{{ site.editor.name }}</span>{% if op.contact %} · <a href="mailto:{{ op.contact }}">{{ op.contact }}</a>{% endif %}</dd></div>{% endif %}
+      {% if op.url %}<div><dt>{{ t.co_site }}</dt><dd><a href="{{ op.url }}" rel="noopener">{{ op.url }}</a></dd></div>{% endif %}
+    </dl>
+    <p class="co-note">{{ t.co_note }}</p>
+  </div>
+</section>
+{%- endif %}
+
+<section class="wrap chapter ch-rail" aria-labelledby="h-official">
+  <h2 id="h-official" class="rail-label">{{ t.official_sites }}</h2>
+  <div class="rail-body">
+    <ul class="src-list">
+      {% set city_link %}<a href="{{ site.source.url }}" rel="noopener" data-track="official_click">{{ t.city_tourism }}</a>{% endset %}
+      <li>{{ t.f('in_korean_paren', name=city_link) }}</li>
+      <li><a href="https://api.visitkorea.or.kr/" rel="noopener" data-track="official_click">{{ t.kto_tourapi }}</a></li>
+    </ul>
+  </div>
+</section>
+{% endblock %}

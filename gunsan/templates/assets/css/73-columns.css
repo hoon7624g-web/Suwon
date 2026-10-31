@@ -1,0 +1,284 @@
+/* 73-columns.css — Editorial columns (/columns/, /columns/<slug>/, home showcase) */
+
+.col-cat-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.col-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(0, 102, 204, .09);
+  color: var(--accent, #0066cc);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+
+.col-meta-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  color: var(--ink-3, #6e6e73);
+}
+
+/* Lead feature card on /columns/ */
+.col-lead-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  padding: clamp(20px, 3vw, 32px);
+  border-radius: 24px;
+  background: var(--bg-2, #f5f5f7);
+  border: 1px solid var(--line, rgba(0, 0, 0, .08));
+}
+@media (min-width: 900px) {
+  .col-lead-card {
+    grid-template-columns: 1.15fr 1fr;
+    align-items: center;
+    gap: 36px;
+  }
+}
+.col-lead-media .fig {
+  margin: 0;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.col-lead-title {
+  margin: 0 0 12px;
+  font-size: clamp(22px, 2.6vw, 30px);
+  font-weight: 800;
+  line-height: 1.32;
+  letter-spacing: -.025em;
+  word-break: keep-all;
+}
+.col-lead-title a {
+  color: var(--ink, #1d1d1f);
+  text-decoration: none;
+}
+.col-lead-title a:hover {
+  color: var(--accent, #0066cc);
+}
+.col-lead-dek {
+  margin: 0 0 16px;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink-2, #424245);
+  word-break: keep-all;
+}
+.col-lead-quote {
+  margin: 0 0 16px;
+  padding: 12px 16px;
+  border-left: 3px solid var(--accent, #0066cc);
+  background: rgba(255, 255, 255, .75);
+  border-radius: 0 12px 12px 0;
+}
+.col-lead-quote p {
+  margin: 0;
+  font-size: 14.5px;
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--ink, #1d1d1f);
+  word-break: keep-all;
+}
+.col-lead-places {
+  margin: 0 0 20px;
+  font-size: 13.5px;
+  color: var(--ink-3, #6e6e73);
+}
+.col-lead-more {
+  margin: 0;
+}
+
+/* Column cards grid */
+.col-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+@media (min-width: 720px) {
+  .col-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+}
+.col-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid var(--line, rgba(0, 0, 0, .08));
+  overflow: hidden;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.col-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .06);
+}
+.col-card-media {
+  position: relative;
+  background: var(--bg-2, #f5f5f7);
+}
+.col-card-media a {
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+.col-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.col-card-media img.k3 {
+  object-fit: contain;
+  background: #111;
+}
+.col-card-credit {
+  margin: 0;
+  padding: 6px 14px;
+  font-size: 11.5px;
+  color: var(--ink-3, #6e6e73);
+  background: var(--bg-2, #f5f5f7);
+  border-bottom: 1px solid var(--line, rgba(0, 0, 0, .06));
+}
+.col-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px 22px 22px;
+}
+.col-card-title {
+  margin: 0 0 10px;
+  font-size: clamp(18px, 2vw, 21px);
+  font-weight: 700;
+  line-height: 1.38;
+  letter-spacing: -.02em;
+  word-break: keep-all;
+}
+.col-card-title a {
+  color: var(--ink, #1d1d1f);
+  text-decoration: none;
+}
+.col-card-title a:hover {
+  color: var(--accent, #0066cc);
+}
+.col-card-dek {
+  margin: 0 0 14px;
+  font-size: 14.5px;
+  line-height: 1.62;
+  color: var(--ink-2, #424245);
+  word-break: keep-all;
+}
+.col-card-pull {
+  margin: 0 0 16px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line, rgba(0, 0, 0, .1));
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 1.58;
+  color: var(--ink-2, #424245);
+  word-break: keep-all;
+}
+.col-card-foot {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--line, rgba(0, 0, 0, .06));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 6px 12px;
+  font-size: 12.5px;
+  color: var(--ink-3, #6e6e73);
+}
+.col-card-places {
+  font-weight: 400;
+  color: var(--ink-2, #424245);
+}
+
+/* Column leaf page (/columns/<slug>/) */
+.col-hero .col-dek {
+  margin: 14px 0 0;
+  max-width: 58ch;
+  font-size: clamp(17px, 2vw, 21px);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--ink-2, #424245);
+  word-break: keep-all;
+}
+.col-hero-media {
+  max-width: 920px;
+}
+.col-hero-media .fig {
+  margin: 0;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.col-hero-caption {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: var(--ink-3, #6e6e73);
+}
+.col-pullquote {
+  margin: 0 0 36px;
+  padding: 22px 26px;
+  border-left: 4px solid var(--accent, #0066cc);
+  background: var(--bg-2, #f5f5f7);
+  border-radius: 0 18px 18px 0;
+}
+.col-pullquote p {
+  margin: 0;
+  font-size: clamp(17px, 2vw, 21px);
+  font-weight: 700;
+  line-height: 1.58;
+  letter-spacing: -.015em;
+  color: var(--ink, #1d1d1f);
+  word-break: keep-all;
+}
+.col-prose {
+  max-width: 65ch;
+}
+.col-p {
+  margin: 0 0 18px;
+  font-size: 17px;
+  line-height: 1.86;
+  letter-spacing: -.01em;
+  color: var(--ink, #1d1d1f);
+  word-break: keep-all;
+}
+.col-p:last-child {
+  margin-bottom: 0;
+}
+.col-fquote {
+  margin: 20px 0 4px;
+  padding: 16px 20px;
+  border-radius: 14px;
+  background: var(--bg-2, #f5f5f7);
+  border: 1px solid var(--line, rgba(0, 0, 0, .08));
+}
+.col-fquote p {
+  margin: 0 0 8px;
+  font-size: 15.5px;
+  font-style: italic;
+  line-height: 1.65;
+  color: var(--ink, #1d1d1f);
+}
+.col-fquote footer {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-3, #6e6e73);
+}
+
+/* Japanese and Chinese break between characters — keep-all is for Korean spacing, and a Japanese title under it
+   runs as one line past a phone's width (/ja/columns/ 2026-10-25, as 71-nearby.css does for the place names) */
+:lang(ja) :is(.col-card-dek, .col-card-pull, .col-card-title, .col-hero .col-dek, .col-lead-dek, .col-lead-quote p,
+  .col-lead-title, .col-p, .col-pullquote p) { word-break: normal; word-break: auto-phrase; }
+:lang(zh) :is(.col-card-dek, .col-card-pull, .col-card-title, .col-hero .col-dek, .col-lead-dek, .col-lead-quote p,
+  .col-lead-title, .col-p, .col-pullquote p) { word-break: normal; }

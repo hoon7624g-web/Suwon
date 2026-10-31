@@ -1,0 +1,237 @@
+/* 80-side — the tab panel (operator 2026-10-31 '적용하자': the approved layout after travel.webforai.kr;
+   templates/_side.html.j2, base.html.j2, en/_chrome.html.j2). The tone stays (00-tokens: white, hairline borders, sea
+   blue, Pretendard 400/700, radii 12 · 18 · 24 · 28).
+
+   From 1200px — the PC layout: the header is a white rounded board at the left (288px, 16px from the window's edges),
+   fixed while the page scrolls and scrolling inside itself when taller than the window (data-lenis-prevent: Lenis
+   leaves it its own wheel). In it, in reading and Tab order: the wordmark with its line, the language menu (a full-
+   width button; its list drops over the board), the site search (always shown, works without JS), the day card
+   (군산 날씨 · 해 뜨고 지는 시각 · 다음 행사), the two actions and the tab groups (nav.side-nav: <details> that open
+   without JS, the page's group open, its link aria-current). The bar's own buttons (AI 코스, 검색, 메뉴) step back: the
+   board has each of them. The page is a column right of the board (body padding; --cw its width, so the carousels' and
+   the story stage's 100vw sums use the column); the bars the old layout had at the top are gone (--bar 0), except a
+   page's local bar (place, course, event, guide: 52px, sticky in the column). The home's opening becomes a rounded
+   board in the column (the mock-up Main).
+   Why 1200px: at 1200 the column is 880px — about the 930px the desktop page layouts (from 1024px) were drawn for;
+   below it the board would squeeze them. From 1024 to 1199px the bar stays (60px) with the search field in it, its
+   nav row replaced by the menu, which opens the same groups as on phones.
+   Below 1200px: the bar as before (52px phones · 60px from 1024px; the fixed area ≤ 15% of the screen) and the menu
+   (details.menu, without JS too): the two actions, the groups (each a <details>; their links in two columns of 56px
+   cells), the day card without the weather module, then 검색 and the other versions.
+   Contrast (00-tokens head): ink on white 16.27; ink-2 9.36; ink-3 on white 5.62 / g0 5.22 / tint 4.98; sea-deep on
+   tint 7.13; white on ink 16.27. Targets ≥ 44px (the groups' rows 44–52px); the shared focus ring. */
+:root { --side-w: 288px; --side-in: 16px; --side-x: calc(var(--side-w) + 2 * var(--side-in)); }
+
+/* ---------------------------------------------------------------- the parts, any width */
+.wm-tag, .side { display: none; }
+.sd-acts { display: flex; gap: 8px; margin: 0; }
+.sd-act { flex: 1 1 0; display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; padding: 0 14px; border: 1px solid var(--hair); border-radius: 999px; background: #fff; color: var(--sea-deep); font: 700 14.5px/1.2 var(--font); letter-spacing: -.02em; text-align: center; text-decoration: none; white-space: nowrap; transition: background-color .2s var(--fb); }
+.sd-act .icon { flex: none; width: 16px; height: 16px; stroke-width: 2; }
+.sd-act:hover { background: var(--tint); color: var(--sea-deep); text-decoration: none; }
+.sd-act.is-pri { border-color: var(--ink); background: var(--ink); color: #fff; }
+.sd-act.is-pri:hover { border-color: #000; background: #000; color: #fff; }
+.sd-act:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+/* the groups: a summary row per group (a single tab is a link row with an arrow), the links under it */
+.sg-list { margin: 0; padding: 0; list-style: none; }
+.sg { border-bottom: 1px solid var(--bg-3); }
+.sg-s { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 52px; padding: 0 8px; border-radius: 10px; color: var(--ink); font: 700 18px/1.25 var(--font); letter-spacing: -.025em; text-decoration: none; cursor: pointer; list-style: none; transition: background-color .2s var(--fb); }
+.sg-s::-webkit-details-marker { display: none; }
+.sg-s::marker { content: ""; }
+.sg-s:hover { background: var(--bg-2); color: var(--ink); text-decoration: none; }
+/* the chevrons are drawn here (two borders of a small square), not as inline icons in every row of every page */
+.sg-i { flex: none; width: 8px; height: 8px; margin: -5px 6px 0 0; border: solid var(--ink-3); border-width: 0 2px 2px 0; transform: rotate(45deg); transition: transform .2s var(--fb); }
+.sg-d[open] > .sg-s .sg-i { margin-top: 4px; transform: rotate(-135deg); }
+.sg-i-r { margin: 0 8px 0 0; transform: rotate(-45deg); }
+.sg-1[aria-current] { color: var(--sea-deep); background: var(--tint); }
+.sg-l { margin: 0; padding: 0 0 10px; list-style: none; }
+.sg-a { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 44px; padding: 0 10px 0 12px; border-radius: 10px; color: var(--ink-2); font: 400 15.5px/1.3 var(--font); letter-spacing: -.015em; text-decoration: none; transition: background-color .2s var(--fb), color .2s var(--fb); }
+.sg-n { display: inline-flex; align-items: center; gap: 10px; min-width: 0; }
+.sg-a:hover { background: var(--bg-2); color: var(--ink); text-decoration: none; }
+.sg-c { flex: none; font-size: 13px; color: var(--ink-3); }
+.sg-a[aria-current] { background: var(--tint); color: var(--sea-deep); font-weight: 700; }
+.sg-a[aria-current] .sg-c { color: var(--sea-deep); }
+@media (prefers-reduced-motion: reduce) { .sg-i, .sg-s, .sg-a, .sd-act { transition: none; } }
+
+/* the day card: the weather module, the sunrise · sunset row, the next event */
+.sd-day { display: flex; flex-direction: column; border: 1px solid var(--hair); border-radius: 18px; background: var(--g0); overflow: hidden; }
+.sd-sun, .sd-ev { position: relative; display: flex; flex-wrap: wrap; align-items: center; gap: 2px 12px; min-height: 44px; padding: 10px 40px 10px 14px; color: var(--ink); text-decoration: none; transition: background-color .2s var(--fb); }
+.sd-day > * + * { border-top: 1px solid var(--hair); }
+.sd-sun:hover, .sd-ev:hover { background: var(--tint); color: var(--ink); text-decoration: none; }
+.sd-sun:focus-visible, .sd-ev:focus-visible { outline-offset: -3px; }
+.sd-k { font: 700 12.5px/1.35 var(--font); color: var(--sea-deep); letter-spacing: -.01em; }
+.sd-sun .sd-k { flex-basis: 100%; }
+.sd-sv { font: 400 13.5px/1.3 var(--font); color: var(--ink-2); white-space: nowrap; }
+.sd-sv b { margin-left: 2px; font: 700 16px/1.2 var(--font); color: var(--ink); letter-spacing: -.01em; }
+.sd-ev { flex-direction: column; align-items: flex-start; gap: 3px; }
+.sd-ev-t { font: 700 14.5px/1.4 var(--font); letter-spacing: -.02em; word-break: keep-all; overflow-wrap: anywhere; }
+.sd-go { position: absolute; right: 16px; top: 50%; width: 8px; height: 8px; margin-top: -4px; border: solid var(--ink-3); border-width: 0 2px 2px 0; transform: rotate(-45deg); }
+
+/* ---------------------------------------------------------------- 날씨각's weather module (_side.html.j2 weather,
+   assets/weather.js; operator 2026-10-31). Built: the title and the link to weather.o2o.kr. With JS the module keeps
+   the room of its filled state from the first paint, so nothing moves when the answer comes after load (or when it
+   does not: the link stays, in the same room). Contrast: ink on g0 15+; ink-2 on g0 8+; ink-3 on g0 5.22; sea-deep
+   7+. Icons: currentColor (the sun 4.6:1 amber, the rest ink-3 / sea-deep). */
+.wx { position: relative; display: flex; flex-direction: column; gap: 8px; padding: 12px 14px; color: var(--ink); }
+.wx-h { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin: 0; }
+.wx-t { font: 700 13.5px/1.3 var(--font); color: var(--sea-deep); letter-spacing: -.01em; }
+.wx-iss { font: 400 12px/1.3 var(--font); color: var(--ink-3); white-space: nowrap; }
+.wx-b { display: flex; flex-direction: column; gap: 6px; }
+.wx-b:empty { display: none; }
+.wx-now { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 8px; margin: 0; }
+.wx-ic { display: inline-flex; }
+.wx-svg { display: block; width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; color: var(--ink-3); }
+.wx-now .wx-svg { width: 30px; height: 30px; }
+.wx-k-sun, .wx-k-sunset { color: #B35C00; }   /* 4.6:1 on g0 */
+.wx-k-moon, .wx-k-rain, .wx-k-snow { color: var(--sea-deep); }
+.wx-tmp { font: 700 26px/1 var(--font); letter-spacing: -.03em; }
+.wx-sky { font: 700 14px/1.3 var(--font); color: var(--ink-2); }
+.wx-rp { font: 400 13px/1.3 var(--font); color: var(--ink-2); }
+.wx-hl { margin: 0; font: 400 13px/1.45 var(--font); color: var(--ink-2); word-break: keep-all; }
+.wx-strip { display: grid; grid-auto-flow: column; grid-auto-columns: 51px; gap: 4px; margin: 2px 0 0; padding: 0; list-style: none; }
+.wx-strip li { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 4px 0; border-radius: 10px; background: #fff; font: 400 12px/1.2 var(--font); color: var(--ink-3); }
+.wx-strip .wx-svg { width: 18px; height: 18px; }
+.wx-strip b { font: 700 13px/1.2 var(--font); color: var(--ink); }
+.wx-go { display: inline-flex; align-items: center; gap: 4px; align-self: flex-start; min-height: 24px; font: 700 12.5px/1.3 var(--font); color: var(--sea-deep); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; }
+.wx-go:hover { color: var(--ink); }
+.wx-x { width: 13px; height: 13px; stroke-width: 2; }
+.wx.is-ready .wx-go { font-weight: 400; color: var(--ink-3); }
+/* the kept room (with JS): the filled module's height; built or failed, the link sits in it */
+html.js .wx-side { height: 132px; }
+html.js .wx-side.wx-intl { height: 110px; }   /* no headline in the other versions */
+html.js .wx-home { min-height: 226px; }
+html.js .wx-home.wx-intl { min-height: 200px; }
+/* the link sits at the module's foot whatever fills it: absolutely placed, one 20px line — the answer coming in (or a font
+   arriving) never moves it */
+html.js .wx { padding-bottom: 42px; }
+html.js .wx-go { position: absolute; left: 14px; bottom: 10px; height: 24px; min-height: 0; margin: 0; line-height: 24px; white-space: nowrap; }
+html.js .wx-home .wx-go { left: 18px; }
+@media (max-width: 1023px) {   /* a 44px target below 1024px */
+  .wx-go { min-height: 44px; }
+  html.js .wx-home { padding-bottom: 56px; }
+  html.js .wx-home .wx-go { bottom: 6px; height: 44px; line-height: 44px; }
+}
+/* while the answer is on its way: two quiet bars in the room (no motion); gone when it comes or does not */
+html.js .wx:not(.is-ready):not(.is-failed) .wx-b:empty { display: flex; gap: 6px; }
+html.js .wx:not(.is-ready):not(.is-failed) .wx-b:empty::before, html.js .wx:not(.is-ready):not(.is-failed) .wx-b:empty::after {
+  content: ""; display: block; height: 14px; border-radius: 7px; background: var(--g1); }
+html.js .wx:not(.is-ready):not(.is-failed) .wx-b:empty::before { width: 56%; height: 26px; border-radius: 10px; }
+html.js .wx:not(.is-ready):not(.is-failed) .wx-b:empty::after { width: 78%; }
+@media (prefers-reduced-motion: no-preference) {
+  .wx.is-ready .wx-b { animation: wx-in .45s var(--ease-out) both; }
+}
+@keyframes wx-in { from { opacity: 0; transform: translateY(4px); } }
+/* the homes' module, under the first screen (one place, phones too): a card in the page's own style */
+.hwx { margin-top: 8px; margin-bottom: 8px; }
+.wx-home { border: 1px solid var(--hair); border-radius: 24px; background: var(--g0); padding: 16px 18px; }
+.wx-home .wx-t { font-size: 15px; }
+@media (min-width: 700px) {
+  html.js .wx-home { min-height: 160px; }
+  html.js .wx-home.wx-intl { min-height: 150px; }
+  .wx-home.is-ready { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto auto 1fr; column-gap: 28px; }
+  .wx-home.is-ready .wx-h { grid-column: 1; }
+  .wx-home.is-ready .wx-b { display: contents; }
+  .wx-home.is-ready .wx-now { grid-column: 1; grid-row: 2; }
+  .wx-home.is-ready .wx-hl { grid-column: 1; grid-row: 3; }
+  .wx-home.is-ready .wx-strip { grid-column: 2; grid-row: 1 / 4; align-self: center; margin: 0; }
+  .wx-home .wx-strip { grid-auto-columns: 64px; }
+  .wx-home .wx-strip li { padding: 8px 0; }
+}
+@media (min-width: 1024px) {   /* the link a 24px line again: a little less room */
+  html.js .wx-home { min-height: 156px; }
+  html.js .wx-home.wx-intl { min-height: 140px; }
+}
+
+/* ---------------------------------------------------------------- the menu (below 1200px): the same groups */
+.menu-panel .sd-acts { margin: 4px 0 10px; }
+.menu-panel .sd-act { min-height: 46px; font-size: 15px; }
+.sg-menu .sg-s { min-height: 54px; padding: 0 6px; font-size: 19px; }
+.sg-menu .sg-l { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; padding: 2px 0 12px; }
+.sg-menu .sg-l li { display: flex; }
+.menu-panel .sg-menu .sg-a { flex: 1 1 auto; flex-direction: column; align-items: flex-start; justify-content: center; gap: 2px; min-height: 56px; padding: 6px 12px; border-radius: 12px; background: var(--bg-2); color: var(--ink); font: 700 15.5px/1.3 var(--font); letter-spacing: -.02em; }
+.menu-panel .sg-menu .sg-a:hover { background: var(--tint); }
+.menu-panel .sg-menu .sg-a[aria-current] { background: var(--tint); color: var(--sea-deep); }
+.sg-menu .sg-c { font: 400 12.5px/1.2 var(--font); }
+.menu-panel .sg-menu .sg-1 { font: 700 19px/1.25 var(--font); min-height: 54px; }
+.menu-panel .sd-day { margin-top: 16px; }
+.menu-panel .sd-k { font-size: 13px; }
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .menu { display: block; }
+  html.menu-open .qm { display: none; }   /* the quick menu (46-quick) would sit over the open menu's right side */
+  .menu-panel { padding-left: max(var(--m), calc((100vw - 760px) / 2)); padding-right: max(var(--m), calc((100vw - 760px) / 2)); }
+}
+
+/* ---------------------------------------------------------------- from 1200px: the panel and the column */
+@media (min-width: 1200px) {
+  :root { --bar: 0px; --mh: 0px; --mh-s: 0px; --cw: calc(100vw - var(--side-x)); --m: clamp(24px, calc(var(--cw) * .046), 64px); }
+  :root:has(body.has-lnav) { --bar: 52px; --mh: 52px; --mh-s: 52px; }
+  body { padding-left: var(--side-x); }
+  .mast, .has-lnav .mast { position: fixed; z-index: 50; top: var(--side-in); bottom: var(--side-in); left: var(--side-in); width: var(--side-w); height: auto;
+    display: flex; flex-direction: column; gap: 14px; padding: 22px 18px 18px; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: var(--hair) transparent;
+    background: #fff; border: 1px solid var(--hair); border-radius: var(--r-l); box-shadow: var(--shadow-1); }
+  .mast::before { display: none; }
+  .mast-in { display: flex; flex-direction: column; align-items: stretch; gap: 12px; height: auto; max-width: none; margin: 0; padding: 0; }
+  /* the wordmark: the symbol at the left of the name, the brand (when it differs) and the line under the name */
+  .wordmark { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; column-gap: 10px; row-gap: 3px; align-self: stretch; min-height: 44px; margin: 0 0 4px; padding: 0 2px; }
+  .wordmark > * { grid-column: 2; }
+  .wordmark:not(:has(> .wm-sym)) { grid-template-columns: minmax(0, 1fr); }
+  .wordmark:not(:has(> .wm-sym)) > * { grid-column: 1; }
+  .wordmark .wm-sym { grid-column: 1; grid-row: 1 / span 3; margin: 0; }
+  .wordmark .wm-sym svg { height: 40px; }
+  .wordmark .wm-a { font-size: 25px; line-height: 1.1; white-space: normal; overflow: visible; padding: 0; margin: 0; }
+  .wordmark .wm-b { display: block; white-space: normal; overflow: visible; padding: 0; margin: 0; }
+  .wm-tag { display: block; font: 400 12px/1.35 var(--font); color: var(--ink-3); letter-spacing: 0; }
+  .mast-plan, .mast-v, .mast-ctx, .mast-search, .menu { display: none !important; }
+  /* the language menu: a full-width button; its list drops over the board */
+  .mast .lang-menu { margin: 0; }
+  .mast .lang-btn { justify-content: flex-start; width: 100%; height: 44px; padding: 0 14px; border: 1px solid var(--hair); border-radius: 12px; color: var(--ink); font-size: 14.5px; }
+  .mast .lang-btn::after { content: ""; width: 8px; height: 8px; margin: -4px 4px 0 auto; border: solid var(--ink-3); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+  .mast .lang-menu[open] .lang-btn { border-color: var(--sea); }
+  .mast .lang-cur { position: static; width: auto; height: auto; overflow: visible; clip: auto; }
+  .mast .lang-list { left: 0; right: 0; min-width: 0; }
+  /* the site search, always there */
+  .mast .hs { display: flex; flex: none; min-width: 0; margin: 0; }
+  .mast .hs-f { height: 48px; border-radius: 14px; }
+  .side { display: flex; flex-direction: column; gap: 14px; }
+  .side-nav { margin-top: 2px; }
+  .sg:last-child { border-bottom: 0; }
+  /* the page: its local bar sticks at the column's top; the home's opening is a rounded board in the column */
+  .pg-h4 .ho { margin: var(--side-in) var(--side-in) 0 0; border-radius: var(--r-xl); }
+  /* its H1 sized on the column, not the window (it was 4.2vw of a full-width page): the same share of the opening */
+  .pg-h4 .hk-h1 { font-size: clamp(40px, calc(var(--cw) * .044), 58px); }
+  /* the pages' big type, too: a share of the column as it was of the full-width page (4–4.6vw) */
+  .d1, .h-list { font-size: clamp(34px, calc(var(--cw) * .046), 64px); }
+  .band-s .h-list { font-size: clamp(32px, calc(var(--cw) * .036), 52px); }
+  .d1-q { font-size: clamp(30px, calc(var(--cw) * .036), 52px); }
+  .h2 { font-size: clamp(32px, calc(var(--cw) * .04), 56px); }
+}
+/* 1200–1439px: the column (880–1120px, less the quick menu's gutter) is narrower than the desktop home was drawn for —
+   the assistant card takes the stacked head of 700–1023px and its icon menu two rows of six */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .hk-ask { display: flex; flex-direction: column; align-items: stretch; }
+  .hk-head { grid-template-columns: 56px minmax(0, 1fr); align-items: center; align-self: stretch; margin: 0 0 14px; }
+  .hk-mascot img { align-self: center; width: 56px; height: 56px; }
+  .hk-note { margin-top: 0; }
+  .hq-row { grid-auto-flow: row; grid-template-columns: repeat(6, minmax(0, 1fr)); row-gap: 4px; }
+  /* the lists' head and filters (their ledger beside the map has 500–680px): the 권역 tiles step back as below 1024px
+     (each 권역 is a heading of the list), the chips take the whole row with the count and 필터 under them — the first
+     results stay on the first screen */
+  .list-head .band-data { display: none; }
+  .f-top { flex-wrap: wrap; }
+  .f-top .f-row { flex: 1 1 100%; }
+}
+/* the planner (/plan/, assets/plan.css): its plan and its map side by side need the 1100px content it had from 1280px
+   before the panel; until the column gives it (1600px), one under the other — a stop's buttons stay one line */
+@media (min-width: 1200px) and (max-width: 1599px) {
+  .trp .trp-grid { grid-template-columns: minmax(0, 1fr); }   /* .trp: past plan.css, which comes after this sheet */
+  .trp .trp-side { position: static; }
+}
+@media (min-width: 1200px) and (max-height: 760px) {
+  .mast, .has-lnav .mast { gap: 12px; padding-top: 16px; }
+  .sg-s { min-height: 46px; }
+}
+@media print {
+  body { padding-left: 0 !important; }
+  .side, .menu { display: none !important; }
+  .mast, .has-lnav .mast { position: static !important; width: auto !important; border: 0 !important; box-shadow: none !important; }
+}

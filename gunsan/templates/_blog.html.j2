@@ -1,0 +1,24 @@
+{#- 군산각 블로그 (operator 2026-10-30, pipeline/build.load_blog): a post is its title — a link to the blog — with its
+    category and date. Nothing of its text or photos is shown here (the photos' sources are not known), and its prices
+    and hours are never facts of this site.
+      rows(posts, place)        the block of a place, guide, column or course page (build.blog_for_place / blog_for_page)
+      section(posts, blog, h)   that block as its own chapter (guide, column and course pages)
+      card(r)                   a /blog/ card: a licensed photo (TourAPI KOGL 1/3, build.blog_groups; KOGL-3 whole, never
+                                cropped; its credit is the page's one line, operator 2026-10-30), the title (a link to the
+                                blog), the date and the places (this site's pages) -#}
+{% import "_ui.html.j2" as ui %}
+{% macro rows(posts, place='') -%}
+<ul class="xlinks bl-x">{% for b in posts %}<li><a href="{{ b.url }}" rel="noopener" data-track="blog_click"{% if place %} data-place="{{ place }}"{% endif %}>{{ b.title }}</a><span class="same-t">{% if b.cat %}{{ b.cat }} · {% endif %}<time datetime="{{ b.date }}" class="tn">{{ b.date|short_iso }}</time></span></li>{% endfor %}</ul>
+{%- endmacro %}
+
+{% macro section(posts, blog, heading) -%}
+<section class="wrap chapter ch-rail cv" aria-labelledby="h-blog" data-block="blog">
+  <h2 id="h-blog" class="rail-label">{{ heading }}</h2>
+  <div class="rail-body">{{ rows(posts) }}<p class="note"><a href="/blog/">{{ blog.name }} 글 모아 보기</a></p></div>
+</section>
+{%- endmacro %}
+
+{% macro card(r) -%}
+<li class="bl-card{{ ' no-ph' if not r.photo }}">{% if r.photo %}<div class="bl-media t{{ r.photo.type }}"><a href="{{ r.p.url }}" rel="noopener" tabindex="-1" aria-hidden="true" data-track="blog_click">{{ ui.img(r.photo, '(min-width: 1100px) 380px, (min-width: 720px) 46vw, 124px', false, 'bl-img') }}</a></div>{% endif %}
+<div class="bl-body"><h3 class="bl-t"><a href="{{ r.p.url }}" rel="noopener" data-track="blog_click">{{ r.p.title }}<span class="arr" aria-hidden="true">↗</span></a></h3><p class="bl-m"><time datetime="{{ r.p.date }}" class="tn">{{ r.p.date|short_iso }}</time>{% if r.places %}<span class="bl-pl"><span aria-hidden="true"> · </span>나온 장소 {% for x in r.places %}<a href="{{ x._path }}">{{ x.name }}</a>{% if not loop.last %}<span aria-hidden="true"> · </span>{% endif %}{% endfor %}</span>{% endif %}</p></div></li>
+{%- endmacro %}
