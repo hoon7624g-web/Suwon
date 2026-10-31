@@ -19,6 +19,7 @@ from pathlib import Path
 import pytest
 
 from pipeline.build import build
+from conftest import route_weather
 
 sync_api = pytest.importorskip("playwright.sync_api")
 
@@ -128,6 +129,7 @@ def open_page(browser, width, height, responses):
         status, body, ctype = responses[min(len(calls), len(responses)) - 1]
         route.fulfill(status=status, body=body, headers={"content-type": ctype})
     page.route("**/api/chat/", handle)
+    route_weather(page)   # the tab panel's weather module (tests/conftest.py)
     return ctx, page, errors, calls
 
 
@@ -192,10 +194,10 @@ def test_phone_sheet_and_error_states(browser, site):
     fab = page.locator(".chat-fab")
     assert fab.is_visible()                                   # there from the first paint, on the home too
     box = fab.bounding_box()
-    assert box["height"] == 68 and box["width"] == 68 and box["y"] + box["height"] <= 844 - 16   # a round face (the first site's owner 2026-10-14: bigger)
+    assert box["height"] == 76 and box["width"] == 76 and box["y"] + box["height"] <= 844 - 16   # a round face (the first site's owner 2026-10-14: bigger; 10-31: 76px)
     page.mouse.wheel(0, 700)
     page.wait_for_timeout(500)
-    assert fab.is_visible() and fab.bounding_box()["height"] == 68                               # the same face while scrolling
+    assert fab.is_visible() and fab.bounding_box()["height"] == 76                               # the same face while scrolling
     assert fab.get_attribute("aria-label").startswith("AI 챗봇")                                   # the name stays
     fab.click()
     panel = page.locator("#chat")

@@ -6,7 +6,18 @@
     data-geo, kept by site.js). Laid out from the first paint with JS, absent without it (the hidden attribute).
     area: the Korean page's group word (cityv.region_label: '권역' or '구·군'), which names the region row and its
     '모든 …' chip instead of the locale's generic word; the other versions keep F.w. F.dishes: the food list's 메뉴
-    row (present.dish_chips; ?dish=…), shown under the top row so a reader narrows by dish in one tap. -#}
+    row (present.dish_chips; ?dish=…), shown under the top row so a reader narrows by dish in one tap.
+    조건으로 찾기 (pipeline/conditions.py, operator 2026-10-31, design ③): where the list has condition chips (F.conds:
+    {id, label, n}) they are a row under the type chips and the tools, in the check box's place; they combine (AND), each one's
+    count is faceted like the others', ?c=mon,park keeps them (an old ?check=1 is F.legacy), '조건 지우기' at the row's
+    end while one is on. The count line keeps its place in the tools (.c-meter): its words stay for a screen reader (the
+    live region), the eye reads the count whose digits roll into place, over the ratio bar (aria-hidden; site.js). One
+    row more than before, packed tight (a phone's chips are one row it swipes, like the type chips; css/70-p3-conds.css):
+    the first results keep their place on the first screen (test_present: 650px desktop, 500px phone). -#}
+{% macro result(F) -%}
+<p class="f-result" aria-live="polite"><span data-result data-forms="{{ F.forms|tojson_attr }}" data-of="{{ F.w.of }}">{{ F.result }}</span>{% if F.conds %}{% set cn = F.cw['count'].split('{n}') %}<span class="c-count" aria-hidden="true">{{ cn[0] }}<b class="c-n" data-c-n>{{ F.count }}</b>{{ cn[1] }} <span class="c-of">{{ F.cw['of']|replace('{m}', F.count|string) }}</span></span>{% endif %}</p>
+{%- endmacro %}
+
 {% macro bar(F, area='') -%}
 <div class="filters" data-filters hidden>
   <div class="f-top">
@@ -17,7 +28,7 @@
     </div>
     {% endif %}
     <div class="f-tools">
-      <p class="f-result" aria-live="polite"><span data-result data-forms="{{ F.forms|tojson_attr }}" data-of="{{ F.w.of }}">{{ F.result }}</span></p>
+      {% if F.conds %}<div class="c-meter">{{ result(F) }}<span class="c-bar" aria-hidden="true"><i data-c-bar></i></span></div>{% else %}{{ result(F) }}{% endif %}
       <button type="button" class="f-more" aria-expanded="false" aria-controls="f-panel" data-f-more>{{ F.w.filters }}<span class="f-badge tn" data-f-badge hidden></span></button>
       {% if F.n_geo %}<div class="seg" role="group" aria-label="{{ F.w.view }}"><button type="button" data-view="list" aria-pressed="true">{{ F.w.list }}</button><button type="button" data-view="map" aria-pressed="false">{{ F.w.map }} <span class="tn">{{ F.n_geo }}</span></button></div>{% endif %}
     </div>
@@ -28,6 +39,11 @@
       <button type="button" data-f="dish" data-v="" aria-pressed="true">{{ F.w.all_dishes }}</button>
       {% for v, lab, n in F.dishes %}<button type="button" data-f="dish" data-v="{{ v }}" aria-pressed="false">{{ lab }} <span class="tn">{{ n }}</span></button>{% endfor %}
     </div>
+  </div>
+  {% endif %}
+  {% if F.conds %}
+  <div class="f-conds" data-conds{% if F.legacy %} data-legacy="{{ F.legacy }}"{% endif %}>
+    <div class="f-row c-row" role="group" aria-label="{{ F.cw['group'] }}"><span class="c-lab" aria-hidden="true">{{ F.cw['group'] }}</span>{% for c in F.conds %}<button type="button" data-cond="{{ c.id }}" aria-pressed="false"><span class="c-ck" aria-hidden="true"></span>{{ c.label }} <span class="tn">{{ c.n }}</span></button>{% endfor %}<button type="button" class="c-clear" data-c-clear hidden>{{ F.cw['clear'] }}</button></div>
   </div>
   {% endif %}
   <div class="f-panel" id="f-panel" data-f-panel hidden>
@@ -43,7 +59,7 @@
       {% for v, lab, n in F.themes %}<button type="button" data-f="theme" data-v="{{ v }}" aria-pressed="false">{{ lab }} <span class="tn">{{ n }}</span></button>{% endfor %}
     </div>
     {% endif %}
-    {% if F.check and F.check[1] %}<label class="f-check"><input type="checkbox" data-f="check" value="{{ F.check[0] }}"> {{ F.check[1] }} <span class="tn">{{ F.check[2] }}</span></label>{% endif %}
+    {% if F.check and F.check[1] and not F.conds %}<label class="f-check"><input type="checkbox" data-f="check" value="{{ F.check[0] }}"> {{ F.check[1] }} <span class="tn">{{ F.check[2] }}</span></label>{% endif %}
   </div>
 </div>
 {%- endmacro %}
@@ -68,5 +84,13 @@
 {#- the filter keys of one list row (present.list_vm item; en_site.list_vm passes the same keys): empty ones left out;
     data-geo marks a row that is a point of the list map (site.js counts the shown ones: '지도 n', the map caption) -#}
 {% macro rec_attrs(it) -%}
-{% if it.geo %} data-geo="1"{% endif %}{% if it.tags %} data-types="|{{ it.tags|join('|') }}|"{% endif %}{% if it.dishes %} data-dishes="|{{ it.dishes|join('|') }}|"{% endif %} data-region="{{ it.region }}"{% if it.themes %} data-themes="{{ it.themes|join(' ') }}"{% endif %}{% for k, v in it.flags.items() %}{% if v %} data-{{ k }}="1"{% endif %}{% endfor %}
+{% if it.geo %} data-geo="1"{% endif %}{% if it.tags %} data-types="|{{ it.tags|join('|') }}|"{% endif %}{% if it.dishes %} data-dishes="|{{ it.dishes|join('|') }}|"{% endif %} data-region="{{ it.region }}"{% if it.themes %} data-themes="{{ it.themes|join(' ') }}"{% endif %}{% for k, v in it.flags.items() %}{% if v %} data-{{ k }}="1"{% endif %}{% endfor %}{% if it.conds %} data-conds="{{ it.conds|join(' ') }}"{% endif %}
+{%- endmacro %}
+
+{#- the row's '이 조건에 맞는 이유' tags (it.why: {id, label, value, src} per condition it meets — present.list_vm,
+    en_site.cond_tags): built hidden; site.js shows the tags of the chosen conditions on the shown rows, each with the
+    field's label and value and the source's short name (no date: operator decision 2026-10-09). Never shown without
+    JS (no condition can be chosen then). -#}
+{% macro why(it) -%}
+{% if it.why %}<p class="rec-why" data-why hidden>{% for w in it.why %}<span data-cond="{{ w.id }}" hidden>{% if w.label %}<b>{{ w.label }}</b> {% endif %}{{ w.value }}{% if w.src %} <small>{{ w.src }}</small>{% endif %}</span>{% endfor %}</p>{% endif %}
 {%- endmacro %}

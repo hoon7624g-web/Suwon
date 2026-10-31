@@ -4,8 +4,9 @@
     area (권역) in the same order, each with the kind's four key-fact cells ('Not listed' in place, both values of a
     conflict), a small kind picture where a record has no photo, the mascot beside the food list's head (owner
     2026-10-14: the other versions take the Korean design). L = pipeline/en_site.Site.list_vm. The Korean list's filter
-    bar (_filters.html.j2, QA 2026-10-15 SRC-01) in this version's words: type, 권역 and theme chips and the kind's
-    check box, whose values are the Korean ones (one URL vocabulary: /food/?type=중식 and /en/food/?type=중식 keep the
+    bar (_filters.html.j2, QA 2026-10-15 SRC-01) in this version's words: type, 권역 and theme chips and the condition
+    chips (조건으로 찾기, pipeline/conditions.py: each row's reasons in this version's words, en_site.cond_tags), whose
+    values are the Korean ones (one URL vocabulary: /food/?type=중식 and /en/food/?type=중식 keep the
     same rows; the language links carry the query), shown only with JS. The map sits beside the list on desktop
     (folded when fewer than 30% of the places have coordinates) and behind the List | Map switch below 1024px; it
     shows the places the filter keeps, and its counts follow the filter (site.js, map.js). -#}
@@ -48,6 +49,7 @@
             </div>
             <dl class="rec-cells">{% for c in it.cells %}<div class="c-{{ c.key }}{% if c.conflict %} is-conflict{% endif %}"><dt>{{ c.label }}</dt><dd>{{ E.kfv(c, '', false, it.e.id) }}</dd></div>{% endfor %}</dl>
             {% if it.cells|selectattr('conflict')|list %}<p class="rec-call">{{ t.rec_call }}</p>{% endif %}
+            {{ fb.why(it) }}
           </li>{% endfor %}
         </ol>
       </section>

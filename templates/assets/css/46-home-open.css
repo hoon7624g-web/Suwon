@@ -135,7 +135,7 @@ html.js .hk-nojs { display: none; }
 .hq-i:hover { text-decoration: none; color: var(--ink); background: var(--g0); }
 .hq-i:focus-visible { outline: 3px solid var(--focus); outline-offset: 0; }
 .hq-l { font: 700 13px/1.25 var(--font); letter-spacing: -.03em; word-break: keep-all; }
-.hq-n { margin-top: -3px; font: 500 12px/1.2 var(--font); color: var(--ink-3); letter-spacing: -.01em; }
+.hq-n { margin-top: -3px; font: 400 12px/1.2 var(--font); color: var(--ink-3); letter-spacing: -.01em; }
 .hq-ls { display: none; }   /* a tile's short label (the other versions' 'getting there' guide): phones only, 5. */
 .hq-i .pic { transition: transform .45s var(--ease-bounce); }
 .hq-i:hover .pic { transform: translateY(-6px) rotate(-4deg); }

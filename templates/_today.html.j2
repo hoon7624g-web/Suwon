@@ -1,0 +1,109 @@
+{#- 오늘의 상태 · 오늘의 바다 — the place page's day card, every language (present.today_vm; design boards ① ② approved
+    by the operator 2026-10-31). {% import "_today.html.j2" as td %} … {{ td.card(T, nm) }} at the top of .pl-main.
+    The HTML is the build day and reads whole without script: its date written out (never '오늘'), the status and the
+    hours bar, the line under it (준비시간 · 마지막 주문 · 입장 마감, or the source's words), sunset, the crowd forecast with
+    what its number means, the tides as a table and a curve drawn from the real times and heights; each date button's
+    name is that day's date and state ('11월 2일(월) 휴관'). assets/today.js (site.js attaches it on [data-today]) reads
+    the JSON of every day, starts the row at the visitor's own date (Asia/Seoul), switches days (aria-selected, ←/→)
+    and marks '지금'; a build older than its days stays as built. Motion (css/74-today.css): the card rises
+    ([data-reveal]), the bar, the sun's arc and the tide curve draw ([data-draw], motion.js) — all below the first
+    screen; the status dot pulses and the sea card's two waves roll in CSS only, still under prefers-reduced-motion.
+    Words: T.w (locales.TODAY_WORDS in the page's language). No check date is printed (operator decision 2026-10-09). -#}
+{% macro card(T, nm='') -%}
+{%- set w = T.w %}{% set d = T.days[0] -%}
+<section class="td{{ ' td-sea' if T.sea }}" aria-labelledby="h-today" data-today data-reveal data-st="{{ d.st }}">
+  {%- if T.sea %}
+  <div class="td-band">
+    <span class="td-ball" aria-hidden="true"></span>
+    <h2 id="h-today" class="td-h"><span class="vh">{{ nm }} </span>{{ w.title_sea }}</h2>
+    <p class="td-lab" data-t-lab>{{ d.lab }}</p>
+    <svg class="td-wave td-w2" width="1200" height="60" viewBox="0 0 1200 60" aria-hidden="true" focusable="false"><path d="M0 30Q50 14 100 30T200 30T300 30T400 30T500 30T600 30T700 30T800 30T900 30T1000 30T1100 30T1200 30V60H0Z"/></svg>
+    <svg class="td-wave td-w1" width="1200" height="50" viewBox="0 0 1200 50" aria-hidden="true" focusable="false"><path d="M0 22Q50 6 100 22T200 22T300 22T400 22T500 22T600 22T700 22T800 22T900 22T1000 22T1100 22T1200 22V50H0Z"/></svg>
+  </div>
+  {%- endif %}
+  <div class="td-in">
+    {%- if not T.sea %}
+    <div class="td-top"><h2 id="h-today" class="td-h"><span class="vh">{{ nm }} </span>{{ w.title }}</h2><span class="td-chip"><i aria-hidden="true"></i>{{ w.chip }}</span></div>
+    {%- endif %}
+    <div class="td-days" role="tablist" aria-label="{{ w.pick }}">
+      {%- for x in T.strip %}<button type="button" role="tab" class="td-day" id="td-t{{ loop.index0 }}" data-i="{{ loop.index0 }}" data-st="{{ x.st }}" aria-controls="td-panel" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ '0' if loop.first else '-1' }}"><span class="td-dw" aria-hidden="true">{{ x.dow }}</span><span class="td-dn tn" aria-hidden="true">{{ x.dn }}</span><i class="td-dd" aria-hidden="true"></i><span class="vh">{{ x.lab }}{% if x.short %} {{ x.short }}{% endif %}</span></button>{% endfor %}
+    </div>
+    <div class="td-panel" id="td-panel" role="tabpanel" aria-labelledby="td-t0">
+      {%- if T.status %}
+      <div class="td-st">
+        <span class="td-sdot" aria-hidden="true"></span>
+        <div class="td-stx">
+          {%- if not T.sea %}<p class="td-lab" data-t-lab>{{ d.lab }}</p>{% endif %}
+          <p class="td-head" data-t-h>{{ d.head }}</p>
+        </div>
+      </div>
+      {%- if T.ax %}
+      <div class="td-bar" aria-hidden="true">
+        <div class="td-track" data-draw data-t-bar>{% for t in T.ax.ticks[1:-1] %}<b class="td-grid" style="--x:{{ t.x }}"></b>{% endfor %}{% for s in d.bar %}<i class="td-seg" style="--a:{{ s[0] }};--b:{{ s[1] }}"></i>{% endfor %}<span class="td-now" data-t-now hidden></span></div>
+        <div class="td-ticks tn">{% for t in T.ax.ticks %}<span style="--x:{{ t.x }}">{{ t.l }}</span>{% endfor %}</div>
+      </div>
+      <p class="td-live" data-t-live></p>
+      {%- endif %}
+      {%- if T.has_sub %}
+      <p class="td-sub" data-t-sub>{{ d.sub }}</p>
+      {%- endif %}
+      {%- endif %}
+      {%- if T.tide %}
+      <div class="td-tide">
+        <div class="td-th"><h3 class="td-h3">{{ w.tide }}</h3><span class="td-tst">{{ T.tide.at }}</span></div>
+        <svg class="td-curve" viewBox="0 0 330 96" preserveAspectRatio="none" aria-hidden="true" focusable="false" data-draw><path class="td-cf" d="{{ d.curve[1] if d.curve else '' }}" data-t-cf/><path class="td-cl" d="{{ d.curve[0] if d.curve else '' }}" pathLength="1" data-t-cl/><line class="td-cb" x1="0" y1="95.5" x2="330" y2="95.5"/><line class="td-cn" x1="0" y1="0" x2="0" y2="96" visibility="hidden" data-t-cn/></svg>
+        <table class="td-tt">
+          <caption class="vh">{{ w.tide }} · <span data-t-lab>{{ d.lab }}</span></caption>
+          <thead><tr>{% for h in T.tide.th %}<th scope="col">{{ h }}</th>{% endfor %}</tr></thead>
+          <tbody data-t-tide>{% for p in d.tide %}<tr class="is-{{ p.k }}"><td>{{ p.w }}</td><td class="tn">{{ p.t }}</td><td class="tn">{{ p.cm_t }}</td></tr>{% endfor %}</tbody>
+        </table>
+        <p class="td-note">{{ T.tide.rule }}</p>
+      </div>
+      {%- endif %}
+      {%- if T.sun or T.crowd or T.beach or T.ferry %}
+      <div class="td-cards">
+        {%- if T.sun %}
+        <div class="td-sun">
+          <p class="td-k">{{ w.sunset }}</p>
+          <svg class="td-arc" viewBox="0 0 160 68" aria-hidden="true" focusable="false" data-draw><path class="td-arcp" d="M10 64A70 56 0 0 1 150 64" pathLength="1"/><line class="td-hz" x1="4" y1="64" x2="156" y2="64"/><g transform="translate(150 64)" data-t-sunp><circle class="td-glow" r="12"/><circle class="td-core" r="7"/></g></svg>
+          <p class="td-v tn" data-t-set>{{ d.sun.set if d.sun else w.none }}</p>
+          <p class="td-s tn" data-t-rise>{{ w.sunrise.format(t=d.sun.rise) if d.sun and d.sun.rise else '' }}</p>
+          {%- if T.sun_page %}{#- Korean pages only (build.entity_ctx): the whole table, /sun/ (pipeline/timetables.py) #}
+          <p class="td-s"><a class="td-sun-more" href="{{ T.sun_page }}">날짜별 일출·일몰 시각표</a></p>
+          {%- endif %}
+        </div>
+        {%- endif %}
+        {%- if T.crowd %}
+        <div class="td-cr">
+          <p class="td-k">{{ w.crowd }}</p>
+          {%- if T.crowd.scale %}<p class="td-s">{{ T.crowd.scale }}</p>{% endif %}
+          <div class="td-meter" aria-hidden="true"><i data-t-crm style="--v:{{ (d.crowd.v|float / 100)|round(3) if d.crowd else 0 }}"></i>{% if T.crowd.graded %}{% for c in T.crowd.cuts %}<b style="--x:{{ c }}"></b>{% endfor %}{% endif %}</div>
+          <p class="td-v tn" data-t-cr>{% if d.crowd %}{{ d.crowd.v }}{% if d.crowd.w %} · {{ d.crowd.w }}{% endif %}{% else %}{{ w.none }}{% endif %}</p>
+          {%- if T.crowd.got %}
+          <p class="td-s">{{ T.crowd.got }}</p>
+          {%- endif %}
+        </div>
+        {%- endif %}
+        {%- for b in T.beach %}
+        <div class="td-bx"><p class="td-k">{{ b.label }}</p><p class="td-v2">{{ b.value }}</p></div>
+        {%- endfor %}
+        {%- for b in T.ferry %}
+        <div class="td-bx td-wide"><p class="td-k">{{ b.label }}</p><p class="td-v2">{{ b.value }}</p></div>
+        {%- endfor %}
+      </div>
+      {%- endif %}
+    </div>
+    {%- if T.notes or T.sources %}
+    <div class="td-foot">
+      {%- for n in T.notes %}
+      <p class="td-note">{{ n }}</p>
+      {%- endfor %}
+      {%- if T.sources %}
+      <p class="td-src">{{ w.src }}{{ T.colon }}{% for s in T.sources %}{% if not loop.first %} · {% endif %}{{ s.what }}{{ T.isep }}{% for it in s['items'] %}{% if not loop.first %}, {% endif %}{% if it.url %}<a href="{{ it.url }}" rel="noopener">{{ it.name }}</a>{% else %}{{ it.name }}{% endif %}{% endfor %}{% endfor %}</p>
+      {%- endif %}
+    </div>
+    {%- endif %}
+  </div>
+  <script type="application/json" data-today-json>{{ T.json }}</script>
+</section>
+{%- endmacro %}

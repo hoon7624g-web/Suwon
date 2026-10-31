@@ -176,7 +176,7 @@
 @media (min-width: 1024px) {
   .story.is-staged .st-stage { padding: 0; height: 250vh; height: 250svh; }
   .story.is-staged .st-grid { position: sticky; top: 0; height: 100vh; height: 100svh; display: grid;
-    grid-template-columns: var(--ml) minmax(0, calc((min(100vw, var(--maxw) + 2 * var(--m)) - 2 * var(--m)) * .4)) clamp(32px, 4vw, 72px) minmax(0, 1fr) var(--ml);
+    grid-template-columns: var(--ml) minmax(0, calc((min(var(--cw), var(--maxw) + 2 * var(--m)) - 2 * var(--m)) * .4)) clamp(32px, 4vw, 72px) minmax(0, 1fr) var(--ml);
     /* the height a tall window adds goes to the two margin rows alike: the heading, the text and the years stay one
        block in the middle, the photo (all six rows) on the same centre line (operator 2026-10-17, as the first site:
        the text sat at the top, the photo in the middle and the years at the bottom of the window) */

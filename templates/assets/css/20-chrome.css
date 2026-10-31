@@ -29,18 +29,14 @@ html.is-scrolled .mast::before { box-shadow: 0 1px 0 rgba(0, 0, 0, .08); }
 .foot-mark .wm-sym { margin: 0; }
 .foot-mark .wm-sym svg { height: 24px; }
 .wm-b { font: 700 11px/1 var(--font); letter-spacing: .02em; color: var(--ink-2); white-space: nowrap; }
-.mast-nav ul { display: flex; }
-.mast-nav a { display: flex; align-items: center; min-height: 44px; padding: 0 11px; color: #333336; text-decoration: none; font-size: 14px; letter-spacing: -.01em; white-space: nowrap; transition: color .2s var(--fb); }
-.mast-nav a:hover { color: #000; text-decoration: none; }
-.mast-nav a[aria-current] { color: var(--ink); font-weight: 700; }
 .mast-search { display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; min-width: 44px; padding: 0 8px; margin-left: 4px; color: #333336; text-decoration: none; font-size: 14px; }
 .mast-search:hover, .mast-search[aria-current] { color: #000; text-decoration: none; }
 .mast-search .icon { width: 18px; height: 18px; }
 .mast-search span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .mast-ctx, .mast-v { display: none; }
 .menu { display: none; position: static; }
-.menu summary { list-style: none; display: flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; cursor: pointer; color: var(--ink); }
-.menu summary::-webkit-details-marker { display: none; }
+.menu > summary { list-style: none; display: flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; cursor: pointer; color: var(--ink); }
+.menu > summary::-webkit-details-marker { display: none; }
 .bars { position: relative; width: 17px; height: 10px; }
 .bars::before, .bars::after { content: ""; position: absolute; left: 0; right: 0; height: 1.5px; border-radius: 1px; background: currentColor; transition: transform .24s var(--ease), top .24s var(--ease); }
 .bars::before { top: 0; } .bars::after { top: 8px; }
@@ -56,7 +52,6 @@ html.is-scrolled .mast::before { box-shadow: 0 1px 0 rgba(0, 0, 0, .08); }
 }
 @keyframes menu-in { from { opacity: 0; transform: translateY(-6px); } }
 @media (max-width: 1023px) {
-  .mast-nav { display: none; }
   .menu { display: block; }
   .wm-a { font-size: 16px; letter-spacing: -.035em; }
   .wm-b { display: none; }
@@ -149,12 +144,10 @@ html.is-scrolled .mast::before { box-shadow: 0 1px 0 rgba(0, 0, 0, .08); }
 .mast { background: rgba(255, 255, 255, .92); }
 html.is-scrolled .mast::before { box-shadow: 0 1px 0 var(--hair), 0 8px 24px -18px rgba(20, 52, 99, .4); }
 .has-lnav .mast { background: #fff; }
-.mast-nav a { position: relative; padding: 0 12px; border-radius: 12px; color: var(--ink-2); font-size: 15px; font-weight: 400; }
-.mast-nav a:hover { color: var(--ink); background: var(--bg-2); }
-.mast-nav a[aria-current] { color: var(--ink); font-weight: 700; }
-.mast-nav a[aria-current]::after { content: ""; position: absolute; left: 12px; right: 12px; bottom: 4px; height: 3px; border-radius: 3px; background: var(--sea); }
-@media (min-width: 1024px) { .wm-a { font-size: 20px; } }
-@media (min-width: 1024px) and (max-width: 1180px) { .mast-nav a { padding: 0 8px; font-size: 14px; } .mast-nav a[aria-current]::after { left: 8px; right: 8px; } }
+@media (min-width: 1024px) { .wm-a { font-size: 20px; } .wordmark { flex-shrink: 0; } }
+/* the old nav row of this bar (eleven links) is gone (operator 2026-10-31 '적용하자'): from 1200px the header is the
+   tab panel, and from 1024 to 1199px the bar keeps the wordmark, AI 코스, the language menu, the search field and the
+   menu with the tab groups (css/80-side.css) */
 .foot { background: var(--bg-2); }
 
 /* ---------------------------------------------------------------- the site search in the bar (base.html.j2 form.hs)

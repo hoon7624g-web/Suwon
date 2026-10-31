@@ -1,10 +1,12 @@
 {#- en/_chrome.html.j2 — the body chrome of every version but Korean (English, Japanese, Chinese, German, French,
     Spanish, Russian), called by base.html.j2 when lang != 'ko' (the head is shared). t = the version's words
     (pipeline/en_site.UIText), loc = its locale (pipeline/locales.py: home path, separators).
-    header(nav, current, page_kind, langs, wordmark, t, loc): skip link and the global bar — the version's site name,
-      the nav (Things to do · Food · Stay · Guides · Courses · Events), the site search (owner 2026-10-14) and the language menu (_lang.html.j2: Korean
-      and every version this build has, each this page's counterpart, else its home); phones get the menu panel
-      (a <details>, works without JS) with the other versions listed.
+    header(nav, current, page_kind, langs, wordmark, t, loc, sym, sd): skip link and the header — the version's site
+      name, the language menu (_lang.html.j2: Korean and every version this build has, each this page's counterpart,
+      else its home), the site search (owner 2026-10-14) and the tab groups of _side.html.j2 (sd: en_site Pages.side —
+      Find · Plan your trip · Events calendar · Read · About and sources, in the version's words): from 1200px the
+      panel at the left, below it the bar whose menu (a <details>, works without JS) holds the same groups and the
+      other versions (operator 2026-10-31 '적용하자').
     crumbs(items, t): the breadcrumb line (page.crumbs; the JSON-LD BreadcrumbList repeats these names).
     footer(nav, site, langs, wordmark, tourapi_used, t, loc): explore · sources (links only: TourAPI, and the source of
       the original texts when this version has a name for it — site.source.name_l, Pages.common — labelled 'Official
@@ -12,17 +14,24 @@
       span (no company name is made up) and the correction contact. -#}
 {% import "_ui.html.j2" as ui %}
 {% import "_lang.html.j2" as lg %}
+{% import "_side.html.j2" as sdm %}
 
 {% macro nav_items(nav, current, stagger=false, loc=none) -%}
 {% for label, href in nav %}<li{% if stagger %} style="--i:{{ loop.index0 }}"{% endif %}><a href="{{ href }}"{% if current == href %} aria-current="page"{% endif %}{% if href == loc.home ~ 'courses/' %} data-track="course_click"{% endif %}>{{ label }}</a></li>{% endfor %}
 {%- endmacro %}
 
-{% macro header(nav, current, page_kind, langs, wordmark, t, loc, sym='') -%}
+{% macro header(nav, current, page_kind, langs, wordmark, t, loc, sym='', sd=none) -%}
+{#- the same header as the Korean pages' (base.html.j2, operator 2026-10-31 '적용하자'): from 1200px the tab panel at the
+    left (wordmark, language menu, this version's site search, the day card — 날씨 · next event —, the tab groups:
+    Find · Plan your trip · Events calendar · Read · About and sources in the version's words, locales.SIDE_WORDS);
+    below it the bar with the same groups in its menu. The Korean-only sections (/plan/, the map, /abroad/, videos,
+    the blog, /sun/, /transport/) are not here: this version has no such page. -#}
+{% set SG = sd.groups|side_state(current) if sd else [] %}
 <a class="skip-link" href="#main-content">{{ t.skip }}</a>
-<header class="mast mast-en" data-mast>
+<header class="mast mast-en" data-mast data-lenis-prevent>
   <div class="wrap mast-in">
-    <a class="wordmark" href="{{ loc.home }}"{% if page_kind == 'home' %} aria-current="page"{% endif %}>{{ sym }}<span class="wm-a">{{ wordmark|wordmark }}</span></a>
-    <nav class="mast-nav" aria-label="{{ t.main_menu }}"><ul>{{ nav_items(nav, current, false, loc) }}</ul></nav>
+    <a class="wordmark" href="{{ loc.home }}"{% if page_kind == 'home' %} aria-current="page"{% endif %}>{{ sym }}<span class="wm-a">{{ wordmark|wordmark }}</span>{% if sd and sd.tagline %}<span class="wm-tag">{{ sd.tagline }}</span>{% endif %}</a>
+    {% if langs %}{{ lg.menu(langs, t.language) }}{% endif %}
     {#- the site search, as in the Korean bar (owner 2026-10-14): this version's search page <home>search/ (Pages.search);
         phones open the form over the bar from the round icon (site.js [data-hs-open]; a link without JS) -#}
     {% set sw = t.search_words() %}{% set on_search = current == loc.home ~ 'search/' %}
@@ -32,15 +41,20 @@
       <span class="hs-f"><input id="hs-q" name="q" type="search" maxlength="100" placeholder="{{ sw.bar }}" autocomplete="off" enterkeyhint="search" spellcheck="false"><button type="submit" class="hs-go">{{ ui.icon('search', 'icon') }}<span class="vh">{{ sw.go }}</span></button></span>
       <button type="button" class="hs-x" data-hs-close>{{ ui.icon('close', 'icon') }}<span class="vh">{{ sw.close }}</span></button>
     </form>{% endif %}
-    {% if langs %}{{ lg.menu(langs, t.language) }}{% endif %}
     <details class="menu" data-menu>
       <summary><span class="vh">{{ t.menu }}</span><i class="bars" aria-hidden="true"></i></summary>
       <nav class="menu-panel" aria-label="{{ t.full_menu }}">
-        <ul>{{ nav_items(nav, current, true, loc) }}</ul>
-        <ul class="menu-sub"><li><a href="{{ loc.home }}search/"{% if current == loc.home ~ 'search/' %} aria-current="page"{% endif %}>{{ t.search_words().open }}</a></li><li><a href="{{ loc.home }}about/"{% if current == loc.home ~ 'about/' %} aria-current="page"{% endif %}>{{ t.about_sources }}</a></li>{{ lg.others(langs) }}</ul>
+        {% if sd %}{{ sdm.groups(SG, current, 'menu') }}
+        {{ sdm.day(sd, 'menu') }}
+        {% else %}<ul>{{ nav_items(nav, current, true, loc) }}</ul>{% endif %}
+        <ul class="menu-sub"><li><a href="{{ loc.home }}search/"{% if current == loc.home ~ 'search/' %} aria-current="page"{% endif %}>{{ t.search_words().open }}</a></li>{% if not sd %}<li><a href="{{ loc.home }}about/"{% if current == loc.home ~ 'about/' %} aria-current="page"{% endif %}>{{ t.about_sources }}</a></li>{% endif %}{{ lg.others(langs) }}</ul>
       </nav>
     </details>
   </div>
+  {% if sd %}<div class="side">
+    {{ sdm.day(sd, 'side') }}
+    <nav class="side-nav" aria-label="{{ t.main_menu }}">{{ sdm.groups(SG, current, 'side') }}</nav>
+  </div>{% endif %}
 </header>
 {%- endmacro %}
 

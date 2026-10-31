@@ -1773,7 +1773,8 @@ export class Knowledge {
     // an outlet as a question names it: its whole name (and without 'the'), a name in brackets ('コレポ (Korepo)'), and
     // the one word of a name that is not generic ('CNN Travel' → cnn, 'The Korea Herald' → herald) unless a page of
     // the site has it in its title ('Gwangju News' → not gwangju: the bus guide's 광주) — a single word is at least 3
-    // letters, a Hangul, kana or CJK name at least 3 characters
+    // letters, a Hangul, kana or CJK name at least 3 characters; a word the outlet writes in capitals ('CNN Travel' → cnn)
+    // is its own name even where a page's title has it (the first site's column on what CNN and the foreign press saw)
     const titled = (w) => this.keys.some((k) => !["abroad", "video"].includes(this.docs[k].k) && this.head.get(k).has(w));
     const outlets = new Set();
     for (const o of [...outletNames].sort()) {
@@ -1781,7 +1782,8 @@ export class Knowledge {
         const p = plainWords(name);
         if (!p) continue;
         const words = p.split(" ");
-        const single = (w) => w.length >= 3 && !/^\d+$/u.test(w) && !OUTLET_GENERIC.has(w) && !titled(w);
+        const caps = new Set([...name.matchAll(/(?<![\p{L}\p{N}])\p{Lu}{3,}(?![\p{L}\p{N}])/gu)].map((m) => m[0].toLowerCase()));
+        const single = (w) => w.length >= 3 && !/^\d+$/u.test(w) && !OUTLET_GENERIC.has(w) && (caps.has(w) || !titled(w));
         const ok = (v) => (v.includes(" ") ? true                         // several words: the name as written
           : /^[\p{Script=Latin}\p{Script=Cyrillic}\p{N}]+$/u.test(v) ? single(v)   // one Latin word: as a word of its own
             : [...v].length >= 3);                                         // Hangul, kana, CJK (トラベルjp)

@@ -25,6 +25,9 @@
                     straight-line legs, course chips), nearby rows on one straight-line scale, guide and event cards
      72-guide       the guide reading layer (owner 2026-10-09): answer card, mini cards, table of contents, sentence
                     bullets, bold figures (.gk), FAQ accordion, compact sources
+     80-side        the tab panel (operator 2026-10-31 '적용하자'): from 1200px the header is a panel at the left and the
+                    page a column at its right (--cw); below 1200px the bar's menu holds the same tab groups; the day
+                    card and 날씨각's weather module
 
    Look (UI4, owner 2026-10-14, after the AIO2O proposal demo for KT Skylife — its design language only): a light
    page, white cards with a hairline border on soft sea-blue tints, one brand colour, 바다 파랑 (sea blue, the
@@ -73,7 +76,8 @@
   --font-num: var(--font);   /* big figures are Pretendard 700 in this skin (Light Numerals 200 is not used) */
   --maxw: 1200px;
   --m: clamp(16px, 4.6vw, 64px);                          /* outer margin */
-  --ml: max(var(--m), calc((100vw - var(--maxw)) / 2));    /* left edge of the content column (carousels) */
+  --cw: 100vw;                                             /* the content column's width (80-side: less the tab panel) */
+  --ml: max(var(--m), calc((var(--cw) - var(--maxw)) / 2)); /* left edge of the content column (carousels) */
   --g: 20px;                                               /* grid gap */
   --r-xl: 28px; --r-l: 24px; --r: 20px; --r-s: 12px;      /* tile radii */
   --sec: clamp(56px, 7vw, 100px);                          /* between sections */

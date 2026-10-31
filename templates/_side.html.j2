@@ -1,0 +1,60 @@
+{#- _side.html.j2 — the tab panel (operator 2026-10-31 '적용하자': the approved layout after travel.webforai.kr), shared by
+    the Korean header (base.html.j2) and the other versions' (en/_chrome.html.j2). css/80-side.css lays it out.
+    From 1200px the header is a white rounded panel at the left that stays while the page scrolls (it scrolls inside
+    itself when it is taller than the window): the wordmark, the language menu, the site search, then day(sd, 'side'),
+    acts(sd.acts) and the groups in <nav class="side-nav"> — the main menu. Below 1200px the bar stays as it was and its
+    menu (details.menu: it opens without JavaScript) holds acts, groups(…, 'menu') and day(sd, 'menu').
+    sd (present.side_vm, en_site Pages.side): groups [{key, label, href ('' for a group of links), links [{label, href,
+      n (the count the build uses: '222곳'), track}], open}], acts [{label, href, track, icon, primary}], tagline, latin,
+      next {name, href, when, iso} | None, sun {lab, rise, set, iso, days} | None (Korean), wx (present.weather_vm) | None,
+      w {next, sunrise, sunset, sun}.
+    groups(G, current, mode): G is sd.groups|side_state(current). A group of links is a <details> (it opens and closes
+      without JavaScript): open when it holds the page (that link carries aria-current="page"), or — on a page in no
+      group — when it is marked open (찾기 · 여행 계획). A single tab (행사 달력, 해외에서 본 수원, 소개·출처) is a link.
+      mode 'side': rows; 'menu': the phone menu's two-column cells.
+    acts(A, current): the two actions (Korean: 내 일정 만들기 → /plan/, 추천 코스 → /courses/).
+    day(sd, mode): the day card — the weather module (the panel only), the build day's sunrise and sunset with its
+      date written out (in the panel weather.js moves it to the visitor's day; never '오늘' in the HTML), linked to /sun/,
+      and the next
+      event with its dates written out, linked to its page.
+    weather(wx, variant): 날씨각's card (operator 2026-10-31: '날씨각 실제 디자인으로' — its home card as it is; no
+      '출처' line, 날씨각 is the operator's own service). The whole card is one link to weather.o2o.kr. The HTML holds no
+      weather value: its title and '수원 팔달구 날씨 보기', which is all a reader without JavaScript (or after a failed
+      or late answer) gets. assets/weather.js (site.js attaches it after the page has loaded, when a card is on screen)
+      asks /v1/feed and /v1/weather/today and draws in the kept room: the sky of the hour (night: navy, stars, the
+      moon in its phase; day: the sun), '지금 날씨 점수' and the score, clouds either side, the provider's own Korean
+      lines (Korean pages only) and the four cells 아침 · 낮 · 저녁 · 지금. variant 'home' (big) or 'side' (small). -#}
+{% import "_ui.html.j2" as ui %}
+
+{% macro groups(G, current, mode) -%}
+<ul class="sg-list sg-{{ mode }}">
+{%- for g in G %}
+<li class="sg{{ ' is-cur' if g.cur }}">
+{%- if g.links %}<details class="sg-d"{% if g.open %} open{% endif %}><summary class="sg-s"><span class="sg-t">{{ g.label }}</span><i class="sg-i" aria-hidden="true"></i></summary><ul class="sg-l">{% for x in g.links %}<li><a class="sg-a" href="{{ x.href }}"{% if x.href == current %} aria-current="page"{% endif %}{% if x.track %} data-track="{{ x.track }}"{% endif %}><span class="sg-n">{{ x.label }}</span>{% if x.n %}<span class="sg-c tn">{{ x.n }}</span>{% endif %}</a></li>{% endfor %}</ul></details>
+{%- else %}<a class="sg-s sg-1" href="{{ g.href }}"{% if g.cur %} aria-current="page"{% endif %}><span class="sg-t">{{ g.label }}</span><i class="sg-i sg-i-r" aria-hidden="true"></i></a>{% endif %}</li>
+{%- endfor %}
+</ul>
+{%- endmacro %}
+
+{% macro acts(A, current) -%}
+{% if A %}<p class="sd-acts">{% for a in A %}<a class="sd-act{{ ' is-pri' if a.primary }}" href="{{ a.href }}"{% if a.href == current %} aria-current="page"{% endif %}{% if a.track %} data-track="{{ a.track }}"{% endif %}>{% if a.icon %}{{ ui.icon(a.icon, 'icon') }}{% endif %}<span>{{ a.label }}</span></a>{% endfor %}</p>{% endif %}
+{%- endmacro %}
+
+{% macro weather(wx, variant) -%}
+<a class="wx wx-{{ variant }} wx-{{ 'ko' if wx.js.ko else 'intl' }}" href="{{ wx.home }}" rel="noopener" data-track="weather_click" data-wx="{{ wx.feed }}" data-wx-t="{{ wx.api }}" data-wx-w="{{ wx.js|tojson_attr }}">
+  <span class="wx-h"><span class="wx-t">{{ wx.title }}</span><span class="wx-d" data-wx-d></span></span>
+  <span class="wx-b" data-wx-b></span>
+  <span class="wx-go">{{ wx.go }}{{ ui.icon('external', 'icon wx-x') }}</span>
+</a>
+{%- endmacro %}
+
+{% macro day(sd, mode) -%}
+{% set wx = sd.wx if mode == 'side' else none %}
+{% if wx or sd.sun or sd.next %}
+<div class="sd-day sd-day-{{ mode }}">
+  {%- if wx %}{{ weather(wx, 'side') }}{% endif %}
+  {%- if sd.sun %}<a class="sd-sun" href="/sun/"{% if mode == 'side' %} data-sd-days="{{ sd.sun.days }}"{% endif %}><span class="vh">{{ sd.w.sun }}: </span><span class="sd-k" data-sd-lab>{{ sd.sun.lab }}</span><span class="sd-sv">{{ sd.w.sunrise }} <b class="tn" data-sd-rise>{{ sd.sun.rise }}</b></span><span class="sd-sv">{{ sd.w.sunset }} <b class="tn" data-sd-set>{{ sd.sun.set }}</b></span><i class="sd-go" aria-hidden="true"></i></a>{% endif %}
+  {%- if sd.next %}<a class="sd-ev" href="{{ sd.next.href }}"><span class="sd-k">{{ sd.w.next }} · <time datetime="{{ sd.next.iso }}">{{ sd.next.when }}</time></span><span class="sd-ev-t">{{ sd.next.name }}</span><i class="sd-go" aria-hidden="true"></i></a>{% endif %}
+</div>
+{% endif %}
+{%- endmacro %}

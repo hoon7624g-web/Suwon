@@ -708,8 +708,8 @@ def _bar(h: str) -> str:
 def test_every_version_list_has_the_filter_bar_and_the_map_count(site, code):
     """QA 2026-10-15 SRC-01 / F04: every version's places, food and stays lists carry the Korean list's filter bar in
     their own words (no Korean script once the tags and data-* attributes are stripped — the filter values are the
-    Korean ones), every row its filter keys, the kind's check box with its label from strings.json and the number of
-    rows that carry its flag; the '지도 n' count of the list | map switch is the rows with coordinates (data-geo), which
+    Korean ones), every row its filter keys, the condition chips (조건으로 찾기, in the check box's place since
+    2026-10-31) with their labels from locales.COND_WORDS and the number of rows that meet each; the '지도 n' count of the list | map switch is the rows with coordinates (data-geo), which
     are exactly the map's points."""
     out, loc, w = site["out"], LC.get(code), LC.LIST_WORDS[code]
     strings = json.loads((site["data"] / code / "strings.json").read_text("utf-8"))
@@ -718,9 +718,16 @@ def test_every_version_list_has_the_filter_bar_and_the_map_count(site, code):
         bar = _bar(h)
         rows = re.findall(r'<li class="rec"[^>]*>', h)
         assert rows and all('data-region="' in r for r in rows), (code, seg)
-        check = re.search(r'<input type="checkbox" data-f="check" value="(\w+)"> ([^<]*?) <span class="tn">(\d+)</span>', bar)
-        assert check and html.unescape(check.group(2)) == strings[f"LIST_CFG.{kind}.check"][loc.tag], (code, seg)
-        assert int(check.group(3)) == sum(1 for r in rows if f'data-{check.group(1)}="1"' in r), (code, seg)
+        # 조건으로 찾기 (pipeline/conditions.py) took the check box's place: the condition chips in this version's words
+        # (locales.COND_WORDS), each counting the rows that meet it (data-conds)
+        conds = re.findall(r'<button type="button" data-cond="(\w+)" aria-pressed="false"><span class="c-ck" '
+                           r'aria-hidden="true"></span>([^<]*?) <span class="tn">(\d+)</span></button>', bar)
+        # a list none of whose rows meets a condition keeps the check box (present.filter_vm)
+        assert ('data-f="check"' not in bar) == bool(conds), (code, seg)
+        for cid, lab, n in conds:
+            words = LC.COND_WORDS[code]["labels"]
+            assert html.unescape(lab) == words.get(f"{cid}_{kind}", words[cid]), (code, seg, cid)
+            assert int(n) == sum(1 for r in rows if cid in (re.search(r'data-conds="([^"]*)"', r) or [None, ""])[1].split())
         if bar.count('data-f="type"') > 1:
             assert f'role="group" aria-label="{w["type"]}"' in bar, (code, seg)
         geo = sorted(re.search(r'id="(r\d+)"', r).group(1) for r in rows if 'data-geo="1"' in r)

@@ -1,0 +1,110 @@
+{% extends "base.html.j2" %}
+{% import "_timetables.html.j2" as tt %}
+{#- /sun/ {지역} 일출·일몰 시간 (pipeline/timetables.sun_vm; operator 2026-10-31). The answer first: the build day written
+    out with its sunrise and sunset (never '오늘' in the HTML), the day's length and civil twilight, the source and its
+    point; the figures the table gives (earliest sunset, latest sunrise, shortest day, 1월 1일); every day from the build
+    day on as a month table (date · weekday · 시민박명 시작 · 일출 · 일몰 · 시민박명 끝; the first month open, the others
+    folded with their ranges in the summary); the places whose own pages name a sunset, each with that sentence; the
+    tides when almanac.json has them; the data box. assets/sun.js ([data-sun], attached by site.js) moves the answer to
+    the visitor's own date (Asia/Seoul) — the '오늘' tag's room is kept from the first paint (no shift) — and marks the
+    day's row (aria-current="date"), opening its month. Motion: [data-reveal] / [data-numroll] below the first screen. -#}
+{% block bodyclass %}pg-tt pg-sun{% endblock %}
+{% block main_class %}{% endblock %}
+{% block content %}
+{% set L = V.lead %}{% set s = V.src %}
+<div data-sun data-w-today="오늘">
+<header class="pg-hero tt-hero" aria-labelledby="h-sun">
+  <div class="wrap">
+    <p class="hd-pic">{{ ui.kpic('sun', 'sun', 64) }}</p>
+    <p class="eyebrow">해 뜨고 지는 시각 · {{ s.provider }}</p>
+    <h1 id="h-sun" class="h-list">{{ site.region }} 일출·일몰 시간</h1>
+    <p class="sun-ans" data-sun-ans data-d="{{ L.iso }}">
+      <span class="sa-d"><span data-sun-lab>{{ L.lab }}</span><span class="sa-now" data-sun-now></span></span>
+      <span class="sa-i"><span class="sa-k">해 뜨는 시각</span> <b class="sa-v tn" data-sun-rise>{{ L.rise }}</b></span><span class="sa-sep" aria-hidden="true"> · </span>
+      <span class="sa-i"><span class="sa-k">해 지는 시각</span> <b class="sa-v tn" data-sun-set>{{ L.set }}</b></span>
+    </p>
+    <p class="sun-sub">낮 길이 <b data-sun-day>{{ L.day_t }}</b> · 시민박명 <span class="tn" data-sun-tw>{{ L.dawn }}–{{ L.dusk }}</span></p>
+    {#- the day's arc, wide screens only (decorative: the sentence below says it all): sunrise and sunset at the ends of
+        the horizon; sun.js puts the sun where it is now on the visitor's day (a transform, nothing moves around it) -#}
+    <div class="sun-arc" aria-hidden="true">
+      <svg viewBox="0 0 320 172" focusable="false"><path class="sun-arc-p" d="M24 150A136 124 0 0 1 296 150"/><line class="sun-arc-h" x1="6" y1="150.5" x2="314" y2="150.5"/><g data-sun-dot transform="translate(160 26)"><circle class="sun-arc-g" r="22"/><circle class="sun-arc-c" r="12"/></g></svg>
+      <span class="sun-arc-l tn" data-sun-rise>{{ L.rise }}</span><span class="sun-arc-r tn" data-sun-set>{{ L.set }}</span>
+    </div>
+    <p class="list-lede">{{ s.provider }} 출몰시각의 '{{ s.point }}' 지점 값입니다 — 지점에서 먼 곳은 1~2분 다를 수 있습니다. {{ V.period }} {{ V.n }}일을 월별 표로 실었습니다.</p>
+    {% set items = [] %}{% for m in V.months %}{% set _ = items.append((m.short, '#' ~ m.id)) %}{% endfor %}
+    {% if V.tide %}{% set _ = items.append(('물때', '#h-tide')) %}{% endif %}
+    {% if V.spots %}{% set _ = items.append(('해넘이 명소', '#h-spots')) %}{% endif %}
+    {{ tt.jump(items, '월별 표 바로가기') }}
+  </div>
+</header>
+
+{% if V.facts %}
+<section class="wrap chapter-tight tt-facts" aria-labelledby="h-sun-facts" data-reveal>
+  <h2 id="h-sun-facts" class="h-sec">표에서 찾은 날</h2>
+  <ul class="tf-list">
+    {% for f in V.facts %}<li class="tf"><p class="tf-k">{{ f.k }}</p><p class="tf-v tn" data-numroll>{{ f.v }}</p><p class="tf-w">{{ f.when }}</p></li>{% endfor %}
+  </ul>
+  <p class="note">위 값은 아래 표의 시각만으로 셌습니다(분 단위).</p>
+</section>
+{% endif %}
+
+<section class="wrap chapter-tight tt-months" aria-labelledby="h-sun-table">
+  <h2 id="h-sun-table" class="h-sec">날짜별 일출·일몰 시각 <span class="tn">{{ V.n }}일</span></h2>
+  <p class="note">{{ V.period }}. 시민박명: 해 뜨기 전과 해 진 뒤에도 하늘이 밝은 때. 시작은 아침, 끝은 저녁입니다. 토요일·일요일은 색으로 구분했습니다.</p>
+  {% for m in V.months %}
+  <details class="tt-m" id="{{ m.id }}"{% if m.open %} open{% endif %}>
+    <summary><h3 class="tt-m-h">{{ m.label }}</h3><span class="tt-m-s">일출 <span class="tn">{{ m.rise }}</span> · 일몰 <span class="tn">{{ m.set }}</span></span><span class="tt-m-i" aria-hidden="true"></span></summary>
+    <div class="tt-scroll">
+    <table class="tt-day sun-t">
+      <caption class="vh">{{ site.region }} {{ m.label }} 일출·일몰·시민박명 시각({{ m.days }})</caption>
+      <thead><tr><th scope="col">날짜</th><th scope="col">요일</th><th scope="col">시민박명 시작</th><th scope="col">일출</th><th scope="col">일몰</th><th scope="col">시민박명 끝</th></tr></thead>
+      <tbody>{% for r in m.rows %}<tr data-d="{{ r.iso }}" data-v="{{ r.dawn }}|{{ r.rise }}|{{ r.set }}|{{ r.dusk }}|{{ r.day_t }}"{% if r.we %} class="we"{% endif %}><th scope="row">{{ r.md }}</th><td>{{ r.dow }}</td><td class="tn">{{ r.dawn }}</td><td class="tn b">{{ r.rise }}</td><td class="tn b">{{ r.set }}</td><td class="tn">{{ r.dusk }}</td></tr>{% endfor %}</tbody>
+    </table>
+    </div>
+  </details>
+  {% endfor %}
+</section>
+
+{% if V.tide %}{% set T = V.tide %}
+<section class="wrap chapter tt-tide" aria-labelledby="h-tide" data-reveal>
+  <h2 id="h-tide" class="h-sec">{{ site.region }} 바다 물때 <span class="tn">관측소 {{ T.stations|length }}곳</span></h2>
+  <p class="note">{{ T.provider }} 조석예보의 만조·간조 시각과 예측 높이입니다. 바닷가 장소 페이지에는 그 장소에서 가장 가까운 관측소의 물때가 나옵니다.</p>
+  {% for st in T.stations %}
+  <details class="tt-m" id="{{ st.id }}"{% if loop.first %} open{% endif %}>
+    <summary><h3 class="tt-m-h">{{ st.name }} 관측소</h3><span class="tt-m-s">{{ st.months|length }}개월</span><span class="tt-m-i" aria-hidden="true"></span></summary>
+    {% for m in st.months %}
+    <div class="tt-scroll">
+    <table class="tt-day tide-t">
+      <caption>{{ st.name }} {{ m.label }} 만조·간조</caption>
+      <thead><tr><th scope="col">날짜</th><th scope="col">요일</th><th scope="col">만조</th><th scope="col">간조</th></tr></thead>
+      <tbody>{% for r in m.rows %}<tr data-d="{{ r.iso }}"{% if r.we %} class="we"{% endif %}><th scope="row">{{ r.md }}</th><td>{{ r.dow }}</td><td class="tn">{% for p in r.high %}{% if not loop.first %}<br>{% endif %}{{ p.t }}{% if p.cm is not none %} <small>{{ p.cm }}cm</small>{% endif %}{% endfor %}</td><td class="tn">{% for p in r.low %}{% if not loop.first %}<br>{% endif %}{{ p.t }}{% if p.cm is not none %} <small>{{ p.cm }}cm</small>{% endif %}{% endfor %}</td></tr>{% endfor %}</tbody>
+    </table>
+    </div>
+    {% endfor %}
+  </details>
+  {% endfor %}
+</section>
+{% endif %}
+
+{% if V.spots %}
+<section class="wrap chapter tt-spots" aria-labelledby="h-spots" data-reveal>
+  <h2 id="h-spots" class="h-sec">{{ site.region }} 해넘이·노을 명소 <span class="tn">{{ V.spots|length }}곳</span></h2>
+  <p class="note">장소 페이지에 해넘이·노을·낙조가 적힌 곳입니다. 아래 문장이 그 페이지의 내용입니다.</p>
+  <ul class="tt-spot-l">
+    {% for x in V.spots %}<li class="tt-spot"><span class="tt-spot-i" aria-hidden="true">{{ ui.icon('sun', 'icon') }}</span><div><p class="tt-spot-n"><a href="{{ x.path }}" data-track="nearby_click" data-place="{{ x.e.id }}">{{ x.name }}</a>{% set meta = [x.type, x.area]|select|list %}{% if meta %}<span class="tt-spot-m">{{ meta|join(' · ') }}</span>{% endif %}</p><p class="tt-spot-t">{{ x.line }}</p></div></li>{% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+{% set rows = [('제공 기관', s.provider, ''), ('지점', s.point ~ (' (북위 %.2f° · 동경 %.2f°)'|format(s.lat, s.lng) if s.lat is not none and s.lng is not none else ''), ''), ('기간', V.coverage ~ ' (' ~ V.n ~ '일)', '')] %}
+{% if s.lic %}{% set _ = rows.append(('이용 조건', s.lic.name ~ ' (공공데이터포털)', s.lic.url or '')) %}{% endif %}
+{% if s.url %}{% set _ = rows.append(('원자료', '공공데이터포털 ' ~ (s.dataset or s.provider), s.url)) %}{% endif %}
+{{ tt.databox('h-sun-data', '해 뜨고 지는 시각 자료', page.ds_name, page.ds_desc, rows) }}
+{% if V.tide %}{% set T = V.tide %}
+{% set trows = [('제공 기관', T.provider, ''), ('관측소', T.stations|map(attribute='name')|join(', '), ''), ('기간', T.coverage, '')] %}
+{% if T.lic %}{% set _ = trows.append(('이용 조건', T.lic.name ~ ' (공공데이터포털)', T.lic.url or '')) %}{% endif %}
+{% if T.url %}{% set _ = trows.append(('원자료', '공공데이터포털 ' ~ (T.dataset or T.provider), T.url)) %}{% endif %}
+{{ tt.databox('h-tide-data', '물때 자료', T.ds_name, T.ds_desc, trows) }}
+{% endif %}
+</div>
+{% endblock %}

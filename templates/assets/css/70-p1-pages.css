@@ -40,6 +40,18 @@
 .orig { margin: 0; padding: 0 0 0 14px; border-left: 3px solid var(--hair); font-size: 15px; line-height: 1.65; color: var(--ink-2); }
 .src-dl dd .note { margin-top: 6px; }
 .pl-src .src-dl a { min-height: 44px; }
+/* the sources at the page's foot (owner 2026-10-31 '이런 거는 크게 넣지 말고 아주 작게'): a small label and one
+   wrapping line of links, not a chapter with a rail heading; a verbatim original (sample data) keeps its full row */
+.pl-src.chapter { margin-top: calc(var(--s-bl) * .8); }
+.pl-src.ch-rail { display: block; }
+.pl-src .rail-label { position: static; padding: 0; margin: 0 0 2px; font: 700 13px/1.4 var(--font); letter-spacing: 0; color: var(--ink-3); }
+.pl-src .rail-label .nm { color: var(--ink-3); }
+.pl-src .src-dl { display: flex; flex-wrap: wrap; column-gap: 16px; margin: 0; }
+.pl-src .src-dl div { display: flex; align-items: center; gap: 5px; padding: 0; border: 0; font-size: 13px; line-height: 1.4; color: var(--ink-3); }
+.pl-src .src-dl dt { font-size: 13px; padding: 0; }
+.pl-src .src-dl dd { margin: 0; }
+.pl-src .src-dl div:has(.orig) { flex-basis: 100%; display: block; }
+.pl-src .rail-body > .note { margin-top: 0; font-size: 12.5px; color: var(--ink-3); }
 
 /* ---------------------------------------------------------------- place: the news rows of the media chapter (the
    주변·함께 가기 chapter is css/71-nearby.css) */

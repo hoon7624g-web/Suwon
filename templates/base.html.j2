@@ -1,4 +1,4 @@
-{% import "_ui.html.j2" as ui %}{% import "en/_chrome.html.j2" as enc %}{% import "_lang.html.j2" as lg %}<!doctype html>
+{% import "_ui.html.j2" as ui %}{% import "en/_chrome.html.j2" as enc %}{% import "_lang.html.j2" as lg %}{% import "_side.html.j2" as sdm %}<!doctype html>
 {#- base.html.j2 — every page (Apple direction). Head logic (title, description, canonical, robots/noindex,
     search-engine tokens in production only, og/twitter, geo, JSON-LD, GA4 + track.js in production with a GA4 id) is
     unchanged by the redesign. Blocks for page templates:
@@ -15,7 +15,8 @@
                   share link's #p= fragment leaves the address before any tag can read it)
       crumbs      the breadcrumb line above the footer (default: page.crumbs)
     Context used here: site, page, page_kind, noindex, banner, mode, nav [(label, href)], nav_current, ctxbtn
-    (label, href) | None, has_search, has_videos, tourapi_used, wordmark (pipeline/present.common_vm, page_chrome).
+    (label, href) | None, has_search, has_videos, tourapi_used, wordmark (pipeline/present.common_vm, page_chrome),
+    side (the tab panel: present.side_vm, en_site Pages.side — templates/_side.html.j2, operator 2026-10-31).
     Language: lang ('ko' when unset; 'en', 'ja', 'zh-Hans' … on the other versions, pipeline/en_site.py with the
     locale table pipeline/locales.py) sets <html lang>, og:locale (og_locale) and the body chrome (the other versions'
     header, crumbs and footer are in en/_chrome.html.j2, with their words t and locale loc). The head logic — title,
@@ -86,6 +87,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="stylesheet" href="/assets/vendor/pretendard/pretendard.css">
 <link rel="stylesheet" href="/assets/style.css">
+<style>@view-transition{navigation:auto}@media (prefers-reduced-motion:reduce){@view-transition{navigation:none}}</style>
 {# head block: a page whose first screen shows a KOGL-1 photo may preload it here with md.preload(ph)
    (_media.html.j2) instead of page.preload. The behaviour states are folded into the one built stylesheet
    (templates/assets/css/65-states.css), so there is no third stylesheet. #}
@@ -104,6 +106,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','{{ site.ga4_id }}');</script>
 {% endif %}
 {% if (site.ga4_id or site.gtm_id) and mode == 'production' %}<script src="/assets/track.js" defer></script>{% endif %}
+{% if mode == 'production' %}<!-- Vercel Web Analytics -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+{% endif %}
 </head>
 {% set ln = self.lnav()|trim %}
 {% set bc = self.bodyclass()|trim %}
@@ -116,36 +124,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 {#- the site's symbol beside its name (site.json brand_symbol, a file in assets/brand/; operator 2026-10-16: 군산각's
     lighthouse-bookmark) — decorative: the name next to it is the link text -#}
 {% set wm_sym %}{% if site.brand_symbol %}<span class="wm-sym" aria-hidden="true">{% include "assets/brand/" ~ site.brand_symbol %}</span>{% endif %}{% endset %}
-{% if lang != 'ko' %}{{ enc.header(nav, nav_current, page_kind, langs, wordmark, t, loc, wm_sym) }}{% else %}
+{% if lang != 'ko' %}{{ enc.header(nav, nav_current, page_kind, langs, wordmark, t, loc, wm_sym, side|default(none)) }}{% else %}
 <a class="skip-link" href="#main-content">본문 바로가기</a>
 {% macro nav_links(stagger=false) -%}
 {#- the courses entry keeps course_click on every page (the round-2 header '코스 보기' carried it; a page with a
     local bar now offers its own pill instead of that button) -#}
 {% for label, href in nav %}<li{% if stagger %} style="--i:{{ loop.index0 }}"{% endif %}><a href="{{ href }}"{% if nav_current == href %} aria-current="page"{% endif %}{% if href == '/courses/' %} data-track="course_click"{% endif %}>{{ label }}</a></li>{% endfor %}
 {%- endmacro %}
-{# The global bar: frosted, 52/60px, sticky (in the flow, so nothing is covered at load). The wordmark is
-   site.json site_name (present.common_vm), with the brand small beside it only when it differs (the
-   traveller-facing name is the owner's call, CLAUDE.md 9). Owner 2026-10-14 ('페이지 상단에는 검색, 중앙 부분에는
-   AI챗봇으로 확실히 구분'): this bar is where the SITE SEARCH lives, on every Korean page — form.hs (GET /search/?q=,
-   the static search, search.js), its field 'hs-q' and a round search button; the assistant has no button here (it
-   is the home's centre card and the launcher on every page, _chat.html.j2). /search/ is Korean only: the other
-   language versions (enc.header) have no search page, so their bar has no search.
-   Desktop: wordmark · nav · the search field (always shown, works without JS) · language menu.
-   Phones: wordmark · 영상 · context button · 검색 · 언어 · 메뉴 — '검색' is a link to /search/ (without JS: that page
-   and its own field); with JS it opens the same form OVER the bar (field + close, site.js [data-hs-open]), so the
-   fixed area stays the 52px bar (6% of a 390x844 screen, CLAUDE.md 7 ≤ 15%) and the context button keeps its place.
-   Below 375px 영상 gives way to 검색 (it stays in the menu panel). On /search/ itself the page's own field is the
-   search: the bar keeps only its 검색 link (the current page). The whole nav is in the menu panel (a <details>:
-   works without JS). A page with a local bar (block lnav) lets this bar scroll away; its context action is then the
-   local bar's pill. #}
+{# The header (operator 2026-10-31 '적용하자': the approved layout after travel.webforai.kr; css/80-side.css,
+   templates/_side.html.j2). Before it: the skip link. The wordmark is site.json site_name (present.common_vm), with the
+   brand small beside it only when it differs (CLAUDE.md 9).
+   From 1200px the header is the tab panel at the left, a white rounded board that stays while the page scrolls and
+   scrolls inside itself when taller than the window: the wordmark (with its line 'Suwongak · 수원 여행 정보'), the
+   language menu, the site search (form.hs, always shown, works without JS), the day card (날씨 · 해 뜨고 지는 시각 ·
+   다음 행사), the two actions and the tab groups (nav.side-nav '주 메뉴': 찾기 · 여행 계획 · 행사 달력 · 읽을거리 · 해외에서
+   본 수원 · 소개·출처 — every link of the old bar's nav is in one of them). The page's group is open and its link
+   aria-current. The content sits to the panel's right.
+   Below 1200px the bar stays (52px phones / 60px from 1024px, sticky, in the flow): wordmark · AI 코스 · context button
+   · 언어 · 검색 · 메뉴 (1024–1199px: the search field itself instead of 검색). Owner 2026-10-14 ('페이지 상단에는 검색,
+   중앙 부분에는 AI챗봇으로 확실히 구분'): the site search lives here on every Korean page — form.hs (GET /search/?q=, the
+   static search, search.js), its field 'hs-q' and a round search button; the assistant has no button here (it is the
+   home's centre card and the launcher on every page, _chat.html.j2). Phones: '검색' is a link to /search/ (without JS:
+   that page and its own field); with JS it opens the same form OVER the bar (field + close, site.js [data-hs-open]),
+   so the fixed area stays the 52px bar (6% of a 390x844 screen, CLAUDE.md 7 ≤ 15%) and the context button keeps its
+   place. On /search/ itself the page's own field is the search: the bar keeps only its 검색 link (the current page).
+   The menu (a <details>: works without JS) holds the two actions, the same tab groups as the panel (two columns), the
+   day card and the other versions. A page with a local bar (block lnav) lets the bar scroll away; its context action
+   is then the local bar's pill. #}
 {% set wm = wordmark or ((site.region or '') ~ ' 여행') %}
-<header class="mast" data-mast>
+{% set sd = side|default(none) %}
+{% set SG = sd.groups|side_state(nav_current) if sd else [] %}
+<header class="mast" data-mast data-lenis-prevent>
   <div class="wrap mast-in">
-    <a class="wordmark" href="/"{% if page_kind == 'home' %} aria-current="page"{% endif %}>{{ wm_sym }}<span class="wm-a">{{ wm|wordmark }}</span>{% if site.brand and site.brand != wm %}<span class="wm-b">{{ site.brand }}</span>{% endif %}</a>
-    <nav class="mast-nav" aria-label="주 메뉴"><ul>{{ nav_links() }}</ul></nav>
+    <a class="wordmark" href="/"{% if page_kind == 'home' %} aria-current="page"{% endif %}>{{ wm_sym }}<span class="wm-a">{{ wm|wordmark }}</span>{% if site.brand and site.brand != wm %}<span class="wm-b">{{ site.brand }}</span>{% endif %}{% if sd and sd.tagline %}<span class="wm-tag">{% if sd.latin %}<span lang="en">{{ sd.latin }}</span> · {% endif %}{{ sd.tagline }}</span>{% endif %}</a>
     {% if has_plan %}<a class="mast-plan" href="/plan/"{% if nav_current == '/plan/' %} aria-current="page"{% endif %} data-track="plan_cta">{{ ui.icon('spark', 'icon') }}<span>AI 코스</span></a>{% endif %}
     {% if has_videos %}<a class="mast-v" href="/videos/"{% if nav_current == '/videos/' %} aria-current="page"{% endif %}>영상</a>{% endif %}
     {% if ctxbtn and not ln %}<a class="mast-ctx" href="{{ ctxbtn[1] }}"{% if ctxbtn[1] == '/courses/' %} data-track="course_click"{% endif %}{% if ctxbtn[1] == '#list-map' %} data-show-map{% endif %}>{{ ctxbtn[0] }}</a>{% endif %}
+    {% if langs %}{{ lg.menu(langs, '언어') }}{% endif %}
     {% if has_search %}{% set on_search = nav_current == '/search/' %}
     <a class="mast-search" href="/search/"{% if on_search %} aria-current="page"{% else %} data-hs-open{% endif %}>{{ ui.icon('search', 'icon') }}<span>검색</span></a>
     {% if not on_search %}<form class="hs" id="hs" action="/search/" method="get" role="search" data-hs>
@@ -153,16 +168,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="hs-f"><input id="hs-q" name="q" type="search" maxlength="100" placeholder="장소·음식·지역 검색" autocomplete="off" enterkeyhint="search" spellcheck="false"><button type="submit" class="hs-go">{{ ui.icon('search', 'icon') }}<span class="vh">검색</span></button></span>
       <button type="button" class="hs-x" data-hs-close>{{ ui.icon('close', 'icon') }}<span class="vh">검색 닫기</span></button>
     </form>{% endif %}{% endif %}
-    {% if langs %}{{ lg.menu(langs, '언어') }}{% endif %}
     <details class="menu" data-menu>
       <summary><span class="vh">메뉴</span><i class="bars" aria-hidden="true"></i></summary>
       <nav class="menu-panel" aria-label="전체 메뉴">
-        {% if has_plan %}<a class="menu-plan" href="/plan/"{% if nav_current == '/plan/' %} aria-current="page"{% endif %} data-track="plan_cta">{{ ui.icon('spark', 'icon') }}<span><b>AI 코스 만들기</b><small>조건만 고르면 일정을 짜 드려요</small></span></a>{% endif %}
-        <ul>{{ nav_links(true) }}</ul>
-        <ul class="menu-sub">{% if has_search %}<li><a href="/search/"{% if nav_current == '/search/' %} aria-current="page"{% endif %}>검색</a></li>{% endif %}<li><a href="/about/"{% if nav_current == '/about/' %} aria-current="page"{% endif %}>소개·출처</a></li>{{ lg.others(langs) }}</ul>
+        {% if sd %}{{ sdm.acts(sd.acts, nav_current) }}
+        {{ sdm.groups(SG, nav_current, 'menu') }}
+        {{ sdm.day(sd, 'menu') }}{% endif %}
+        <ul class="menu-sub">{% if has_search %}<li><a href="/search/"{% if nav_current == '/search/' %} aria-current="page"{% endif %}>검색</a></li>{% endif %}{% if not sd %}<li><a href="/about/"{% if nav_current == '/about/' %} aria-current="page"{% endif %}>소개·출처</a></li>{% endif %}{{ lg.others(langs) }}</ul>
       </nav>
     </details>
   </div>
+  {% if sd %}<div class="side">
+    {{ sdm.day(sd, 'side') }}
+    {{ sdm.acts(sd.acts, nav_current) }}
+    <nav class="side-nav" aria-label="주 메뉴">{{ sdm.groups(SG, nav_current, 'side') }}</nav>
+  </div>{% endif %}
 </header>
 {% endif %}
 {{ ln }}
@@ -191,7 +211,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <nav class="foot-col" aria-label="안내">
         <h2>안내</h2>
-        <ul>{% if has_videos %}<li><a href="/videos/">영상으로 보는 {{ site.region }}</a></li>{% endif %}{% if has_abroad %}<li><a href="/abroad/">해외에서 본 {{ site.region }}</a></li>{% endif %}<li><a href="/about/">소개·출처</a></li><li><a href="/about/#how">이 사이트를 만드는 방법</a></li><li><a href="/about/#correction">정정 요청</a></li><li><a href="/llms.txt">AI용 안내(llms.txt)</a></li><li><a href="/sitemap.xml">사이트맵</a></li>{{ lg.others(langs) }}</ul>
+        <ul>{% if has_transport %}<li><a href="/transport/">{{ site.region }} 교통 시간표</a></li>{% endif %}{% if has_sun %}<li><a href="/sun/">{{ site.region }} 일출·일몰 시간</a></li>{% endif %}{% if has_videos %}<li><a href="/videos/">영상으로 보는 {{ site.region }}</a></li>{% endif %}{% if has_abroad %}<li><a href="/abroad/">해외에서 본 {{ site.region }}</a></li>{% endif %}<li><a href="/about/">소개·출처</a></li><li><a href="/about/#how">이 사이트를 만드는 방법</a></li><li><a href="/about/#correction">정정 요청</a></li><li><a href="/llms.txt">AI용 안내(llms.txt)</a></li><li><a href="/sitemap.xml">사이트맵</a></li>{{ lg.others(langs) }}</ul>
       </nav>
     </div>
     <div class="foot-id">

@@ -46,7 +46,7 @@ from urllib.parse import quote
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from markupsafe import Markup, escape
 
-from . import art, ask, chat_index, en_site, icons, jsonld, notices, plan, relations, tickets
+from . import art, ask, chat_index, en_site, icons, jsonld, notices, plan, relations, tickets, timetables
 from .city import of as city_of
 from .enrich import haversine_m
 from .maplinks import DEFAULT_TMAP_SCHEME, build_links, precision_summary, search_link
@@ -57,8 +57,8 @@ from .schema import (PHOTO_SOURCES, DEFAULT_ALLOWED_LICENSES, FACT_ALIASES, FACT
 from . import present
 from . import locales as LC
 from .slugs import COURSE_GROUP_IDS, YEAR_PREFIX, assign_slugs, series_slug, topic_slug
-from .textutil import (display_address, display_value, drop_dead_links, event_name_key, first_sentence, josa, link_url,
-                       series_key, squash_ws, url_domain, url_key, web_url)
+from .textutil import (cell_html, display_address, display_value, drop_dead_links, event_name_key, first_sentence, josa,
+                       keep_dots, keep_units, link_url, series_key, squash_ws, url_domain, url_key, web_url)
 
 ROOT = Path(__file__).resolve().parent.parent
 TEMPLATES = ROOT / "templates"
@@ -197,6 +197,10 @@ def make_env() -> Environment:
     # without spaces; tap-to-call numbers; closed-day phrases marked; owner item 7's caution filter (opt-in)
     env.filters["nwt"] = lambda t: Markup(re.sub(r"(\d{1,2}:\d{2}–\d{1,2}:\d{2}|[\d,]+원(?:\([\d,]+원\))?)",
                                                  lambda m: f'<span class="nw">{m.group(1)}</span>', str(escape(t or ""))))
+    # line breaks that read well (textutil.keep_units / cell_html, UI 2026-10-31): `ku` for a sentence or a label,
+    # `cellv` for a list cell's value (more=True glues its '외' to the last word, never a line of its own)
+    env.filters["ku"] = lambda t: Markup(keep_units(t))
+    env.filters["cellv"] = lambda t, more=False: Markup(cell_html(t, ' <span class="kf-more">외</span>' if more else ""))
     env.filters["dbr"] = lambda t: Markup(re.sub(r"(\d{1,2}\. \d{1,2}\.(?:\([월화수목금토일]\))?)",
                                                  lambda m: f'<span class="nw">{m.group(1)}</span>', str(escape(t or ""))))
     env.filters["short_iso"] = lambda iso: f"{iso[:4]}. {int(iso[5:7])}. {int(iso[8:10])}." if iso and len(iso) >= 10 else (iso or "")
@@ -206,6 +210,7 @@ def make_env() -> Environment:
     env.filters["clhead"] = present.closed_head     # a row's closed day: the square kept with its first word
     env.filters["glue_dots"] = present.glue_dots   # '해설·한빛': a middle dot never starts a line
     env.filters["decaution"] = present.decaution
+    env.filters["side_state"] = present.side_state   # the tab panel's groups of one page (templates/_side.html.j2)
     env.globals["card_vm"] = present.card_vm
     env.globals["SHARE_WORDS"] = LC.SHARE_WORDS   # ui.lnav's share button, in the page's language
     env.globals["ART_CARD_NOTE"] = LC.ART_CARD_NOTE   # a home card's illustration line
@@ -546,6 +551,7 @@ class State:
             g["_url"] = self.abs(g["_path"])
             g["_page_date"] = latest(g.get("reviewed_at"), g.get("checked_at"))
         self.ent_by_slug = {e["slug"]: e for e in self.entities}
+        self.ent_by_id = {e["id"]: e for e in self.entities}   # related.json's place_id (present.related_places)
         # places that belong together (data part_of, pipeline/relations.py, operator decision 2026-10-16): _parent,
         # _rel, _parts, _same, _alias_of, _family on every built place; a parent outside the build drops the relation
         self.relation_warnings = relations.resolve(self.entities_all, self.entities)
@@ -644,11 +650,30 @@ class State:
         # the city bus timetable's reference-stop first and last times (transit.json, optional; QA 2026-10-15 F09 and
         # operator decision 4): the course pages' '차 없이 다니기' block; checked against guide-31 by pipeline.validate
         self.transit = _load(data_dir / "transit.json", {}) or {}
+        # the place page's day card (present.today_vm, operator 2026-10-31): sunrise·sunset and tides (almanac.json),
+        # the crowd forecast (crowd.json) and beaches (beaches.json) — each optional, a file not made yet is empty
+        self.almanac = _load(data_dir / "almanac.json", {}) or {}
+        # /transport/ 교통 시간표 (transport_tago.json: 국토교통부 TAGO, pipeline/timetables.py) — optional
+        self.transport = _load(data_dir / "transport_tago.json", {}) or {}
+        self.crowd = _load(data_dir / "crowd.json", {}) or {}
+        self.beaches = _load(data_dir / "beaches.json", {}) or {}
+        self.ferry = _load(data_dir / "ferry.json", {}) or {}   # the routes that call at an island place (Korean card)
+        # 영업 확인 (licenses.json: 행정안전부 인허가, 식품안심업소) and 이어서 많이 간 곳 (related.json: 한국관광공사 연관
+        # 관광지) on the place page (present.license_vm, related_vm; operator 2026-10-31) — optional files
+        self.licenses = _load(data_dir / "licenses.json", {}) or {}
+        self.related_trips = _load(data_dir / "related.json", {}) or {}
         # View-model fields for the redesigned templates (pipeline/present.py, computed once): e["_type"],
         # e["_photos"] (with image_sizes.json), e["_line"], e["_region"], S.anchors, S.course_vms, S.warnings …
         self.warnings: list[str] = list(self.relation_warnings)
         present.prepare(self, data_dir)
         self.common_vm = present.common_vm(self)
+        # /sun/ 일출·일몰 시간 and /transport/ 교통 시간표 (pipeline/timetables.py, operator 2026-10-31): their
+        # view models, None without data — the pages, the footer's links and the place / guide links follow them
+        self.tt_sun = timetables.sun_vm(self)
+        self.tt_transport = timetables.transport_vm(self)
+        # the tab panel (operator 2026-10-31 '적용하자'; present.side_vm, templates/_side.html.j2): its groups, the day card's
+        # next event and sunrise · sunset, the weather module's hook — once per build
+        self.side = present.side_vm(self)
         self.en = None  # the English site, set by build()/validate() (pipeline/en_site.load_all)
         self.intl = None  # every version besides Korean (en_site.Intl): hreflang sets and the language menu
 
@@ -683,7 +708,9 @@ class State:
                 "tourapi_used": self.tourapi_used, "has_map": bool(self.entities), "has_videos": bool(self.videos),
                 "has_search": bool(self.entities), "has_abroad": bool(self.abroad or self.abroad_videos),
                 "has_plan": bool(self.entities),   # /plan/, the AI course planner (Korean pages, pipeline/plan.py)
-                "art_slots": art.for_lang(self.art, "ko"), **self.common_vm,
+                "has_sun": bool(self.tt_sun), "has_transport": bool(self.tt_transport),   # /sun/ · /transport/
+                "tt_guides": timetables.TRANSPORT_GUIDES if self.tt_transport else (),   # guides that link /transport/
+                "art_slots": art.for_lang(self.art, "ko"), "side": self.side, **self.common_vm,
                 **present.page_chrome(page_kind, bool(self.courses))}
 
     def name_related(self, e: dict) -> list[dict]:
@@ -1071,6 +1098,8 @@ def entity_ctx(e: dict, S: State) -> dict:
     # existing key already has that name (existing keys keep their meaning; `points` stays the map_box list,
     # the redesign's {self, near, anchors} is `place_points`).
     vm = present.place_vm(S, e, ctx)
+    if S.tt_sun and (vm.get("today") or {}).get("sun"):   # the day card's sunset leads to /sun/ (pipeline/timetables.py)
+        vm["today"]["sun_page"] = timetables.SUN_PATH
     ctx.update({k: v for k, v in vm.items() if k not in ctx})
     # inside `p` the names the prototype templates use are free: p.faqs, p.points, p.segs (the course segments of
     # the 주변·함께 가기 chapter, present.route_segs)
@@ -1090,7 +1119,8 @@ def place_media(e: dict) -> dict:
 def _write(out: Path, path: str, html: str) -> None:
     target = out / path.strip("/") / "index.html" if path.endswith("/") else out / path.lstrip("/")
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(html, "utf-8")
+    # a title never starts a line with '·' (textutil.keep_dots)
+    target.write_text(keep_dots(html) if target.suffix == ".html" else html, "utf-8")
 
 
 def _render(env, S: State, out: Path, template: str, path: str, page: dict, page_kind: str,
@@ -1292,6 +1322,7 @@ def llms_txt(S: State) -> tuple[str, str]:
                   f"- [해외에서 본 {S.city.region}]({S.abs('/abroad/')}): 외신·해외 매체 기사 "
                   f"{sum(a.get('kind') == 'article' for a in S.abroad)}건(우리가 쓴 한 줄 소개와 원문 링크, 일부는 원문 한두 문장 인용)과 외국어 영상 "
                   f"{len(S.abroad_videos)}편", ""]
+    short += timetables.llms_short(S, S.tt_sun, S.tt_transport)   # /sun/ · /transport/ (operator 2026-10-31)
     short += ["## 이용 안내", f"- [출처·이용 안내]({S.abs('/about/')}): 원문 이용조건, 사진, 운영 주체, 정정 요청", ""]
     for site in (getattr(S, "intl", None) or en_site.Intl({})).sites.values():   # one section per version
         short += en_site.llms_lines(site)
@@ -1321,6 +1352,18 @@ def llms_txt(S: State) -> tuple[str, str]:
                                 "— 출처마다 값이 달라 방문 전 전화 확인")
         for d in designations(e, city=S.city):
             full.append(f"- 지정: {d['label']} (출처: {d['source_name']} {d['url']})")
+        # 영업 확인 and 이어서 많이 간 곳 (present.license_vm, related_places; operator 2026-10-31), as the page shows them
+        biz = present.license_vm(S, e)
+        if biz:
+            srcs = ", ".join(f"{x['name']} {x['url']}" for x in biz["sources"])
+            full.append(f"- 영업 확인: {biz['open']} — {biz['by']}" + (f" · 인허가상 상호 {biz['licensed_name']}" if biz.get("licensed_name") else "") + (f" (출처: {srcs})" if srcs else ""))
+            if biz["safe"]:
+                full.append(f"- {biz['safe']}")
+        went = present.related_places(S, e)
+        if went:
+            ym = present.related_ym(getattr(S, "related_trips", None) or {})
+            full.append(f"- 이어서 많이 간 곳(티맵 차량 이동 기준{', ' + ym if ym else ''}, 한국관광공사 · 추천 아님): "
+                        + ", ".join(t["name"] for t in went))
         full.append("")
     for sr in series:
         ev = sr["newest"]
@@ -1331,6 +1374,7 @@ def llms_txt(S: State) -> tuple[str, str]:
         if squash_ws(ev.get("source_name")):
             full.append(f"- 출처: {squash_ws(ev['source_name'])}")
         full.append("")
+    full += timetables.llms_full(S, S.tt_sun, S.tt_transport)   # the two timetables' summary lines
     return "\n".join(short), "\n".join(full)
 
 
@@ -1686,6 +1730,7 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
     # links and the language menu
     S.intl = en_site.load_all(S, data_dir)
     S.en = S.intl.sites.get("en")
+    S.side["latin"] = S.en.site_name if S.en else ""   # the panel's wordmark line: 'Suwongak · 수원 여행 정보'
     env = make_env()
     # the 3D picture registry of this data folder (data/<region>/icons.json, pipeline/icons.py), bound per build
     reg = icons.load(data_dir) or icons.registry()
@@ -1847,7 +1892,7 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
         page = _simple_page(S, path, f"{region} 여행 코스" + (f" — {'·'.join(durations)}" if durations else ""),
                             desc, crumbs, image=next((c["_cover"]["url"] for c in S.courses if c.get("_cover")), ""))
         _render(env, S, out, "courses_index.html.j2", path, page, "courses", lastmod,
-                co_groups=present.course_groups_vm(S))
+                co_groups=present.course_groups_vm(S), CV=present.course_index_vm(S))
 
     if S.events:
         index_path = "/events/"
@@ -1938,6 +1983,20 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
         if hl:   # the viewer (templates/_abroad_hl.html.j2 dialog) arrives with highlights.js on the first press
             viewer = env.get_template("_abroad_hl.html.j2").module.dialog(hl)
             (out / HL_VIEWER.strip("/")).write_text(json.dumps({"html": str(viewer)}, ensure_ascii=False), "utf-8")
+
+    # /sun/ 일출·일몰 시간 and /transport/ 교통 시간표 (pipeline/timetables.py, operator 2026-10-31: the new public
+    # data on the site, for search and AI answers): Korean pages, WebPage + BreadcrumbList + Dataset, lastmod the data's
+    # checked date (never shown)
+    for V, make, path, template, kind in ((S.tt_sun, timetables.sun_page, timetables.SUN_PATH, "sun.html.j2", "sun"),
+                                          (S.tt_transport, timetables.transport_page, timetables.TRANSPORT_PATH,
+                                           "transport.html.j2", "transport")):
+        if not V:
+            continue
+        P = make(S, V)
+        page = {k: P[k] for k in ("title", "description", "canonical", "crumbs", "ds_name", "ds_desc")}
+        page["jsonld"] = [jsonld.dumps(P["graph"])]
+        checked = V["src"]["checked"] if kind == "sun" else V["checked"]
+        _render(env, S, out, template, path, page, kind, checked or None, V=V)
 
     if S.entities:
         # /search/: a static index (name · other names · 대표 메뉴 · 동 · 권역) fetched by assets/search.js on first

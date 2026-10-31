@@ -122,6 +122,17 @@
 </figure>
 {%- endmacro %}
 
+{#- cellv(c, place): a list cell (UI 2026-10-31, operator: '매주 월요일 / 1월 1일' broke at '/', '외' on a line of its
+    own, a bracket and the seasons' times piled up): the value's main part on its first line — its head or time bold,
+    a season or days before a time (.cv-l) and the last entry after it (.kfl) quiet — then its second part as the
+    small line (.kf-sub), '외' glued to the last word (textutil.cell_html; the words unchanged). A missing value, a
+    phone number and a conflict keep ui.kfv. -#}
+{% macro cellv(c, place='') -%}
+{% if c.missing or c.conflict or c.key == 'tel' %}{{ ui.kfv(c, '', false, place) }}
+{%- else %}<span class="kf-main tn cv{% if c.closed %} closed{% endif %}">{{ c.main|cellv(c.more and not c.sub) }}</span>{% if c.sub %}<span class="kf-sub tn cv">{{ c.sub|cellv(c.more) }}</span>{% endif %}
+{%- endif %}
+{%- endmacro %}
+
 {% macro rec(it, kind) -%}
 {#- empty type/theme keys are left out (a list page carries ~170 of these rows); the name link is the view-transition
     title without data-vt (site.js takes the link in .rec-name of a [data-vt-scope] row) -#}
@@ -135,9 +146,10 @@
 {% if not it.photo %}<span class="rec-ic">{{ ui.type_icon(it.e, 48) }}</span>{% endif %}
 {% if it.photo %}<img class="rec-th t{{ it.photo.type }}" src="{{ it.photo.url }}"{% if it.photo.w and it.photo.h %} width="{{ it.photo.w }}" height="{{ it.photo.h }}"{% endif %} alt="" loading="lazy" decoding="async" data-kogl="{{ it.photo.type }}">{% endif %}
 </div>
-<dl class="rec-cells">{% for c in it.slots %}<div class="c-{{ c.key }}{% if c.conflict %} is-conflict{% endif %}{% if c.missing or c.none %} is-missing{% endif %}"><dt>{{ c.label }}</dt><dd>{% if not (c.missing or c.none) or (c.missing and c.sub) %}{{ ui.kfv(c, '', false, it.e.id) }}{% endif %}</dd></div>{% endfor %}</dl>
+<dl class="rec-cells">{% for c in it.slots %}<div class="c-{{ c.key }}{% if c.conflict %} is-conflict{% endif %}{% if c.missing or c.none %} is-missing{% endif %}"><dt>{{ c.label }}</dt><dd>{% if not (c.missing or c.none) or (c.missing and c.sub) %}{{ cellv(c, it.e.id) }}{% endif %}</dd></div>{% endfor %}</dl>
 {% if it.slots|selectattr('conflict')|list %}<p class="rec-call">방문 전 전화 확인</p>{% endif %}
 {{ ui.need(it.slots, 'rec-need') }}
+{{ fb.why(it) }}
 </li>
 {%- endmacro %}
 

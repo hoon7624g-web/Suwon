@@ -11,6 +11,7 @@
   "brand": "수원각",
   "brand_symbol": "suwongak-symbol.svg",
   "region": "수원",
+  "weather": {"_note": "날씨각(weather.o2o.kr, 운영사 서비스) 위젯 지역 — 행정표준코드 경기 수원시 팔달구(홈 첫 권역 수원화성·화성행궁이 있는 구). 운영자 요청 2026-10-31 군산각 안내서 port_2026-10-31.md 2절", "region_code": "4111500000", "area": "팔달구"},
   "region_en": "Suwon",
   "region_admin": "경기도",
   "region_admin_en": "Gyeonggi-do",

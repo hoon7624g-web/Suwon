@@ -12,10 +12,11 @@
 {% import "en/_en.html.j2" as E with context %}
 {% import "_media.html.j2" as md %}
 {% import "_near.html.j2" as nb %}
+{% import "_today.html.j2" as tdy %}
 {% set fn = v.notes|length > 1 %}
 {% set nm = v.name %}
 {% set lead = v.hero_k1 or v.hero_k3 %}
-{% set has_near = v.parts or v.near_sights or v.near_biz or v.segs or v.guide_cards or v.event_cards %}
+{% set has_near = v.parts or v.near_sights or v.near_biz or v.segs or v.went_next or v.guide_cards or v.event_cards %}
 {% block main_class %}{% endblock %}
 {% block bodyclass %}pg-place kind-{{ v.kind }}{% if lead %} has-photo{% else %} no-photo{% endif %}{% endblock %}
 {% block head %}{% if v.hero_k1 %}{{ md.preload(v.hero_k1, '(min-width: 1024px) min(940px, 66vw), 100vw') }}{% endif %}{% endblock %}
@@ -73,9 +74,15 @@
 
   <div class="pl-band tone-2">
   <div class="wrap pl-grid{% if not lead %} lift{% endif %}">
+    {#- 오늘의 상태 · 오늘의 바다 (present.today_vm, templates/_today.html.j2; operator 2026-10-31): a grid item of its own
+        — phones and tablets right after the opening, before 방문 전 확인 (css/74-today.css order); from 1024px at the top
+        of the left column, the photos and the rest under it (.pl-main moves to the second row) -#}
+    {% if v.today %}{{ tdy.card(v.today, nm) }}{% endif %}
     <section class="pl-side" aria-labelledby="h-facts" data-block="facts" data-sticky>
       <h2 id="h-facts" class="h-side">{{ t.f('h_facts', name=E.nm(nm)) }}</h2>
       {% if v.practical or v.designations %}<dl class="facts">{% for r in v.practical %}{{ E.factrow(r, fn, v.e.id, v.address_ko) }}{% endfor %}{{ E.dzrow(v.designations, v.e.id) }}</dl>{% endif %}
+      {#- the licence line in this language (present.license_vm with locales.LICENSE_WORDS, as the Korean page) -#}
+      {% if v.biz %}<div class="biz" data-block="license"><p class="biz-l"><b>{{ v.biz.open }}</b> — {{ v.biz.by }}</p>{% if v.biz.safe %}<p class="biz-l">{{ v.biz.safe_html }}</p>{% endif %}{% if v.biz.sources %}<p class="biz-src">{{ v.biz.src_word }}{{ loc.colon }}{% for s in v.biz.sources %}{% if not loop.first %} · {% endif %}<a href="{{ s.url }}" rel="noopener">{{ s.name }}</a>{% endfor %}</p>{% endif %}</div>{% endif %}
       {% if v.missing %}<p class="need"><b>{{ t.not_listed }}</b> {{ v.missing|join(loc.list_sep) }}</p>{% endif %}
       {{ E.notes(v.notes, v.e.id) }}
     </section>
@@ -134,6 +141,10 @@
         <p class="note nb-note">{{ w.scale.format(d=loc.dist(v.near_scale)) }}{% if v.nearby_source.provider %} · {{ t.f('near_note', m=loc.num((v.nearby_source.radius_m or 0)|int), provider=v.near_src) }}{% endif %}</p>
         {% if v.photo_lics %}<p class="note nb-credit">{{ w.credit.format(lic=v.photo_lics|join(loc.list_sep)) }}</p>{% endif %}
       </div>
+      {% endif %}
+      {% if v.went_next %}
+      <div class="nb-part" data-block="went-next"><h3 class="h-sub">{{ v.went_next.title }}</h3>{{ nb.rows(v.went_next.rows, v.e.id, w) }}
+        <p class="note nb-note">{{ v.went_next.note }}</p></div>
       {% endif %}
       {% if v.guide_cards %}<div class="nb-part"><h3 class="h-sub nb-h">{{ ui.kpic('guide', '', 40) }}<span>{{ t.s('guides_here') }}</span></h3>
         {{ nb.cards(v.guide_cards, v.e.id, w, 'guide_click', w.more_guides) }}</div>{% endif %}

@@ -1,0 +1,274 @@
+/* 80-side — the tab panel (operator 2026-10-31 '적용하자': the approved layout after travel.webforai.kr;
+   templates/_side.html.j2, base.html.j2, en/_chrome.html.j2). The tone stays (00-tokens: white, hairline borders, sea
+   blue, Pretendard 400/700, radii 12 · 18 · 24 · 28).
+
+   From 1200px — the PC layout: the header is a white rounded board at the left (288px, 16px from the window's edges),
+   fixed while the page scrolls and scrolling inside itself when taller than the window (data-lenis-prevent: Lenis
+   leaves it its own wheel). In it, in reading and Tab order: the wordmark with its line, the language menu (a full-
+   width button; its list drops over the board), the site search (always shown, works without JS), the day card
+   (날씨 · 해 뜨고 지는 시각 · 다음 행사), the two actions and the tab groups (nav.side-nav: <details> that open
+   without JS, the page's group open, its link aria-current). The bar's own buttons (AI 코스, 검색, 메뉴) step back: the
+   board has each of them. The page is a column right of the board (body padding; --cw its width, so the carousels' and
+   the story stage's 100vw sums use the column); the bars the old layout had at the top are gone (--bar 0), except a
+   page's local bar (place, course, event, guide: 52px, sticky in the column). The home's opening becomes a rounded
+   board in the column (the mock-up Main).
+   Why 1200px: at 1200 the column is 880px — about the 930px the desktop page layouts (from 1024px) were drawn for;
+   below it the board would squeeze them. From 1024 to 1199px the bar stays (60px) with the search field in it, its
+   nav row replaced by the menu, which opens the same groups as on phones.
+   Below 1200px: the bar as before (52px phones · 60px from 1024px; the fixed area ≤ 15% of the screen) and the menu
+   (details.menu, without JS too): the two actions, the groups (each a <details>; their links in two columns of 56px
+   cells), the day card without the weather module, then 검색 and the other versions.
+   Contrast (00-tokens head): ink on white 16.27; ink-2 9.36; ink-3 on white 5.62 / g0 5.22 / tint 4.98; sea-deep on
+   tint 7.13; white on ink 16.27. Targets ≥ 44px (the groups' rows 44–52px); the shared focus ring. */
+:root { --side-w: 288px; --side-in: 16px; --side-x: calc(var(--side-w) + 2 * var(--side-in)); }
+
+/* ---------------------------------------------------------------- the parts, any width */
+.wm-tag, .side { display: none; }
+.sd-acts { display: flex; gap: 8px; margin: 0; }
+.sd-act { flex: 1 1 0; display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; padding: 0 14px; border: 1px solid var(--hair); border-radius: 999px; background: #fff; color: var(--sea-deep); font: 700 14.5px/1.2 var(--font); letter-spacing: -.02em; text-align: center; text-decoration: none; white-space: nowrap; transition: background-color .2s var(--fb); }
+.sd-act .icon { flex: none; width: 16px; height: 16px; stroke-width: 2; }
+.sd-act:hover { background: var(--tint); color: var(--sea-deep); text-decoration: none; }
+.sd-act.is-pri { border-color: var(--ink); background: var(--ink); color: #fff; }
+.sd-act.is-pri:hover { border-color: #000; background: #000; color: #fff; }
+.sd-act:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+/* the groups: a summary row per group (a single tab is a link row with an arrow), the links under it */
+.sg-list { margin: 0; padding: 0; list-style: none; }
+.sg { border-bottom: 1px solid var(--bg-3); }
+.sg-s { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 52px; padding: 0 8px; border-radius: 10px; color: var(--ink); font: 700 18px/1.25 var(--font); letter-spacing: -.025em; text-decoration: none; cursor: pointer; list-style: none; transition: background-color .2s var(--fb); }
+.sg-s::-webkit-details-marker { display: none; }
+.sg-s::marker { content: ""; }
+.sg-s:hover { background: var(--bg-2); color: var(--ink); text-decoration: none; }
+/* the chevrons are drawn here (two borders of a small square), not as inline icons in every row of every page */
+.sg-i { flex: none; width: 8px; height: 8px; margin: -5px 6px 0 0; border: solid var(--ink-3); border-width: 0 2px 2px 0; transform: rotate(45deg); transition: transform .2s var(--fb); }
+.sg-d[open] > .sg-s .sg-i { margin-top: 4px; transform: rotate(-135deg); }
+.sg-i-r { margin: 0 8px 0 0; transform: rotate(-45deg); }
+.sg-1[aria-current] { color: var(--sea-deep); background: var(--tint); }
+.sg-l { margin: 0; padding: 0 0 10px; list-style: none; }
+.sg-a { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 44px; padding: 0 10px 0 12px; border-radius: 10px; color: var(--ink-2); font: 400 15.5px/1.3 var(--font); letter-spacing: -.015em; text-decoration: none; transition: background-color .2s var(--fb), color .2s var(--fb); }
+.sg-n { display: inline-flex; align-items: center; gap: 10px; min-width: 0; }
+.sg-a:hover { background: var(--bg-2); color: var(--ink); text-decoration: none; }
+.sg-c { flex: none; font-size: 13px; color: var(--ink-3); }
+.sg-a[aria-current] { background: var(--tint); color: var(--sea-deep); font-weight: 700; }
+.sg-a[aria-current] .sg-c { color: var(--sea-deep); }
+@media (prefers-reduced-motion: reduce) { .sg-i, .sg-s, .sg-a, .sd-act { transition: none; } }
+
+/* the day card: the weather module, the sunrise · sunset row, the next event */
+.sd-day { display: flex; flex-direction: column; border: 1px solid var(--hair); border-radius: 18px; background: var(--g0); overflow: hidden; }
+.sd-sun, .sd-ev { position: relative; display: flex; flex-wrap: wrap; align-items: center; gap: 2px 12px; min-height: 44px; padding: 10px 40px 10px 14px; color: var(--ink); text-decoration: none; transition: background-color .2s var(--fb); }
+.sd-day > * + * { border-top: 1px solid var(--hair); }
+.sd-sun:hover, .sd-ev:hover { background: var(--tint); color: var(--ink); text-decoration: none; }
+.sd-sun:focus-visible, .sd-ev:focus-visible { outline-offset: -3px; }
+.sd-k { font: 700 12.5px/1.35 var(--font); color: var(--sea-deep); letter-spacing: -.01em; }
+.sd-sun .sd-k { flex-basis: 100%; }
+.sd-sv { font: 400 13.5px/1.3 var(--font); color: var(--ink-2); white-space: nowrap; }
+.sd-sv b { margin-left: 2px; font: 700 16px/1.2 var(--font); color: var(--ink); letter-spacing: -.01em; }
+.sd-ev { flex-direction: column; align-items: flex-start; gap: 3px; }
+.sd-ev-t { font: 700 14.5px/1.4 var(--font); letter-spacing: -.02em; word-break: keep-all; overflow-wrap: anywhere; }
+.sd-go { position: absolute; right: 16px; top: 50%; width: 8px; height: 8px; margin-top: -4px; border: solid var(--ink-3); border-width: 0 2px 2px 0; transform: rotate(-45deg); }
+
+/* ---------------------------------------------------------------- 날씨각's card (_side.html.j2 weather,
+   assets/weather.js; operator 2026-10-31 '날씨각 실제 디자인으로': its home card — the sky of the hour, at night
+   navy with stars and the moon in its phase, the score in the orb, clouds either side, 'Jua' lines and the four
+   cells, 지금 on white). Built: the title and '… 날씨 보기' on the site's own grey card, the whole card one link. With
+   JS the card keeps its filled room from the first paint (fixed heights below), so nothing moves when the answer
+   comes after load — or when it does not (the link stays, in the same room). Two sizes: 'home' (under a home's first
+   screen) and 'side' (the panel's day card). Contrast on the night sky (#141b3d–#3d3f86): white 9+; on the day sky
+   ink #28304a 9+. No '출처' line: 날씨각 is the operator's own service. */
+.wx { position: relative; display: flex; flex-direction: column; gap: 8px; padding: 12px 14px; color: var(--ink); text-decoration: none; overflow: hidden; }
+.wx:hover .wx-go, .wx:focus-visible .wx-go { color: var(--ink); }
+.wx-h { position: relative; z-index: 3; display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.wx-t { font: 700 13.5px/1.3 var(--font); color: var(--sea-deep); letter-spacing: -.01em; }
+.wx-d { font: 700 12.5px/1.3 var(--font); opacity: .8; white-space: nowrap; }
+.wx-b { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.wx-b:empty { display: none; }
+.wx-go { display: inline-flex; align-items: center; gap: 4px; align-self: flex-start; min-height: 24px; font: 700 12.5px/1.3 var(--font); color: var(--sea-deep); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; }
+.wx-x { width: 13px; height: 13px; stroke-width: 2; }
+html.js .wx { padding-bottom: 42px; }
+html.js .wx-go { position: absolute; left: 14px; bottom: 10px; height: 24px; min-height: 0; margin: 0; line-height: 24px; white-space: nowrap; }
+html.js .wx:not(.is-ready):not(.is-failed) .wx-b:empty { display: flex; gap: 8px; align-items: stretch; }
+html.js .wx:not(.is-ready):not(.is-failed) .wx-b:empty::before, html.js .wx:not(.is-ready):not(.is-failed) .wx-b:empty::after {
+  content: ""; display: block; height: 14px; border-radius: 7px; background: var(--hair); }
+html.js .wx:not(.is-ready):not(.is-failed) .wx-b:empty::before { width: 56%; height: 26px; border-radius: 10px; }
+html.js .wx:not(.is-ready):not(.is-failed) .wx-b:empty::after { width: 78%; }
+/* the drawn card */
+.wx.is-ready { padding-bottom: 12px; transition: background .6s; }
+.wx.is-ready .wx-go { display: none; }
+.wx[data-t=morning] { background: linear-gradient(#ffd9b8, #ffe9d4 40%, #dff0ff); color: #28304a; }
+.wx[data-t=day] { background: linear-gradient(#9fd3ff, #cfe9ff 55%, #f1f8ff); color: #28304a; }
+.wx:is([data-t=morning], [data-t=day])[data-sky=cloudy] { background: linear-gradient(#a9bbd0, #cbd7e4 55%, #eef2f7); }
+.wx[data-t=sunset] { background: linear-gradient(#4c42b0, #6a48b0 45%, #9a4a88); color: #fff; }
+.wx[data-t=night] { background: linear-gradient(#141b3d, #27306a 60%, #3d3f86); color: #fff; }
+.wx.is-ready .wx-t { color: inherit; font-family: "Jua", var(--font); font-weight: 400; font-size: 14px; }
+.wx-stars { position: absolute; inset: -40px -14px auto; height: 100%; pointer-events: none; opacity: 0; }
+.wx[data-t=night] .wx-stars { opacity: 1; }
+.wx-stars i { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: #fff; box-shadow: 0 0 6px #fff; }
+.wx-sky { position: relative; display: block; width: 100%; height: 146px; }
+.wx-cloud { position: absolute; z-index: 1; height: 32px; width: 84px; border-radius: 999px; background: #fff; box-shadow: inset 0 -12px 18px #a0bee673, 0 16px 28px #28467821; }
+.wx-cloud::before, .wx-cloud::after { content: ""; position: absolute; aspect-ratio: 1; border-radius: 999px; background: inherit; box-shadow: inset 0 -10px 16px #a0bee659; }
+.wx-cloud::before { width: 46%; top: -58%; left: 16%; }
+.wx-cloud::after { width: 36%; top: -36%; left: 50%; }
+.wx[data-t=night] .wx-cloud { background: #c9cdf0; }
+.wx-c1 { top: 36px; left: 3%; }
+.wx-c2 { top: 96px; left: 63%; width: 96px; height: 36px; }
+.wx-c3 { top: 30px; left: 74%; width: 64px; height: 28px; }
+.wx-orb { position: absolute; z-index: 2; top: 8px; left: 50%; width: 128px; height: 128px; margin-left: -64px; display: grid; place-items: center; border-radius: 50%;
+  color: #5c1f08; background: radial-gradient(circle at 34% 30%, #fff5cf, #ffc86e 30%, #ff8e4e 68%, #ee6436);
+  box-shadow: inset -18px -24px 40px #aa321457, inset 16px 18px 28px #ffffff8c, 0 30px 56px #f06a3a52; }
+.wx[data-sky=cloudy] .wx-orb:not(.is-moon) { filter: saturate(.7) brightness(.96); }
+.wx[data-t=sunset] .wx-orb { color: #4a2442; background: radial-gradient(circle at 34% 30%, #fff4e6, #ffd9b8 32%, #f7a991 68%, #e07a8f); }
+.wx-orb.is-moon { color: #2b2a5c; background: none; box-shadow: none; }
+.wx-moon { position: absolute; top: -25%; left: -25%; width: 150%; height: 150%; pointer-events: none; }
+.wx-ol { position: relative; display: flex; flex-direction: column; align-items: center; text-shadow: 0 0 6px #fff, 0 0 12px #fff; }
+.wx-sl { font: 400 12px/1.2 "Jua", var(--font); }
+.wx-sc { font: 400 52px/.95 "Bagel Fat One", "Jua", var(--font); font-variant-numeric: tabular-nums; }
+.wx-bub { position: relative; z-index: 3; display: block; margin-top: 6px; font: 400 24px/1.25 "Jua", var(--font); }
+.wx[data-t=night] .wx-bub, .wx[data-t=sunset] .wx-bub { text-shadow: 0 2px #0003; }
+.wx-sum { position: relative; z-index: 3; display: block; margin-top: 2px; font: 700 15px/1.4 var(--font); opacity: .82; }
+.wx-st { position: relative; z-index: 3; display: flex; flex-wrap: wrap; justify-content: center; gap: 0 6px; margin-top: 6px; font: 400 14px/1.45 "Jua", var(--font); }
+.wx-s1 { white-space: nowrap; }
+.wx-sk { opacity: .75; }
+.wx-st b { font-weight: 400; }
+.wx-dot { opacity: .35; }
+.wx-cells { position: relative; z-index: 3; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; width: 100%; margin: 10px 0 0; padding: 3px; list-style: none; border-radius: 18px; background: #ffffff6b; }
+.wx[data-t=night] .wx-cells, .wx[data-t=sunset] .wx-cells { background: #ffffff24; }
+.wx-cells li { display: flex; flex-direction: column; align-items: center; padding: 6px 0; border-radius: 14px; }
+.wx-cells li.is-now { color: #28304a; background: #fff; box-shadow: 0 4px 12px #28304a1a; }
+.wx-cn { font: 700 13px/1.3 var(--font); opacity: .78; }
+.wx-cells .is-now .wx-cn { opacity: 1; color: #c2471b; }
+.wx-i { display: block; width: 22px; height: 22px; margin: 2px 0; object-fit: contain; }
+.wx-ct { font: 400 15px/1.3 "Jua", var(--font); }
+@media (prefers-reduced-motion: no-preference) {
+  .wx.is-ready .wx-orb { animation: wx-bob 5.6s ease-in-out infinite; }
+  .wx.is-ready .wx-cloud { animation: wx-bob 6.2s ease-in-out infinite; }
+  .wx.is-ready .wx-c2 { animation-duration: 6.8s; }
+}
+@keyframes wx-bob { 50% { transform: translateY(-4px); } }
+/* the home's card (big): 날씨각's own size, 28px round */
+.hwx { margin-top: 8px; margin-bottom: 8px; }
+.wx-home { border: 1px solid var(--hair); border-radius: 28px; background: var(--g0); padding: 14px 16px; }
+.wx-home .wx-t { font-size: 15px; }
+html.js .wx-home.wx-ko { height: 380px; }
+html.js .wx-home.wx-intl { height: 294px; }
+.wx-home.is-ready { border-color: transparent; }
+@media (min-width: 761px) {   /* wider: the cells beside the orb's column are still one row under it, centred */
+  .wx-home .wx-b { max-width: 520px; margin: 0 auto; width: 100%; }
+}
+/* the panel's card (small) */
+.wx-side .wx-sky { height: 92px; }
+.wx-side .wx-orb { width: 80px; height: 80px; margin-left: -40px; top: 4px; }
+.wx-side .wx-sl { font-size: 9.5px; }
+.wx-side .wx-sc { font-size: 32px; }
+.wx-side .wx-cloud { height: 20px; width: 52px; }
+.wx-side .wx-c1 { top: 26px; left: 0; }
+.wx-side .wx-c2 { top: 62px; left: 66%; width: 58px; height: 22px; }
+.wx-side .wx-c3 { top: 18px; left: 76%; width: 42px; height: 18px; }
+.wx-side .wx-bub { margin-top: 2px; font-size: 18px; }
+.wx-side .wx-sum { font-size: 12.5px; }
+.wx-side .wx-st { margin-top: 3px; gap: 0 4px; font-size: 11.5px; }
+.wx-side .wx-cells { margin-top: 8px; gap: 2px; padding: 2px; border-radius: 14px; }
+.wx-side .wx-cells li { padding: 4px 0; border-radius: 11px; }
+.wx-side .wx-cn { font-size: 11px; }
+.wx-side .wx-i { width: 18px; height: 18px; margin: 1px 0; }
+.wx-side .wx-ct { font-size: 13px; }
+html.js .wx-side.wx-ko { height: 282px; }
+html.js .wx-side.wx-intl { height: 218px; }
+@media (max-width: 760px) {   /* a 44px target for the link while the card is the plain one */
+  html.js .wx-home { padding-bottom: 56px; }
+  html.js .wx-home .wx-go { bottom: 6px; height: 44px; line-height: 44px; }
+  html.js .wx-home.is-ready { padding-bottom: 14px; }
+}
+
+/* ---------------------------------------------------------------- the menu (below 1200px): the same groups */
+.menu-panel .sd-acts { margin: 4px 0 10px; }
+.menu-panel .sd-act { min-height: 46px; font-size: 15px; }
+.sg-menu .sg-s { min-height: 54px; padding: 0 6px; font-size: 19px; }
+.sg-menu .sg-l { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; padding: 2px 0 12px; }
+.sg-menu .sg-l li { display: flex; }
+.menu-panel .sg-menu .sg-a { flex: 1 1 auto; flex-direction: column; align-items: flex-start; justify-content: center; gap: 2px; min-height: 56px; padding: 6px 12px; border-radius: 12px; background: var(--bg-2); color: var(--ink); font: 700 15.5px/1.3 var(--font); letter-spacing: -.02em; }
+.menu-panel .sg-menu .sg-a:hover { background: var(--tint); }
+.menu-panel .sg-menu .sg-a[aria-current] { background: var(--tint); color: var(--sea-deep); }
+.sg-menu .sg-c { font: 400 12.5px/1.2 var(--font); }
+.menu-panel .sg-menu .sg-1 { font: 700 19px/1.25 var(--font); min-height: 54px; }
+.menu-panel .sd-day { margin-top: 16px; }
+.menu-panel .sd-k { font-size: 13px; }
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .menu { display: block; }
+  html.menu-open .qm { display: none; }   /* the quick menu (46-quick) would sit over the open menu's right side */
+  .menu-panel { padding-left: max(var(--m), calc((100vw - 760px) / 2)); padding-right: max(var(--m), calc((100vw - 760px) / 2)); }
+}
+
+/* ---------------------------------------------------------------- from 1200px: the panel and the column */
+@media (min-width: 1200px) {
+  :root { --bar: 0px; --mh: 0px; --mh-s: 0px; --cw: calc(100vw - var(--side-x)); --m: clamp(24px, calc(var(--cw) * .046), 64px); }
+  :root:has(body.has-lnav) { --bar: 52px; --mh: 52px; --mh-s: 52px; }
+  body { padding-left: var(--side-x); }
+  .mast, .has-lnav .mast { position: fixed; z-index: 50; top: var(--side-in); bottom: var(--side-in); left: var(--side-in); width: var(--side-w); height: auto;
+    display: flex; flex-direction: column; gap: 14px; padding: 22px 18px 18px; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: var(--hair) transparent;
+    background: #fff; border: 1px solid var(--hair); border-radius: var(--r-l); box-shadow: var(--shadow-1); }
+  .mast::before { display: none; }
+  .mast-in { display: flex; flex-direction: column; align-items: stretch; gap: 12px; height: auto; max-width: none; margin: 0; padding: 0; }
+  /* the wordmark: the symbol at the left of the name, the brand (when it differs) and the line under the name */
+  .wordmark { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; column-gap: 10px; row-gap: 3px; align-self: stretch; min-height: 44px; margin: 0 0 4px; padding: 0 2px; }
+  .wordmark > * { grid-column: 2; }
+  .wordmark:not(:has(> .wm-sym)) { grid-template-columns: minmax(0, 1fr); }
+  .wordmark:not(:has(> .wm-sym)) > * { grid-column: 1; }
+  .wordmark .wm-sym { grid-column: 1; grid-row: 1 / span 3; margin: 0; }
+  .wordmark .wm-sym svg { height: 40px; }
+  .wordmark .wm-a { font-size: 25px; line-height: 1.1; white-space: normal; overflow: visible; padding: 0; margin: 0; }
+  .wordmark .wm-b { display: block; white-space: normal; overflow: visible; padding: 0; margin: 0; }
+  .wm-tag { display: block; font: 400 12px/1.35 var(--font); color: var(--ink-3); letter-spacing: 0; }
+  .mast-plan, .mast-v, .mast-ctx, .mast-search, .menu { display: none !important; }
+  /* the language menu: a full-width button; its list drops over the board */
+  .mast .lang-menu { margin: 0; }
+  .mast .lang-btn { justify-content: flex-start; width: 100%; height: 44px; padding: 0 14px; border: 1px solid var(--hair); border-radius: 12px; color: var(--ink); font-size: 14.5px; }
+  .mast .lang-btn::after { content: ""; width: 8px; height: 8px; margin: -4px 4px 0 auto; border: solid var(--ink-3); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+  .mast .lang-menu[open] .lang-btn { border-color: var(--sea); }
+  .mast .lang-cur { position: static; width: auto; height: auto; overflow: visible; clip: auto; }
+  .mast .lang-list { left: 0; right: 0; min-width: 0; }
+  /* the site search, always there */
+  .mast .hs { display: flex; flex: none; min-width: 0; margin: 0; }
+  .mast .hs-f { height: 48px; border-radius: 14px; }
+  .side { display: flex; flex-direction: column; gap: 14px; }
+  .side-nav { margin-top: 2px; }
+  .sg:last-child { border-bottom: 0; }
+  /* the page: its local bar sticks at the column's top; the home's opening is a rounded board in the column */
+  .pg-h4 .ho { margin: var(--side-in) var(--side-in) 0 0; border-radius: var(--r-xl); }
+  /* its H1 sized on the column, not the window (it was 4.2vw of a full-width page): the same share of the opening */
+  .pg-h4 .hk-h1 { font-size: clamp(40px, calc(var(--cw) * .044), 58px); }
+  /* the pages' big type, too: a share of the column as it was of the full-width page (4–4.6vw) */
+  .d1, .h-list { font-size: clamp(34px, calc(var(--cw) * .046), 64px); }
+  .band-s .h-list { font-size: clamp(32px, calc(var(--cw) * .036), 52px); }
+  .d1-q { font-size: clamp(30px, calc(var(--cw) * .036), 52px); }
+  .h2 { font-size: clamp(32px, calc(var(--cw) * .04), 56px); }
+}
+/* 1200–1439px: the column (880–1120px, less the quick menu's gutter) is narrower than the desktop home was drawn for —
+   the assistant card takes the stacked head of 700–1023px and its icon menu two rows of six */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .hk-ask { display: flex; flex-direction: column; align-items: stretch; }
+  .hk-head { grid-template-columns: 56px minmax(0, 1fr); align-items: center; align-self: stretch; margin: 0 0 14px; }
+  .hk-mascot img { align-self: center; width: 56px; height: 56px; }
+  .hk-note { margin-top: 0; }
+  .hq-row { grid-auto-flow: row; grid-template-columns: repeat(6, minmax(0, 1fr)); row-gap: 4px; }
+  /* the lists' head and filters (their ledger beside the map has 500–680px): the 권역 tiles step back as below 1024px
+     (each 권역 is a heading of the list), the chips take the whole row with the count and 필터 under them — the first
+     results stay on the first screen */
+  .list-head .band-data { display: none; }
+  .f-top { flex-wrap: wrap; }
+  .f-top .f-row { flex: 1 1 100%; }
+}
+/* the planner (/plan/, assets/plan.css): its plan and its map side by side need the 1100px content it had from 1280px
+   before the panel; until the column gives it (1600px), one under the other — a stop's buttons stay one line */
+@media (min-width: 1200px) and (max-width: 1599px) {
+  .trp .trp-grid { grid-template-columns: minmax(0, 1fr); }   /* .trp: past plan.css, which comes after this sheet */
+  .trp .trp-side { position: static; }
+}
+@media (min-width: 1200px) and (max-height: 760px) {
+  .mast, .has-lnav .mast { gap: 12px; padding-top: 16px; }
+  .sg-s { min-height: 46px; }
+}
+@media print {
+  body { padding-left: 0 !important; }
+  .side, .menu { display: none !important; }
+  .mast, .has-lnav .mast { position: static !important; width: auto !important; border: 0 !important; box-shadow: none !important; }
+}

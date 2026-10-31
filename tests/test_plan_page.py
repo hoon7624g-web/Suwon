@@ -15,6 +15,7 @@ from pathlib import Path
 import pytest
 
 from pipeline.build import build
+from conftest import weather_answer
 
 ROOT = Path(__file__).resolve().parent.parent
 SAMPLE = ROOT / "data" / "sample"
@@ -33,6 +34,12 @@ FIRST_PLAN = {
     "resident_label": "군산시민", "far": {"고군산": {"car": 60, "transit": 120}}, "pref_regions": {"islands": ["고군산", "섬"]},
 }
 PNG = bytes.fromhex("89504e470d0a1a0a0000000d49484452000000010000000108060000001f15c4890000000d49444154789c6360000002000154a24f5d0000000049454e44ae426082")
+
+
+# the bottom of the bar at the top of the window: the header below 1200px; from 1200px the header is the tab panel at
+# the left (operator 2026-10-31, css/80-side.css) and nothing sits across the top — 0
+TOP_BAR = """(() => { const r = document.querySelector('.mast').getBoundingClientRect();
+  return r.width < innerWidth / 2 ? 0 : r.bottom; })()"""
 
 
 def plan_build(tmp_path):
@@ -299,6 +306,9 @@ def server(site, plan, calls, script):
                                  content_type="application/javascript")
         if "tong.visitkorea.or.kr" in url or "tile.openstreetmap.org" in url:   # (the map's tiles too: Leaflet + OSM)
             return route.fulfill(status=200, body=PNG, content_type="image/png")
+        if url.startswith("https://weather.o2o.kr/"):   # the tab panel's weather module (tests/conftest.py)
+            return route.fulfill(status=200, body=json.dumps(weather_answer()), content_type="application/json",
+                                 headers={"access-control-allow-origin": "*"})
         if not url.startswith("http://site.test/"):
             return route.abort()
         path = unquote(urlsplit(url).path)
@@ -1167,7 +1177,7 @@ def test_in_a_browser_a_hand_over_lands_on_the_form_under_a_line_that_says_so(si
             page.wait_for_timeout(200)
             assert page.evaluate(shifts) == 0
             box = line.bounding_box()
-            mast = page.evaluate("document.querySelector('.mast').getBoundingClientRect().bottom")
+            mast = page.evaluate(TOP_BAR)
             assert page.evaluate("scrollY") > 0 and mast <= box["y"] <= mast + 60, (box, mast)
             # the line sits right above the form's first step, both in view
             step = page.locator(".trp-step").first.bounding_box()
@@ -1640,7 +1650,7 @@ def test_in_a_browser_the_course_sent_first_then_the_ai_course(site, width):
             page.wait_for_selector("#h-diff")
             page.wait_for_timeout(1200)
             top = page.evaluate("document.querySelector('.trp-result').getBoundingClientRect().top")
-            mast = page.evaluate("document.querySelector('.mast').getBoundingClientRect().bottom")
+            mast = page.evaluate(TOP_BAR)
             assert abs(top - mast) <= 40, (top, mast)
             assert page.locator("[data-plan-work]").is_hidden()
             page.evaluate("window.__streams.length = 1")   # the indices below count the new plans only

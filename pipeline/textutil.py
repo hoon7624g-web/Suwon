@@ -568,3 +568,190 @@ def clock_hours(text: str | None) -> str:
             h = 0
         return f"{h:02d}:{mi:02d}"
     return _CLOCK_WORD.sub(one, s)
+
+
+# ---------------------------------------------------------------- line breaks around '·' '~' '/' (UI 2026-10-31)
+# Operator 2026-10-31 ('이런 것들도 줄바꿈도 그렇고, UI 좀 더 세련되게'): Korean text is set word-break: keep-all, so a line
+# breaks at a space or beside a mark — and it broke before '·' ('…테디베어박물관' | '·킹콩놀이터'), after '~' inside a short
+# unit ('B코스 근대~' | '금강권') and inside a short part of a ' · ' / ' / ' list ('1월' | '1일'). Three pieces, each only
+# wraps text in spans, so the text (textContent) stays exactly as written:
+# - keep_dots(html): every h1–h3 and course-row title of a written page (pipeline.build._write), from the
+#   부평시장각 engine (bpss pipeline/textutil.py, 2026-10-30): the dot kept with the letter before it.
+# - keep_units(text): a plain value or sentence (the home's answer tiles, list cells): a mark never begins a line,
+#   a run joined by marks ('근대~금강권', '토·일') and a short part of a spaced list ('매주 월요일 / 1월 1일') stay whole
+#   unless wider than the line.
+# - cell_html(text): a list cell's value in parts the table styles apart (head or time bold, label and notes quiet).
+# A span splits the page's text runs for pipeline.validate (PageScan joins runs with a space): never put one inside a
+# string the structured data repeats only there (an FAQ question; a title is also in <title>).
+# Classes (css/10-base.css): .dj = white-space: nowrap + display: contents — no box of its own, so it is safe even in
+# a flex title (bpss: a nowrap span with a box split a flex course title into flex items and overflowed at 390px);
+# .ku = an inline-block unit — a line breaks before it, never inside it, unless it is wider than the line (then it
+# breaks inside, at a space or after a mark, never overflowing). keep_units is used only in block text (never as the
+# direct content of a flex box), where an inline-block is one run of text.
+_HEADING = re.compile(r'(?<!<div class="qa">)(?<!<summary>)(<h[1-3]\b[^>]*>)(.*?)(</h[1-3]>)', re.S)
+_TITLE_LINK = re.compile(r'(<a class="line-name"[^>]*>)(.*?)(</a>)', re.S)   # a course row's title (courses, home)
+_DOT = re.compile(r"([^\s<>·;])·")
+
+
+_UNIT_END = re.compile(r'(<span class="dj">[^<]*·</span>)(?=[^\s<])')   # a unit with a letter after it
+
+
+def _dot_unit(m: re.Match) -> str:
+    """'장·' kept whole, then a <wbr> when a letter follows: under word-break: keep-all the dot is a title's only break
+    ('가가가가·나나나나·다다다다다·라라라라 성곽 기행'), and the unit's nowrap would take it away (a phone's row overflowed)."""
+    tail = m.string[m.end():m.end() + 1]
+    return f'<span class="dj">{m.group(1)}·</span>' + ("<wbr>" if tail and not tail.isspace() else "")
+
+
+def keep_dots(html_text: str) -> str:
+    """A title never starts a line with '·': in every h1–h3 and course-row title the dot is kept with the letter
+    before it (<span class="dj">장·</span>); the line may still break after the dot. Only text between tags changes,
+    so the title's text stays as written. An FAQ question (div.qa h3, a summary's h3 — details.qa, open or not) is left alone:
+    pipeline.validate finds each FAQPage question name word for word in the page's text runs, and a span would split
+    it (as in the 부평시장각 engine)."""
+    def heading(m: re.Match) -> str:
+        parts = re.split(r"(<[^>]+>)", m.group(2))
+        out, inside = [], 0
+        for x in parts:   # text already in a unit (the ku filter's <span class="dj">) is left as it is
+            if x.startswith("<"):
+                inside += 1 if x.startswith('<span class="dj"') else -1 if (x == "</span>" and inside) else 0
+                out.append(x)
+            else:
+                out.append(x if inside else _DOT.sub(_dot_unit, x))
+        body = _UNIT_END.sub(r"\1<wbr>", "".join(out))
+        return m.group(1) + body + m.group(3)
+    return _TITLE_LINK.sub(heading, _HEADING.sub(heading, html_text)) if "·" in html_text else html_text
+
+
+MARKS = "·~～/–→"
+_MARK = f"[{MARKS}]"
+_NOMARK = rf"[^\s{MARKS}]"
+_GLUE = re.compile(rf"{_NOMARK}{_MARK}+")                       # a mark with the letter before it: '관·', '석/'
+_JOINED = re.compile(rf"{_NOMARK}+(?:{_MARK}+{_NOMARK}+)+")     # a run joined by marks: '근대~금강권', '토·일'
+_SPACED = re.compile(rf"(\s+)({_MARK}|\|)(\s+)")                 # a spaced list mark: ' · ', ' / '
+_LAST = re.compile(rf"(?:{_NOMARK}{_MARK}*|{_MARK}+)$")          # the end a tail is glued to
+UNIT_MAX = 12   # a joined run up to this many characters is one unit; a longer one ('근대역사박물관·진포해양공원·…')
+                # only keeps each mark with the letter before it (a wrapped inline-block would leave a ragged gap)
+PART_MAX = 10   # a spaced-list part up to this many characters is one unit ('매주 월요일', 'A코스 화성~행궁')
+
+
+def _esc(text: str) -> str:
+    from markupsafe import escape
+    return str(escape(text))
+
+
+def _glued(tok: str) -> str:
+    out, last = [], 0
+    for m in _GLUE.finditer(tok):
+        out += [_esc(tok[last:m.start()]), f'<span class="dj">{_esc(m.group(0))}</span>']
+        last = m.end()
+    return "".join(out) + _esc(tok[last:])
+
+
+def _token(tok: str, tail: str = "") -> str:
+    """One word: its marks glued to the letter before them, a short joined run one unit; tail (HTML) glued to its
+    end."""
+    if tail:
+        m = _LAST.search(tok)
+        a = m.start() if m else len(tok)
+        body = _glued(tok[:a]) + f'<span class="dj">{_esc(tok[a:])}{tail}</span>'
+    else:
+        body = _glued(tok)
+    return f'<span class="ku">{body}</span>' if len(tok) <= UNIT_MAX and _JOINED.fullmatch(tok) else body
+
+
+def _words(text: str, tail: str = "") -> str:
+    bits = [b for b in re.split(r"(\s+)", text) if b]
+    last = max((i for i, b in enumerate(bits) if not b.isspace()), default=-1)
+    out = [_esc(b) if b.isspace() else _token(b, tail if i == last else "") for i, b in enumerate(bits)]
+    return "".join(out) + (tail if tail and last < 0 else "")
+
+
+def keep_units(text: str | None, tail: str = "") -> str:
+    """HTML for a plain text that breaks only where it reads well (see above): a mark ('·', '~', '/', '–', '→') never
+    begins a line, a joined run of UNIT_MAX characters or fewer stays one unit, and so does a part of a spaced list
+    ('A · B', 'A / B') of PART_MAX characters or fewer, its list mark kept at its end. tail: HTML glued to the last
+    word (a list cell's '외'). Tags only: the text is the escaped input."""
+    pieces = _SPACED.split(str(text or ""))      # [part, ws, mark, ws, part, …]
+    out = []
+    for k in range(0, len(pieces), 4):
+        part, more = pieces[k], k + 3 < len(pieces)
+        html_part = _words(part, _esc(pieces[k + 1] + pieces[k + 2]) if more else tail)
+        if " " in part.strip() and len(part.strip()) <= PART_MAX:
+            html_part = f'<span class="ku">{html_part}</span>'
+        out.append(html_part + (_esc(pieces[k + 3]) if more else ""))
+    return "".join(out)
+
+
+_CELL_RANGE = re.compile(r"\d{1,2}:\d{2}\s*[–~-]\s*\d{1,2}:\d{2}")
+_CELL_TIME = re.compile(r"\d{1,2}:\d{2}")
+NOTE_MIN = 3   # a closing bracket of at least this many characters inside is the value's note
+
+
+def _trailing_note(text: str) -> int:
+    """Where the bracket that ends `text` opens ('가능 (○○박물관, …)' → 3), or -1: none, unbalanced, the whole
+    value, or too short to stand apart ('생선탕(찜)')."""
+    if not text.endswith((")", "）")):
+        return -1
+    depth = 0
+    for i in range(len(text) - 1, -1, -1):
+        ch = text[i]
+        depth += ch in ")）"
+        depth -= ch in "(（"
+        if depth == 0:
+            inner = text[i + 1:-1].strip()
+            return i if i > 0 and text[:i].strip() and len(inner) >= NOTE_MIN else -1
+    return -1
+
+
+def _top_level(text: str) -> list[re.Match]:
+    """The spaced list marks of `text` outside brackets."""
+    out = []
+    for m in _SPACED.finditer(text):
+        before = text[:m.start()]
+        if before.count("(") + before.count("（") == before.count(")") + before.count("）"):
+            out.append(m)
+    return out
+
+
+def cell_html(text: str | None, tail: str = "") -> str:
+    """A list cell's value (present.slot_value main or sub) as parts the table styles apart (css/30-info.css .cv):
+    a value of several parts ('매주 월요일 / 1월 1일', '하절기 09:00–18:00 · 하절기(입장마감 17:30), …') is one unit per
+    part (.ku), its mark kept at its end, so a line breaks between parts. In a part, a closing bracket of its own is
+    the note (.cv-n; .kfl when it holds a time — the last entry '(입장마감 17:30)' — kept beside its range, else a small
+    line under the value), a time range is .cv-t (never broken) and the words before it its label (.cv-l:
+    '하절기(3~10월)', '평일'); any other value is the head (.cv-h). Every run of words goes through keep_units. tail: HTML
+    glued to the value's last word ('외'). The text is unchanged."""
+    text = str(text or "")
+    marks = _top_level(text)
+    if not marks:
+        return _cell_part(text, tail)
+    out, last = [], 0
+    for m in marks:
+        out.append(f'<span class="ku">{_cell_part(text[last:m.start()], _esc(m.group(1) + m.group(2)))}</span>'
+                   + _esc(m.group(3)))
+        last = m.end()
+    return "".join(out) + f'<span class="ku">{_cell_part(text[last:], tail)}</span>'
+
+
+def _cell_part(text: str, tail: str = "") -> str:
+    a = _trailing_note(text)
+    head, note = (text[:a], text[a:]) if a >= 0 else (text, "")
+    gap = head[len(head.rstrip()):]
+    head = head.rstrip()
+    if note:
+        cls = "cv-n kfl" if _CELL_TIME.search(note) else "cv-n"
+        end = f'{_esc(gap)}<span class="{cls}">{keep_units(note, tail)}</span>'
+        tail = ""
+    else:
+        end = _esc(gap)
+    m = _CELL_RANGE.search(head)
+    if m:
+        label, rng, rest = head[:m.start()], m.group(0), head[m.end():]
+        out = (f'<span class="cv-l">{keep_units(label.rstrip())}</span>{_esc(label[len(label.rstrip()):])}'
+               if label.strip() else _esc(label))
+        out += f'<span class="cv-t">{_esc(rng)}{tail if not rest else ""}</span>'
+        if rest:
+            out += keep_units(rest, tail)
+        return out + end
+    return (f'<span class="cv-h">{keep_units(head, tail)}</span>' if head else "") + end

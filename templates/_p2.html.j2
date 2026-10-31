@@ -16,14 +16,17 @@
 {% import "_ui.html.j2" as ui %}
 
 {#- answer(a, q, id, track): ui.answer's tile with the link's data-track — guide_click for a guide, course_click for
-    the courses (the round-2 guide cards and purposes carried it); track='' leaves it out. -#}
+    the courses (the round-2 guide cards and purposes carried it); track='' leaves it out. The figure with its unit
+    ('4곳', .ans-u) or its own label ('09:30 토·일 첫 출발', .ans-fl); the answer and the closed-day note set with
+    keep_units (no line starts with '·' or splits '근대~금강권'); the note and the arrow share the card's foot, so every
+    arrow sits on the card's bottom line (operator 2026-10-31). -#}
 {% macro answer(a, q='', id='', track=none) -%}
 {% set tr = track if track is not none else ('guide_click' if a.href.startswith('/guides/') else ('course_click' if a.href.startswith('/courses/') else '')) %}
 <li{% if id %} id="{{ id }}"{% endif %}><a class="ans" href="{{ a.href }}"{% if tr %} data-track="{{ tr }}"{% endif %}>
 <span class="ans-k">{{ a.key }}</span>
-<span class="ans-n">{% if a.fig %}<b class="num tn">{{ a.fig }}</b><small>{{ a.fig_label or a.unit }}</small>{% endif %}</span>
-<span class="ans-v">{% if q %}<span class="ans-q">{{ q }}</span>{% endif %}{{ a.answer }}{% if a.closed %}<span class="ans-closed closed">{{ a.closed }}</span>{% endif %}</span>
-<span class="arr" aria-hidden="true">›</span>
+{% if a.fig %}<span class="ans-n"><b class="num tn">{{ a.fig }}</b>{% if a.fig_label %}<small class="ans-fl">{{ a.fig_label }}</small>{% elif a.unit %}<small class="ans-u">{{ a.unit }}</small>{% endif %}</span>{% endif %}
+<span class="ans-v">{% if q %}<span class="ans-q">{{ q|ku }}</span>{% endif %}{{ a.answer|ku }}</span>
+<span class="ans-f">{% if a.closed %}<span class="ans-closed"><span class="sq" aria-hidden="true"></span><span>{{ a.closed|ku }}</span></span>{% endif %}<span class="arr" aria-hidden="true">›</span></span>
 </a></li>
 {%- endmacro %}
 

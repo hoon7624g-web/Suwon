@@ -102,6 +102,13 @@
   </div>
   {% endif %}
 
+  {#- the guides on getting here lead to the timetable page (/transport/: TAGO's trains, buses and flights; pipeline/
+      timetables.py TRANSPORT_GUIDES) -#}
+  {% if G.g.id in tt_guides %}
+  <aside class="wrap chapter-tight tt-see" aria-label="함께 보는 시간표">
+    <a class="tt-see-a" href="/transport/"><span class="tt-see-k">함께 보는 시간표</span><b>{{ site.region }} 교통 시간표</b><span class="tt-see-s">기차·고속버스·시외버스·항공의 첫차·막차·하루 횟수·요금(국토교통부 TAGO 하루 배차)</span></a>
+  </aside>
+  {% endif %}
   {% if G.week %}
   <section class="wrap chapter chapter-mid cv">
     {{ ui.week(G.week, 'h-week', '이 가이드 장소의 요일별 쉬는 날') }}

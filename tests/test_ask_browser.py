@@ -31,6 +31,7 @@ from urllib.parse import parse_qs, unquote, urlsplit
 import pytest
 
 from pipeline.build import build
+from conftest import route_weather
 
 sync_api = pytest.importorskip("playwright.sync_api")
 
@@ -126,6 +127,7 @@ def open_home(browser, site, width, height, mode="ok", gap=0.06, reduced="no-pre
     """A fresh tab whose fonts are already cached (one page first), then the home. Returns (ctx, page, errors)."""
     API.update(mode=mode, gap=gap, calls=[])
     ctx = browser.new_context(viewport={"width": width, "height": height}, locale="ko-KR", reduced_motion=reduced)
+    route_weather(ctx)   # the tab panel's weather module (tests/conftest.py): answered here, as /api/chat/ is
     page = ctx.new_page()
     errors = []
     page.on("console", lambda m: errors.append(m.text) if m.type == "error" else None)
@@ -196,6 +198,7 @@ def open_public(browser, width, height, js=True):
     ctx.route("**/*", lambda route: route.abort())
     ctx.route(f"{PUBLIC}/**", files)
     ctx.route(f"{PUBLIC}/api/chat/", api)
+    route_weather(ctx)   # the tab panel's weather module (tests/conftest.py)
     page = ctx.new_page()
     errors = []
     page.on("console", lambda m: errors.append(m.text) if m.type == "error" else None)
@@ -292,9 +295,10 @@ def test_the_opening_asks_and_the_panel_below_answers(browser, site, width, heig
     assert box["y"] >= 0 and box["y"] + box["height"] <= height
     assert page.evaluate("document.querySelector('.hq').contains(document.getElementById('ask-q'))")
     assert page.evaluate("document.querySelector('.hq').nextElementSibling.matches('.hk-conv')")
-    # the launcher: at load from 1024px (owner 2026-10-14); below it steps aside while this box is on screen (operator
-    # 2026-10-15: at 390x844 it covered the box's '#' tags)
-    assert page.locator(".chat-fab").is_visible() == (width >= 1024)
+    # the launcher steps aside while the home's question zone is on screen (operator 2026-10-15: at 390x844 it covered
+    # the box's '#' tags; css/49-chat.css, as test_present checks) — with the tab panel (2026-10-31) the zone is in
+    # the first screen at 1440 too
+    assert page.locator(".chat-fab").is_visible() == page.evaluate("document.documentElement.classList.contains('ask-out')")
     later = ".foot"
     page.fill("#ask-q", "은파 주차")
     above = {s: doc_top(page, s) for s in ("#h-home", ".hk-box", ".hk-note")}
@@ -428,15 +432,15 @@ def test_without_chat_js_the_box_searches_and_a_starter_follows_its_link(browser
 def test_the_launcher_is_there_from_the_start_and_goes_to_the_box(browser, site, width, height):
     ctx, page, errors = open_home(browser, site, width, height)
     fab = page.locator(".chat-fab")
-    if width < 1024:
-        # operator 2026-10-15: below 1024px it steps aside while the home's question box is on screen — hidden, out
-        # of the tab order — and is there once the box has left the screen
+    if not page.evaluate("document.documentElement.classList.contains('ask-out')"):
+        # operator 2026-10-15: it steps aside while the home's question box is on screen — hidden, out of the tab
+        # order — and is there once the box has left the screen
         assert not fab.is_visible() and page.evaluate("getComputedStyle(document.querySelector('.chat-fab')).visibility") == "hidden"
         page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
         page.wait_for_timeout(400)
     assert fab.is_visible()                                          # from the first paint, on the home too
     b = fab.bounding_box()
-    assert b["height"] == (84 if width >= 1024 else 68) and b["y"] + b["height"] <= height - 16 and b["x"] + b["width"] <= width - 16
+    assert b["height"] == (100 if width >= 1024 else 76) and b["y"] + b["height"] <= height - 16 and b["x"] + b["width"] <= width - 16
     assert fab.get_attribute("aria-haspopup") is None                # here it goes to the box, it opens no dialog
     # a round button at every width, its label 'AI 챗봇' always on the tag across its bottom (owner 2026-10-14: 'AI
     # 챗봇인 거 더 크게 잘 보이면'), the start of its accessible name
@@ -449,7 +453,7 @@ def test_the_launcher_is_there_from_the_start_and_goes_to_the_box(browser, site,
     page.wait_for_timeout(1000)
     assert page.evaluate("document.activeElement.id") == "ask-q" and in_viewport(page, ".hk-box")
     assert page.locator("#chat").count() == 0 and page.locator("[data-ask-log]").is_hidden()
-    assert fab.is_visible() == (width >= 1024)                       # the box is on screen again (operator 2026-10-15)
+    assert fab.is_visible() == page.evaluate("document.documentElement.classList.contains('ask-out')")   # the box is on screen again (operator 2026-10-15)
     assert errors == []
     ctx.close()
 

@@ -469,8 +469,11 @@ def _filter_bar(html: str) -> dict:
     for k, v, lab, n in re.findall(r'<button type="button" data-f="(\w+)" data-v="([^"]*)" aria-pressed="[^"]*">([^<]*?)\s*(?:<span class="tn">(\d+)</span>)?</button>', bar):
         chips.setdefault(k, []).append((html_unescape(v), lab.strip(), int(n or 0)))
     check = re.search(r'<input type="checkbox" data-f="check" value="(\w+)"> ([^<]*?) <span class="tn">(\d+)</span>', bar)
+    conds = re.findall(r'<button type="button" data-cond="(\w+)" aria-pressed="false"><span class="c-ck" aria-hidden="true">'
+                       r'</span>([^<]*?) <span class="tn">(\d+)</span></button>', bar)
     rows = re.findall(r'<li class="rec"[^>]*>', html)
-    return {"chips": chips, "check": check.groups() if check else None, "views": re.findall(r'data-view="(\w+)"', bar),
+    return {"chips": chips, "check": check.groups() if check else None, "conds": conds,
+            "views": re.findall(r'data-view="(\w+)"', bar),
             "rows": rows, "result": re.search(r'<span data-result data-forms="([^"]*)" data-of="([^"]*)">', bar)}
 
 
@@ -482,7 +485,7 @@ def html_unescape(s: str) -> str:
 @pytest.mark.parametrize("seg", ["places", "food", "stays"])
 def test_lists_have_the_korean_filters_in_english(site, seg):
     """QA 2026-10-15 SRC-01: every version's list has the Korean list's filter bar — type chips, 권역 and (attractions)
-    theme chips, the kind's check box and the list | map switch — with its own words and the Korean filter values
+    theme chips, the condition chips (in the check box's place since 2026-10-31) and the list | map switch — with its own words and the Korean filter values
     (one URL vocabulary: /food/?type=중식 and /en/food/?type=중식 show the same restaurants). Over the English rows
     (en_min: a few places per list) the bar has exactly the chips the rule gives: a type carried by two rows or more,
     every region and theme of a row, a group shown only with more than one chip (themes: any)."""
@@ -506,9 +509,14 @@ def test_lists_have_the_korean_filters_in_english(site, seg):
             assert lab and not HANGUL.search(lab), (k, v, lab)
             if v:   # each chip counts the rows that carry its value
                 assert n == carried[v], (k, v, n, carried[v])
-    if ko["check"] and ko["check"][2] != "0":
-        assert en["check"][0] == ko["check"][0] and not HANGUL.search(en["check"][1])
-        assert int(en["check"][2]) == sum(1 for r in en["rows"] if f'data-{en["check"][0]}="1"' in r)
+    # 조건으로 찾기 (pipeline/conditions.py) took the check box's place: the Korean list's condition chips in this
+    # version's words, each counting the rows that meet it (data-conds)
+    # (a list none of whose rows meets a condition keeps the check box: present.filter_vm)
+    assert (en["check"] is None) == bool(en["conds"]) and (ko["check"] is None) == bool(ko["conds"])
+    assert {c for c, _, _ in en["conds"]} <= {c for c, _, _ in ko["conds"]}
+    for cid, lab, n in en["conds"]:
+        assert lab and not HANGUL.search(lab), (cid, lab)
+        assert int(n) == sum(1 for r in en["rows"] if cid in (re.search(r'data-conds="([^"]*)"', r) or [None, ""])[1].split())
     assert en["views"] == ko["views"] and set(en["views"]) <= {"list", "map"}
     assert all('data-region="' in r for r in en["rows"]) and len(en["rows"]) >= 1
     forms = json.loads(html_unescape(en["result"].group(1)))

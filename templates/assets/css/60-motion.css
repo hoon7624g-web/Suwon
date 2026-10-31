@@ -8,8 +8,10 @@
    The new page is never animated in (it is fully visible underneath); the old page fades out on top in 220ms. site.js
    names the clicked title vt-title and a KOGL-1 thumbnail vt-photo, so they morph into the next page's H1
    (.vt-title or [data-vt-title]) and KOGL-1 photo (.vt-photo, or img[data-vt-photo][data-kogl="1"]); a KOGL-3 photo
-   never morphs (30-info). The bars (view-transition-name: mast) stay put. Browsers without support navigate normally. */
-@view-transition { navigation: auto; }
+   never morphs (30-info). The bars (view-transition-name: mast) stay put. Browsers without support navigate normally.
+   The opt-in itself (@view-transition { navigation: auto }, and none with reduced motion) is an inline <style> in
+   base.html.j2's head (as on the first site): from this stylesheet alone, a next page whose stylesheets came late read
+   as not opted in ('Transition was aborted … opt-in disabled' on a way back). */
 ::view-transition-old(root) { animation: vt-out .22s cubic-bezier(.4, 0, 1, 1) both; z-index: 2; }
 ::view-transition-new(root) { animation: none; z-index: 1; }
 ::view-transition-group(vt-title) { animation-duration: .5s; animation-timing-function: var(--ease); z-index: 3; }
@@ -33,6 +35,5 @@ html.cv-off .cv, html.cv-off .pg-home .sec, html.cv-off .pg-home .gallery, html.
 
 /* ---------------------------------------------------------------- reduced motion: final state, nothing moves */
 @media (prefers-reduced-motion: reduce) {
-  @view-transition { navigation: none; }
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
 }

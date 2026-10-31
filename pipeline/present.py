@@ -33,7 +33,7 @@ from markupsafe import Markup, escape
 
 from . import art, booking, jsonld, media, relations   # booking imports present only inside its functions
 from . import locales as LC          # locales imports nothing from the package
-from .city import NATIONAL_PROVIDER, NATIONAL_PROVIDER_SHORT
+from .city import NATIONAL_PROVIDER, NATIONAL_PROVIDER_SHORT, REGION_WORDS
 from .enrich import haversine_m
 from .maplinks import kakao_route_url, kakao_transit_url
 from .romanize import romanize
@@ -463,8 +463,11 @@ def fee_table(raw: str | None):
     return {"groups": groups, "foot": foot}
 
 
+# the n-th words before the weekday belong to the span ('둘째,넷째주 일요일 휴무', '2, 4번째 화요일'): without them a
+# span read alone (closed_text of an hours value) said every Sunday (2026-10-31)
 CLOSED_SPAN = re.compile(
-    r"((?:휴무일?\s*[:：]\s*)?(?:매주|매달|매월|격주|첫째|둘째|셋째|넷째|\d째주|[,·\s])*\s*"
+    r"((?:휴무일?\s*[:：]\s*)?(?:매주|매달|매월|격주|(?:첫째|둘째|셋째|넷째|다섯째|(?:첫|두|세|네|다섯)\s*번\s*째|\d\s*(?:번\s*)?째)\s*주?"
+    r"|[,·\s])*\s*"
     r"(?:(?:(?:(?<![가-힣])|(?<=[주째]))[월화수목금토일](?:요일)?|공휴일|법정\s*공휴일)[,·\s~]*)+(?:\s*\([^)]*\))?\s*"
     r"(?:정기\s*)?(?:휴무|휴관|휴일)"
     r"|휴무일?\s*[:：]\s*(?:매주\s*)?[월화수목금토일]요일"
@@ -1499,6 +1502,7 @@ PARTIAL_RX = re.compile(r"(첫째|둘째|셋째|넷째|다섯째|(?:첫|두|세|
 # the weekday after it takes them (the first site's present.week_closure and chatbot closedOn read the same way)
 ORD_ONLY = re.compile(r"^\s*(?:매\s*(?:월|달|주)\s*)?(?:(?:(?:첫|두|세|네|다섯)\s*번\s*째|첫째|둘째|셋째|넷째|다섯째|마지막|[1-5]\s*(?:번\s*)?(?:째)?"
                       r"|제\s*[1-5])\s*주?\s*(?:[,·、및]\s*)?)+$")
+WDAY_RANGE = re.compile(rf"(?:(?<![\d가-힣])|(?<=매주))([월화수목금토일])(?:요일)?\s*(?:{TILDE}|[\-–])\s*([월화수목금토일])요일")
 FEAST_RX = re.compile(r"설날|구정|추석|한가위|명절|(?<![가-힣])설(?=\s|[·,、/]|연휴|당일|전날|$)")
 
 
@@ -1623,6 +1627,17 @@ def week_closure(text: str | None) -> dict:
             continue
         part = PARTIAL_RX.search(before) or re.match(r"\s*\(\s*(?:매월|매달)?\s*\d\s*(?:주|째)", after)   # '월요일 (매월 2주, 4주)'
         (out["partial"] if part else out["days"]).update(days)
+    # a weekday range is every day in it ('매주 월요일~수요일', '월~수요일'): DAY_RX reads its two ends only
+    # (2026-10-31: 화요일 was left open)
+    for m in WDAY_RANGE.finditer(t):
+        a, b = m.group(1), m.group(2)
+        if re.match(rf"\s*{TIME}", t[m.end():]):   # '월요일~토요일 10:00~19:00': the hours' days, not closed ones
+            continue
+        span = {WEEK[(WEEK.index(a) + k) % 7] for k in range((WEEK.index(b) - WEEK.index(a)) % 7 + 1)}
+        for tgt in (out["days"], out["partial"]):
+            if b in tgt and (a in tgt or not re.search(rf"{a}요일", m.group(0))):
+                tgt.update(span)
+                break
     return out
 
 
@@ -2242,6 +2257,116 @@ def course_groups_vm(S) -> list[dict]:
     return [{"title": t, "id": unique_id(anchor_id("g", t), used), "courses": cvs} for t, cvs in groups]
 
 
+# ----------------------------------------------------------------------------- courses index cards
+# operator 2026-10-31 ('이런 곳들 UI도 좀 더 고도화할 방안 없나?', with a capture of the text-only rows): a card per
+# course — the photo of one stop, the length or theme chip, the name, a route band (dots on a line: the first stops by
+# name, '외 n곳', the last), the 권역 it passes through, its figures (stops, the straight-line sum when every leg is
+# measured, the source's own time, the busiest closed day) and its source. Shared by every version (en_site
+# Site.course_cards, templates/_courses.html.j2); the words are locales.COURSES_WORDS.
+ROUTE_HEAD = 3      # the route band names the first ROUTE_HEAD stops, then '외 n곳' and the last stop
+DURATIONS = ("당일", "1박 2일", "2박 3일")
+
+
+def route_band(stops: list) -> tuple[list, int]:
+    """The first ROUTE_HEAD stops and the last one, with how many stand between them; every stop when there are at
+    most ROUTE_HEAD + 2 (a '외 1곳' row would take the room of the stop it hides)."""
+    if len(stops) <= ROUTE_HEAD + 2:
+        return list(stops), 0
+    return [*stops[:ROUTE_HEAD], stops[-1]], len(stops) - ROUTE_HEAD - 1
+
+
+def route_rows(stops: list, name_of, more_word) -> list[dict]:
+    """The band's rows: {n, name, pos ('a' start, 'z' last, ''), opt (a stop the source marks optional, '어청도
+    (선택사항)': tagged so, not '마지막')} per shown stop and one {more, text} row before the last when stops are left
+    out (more_word(n) gives its words)."""
+    shown, more = route_band(stops)
+    rows = [{"n": s["n"], "name": name_of(s), "pos": "a" if i == 0 else "z" if i == len(shown) - 1 and i else "",
+             "opt": bool(s.get("optional")), "more": False} for i, s in enumerate(shown)]
+    if more:
+        rows.insert(ROUTE_HEAD, {"more": True, "text": more_word(more), "n": more})
+    return rows
+
+
+NONE_LABELS = {w["none_label"] for w in REGION_WORDS.values()}   # 권역 미정 · 구·군 미기재: no area
+
+
+def course_regions(places) -> list[str]:
+    """The 권역 (assign_regions: the /map/ page's travel areas) of a course's linked places in order of first
+    appearance; '권역 미정' is no area and is left out, and a stop without a place page has none (never guessed)."""
+    out: list[str] = []
+    for t in places:
+        r = (t or {}).get("_region")
+        if r and r not in NONE_LABELS and r not in out:
+            out.append(r)
+    return out
+
+
+def course_cover(stops: list, used: set, photo_of) -> tuple[dict | None, dict | None]:
+    """A card's photo: the first stop whose place has a licensed TourAPI photo (photo_of: e['_photos'], KOGL-1/3 only —
+    CLAUDE.md 3.4) that no earlier card of the page shows — seven courses start at the same museum, and one photo seven
+    times reads as one course — else the first stop with a photo at all; (None, None) when no stop has one (the card
+    then shows the course icon). used: the place IDs the earlier cards show, updated here."""
+    cands = [(s, ph) for s in stops if s.get("t") for ph in [photo_of(s)] if ph]
+    if not cands:
+        return None, None
+    s, ph = next(((s, ph) for s, ph in cands if s["t"]["id"] not in used), cands[0])
+    used.add(s["t"]["id"])
+    return s, ph
+
+
+def stops_range(counts: list[int], word) -> str:
+    """The stop range under a group heading: '경유지 8~11곳', or '경유지 9곳' when every course has as many.
+    word(key, n, **kw): locales.courses_word for the version."""
+    if not counts:
+        return ""
+    a, b = min(counts), max(counts)
+    return word("range_one", b) if a == b else word("range", b, a=a)
+
+
+def course_card(cv: dict, used: set) -> dict:
+    """One Korean card (course_vm cv): see the block comment above. Every value comes from the course model; a figure
+    the data does not give is left out (never '확인 필요' on a card: the course page lists what is missing)."""
+    w = lambda key, n=None, **kw: LC.courses_word("ko", key, n, **kw)
+    s, ph = course_cover(cv["stops"], used, lambda s: (s["t"].get("_photos") or [None])[0])
+    facts = [{"k": w("stops"), "v": w("n", cv["n_places"])}]
+    if cv["complete"] and cv["measured"]:
+        facts.append({"k": w("line"), "v": dist(cv["total"])})
+    if cv["taketime"]:
+        facts.append({"k": w("time"), "v": cv["taketime"]["value"]})
+    if cv["closed_note"]:
+        facts.append({"k": w("closed"), "v": cv["closed_note"], "closed": True})
+    name = cv["title"] or cv["display"]
+    head = len(cv["stops"]) > ROUTE_HEAD + 2
+    return {"id": cv["c"]["id"], "path": cv["path"], "code": cv["code"], "name": name,
+            "chip": cv["duration"] or cv["group"],
+            "rows": route_rows(cv["stops"], lambda x: x["short"] or x["name"], lambda n: w("more", n)),
+            "route_label": w("route_part", name=cv["display"], k=ROUTE_HEAD) if head else w("route_all", name=cv["display"]),
+            "start": w("start"), "end": w("end"), "opt": LC.COURSE_WORDS["ko"]["optional"], "areas_k": w("areas"),
+            "areas": course_regions(x["t"] for x in cv["stops"]), "facts": facts, "photo": ph,
+            "photo_cap": w("photo", name=s["t"]["name"]) if s else "",
+            "credit": f"출처: {ph['credit']}" if ph else "", "src": w("official", src=cv["orig_name"])}
+
+
+def course_index_vm(S) -> dict:
+    """/courses/: the groups of course_groups_vm (당일 · 1박 2일 · 2박 3일, then the themes), each with its cards
+    (course_card, photos picked in page order so no two cards repeat a stop while another one has a photo), the
+    stop range and its kind ('dur' length / 'theme'); lics: the photo licences shown, KOGL-1 first."""
+    w = lambda key, n=None, **kw: LC.courses_word("ko", key, n, **kw)
+    used: set = set()
+    groups = []
+    for g in course_groups_vm(S):
+        dur = g["title"] in DURATIONS
+        groups.append({**g, "heading": f"{g['title']} 코스" if dur else g["title"], "kind": w("by_dur" if dur else "by_theme"),
+                       "range": stops_range([cv["n_places"] for cv in g["courses"]], w),
+                       "cards": [course_card(cv, used) for cv in g["courses"]]})
+    cards = [c for g in groups for c in g["cards"]]
+    lics = sorted({(c["photo"]["type"], c["photo"]["lic"]) for c in cards if c["photo"]})
+    return {"groups": groups, "lics": [lab for _, lab in lics], "w": LC.COURSES_WORDS["ko"],
+            "credit": next((c["photo"]["credit"] for c in cards if c["photo"]), ""),
+            "any_line": any(f["k"] == w("line") for c in cards for f in c["facts"]),
+            "any_areas": any(c["areas"] for c in cards), "any_photo": any(c["photo"] for c in cards)}
+
+
 # ----------------------------------------------------------------------------- place page
 PRACTICAL = {"attraction": ("usetime", "restdate", "usefee", "parking", "parkingfee", "spendtime", "infocenter", "address"),
              "stay": ("checkin", "checkout", "parking", "roomcount", "infocenter", "reservation", "address"),
@@ -2730,7 +2855,8 @@ def place_vm(S, e: dict, ctx: dict) -> dict:
     near_hrefs = {r["href"] for r in near}
     rel_rows = [near_row(S, x) for x in ctx["related"] if x not in twins and x["_path"] not in near_hrefs]
     relation, parts = relation_vm(S, e)
-    photo_lics = photo_credits(near + twin_rows + rel_rows + parts)
+    went_next = related_vm(S, e)   # 이어서 많이 간 곳 (related.json): its rows' photos share the chapter's credit line
+    photo_lics = photo_credits(near + twin_rows + rel_rows + parts + (went_next["rows"] if went_next else []))
     kicker = [(KIND_LABELS[kind], LIST_PATH[kind])]
     if e["_type"]:
         kicker.append((e["_type"], f"{LIST_PATH[kind]}?type={quote(e['_type'])}"))
@@ -2766,6 +2892,9 @@ def place_vm(S, e: dict, ctx: dict) -> dict:
         "designations": designations(e, city=C),
         "lede": ss[0] if ss else "", "story": ss[1:],
         "practical": practical, "more": more, "fit": fit, "notes": notes.items, "missing": missing, "ask": ask,
+        "today": today_vm(S, e),      # 오늘의 상태 · 오늘의 바다 (2026-10-31): the day card after the opening
+        "biz": license_vm(S, e),      # 영업 확인 (licenses.json, 2026-10-31): a line in 방문 전 확인
+        "went_next": went_next,          # 이어서 많이 간 곳 (related.json, 2026-10-31): rows in 주변·함께 가기
         "conflicts": [r for r in all_rows if r["conflict"]], "tel": tel, "tel_text": tel_text,
         **links, "precise": bool(e["_geo"]),
         "photos": e["_photos"], "geo": e["_geo"], "place_points": place_points, "anchors": anchors,
@@ -2928,6 +3057,7 @@ def list_vm(S, kind: str, theme: dict | None = None) -> dict:
     (Latin and digits after). regions: [(name, count, group id)]."""
     from . import build as B
     C = S.city
+    from . import conditions as CD
     cfg = LIST_CFG[kind]
     ents = [e for e in S.lists[kind] if not theme or theme["slug"] in (e.get("themes") or [])]
     dishes = dish_groups(S.site)
@@ -2945,6 +3075,7 @@ def list_vm(S, kind: str, theme: dict | None = None) -> dict:
         flags = {"free": squash_ws(f.get("usefee")) == "무료" and not contested(e, "usefee"),
                  "checkin": bool(f.get("checkin")), "open_mon": all(monday_open(t) for t in rest_all)}
         ds = designations(e, city=C)
+        conds = CD.judge(e, city=C)   # 조건으로 찾기: the conditions its shown values meet, with the reason for each
         items.append({"i": i, "e": e, "name": e["name"], "path": e["_path"], "type": e["_type"], "street": e["_street"],
                       "dz": ds[0] if ds else None,
                       "dong": C.area_label(e), "region": e["_region"], "themes": e.get("themes") or [], "tags": tags,
@@ -2953,6 +3084,7 @@ def list_vm(S, kind: str, theme: dict | None = None) -> dict:
                       "web_text": web_text(web) if web else "", "photo": thumb(e["_photos"][0]) if e["_photos"] else None,
                       "geo": e["_geo"], "flags": flags, "id": f"r{i}",
                       "dishes": dish_keys(e, dishes) if kind == "food" else [],
+                      "conds": conds, "why": CD.ko_tags(conds, LC.COND_WORDS["ko"]),
                       "rooms": squash_ws(f.get("roomcount")) if kind == "stay" else ""})
     groups, gid = [], {}
     used: set = set()
@@ -2983,7 +3115,9 @@ def list_vm(S, kind: str, theme: dict | None = None) -> dict:
                 [(s, S.theme_names.get(s, s), n) for s, n in themes.most_common()] if kind == "attraction" and not theme else [],
                 (ck, clabel, sum(1 for it in items if it["flags"][ck])), len(points), LC.LIST_WORDS["ko"],
                 {"other": f"{theme['name'] if theme else cfg['title']} {{n}}곳"},
-                dishes=dish_chips(items, dishes, lambda g: g["key"]))}
+                dishes=dish_chips(items, dishes, lambda g: g["key"]),
+                conds=CD.conditions(kind, items, LC.COND_WORDS["ko"]), cwords=LC.COND_WORDS["ko"],
+                legacy=CD.LEGACY_CHECK.get(kind, ""))}
 
 
 def dish_chips(items: list[dict], groups: list[dict], label) -> list[tuple]:
@@ -2994,16 +3128,20 @@ def dish_chips(items: list[dict], groups: list[dict], label) -> list[tuple]:
 
 
 def filter_vm(count: int, types: list, regions: list, themes: list, check: tuple, n_geo: int, words: dict,
-              forms: dict, dishes: list | None = None) -> dict:
+              forms: dict, dishes: list | None = None, conds: list | None = None, cwords: dict | None = None,
+              legacy: str = "") -> dict:
     """The list filter bar (templates/_filters.html.j2) of Korean and every version: chips as (value, label, n) — the
     value is the Korean key every version shares (?type=한식&region=원도심), the label the version's; check =
     (flag, label, n); forms = the count line by plural category ({n}); words = locales.LIST_WORDS[code]; dishes = the
     food list's 메뉴 chips (dish_chips, ?dish=…). n_off = the places of the list without coordinates (the map caption's
-    '지도에 없는 n곳은 목록에서', _filters.off_map)."""
+    '지도에 없는 n곳은 목록에서', _filters.off_map).
+    conds = the condition chips (pipeline/conditions.py: {id, label, n}; cwords = locales.COND_WORDS[code]; legacy =
+    the condition the former check box became, read from an old ?check=1): where a list has them they take the check
+    box's place, and the count line moves under them beside the ratio bar."""
     form = forms.get("other") or next(iter(forms.values()), "{n}")
     return {"count": count, "types": types, "regions": regions, "themes": themes, "check": check, "n_geo": n_geo,
             "n_off": max(0, count - n_geo), "w": words, "forms": forms, "result": form.replace("{n}", str(count)),
-            "dishes": dishes or []}
+            "dishes": dishes or [], "conds": conds or [], "cw": cwords or {}, "legacy": legacy if conds else ""}
 
 
 # ----------------------------------------------------------------------------- answers (home, guides index, 404)
@@ -3223,6 +3361,34 @@ def checkin_sample(S) -> tuple[list[dict], Counter, bool]:
     n = sum(checkins.values())
     return stays, checkins, n >= CHECKIN_MIN and n >= CHECKIN_SHARE * max(1, len(stays))
 
+# The home's guide index (operator 2026-10-31: the 36 guide names read as a wall of chips, no order): the guides in
+# GUIDE_GROUPS, each read off the guide itself — 교통·주차 when its label names a way of getting about (GUIDE_MOVE_WORDS),
+# else 먹거리 / 숙소 when more than half of its places are restaurants / stays (its items' kinds), else 여행·볼거리; in
+# the data's order within a group, an empty group left out.
+GUIDE_GROUPS = ("여행·볼거리", "먹거리", "숙소", "교통·주차")
+GUIDE_MOVE_WORDS = ("가는 법", "교통", "버스", "여객선", "공항", "주차")
+
+
+def guide_group(S, g: dict) -> str:
+    label = squash_ws(g.get("label") or g.get("title"))
+    if any(w in label for w in GUIDE_MOVE_WORDS):
+        return "교통·주차"
+    kinds = Counter((S.ent_by_slug.get(i.get("place_slug")) or {}).get("kind") for i in g.get("items") or [])
+    n = sum(v for k, v in kinds.items() if k)
+    for kind, name in (("food", "먹거리"), ("stay", "숙소")):
+        if n and kinds[kind] * 2 > n:
+            return name
+    return "여행·볼거리"
+
+
+def guide_groups(S) -> list[dict]:
+    """[{name, guides}] in GUIDE_GROUPS order (guide_group)."""
+    by = {name: [] for name in GUIDE_GROUPS}
+    for g in S.guides:
+        by[guide_group(S, g)].append(g)
+    return [{"name": name, "guides": gs} for name, gs in by.items() if gs]
+
+
 
 def home_vm(S) -> dict:
     """The home page. Every block site.json home configures is looked up and skipped with a warning when it points
@@ -3273,7 +3439,7 @@ def home_vm(S) -> dict:
     if not lines:   # no course states a duration (the source gives none): the courses in file order, never an empty list
         lines = [S.course_vms[c["slug"]] for c in S.courses]
     annual_n = sum(1 for ev in S.events if not ev.get("start_date") and "매년" in str(ev.get("period_text") or ""))
-    h = {"answers": answers, "search_example": search_example(S), "guides": S.guides, "events": events, "ev_head": ev_head, "annual_n": annual_n,
+    h = {"answers": answers, "search_example": search_example(S), "guides": S.guides, "guide_groups": guide_groups(S), "events": events, "ev_head": ev_head, "annual_n": annual_n,
          "last_event": event_row(past[0], city=C) if past and not events else None,
          "lines": lines, "course_total": len(S.courses), "regions": home_regions(S), "region_mode": C.region_mode,
          "counts": {k: len(v) for k, v in S.lists.items()}, "official": S.site.get("official_links") or [],
@@ -3380,6 +3546,13 @@ def ranked_events(S) -> list[dict]:
         rows.append({**r, "chip": chip, "rank": rank, "days": d, "dp": date_parts(r)})
     rows.sort(key=lambda r: (r["rank"], r["start"]))
     return rows
+
+
+def pinned_first(rows: list[dict]) -> list[dict]:
+    """The home's event rows with the editions the operator pinned (events.json pin_home, operator 2026-10-31 '홈에
+    불꽃축제 고정') first, in their own order; the rest keep ranked_events' order. A pinned edition leaves by itself once
+    it is over (ranked_events drops it)."""
+    return [r for r in rows if r["ev"].get("pin_home")] + [r for r in rows if not r["ev"].get("pin_home")]
 
 
 def pick_next_event(rows: list[dict]) -> dict | None:
@@ -3536,7 +3709,7 @@ def home_showcase(S, h: dict) -> dict:
     return {"hero": slots["hero"], "cover": slots.get("cover"), "purposes": purposes_vm(S),
             "opening": home_opening(S), "news": home_news(S), "services": home_services(S, len(ranked)),
             "next_event": pick_next_event(ranked),
-            "events_ranked": ranked[:3], "n_upcoming": len(ranked), "featured": featured,
+            "events_ranked": pinned_first(ranked)[:3], "n_upcoming": len(ranked), "featured": featured,
             "featured_min": featured_min, "regions2": regions2, "region_map": {"anchors": anchors} if anchors else None,
             "chapters": home_story(S, cen, slots.get("story")), "gallery": gallery, "gallery_cfg": gcfg if gallery else None,
             "gallery_fact": {"region": region,
@@ -3693,8 +3866,9 @@ def home_news(S) -> list[dict]:
         r = next((x for x in ranked if x["ev"].get("id") == focus_id), None)
         tiers.append(([_event_card(S, r, "festival")] if r else [], 1))
     caps = dict(NEWS_CAPS)
-    tiers.append(([_event_card(S, r) for r in ranked
-                   if r["days"] <= NEWS_EVENT_DAYS and r["ev"].get("id") != focus_id], caps["event"]))
+    tiers.append(([_event_card(S, r) for r in pinned_first(ranked)
+                   if (r["days"] <= NEWS_EVENT_DAYS or r["ev"].get("pin_home")) and r["ev"].get("id") != focus_id],
+                  caps["event"]))
     # news: an outlet's report (source_type press, the default) — a reference work or a heritage listing is not news,
     # whatever date it carries (QA 2026-10-24 item 06: three encyclopedia entries were the home's news)
     arts = [a for a in getattr(S, "abroad", None) or [] if a.get("kind") == "article" and a.get("date")
@@ -4713,7 +4887,8 @@ def common_vm(S) -> dict:
 CURRENT = {"plan": "/plan/", "place-attraction": "/places/", "places": "/places/", "theme": "/places/", "place-stay": "/stays/",
            "list-stay": "/stays/", "place-food": "/food/", "list-food": "/food/", "course": "/courses/",
            "courses": "/courses/", "guide": "/guides/", "guides": "/guides/", "events": "/events/", "map": "/map/",
-           "search": "/search/", "about": "/about/", "videos": "/videos/", "abroad": "/abroad/"}
+           "search": "/search/", "about": "/about/", "videos": "/videos/", "abroad": "/abroad/",
+           "sun": "/sun/", "transport": "/transport/"}   # the last two: their tab in the panel (side_state)
 
 
 def page_chrome(page_kind: str, has_courses: bool) -> dict:
@@ -4726,3 +4901,920 @@ def page_chrome(page_kind: str, has_courses: bool) -> dict:
     else:
         btn = ("코스 보기", "/courses/") if has_courses else None
     return {"nav_current": CURRENT.get(page_kind, ""), "ctxbtn": btn}
+# ----------------------------------------------------------------------------- the tab panel (operator 2026-10-31)
+# Operator 2026-10-31 '적용하자' (the approved layout, after travel.webforai.kr): from 1200px the header is a panel at the
+# left of the page — the wordmark, the language menu, the site search, the day card (날씨 · 해 뜨고 지는 시각 · 다음
+# 행사), the two actions and the tab groups; below 1200px the bar stays and its menu opens the same groups
+# (templates/_side.html.j2, css/80-side.css). side_vm builds it once per build; side_state marks one page's group.
+# Every main-nav link (nav_items) is in one group, so nothing of the old bar is lost (tests/test_sidebar_layout.py).
+# 날씨각 (weather.o2o.kr, the operator's own service; operator 2026-10-31): its region code for the site's region. The
+# page carries no weather value — assets/weather.js asks the API in the browser after the page has loaded.
+WEATHER_API = "https://weather.o2o.kr/v1/weather/today?region={code}"   # the day's 3-hour slots (the four cells)
+WEATHER_FEED = "https://weather.o2o.kr/v1/feed?region={code}"           # the card: sky, score, moon, headline
+WEATHER_HOME = "https://weather.o2o.kr/"
+
+
+def weather_vm(site: dict, code: str, region_label: str) -> dict | None:
+    """The weather module's hook ({api, home, title, go, js}) in one version, or None for a site with no 날씨각 region
+    (site.json weather.region_code: the 행정표준코드 of the 시·군·구 날씨각 answers for — a city of several 구 names
+    the one of its home's first area, weather.area). region_label: this version's place name for the title. js: the
+    words weather.js needs (the score's label, the four cells' names, the sky words for the icons' alt) and ko (the
+    Korean pages show the provider's own Korean lines — its '지금은 ○○각!', the summary and the status line; the other
+    versions the figures, icons and cell names only). No '출처' line: 날씨각 is the operator's own service (operator
+    2026-10-31 '출처: 날씨각 표기 필요없어 우리 회사 거야')."""
+    rc = squash_ws(str(((site or {}).get("weather") or {}).get("region_code") or ""))
+    if not re.fullmatch(r"\d{10}", rc):
+        return None
+    w = LC.SIDE_WORDS[code]
+    return {"api": WEATHER_API.format(code=rc), "feed": WEATHER_FEED.format(code=rc), "home": WEATHER_HOME,
+            "title": w["wx_title"].format(r=region_label), "go": w["wx_go"].format(r=region_label),
+            "js": {"score": w["wx_score"], "slots": w["wx_slots"], "sky": w["sky"], "ko": code == "ko"}}
+
+
+def weather_label_ko(site: dict) -> str:
+    """The Korean title's place: the region and, for a city of several 구, the 구 날씨각 answers for ('{region} {area}')."""
+    area = squash_ws(((site or {}).get("weather") or {}).get("area"))
+    region = squash_ws(site.get("region") or site.get("locality", ""))
+    return f"{region} {area}".strip() if area else region
+
+
+def ko_when(start: str, end: str = "", time: str = "", end_month: str = "") -> str:
+    """'11월 14일(토) 20:00', '11월 13일(금)~14일(토)', '10월 1일(수)~11월 2일(일)', '10월 3일(금)~11월': an event's
+    absolute dates (never '오늘'); the start time only for a one-day event whose time starts with one."""
+    d0 = dt.date.fromisoformat(start)
+    out = f"{d0.month}월 {d0.day}일({WEEK[d0.weekday()]})"
+    if end and end != start:
+        d1 = dt.date.fromisoformat(end)
+        out += "~" + (f"{d1.month}월 " if (d1.month, d1.year) != (d0.month, d0.year) else "") + f"{d1.day}일({WEEK[d1.weekday()]})"
+    elif end_month:
+        out += f"~{int(end_month[5:])}월"
+    else:
+        m = re.match(r"\s*(\d{1,2}):(\d{2})(?!\d)", time or "")
+        if m and int(m.group(1)) < 24:
+            out += f" {int(m.group(1)):02d}:{m.group(2)}"
+    return out
+
+
+def side_next_event(S) -> dict | None:
+    """The day card's '다음 행사': of the dated editions this build publishes, the one that starts first on or after the
+    build day (one running already is not 'next'): {name, href (its series page), when, iso}; None when none is ahead."""
+    from . import build as B
+    rows = [r for r in (event_row(ev, city=S.city) for ev in S.events) if r["start"] and r["start"] >= S.today and r["path"]]
+    if not rows:
+        return None
+    r = min(rows, key=lambda r: (r["start"], r["title"]))
+    when = ko_when(r["start"], r["end"], "" if "출처마다 다름" in (r["time"] or "") else r["time"],
+                   B.event_end_month(r["ev"]))
+    return {"name": r["title"], "href": r["path"], "when": when, "iso": r["start"]}
+
+
+def side_sun(S) -> dict | None:
+    """The day card's sunrise and sunset (timetables.sun_vm rows, 한국천문연구원): the build day's, with its date written
+    out, and the next days for weather.js to show the visitor's own day ('days': 'iso|rise|set|label;…')."""
+    V = getattr(S, "tt_sun", None)
+    if not V:
+        return None
+    rows = V["rows"][:10]
+    lab = lambda r: f"{r['d'].month}월 {r['d'].day}일({WEEK[r['d'].weekday()]})"   # noqa: E731
+    return {"lab": lab(rows[0]), "rise": rows[0]["rise"], "set": rows[0]["set"], "iso": rows[0]["iso"],
+            "days": ";".join(f"{r['iso']}|{r['rise']}|{r['set']}|{lab(r)}" for r in rows)}
+
+
+def side_vm(S) -> dict:
+    """The tab panel of the Korean pages: groups (side_state marks a page's), the wordmark's line, the two actions, the
+    day card's next event and sunrise · sunset, the weather module's hook, the words."""
+    W = LC.SIDE_WORDS["ko"]
+    region = S.site.get("region") or S.site.get("locality", "")
+    nav = {href: label for label, href in nav_items(S)}
+    c = {k: len(v) for k, v in S.lists.items()}
+    blog_n = len((getattr(S, "blog", None) or {}).get("posts") or [])
+    counts = {"/places/": f"{c.get('attraction', 0)}곳", "/food/": f"{c.get('food', 0)}곳", "/stays/": f"{c.get('stay', 0)}곳",
+              "/courses/": f"{len(S.courses)}개", "/guides/": f"{len(S.guides)}편",
+              "/columns/": f"{len(getattr(S, 'columns', None) or [])}편", "/blog/": f"{blog_n}편",
+              "/videos/": f"{len(getattr(S, 'videos', None) or [])}편"}
+    track = {"/courses/": "course_click"}
+
+    def link(href: str, label: str = "") -> dict | None:
+        if not label and href not in nav:
+            return None
+        n = counts.get(href, "")
+        return {"label": label or nav[href], "href": href, "n": "" if n[:1] == "0" else n,   # never '0곳' (empty city)
+                "track": track.get(href, "")}
+
+    def group(key: str, links: list, open_: bool = False) -> dict | None:
+        links = [x for x in links if x]
+        return {"key": key, "label": W[key], "links": links, "href": "", "open": open_} if links else None
+
+    groups = [group("find", [link("/places/"), link("/food/"), link("/stays/")], True),
+              group("plan", [link("/courses/"), link("/guides/"), link("/map/"),
+                             link("/transport/", W["transport"]) if getattr(S, "tt_transport", None) else None,
+                             link("/sun/", W["sun"]) if getattr(S, "tt_sun", None) else None], True),
+              {"key": "events", "label": W["events"], "href": "/events/", "links": []} if "/events/" in nav else None,
+              group("read", [link("/columns/"), link("/blog/"), link("/videos/")]),
+              {"key": "abroad", "label": nav["/abroad/"], "href": "/abroad/", "links": []} if "/abroad/" in nav else None,
+              {"key": "about", "label": W["about"], "href": "/about/", "links": []}]
+    acts = []
+    if S.entities:   # /plan/ is built with the places (build.common has_plan)
+        acts.append({"label": W["plan_btn"], "href": "/plan/", "track": "plan_cta", "icon": "spark", "primary": True})
+    if S.courses:
+        acts.append({"label": W["courses_btn"], "href": "/courses/", "track": "course_click", "icon": "", "primary": False})
+    return {"groups": [g for g in groups if g], "acts": acts, "tagline": W["tagline"].format(r=region),
+            "latin": "",   # the site's Latin name beside it once the build knows its English version (build.build)
+            "next": side_next_event(S), "sun": side_sun(S), "wx": weather_vm(S.site, "ko", weather_label_ko(S.site)),
+            "w": {"next": W["next"], "sunrise": W["sunrise"], "sunset": W["sunset"], "sun": W["sun"]}}
+
+
+def side_state(groups: list[dict], current: str) -> list[dict]:
+    """One page's groups: cur — the page is the group's own link or one of its links (its link carries aria-current);
+    open — a group holding the page, or, on a page in none of them (the home, the search, the planner), the groups
+    marked open (찾기 · 여행 계획)."""
+    def cur(g):
+        return bool(current) and (g.get("href") == current or any(x["href"] == current for x in g.get("links") or ()))
+    any_cur = any(cur(g) for g in groups)
+    return [{**g, "cur": cur(g), "open": cur(g) or (not any_cur and bool(g.get("open")))} for g in groups]
+
+
+
+
+# ----------------------------------------------------------------------------- 오늘의 상태 · 오늘의 바다
+# The place page's day card (templates/_today.html.j2 + assets/today.js; design boards ① 오늘의 상태 and ② 오늘의 바다,
+# operator 2026-10-31 '이 정도는 좋네. 반영하고 진행하자'), for the build day and the TODAY_DAYS - 1 days after it:
+#   - closed or not (day_closures): a weekly closed day (week_closure, a weekday range whole), a date
+#     ('1월 1일') or a month span ('12월~2월') the closed-day text names; an n-th week or 격주 day is '확인 필요'.
+#     Holidays (명절·공휴일) have no date in the data and are never placed: the card says so (note_undated)
+#   - the day's hours (hours_rows → day_hours): every range with the season ('3~10월', '하절기(3~10월)') and weekday
+#     ('평일', '주말', '월~금', '토요일~목요일') words before it; a bar only when the ranges that fit the day share one
+#     condition — a season word without its months, a facility's name or a part not understood gives no bar on any day
+#     (the first screen's brief words instead); 준비시간 · 마지막 주문 · 입장 마감 are a line under it (a break is cut
+#     out of the bar); 상시 개방 / 24시간
+#   - sunrise and sunset (almanac.json 'sun'): attractions only
+#   - tides (almanac.json 'tide'): a seaside attraction (theme SEA_THEMES, or a name of SEA_NAME: 해수욕장·해변·섬·
+#     항·포구·선착장·등대 …) whose nearest tide station is within TIDE_MAX_M in a straight line (the card prints both)
+#   - the crowd forecast (crowd.json: its _about says what the number is; the bands 여유·보통·붐빔 are this site's and
+#     are printed, only on a 0–100 rate) and a beach's season and water (beaches.json)
+# Nothing is guessed: a day the data cannot settle says so. The HTML holds the build day in absolute dates (never
+# '오늘'); the JSON holds every day in the page's language and today.js picks the visitor's day (Asia/Seoul).
+# Dates of checks are never printed (operator decision 2026-10-09): the sources line names providers only.
+TODAY_DAYS = 28
+TODAY_STRIP = 7
+TIDE_MAX_M = 30000
+SEA_THEMES = ("islands-sea",)
+SEA_NAME = re.compile(r"해수욕장|해변|해안|갯벌|방파제|선착장|포구|항구|등대|부두|섬|(?:도|항)$")
+CROWD_CUTS = (40, 70)   # 여유 0–39 · 보통 40–69 · 붐빔 70 이상, on the place's own 0–100 scale (crowd_rule prints them)
+H_RANGE = re.compile(rf"({TIME})\s*(?:{TILDE}|[\-–—])\s*(익일|다음\s*날)?\s*({TIME})")
+H_SEC = (("break", re.compile(r"준비|브레이크|쉬는\s*시간|휴게")),
+         ("order", re.compile(r"마지막\s*주문|라스트\s*오더|라스트오더|주문\s*마감")),
+         ("entry", re.compile(r"입장\s*(?:마감|종료)|마지막\s*입장|매표\s*마감|발권\s*마감")))
+H_ALWAYS = (("h24", re.compile(r"24\s*시간(?!\s*(?:예약|상담|문의|접수))")), ("always", re.compile(r"상시\s*개방|^상시$")))
+C_ALL = re.compile(r"매일|연중\s*무휴|년중\s*무휴|연중|점심|저녁|오전|오후|런치|디너")
+C_MONTHS = re.compile(rf"(\d{{1,2}})\s*월?\s*(?:{TILDE}|[\-–])\s*(\d{{1,2}})\s*월")
+C_MONTH = re.compile(r"(\d{1,2})\s*월(?!\s*\d)")
+C_SEASON = re.compile(r"하절기|동절기|하계|동계|여름철?|겨울철?|봄철?|가을철?|성수기|비수기")
+C_WDAYS = re.compile(rf"([월화수목금토일])(?:요일)?\s*(?:{TILDE}|[\-–])\s*([월화수목금토일])(?:요일)?")
+C_WDAY = re.compile(r"([월화수목금토일])(?:요일)?")
+D_DATE = re.compile(r"(\d{1,2})\s*월\s*(\d{1,2})\s*일(?!\s*(?:은|는)?\s*(?:제외|정상|개관|운영|영업))")
+D_MONTHS = re.compile(rf"(\d{{1,2}})\s*월\s*(?:{TILDE}|[\-–])\s*(\d{{1,2}})\s*월(?!\s*\d)")
+UNDATED = re.compile(r"명절|설날|구정|추석|공휴일|휴일|연휴|임시|비정기|정한\s*날|우천|기상|해상|공지|(?<![가-힣])설(?![가-힣])")
+TIDE_W, TIDE_H, TIDE_PAD = 330, 96, 10   # the curve's viewBox (templates/_today.html.j2)
+
+
+def _month_span(a: int, b: int) -> set:
+    return set(range(a, b + 1)) if a <= b else set(range(a, 13)) | set(range(1, b + 1))
+
+
+def _wday_span(a: str, b: str) -> set:
+    i, j = WEEK.index(a), WEEK.index(b)
+    return set(range(i, j + 1)) if i <= j else set(range(i, 7)) | set(range(0, j + 1))
+
+
+def _hm(t: str) -> int:
+    h, m = t.split(":")
+    return int(h) * 60 + int(m)
+
+
+def hm_text(minutes: int, next_day: str = "익일 {t}") -> str:
+    """Minutes since the day's 00:00 as 'HH:MM'; past midnight in the next day's words ('익일 02:00')."""
+    t = f"{(minutes // 60) % 24:02d}:{minutes % 60:02d}"
+    return next_day.format(t=t) if minutes >= 1440 else t
+
+
+def _sec_kind(words: str) -> str:
+    return next((k for k, rx in H_SEC if rx.search(words)), "")
+
+
+def cond_scope(cond: str | None):
+    """The days an hours range's words say it holds on: (months or None, weekdays 0=월 or None), (None, None) for
+    every day; None when the words are more than a season with its months and weekdays ('하절기' without months,
+    '공휴일' alone, a facility's name, '입실'): such a range cannot be placed on a date."""
+    c = squash_ws(cond)
+    if c.replace(" ", "") in BASE_WORDS:
+        return (None, None)
+    c = C_ALL.sub(" ", c)
+    months: set = set()
+    for m in C_MONTHS.finditer(c):
+        a, b = int(m.group(1)), int(m.group(2))
+        if not (1 <= a <= 12 and 1 <= b <= 12):
+            return None
+        months |= _month_span(a, b)
+    c = C_MONTHS.sub(" ", c)
+    for m in C_MONTH.finditer(c):
+        if not 1 <= int(m.group(1)) <= 12:
+            return None
+        months.add(int(m.group(1)))
+    c = C_MONTH.sub(" ", c)
+    if C_SEASON.search(c) and not months:
+        return None
+    c = C_SEASON.sub(" ", c)
+    days: set = set()
+    if re.search(r"평일|주중", c):
+        days |= set(range(5))
+    if "주말" in c:
+        days |= {5, 6}
+    c = re.sub(r"평일|주중|주말", " ", c)
+    # '주말·공휴일': the weekend part (no holiday is dated here; the card says so) — a holiday alone is no weekday
+    hol = bool(re.search(r"공휴일|휴일", c))
+    c = re.sub(r"(?:법정\s*)?공휴일|휴일", " ", c)
+    for m in C_WDAYS.finditer(c):
+        days |= _wday_span(m.group(1), m.group(2))
+    c = C_WDAYS.sub(" ", c)
+    for m in C_WDAY.finditer(c):
+        days.add(WEEK.index(m.group(1)))
+    c = C_WDAY.sub(" ", c)
+    if hol and not days:
+        return None
+    if re.sub(r"[\s·,、/()\[\]:：~\-–및]|매주|시간|운영|영업|이용|관람", "", c):
+        return None
+    return (frozenset(months) or None, frozenset(days) or None)
+
+
+def _fits(scope, d: dt.date) -> bool:
+    months, days = scope
+    return (months is None or d.month in months) and (days is None or d.weekday() in days)
+
+
+def hours_rows(raw) -> dict:
+    """An hours value as rows a date can be matched to: {rows: [{cond, a, b, sec, label}], notes, always, loose}.
+    a / b are minutes since 00:00 (b past 1440 for '익일' or an end before the start; None for a single time such as
+    '마지막 주문 20:00'); sec is '' for an opening range, else break / order / entry; cond is the [group] and the words
+    before the range ('3~10월', '평일'); a note in brackets after a range ('(입장마감 17:30)') takes that range's cond.
+    notes: words with no time and no closed day ('외부·정원만 관람 가능'); always: 'always' (상시 개방) or 'h24';
+    loose: a part holding a time was not understood — then no day of this value gets a bar."""
+    out = {"rows": [], "notes": [], "always": "", "loose": False}
+    rows = out["rows"]
+
+    def note(text: str, cond: str) -> None:
+        t = squash_ws(text).strip(" ,:()[]-~")
+        if not t:
+            return
+        times = re.findall(TIME, t)
+        if times:
+            words = squash_ws(re.sub(TIME, " ", t)).strip(" ,:()[]-~")
+            kind = _sec_kind(words)
+            if kind and len(times) == 1:
+                rows.append({"cond": cond, "a": _hm(times[0]), "b": None, "sec": kind, "label": words})
+            else:
+                out["loose"] = True
+            return
+        for key, rx in H_ALWAYS:
+            if rx.search(t):
+                out["always"] = out["always"] or key
+                return
+        if CLOSED_HINT.search(t) or OPENISH.search(t) or is_open_value(t):
+            return   # closed days are read from the closed-day text (closed_text, day_closures)
+        out["notes"].append(t)
+
+    group = ""
+    for line in clean_lines(raw):
+        m = re.fullmatch(r"\[([^\]]+)\]\s*(.*)", line)
+        if m:
+            group, line = squash_ws(m.group(1)), m.group(2)
+        for part in re.split(r"\s*/\s*|,\s*(?=휴무일)|\s+-\s+(?=[가-힣\[])|^-\s*", line):
+            part = squash_ws(part).strip(" ,-")
+            if not part:
+                continue
+            pos, cur = 0, group
+            for m in H_RANGE.finditer(part):
+                between = part[pos:m.start()]
+                for par in re.findall(r"\(([^()]*)\)", between):   # a closed bracket: the previous range's note
+                    note(par, cur)
+                label = re.sub(r"\([^()]*\)", " ", between)
+                if re.search(TIME, label):
+                    out["loose"] = True
+                label = squash_ws(label).strip(" :,-()[]~")
+                a, b = _hm(m.group(1)), _hm(m.group(3))
+                if m.group(2) or b <= a:
+                    b += 1440
+                kind = _sec_kind(label)
+                if kind:
+                    rows.append({"cond": cur if pos else group, "a": a, "b": b, "sec": kind, "label": label})
+                else:
+                    cur = " ".join(x for x in (group, "" if label.replace(" ", "") in BASE_WORDS else label) if x)
+                    rows.append({"cond": cur, "a": a, "b": b, "sec": "", "label": label})
+                pos = m.end()
+            tail = part[pos:]
+            for par in re.findall(r"\(([^()]*)\)", tail):
+                note(par, cur)
+            note(re.sub(r"\([^()]*\)", " ", tail), cur)
+    return out
+
+
+def day_hours(H: dict, d: dt.date) -> dict | None:
+    """One day of an hours value (hours_rows): {ranges: [[a, b]] merged, secs: the notes that hold on the day, cond:
+    the words of the ranges that fit}; ranges [] when the value gives hours for other days only ('평일' on a Saturday);
+    None when the day cannot be settled: a part not understood, a range whose words cannot be placed on a date, or
+    two different conditions fitting the same day ('평일' and '3~10월')."""
+    prim = [r for r in H["rows"] if not r["sec"]]
+    if H["loose"] or not prim:
+        return None
+    hit, scopes = [], set()
+    for r in prim:
+        s = cond_scope(r["cond"])
+        if s is None:
+            return None
+        if _fits(s, d):
+            hit.append(r)
+            scopes.add(s)
+    if len(scopes) > 1:
+        return None
+    merged: list[list[int]] = []
+    for a, b in sorted({(r["a"], r["b"]) for r in hit}):
+        if merged and a <= merged[-1][1]:
+            merged[-1][1] = max(merged[-1][1], b)
+        else:
+            merged.append([a, b])
+    secs, seen = [], set()
+    for r in H["rows"]:
+        s = cond_scope(r["cond"]) if r["sec"] else None
+        key = (r["sec"], r["label"], r["a"], r["b"])
+        if s is not None and _fits(s, d) and key not in seen:
+            seen.add(key)
+            secs.append(r)
+    conds = list(dict.fromkeys(r["cond"] for r in hit if r["cond"]))
+    return {"ranges": merged, "secs": secs, "cond": conds[0] if len(conds) == 1 else ""}
+
+
+def cut_breaks(ranges: list, breaks: list) -> list[list[int]]:
+    """The opening ranges with the breaks (준비시간) taken out: the bar's segments."""
+    segs = [list(r) for r in ranges]
+    for a, b in breaks:
+        nxt = []
+        for x, y in segs:
+            if b <= x or a >= y:
+                nxt.append([x, y])
+                continue
+            if a > x:
+                nxt.append([x, a])
+            if b < y:
+                nxt.append([b, y])
+        segs = nxt
+    return segs
+
+
+def day_closures(text: str | None) -> dict:
+    """What a closed-day text says about dates: weekly closed weekdays (week_closure, 0=월), n-th week / 격주 weekdays
+    (partial), dates ('1월 1일') and month spans ('12월~2월', in a clause without a weekday); stated: the text says
+    something a date can be checked against (연중무휴 included); undated: it also names closures with no date in the
+    data (명절, 공휴일, 임시 휴무 …)."""
+    t = squash_ws(text)
+    wc = week_closure(t)
+    days = {WEEK.index(x) for x in wc["days"]}
+    partial = {WEEK.index(x) for x in wc["partial"]}
+    dates = {(int(m.group(1)), int(m.group(2))) for m in D_DATE.finditer(t)
+             if 1 <= int(m.group(1)) <= 12 and 1 <= int(m.group(2)) <= 31}
+    months: set = set()
+    for clause in re.split(r"[,/;，、]", t):
+        if re.search(r"[월화수목금토일]\s*요일", clause):
+            continue
+        for m in D_MONTHS.finditer(clause):
+            a, b = int(m.group(1)), int(m.group(2))
+            if 1 <= a <= 12 and 1 <= b <= 12:
+                months |= _month_span(a, b)
+    partial -= days
+    return {"days": days, "partial": partial, "dates": dates, "months": months, "open": wc["open"],
+            "stated": bool(wc["open"] or days or partial or dates or months), "text": t,
+            "undated": bool(UNDATED.search(t))}
+
+
+def closure_on(C: dict | None, d: dt.date) -> str:
+    """'closed', 'check' (an n-th week / 격주 weekday) or '' for one date."""
+    if not C:
+        return ""
+    if (d.month, d.day) in C["dates"] or d.month in C["months"] or d.weekday() in C["days"]:
+        return "closed"
+    return "check" if d.weekday() in C["partial"] else ""
+
+
+def is_seaside(e: dict) -> bool:
+    """A place the card shows tides for, given a station close enough (SEA_THEMES / SEA_NAME)."""
+    return e.get("kind") == "attraction" and bool(set(e.get("themes") or ()) & set(SEA_THEMES)
+                                                  or SEA_NAME.search(squash_ws(e.get("name"))))
+
+
+def nearest_station(e: dict, almanac: dict) -> dict | None:
+    """The almanac's tide station nearest to the place, when it is within TIDE_MAX_M: {code, name, m, days}."""
+    best = None
+    for code, st in ((almanac or {}).get("tide") or {}).items():
+        if not isinstance(st, dict) or st.get("lat") is None or st.get("lng") is None or not st.get("days"):
+            continue
+        m = hav(e.get("_geo"), {"lat": st["lat"], "lng": st["lng"]})
+        if m is not None and (best is None or m < best["m"]):
+            best = {"code": code, "name": squash_ws(st.get("name")), "m": m, "days": st["days"]}
+    return best if best and best["m"] <= TIDE_MAX_M else None
+
+
+def _clock(v) -> str:
+    """'0654', '06:54', '2026-10-31 06:54' → '06:54' ('' for anything else)."""
+    s = re.sub(r"\s+", "", str(v or ""))
+    m = re.findall(r"(\d{1,2}):(\d{2})", s)
+    if m:
+        h, mm = m[-1]
+    elif re.fullmatch(r"\d{4}", s):
+        h, mm = s[:2], s[2:]
+    else:
+        return ""
+    return f"{int(h):02d}:{mm}" if int(h) < 24 and int(mm) < 60 else ""
+
+
+def tide_points(raw) -> list[dict]:
+    """A day's tide extremes: [{t 'HH:MM', k 'high'|'low', cm int|None}] in time order."""
+    out = []
+    for x in raw or []:
+        if not isinstance(x, dict):
+            continue
+        t = _clock(x.get("time"))
+        typ = squash_ws(x.get("type"))
+        k = "high" if re.search(r"만조|고조|high", typ, re.I) else "low" if re.search(r"간조|저조|low", typ, re.I) else ""
+        try:
+            cm = int(round(float(x.get("level_cm"))))
+        except (TypeError, ValueError):
+            cm = None
+        if t and k:
+            out.append({"t": t, "k": k, "cm": cm})
+    return sorted(out, key=lambda p: p["t"])
+
+
+def tide_curve(points: list[tuple[int, int]], lo: int, hi: int) -> list[str] | None:
+    """The day's tide as an SVG path through its extremes ([(minutes from the day's 00:00, cm)], the neighbouring
+    days' nearest extremes included so the line reaches both edges): one cubic per half-wave with level tangents at
+    every high and low (a cosine to within a pixel). [line, area under it]; None with fewer than two heights."""
+    pts = [(m, v) for m, v in points if v is not None]
+    if len(pts) < 2:
+        return None
+    span = (hi - lo) or 1
+    xy = [(round(m / 1440 * TIDE_W), round(TIDE_PAD + (hi - v) / span * (TIDE_H - 2 * TIDE_PAD))) for m, v in pts]
+    d = [f"M{xy[0][0]} {xy[0][1]}"]
+    for (x0, y0), (x1, y1) in zip(xy, xy[1:]):
+        k = round((x1 - x0) * 0.3634)
+        d.append(f"C{x0 + k} {y0} {x1 - k} {y1} {x1} {y1}")
+    line = "".join(d)
+    return [line, f"{line}L{xy[-1][0]} {TIDE_H}L{xy[0][0]} {TIDE_H}Z"]
+
+
+def data_source(doc: dict | None, part: str = "") -> dict | None:
+    """A data file's source for one part ('sun', 'tide'): its 'sources' (keyed by part, a list, or one dict) or
+    'source'; {provider, dataset, url} (no dates: they are never printed)."""
+    if not isinstance(doc, dict):
+        return None
+    words = {"sun": ("천문", "출몰", "일출", "sun"), "tide": ("조석", "해양조사", "물때", "tide")}.get(part, ())
+    cand = None
+    for key in ("sources", "source"):
+        x = doc.get(key)
+        if isinstance(x, dict) and part and isinstance(x.get(part), dict):
+            cand = x[part]
+        elif isinstance(x, list):
+            items = [s for s in x if isinstance(s, dict)]
+            cand = next((s for s in items if part and part in (s.get("for"), s.get("key"), s.get("part"), s.get("id"))),
+                        None) or next((s for s in items if words and any(w in json.dumps(s, ensure_ascii=False)
+                                                                         for w in words)), None) \
+                or (items[0] if items else None)
+        elif isinstance(x, dict) and (x.get("provider") or x.get("name")):
+            cand = x
+        elif isinstance(x, str) and x.strip():
+            cand = {"provider": x}
+        if cand:
+            break
+    if not cand:
+        return None
+    provider = squash_ws(cand.get("provider") or cand.get("name"))
+    dataset = squash_ws(cand.get("dataset"))
+    if provider and dataset.startswith(provider):   # '한국관광공사_관광지 집중률 …' names its provider again
+        dataset = dataset[len(provider):].lstrip(" _-·")
+    return {"provider": provider, "dataset": dataset, "url": web_url(cand.get("url")) if cand.get("url") else "",
+            "location": squash_ws(cand.get("location"))}
+
+
+AGENCY = (("kasi", re.compile(r"천문")), ("khoa", re.compile(r"해양조사")), ("kto", re.compile(r"한국관광공사|TourAPI")),
+          ("mof", re.compile(r"해양수산부")))
+
+
+def today_label(d: dt.date, code: str = "ko") -> tuple[str, str]:
+    """('10월 31일(토)', '토') in the page's language ('Oct 31 (Sat)', '10月31日（土）')."""
+    if code == "ko":
+        wd = WEEK[d.weekday()]
+        return f"{d.month}월 {d.day}일({wd})", wd
+    loc = LC.get(code)
+    wd = loc.weekdays_short[d.weekday()] if loc.weekdays_short else loc.weekdays[d.weekday()][:3]
+    md = loc.md(d.isoformat())
+    return (f"{md}（{wd}）" if loc.cjk else f"{md} ({wd})"), wd
+
+
+def _beach_rows(b: dict | None, W: dict, code: str) -> list[dict]:
+    """A beach (beaches.json: 해양수산부 해수욕장정보 info, 수질적합 여부 water) as {label, value}: the beach's kind,
+    length and width, and the water's latest result with the year of its survey always written ('2024년 조사 · 적합
+    (8월 27일)') — a past year's result never reads as this year's. A value only the source's Korean words could say
+    is left out of the other versions. (The services give no season: no opening dates are printed.)"""
+    if not isinstance(b, dict):
+        return []
+    loc = None if code == "ko" else LC.get(code)
+    num = (lambda n: f"{n:,}") if not loc else loc.num
+    out = []
+    info = b.get("info") if isinstance(b.get("info"), dict) else {}
+    parts = []
+    kind_w = squash_ws(info.get("beach_knd"))
+    if kind_w:
+        parts.append(W["sand"] if kind_w == "모래" else (kind_w if not loc else ""))
+    for key, word in (("beach_len", "beach_len"), ("beach_wid", "beach_wid")):
+        try:
+            n = float(info.get(key))
+        except (TypeError, ValueError):
+            continue
+        if n > 0:
+            parts.append(W[word].format(n=num(int(n)) if n == int(n) else n))
+    parts = [x for x in parts if x]
+    if parts:
+        out.append({"label": W["beach"], "value": " · ".join(parts)})
+    w = b.get("water") if isinstance(b.get("water"), dict) else {}
+    res = squash_ws(w.get("result"))
+    year = squash_ws(w.get("year"))
+    if res and re.fullmatch(r"\d{4}", year):
+        word = {"적합": W["water_ok"], "부적합": W["water_bad"]}.get(res, res if not loc else "")
+        if word:
+            v = f"{W['water_year'].format(y=year)} · {word}"
+            when = squash_ws(w.get("checked") or w.get("date"))[:10]
+            if re.fullmatch(r"\d{4}-\d{2}-\d{2}", when) and when[:4] == year:
+                d = dt.date.fromisoformat(when)
+                v += f" ({d.month}월 {d.day}일)" if not loc else f" ({loc.md(when)})"
+            out.append({"label": W["water"], "value": v})
+    return out
+
+
+def _ferry_rows(S, e: dict, W: dict) -> list[dict]:
+    """The passenger routes that call at an island place (ferry.json places → routes: 한국해양교통안전공단 여객선
+    운항상태 정보), Korean page only: the route's name, its ports, its ships. No sailing state: that is live and a
+    static page cannot show it (the file has none)."""
+    doc = getattr(S, "ferry", None) or {}
+    out = []
+    for code in (doc.get("places") or {}).get(e["id"]) or []:
+        r = (doc.get("routes") or {}).get(code) or {}
+        name = squash_ws(r.get("name"))
+        ports = "·".join(squash_ws(p.get("name")) for p in r.get("ports") or [] if p.get("name"))
+        ships = ", ".join(squash_ws(x.get("name")) for x in r.get("ships") or [] if x.get("name"))
+        if name:
+            route = W["ferry_route"].format(name=name, ports=ports) if ports else name
+            out.append({"label": W["ferry"], "value": f"{route} · {ships}" if ships else route})
+    return out
+
+
+HANGUL_RX = re.compile(r"[ᄀ-ᇿㄱ-ㆎ가-힣]")
+
+
+def today_vm(S, e: dict, code: str = "ko", prov=None) -> dict | None:
+    """The day card of a place page (see the section note): {days: [...TODAY_DAYS], strip, ax, sea, status, tide, sun,
+    crowd, beach, notes, sources, w, json}; None for a stay, or when the data says nothing a date can be checked
+    against (no hours, no closed day, no tides, no crowd forecast, no beach). code: the page's language (TODAY_WORDS);
+    prov(name): a provider's name in that language (en_site.Site.provider), the Korean page prints the data's own."""
+    kind = e.get("kind")
+    if kind not in ("attraction", "food"):
+        return None
+    W = LC.TODAY_WORDS[code]
+    ko = code == "ko"
+    loc = None if ko else LC.get(code)
+    f = e.get("facts") or {}
+    hkey = "usetime_restdate" if kind == "food" and f.get("usetime_restdate") else "usetime"
+    raw = f.get(hkey) if not contested(e, hkey) else None   # sources that differ settle no day here
+    H = hours_rows(raw) if raw else {"rows": [], "notes": [], "always": "", "loose": False}
+    hb = brief_hours(raw, BASE_LABEL.get(hkey, ""))[0] if raw else None
+    brief = ""
+    if hb:
+        brief = " · ".join(x for x in (hb["main"], hb["sub"]) if x) + (" 외" if hb["more"] else "")
+    ctext, cont = closed_text(e)
+    C = day_closures(ctext) if ctext and not cont else None
+    almanac = getattr(S, "almanac", None) or {}
+    sun = (almanac.get("sun") or {}) if kind == "attraction" else {}
+    station = nearest_station(e, almanac) if is_seaside(e) and e.get("_geo") else None
+    crowd_doc = getattr(S, "crowd", None) or {}
+    crowd = ((crowd_doc.get("places") or {}).get(e["id"]) or {}).get("days") or {}
+    beach_doc = getattr(S, "beaches", None) or {}
+    beach = _beach_rows((beach_doc.get("places") or {}).get(e["id"]), W, code)
+    ferry = _ferry_rows(S, e, W) if ko else []
+    nd = W["next_day"]
+    rng = lambda rs: ", ".join(f"{hm_text(a, nd)}–{hm_text(b, nd)}" for a, b in rs)   # noqa: E731
+    vals = []
+    for v in crowd.values():
+        try:
+            vals.append(float(v))
+        except (TypeError, ValueError):
+            pass
+    about = crowd_doc.get("_about")
+    about = squash_ws(about if isinstance(about, str) else (about or {}).get("ko") if isinstance(about, dict) else "")
+    # crowd.json (한국관광공사 관광지 집중률 예측): a relative figure, 100 = the place at its busiest (its _about) — the
+    # card says so, and only then puts this site's bands on it
+    relative = bool(re.search(r"100", about)) and bool(vals) and all(0 <= v <= 100 for v in vals)
+    start = dt.date.fromisoformat(S.today[:10])
+    tide_days = {}
+    if station:
+        for k in range(-1, TODAY_DAYS + 1):
+            iso = (start + dt.timedelta(days=k)).isoformat()
+            tide_days[k] = tide_points(station["days"].get(iso))
+        lv = [p["cm"] for ps in tide_days.values() for p in ps if p["cm"] is not None]
+        lo_cm, hi_cm = (min(lv), max(lv)) if lv else (0, 0)
+
+    days = []
+    for k in range(TODAY_DAYS):
+        d = start + dt.timedelta(days=k)
+        iso = d.isoformat()
+        lab, dow = today_label(d, code)
+        st, head, short, sub, ranges, breaks = "", "", "", [], [], []
+        c = closure_on(C, d)
+        hrs = day_hours(H, d)
+        if c == "closed":
+            st, head, short = "closed", W["closed"][kind], W["closed_s"][kind]
+            if ko and C:
+                sub.append(W["closed_note"].format(text=C["text"]))
+        else:
+            if hrs and hrs["ranges"]:
+                ranges = hrs["ranges"]
+                breaks = [[r["a"], r["b"]] for r in hrs["secs"] if r["sec"] == "break" and r["b"]]
+                for r in hrs["secs"]:
+                    t = f"{hm_text(r['a'], nd)}–{hm_text(r['b'], nd)}" if r["b"] else hm_text(r["a"], nd)
+                    if ko:
+                        sub.append(f"{r['label']} {t}")
+                    elif r["sec"] in W["sec"]:
+                        sub.append(f"{W['sec'][r['sec']]} {t}")
+                if ko and hrs["cond"]:
+                    sub.append(W["cond"].format(c=hrs["cond"]))
+                if ko:
+                    sub += H["notes"]
+            if c == "check":
+                st, head, short = "check", W["maybe"], W["maybe_s"]
+                sub.insert(0, W["closed_note"].format(text=C["text"]) if ko else W["maybe_why"])
+                if ranges:
+                    sub.insert(1, W["if_open"].format(t=rng(ranges)))
+            elif ranges:
+                st = "open" if C and C["stated"] else "hours"
+                head = f"{W['open'][kind]} · {rng(ranges)}" if st == "open" else f"{W['hours'][kind]} {rng(ranges)}"
+                short = f"{W['open_s'][kind]} {rng(ranges)}" if st == "open" else rng(ranges)
+            elif H["always"]:
+                st, head = "always", W["h24" if H["always"] == "h24" else "always"]
+                short = head
+            elif hrs is not None and not hrs["ranges"]:
+                st, head, short = "check", W["no_hours"], W["no_hours_s"]
+            elif brief:
+                st = "open" if C and C["stated"] else "hours"
+                head = W["open"][kind] if st == "open" else ""
+                short = W["open_s"][kind] if st == "open" else ""
+                sub.append(f"{W['hours'][kind]} {brief}" if ko else W["see_hours"])
+                if not head:
+                    head, sub = (f"{W['hours'][kind]} {brief}", []) if ko else (W["see_hours"], [])
+            elif C and C["stated"]:
+                st, head, short = "open", W["open"][kind], W["open_s"][kind]
+        s = sun.get(iso) if isinstance(sun.get(iso), dict) else None
+        rise, sset = (_clock(s.get("sunrise")), _clock(s.get("sunset"))) if s else ("", "")
+        cv = crowd.get(iso)
+        try:
+            cv = float(cv)
+        except (TypeError, ValueError):
+            cv = None
+        cr = None
+        if cv is not None:
+            g = (0 if cv < CROWD_CUTS[0] else 1 if cv < CROWD_CUTS[1] else 2) if relative else -1
+            cr = {"v": f"{cv:g}", "g": g, "w": W["grades"][g] if g >= 0 else ""}
+        tide, curve = [], None
+        if station:
+            tide = [{**p, "w": W[p["k"]], "cm_t": W["cm"].format(n=p["cm"]) if p["cm"] is not None else ""}
+                    for p in tide_days[k]]
+            pts = ([(_hm(p["t"]) - 1440, p["cm"]) for p in tide_days[k - 1][-1:]] + [(_hm(p["t"]), p["cm"]) for p in tide_days[k]]
+                   + [(_hm(p["t"]) + 1440, p["cm"]) for p in tide_days[k + 1][:1]])
+            curve = tide_curve(pts, lo_cm, hi_cm) if tide else None
+        days.append({"iso": iso, "lab": lab, "dow": dow, "dn": d.day, "st": st, "head": head, "short": short,
+                     "sub": " · ".join(x for x in sub if x), "ranges": ranges, "breaks": breaks,
+                     "segs": cut_breaks(ranges, breaks), "sun": {"rise": rise, "set": sset} if sset else None,
+                     "crowd": cr, "tide": tide, "curve": curve})
+
+    has_status = any(x["st"] for x in days)
+    has_tide = any(x["tide"] for x in days)
+    has_crowd = any(x["crowd"] for x in days)
+    if not (has_status or has_tide or has_crowd or beach):
+        return None
+    # the bar's axis: 06–22 at least, widened to every range of the days (a late close or past midnight)
+    ax = None
+    if any(x["ranges"] for x in days):
+        lo = min([360] + [a for x in days for a, _ in x["ranges"]]) // 60 * 60
+        hi = -(-max([1320] + [b for x in days for _, b in x["ranges"]]) // 60) * 60
+        span = hi - lo
+        ticks = [lo] + [t for t in range(lo // 180 * 180 + 180, hi, 180) if t - lo >= 120 and hi - t >= 150] + [hi]
+        ax = {"lo": lo, "hi": hi, "ticks": [{"x": round((t - lo) / span, 4), "l": f"{(t // 60) % 24 or (24 if t else 0):02d}"}
+                                            for t in ticks]}
+        for x in days:
+            x["bar"] = [[round((a - lo) / span, 4), round((b - lo) / span, 4)] for a, b in x["segs"]]
+    has_sun = any(x["sun"] for x in days)
+    # sources: providers only (no dates); the hours and the closed day name the fields' own providers
+    say = (lambda p: slot_provider(p, city=S.city)) if ko else (lambda p: next((W["agency"][k] for k, rx in AGENCY if rx.search(p)),
+                                                                   "") or (prov(p) if prov else ""))
+    sources = []
+    if has_status:
+        names = []
+        for key in ([hkey] if raw else []) + (["restdate" if f.get("restdate") else hkey] if ctext else []):
+            p = say(src_of(e, key)["provider"])
+            if p and p not in names:
+                names.append(p)
+        if names:
+            sources.append({"what": W["src_hours"], "items": [{"name": n, "url": ""} for n in names]})
+
+    def doc_src(what, doc, parts=("",), point=False):
+        items = []
+        for part in parts:
+            s = data_source(doc, part)
+            if not (s and s["provider"]):
+                continue
+            name = say(s["provider"]) if not ko else " ".join(x for x in (s["provider"], s["dataset"]) if x)
+            if point and s["location"]:   # 출몰시각 is one point's (the region's name): a far corner differs a little
+                where = s["location"] if ko else (getattr(loc, "city", "") if s["location"] == squash_ws(S.site.get("region")) else "")
+                note = W["sun_point"].format(name=where) if where else ""
+                name = (f"{name}({note})" if ko else f"{name}（{note}）" if loc.cjk else f"{name} ({note})") if note else name
+            if name and name not in [x["name"] for x in items]:
+                items.append({"name": name, "url": s["url"]})
+        if items:
+            sources.append({"what": what, "items": items})
+    if has_sun:
+        doc_src(W["src_sun"], almanac, ("sun",), point=True)
+    if has_tide:
+        doc_src(W["src_tide"], almanac, ("tide",))
+    if has_crowd:
+        doc_src(W["src_crowd"], crowd_doc)
+    if beach:
+        doc_src(W["src_beach"], beach_doc, ("water", "info"))
+    if ferry:
+        doc_src(W["src_ferry"], getattr(S, "ferry", None) or {})
+    tide_info = None
+    if has_tide:
+        dd = dist(station["m"]) if ko else loc.dist(station["m"])
+        name = station["name"] if ko else (getattr(loc, "city", "") if station["name"] == squash_ws(S.site.get("region")) else "")
+        tide_info = {"at": (W["tide_at"].format(name=name, d=dd) if name else W["tide_near"].format(d=dd)),
+                     "rule": W["tide_rule"].format(km=TIDE_MAX_M // 1000), "th": W["tide_th"]}
+    notes = []
+    if C and C["undated"]:
+        notes.append(W["note_undated"])
+    crowd_vm = None
+    if has_crowd:
+        # the forecast changes every day: who made it and the day it was received (a date without its year, never
+        # a check date's words — operator decision 2026-10-09 keeps those off the page)
+        cs = data_source(crowd_doc) or {}
+        src = (crowd_doc.get("source") or {}) if isinstance(crowd_doc.get("source"), dict) else {}
+        got = squash_ws(src.get("base_date") or src.get("checked_at") or crowd_doc.get("generated"))[:10]
+        who = (cs.get("provider") or "") if ko else say(cs.get("provider") or "")
+        got_t = ""
+        if who and re.fullmatch(r"\d{4}-\d{2}-\d{2}", got):
+            gd = dt.date.fromisoformat(got)
+            got_t = W["crowd_got"].format(who=who, date=f"{gd.month}월 {gd.day}일" if ko else loc.md(got))
+        crowd_vm = {"scale": W["crowd_scale"] if relative else "", "got": got_t, "graded": relative,
+                    "cuts": [c / 100 for c in CROWD_CUTS]}
+        if relative:   # what the number is and this site's bands: a line of the card's foot
+            notes.append(f"{W['crowd']}{': ' if ko else loc.colon}{W['crowd_what']}{' ' if ko else loc.sjoin}"
+                         f"{W['crowd_rule']}")
+    js = {"start": days[0]["iso"], "ax": [ax["lo"], ax["hi"]] if ax else None, "w": W["js"], "nd": nd,
+          "none": W["none"], "sunrise": W["sunrise"],
+          "days": [{"d": x["iso"], "l": x["lab"], "dw": x["dow"], "dn": x["dn"], "st": x["st"], "h": x["head"],
+                    "s": x["short"], "u": x["sub"], "r": x["ranges"], "k": x["breaks"], "g": x["segs"],
+                    "sun": [x["sun"]["rise"], x["sun"]["set"]] if x["sun"] else 0,
+                    "cr": [x["crowd"]["v"], x["crowd"]["g"], x["crowd"]["w"]] if x["crowd"] else 0,
+                    "td": [[p["t"], p["k"], p["w"], p["cm_t"]] for p in x["tide"]] if x["tide"] else 0,
+                    "tc": x["curve"] or 0} for x in days]}
+    payload = json.dumps(js, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
+    # the sea card (② 오늘의 바다: the band with its waves) when the sea itself is on it: tides or a beach's water
+    return {"days": days, "strip": days[:TODAY_STRIP], "ax": ax, "sea": has_tide or bool(beach), "status": has_status,
+            "has_sub": any(x["sub"] for x in days),
+            "ferry": ferry,
+            "tide": tide_info, "sun": has_sun, "crowd": crowd_vm, "beach": beach, "notes": notes, "sources": sources,
+            "w": W, "kind": kind, "colon": ": " if ko else loc.colon, "isep": " " if ko else loc.colon,
+            "json": Markup(payload)}
+
+
+# ----------------------------------------------------------------------------- 영업 확인 · 이어서 많이 간 곳
+# Two blocks of the place page (operator 2026-10-31), every language:
+#   - 영업 확인 (licenses.json: 행정안전부 인허가 조회서비스, 식품의약품안전처 식품안심업소 지정): one line in 방문 전 확인 for
+#     a place whose licence records say '영업' — '영업 중 — 행정안전부 인허가(일반음식점·한식)' — and the 식품안심업소
+#     designation while it is valid ('식품안심업소 지정(식약처, 2025-06-19~2028-06-18)'), never as a grade or stars.
+#     '폐업 확인' prints nothing (the operator decides); the licence's phone and date are not printed (one value per
+#     fact; a licence date is no opening date)
+#   - 이어서 많이 간 곳 (related.json: 한국관광공사 관광지별 연관 관광지 정보, TMAP navigation): the places with a page that
+#     cars went to next, in rank order, at most RELATED_MAX — movement data, never called a recommendation
+RELATED_MAX = 8
+
+
+def _dataset(s: dict) -> str:
+    """A source's name as the page prints it: its provider and dataset, the portal's underscores as spaces
+    ('행정안전부_식품_일반음식점 조회서비스' → '행정안전부 식품 일반음식점 조회서비스')."""
+    p, d = squash_ws(s.get("provider")), squash_ws(s.get("dataset"))
+    if p and d.startswith(p):
+        d = d[len(p):].lstrip(" _-·")
+    return squash_ws(f"{p} {d.replace('_', ' ')}")
+
+
+def license_vm(S, e: dict, code: str = "ko", today: str | None = None, any_day: bool = False) -> dict | None:
+    """{open, by, safe, sources: [{name, url}]} for a place licenses.json records as '영업'; None otherwise. code: the
+    page's language (locales.LICENSE_WORDS; a version without the agency's or the kind's name in its words leaves the
+    part out). safe: the 식품안심업소 designation when the build day lies in its period."""
+    doc = getattr(S, "licenses", None) or {}
+    x = (doc.get("places") or {}).get(e.get("id"))
+    if not isinstance(x, dict) or squash_ws(x.get("status")) != "영업":
+        return None
+    # a renamed lodging joined by address and phone (운영자 결정 2026-10-31): the licence is under another name, which
+    # only the Korean page can write — another version leaves the block out rather than vouch for the old name
+    renamed = squash_ws(x.get("match")) == "address+tel"
+    if renamed and code != "ko":
+        return None
+    W = LC.LICENSE_WORDS[code]
+    srcs = doc.get("sources") or {}
+    s = srcs.get(x.get("source")) or {}
+    provider = squash_ws(s.get("provider"))
+    who = W["agency"].get(provider) or (provider if code == "ko" else "")
+    if not who:
+        return None
+    kind = squash_ws(x.get("kind"))
+    if code == "ko":
+        kinds = "·".join(v for v in (kind, squash_ws(x.get("kind_detail"))) if v)
+    else:
+        kinds = W["kinds"].get(kind, "")
+    out = {"open": W["open"], "by": W["by"].format(who=who, kind=kinds) if kinds else W["by_bare"].format(who=who),
+           "safe": "", "safe_html": "", "sources": [],
+           "licensed_name": squash_ws(x.get("name")) if renamed else ""}
+    if s.get("url"):
+        out["sources"].append({"name": _dataset(s) if code == "ko" else who, "url": web_url(s["url"])})
+    h = x.get("hygiene") if isinstance(x.get("hygiene"), dict) else None
+    day = (today or getattr(S, "today", "") or "")[:10]
+    # any_day: the designation with its period whatever the build day (the chat documents may not depend on the build
+    # date — tests/test_chat_index.py; the period it states says when it holds)
+    if h and (any_day or (squash_ws(h.get("valid_from")) <= day <= squash_ws(h.get("valid_to")) and day)):
+        by = squash_ws(h.get("designated_by"))
+        hw = W["agency"].get(by) or (by if code == "ko" else "")
+        if hw:
+            out["safe"] = W["safe"].format(who=hw, a=squash_ws(h["valid_from"]), b=squash_ws(h["valid_to"]))
+            out["safe_html"] = nowrap_numbers(out["safe"])   # a date never breaks at its hyphens
+            hs = srcs.get("hygiene") or {}
+            if hs.get("url"):
+                hname = _dataset(hs) if code == "ko" else (W["agency"].get(squash_ws(hs.get("provider"))) or hw)
+                if hname not in [y["name"] for y in out["sources"]]:
+                    out["sources"].append({"name": hname, "url": web_url(hs["url"])})
+    return out
+
+
+def related_ym(doc: dict, code: str = "ko") -> str:
+    """The month of related.json's data in words ('2026년 9월', 'September 2026'); '' when the file does not say."""
+    src = doc.get("source") if isinstance(doc.get("source"), dict) else {}
+    m = re.fullmatch(r"(\d{4})-?(\d{2})", squash_ws(doc.get("base_ym") or src.get("base_date"))[:7])
+    if not m:
+        return ""
+    W = LC.RELATED_WORDS[code]
+    y, mo = int(m.group(1)), int(m.group(2))
+    return W["ym"].format(y=y, m=mo, mo=W["months"][mo - 1] if "months" in W else "")
+
+
+def related_places(S, e: dict) -> list[dict]:
+    """The built places related.json says cars went to next after this one, in rank order (each once, never the
+    place itself), at most RELATED_MAX."""
+    doc = getattr(S, "related_trips", None) or {}
+    rows = (doc.get("places") or {}).get(e.get("id")) or []
+    out, seen = [], {e.get("id")}
+    by_id = getattr(S, "ent_by_id", None) or {x["id"]: x for x in getattr(S, "entities", [])}
+    for r in sorted((r for r in rows if isinstance(r, dict)), key=lambda r: r.get("rank") or 999):
+        t = by_id.get(r.get("place_id"))
+        if t is None or t["id"] in seen:
+            continue
+        seen.add(t["id"])
+        out.append(t)
+        if len(out) == RELATED_MAX:
+            break
+    return out
+
+
+def related_vm(S, e: dict) -> dict | None:
+    """The Korean page's 이어서 많이 간 곳: {rows (near_row, no distance), title, note (the month and the source),
+    src {name, url}}; None without a built place to link."""
+    places = related_places(S, e)
+    if not places:
+        return None
+    doc = getattr(S, "related_trips", None) or {}
+    src = doc.get("source") if isinstance(doc.get("source"), dict) else {}
+    name = squash_ws(src.get("provider")) or "한국관광공사"
+    return {"rows": [near_row(S, t) for t in places], "title": LC.RELATED_WORDS["ko"]["title"],
+            "note": related_note("ko", related_ym(doc), name, web_url(src.get("url")) if src.get("url") else "")}
+
+
+def related_note(code: str, ym: str, name: str, url: str) -> Markup:
+    """'티맵 차량 이동 기준, 2026년 9월 · 한국관광공사' with the provider's name linked to the dataset."""
+    W = LC.RELATED_WORDS[code]
+    link = Markup('<a href="{}" rel="noopener">{}</a>').format(url, name) if url else escape(name)
+    note = W["note"] if ym else re.sub(r",?\s*\{ym\}", "", W["note"])
+    head, _, tail = note.partition("{src}")
+    return escape(head.format(ym=ym)) + link + escape(tail)

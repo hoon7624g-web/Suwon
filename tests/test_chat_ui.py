@@ -186,9 +186,9 @@ def test_chat_styles_keep_the_type_rules_targets_and_reduced_motion():
         assert "width: 44px" in rules[sel] and "height: 44px" in rules[sel], sel
     for sel in (".chat-chip", ".chat-retry"):
         assert "min-height: 44px" in rules[sel], sel
-    # the launcher: the mascot face, 68px (84px from 1024px) above the safe area, on every page from the first paint,
+    # the launcher: the mascot face, 76px (100px from 1024px; the first site's owner 2026-10-31: bigger) above the safe area, on every page from the first paint,
     # out of the way while the menu is open
-    assert "height: 68px" in launcher and "height: 84px" in launcher and "safe-area-inset-bottom" in launcher
+    assert "height: 76px" in launcher and "height: 100px" in launcher and "safe-area-inset-bottom" in launcher
     assert "html.menu-open .chat-fab" in launcher and "chat-up" not in launcher
     # an answer written right to left: its lists indent on the side it starts from
     lists = re.findall(r"\.chat-md [uo]l \{([^}]*)\}", panel)

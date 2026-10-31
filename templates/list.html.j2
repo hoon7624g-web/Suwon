@@ -8,7 +8,10 @@
     A short band: the title with its count (the query words of LISTS[kind].h1 when the pipeline sets them) and, on
     desktop, the count per group as links. The filter bar is laid out from the first paint with JS (css 70-p1) and
     absent without it (the `hidden` attribute; site.js removes it); without JS the grouped list is the answer. The bar
-    is _filters.html.j2's, shared with the other versions (L.filters = present.filter_vm).
+    is _filters.html.j2's, shared with the other versions (L.filters = present.filter_vm), with the condition chips
+    (조건으로 찾기, pipeline/conditions.py; each row's reasons: p1.rec → fb.why), and so is the zero-result
+    panel under it (fb.zero: the sentence and the buttons that bring rows back — outside the ledger, so the phone's
+    지도 view shows it too).
     Map: beside the list on desktop (folded when fewer than 30% of the records have coordinates, CLAUDE.md 7),
     behind the 목록 | 지도 switch below 1024px; it shows the places the filter keeps, and its counts ('지도 n', the
     caption's [data-geo-cap]) follow the filter (site.js, map.js). -#}

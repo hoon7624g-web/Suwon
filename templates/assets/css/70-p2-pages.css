@@ -49,10 +49,6 @@
 .mv-guides { margin-top: 16px; font-size: 15px; line-height: 1.7; }
 .co-move .kf-need { margin-top: 8px; font-size: 15px; }
 
-/* ---------------------------------------------------------------- courses index */
-.p2-courses { padding-bottom: var(--sec); }
-.p2-courses .chapter-tight:first-child { margin-top: clamp(16px, 2vw, 28px); }
-
 /* ---------------------------------------------------------------- guide */
 .gd-sec .gd-p + .gd-p { margin-top: 12px; }
 .strip-line .p2-sl { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; padding: 0 4px; color: var(--ink); }

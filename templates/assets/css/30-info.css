@@ -316,7 +316,8 @@ a.kf-more { display: inline-flex; align-items: center; min-height: 28px; }
   .board-bar .b-next .b-d { text-align: right; }
 }
 
-/* ---------------------------------------------------------------- course lines (/courses/, the home, /en/): code, name, the
+/* ---------------------------------------------------------------- course lines (the home, /en/; /courses/ is cards since
+   2026-10-31, 79-courses.css): code, name, the
    first stops by name in course order (ui.stoprow: linked names underlined, '외 n곳'), count · distance (ui.linemeta).
    The whole row opens the course (.line-name::after); the stop names sit above that layer and open their place. */
 .lines { border-top: 1px solid var(--hair); }
@@ -324,6 +325,7 @@ a.kf-more { display: inline-flex; align-items: center; min-height: 28px; }
 .line-dur { grid-area: dur; font-size: 14px; font-weight: 700; color: var(--ink-3); }
 .line-name { grid-area: name; font: 700 21px/1.3 var(--font); color: var(--ink); text-decoration: none; min-height: 44px; display: flex; align-items: center; letter-spacing: -.025em; }
 .line-name::after { content: ""; position: absolute; inset: 0; }
+.ln-t { min-width: 0; }   /* the title as one inline run in the flex link: its <wbr> after a kept dot can break (textutil.keep_dots) */
 .line-name:hover { text-decoration: none; }
 .line-row:hover .line-name { color: var(--link); }
 .line-stops { grid-area: stops; min-width: 0; font-size: 15px; line-height: 34px; color: var(--ink-2); letter-spacing: -.01em; }
@@ -335,13 +337,10 @@ a.kf-more { display: inline-flex; align-items: center; min-height: 28px; }
 .ls-arr { color: var(--ink-3); }
 .ls-more { color: var(--ink-3); white-space: nowrap; }
 .line-meta { grid-area: meta; font-size: 14px; line-height: 1.45; text-align: right; color: var(--ink-3); }
-.lines-nodur .line-row { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr) 15em; grid-template-areas: "name stops meta"; }
 .lines-home .line-row { grid-template-columns: 4.2em minmax(0, 1fr) auto; grid-template-areas: "dur name meta" "dur stops stops"; row-gap: 2px; padding: 18px 0; }
 .lines-home .line-dur { align-self: start; padding-top: 12px; }
 @media (max-width: 1023px) {
   .line-row, .lines-home .line-row { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "dur meta" "name name" "stops stops"; row-gap: 4px; padding: 16px 0; }
-  .lines-nodur .line-row { grid-template-columns: minmax(0, 1fr); grid-template-areas: "name" "stops" "meta"; }
-  .lines-nodur .line-meta { text-align: left; }
   .line-dur, .lines-home .line-dur { padding-top: 0; align-self: center; }
   .line-name { min-height: 32px; }
   .line-meta { align-self: center; }
@@ -383,28 +382,53 @@ a.kf-more { display: inline-flex; align-items: center; min-height: 28px; }
 .answers li { position: relative; display: flex; min-width: 0; }
 .ans { position: relative; display: flex; flex-direction: column; width: 100%; min-height: 100%; padding: 28px 28px 24px; border-radius: var(--r-xl); background: var(--tile); color: var(--ink); text-decoration: none; transition: box-shadow .3s var(--ease); }
 .ans:hover { text-decoration: none; color: var(--ink); box-shadow: 0 6px 32px rgba(0, 0, 0, .08); }
+/* 2026-10-31 (operator: '줄바꿈도 그렇고, 좀 더 세련되게'): the figure with its unit set close ('4곳', .ans-u) or with a
+   quiet label saying what it counts ('09:30 토·일 첫 출발', .ans-fl); the answer set with keep_units (build filter ku); the
+   foot (.ans-f) on the card's bottom line holds the closed-day note — small, its red square the cue, in the card's own
+   ink rather than a red paragraph — and the arrow, so every arrow of a row sits on one line. The other versions' tiles
+   (an .arr straight in .ans, an unclassed small) keep the same places. */
 .ans-k { order: 0; font: 700 21px/1.25 var(--font); letter-spacing: -.025em; }
-.ans-n { order: 1; display: flex; align-items: baseline; gap: 4px; margin-top: 14px; white-space: nowrap; }
-.ans-n b { font-size: clamp(30px, 2.6vw, 38px); line-height: 1.05; letter-spacing: -.03em; }
-.ans-n small { font: 700 15px/1.2 var(--font); color: var(--ink-2); white-space: normal; }
-.ans-v { order: 2; font-size: 15px; line-height: 1.5; color: var(--ink-2); margin-top: 14px; }
+.ans-n { order: 1; display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 8px; row-gap: 2px; margin-top: 16px; }
+.ans-n b { font-size: clamp(30px, 2.6vw, 38px); line-height: 1.05; letter-spacing: -.03em; white-space: nowrap; }
+.ans-n small { font: 700 15px/1.2 var(--font); color: var(--ink-2); }
+.ans-n .ans-u { margin-left: -6px; font-size: clamp(17px, 1.45vw, 20px); color: var(--ink); letter-spacing: -.02em; }
+.ans-n .ans-fl { font: 400 14.5px/1.3 var(--font); color: var(--ink-2); letter-spacing: -.01em; }
+.ans-v { order: 2; font-size: 15px; line-height: 1.55; color: var(--ink-2); margin: 12px 0 20px; text-wrap: pretty; }
 .ans-q { display: block; font: 400 14px/1.45 var(--font); color: var(--ink-3); margin-bottom: 4px; }
-.ans-closed { display: block; margin-top: 6px; font-size: 14px; }
-.ans .arr { order: 3; align-self: flex-end; margin: auto 0 0; display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: var(--ink); color: var(--bg); font-size: 20px; line-height: 1; padding-bottom: 2px; }
+.ans-f { order: 3; display: flex; align-items: flex-end; gap: 14px; margin-top: auto; }
+.ans-closed { display: flex; gap: 7px; flex: 1; min-width: 0; font-size: 13.5px; line-height: 1.5; color: var(--ink-2); letter-spacing: -.01em; }
+.ans-closed .sq { margin: 6px 0 0; }
+.ans .arr { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 36px; height: 36px; border-radius: 50%; background: var(--ink); color: var(--bg); font-size: 20px; line-height: 1; padding-bottom: 2px; }
+.ans > .arr, .ans-f > .arr { order: 3; align-self: flex-end; margin: auto 0 0 auto; }
 .ans:hover .arr { transform: none; background: var(--link); color: #fff; }
-.ans-v + .arr, .ans-v ~ .arr { margin-top: 18px; }
 .answers-2 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--g); }
-.ans-more { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding-top: 24px; font-size: 15px; }
-.ans-more a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 980px; background: var(--tile); color: var(--ink); text-decoration: none; transition: background-color .2s var(--fb); }
-.ans-more a:hover { background: var(--bg-3); text-decoration: none; }
+/* the guide index under the tiles (home.html.j2, present.guide_groups): a group per row — its name and count, then
+   its guides as quiet pills; on phones each row scrolls sideways, the name first */
+.gix { margin-top: 28px; border-top: 1px solid var(--hair); }
+.gix-row { display: grid; grid-template-columns: 168px minmax(0, 1fr); column-gap: 20px; align-items: start; padding: 14px 0; border-bottom: 1px solid var(--hair); }
+.gix-h { display: flex; align-items: center; gap: 8px; min-height: 38px; font: 700 15px/1.3 var(--font); letter-spacing: -.015em; color: var(--ink); }
+.gix-h .tn { font-weight: 400; font-size: 13px; color: var(--ink-3); }
+.gix-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.gix-list a { display: inline-flex; align-items: center; min-height: 38px; padding: 0 14px; border-radius: 980px; background: #fff; box-shadow: inset 0 0 0 1px var(--hair); color: var(--ink-2); font-size: 14.5px; letter-spacing: -.01em; white-space: nowrap; text-decoration: none; transition: background-color .2s var(--fb), color .2s var(--fb), box-shadow .2s var(--fb); }
+.gix-list a:hover { background: var(--tint); box-shadow: inset 0 0 0 1px var(--tint2); color: var(--sea-deep); text-decoration: none; }
 @media (max-width: 1023px) {
   .answers-2.car-track { display: flex; gap: 12px; }
   .answers-2.car-track > li { width: min(300px, 78vw); }
   .ans { padding: 22px 22px 20px; border-radius: var(--r-l); }
   .ans-k { font-size: 19px; }
-  .ans-more { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-right: calc(-1 * var(--m)); padding-right: var(--m); }
-  .ans-more::-webkit-scrollbar { display: none; }
-  .ans-more a { flex: none; white-space: nowrap; }
+  .gix { margin-top: 20px; border-top: 0; }
+  .gix-row { display: flex; align-items: center; gap: 6px; padding: 4px 0; border: 0; overflow-x: auto; scrollbar-width: none; margin-right: calc(-1 * var(--m)); padding-right: var(--m); }
+  .gix-row::-webkit-scrollbar { display: none; }
+  .gix-h { flex: none; min-width: 7.6em; min-height: 44px; padding-right: 4px; font-size: 14px; }
+  .gix-list { flex-wrap: nowrap; }
+  .gix-list a { min-height: 44px; padding: 0 16px; font-size: 14.5px; }
+}
+/* a mouse cannot swipe a row whose scrollbar is hidden (as .f-row): with a fine pointer the group's name stands over
+   its guides, which wrap */
+@media (max-width: 1023px) and (hover: hover) and (pointer: fine) {
+  .gix-row { display: block; overflow-x: visible; margin-right: 0; padding: 4px 0 8px; }
+  .gix-h { min-height: 36px; }
+  .gix-list { flex-wrap: wrap; }
 }
 
 /* ---------------------------------------------------------------- the place card (ui.card / ui.place_card): one component
@@ -513,19 +537,21 @@ a.kf-more { display: inline-flex; align-items: center; min-height: 28px; }
 /* ---------------------------------------------------------------- ledger records (ui.rec) and list filters
    A clean comparison table: the list markup sets --cols with .kind-<kind> on the ledger; '확인 필요' or '—' =
    not in the source. Filters are pills (hidden without JS); the 필터 panel holds 권역 · 테마 · the check box. */
-.lg-head { position: sticky; top: var(--bar); z-index: 5; display: grid; grid-template-columns: var(--cols); column-gap: 16px; background: rgba(255, 255, 255, .92); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid var(--hair); padding: 12px 12px 10px; font-size: 13px; font-weight: 700; color: var(--ink-3); margin-top: 14px; }
-.kind-attraction, .kind-food, .kind-stay { --cols: minmax(0, 3.2fr) minmax(0, 2fr) minmax(0, 1.6fr) minmax(0, 1.4fr) minmax(0, 1.5fr); }
-.kind-food { --cols: minmax(0, 3fr) minmax(0, 1.8fr) minmax(0, 2.2fr) minmax(0, 1.5fr) minmax(0, 1.5fr); }
+.lg-head { position: sticky; top: var(--bar); z-index: 5; display: grid; grid-template-columns: var(--cols); column-gap: 14px; background: rgba(255, 255, 255, .92); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid var(--hair); padding: 12px 8px 10px; font-size: 13px; font-weight: 700; color: var(--ink-3); margin-top: 14px; }
+/* 2026-10-31: the columns sized for their usual values at 1440 — a name with its thumbnail, '하절기(3~10월) 09:00–18:00',
+   '매주 월요일 / 1월 1일' (closed) and '개별 성인 500원' on one line each */
+.kind-attraction, .kind-food, .kind-stay { --cols: minmax(0, 3.09fr) minmax(0, 2.09fr) minmax(0, 1.97fr) minmax(0, 1.52fr) minmax(0, 1.34fr); }
+.kind-food { --cols: minmax(0, 3.09fr) minmax(0, 1.7fr) minmax(0, 1.94fr) minmax(0, 1.82fr) minmax(0, 1.45fr); }
 .kind-stay { --cols: minmax(0, 3.6fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.8fr) minmax(0, 1.6fr); }
 .lg-group { margin-top: 28px; }
 .lg-group:first-of-type { margin-top: 12px; }
-.lg-g { font: 700 21px/1.25 var(--font); letter-spacing: -.025em; padding: 0 12px 8px; }
+.lg-g { font: 700 21px/1.25 var(--font); letter-spacing: -.025em; padding: 0 8px 8px; }
 .lg-g .tn { color: var(--ink-3); margin-left: 6px; font-size: 17px; }
 .recs { border-top: 1px solid var(--hair); }
-.rec { position: relative; display: grid; grid-template-columns: var(--cols); column-gap: 16px; padding: 14px 12px 15px; border-bottom: 1px solid var(--hair); transition: background-color .2s var(--fb); }
+.rec { position: relative; display: grid; grid-template-columns: var(--cols); column-gap: 14px; padding: 14px 8px 15px; border-bottom: 1px solid var(--hair); transition: background-color .2s var(--fb); }
 .rec:hover, .rec.hl { background: var(--bg-2); }
 .rec:focus-within { outline: 2px solid var(--focus); outline-offset: -2px; border-radius: 12px; }
-.rec-name { min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 12px; align-content: start; }
+.rec-name { min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr) 64px; column-gap: 12px; align-content: start; }
 .rec-name > :not(.rec-th) { grid-column: 1; }
 .rec-link { font: 700 18px/1.3 var(--font); color: var(--ink); text-decoration: none; letter-spacing: -.02em; }
 .rec-link::after { content: ""; position: absolute; inset: 0; z-index: 0; }
@@ -535,12 +561,16 @@ a.kf-more { display: inline-flex; align-items: center; min-height: 28px; }
 .rec-meta { font-size: 13px; color: var(--ink-3); line-height: 1.5; margin-top: 3px; }
 .rec-meta:empty { display: none; }
 .rec-web { position: relative; z-index: 1; font-size: 13px; color: var(--link); justify-self: start; min-height: 28px; display: inline-flex; align-items: center; overflow-wrap: anywhere; padding: 13px 0; margin: -11px 0; }
-.rec-th { grid-column: 2; grid-row: 1 / span 3; height: 48px; width: auto; align-self: start; margin-top: 2px; }
+/* the thumbnail: one 64 × 44 box in every row, so the names line up — a KOGL-1 photo fills it (cropped), a KOGL-3
+   photo sits whole inside it on the grey (never cropped, never enlarged past the box; the photo's corners square) */
+.rec-th { grid-column: 2; grid-row: 1 / span 3; width: 64px; height: 44px; object-fit: cover; align-self: start; margin-top: 2px; }
 .rec-th.t1 { border-radius: 8px; }
+.rec-th.t3 { object-fit: contain; background: var(--bg-2); }
+.rec-name > .rec-ic { justify-self: center; }
 .rec-cells { display: contents; }
 .rec-cells > div { min-width: 0; }
 .rec-cells dt { display: none; }
-.rec-cells dd { font-size: 15px; line-height: 1.5; padding-top: 2px; }
+.rec-cells dd { font-size: 15px; line-height: 1.45; padding-top: 2px; text-wrap: pretty; }
 .rec-cells a { position: relative; z-index: 1; }
 .rec .more { font-size: 13.5px; color: var(--link); }
 .rec .flag { margin-left: 0; display: block; font-size: 13px; }
@@ -553,6 +583,21 @@ a.kf-more { display: inline-flex; align-items: center; min-height: 28px; }
 .rec .kf-main { font-weight: 700; }
 .rec .kf-sub { font-size: 13px; }
 .rec .kf-na { font-size: 14px; }
+/* a cell's value (p1.cellv, textutil.cell_html; operator 2026-10-31: '/' breaks, a lone '외', a bracket and the seasons
+   piled up): the head or the time bold on the first line, the season or days before a time and the last entry after
+   it in the value's size but quiet, a bracket of words as a small line under it, the second part as the small line
+   (.kf-sub), '외' glued to the last word in grey (the whole row is the link to the place) */
+.rec .kf-main.cv { font-weight: 400; }
+.cv .cv-h, .cv .cv-t { font-weight: 700; color: inherit; }
+.kf-main.cv:not(.closed) .cv-h, .kf-main.cv .cv-t { color: var(--ink); }
+.cv .cv-t { white-space: nowrap; }
+.cv .cv-l { color: var(--ink-2); }
+.cv .kfl { color: var(--ink-3); }
+.cv .cv-n:not(.kfl) { display: block; margin-top: 1px; font-size: 13px; line-height: 1.4; color: var(--ink-3); letter-spacing: -.01em; }
+.kf-main.closed.cv .cv-n:not(.kfl) { color: var(--red); }
+.rec .kf-sub.cv { margin-top: 2px; font-size: 13px; line-height: 1.4; color: var(--ink-3); }
+.kf-sub.cv .cv-h, .kf-sub.cv .cv-t { font-weight: 400; color: var(--ink-2); }
+.cv .kf-more { font-size: 13px; color: var(--ink-3); }
 .empty { padding: 24px 0; color: var(--ink-2); }
 .f-row { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding: 2px 0; }
 .f-row::-webkit-scrollbar { display: none; }
@@ -611,10 +656,15 @@ a.kf-more { display: inline-flex; align-items: center; min-height: 28px; }
   html.js .seg { display: inline-flex; }
   .lg-head { display: none; }
   .rec { display: block; padding: 14px 4px 15px; }
-  .rec-cells { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px 16px; margin-top: 8px; }
-  .rec-cells dt { display: block; font-size: 12px; font-weight: 400; color: var(--ink-3); line-height: 1.4; }
+  /* phones and tablets: label │ value rows (two pairs a row on a tablet), each value on the width it needs rather
+     than a quarter of the row */
+  .rec-cells { display: grid; grid-template-columns: auto minmax(0, 1fr) auto minmax(0, 1fr); align-items: baseline; gap: 6px 14px; margin-top: 10px; }
+  .rec-cells > div { display: contents; }
+  .rec-cells dt { display: block; font-size: 13px; font-weight: 400; color: var(--ink-3); line-height: 1.45; white-space: nowrap; }
+  .rec-cells dd { padding-top: 0; }
   .rec-cells > .is-missing { display: none; }   /* labelled cells: an empty one would read as a value; .rec-need says it */
-  .rec-th { height: 46px; }
+  .rec-name { grid-template-columns: minmax(0, 1fr) 64px; }
+  .rec-th { width: 64px; height: 46px; }
 }
 @media (max-width: 760px) {
   .f-top { flex-wrap: wrap; }
@@ -626,7 +676,7 @@ a.kf-more { display: inline-flex; align-items: center; min-height: 28px; }
   .rec { padding: 12px 0 13px !important; }
   .rec:hover, .rec.hl { box-shadow: -8px 0 0 var(--bg-2), 8px 0 0 var(--bg-2); }
   .rec-link { font-size: 18px; }
-  .rec-cells { grid-template-columns: 1fr 1fr; gap: 4px 14px !important; margin-top: 6px !important; }
+  .rec-cells { grid-template-columns: auto minmax(0, 1fr); gap: 5px 16px !important; margin-top: 8px !important; }
   .rec-cells dd { padding-top: 0; font-size: 14.5px; }
 }
 

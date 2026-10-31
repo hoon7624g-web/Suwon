@@ -47,6 +47,7 @@ from urllib.parse import urlencode, urlsplit
 from markupsafe import Markup, escape
 
 from . import art, ask, booking, intl_text, jsonld, media, notices, present, relations
+from . import conditions as CD
 from . import locales as LC
 # a cited booking site's own page in a reader's language (QA 2026-10-15 SRC-05b): moved to booking.py with the booking
 # buttons (2026-10-16), so present and en_site share it
@@ -1234,7 +1235,19 @@ class Site:
                                 "range": nw["ev_varies"] if varies else squash_ws((ev_rec.get("newest") or {}).get("period_text")),
                                 "past": (B.event_last_day(ev) if ev.get("start_date") else "") < S.today})
         relation, parts = self.relation_vm(e)
-        photo_lics = present.photo_credits(near_sights + near_biz + parts)
+        # 이어서 많이 간 곳 (related.json, present.related_places): the places that have a page in this version
+        went = [(t, self.own(t)) for t in present.related_places(S, e)]
+        went_rows = [self.near_row(t, tp, None) for t, tp in went if tp]
+        went_next = None
+        if went_rows:
+            doc = getattr(S, "related_trips", None) or {}
+            src = doc.get("source") if isinstance(doc.get("source"), dict) else {}
+            who = LC.TODAY_WORDS[loc.code]["agency"]["kto"] if "관광공사" in str(src.get("provider") or "한국관광공사") \
+                else self.provider(src.get("provider"))
+            went_next = {"rows": went_rows, "title": LC.RELATED_WORDS[loc.code]["title"],
+                         "note": present.related_note(loc.code, present.related_ym(doc, loc.code), who,
+                                                      web_url(src.get("url")) if src.get("url") else "")}
+        photo_lics = present.photo_credits(near_sights + near_biz + parts + went_rows)
         official = e.get("official") or {}
         orig = e.get("original") or {}
         list_cfg = self.lists()[kind]
@@ -1274,8 +1287,18 @@ class Site:
             "facts_checked": facts_checked, "reviewed_at": e.get("reviewed_at") or "",
             "translated_at": rec.get("translated_at") or "", "ko_path": e["_path"],
             "lics": list(dict.fromkeys(ph["lic"] for ph in photos)),
+            # 오늘의 상태 · 오늘의 바다 (present.today_vm, operator 2026-10-31): the Korean record's days in this
+            # language's words (locales.TODAY_WORDS) — times, dates and states only, never the source's Korean words
+            "today": present.today_vm(S, e, loc.code, self.provider),
+            # 영업 확인 and 이어서 많이 간 곳 (licenses.json, related.json; operator 2026-10-31) in this language
+            "biz": self.biz_vm(e), "went_next": went_next,
             **self.book_vm(booking.place_targets(S, e)),
         }
+
+    def biz_vm(self, e: dict) -> dict | None:
+        """present.license_vm in this version's words (locales.LICENSE_WORDS), with the word before its sources."""
+        b = present.license_vm(self.S, e, self.loc.code)
+        return {**b, "src_word": LC.LICENSE_WORDS[self.loc.code]["src"]} if b else None
 
     def book_vm(self, targets: list[dict]) -> dict:
         """예약하기 (pipeline/booking.py) in this version: the buttons (booking.view: the service's page in this
@@ -1404,7 +1427,8 @@ class Site:
                              "cells": cells,
                              # the Korean list's filter keys (Korean values: one URL vocabulary in every version)
                              "tags": it["tags"], "region": it["region"], "themes": it["themes"], "flags": it["flags"],
-                             "dishes": it.get("dishes") or [], "geo": p["e"]["_geo"]})
+                             "dishes": it.get("dishes") or [], "conds": it["conds"], "why": self.cond_tags(p, kind, it["conds"]),
+                             "geo": p["e"]["_geo"]})
                 if p["e"]["_geo"]:
                     points.append({"lat": p["e"]["_geo"]["lat"], "lng": p["e"]["_geo"]["lng"], "name": p["name"],
                                    "url": p["path"], "id": rid, "kind": kind, "r": it["region"]})
@@ -1426,12 +1450,43 @@ class Site:
             (ck, self.T(f"LIST_CFG.{kind}.check", track=True), sum(1 for r in flat if r["flags"].get(ck))),
             len(points), LC.LIST_WORDS[self.loc.code], forms,
             dishes=present.dish_chips(flat, present.dish_groups(S.site),
-                                      lambda g: squash_ws((g.get("names") or {}).get(self.loc.code))))
+                                      lambda g: squash_ws((g.get("names") or {}).get(self.loc.code))),
+            conds=CD.conditions(kind, flat, LC.COND_WORDS[self.loc.code]), cwords=LC.COND_WORDS[self.loc.code],
+            legacy=CD.LEGACY_CHECK.get(kind, ""))
         filters["result"] = self.t.sn(f"count_{kind}", count)
         return {"kind": kind, "groups": groups, "count": count, "cols": cols, "points": points, "n_geo": len(points),
                 "far_label": squash_ws((C.far or {}).get("label")), "none_label": C.none_label, "filters": filters,
                 "map_open": len(points) >= 0.3 * max(1, count), "n_photo": n_photo,
                 "lics": [self.lic("KOGL-1") if t == 1 else self.lic("KOGL-3") for t in sorted(lics)]}
+
+    def cond_tags(self, p: dict, kind: str, conds: dict) -> list[dict]:
+        """The Korean row's '이 조건에 맞는 이유' tags (pipeline/conditions.py, present.list_vm why) in this language: the
+        field's label and value as this version shows them (its key-fact slot for the closed day, the parking and the
+        fee; the field's translated value for the others), the source's short name. A value this version does not
+        have, or one still in Korean script, is left off: the chip's own words stand alone."""
+        cw = LC.COND_WORDS[self.loc.code]
+        facts = p["rec"].get("facts") or {}
+        out = []
+        for cid, r in conds.items():
+            label, value = "", ""
+            if cid == "late":
+                value = CD.late_text(r["close"], cw)
+            elif cid in ("mon", "park", "free"):
+                s = self.slot(p, {"mon": "closed", "park": "parking", "free": "fee"}[cid])
+                if s and not s.get("skip") and not s.get("conflict") and s.get("main"):
+                    label = s["label"] if cid == "mon" else self.fact_label("parking" if cid == "park" else "usefee")
+                    value = s["main"]
+            else:
+                v = squash_ws((facts.get(r["key"]) or {}).get("value"))
+                v = v.split(" · ")[0] if cid == "pet" else v
+                if v and len(v) <= 60:
+                    label, value = self.fact_label(r["key"]), v
+            if HANGUL.search(f"{label} {value}"):
+                label, value = "", ""
+            if not value:
+                label = CD.chip_label(cid, kind, cw)
+            out.append({"id": cid, "label": label, "value": value, "src": no_hangul(self.short_provider(r["provider"]))})
+        return out
 
     # ---- guides
     def guide_vm(self, x: dict) -> dict:
@@ -1590,6 +1645,52 @@ class Site:
                 if tk and tk.get("hours") else None,
                 **self.course_week(stops, cv), "move": self.course_move(stops, cv), "cw": LC.COURSE_WORDS[self.loc.code],
                 **self.book_vm(booking.course_targets(S, c))}
+
+    def course_index(self, grouped: list[tuple[str, list[dict]]], ids: list[str] | None = None) -> dict:
+        """<home>courses/ (operator 2026-10-31): the Korean page's cards (present.course_index_vm) in this language —
+        the same photo pick over the page's order (present.course_cover), route band (present.route_rows), areas (this
+        version's 권역 names; one without a translation is left out, never Korean script) and figures (the stop count,
+        the straight-line sum only when every leg is measured, the source's time, the busiest closed day). grouped:
+        [(title, [course_vm])] in page order; words locales.COURSES_WORDS."""
+        code, t = self.loc.code, self.t
+        w = lambda key, n=None, **kw: LC.courses_word(code, key, n, **kw)
+        used: set = set()
+        groups = []
+        for gi, (title, cs) in enumerate(grouped):
+            dur = (cs[0]["c"].get("duration") or "") in present.DURATIONS
+            cards = []
+            for C in cs:
+                s, ph = present.course_cover(C["stops"], used, lambda s: s["photo"])
+                facts = [{"k": w("stops"), "v": w("n", C["n_places"])}]
+                if C["complete"] and C["measured"]:
+                    facts.append({"k": w("line"), "v": self.loc.dist(C["total"])})
+                if C["taketime"]:
+                    facts.append({"k": w("time"), "v": C["taketime"]["text"]})
+                if C["closed_note"]:
+                    facts.append({"k": w("closed"), "v": C["closed_note"], "closed": True})
+                head = len(C["stops"]) > present.ROUTE_HEAD + 2
+                cards.append({
+                    "id": C["c"]["id"], "path": C["x"]["path"], "code": "", "name": C["name"],
+                    "chip": C["duration"] or C["group"],
+                    "rows": present.route_rows(C["stops"], lambda x: x["name"] or x["place_name"], lambda n: w("more", n)),
+                    "route_label": w("route_part", name=C["name"], k=present.ROUTE_HEAD) if head
+                    else w("route_all", name=C["name"]),
+                    "start": w("start"), "end": w("end"), "opt": LC.COURSE_WORDS[code]["optional"], "areas_k": w("areas"),
+                    "areas": [a for a in (self.region_name(r) for r in present.course_regions(x["t"] for x in C["stops"]))
+                              if a and not HANGUL.search(a)],
+                    "facts": facts, "photo": ph, "photo_cap": w("photo", name=s["place_name"] or s["name"]) if s else "",
+                    "credit": t.s("source_is", name=ph["credit"]) if ph else "",
+                    "src": w("official", src=C["orig_name"])})
+            groups.append({"title": title, "heading": title, "kind": w("by_dur" if dur else "by_theme"),
+                           # ids: the page's group ids (the Korean page's per duration, slugs.COURSE_GROUP_IDS)
+                           "id": ids[gi] if ids else "g-" + en_slug(romanize(cs[0]["c"].get("duration")
+                                                                           or cs[0]["c"].get("group") or "") or title),
+                           "range": present.stops_range([C["n_places"] for C in cs], w), "cards": cards, "courses": cs})
+        cards = [k for g in groups for k in g["cards"]]
+        lics = sorted({(k["photo"]["type"], k["photo"]["lic"]) for k in cards if k["photo"]})
+        return {"groups": groups, "lics": [lab for _, lab in lics], "w": LC.COURSES_WORDS[code],
+                "credit": t.s("kto"), "any_photo": any(k["photo"] for k in cards),
+                "any_areas": any(k["areas"] for k in cards)}
 
     def course_week(self, stops: list[dict], cv: dict) -> dict:
         """F09-a (QA 2026-10-15): the Korean course page's closed days by weekday in this language — present.week_grid
@@ -2040,6 +2141,7 @@ class Pages:
         self.t, self.loc = site.t, site.loc
         self.count = 0
         self.indexable = 0
+        self._side = None   # the tab panel (Pages.side), made once per version
 
     def abs(self, path: str) -> str:
         return self.S.abs(path)
@@ -2065,7 +2167,58 @@ class Pages:
                 # courses' shared source and whether it is official (Site.course_src)
                 "admin_l": site.admin, "city_l": site.city_body, "course_src": site.course_src,
                 # AI art (pipeline/art.py): only the pictures whose langs name this version, with its alt and label
-                "art_slots": art.for_lang(S.art, loc.code)}
+                "art_slots": art.for_lang(S.art, loc.code), "side": self.side(nav)}
+
+    def side(self, nav: list[tuple[str, str]]) -> dict:
+        """The tab panel of this version (templates/_side.html.j2, the Korean one: present.side_vm; operator 2026-10-31
+        '적용하자'): Find (the three lists with their counts) · Plan your trip (courses, guides) · Events calendar ·
+        About and sources, in the version's words (locales.SIDE_WORDS); every link of the bar's nav
+        is in one of them. The day card: the next event (the first edition this version shows that starts on or after
+        the build day: its dates in the version's form, the start time of a one-day event) and the weather module
+        (figures and icons only — the provider's Korean sentences stay on the Korean pages). No actions: the
+        planner is Korean only."""
+        if self._side is not None:
+            return self._side
+        site, S, t, loc = self.site, self.S, self.t, self.loc
+        W = LC.SIDE_WORDS[loc.code]
+        label = dict((href, lab) for lab, href in nav)
+        lists = site.lists()
+        home = site.home
+        n = {lists[k]["path"]: str(len(site.by_kind[k])) for k in LIST_PAGES}
+        n.update({f"{home}courses/": str(len(site.courses)), f"{home}guides/": str(len(site.guides))})
+
+        def link(href: str) -> dict | None:
+            return {"label": label[href], "href": href, "n": "" if n.get(href, "") == "0" else n.get(href, ""),
+                    "track": "course_click" if href == f"{home}courses/" else ""} if href in label else None
+
+        def group(key: str, links: list, open_: bool = False) -> dict | None:
+            links = [x for x in links if x]
+            return {"key": key, "label": W[key], "links": links, "href": "", "open": open_} if links else None
+
+        groups = [group("find", [link(lists[k]["path"]) for k in ("attraction", "food", "stay")], True),
+                  group("plan", [link(f"{home}courses/"), link(f"{home}guides/")], True),
+                  {"key": "events", "label": W["events"], "href": f"{home}events/", "links": []}
+                  if f"{home}events/" in label else None,
+                  {"key": "about", "label": t.about_sources, "href": f"{home}about/", "links": []}]
+        nxt = None
+        if site.series and S.events:
+            ahead = [r for r in site.events_vm()["upcoming"] if r["start"] and r["start"] >= S.today]
+            if ahead:
+                r = min(ahead, key=lambda r: (r["start"], r["name"]))
+                when = loc.md(r["start"])
+                if r["end"] and r["end"] != r["start"]:
+                    when += "–" + loc.md(r["end"])
+                else:
+                    pt = next((row["value"] for row in r["rows"] if row["field"] == "playtime"), "")
+                    m = re.match(r"\s*(\d{1,2}):(\d{2})(?!\d)", pt or "")
+                    if m and int(m.group(1)) < 24:
+                        when += f" {int(m.group(1)):02d}:{m.group(2)}"
+                nxt = {"name": r["name"], "href": f"{home}events/#{r['anchor']}", "when": when, "iso": r["start"]}
+        self._side = {"groups": [g for g in groups if g], "acts": [], "tagline": W["tagline"].format(r=site.region),
+                      "latin": "", "next": nxt, "sun": None,
+                      "wx": present.weather_vm(S.site, loc.code, site.region),
+                      "w": {"next": W["next"]}}
+        return self._side
 
     def _built(self, href: str) -> bool:
         site = self.site
@@ -2252,10 +2405,11 @@ class Pages:
                     lede=t.s("courses_lede" + tail, name=src["name"]),
                     # one fragment id per group in every version: the Korean page's (slugs.COURSE_GROUP_IDS for a
                     # duration), else the romanized Korean group
-                    groups=[{"title": tt, "id": present.unique_id("g-" + (
+                    groups=(gl := [{"title": tt, "id": present.unique_id("g-" + (
                         COURSE_GROUP_IDS.get(squash_ws(cs[0]["c"].get("duration")))
                         or en_slug(romanize(cs[0]["c"].get("duration") or cs[0]["c"].get("group") or "") or tt)), used),
-                             "courses": cs} for tt, cs in grouped])
+                             "courses": cs} for tt, cs in grouped]),
+                    CV=site.course_index(grouped, [g["id"] for g in gl]))
 
     def events(self) -> None:
         site, S, t = self.site, self.S, self.t

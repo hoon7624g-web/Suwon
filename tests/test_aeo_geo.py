@@ -231,7 +231,8 @@ def test_event_leaf_shows_programme_usual_timing_and_differing_values(tmp_path):
     # the index lists editions still to come apart from finished ones
     idx = scan_file(out / "events/index.html").body
     current, past = idx.index("진행 중이거나 열릴 예정인 행사"), idx.index("지난 행사")
-    assert current < idx.index("2099 군산짬뽕페스티벌") < past < idx.index("2025 군산시간여행축제")
+    # (the tab panel's day card names the next event too, before the page: look from the heading on)
+    assert current < idx.index("2099 군산짬뽕페스티벌", current) < past < idx.index("2025 군산시간여행축제", past)
     # a series without a stored slug gets one from its name (RR, ASCII); validate warns outside production
     assert (out / "events/gunsanjjamppongpeseutibeol/index.html").exists()
     errors, warns, _ = validate(data, out, "sample")

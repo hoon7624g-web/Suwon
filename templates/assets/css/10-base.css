@@ -45,6 +45,10 @@ a:hover .arr, a:focus-visible .arr { transform: translateX(3px); }
 .flag { display: inline-block; font: 700 14px/1.4 var(--font); color: var(--red); }
 .dash { color: var(--ink-3); }
 .tel, .nw { white-space: nowrap; }
+   of its own, so a flex title stays one run of text (bpss: a boxed nowrap span split a flex title and overflowed);
+   .ku is a short unit ('근대~금강권', '매주 월요일 /') a line breaks before, not inside, unless it is wider than the line */
+.dj { white-space: nowrap; display: contents; }
+.ku { display: inline-block; }
 .fn { font: 700 10.5px/0 var(--font); color: var(--ink-3); margin-left: 2px; vertical-align: .55em; }
 .chip { display: inline-flex; align-items: center; height: 24px; padding: 0 10px; border-radius: 980px; background: var(--blue); color: #fff; font: 700 12px/1 var(--font); letter-spacing: 0; white-space: nowrap; flex: none; }
 .chip-inv { background: var(--blue); color: #fff; }

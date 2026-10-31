@@ -634,6 +634,24 @@ class Knowledge:
         for d in designations(e, city=S.city):
             L.append(f"- 지정: {d['label']} (출처: {_clean(d.get('source_name'))} {d.get('url') or ''})".rstrip())
             self.keep_url(d.get("url"))
+        # 영업 확인 (licenses.json: 행정안전부 인허가, 식품안심업소 지정) and 이어서 많이 간 곳 (related.json: 한국관광공사
+        # 관광지별 연관 관광지, TMAP 이동 기록 — not a recommendation), as the page shows them (2026-10-31)
+        biz = present.license_vm(S, e, any_day=True)
+        if biz:
+            L.append(f"영업 확인: {biz['open']} — {biz['by']}" + (f" · 인허가상 상호 {biz['licensed_name']}" if biz.get("licensed_name") else "") + (f"; {biz['safe']}" if biz["safe"] else "")
+                     + " (출처: " + "; ".join(f"{x['name']} {x['url']}" for x in biz["sources"]) + ")")
+            self.keep_url(*(x["url"] for x in biz["sources"]))
+        went = present.related_places(S, e)
+        if went:
+            doc = getattr(S, "related_trips", None) or {}
+            src = doc.get("source") if isinstance(doc.get("source"), dict) else {}
+            ym = present.related_ym(doc)
+            url = web_url(src.get("url")) if src.get("url") else ""
+            who = " ".join(x for x in (src.get("provider") or "한국관광공사", url) if x)
+            L.append(f"이어서 많이 간 곳(티맵 차량 이동 기준{', ' + ym if ym else ''}, 이곳 다음에 차로 많이 간 순서 — 추천이 아닌 "
+                     f"이동 기록; 출처: {who}): " + "; ".join(f"{t['name']} {t['_path']}" for t in went))
+            if url:
+                self.keep_url(url)
         faqs = [x for x in e.get("faq") or [] if x.get("q") and x.get("a")]
         if faqs:
             L.append("자주 묻는 질문:")

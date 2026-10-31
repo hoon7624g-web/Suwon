@@ -1,0 +1,94 @@
+/* 코스 목록 (operator 2026-10-31: '이런 곳들 UI도 좀 더 고도화할 방안 없나?'; templates/_courses.html.j2, every version's
+   courses page). The group pills under the heading (one sideways row on a phone, 44px), then per group an eyebrow, the
+   heading with its count and the stop range, and the cards: phones one column — the photo (112px, 4:3) beside the chip
+   and the name, the route band and the foot under them; from 720px two columns (three from 1100px) with the photo on
+   top (3:2, the ratio of most TourAPI photos); a group of one course lies on its side (photo left). A KOGL-3 photo is
+   kept whole on a tint (the img.t3 guard of 30-info.css); only a KOGL-1 photo zooms on hover. The card's one link is
+   its name (::after covers the card). The route band's line and dots draw with --p (motion.js [data-draw], 0 → 1;
+   unset = 1: the final state without JS or under reduced motion); the card is a [data-reveal] tile. */
+.cc-nav { margin-top: 18px; }
+.cc-nav ul { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.cc-nav a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 16px; border-radius: 999px; background: #fff; box-shadow: inset 0 0 0 1px var(--hair); color: var(--ink); font-size: 15px; font-weight: 700; white-space: nowrap; text-decoration: none; transition: background-color .2s, box-shadow .2s; }
+.cc-nav a .tn { color: var(--sea-deep); }
+.cc-nav a:hover { background: var(--tint); box-shadow: inset 0 0 0 1px var(--tint2); text-decoration: none; }
+@media (max-width: 719px) {
+  .cc-nav ul { flex-wrap: nowrap; overflow-x: auto; margin: 0 calc(var(--m) * -1); padding: 2px var(--m) 4px; scroll-padding-inline: var(--m); scrollbar-width: none; }
+  .cc-nav ul::-webkit-scrollbar { display: none; }
+  .cc-nav a { padding: 0 14px; font-size: 14px; }
+}
+.cc-wrap { padding-bottom: var(--sec); }
+.cc-sec { margin-top: var(--s-bl); scroll-margin-top: calc(var(--mh-s, 52px) + 16px); }
+.cc-sh { margin-bottom: 18px; }
+.cc-sh .eyebrow { margin-bottom: 4px; }
+.cc-sh h2 { font: 700 clamp(26px, 2.8vw, 40px)/1.12 var(--font); letter-spacing: -.03em; color: var(--ink); }
+.cc-sh .count { margin-left: 4px; color: var(--sea); }
+.cc-range { margin-top: 6px; font-size: 15px; color: var(--ink-3); }
+.cc-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; margin: 0; padding: 0; list-style: none; }
+.cc { position: relative; display: grid; grid-template-columns: 112px minmax(0, 1fr); grid-template-areas: "media head" "route route" "foot foot"; gap: 14px; padding: 14px 16px 16px; border-radius: var(--r-card); background: #fff; box-shadow: inset 0 0 0 1px var(--hair), var(--shadow-1); transition: box-shadow .25s var(--ease-out); }
+.cc:hover { box-shadow: inset 0 0 0 1px var(--tint2), var(--shadow-2); }
+.cc-media { grid-area: media; position: relative; display: flex; align-items: center; justify-content: center; align-self: start; aspect-ratio: 4 / 3; border-radius: 14px; overflow: hidden; background: var(--bg-2); }
+.cc-media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.cc-media.t3, .cc-ico { background: var(--tint); }
+.cc-head { grid-area: head; min-width: 0; align-self: center; }
+.cc-chip { display: inline-flex; align-items: center; min-height: 26px; padding: 0 10px; border-radius: 999px; background: var(--tint); color: var(--sea-deep); font-size: 13px; font-weight: 700; line-height: 1.3; }
+.cc-name { margin-top: 8px; font: 700 19px/1.35 var(--font); letter-spacing: -.02em; word-break: keep-all; overflow-wrap: anywhere; }
+.cc-name a { color: var(--ink); text-decoration: none; }
+@supports selector(:has(a)) {
+  .cc:has(.cc-name a:focus-visible) { outline: 2px solid var(--focus); outline-offset: 3px; }
+  .cc-name a:focus-visible { outline: none; }
+}
+.cc-name a::after { content: ""; position: absolute; inset: 0; z-index: 2; border-radius: inherit; }
+.cc:hover .cc-name a { color: var(--link); }
+.cc-code { color: var(--sea-deep); }
+/* the route band: numbered dots on one line, the first and the last filled; '외 n곳' as a dotted stretch */
+.cc-route { grid-area: route; position: relative; margin: 0; padding: 0; list-style: none; }
+.cc-route::before { content: ""; position: absolute; left: 11px; top: 15px; bottom: 15px; width: 2px; border-radius: 1px; background: var(--sea); transform: scaleY(var(--p, 1)); transform-origin: top; }
+.cr { display: flex; align-items: center; gap: 10px; min-height: 30px; padding: 2px 0; font-size: 15px; line-height: 1.35; color: var(--ink-2); }
+.cr > i { position: relative; z-index: 1; flex: none; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: #fff; box-shadow: inset 0 0 0 2px var(--sea); color: var(--sea-deep); font: normal 700 12px/1 var(--font); transform: scale(calc(.4 + .6 * var(--p, 1))); }
+.cr-a > i, .cr-z > i { background: var(--sea); box-shadow: none; color: #fff; }
+.cr-nm { min-width: 0; word-break: keep-all; overflow-wrap: anywhere; }
+.cr-a .cr-nm, .cr-z .cr-nm { color: var(--ink); font-weight: 700; }
+.cr-tag { flex: none; margin-left: auto; padding: 2px 8px; border-radius: 999px; background: var(--bg-2); color: var(--ink-3); font-size: 12px; font-weight: 700; line-height: 1.4; }
+.cr-more { color: var(--ink-3); font-size: 14px; }
+.cr-more > i { box-shadow: none; background: radial-gradient(circle at center, var(--sea) 0 1.5px, transparent 2px) center top / 24px 6px repeat-y, #fff; }
+.cc-foot { grid-area: foot; display: grid; gap: 10px; padding-top: 12px; border-top: 1px solid var(--hair); }
+.cc-areas { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; font-size: 13px; }
+.cc-k { font-weight: 700; color: var(--ink-3); }
+.cc-arl { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.cc-arl li { display: flex; align-items: center; gap: 6px; min-width: 0; max-width: 100%; }
+.cc-arl li + li::before { content: "→"; content: "→" / ""; color: var(--ink-3); }
+.cc-ar { display: inline-flex; align-items: center; min-height: 26px; max-width: 100%; padding: 2px 10px; overflow-wrap: anywhere; border-radius: 999px; background: var(--g0); box-shadow: inset 0 0 0 1px var(--g1); color: var(--ink); font-weight: 700; }
+.cc-facts { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0; }
+.cc-facts div { display: flex; align-items: baseline; gap: 6px; }
+.cc-facts dt { font-size: 13px; color: var(--ink-3); }
+.cc-facts dd { margin: 0; font-size: 15px; font-weight: 700; color: var(--ink); }
+.cc-src { font-size: 12.5px; line-height: 1.5; color: var(--ink-3); }
+.cc-cr { display: block; }
+.cc-notes { margin-top: var(--s-bl); max-width: 60em; }
+@media (hover: hover) {
+  .cc-media.t1 img { transition: transform .6s var(--ease-out); }
+  .cc:hover .cc-media.t1 img { transform: scale(1.04); }
+}
+@media (min-width: 720px) {
+  .cc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+  .cc { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto 1fr auto; grid-template-areas: "media" "head" "route" "foot"; padding: 0 0 20px; overflow: hidden; }
+  .cc-media { aspect-ratio: 3 / 2; border-radius: 0; }
+  .cc-head, .cc-route, .cc-foot { margin: 0 20px; }
+  .cc-head { align-self: start; }
+  .cc-route { align-self: start; }
+  .cc-name { font-size: 20px; }
+  .cc.no-ph { grid-template-columns: 64px minmax(0, 1fr); grid-template-rows: auto 1fr auto; grid-template-areas: "media head" "route route" "foot foot"; padding: 20px; }
+  .cc.no-ph .cc-media { aspect-ratio: 1; border-radius: 14px; }
+  .cc.no-ph .cc-head, .cc.no-ph .cc-route, .cc.no-ph .cc-foot { margin: 0; }
+  .cc-grid.is-one { grid-template-columns: minmax(0, 1fr); }
+  .is-one .cc:not(.no-ph) { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); grid-template-rows: auto 1fr auto; grid-template-areas: "media head" "media route" "media foot"; column-gap: 28px; padding: 0; }
+  .is-one .cc:not(.no-ph) .cc-media { aspect-ratio: auto; height: 100%; min-height: 280px; }
+  .is-one .cc:not(.no-ph) .cc-head { margin: 24px 24px 0 0; }
+  .is-one .cc:not(.no-ph) .cc-route { margin: 0 24px 0 0; }
+  .is-one .cc:not(.no-ph) .cc-foot { margin: 0 24px 24px 0; }
+}
+@media (min-width: 1100px) {
+  .cc-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .cc-grid.is-one { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .is-one .cc { grid-column: span 2; }
+}

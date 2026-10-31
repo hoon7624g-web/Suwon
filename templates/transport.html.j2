@@ -1,0 +1,81 @@
+{% extends "base.html.j2" %}
+{% import "_timetables.html.j2" as tt %}
+{#- /transport/ {지역} 교통 시간표 (pipeline/timetables.transport_vm; operator 2026-10-31). The schedule days first (the two
+    days TAGO was asked for, in words), then per mode its busiest route as a tile (links to its card); per mode one card
+    per pair (the region's end ↔ the other end), each direction a summary table (첫차 · 막차 · 하루 횟수 · 걸린 시간 · 요금;
+    one column when both days are the same) and every departure folded in a <details>. A direction TAGO gave nothing
+    for reads '이 자료(TAGO)에 없음 — 운수사 확인' (never '운행 없음'); pairs with nothing either way are one line under the
+    mode. The guides on getting here follow, then the data box. Motion: [data-reveal] below the first screen. -#}
+{% block bodyclass %}pg-tt pg-transport{% endblock %}
+{% block main_class %}{% endblock %}
+{% block content %}
+{% set nd = '다음 날' %}
+<header class="pg-hero tt-hero" aria-labelledby="h-tp">
+  <div class="wrap">
+    <p class="hd-pic">{{ ui.kpic('icon-getting-here', 'route', 64) }}</p>
+    <p class="eyebrow">교통 시간표 · 국토교통부 TAGO</p>
+    <h1 id="h-tp" class="h-list">{{ site.region }} 교통 시간표 <span class="tp-h-sub">{{ site.region }}역 기차·고속버스·시외버스·{{ site.region }}공항</span></h1>
+    <p class="tp-base"><b>{{ V.days[0].d.year }}년 {{ V.both }}</b> 하루 배차입니다. 다른 날은 코레일·코버스·버스타고·티머니·항공사에서 조회하세요.</p>
+    <ul class="tp-tiles">
+      {% for x in V.tiles %}<li><a class="tp-tile" href="{{ x.href }}"><span class="tp-tile-k">{{ x.label }}</span><span class="tp-tile-r">{{ x.route }}</span><span class="tp-tile-v"><b class="tn">하루 {{ x.count }}</b> <span class="tn">{{ x.span }}</span></span></a></li>{% endfor %}
+    </ul>
+    <p class="note">칸마다 가장 많이 다니는 방향({{ site.region }}에서 떠나는 쪽 먼저)의 하루 횟수와 첫차–막차입니다.</p>
+  </div>
+</header>
+
+{% for m in V.modes %}{% set w = m.w %}
+<section class="wrap chapter-tight tp-mode" id="{{ m.id }}" aria-labelledby="h-{{ m.id }}">
+  <h2 id="h-{{ m.id }}" class="h-sec">{{ m.label }} <span class="tn">{{ m.cards|length }}개 구간</span></h2>
+  {% if m.note %}<p class="tp-note">{{ m.note }}</p>{% endif %}
+  {% for x in m.none_ways %}<p class="tp-none tp-none-m"><b>{{ x }}</b> 이 자료(TAGO)에 없음 — 운수사 확인</p>{% endfor %}
+  <div class="tp-cards{{ ' tp-cards-grid' if m.single }}">
+  {% for c in m.cards %}
+    <article class="tp-card{{ ' is-two' if c.dirs|length > 1 }}" id="{{ c.id }}" aria-labelledby="h-{{ c.id }}" data-reveal>
+      <h3 id="h-{{ c.id }}" class="tp-card-h">{{ c.title }}</h3>
+      {% for d in c.dirs %}
+      <div class="tp-dir{{ ' is-none' if d.none }}">
+        {% if c.dirs|length > 1 %}<h4 class="tp-dir-h">{{ d.from }} → {{ d.to }}</h4>{% endif %}
+        {% if d.none %}
+        <p class="tp-none">이 자료(TAGO)에 없음 — 운수사 확인</p>
+        {% else %}
+        <table class="tp-sum">
+          <caption class="vh">{{ d.from }} → {{ d.to }} {{ m.label }} 요약</caption>
+          <thead><tr><td></td>{% for col in d.cols %}<th scope="col">{{ col.lab }}</th>{% endfor %}</tr></thead>
+          <tbody>{% for fld, lab in d.rows %}<tr><th scope="row">{{ lab }}</th>{% for col in d.cols %}<td{% if fld != 'fare' %} class="tn"{% endif %}>{% if col.s %}{{ (col.s[fld] or '—')|ku if fld == 'fare' else col.s[fld] or '—' }}{% elif fld == 'count' %}이 자료(TAGO)에 없음{% else %}—{% endif %}</td>{% endfor %}</tr>{% endfor %}</tbody>
+        </table>
+        <details class="tp-all">
+          <summary>출발 시각 전체 <span class="tn">{{ d.counts }}</span></summary>
+          {% for Lx in d.lists %}
+          <div class="tt-scroll">
+          <table class="tt-day tp-list">
+            <caption>{{ d.from }} → {{ d.to }} · {{ Lx.lab }}{% if Lx.same %} 같음{% endif %}</caption>
+            <thead><tr><th scope="col">출발</th><th scope="col">도착</th><th scope="col">{{ w.kind }}</th>{% if w.no %}<th scope="col">{{ w.no }}</th>{% endif %}{% if not d.no_fare %}<th scope="col">요금</th>{% endif %}</tr></thead>
+            <tbody>{% for r in Lx.rows %}<tr><th scope="row" class="tn">{{ r.dep }}{% if r.dep_next %} <small>{{ nd }}</small>{% endif %}</th><td class="tn">{{ r.arr }}{% if r.arr_next %} <small>{{ nd }}</small>{% endif %}</td><td>{{ r.kind }}</td>{% if w.no %}<td class="tn">{{ r.no }}</td>{% endif %}{% if not d.no_fare %}<td class="tn">{{ r.fare or '—' }}</td>{% endif %}</tr>{% endfor %}</tbody>
+          </table>
+          </div>
+          {% endfor %}
+        </details>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </article>
+  {% endfor %}
+  </div>
+  {% if m.missing %}<p class="tp-miss"><b>이 자료(TAGO)에 없음 — 운수사 확인</b> <span>{{ m.missing|join(', ') }}</span></p>{% endif %}
+  <p class="tp-src">출처: {% if m.src.url %}<a href="{{ m.src.url }}" rel="noopener" data-track="official_click">{{ m.src.dataset or m.src.provider }}</a>{% else %}{{ m.src.dataset or m.src.provider }}{% endif %}{% if m.src.lic %} · {{ m.src.lic.name }}{% endif %}</p>
+</section>
+{% endfor %}
+
+{% if V.guides %}
+<section class="wrap chapter tp-guides" aria-labelledby="h-tp-guides" data-reveal>
+  <h2 id="h-tp-guides" class="h-sec">{{ site.region }} 가는 법·교통 가이드</h2>
+  <ul class="tt-links">{% for g in V.guides %}<li><a href="{{ g._path }}" data-track="guide_click">{{ g.title }}</a></li>{% endfor %}</ul>
+  <p class="note">이 표는 TAGO의 하루 배차입니다. 두 자료의 값이 다를 수 있으니 떠나기 전에 운수사에서 확인하세요.</p>
+</section>
+{% endif %}
+
+{% set rows = [('제공 기관', V.provider, ''), ('배차 날짜', V.days[0].d.year ~ '년 ' ~ V.both, ''), ('기간', V.coverage, '')] %}
+{% if V.lic %}{% set _ = rows.append(('이용 조건', V.lic ~ ' (공공데이터포털)', '')) %}{% endif %}
+{% for m in V.modes %}{% if m.src.url %}{% set _ = rows.append(('원자료 · ' ~ m.label, '공공데이터포털 ' ~ (m.src.dataset or m.src.provider), m.src.url)) %}{% endif %}{% endfor %}
+{{ tt.databox('h-tp-data', '시간표 자료', page.ds_name, page.ds_desc, rows) }}
+{% endblock %}

@@ -19,6 +19,7 @@ from pipeline.build import State, build, entity_ctx
 from pipeline.schema import fact_label, parking_seats_half, parking_seats_part
 from pipeline.textutil import dash_times, display_value, value_shown, value_tokens
 from pipeline.validate import PageScan, fact_shown, seat_only_parking_problems, validate
+from conftest import weather_answer
 from tools.image_sizes import image_size
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -346,7 +347,7 @@ def test_course_source_is_official_only_on_an_official_domain(S, built):
 def test_course_map_needs_half_the_stops_and_numbers_them_as_the_list(S, built):
     """present.course_map: drawn only when at least half of the stops (and two or more) have coordinates; each
     marker carries its number in the stop list (meals and lodging are not stops). The course page shows the map
-    with the factual caption, or none; the course lines name their first stops (ui.stoprow), no ring diagram."""
+    with the factual caption, or none; the index cards name their first stops (route band), no ring diagram."""
     drawn = 0
     for cv in S.course_vms.values():
         stops, m = cv["stops"], present.course_map(cv["stops"])
@@ -365,7 +366,8 @@ def test_course_map_needs_half_the_stops_and_numbers_them_as_the_list(S, built):
     two = next(v for v in S.course_vms.values() if v["c"]["name"] == "2박 3일 코스")   # meals sit between its stops
     assert len(two["c"]["stops"]) > len(two["stops"]) and present.course_map(two["stops"])["points"][-1]["n"] <= len(two["stops"])
     index = (built / "courses" / "index.html").read_text("utf-8")
-    assert index.count('class="line-stops"') == len(S.course_vms) and 'class="mini' not in index
+    # the index: one card per course, each with its route band (tests/test_courses_index.py checks the cards)
+    assert index.count('class="cc-route"') == len(S.course_vms) and 'class="mini' not in index
 
 
 def _course(S, cid):
@@ -950,11 +952,15 @@ def _check_news(S, day: str) -> list[dict]:
     assert present.NEWS_MIN <= len(news) <= present.NEWS_MAX, (day, kinds)
     assert len({c["key"] for c in news}) == len(news) and all(c["href"] and c["title"] for c in news)
     assert kinds == sorted(kinds, key=NEWS_ORDER.index), (day, kinds)    # focus → events → abroad → guides → video
-    # events: the running / coming editions within 30 days, in ranked_events order; nothing past
-    rows = [r for r in present.ranked_events(S) if r["days"] <= present.NEWS_EVENT_DAYS]
+    # events: the dish festival's card first when it runs (focus), then the running / coming editions within 30 days
+    # in ranked_events order, an edition the operator pinned (pin_home, 2026-10-31) first whatever its distance;
+    # nothing past
+    rows = [r for r in present.pinned_first(present.ranked_events(S))
+            if r["days"] <= present.NEWS_EVENT_DAYS or r["ev"].get("pin_home")]
     want = ["ev:" + str(r["ev"].get("id")) for r in rows]
-    got = [c["key"] for c in news if c["kind"] in ("festival", "event")]
+    got = [c["key"] for c in news if c["kind"] == "event"]
     assert got == [k for k in want if k in got] and all(r["last"] >= day for r in rows)
+    assert all(c["key"] in want for c in news if c["kind"] == "festival")
     if "festival" not in kinds:
         assert got == want[:3]
     # foreign press: the newest articles dated on or before the build date (date, then id)
@@ -1371,6 +1377,9 @@ def test_home_news_row_turns_by_itself_and_stops_for_the_reader(built):
 
     def serve(route):
         url = route.request.url
+        if url.startswith("https://weather.o2o.kr/"):   # the tab panel's weather module (tests/conftest.py)
+            return route.fulfill(status=200, body=json.dumps(weather_answer()), content_type="application/json",
+                                 headers={"access-control-allow-origin": "*"})
         if not url.startswith("http://site.test/"):
             return route.abort()
         path = unquote(urlsplit(url).path)
@@ -1478,6 +1487,9 @@ def test_launcher_and_quick_menu_are_there_at_load(built_en):
 
     def serve(route):
         url = route.request.url
+        if url.startswith("https://weather.o2o.kr/"):   # the tab panel's weather module (tests/conftest.py)
+            return route.fulfill(status=200, body=json.dumps(weather_answer()), content_type="application/json",
+                                 headers={"access-control-allow-origin": "*"})
         if not url.startswith("http://site.test/"):
             return route.abort()
         path = unquote(urlsplit(url).path)
@@ -2016,6 +2028,9 @@ def _serve(built):
 
     def serve(route):
         url = route.request.url
+        if url.startswith("https://weather.o2o.kr/"):   # the tab panel's weather module (tests/conftest.py)
+            return route.fulfill(status=200, body=json.dumps(weather_answer()), content_type="application/json",
+                                 headers={"access-control-allow-origin": "*"})
         if not url.startswith("http://site.test/"):
             return route.abort()
         path = unquote(urlsplit(url).path)
