@@ -62,7 +62,15 @@
      [data-f-more] + [data-f-panel] the '필터' button opens the panel of further filters (aria-expanded); the panel
                                     starts open when the URL sets one of its filters; [data-f-badge] counts them
      details[data-map-fold]         folded list map (also .map-fold): opening it draws the map
-     row ↔ marker                   an item's id equals its map point's id: hovering/focusing the row lights the
+     [data-conds] button[data-cond=ID]   조건으로 찾기: condition chips that combine (AND, aria-pressed; ?c=mon,park, an
+                                    old ?check=1 is [data-conds][data-legacy]); a row meets ID when its data-conds lists
+                                    it. Faceted counts and '<값> 조건 해제' buttons as for the other chips. [data-c-n]
+                                    the visual count (aria-hidden; its digits roll into place, at once with reduced
+                                    motion), [data-c-bar] the ratio bar (scaleX shown / all), [data-c-clear] takes every
+                                    condition off (hidden while none is on). A shown row's [data-why] tags of the
+                                    chosen conditions are shown (span[data-cond=ID]); html.c-still during the first
+                                    apply (nothing rolls, grows or pops)
+     row ↔ marker                 an item's id equals its map point's id: hovering/focusing the row lights the
                                     marker (gs:hl); hovering the marker lights the row (.hl, from gs:hlrow)
    Map page
      [data-region-tabs] a[data-region]   (also .region-tabs) 권역 tabs; [data-region-sec=NAME] sections
@@ -135,7 +143,9 @@
                                     (an image carrying any other data-kogl is never named)
    Modules: motion.js (every page, after load, not with reduced motion); map.js (.map[data-points] /
    .map[data-map]; at once when a map is near the first screen, else after load); course.js ([data-course]);
-   search.js ([data-search]); plan.js ([data-plan], the AI course planner). Each is skipped when the page already loads it. chat.js + chat.css (the site assistant):
+   search.js ([data-search]); plan.js ([data-plan], the AI course planner); today.js ([data-today]); sun.js ([data-sun],
+   /sun/); weather.js ([data-wx] / [data-sd-days]: the tab panel's day card and the homes' weather module — after load,
+   when the browser is idle). Each is skipped when the page already loads it. chat.js + chat.css (the site assistant):
    on the first press of [data-chat-open], or after load when sessionStorage 'gs-chat' says the chat was open; on a
    page that asks in place ([data-chat-dock] > [data-ask-form] [data-ask-q], [data-ask-go], a[data-ask],
    [data-ask-log]: the Korean home's centre card with its conversation panel below, the English home's centre card)
@@ -182,6 +192,30 @@
   if (doc.querySelector("[data-course]")) attach("course.js");
   if (doc.querySelector("[data-search]")) attach("search.js");
   if (doc.querySelector("[data-plan]")) attach("plan.js");   // the AI course planner (/plan/)
+  // the place page's day card (오늘의 상태 · 오늘의 바다, today.js): its HTML is the build day; the module moves it to
+  // the visitor's own date — at once when the card is near the first screen, else after the page has loaded
+  var dayCard = doc.querySelector("[data-today]");
+  if (dayCard) {
+    if (dayCard.getBoundingClientRect().top < win.innerHeight * 1.5) attach("today.js");
+    else afterLoad(function () { attach("today.js"); });
+  }
+  // /sun/ 일출·일몰 시간 (sun.js): the answer and the table's row move to the visitor's own date; the answer is on the
+  // first screen, so the module comes at once (it only fills the '오늘' tag's kept room and the same-width figures)
+  if (doc.querySelector("[data-sun]")) attach("sun.js");
+  // 날씨각's weather module and the day card (templates/_side.html.j2; operator 2026-10-31): weather.js comes only after
+  // the page has loaded and the browser is idle — nothing of it competes with the first screen —
+  // when a module is on screen (the panel's from 1200px — so a phone page without the home's module never fetches it;
+  // widened later, it comes then)
+  var wxHooks = $all("[data-wx], [data-sd-days]");
+  if (wxHooks.length) afterLoad(function () {
+    var go = function () {
+      if (wxHooks.some(function (el) { return el.getClientRects().length > 0; })) attach("weather.js");
+    };
+    var idle = function () { if (win.requestIdleCallback) win.requestIdleCallback(go, { timeout: 2500 }); else setTimeout(go, 600); };
+    idle();
+    var wide = win.matchMedia("(min-width: 1200px)");
+    if (wide.addEventListener) wide.addEventListener("change", idle); else if (wide.addListener) wide.addListener(idle);
+  });
   afterLoad(function () { root.classList.add("cv-off"); });
   // the motion layer arrives after the page has loaded (or after 4s), never with reduced motion: nothing of it
   // competes with the first screen
@@ -575,11 +609,59 @@
     var check = controls.filter(function (c) { return c.type === "checkbox"; })[0];
     var keys = [];
     controls.forEach(function (c) { var k = keyOf(c); if (c !== check && keys.indexOf(k) < 0) keys.push(k); });
-    var state = { check: false, view: "list" };
+    var state = { check: false, view: "list", c: [] };
     var q = new URLSearchParams(location.search);
     keys.forEach(function (k) { state[k] = q.get(k) || ""; });
-    state.check = q.get("check") === "1";
+    state.check = !!check && q.get("check") === "1";
     state.view = q.get("view") === "map" ? "map" : "list";
+    // 조건으로 찾기 (_filters.html.j2 conds, pipeline/conditions.py): chips that combine (AND). state.c holds the chosen
+    // ids in the chips' order (?c=mon,park; an old ?check=1 is the condition the check box became, data-legacy); a row
+    // meets one when its data-conds lists it. Each is a filter key of its own (CK) for the faceted counts and the
+    // zero-result buttons. The count line's words stay for a screen reader; its visual count [data-c-n] rolls to the
+    // new number (at once with reduced motion) and the ratio bar [data-c-bar] follows; each shown row shows the
+    // reasons ([data-why] tags) of the chosen conditions
+    var condBox = box.querySelector("[data-conds]");
+    var condBtns = condBox ? $all("[data-cond]", condBox) : [];
+    var condIds = condBtns.map(function (b) { return b.getAttribute("data-cond"); });
+    var CK = function (id) { return "c:" + id; };
+    var inOrder = function (ids) { return condIds.filter(function (id) { return ids.indexOf(id) > -1; }); };
+    state.c = (q.get("c") || "").split(",");
+    var legacy = condBox && condBox.getAttribute("data-legacy");
+    if (legacy && q.get("check") === "1") state.c.push(legacy);
+    state.c = inOrder(state.c);
+    var cnEl = condBox && box.querySelector("[data-c-n]"), barEl = condBox && box.querySelector("[data-c-bar]");
+    var clearBtn = condBox && condBox.querySelector("[data-c-clear]");
+    // the count rolls to its new number: each digit of the new number rises into place in its own clipped band
+    // (css/70-p3-conds.css .c-rl), an odometer settling — never a count through the numbers between, which would show
+    // counts that are not the list's (the rule of motion.js's figures); the text is the new number at once
+    var roll = function (to, now) {
+      if (!cnEl) return;
+      var text = String(to);
+      if (now || reduce || cnEl.textContent === text) { cnEl.textContent = text; return; }
+      cnEl.textContent = "";
+      text.split("").forEach(function (ch, i) {
+        var o = doc.createElement("span"), d = doc.createElement("span");
+        o.className = "c-rl";
+        d.className = "c-rl-i";
+        d.textContent = ch;
+        d.style.animationDelay = (i * 40) + "ms";
+        o.appendChild(d);
+        cnEl.appendChild(o);
+      });
+    };
+    var whys = function () {
+      items.forEach(function (it) {
+        var w = it.querySelector("[data-why]");
+        if (!w) return;
+        var any = false;
+        $all("[data-cond]", w).forEach(function (t) {
+          var on = !it.hidden && state.c.indexOf(t.getAttribute("data-cond")) > -1;
+          t.hidden = !on;
+          any = any || on;
+        });
+        w.hidden = !any;
+      });
+    };
     var attrOf = function (el, k) {
       var v = el.getAttribute("data-" + k);
       return v === null ? el.getAttribute("data-" + k + "s") : v;
@@ -610,11 +692,13 @@
     });
     holdWidth(mapN);
     bands.forEach(function (b) { holdWidth(b.num); });
+    condBtns.forEach(function (b) { holdWidth(b.querySelector(".tn")); });
     var misses = function () {
       var flag = check ? check.value : "";
       return items.map(function (it) {
         var m = keys.filter(function (k) { return state[k] && !has(attrOf(it, k), state[k]); });
         if (state.check && flag && !it.hasAttribute("data-" + flag)) m.push(CHECK);
+        state.c.forEach(function (id) { if (!has(it.getAttribute("data-conds"), id)) m.push(CK(id)); });
         return m;
       });
     };
@@ -645,6 +729,12 @@
         tn.textContent = String(n);
         host.classList.toggle("is-zero", !n && !(isCheck ? state.check : (state[k] || "") === v));
       });
+      condBtns.forEach(function (b) {
+        var id = b.getAttribute("data-cond"), tn = b.querySelector(".tn"), n = 0;
+        items.forEach(function (it, i) { if (only(miss[i], CK(id)) && has(it.getAttribute("data-conds"), id)) n++; });
+        if (tn) tn.textContent = String(n);
+        b.classList.toggle("is-zero", !n && state.c.indexOf(id) < 0);
+      });
     };
     // nothing shown: one button per filter whose removal alone brings items back (so every button restores the list
     // in one press; when three or more filters each still leave nothing, only the reset remains), in the bar's
@@ -669,7 +759,12 @@
         b.type = "button";
         b.textContent = tpl.replace("{v}", label);
         b.setAttribute("data-f-undo-k", k === CHECK ? "check" : k);
-        b.addEventListener("click", function () { if (k === CHECK) state.check = false; else state[k] = ""; restore(); });
+        b.addEventListener("click", function () {
+          if (k === CHECK) state.check = false;
+          else if (k.indexOf("c:") === 0) state.c = state.c.filter(function (id) { return CK(id) !== k; });
+          else state[k] = "";
+          restore();
+        });
         undo.insertBefore(b, resetBtn || null);
       };
       keys.forEach(function (k) {
@@ -678,10 +773,12 @@
         add(k, chip ? wordsOf(chip) : state[k]);
       });
       if (state.check && check) add(CHECK, wordsOf(check.closest("label") || check.parentNode));
+      state.c.forEach(function (id) { add(CK(id), wordsOf(condBtns[condIds.indexOf(id)])); });
     };
     if (resetBtn) resetBtn.addEventListener("click", function () {
       keys.forEach(function (k) { state[k] = ""; });
       state.check = false;
+      state.c = [];
       restore();
     });
     var apply = function (push) {
@@ -726,6 +823,13 @@
       });
       facet(miss);
       drawUndo(miss, n);
+      if (condBox) {
+        condBtns.forEach(function (b) { b.setAttribute("aria-pressed", String(state.c.indexOf(b.getAttribute("data-cond")) > -1)); });
+        roll(n, !push);
+        if (barEl) barEl.style.transform = "scaleX(" + (items.length ? n / items.length : 0) + ")";
+        if (clearBtn) clearBtn.hidden = !state.c.length;
+        whys();
+      }
       $all("[data-view]", box).forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-view") === state.view)); });
       if (grid) grid.classList.toggle("show-map", state.view === "map");
       // the map view of a folded list map (fewer than 30% with coordinates): the fold opens (its summary is not
@@ -739,10 +843,12 @@
       var p = new URLSearchParams();
       keys.forEach(function (k) { if (state[k]) p.set(k, state[k]); });
       if (state.check) p.set("check", "1");
+      if (state.c.length) p.set("c", state.c.join(","));
       if (state.view === "map") p.set("view", "map");
-      carry(p.toString());
+      var qs = p.toString().replace(/%2C/gi, ",");
+      carry(qs);
       if (push) {
-        try { history.replaceState(null, "", location.pathname + (p.toString() ? "?" + p : "") + location.hash); } catch (e) { /* file:// */ }
+        try { history.replaceState(null, "", location.pathname + (qs ? "?" + qs : "") + location.hash); } catch (e) { /* file:// */ }
       }
     };
     box.addEventListener("click", function (e) {
@@ -754,13 +860,24 @@
         if (state.view === "map") emit("gs:showmap", {});
         return;
       }
+      if (b.hasAttribute("data-cond")) {
+        var id = b.getAttribute("data-cond");
+        state.c = state.c.indexOf(id) > -1 ? state.c.filter(function (x) { return x !== id; }) : inOrder(state.c.concat(id));
+        apply(true);
+        return;
+      }
+      // '조건 지우기' leaves with the conditions: the focus goes to the count line (restore), which reads the new number
+      if (b.hasAttribute("data-c-clear")) { state.c = []; restore(); return; }
       if (keyOf(b)) { state[keyOf(b)] = valOf(b); apply(true); }
     });
     controls.forEach(function (c) {
       if (c === check) c.addEventListener("change", function () { state.check = c.checked; apply(true); });
       else if (c.tagName === "SELECT") c.addEventListener("change", function () { state[keyOf(c)] = c.value; apply(true); });
     });
+    // the first apply draws the state the URL asks for in place: no roll, no bar growing, no tag popping
+    root.classList.add("c-still");
     apply(false);
+    win.requestAnimationFrame(function () { win.requestAnimationFrame(function () { root.classList.remove("c-still"); }); });
     if (moreBtn && panel) {
       if (panelSet()) { panel.hidden = false; moreBtn.setAttribute("aria-expanded", "true"); }
       moreBtn.addEventListener("click", function () {
