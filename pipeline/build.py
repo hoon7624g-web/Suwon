@@ -35,6 +35,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+from zoneinfo import ZoneInfo
 import json
 import re
 import shutil
@@ -473,7 +474,9 @@ class State:
         self.site = _load(data_dir / "site.json")
         self.city = city_of(self.site)  # every city-specific value (pipeline/city.py); present uses the same object
         self.site_url = self.site["site_url"].rstrip("/")
-        self.today = dt.date.today().isoformat()
+        # the build date is the site's own day (Asia/Seoul), not the machine's (a container or CI runner is on UTC:
+        # before 09:00 KST it was still yesterday there, and yesterday's events stayed 'next' — operator 2026-11-01)
+        self.today = dt.datetime.now(ZoneInfo("Asia/Seoul")).date().isoformat()
         statuses = self.cfg["statuses"]
         keep = lambda xs: [x for x in xs if x.get("status") in statuses and not x.get("duplicate_of")
                            and not x.get("exclude")]  # exclude: e.g. 'not_a_place' (a reading guide, a walking course)
