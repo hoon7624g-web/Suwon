@@ -16,7 +16,10 @@
 .list-lede { font-size: clamp(15px, 1.4vw, 21px); line-height: 1.45; color: var(--ink-3); margin-top: 10px; max-width: 46em; }
 .pg-hero .kicker { margin-bottom: 4px; }
 .pg-hero .eyebrow { margin-bottom: 4px; }
-.band-data { display: flex; gap: 8px; }
+.band-data { display: flex; flex-wrap: wrap; gap: 8px; }
+/* a city of many districts (9 구·군): the figures go under the title instead of squeezing it into a narrow column
+   (1024~1199px, 2026-11-05 screenshot check — '대구 맛집·음식점 301곳' broke into one word a line) */
+.band-grid:has(> .band-data > li:nth-child(6)) { grid-template-columns: minmax(0, 1fr); }
 .band-data li a { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; min-width: 76px; min-height: 64px; padding: 8px 14px; border-radius: 14px; background: var(--bg-2); color: var(--ink-3); text-decoration: none; font-size: 13px; font-weight: 700; transition: background-color .2s var(--fb); }
 .band-data b { font-size: 24px; line-height: 1.05; color: var(--ink); }
 .band-data a:hover { background: var(--bg-3); color: var(--ink-2); }

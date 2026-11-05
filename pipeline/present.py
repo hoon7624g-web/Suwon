@@ -3832,6 +3832,14 @@ def home_food_row(S, n: int = 4) -> dict | None:
     pick = sorted(g["recs"], key=lambda r: (r.get("photo") is None, -(r.get("answered") or 0), name_key(r["name"])))[:n]
     recs = []
     for r in pick:
+        # the list card's photo is TourAPI's small copy (…image3_1, 150px); here the card is ~320px wide, so the same
+        # photo's full-size copy (…image2_1, the same licence) when the place has it — a KOGL-3 photo is never
+        # enlarged past its own size (css/87-design-a.css .hfo-ph.t3)
+        ph = r.get("photo")
+        if ph and "image3_" in ph["url"]:
+            ph = next((p for p in r["e"].get("_photos") or [] if p["url"] == ph["url"].replace("image3_", "image2_")
+                       and p.get("type") == ph.get("type")), ph)
+        r = {**r, "photo": ph}
         sl = {x["key"]: x for x in r.get("slots") or []}
         val = lambda k: (sl.get(k) or {}).get("main") if sl.get(k) and not sl[k].get("missing") and not sl[k].get("conflict") else ""  # noqa: E731
         recs.append({"name": r["name"], "path": r["path"], "e": r["e"], "photo": r.get("photo"), "dz": r.get("dz"),
@@ -3843,10 +3851,11 @@ def home_food_row(S, n: int = 4) -> dict | None:
 
 def search_hint(S) -> str:
     """The first-screen search box's placeholder (시안 A): two of the search examples (home_focus's dish first, then
-    site.json search_examples), '<a>, <b>처럼 찾아보세요'; '' when there are none."""
+    site.json search_examples), '예: <a>, <b>' — short enough to stay whole in a 360px box ('<a>, <b>처럼 찾아보세요'
+    was cut there); '' when there are none."""
     focus = home_focus(S)
     words = list(dict.fromkeys(([focus["dish"]] if focus else []) + list(S.city.search_examples)))[:2]
-    return (", ".join(words) + "처럼 찾아보세요") if words else ""
+    return ("예: " + ", ".join(words)) if words else ""
 
 
 def home_showcase(S, h: dict) -> dict:

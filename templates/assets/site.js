@@ -674,7 +674,9 @@
     };
     var attrOf = function (el, k) {
       var v = el.getAttribute("data-" + k);
-      return v === null ? el.getAttribute("data-" + k + "s") : v;
+      if (v === null) v = el.getAttribute("data-" + k + "s");
+      // dish → data-dishes (the food list's 대표 메뉴 chips: read as data-dishs, every chip counted 0 and matched none)
+      return v === null ? el.getAttribute("data-" + k + "es") : v;
     };
     var has = function (raw, v) {
       if (raw === null) return false;
