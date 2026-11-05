@@ -2050,5 +2050,9 @@
   "chrome.map_credit_osm": {
     "en": "Map: © OpenStreetMap contributors",
     "ja": "地図：© OpenStreetMap contributors"
+  },
+  "chrome.about_how_2_one": {
+    "en": "Every value names its source. Where two sources give different values, the page shows one of them, the value the data lists first (usually the local or the facility's official information or the Korea Tourism Organization's), with its source. A value no source gives is listed once as \"{missing}\".",
+    "ja": "すべての値に出典を示します。二つの情報源で値が異なる場合は、そのうち一つ、資料に先に記された値(多くは地域や施設の公式案内、または韓国観光公社の情報)を、その出典とともに示します。どの情報源にもない値は、「{missing}」と一度だけ記します。"
   }
 }

@@ -29,7 +29,7 @@
   <h2 id="how" class="rail-label">{{ t.how_made }}</h2>
   <div class="rail-body prose">
     <p>{% if site.source.name_l %}{{ t.f('about_how_1', source=site.source.name_l) }}{% else %}{{ t.about_how_1_kto }}{% endif %}</p>
-    <p>{{ t.f('about_how_2', note=loc.conflict, missing=t.not_listed) }}</p>
+    <p>{% if site.fact_conflicts == 'primary' %}{{ t.f('about_how_2_one', missing=t.not_listed) }}{% else %}{{ t.f('about_how_2', note=loc.conflict, missing=t.not_listed) }}{% endif %}</p>
     <p>{% if site.source.kogl == 'none' and site.source.name_l %}{{ t.f('about_how_3', source=site.source.name_l) }}{% else %}{{ t.about_how_3_unconfirmed }}{% endif %}</p>
     <p id="booking">{{ book_words[loc.code].about }}</p>
   </div>

@@ -2178,5 +2178,9 @@
   "chrome.map_credit_osm": {
     "en": "Map: © OpenStreetMap contributors",
     "es": "Mapa: © OpenStreetMap contributors"
+  },
+  "chrome.about_how_2_one": {
+    "en": "Every value names its source. Where two sources give different values, the page shows one of them, the value the data lists first (usually the local or the facility's official information or the Korea Tourism Organization's), with its source. A value no source gives is listed once as \"{missing}\".",
+    "es": "Cada dato indica su fuente. Cuando dos fuentes dan valores distintos, la página muestra uno de ellos con su fuente: el valor que los datos citan primero (casi siempre la información oficial de la región o del establecimiento, o la de la Organización de Turismo de Corea). Un dato que ninguna fuente ofrece se indica una sola vez como «{missing}»."
   }
 }

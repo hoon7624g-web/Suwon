@@ -2194,14 +2194,17 @@ def course_move(S, vm: dict) -> dict | None:
     names = access_names(S)
     # first: a route a transit guide stands for (course_move.route_by_guide) — the block shows it open, the rest folded
     return {"lead": lead, "rest": rest, "legs": legs, "guides": guides,
-            "routes": [{**route_parts(r), "first": r["no"] in first_nums} for r in routes],
+            "routes": [{**route_parts(r, S.site.get("fact_conflicts") == "primary"), "first": r["no"] in first_nums}
+                       for r in routes],
             "missing": missing, "sources": [names[k] for k in keys if k in names], "source_keys": keys, "tt": tt,
             "tel": tel, "tel_html": tel_markup(tel) if tel else "", "bus_radius": meta.get("radius_m") or 500}
 
 
-def route_parts(r: dict) -> dict:
+def route_parts(r: dict, one: bool = False) -> dict:
     """One timetable route (transit.json) as the course block prints it: the weekday rows by direction, and the
-    Sat/Sun/holiday rows only where they differ ('same': every weekend value equals the weekday one)."""
+    Sat/Sun/holiday rows only where they differ ('same': every weekend value equals the weekday one). A row another
+    source times differently is listed in 'alts' — none on a site that shows one value per fact (one, site.json
+    fact_conflicts 'primary')."""
     times = r.get("times") or []
     same = all(t["weekend"] == t["weekday"] and t["weekend_n"] == t["weekday_n"] for t in times)
     # a row whose departures are not one even run ('pattern': 99 한빛대 정문 '06:10, 09:10~20:10') shows the source's
@@ -2209,7 +2212,8 @@ def route_parts(r: dict) -> dict:
     shown = lambda t: {**t, "weekday": t.get("pattern") or t["weekday"],
                        "weekend": t["pattern"] if t.get("pattern") and t["weekend"] == t["weekday"] else t["weekend"]}
     return {"no": r["no"], "out": [shown(t) for t in times if t["dir"] == "out"],
-            "back": [shown(t) for t in times if t["dir"] == "back"], "same": same, "alts": [t for t in times if t.get("alt")]}
+            "back": [shown(t) for t in times if t["dir"] == "back"], "same": same,
+            "alts": [] if one else [t for t in times if t.get("alt")]}
 
 
 MAP_MIN_SHARE = 0.5  # a course map is drawn only when at least half of its stops have coordinates
@@ -2545,16 +2549,22 @@ def lot_row(S, lot: dict, meters: int, place: str) -> dict:
     road = lot_address(lot.get("address"), city=C)
     jibun = lot_address(lot.get("address_jibun"), city=C)
     alt = lot.get("alt") or {}
+    # one value a fact (site.json fact_conflicts 'primary', operator 2026-11-05 '출처 마다 다른 값은 대표 값 하나만'): the
+    # lot's own spaces, type, 무료/유료, hours and phone and its first fee version — the other source's values stay in
+    # the data; its name for the same lot (alt name) still shows, as the first site does
+    one = S.site.get("fact_conflicts") == "primary"
+    if one:
+        alt = {k: v for k, v in alt.items() if k == "name"}
     alt_spaces = (alt.get("spaces") or {}).get("value")
     alt_type = squash_ws((alt.get("type") or {}).get("value"))
     alt_paid = squash_ws((alt.get("paid") or {}).get("value"))
     alt_hours = hours_text((alt.get("hours") or {}).get("value"))
     fee = lot.get("fee") or {}
     fees = [{"src": squash_ws(v.get("label")) or squash_ws(v.get("source_name")) or names.get(v["source"], ""),
-             "text": fee_text(v), "key": v["source"]} for v in fee.get("versions") or []]
+             "text": fee_text(v), "key": v["source"]} for v in fee.get("versions") or []][:1 if one else None]
     differ = (["유형"] if alt_type and alt_type != lot.get("type") else []) + \
         (["면수"] if alt_spaces is not None and alt_spaces != lot.get("spaces") else []) + \
-        (["요금"] if fee.get("differs") or (alt_paid and alt_paid != lot.get("paid")) else []) + \
+        (["요금"] if (fee.get("differs") and not one) or (alt_paid and alt_paid != lot.get("paid")) else []) + \
         (["운영시간"] if alt_hours and alt_hours != hours_text(lot.get("hours")) else [])
     desk = next((c for c in S.parking_contacts if c.get("phone") == fee.get("contact")), None) if fee else None
     calls = []

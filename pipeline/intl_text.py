@@ -305,6 +305,11 @@ EN: dict[str, str | dict] = {
                        "Nothing is filled in from general knowledge.",
     "about_how_2": "Every value names its source. Where two sources give different values, the page shows both, each "
                    "with its source, and says \"{note}\". A value no source gives is listed once as \"{missing}\".",
+    # a site that keeps one value per fact (site.json fact_conflicts 'primary', operator 2026-11-05)
+    "about_how_2_one": "Every value names its source. Where two sources give different values, the page shows one of "
+                       "them, the value the data lists first (usually the local or the facility's official information "
+                       "or the Korea Tourism Organization's), with its source. A value no source gives is listed once as "
+                       "\"{missing}\".",
     "about_how_3": "Texts from {source} are not copied; each place page links to its original page. Distances are "
                    "straight lines between coordinates, not travel distances.",
     "about_how_3_unconfirmed": "Original texts whose terms of use (the KOGL type) are not confirmed are not copied: pages "
@@ -484,6 +489,7 @@ NOTES: dict[str, str] = {
                            "announced when it reopens.",
     "notice_closed_from": "{date} is one date; the facility is closed from then and has not announced when it reopens.",
     "about_how_2": "{note} is this language's 'sources differ' note, {missing} its 'Not listed'.",
+    "about_how_2_one": "{missing} is this language's 'Not listed'.",
     "plus_more": "After the first stops of a course: how many more there are.",
     "region_name": "A course name with the city's name in front when the name lacks it.",
     "lede_both": "{near} and {longest} are two clauses this file gives (lede_near, lede_longest).",

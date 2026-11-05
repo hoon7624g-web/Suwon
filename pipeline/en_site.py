@@ -539,6 +539,15 @@ class Site:
         self.strings = {k: no_hangul(squash_ws((v or {}).get(loc.tag))) for k, v in strings.items()}
         self.t = UIText(loc, self.strings)
         recs = {k: _load(ldir / f"{k}.json", {}) or {} for k in ("places", "guides", "courses", "events")}
+        if S.site.get("fact_conflicts") == "primary":
+            # one value a fact (operator 2026-11-05, build.State keep_primary_facts): the translated other sources'
+            # values and their 'sources differ' note stay in the file, off the page — the main value is the one
+            # translated (keep_primary_facts replaces no main value of this site's data: textutil._note_only)
+            for rec in recs["places"].values():
+                for f in (rec.get("facts") or {}).values():
+                    if isinstance(f, dict):
+                        f.pop("alternatives", None)
+                        f.pop("note", None)
         hashes = current_hashes(Path(data_dir), city=C)
         # names (site.json through locales.names): the site, the city and its province in this language; never
         # Korean script

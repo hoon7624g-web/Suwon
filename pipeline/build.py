@@ -499,6 +499,16 @@ class State:
         # before anything reads it: index_status, pages in every language, cards, JSON-LD, llms-full, chat docs
         self.dead_links = _load(data_dir / "dead_links.json", {})
         self.dead_dropped = drop_dead_links(self.entities_all + self.events_all, self.dead_links)
+        # 출처마다 다른 값 (site.json fact_conflicts 'primary', operator 2026-11-05 '출처 마다 다른 값은 대표 값 하나만 보이도록
+        # 해'; the first site's 2026-10-31 decision): every record keeps its main value alone before anything reads it
+        # (textutil.keep_primary_facts) — pages in every language, cards, JSON-LD, llms-full, the chat documents; the
+        # language versions drop their translated alternatives the same way (en_site.Site); without the key both show
+        self.facts_set_aside = (keep_primary_facts(self.entities_all + self.events_all)
+                                if self.site.get("fact_conflicts") == "primary" else [])
+        if self.site.get("fact_conflicts") == "primary":   # an event edition's other sources' values, the same way
+            for ev in self.events_all:
+                if ev.get("alternatives"):
+                    ev["alternatives"] = {}
         # 예약하기 (step 1): the official booking pages pages link as buttons (pipeline/booking.py); none without the file
         self.booking = _load(data_dir / "booking.json", {})
         # 파트너 되기 (pipeline/partners.py, operator 2026-11-05): /partners/ and the '문의/제휴' links; none without the file

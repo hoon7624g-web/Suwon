@@ -7678,7 +7678,7 @@
     "name_ko": "화성행궁",
     "name_de": "Palast Hwaseong Haenggung",
     "name_de_source": "TourAPI GerService2",
-    "summary": "Palast Hwaseong Haenggung ist vom 30. Oktober 2026 (Fr.) bis 1. November (So.) 09:00–21:30 geöffnet; letzter Einlass ist um 21:00. Normalerweise ist ohne Ruhetag geöffnet. Die Öffnungszeiten unterscheiden sich je nach Quelle; bitte vor dem Besuch telefonisch bestätigen.",
+    "summary": "Die Öffnungszeiten von Palast Hwaseong Haenggung sind: Sommersaison (März–Oktober) 09:00–18:00, Wintersaison (November–Februar) 09:00–17:00; ganzjährig ohne Ruhetag. Der Einzeleintritt beträgt für Erwachsene 2.000 Won, für Jugendliche / Soldaten 1.500 Won und für Grundschüler 1.000 Won. Parken ist möglich; die Gebühr beträgt unter anderem 900 Won für die ersten 30 Minuten bei Kleinwagen.",
     "facts": {
       "address": {
         "value": "825 Jeongjo-ro (Namchang-dong), Paldal-gu, Suwon-si, Gyeonggi-do"
@@ -7733,23 +7733,18 @@
     "details": [],
     "faq": [
       {
-        "q": "Bis wann ist Palast Hwaseong Haenggung vom 30. Oktober 2026 (Fr.) bis 1. November (So.) geöffnet?",
-        "a": "Geöffnet ist 09:00–21:30. Letzter Einlass ist um 21:00. Bitte vor dem Besuch die Mitteilungen prüfen.",
-        "source": "https://www.swcf.or.kr/?p=260"
-      },
-      {
         "q": "Ist Palast Hwaseong Haenggung auch am Montag geöffnet?",
         "a": "Ja, es wird ohne Ruhetag betrieben.",
         "source": "한국관광공사 TourAPI"
       },
       {
-        "q": "Wann öffnet Palast Hwaseong Haenggung?",
-        "a": "Die Öffnungszeiten unterscheiden sich je nach Quelle. Laut der Koreanischen Tourismusorganisation: Sommersaison (März–Oktober) 09:00–18:00, Wintersaison (November–Februar) 09:00–17:00. Laut der Kulturstiftung Suwon: 09:00–18:00 (letzter Einlass 1 Stunde vor Ende der Besuchszeit). Bitte vor dem Besuch telefonisch bestätigen.",
+        "q": "Ändern sich die Öffnungszeiten von Palast Hwaseong Haenggung je nach Jahreszeit?",
+        "a": "Ja, in der Sommersaison (März–Oktober) ist 09:00–18:00 geöffnet und in der Wintersaison (November–Februar) 09:00–17:00.",
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "e0abff8338809ffa",
-    "translated_at": "2026-10-28"
+    "ko_hash": "4d81b554dccec0e5",
+    "translated_at": "2026-11-05"
   },
   "tourapi-264394": {
     "slug": "hwahongmun",
@@ -8720,7 +8715,7 @@
     "name_ko": "플라잉 수원",
     "name_de": "Flying Suwon",
     "name_de_source": "translated",
-    "summary": "Flying Suwon hat angekündigt, vom 1. November 2026 (So.) bis 31. Januar 2027 (So.) geschlossen zu sein. Normalerweise ist ohne Ruhetag geöffnet. Die Öffnungszeiten unterscheiden sich je nach Quelle; bitte vor dem Besuch telefonisch bestätigen.",
+    "summary": "Flying Suwon hat angekündigt, vom 1. November 2026 (So.) bis 31. Januar 2027 (So.) geschlossen zu sein. Die Öffnungszeiten von Flying Suwon sind werktags 13:00–22:00 (letzter Flug 21:30) und am Wochenende 11:00–22:00 (letzter Flug 21:30); ganzjährig ohne Ruhetag. Der Eintritt beträgt unter anderem 24.000 Won für Erwachsene.",
     "facts": {
       "address": {
         "value": "697 Gyeongsu-daero (Ji-dong), Paldal-gu, Suwon-si, Gyeonggi-do"
@@ -8758,15 +8753,10 @@
         "q": "Ist Flying Suwon auch vom 1. November 2026 (So.) bis 31. Januar 2027 (So.) geöffnet?",
         "a": "Nein. Es gibt eine Mitteilung, dass in diesem Zeitraum geschlossen ist. Bitte vor dem Besuch die Mitteilungen prüfen.",
         "source": "https://www.flyingsuwon.com/"
-      },
-      {
-        "q": "Wann öffnet Flying Suwon?",
-        "a": "Die Öffnungszeiten unterscheiden sich je nach Quelle. Laut der Koreanischen Tourismusorganisation: werktags 13:00–22:00 (letzter Flug 21:30), am Wochenende 11:00–22:00 (letzter Flug 21:30). Laut der Kulturstiftung Suwon: unter anderem werktags 12:30–21:30 sowie am Wochenende und an Feiertagen 11:00–22:00. Bitte vor dem Besuch telefonisch bestätigen.",
-        "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "2023f4e49f858b85",
-    "translated_at": "2026-10-28"
+    "ko_hash": "9fd79d6bc3e5bc0b",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2916328": {
     "slug": "ak-peullaja-suwon",

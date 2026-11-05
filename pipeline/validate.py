@@ -1009,7 +1009,8 @@ def transit_problems(S) -> list[str]:
                 out.append(f"{where}: 토·일·공휴일 {t['weekend_n']}회가 {gid} 시간표 기록에 없음")
             if t.get("pattern") and t["pattern"] not in body:
                 out.append(f"{where}: 출발 시각 '{t['pattern']}'가 {gid} 본문에 없음")
-            alt = t.get("alt") or {}
+            # one value per fact (site.json fact_conflicts 'primary'): the course pages show no other source's time
+            alt = {} if S.site.get("fact_conflicts") == "primary" else t.get("alt") or {}
             for v in (alt.get("value"), t.get("every") if alt else None):
                 if v and v not in body:
                     out.append(f"{where}: '{v}'가 {gid} 본문에 없음")
@@ -1279,6 +1280,12 @@ def access_problems(S, e: dict, page: PageScan) -> list[str]:
         lot = S.parking_lots[x["lot_id"]]
         t = r["text"]
         alt = lot.get("alt") or {}
+        # a site that shows one value per fact (site.json fact_conflicts 'primary', operator 2026-11-05) prints the lot's
+        # own values and its first fee version only, with no '방문 전 전화 확인' (present.lot_row); the other source's
+        # name for the same lot still shows
+        one = S.site.get("fact_conflicts") == "primary"
+        if one:
+            alt = {k: v for k, v in alt.items() if k == "name"}
         alt_spaces = (alt.get("spaces") or {}).get("value")
         alt_type, alt_paid = (alt.get("type") or {}).get("value"), (alt.get("paid") or {}).get("value")
         alt_hours = (alt.get("hours") or {}).get("value")
@@ -1289,7 +1296,7 @@ def access_problems(S, e: dict, page: PageScan) -> list[str]:
         if alt_spaces is not None:
             need.append(f"{alt_spaces}{(alt.get('spaces') or {}).get('unit') or '대'}")
         amounts, spans = set(), set()
-        for v in fee.get("versions") or []:
+        for v in (fee.get("versions") or [])[:1 if one else None]:
             amounts |= {f"{int(n):,}원" for n in present.fee_amounts(v)}
             for k in ("basic", "extra"):
                 m = (v.get(k) or {}).get("minutes")
@@ -1300,10 +1307,12 @@ def access_problems(S, e: dict, page: PageScan) -> list[str]:
             need.append(lot["phone"])
         if not fee.get("contact") and alt_phone.get("value"):
             need.append(alt_phone["value"])
-        if fee.get("differs") or (alt_spaces is not None and alt_spaces != lot.get("spaces")) or \
+        if (fee.get("differs") and not one) or (alt_spaces is not None and alt_spaces != lot.get("spaces")) or \
                 (alt_type and alt_type != lot.get("type")) or (alt_paid and alt_paid != lot.get("paid")) or \
                 (alt_hours and present.hours_text(alt_hours) != present.hours_text(lot.get("hours"))):
             need.append("방문 전 전화 확인")
+        elif one and "방문 전 전화 확인" in t:
+            out.append(f"근처 공영주차장 {lot['name']}: 값 하나만 보이는 사이트인데 '방문 전 전화 확인'이 있음")
         missing = [w for w in need if w and w not in t]
         for label, value in (("이름", present.tidy_brackets(lot["name"])),
                              ("주소", present.lot_address(lot.get("address") or lot.get("address_jibun"), city=S.city)),

@@ -7678,7 +7678,7 @@
     "name_ko": "화성행궁",
     "name_en": "Hwaseong Haenggung Palace",
     "name_en_source": "romanized specific part + English generic (MCST guideline)",
-    "summary": "Hwaseong Haenggung Palace is open 09:00–21:30 from Friday, October 30 to Sunday, November 1, 2026, and last admission is at 21:00. Normally, it operates with no closing days. Opening hours differ by source, so call to confirm before visiting.",
+    "summary": "Hwaseong Haenggung Palace is open 09:00–18:00 in the summer season (March–October) and 09:00–17:00 in the winter season (November–February), and it is open year-round. Individual admission is 2,000 won for adults, 1,500 won for youth/military and 1,000 won for elementary school students. Parking is available; the fee for small cars is 900 won for the first 30 minutes, among other rates.",
     "facts": {
       "address": {
         "value": "825 Jeongjo-ro (Namchang-dong), Paldal-gu, Suwon-si, Gyeonggi-do"
@@ -7733,23 +7733,18 @@
     "details": [],
     "faq": [
       {
-        "q": "Until what time is Hwaseong Haenggung Palace open from Friday, October 30 to Sunday, November 1, 2026?",
-        "a": "It is open 09:00–21:30. Last admission is at 21:00. Check the notice before you go.",
-        "source": "https://www.swcf.or.kr/?p=260"
-      },
-      {
         "q": "Is Hwaseong Haenggung Palace open on Mondays?",
         "a": "Yes, it operates without closing days.",
         "source": "한국관광공사 TourAPI"
       },
       {
-        "q": "What time does Hwaseong Haenggung Palace open?",
-        "a": "Opening hours differ by source. Korea Tourism Organization data lists 09:00–18:00 in the summer season (March–October) and 09:00–17:00 in the winter season (November–February). Suwon Cultural Foundation data lists 09:00–18:00 (last admission 1 hour before viewing hours end). Call to confirm before visiting.",
+        "q": "Do the opening hours of Hwaseong Haenggung Palace change by season?",
+        "a": "Yes, it is open 09:00–18:00 in the summer season (March–October) and 09:00–17:00 in the winter season (November–February).",
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "e0abff8338809ffa",
-    "translated_at": "2026-10-28"
+    "ko_hash": "4d81b554dccec0e5",
+    "translated_at": "2026-11-05"
   },
   "tourapi-264394": {
     "slug": "hwahongmun",
@@ -8720,7 +8715,7 @@
     "name_ko": "플라잉 수원",
     "name_en": "Flying Suwon",
     "name_en_source": "TourAPI EngService2",
-    "summary": "Flying Suwon has announced that it will be closed from Sunday, November 1, 2026 to Sunday, January 31, 2027. Normally, it operates with no closing days. Opening hours differ by source, so call to confirm before visiting.",
+    "summary": "Flying Suwon has announced that it will be closed from Sunday, November 1, 2026 to Sunday, January 31, 2027. Flying Suwon is open 13:00–22:00 on weekdays (last flight 21:30) and 11:00–22:00 on weekends (last flight 21:30), and it is open year-round. Admission is 24,000 won for adults, among other fares.",
     "facts": {
       "address": {
         "value": "697 Gyeongsu-daero (Ji-dong), Paldal-gu, Suwon-si, Gyeonggi-do"
@@ -8758,15 +8753,10 @@
         "q": "Is Flying Suwon open from Sunday, November 1, 2026 to Sunday, January 31, 2027?",
         "a": "No. There is a notice that it will be closed during that period. Check the notice before you go.",
         "source": "https://www.flyingsuwon.com/"
-      },
-      {
-        "q": "What time does Flying Suwon open?",
-        "a": "Opening hours differ by source. Korea Tourism Organization data lists 13:00–22:00 on weekdays (last flight 21:30) and 11:00–22:00 on weekends (last flight 21:30). Suwon Cultural Foundation data lists 12:30–21:30 on weekdays and 11:00–22:00 on weekends and public holidays, among others. Call to confirm before visiting.",
-        "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "2023f4e49f858b85",
-    "translated_at": "2026-10-28"
+    "ko_hash": "9fd79d6bc3e5bc0b",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2916328": {
     "slug": "ak-peullaja-suwon",
