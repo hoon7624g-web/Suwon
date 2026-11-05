@@ -470,13 +470,15 @@ def test_home_opening_and_news_cards_with_and_without_art(tmp_path, monkeypatch)
 
     def home_parts(out):
         html = (out / "index.html").read_text("utf-8")
-        news = html[html.index('<div class="ho-news">'):html.index('<section class="hq"')]
+        start = html.index('<div class="ho-news">')
+        end = html.find('<div class="ho-ctl">', start)                  # the news row (시안 A, 2026-11-05)
+        news = html[start:end if end > 0 else html.index('</section>', start)]
         guide = next(c for c in news.split('<article class="nc nc-')[1:] if c.startswith("guide"))
         return html, guide
 
     build(data, tmp_path / "with", "sample")
     html, guide = home_parts(tmp_path / "with")
-    assert '<section class="ho"' in html and 'data-art="hero-test"' not in html   # the season picture: gone
+    assert '<section class="ha"' in html and 'data-art="hero-test"' not in html   # the season picture: gone
     assert 'data-art="card-test-guide"' in guide and 'data-pic=' not in guide
     assert 'alt="일러스트: 시험 그림 card-test-guide"' in guide and "<figcaption" not in guide
     assert 'loading="lazy"' in guide and 'width="1024" height="1024"' in guide
@@ -490,7 +492,7 @@ def test_home_opening_and_news_cards_with_and_without_art(tmp_path, monkeypatch)
     (data / "art.json").unlink()                                         # no picture: the type icon
     build(data, tmp_path / "without", "sample")
     html, guide = home_parts(tmp_path / "without")
-    assert '<section class="ho"' in html and "data-art=" not in html
+    assert '<section class="ha"' in html and "data-art=" not in html
     # no picture: the kind's 3D picture by registry ID (the interim look until its file exists), never a photo
     assert 'data-pic="guide"' in guide and 'class="nc-frame nc-icof"' in guide
     assert not (tmp_path / "without" / "assets" / "art").exists()
