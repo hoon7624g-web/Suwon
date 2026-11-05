@@ -5,7 +5,7 @@
     acts(sd.acts) and the groups in <nav class="side-nav"> — the main menu. Below 1200px the bar stays as it was and its
     menu (details.menu: it opens without JavaScript) holds acts, groups(…, 'menu') and day(sd, 'menu').
     sd (present.side_vm, en_site Pages.side): groups [{key, label, href ('' for a group of links), links [{label, href,
-      n (the count the build uses: '222곳'), track}], open}], acts [{label, href, track, icon, primary}], tagline, latin,
+      n (unused since 2026-11-05: no counts beside the links), track}], open}], acts [{label, href, track, icon, primary}], tagline, latin,
       next {name, href, when, iso} | None, sun {lab, rise, set, iso, days} | None (Korean), wx (present.weather_vm) | None,
       w {next, sunrise, sunset, sun}.
     groups(G, current, mode): G is sd.groups|side_state(current). A group of links is a <details> (it opens and closes
@@ -30,7 +30,7 @@
 <ul class="sg-list sg-{{ mode }}">
 {%- for g in G %}
 <li class="sg{{ ' is-cur' if g.cur }}">
-{%- if g.links %}<details class="sg-d"{% if g.open %} open{% endif %}><summary class="sg-s"><span class="sg-t">{{ g.label }}</span><i class="sg-i" aria-hidden="true"></i></summary><ul class="sg-l">{% for x in g.links %}<li><a class="sg-a" href="{{ x.href }}"{% if x.href == current %} aria-current="page"{% endif %}{% if x.track %} data-track="{{ x.track }}"{% endif %}><span class="sg-n">{{ x.label }}</span>{% if x.n %}<span class="sg-c tn">{{ x.n }}</span>{% endif %}</a></li>{% endfor %}</ul></details>
+{%- if g.links %}<details class="sg-d"{% if g.open %} open{% endif %}><summary class="sg-s"><span class="sg-t">{{ g.label }}</span><i class="sg-i" aria-hidden="true"></i></summary><ul class="sg-l">{% for x in g.links %}<li><a class="sg-a" href="{{ x.href }}"{% if x.href == current %} aria-current="page"{% endif %}{% if x.track %} data-track="{{ x.track }}"{% endif %}><span class="sg-n">{{ x.label }}</span></a></li>{% endfor %}</ul></details>
 {%- else %}<a class="sg-s sg-1" href="{{ g.href }}"{% if g.cur %} aria-current="page"{% endif %}><span class="sg-t">{{ g.label }}</span><i class="sg-i sg-i-r" aria-hidden="true"></i></a>{% endif %}</li>
 {%- endfor %}
 </ul>

@@ -70,9 +70,9 @@ def menu_panel(html: str) -> str:
 
 # ------------------------------------------------------------------ the markup
 def test_every_main_nav_link_is_in_the_panel_and_the_phone_menu(built):
-    """Nothing of the old bar is lost: the footer's 둘러보기 is the main nav (nav_items), and every one of its links —
-    plus 소개·출처, the timetables and the planner — is in the panel's groups and in the phone menu's, each a page of
-    this build; the counts are the ones the lists show."""
+    """Nothing of the old bar is lost: every link of the footer's 둘러보기 (the main nav) — plus 소개·출처 and the
+    planner — is in the panel's groups and in the phone menu's, each a page of this build; no counts beside the
+    links."""
     home = page_html(built, "/")
     nav = [h for h in hrefs(block(home, '<nav class="foot-col foot-nav"')) if h != "/search/"]
     assert len(nav) >= 8 and "/videos/" in nav
@@ -91,10 +91,10 @@ def test_every_main_nav_link_is_in_the_panel_and_the_phone_menu(built):
     # the groups, in the approved order, and the counts the list pages print
     labels = re.findall(r'<span class="sg-t">([^<]+)</span>', side_nav(home))
     assert labels == ["찾기", "여행 계획", "행사 달력", "읽을거리", "소개·출처"]
+    # no counts beside the links (operator 2026-11-05 on the first site: '좌측 탭 숫자도 빼줘')
     for path in ("/places/", "/food/", "/stays/"):
-        n = re.search(r'class="count tn">(\d+)곳', page_html(built, path)).group(1)
-        assert f'href="{path}"><span class="sg-n">' in side_nav(home)
-        assert re.search(rf'href="{path}"><span class="sg-n">[^<]+</span><span class="sg-c tn">{n}곳</span>', side_nav(home)), path
+        assert re.search(rf'href="{path}"><span class="sg-n">[^<]+</span></a>', side_nav(home)), path
+    assert "sg-c" not in side_nav(home)
     assert re.findall(r'<span class="sg-n">([^<]+)</span>', block(side_nav(home), "여행 계획</span>", "</ul>")) == [
         "코스", "가이드", "지도"]
     # the panel is the header (a nav landmark with its name), after the skip link; the page's main is untouched
