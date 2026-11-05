@@ -2184,19 +2184,28 @@
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "125555",
-        "confirmed_by": "수원문화재단 수원화성관광 관람안내 2026-10-26"
+        "confirmed_by": "수원문화재단 수원화성관광 관람안내 2026-10-26",
+        "confirmed_urls": {
+          "수원문화재단 수원화성관광 관람안내": "https://www.swcf.or.kr/?p=65"
+        }
       },
       "usetime": {
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "125555",
-        "confirmed_by": "수원문화재단 수원화성관광 관람안내 2026-10-26"
+        "confirmed_by": "수원문화재단 수원화성관광 관람안내 2026-10-26",
+        "confirmed_urls": {
+          "수원문화재단 수원화성관광 관람안내": "https://www.swcf.or.kr/?p=65"
+        }
       },
       "restdate": {
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "125555",
-        "confirmed_by": "수원문화재단 수원화성관광 관람안내 2026-10-26"
+        "confirmed_by": "수원문화재단 수원화성관광 관람안내 2026-10-26",
+        "confirmed_urls": {
+          "수원문화재단 수원화성관광 관람안내": "https://www.swcf.or.kr/?p=65"
+        }
       },
       "parking": {
         "provider": "한국관광공사 TourAPI",
@@ -2524,13 +2533,19 @@
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "3076051",
-        "confirmed_by": "일월수목원 관람안내 2026-10-26"
+        "confirmed_by": "일월수목원 관람안내 2026-10-26",
+        "confirmed_urls": {
+          "일월수목원 관람안내": "https://www.suwon.go.kr/sw-www/sw-iwarbor/sw-iwarbor-02/sw-iwarbor-02-01/sw-iwarbor-02-01-01.jsp"
+        }
       },
       "restdate": {
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "3076051",
-        "confirmed_by": "일월수목원 관람안내 2026-10-26"
+        "confirmed_by": "일월수목원 관람안내 2026-10-26",
+        "confirmed_urls": {
+          "일월수목원 관람안내": "https://www.suwon.go.kr/sw-www/sw-iwarbor/sw-iwarbor-02/sw-iwarbor-02-01/sw-iwarbor-02-01-01.jsp"
+        }
       },
       "parking": {
         "provider": "한국관광공사 TourAPI",
@@ -36099,19 +36114,28 @@
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "2944481",
-        "confirmed_by": "국립농업박물관 관람안내 2026-10-26"
+        "confirmed_by": "국립농업박물관 관람안내 2026-10-26",
+        "confirmed_urls": {
+          "국립농업박물관 관람안내": "https://www.namuk.or.kr/kr/530/subview.do"
+        }
       },
       "restdate": {
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "2944481",
-        "confirmed_by": "국립농업박물관 관람안내 2026-10-26"
+        "confirmed_by": "국립농업박물관 관람안내 2026-10-26",
+        "confirmed_urls": {
+          "국립농업박물관 관람안내": "https://www.namuk.or.kr/kr/530/subview.do"
+        }
       },
       "usefee": {
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "2944481",
-        "confirmed_by": "국립농업박물관 관람안내 2026-10-26"
+        "confirmed_by": "국립농업박물관 관람안내 2026-10-26",
+        "confirmed_urls": {
+          "국립농업박물관 관람안내": "https://www.namuk.or.kr/kr/530/subview.do"
+        }
       },
       "parkingfee": {
         "provider": "한국관광공사 TourAPI",
@@ -61204,13 +61228,19 @@
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "3494623",
-        "confirmed_by": "수원문화재단 XR버스 1795행 상세안내 2026-10-26"
+        "confirmed_by": "수원문화재단 XR버스 1795행 상세안내 2026-10-26",
+        "confirmed_urls": {
+          "수원문화재단 XR버스 1795행 상세안내": "https://www.swcf.or.kr/?p=74&listGubun=list&page=1&viewMode=view&idx=222"
+        }
       },
       "restdate": {
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "3494623",
-        "confirmed_by": "수원문화재단 XR버스 1795행 상세안내 2026-10-26"
+        "confirmed_by": "수원문화재단 XR버스 1795행 상세안내 2026-10-26",
+        "confirmed_urls": {
+          "수원문화재단 XR버스 1795행 상세안내": "https://www.swcf.or.kr/?p=74&listGubun=list&page=1&viewMode=view&idx=222"
+        }
       },
       "parking": {
         "provider": "한국관광공사 TourAPI",
@@ -61231,7 +61261,11 @@
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "3494623",
-        "confirmed_by": "수원문화재단 수원화성관광 관람안내 2026-10-26 · 수원문화재단 XR버스 1795행 상세안내 2026-10-26"
+        "confirmed_by": "수원문화재단 수원화성관광 관람안내 2026-10-26 · 수원문화재단 XR버스 1795행 상세안내 2026-10-26",
+        "confirmed_urls": {
+          "수원문화재단 수원화성관광 관람안내": "https://www.swcf.or.kr/?p=65",
+          "수원문화재단 XR버스 1795행 상세안내": "https://www.swcf.or.kr/?p=74&listGubun=list&page=1&viewMode=view&idx=222"
+        }
       },
       "reservation": {
         "provider": "수원문화재단 XR버스 1795행 상세안내",
@@ -64008,7 +64042,10 @@
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "736662",
-        "confirmed_by": "수원문화재단 수원화성관광 관람안내 2026-10-26"
+        "confirmed_by": "수원문화재단 수원화성관광 관람안내 2026-10-26",
+        "confirmed_urls": {
+          "수원문화재단 수원화성관광 관람안내": "https://www.swcf.or.kr/?p=65"
+        }
       },
       "wheelchair": {
         "provider": "한국관광공사 무장애 여행 정보(TourAPI)",
@@ -68897,13 +68934,19 @@
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "264402",
-        "confirmed_by": "수원문화재단 화성어차 상세안내 2026-10-26"
+        "confirmed_by": "수원문화재단 화성어차 상세안내 2026-10-26",
+        "confirmed_urls": {
+          "수원문화재단 화성어차 상세안내": "https://www.swcf.or.kr/?p=74&listGubun=list&page=1&viewMode=view&idx=74"
+        }
       },
       "restdate": {
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "264402",
-        "confirmed_by": "수원문화재단 화성어차 상세안내 2026-10-26"
+        "confirmed_by": "수원문화재단 화성어차 상세안내 2026-10-26",
+        "confirmed_urls": {
+          "수원문화재단 화성어차 상세안내": "https://www.swcf.or.kr/?p=74&listGubun=list&page=1&viewMode=view&idx=74"
+        }
       },
       "parking": {
         "provider": "한국관광공사 TourAPI",
@@ -68929,7 +68972,11 @@
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "264402",
-        "confirmed_by": "수원문화재단 수원화성관광 관람안내 2026-10-26 · 수원문화재단 화성어차 상세안내 2026-10-26"
+        "confirmed_by": "수원문화재단 수원화성관광 관람안내 2026-10-26 · 수원문화재단 화성어차 상세안내 2026-10-26",
+        "confirmed_urls": {
+          "수원문화재단 수원화성관광 관람안내": "https://www.swcf.or.kr/?p=65",
+          "수원문화재단 화성어차 상세안내": "https://www.swcf.or.kr/?p=74&listGubun=list&page=1&viewMode=view&idx=74"
+        }
       },
       "accessible_toilet": {
         "provider": "한국관광공사 무장애 여행 정보(TourAPI)",
@@ -69244,7 +69291,10 @@
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-11-05",
         "contentid": "129437",
-        "confirmed_by": "수원문화재단 수원화성관광 관람안내 2026-10-26"
+        "confirmed_by": "수원문화재단 수원화성관광 관람안내 2026-10-26",
+        "confirmed_urls": {
+          "수원문화재단 수원화성관광 관람안내": "https://www.swcf.or.kr/?p=65"
+        }
       },
       "parking": {
         "provider": "한국관광공사 TourAPI",
@@ -69270,7 +69320,10 @@
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-11-05",
         "contentid": "129437",
-        "confirmed_by": "수원문화재단 수원화성관광 관람안내 2026-10-26"
+        "confirmed_by": "수원문화재단 수원화성관광 관람안내 2026-10-26",
+        "confirmed_urls": {
+          "수원문화재단 수원화성관광 관람안내": "https://www.swcf.or.kr/?p=65"
+        }
       },
       "wheelchair": {
         "provider": "한국관광공사 무장애 여행 정보(TourAPI)",
@@ -71750,19 +71803,28 @@
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "2033483",
-        "confirmed_by": "수원시립미술관 관람안내 2026-10-26"
+        "confirmed_by": "수원시립미술관 관람안내 2026-10-26",
+        "confirmed_urls": {
+          "수원시립미술관 관람안내": "https://suma.suwon.go.kr/views/info.do"
+        }
       },
       "restdate": {
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "2033483",
-        "confirmed_by": "수원시립미술관 관람안내 2026-10-26"
+        "confirmed_by": "수원시립미술관 관람안내 2026-10-26",
+        "confirmed_urls": {
+          "수원시립미술관 관람안내": "https://suma.suwon.go.kr/views/info.do"
+        }
       },
       "usefee": {
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "2033483",
-        "confirmed_by": "수원시립미술관 관람안내 2026-10-26"
+        "confirmed_by": "수원시립미술관 관람안내 2026-10-26",
+        "confirmed_urls": {
+          "수원시립미술관 관람안내": "https://suma.suwon.go.kr/views/info.do"
+        }
       },
       "parkingfee": {
         "provider": "한국관광공사 TourAPI",
@@ -71773,7 +71835,10 @@
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "2033483",
-        "confirmed_by": "수원시립미술관 관람안내 2026-10-26"
+        "confirmed_by": "수원시립미술관 관람안내 2026-10-26",
+        "confirmed_urls": {
+          "수원시립미술관 관람안내": "https://suma.suwon.go.kr/views/info.do"
+        }
       },
       "homepage": {
         "provider": "한국관광공사 TourAPI",
@@ -72976,19 +73041,28 @@
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "1921150",
-        "confirmed_by": "수원화성박물관 관람안내 2026-10-26"
+        "confirmed_by": "수원화성박물관 관람안내 2026-10-26",
+        "confirmed_urls": {
+          "수원화성박물관 관람안내": "https://smuseum.suwon.go.kr/hs/contents/view?contentsNo=129&menuLevel=3&menuNo=110"
+        }
       },
       "restdate": {
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "1921150",
-        "confirmed_by": "수원화성박물관 관람안내 2026-10-26"
+        "confirmed_by": "수원화성박물관 관람안내 2026-10-26",
+        "confirmed_urls": {
+          "수원화성박물관 관람안내": "https://smuseum.suwon.go.kr/hs/contents/view?contentsNo=129&menuLevel=3&menuNo=110"
+        }
       },
       "usefee": {
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "1921150",
-        "confirmed_by": "수원화성박물관 관람안내 2026-10-26"
+        "confirmed_by": "수원화성박물관 관람안내 2026-10-26",
+        "confirmed_urls": {
+          "수원화성박물관 관람안내": "https://smuseum.suwon.go.kr/hs/contents/view?contentsNo=129&menuLevel=3&menuNo=110"
+        }
       },
       "infocenter": {
         "provider": "한국관광공사 TourAPI",
@@ -74088,7 +74162,10 @@
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "2714220",
-        "confirmed_by": "플라잉수원 홈페이지 2026-10-26"
+        "confirmed_by": "플라잉수원 홈페이지 2026-10-26",
+        "confirmed_urls": {
+          "플라잉수원 홈페이지": "https://www.flyingsuwon.com/"
+        }
       },
       "restdate": {
         "provider": "한국관광공사 TourAPI",
@@ -74099,7 +74176,10 @@
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "2714220",
-        "confirmed_by": "플라잉수원 홈페이지 2026-10-26"
+        "confirmed_by": "플라잉수원 홈페이지 2026-10-26",
+        "confirmed_urls": {
+          "플라잉수원 홈페이지": "https://www.flyingsuwon.com/"
+        }
       },
       "homepage": {
         "provider": "한국관광공사 TourAPI",
@@ -116132,13 +116212,19 @@
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "2998800",
-        "confirmed_by": "영흥수목원 관람안내 2026-10-26"
+        "confirmed_by": "영흥수목원 관람안내 2026-10-26",
+        "confirmed_urls": {
+          "영흥수목원 관람안내": "https://www.suwon.go.kr/sw-www/sw-yharbor/sw-yharbor-02/sw-yharbor-02-01/sw-yharbor-02-01-01.jsp"
+        }
       },
       "restdate": {
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "2998800",
-        "confirmed_by": "영흥수목원 관람안내 2026-10-26"
+        "confirmed_by": "영흥수목원 관람안내 2026-10-26",
+        "confirmed_urls": {
+          "영흥수목원 관람안내": "https://www.suwon.go.kr/sw-www/sw-yharbor/sw-yharbor-02/sw-yharbor-02-01/sw-yharbor-02-01-01.jsp"
+        }
       },
       "parking": {
         "provider": "한국관광공사 TourAPI",
@@ -118218,13 +118304,19 @@
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "2379222",
-        "confirmed_by": "수원광교박물관 관람안내 2026-10-26"
+        "confirmed_by": "수원광교박물관 관람안내 2026-10-26",
+        "confirmed_urls": {
+          "수원광교박물관 관람안내": "https://smuseum.suwon.go.kr/gg/contents/view?contentsNo=151&menuLevel=2&menuNo=114"
+        }
       },
       "restdate": {
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "2379222",
-        "confirmed_by": "수원광교박물관 관람안내 2026-10-26"
+        "confirmed_by": "수원광교박물관 관람안내 2026-10-26",
+        "confirmed_urls": {
+          "수원광교박물관 관람안내": "https://smuseum.suwon.go.kr/gg/contents/view?contentsNo=151&menuLevel=2&menuNo=114"
+        }
       },
       "usefee": {
         "provider": "한국관광공사 TourAPI",
@@ -118479,13 +118571,19 @@
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "638913",
-        "confirmed_by": "수원박물관 관람안내 2026-10-26"
+        "confirmed_by": "수원박물관 관람안내 2026-10-26",
+        "confirmed_urls": {
+          "수원박물관 관람안내": "https://smuseum.suwon.go.kr/sw/contents/view?contentsNo=100&menuLevel=2&menuNo=53"
+        }
       },
       "restdate": {
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "638913",
-        "confirmed_by": "수원박물관 관람안내 2026-10-26"
+        "confirmed_by": "수원박물관 관람안내 2026-10-26",
+        "confirmed_urls": {
+          "수원박물관 관람안내": "https://smuseum.suwon.go.kr/sw/contents/view?contentsNo=100&menuLevel=2&menuNo=53"
+        }
       },
       "usefee": {
         "provider": "한국관광공사 TourAPI",
@@ -118496,7 +118594,10 @@
         "provider": "한국관광공사 TourAPI",
         "checked_at": "2026-10-25",
         "contentid": "638913",
-        "confirmed_by": "수원박물관 관람안내 2026-10-26"
+        "confirmed_by": "수원박물관 관람안내 2026-10-26",
+        "confirmed_urls": {
+          "수원박물관 관람안내": "https://smuseum.suwon.go.kr/sw/contents/view?contentsNo=100&menuLevel=2&menuNo=53"
+        }
       },
       "babycarriage": {
         "provider": "한국관광공사 TourAPI",

@@ -81,5 +81,6 @@
 
 ### 확인
 - build·validate: sample·preview·production 오류 0. npm test 339개 중 331 통과·실패 0.
+- pytest 전체: 남은 실패는 main부터 있던 3건(test_audit_engine 1, test_ask_browser 런처 대화 2). 이번 데이터로 처음 돌거나 깨진 시험은 고침 — test_sun_transport_pages(자료가 없어 건너뛰던 시험이 군산 값을 기대하던 것 → 수원 자료 값으로, 두 날 요약이 같고 시각이 다른 목록 경우 추가, 항공편 없는 제목 시험 추가), test_chat_index(근처 주차장 문장은 화면에 있는 곳에만 / 다른 이름이 붙은 카탈로그 줄), test_sidebar_layout(시간표 두 링크, 패널이 길어져 스크롤된 뒤의 탭 순서를 패널 안 위치로 잼). 병합 도구가 공식 페이지 주소(fact_sources.confirmed_urls) 33칸을 지운 것을 되살림(test_official_pages).
 - 캡처 `docs/reference/upgrade_2026-11-05/data_{today,related,license,designation,shops,sun,transport,en}-{390,1440}.png`(배율 2, 외부 사진 막음, 가로 넘침 없음).
 - perf_check(압축 없는 로컬 서버, 외부 사진 막음, pytest가 함께 도는 중): 홈 LCP 4.5초, 화성행궁 3.3초, 연무대 3.2초, 팔달문시장 3.6초, /transport/ 4.5초, CLS 모두 0. 이식 때처럼 압축 없는 측정은 main부터 2.5초를 넘음. 글꼴 341~436KB로 300KB 목표를 main부터 넘음.

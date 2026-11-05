@@ -95,8 +95,10 @@ def test_every_main_nav_link_is_in_the_panel_and_the_phone_menu(built):
     for path in ("/places/", "/food/", "/stays/"):
         assert re.search(rf'href="{path}"><span class="sg-n">[^<]+</span></a>', side_nav(home)), path
     assert "sg-c" not in side_nav(home)
-    assert re.findall(r'<span class="sg-n">([^<]+)</span>', block(side_nav(home), "여행 계획</span>", "</ul>")) == [
-        "코스", "가이드", "지도"]
+    # the timetable pages join the group once their data exists (/transport/ · /sun/, 수원 2026-11-05)
+    plan = ["코스", "가이드", "지도"] + ["가는 법·시간표"] * (built / "transport" / "index.html").exists() \
+        + ["해 뜨고 지는 시각"] * (built / "sun" / "index.html").exists()
+    assert re.findall(r'<span class="sg-n">([^<]+)</span>', block(side_nav(home), "여행 계획</span>", "</ul>")) == plan
     # the panel is the header (a nav landmark with its name), after the skip link; the page's main is untouched
     assert home.index('<a class="skip-link" href="#main-content">') < home.index('<header class="mast"') < home.index(
         '<nav class="side-nav" aria-label="주 메뉴">') < home.index('<main id="main-content"')
@@ -305,7 +307,9 @@ def test_tab_order_is_the_order_on_screen(browser, built):
     for _ in range(14):
         page.keyboard.press("Tab")
         seen.append(page.evaluate("""(() => { const e = document.activeElement, r = e.getBoundingClientRect();
-          return [e.className || e.tagName, Math.round(r.top), !!e.closest('.mast')]; })()"""))
+          let s = e.parentElement;   // the panel scrolls once it is taller than the window: its content's own top
+          while (s && !(s.scrollHeight > s.clientHeight && /(auto|scroll)/.test(getComputedStyle(s).overflowY))) s = s.parentElement;
+          return [e.className || e.tagName, Math.round(r.top + (s ? s.scrollTop : 0)), !!e.closest('.mast')]; })()"""))
     inside = [s for s in seen if s[2]]
     assert len(inside) >= 10 and [s[1] for s in inside] == sorted(s[1] for s in inside), seen
     assert inside[0][0] == "wordmark" and inside[1][0] == "lang-btn" and seen.index(inside[-1]) == len(inside) - 1, seen
