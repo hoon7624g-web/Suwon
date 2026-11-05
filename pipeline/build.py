@@ -47,7 +47,7 @@ from urllib.parse import quote
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from markupsafe import Markup, escape
 
-from . import art, ask, chat_index, en_site, icons, jsonld, notices, plan, relations, tickets, timetables
+from . import art, ask, chat_index, en_site, icons, jsonld, notices, partners, plan, relations, tickets, timetables
 from .city import of as city_of
 from .enrich import haversine_m
 from .maplinks import DEFAULT_TMAP_SCHEME, build_links, precision_summary, search_link
@@ -58,8 +58,9 @@ from .schema import (PHOTO_SOURCES, DEFAULT_ALLOWED_LICENSES, FACT_ALIASES, FACT
 from . import present
 from . import locales as LC
 from .slugs import COURSE_GROUP_IDS, YEAR_PREFIX, assign_slugs, series_slug, topic_slug
-from .textutil import (cell_html, display_address, display_value, drop_dead_links, event_name_key, first_sentence, josa,
-                       keep_dots, keep_units, link_url, series_key, squash_ws, url_domain, url_key, web_url)
+from .textutil import (cell_html, dash_times, display_address, display_value, drop_dead_links, event_name_key,
+                       first_sentence, josa, keep_dots, keep_primary_facts, keep_units, link_url, series_key, squash_ws,
+                       url_domain, url_key, web_url)
 
 ROOT = Path(__file__).resolve().parent.parent
 TEMPLATES = ROOT / "templates"
@@ -154,10 +155,19 @@ def fmt_dist(m) -> str:
     return f"{m}m" if m < 1000 else f"{m / 1000:.1f}km"
 
 
-# The first city moved its map boxes to the Kakao Maps JavaScript SDK (its owner's decision of 2026-10-14); the engine keeps
-# Leaflet + OpenStreetMap (operator 2026-10-16), so nothing below is used by a page: the helper stays inert (a city
-# whose site.json names a kakao_js_key could pass it to its map boxes) and no template global is set.
+# The map provider (site.json map_provider): 'kakao' — the Kakao Maps JavaScript SDK (the first site's owner decision
+# 2026-10-14; this site's operator 2026-11-05 '카카오맵으로 바꿔'). site.json kakao_js_key is a public key that Kakao
+# accepts only from the web domains registered for it; every map box names the SDK URL (data-kakao-sdk) and
+# assets/map.js fetches it near the screen, after load. A page without a map box never names it.
 KAKAO_SDK = "https://dapi.kakao.com/v2/maps/sdk.js?appkey={key}&autoload=false"
+# 'osm' (operator 2026-10-16, until 2026-11-05): the same map boxes drawn by Leaflet (self-hosted, assets/vendor/leaflet/)
+# on OpenStreetMap tiles — the boxes name the Leaflet folder (data-osm-lib) instead of the SDK and the credits read
+# OpenStreetMap (map.js osmKit answers the Kakao calls with Leaflet). Anything else (or no value) is Kakao.
+OSM_LIB = "/assets/vendor/leaflet/"
+
+
+def map_provider(site: dict) -> str:
+    return "osm" if str((site or {}).get("map_provider") or "").strip().lower() == "osm" else "kakao"
 
 
 def kakao_sdk_url(site: dict) -> str:
@@ -239,14 +249,18 @@ def css_source() -> str:
     return "\n".join(f.read_text("utf-8") for f in sorted(CSS_DIR.glob("*.css")))
 
 
-def site_css(art_slots: bool = False) -> str:
-    """/assets/style.css: the partials in one request, comments stripped and whitespace collapsed (spaces after
-    commas and inside values are kept, so font stacks and calc() stay as written). The stylesheet blocks the first
-    paint and shares the line with the HTML, so every byte shows in the first paint on a slow line (2026-10-09:
-    5 KB less = the stylesheet in ~80 ms earlier on the guide hub, tools/perf_check conditions): the space after a
-    declaration's colon and the line break after a selector list's comma go too. art_slots: keep the AI art slot
-    rules (ART_SLOT_CSS) — True when a built page shows one of those pictures."""
-    css = css_source() if art_slots else ART_SLOT_CSS.sub("", css_source())
+# Page sheets (the mobile speed work, 2026-11-05): a region of a partial between '/* sheet:<name> …*/' and
+# '/* sheet:<name> end */' is left out of /assets/style.css and written to its own file, linked only where it is used —
+# so the stylesheet every page waits for before its first paint carries no other page's rules. 'wide' is linked on
+# every page with media="(min-width: 1200px)" (the panel, its weather card): a phone does not wait for it.
+SHEET_RX = re.compile(r"/\* sheet:([a-z][a-z-]*)\b.*?\*/(.*?)/\* sheet:\1 end \*/", re.S)
+PAGE_SHEETS = {"home": "page-home.css", "times": "page-times.css", "partners": "page-partners.css", "wide": "wide.css"}
+
+
+def minify_css(css: str) -> str:
+    """Comments stripped and whitespace collapsed (spaces after commas and inside values are kept, so font stacks and
+    calc() stay as written). The space after a declaration's colon and the line break after a selector list's comma
+    go too."""
     css = re.sub(r"/\*.*?\*/", "", css, flags=re.S)
     css = re.sub(r"\s*\n\s*", "\n", css)
     css = re.sub(r"[ \t]{2,}", " ", css)
@@ -254,6 +268,24 @@ def site_css(art_slots: bool = False) -> str:
     css = re.sub(r"([{;])(-*[A-Za-z][\w-]*):\s+", r"\1\2:", css)   # 'color: x' -> 'color:x' (a declaration's name)
     css = css.replace(",\n", ",")
     return css.strip() + "\n"
+
+
+def site_css(art_slots: bool = False) -> str:
+    """/assets/style.css: the partials in one request, minified (minify_css), without the page sheets' regions
+    (SHEET_RX). The stylesheet blocks the first paint and shares the line with the HTML, so every byte shows in the
+    first paint on a slow line (2026-10-09: 5 KB less = the stylesheet in ~80 ms earlier on the guide hub,
+    tools/perf_check conditions). art_slots: keep the AI art slot rules (ART_SLOT_CSS) — True when a built page shows
+    one of those pictures."""
+    css = css_source() if art_slots else ART_SLOT_CSS.sub("", css_source())
+    unknown = {m.group(1) for m in SHEET_RX.finditer(css)} - set(PAGE_SHEETS)
+    if unknown:
+        raise ValueError(f"css sheet markers without a PAGE_SHEETS file: {sorted(unknown)}")
+    return minify_css(SHEET_RX.sub("", css))
+
+
+def page_css(name: str) -> str:
+    """/assets/<PAGE_SHEETS[name]>: the regions of the partials marked 'sheet:<name>', in file-name order, minified."""
+    return minify_css("\n".join(m.group(2) for m in SHEET_RX.finditer(css_source()) if m.group(1) == name))
 
 
 SLUG_NAME_KEYS = {"place": "name", "course": "name", "guide": "title"}
@@ -489,8 +521,20 @@ class State:
         # before anything reads it: index_status, pages in every language, cards, JSON-LD, llms-full, chat docs
         self.dead_links = _load(data_dir / "dead_links.json", {})
         self.dead_dropped = drop_dead_links(self.entities_all + self.events_all, self.dead_links)
+        # 출처마다 다른 값 (site.json fact_conflicts 'primary', operator 2026-11-05 '출처 마다 다른 값은 대표 값 하나만 보이도록
+        # 해'; the first site's 2026-10-31 decision): every record keeps its main value alone before anything reads it
+        # (textutil.keep_primary_facts) — pages in every language, cards, JSON-LD, llms-full, the chat documents; the
+        # language versions drop their translated alternatives the same way (en_site.Site); without the key both show
+        self.facts_set_aside = (keep_primary_facts(self.entities_all + self.events_all)
+                                if self.site.get("fact_conflicts") == "primary" else [])
+        if self.site.get("fact_conflicts") == "primary":   # an event edition's other sources' values, the same way
+            for ev in self.events_all:
+                if ev.get("alternatives"):
+                    ev["alternatives"] = {}
         # 예약하기 (step 1): the official booking pages pages link as buttons (pipeline/booking.py); none without the file
         self.booking = _load(data_dir / "booking.json", {})
+        # 파트너 되기 (pipeline/partners.py, operator 2026-11-05): /partners/ and the '문의/제휴' links; none without the file
+        self.partners = _load(data_dir / "partners.json", {})
         # URL slugs over every record of a file (a draft's stored slug is reserved too); the problems — a malformed
         # or duplicate stored slug — are errors in pipeline.validate
         self.slug_problems = (assign_record_slugs(self.entities_all, "place", self.city)
@@ -711,6 +755,8 @@ class State:
                 "tourapi_used": self.tourapi_used, "has_map": bool(self.entities), "has_videos": bool(self.videos),
                 "has_search": bool(self.entities), "has_abroad": bool(self.abroad or self.abroad_videos),
                 "has_plan": bool(self.entities),   # /plan/, the AI course planner (Korean pages, pipeline/plan.py)
+                # 파트너 되기 (pipeline/partners.py): the side panel / phone menu / footer link to /partners/
+                "partners_path": partners.PATH if self.partners else "",
                 "has_sun": bool(self.tt_sun), "has_transport": bool(self.tt_transport),   # /sun/ · /transport/
                 "tt_guides": timetables.TRANSPORT_GUIDES if self.tt_transport else (),   # guides that link /transport/
                 "art_slots": art.for_lang(self.art, "ko"), "side": self.side, **self.common_vm,
@@ -1715,12 +1761,16 @@ def event_description(ev: dict, series_name: str = "", limit: int = DESC_MAX) ->
     """An event page's description, the first of these within `limit`; the dates are always the whole, exact period:
     1. the answer line the page shows, '<행사명> 기간: <기간> · 장소: <장소>.', with ' 요금: <요금>.' when it fits;
     2. '<행사명> <기간>, <장소 요약>.' — the place without its bracketed notes, else its first place + '일원';
-    3. '<행사명> <기간>.', then '<행사 이름(이 페이지의 목록 이름)> <기간>.'."""
+    3. '<행사명> <기간>.', then '<행사 이름(이 페이지의 목록 이름)> <기간>.'.
+    In 2, the time the page shows goes after the period when it fits (the first site's cf4ebcd8a, operator 2026-11-04:
+    '<행사명> <기간> 20:00 (약 30분), <장소>.') — not a time other sources give differently."""
     answer = event_answer(ev)
     fee = squash_ws(ev.get("fee"))
     title, period = squash_ws(ev["_title"]), event_period(ev)
     bare, first = place_summary(ev.get("place_name"))
-    return first_fit(f"{answer}. 요금: {fee}." if fee else "", f"{answer}.",
+    time = "" if (ev.get("alternatives") or {}).get("playtime") else dash_times(squash_ws(ev.get("playtime")))
+    timed = [f"{title} {period} {time}, {p}." for p in (bare, first) if time and p]
+    return first_fit(f"{answer}. 요금: {fee}." if fee else "", f"{answer}.", *timed,
                      f"{title} {period}, {bare}." if bare else "", f"{title} {period}, {first}." if first else "",
                      f"{title} {period}.", f"{squash_ws(series_name)} {period}." if series_name else "",
                      limit=limit) or f"{title} {period}."
@@ -1739,6 +1789,9 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
     reg = icons.load(data_dir) or icons.registry()
     env.globals["icon_pic"] = lambda pid: icons.lookup(pid, reg)
     env.globals["icon_glyph"] = lambda pid, default="pin": icons.glyph(pid, default, reg)
+    osm = map_provider(S.site) == "osm"
+    env.globals["kakao_sdk"] = "" if osm else kakao_sdk_url(S.site)  # the map boxes' data-kakao-sdk (_ui mapfig, _p1 …)
+    env.globals["osm_lib"] = OSM_LIB if osm else ""                   # … or data-osm-lib (map_provider 'osm')
     _prepare_out(out, data_dir)
     region = S.city.region
     # Dates (P0-4): every lastmod is a data date shown on that page; aggregate pages use the newest date
@@ -1987,6 +2040,28 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
             viewer = env.get_template("_abroad_hl.html.j2").module.dialog(hl)
             (out / HL_VIEWER.strip("/")).write_text(json.dumps({"html": str(viewer)}, ensure_ascii=False), "utf-8")
 
+    if S.partners:
+        # /partners/ 파트너 되기 (the first site's 7f2afaad7, operator 2026-11-04 meeting; this city 2026-11-05 — the
+        # recruiting page alone): the stay and content partnerships and one inquiry form (pipeline/partners.py). Korean
+        # only; no partner stay is listed.
+        path = partners.PATH
+        site_name = S.site.get("site_name", "")
+        crumbs = [("홈", S.site_url + "/"), ("파트너", S.abs(path))]
+        P = partners.page_vm(S)
+        desc = first_fit(f"{site_name} 숙소 파트너(AI 검색에 맞춘 홈페이지와 영상·직접 예약 문의)와 콘텐츠 파트너(배너 교환·크리에이터 큐레이션)를 모집합니다.",
+                         f"{site_name} 숙소·콘텐츠 파트너를 모집합니다.")
+        page = _simple_page(S, path, f"{site_name} 파트너 — 숙소·콘텐츠 제휴 안내", desc, crumbs, None)
+        _render(env, S, out, "partners.html.j2", path, page, "partners", None, P=P)
+        # /partners/contact/ 파트너 문의 (the first site's 3ee5bff35): a form that writes the mail to partners.contact in
+        # the visitor's mail app (site.js [data-pc-form]; without JS the form posts to the mailto: address). Nothing is
+        # stored or sent by the site. Not in the sitemap.
+        if P["contact"]:
+            cpath = partners.CONTACT_PATH
+            cpage = _simple_page(S, cpath, f"{site_name} 파트너 문의",
+                                 f"{site_name} 숙소·콘텐츠 파트너 제휴를 문의합니다. 입력한 내용은 메일로 {P['contact']}에 갑니다.",
+                                 [*crumbs, ("문의", S.abs(cpath))], None)
+            _render(env, S, out, "partners_contact.html.j2", cpath, cpage, "partners", None, in_sitemap=False, P=P)
+
     # /sun/ 일출·일몰 시간 and /transport/ 교통 시간표 (pipeline/timetables.py, operator 2026-10-31: the new public
     # data on the site, for search and AI answers): Korean pages, WebPage + BreadcrumbList + Dataset, lastmod the data's
     # checked date (never shown)
@@ -2086,8 +2161,9 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
             themes=[t for t in S.themes if any(t["slug"] in (e.get("themes") or []) for e in S.entities)], h=h,
             ask_starters=ask_starters,
             # the SNS row (owner 2026-10-14: 'SNS 게시물이 좀 더 잘 보이면'): the newest published posts, our notes only
-            home_posts=sorted([a for a in getattr(S, "abroad", None) or [] if a.get("kind") == "post"],
-                              key=lambda a: (a.get("date") or "", a["id"]), reverse=True)[:8],
+            # each card topped by the place it shows (present.home_posts, the first site's a11b69248)
+            home_posts=present.home_posts(sorted([a for a in getattr(S, "abroad", None) or [] if a.get("kind") == "post"],
+                                                 key=lambda a: (a.get("date") or "", a["id"]), reverse=True)[:8]),
             n_posts=sum(a.get("kind") == "post" for a in getattr(S, "abroad", None) or []))
 
     # the 404 page is never indexed (it answers no question; Vercel serves it with status 404), and it says what it is
@@ -2130,7 +2206,8 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
             print(f"오류: {x}", file=sys.stderr)
         raise SystemExit(f"외국어 판 번역이 모자라 빌드를 멈춥니다({len(incomplete)}건, site.json intl.require_complete)")
 
-    # assets: the partials in templates/assets/css become one /assets/style.css (see site_css); the folder itself
+    # assets: the partials in templates/assets/css become /assets/style.css (see site_css) and the page sheets
+    # (PAGE_SHEETS: wide.css, page-home.css, page-times.css, page-partners.css); the folder itself
     # is not published. AI art renditions (templates/assets/art, pipeline/art.py) go out only when a page uses them.
     shutil.copytree(TEMPLATES / "assets", out / "assets", ignore=shutil.ignore_patterns("css", "art"))
     art.copy_used(out)
@@ -2140,6 +2217,8 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
         if (brand / src).exists():
             shutil.copyfile(brand / src, out / dst)
     (out / "assets" / "style.css").write_text(site_css(art.slot_css_needed(out)), "utf-8")
+    for name, file in PAGE_SHEETS.items():
+        (out / "assets" / file).write_text(page_css(name), "utf-8")
     (out / "robots.txt").write_text(robots_txt(S), "utf-8")
     (out / "sitemap.xml").write_text(sitemap_xml(S), "utf-8")
     (out / "rss.xml").write_text(rss_xml(S), "utf-8")

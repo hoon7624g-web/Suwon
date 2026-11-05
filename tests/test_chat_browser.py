@@ -190,16 +190,28 @@ def test_desktop_card(browser, site):
 
 def test_phone_sheet_and_error_states(browser, site):
     ctx, page, errors, calls = open_page(browser, 390, 844, [NOT_CONFIGURED, BUSY, OK])
-    page.goto(site["url"] + "/")
+    # a place page with its call/route bar (시안 A, ported 2026-11-05): the launcher's round face sits above the bar,
+    # there from the first paint and while scrolling
+    page.goto(site["url"] + "/places/eunpa-lake-park/")
     fab = page.locator(".chat-fab")
-    assert fab.is_visible()                                   # there from the first paint, on the home too
-    box = fab.bounding_box()
-    assert box["height"] == 76 and box["width"] == 76 and box["y"] + box["height"] <= 844 - 16   # a round face (the first site's owner 2026-10-14: bigger; 10-31: 76px)
+    assert fab.is_visible() and page.locator(".pl-bar").is_visible()
+    box, bar = fab.bounding_box(), page.locator(".pl-bar").bounding_box()
+    assert box["height"] == 76 and box["width"] == 76 and box["y"] + box["height"] <= bar["y"]   # a round face (the first site's owner 2026-10-14: bigger; 10-31: 76px)
     page.mouse.wheel(0, 700)
     page.wait_for_timeout(500)
     assert fab.is_visible() and fab.bounding_box()["height"] == 76                               # the same face while scrolling
     assert fab.get_attribute("aria-label").startswith("AI 챗봇")                                   # the name stays
-    fab.click()
+    # the home on a phone: the tab bar's 'AI 챗봇' is the page's one chat opener (it presses the launcher, site.js
+    # [data-tab-chat]; the first site's c2552acc7) — the launcher's face is not shown beside it
+    page.goto(site["url"] + "/")
+    tab = page.locator("[data-tab-chat]")
+    assert tab.is_visible() and not fab.is_visible()
+    tb = page.locator(".tabbar").bounding_box()
+    assert tb["height"] == 64 and tb["y"] + tb["height"] <= 844 - 12
+    page.mouse.wheel(0, 700)
+    page.wait_for_timeout(500)
+    assert tab.is_visible()                                   # the bar stays while scrolling
+    tab.click()
     panel = page.locator("#chat")
     panel.wait_for(state="visible")
     assert panel.get_attribute("aria-modal") == "true"

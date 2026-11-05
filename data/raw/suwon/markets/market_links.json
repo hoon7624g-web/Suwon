@@ -1,0 +1,330 @@
+{
+ "links": [
+  {
+   "id": "tourapi-132105",
+   "name": "반딧불이 연무시장",
+   "status": "published",
+   "anchor": {
+    "name": "반딧불이연무시장",
+    "address": "경기도 수원시 장안구 월드컵로428번길 10",
+    "meters": 1,
+    "stores": "194",
+    "opened": "2011",
+    "base_date": "2025-11-10"
+   },
+   "anchors_found": 1,
+   "onnuri": [
+    "반딧불이연무시장"
+   ],
+   "onnuri_rows": 112,
+   "rejected": []
+  },
+  {
+   "id": "tourapi-2753658",
+   "name": "북수원시장",
+   "status": "published",
+   "anchor": {
+    "name": "북수원시장",
+    "address": "경기도 수원시 장안구 파장로82번길 9",
+    "meters": 0,
+    "stores": "150",
+    "opened": "2005",
+    "base_date": "2025-11-10"
+   },
+   "anchors_found": 1,
+   "onnuri": [
+    "북수원시장( 구 파장시장)"
+   ],
+   "onnuri_rows": 146,
+   "rejected": []
+  },
+  {
+   "id": "tourapi-2752967",
+   "name": "장안문거북시장",
+   "status": "published",
+   "anchor": {
+    "name": "장안문거북시장",
+    "address": "경기도 수원시 장안구 수성로382번길 24",
+    "meters": 1,
+    "stores": "117",
+    "opened": "2008",
+    "base_date": "2025-11-10"
+   },
+   "anchors_found": 1,
+   "onnuri": [
+    "장안문거북시장"
+   ],
+   "onnuri_rows": 89,
+   "rejected": []
+  },
+  {
+   "id": "tourapi-2752977",
+   "name": "정자시장",
+   "status": "published",
+   "anchor": {
+    "name": "정자시장",
+    "address": "경기도 수원시 장안구 수성로261번길 16",
+    "meters": 108,
+    "stores": "150",
+    "opened": "2009",
+    "base_date": "2025-11-10"
+   },
+   "anchors_found": 1,
+   "onnuri": [
+    "정자시장"
+   ],
+   "onnuri_rows": 124,
+   "rejected": []
+  },
+  {
+   "id": "tourapi-2752643",
+   "name": "조원시장",
+   "status": "published",
+   "anchor": {
+    "name": "조원시장",
+    "address": "경기도 수원시 장안구 조원로89번길 8",
+    "meters": 136,
+    "stores": "135",
+    "opened": "2008",
+    "base_date": "2025-11-10"
+   },
+   "anchors_found": 1,
+   "onnuri": [
+    "조원시장"
+   ],
+   "onnuri_rows": 73,
+   "rejected": []
+  },
+  {
+   "id": "tourapi-2753389",
+   "name": "권선종합시장",
+   "status": "published",
+   "anchor": {
+    "name": "권선종합시장",
+    "address": "경기도 수원시 권선구 세권로 185",
+    "meters": 26,
+    "stores": "108",
+    "opened": "2005",
+    "base_date": "2025-11-10"
+   },
+   "anchors_found": 1,
+   "onnuri": [
+    "권선종합시장"
+   ],
+   "onnuri_rows": 61,
+   "rejected": []
+  },
+  {
+   "id": "tourapi-2753679",
+   "name": "남문로데오시장",
+   "status": "published",
+   "anchor": {
+    "name": "남문로데오시장",
+    "address": "경기도 수원시 팔달구 행궁로 88",
+    "meters": 9,
+    "stores": "174",
+    "opened": "2005",
+    "base_date": "2025-11-10"
+   },
+   "anchors_found": 1,
+   "onnuri": [
+    "수원남문로데오시장"
+   ],
+   "onnuri_rows": 77,
+   "rejected": []
+  },
+  {
+   "id": "tourapi-2753395",
+   "name": "매산시장",
+   "status": "published",
+   "anchor": {
+    "name": "매산시장",
+    "address": "경기도 수원시 팔달구 권선로 477",
+    "meters": 36,
+    "stores": "103",
+    "opened": "2011",
+    "base_date": "2025-11-10"
+   },
+   "anchors_found": 1,
+   "onnuri": [
+    "매산시장"
+   ],
+   "onnuri_rows": 62,
+   "rejected": []
+  },
+  {
+   "id": "tourapi-1177952",
+   "name": "못골종합시장 (못골시장)",
+   "status": "published",
+   "anchor": {
+    "name": "못골종합시장",
+    "address": "경기도 수원시 팔달구 수원천로 254",
+    "meters": 64,
+    "stores": "86",
+    "opened": "2005",
+    "base_date": "2025-11-10"
+   },
+   "anchors_found": 1,
+   "onnuri": [
+    "수원못골종합시장"
+   ],
+   "onnuri_rows": 93,
+   "rejected": []
+  },
+  {
+   "id": "tourapi-2753669",
+   "name": "미나리광시장",
+   "status": "published",
+   "anchor": {
+    "name": "미나리광시장",
+    "address": "경기도 수원시 팔달구 수원천로 266-4",
+    "meters": 0,
+    "stores": "51",
+    "opened": "2006",
+    "base_date": "2025-11-10"
+   },
+   "anchors_found": 1,
+   "onnuri": [
+    "미나리광시장"
+   ],
+   "onnuri_rows": 56,
+   "rejected": []
+  },
+  {
+   "id": "tourapi-132352",
+   "name": "수원 영동시장",
+   "status": "published",
+   "anchor": {
+    "name": "영동시장",
+    "address": "경기도 수원시 팔달구 수원천로255번길 6",
+    "meters": 3,
+    "stores": "282",
+    "opened": "2006",
+    "base_date": "2025-11-10"
+   },
+   "anchors_found": 1,
+   "onnuri": [
+    "수원영동시장"
+   ],
+   "onnuri_rows": 186,
+   "rejected": []
+  },
+  {
+   "id": "tourapi-2753666",
+   "name": "수원역전시장",
+   "status": "published",
+   "anchor": {
+    "name": "역전시장",
+    "address": "경기도 수원시 팔달구 매산로 2-10",
+    "meters": 69,
+    "stores": "300",
+    "opened": "2006",
+    "base_date": "2025-11-10"
+   },
+   "anchors_found": 1,
+   "onnuri": [
+    "수원역전시장"
+   ],
+   "onnuri_rows": 77,
+   "rejected": []
+  },
+  {
+   "id": "tourapi-2752971",
+   "name": "지동시장",
+   "status": "published",
+   "anchor": {
+    "name": "지동시장",
+    "address": "경기도 수원시 팔달구 팔달문로 19",
+    "meters": 26,
+    "stores": "219",
+    "opened": "2005",
+    "base_date": "2025-11-10"
+   },
+   "anchors_found": 1,
+   "onnuri": [
+    "지동시장"
+   ],
+   "onnuri_rows": 57,
+   "rejected": []
+  },
+  {
+   "id": "tourapi-2752650",
+   "name": "팔달문시장",
+   "status": "published",
+   "anchor": {
+    "name": "팔달문시장",
+    "address": "경기도 수원시 팔달구 정조로770번길 17",
+    "meters": 83,
+    "stores": "221",
+    "opened": "2005",
+    "base_date": "2025-11-10"
+   },
+   "anchors_found": 1,
+   "onnuri": [
+    "팔달문시장"
+   ],
+   "onnuri_rows": 107,
+   "rejected": []
+  },
+  {
+   "id": "tourapi-3351843",
+   "name": "화서시장",
+   "status": "published",
+   "anchor": {
+    "name": "화서시장",
+    "address": "경기도 수원시 팔달구 동말로 72",
+    "meters": 5,
+    "stores": "229",
+    "opened": "2005",
+    "base_date": "2025-11-10"
+   },
+   "anchors_found": 1,
+   "onnuri": [
+    "화서시장"
+   ],
+   "onnuri_rows": 137,
+   "rejected": []
+  },
+  {
+   "id": "tourapi-2753656",
+   "name": "구매탄시장",
+   "status": "published",
+   "anchor": {
+    "name": "구매탄시장",
+    "address": "경기도 수원시 영통구 매여울로53번길 50-1",
+    "meters": 19,
+    "stores": "118",
+    "opened": "2006",
+    "base_date": "2025-11-10"
+   },
+   "anchors_found": 1,
+   "onnuri": [
+    "구매탄시장"
+   ],
+   "onnuri_rows": 77,
+   "rejected": []
+  }
+ ],
+ "unlinked": [
+  {
+   "id": "tourapi-132353",
+   "name": "수원 농수산물도매시장",
+   "status": "published",
+   "anchor": null,
+   "anchors_found": 0,
+   "onnuri": [],
+   "onnuri_rows": 0,
+   "rejected": []
+  },
+  {
+   "id": "tourapi-2589025",
+   "name": "수원 남문시장",
+   "status": "published",
+   "anchor": null,
+   "anchors_found": 0,
+   "onnuri": [],
+   "onnuri_rows": 0,
+   "rejected": []
+  }
+ ]
+}

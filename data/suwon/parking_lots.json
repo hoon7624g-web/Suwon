@@ -1,0 +1,3652 @@
+{
+ "_about": "수원시의 주차장(공공데이터포털 전국주차장정보표준데이터 1개 제공기관 파일, 좌표가 있고 주소가 이 지역인 행 전부). 장소 페이지의 '근처 공영주차장'은 nearby가 false가 아닌 공영 주차장만 쓴다. 장소 자체의 주차 정보(places.json facts.parking)가 아니며 색인 기준(필수 정보 묶음)에 들어가지 않는다. /home/user/work/filedata/scripts/build_nearby.py가 원본 파일에서 만든 후보다 — 손으로 고치지 않는다.",
+ "source": {
+  "standard": {
+   "name": "경기도 수원시 · 공공데이터포털 전국주차장정보표준데이터",
+   "provider": "공공데이터포털",
+   "row_provider": "경기도 수원시",
+   "url": "https://www.data.go.kr/data/15012896/standard.do",
+   "checked_at": "2026-11-05",
+   "files": {
+    "suwonsi": {
+     "provider": "경기도 수원시",
+     "file": "경기도_수원시_주차장정보",
+     "data_reference_date": "2026-04-20",
+     "download": "https://www.data.go.kr/cmm/cmm/fileDownload.do?atchFileId=FILE_000000003628108&fileDetailSn=1",
+     "raw": "raw/parking/15012896_경기도_수원시_FILE_000000003628108.csv",
+     "license": "이용허락범위 제한 없음"
+    }
+   },
+   "license": "공공데이터포털 이용허락범위: 경기도 수원시 '이용허락범위 제한 없음' (2026-11-05 확인) · 공공데이터법 제3조에 따른 자유 이용, 출처 표시",
+   "fields": "주차기본시간·추가단위시간은 분. 1일주차권요금적용시간은 applies_raw로만 둔다. 월정기권요금은 화면에 쓰지 않는다."
+  }
+ },
+ "contacts": [],
+ "lots": [
+  {
+   "id": "suwon-prk-suwonsi-200-2-000001",
+   "management_no": "200-2-000001",
+   "name": "광교공영",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 장안구 광교산로 160 (하광교동)",
+   "address_jibun": "경기도 수원시 장안구 하광교동403-1",
+   "lat": 37.30154124,
+   "lng": 127.0318348,
+   "spaces": 360,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "3",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 100
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 100
+      },
+      "day": {
+       "won": 4000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 40000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-200-2-000002",
+   "management_no": "200-2-000002",
+   "name": "만석공원 제5",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 장안구 송정로 9",
+   "address_jibun": "경기도 수원시 장안구 송죽동 417-23",
+   "lat": 37.29757718,
+   "lng": 126.9991131,
+   "spaces": 104,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "3",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 100
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 100
+      },
+      "day": {
+       "won": 4000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 40000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-200-2-000003-fb649a",
+   "management_no": "200-2-000003",
+   "name": "만석공원 제1",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 장안구 송정로 9",
+   "address_jibun": "경기도 수원시 장안구 송죽동 417-23",
+   "lat": 37.29757718,
+   "lng": 126.9991131,
+   "spaces": 76,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "3",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 100
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 100
+      },
+      "day": {
+       "won": 4000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 40000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-200-2-000003-b103f2",
+   "management_no": "200-2-000003",
+   "name": "백설공영",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 장안구 정자천로133번길 26",
+   "address_jibun": "경기도 수원시 장안구 정자동 879-1",
+   "lat": 37.29513422,
+   "lng": 126.9911147,
+   "spaces": 56,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 300
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 70000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-200-2-000004-1e366e",
+   "management_no": "200-2-000004",
+   "name": "만석공원 제2",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 장안구 송정로 9",
+   "address_jibun": "경기도 수원시 장안구 송죽동 417-23",
+   "lat": 37.29757718,
+   "lng": 126.9991131,
+   "spaces": 61,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "3",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 100
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 100
+      },
+      "day": {
+       "won": 4000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 40000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-200-2-000004-20eab3",
+   "management_no": "200-2-000004",
+   "name": "성대환승",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 장안구 덕영대로 417번길1",
+   "address_jibun": "경기도 수원시 장안구 율전동192-13",
+   "lat": 37.30128763,
+   "lng": 126.9686162,
+   "spaces": 160,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "1",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 500
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 500
+      },
+      "day": {
+       "won": 10000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 80000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-200-2-000005-b926dc",
+   "management_no": "200-2-000005",
+   "name": "만석공원 제3",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 장안구 송정로 9",
+   "address_jibun": "경기도 수원시 장안구 송죽동 417-23",
+   "lat": 37.29757718,
+   "lng": 126.9991131,
+   "spaces": 50,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "3",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 100
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 100
+      },
+      "day": {
+       "won": 4000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 40000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-200-2-000005-c8485b",
+   "management_no": "200-2-000005",
+   "name": "영화동",
+   "operation": "공영",
+   "type": "노외",
+   "address": null,
+   "address_jibun": "경기도 수원시 장안구 영화동 250-1",
+   "lat": 37.2931485668,
+   "lng": 127.0139655678,
+   "spaces": 212,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 300
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 70000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-200-2-000006-598db3",
+   "management_no": "200-2-000006",
+   "name": "만석공원 제4",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 장안구 송정로 9",
+   "address_jibun": "경기도 수원시 장안구 송죽동 417-23",
+   "lat": 37.29757718,
+   "lng": 126.9991131,
+   "spaces": 43,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "3",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 100
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 100
+      },
+      "day": {
+       "won": 4000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 40000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-200-2-000006-a4d287",
+   "management_no": "200-2-000006",
+   "name": "율전공영",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 장안구 서부로2106번길 27",
+   "address_jibun": "경기도 수원시 장안구 율전동 433-2",
+   "lat": 37.29761545,
+   "lng": 126.9714256,
+   "spaces": 118,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 300
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 70000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-200-2-000007-893bd3",
+   "management_no": "200-2-000007",
+   "name": "성균관대역환승(신)",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 장안구 화산로 242",
+   "address_jibun": "경기도 수원시 장안구 율전동 301-1",
+   "lat": 37.30008654,
+   "lng": 126.9703313,
+   "spaces": 191,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "1",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 500
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 500
+      },
+      "day": {
+       "won": 10000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 80000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-200-2-000007-139c7e",
+   "management_no": "200-2-000007",
+   "name": "화홍문공영",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 장안구 팔달로 280",
+   "address_jibun": "경기도 수원시 장안구 영화동 154-12",
+   "lat": 37.28988748,
+   "lng": 127.0158124,
+   "spaces": 497,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 300
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 70000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-200-2-000011",
+   "management_no": "200-2-000011",
+   "name": "파장동맛고을거리",
+   "operation": "공영",
+   "type": "노외",
+   "address": null,
+   "address_jibun": "경기도 수원시 장안구 파장동 338-18",
+   "lat": 37.3146687601,
+   "lng": 127.0007371587,
+   "spaces": 70,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "3",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 100
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 100
+      },
+      "day": {
+       "won": 4000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 40000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-200-2-000012",
+   "management_no": "200-2-000012",
+   "name": "율전 제3공영",
+   "operation": "공영",
+   "type": "노외",
+   "address": null,
+   "address_jibun": "경기도 수원시 장안구 율전동 281-3",
+   "lat": 37.2990071867,
+   "lng": 126.9716982775,
+   "spaces": 44,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 300
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 70000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-201-2-000001",
+   "management_no": "201-2-000001",
+   "name": "곡반2공영",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 권선구 곡선로49번길 14-5",
+   "address_jibun": null,
+   "lat": 37.23952389,
+   "lng": 127.0306259,
+   "spaces": 204,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 300
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 70000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-201-2-000002",
+   "management_no": "201-2-000002",
+   "name": "권선지하공영",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 권선구 세지로82번길 15-3",
+   "address_jibun": "경기도 수원시 권선구 권선동 980-2",
+   "lat": 37.25910245,
+   "lng": 127.0188254,
+   "spaces": 66,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 300
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 70000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-201-2-000004-c83f02",
+   "management_no": "201-2-000004",
+   "name": "수원화물공영차고지(고색)",
+   "operation": "공영",
+   "type": "노외",
+   "address": null,
+   "address_jibun": "경기도 수원시 권선구 고색동 551",
+   "lat": 37.2381349151,
+   "lng": 126.9885846708,
+   "spaces": 205,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "3",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 100
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 100
+      },
+      "day": {
+       "won": 4000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 40000
+      }
+     }
+    ],
+    "differs": false
+   },
+   "nearby": false,
+   "nearby_excluded": "화물·버스 전용(이름)"
+  },
+  {
+   "id": "suwon-prk-suwonsi-201-2-000004-7546b8",
+   "management_no": "201-2-000004",
+   "name": "대황교화물",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 권선구 정조로 224 (대황교동)",
+   "address_jibun": "경기도 수원시 권선구 대황교동 31-3",
+   "lat": 37.23051924,
+   "lng": 127.0218832,
+   "spaces": 244,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "3",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 100
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 100
+      },
+      "day": {
+       "won": 4000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 40000
+      }
+     }
+    ],
+    "differs": false
+   },
+   "nearby": false,
+   "nearby_excluded": "화물·버스 전용(이름)"
+  },
+  {
+   "id": "suwon-prk-suwonsi-201-2-000005",
+   "management_no": "201-2-000005",
+   "name": "세류역환승",
+   "operation": "공영",
+   "type": "노외",
+   "address": null,
+   "address_jibun": "경기도 수원시 권선구 장지동 44-10",
+   "lat": 37.24341416,
+   "lng": 127.0145079,
+   "spaces": 136,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 300
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 70000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-201-2-000006",
+   "management_no": "201-2-000006",
+   "name": "수원역환승",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 권선구 세화로 136(서둔동)",
+   "address_jibun": "경기도 수원시 권선구 서둔동 296-84",
+   "lat": 37.26568452,
+   "lng": 126.998785,
+   "spaces": 129,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "기타",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 600
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 600
+      },
+      "day": {
+       "won": 15000,
+       "applies_raw": "24"
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-201-2-000007",
+   "management_no": "201-2-000007",
+   "name": "터미널공영",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 권선구 경수대로 270",
+   "address_jibun": "경기도 수원시 권선구 권선동 1189",
+   "lat": 37.25018811,
+   "lng": 127.0207006,
+   "spaces": 51,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 300
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 70000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-201-2-000008",
+   "management_no": "201-2-000008",
+   "name": "역세권1지구",
+   "operation": "공영",
+   "type": "노외",
+   "address": null,
+   "address_jibun": "경기도 수원시 권선구 서둔동 393",
+   "lat": 37.261139424,
+   "lng": 126.9904924111,
+   "spaces": 100,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "1",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 500
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 500
+      },
+      "day": {
+       "won": 10000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 80000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-201-2-000009",
+   "management_no": "201-2-000009",
+   "name": "곡반정동제7공영",
+   "operation": "공영",
+   "type": "노외",
+   "address": null,
+   "address_jibun": "경기도 수원시 권선구 곡반정동 652-1",
+   "lat": 37.2444036623,
+   "lng": 127.0351468107,
+   "spaces": 92,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 300
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 70000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-201-2-000010",
+   "management_no": "201-2-000010",
+   "name": "곡반정동제8공영",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 권선구 곡반정로 158번길 4",
+   "address_jibun": null,
+   "lat": 37.2413083522,
+   "lng": 127.0335579688,
+   "spaces": 271,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 300
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 70000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-201-2-000011",
+   "management_no": "201-2-000011",
+   "name": "구운공원공영",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 권선구 구운로14번길 42",
+   "address_jibun": null,
+   "lat": 37.2787033,
+   "lng": 126.9758424,
+   "spaces": 67,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 300
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 70000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-201-3-000001",
+   "management_no": "201-3-000001",
+   "name": "권선구청 부설",
+   "operation": "공영",
+   "type": "부설",
+   "address": "경기도 수원시 권선구 호매실로 12",
+   "address_jibun": "경기도 수원시 권선구 탑동 900",
+   "lat": 37.25763416,
+   "lng": 126.9718985,
+   "spaces": 256,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 30,
+       "won": 600
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-201-3-000002",
+   "management_no": "201-3-000002",
+   "name": "농수산시장",
+   "operation": "공영",
+   "type": "부설",
+   "address": "경기도 수원시 권선구 세권로 243",
+   "address_jibun": "경기도 수원시 권선구 권선동 1229",
+   "lat": 37.25489793,
+   "lng": 127.0304237,
+   "spaces": 779,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-267-2036",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 300
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 200
+      },
+      "day": {
+       "won": 6000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 60000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-202-2-000001",
+   "management_no": "202-2-000001",
+   "name": "교동공영",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 팔달구 향교로 140",
+   "address_jibun": "경기도 수원시 팔달구 교동 98",
+   "lat": 37.27321263,
+   "lng": 127.0153514,
+   "spaces": 243,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 300
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 70000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-202-2-000002",
+   "management_no": "202-2-000002",
+   "name": "꽃뫼환승",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 팔달구 화산로6번길 6",
+   "address_jibun": "경기도 수원시 팔달구 화서동 689-1",
+   "lat": 37.28508836,
+   "lng": 126.9862825,
+   "spaces": 136,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 300
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 70000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-202-2-000003",
+   "management_no": "202-2-000003",
+   "name": "남수동",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 팔달구 창룡대로26번길 19",
+   "address_jibun": "경기도 수원시 팔달구 남수동 41-7",
+   "lat": 37.2809334,
+   "lng": 127.0194508,
+   "spaces": 63,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "20:00"
+    ],
+    "saturday": [
+     "00:00",
+     "20:00"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 300
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 70000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-202-2-000005",
+   "management_no": "202-2-000005",
+   "name": "우만공원공영",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 팔달구 세지로 436",
+   "address_jibun": "경기도 수원시 팔달구 우만동 500",
+   "lat": 37.28706781,
+   "lng": 127.0320999,
+   "spaces": 119,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 300
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 70000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-202-2-000006",
+   "management_no": "202-2-000006",
+   "name": "인계공영",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 팔달구 장다리로 306번길 24",
+   "address_jibun": "경기도 수원시 팔달구 인계동 944-1",
+   "lat": 37.27438661,
+   "lng": 127.0305873,
+   "spaces": 56,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 300
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 70000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-202-2-000007",
+   "management_no": "202-2-000007",
+   "name": "인계동주택",
+   "operation": "공영",
+   "type": "노외",
+   "address": null,
+   "address_jibun": "경기도 수원시 팔달구 인계동821-4",
+   "lat": 37.27178632,
+   "lng": 127.023842,
+   "spaces": 80,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 300
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 70000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-202-2-000008",
+   "management_no": "202-2-000008",
+   "name": "창룡공영",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 팔달구 월드컵로 381번길 2",
+   "address_jibun": "경기도 수원시 팔달구 우만동582",
+   "lat": 37.29134418,
+   "lng": 127.0279964,
+   "spaces": 87,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 300
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 70000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-202-2-000011",
+   "management_no": "202-2-000011",
+   "name": "장안동공영",
+   "operation": "공영",
+   "type": "노외",
+   "address": null,
+   "address_jibun": "경기도 수원시 팔달구 장안동 51",
+   "lat": 37.2865189636,
+   "lng": 127.0144079967,
+   "spaces": 163,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "1",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 500
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 500
+      },
+      "day": {
+       "won": 10000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 80000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-202-2-000012",
+   "management_no": "202-2-000012",
+   "name": "우만2동공영주차장",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 팔달구 아주로 27번길 5",
+   "address_jibun": null,
+   "lat": 37.2769076478,
+   "lng": 127.0433469164,
+   "spaces": 173,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 300
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 70000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-202-2-000013",
+   "management_no": "202-2-000013",
+   "name": "화서시장공영주차장",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 팔달구 팔달로 119번길 29",
+   "address_jibun": null,
+   "lat": 37.2789217879,
+   "lng": 127.0021642775,
+   "spaces": 159,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "1",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 500
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 500
+      },
+      "day": {
+       "won": 10000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 80000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-202-2-000014",
+   "management_no": "202-2-000014",
+   "name": "고등동",
+   "operation": "공영",
+   "type": "노외",
+   "address": null,
+   "address_jibun": "경기도 수원시 팔달구 고등동 317",
+   "lat": 37.2734279835,
+   "lng": 127.0015088434,
+   "spaces": 40,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "1",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 500
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 500
+      },
+      "day": {
+       "won": 10000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 80000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-202-2-000015",
+   "management_no": "202-2-000015",
+   "name": "화서동먹거리촌",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 팔달구 수성로157번길 27-17",
+   "address_jibun": "경기도 수원시 팔달구 화서동 678-3",
+   "lat": 37.28766805,
+   "lng": 126.989095957,
+   "spaces": 142,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "1",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 500
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 500
+      },
+      "day": {
+       "won": 10000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 80000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-202-3-000001",
+   "management_no": "202-3-000001",
+   "name": "선경도서관",
+   "operation": "공영",
+   "type": "부설",
+   "address": "경기도 수원시 팔달구 신풍로23번길 68(신풍동)",
+   "address_jibun": "경기도 수원시 팔달구 신풍동 123-69",
+   "lat": 37.28386229,
+   "lng": 127.0104322,
+   "spaces": 73,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:00"
+    ],
+    "saturday": [
+     "00:00",
+     "23:00"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 30,
+       "won": 600
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-202-3-000002",
+   "management_no": "202-3-000002",
+   "name": "시청2부설",
+   "operation": "공영",
+   "type": "부설",
+   "address": "경기도 수원시 팔달구 효원로 241(인계동)",
+   "address_jibun": "경기도 수원시 팔달구 인계동1111",
+   "lat": 37.2634535,
+   "lng": 127.0286621,
+   "spaces": 212,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "1",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 30,
+       "won": 900
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 400
+      },
+      "day": {
+       "won": 9500,
+       "applies_raw": "24"
+      }
+     }
+    ],
+    "differs": false
+   },
+   "nearby": false,
+   "nearby_excluded": "좌표 공유(같은 좌표에 이름이 다른 주차장 3곳 — 주차장마다의 위치가 아님)"
+  },
+  {
+   "id": "suwon-prk-suwonsi-202-3-000003",
+   "management_no": "202-3-000003",
+   "name": "시청별관",
+   "operation": "공영",
+   "type": "부설",
+   "address": "경기도 수원시 팔달구 효원로 241(인계동)",
+   "address_jibun": "경기도 수원시 팔달구 인계동1111",
+   "lat": 37.2634535,
+   "lng": 127.0286621,
+   "spaces": 364,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+공휴일",
+    "weekday": [
+     "00:00",
+     "22:00"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "1",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 30,
+       "won": 900
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 400
+      },
+      "day": {
+       "won": 9500,
+       "applies_raw": "24"
+      }
+     }
+    ],
+    "differs": false
+   },
+   "nearby": false,
+   "nearby_excluded": "좌표 공유(같은 좌표에 이름이 다른 주차장 3곳 — 주차장마다의 위치가 아님)"
+  },
+  {
+   "id": "suwon-prk-suwonsi-202-3-000004",
+   "management_no": "202-3-000004",
+   "name": "시청정문",
+   "operation": "공영",
+   "type": "부설",
+   "address": "경기도 수원시 팔달구 효원로 241(인계동)",
+   "address_jibun": "경기도 수원시 팔달구 인계동1111",
+   "lat": 37.2634535,
+   "lng": 127.0286621,
+   "spaces": 90,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "1",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 30,
+       "won": 900
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 400
+      },
+      "day": {
+       "won": 9500,
+       "applies_raw": "24"
+      }
+     }
+    ],
+    "differs": false
+   },
+   "nearby": false,
+   "nearby_excluded": "좌표 공유(같은 좌표에 이름이 다른 주차장 3곳 — 주차장마다의 위치가 아님)"
+  },
+  {
+   "id": "suwon-prk-suwonsi-202-3-000005",
+   "management_no": "202-3-000005",
+   "name": "화성박물관,팔달구청",
+   "operation": "공영",
+   "type": "부설",
+   "address": "경기도 수원시 팔달구 창룡대로 23",
+   "address_jibun": "경기도 수원시 팔달구 매향동 49",
+   "lat": 37.28265077,
+   "lng": 127.0200791,
+   "spaces": 340,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 30,
+       "won": 600
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-203-2-000001",
+   "management_no": "203-2-000001",
+   "name": "광교 1동 공영",
+   "operation": "공영",
+   "type": "노외",
+   "address": null,
+   "address_jibun": "경기도 수원시 영통구 이의동 1260-6",
+   "lat": 37.299177397,
+   "lng": 127.0442300382,
+   "spaces": 35,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 300
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 70000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-203-2-000002",
+   "management_no": "203-2-000002",
+   "name": "광교 대학로 공영",
+   "operation": "공영",
+   "type": "노외",
+   "address": null,
+   "address_jibun": "경기도 수원시 영통구 원천동 577",
+   "lat": 37.277697173,
+   "lng": 127.0502133837,
+   "spaces": 49,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 300
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 70000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-203-2-000003-388f56",
+   "management_no": "203-2-000003",
+   "name": "신동 제1공영",
+   "operation": "공영",
+   "type": "노외",
+   "address": null,
+   "address_jibun": "경기도 수원시 영통구 신동 931-5",
+   "lat": 37.2482419536,
+   "lng": 127.0446642623,
+   "spaces": 62,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 300
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 70000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-203-2-000003-0879cd",
+   "management_no": "203-2-000003",
+   "name": "광교 중앙마을 공영",
+   "operation": "공영",
+   "type": "노외",
+   "address": null,
+   "address_jibun": "경기도 수원시 영통구 이의동 1274",
+   "lat": 37.2984455634,
+   "lng": 127.0435348018,
+   "spaces": 46,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 300
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 70000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-203-2-000005",
+   "management_no": "203-2-000005",
+   "name": "매봉공영",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 영통구 동탄원천로1109번길 61",
+   "address_jibun": "경기도 수원시 영통구 매탄동 1210",
+   "lat": 37.26961675,
+   "lng": 127.0550603,
+   "spaces": 200,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 300
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 70000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-203-2-000006",
+   "management_no": "203-2-000006",
+   "name": "매탄공원",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 영통구 매탄로 185",
+   "address_jibun": "경기도 수원시 영통구 매탄동 811",
+   "lat": 37.26713341,
+   "lng": 127.0454804,
+   "spaces": 222,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 300
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 70000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-203-2-000007",
+   "management_no": "203-2-000007",
+   "name": "신대호수",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 영통구 광교호수로 214",
+   "address_jibun": "경기도 수원시 영통구 하동1008",
+   "lat": 37.28351029,
+   "lng": 127.0772467,
+   "spaces": 245,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "3",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 100
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 100
+      },
+      "day": {
+       "won": 4000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 40000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-203-2-000008",
+   "management_no": "203-2-000008",
+   "name": "영통공영",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 영통구 봉영로 1598",
+   "address_jibun": "경기도 수원시 영통구 영통동995-3",
+   "lat": 37.25331525,
+   "lng": 127.0739484,
+   "spaces": 305,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "1",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 500
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 500
+      },
+      "day": {
+       "won": 10000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 80000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-203-2-000009",
+   "management_no": "203-2-000009",
+   "name": "원천호수",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 영통구 광교호수로 75",
+   "address_jibun": "경기도 수원시 영통구 하동 1024",
+   "lat": 37.27588505,
+   "lng": 127.0662683,
+   "spaces": 396,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "3",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 100
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 100
+      },
+      "day": {
+       "won": 4000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 40000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-203-2-000010",
+   "management_no": "203-2-000010",
+   "name": "카페거리1공영",
+   "operation": "공영",
+   "type": "노외",
+   "address": null,
+   "address_jibun": "경기도 수원시 영통구 이의동 1307-3",
+   "lat": 37.2940626616,
+   "lng": 127.0517297227,
+   "spaces": 64,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 300
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 70000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-203-2-000011",
+   "management_no": "203-2-000011",
+   "name": "행복한들",
+   "operation": "공영",
+   "type": "노외",
+   "address": "경기도 수원시 영통구 광교호수로 171",
+   "address_jibun": "경기도 수원시 영통구 하동1000",
+   "lat": 37.28335668,
+   "lng": 127.0719185,
+   "spaces": 229,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "3",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 100
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 100
+      },
+      "day": {
+       "won": 4000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 40000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-203-2-000012",
+   "management_no": "203-2-000012",
+   "name": "광교외식타운",
+   "operation": "공영",
+   "type": "노외",
+   "address": null,
+   "address_jibun": "경기도 수원시 영통구 이의동 1220-1",
+   "lat": 37.3114532696,
+   "lng": 127.0541754673,
+   "spaces": 33,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 300
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 70000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-203-2-000013",
+   "management_no": "203-2-000013",
+   "name": "신동 제3공영",
+   "operation": "공영",
+   "type": "노외",
+   "address": null,
+   "address_jibun": "경기도 수원시 영통구 신동 1012",
+   "lat": 37.24558288,
+   "lng": 127.04174289,
+   "spaces": 57,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 60,
+       "won": 300
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      },
+      "month": {
+       "won": 70000
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-203-3-000001",
+   "management_no": "203-3-000001",
+   "name": "영통구청",
+   "operation": "공영",
+   "type": "부설",
+   "address": "경기도 수원시 영통구 효원로 407",
+   "address_jibun": "경기도 수원시 영통구 매탄동 1268",
+   "lat": 37.25959894,
+   "lng": 127.0465078,
+   "spaces": 292,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:59"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 30,
+       "won": 600
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      }
+     }
+    ],
+    "differs": false
+   }
+  },
+  {
+   "id": "suwon-prk-suwonsi-203-3-000003",
+   "management_no": "203-3-000003",
+   "name": "광교홍재도서관",
+   "operation": "공영",
+   "type": "부설",
+   "address": "경기도 수원시 영통구 대학로88",
+   "address_jibun": null,
+   "lat": 37.3029355951,
+   "lng": 127.0474431295,
+   "spaces": 52,
+   "paid": "유료",
+   "hours": {
+    "days": "평일+토요일+공휴일",
+    "weekday": [
+     "00:00",
+     "23:59"
+    ],
+    "saturday": [
+     "00:00",
+     "23:00"
+    ],
+    "holiday": [
+     "00:00",
+     "23:59"
+    ]
+   },
+   "phone": "031-695-0930",
+   "manager": "수원도시공사",
+   "payment": "신용카드",
+   "grade": "2",
+   "provider": "경기도 수원시",
+   "file": "suwonsi",
+   "reference_date": "2026-04-16",
+   "fee": {
+    "versions": [
+     {
+      "source": "standard",
+      "label": "요금",
+      "source_name": "공공데이터포털 전국주차장정보표준데이터 · 경기도_수원시_주차장정보",
+      "url": "https://www.data.go.kr/data/15012896/standard.do",
+      "checked_at": "2026-11-05",
+      "basic": {
+       "minutes": 30,
+       "won": 600
+      },
+      "extra": {
+       "minutes": 10,
+       "won": 300
+      },
+      "day": {
+       "won": 7000,
+       "applies_raw": "24"
+      }
+     }
+    ],
+    "differs": false
+   }
+  }
+ ]
+}

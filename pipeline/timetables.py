@@ -517,14 +517,24 @@ def transport_page(S, V: dict) -> dict:
     """title, description, h1 and JSON-LD of /transport/."""
     url = S.abs(TRANSPORT_PATH)
     r = region_of(S)
-    title = f"{r} 교통 시간표 — {r}역 기차·고속버스·시외버스·{r}공항 첫차·막차·요금"
+    # only the modes the data has (수원: no flights in TAGO — no '{r}공항' in the title, 2026-11-05)
+    have = {m["mode"] for m in V["modes"]}
+    head = [w for k, w in (("train", f"{r}역 기차"), ("express_bus", "고속버스"), ("intercity_bus", "시외버스"),
+                           ("flight", f"{r}공항")) if k in have]
+    title = f"{r} 교통 시간표 — {'·'.join(head)} 첫차·막차·요금"
+    bus = [w for k, w in (("express_bus", "고속"), ("intercity_bus", "시외")) if k in have]
+    long_parts = ([f"{r}역 기차"] if "train" in have else []) + ([f"{'·'.join(bus)}버스"] if bus else []) \
+        + ([f"{r}공항 항공편"] if "flight" in have else [])
+    short = "·".join(w for k, w in (("train", "기차"), ("express_bus", "고속버스"), ("intercity_bus", "시외버스"),
+                                    ("flight", "항공편")) if k in have)
     labels = [t["label"] for t in V["tiles"]]
     desc = next((x for x in (
-        f"국토교통부 TAGO {V['both']} 배차로 {r}역 기차, 고속·시외버스, {r}공항 항공편의 첫차·막차·하루 횟수·요금을 정리했습니다.",
-        f"TAGO {V['both']} 배차로 {r} 기차·고속버스·시외버스·항공편의 첫차·막차·하루 횟수·요금을 정리했습니다.",
-        f"{r} 기차·고속버스·시외버스·항공편의 첫차·막차·하루 횟수·요금(TAGO {V['both']} 배차).") if len(x) <= 80), "")
+        f"국토교통부 TAGO {V['both']} 배차로 {', '.join(long_parts)}의 첫차·막차·하루 횟수·요금을 정리했습니다.",
+        f"TAGO {V['both']} 배차로 {r} {short}의 첫차·막차·하루 횟수·요금을 정리했습니다.",
+        f"{r} {short}의 첫차·막차·하루 횟수·요금(TAGO {V['both']} 배차).") if len(x) <= 80), "")
     crumbs = [("홈", S.site_url + "/"), (f"{r} 교통 시간표", url)]
-    ds_name = f"{r} 오가는 열차·고속버스·시외버스·항공 배차표"
+    ds_name = f"{r} 오가는 " + "·".join(w for k, w in (("train", "열차"), ("express_bus", "고속버스"), ("intercity_bus", "시외버스"),
+                                                    ("flight", "항공")) if k in have) + " 배차표"
     ds_desc = (f"{V['provider']} TAGO의 {V['both']} 하루 배차에서 {r}을 오가는 {'·'.join(labels)}의 출발·도착 시각과 "
                "요금을 노선별로 옮긴 표입니다.")
     portal = [m["src"]["url"] for m in V["modes"] if m["src"]["url"]]

@@ -19,6 +19,14 @@ from pipeline import chat_index, en_site, present
 from pipeline.build import State, build
 from pipeline.schema import FACT_ORDER, FIT_ORDER
 
+
+
+@pytest.fixture(scope="module", autouse=True)
+def _engine_both_values(engine_both_values):
+    """This module checks the engine's both-values display on this city's data (tests/conftest.py): since 2026-11-05 the
+    site shows one value per fact (site.json fact_conflicts 'primary'; tests/test_fact_conflicts.py checks that mode)."""
+
+
 ROOT = Path(__file__).resolve().parent.parent
 CITY = ROOT / "data" / "suwon"
 SAMPLE = ROOT / "data" / "sample"
@@ -182,8 +190,12 @@ def test_nearby_parking_stops_and_stations_name_their_sources(real, tmp_path):
             assert url in ext, url
         assert "(출처 확인 " in src, e["id"]
     assert all(n >= 1 for n in kinds.values()), kinds
-    # this city's places without nearby files: no doc claims a nearby lot, stop or station
-    assert not [k for k, d in real["docs"]["docs"].items() if d["k"] == "place" and "근처 공영주차장(" in d["x"]]
+    # this city's own data: a doc claims a nearby lot only where the page shows one (present.access_vm) — with no
+    # nearby files (before 2026-11-05) that is no doc at all
+    RS = real["S"]
+    shown = {e["_path"] for e in RS.entities if (present.access_vm(RS, e) or {}).get("lots")}
+    claimed = {k for k, d in real["docs"]["docs"].items() if d["k"] == "place" and "근처 공영주차장(" in d["x"]}
+    assert claimed == shown
 
 
 def test_dates_by_kind_and_course_values(real):
@@ -355,7 +367,12 @@ def test_bytes_do_not_depend_on_the_build_date(real, tmp_path, monkeypatch):
         @classmethod
         def today(cls):
             return cls(2031, 7, 1)
-    monkeypatch.setattr(B, "dt", SimpleNamespace(date=Later, timedelta=dt.timedelta, datetime=dt.datetime))
+
+    class LaterTime(dt.datetime):   # the build date is Seoul's day (State: datetime.now(Asia/Seoul); the first site's 80ab6b8ee3)
+        @classmethod
+        def now(cls, tz=None):
+            return cls(2031, 7, 1, 12, 0, tzinfo=tz)
+    monkeypatch.setattr(B, "dt", SimpleNamespace(date=Later, timedelta=dt.timedelta, datetime=LaterTime))
     # a dated facility notice ends on its `until` day by design (pipeline/notices.py): read them as on the real build
     # day, so everything else is still checked for the build date leaking in
     real_active, real_day = B.notices.active, real["S"].today
@@ -565,7 +582,8 @@ def test_a_restaurant_carries_its_tourapi_class_so_a_plan_can_pick_a_cafe(real):
     cafes = [(k, d) for k, d in food if d["f"]["ty"] in CAFE_TYPES]
     assert len(cafes) >= 5      # 6 of this city's 56 restaurants (2026-10-24)
     for path, d in cafes:       # the catalog line names the class the planner picks a café by
-        assert re.search(rf"^P {re.escape(path)} \| {re.escape(d['t'])}(?: \([^)]*\))? \| {d['f']['ty']}(?: \||$)",
+        # (a TourAPI alternate name follows as ' · 다른 이름 …', e.g. 와이엠엠디 · 다른 이름 YMMD 와이엠엠디, 2026-11-05)
+        assert re.search(rf"^P {re.escape(path)} \| {re.escape(d['t'])}(?: \([^)]*\))?(?: · 다른 이름 [^|]+)? \| {d['f']['ty']}(?: \||$)",
                          real["catalog"], re.M), d["t"]
 
 

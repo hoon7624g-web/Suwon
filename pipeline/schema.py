@@ -320,6 +320,8 @@ def designations(e: dict, *, city) -> list[dict]:
 TRACK_EVENTS = (
     "map_click", "route_click", "official_click", "nearby_click",
     "stay_click", "food_click", "course_click", "guide_click", "video_click", "news_click", "parking_click",
+    "tel_click", "fest_click",   # a place page's phone call bar and the pinned event's banner (시안 A, 2026-11-05)
+    "partner_cta", "partner_contact",   # 파트너 되기 (pipeline/partners.py): toward /partners/, the inquiry mail
     "chat_open", "chat_send", "chat_link_click",
 )
 

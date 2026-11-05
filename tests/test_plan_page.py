@@ -73,8 +73,10 @@ def test_the_page_is_a_noindex_utility_page_with_real_inputs_and_its_place_data(
     assert '<link rel="stylesheet" href="/assets/plan.css">' in html
     assert (site / "assets" / "plan.js").is_file() and (site / "assets" / "plan.css").is_file()
     assert 'data-plan data-api="/api/plan/" data-places="/plan/places.json" data-site="https://example.com" data-site-name="' in html
-    # (the map is this site's own Leaflet map: nothing of it before a plan; the city's hubs from site.json plan.hubs)
-    assert "data-kakao-sdk" not in html and "leaflet" not in html
+    # nothing of the map before a plan: the root only names what a day map will load (the sample's map_provider 'osm':
+    # the self-hosted Leaflet folder, as the other map boxes do)
+    assert 'data-osm-lib="/assets/vendor/leaflet/"' in html and "data-kakao-sdk" not in html
+    assert "map.js" not in html and "leaflet.js" not in html and "leaflet.css" not in html
     assert html.count('<option value="station">군산역</option>') == 2
     # every choice is a real radio or check box inside its card's label
     for name, kind, n in (("days", "radio", 3), ("move", "radio", 2), ("with", "radio", 4), ("prefs", "checkbox", 9),

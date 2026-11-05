@@ -1,0 +1,69 @@
+{#- _mz.html.j2 — the home's card set in the look the first site's operator approved on 2026-11-02 ('일단 반영하자', the
+    canvas ④ 시안; this city 2026-11-05; present.home_tiles · feed_extra · home_post, css/81-home-mz.css, the browser
+    parts in site.js 'home cards').
+    Pretendard 400·700 only. Words go on a photo only when it is KOGL-1 (cropped to fill, a dark outline on the letters,
+    never a darkening layer); a KOGL-3 photo sits whole in its frame with nothing laid on it (CLAUDE.md 3.4).
+      tile(a)      목적별 가이드: a card-news tile — the purpose as a label, the figure big, the answer and the closed-day
+                   note; tone photo (a place's KOGL-1 photo under the words) · sea · chick · ink · tint
+      feed(c)      대표 장소: a feed card — name · '유형 · 동 · (공식) 코스 n개' head, the photo (KOGL-1: the name and
+                   '동 / EVERYDAY|MON OFF / 요금' on it; KOGL-3: whole, the same words under it), the key values as
+                   chips; '오늘 휴관' shows in the browser on the card's weekly closed days (data-closed-days)
+      ticket(r, i) 다가오는 행사: a D-day ticket — the stub (D-n from the build, recounted in the browser from
+                   data-dday), the date, the chip, the name, place · time · fee
+      sns(a, i)    SNS: the post card topped by the place it shows — that place's photo (KOGL-1 filling the
+                   box, KOGL-3 whole under the labels) or its name, else the post's language, in words — then the
+                   service · account, the language, our note, the date. Nothing loads from the service here. -#}
+{% import "_ui.html.j2" as ui %}
+{% import "_media.html.j2" as md %}
+{% import "_mascot.html.j2" as mm %}
+{% import "_abroad.html.j2" as ab %}
+
+{% macro pin_icon() -%}
+<svg class="mz-pin" viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" d="M12 21s7-6 7-12a7 7 0 0 0-14 0c0 6 7 12 7 12z"/></svg>
+{%- endmacro %}
+
+{% macro tile(a) -%}
+{% set tr = 'guide_click' if a.href.startswith('/guides/') else ('course_click' if a.href.startswith('/courses/') else '') %}
+{% set fig %}{% if a.fig %}<span class="mzt-n"><b class="tn{% if a.fig|length > 5 %} mzt-long{% endif %}">{{ a.fig }}</b>{% if a.fig_label %}<small>{{ a.fig_label }}</small>{% elif a.unit %}<small class="mzt-u">{{ a.unit }}</small>{% endif %}</span>{% endif %}{% endset %}
+{% set rest %}<span class="mzt-v">{{ a.answer|ku }}</span>
+{% if a.closed %}<span class="mzt-closed"><span class="sq" aria-hidden="true"></span><span>{{ a.closed|ku }}</span></span>{% endif %}{% endset %}
+<li><a class="mzt mzt-{{ a.tone }}" href="{{ a.href }}"{% if tr %} data-track="{{ tr }}"{% endif %}>
+{% if a.photo %}<span class="mzt-ph">{{ ui.img(a.photo, '(min-width: 1024px) 380px, 80vw', false, 'mzt-img') }}<span class="mzt-top"><span class="mzt-k">{{ a.key }}</span><span class="mzt-cr">사진 {{ a.photo.name }} · {{ md.credit(a.photo) }}</span></span>{{ fig }}</span>
+<span class="mzt-b">{{ rest }}</span>
+{% else %}<span class="mzt-top"><span class="mzt-k">{{ a.key }}</span></span>
+<span class="mzt-b">{{ fig }}{{ rest }}</span>{% endif %}
+<span class="arr" aria-hidden="true">›</span>
+</a></li>
+{%- endmacro %}
+
+{% macro feed(c) -%}
+<article class="fp{% if not c.photo %} fp-nophoto{% endif %}" data-vt-scope{% if c.closed_days %} data-closed-days="{{ c.closed_days }}"{% endif %}>
+<div class="fp-h"><span class="fp-av">{{ mm.pic('mascot-icon-flat', 'icon', 28, lazy=true) }}</span><div class="fp-hd"><h3 class="fp-name"><a href="{{ c.path }}" data-vt data-track="nearby_click" data-place="{{ c.id }}">{{ c.name }}</a></h3><p class="fp-meta">{{ c.type }}{% if c.dong %} · {{ c.dong }}{% endif %}{% if c.n_courses %} · {{ c.n_courses_label or '코스' }} {{ c.n_courses }}개{% endif %}</p></div>{% if c.closed_days %}<span class="fp-off" data-today-off hidden>오늘 휴관</span>{% endif %}</div>
+{% if c.photo and c.photo.type == 1 %}<div class="fp-ph t1">{{ ui.img(c.photo, '264px', false, 'fp-img') }}<span class="fp-cr">{{ md.credit(c.photo) }}</span><span class="fp-badge">{{ mm.pic('mascot-icon-flat', 'icon', 30, lazy=true) }}</span><p class="fp-cap" aria-hidden="true"><span class="fp-t{% if c.title|length > 16 %} fp-t-xs{% elif c.title|length > 10 %} fp-t-s{% endif %}">{{ c.title }}</span>{% if c.line %}<span class="fp-l">{{ c.line }}</span>{% endif %}</p></div>
+{% elif c.photo %}<figure class="fp-ph t3"><div class="fp-frame">{{ ui.img(c.photo, '240px', false, 'fp-img') }}</div><figcaption><span class="fp-t{% if c.title|length > 16 %} fp-t-xs{% elif c.title|length > 10 %} fp-t-s{% endif %}" aria-hidden="true">{{ c.title }}</span>{% if c.line %}<span class="fp-l">{{ c.line }}</span>{% endif %}<span class="fp-cr3">{{ md.credit(c.photo) }}</span></figcaption></figure>
+{% else %}<p class="pc-icon">{{ ui.type_icon(c.e) }}</p>{% endif %}
+{% if c.kf and c.kf.slots %}<ul class="fp-chips">{% for s in c.kf.slots %}<li class="fpc fpc-{{ s.key }}{% if s.closed %} is-closed{% endif %}{% if s.missing %} is-na{% endif %}"><span class="vh">{{ s.label }} </span>{{ ui.kfv(s, '', true, c.id) }}</li>{% endfor %}</ul>{% endif %}
+</article>
+{%- endmacro %}
+
+{% macro ticket(r, i=0) -%}
+{% set pin = r.ev and r.ev.pin_home %}
+{% set tone = 'red' if pin else ('sea' if i is even else 'chick') %}
+<li class="tkt tkt-{{ tone }}"><a href="{{ r.path or r.source_url }}"{% if not r.path %} rel="noopener" data-track="official_click"{% endif %}>
+<span class="tkt-stub"><b class="tkt-dd tn" data-dday="{{ r.start }}" data-dday-end="{{ r.last }}">{% if r.days > 0 %}D-{{ r.days }}{% elif r.days == 0 %}D-DAY{% else %}진행 중{% endif %}</b>{% if r.dp and r.dp.a %}<span class="tkt-date tn">{{ r.dp.a.md }} {{ r.dp.a.wd }}{% if r.dp.b %}<br>– {{ r.dp.b.md }} {{ r.dp.b.wd }}{% elif r.dp.end_month %}<br>– {{ r.dp.end_month|int }}월{% endif %}</span>{% endif %}</span>
+<span class="tkt-body">{% if r.chip or pin %}<span class="tkt-tags">{% if r.chip %}<span class="tkt-chip">{{ r.chip }}</span>{% endif %}{% if pin %}<span class="tkt-hot">HOT</span>{% endif %}</span>{% endif %}
+<span class="tkt-name" data-vt>{{ r.title }}</span>
+<span class="tkt-meta">{% if r.place %}<span>{{ r.place }}</span>{% endif %}{% if r.time %}<span class="tn">{{ r.time }}</span>{% endif %}{% if r.fee %}<span>{{ r.fee }}</span>{% endif %}</span></span>
+</a></li>
+{%- endmacro %}
+
+{% macro sns(a, i=0) -%}
+{% set tones = ['ink', 'chick', 'sea', 'tint', 'rose'] %}
+{% set word = a.place.name if a.place else ((a.lang ~ ' 게시물') if a.lang else (a.platform_label ~ ' 게시물')) %}
+<li><a class="hsns-c" href="/abroad/#{{ a.id }}" data-track="abroad_click">
+<span class="hsns-v{% if a.photo %} t{{ a.photo.type }}{% else %} hsns-w-{{ tones[i % tones|length] }}{% endif %}">{% if a.photo %}{{ ui.img(a.photo, '(min-width: 1024px) 280px, 264px', false, 'hsns-img') }}{% else %}<span class="hsns-w">{{ word }}</span>{% endif %}{% if a.place %}<span class="hsns-pl">{{ pin_icon() }}{{ a.place.name if a.photo else '나온 곳' }}</span>{% endif %}{% if a.photo %}<span class="hsns-cr">장소 사진 · 출처: {{ a.photo.credit or '한국관광공사' }} · 공공누리 제{{ a.photo.type }}유형</span>{% endif %}</span>
+<span class="hsns-h">{{ ab.svc(a.platform) }}<span class="hsns-who"><b>{{ a.platform_label }}</b>{% if a.author %} · {{ a.author }}{% endif %}</span>{% if a.lang %}<span class="hsns-lang">{{ a.lang }}</span>{% endif %}</span>
+<span class="hsns-n">{{ a.note }}</span>
+<span class="hsns-f">{% if a.date %}<span class="hsns-d tn">{{ ab.when(a.date) }}</span>{% endif %}<span class="hsns-go">게시물 보기<span class="arr" aria-hidden="true">›</span></span></span>
+</a></li>
+{%- endmacro %}

@@ -1,0 +1,856 @@
+{
+ "service": "ExpBusInfo",
+ "operation": "GetStrtpntAlocFndExpbusInfo",
+ "provider": "국토교통부",
+ "dataset": "국토교통부_(TAGO)_고속버스정보",
+ "url": "https://www.data.go.kr/data/15098522/openapi.do",
+ "date": "2026-11-06",
+ "day": "weekday",
+ "fetched_at": "2026-11-05",
+ "pairs": [
+  {
+   "params": {
+    "depTerminalId": "NAEK110",
+    "arrTerminalId": "NAEK500",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 14,
+   "items": [
+    {
+     "routeId": "NAEK110500",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "광주(유·스퀘어)",
+     "depPlandTime": 202611060600,
+     "arrPlandTime": 202611060905,
+     "charge": 30300,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK110500",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "광주(유·스퀘어)",
+     "depPlandTime": 202611060720,
+     "arrPlandTime": 202611061025,
+     "charge": 30300,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK110500",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "광주(유·스퀘어)",
+     "depPlandTime": 202611060840,
+     "arrPlandTime": 202611061145,
+     "charge": 30300,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK110500",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "광주(유·스퀘어)",
+     "depPlandTime": 202611060930,
+     "arrPlandTime": 202611061235,
+     "charge": 39300,
+     "gradeNm": "프리미엄"
+    },
+    {
+     "routeId": "NAEK110500",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "광주(유·스퀘어)",
+     "depPlandTime": 202611061100,
+     "arrPlandTime": 202611061405,
+     "charge": 30300,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK110500",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "광주(유·스퀘어)",
+     "depPlandTime": 202611061220,
+     "arrPlandTime": 202611061525,
+     "charge": 30300,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK110500",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "광주(유·스퀘어)",
+     "depPlandTime": 202611061350,
+     "arrPlandTime": 202611061655,
+     "charge": 30300,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK110500",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "광주(유·스퀘어)",
+     "depPlandTime": 202611061430,
+     "arrPlandTime": 202611061735,
+     "charge": 39300,
+     "gradeNm": "프리미엄"
+    },
+    {
+     "routeId": "NAEK110500",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "광주(유·스퀘어)",
+     "depPlandTime": 202611061530,
+     "arrPlandTime": 202611061835,
+     "charge": 30300,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK110500",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "광주(유·스퀘어)",
+     "depPlandTime": 202611061630,
+     "arrPlandTime": 202611061935,
+     "charge": 30300,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK110500",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "광주(유·스퀘어)",
+     "depPlandTime": 202611061720,
+     "arrPlandTime": 202611062025,
+     "charge": 30300,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK110500",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "광주(유·스퀘어)",
+     "depPlandTime": 202611061820,
+     "arrPlandTime": 202611062125,
+     "charge": 30300,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK110500",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "광주(유·스퀘어)",
+     "depPlandTime": 202611061920,
+     "arrPlandTime": 202611062225,
+     "charge": 39300,
+     "gradeNm": "프리미엄"
+    },
+    {
+     "routeId": "NAEK110500",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "광주(유·스퀘어)",
+     "depPlandTime": 202611062040,
+     "arrPlandTime": 202611062345,
+     "charge": 30300,
+     "gradeNm": "우등"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depTerminalId": "NAEK500",
+    "arrTerminalId": "NAEK110",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 14,
+   "items": [
+    {
+     "routeId": "NAEK500110",
+     "depPlaceNm": "광주(유·스퀘어)",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611060600,
+     "arrPlandTime": 202611060905,
+     "charge": 30300,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK500110",
+     "depPlaceNm": "광주(유·스퀘어)",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611060655,
+     "arrPlandTime": 202611061000,
+     "charge": 30300,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK500110",
+     "depPlaceNm": "광주(유·스퀘어)",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611060740,
+     "arrPlandTime": 202611061045,
+     "charge": 30300,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK500110",
+     "depPlaceNm": "광주(유·스퀘어)",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611060830,
+     "arrPlandTime": 202611061135,
+     "charge": 39300,
+     "gradeNm": "프리미엄"
+    },
+    {
+     "routeId": "NAEK500110",
+     "depPlaceNm": "광주(유·스퀘어)",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611060925,
+     "arrPlandTime": 202611061230,
+     "charge": 30300,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK500110",
+     "depPlaceNm": "광주(유·스퀘어)",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611061025,
+     "arrPlandTime": 202611061330,
+     "charge": 30300,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK500110",
+     "depPlaceNm": "광주(유·스퀘어)",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611061110,
+     "arrPlandTime": 202611061415,
+     "charge": 30300,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK500110",
+     "depPlaceNm": "광주(유·스퀘어)",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611061225,
+     "arrPlandTime": 202611061530,
+     "charge": 30300,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK500110",
+     "depPlaceNm": "광주(유·스퀘어)",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611061315,
+     "arrPlandTime": 202611061620,
+     "charge": 30300,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK500110",
+     "depPlaceNm": "광주(유·스퀘어)",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611061425,
+     "arrPlandTime": 202611061730,
+     "charge": 39300,
+     "gradeNm": "프리미엄"
+    },
+    {
+     "routeId": "NAEK500110",
+     "depPlaceNm": "광주(유·스퀘어)",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611061615,
+     "arrPlandTime": 202611061920,
+     "charge": 30300,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK500110",
+     "depPlaceNm": "광주(유·스퀘어)",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611061725,
+     "arrPlandTime": 202611062030,
+     "charge": 30300,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK500110",
+     "depPlaceNm": "광주(유·스퀘어)",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611061830,
+     "arrPlandTime": 202611062135,
+     "charge": 30300,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK500110",
+     "depPlaceNm": "광주(유·스퀘어)",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611062015,
+     "arrPlandTime": 202611062320,
+     "charge": 39300,
+     "gradeNm": "프리미엄"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depTerminalId": "NAEK110",
+    "arrTerminalId": "NAEK505",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 2,
+   "items": [
+    {
+     "routeId": "NAEK110505",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "목포",
+     "depPlandTime": 202611060850,
+     "arrPlandTime": 202611061225,
+     "charge": 36000,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK110505",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "목포",
+     "depPlandTime": 202611061620,
+     "arrPlandTime": 202611061955,
+     "charge": 36000,
+     "gradeNm": "우등"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depTerminalId": "NAEK505",
+    "arrTerminalId": "NAEK110",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 2,
+   "items": [
+    {
+     "routeId": "NAEK505110",
+     "depPlaceNm": "목포",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611061020,
+     "arrPlandTime": 202611061355,
+     "charge": 36000,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK505110",
+     "depPlaceNm": "목포",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611061750,
+     "arrPlandTime": 202611062125,
+     "charge": 36000,
+     "gradeNm": "우등"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depTerminalId": "NAEK110",
+    "arrTerminalId": "NAEK510",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 4,
+   "items": [
+    {
+     "routeId": "NAEK110510",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "여수",
+     "depPlandTime": 202611060750,
+     "arrPlandTime": 202611061230,
+     "charge": 39200,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK110510",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "여수",
+     "depPlandTime": 202611061050,
+     "arrPlandTime": 202611061530,
+     "charge": 39200,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK110510",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "여수",
+     "depPlandTime": 202611061430,
+     "arrPlandTime": 202611061910,
+     "charge": 39200,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK110510",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "여수",
+     "depPlandTime": 202611061630,
+     "arrPlandTime": 202611062110,
+     "charge": 39200,
+     "gradeNm": "우등"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depTerminalId": "NAEK510",
+    "arrTerminalId": "NAEK110",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 4,
+   "items": [
+    {
+     "routeId": "NAEK510110",
+     "depPlaceNm": "여수",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611060700,
+     "arrPlandTime": 202611061140,
+     "charge": 39200,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK510110",
+     "depPlaceNm": "여수",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611060910,
+     "arrPlandTime": 202611061350,
+     "charge": 39200,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK510110",
+     "depPlaceNm": "여수",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611061400,
+     "arrPlandTime": 202611061840,
+     "charge": 39200,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK510110",
+     "depPlaceNm": "여수",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611061700,
+     "arrPlandTime": 202611062140,
+     "charge": 39200,
+     "gradeNm": "우등"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depTerminalId": "NAEK110",
+    "arrTerminalId": "NAEK515",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 4,
+   "items": [
+    {
+     "routeId": "NAEK110515",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "순천",
+     "depPlandTime": 202611060750,
+     "arrPlandTime": 202611061130,
+     "charge": 32800,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK110515",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "순천",
+     "depPlandTime": 202611061050,
+     "arrPlandTime": 202611061430,
+     "charge": 32800,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK110515",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "순천",
+     "depPlandTime": 202611061430,
+     "arrPlandTime": 202611061810,
+     "charge": 32800,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK110515",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "순천",
+     "depPlandTime": 202611061630,
+     "arrPlandTime": 202611062010,
+     "charge": 32800,
+     "gradeNm": "우등"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depTerminalId": "NAEK515",
+    "arrTerminalId": "NAEK110",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 4,
+   "items": [
+    {
+     "routeId": "NAEK515110",
+     "depPlaceNm": "순천",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611060800,
+     "arrPlandTime": 202611061140,
+     "charge": 32800,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK515110",
+     "depPlaceNm": "순천",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611061010,
+     "arrPlandTime": 202611061350,
+     "charge": 32800,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK515110",
+     "depPlaceNm": "순천",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611061500,
+     "arrPlandTime": 202611061840,
+     "charge": 32800,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK515110",
+     "depPlaceNm": "순천",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611061800,
+     "arrPlandTime": 202611062140,
+     "charge": 32800,
+     "gradeNm": "우등"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depTerminalId": "NAEK110",
+    "arrTerminalId": "NAEK210",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 5,
+   "items": [
+    {
+     "routeId": "NAEK110210",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "동해",
+     "depPlandTime": 202611060700,
+     "arrPlandTime": 202611061015,
+     "charge": 34300,
+     "gradeNm": "프리미엄"
+    },
+    {
+     "routeId": "NAEK110210",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "동해",
+     "depPlandTime": 202611061000,
+     "arrPlandTime": 202611061315,
+     "charge": 28700,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK110210",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "동해",
+     "depPlandTime": 202611061310,
+     "arrPlandTime": 202611061625,
+     "charge": 28700,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK110210",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "동해",
+     "depPlandTime": 202611061600,
+     "arrPlandTime": 202611061915,
+     "charge": 34300,
+     "gradeNm": "프리미엄"
+    },
+    {
+     "routeId": "NAEK110210",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "동해",
+     "depPlandTime": 202611061900,
+     "arrPlandTime": 202611062215,
+     "charge": 34300,
+     "gradeNm": "프리미엄"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depTerminalId": "NAEK210",
+    "arrTerminalId": "NAEK110",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 5,
+   "items": [
+    {
+     "routeId": "NAEK210110",
+     "depPlaceNm": "동해",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611060800,
+     "arrPlandTime": 202611061115,
+     "charge": 28700,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK210110",
+     "depPlaceNm": "동해",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611061025,
+     "arrPlandTime": 202611061340,
+     "charge": 34300,
+     "gradeNm": "프리미엄"
+    },
+    {
+     "routeId": "NAEK210110",
+     "depPlaceNm": "동해",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611061335,
+     "arrPlandTime": 202611061650,
+     "charge": 34300,
+     "gradeNm": "프리미엄"
+    },
+    {
+     "routeId": "NAEK210110",
+     "depPlaceNm": "동해",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611061630,
+     "arrPlandTime": 202611061945,
+     "charge": 28700,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK210110",
+     "depPlaceNm": "동해",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611061930,
+     "arrPlandTime": 202611062245,
+     "charge": 28700,
+     "gradeNm": "우등"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depTerminalId": "NAEK110",
+    "arrTerminalId": "NAEK220",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 5,
+   "items": [
+    {
+     "routeId": "NAEK110220",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "삼척",
+     "depPlandTime": 202611060700,
+     "arrPlandTime": 202611061040,
+     "charge": 37700,
+     "gradeNm": "프리미엄"
+    },
+    {
+     "routeId": "NAEK110220",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "삼척",
+     "depPlandTime": 202611061000,
+     "arrPlandTime": 202611061340,
+     "charge": 31600,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK110220",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "삼척",
+     "depPlandTime": 202611061310,
+     "arrPlandTime": 202611061650,
+     "charge": 31600,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK110220",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "삼척",
+     "depPlandTime": 202611061600,
+     "arrPlandTime": 202611061940,
+     "charge": 37700,
+     "gradeNm": "프리미엄"
+    },
+    {
+     "routeId": "NAEK110220",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "삼척",
+     "depPlandTime": 202611061900,
+     "arrPlandTime": 202611062240,
+     "charge": 37700,
+     "gradeNm": "프리미엄"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depTerminalId": "NAEK220",
+    "arrTerminalId": "NAEK110",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 5,
+   "items": [
+    {
+     "routeId": "NAEK220110",
+     "depPlaceNm": "삼척",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611060730,
+     "arrPlandTime": 202611061110,
+     "charge": 31600,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK220110",
+     "depPlaceNm": "삼척",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611061000,
+     "arrPlandTime": 202611061340,
+     "charge": 37700,
+     "gradeNm": "프리미엄"
+    },
+    {
+     "routeId": "NAEK220110",
+     "depPlaceNm": "삼척",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611061310,
+     "arrPlandTime": 202611061650,
+     "charge": 37700,
+     "gradeNm": "프리미엄"
+    },
+    {
+     "routeId": "NAEK220110",
+     "depPlaceNm": "삼척",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611061600,
+     "arrPlandTime": 202611061940,
+     "charge": 31600,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK220110",
+     "depPlaceNm": "삼척",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611061900,
+     "arrPlandTime": 202611062240,
+     "charge": 31600,
+     "gradeNm": "우등"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depTerminalId": "NAEK110",
+    "arrTerminalId": "NAEK595",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 2,
+   "items": [
+    {
+     "routeId": "NAEK110595",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "해남",
+     "depPlandTime": 202611060850,
+     "arrPlandTime": 202611061320,
+     "charge": 47400,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK110595",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "해남",
+     "depPlandTime": 202611061620,
+     "arrPlandTime": 202611062050,
+     "charge": 47400,
+     "gradeNm": "우등"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depTerminalId": "NAEK595",
+    "arrTerminalId": "NAEK110",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 2,
+   "items": [
+    {
+     "routeId": "NAEK595110",
+     "depPlaceNm": "해남",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611060925,
+     "arrPlandTime": 202611061355,
+     "charge": 47400,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK595110",
+     "depPlaceNm": "해남",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611061655,
+     "arrPlandTime": 202611062125,
+     "charge": 47400,
+     "gradeNm": "우등"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depTerminalId": "NAEK110",
+    "arrTerminalId": "NAEK575",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 2,
+   "items": [
+    {
+     "routeId": "NAEK110575",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "완도",
+     "depPlandTime": 202611060850,
+     "arrPlandTime": 202611061400,
+     "charge": 56900,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK110575",
+     "depPlaceNm": "수원",
+     "arrPlaceNm": "완도",
+     "depPlandTime": 202611061620,
+     "arrPlandTime": 202611062130,
+     "charge": 56900,
+     "gradeNm": "우등"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depTerminalId": "NAEK575",
+    "arrTerminalId": "NAEK110",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 2,
+   "items": [
+    {
+     "routeId": "NAEK575110",
+     "depPlaceNm": "완도",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611060845,
+     "arrPlandTime": 202611061355,
+     "charge": 56900,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAEK575110",
+     "depPlaceNm": "완도",
+     "arrPlaceNm": "수원",
+     "depPlandTime": 202611061615,
+     "arrPlandTime": 202611062125,
+     "charge": 56900,
+     "gradeNm": "우등"
+    }
+   ]
+  }
+ ]
+}

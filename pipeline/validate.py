@@ -111,7 +111,8 @@ from urllib.parse import unquote, urlsplit
 
 from collections import Counter
 
-from . import art, ask, booking, chat_index, en_site, intl_check, media, notices, plan, present, relations, tickets
+from . import (art, ask, booking, chat_index, en_site, intl_check, media, notices, partners, plan, present, relations,
+               tickets)
 from . import locales as LC
 from .build import DESC_MAX, HL_VIEWER, LISTS, MODES, State, fact_row, index_counts, load_abroad
 from .jsonld import AMENITY_VALUES, amenity_value
@@ -621,6 +622,11 @@ class PageScan(HTMLParser):
             if self._lstack[i][0] == tag:
                 del self._lstack[i:]
                 break
+        if tag in ("p", "div", "li", "h3", "h4"):
+            # a row's lines are read apart: '… 표기 신천교고가도로밑주차장' then '대구광역시 북구 자료 …' — glued, the
+            # name's last token ran into the next line's first (a one-value site ends that line with the name)
+            for r in self._rows_open:
+                r["parts"].append(" ")
         while self._rows_open and self._rows_open[-1]["depth"] > len(self._stack):
             r = self._rows_open.pop()
             self.access_rows.append({"kind": r["kind"], "id": r["id"], "text": squash_ws("".join(r["parts"])),
@@ -1008,7 +1014,8 @@ def transit_problems(S) -> list[str]:
                 out.append(f"{where}: 토·일·공휴일 {t['weekend_n']}회가 {gid} 시간표 기록에 없음")
             if t.get("pattern") and t["pattern"] not in body:
                 out.append(f"{where}: 출발 시각 '{t['pattern']}'가 {gid} 본문에 없음")
-            alt = t.get("alt") or {}
+            # one value per fact (site.json fact_conflicts 'primary'): the course pages show no other source's time
+            alt = {} if S.site.get("fact_conflicts") == "primary" else t.get("alt") or {}
             for v in (alt.get("value"), t.get("every") if alt else None):
                 if v and v not in body:
                     out.append(f"{where}: '{v}'가 {gid} 본문에 없음")
@@ -1278,6 +1285,12 @@ def access_problems(S, e: dict, page: PageScan) -> list[str]:
         lot = S.parking_lots[x["lot_id"]]
         t = r["text"]
         alt = lot.get("alt") or {}
+        # a site that shows one value per fact (site.json fact_conflicts 'primary', operator 2026-11-05) prints the lot's
+        # own values and its first fee version only, with no '방문 전 전화 확인' (present.lot_row); the other source's
+        # name for the same lot still shows
+        one = S.site.get("fact_conflicts") == "primary"
+        if one:
+            alt = {k: v for k, v in alt.items() if k == "name"}
         alt_spaces = (alt.get("spaces") or {}).get("value")
         alt_type, alt_paid = (alt.get("type") or {}).get("value"), (alt.get("paid") or {}).get("value")
         alt_hours = (alt.get("hours") or {}).get("value")
@@ -1288,7 +1301,7 @@ def access_problems(S, e: dict, page: PageScan) -> list[str]:
         if alt_spaces is not None:
             need.append(f"{alt_spaces}{(alt.get('spaces') or {}).get('unit') or '대'}")
         amounts, spans = set(), set()
-        for v in fee.get("versions") or []:
+        for v in (fee.get("versions") or [])[:1 if one else None]:
             amounts |= {f"{int(n):,}원" for n in present.fee_amounts(v)}
             for k in ("basic", "extra"):
                 m = (v.get(k) or {}).get("minutes")
@@ -1299,10 +1312,12 @@ def access_problems(S, e: dict, page: PageScan) -> list[str]:
             need.append(lot["phone"])
         if not fee.get("contact") and alt_phone.get("value"):
             need.append(alt_phone["value"])
-        if fee.get("differs") or (alt_spaces is not None and alt_spaces != lot.get("spaces")) or \
+        if (fee.get("differs") and not one) or (alt_spaces is not None and alt_spaces != lot.get("spaces")) or \
                 (alt_type and alt_type != lot.get("type")) or (alt_paid and alt_paid != lot.get("paid")) or \
                 (alt_hours and present.hours_text(alt_hours) != present.hours_text(lot.get("hours"))):
             need.append("방문 전 전화 확인")
+        elif one and "방문 전 전화 확인" in t:
+            out.append(f"근처 공영주차장 {lot['name']}: 값 하나만 보이는 사이트인데 '방문 전 전화 확인'이 있음")
         missing = [w for w in need if w and w not in t]
         for label, value in (("이름", present.tidy_brackets(lot["name"])),
                              ("주소", present.lot_address(lot.get("address") or lot.get("address_jibun"), city=S.city)),
@@ -1774,6 +1789,8 @@ def validate(data_dir: Path, out: Path, mode: str = "production") -> tuple[list[
     W = lambda where, msg: warns.append(f"[{where}] {msg}")
     for problem in media.cover_problems(S):   # the home's opening photo is shown (pipeline/media.py)
         (E if strict else W)("home cover", problem)
+    for problem in partners.data_problems(S):   # 파트너 되기 (pipeline/partners.py): partners.json itself
+        E("partners.json", problem)
     sitemap = _sitemap_locs(out)
     llms = {name: (out / name).read_text("utf-8") if (out / name).exists() else ""
             for name in ("llms.txt", "llms-full.txt")}
@@ -1859,9 +1876,11 @@ def validate(data_dir: Path, out: Path, mode: str = "production") -> tuple[list[
     for problem in tickets.problems(S.tickets, {p["id"]: p for p in S.entities_all}, {e["id"] for e in S.entities},
                                     plan.plan_config(S.site)["resident_label"]):
         E("tickets.json", problem)
-    style = out / "assets" / "style.css"
-    if style.exists() and art.URL_PREFIX in style.read_text("utf-8"):
-        E("style.css", "CSS 배경으로 AI 그림을 씀 — templates/_art.html.j2 figure()의 <img>로만(표기·alt 규칙)")
+    from pipeline.build import PAGE_SHEETS  # the shared stylesheet and the page sheets (wide.css, page-*.css)
+    for sheet in ("style.css", *PAGE_SHEETS.values()):
+        style = out / "assets" / sheet
+        if style.exists() and art.URL_PREFIX in style.read_text("utf-8"):
+            E(sheet, "CSS 배경으로 AI 그림을 씀 — templates/_art.html.j2 figure()의 <img>로만(표기·alt 규칙)")
     for e in S.entities:
         where = f"{e['id']} {e['name']}"
         f = _file_for(out, e["_path"])

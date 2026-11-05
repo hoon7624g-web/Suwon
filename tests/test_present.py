@@ -618,9 +618,12 @@ def test_metro_search_index_and_place_line_carry_the_district(M, tmp_path):
     assert kicker.endswith("<span>대구광역시 중구 삼덕동1가</span>")
     assert present.card_vm(e)["meta"].endswith(" · 중구 삼덕동1가")
     home = (out / "index.html").read_text("utf-8")
-    # UI4 home: the opening's kicker names the region once ('지금 대구 · 10월'), never '대구광역시 대구광역시'
-    kick = re.search(r'<p class="ho-k"><span class="ho-dot" aria-hidden="true"></span>([^<]+)</p>', home)
-    assert kick and kick.group(1) == present.home_opening(M)["kicker"] and "대구광역시 대구광역시" not in home
+    # 시안 A home (2026-11-05): the H1 names the city once ('<region> 여행의 모든 것' — no eyebrow kicker any more),
+    # never '대구광역시 대구광역시'
+    region = city.of(M.site).region
+    h1 = re.search(r'<h1 id="h-home" class="op-h1 ha-h1">(.+?)</h1>', home)
+    assert h1 and re.sub(r"<[^>]+>", "", h1.group(1)) == f"{region} 여행의 모든 것"
+    assert 'class="ho-k"' not in home and "대구광역시 대구광역시" not in home
 
 
 def test_other_names_keep_only_what_the_search_would_not_find_anyway():
@@ -840,7 +843,7 @@ def test_home_accent_points(S, built):
     pages = ["index.html"] + (["en/index.html"] if (built / "en" / "index.html").exists() else [])
     for page in pages:
         html = (built / page).read_text("utf-8")
-        assert re.search(r'<h1 id="h-home" class="op-h1[^"]*">[^<]+</h1>', html) and 'class="mkr"' not in html, page
+        assert re.search(r'<h1 id="h-home" class="op-h1[^"]*">.+?</h1>', html) and 'class="mkr"' not in html, page
         # the big-numerals band is retired (owner 2026-10-14: 'AI 같고 촌스럽다'), no heading ends in a full stop
         assert 'id="h-nums"' not in html and not re.search(r'class="h2"[^>]*>[^<]*[가-힣a-z]\.</h2>', html), page
     if (built / "en" / "index.html").exists():   # a build with an English version (data/<region>/en)
@@ -1161,50 +1164,68 @@ def test_home_opening_markup_carousel_and_links(home_world):
     S, built = home_world
     region = S.city.region
     html = (built / "index.html").read_text("utf-8")
-    # the big title (2026-10-16, as 군산각·해남각): '<region> 여행의 모든 것', the site's name only without a region
-    title = f"{region} 여행의 모든 것" if region else S.site["site_name"]
-    assert re.search(rf'<h1 id="h-home" class="op-h1 hk-h1">{re.escape(title)}</h1>', html)
+    # 시안 A (the first site's 8f2370215 · c4020e9bd, ported 2026-11-05): the H1 describes the site — '<region> 여행의
+    # 모든 것' with '모든 것' in the sea blue (the site's name only without a region); the name stays in the bar
+    if region:
+        assert f'<h1 id="h-home" class="op-h1 ha-h1">{region} 여행의 <span class="ha-em">모든 것</span></h1>' in html
+    else:
+        assert f'<h1 id="h-home" class="op-h1 ha-h1">{S.site["site_name"]}</h1>' in html
     start = html.index('<div class="hk" data-chat-dock>')
     top = html[start:html.index('<section class="sec ', start)]
     opening = top[:top.index('<section class="hq"')]
-    # owner 2026-10-14 ('고화질 실사 배경'): the official KOGL-1 cover photo (site.json home.media.cover) behind the
-    # opening (cropping allowed), credited — once it has its AVIF derivatives (tools/kogl1_media.py); without them (the
-    # fixture's photo) the opening keeps its soft gradient and names no photo
+    assert re.match(r'<div class="hk" data-chat-dock>\s*<section class="ha" aria-labelledby="h-home">', opening)
+    # the card over the official KOGL-1 cover photo (site.json home.media.cover; cropping allowed), credited, its local
+    # AVIF derivative the one image preloaded — once it has its derivatives (tools/kogl1_media.py); without them (the
+    # fixture's photo) a white card that names no photo and preloads nothing
     cover = present.media.slot_photos(S)["cover"]
     ph = bool(cover and cover["type"] == 1 and cover.get("avif"))
-    assert re.match(rf'<div class="hk" data-chat-dock>\s*<section class="ho{" ho-ph" if ph else ""}" aria-labelledby="h-home">',
-                    opening)
-    assert "hx-ph" not in opening and "hk-open" not in opening and "rgba(4, 9, 16" not in html
+    head = html[:html.index("</head>")]
+    pre = re.findall(r'<link rel="preload" as="image"[^>]*>', head)
     if ph:
-        bg = opening[opening.index('<div class="ho-bg" aria-hidden="true">'):]
-        assert 'data-kogl="1"' in bg.split("</div>", 1)[0] and 'class="ho-cap"' in opening and "공공누리 제1유형" in opening
+        assert '<div class="ha-card ha-ph">' in opening
+        bg = opening[opening.index('<div class="ha-bg" aria-hidden="true">'):]
+        assert 'data-kogl="1"' in bg.split("</div>", 1)[0] and 'class="ha-cap"' in opening and "공공누리 제1유형" in opening
+        assert len(pre) == 1 and 'type="image/avif"' in pre[0] and 'imagesrcset="/assets/media/' in pre[0], pre
     else:
-        assert 'class="ho-bg"' not in opening
-    assert '<p class="ho-k"><span class="ho-dot" aria-hidden="true"></span>' in opening
-    # the planner's button first, then the course one in its white variant (군산각 the same, 2026-10-21)
-    cta = re.escape(f'{S.site.get("locality") or region} 추천 코스')
-    assert re.search(r'<div class="ho-cta ho-cta-2"><a class="btn-sea" href="/plan/" data-track="plan_cta">내 일정 만들기'
-                     rf'<span class="arr" aria-hidden="true">→</span></a><a class="btn-sea btn-sea-w" href="/courses/"'
-                     rf' data-track="course_click">{cta}<span class="arr"', opening)
-    # the carousel: the box holds the controls and the cards
-    assert re.search(rf'<div class="wrap ho-in" data-hcar aria-roledescription="carousel" aria-label="지금 {re.escape(region)} 소식">',
-                     opening)
-    n = opening.count('aria-roledescription="slide"')
+        assert '<div class="ha-card">' in opening and 'class="ha-bg"' not in opening and pre == []
+    assert "ho-dot" not in html and "hx-ph" not in opening and "rgba(4, 9, 16" not in html
+    # the site search, big: a GET form to /search/ with one button '검색'
+    form = opening[opening.index('<form class="ha-search"'):opening.index("</form>")]
+    assert 'action="/search/" method="get" role="search"' in form and 'name="q" type="search"' in form
+    assert re.findall(r"<button [^>]*>([^<]*)</button>", form) == ["검색"]
+    # the core lists with their pictures, no counts; no booking page or button (operator 2026-11-05 '제휴링크는 일단
+    # 제외하자'); the planner and the city's courses side by side
+    tiles = re.findall(r'<a class="ha-tile ha-[a-z]" href="([^"]+)"', opening)
+    assert tiles and tiles == [t for t in ("/places/", "/food/", "/stays/", "/courses/") if t in tiles]
+    assert "ha-tn" not in opening and "ha-stay" not in opening
+    assert "숙박 예약하기" not in html and "/stays/booking/" not in html
+    if (built / "plan" / "index.html").exists():
+        assert '<a class="ha-btn ha-plan" href="/plan/" data-track="plan_cta">' in opening
+    assert 'href="/courses/" data-track="course_click">' in opening
+    # the pinned event's banner only while events.json pins one, each guide it names a page of this build
+    if '<section class="ha-fest"' in opening:
+        fest = opening[opening.index('<section class="ha-fest"'):]
+        assert 'data-dday="' in fest and 'data-track="fest_click"' in fest and "instagram.com" not in fest
+        for href in re.findall(r'<li><a href="([^"]+)" data-track="guide_click">', fest):
+            assert (built / unquote(href).strip("/") / "index.html").exists(), href
+    # the news row, after the assistant: a labelled carousel of groups 'i / N', the controls under the cards
+    news_sec = top[top.index('<section class="hn"'):]
+    assert re.search(rf'<div class="hn-in" data-hcar aria-roledescription="carousel" aria-label="지금 {re.escape(region)} 소식">',
+                     news_sec)
+    n = news_sec.count('aria-roledescription="slide"')
     assert present.NEWS_MIN <= n <= present.NEWS_MAX
-    assert re.findall(r'role="group" aria-roledescription="slide" aria-label="(\d+) / (\d+)"', opening) == \
+    assert re.findall(r'role="group" aria-roledescription="slide" aria-label="(\d+) / (\d+)"', news_sec) == \
         [(str(i), str(n)) for i in range(1, n + 1)]
-    ctl = opening[opening.index('<div class="ho-ctl">'):opening.index('<div class="ho-news">')]
+    ctl = news_sec[news_sec.index('<div class="ho-ctl">'):news_sec.index('</section>')]
     buttons = re.findall(r"<button [^>]*>", ctl)
     assert len(buttons) == 3 and "data-hcar-pause" in buttons[0] and 'aria-label="소식 자동 넘김 멈추기"' in buttons[0]
     assert 'data-hcar-dir="-1" aria-controls="hv-track" aria-label="이전 소식"' in buttons[1]
     assert 'data-hcar-dir="1" aria-controls="hv-track" aria-label="다음 소식"' in buttons[2]
     assert f'data-hcar-count aria-live="off"><span class="vh">소식 </span><span data-hcar-cur>1</span> / {n}</p>' in ctl
     assert '<i data-hcar-prog></i>' in ctl and '<a class="ho-all" href="/events/">' in ctl
-    news = opening[opening.index('<div class="ho-news">'):]
-    news = news.split('<p class="ho-cap">', 1)[0]    # the cover photo's credit line follows the cards
-    assert not re.search(r'<link rel="preload" as="image" href="https?://', html[:html.index("</head>")])   # no outside photo
+    news = news_sec[news_sec.index('<div class="ho-news">'):news_sec.index('<div class="ho-ctl">')]
     assert 'aria-live="polite"' not in news and 'id="hv-track"' in news
-    for i, card in enumerate(news.split('<article class="nc nc-')[1:]):
+    for card in news.split('<article class="nc nc-')[1:]:
         links = re.findall(r'<a href="([^"]+)"([^>]*)>', card)
         assert len(links) == 1, card[:120]
         href, attrs = links[0]
@@ -1214,15 +1235,6 @@ def test_home_opening_markup_carousel_and_links(home_world):
             assert href.startswith("https://") and 'rel="noopener"' in attrs, href
         for img in re.findall(r"<img [^>]*>", card):
             src = re.search(r' src="([^"]+)"', img).group(1)
-            if src.startswith("/assets/art/") and i == 0:    # a first slide without a light photo: its picture, preloaded
-                head = html[:html.index("</head>")]
-                pre = re.findall(r'<link rel="preload" as="image"[^>]*>', head)
-                assert 'alt="일러스트: ' in img and 'fetchpriority="high"' in img and 'loading="lazy"' not in img
-                arts = [x for x in pre if 'imagesrcset="/assets/art/' in x]
-                assert len(arts) == 1 and 'type="image/avif"' in arts[0], pre
-                # the other one: the opening's KOGL-1 cover photo (owner 2026-10-14), a local derivative
-                assert all('imagesrcset="/assets/media/' in x for x in pre if x not in arts) and len(pre) <= 2, pre
-                continue
             if src.startswith("/assets/art/"):    # the card kind's picture; an event's may be its event kind's (K)
                 kind_art = card.startswith(("event", "festival")) and 'data-art="evkind-' in card
                 assert ('data-art="card-' in card or kind_art) and 'alt="일러스트: ' in img
@@ -1234,17 +1246,7 @@ def test_home_opening_markup_carousel_and_links(home_world):
                 assert 'alt=""' in img
             else:
                 assert src.startswith("https://tong.visitkorea.or.kr/") and "출처: 한국관광공사" in card
-                if i == 0:     # the first slide's photo: the LCP candidate on wide screens
-                    assert 'loading="eager"' in img and 'fetchpriority="high"' in img
-                    # light and local (review 2026-10-14: a KOGL-3 original first made the home's LCP 5.8 s): a
-                    # KOGL-1 photo whose same-origin AVIF derivative is preloaded; no outside photo is preloaded
-                    assert card.split(">", 1)[0] and 'class="nc-frame t1"' in card, card[:200]
-                    head = html[:html.index("</head>")]
-                    pre = re.findall(r'<link rel="preload" as="image"[^>]*>', head)
-                    assert len(pre) == 1 and 'type="image/avif"' in pre[0], pre
-                    assert re.search(r'imagesrcset="/assets/[^"]+\.avif \d+w', pre[0]), pre
-                    continue
-            assert 'loading="lazy"' in img and "width=" in img and "height=" in img
+            assert 'loading="lazy"' in img and "width=" in img and "height=" in img   # below the first screen now
     card = top[top.index('<section class="hq"'):]
     assert card.startswith('<section class="hq" aria-labelledby="h-ask">')
     assert f'<h2 id="h-ask" class="hk-h"><span class="hk-hn">{region} 여행 도우미에게</span> 물어보세요</h2>' in card
@@ -1342,8 +1344,10 @@ def test_homes_ask_in_place(home_world):
     assert '<section class="ask' not in ko and 'class="ask-card"' not in ko
     start = ko.index('<div class="hk" data-chat-dock>')
     top = ko[start:ko.index('<section class="sec ', start)]
-    assert top.index('<section class="ho') < top.index('data-hcar-item') < top.index('<section class="hq"') \
-        < top.index('<form class="hk-box"') < top.index('<nav class="hq-menu"') < top.index("data-ask-log")
+    # 시안 A (the first site's c4020e9bd, ported 2026-11-05): the cover card (and a pinned event's banner), then the
+    # assistant, then the news row
+    assert top.index('<section class="ha"') < top.index('<section class="hq"') < top.index('<form class="hk-box"') \
+        < top.index('<nav class="hq-menu"') < top.index("data-ask-log") < top.index('data-hcar-item')
     en = (built / "en" / "index.html").read_text("utf-8")
     # owner 2026-10-14: the English home asks from the same white card (_ask.html.j2 box_intl): no search page in
     # English, so its form shows with JS only (data-js-only); no centre card any more
@@ -1364,9 +1368,10 @@ def test_homes_ask_in_place(home_world):
 
 
 def test_home_news_row_turns_by_itself_and_stops_for_the_reader(built):
-    """UI4 in a browser (Playwright + Chromium; the build is served through page.route, nothing leaves the
-    machine): exactly one news card is in view at a time — at 1440 at the right of the opening's text, in the first
-    screen, and at 390 under the H1 and above the question box, which is in the first screen at both sizes; the row
+    """The news row in a browser (Playwright + Chromium; the build is served through page.route, nothing leaves the
+    machine): exactly one news card is in view at a time — since 시안 A (2026-11-05) under the first screen's opening
+    card (the H1, the big search, the core lists and the course buttons in the first screen at 390 and 1440) and under
+    the assistant card; the row
     advances by itself, a control press stops it (the play button
     restarts it, the counter is live only while stopped), focus inside stops it; with reduced motion there is no
     autoplay and no pause button; without JS the controls are hidden, one card is still in view, the cards still
@@ -1407,18 +1412,21 @@ def test_home_news_row_turns_by_itself_and_stops_for_the_reader(built):
                 return r.right > v.left + 1 && r.left < v.right - 1 && r.width > 0; }).length; })()"""
             in_screen = """(sel => { const r = document.querySelector(sel).getBoundingClientRect();
               return r.top >= 0 && r.bottom <= innerHeight && r.left >= 0 && r.right <= innerWidth; })"""
-            ctx, page = open_home(390, 844)                          # phones: H1, the question card, then the news card
+            ctx, page = open_home(390, 844)        # phones: the opening card, the assistant card, then the news row
             assert page.evaluate(in_view) == 1
-            assert page.evaluate("document.querySelector('.hk-h1').getBoundingClientRect().bottom <= "
-                                 "document.querySelector('.hk-box').getBoundingClientRect().top")
+            # 시안 A (the first site's 8f2370215 · c4020e9bd, ported 2026-11-05): the opening card holds the H1, the big
+            # site search, the four core lists and the course buttons — all in the 390x844 first screen
+            assert page.evaluate("document.querySelector('.ha-h1').getBoundingClientRect().bottom <= "
+                                 "document.querySelector('.ha-search').getBoundingClientRect().top")
+            assert page.evaluate(in_screen + "('.ha-search')") and page.evaluate(in_screen + "('.ha-tiles')")
+            assert page.evaluate(in_screen + "('.ha-cta a')")
+            assert page.evaluate("document.querySelector('.ha-lede').getBoundingClientRect().bottom <= "
+                                 "document.querySelector('.ha-search').getBoundingClientRect().top")
+            assert page.evaluate("document.documentElement.scrollWidth") == 390
+            # the news row under the assistant card, a compact card (its frame at the left), waiting on its first
+            # card (no autoplay below 768px)
             assert page.evaluate("document.querySelector('.hq-card').getBoundingClientRect().bottom <= "
                                  "document.querySelector('[data-hcar-view]').getBoundingClientRect().top")
-            assert page.evaluate(in_screen + "('.hk-box')")         # the question box in the 390x844 first screen
-            # operator 2026-10-15: the course button under the lede, one compact card (a row, its frame at the
-            # left), the '#' tags in the first screen too; the row waits on its first card (no autoplay below 768px)
-            assert page.evaluate(in_screen + "('.ho-cta a')") and page.evaluate(in_screen + "('.hk-pills')")
-            assert page.evaluate("document.querySelector('.ho-lede').getBoundingClientRect().bottom <= "
-                                 "document.querySelector('.ho-cta a').getBoundingClientRect().top")
             assert page.evaluate("document.querySelector('[data-hcar-view]').getBoundingClientRect().height") < 200
             assert page.evaluate("(() => { const f = document.querySelector('[data-hcar-item] .nc-frame')"
                                  ".getBoundingClientRect(), t = document.querySelector('[data-hcar-item] .nc-t')"
@@ -1429,14 +1437,12 @@ def test_home_news_row_turns_by_itself_and_stops_for_the_reader(built):
             ctx.close()
             ctx, page = open_home()
             box, cur = "[data-hcar]", "[data-hcar-cur]"
-            # 1440: the card at the right of the opening's text, inside the first screen, one card in view; the
-            # question box in the first screen too, the white card overlapping the opening's bottom edge
-            card = page.locator(".ho-news").bounding_box()
-            text = page.locator(".hk-h1").bounding_box()
-            assert card["x"] >= text["x"] + text["width"] and card["y"] >= 0 and card["y"] + card["height"] <= 900
-            assert page.evaluate(in_screen + "('.hk-box')")
-            assert page.evaluate("document.querySelector('.hq-card').getBoundingClientRect().top < "
-                                 "document.querySelector('.ho').getBoundingClientRect().bottom")
+            # 1440: the opening card whole in the first screen, the news row below it (no longer beside the H1), one
+            # card in view
+            assert page.evaluate(in_screen + "('.ha-card')")
+            assert page.evaluate("document.querySelector('.hn').getBoundingClientRect().top >= "
+                                 "document.querySelector('.ha').getBoundingClientRect().bottom")
+            page.locator(".hn").scroll_into_view_if_needed()
             assert page.evaluate(in_view) == 1
             assert page.text_content(cur) == "1"
             assert page.get_attribute("[data-hcar-pause]", "aria-label") == "소식 자동 넘김 멈추기"
@@ -1463,7 +1469,8 @@ def test_home_news_row_turns_by_itself_and_stops_for_the_reader(built):
             assert not page.is_visible(".hv-ctl") and page.evaluate(in_view) == 1
             assert page.evaluate("(() => { const v = document.querySelector('[data-hcar-view]');"
                                  " return v.scrollWidth > v.clientWidth; })()")
-            # without JS the question box searches
+            # without JS the opening's search box and the question box search
+            assert page.get_attribute(".ha-search", "action") == "/search/"
             page.fill("#ask-q", "선유도")
             page.press("#ask-q", "Enter")
             page.wait_for_url("**/search/?q=*")
@@ -1480,7 +1487,10 @@ def test_launcher_and_quick_menu_are_there_at_load(built_en):
     길찾기, the page's own block); phones show only the launcher; /en/ has no quick menu. No layout shift while the home
     loads (fonts cached, as on any second page), no console errors, and no 'AI 생성 이미지' anywhere on screen.
     Operator 2026-10-15: on the homes below 1024px the launcher steps aside while their own question box is on screen
-    (hidden, out of the tab order) and is there as above once the box has left the screen."""
+    (hidden, out of the tab order) and is there as above once the box has left the screen. 시안 A (2026-11-05): the Korean
+    home's question box is under the first screen (the launcher is there at load from 768px); on Korean phone pages the
+    tab bar's 'AI 챗봇' is the opener instead of the launcher, and on a place page the launcher sits above its call/route
+    bar."""
     sync_api = pytest.importorskip("playwright.sync_api")
     import mimetypes
     from urllib.parse import unquote, urlsplit
@@ -1528,11 +1538,11 @@ def test_launcher_and_quick_menu_are_there_at_load(built_en):
                     page.wait_for_timeout(300)
                     assert page.evaluate("window.scrollY") == 0
                     qm = page.locator(".qm")
-                    if path in ("/", "/en/"):
+                    fab_style = "getComputedStyle(document.querySelector('.chat-fab'))"
+                    if path == "/en/":
                         # on the homes the launcher (and quick menu from 1024px) steps aside while the page's own
                         # question box is on screen — out of the tab order and the pointer's way — and comes back
                         # once the box has left the screen
-                        fab_style = "getComputedStyle(document.querySelector('.chat-fab'))"
                         assert page.evaluate(fab_style + ".visibility") == "hidden", (w, path)
                         assert page.evaluate(fab_style + ".pointerEvents") == "none", (w, path)
                         assert qm.count() == 0 or not qm.is_visible(), (w, path)
@@ -1541,6 +1551,34 @@ def test_launcher_and_quick_menu_are_there_at_load(built_en):
                         page.wait_for_function("document.documentElement.classList.contains('ask-out')", timeout=3000)
                         page.wait_for_timeout(400)                         # the fade
                         assert page.evaluate(fab_ok), (w, path)
+                    elif path == "/":
+                        # 시안 A (the first site's 8f2370215 · c4020e9bd · c2552acc7, ported 2026-11-05): the question box
+                        # is under the first screen, so at load the launcher is there from 768px (owner 2026-10-14
+                        # '첫 화면부터 우측 하단에 챗봇 잘 보이게'); on phones the tab bar's 'AI 챗봇' is the page's one
+                        # chat opener and the launcher is not shown
+                        page.wait_for_function("document.documentElement.classList.contains('ask-out')", timeout=3000)
+                        page.wait_for_timeout(400)                         # the fade
+                        if w < 768:
+                            assert page.locator(".tabbar").is_visible() and page.locator("[data-tab-chat]").is_visible()
+                            assert page.evaluate(fab_style + ".display") == "none", (w, path)
+                        else:
+                            assert page.evaluate(fab_ok), (w, path)
+                        # with the question box on screen the launcher (and quick menu) steps aside, as before
+                        page.evaluate("document.querySelector('[data-ask-zone]').scrollIntoView({block: 'center'})")
+                        page.wait_for_function("!document.documentElement.classList.contains('ask-out')", timeout=3000)
+                        page.wait_for_timeout(400)
+                        assert page.evaluate(fab_style + ".visibility") == "hidden", (w, path)
+                        assert qm.count() == 0 or not qm.is_visible(), (w, path)
+                        page.evaluate("window.scrollTo(0, 0)")
+                        page.wait_for_function("document.documentElement.classList.contains('ask-out')", timeout=3000)
+                        page.wait_for_timeout(400)
+                    elif w < 768 and page.locator(".pl-bar").count():
+                        # a place page on a phone: its call/route bar at the bottom, the launcher right above it
+                        assert page.locator(".pl-bar").is_visible()
+                        bar = page.locator(".pl-bar").bounding_box()
+                        fab = page.locator(".chat-fab").bounding_box()
+                        assert fab["y"] + fab["height"] <= bar["y"] and fab["x"] + fab["width"] > w - 60, (w, path)
+                        assert page.evaluate(fab_style + ".visibility") == "visible", (w, path)
                     else:
                         assert page.evaluate(fab_ok), (w, path)
                     if path == "/en/" or w < 1024:
@@ -1558,7 +1596,7 @@ def test_launcher_and_quick_menu_are_there_at_load(built_en):
                         assert q["y"] + q["height"] <= f["y"]                     # above the launcher
                         if path.startswith("/places/"):
                             assert page.locator("#h-dir").count() == 1
-                    if path in ("/", "/en/"):
+                    if path == "/en/":
                         page.evaluate("window.scrollTo(0, 0)")
                         page.wait_for_function("!document.documentElement.classList.contains('ask-out')", timeout=3000)
                     if path == "/":

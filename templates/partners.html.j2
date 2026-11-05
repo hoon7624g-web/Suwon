@@ -1,0 +1,50 @@
+{% extends "base.html.j2" %}
+{% block sheets %}<link rel="stylesheet" href="/assets/page-partners.css">{% endblock %}
+{% import "_pic.html.j2" as pk %}
+{#- /partners/ 파트너 되기 (the first site's 7f2afaad7 · 3ee5bff35 · d624c1f6e, operator 2026-11-04 meeting; this city
+    2026-11-05 — the recruiting page alone, no partner stay listed): the stay partnership's benefits as cards (each with
+    its 3D picture, partners.json offers.*.benefits pic/icon), the content partnership, and one inquiry band (the form
+    page and the mail to partners.contact, sales@o2o.kr). The words are partners.json's; the template names no city.
+    The relationship and the rule that visit facts come from sources stay said (P.note). pipeline/partners.py;
+    css/83-partners.css. Korean only. -#}
+{% block main_class %}{% endblock %}
+{% block bodyclass %}pg-partners{% endblock %}
+{% block content %}
+{#- '·' between words gets word joiners (U+2060) so a line never starts with the middle dot. -#}
+<section class="pn-hero" aria-labelledby="h-pn">
+  <div class="wrap pn-hero-in">
+    <div class="pn-hero-t">
+      <p class="pn-k">{{ site.site_name }} 파트너</p>
+      <h1 id="h-pn" class="pn-h1"><span class="nw">{{ site.region }} 숙소·크리에이터,</span> <span class="nw">{{ site.site_name|josa('과/와') }} 함께</span> <span class="nw">여행자를 만나세요</span></h1>
+      {% if P.lede %}<p class="pn-lede">{{ P.lede|replace('·', '⁠·⁠') }}</p>{% endif %}
+      <p class="pn-cta">{% if P.contact_path %}<a class="pn-btn" href="{{ P.contact_path }}" data-track="partner_cta">파트너 문의하기<span class="arr" aria-hidden="true">→</span></a>{% endif %}<a class="pn-btn pn-btn-w" href="#pn-stay">혜택 보기<span class="arr" aria-hidden="true">↓</span></a></p>
+    </div>
+  </div>
+</section>
+<div class="wrap pn-wrap">
+  {% set stay = P.offers|selectattr('key', 'equalto', 'stay')|list %}
+  {% if stay %}{% set o = stay[0] %}
+  <section class="pn-sec" id="pn-stay" aria-labelledby="h-pn-stay">
+    <h2 id="h-pn-stay" class="pn-h2">{{ o.title|josa('이/가') }} 되면</h2>
+    <p class="pn-sub">{{ o.lead }}</p>
+    <ul class="pn-cards pn-cards-3">{% for b in o.benefits %}<li class="pn-card"><span class="pn-ic" aria-hidden="true">{{ pk.pic(b.pic, b.icon, 40) if b.pic else ui.icon(b.icon) }}</span><b>{{ b.t|replace('·', '⁠·⁠') }}</b><span>{{ b.d|replace('·', '⁠·⁠') }}</span></li>{% endfor %}</ul>
+  </section>
+  {% endif %}
+  {% set content = P.offers|selectattr('key', 'equalto', 'content')|list %}
+  {% if content %}{% set o = content[0] %}
+  <section class="pn-sec" id="pn-content" aria-labelledby="h-pn-content">
+    <h2 id="h-pn-content" class="pn-h2">{{ o.title }}</h2>
+    <p class="pn-sub">{{ o.lead }}</p>
+    <ul class="pn-cards pn-cards-3">{% for b in o.benefits %}<li class="pn-card pn-card-l"><b>{{ b.t|replace('·', '⁠·⁠') }}</b><span>{{ b.d|replace('·', '⁠·⁠') }}</span></li>{% endfor %}</ul>
+  </section>
+  {% endif %}
+  <section class="pn-ask" aria-labelledby="h-pn-ask">
+    <div>
+      <h2 id="h-pn-ask" class="pn-ask-h">파트너 문의</h2>
+      <p>숙소·채널 이름과 연락처를 적어 보내 주시면 답을 드립니다.{% if P.contact %} <a href="{{ P.mailto }}" data-track="partner_contact">{{ P.contact }}</a>{% endif %}</p>
+    </div>
+    {% if P.contact_path %}<a class="pn-btn" href="{{ P.contact_path }}" data-track="partner_cta">파트너 문의하기<span class="arr" aria-hidden="true">→</span></a>{% endif %}
+  </section>
+  {% if P.note %}<p class="note pn-note">{{ P.note }}</p>{% endif %}
+</div>
+{% endblock %}

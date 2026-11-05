@@ -117,8 +117,8 @@
     /map/ captions' '지도에 없는 n곳은 목록에서', _filters.off_map) -#}
 {% set json = (data|tojson_attr)|replace('&', '&amp;')|replace("'", '&#39;')|replace('<', '&lt;')|replace('>', '&gt;') %}
 <figure class="mapfig{% if cls %} {{ cls }}{% endif %}">
-<div class="map" role="region" aria-label="{{ label }}" data-points='{{ json|safe }}' data-leaflet-css="/assets/vendor/leaflet/leaflet.css" data-leaflet-js="/assets/vendor/leaflet/leaflet.js" data-lenis-prevent><p class="map-off">이 지도의 장소는 이 페이지에 글로도 적었습니다.</p></div>
-<figcaption>{% if caption %}<span data-geo-cap>{{ caption }}</span>{{ tail }} · {% endif %}지도 © OpenStreetMap contributors</figcaption>
+<div class="map" role="region" aria-label="{{ label }}" data-points='{{ json|safe }}'{% if kakao_sdk %} data-kakao-sdk="{{ kakao_sdk }}"{% elif osm_lib %} data-osm-lib="{{ osm_lib }}"{% endif %} data-lenis-prevent><p class="map-off">이 지도의 장소는 이 페이지에 글로도 적었습니다.</p></div>
+<figcaption>{% if caption %}<span data-geo-cap>{{ caption }}</span>{{ tail }} · {% endif %}{{ '지도: © OpenStreetMap 기여자' if osm_lib else '지도: 카카오맵' }}</figcaption>
 </figure>
 {%- endmacro %}
 
@@ -172,7 +172,9 @@
 {%- endmacro %}
 
 {% macro dzchip(d) -%}
-{% if d %}<span class="dz-chip">{{ d.short }}</span>{% endif %}
+{#- one tone per kind of designation (css 86-polish, the first site's a3de6b844): 착한가격·나트륨 줄이기 good, 백년가게 star,
+    모범·우수숙박 model, 안심식당·여성안심 safe — by the national designation type (schema.designations) -#}
+{% if d %}{% set t = {'goodprice': 'good', 'low_sodium': 'good', 'baeknyeon': 'star', 'mobeom': 'model', 'good_stay': 'model', 'ansim': 'safe', 'women_safe_stay': 'safe'}.get(d.type, '') %}<span class="dz-chip{% if t %} dz-{{ t }}{% endif %}">{{ d.short }}</span>{% endif %}
 {%- endmacro %}
 
 {% macro dzsrc(sources) -%}

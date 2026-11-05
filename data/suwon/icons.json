@@ -265,6 +265,31 @@
       "glyph": "swap",
       "label": "일정 바꾸기",
       "group": "plan"
+    },
+    "btn-partner": {
+      "glyph": "spark",
+      "label": "문의·제휴",
+      "group": "side.partner"
+    },
+    "btn-plan": {
+      "glyph": "spark",
+      "label": "내 일정 만들기",
+      "group": "side.plan"
+    },
+    "pn-site": {
+      "glyph": "building",
+      "label": "숙소 홈페이지와 영상",
+      "group": "partners"
+    },
+    "pn-direct": {
+      "glyph": "phone",
+      "label": "자체 예약 문의",
+      "group": "partners"
+    },
+    "pn-content": {
+      "glyph": "play",
+      "label": "숙소 페이지 콘텐츠",
+      "group": "partners"
     }
   }
 }

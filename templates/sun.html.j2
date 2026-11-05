@@ -1,4 +1,5 @@
 {% extends "base.html.j2" %}
+{% block sheets %}<link rel="stylesheet" href="/assets/page-times.css">{% endblock %}
 {% import "_timetables.html.j2" as tt %}
 {#- /sun/ {지역} 일출·일몰 시간 (pipeline/timetables.sun_vm; operator 2026-10-31). The answer first: the build day written
     out with its sunrise and sunset (never '오늘' in the HTML), the day's length and civil twilight, the source and its

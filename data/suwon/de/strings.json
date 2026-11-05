@@ -772,7 +772,7 @@
     "de": "Originaltexte:"
   },
   "chrome.foot_maps": {
-    "en": "Maps: © OpenStreetMap contributors",
+    "en": "Maps: Kakao Map",
     "de": "Karten: Kakao Map"
   },
   "chrome.about": {
@@ -1124,7 +1124,7 @@
     "de": "Die Orte auf dieser Karte stehen auch als Text auf dieser Seite."
   },
   "chrome.map_credit": {
-    "en": "Map: © OpenStreetMap contributors",
+    "en": "Map: Kakao Map",
     "de": "Karte: Kakao Map"
   },
   "chrome.map_of": {
@@ -2170,5 +2170,33 @@
   "chrome.notice_closed_from": {
     "en": "from {date}: closed — reopening date not announced",
     "de": "ab {date}: geschlossen – Wiedereröffnungstermin nicht bekannt gegeben"
+  },
+  "chrome.foot_maps_osm": {
+    "en": "Maps: © OpenStreetMap contributors",
+    "de": "Karten: © OpenStreetMap contributors"
+  },
+  "chrome.map_credit_osm": {
+    "en": "Map: © OpenStreetMap contributors",
+    "de": "Karte: © OpenStreetMap contributors"
+  },
+  "chrome.about_how_2_one": {
+    "en": "Every value names its source. Where two sources give different values, the page shows one of them, the value the data lists first (usually the local or the facility's official information or the Korea Tourism Organization's), with its source. A value no source gives is listed once as \"{missing}\".",
+    "de": "Jeder Wert nennt seine Quelle. Wo zwei Quellen unterschiedliche Werte nennen, zeigt die Seite einen davon mit seiner Quelle: den Wert, den die Daten zuerst nennen (meist die offizielle Angabe der Region oder der Einrichtung oder die der Koreanischen Tourismusorganisation). Ein Wert, den keine Quelle nennt, wird einmal als „{missing}“ aufgeführt."
+  },
+  "designation:모범음식점(수원시 지정)": {
+    "ko": "모범음식점(수원시 지정)",
+    "de": "Musterrestaurant (ausgezeichnet von der Stadt Suwon)"
+  },
+  "designation:백년가게(중소벤처기업부)": {
+    "ko": "백년가게(중소벤처기업부)",
+    "de": "Jahrhundertgeschäft (Ministerium für KMU und Start-ups)"
+  },
+  "designation_source:경기도 수원시 · 공공데이터포털 모범음식점 현황(2026-06-30)": {
+    "ko": "경기도 수원시 · 공공데이터포털 모범음식점 현황(2026-06-30)",
+    "de": "Stadt Suwon, Provinz Gyeonggi · Portal für öffentliche Daten, Liste der Musterrestaurants (2026-06-30)"
+  },
+  "designation_source:소상공인시장진흥공단 · 공공데이터포털 전국 백년가게 지정리스트 현황 정보(2026-08-20)": {
+    "ko": "소상공인시장진흥공단 · 공공데이터포털 전국 백년가게 지정리스트 현황 정보(2026-08-20)",
+    "de": "Agentur für Kleinunternehmen und Märkte · Portal für öffentliche Daten, landesweite Liste der ausgezeichneten Jahrhundertgeschäfte (2026-08-20)"
   }
 }

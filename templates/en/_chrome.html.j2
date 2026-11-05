@@ -75,7 +75,7 @@
         <ul class="foot-src">
           {% if tourapi_used %}<li>{{ t.foot_tourapi }} <a href="https://api.visitkorea.or.kr/" rel="noopener" data-track="official_click">{{ t.kto_tourapi }}</a></li>{% endif %}
           {% if site.source.name_l %}<li>{{ t.foot_official if site.source.official else t.foot_original }} {% if site.source.url %}<a href="{{ site.source.url }}" rel="noopener" data-track="official_click">{{ site.source.name_l }}</a>{% else %}{{ site.source.name_l }}{% endif %}</li>{% endif %}
-          <li>{{ t.foot_maps }}</li>
+          <li>{{ t.foot_maps_osm if osm_lib else t.foot_maps }}</li>
         </ul>
       </div>
       <nav class="foot-col" aria-label="{{ t.about }}">

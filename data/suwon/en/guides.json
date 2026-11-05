@@ -3,11 +3,11 @@
     "slug": "suwon-hwaseong-fortress-haenggung",
     "label": "Suwon Hwaseong Fortress, Haenggung Palace, and Fortress Walls",
     "title": "Where are the fortress sights such as Suwon Hwaseong Fortress, Hwaseong Haenggung Palace, and Banghwasuryujeong Pavilion, and the free attractions that are always open?",
-    "summary": "This site lists 20 sights related to Suwon Hwaseong Fortress, Hwaseong Haenggung Palace, the four main gates, the corner pavilions, and the fortress walls, and 51 Suwon attractions open year-round and free of charge. Below, you can compare the hours, closing days, and admission fees of 10 key places at a glance.",
+    "summary": "This site lists 21 sights related to Suwon Hwaseong Fortress, Hwaseong Haenggung Palace, the four main gates, the corner pavilions, and the fortress walls, and 52 Suwon attractions open every day of the year free of charge. Below, you can compare the hours, closing days, and admission fees of 10 key places at a glance.",
     "body": [
       {
-        "heading": "20 sights of Suwon Hwaseong Fortress, Hwaseong Haenggung Palace, and the fortress walls, and 51 free attractions open year-round",
-        "text": "In Korea Tourism Organization TourAPI data, there are 20 fortress-related sights, including Suwon Hwaseong Fortress and Hwaseong Haenggung Palace; Janganmun Gate, Paldalmun Gate, Hwaseomun Gate, and Changnyongmun Gate; and Banghwasuryujeong Pavilion, Yeonmudae, Hwahongmun Gate, Seojangdae, and Hwaryeongjeon. Of all Suwon attractions, 51 are open year-round and free of charge."
+        "heading": "21 Suwon Hwaseong Fortress, Hwaseong Haenggung Palace, and fortress-wall sights and 52 attractions open every day for free",
+        "text": "According to TourAPI, there are 21 fortress-related sights, including Suwon Hwaseong Fortress, Hwaseong Haenggung Palace, Janganmun Gate, Paldalmun Gate, Hwaseomun Gate, Changnyongmun Gate, Banghwasuryujeong Pavilion, Yeonmudae, Hwahongmun Gate, Seojangdae, and Hwaryeongjeon Hall. Of all Suwon attractions, 52 are open every day of the year and free to enter."
       },
       {
         "heading": "Check the always-open fortress sections and the ticket sales times of the palace and activity facilities",
@@ -59,7 +59,7 @@
     "faq": [
       {
         "q": "How many sights related to Suwon Hwaseong Fortress, Haenggung Palace, and the fortress walls, and how many free attractions open year-round, are there in Suwon?",
-        "a": "There are 20 sights related to Suwon Hwaseong Fortress, Hwaseong Haenggung Palace, the four main gates, and the corner pavilions, and 51 attractions that are open year-round and free.",
+        "a": "There are 21 sights related to Suwon Hwaseong Fortress, Hwaseong Haenggung Palace, the four main gates, and the corner pavilions, and 52 attractions open every day of the year free of charge.",
         "source": "한국관광공사 TourAPI"
       }
     ],
@@ -69,8 +69,8 @@
         "url": "https://api.visitkorea.or.kr/"
       }
     ],
-    "ko_hash": "23cc05f8a14617b9",
-    "translated_at": "2026-10-28"
+    "ko_hash": "e65abe35c2af7ca0",
+    "translated_at": "2026-11-05"
   },
   "guide-02": {
     "slug": "suwon-with-kids",
@@ -143,17 +143,17 @@
       }
     ],
     "ko_hash": "5c72e6e5bde70c1a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "guide-03": {
     "slug": "suwon-indoor-museums",
     "label": "Rainy Days · Indoors",
     "title": "Which museums, art museums, Starfield Library, and cultural facilities in Suwon are easy to visit on a rainy day?",
-    "summary": "This site lists 43 cultural facilities in Suwon, such as museums, art museums, libraries, and art centers. Of the indoor and outdoor cultural attractions, 34 have museum, art museum, exhibition hall, library, Haewoojae Museum (Mr. Toilet House), or Aqua Planet in their names. Below, you can compare the viewing hours, regular closing days, and admission fees of 10 key places.",
+    "summary": "This site lists 43 cultural facilities in Suwon, such as museums, art museums, libraries, and art centers, and 38 indoor and outdoor cultural attractions whose names include museum, art museum, exhibition hall, library, Haewoojae Museum (Mr. Toilet House), or Aqua Planet. Below, you can compare the viewing hours, regular closing days, and admission fees of 10 key places.",
     "body": [
       {
-        "heading": "43 cultural facilities such as museums, art museums, and libraries, and 34 exhibition and cultural sights",
-        "text": "Under Korea Tourism Organization TourAPI categories, 43 Suwon sights are registered as cultural facilities. There are 34 exhibition and library sights, such as Suwon Hwaseong Museum, Suwon Museum of Art, National Agricultural Museum, Starfield Library Suwon, Gyeonggi Library, Haewoojae Museum (Mr. Toilet House), and Aqua Planet Gwanggyo."
+        "heading": "43 cultural facilities such as museums, art museums, and libraries, and 38 exhibition and cultural sights",
+        "text": "TourAPI lists 43 Suwon sights as cultural facilities, and there are 38 exhibition and library sights, including Suwon Hwaseong Museum, Suwon Museum of Art, National Agricultural Museum, Starfield Library Suwon, Gyeonggi Library, Haewoojae Museum (Mr. Toilet House), and Aqua Planet Gwanggyo."
       },
       {
         "heading": "Compare opening hours, Monday closures, and free admission",
@@ -205,7 +205,7 @@
     "faq": [
       {
         "q": "How many places in Suwon are classified as cultural facilities, such as museums, art museums, and libraries?",
-        "a": "There are 43 Suwon attractions registered as cultural facilities, and 34 sights related to museums, art museums, exhibition halls, libraries, Haewoojae Museum (Mr. Toilet House), or Aqua Planet.",
+        "a": "There are 43 Suwon attractions registered as cultural facilities, and 38 sights related to museums, art museums, exhibition halls, libraries, Haewoojae Museum (Mr. Toilet House), or Aqua Planet.",
         "source": "한국관광공사 TourAPI"
       }
     ],
@@ -215,18 +215,18 @@
         "url": "https://api.visitkorea.or.kr/"
       }
     ],
-    "ko_hash": "9ea0ed6649e6de30",
-    "translated_at": "2026-10-28"
+    "ko_hash": "eeaa28df34cf5851",
+    "translated_at": "2026-11-05"
   },
   "guide-05": {
     "slug": "monday-open-restaurants-suwon",
     "label": "Open on Mondays · Places to Eat",
     "title": "Which Suwon king-size galbi, whole fried chicken, kalguksu, and Haengnidan Street café spots are open on Mondays?",
-    "summary": "Of the Suwon restaurants on this site, 176 do not list Monday among their closing days. You can compare the menus and hours of 10 key places among 54 galbi, hanwoo, and grilled meat restaurants, 23 fried chicken, kalguksu, haejangguk, and dumpling spots, and 42 coffee, bakery, and dessert places.",
+    "summary": "Of the Suwon restaurants on this site, 175 do not list Monday among their closing days. You can compare the menus and hours of 10 leading places among 55 galbi, hanu, and grilled-meat restaurants, 23 fried chicken, kalguksu, haejangguk, and dumpling restaurants, and 44 coffee, bakery, and dessert places.",
     "body": [
       {
-        "heading": "176 places open on Mondays: 54 Suwon galbi and grill restaurants, 23 fried chicken, noodle, and rice soup spots, and 42 cafés",
-        "text": "In Korea Tourism Organization TourAPI data, 176 Suwon restaurants and cafés do not list Monday among their regular closing days. By menu, 54 serve Suwon king-size galbi, hanwoo, bulgogi, pork belly, or duck; 23 serve fried chicken, kalguksu, cold noodles, haejangguk, seolleongtang, or dumplings; and 42 serve coffee, bakery goods, or desserts."
+        "heading": "175 restaurants open on Mondays, with 55 Suwon galbi and grill places, 23 chicken, noodle, and rice soup places, and 44 cafés",
+        "text": "Based on the Korea Tourism Organization's TourAPI, 175 Suwon restaurants and cafés do not include Monday in their regular closing days. By menu, 55 places serve Suwon jumbo galbi, hanu, bulgogi, pork belly, or duck; 23 serve fried chicken, kalguksu, naengmyeon, haejangguk, seolleongtang, or dumplings; and 44 serve coffee, bakery items, or desserts."
       },
       {
         "heading": "Check break times and last order times",
@@ -278,7 +278,7 @@
     "faq": [
       {
         "q": "In Suwon, how many restaurants are open on Mondays, and how many of them are galbi and grill, fried chicken, noodle, and rice soup, or coffee and bakery places?",
-        "a": "There are 176 restaurants not closed on Mondays: 54 galbi, hanwoo, and grill restaurants, 23 fried chicken, kalguksu, haejangguk, and dumpling spots, and 42 coffee, bakery, and dessert places.",
+        "a": "175 restaurants have no Monday closing; among them are 55 galbi, hanu, and grill places, 23 fried chicken, kalguksu, haejangguk, and dumpling places, and 44 coffee, bakery, and dessert places.",
         "source": "한국관광공사 TourAPI"
       }
     ],
@@ -288,8 +288,8 @@
         "url": "https://api.visitkorea.or.kr/"
       }
     ],
-    "ko_hash": "10d27a57ece246bb",
-    "translated_at": "2026-10-28"
+    "ko_hash": "a57584d7eff9b137",
+    "translated_at": "2026-11-05"
   },
   "guide-06": {
     "slug": "suwon-hotels-hanok-stays",
@@ -362,6 +362,6 @@
       }
     ],
     "ko_hash": "e090e2a9577a1863",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   }
 }

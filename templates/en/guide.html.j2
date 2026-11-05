@@ -49,7 +49,7 @@
     </dl>
     {% endif %}
     <div class="gd-ans">
-      <div class="summary" data-block="summary"><p class="lede gd-ans-l {{ G.ans.size }}">{{ G.ans.html }}</p>{% if G.ans.rest %}<p class="dek gd-ans-r">{{ G.ans.rest_html }}</p>{% endif %}</div>
+      <div class="summary" data-block="summary"><p class="lede gd-ans-l {{ G.ans.size }}">{{ G.ans.html }}</p>{% if G.ans.rest_pts %}<ul class="gd-ans-pts">{% for t in G.ans.rest_pts %}<li>{{ t }}</li>{% endfor %}</ul>{% elif G.ans.rest %}<p class="dek gd-ans-r">{{ G.ans.rest_html }}</p>{% endif %}</div>
       {% if G.picks %}
       <div class="gd-picks">
         {% set nb %}<b class="tn">{{ G.picks_total }}</b>{% endset %}

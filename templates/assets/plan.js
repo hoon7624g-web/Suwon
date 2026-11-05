@@ -1026,13 +1026,18 @@
       if (p && p.g) pts.push({ lat: p.g[0], lng: p.g[1], name: s.name, url: s.path, n: i + 1 });
     });
     if (pts.length < 1) return h("p", { class: "trp-nomap", text: "이 날의 장소에는 지도 좌표가 없어요." });
-    var box = h("div", { class: "map", role: "region", "aria-label": day.label + " 지도", "data-map": JSON.stringify({ course: pts }) },
+    // the box names what map.js loads, as the page's other maps do (_ui.html.j2 mapfig): Kakao's SDK
+    // (data-kakao-sdk, map_provider 'kakao') or the self-hosted Leaflet and OpenStreetMap's tiles (data-osm-lib)
+    var osm = root.getAttribute("data-osm-lib");
+    var box = h("div", { class: "map", role: "region", "aria-label": day.label + " 지도", "data-map": JSON.stringify({ course: pts }),
+      "data-osm-lib": osm || null, "data-kakao-sdk": osm ? null : root.getAttribute("data-kakao-sdk") || null },
       [h("p", { class: "map-off", text: "지도를 불러오는 중입니다." })]);
-    var fig = h("figure", { class: "trp-map" }, [box, h("figcaption", { text: "번호는 일정 순서" + (pts.length < day.stops.length ? " · 좌표가 있는 " + pts.length + "곳만 표시" : "") + " · 지도 © OpenStreetMap contributors" })]);
+    var fig = h("figure", { class: "trp-map" }, [box, h("figcaption", { text: "번호는 일정 순서" + (pts.length < day.stops.length ? " · 좌표가 있는 " + pts.length + "곳만 표시" : "") + " · " + (osm ? "지도: © OpenStreetMap 기여자" : "지도: 카카오맵") })]);
     setTimeout(function () { startMap(box); }, 0);
     return fig;
   }
-  function startMap(box) {   // map.js (Leaflet + OpenStreetMap) builds a box added after load; loaded here when needed
+  function startMap(box) {   // map.js builds a box added after load (window.GSMapStart); loaded here when needed
+    if (!box.getAttribute("data-osm-lib") && !box.getAttribute("data-kakao-sdk")) return;
     if (win.GSMapStart) { win.GSMapStart(box); return; }
     var s = doc.querySelector('script[src$="map.js"]');
     if (!s) { s = h("script", { src: BASE + "map.js" }); doc.body.append(s); }

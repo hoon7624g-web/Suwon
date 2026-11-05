@@ -9,6 +9,8 @@
    'copy_link', content_type = the page kind (place-food, guide, course, events …), item_id = the place, guide,
    course or event series id. The shared link carries utm_source=share&utm_medium=<method>, so the visits it
    brings show as their own source / medium.
+   partner_cta (파트너 되기, pipeline/partners.py): a press toward /partners/ or its inquiry form (the panel's '문의/제휴',
+   the footer, the page's buttons); partner_contact: the inquiry mail link.
    Register place_id / link_provider / page_kind / chat_where / link_lang / method / content_type / item_id as custom
    dimensions in GA4 to report on them. */
 (function () {

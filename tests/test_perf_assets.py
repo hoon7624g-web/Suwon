@@ -9,7 +9,7 @@ import re
 import shutil
 from pathlib import Path
 
-from pipeline.build import build, css_source, site_css
+from pipeline.build import PAGE_SHEETS, build, css_source, page_css, site_css
 
 ROOT = Path(__file__).resolve().parent.parent
 ASSETS = ROOT / "templates" / "assets"
@@ -32,9 +32,23 @@ def test_first_screen_is_never_hidden_and_libraries_are_not_in_head(tmp_path):
         assert "/assets/motion.js" not in html
         assert '<script src="/assets/vendor/' not in html
         assert 'href="/assets/vendor/lenis/' not in html and '<script src="https://dapi.kakao.com' not in html
-        assert html.count('rel="stylesheet"') == 2  # fonts + the one built stylesheet
+        # the stylesheets that hold the first paint: fonts + the shared one (+ the home's own sheet on the home);
+        # the panel's rules (wide.css) only for windows from 1200px, so a phone does not wait for them
+        sheets = re.findall(r'<link rel="stylesheet" href="([^"]+)"( media="[^"]+")?>', html)
+        blocking = [href for href, media in sheets if not media]
+        own = ["/assets/page-home.css"] if page == out / "index.html" else []
+        assert blocking == ["/assets/vendor/pretendard/pretendard.css", "/assets/style.css", *own], blocking
+        assert ("/assets/wide.css", ' media="(min-width: 1200px)"') in sheets
     built = (out / "assets" / "style.css").read_text("utf-8")
     assert built == site_css() and not (out / "assets" / "css").exists()
+    for name, file in PAGE_SHEETS.items():   # every page sheet is written, has rules, and none of them is shared
+        sheet = (out / "assets" / file).read_text("utf-8")
+        assert sheet == page_css(name) and len(sheet) > 1000, file
+    for file, rule in (("page-partners.css", ".pn-hero{"), ("page-times.css", ".tt-day{"), ("page-home.css", ".mzt{"),
+                       ("wide.css", ".side{display:flex")):
+        assert rule in (out / "assets" / file).read_text("utf-8") and rule not in built, (file, rule)
+    # what stays shared: the panel's '문의/제휴' row (every Korean page) and the place page's link to /sun/
+    assert ".sd-pt{" in built and ".td-sun-more{" in built
     assert "motion-pending" not in css_source() and "/*" not in built
     motion = (ASSETS / "motion.js").read_text("utf-8")
     assert "motion-pending" not in motion and "prefers-reduced-motion" in motion

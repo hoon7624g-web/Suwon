@@ -290,15 +290,20 @@ def test_the_opening_asks_and_the_panel_below_answers(browser, site, width, heig
     assert page.locator('link[href$="chat.css"]').count() == 0 and page.locator('script[src$="chat.js"]').count() == 0
     log = page.locator("[data-chat-dock] [data-ask-log]")
     assert log.is_hidden()
-    # the box is in the question card, inside the first screen; the panel comes right under the card
-    box = page.locator(".hk-box").bounding_box()
-    assert box["y"] >= 0 and box["y"] + box["height"] <= height
+    # the box is in the question card — since 시안 A (the first site's 8f2370215 · c4020e9bd, ported 2026-11-05) under
+    # the first screen's opening card (its own big site search); the panel comes right under the card
+    assert page.evaluate("document.querySelector('.hq').getBoundingClientRect().top >= "
+                         "document.querySelector('.ha').getBoundingClientRect().bottom")
     assert page.evaluate("document.querySelector('.hq').contains(document.getElementById('ask-q'))")
     assert page.evaluate("document.querySelector('.hq').nextElementSibling.matches('.hk-conv')")
+    page.evaluate("document.querySelector('.hk-box').scrollIntoView({block: 'center'})")
+    page.wait_for_function("!document.documentElement.classList.contains('ask-out')", timeout=3000)
+    page.wait_for_timeout(400)
+    box = page.locator(".hk-box").bounding_box()
+    assert box["y"] >= 0 and box["y"] + box["height"] <= height
     # the launcher steps aside while the home's question zone is on screen (operator 2026-10-15: at 390x844 it covered
-    # the box's '#' tags; css/49-chat.css, as test_present checks) — with the tab panel (2026-10-31) the zone is in
-    # the first screen at 1440 too
-    assert page.locator(".chat-fab").is_visible() == page.evaluate("document.documentElement.classList.contains('ask-out')")
+    # the box's '#' tags; css/49-chat.css, as test_present checks)
+    assert not page.locator(".chat-fab").is_visible()
     later = ".foot"
     page.fill("#ask-q", "은파 주차")
     above = {s: doc_top(page, s) for s in ("#h-home", ".hk-box", ".hk-note")}
@@ -356,6 +361,11 @@ def test_starters_ask_and_the_boxes_ignore_input_methods_and_empty_questions(bro
     chip = page.locator(".hk-pill").first
     href = chip.get_attribute("href")
     assert href == "/guides/no-car-day-trip/" and chip.get_attribute("data-ask") == "차 없이 하루 여행"
+    # 시안 A (2026-11-05): the question card is under the first screen — the reader scrolls to it first (the page
+    # scrolls smoothly, so a click while it still moves would land elsewhere)
+    page.evaluate("document.querySelector('.hk-pill').scrollIntoView({block: 'center', behavior: 'instant'})")
+    page.wait_for_function("!document.documentElement.classList.contains('ask-out')", timeout=3000)
+    page.wait_for_timeout(500)   # the launcher's fade as the box comes on screen
     # with a modifier key a starter is a link (a new tab), and nothing is asked
     with ctx.expect_page() as other:
         chip.click(modifiers=["Control"])
@@ -432,6 +442,21 @@ def test_without_chat_js_the_box_searches_and_a_starter_follows_its_link(browser
 def test_the_launcher_is_there_from_the_start_and_goes_to_the_box(browser, site, width, height):
     ctx, page, errors = open_home(browser, site, width, height)
     fab = page.locator(".chat-fab")
+    if width < 768:
+        # 시안 A (the first site's c4020e9bd · c2552acc7, ported 2026-11-05): on phones the tab bar's 'AI 챗봇' is the
+        # page's one chat opener — it presses the launcher (site.js [data-tab-chat]), whose face is not shown; nothing
+        # asked yet, it goes to the card's question box
+        tab = page.locator("[data-tab-chat]")
+        assert tab.is_visible() and not fab.is_visible()
+        assert page.evaluate("getComputedStyle(document.querySelector('.chat-fab')).display") == "none"
+        assert fab.get_attribute("aria-haspopup") is None and fab.get_attribute("aria-label").startswith("AI 챗봇")
+        tab.click()
+        page.wait_for_timeout(1000)
+        assert page.evaluate("document.activeElement.id") == "ask-q" and in_viewport(page, ".hk-box")
+        assert page.locator("#chat").count() == 0 and page.locator("[data-ask-log]").is_hidden()
+        assert errors == []
+        ctx.close()
+        return
     if not page.evaluate("document.documentElement.classList.contains('ask-out')"):
         # operator 2026-10-15: it steps aside while the home's question box is on screen — hidden, out of the tab
         # order — and is there once the box has left the screen

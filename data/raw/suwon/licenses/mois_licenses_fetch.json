@@ -1,0 +1,122 @@
+{
+  "general_restaurants": {
+    "fetched_at": "2026-11-05",
+    "total": 43561,
+    "rows": 43561,
+    "data_updated": "2026-11-04",
+    "file": "mois_general_restaurants.csv",
+    "groups": {
+      "3740000": 43561
+    }
+  },
+  "rest_cafes": {
+    "fetched_at": "2026-11-05",
+    "total": 14466,
+    "rows": 14466,
+    "data_updated": "2026-11-04",
+    "file": "mois_rest_cafes.csv",
+    "groups": {
+      "3740000": 14466
+    }
+  },
+  "bakeries": {
+    "fetched_at": "2026-11-05",
+    "total": 1669,
+    "rows": 1669,
+    "data_updated": "2026-11-04",
+    "file": "mois_bakeries.csv",
+    "groups": {
+      "3740000": 1669
+    }
+  },
+  "tourist_restaurants": {
+    "fetched_at": "2026-11-05",
+    "total": 0,
+    "rows": 0,
+    "data_updated": "",
+    "file": "",
+    "groups": {
+      "3740000": 0
+    }
+  },
+  "lodgings": {
+    "fetched_at": "2026-11-05",
+    "total": 942,
+    "rows": 942,
+    "data_updated": "2026-11-04",
+    "file": "mois_lodgings.csv",
+    "groups": {
+      "3740000": 942
+    }
+  },
+  "tourist_accommodations": {
+    "fetched_at": "2026-11-05",
+    "total": 64,
+    "rows": 64,
+    "data_updated": "2026-09-19",
+    "file": "mois_tourist_accommodations.csv",
+    "groups": {
+      "3740000": 64
+    }
+  },
+  "tourist_pensions": {
+    "fetched_at": "2026-11-05",
+    "total": 0,
+    "rows": 0,
+    "data_updated": "",
+    "file": "",
+    "groups": {
+      "3740000": 0
+    }
+  },
+  "rural_homestays": {
+    "fetched_at": "2026-11-05",
+    "total": 1,
+    "rows": 1,
+    "data_updated": "2026-03-11",
+    "file": "mois_rural_homestays.csv",
+    "groups": {
+      "3740000": 1
+    }
+  },
+  "foreigner_city_homestays": {
+    "fetched_at": "2026-11-05",
+    "total": 391,
+    "rows": 391,
+    "data_updated": "2026-11-03",
+    "file": "mois_foreigner_city_homestays.csv",
+    "groups": {
+      "3740000": 391
+    }
+  },
+  "hanok_experience": {
+    "fetched_at": "2026-11-05",
+    "total": 22,
+    "rows": 22,
+    "data_updated": "2026-09-30",
+    "file": "mois_hanok_experience.csv",
+    "groups": {
+      "3740000": 22
+    }
+  },
+  "general_campgrounds": {
+    "fetched_at": "2026-11-05",
+    "total": 1,
+    "rows": 1,
+    "data_updated": "2025-12-15",
+    "file": "mois_general_campgrounds.csv",
+    "groups": {
+      "3740000": 1
+    }
+  },
+  "auto_campgrounds": {
+    "fetched_at": "2026-11-05",
+    "total": 1,
+    "rows": 1,
+    "data_updated": "2025-12-15",
+    "file": "mois_auto_campgrounds.csv",
+    "groups": {
+      "3740000": 1
+    }
+  }
+}

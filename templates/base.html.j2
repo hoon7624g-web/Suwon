@@ -88,6 +88,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="stylesheet" href="/assets/vendor/pretendard/pretendard.css">
 <link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/assets/wide.css" media="(min-width: 1200px)">
+{# sheets block: the page's own rules (pipeline/build.PAGE_SHEETS — page-home.css, page-times.css, page-partners.css),
+   kept out of the shared style.css so other pages do not wait for them; wide.css (the panel, from 1200px) is linked
+   with its media query, so a phone does not wait for it either. #}
+{% block sheets %}{% endblock %}
 <style>@view-transition{navigation:auto}@media (prefers-reduced-motion:reduce){@view-transition{navigation:none}}</style>
 {# head block: a page whose first screen shows a KOGL-1 photo may preload it here with md.preload(ph)
    (_media.html.j2) instead of page.preload. The behaviour states are folded into the one built stylesheet
@@ -174,6 +179,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <nav class="menu-panel" aria-label="전체 메뉴">
         {% if sd %}{{ sdm.acts(sd.acts, nav_current) }}
         {{ sdm.groups(SG, nav_current, 'menu') }}
+        {{ sdm.partner(partners_path|default(''), nav_current, site.site_name) }}
         {{ sdm.day(sd, 'menu') }}{% endif %}
         <ul class="menu-sub">{% if has_search %}<li><a href="/search/"{% if nav_current == '/search/' %} aria-current="page"{% endif %}>검색</a></li>{% endif %}{% if not sd %}<li><a href="/about/"{% if nav_current == '/about/' %} aria-current="page"{% endif %}>소개·출처</a></li>{% endif %}{{ lg.others(langs) }}</ul>
       </nav>
@@ -183,6 +189,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     {{ sdm.day(sd, 'side') }}
     {{ sdm.acts(sd.acts, nav_current) }}
     <nav class="side-nav" aria-label="주 메뉴">{{ sdm.groups(SG, nav_current, 'side') }}</nav>
+    {{ sdm.partner(partners_path|default(''), nav_current, site.site_name) }}
   </div>{% endif %}
 </header>
 {% endif %}
@@ -207,12 +214,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <ul class="foot-src">
           {% if site.source.name %}<li>원문 출처: {% if site.source.url %}<a href="{{ site.source.url }}" rel="noopener" data-track="official_click">{{ site.source.name }}</a>{% else %}{{ site.source.name }}{% endif %}</li>{% endif %}
           {% if tourapi_used %}<li>관광 정보·사진: 한국관광공사 TourAPI</li>{% endif %}
-          <li>지도: © OpenStreetMap contributors</li>
+          <li>{{ '지도: © OpenStreetMap 기여자' if osm_lib else '지도: 카카오맵' }}</li>
         </ul>
       </div>
       <nav class="foot-col" aria-label="안내">
         <h2>안내</h2>
-        <ul>{% if has_transport %}<li><a href="/transport/">{{ site.region }} 교통 시간표</a></li>{% endif %}{% if has_sun %}<li><a href="/sun/">{{ site.region }} 일출·일몰 시간</a></li>{% endif %}{% if has_videos %}<li><a href="/videos/">영상으로 보는 {{ site.region }}</a></li>{% endif %}{% if has_abroad %}<li><a href="/abroad/">해외에서 본 {{ site.region }}</a></li>{% endif %}<li><a href="/about/">소개·출처</a></li><li><a href="/about/#how">이 사이트를 만드는 방법</a></li><li><a href="/about/#correction">정정 요청</a></li><li><a href="/llms.txt">AI용 안내(llms.txt)</a></li><li><a href="/sitemap.xml">사이트맵</a></li>{{ lg.others(langs) }}</ul>
+        <ul>{% if partners_path is defined and partners_path %}<li><a href="{{ partners_path }}" data-track="partner_cta">파트너 문의·제휴</a></li>{% endif %}{% if has_transport %}<li><a href="/transport/">{{ site.region }} 교통 시간표</a></li>{% endif %}{% if has_sun %}<li><a href="/sun/">{{ site.region }} 일출·일몰 시간</a></li>{% endif %}{% if has_videos %}<li><a href="/videos/">영상으로 보는 {{ site.region }}</a></li>{% endif %}{% if has_abroad %}<li><a href="/abroad/">해외에서 본 {{ site.region }}</a></li>{% endif %}<li><a href="/about/">소개·출처</a></li><li><a href="/about/#how">이 사이트를 만드는 방법</a></li><li><a href="/about/#correction">정정 요청</a></li><li><a href="/llms.txt">AI용 안내(llms.txt)</a></li><li><a href="/sitemap.xml">사이트맵</a></li>{{ lg.others(langs) }}</ul>
       </nav>
     </div>
     <div class="foot-id">
@@ -232,6 +239,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </footer>
 {% endif %}
+{#- phones (시안 A, the first site's c4020e9bd · c2552acc7, operator 2026-11-05): a tab bar at the bottom of the Korean
+    pages — 홈 · 지도 · 코스 · AI 챗봇 (the chat's own opener: [data-tab-chat] presses the launcher, site.js; 지도 and 코스
+    only when the build has those pages; the first site's 숙박 tab only with a booking page, which this city has not —
+    operator 2026-11-05). The floating launcher gives way to it there, and a place page shows its call/route bar
+    instead (css 87-design-a). -#}
+{% if lang == 'ko' %}<nav class="tabbar" aria-label="아래 빠른 메뉴">
+  <a href="/"{% if page_kind == 'home' %} aria-current="page"{% endif %}><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 11 12 4l8 7v9H4z"/></svg><span>홈</span></a>
+  {% if has_map %}<a href="/map/"{% if nav_current == '/map/' %} aria-current="page"{% endif %}>{{ ui.icon('map') }}<span>지도</span></a>{% endif %}
+  {% if has_courses %}<a href="/courses/"{% if nav_current == '/courses/' %} aria-current="page"{% endif %} data-track="course_click">{{ ui.icon('route') }}<span>코스</span></a>{% endif %}
+  <button type="button" data-tab-chat aria-haspopup="dialog">{{ ui.icon('chat') }}<span>AI 챗봇</span></button>
+</nav>{% endif %}
 {# the site assistant's launcher, the last thing in <body> on every page (_chat.html.j2; the chat loads on its press) #}
 {% include "_chat.html.j2" %}
 </body>

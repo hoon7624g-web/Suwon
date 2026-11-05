@@ -212,7 +212,8 @@ def test_site_js_and_state_css_never_hide_content_by_default():
 
 def test_map_module_keeps_the_markup_contract():
     js = (ASSETS / "map.js").read_text("utf-8")
-    assert '.map[data-points]' in js and 'data-leaflet-js' in js and 'data-lenis-prevent' in js   # Leaflet + OSM (operator 2026-10-16)
+    # Kakao Maps (site.json map_provider 'kakao', operator 2026-11-05) or Leaflet + OSM ('osm'): the box names which
+    assert '.map[data-points]' in js and 'data-kakao-sdk' in js and 'data-osm-lib' in js and 'data-lenis-prevent' in js
     site = (ASSETS / "site.js").read_text("utf-8")
     assert 'attach("map.js")' in site and 'attach("course.js")' in site and 'attach("search.js")' in site
 

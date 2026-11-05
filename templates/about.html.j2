@@ -37,7 +37,7 @@
         {% if n_other_sources or not tourapi_used %}<li><strong>출처:</strong> 장소 정보는 {% if tourapi_used %}한국관광공사 TourAPI와 {% endif %}{% if site.source.name %}{{ site.source.name }}·{% endif %}시설 공식 누리집 같은 공식 안내에서 가져옵니다.</li>
         {%- else %}<li><strong>출처:</strong> 장소 정보는 지금 한국관광공사 TourAPI{% if site.source.name %}와 {{ site.source.name }}{% endif %}에서 가져옵니다. 시설 공식 누리집에서 확인한 값은 확인한 항목부터 출처와 함께 더합니다.</li>{% endif %}
         <li><strong>항목별 출처:</strong> 이용시간·요금·주차 같은 항목마다 어느 출처의 값인지 적습니다.</li>
-        <li><strong>출처마다 다른 값:</strong> 출처끼리 값이 다르면 하나를 고르지 않고 출처와 함께 나란히 싣습니다.</li>
+        <li><strong>출처마다 다른 값:</strong> {% if site.fact_conflicts == 'primary' %}출처끼리 값이 다르면 대표값 하나만 그 출처와 함께 싣습니다. 대표값은 자료에 먼저 적힌 값으로, 대개 지역·시설의 공식 안내나 한국관광공사 정보입니다.{% else %}출처끼리 값이 다르면 하나를 고르지 않고 출처와 함께 나란히 싣습니다.{% endif %}</li>
         <li><strong>요약과 자주 묻는 질문:</strong> 위에서 모은 사실만으로 AI의 도움을 받아 초안을 쓰고, 숫자·출처 대조와 원문 베끼기 검사를 통과한 문장만 싣습니다. 사람이 검토했거나 운영자가 공개를 승인한 페이지만 공개합니다.</li>
         <li><strong>원문과 사진:</strong> {% if site.source.kogl == 'none' and site.source.name %}공공누리 표시가 없는 {{ site.source.name }}의 글과 사진은 옮겨 싣지 않고 원문 링크로 안내합니다. 원문에서 확인한 사실은 이 사이트의 문장으로 새로 씁니다.{% else %}이용 조건(공공누리 유형)을 확인하기 전인 원문은 옮겨 싣지 않고 링크로만 안내합니다. 설명은 이 사이트의 문장으로 새로 쓰고, 이용시간·요금·메뉴 같은 값은 출처의 값 그대로 씁니다.{% endif %}{% if tourapi_used %} 사진은 한국관광공사 TourAPI의 공공누리 제1·3유형 사진만 출처와 함께 씁니다.{% endif %}</li>
         <li><strong>거리:</strong> 코스·가이드·주변 목록의 거리는 모두 두 장소 좌표 사이의 직선거리입니다.</li>

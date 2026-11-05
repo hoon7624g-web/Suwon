@@ -1,0 +1,143 @@
+/* ================================================================ 86-polish — list ledgers, the map's 읍·면·동 lists,
+   kind colours, the guide answer's sentence list and the no-photo place hero (operator 2026-11-04: '눈에 잘 안
+   들어와서', '너무 허접해 보인다', '사진도 없고', '글 쭉 적어둔 곳들은 좀 이쁘게').
+   Kind colours (shape stays the cue — ● 관광지, ○ 숙소, ■ 음식점 — colour only adds to it): */
+:root { --k-a: #0E9384; --k-a-bg: #E6F6F3; --k-s: #2F6FC9; --k-s-bg: #EAF2FC; --k-f: #E0701F; --k-f-bg: #FFF1E6; }
+
+/* ---------------------------------------------------------------- map markers and the kind keys */
+.mk-dot { background: var(--k-a); }
+.mk-ring { border-color: var(--k-s); }
+.mk-sq { background: var(--k-f); border-radius: 3px; }
+.mk-a { background: var(--k-a); }
+.mk-s { border-color: var(--k-s); }
+.mk-f { background: var(--k-f); }
+
+/* ---------------------------------------------------------------- list ledger: one card per place */
+.ledger .recs { border-top: 0; display: grid; gap: 10px; }
+.ledger .rec { border: 1px solid var(--hair); border-bottom-color: var(--hair); border-radius: 18px; background: #fff; padding: 16px 18px 17px; box-shadow: 0 1px 2px rgba(20, 52, 99, .04); transition: box-shadow .25s var(--ease-out), border-color .25s var(--ease-out), transform .25s var(--ease-out); }
+.ledger .rec:hover, .ledger .rec.hl { background: #fff; border-color: var(--tint2); box-shadow: var(--shadow-2); }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) { .ledger .rec:hover { transform: translateY(-2px); } }
+.ledger .rec:focus-within { outline-offset: 2px; border-radius: 18px; }
+.lg-head { margin-top: 18px; margin-bottom: 4px; padding: 11px 19px 10px; border: 0; border-radius: 12px; background: rgba(244, 247, 251, .94); font-size: 12.5px; letter-spacing: .01em; }
+.lg-group { margin-top: 30px; }
+/* a block, not a flex row: the name's own line-break groups (<span class="dj">…</span><wbr>) would each become a flex
+   item and break mid-word ('수원화 / 성·', 2026-11-05 screenshot check) — the bar and the count pill sit inline */
+.lg-g { display: block; padding: 0 4px 12px; font-size: 22px; }
+.lg-g::before { content: ""; display: inline-block; width: 4px; height: 20px; margin-right: 10px; border-radius: 4px; background: var(--sea); vertical-align: -3px; }
+.lg-g .tn { display: inline-block; margin-left: 6px; padding: 3px 10px 4px; border-radius: 999px; background: var(--tint); color: var(--sea-deep); font-size: 13px; font-weight: 700; letter-spacing: 0; }
+
+/* the picture first, the name block beside it */
+.rec-name { grid-template-columns: 72px minmax(0, 1fr); column-gap: 14px; }
+.rec-name > :not(.rec-th):not(.rec-ic) { grid-column: 2; }
+.rec-name > .rec-th, .rec-name > .rec-ic { grid-column: 1; grid-row: 1 / span 6; width: 72px; height: 72px; margin-top: 0; align-self: start; }
+.rec-th.t1 { border-radius: 14px; object-fit: cover; }
+.rec-th.t3 { border-radius: 14px; object-fit: contain; background: var(--bg-2); }
+/* no photo: the kind's small picture on a tinted tile the size of a thumbnail (not a cover) */
+.rec-name > .rec-ic { display: grid; place-items: center; border-radius: 14px; background: linear-gradient(150deg, var(--kc-1, var(--g0)) 0, var(--kc-2, var(--g1)) 100%); box-shadow: inset 0 0 0 1px rgba(20, 52, 99, .05); }
+.rec-ic .type-ico .pic { --pic: 46px; }
+.kind-food .rec-ic { --kc-1: #FFF6EC; --kc-2: #FFE6D0; }
+.kind-stay .rec-ic { --kc-1: #F1F6FE; --kc-2: #DCE8FA; }
+.kind-attraction .rec-ic { --kc-1: #EFFAF7; --kc-2: #D7F0EA; }
+.rec-link { font-size: 18px; line-height: 1.32; }
+.rec-meta { margin-top: 2px; }
+.rec-web { font-size: 12.5px; color: var(--ink-3); }
+.rec-web:hover { color: var(--link); }
+
+/* designations: one tone each — 착한가격 green, 맛집 amber, 모범 sea, 안심 teal */
+.dz-chip { gap: 5px; margin-top: 7px; padding: 3px 10px 3px 8px; border: 1px solid var(--hair); background: #fff; color: var(--ink-2); font-size: 12px; }
+.dz-chip::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; opacity: .9; }
+.dz-chip.dz-good { border-color: #CDEBD9; background: #F0FAF4; color: #18794E; }
+.dz-chip.dz-star { border-color: #F6DFA8; background: #FFF8E6; color: #9A5B00; }
+.dz-chip.dz-model { border-color: var(--tint2); background: var(--g0); color: var(--sea-deep); }
+.dz-chip.dz-safe { border-color: #C9ECE6; background: #EFFAF8; color: #0B6E62; }
+.rec:hover .dz-chip { background: #fff; }
+.rec:hover .dz-chip.dz-good { background: #F0FAF4; }
+.rec:hover .dz-chip.dz-star { background: #FFF8E6; }
+.rec:hover .dz-chip.dz-model { background: var(--g0); }
+.rec:hover .dz-chip.dz-safe { background: #EFFAF8; }
+
+/* the cells: values on the row's top line, a closed day as a soft red mark (not a block of red) */
+.rec-cells dd { font-size: 15px; color: var(--ink); }
+.rec .kf-main.closed { color: #B42318; }
+.rec .kf-main.closed:not(.cv) { display: inline; padding: 2px 7px; border-radius: 7px; background: #FEF1F0; line-height: 1.75; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.rec .kf-main.closed::before { width: 6px; height: 6px; border-radius: 50%; vertical-align: .2em; }
+.rec .tel { font-weight: 700; }
+
+@media (max-width: 1023px) {
+  .ledger .rec { padding: 14px 15px 15px !important; }
+  .ledger .rec:hover, .ledger .rec.hl { box-shadow: var(--shadow-1); }
+  .rec-name { grid-template-columns: 64px minmax(0, 1fr); column-gap: 13px; }
+  .rec-name > .rec-th, .rec-name > .rec-ic { width: 64px; height: 64px; }
+  .rec-ic .type-ico .pic { --pic: 40px; }
+  .rec-cells { margin-top: 12px !important; padding-top: 11px; border-top: 1px dashed var(--hair); }
+  .lg-g { font-size: 20px; padding: 0 2px 10px; }
+}
+
+/* ---------------------------------------------------------------- /map/: each 읍·면·동 a card, each place a row */
+.dongs { columns: 2 17em; column-gap: 14px; margin-top: 14px; }
+.dong { break-inside: avoid; margin: 0 0 14px; padding: 14px 16px 6px; border: 1px solid var(--hair); border-radius: 18px; background: #fff; box-shadow: 0 1px 2px rgba(20, 52, 99, .04); }
+.dong h3 { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-bottom: 8px; font-size: 16px; letter-spacing: -.02em; }
+.dong h3 .tn { margin-left: 0; padding: 2px 9px 3px; border-radius: 999px; background: var(--tint); color: var(--sea-deep); font-size: 12px; font-weight: 700; }
+.dong li { gap: 11px; padding: 7px 4px; border-top: 1px solid var(--bg-3); border-radius: 10px; font-size: 15px; }
+.dong li:first-child { border-top-color: var(--hair); }
+.dong li .mk { width: 22px; height: 22px; border: 0; border-radius: 7px; transform: none; position: relative; flex: none; }
+.dong li .mk::after { content: ""; position: absolute; inset: 0; margin: auto; width: 8px; height: 8px; }
+.dong li .mk-a { background: var(--k-a-bg); }
+.dong li .mk-a::after { border-radius: 50%; background: var(--k-a); }
+.dong li .mk-s { background: var(--k-s-bg); }
+.dong li .mk-s::after { width: 9px; height: 9px; border-radius: 50%; border: 2.5px solid var(--k-s); box-sizing: border-box; }
+.dong li .mk-f { background: var(--k-f-bg); }
+.dong li .mk-f::after { border-radius: 2px; background: var(--k-f); }
+.dong li:hover, .dong li.hl { background: var(--g0); border-top-color: transparent; }
+.dong li:hover + li, .dong li.hl + li { border-top-color: transparent; }
+
+.region-head { padding-top: 6px; }
+.region-k { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 13px; }
+.f-kinds .mk { width: 11px; height: 11px; }
+
+/* ---------------------------------------------------------------- guide answer card: the rest of the summary as a
+   sentence list (each sentence whole, in order) */
+.gd-ans-pts { order: 3; list-style: none; margin: 18px 0 0; padding: 16px 0 0; border-top: 1px solid rgba(29, 79, 150, .14); display: grid; gap: 10px; max-width: 46em; }
+.gd-ans-pts li { position: relative; padding-left: 26px; font-size: clamp(15.5px, 1.05vw, 17px); line-height: 1.7; color: var(--ink-2); text-wrap: pretty; }
+.gd-ans-pts li::before { content: ""; position: absolute; left: 3px; top: .55em; width: 14px; height: 14px; border-radius: 50%; background: #fff; box-shadow: inset 0 0 0 1.5px var(--sea); }
+.gd-ans-pts li::after { content: ""; position: absolute; left: 8px; top: calc(.55em + 3.5px); width: 3px; height: 6px; border: solid var(--sea); border-width: 0 1.6px 1.6px 0; transform: rotate(45deg); }
+.gd-ans-pts b { color: var(--ink); }
+
+/* ---------------------------------------------------------------- a place without a photo: its location map where
+   the photo would be (from 1024px beside the opening; on phones after the routes), never a large picture */
+.pv-map { margin: 0; }
+.pv-map .mapfig { margin: 0; }
+.pv-map .map { height: clamp(260px, 42vh, 460px); border-radius: 22px; overflow: hidden; background: var(--bg-2); box-shadow: var(--shadow-1); }
+.pv-map figcaption { margin-top: 8px; font-size: 13px; color: var(--ink-3); }
+.pv-map .pv-map-h { margin: 0 0 10px; font-size: 14px; font-weight: 700; color: var(--ink-2); display: flex; align-items: center; gap: 6px; }
+.pv-map .pv-map-h .icon { width: 16px; height: 16px; color: var(--sea); }
+.no-photo .pl-kpic { display: inline-grid; place-items: center; width: 64px; height: 64px; margin-bottom: 14px; border-radius: 18px; background: linear-gradient(150deg, var(--kc-1, var(--g0)) 0, var(--kc-2, var(--g1)) 100%); box-shadow: inset 0 0 0 1px rgba(20, 52, 99, .05); line-height: 0; }
+.no-photo .pl-kpic .pic { --pic: 44px; }
+.pg-place.kind-food { --kc-1: #FFF6EC; --kc-2: #FFE6D0; }
+.pg-place.kind-stay { --kc-1: #F1F6FE; --kc-2: #DCE8FA; }
+.pg-place.kind-attraction { --kc-1: #EFFAF7; --kc-2: #D7F0EA; }
+.pv-map .anchors { margin-top: 10px; }
+@media (max-width: 1023px) { .pv-map { margin-top: 18px; } .pv-map .map { height: min(40vh, 320px); } }
+html[lang="ko"] .gd-ans-pts li { word-break: keep-all; }
+
+/* wide screens: the name column gets the room the picture took (names on one line where they fit, Korean broken at
+   spaces only) */
+.kind-food { --cols: minmax(0, 3.7fr) minmax(0, 1.6fr) minmax(0, 1.85fr) minmax(0, 1.7fr) minmax(0, 1.4fr); }
+.kind-attraction { --cols: minmax(0, 3.6fr) minmax(0, 2fr) minmax(0, 1.9fr) minmax(0, 1.5fr) minmax(0, 1.3fr); }
+.kind-stay { --cols: minmax(0, 3.9fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.6fr) minmax(0, 1.7fr); }
+html[lang="ko"] .rec-link { word-break: keep-all; overflow-wrap: anywhere; }
+@media (min-width: 1024px) {
+  .ledger .rec { padding: 14px 16px 15px; }
+  .lg-head { padding-left: 17px; padding-right: 17px; }
+  .rec-name { grid-template-columns: 64px minmax(0, 1fr); column-gap: 13px; }
+  .rec-name > .rec-th, .rec-name > .rec-ic { width: 64px; height: 64px; }
+  .rec-ic .type-ico .pic { --pic: 42px; }
+  .rec-link { font-size: 17px; }
+}
+.rec-cells dd { overflow-wrap: anywhere; }
+
+/* key-fact tiles: a phone number shrinks to its tile instead of running out of it (operator 2026-11-05, the
+   0507-… number past the tile's edge): the tile is a size container, the number at most 11.5% of its width a
+   character-ish (14 characters ≈ 8.4em) */
+.kf .kf-i { container-type: inline-size; min-width: 0; }
+.kf .kf-main .tel { font-size: min(1em, 11.5cqi); letter-spacing: -.01em; }

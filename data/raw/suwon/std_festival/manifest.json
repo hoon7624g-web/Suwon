@@ -1,0 +1,22 @@
+{
+ "dataset": "전국문화축제표준데이터",
+ "pk": "15013104",
+ "page": "https://www.data.go.kr/data/15013104/standard.do",
+ "files": [
+  {
+   "name": "파일데이터 경기도_수원시_문화축제",
+   "provider": "경기도 수원시",
+   "registered": "2020-03-16",
+   "dpk": "uddi:3f95ba5f-2f6d-4dd7-808e-9592f1b38272_202003160908",
+   "atchFileId": "FILE_000000003683400",
+   "fileDetailSn": "1",
+   "ext": "csv",
+   "modified": "2026-07-28",
+   "rows": "3",
+   "license": "이용허락범위 제한 없음",
+   "cycle": "분기",
+   "file": "raw/std_festival/15013104_경기도_수원시_FILE_000000003683400.csv",
+   "download": "https://www.data.go.kr/cmm/cmm/fileDownload.do?atchFileId=FILE_000000003683400&fileDetailSn=1"
+  }
+ ]
+}

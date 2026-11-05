@@ -9,7 +9,7 @@
 
 ## 불러오는 방식(첫 화면을 막지 않는다)
 - **글꼴**: `pretendard.css`의 `@font-face`마다 `unicode-range`가 있어, 브라우저는 그 페이지에 실제로 나오는 글자가 든 조각만 받는다.
-  - 0번 조각(약 54KB)은 라틴·문장부호와 사이트 글에 가장 흔한 한글 450자, 다음은 사이트에 나오는 나머지 한글(빈도순 90자씩), 그 뒤는 사이트에 없는 글자(한글 300자·기타 400자씩, 코드 순서)다. 굵기마다 50조각, 합계 약 1MB지만 한 페이지가 받는 양은 측정한 페이지 기준 약 110~190KB다(압축 없는 로컬 서버 기준).
+  - 0번 조각(약 54KB)은 라틴·문장부호와 사이트 글에 가장 흔한 한글 450자, 다음은 사이트에 나오는 나머지 한글(빈도순 90자씩), 그 뒤는 사이트에 없는 글자(한글 300자·기타 400자씩, 코드 순서)다. 굵기마다 49조각, 합계 약 1MB지만 한 페이지가 받는 양은 측정한 페이지 기준 약 140~235KB다(2026-11-05 수원 공개·미리보기 빌드로 다시 만든 뒤: 홈 201~221KB, 화성행궁 179KB, /places/ 187KB(전 729KB), /food/ 187~196KB, /map/ 154KB, /sun/·/transport/ 198~234KB, 390·1440px).
   - 400·700은 원본의 **모든 글자**를 나눠 담았다(빠진 글자 없음, OpenType 기능·이름·저작권 정보 유지). 그래서 이름 Pretendard를 그대로 쓴다.
   - 200은 큰 숫자용으로 숫자·쉼표·마침표·%·km 등만 남긴 부분 글꼴이다. OFL의 예약 글꼴 이름 규정에 따라 `Light Numerals`로 이름을 바꿨다(저작권·라이선스 표기 유지). CSS는 `var(--font-num)`(= 'Light Numerals', Pretendard …)으로 쓰며, 같은 줄의 한글은 Pretendard 400으로 그려진다(시스템 글꼴로 빠지지 않음).
   - 600(SemiBold)은 쓰지 않는다. 예전 600 자리는 700으로 바꿨다. 800은 700 글꼴로 표시된다.
@@ -22,7 +22,5 @@
   - SplitText는 첫 화면 아래에 `[data-split]` 제목이 있을 때만 받는다(줄 올림, 쓰는 쪽이 고르는 선택 연출). 첫 화면 제목에 붙은 `data-split`은 무시한다.
   - Lenis는 데스크톱(1024px 이상) + 정밀 포인터(`hover: hover` + `pointer: fine`)에서만 받는다. 지도·`[data-lenis-prevent]` 안의 휠은 건드리지 않고, 앵커는 머리말 아래로 이동한 뒤 초점을 옮기며, 키보드 스크롤은 브라우저 기본 동작 그대로다.
   - 동작 줄이기(reduced motion)면 motion.js 자체를 받지 않는다. JS가 없으면 아무것도 받지 않는다. 둘 다 최종 상태 그대로 보인다(`templates/assets/css/65-states.css`).
-- **Leaflet**: `<head>`에 넣지 않는다. map.js가 지도 상자(`.map[data-map]`, 옛 `.map[data-points]`)가 화면 가까이(400px) 오면 상자에 적힌 `data-leaflet-css`(사이트 CSS 앞에)·`data-leaflet-js`(없으면 `vendor/leaflet/`)를 받는다. 지도 꾸밈은 사이트 CSS(`css/30-info.css`)에 있다.
-
-지도 타일은 OpenStreetMap(`tile.openstreetmap.org`)에서 브라우저가 직접 받으며, 지도에 © OpenStreetMap contributors 표시를 넣는다.
-- (운영자 결정 2026-10-16) 첫 사이트의 엔진을 옮겨 온 뒤에도 지도는 Leaflet + OpenStreetMap 그대로 둔다. 카카오맵은 회사 도메인으로 옮긴 뒤에 바꾼다(그때 카카오 개발자 콘솔에 새 주소를 등록한 JavaScript 키를 `site.json` `kakao_js_key`에 넣고 첫 사이트의 카카오 map.js를 옮긴다).
+- **지도(카카오맵, 운영자 결정 2026-11-05 '카카오맵으로 바꿔')**: 자체 호스팅하지 않는다. `site.json` `map_provider`가 `kakao`면(값이 없어도 카카오) 카카오 지도 JavaScript SDK(`dapi.kakao.com/v2/maps/sdk.js?appkey=…&autoload=false`)를 map.js가 지도 상자(`.map[data-map]`, 옛 `.map[data-points]`)가 화면 가까이(400px) 오거나 접힌 지도가 열릴 때, 페이지 로드(`load`) 뒤에만 받는다. 주소는 빌드가 `site.json`의 `kakao_js_key`(첫 사이트와 같은 공개 키, 카카오 개발자 콘솔 웹 도메인에 `https://daegu.webforai.kr` 등록 — 운영자 2026-11-05)로 만들어 상자의 `data-kakao-sdk`에 적는다(`pipeline/build.kakao_sdk_url`). 등록되지 않은 주소(미리보기·로컬)에서는 HTTP 401로 지도 대신 '지도를 불러오지 못했습니다'가 보인다. 지도 상자가 없는 페이지는 map.js도 SDK도 받지 않는다. 마커·이름표·확대 버튼은 사이트 CSS(`css/30-info.css`)로 꾸민 우리 요소이고, 지도 안 로고는 카카오가 그린다. 화면 표기는 '지도: 카카오맵'.
+- **Leaflet(오픈소스 지도, `map_provider` `osm`)**: 2026-10-16~11-05 이 사이트의 지도였고, 지금은 샘플 데이터(`data/sample`)가 쓴다. map.js가 지도 상자의 `data-osm-lib`(`/assets/vendor/leaflet/`)에서 Leaflet CSS·JS를 카카오 SDK와 같은 때(페이지 로드 뒤, 화면 가까이)에 받아, 카카오 지도 호출을 Leaflet으로 바꿔 그린다(map.js `osmKit`, 해남각에서 옮김). 타일은 OpenStreetMap 표준 타일(`tile.openstreetmap.org`), 지도 오른쪽 아래와 바닥글에 'OpenStreetMap' 출처를 단다.

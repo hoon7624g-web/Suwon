@@ -132,13 +132,13 @@ def tago():
 
 @pytest.fixture(scope="module")
 def tv(tago):
-    return T.transport_vm(ns(transport=tago))
+    return T.transport_vm(ns(today="2026-11-05", transport=tago, region="수원"))   # 수원 TAGO (2026-11-05 수집)
 
 
 def test_transport_days_and_modes(tv):
-    assert [d["iso"] for d in tv["days"]] == ["2026-11-01", "2026-11-02"] and tv["both"] == "11월 1일(일)·2일(월)"
-    assert [m["label"] for m in tv["modes"]] == ["열차", "고속버스", "시외버스", "항공"]
-    assert tv["coverage"] == "2026-11-01/2026-11-02"
+    assert [d["iso"] for d in tv["days"]] == ["2026-11-06", "2026-11-07"] and tv["both"] == "11월 6일(금)·7일(토)"
+    assert [m["label"] for m in tv["modes"]] == ["열차", "고속버스", "시외버스"]   # no flights for Suwon in TAGO
+    assert tv["coverage"] == "2026-11-06/2026-11-07"
 
 
 def test_transport_summaries_match_the_routes(tv, tago):
@@ -149,6 +149,12 @@ def test_transport_summaries_match_the_routes(tv, tago):
                 if d["none"]:
                     continue
                 keys = [k["key"] for k in tv["days"]]
+                if len(d["cols"]) == 1 < len(keys) == len(d["lists"]) and not any(L["same"] for L in d["lists"]):
+                    # one summary (same count, first and last both days) over two day lists whose times differ
+                    # in between (수원 TAGO 2026-11-06·07): each day's list is that day's route
+                    for L, key in zip(d["lists"], keys):
+                        assert len(L["rows"]) == routes[(m["mode"], d["from"], d["to"], key)]["count"]
+                    continue
                 for col, key in zip(d["cols"], keys if len(d["cols"]) > 1 else keys[:1]):
                     r = routes[(m["mode"], d["from"], d["to"], key)]
                     assert col["s"]["n"] == r["count"]
@@ -159,38 +165,37 @@ def test_transport_summaries_match_the_routes(tv, tago):
 def test_transport_train_fare_and_next_day(tv):
     train = tv["modes"][0]
     out = {(d["from"], d["to"]): d for c in train["cards"] for d in c["dirs"]}
-    s = out[("군산", "용산")]["cols"][0]["s"]
-    assert s["fare"] == "21,600원(무궁화호·새마을호)" and s["span"] == "05:34–20:26" and s["count"] == "15회"
-    assert out[("군산", "익산")]["cols"][0]["s"]["last"] == "00:12(다음 날)"   # departs past midnight
-    assert "등급 구분 없이" in train["note"] and "코레일" in train["note"]
-    assert train["missing"] == ["군산↔대전", "군산↔서대전"]
+    s = out[("수원", "용산")]["cols"][0]["s"]
+    assert s["fare"] == "4,800원(무궁화호·새마을호·ITX-새마을·ITX-마음)" and s["count"] == "38회"
+    assert s["last"] == "00:00(다음 날)"   # the last train leaves at midnight
+    assert "등급 구분 없이" in train["note"]
+    assert train["missing"] == []
 
 
-def test_transport_flight_has_no_fare(tv):
-    fl = tv["modes"][-1]
-    d = fl["cards"][0]["dirs"][0]
-    assert d["no_fare"] and not any(c["s"]["fare"] for c in d["cols"])
-    assert all(r["fare"] == "" for L in d["lists"] for r in L["rows"])
-    assert fl["note"].startswith("확인 필요: 요금")
+def test_transport_without_flights_names_no_airport(tv):
+    assert "flight" not in {m["mode"] for m in tv["modes"]}
+    P = T.transport_page(types.SimpleNamespace(site={"region": "수원"}, site_url="https://example.test",
+                                               abs=lambda p: "https://example.test" + p), tv)
+    assert P["title"] == "수원 교통 시간표 — 수원역 기차·고속버스·시외버스 첫차·막차·요금"
+    assert "공항" not in P["title"] + P["description"] + P["ds_name"] and "항공" not in P["ds_name"]
 
 
 def test_transport_missing_direction_said_once(tv):
     ic = next(m for m in tv["modes"] if m["mode"] == "intercity_bus")
-    assert ic["none_ways"] == ["군산 → 각 도착지"] and ic["single"]
-    assert all(len(c["dirs"]) == 1 and c["dirs"][0]["to"] == "군산" for c in ic["cards"])
-    assert ic["cards"][0]["title"] == "김제 → 군산"
-    ex = next(m for m in tv["modes"] if m["mode"] == "express_bus")
-    seoul = ex["cards"][0]["dirs"][0]
-    assert [c["lab"] for c in seoul["cols"]] == ["11월 1일(일)", "11월 2일(월)"]   # the two days differ
-    assert [c["s"]["count"] for c in seoul["cols"]] == ["55회", "51회"]
+    assert ic["none_ways"] == ["수원터미널 → 각 도착지"] and ic["single"]
+    assert all(len(c["dirs"]) == 1 and c["dirs"][0]["to"] == "수원터미널" for c in ic["cards"])
+    assert ic["cards"][0]["title"] == "안산터미널 → 수원터미널"
+    seoul = next(d for c in tv["modes"][0]["cards"] for d in c["dirs"] if (d["from"], d["to"]) == ("수원", "서울"))
+    assert [c["lab"] for c in seoul["cols"]] == ["11월 6일(금)", "11월 7일(토)"]   # the two days differ
+    assert [c["s"]["count"] for c in seoul["cols"]] == ["36회", "38회"]
 
 
 def test_transport_tiles_answer_first(tv):
     tiles = {t["label"]: t for t in tv["tiles"]}
-    assert tiles["열차"]["route"] == "군산 → 용산" and tiles["열차"]["count"] == "15회"
-    assert tiles["고속버스"]["count"] == "51~55회"
-    assert tiles["시외버스"]["route"].endswith("→ 군산")     # no departure from Gunsan in the source
-    assert tiles["항공"]["count"] == "2편"
+    assert tiles["열차"]["route"] == "수원 → 영등포" and tiles["열차"]["count"] == "74~76회"
+    assert tiles["고속버스"]["count"] == "14회"
+    assert tiles["시외버스"]["route"].endswith("→ 수원터미널")     # no departure from Suwon in the source
+    assert "항공" not in tiles
 
 
 def test_portal_license():
@@ -204,10 +209,11 @@ def built(tmp_path_factory):
     if not (DATA / "almanac.json").exists() or not (DATA / "transport_tago.json").exists():
         pytest.skip("almanac.json / transport_tago.json not built yet")
     S = B.State(DATA, "preview")
-    S.today = "2026-10-31"     # the data's first day (the tests do not age with the clock)
+    S.today = "2026-11-05"     # the data's first day (the tests do not age with the clock)
     S.tt_sun, S.tt_transport = T.sun_vm(S), T.transport_vm(S)
     env = B.make_env()
-    env.globals["kakao_sdk"] = B.kakao_sdk_url(S.site)
+    env.globals["kakao_sdk"] = B.kakao_sdk_url(S.site) if B.map_provider(S.site) == "kakao" else ""
+    env.globals["osm_lib"] = B.OSM_LIB if B.map_provider(S.site) == "osm" else ""
     out = tmp_path_factory.mktemp("tt")
 
     def render(V, make, path, tpl, kind):
@@ -235,7 +241,7 @@ def check_page(html):
     types_ = [n.get("@type") for n in nodes]
     assert {"WebPage", "BreadcrumbList", "Dataset"} <= set(types_)
     ds = next(n for n in nodes if n.get("@type") == "Dataset")
-    assert ds["creator"]["name"] == ds["publisher"]["name"] and ds["isBasedOn"] and ds["dateModified"] == "2026-10-31"
+    assert ds["creator"]["name"] == ds["publisher"]["name"] and ds["isBasedOn"] and ds["dateModified"] == "2026-11-05"
     assert re.fullmatch(r"\d{4}-\d{2}-\d{2}/\d{4}-\d{2}-\d{2}", ds["temporalCoverage"])
     # real tables: every one has a caption and its header cells a scope
     for t in re.findall(r"<table.*?</table>", html, re.S):
@@ -247,23 +253,24 @@ def check_page(html):
 def test_sun_page(built):
     html = built.render(built.S.tt_sun, T.sun_page, T.SUN_PATH, "sun.html.j2", "sun")
     p, nodes = check_page(html)
-    assert "10월 31일(토)" in p.body and "해 뜨는 시각 06:54" in p.body and "해 지는 시각 17:39" in p.body
+    assert "11월 5일(목)" in p.body and "해 뜨는 시각 07:00" in p.body and "해 지는 시각 17:30" in p.body
     assert "오늘" not in p.body                         # sun.js adds it on the visitor's own date
-    assert "data-sun" in html and 'data-d="2026-11-01"' in html
+    assert "data-sun" in html and 'data-d="2026-11-06"' in html
     assert "1~2분 다를 수 있습니다" in p.body and "한국천문연구원" in p.body
-    # the tides (국립해양조사원 조석예보, filled 2026-10-31 once the agency's server answered again): one table per
-    # station and month, each with its caption, and the data box names the provider
-    assert "바다 물때" in p.body and "관측소 5곳" in p.body and "국립해양조사원" in p.body
-    caps = re.findall(r"<caption>([^<]*만조·간조)</caption>", html)
-    assert {c.split()[0] for c in caps} == {"군산", "말도", "연도항", "어청도", "위도"}, caps[:3]
-    assert 'id="h-tide-data"' in html
-    assert re.search(r'<a href="/places/[^"]+/"[^>]*>장자도</a>', html)   # a sunset spot links its page
-    assert p.title.startswith("군산 일출·일몰·물때 시간표")   # with the tides, the title names them too
+    # 수원 has no tide stations (almanac.json 2026-11-05: sun only): no tide block, and the title says sun only
+    assert "바다 물때" not in p.body and 'id="h-tide-data"' not in html
+    assert p.title.startswith("수원 일출·일몰 시간표")
+
+
+def _shift(days: dict, n: int) -> dict:
+    """The synthetic tide days moved n days on (the built page starts at the data's first day)."""
+    return {(dt.date.fromisoformat(k) + dt.timedelta(days=n)).isoformat(): v for k, v in days.items()}
 
 
 def test_sun_page_with_tides(built, monkeypatch):
     S = built.S
-    monkeypatch.setattr(S, "almanac", {**S.almanac, "sources": {**S.almanac["sources"], "tide": TIDE_SRC}, "tide": TIDE})
+    tide = {k: {**v, "days": _shift(v["days"], 5)} for k, v in TIDE.items()}   # 10-31 → the built day 11-05
+    monkeypatch.setattr(S, "almanac", {**S.almanac, "sources": {**S.almanac["sources"], "tide": TIDE_SRC}, "tide": tide})
     V = T.sun_vm(S)
     html = built.render(V, T.sun_page, T.SUN_PATH, "sun.html.j2", "sun")
     p, nodes = check_page(html)
@@ -275,15 +282,15 @@ def test_sun_page_with_tides(built, monkeypatch):
 def test_transport_page(built):
     html = built.render(built.S.tt_transport, T.transport_page, T.TRANSPORT_PATH, "transport.html.j2", "transport")
     p, nodes = check_page(html)
-    assert "2026년 11월 1일(일)·2일(월) 하루 배차입니다" in p.body
+    assert "2026년 11월 6일(금)·7일(토) 하루 배차입니다" in p.body
     assert "이 자료(TAGO)에 없음 — 운수사 확인" in p.body and "운행 없음" not in p.body
-    assert " 0원" not in p.body and "확인 필요: 요금" in p.body
-    assert "<details class=\"tp-all\">" in html and "00:12(다음 날)" in p.body
+    assert " 0원" not in p.body
+    assert "<details class=\"tp-all\">" in html and "00:00(다음 날)" in p.body
     for gid in ("guide-12", "guide-33", "guide-31"):   # the guides on getting here are linked
         g = built.S.guide_by_id.get(gid)
         if g:
             assert f'href="{g["_path"]}"' in html
-    assert p.title.startswith("군산 교통 시간표")
+    assert p.title.startswith("수원 교통 시간표") and "공항" not in p.title
 
 
 def test_footer_and_llms(built):
@@ -293,14 +300,14 @@ def test_footer_and_llms(built):
     short = "\n".join(T.llms_short(S, S.tt_sun, S.tt_transport))
     full = "\n".join(T.llms_full(S, S.tt_sun, S.tt_transport))
     assert S.abs("/sun/") in short and S.abs("/transport/") in short
-    assert "- 10월 31일(토): 시민박명 시작 06:28, 일출 06:54, 일몰 17:39" in full
-    assert "- 군산 → 용산 열차: 15회, 첫차 05:34, 막차 20:26" in full
+    assert "- 11월 5일(목): 시민박명 시작 06:33, 일출 07:00, 일몰 17:30" in full
+    assert "- 수원 → 용산 열차: 38회, 첫차 08:16, 막차 00:00(다음 날)" in full
     assert visible_check_dates(short) == [] and visible_check_dates(full) == []
 
 
 def test_place_day_card_links_the_sun_page(built):
     S = built.S
-    e = next(e for e in S.entities if e["name"] == "장자도")
+    e = next(e for e in S.entities if e["name"] == "연무대(동장대)")
     ctx = B.entity_ctx(e, S)
     T_ = ctx["p"]["today"]
     assert T_ and T_["sun"] and T_["sun_page"] == "/sun/"

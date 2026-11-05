@@ -1,0 +1,9 @@
+{
+ "fetched_at": "2026-11-05",
+ "calls": 62,
+ "base_dates": {
+  "weekday": "2026-11-06",
+  "weekend": "2026-11-07"
+ },
+ "warnings": []
+}

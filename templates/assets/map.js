@@ -1,19 +1,19 @@
-/* Travel site — maps (progressive enhancement; attached by site.js when the page has a map box). Leaflet 1.9.4
-   (self-hosted; map provider: Leaflet + OpenStreetMap tiles, operator decision 2026-10-16 — Kakao Maps only after the
-   domain move) is fetched only when a box comes within 400px of the viewport, or when a folded map opens
-   (gs:showmap), and never before the window 'load' event: nothing of it is on the first screen's critical path, and a
-   page without a map box loads neither this file nor Leaflet. OSM tiles, toned down by the site stylesheet
-   (css/30-info.css: tiles, markers, labels, controls); DivIcon markers; scroll-wheel zoom off; 44px zoom buttons;
-   attribution kept; the map takes the focus (Leaflet's arrow keys move it, + and − zoom; its name says so). Every
-   map has a text equivalent on the page; without JS the box is not shown (css/10-base.css), and when Leaflet fails
-   the box keeps its text with the failure line. The words this file writes are Korean on Korean pages, English on
-   the others — whose map boxes may carry their own (data-words {in, out, fail, keys}, en/_en.html.j2).
+/* Travel site — maps (progressive enhancement; attached by site.js when the page has a map box). Kakao Maps JavaScript
+   SDK (map provider: site.json map_provider 'kakao' — the first site's owner decision 2026-10-14, this site's operator
+   2026-11-05 '카카오맵으로 바꿔'; the key is site.json kakao_js_key, which the build writes into each box as
+   data-kakao-sdk; with map_provider 'osm' the box names the self-hosted Leaflet folder instead, data-osm-lib, and
+   osmKit below draws the same calls on OpenStreetMap tiles) is fetched only when a box comes within 400px of the viewport, or when a folded map opens
+   (gs:showmap), and never before the window 'load' event: nothing of it is on the first screen's critical path, and
+   a page without a map box loads neither this file nor the SDK. Markers, labels and controls are the site's own
+   (CustomOverlay elements styled by css/30-info.css); Kakao draws its own logo in the map's corner. Scroll-wheel zoom
+   off; 44px zoom buttons; the map itself takes the focus (arrow keys move it, + and − zoom). Every map has a text
+   equivalent on the page; without JS the box is not shown (css/10-base.css), and when the SDK fails (a page served
+   from a domain the key is not registered for answers HTTP 401) the box keeps its text with the failure line.
 
    MARKUP
-     <div class="map" data-points='JSON' role="region" aria-label="…">   (data-map='JSON' is accepted too)
-       optional data-leaflet-css / data-leaflet-js: where Leaflet lives (default: assets/vendor/leaflet/)
-       optional <p class="map-off">…</p> inside: its own text says the page lists the same places (what a reader
-       without the map gets); 'loading' once drawing starts, replaced by the map, the failure line if Leaflet fails
+     <div class="map" data-map='JSON' data-kakao-sdk="https://dapi.kakao.com/v2/maps/sdk.js?appkey=…&autoload=false"
+          role="region" aria-label="…">                   (data-points='JSON' is accepted too)
+       optional <p class="map-off">…</p> inside: replaced by the map; shows the failure line if the SDK fails
      JSON shapes (pipeline/present.py and build.map_points make them):
        [{lat, lng, name, url, kind?, n?}, …]      a list of places; with data-numbered="1" a numbered route
        {self: {lat, lng, name}, near: [{lat, lng, name, url, d, kind}], anchors: [{lat, lng, label}],
@@ -23,14 +23,14 @@
                                                   own marker (touching ones pushed apart, a hairline to the true
                                                   point); opens on the most stops that stand alone, the others
                                                   pointed at from the edge; '전체 보기' frames all (see COURSE
-                                                  MAPS below); the blue progress line is drawn by course.js
+                                                  MAPS below); the blue progress line is drawn for course.js
+                                                  (reg.progressTo)
        {guide: [...], route: bool}                numbered places (id: the place, gs:focus), joined only when route is true
        {list: [{lat, lng, name, url, id, kind, r}], far_label?, none_label?}   a list page's places (id = the row's
                                                   id: row ↔ marker; r = its 권역 / 구·군); only the places the list's
                                                   filter keeps (window.GSFilter / gs:filter), framed on them; each
-                                                  marker named by its place, quiet beside the shown list (out of the
-                                                  tab order: the rows are the same links), in the tab order where the
-                                                  list is hidden (phones' 지도)
+                                                  marker a link named by the place (quiet beside the shown list, in
+                                                  the tab order where the list is hidden: phones' 지도)
        {all: [...same...], anchor_pts: [{name, n, geo?}], far_label?, none_label?}   the map page: a label over each
                                                   group's points (an anchor's point when the group has none), an
                                                   edge control for the far group (far_label: site.json regions.far)
@@ -39,94 +39,187 @@
                                                   link to its region on /map/ (present.home_vm region_map)
      Every box gets data-lenis-prevent (wheel and touch on the map stay the map's).
 
-   API: window.GSMaps (registry: {el, map, markers, data, frame, all, line, progress, lls, activeN, paint, showHome,
-   showAround, whenIdle, progressTo}): a numbered map marks stop activeN .on and the earlier ones .past when paint()
-   is called; a course map's showHome(fly) returns to its first view and showAround(n) moves to stop n when it is out
-   of view (course.js; true when it moves); whenIdle(fn) runs fn once the map has stopped moving and returns a
-   function that cancels it; progressTo(from, n) draws the blue line through stop n (the part after stop `from`
-   draws itself along the straight lines unless motion is reduced). Numbered markers open their place on Enter or Space as on a click. Every built map
-   dispatches gs:mapready {detail: registry entry} (bubbles to document). Listens to gs:hl, gs:filter, gs:focus,
-   gs:region, gs:showmap (see site.js). window.GSMapStart(el) builds a box a script adds after load (the course
-   planner's day maps, plan.js — the page has no map box of its own, so this file and Leaflet come only then). */
+   ZOOM: Kakao levels (1 = street, 14 = the whole country; one level is twice the scale; level 3 ≈ 1 m per pixel, a
+   web-map zoom z ≈ level 20 − z): street-level stops 4, a place 5.
+
+   API: window.GSMaps (registry: {el, map (the kakao.maps.Map), g (the adapter below), markers, data, frame, line,
+   progress, lls, activeN, paint, showHome, showAround, whenIdle, progressTo}): a numbered map marks stop activeN .on
+   and the earlier ones .past when paint() is called; a course map's showHome(fly) returns to its first view and
+   showAround(n) moves to stop n when it is out of view (course.js; true when it moves); whenIdle(fn) runs fn once the
+   map has stopped moving and returns a function that cancels it; progressTo(from, n) draws the blue line through stop
+   n (the part after stop `from` grows along the straight lines unless motion is reduced). Numbered markers are links
+   (Enter or Space opens them). Every built map dispatches gs:mapready {detail: registry entry} (bubbles to document).
+   Listens to gs:hl, gs:filter, gs:focus, gs:region, gs:showmap (see site.js). window.GSMapStart(el) builds a box
+   a script added after load (plan.js). */
 (function () {
   "use strict";
-  var doc = document, win = window, maps = win.GSMaps = win.GSMaps || [], loading = null;
+  var doc = document, win = window, maps = win.GSMaps = win.GSMaps || [], loading = null, K = null;
   var reduce = win.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var BASE = ((doc.currentScript && doc.currentScript.src) || "/assets/map.js").replace(/[^/]*$/, "");
   var INK = "#1d1d1f", BLUE = "#0071e3";   // the Apple skin: ink for lines, the one blue for progress
-  // the few words this file writes (zoom buttons, the failure line, how to move the map): Korean on Korean pages,
-  // English on the other versions — whose map boxes may carry their own (data-words, en/_en.html.j2)
+  var MINLV = 1, MAXLV = 14;
+  // the few words this file writes (zoom buttons, 'whole course', the off-map chips, the failure line): Korean on
+  // Korean pages, English on the other versions — whose map boxes may carry their own (data-words, en/_en.html.j2)
   var EN = !/^ko/i.test(doc.documentElement.lang || "ko");
   var W = (function () {
     var el = doc.querySelector(".map[data-words]");
     try { return el ? JSON.parse(el.getAttribute("data-words")) || {} : {}; } catch (e) { return {}; }
   })();
-  function afterLoad(fn) { if (doc.readyState === "complete") fn(); else win.addEventListener("load", fn); }
 
-  function css(href, before) {
-    if (doc.querySelector('link[href="' + href + '"]')) return;
-    var l = doc.createElement("link");
-    l.rel = "stylesheet"; l.href = href;
-    doc.head.insertBefore(l, before);
-  }
+  // ------------------------------------------------------------ the SDK: once per page, after 'load'
+  function afterLoad(fn) { if (doc.readyState === "complete") fn(); else win.addEventListener("load", fn); }
   function load(el) {
-    if (win.L) return Promise.resolve();
+    if (K) return Promise.resolve();
     if (loading) return loading;
-    var first = doc.head.querySelector("link[rel=stylesheet]");
-    // Leaflet's stylesheet goes before the site's own CSS, so the map skin there (css/30-info.css) still wins
-    css(el.getAttribute("data-leaflet-css") || BASE + "vendor/leaflet/leaflet.css", first);
+    var attr = function (name) { return el.getAttribute(name) || (doc.querySelector(".map[" + name + "]") || { getAttribute: function () { return ""; } }).getAttribute(name); };
+    var osm = attr("data-osm-lib");
+    if (osm) return (loading = loadOsm(osm));
+    var src = attr("data-kakao-sdk");
+    if (!src) return Promise.reject(new Error("no Kakao SDK"));
     loading = new Promise(function (res, rej) {
+      var t = setTimeout(rej, 20000); // the SDK fetches its main file inside kakao.maps.load: never wait for ever
+      var ready = function () { kakao.maps.load(function () { clearTimeout(t); K = kakao.maps; res(); }); };
+      if (win.kakao && win.kakao.maps && win.kakao.maps.load) { ready(); return; }
       var s = doc.createElement("script");
-      s.src = el.getAttribute("data-leaflet-js") || BASE + "vendor/leaflet/leaflet.js";
-      s.onload = function () { if (win.L) res(); else rej(); };
-      s.onerror = rej;
+      s.src = src;
+      s.onload = function () { if (win.kakao && win.kakao.maps && win.kakao.maps.load) ready(); else { clearTimeout(t); rej(); } };
+      s.onerror = function () { clearTimeout(t); rej(); };
       doc.head.appendChild(s);
     });
     loading.catch(function () { loading = null; });
     return loading;
   }
+  // site.json map_provider 'osm' (owner 2026-10-16, until the domain moves): the box names the self-hosted Leaflet folder
+  // (data-osm-lib); its stylesheet and script come the same way as Kakao's SDK — near the screen, after 'load'
+  function loadOsm(base) {
+    var p = new Promise(function (res, rej) {
+      var t = setTimeout(rej, 20000);
+      if (!doc.querySelector('link[data-leaflet]')) {
+        var l = doc.createElement("link");
+        l.rel = "stylesheet"; l.href = base + "leaflet.css"; l.setAttribute("data-leaflet", "");
+        doc.head.appendChild(l);
+      }
+      var ready = function () { clearTimeout(t); K = osmKit(win.L); OSM = true; res(); };
+      if (win.L && win.L.map) { ready(); return; }
+      var s = doc.createElement("script");
+      s.src = base + "leaflet.js";
+      s.onload = function () { if (win.L && win.L.map) ready(); else { clearTimeout(t); rej(); } };
+      s.onerror = function () { clearTimeout(t); rej(); };
+      doc.head.appendChild(s);
+    });
+    p.catch(function () { loading = null; });
+    return p;
+  }
+
+  // ------------------------------------------------------------ OpenStreetMap: the Kakao calls of this file, by Leaflet
+  // Only what this file uses (Map, LatLng, Coords, CustomOverlay, Polyline, Circle, event, CopyrightPosition). A Kakao
+  // level lv is the web zoom OSM_Z − lv (level 3 = zoom 17, about a metre a pixel here) and a position's plane is
+  // EPSG:3857 metres (y to the north, as Kakao's own plane), so the views worked out above (project / fitView) hold.
+  // Tiles: OpenStreetMap's standard layer, credited in the map's corner as its tile policy asks.
+  var OSM = false, OSM_Z = 20, OSM_TILES = "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+      OSM_ATTR = '© <a href="https://www.openstreetmap.org/copyright" rel="noopener" target="_blank">OpenStreetMap</a>';
+  function osmKit(L) {
+    var CRS = L.CRS.EPSG3857, EV = { idle: "moveend", zoom_changed: "zoomend" };
+    var DASH = { solid: null, dash: "8 6", shortdash: "4 4", shortdot: "1 4" };
+    function LatLng(lat, lng) { this.lat = lat; this.lng = lng; }
+    LatLng.prototype.getLat = function () { return this.lat; };
+    LatLng.prototype.getLng = function () { return this.lng; };
+    LatLng.prototype.toCoords = function () { var q = CRS.project(L.latLng(this.lat, this.lng)); return new Coords(q.x, q.y); };
+    function Coords(x, y) { this.x = x; this.y = y; }
+    Coords.prototype.getX = function () { return this.x; };
+    Coords.prototype.getY = function () { return this.y; };
+    Coords.prototype.toLatLng = function () { var l = CRS.unproject(L.point(this.x, this.y)); return new LatLng(l.lat, l.lng); };
+    function ll(a) { return L.latLng(a.lat, a.lng); }
+    function zoomOf(lv) { return OSM_Z - lv; }
+    function KMap(box, o) {
+      var anim = o.tileAnimation !== false;
+      var m = this.m = L.map(box, { center: ll(o.center), zoom: zoomOf(o.level), minZoom: zoomOf(MAXLV), maxZoom: zoomOf(MINLV),
+        zoomControl: false, attributionControl: false, scrollWheelZoom: false, keyboard: false, boxZoom: false,
+        doubleClickZoom: true, zoomSnap: 1, fadeAnimation: anim, zoomAnimation: anim, markerZoomAnimation: anim });
+      m.createPane("gsOverlay").style.zIndex = 450;   // the site's markers and labels, above the lines (overlayPane 400)
+      L.tileLayer(OSM_TILES, { maxZoom: 19, attribution: OSM_ATTR }).addTo(m);
+      L.control.attribution({ prefix: false, position: "bottomright" }).addTo(m);
+    }
+    KMap.prototype.getCenter = function () { var c = this.m.getCenter(); return new LatLng(c.lat, c.lng); };
+    KMap.prototype.getLevel = function () { return OSM_Z - this.m.getZoom(); };
+    KMap.prototype.setLevel = function (lv, o) { this.m.setZoom(zoomOf(lv), { animate: !!(o && o.animate) && !reduce }); };
+    KMap.prototype.setCenter = function (c) { this.m.setView(ll(c), this.m.getZoom(), { animate: false }); };
+    KMap.prototype.panTo = function (c) { this.m.panTo(ll(c), { animate: !reduce }); };
+    KMap.prototype.panBy = function (x, y) { this.m.panBy([x, y], { animate: !reduce }); };
+    KMap.prototype.relayout = function () { this.m.invalidateSize({ animate: false }); };
+    KMap.prototype.setCopyrightPosition = function () {};
+    // a CustomOverlay: our element at a point, anchored at fractions of its own box, positioned the way L.Marker is
+    var Overlay = L.Layer.extend({
+      initialize: function (o) {
+        this._ll = ll(o.position); this._km = null;
+        var w = this._w = doc.createElement("div"), a = this._a = doc.createElement("div");
+        w.style.cssText = "position:absolute;left:0;top:0;z-index:" + (o.zIndex || 0);
+        a.style.cssText = "position:absolute;left:0;top:0;transform:translate(" + (-100 * (o.xAnchor == null ? 0.5 : o.xAnchor)) + "%," + (-100 * (o.yAnchor == null ? 0.5 : o.yAnchor)) + "%)";
+        if (o.content) a.appendChild(o.content);
+        w.appendChild(a);
+        if (o.clickable) L.DomEvent.disableClickPropagation(w);   // a press on a marker link never starts a drag
+      },
+      getEvents: function () { var e = { zoom: this._update, viewreset: this._update }; if (this._map && this._map._zoomAnimated) e.zoomanim = this._anim; return e; },
+      onAdd: function (map) { if (map._zoomAnimated) L.DomUtil.addClass(this._w, "leaflet-zoom-animated"); map.getPane("gsOverlay").appendChild(this._w); this._update(); },
+      onRemove: function () { L.DomUtil.remove(this._w); },
+      _update: function () { if (this._map) L.DomUtil.setPosition(this._w, this._map.latLngToLayerPoint(this._ll).round()); },
+      _anim: function (e) { L.DomUtil.setPosition(this._w, this._map._latLngToNewLayerPoint(this._ll, e.zoom, e.center).round()); },
+      setMap: function (km) { if (km) { this._km = km; if (!this._map) this.addTo(km.m); } else if (this._map) { this.remove(); } return this; },
+      getMap: function () { return this._map ? this._km : null; },
+      setPosition: function (c) { this._ll = ll(c); this._update(); },
+      setContent: function (node) { this._a.innerHTML = ""; this._a.appendChild(node); },
+      setZIndex: function (z) { this._w.style.zIndex = z; }
+    });
+    function Line(o) {
+      this.l = L.polyline((o.path || []).map(ll), { weight: o.strokeWeight, color: o.strokeColor, opacity: o.strokeOpacity == null ? 1 : o.strokeOpacity,
+        dashArray: DASH[o.strokeStyle || "solid"], lineCap: o.strokeStyle === "shortdot" ? "round" : "butt", interactive: false });
+      this.z = o.zIndex || 0;
+    }
+    Line.prototype.setMap = function (km) { if (km) { this.l.addTo(km.m); if (this.z > 0) this.l.bringToFront(); } else this.l.remove(); };
+    Line.prototype.setPath = function (p) { this.l.setLatLngs(p.map(ll)); };
+    function Circle(o) {
+      this.l = L.circle(ll(o.center), { radius: o.radius, weight: o.strokeWeight, color: o.strokeColor, opacity: o.strokeOpacity == null ? 1 : o.strokeOpacity,
+        dashArray: DASH[o.strokeStyle || "solid"], fill: !!o.fillOpacity, fillOpacity: o.fillOpacity || 0, interactive: false });
+    }
+    Circle.prototype.setMap = Line.prototype.setMap;
+    return {
+      Map: KMap, LatLng: LatLng, Coords: Coords, Polyline: Line, Circle: Circle,
+      CustomOverlay: function (o) { return new Overlay(o); },
+      CopyrightPosition: { BOTTOMRIGHT: 0 },
+      event: {
+        addListener: function (km, type, fn) { km.m.on(EV[type] || type, fn); },
+        removeListener: function (km, type, fn) { km.m.off(EV[type] || type, fn); }
+      }
+    };
+  }
+
+  // ------------------------------------------------------------ small helpers
+  function Pt(x, y) { this.x = x; this.y = y; }
+  Pt.prototype.distanceTo = function (p) { var dx = p.x - this.x, dy = p.y - this.y; return Math.sqrt(dx * dx + dy * dy); };
+  function pt(x, y) { return new Pt(x, y); }
+  function LL(a) { return new K.LatLng(a[0], a[1]); }
+  function clampLv(lv) { return Math.max(MINLV, Math.min(MAXLV, Math.round(lv))); }
   function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
-  function icon(cls, size, html) {
-    return L.divIcon({ className: "", html: '<div class="' + cls + '">' + (html || "") + "</div>", iconSize: [size, size], iconAnchor: [size / 2, size / 2] });
+  function div(cls, html) { var n = doc.createElement("div"); n.className = cls; if (html != null) n.innerHTML = html; return n; }
+  // a marker: an outer element (a link when it goes somewhere) round the styled dot (inner: .mk-num, .mk-dot …); the
+  // state classes (.on .past .dim .mk-hl) go on the inner element
+  function pin(cls, html, url, label, quiet) {
+    var a = doc.createElement(url ? "a" : "span");
+    a.className = "mk-a";
+    if (url) a.href = url;
+    if (label && !quiet) a.title = label;
+    if (label && url) a.setAttribute("aria-label", label);
+    // a list map's dots (quiet) are named links too (the place's name; the map's tooltip shows it on hover and focus).
+    // Beside the shown list they start out of the tab order and hidden from screen readers — the rows are the same
+    // links — and listQuiet() lets them in while the list is not shown (phones' 지도 view)
+    if (quiet) { a.tabIndex = -1; a.setAttribute("aria-hidden", "true"); a.className += " mk-li"; }
+    else if (!url) a.setAttribute("aria-hidden", "true");
+    if (url) a.addEventListener("keydown", function (e) { if (e.key === " ") { e.preventDefault(); location.href = url; } });
+    a.appendChild(div(cls, html));
+    return a;
   }
-  function label(html, cls, side, off) {
-    return L.divIcon({ className: "", html: '<div class="mk-label ' + (cls || "") + '" style="transform:translate(' +
-      (side === "l" ? "calc(-100% - " + off + "px)" : off + "px") + ',-50%)">' + html + "</div>", iconSize: [0, 0], iconAnchor: [0, 0] });
-  }
-  function kindIcon(kind) { return kind === "stay" ? icon("mk-ring", 11) : kind === "food" ? icon("mk-sq", 9) : icon("mk-dot", 10); }
+  function kindPin(kind, url, label, quiet) { return pin(kind === "stay" ? "mk-ring" : kind === "food" ? "mk-sq" : "mk-dot", "", url, label, quiet); }
   function textW(t) { return Math.min(280, 13.4 * String(t).length + 8); }
   function idOf(p) { return p.id || decodeURIComponent((p.url || "").split("/")[2] || ""); }
-  function visible(el) { return el.offsetParent !== null && el.getBoundingClientRect().height > 0; }
-  // a list map's filter (site.js keeps the list's shown row ids in window.GSFilter and sends gs:filter): the kept
-  // points ({keep: {id: 1}, lls}), or null when every point is kept (the map then shows its whole frame)
-  function picked(list, ids) {
-    if (!ids) return null;
-    var keep = {}, lls = [];
-    ids.forEach(function (id) { keep[id] = 1; });
-    list.forEach(function (p) { if (keep[idOf(p)]) lls.push([p.lat, p.lng]); });
-    return lls.length === list.length ? null : { keep: keep, lls: lls };
-  }
-  // the view of a list map: the filtered places with coordinates (all of them, nothing trimmed), else the whole frame
-  function listFit(r) {
-    var s = r.picked;
-    fitVisible(r.map, r.el, s && s.lls.length ? s.lls : r.frame, s && s.lls.length ? 36 : 28, s && s.lls.length ? 15 : 18);
-  }
-  // beside a shown list a list map's markers are quiet (out of the tab order, hidden from screen readers: the rows
-  // are the same links); where the list is not shown (phones' 지도 view) they are named links in the tab order. The
-  // list of /map/ (data.all) is its 권역 sections: quiet while one of them is shown
-  function quietIcon(mk, quiet) {
-    var a = mk._icon;
-    if (!a) return;
-    a.setAttribute("aria-label", mk._gs ? mk._gs.name : "");
-    a.tabIndex = quiet ? -1 : 0;
-    if (quiet) a.setAttribute("aria-hidden", "true"); else a.removeAttribute("aria-hidden");
-  }
-  function listQuiet(r) {
-    if (!r.data.list && !r.data.all) return;
-    var rows = doc.querySelectorAll(r.data.list ? "[data-ledger]" : "[data-region-sec]");
-    r.quiet = Array.prototype.some.call(rows, visible);
-    Object.keys(r.markers).forEach(function (id) { quietIcon(r.markers[id], r.quiet); });
-  }
   // the middle of the points (outliers stay on the map, one zoom-out away)
   function robust(pts, f) {
     if (pts.length < 8) return pts;
@@ -140,79 +233,258 @@
     var r = el.getBoundingClientRect(), vh = win.innerHeight;
     return r.top < vh && r.bottom > vh ? Math.min(r.height - 160, r.bottom - vh) : 0;
   }
-  function fitVisible(m, el, b, pad, max) {
-    if (b.length === 1) { m.setView(b[0], 15, { animate: false }); return; }
-    var hb = Math.max(0, hiddenBelow(el));
-    m.fitBounds(b, { paddingTopLeft: [pad, pad], paddingBottomRight: [pad, pad + hb], maxZoom: max || 18, animate: false });
+  function visibleView(g, b, pad, minLv) {
+    if (b.length === 1) return { c: b[0], lv: 5 };
+    var hb = Math.max(0, hiddenBelow(g.el));
+    return g.fitView(b, [pad, pad, pad + hb, pad], minLv || 2);
   }
+  function fitVisible(g, b, pad, minLv) { var v = visibleView(g, b, pad, minLv); g.view(v.c, v.lv, false); }
+  function visible(el) { return el.offsetParent !== null && el.getBoundingClientRect().height > 0; }
+  // a list map's filter (site.js keeps the list's shown row ids in window.GSFilter and sends gs:filter): the kept
+  // points ({keep: {id: 1}, lls}), or null when every point is kept (the map then shows its whole frame)
+  function picked(list, ids) {
+    if (!ids) return null;
+    var keep = {}, lls = [];
+    ids.forEach(function (id) { keep[id] = 1; });
+    list.forEach(function (p) { if (keep[idOf(p)]) lls.push([p.lat, p.lng]); });
+    return lls.length === list.length ? null : { keep: keep, lls: lls };
+  }
+  // the view of a list map: the filtered places with coordinates (all of them, nothing trimmed), else the whole frame
+  function listView(r) {
+    var s = r.picked;
+    return s && s.lls.length ? visibleView(r.g, s.lls, 36, 5) : visibleView(r.g, r.frame, 28);
+  }
+  // beside a shown list a list map's markers are quiet (out of the tab order, hidden from screen readers: the rows
+  // are the same links); where the list is not shown (phones' 지도 view) they are named links in the tab order. The
+  // map page's 권역 map (d.all) the same, its list being the 권역 sections (QA 2026-10-17 F16: its pins stayed hidden
+  // from keyboards and screen readers in the 지도 view, where the sections are not shown)
+  function listQuiet(r) {
+    if (!r.data.list && !r.data.all) return;
+    var rows = r.data.list ? [doc.querySelector("[data-ledger]")] : Array.prototype.slice.call(doc.querySelectorAll("[data-region-sec]"));
+    var quiet = rows.some(function (el) { return !!el && visible(el); });
+    if (r.quiet === quiet) return;
+    r.quiet = quiet;
+    Object.keys(r.markers).forEach(function (id) {
+      var a = r.markers[id]._a;
+      a.tabIndex = quiet ? -1 : 0;
+      if (quiet) a.setAttribute("aria-hidden", "true"); else a.removeAttribute("aria-hidden");
+    });
+    if (r.groups && r.g && r.g.k) regroup(r);   // the bubbles follow (quiet or in the tab order)
+  }
+
+  // ------------------------------------------------------------ marker groups (review 2026-10-17: the map page's 888
+  // pins covered each other on a phone): above street scale a list map or the map page draws the eligible markers that
+  // fall in one GROUP_PX square of the map as one count bubble (a button: two levels closer, on them); from level
+  // GROUP_LV in, or with few markers, every marker stands alone. Which markers are eligible (the list's filter, the
+  // 권역 and the kinds) is mk._want; regroup decides only alone or in a bubble, again when the level changes.
+  var GROUP_PX = 48, GROUP_LV = 5, GROUP_MIN = 4, GROUP_FROM = 60;
+  function regroup(r) {
+    var g = r.g, lv = g.k.getLevel(), ids = Object.keys(r.markers);
+    (r.groups || []).forEach(function (ov) { ov.setMap(null); });
+    r.groups = [];
+    r.glv = lv;
+    var want = ids.filter(function (id) { return r.markers[id]._want !== false; }), inGroup = {};
+    if (lv > GROUP_LV && want.length > GROUP_FROM) {
+      var cells = {};
+      want.forEach(function (id) {
+        var p = r.markers[id]._gs, q = g.project([p.lat, p.lng], lv);
+        var key = Math.floor(q.x / GROUP_PX) + ":" + Math.floor(q.y / GROUP_PX);
+        (cells[key] = cells[key] || []).push(id);
+      });
+      Object.keys(cells).forEach(function (key) {
+        var c = cells[key];
+        if (c.length < GROUP_MIN) return;
+        var lat = 0, lng = 0;
+        c.forEach(function (id) { inGroup[id] = 1; lat += r.markers[id]._gs.lat; lng += r.markers[id]._gs.lng; });
+        var ll = [lat / c.length, lng / c.length], b = doc.createElement("button");
+        b.type = "button";
+        b.className = "mk-group";
+        b.textContent = c.length;
+        b.setAttribute("aria-label", W.group ? W.group.replace("{n}", c.length) : EN ? c.length + " places here: zoom in" : "이곳 " + c.length + "곳: 지도 확대");
+        if (r.quiet) { b.tabIndex = -1; b.setAttribute("aria-hidden", "true"); }
+        b.addEventListener("click", function () { g.view(ll, clampLv(lv - 2), true); });
+        r.groups.push(g.add(ll, b, { z: 15, click: true }));
+      });
+    }
+    ids.forEach(function (id) {
+      var mk = r.markers[id], show = mk._want !== false && !inGroup[id];
+      if (show && !g.shown(mk)) mk.setMap(r.map || g.k); else if (!show && g.shown(mk)) mk.setMap(null);
+    });
+  }
+
+  // ------------------------------------------------------------ the adapter: one Kakao map in a box
+  // Positions are worked out on Kakao's own plane (WCONGNAMUL: LatLng.toCoords(), 0.4 m a unit, y to the north), which
+  // its tiles are cut from: at level lv a pixel is 2.5 × 2^(lv − 3) units, so g.project(ll, lv) / g.unproject(p, lv)
+  // are exact, in fractions of a pixel, and need no map — every view is known before the map is made (g.open(view)
+  // creates it right there: no tiles are fetched for a throwaway first view). After open: g.cp(ll) / g.ll(p) container
+  // pixels ↔ [lat, lng]; g.view(c, lv, fly); g.fit(lls, [top, right, bottom, left], minLv, fly): the closest level that
+  // holds the points in the padded box (a web map's fitBounds); g.on(type, fn) → off
+  function unitsPerPx(lv) { return OSM ? 156543.03392804097 / Math.pow(2, OSM_Z - lv) : 2.5 * Math.pow(2, lv - 3); }
   function base(el) {
-    var m = L.map(el, { scrollWheelZoom: false, zoomControl: false, attributionControl: true });
-    L.control.zoom({ position: "topleft", zoomInTitle: W.in || (EN ? "Zoom in" : "확대"), zoomOutTitle: W.out || (EN ? "Zoom out" : "축소") }).addTo(m);
-    // the map takes the focus (Leaflet's keyboard): its name says how to move it
+    el.innerHTML = "";
+    var box = div("kmap");
+    box.tabIndex = 0;
+    box.setAttribute("role", "group");
+    // the map takes the focus: its name is the box's, with how to move it (Korean and English; the other versions
+    // give their words in data-words.keys when they have them)
     var keys = W.keys || (!EN ? "화살표 키로 이동, + − 키로 확대·축소" : /^en/i.test(doc.documentElement.lang) ? "arrow keys move it, + and − zoom" : "");
-    if (keys && el.getAttribute("aria-label")) el.setAttribute("aria-label", el.getAttribute("aria-label") + " · " + keys);
-    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' }).addTo(m);
-    m.attributionControl.setPrefix(false);
-    return m;
+    box.setAttribute("aria-label", (el.getAttribute("aria-label") || (EN ? "Map" : "지도")) + (keys ? " · " + keys : ""));
+    var tl = div("map-ctl map-tl"), tr = div("map-ctl map-tr"), bl = div("map-ctl map-bl");
+    el.appendChild(box); el.appendChild(tl); el.appendChild(tr); el.appendChild(bl);
+    var g = { k: null, el: el, box: box, ctl: { tl: tl, tr: tr, bl: bl } };
+    g.size = function () { return pt(box.clientWidth, box.clientHeight); };
+    g.project = function (a, lv) { var c = LL(a).toCoords(), u = unitsPerPx(lv); return pt(c.getX() / u, -c.getY() / u); };
+    g.unproject = function (p, lv) { var u = unitsPerPx(lv), l = new K.Coords(p.x * u, -p.y * u).toLatLng(); return [l.getLat(), l.getLng()]; };
+    g.fitView = function (lls, pad, minLv) {
+      minLv = minLv || MINLV;
+      if (lls.length === 1) return { c: lls[0], lv: Math.max(minLv, 5) };
+      var sz = g.size(), x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+      lls.forEach(function (a) { var p = g.project(a, 1); x0 = Math.min(x0, p.x); x1 = Math.max(x1, p.x); y0 = Math.min(y0, p.y); y1 = Math.max(y1, p.y); });
+      var w = Math.max(1, sz.x - pad[1] - pad[3]), h = Math.max(1, sz.y - pad[0] - pad[2]);
+      var need = Math.max((x1 - x0) / w, (y1 - y0) / h); // at level 1
+      var lv = clampLv(Math.max(minLv, need > 0 ? Math.ceil(1 + Math.log(need) / Math.LN2 - 1e-9) : minLv));
+      var f = Math.pow(2, lv - 1); // level-1 pixels per pixel at lv
+      return { c: g.unproject(pt((x0 + x1) / 2 + (pad[1] - pad[3]) / 2 * f, (y0 + y1) / 2 + (pad[2] - pad[0]) / 2 * f), 1), lv: lv };
+    };
+    // zoom buttons (44px, top left; also the + − keys while the map has the focus): made now, so a first view
+    // worked out before the map exists keeps clear of them
+    var zb = div("map-zoom");
+    var zin = doc.createElement("button"), zout = doc.createElement("button");
+    zin.type = zout.type = "button";
+    zin.className = "mz-in"; zout.className = "mz-out";
+    zin.textContent = "+"; zout.textContent = "−";
+    zin.setAttribute("aria-label", W.in || (EN ? "Zoom in" : "확대"));
+    zout.setAttribute("aria-label", W.out || (EN ? "Zoom out" : "축소"));
+    zin.title = zin.getAttribute("aria-label"); zout.title = zout.getAttribute("aria-label");
+    zb.appendChild(zin); zb.appendChild(zout); tl.appendChild(zb);
+    g.resized = []; // fns to run after the box has changed size (course maps: the edge chips)
+    g.open = function (v) {
+      var k = g.k = new K.Map(box, { center: LL(v.c), level: clampLv(v.lv == null ? v.z : v.lv), scrollwheel: false,
+        keyboardShortcuts: false, tileAnimation: !reduce });
+      k.setCopyrightPosition(K.CopyrightPosition.BOTTOMRIGHT, true);
+      g.centre = function () { var c = k.getCenter(); return [c.getLat(), c.getLng()]; };
+      g.cp = function (a) {
+        var lv = k.getLevel(), p = g.project(a, lv), c = g.project(g.centre(), lv), sz = g.size();
+        return pt(p.x - c.x + sz.x / 2, p.y - c.y + sz.y / 2);
+      };
+      g.ll = function (p) {
+        var lv = k.getLevel(), c = g.project(g.centre(), lv), sz = g.size();
+        return g.unproject(pt(p.x - sz.x / 2 + c.x, p.y - sz.y / 2 + c.y), lv);
+      };
+      g.on = function (type, fn) { K.event.addListener(k, type, fn); return function () { K.event.removeListener(k, type, fn); }; };
+      g.view = function (c, lv, fly) {
+        lv = clampLv(lv);
+        if (!fly || reduce) { k.setLevel(lv); k.setCenter(LL(c)); return; }
+        if (lv === k.getLevel()) { k.panTo(LL(c)); return; }
+        k.setCenter(LL(c));
+        k.setLevel(lv, { animate: { duration: 350 } });
+      };
+      g.fit = function (lls, pad, minLv, fly) { var w = g.fitView(lls, pad, minLv); g.view(w.c, w.lv, fly); return w; };
+      g.relayout = function () { k.relayout(); g.resized.forEach(function (fn) { fn(); }); };
+      // a marker / label (CustomOverlay with our element; anchor fractions of its box; clickable: the map does not
+      // start a drag on it, so its link works)
+      g.add = function (a, node, o) {
+        o = o || {};
+        var ov = new K.CustomOverlay({ position: LL(a), content: node, xAnchor: o.xa == null ? 0.5 : o.xa, yAnchor: o.ya == null ? 0.5 : o.ya,
+          zIndex: o.z || 1, clickable: !!o.click });
+        if (!o.off) ov.setMap(k);
+        return ov;
+      };
+      g.shown = function (ov) { return !!ov.getMap(); };
+      g.line = function (lls, o) {
+        var l = new K.Polyline({ path: lls.map(LL), strokeWeight: o.w, strokeColor: o.c || INK, strokeOpacity: o.o == null ? 1 : o.o,
+          strokeStyle: o.dash || "solid", zIndex: o.z || 0 });
+        l.setMap(k);
+        return l;
+      };
+      var zoom = function (d) { var lv = clampLv(k.getLevel() + d); if (lv !== k.getLevel()) k.setLevel(lv, { animate: !reduce }); };
+      zin.addEventListener("click", function () { zoom(-1); });
+      zout.addEventListener("click", function () { zoom(1); });
+      var zstate = function () { zin.disabled = k.getLevel() <= MINLV; zout.disabled = k.getLevel() >= MAXLV; };
+      g.on("zoom_changed", zstate);
+      zstate();
+      box.addEventListener("keydown", function (e) {
+        if (e.target !== box || e.altKey || e.ctrlKey || e.metaKey) return;
+        var d = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] }[e.key];
+        if (d) k.panBy(d[0] * 96, d[1] * 96);
+        else if (e.key === "+" || e.key === "=") zoom(-1);
+        else if (e.key === "-" || e.key === "_") zoom(1);
+        else return;
+        e.preventDefault();
+      });
+      // the box changes size (a folded map opens, the window turns): Kakao needs to be told
+      if ("ResizeObserver" in win) {
+        var last = "";
+        new ResizeObserver(function () {
+          var sz = box.clientWidth + "x" + box.clientHeight;
+          if (sz !== last && box.clientWidth) { var first = !last; last = sz; if (!first) g.relayout(); }
+        }).observe(box);
+      }
+      return g;
+    };
+    return g;
   }
+  // a stretch of the box a control or Kakao's logo covers ([x0, y0, x1, y1] in the box, 6px margin)
+  function boxOf(el, host) {
+    var a = el.getBoundingClientRect(), b = host.getBoundingClientRect();
+    return [a.left - b.left - 6, a.top - b.top - 6, a.right - b.left + 6, a.bottom - b.top + 6];
+  }
+  function hits(a, b) { return !(a[2] <= b[0] || a[0] >= b[2] || a[3] <= b[1] || a[1] >= b[3]); }
+  function controls(g, top) {
+    var els = Array.prototype.slice.call(g.el.querySelectorAll(top ? ".map-tl > *, .map-tr > *" : ".map-ctl > *"));
+    if (!top) { // Kakao's logo and copyright line (bottom right), or Leaflet's credit: the edge chips keep clear of it
+      var logo = g.box.querySelector('img[src*="m_bi"]'), e = logo;
+      var credit = g.box.querySelector(".leaflet-control-attribution");
+      if (credit) els.push(credit);
+      for (var i = 0; e && i < 3 && e.parentNode && e.parentNode !== g.box; i++) e = e.parentNode; // logo › link › box › the line with the scale
+      if (e) els.push(e);
+    }
+    return els.filter(function (el) { return el.offsetWidth > 0 && !el.hidden; }).map(function (el) { return boxOf(el, g.box); });
+  }
+
   // labels: nearest first; each tries right then left of its marker and is dropped when it would overlap a shown
   // label or another marker
-  function declutter(m, items, markers) {
-    var size = m.getSize(), shown = [];
+  function labelNode(html, cls, side, off) {
+    var n = div("mk-label " + (cls || ""), html);
+    n.setAttribute("aria-hidden", "true");
+    n.style.transform = "translate(" + (side === "l" ? "calc(-100% - " + off + "px)" : off + "px") + ",-50%)";
+    return n;
+  }
+  function declutter(g, items, markers) {
+    var size = g.size(), shown = [];
     (markers || []).forEach(function (mk) {
-      var p = m.latLngToContainerPoint(mk.ll), r = (mk.r || 6) + 2;
+      var p = g.cp(mk.ll), r = (mk.r || 6) + 2;
       shown.push([p.x - r, p.y - r, p.x + r, p.y + r]);
     });
     items.forEach(function (it) {
-      var p = m.latLngToContainerPoint(it.ll), w = (it.w || 120) + 6, h = 20, gap = (it.r || 6) + 6, ok = null;
+      var p = g.cp(it.ll), w = (it.w || 120) + 6, h = 20, gap = (it.r || 6) + 6, ok = null;
       ["r", "l"].some(function (side) {
         var box = side === "r" ? [p.x + gap, p.y - h / 2, p.x + gap + w, p.y + h / 2] : [p.x - gap - w, p.y - h / 2, p.x - gap, p.y + h / 2];
-        if (box[0] < 50 || box[2] > size.x - 4 || box[1] < 4 || box[3] > size.y - 18) return false;
+        if (box[0] < 50 || box[2] > size.x - 4 || box[1] < 4 || box[3] > size.y - 22) return false;
         var hit = shown.some(function (b) { return !(box[2] < b[0] || box[0] > b[2] || box[3] < b[1] || box[1] > b[3]); });
         if (!hit) { ok = side; shown.push(box); }
         return !hit;
       });
-      if (ok) { it.lab.setIcon(label(it.html, it.cls, ok, gap)); if (!m.hasLayer(it.lab)) it.lab.addTo(m); }
-      else if (m.hasLayer(it.lab)) m.removeLayer(it.lab);
+      if (ok) {
+        if (it.side !== ok) { it.side = ok; it.lab.setContent(labelNode(it.html, it.cls, ok, gap)); }
+        if (!g.shown(it.lab)) it.lab.setMap(g.k);
+      } else if (g.shown(it.lab)) it.lab.setMap(null);
     });
   }
-  function go(url) { return function () { if (url) location.href = url; }; }
-  // a marker is a link: Enter or Space opens it too (Leaflet 1.9 turns no key on a marker into a click)
-  function enterGo(url) {
-    return function (e) {
-      var k = e.originalEvent && e.originalEvent.key;
-      if (url && (k === "Enter" || k === " ")) { e.originalEvent.preventDefault(); location.href = url; }
+  // one tooltip per map (a list map's names on hover)
+  function tip(g) {
+    var n = div("tt-map"), ov = g.add([0, 0], n, { xa: 0.5, ya: 1, z: 2000, off: true });
+    n.setAttribute("aria-hidden", "true");
+    return {
+      show: function (a, text) { n.textContent = text; ov.setPosition(LL(a)); ov.setMap(g.k); },
+      hide: function () { ov.setMap(null); }
     };
   }
 
-  // the passed part of a course's straight-line route (course.js through reg.progressTo): the blue line through stop
-  // n draws itself from the previous stop, after the map has settled (pixel lengths are then final); reduced motion,
-  // going back or a first stop: set at once
-  function upto(r, n) { var out = []; r.data.course.forEach(function (p) { if (!p.extra && p.n <= n) out.push([p.lat, p.lng]); }); return out; }
-  function pxLen(m, lls) { var t = 0; for (var i = 1; i < lls.length; i++) t += m.latLngToLayerPoint(lls[i - 1]).distanceTo(m.latLngToLayerPoint(lls[i])); return t; }
-  function drawRoute(r, m, from, n) {
-    if (!r.progress) return;
-    var done = upto(r, n);
-    r.progress.setLatLngs(n > 0 ? done : []);
-    var path = r.progress._path;
-    var reset = function () { if (path) { path.style.transition = "none"; path.style.strokeDasharray = ""; path.style.strokeDashoffset = ""; } };
-    if (!path || reduce || n <= from || n < 2) { reset(); return; }
-    var len = pxLen(m, done), prev = pxLen(m, upto(r, from));
-    path.style.transition = "none";
-    path.style.strokeDasharray = len + " " + len;
-    path.style.strokeDashoffset = String(len - prev);
-    path.getBoundingClientRect();
-    path.style.transition = "stroke-dashoffset 1.1s cubic-bezier(.65,0,.35,1)";
-    path.style.strokeDashoffset = "0";
-    var clear = function () { reset(); path.removeEventListener("transitionend", clear); };
-    path.addEventListener("transitionend", clear);
-  }
-
   /* COURSE MAPS (ui.coursemap). Every stop keeps its own numbered marker — nothing is merged into a range:
-     - spread(): markers that would touch at this zoom are pushed apart from their true points as little as needed
+     - spread(): markers that would touch at this level are pushed apart from their true points as little as needed
        (stops at one spot ring round it in number order); a hairline joins a moved marker to its true point;
-     - bestFrame(): the first view is the box at the zoom (street level outwards) that holds the most stops whose
+     - bestFrame(): the first view is the box at the level (street level outwards) that holds the most stops whose
        markers stand alone (no marker moved more than MAXOFF px) — so a course in two places opens on the place
        with more stops, never on a few dots joined by one long line;
      - edge chips: the stops outside the view are pointed at from the box edge (an arrow towards them and their
@@ -258,30 +530,30 @@
     for (i = 0; i < n; i++) max = Math.max(max, Math.sqrt(Math.pow(pos[i][0] - P[i].x, 2) + Math.pow(pos[i][1] - P[i].y, 2)));
     return { pos: pos, max: max };
   }
-  // the view {c: centre, z} that shows the most stops of pool (indices; default all) standing alone; with must, a
-  // view that holds that stop. A view is judged as it will be drawn (the whole zoom level that fits the stops, centred
-  // in the padded box, slid a little when that clears an edge): every stop it shows must stand alone, and none may
-  // sit cut at an edge or under a control — each is well inside or off the view, where an edge chip points at it.
-  function bestFrame(m, items, pool, must) {
+  // the view {c: centre, z: level} that shows the most stops of pool (indices; default all) standing alone; with
+  // must, a view that holds that stop. A view is judged as it will be drawn (the closest level that fits the stops,
+  // centred in the padded box, slid a little when that clears an edge): every stop it shows must stand alone, and
+  // none may sit cut at an edge or under a control — each is well inside or off the view, where an edge chip points
+  // at it.
+  function bestFrame(g, items, pool, must) {
     pool = pool || items.map(function (it, q) { return q; });
-    var sz = m.getSize(), w = sz.x - CPAD[0] - CPAD[2], h = sz.y - CPAD[1] - CPAD[3], best = null, tried = {};
-    var host = m.getContainer(), E = MK / 2 + 6, R = MK / 2 + 2, BOT = 16; // BOT: the credit line
-    var ctl = Array.prototype.filter.call(host.querySelectorAll(".leaflet-top .leaflet-control"), function (el) { return el.offsetWidth > 0; })
-      .map(function (el) { return boxOf(el, host); });
+    var sz = g.size(), w = sz.x - CPAD[0] - CPAD[2], h = sz.y - CPAD[1] - CPAD[3], best = null, tried = {};
+    var E = MK / 2 + 6, R = MK / 2 + 2, BOT = 22; // BOT: Kakao's logo line
+    var ctl = controls(g, true);
     var off = function (x, y) { return x < -R || y < -R || x > sz.x + R || y > sz.y + R; };
     var clear = function (x, y) {
       return x >= E && y >= E && x <= sz.x - E && y <= sz.y - E - BOT && !ctl.some(function (a) { return x + R > a[0] && x - R < a[2] && y + R > a[1] && y - R < a[3]; });
     };
-    function judge(P, S, z) {
+    function judge(P, S, lv) {
       var x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
       S.forEach(function (q) { x0 = Math.min(x0, P[q].x); x1 = Math.max(x1, P[q].x); y0 = Math.min(y0, P[q].y); y1 = Math.max(y1, P[q].y); });
-      var one = S.length === 1, zf = one ? 15 : Math.min(16, z + Math.floor(Math.log(Math.min(x1 > x0 ? w / (x1 - x0) : 1e9, y1 > y0 ? h / (y1 - y0) : 1e9)) / Math.LN2 + 1e-9));
-      var f = Math.pow(2, zf - z), Q = P.map(function (pt) { return L.point(pt.x * f, pt.y * f); });
+      var one = S.length === 1, lf = one ? 5 : Math.max(4, lv - Math.floor(Math.log(Math.min(x1 > x0 ? w / (x1 - x0) : 1e9, y1 > y0 ? h / (y1 - y0) : 1e9)) / Math.LN2 + 1e-9));
+      var f = Math.pow(2, lv - lf), Q = P.map(function (p) { return pt(p.x * f, p.y * f); });
       var cx = (x0 + x1) / 2 * f + (one ? 0 : (CPAD[2] - CPAD[0]) / 2), cy = (y0 + y1) / 2 * f + (one ? 0 : (CPAD[3] - CPAD[1]) / 2);
       // slides to try: none, then each that moves a stop caught at an edge fully in or fully out
       var dxs = [0], dys = [0];
-      Q.forEach(function (pt) {
-        var x = pt.x - cx + sz.x / 2, y = pt.y - cy + sz.y / 2;
+      Q.forEach(function (p) {
+        var x = p.x - cx + sz.x / 2, y = p.y - cy + sz.y / 2;
         if (off(x, y) || clear(x, y)) return;
         dxs.push(E - x, sz.x - E - x, -R - 1 - x, sz.x + R + 1 - x);
         dys.push(E - y, sz.y - E - BOT - y, -R - 1 - y, sz.y + R + 1 - y);
@@ -296,81 +568,75 @@
           if (off(x, y)) { if (S.indexOf(q) >= 0) ok = false; continue; }
           if (!clear(x, y)) ok = false; else V.push(Q[q]);
         }
-        if (ok && spread(V, false).max <= MAXOFF) return { S: S, z: zf, c: m.unproject(L.point(vx, vy), zf) };
+        if (ok && spread(V, false).max <= MAXOFF) return { S: S, z: lf, c: g.unproject(pt(vx, vy), lf) };
       }
       return null;
     }
-    for (var z = 16; z >= 4; z--) { // whole zoom levels only: tiles stay crisp, with no seams between scaled tiles
-      var P = items.map(function (it) { return m.project(it.ll, z); });
+    for (var lv = 4; lv <= MAXLV; lv++) { // street level outwards
+      var P = items.map(function (it) { return g.project(it.ll, lv); });
       for (var i = 0; i < pool.length; i++) for (var j = 0; j < pool.length; j++) {
         var S = pool.filter(function (k) { return P[k].x >= P[pool[i]].x - 1e-6 && P[k].x <= P[pool[i]].x + w && P[k].y >= P[pool[j]].y - 1e-6 && P[k].y <= P[pool[j]].y + h; });
         if ((best && S.length <= best.S.length) || (must != null && S.indexOf(must) < 0)) continue;
         var key = S.join(",");
         if (tried[key]) continue;
         tried[key] = 1;
-        best = judge(P, S, z) || best;
+        best = judge(P, S, lv) || best;
       }
       if (best && best.S.length === pool.length) break;
     }
-    if (!best) { var q0 = must != null ? must : pool[0]; best = { S: [q0], z: 15, c: items[q0].ll }; }
+    if (!best) { var q0 = must != null ? must : pool[0]; best = { S: [q0], z: 5, c: items[q0].ll }; }
     return best;
   }
-  function frameOpts(animate) {
-    return { paddingTopLeft: [CPAD[0], CPAD[1]], paddingBottomRight: [CPAD[2], CPAD[3]], maxZoom: 16,
-      animate: animate && !reduce, duration: reduce ? 0 : 0.7 };
+  // a view from bestFrame ({c, z}), or every stop (fitted in the padded box); fly when asked (the markers are then
+  // spread for the new level once the map has settled: the idle handler in courseMap)
+  function showStops(reg, g, view, fly) {
+    if (view.c) g.view(view.c, view.z, fly);
+    else g.fit(reg.lls, [CPAD[1], CPAD[2], CPAD[3], CPAD[0]], 4, fly);
+    if (fly && !reduce) reg.placed = null;
+    else placeStops(reg, g);
   }
-  // a view from bestFrame ({c, z}), or every stop (fitted in the padded box); fly when asked
-  function showStops(reg, m, view, fly) {
-    if (view.c) { if (fly) m.flyTo(view.c, view.z, frameOpts(true)); else m.setView(view.c, view.z, { animate: false }); }
-    else if (fly) m.flyToBounds(reg.lls, frameOpts(true));
-    else m.fitBounds(reg.lls, frameOpts(false));
-    if (!fly) placeStops(reg, m);
-  }
-  // markers at this zoom: pushed apart where they would touch, a hairline from each moved marker to its point
-  function placeStops(reg, m) {
-    var P = reg.items.map(function (it) { return m.latLngToLayerPoint(it.ll); }), r = spread(P, false);
+  // markers at this level: pushed apart where they would touch, a hairline from each moved marker to its point
+  function placeStops(reg, g) {
+    var P = reg.items.map(function (it) { return g.cp(it.ll); }), r = spread(P, false);
     if (r.max > MAXOFF) r = spread(P, true); // piled up (zoomed out): rings in number order read better
-    reg.legs.clearLayers();
+    reg.placed = g.k.getLevel();
+    reg.legs.forEach(function (x) { x.setMap(null); });
+    reg.legs = [];
     reg.items.forEach(function (it, i) {
-      var q = L.point(r.pos[i][0], r.pos[i][1]);
-      it.at = m.layerPointToLatLng(q);
-      it.mk.setLatLng(it.at);
+      var q = pt(r.pos[i][0], r.pos[i][1]);
+      it.at = g.ll(q);
+      it.mk.setPosition(LL(it.at));
       if (q.distanceTo(P[i]) > 5) {
-        L.polyline([it.ll, it.at], { color: INK, weight: 1, opacity: 0.6, interactive: false }).addTo(reg.legs);
-        L.circleMarker(it.ll, { radius: 2.5, stroke: false, fillColor: INK, fillOpacity: 0.85, interactive: false }).addTo(reg.legs);
+        reg.legs.push(g.line([it.ll, it.at], { w: 1, o: 0.6 }));
+        reg.legs.push(g.add(it.ll, div("mk-foot"), { z: 0 }));
       }
     });
   }
-  function boxOf(el, host) {
-    var a = el.getBoundingClientRect(), b = host.getBoundingClientRect();
-    return [a.left - b.left - 6, a.top - b.top - 6, a.right - b.left + 6, a.bottom - b.top + 6];
-  }
-  function hits(a, b) { return !(a[2] <= b[0] || a[0] >= b[2] || a[3] <= b[1] || a[1] >= b[3]); }
   // the stops outside the view, pointed at from the box edge in their direction (8 directions from the centre);
   // chips that would overlap are joined. '전체 보기' shows only while some stop is outside.
-  function edgeChips(reg, m) {
-    var host = m.getContainer(), sz = m.getSize(), c = L.point(sz.x / 2, sz.y / 2), groups = [], by = {};
+  function edgeChips(reg, g) {
+    var sz = g.size(), c = pt(sz.x / 2, sz.y / 2), groups = [], by = {};
+    if (!sz.x) return;
     reg.items.forEach(function (it) {
-      var p = m.latLngToContainerPoint(it.at || it.ll);
+      var p = g.cp(it.at || it.ll);
       if (p.x >= 0 && p.y >= 0 && p.x <= sz.x && p.y <= sz.y) return;
       var s = (Math.round(Math.atan2(p.y - c.y, p.x - c.x) / (Math.PI / 4)) + 8) % 8;
       if (!by[s]) groups.push(by[s] = { items: [], ps: [] });
       by[s].items.push(it); by[s].ps.push(p);
     });
     if (reg.allBtn) reg.allBtn.hidden = !groups.length;
-    var avoid = Array.prototype.filter.call(host.querySelectorAll(".leaflet-control"), function (el) { return el.offsetWidth > 0; })
-      .map(function (el) { return boxOf(el, host); });
-    var place = function (g) {
+    var avoid = controls(g, false);
+    var place = function (gr) {
       var x = 0, y = 0;
-      g.ps.forEach(function (p) { x += p.x / g.ps.length; y += p.y / g.ps.length; });
+      gr.ps.forEach(function (p) { x += p.x / gr.ps.length; y += p.y / gr.ps.length; });
       x -= c.x; y -= c.y;
-      g.ang = Math.atan2(y, x);
-      var k = g.items.length > 6 ? 5 : g.items.length, len = 34 + k * 24 + (g.items.length > k ? 26 : 0);
+      gr.ang = Math.atan2(y, x);
+      var k = gr.items.length > 6 ? 5 : gr.items.length, len = 34 + k * 24 + (gr.items.length > k ? 26 : 0);
       var tx = Math.abs(x) > 1e-6 ? (sz.x / 2) / Math.abs(x) : 1e9, ty = Math.abs(y) > 1e-6 ? (sz.y / 2) / Math.abs(y) : 1e9;
-      g.vert = tx < ty; // through a side: a vertical pill on it; through the top or bottom: a horizontal one
+      gr.vert = tx < ty; // through a side: a vertical pill on it; through the top or bottom: a horizontal one
       var t = Math.min(tx, ty), px = c.x + x * t, py = c.y + y * t, b;
-      if (g.vert) { var bx = x > 0 ? sz.x - CHIP_M - CHIP_T : CHIP_M; b = [bx, py - len / 2, bx + CHIP_T, py + len / 2]; }
-      else { var by = y > 0 ? sz.y - CHIP_M - CHIP_T : CHIP_M; b = [px - len / 2, by, px + len / 2, by + CHIP_T]; }
+      if (gr.vert) { var bx = x > 0 ? sz.x - CHIP_M - CHIP_T : CHIP_M; b = [bx, py - len / 2, bx + CHIP_T, py + len / 2]; }
+      else { var byy = y > 0 ? sz.y - CHIP_M - CHIP_T : CHIP_M; b = [px - len / 2, byy, px + len / 2, byy + CHIP_T]; }
       var clamp = function () {
         var dx = Math.max(0, CHIP_M - b[0]) - Math.max(0, b[2] - (sz.x - CHIP_M)), dy = Math.max(0, CHIP_M - b[1]) - Math.max(0, b[3] - (sz.y - CHIP_M));
         b = [b[0] + dx, b[1] + dy, b[2] + dx, b[3] + dy];
@@ -378,12 +644,12 @@
       clamp();
       for (var pass = 0; pass < 3; pass++) avoid.forEach(function (a) { // slide along the edge, away from the control
         if (!hits(b, a)) return;
-        var d = g.vert ? ((b[1] + b[3]) / 2 < (a[1] + a[3]) / 2 && a[1] - (b[3] - b[1]) >= CHIP_M ? a[1] - b[3] : a[3] - b[1])
+        var d = gr.vert ? ((b[1] + b[3]) / 2 < (a[1] + a[3]) / 2 && a[1] - (b[3] - b[1]) >= CHIP_M ? a[1] - b[3] : a[3] - b[1])
           : ((b[0] + b[2]) / 2 < (a[0] + a[2]) / 2 && a[0] - (b[2] - b[0]) >= CHIP_M ? a[0] - b[2] : a[2] - b[0]);
-        if (g.vert) { b[1] += d; b[3] += d; } else { b[0] += d; b[2] += d; }
+        if (gr.vert) { b[1] += d; b[3] += d; } else { b[0] += d; b[2] += d; }
         clamp();
       });
-      g.b = b;
+      gr.b = b;
     };
     groups.forEach(place);
     for (var again = true; again;) { // two chips that touch become one
@@ -396,53 +662,91 @@
     }
     var box = reg.chips, had = box.contains(doc.activeElement);
     box.innerHTML = "";
-    groups.forEach(function (g) {
-      g.items.sort(function (a, b) { return a.n - b.n; });
-      var ns = g.items.map(function (it) { return it.n; }), shown = g.items.length > 6 ? ns.slice(0, 5) : ns;
-      var dir = DIRS[(Math.round(g.ang / (Math.PI / 4)) + 8) % 8];
+    groups.forEach(function (gr) {
+      gr.items.sort(function (a, b) { return a.n - b.n; });
+      var ns = gr.items.map(function (it) { return it.n; }), shown = gr.items.length > 6 ? ns.slice(0, 5) : ns;
+      var dir = DIRS[(Math.round(gr.ang / (Math.PI / 4)) + 8) % 8];
       var b = doc.createElement("button");
-      b.type = "button"; b.className = "mk-edge" + (g.vert ? " vert" : "");
-      b.style.left = Math.round(g.b[0]) + "px"; b.style.top = Math.round(g.b[1]) + "px";
-      b.setAttribute("aria-label", EN ? "Stops " + ns.join(", ") + " (" + g.items[0].name + (ns.length > 1 ? " and " + (ns.length - 1) + " more" : "") + ") lie off the map to the " + dir + " · show them"
-        : ns.join(", ") + "번 경유지(" + g.items[0].name + (ns.length > 1 ? " 외 " + (ns.length - 1) + "곳" : "") + ")가 지도 밖 " + dir + "에 있습니다 · 눌러서 보기");
-      b.title = g.items.map(function (it) { return it.n + ". " + it.name; }).join("\n");
-      b.innerHTML = '<svg class="me-arr" viewBox="0 0 16 16" aria-hidden="true" style="transform:rotate(' + (g.ang * 180 / Math.PI).toFixed(1) +
+      b.type = "button"; b.className = "mk-edge" + (gr.vert ? " vert" : "");
+      b.style.left = Math.round(gr.b[0]) + "px"; b.style.top = Math.round(gr.b[1]) + "px";
+      b.setAttribute("aria-label", W.off ? W.off + " (" + ns.join(", ") + ": " + gr.items[0].name + ")" : EN ? "Stops " + ns.join(", ") + " (" + gr.items[0].name + (ns.length > 1 ? " and " + (ns.length - 1) + " more" : "") + ") lie off the map to the " + dir + " · show them"
+        : ns.join(", ") + "번 경유지(" + gr.items[0].name + (ns.length > 1 ? " 외 " + (ns.length - 1) + "곳" : "") + ")가 지도 밖 " + dir + "에 있습니다 · 눌러서 보기");
+      b.title = gr.items.map(function (it) { return it.n + ". " + it.name; }).join("\n");
+      b.innerHTML = '<svg class="me-arr" viewBox="0 0 16 16" aria-hidden="true" style="transform:rotate(' + (gr.ang * 180 / Math.PI).toFixed(1) +
         'deg)"><path d="M2 8h11M9 4l4 4-4 4"/></svg>' + shown.map(function (n) { return '<span class="me-n" aria-hidden="true">' + n + "</span>"; }).join("") +
         (ns.length > shown.length ? '<span class="me-more" aria-hidden="true">+' + (ns.length - shown.length) + "</span>" : "");
-      L.DomEvent.disableClickPropagation(b);
-      L.DomEvent.disableScrollPropagation(b);
-      b.addEventListener("click", function () { showStops(reg, m, bestFrame(m, reg.items, g.items.map(function (it) { return reg.items.indexOf(it); })), true); });
+      b.addEventListener("click", function () { showStops(reg, g, bestFrame(g, reg.items, gr.items.map(function (it) { return reg.items.indexOf(it); })), true); });
       box.appendChild(b);
     });
-    if (had) (box.firstChild || reg.allBtn || host).focus();
+    if (had) (box.firstChild || reg.allBtn || g.box).focus();
   }
-  function courseMap(reg, m) {
-    reg.legs = L.layerGroup().addTo(m);
-    reg.chips = L.DomUtil.create("div", "mk-edges", m.getContainer());
-    var All = L.Control.extend({ options: { position: "topright" }, onAdd: function () {
-      var b = L.DomUtil.create("button", "far-ctl map-all");
-      b.type = "button";
-      b.textContent = EN ? "Whole course" : "전체 보기";
-      L.DomEvent.disableClickPropagation(b);
-      b.addEventListener("click", function () { showStops(reg, m, {}, true); });
-      reg.allBtn = b;
-      return b;
-    } });
-    new All().addTo(m);
-    reg.home = bestFrame(m, reg.items);
-    reg.showHome = function (fly) { showStops(reg, m, reg.home, fly); };
+  // before the map: the edge chips' layer, '전체 보기' and the first view (bestFrame needs only the plane and the
+  // controls); after it: the markers spread, the chips, and the moves course.js asks for
+  function courseHome(reg, g) {
+    reg.legs = [];
+    reg.chips = div("mk-edges");
+    g.el.appendChild(reg.chips);
+    var b = doc.createElement("button");
+    b.type = "button";
+    b.className = "far-ctl map-all";
+    b.textContent = W.all || (EN ? "Whole course" : "전체 보기");
+    b.addEventListener("click", function () { showStops(reg, g, {}, true); });
+    g.ctl.tr.appendChild(b);
+    reg.allBtn = b;
+    reg.home = bestFrame(g, reg.items);
+    return reg.home;
+  }
+  function courseMap(reg, g) {
+    reg.showHome = function (fly) { showStops(reg, g, reg.home, fly); };
     reg.showAround = function (n) { // course.js: the view that holds stop n (the current one when n is in it)
       var it = reg.items.filter(function (x) { return x.n === n; })[0];
       if (!it) return false;
-      var p = m.latLngToContainerPoint(it.at || it.ll), sz = m.getSize();
+      var p = g.cp(it.at || it.ll), sz = g.size();
       if (p.x > CPAD[0] - 10 && p.y > CPAD[1] - 10 && p.x < sz.x - CPAD[2] + 10 && p.y < sz.y - CPAD[3] + 10) return false;
-      showStops(reg, m, bestFrame(m, reg.items, null, reg.items.indexOf(it)), true);
+      showStops(reg, g, bestFrame(g, reg.items, null, reg.items.indexOf(it)), true);
       return true;
     };
-    m.on("zoomend", function () { placeStops(reg, m); });
-    m.on("moveend resize", function () { edgeChips(reg, m); });
-    reg.showHome(false);
-    edgeChips(reg, m);
+    // after any move: the markers spread for the level they are now seen at, the chips for what is out of view
+    g.on("idle", function () { if (reg.placed !== g.k.getLevel()) placeStops(reg, g); edgeChips(reg, g); });
+    g.resized.push(function () { edgeChips(reg, g); });
+    placeStops(reg, g);
+    edgeChips(reg, g);
+  }
+  // the blue progress line of a course map (course.js): through stop n; the part after stop `from` grows along the
+  // straight lines in 1.1s (ease in-out) unless motion is reduced
+  function progress(reg, g) {
+    var line = reg.progress, anim = 0;
+    // the points up to stop n on n's own seg (a line never joins two options of a day: present.course_map)
+    var segOf = function (n) { var k = 0; reg.data.course.forEach(function (p) { if (!p.extra && p.n <= n) k = p.seg || 0; }); return k; };
+    var upto = function (n, k) { var out = []; if (k == null) k = segOf(n); reg.data.course.forEach(function (p) { if (!p.extra && p.n <= n && (p.seg || 0) === k) out.push([p.lat, p.lng]); }); return out; };
+    return function (from, n) {
+      if (anim) { win.cancelAnimationFrame(anim); anim = 0; }
+      var done = upto(n);
+      if (n <= 0 || done.length < 2) { line.setMap(null); return; }
+      line.setMap(g.k);
+      var start = upto(from, segOf(n));
+      if (reduce || n <= from) { line.setPath(done.map(LL)); return; }
+      if (!start.length) start = done.slice(0, 1); // from the first stop
+      var rest = done.slice(start.length - 1), lens = [], tot = 0;
+      for (var i = 1; i < rest.length; i++) { var d = g.cp(rest[i - 1]).distanceTo(g.cp(rest[i])); lens.push(d); tot += d; }
+      if (!tot) { line.setPath(done.map(LL)); return; }
+      var t0 = 0;
+      var step = function (now) {
+        if (!t0) t0 = now;
+        var t = Math.min(1, (now - t0) / 1100), e = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        var want = e * tot, path = start.slice(), acc = 0;
+        for (var i = 0; i < lens.length; i++) {
+          if (acc + lens[i] <= want) { path.push(rest[i + 1]); acc += lens[i]; continue; }
+          var f = (want - acc) / lens[i];
+          path.push([rest[i][0] + (rest[i + 1][0] - rest[i][0]) * f, rest[i][1] + (rest[i + 1][1] - rest[i][1]) * f]);
+          break;
+        }
+        line.setPath(path.map(LL));
+        anim = t < 1 ? win.requestAnimationFrame(step) : 0;
+      };
+      line.setPath(start.map(LL));
+      anim = win.requestAnimationFrame(step);
+    };
   }
 
   function normalise(raw, el) {
@@ -455,174 +759,205 @@
     try { d = normalise(JSON.parse(el.getAttribute("data-points") || el.getAttribute("data-map")), el); } catch (e) { return null; }
     var pts0 = d.self ? [d.self] : (d.course || d.guide || d.list || d.all || d.anchors || []);
     if (!pts0.length) return null; // nothing to draw: the box keeps its text
-    var reg = { el: el, map: null, markers: {}, items: [], data: d }, m;
-    el.innerHTML = "";
+    var g = base(el), reg = { el: el, map: null, g: g, markers: {}, items: [], data: d };
     if (d.self) { // a place or an event: itself, its neighbours, labelled straight-line anchors, or a radius
-      var c = [d.self.lat, d.self.lng];
-      m = base(el);
-      m.setView(c, 15);
-      L.marker(c, { icon: icon("mk-self", 22), keyboard: false, title: d.self.name }).addTo(m);
-      var items = [{ ll: L.latLng(c), html: esc(d.self.name), cls: "self", w: textW(d.self.name) + 6, r: 11 }];
-      var mks = [], bounds = [c];
+      var c = [d.self.lat, d.self.lng], bounds = [c];
+      (d.near || []).forEach(function (n, i) { if (i < 8) bounds.push([n.lat, n.lng]); });
+      (d.anchors || []).forEach(function (a) { bounds.push([a.lat, a.lng]); });
+      if (d.radius) {
+        var dla = d.radius * 1.125 / 111320, dln = dla / Math.cos(c[0] * Math.PI / 180);
+        g.open(g.fitView([[c[0] - dla, c[1] - dln], [c[0] + dla, c[1] + dln]], [0, 0, 0, 0], 1));
+        new K.Circle({ center: LL(c), radius: d.radius, strokeWeight: 1, strokeColor: INK, strokeOpacity: 1, strokeStyle: "shortdash", fillOpacity: 0 }).setMap(g.k);
+      } else g.open(bounds.length > 1 ? g.fitView(bounds, [40, 40, 40, 40], 4) : { c: c, lv: 5 });
+      g.add(c, pin("mk-self", "", "", d.self.name), { z: 30 });
+      var items = [{ ll: c, html: esc(d.self.name), cls: "self", w: textW(d.self.name) + 6, r: 11 }], mks = [];
       (d.near || []).forEach(function (n, i) {
         var ll = [n.lat, n.lng];
-        var mk = L.marker(ll, { icon: kindIcon(n.kind), title: n.name + (n.d ? " " + n.d : "") }).addTo(m);
-        mk.on("click", go(n.url));
-        mks.push({ ll: L.latLng(ll), r: 6 });
-        if (i < 6) items.push({ ll: L.latLng(ll), html: esc(n.name) + (n.d ? "<small>" + esc(n.d) + "</small>" : ""), w: textW(n.name + (n.d || "")), r: 6 });
-        if (i < 8) bounds.push(ll);
+        g.add(ll, kindPin(n.kind, n.url, n.name + (n.d ? " " + n.d : "")), { z: 10, click: true });
+        mks.push({ ll: ll, r: 6 });
+        if (i < 6) items.push({ ll: ll, html: esc(n.name) + (n.d ? "<small>" + esc(n.d) + "</small>" : ""), w: textW(n.name + (n.d || "")), r: 6 });
       });
       (d.anchors || []).forEach(function (a) {
-        L.polyline([c, [a.lat, a.lng]], { color: INK, weight: 1.2, dashArray: "2 5", opacity: 0.7, interactive: false }).addTo(m);
-        L.marker([a.lat, a.lng], { icon: icon("mk-anchor", 12), title: a.label || a.name }).addTo(m);
-        mks.push({ ll: L.latLng(a.lat, a.lng), r: 7 });
-        items.push({ ll: L.latLng(a.lat, a.lng), html: esc(a.label || a.name), w: textW(a.label || a.name), r: 7 });
-        bounds.push([a.lat, a.lng]);
+        var ll = [a.lat, a.lng];
+        g.line([c, ll], { w: 1.5, o: 0.7, dash: "shortdot" });
+        g.add(ll, pin("mk-anchor", "", "", a.label || a.name), { z: 10 });
+        mks.push({ ll: ll, r: 7 });
+        items.push({ ll: ll, html: esc(a.label || a.name), w: textW(a.label || a.name), r: 7 });
       });
-      if (d.radius) {
-        L.circle(c, { radius: d.radius, color: INK, weight: 1, dashArray: "3 5", fill: false, interactive: false }).addTo(m);
-        m.fitBounds(L.latLng(c).toBounds(d.radius * 2.25), { animate: false });
-      } else if (bounds.length > 1) m.fitBounds(bounds, { padding: [40, 40], maxZoom: 16, animate: false });
-      items.forEach(function (it) { it.lab = L.marker(it.ll, { interactive: false, keyboard: false }); });
-      var redraw = function () { declutter(m, items, mks); };
-      m.on("zoomend moveend", redraw);
+      items.forEach(function (it) { it.lab = g.add(it.ll, labelNode(it.html, it.cls, "r", (it.r || 6) + 6), { xa: 0, ya: 0, z: 5, off: true }); it.side = "r"; });
+      var redraw = function () { declutter(g, items, mks); };
+      g.on("idle", redraw);
       redraw();
     } else if (d.course || d.guide) { // numbered stops; a straight line in order (course: thin solid; routed guide: dashed)
       var pts = d.course || d.guide, route = !!d.course || !!d.route, lls = [];
-      m = base(el);
       reg.byId = {}; // a guide's places by id (gs:focus)
+      pts.forEach(function (p) { if (!p.extra) { lls.push([p.lat, p.lng]); reg.items.push({ n: +p.n, ll: [p.lat, p.lng], name: p.name }); } });
+      reg.lls = lls;
+      var frame = lls.length ? lls : pts.map(function (p) { return [p.lat, p.lng]; });
+      reg.frame = route ? frame : robust(frame, 0.03);
+      // a course map opens on the most stops that stand alone in the whole box (sticky on desktop: framing only the
+      // part above the fold would shrink it); the rest are pointed at from the edge
+      var course = d.course && reg.items.length > 1;
+      g.open(course ? courseHome(reg, g) : visibleView(g, reg.frame, 44, 4));
+      var q = 0;
       pts.forEach(function (p) {
         var ll = [p.lat, p.lng], extra = !!p.extra;
-        var mk = L.marker(ll, { icon: icon("mk-num" + (extra ? " extra" : ""), extra ? 14 : MK, extra ? "" : esc(p.n)),
-          title: (extra ? "" : p.n + ". ") + p.name, riseOnHover: true }).addTo(m);
-        mk.on("click", go(p.url));
-        mk.on("keydown", enterGo(p.url));
+        var node = pin("mk-num" + (extra ? " extra" : ""), extra ? "" : esc(p.n), p.url, (extra ? "" : p.n + ". ") + p.name);
+        var mk = g.add(ll, node, { z: extra ? 15 : 20, click: true });
+        mk._el = node.firstChild;
+        mk._ll = ll;
         if (p.id) reg.byId[p.id] = mk;
-        if (extra) mk.bindTooltip(esc(p.name), { className: "tt-map", direction: "top" });
-        else { reg.markers[p.n] = mk; lls.push(ll); reg.items.push({ n: +p.n, ll: L.latLng(ll), mk: mk, name: p.name }); }
+        if (extra) {
+          if (!reg.tip) reg.tip = tip(g);
+          node.addEventListener("mouseenter", function () { reg.tip.show(ll, p.name); });
+          node.addEventListener("mouseleave", function () { reg.tip.hide(); });
+        } else { reg.markers[p.n] = mk; reg.items[q++].mk = mk; }
       });
       reg.paint = function () { // the stop being read (.on) and the stops before it (.past)
-        var n = reg.activeN || 0, cls = function (el, on, past) { if (el) { el.classList.toggle("on", on); el.classList.toggle("past", past); } };
+        var n = reg.activeN || 0;
         Object.keys(reg.markers).forEach(function (k) {
           var mk = reg.markers[k];
-          cls(mk._icon && mk._icon.firstChild, +k === n, n > 0 && +k < n);
-          mk.setZIndexOffset(+k === n ? 1000 : 0);
+          mk._el.classList.toggle("on", +k === n); mk._el.classList.toggle("past", n > 0 && +k < n);
+          mk.setZIndex(+k === n ? 1000 : 20);
         });
       };
       if (route && lls.length > 1) {
-        reg.line = L.polyline(lls, d.course ? { color: INK, weight: 2, opacity: 0.55, lineJoin: "round", interactive: false }
-          : { color: INK, weight: 2, opacity: 0.5, dashArray: "5 7", interactive: false }).addTo(m);
-        reg.progress = L.polyline([], { color: BLUE, weight: 4.5, opacity: 1, lineCap: "round", lineJoin: "round",
-          className: "course-progress", interactive: false }).addTo(m);
+        if (d.course) { // one line per seg: no line between two options of a day (present.course_map, QA 2026-10-15)
+          var segs = {};
+          pts.forEach(function (p) { if (!p.extra) (segs[p.seg || 0] = segs[p.seg || 0] || []).push([p.lat, p.lng]); });
+          Object.keys(segs).forEach(function (k) { if (segs[k].length > 1) g.line(segs[k], { w: 2, o: 0.55 }); });
+        } else g.line(lls, { w: 2, o: 0.5, dash: "dash" });
+        reg.progress = g.line([], { w: 4.5, c: BLUE, o: 1, z: 2 });
+        reg.progress.setMap(null);
       }
-      reg.lls = lls;
-      reg.whenIdle = function (fn) { m.once("moveend", fn); return function () { m.off("moveend", fn); }; };
-      reg.progressTo = function (from, n) { drawRoute(reg, m, from, n); };
-      var frame = lls.length ? lls : pts.map(function (p) { return [p.lat, p.lng]; });
-      reg.frame = route ? frame : robust(frame, 0.03);
-      reg.all = L.latLngBounds(reg.frame);
-      // a course map opens on the most stops that stand alone in the whole box (sticky on desktop: framing only the
-      // part above the fold would shrink it); the rest are pointed at from the edge
-      if (d.course && reg.items.length > 1) courseMap(reg, m);
-      else fitVisible(m, el, reg.frame, 44, 16);
+      if (course) courseMap(reg, g);
+      if (reg.progress) reg.progressTo = progress(reg, g);
     } else if (d.list || d.all) { // a list page, or the map page with its 권역
       var list = d.list || d.all;
-      m = base(el);
-      // a list page's filter set before this map was built (phones build it at the first 지도): only those places,
-      // framed from the first view
-      reg.picked = d.list ? picked(list, win.GSFilter && win.GSFilter.ids) : null;
-      list.forEach(function (p) {
-        var id = idOf(p), mk = L.marker([p.lat, p.lng], { icon: kindIcon(p.kind), title: p.name });
-        if (!reg.picked || reg.picked.keep[id]) mk.addTo(m);
-        mk.bindTooltip(esc(p.name), { className: "tt-map", direction: "top", offset: [0, -6] });
-        mk.on("click", go(p.url));
-        mk.on("keydown", enterGo(p.url));
-        mk.on("mouseover", function () { doc.dispatchEvent(new CustomEvent("gs:hlrow", { detail: { id: id, on: true } })); });
-        mk.on("mouseout", function () { doc.dispatchEvent(new CustomEvent("gs:hlrow", { detail: { id: id, on: false } })); });
-        mk._gs = p;
-        reg.markers[id] = mk;
-      });
       var farL = d.far_label || "", noneL = d.none_label || "";
       var main = list.filter(function (p) { return !(farL && p.r === farL) && !(noneL && p.r === noneL); }).map(function (p) { return [p.lat, p.lng]; });
       if (!main.length) main = list.map(function (p) { return [p.lat, p.lng]; });
       reg.frame = robust(main, d.all ? 0.03 : 0.08);
-      reg.all = L.latLngBounds(reg.frame);
-      reg.map = m;
-      if (d.list) listFit(reg); else fitVisible(m, el, reg.frame, 28);
-      listQuiet(reg);
-      if (d.anchor_pts) regions(reg, m, list, main, d.anchor_pts, farL);
-    } else if (d.anchors) { // the home: the 권역 anchors labelled with their counts; each links to its region on /map/
-      m = base(el);
-      var alls = [];
-      d.anchors.forEach(function (a) {
-        var ll = [a.lat, a.lng];
-        alls.push(ll);
-        var mk = L.marker(ll, { icon: icon("mk-anchor", 14), title: a.name + " " + a.n + "곳 · 기준점 " + a.place }).addTo(m);
-        mk.on("click", go(a.url));
-        L.marker(ll, { interactive: false, keyboard: false, icon: L.divIcon({ className: "", iconSize: [0, 0],
-          html: '<div class="mk-region" style="transform:translate(-50%,calc(-100% - 10px))">' + esc(a.name) + "<small>" + a.n + "곳</small></div>" }) }).addTo(m);
+      // a list page's filter set before this map was built (phones build it at the first 지도): only those places,
+      // framed from the first view
+      reg.picked = d.list ? picked(list, win.GSFilter && win.GSFilter.ids) : null;
+      g.open(d.list ? listView(reg) : visibleView(g, reg.frame, 28));
+      var tt = tip(g);
+      list.forEach(function (p) {
+        var ll = [p.lat, p.lng], id = idOf(p), node = kindPin(p.kind, p.url, p.name, true);
+        var mk = g.add(ll, node, { z: 10, click: true, off: true });
+        mk._want = !(reg.picked && !reg.picked.keep[id]);
+        var on = function () { tt.show(ll, p.name); doc.dispatchEvent(new CustomEvent("gs:hlrow", { detail: { id: id, on: true } })); };
+        var off = function () { tt.hide(); doc.dispatchEvent(new CustomEvent("gs:hlrow", { detail: { id: id, on: false } })); };
+        node.addEventListener("mouseenter", on); node.addEventListener("mouseleave", off);
+        node.addEventListener("focus", on); node.addEventListener("blur", off);
+        mk._gs = p; mk._el = node.firstChild; mk._a = node;
+        reg.markers[id] = mk;
       });
+      listQuiet(reg);
+      regroup(reg);
+      g.on("idle", function () { if (reg.glv !== g.k.getLevel()) regroup(reg); });
+      if (d.anchor_pts) regions(reg, g, list, main, d.anchor_pts, farL);
+    } else if (d.anchors) { // the home: the 권역 anchors labelled with their counts; each links to its region on /map/
+      var alls = d.anchors.map(function (a) { return [a.lat, a.lng]; }), labs = [];
       reg.frame = alls;
-      m.fitBounds(alls, { padding: [56, 40], animate: false });
-      reg.all = L.latLngBounds(alls);
+      g.open(g.fitView(alls, [40, 56, 40, 56], 1));
+      d.anchors.forEach(function (a, i) {
+        var ll = alls[i];
+        g.add(ll, pin("mk-anchor", "", a.url, a.name + " " + a.n + "곳 · 기준점 " + a.place), { z: 10, click: true });
+        var lab = div("mk-region", esc(a.name) + "<small>" + a.n + "곳</small>");
+        lab.setAttribute("aria-hidden", "true");
+        labs.push({ ll: ll, n: a.n, node: lab, w: textW(a.name) + 44, ov: g.add(ll, lab, { xa: 0, ya: 0, z: 5 }) });
+      });
+      // the labels, largest region first: above the anchor, else below, right or left of it — never over another
+      // label, and over another anchor's square only when no side is clear (then the side that covers least)
+      var SIDES = [["translate(-50%,calc(-100% - 10px))", function (p, w, h) { return [p.x - w / 2, p.y - 10 - h, p.x + w / 2, p.y - 10]; }],
+        ["translate(-50%,10px)", function (p, w, h) { return [p.x - w / 2, p.y + 10, p.x + w / 2, p.y + 10 + h]; }],
+        ["translate(12px,-50%)", function (p, w, h) { return [p.x + 12, p.y - h / 2, p.x + 12 + w, p.y + h / 2]; }],
+        ["translate(calc(-100% - 12px),-50%)", function (p, w, h) { return [p.x - 12 - w, p.y - h / 2, p.x - 12, p.y + h / 2]; }]];
+      var cover = function (b, o) { return Math.max(0, Math.min(b[2], o[2]) - Math.max(b[0], o[0])) * Math.max(0, Math.min(b[3], o[3]) - Math.max(b[1], o[1])); };
+      var place = function () {
+        var dots = labs.map(function (l) { var p = g.cp(l.ll); return [p.x - 9, p.y - 9, p.x + 9, p.y + 9]; }), shown = [];
+        labs.slice().sort(function (x, y) { return y.n - x.n; }).forEach(function (l) {
+          var p = g.cp(l.ll), w = l.node.offsetWidth || l.w, h = l.node.offsetHeight || 22, best = null;
+          SIDES.forEach(function (sd) {
+            var b = sd[1](p, w, h);
+            if (shown.some(function (o) { return hits(b, o); })) return;
+            var c = dots.reduce(function (t, o) { return t + cover(b, o); }, 0);
+            if (!best || c < best.c) best = { sd: sd, b: b, c: c };
+          });
+          if (best) { shown.push(best.b); l.node.style.transform = best.sd[0]; if (!g.shown(l.ov)) l.ov.setMap(g.k); }
+          else if (g.shown(l.ov)) l.ov.setMap(null);
+        });
+      };
+      g.on("idle", place);
+      place();
     } else {
       return null;
     }
-    reg.map = m;
+    reg.map = g.k;
+    reg.g = g;
+    reg.whenIdle = function (fn) { // course.js: fn once the map stops moving (or after 1.6s), cancellable
+      var done = false, off, t;
+      var run = function () { if (done) return; done = true; off(); clearTimeout(t); fn(); };
+      off = g.on("idle", run);
+      t = setTimeout(run, 1600);
+      return function () { if (!done) { done = true; off(); clearTimeout(t); } };
+    };
     maps.push(reg);
     el.dispatchEvent(new CustomEvent("gs:mapready", { bubbles: true, detail: reg }));
     return reg;
   }
 
   // the map page: a label above each group's points (collision-checked) and an edge control for the far group
-  function regions(reg, m, list, main, anchors, farL) {
+  function regions(reg, g, list, main, anchors, farL) {
     reg.regions = anchors.map(function (a) {
       var ps = list.filter(function (p) { return p.r === a.name; });
       var la = ps.map(function (p) { return p.lat; }).sort(function (x, y) { return x - y; });
       var ln = ps.map(function (p) { return p.lng; }).sort(function (x, y) { return x - y; });
-      var ll = ps.length ? [la[Math.floor((la.length - 1) * 0.9)], ln[ln.length >> 1]] : (a.geo ? [a.geo.lat, a.geo.lng] : null);
-      return ll ? { name: a.name, n: a.n, ll: L.latLng(ll), lab: L.marker(ll, { interactive: false, keyboard: false }) } : null;
+      if (!ps.length && !a.geo) return null;
+      var ll = ps.length ? [la[Math.floor((la.length - 1) * 0.9)], ln[ln.length >> 1]] : [a.geo.lat, a.geo.lng];
+      var n = div("mk-region");
+      n.setAttribute("aria-hidden", "true");
+      n.style.transform = "translate(-50%,calc(-100% - 10px))";
+      return { name: a.name, n: a.n, ll: ll, node: n, lab: g.add(ll, n, { xa: 0, ya: 0, z: 40, off: true }) };
     }).filter(Boolean);
     reg.drawRegions = function (sel) {
       var shown = [];
       reg.regions.slice().sort(function (x, y) { return y.n - x.n; }).forEach(function (r) {
-        var on = !sel || sel === r.name, p = m.latLngToContainerPoint(r.ll), w = textW(r.name) + 50, h = 24;
+        var on = !sel || sel === r.name, p = g.cp(r.ll), w = textW(r.name) + 50, h = 24;
         var box = [p.x - w / 2, p.y - h - 10, p.x + w / 2, p.y - 10];
         var hit = shown.some(function (b) { return !(box[2] < b[0] || box[0] > b[2] || box[3] < b[1] || box[1] > b[3]); });
         if (on && !hit) {
           shown.push(box);
-          r.lab.setIcon(L.divIcon({ className: "", iconSize: [0, 0], html: '<div class="mk-region' + (sel ? " sel" : "") +
-            '" style="transform:translate(-50%,calc(-100% - 10px))">' + esc(r.name) + "<small>" + r.n + "곳</small></div>" }));
-          if (!m.hasLayer(r.lab)) r.lab.addTo(m);
-        } else if (m.hasLayer(r.lab)) m.removeLayer(r.lab);
+          r.node.className = "mk-region" + (sel ? " sel" : "");
+          r.node.innerHTML = esc(r.name) + "<small>" + r.n + "곳</small>";
+          if (!g.shown(r.lab)) r.lab.setMap(g.k);
+        } else if (g.shown(r.lab)) r.lab.setMap(null);
       });
     };
-    m.on("zoomend moveend", function () { reg.drawRegions(reg.sel); });
+    g.on("idle", function () { reg.drawRegions(reg.sel); });
     reg.drawRegions("");
     var far = farL ? list.filter(function (p) { return p.r === farL; }) : [];
     if (!far.length) return;
-    var Far = L.Control.extend({ options: { position: "bottomleft" }, onAdd: function () {
-      var b = L.DomUtil.create("button", "far-ctl");
-      b.type = "button";
-      var names = far.map(function (p) { return p.name; }).slice(0, 2).join("·");
-      b.textContent = "← " + farL + " " + far.length + "곳 (" + names + (far.length > 2 ? " 등" : "") + ")";
-      L.DomEvent.disableClickPropagation(b);
-      b.addEventListener("click", function () {
-        m.flyToBounds(far.map(function (p) { return [p.lat, p.lng]; }).concat(main.slice(0, 1)), { padding: [40, 40], duration: reduce ? 0 : 0.8, animate: !reduce });
-      });
-      return b;
-    } });
-    new Far().addTo(m);
+    var b = doc.createElement("button");
+    b.type = "button";
+    b.className = "far-ctl";
+    var names = far.map(function (p) { return p.name; }).slice(0, 2).join("·");
+    b.textContent = "← " + farL + " " + far.length + "곳 (" + names + (far.length > 2 ? " 등" : "") + ")";
+    b.addEventListener("click", function () {
+      g.fit(far.map(function (p) { return [p.lat, p.lng]; }).concat(main.slice(0, 1)), [40, 40, 40, 40], 1, true);
+    });
+    g.ctl.bl.appendChild(b);
   }
 
   // a row lights its marker (state change only, nothing moves)
   doc.addEventListener("gs:hl", function (e) {
     maps.forEach(function (r) {
       var mk = r.markers[e.detail.id] || r.markers[decodeURIComponent(e.detail.id)];
-      if (!mk || !mk._icon) return;
-      var inner = mk._icon.firstChild;
-      if (inner) inner.classList.toggle("mk-hl", e.detail.on);
-      mk.setZIndexOffset(e.detail.on ? 1000 : 0);
+      if (!mk || !mk._el) return;
+      mk._el.classList.toggle("mk-hl", e.detail.on);
+      mk.setZIndex(e.detail.on ? 1000 : 10);
     });
   });
   // the list's filter (site.js; also sent when only the 목록 | 지도 view changes): the kept markers shown, the others
@@ -632,12 +967,10 @@
     maps.forEach(function (r) {
       if (!r.data.list) return;
       var was = r.picked ? r.picked.lls.join(";") : "", s = r.picked = picked(r.data.list, e.detail.ids);
-      Object.keys(r.markers).forEach(function (id) {
-        var mk = r.markers[id];
-        if (!s || s.keep[id]) { if (!r.map.hasLayer(mk)) mk.addTo(r.map); } else if (r.map.hasLayer(mk)) r.map.removeLayer(mk);
-      });
+      Object.keys(r.markers).forEach(function (id) { r.markers[id]._want = !s || !!s.keep[id]; });
+      regroup(r);
       listQuiet(r);
-      if ((s ? s.lls.join(";") : "") !== was && visible(r.el)) listFit(r);
+      if ((s ? s.lls.join(";") : "") !== was && visible(r.el)) { var v = listView(r); r.g.view(v.c, v.lv, true); }
     });
   });
   var lastRegion = null;
@@ -646,12 +979,13 @@
     var pts = [];
     Object.keys(r.markers).forEach(function (id) {
       var mk = r.markers[id], p = mk._gs, ok = (!det.region || p.r === det.region) && det.kinds[p.kind || "attraction"] !== false;
-      if (ok) { if (!r.map.hasLayer(mk)) mk.addTo(r.map); pts.push([p.lat, p.lng]); } else if (r.map.hasLayer(mk)) r.map.removeLayer(mk);
+      mk._want = ok;
+      if (ok) pts.push([p.lat, p.lng]);
     });
+    regroup(r);
     r.sel = det.region;
-    listQuiet(r); // markers added back have new icons
-    if (det.region && pts.length) r.map.flyToBounds(pts, { padding: [36, 36], maxZoom: 15, duration: reduce ? 0 : 0.8, animate: !reduce });
-    else if (!det.region) r.map.fitBounds(r.all, { animate: !reduce });
+    if (det.region && pts.length) r.g.fit(pts, [36, 36, 36, 36], 5, true);
+    else if (!det.region) r.g.fit(r.frame, [28, 28, 28, 28], 2, true);
     if (r.drawRegions) r.drawRegions(det.region);
   }
   doc.addEventListener("gs:region", function (e) { lastRegion = e.detail; maps.forEach(function (r) { applyRegion(r, e.detail); }); });
@@ -664,19 +998,19 @@
     if (!r.byId || !r.data.guide) return;
     var lls = [];
     Object.keys(r.byId).forEach(function (id) {
-      var mk = r.byId[id], on = ids.indexOf(id) > -1, inner = mk._icon && mk._icon.firstChild;
-      if (inner) { inner.classList.toggle("on", on); inner.classList.toggle("dim", ids.length > 0 && !on); }
-      mk.setZIndexOffset(on ? 1000 : 0);
-      if (on) lls.push(mk.getLatLng());
+      var mk = r.byId[id], on = ids.indexOf(id) > -1;
+      mk._el.classList.toggle("on", on); mk._el.classList.toggle("dim", ids.length > 0 && !on);
+      mk.setZIndex(on ? 1000 : 20);
+      if (on) lls.push(mk._ll);
     });
-    var target = lls.length ? L.latLngBounds(lls) : r.all;
-    if (target) r.map.flyToBounds(target, { padding: [56, 56], maxZoom: 15, duration: reduce ? 0 : 0.9, animate: !reduce });
+    var target = lls.length ? lls : r.frame;
+    if (target && target.length) r.g.fit(target, [56, 56, 56, 56], 5, true);
   }
   doc.addEventListener("gs:focus", function (e) { lastFocus = (e.detail && e.detail.ids) || []; maps.forEach(function (r) { applyFocus(r, lastFocus); }); });
   doc.addEventListener("gs:mapready", function (e) { if (lastFocus && lastFocus.length) applyFocus(e.detail, lastFocus); });
   win.addEventListener("resize", function () { maps.forEach(listQuiet); }); // the list shows or hides beside the map at 1024px
   win.GSMapsReady = function (fn) { maps.forEach(fn); doc.addEventListener("gs:mapready", function (e) { fn(e.detail); }); };
-  // a map box a script adds later (the course planner's day map, plan.js): built at once, Leaflet after 'load'
+  // a map box a script adds later (the course planner's day map, plan.js): built at once, its library after 'load'
   win.GSMapStart = function (el) { el.setAttribute("data-lenis-prevent", ""); start(el); };
 
   var els = Array.prototype.slice.call(doc.querySelectorAll(".map[data-points], .map[data-map]"));
@@ -703,17 +1037,18 @@
     }, { rootMargin: "400px 0px" });
     els.forEach(function (el) { io.observe(el); });
   } else els.forEach(start);
+  doc.addEventListener("gs:showlist", function () { maps.forEach(listQuiet); });
   doc.addEventListener("gs:showmap", function () {
     setTimeout(function () {
       els.forEach(function (el) { if (visible(el)) start(el); });
       maps.forEach(function (r) {
         listQuiet(r);
         if (!visible(r.el)) return;
-        r.map.invalidateSize();
+        r.g.relayout();
         if (r.showHome) r.showHome(false);
-        else if (r.data.list) listFit(r);
-        else if (r.data.all && lastRegion && lastRegion.region) applyRegion(r, lastRegion); // /map/: the chosen group stays framed
-        else if (r.frame) fitVisible(r.map, r.el, r.frame, 28);
+        else if (r.data.list) { var v = listView(r); r.g.view(v.c, v.lv, false); }
+        else if (r.data.all && lastRegion && lastRegion.region) applyRegion(r, lastRegion); // /map/: the chosen 권역 stays framed
+        else if (r.frame) fitVisible(r.g, r.frame, 28);
       });
     }, 30);
   });

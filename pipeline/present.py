@@ -41,8 +41,8 @@ from .schema import (PHOTO_SOURCES, FACT_ALIASES, FACT_LABELS, KEY_FACTS, KEY_FA
                      designations, fact_label, geo_provider, geo_providers, parking_seats_half)
 from .slugs import anchor_id, initial_id
 from .textutil import (TILDE, TIME, clock_text, contact_org, course_display_name, dash_times, display_address,
-                       display_value, hyphenate_phones, link_url, normalize_name, parking_compatible, parking_text,
-                       phone_e164, restore_lines, squash_ws, url_domain, web_text, web_url)
+                       display_value, event_start_dt, hyphenate_phones, link_url, normalize_name, parking_compatible,
+                       parking_text, phone_e164, restore_lines, squash_ws, url_domain, web_text, web_url)
 
 WEEK = "월화수목금토일"
 LIST_PATH = {"attraction": "/places/", "stay": "/stays/", "food": "/food/"}
@@ -2194,14 +2194,17 @@ def course_move(S, vm: dict) -> dict | None:
     names = access_names(S)
     # first: a route a transit guide stands for (course_move.route_by_guide) — the block shows it open, the rest folded
     return {"lead": lead, "rest": rest, "legs": legs, "guides": guides,
-            "routes": [{**route_parts(r), "first": r["no"] in first_nums} for r in routes],
+            "routes": [{**route_parts(r, S.site.get("fact_conflicts") == "primary"), "first": r["no"] in first_nums}
+                       for r in routes],
             "missing": missing, "sources": [names[k] for k in keys if k in names], "source_keys": keys, "tt": tt,
             "tel": tel, "tel_html": tel_markup(tel) if tel else "", "bus_radius": meta.get("radius_m") or 500}
 
 
-def route_parts(r: dict) -> dict:
+def route_parts(r: dict, one: bool = False) -> dict:
     """One timetable route (transit.json) as the course block prints it: the weekday rows by direction, and the
-    Sat/Sun/holiday rows only where they differ ('same': every weekend value equals the weekday one)."""
+    Sat/Sun/holiday rows only where they differ ('same': every weekend value equals the weekday one). A row another
+    source times differently is listed in 'alts' — none on a site that shows one value per fact (one, site.json
+    fact_conflicts 'primary')."""
     times = r.get("times") or []
     same = all(t["weekend"] == t["weekday"] and t["weekend_n"] == t["weekday_n"] for t in times)
     # a row whose departures are not one even run ('pattern': 99 한빛대 정문 '06:10, 09:10~20:10') shows the source's
@@ -2209,7 +2212,8 @@ def route_parts(r: dict) -> dict:
     shown = lambda t: {**t, "weekday": t.get("pattern") or t["weekday"],
                        "weekend": t["pattern"] if t.get("pattern") and t["weekend"] == t["weekday"] else t["weekend"]}
     return {"no": r["no"], "out": [shown(t) for t in times if t["dir"] == "out"],
-            "back": [shown(t) for t in times if t["dir"] == "back"], "same": same, "alts": [t for t in times if t.get("alt")]}
+            "back": [shown(t) for t in times if t["dir"] == "back"], "same": same,
+            "alts": [] if one else [t for t in times if t.get("alt")]}
 
 
 MAP_MIN_SHARE = 0.5  # a course map is drawn only when at least half of its stops have coordinates
@@ -2545,16 +2549,22 @@ def lot_row(S, lot: dict, meters: int, place: str) -> dict:
     road = lot_address(lot.get("address"), city=C)
     jibun = lot_address(lot.get("address_jibun"), city=C)
     alt = lot.get("alt") or {}
+    # one value a fact (site.json fact_conflicts 'primary', operator 2026-11-05 '출처 마다 다른 값은 대표 값 하나만'): the
+    # lot's own spaces, type, 무료/유료, hours and phone and its first fee version — the other source's values stay in
+    # the data; its name for the same lot (alt name) still shows, as the first site does
+    one = S.site.get("fact_conflicts") == "primary"
+    if one:
+        alt = {k: v for k, v in alt.items() if k == "name"}
     alt_spaces = (alt.get("spaces") or {}).get("value")
     alt_type = squash_ws((alt.get("type") or {}).get("value"))
     alt_paid = squash_ws((alt.get("paid") or {}).get("value"))
     alt_hours = hours_text((alt.get("hours") or {}).get("value"))
     fee = lot.get("fee") or {}
     fees = [{"src": squash_ws(v.get("label")) or squash_ws(v.get("source_name")) or names.get(v["source"], ""),
-             "text": fee_text(v), "key": v["source"]} for v in fee.get("versions") or []]
+             "text": fee_text(v), "key": v["source"]} for v in fee.get("versions") or []][:1 if one else None]
     differ = (["유형"] if alt_type and alt_type != lot.get("type") else []) + \
         (["면수"] if alt_spaces is not None and alt_spaces != lot.get("spaces") else []) + \
-        (["요금"] if fee.get("differs") or (alt_paid and alt_paid != lot.get("paid")) else []) + \
+        (["요금"] if (fee.get("differs") and not one) or (alt_paid and alt_paid != lot.get("paid")) else []) + \
         (["운영시간"] if alt_hours and alt_hours != hours_text(lot.get("hours")) else [])
     desk = next((c for c in S.parking_contacts if c.get("phone") == fee.get("contact")), None) if fee else None
     calls = []
@@ -2585,6 +2595,123 @@ def lot_row(S, lot: dict, meters: int, place: str) -> dict:
         "contact_html": tel_markup(contact, place) if contact else "",
         "map": f"https://map.kakao.com/link/map/{quote(lot['name'], safe='')},{lot['lat']},{lot['lng']}" if geo else "",
     }
+
+
+SHOP_FOLD = 30   # a group with more than SHOP_FOLD + SHOP_FOLD_MIN shops shows the first 30 and folds the rest
+SHOP_FOLD_MIN = 10   # (folding fewer than this many would hide a line or two behind a button)
+SHOP_CARDS = 12      # the page's cards: the first 12 of a group, the rest behind '더 보기' (when more than 4 are left)
+SHOP_CARDS_MIN = 4
+
+
+def _shop_key(name: str) -> str:
+    """A shop name for joining two lists (tools/market_data_bpss.norm_name): brackets, spaces and punctuation out,
+    '방앗간' read as '방아간'."""
+    s = re.sub(r"\(.*?\)|\[.*?\]", "", name or "").replace("주식회사", "").replace("방앗간", "방아간")
+    return re.sub(r"[\s\W_]+", "", s).lower()
+
+
+def _lic_note(lc: dict, addr: dict) -> str:
+    """The group head's line for one more list (tools/market_data_bpss: a 2026 licence list adds cards, a 상가정보 kind
+    adds its stores, an old licence list only marks shops the group already has)."""
+    kinds = "·".join(sorted({x["kind"] for x in lc.get("rows") or [] if x.get("kind")}))
+    n, m = len(lc.get("rows") or []), int(addr.get("match_m") or 300)
+    mois = (lc.get("source") or {}).get("provider") == "행정안전부"   # the daily 인허가 service: in-business rows only
+    if lc.get("mode") == "store":
+        return f"상가(상권)정보에서 업종이 {kinds.replace(' 점포', '')}인 시장 {m}m 안 점포 {n}곳을 함께 실었습니다."
+    if lc.get("mode") == "support":
+        if mois:
+            return f"행정안전부 인허가 정보({kinds})에 영업 중으로 적힌 같은 이름의 {n}곳에는 배지·주소·전화를 붙였습니다."
+        return f"오래된 구청 인허가 목록({kinds})에도 같은 이름이 있는 {n}곳에는 배지와 주소를 붙였습니다."
+    if mois:
+        return f"행정안전부 인허가 정보({kinds})에서 영업 중으로 적히고 시장 {m}m 안 주소인 {n}곳을 함께 실었습니다."
+    return f"구청 인허가 목록({kinds})에서 시장 {m}m 안 주소로 적힌 {n}곳을 함께 실었습니다."
+
+
+def _shop_cards(g: dict, lic: list[dict]) -> list[dict]:
+    """A group's cards (2026-10-30 '카드로'): one per shop name — the 온누리 shop (badge '온누리 가맹', its items as
+    written) and the licence rows near the market (badge: the licence kind) joined when the names match, else cards of
+    their own; the address from the 상가정보 match or the licence row, the licence row's phone (tel), and a 카카오맵 link
+    at that point. 가나다 order."""
+    cards: dict[str, dict] = {}
+    for s in g.get("shops") or []:
+        cards.setdefault(_shop_key(s["name"]) or s["name"], {"name": s["name"], "items": s.get("items") or "",
+                                                            "addr": s.get("addr") or "", "geo": s.get("geo"),
+                                                            "badges": ["온누리 가맹"]})
+    for lc in sorted(lic, key=lambda lc: lc.get("mode") == "support"):   # an old list only marks cards already there
+        for x in lc.get("rows") or []:
+            c = cards.get(_shop_key(x["name"]) or x["name"])
+            if c is None and lc.get("mode") == "support":
+                continue
+            if c is None:
+                c = cards[_shop_key(x["name"]) or x["name"]] = {"name": x["name"], "items": "", "addr": x.get("addr") or "",
+                                                              "geo": x.get("geo"), "badges": []}
+            if x.get("kind") and x["kind"] not in c["badges"]:
+                c["badges"].append(x["kind"])
+            if not c["addr"]:
+                c["addr"], c["geo"] = x.get("addr") or "", c["geo"] or x.get("geo")
+            if x.get("tel") and not c.get("tel"):
+                c["tel"] = x["tel"]
+    out = sorted(cards.values(), key=lambda c: c["name"])
+    for c in out:
+        geo = c.pop("geo", None)
+        c["map"] = (f"https://map.kakao.com/link/map/{quote(c['name'], safe='')},{geo[0]},{geo[1]}"
+                    if geo and len(geo) == 2 else "")
+        if c.get("tel"):
+            c["tel"] = (c["tel"], tel_href(c["tel"]))
+    return out
+
+
+def market_shops(e: dict) -> dict | None:
+    """A market's shops by item group (place['market']['shops'], tools/market_data_bpss.py — the 온누리상품권 가맹점
+    list of 소상공인시장진흥공단, whose rows name the market a shop belongs to): {groups [{key, label, n, shops [{name,
+    items}], fold}], n (distinct names), stalls (rows named '노점', counted without names), source {name, url}}. The
+    groups are the site's own; each name keeps the list's 취급품목 as written, and its address (addr) when one 상가(상권)
+    정보 store of that name stands near the market (addr_source, with_addr, match_m). None without such a list."""
+    rows = (e.get("market") or {}).get("shops") or []
+    r = rows[0] if rows else None
+
+    def label(src: dict, default: str) -> dict:
+        # the dataset name without its provider and its date ('…_20260902'); the 행안부 services carry no date
+        bits = str(src.get("dataset") or "").split("_")[1:]
+        nm = " ".join(bits[:-1] if bits and bits[-1].isdigit() else bits) or default
+        return {"name": f"{src.get('provider') or ''} {nm}".strip(), "url": src.get("url") or ""}
+    cut = lambda xs: SHOP_FOLD if len(xs) > SHOP_FOLD + SHOP_FOLD_MIN else len(xs)
+    lic: dict[str, list[dict]] = {}
+    for lc in (r or {}).get("licensed") or []:
+        lic.setdefault(lc["group"], []).append(lc)
+    groups = [{"key": g["key"], "label": g["label"], "n": len(g["shops"]), "shops": g["shops"][:cut(g["shops"])],
+               "fold": g["shops"][cut(g["shops"]):],
+               # the 구청 licence lists near the market (tools/market_data_bpss.LICENSES): one line per list, as written
+               "licensed": [{"rows": lc["rows"], "kinds": sorted({x["kind"] for x in lc["rows"] if x["kind"]}),
+                             "mode": lc.get("mode") or "add", "source": label(lc["source"], "인허가 목록"),
+                             "note": _lic_note(lc, (r or {}).get("addr_source") or {})}
+                            for lc in lic.get(g["key"]) or []],
+               "cards": _shop_cards(g, lic.get(g["key"]) or []), "photo": g.get("photo")}
+              for g in (r or {}).get("groups") or [] if g.get("shops")]
+    if not groups:
+        return None
+    # one shop in two groups (용가네기름집: 온누리 '고추.기름' under 청과·채소, its 인허가 under 기름·방앗간·떡) shows the
+    # same facts on both cards: every list it is on (badges), the 온누리 items, the address, its map link and the phone
+    same: dict[str, list[dict]] = {}
+    for g in groups:
+        for c in g["cards"]:
+            same.setdefault(_shop_key(c["name"]), []).append(c)
+    for cs in (cs for cs in same.values() if len(cs) > 1):
+        badges = list(dict.fromkeys(b for c in sorted(cs, key=lambda c: "온누리 가맹" not in c["badges"]) for b in c["badges"]))
+        for c in cs:
+            c["badges"] = list(badges)
+            for k in ("items", "addr", "map", "tel"):
+                if not c.get(k) and any(o.get(k) for o in cs):
+                    c[k] = next(o[k] for o in cs if o.get(k))
+    for g in groups:   # the page shows the first cards, the rest behind '더 보기' (never a handful)
+        k = SHOP_CARDS if len(g["cards"]) > SHOP_CARDS + SHOP_CARDS_MIN else len(g["cards"])
+        g["cards"], g["more"], g["n_cards"] = g["cards"][:k], g["cards"][k:], len(g["cards"])
+    addr = r.get("addr_source") or {}
+    return {"groups": groups, "n": len({s["name"] for g in groups for s in g["shops"] + g["fold"]}),
+            "stalls": int(r.get("stalls") or 0), "source": label(r, "온누리상품권 가맹점 현황"),
+            # the shops' addresses: a 상가정보 store of the same name near the market (tools/market_data_bpss.py)
+            "addr_source": label(addr, "상가(상권)정보") if addr else None,
+            "with_addr": int(addr.get("with_addr") or 0), "match_m": int(addr.get("match_m") or 0)}
 
 
 def access_vm(S, e: dict) -> dict | None:
@@ -2895,6 +3022,8 @@ def place_vm(S, e: dict, ctx: dict) -> dict:
         "today": today_vm(S, e),      # 오늘의 상태 · 오늘의 바다 (2026-10-31): the day card after the opening
         "biz": license_vm(S, e),      # 영업 확인 (licenses.json, 2026-10-31): a line in 방문 전 확인
         "went_next": went_next,          # 이어서 많이 간 곳 (related.json, 2026-10-31): rows in 주변·함께 가기
+        # a market's shops by item group (온누리상품권 가맹점 명부·상가정보, 2026-11-05 수집 병합; 군산각 2026-10-30 블록)
+        "shops": market_shops(e),
         "conflicts": [r for r in all_rows if r["conflict"]], "tel": tel, "tel_text": tel_text,
         **links, "precise": bool(e["_geo"]),
         "photos": e["_photos"], "geo": e["_geo"], "place_points": place_points, "anchors": anchors,
@@ -3439,7 +3568,7 @@ def home_vm(S) -> dict:
     if not lines:   # no course states a duration (the source gives none): the courses in file order, never an empty list
         lines = [S.course_vms[c["slug"]] for c in S.courses]
     annual_n = sum(1 for ev in S.events if not ev.get("start_date") and "매년" in str(ev.get("period_text") or ""))
-    h = {"answers": answers, "search_example": search_example(S), "guides": S.guides, "guide_groups": guide_groups(S), "events": events, "ev_head": ev_head, "annual_n": annual_n,
+    h = {"answers": home_tiles(S, answers), "search_example": search_example(S), "guides": S.guides, "guide_groups": guide_groups(S), "events": events, "ev_head": ev_head, "annual_n": annual_n,
          "last_event": event_row(past[0], city=C) if past and not events else None,
          "lines": lines, "course_total": len(S.courses), "regions": home_regions(S), "region_mode": C.region_mode,
          "counts": {k: len(v) for k, v in S.lists.items()}, "official": S.site.get("official_links") or [],
@@ -3651,6 +3780,203 @@ def home_story(S, cen: dict | None = None, photos_: dict | None = None) -> list[
     return out
 
 
+# ----------------------------------------------------------------------------- home cards (the first site's
+# a11b69248, operator 2026-11-02 '일단 반영하자'; this city: 2026-11-05 upgrade)
+# The home's sections in the look the first site's operator approved on the canvas: 목적별 가이드 as card-news tiles
+# (photo · sea · chick · ink · tint), 대표 장소 as feed cards, 다가오는 행사 as D-day tickets, SNS as post cards topped by
+# the place they show (no blog: this city has none, operator 2026-11-05 '블로그는 없어'). Pretendard 400·700 only. A name
+# or one line is written on a photo only when the photo is KOGL-1 (CLAUDE.md 3.4 allows changes to it); a KOGL-3 photo
+# stays whole, uncropped, with nothing laid on it.
+HOME_TILE_TONES = ("photo", "sea", "chick", "photo", "ink", "tint")
+OFF_EN = {"월": "MON", "화": "TUE", "수": "WED", "목": "THU", "금": "FRI", "토": "SAT", "일": "SUN"}
+WEEKDAYS = "월화수목금토일"
+POST_LANGS = ("일본어", "베트남어", "영어", "중국어", "태국어", "스페인어", "프랑스어", "독일어", "러시아어", "인도네시아어",
+              "말레이어", "타갈로그어", "이탈리아어", "포르투갈어", "아랍어", "몽골어", "튀르키예어", "힌디어")
+
+
+def kogl1_photo(e: dict | None, used: set | None = None) -> dict | None:
+    """The place's first KOGL-1 photo (not in used); None when it has none."""
+    return next((p for p in (e or {}).get("_photos") or [] if p.get("type") == 1 and p["url"] not in (used or ())), None)
+
+
+def off_word(e: dict) -> str:
+    """The short closed-day word a feed card writes on its photo: 'EVERYDAY' (연중무휴 · 상시 개방), 'MON OFF' or
+    'MON·TUE OFF' (one or two weekly days); '' when the text says neither, names more days, a partial day or is
+    contested (the card's value chips keep the whole text)."""
+    text, cont = closed_text(e)
+    if not text or cont:
+        return ""
+    wc = week_closure(text)
+    if wc["open"] and not wc["days"] and not wc["partial"]:
+        return "EVERYDAY"
+    if wc["days"] and not wc["partial"] and len(wc["days"]) <= 2:
+        return "·".join(OFF_EN[d] for d in WEEKDAYS if d in wc["days"]) + " OFF"
+    return ""
+
+
+def feed_extra(e: dict, kf: dict, region: str = "") -> dict:
+    """A feed card's photo words: title ("<region> '<name>'", or the name itself when it starts with the region), line
+    ('<동> / EVERYDAY / 무료': the 동 or street, off_word, a short fee or menu) and closed_days (the weekly closed days,
+    '월': the page marks '오늘 휴관' on those days in the browser)."""
+    name = e["name"]
+    title = name if not region or name.startswith(region) else f"{region} '{name}'"
+    short = next((s["main"] for s in kf.get("slots") or []
+                  if s["key"] in ("fee", "menu") and s.get("main") and not s.get("missing") and not s.get("conflict")
+                  and len(s["main"]) <= 12), "")
+    line = " / ".join(x for x in (e.get("_area") or e.get("_street") or "", off_word(e), short) if x)
+    return {"title": title, "line": line, "closed_days": "".join(d for d in WEEKDAYS if d in closed_days(e))}
+
+
+def answer_places(S, a: dict) -> list[dict]:
+    """The places an answer tile's page is about: a guide's items, the 당일 courses' stops; [] for anything else."""
+    href = a.get("href") or ""
+    if href.startswith("/courses/"):
+        out = []
+        for c in S.courses:
+            if c.get("duration") == "당일":
+                out += [S.ent_by_slug.get(st["t"]["slug"]) for st in S.course_vms[c["slug"]]["stops"] if st.get("t")]
+        return [e for e in out if e]
+    g = next((x for x in S.guides if x.get("_path") == href), None)
+    return [S.ent_by_slug[it["place_slug"]] for it in (g or {}).get("items") or [] if it.get("place_slug") in S.ent_by_slug]
+
+
+def home_tiles(S, answers: list[dict]) -> list[dict]:
+    """The 목적별 가이드 tiles: each answer row with its tone (HOME_TILE_TONES in turn) and, on a photo tile, the first
+    KOGL-1 photo of a place its page is about (no photo twice); a photo tile without one takes the sea tone."""
+    used: set[str] = set()
+    out = []
+    for i, a in enumerate(answers):
+        tone, ph = HOME_TILE_TONES[i % len(HOME_TILE_TONES)], None
+        if tone == "photo":
+            ph = next((p for p in (kogl1_photo(e, used) for e in answer_places(S, a)) if p), None)
+            if ph:
+                used.add(ph["url"])
+            else:
+                tone = "sea"
+        out.append({**a, "tone": tone, "photo": ph})
+    return out
+
+
+def post_lang(note: str | None) -> str:
+    """The language our one-line note says the post is written in ('일본어 계정이 …' → '일본어'); '' when it says none."""
+    t = squash_ws(note)
+    hits = [(t.find(w), w) for w in POST_LANGS if w in t]
+    return min(hits)[1] if hits else ""
+
+
+def _free_photo(e: dict | None, used: set) -> dict | None:
+    phs = (e or {}).get("_photos") or []
+    return next((p for p in phs if p.get("type") == 1 and p["url"] not in used), None) \
+        or next((p for p in phs if p["url"] not in used), None)
+
+
+def home_post(a: dict, used: set | None = None) -> dict:
+    """An SNS card on the home: the post with lang (post_lang), place (a place it shows that this site has) and photo
+    (a licensed photo of it, KOGL-1 first, not one an earlier card used — the place changes to another it shows if
+    need be; None: the card names the place, or the language, in words). used collects the photos shown. (The first
+    site also lays a 'related' photo on a post that shows none of its places, from a table of its own 동 and topics;
+    this engine has no such table, so such a card keeps its words.)"""
+    used = used if used is not None else set()
+    places = a.get("_places") or []
+    pick = None
+    for e in places:
+        ph = _free_photo(e, used)
+        if ph:
+            pick = (e, ph)
+            break
+    e, photo = pick if pick else (places[0] if places else None, None)
+    if photo:
+        used.add(photo["url"])
+    return {**a, "lang": post_lang(a.get("note")), "place": e, "photo": photo,
+            "place_short": re.sub(r"\s*\([^()]*\)$", "", (e or {}).get("name") or "")}
+
+
+def home_posts(posts: list[dict]) -> list[dict]:
+    """The home's SNS cards in order (home_post), no photo twice among them; the posts with a place's photo pick theirs
+    first."""
+    used: set[str] = set()
+    own = {id(a): home_post(a, used) for a in posts if any(_free_photo(e, set()) for e in a.get("_places") or [])}
+    return [own.get(id(a)) or home_post(a, used) for a in posts]
+
+
+def home_fest(rows: list[dict], guides: list[dict] | None = None) -> dict | None:
+    """The home's pinned-event band (the first site's cf4ebcd8a / c4020e9bd, operator 2026-11-04; 시안 A banner under
+    the first screen's card): the edition the operator pinned (events.json pin_home) while it is not over (ranked_events
+    rows, so the band leaves by itself the day after) — its D-day, day and time (start_dt: a <time datetime> when the
+    time is one start), place, the programme lines the record names (pin_points: highlights by index, each split at
+    ' — ' into the fact and its note), the source (without a quoted release title) and the event page; the guides the
+    record names (page_media.guide, page_media.series: guide slugs) once they are published. None without a pinned
+    edition. (The first site's band also carries its own Instagram reel; this engine shows a reel only through the
+    event page's videos.)"""
+    r = next((x for x in rows if x["ev"].get("pin_home")), None)
+    if not r:
+        return None
+    ev, hl = r["ev"], r["ev"].get("highlights") or []
+    points = []
+    for i in ev.get("pin_points") or []:
+        if isinstance(i, int) and 0 <= i < len(hl):
+            head, _, note = squash_ws(hl[i]).partition(" — ")
+            points.append({"t": head, "d": note})
+    m = re.fullmatch(r"(.+?)\s+('[^']+')", r["title"])
+    d = dt.date.fromisoformat(r["start"])
+    pm = ev.get("page_media") or {}
+    by_slug = {g.get("slug"): g for g in guides or []}
+    series = []
+    for slug in [pm.get("guide"), *(pm.get("series") or [])]:
+        g = by_slug.get(slug)
+        if g and all(x["path"] != g["_path"] for x in series):
+            head, _, q = (g.get("title") or "").partition(", ")
+            series.append({"path": g["_path"], "label": g.get("label") or head, "q": q or head})
+    return {"r": r, "points": points, "series": series[:3],
+            "h": m.group(1) if m else r["title"], "sub": m.group(2) if m else "",
+            "when": f"{d.month}월 {d.day}일({WEEK[d.weekday()]})", "time": r["time"],
+            "start_dt": event_start_dt(ev) or r["start"],
+            "src": squash_ws(re.sub(r"\s*'.*'\s*", " ", r["source"]))}
+
+
+def home_food_row(S, n: int = 4) -> dict | None:
+    """시안 A (the first site's 48f2a64c9, operator 2026-11-05 '음식점 카드 줄도 바꿔줘'): four food places of the food
+    list's first group (this city's first 권역 / 구·군, site.json regions), the ones with a photo first, then the ones that
+    answer more of the list's cells, then by name — an order of what can be shown, not a recommendation (the line under
+    the row says so). Each: its photo (KOGL-1 may fill its box; KOGL-3 sits whole on a tint, never cropped) or its kind
+    picture, its designation chip, and its dish · hours · closed day exactly as the list shows them (a value the list
+    lacks is left out, never filled)."""
+    if not S.lists.get("food"):
+        return None
+    L = list_vm(S, "food")
+    groups = L.get("groups") or []
+    if not groups:
+        return None
+    g = groups[0]
+    pick = sorted(g["recs"], key=lambda r: (r.get("photo") is None, -(r.get("answered") or 0), name_key(r["name"])))[:n]
+    recs = []
+    for r in pick:
+        # the list card's photo is TourAPI's small copy (…image3_1, 150px); here the card is ~320px wide, so the same
+        # photo's full-size copy (…image2_1, the same licence) when the place has it — a KOGL-3 photo is never
+        # enlarged past its own size (css/87-design-a.css .hfo-ph.t3)
+        ph = r.get("photo")
+        if ph and "image3_" in ph["url"]:
+            ph = next((p for p in r["e"].get("_photos") or [] if p["url"] == ph["url"].replace("image3_", "image2_")
+                       and p.get("type") == ph.get("type")), ph)
+        r = {**r, "photo": ph}
+        sl = {x["key"]: x for x in r.get("slots") or []}
+        val = lambda k: (sl.get(k) or {}).get("main") if sl.get(k) and not sl[k].get("missing") and not sl[k].get("conflict") else ""  # noqa: E731
+        recs.append({"name": r["name"], "path": r["path"], "e": r["e"], "photo": r.get("photo"), "dz": r.get("dz"),
+                     "menu": val("menu"), "hours": val("hours"), "closed": val("closed"),
+                     "is_closed": bool((sl.get("closed") or {}).get("closed"))})
+    lics = sorted({str(r["photo"]["type"]) for r in recs if r.get("photo")})
+    return {"group": g["name"], "total": L.get("count") or 0, "recs": recs, "lics": lics}
+
+
+def search_hint(S) -> str:
+    """The first-screen search box's placeholder (시안 A): two of the search examples (home_focus's dish first, then
+    site.json search_examples), '예: <a>, <b>' — short enough to stay whole in a 360px box ('<a>, <b>처럼 찾아보세요'
+    was cut there); '' when there are none."""
+    focus = home_focus(S)
+    words = list(dict.fromkeys(([focus["dish"]] if focus else []) + list(S.city.search_examples)))[:2]
+    return ("예: " + ", ".join(words)) if words else ""
+
+
 def home_showcase(S, h: dict) -> dict:
     """The Apple home's view model, added to home_vm: hero (KOGL-1 slides) and cover (the full-bleed opening photo,
     home.media), opening + news + services (the Korean opening's kicker, its one-card news carousel and its round
@@ -3688,8 +4014,12 @@ def home_showcase(S, h: dict) -> dict:
         e = by[slug]
         if closure_notice(e):   # closed until further notice: not a place to start from (its course stop says so)
             continue
-        ph = next((p for p in e["_photos"] if p["url"] not in used), e["_photos"][0] if e["_photos"] else None)
-        featured.append({**card_vm(e, ph), "n_courses": k, "n_courses_label": n_label})
+        # a KOGL-1 photo first: the feed card writes the name on it (_mz.html.j2 feed, the first site's a11b69248);
+        # KOGL-3 stays whole
+        ph = (next((p for p in e["_photos"] if p["type"] == 1 and p["url"] not in used), None)
+              or next((p for p in e["_photos"] if p["url"] not in used), e["_photos"][0] if e["_photos"] else None))
+        c = card_vm(e, ph)
+        featured.append({**c, "n_courses": k, "n_courses_label": n_label, **feed_extra(e, c["kf"], C.region or "")})
     ranked = ranked_events(S)
     regions2 = [{**r, "dongs": r["dongs"][:3]} for r in h.get("regions") or []]
     anchors = [{"lat": r["anchor"]["geo"]["lat"], "lng": r["anchor"]["geo"]["lng"], "name": r["name"], "label": r["name"],
@@ -3710,6 +4040,7 @@ def home_showcase(S, h: dict) -> dict:
             "opening": home_opening(S), "news": home_news(S), "services": home_services(S, len(ranked)),
             "next_event": pick_next_event(ranked),
             "events_ranked": pinned_first(ranked)[:3], "n_upcoming": len(ranked), "featured": featured,
+            "fest": home_fest(ranked, S.guides), "food_row": home_food_row(S), "search_hint": search_hint(S),
             "featured_min": featured_min, "regions2": regions2, "region_map": {"anchors": anchors} if anchors else None,
             "chapters": home_story(S, cen, slots.get("story")), "gallery": gallery, "gallery_cfg": gcfg if gallery else None,
             "gallery_fact": {"region": region,
@@ -4220,6 +4551,21 @@ def event_vm(S, sr: dict) -> dict:
         notes.ref({"provider": a.get("name") or "", "checked_at": a.get("checked_at") or "", "url": a.get("url") or ""},
                   "같은 일정 확인" if a.get("agrees") else "함께 확인")
     places = [S.ent_by_slug[x] for x in sr["place_slugs"] if x in S.ent_by_slug]
+    # 사진·영상 (the first site's a0dc577a3, operator 2026-11-04 '상세 페이지에 사진, 영상 등 넣어서 다채롭게', events.json
+    # page_media): the licensed photo (KOGL-1 first) of each place the record names around the venue, the videos the
+    # record names from videos.json (about the venue's surroundings, said so on the page) and the day's guide once it
+    # is published — nothing without the record's page_media
+    pm = ev.get("page_media") or {}
+    gallery = []
+    for slug in pm.get("photo_places") or []:
+        e = S.ent_by_slug.get(slug)
+        phs = (e or {}).get("_photos") or []
+        ph = next((p for p in phs if p.get("type") == 1), phs[0] if phs else None)
+        if ph:
+            gallery.append({"e": e, "ph": ph})
+    vids_by = {v["youtube_id"]: v for v in getattr(S, "videos", None) or [] if v.get("youtube_id")}
+    near_videos = [vids_by[x] for x in pm.get("near_videos") or [] if x in vids_by]
+    day_guide = next((g for g in S.guides if pm.get("guide") and g.get("slug") == pm["guide"]), None)
     geo = ev.get("geo") or {}
     row = event_row(ev, city=C)
     point = {"self": {"lat": geo["lat"], "lng": geo["lng"], "name": row["place"] or sr["name"]}, "near": [], "anchors": []} \
@@ -4281,7 +4627,9 @@ def event_vm(S, sr: dict) -> dict:
     slots = [tile("기간", "period", Markup(f'<time datetime="{escape(start)}">{escape(row["range"] or row["period_text"])}</time>'))]
     if ev.get("playtime"):
         pt = ev_text(ev["playtime"])   # each time range stays on one line; the text around and between them may wrap
-        slots.append(tile("시간", "playtime", nowrap_times(pt)))
+        sdt = event_start_dt(ev)   # a one-day edition's start time: machine-readable too (the Event's startDate)
+        slots.append(tile("시간", "playtime", Markup(f'<time datetime="{sdt}">') + nowrap_times(pt) + Markup("</time>")
+                          if sdt else nowrap_times(pt)))
     if ev.get("fee"):
         slots.append(tile("요금", "fee", escape(ev_text(ev["fee"]))))
     if place_short:
@@ -4311,6 +4659,8 @@ def event_vm(S, sr: dict) -> dict:
             "rows": rows, "notes": notes.items, "places": places, "point": point, "route": route,
             "tel": tel, "tel_text": tel_text, "past": past, "undated": [event_row(x, city=C) for x in sr["undated"]],
             "videos": [v for v in sr.get("videos") or [] if v.get("youtube_id")], "program": program, "usual": usual,
+            "gallery": gallery, "gallery_note": squash_ws(pm.get("photo_note")), "near_videos": near_videos,
+            "near_videos_note": squash_ws(pm.get("videos_note")), "day_guide": day_guide,
             "other_alts": other_alts, "flagged": flagged or bool(other_alts),
             "confirm_line": ORGANISER_LINE if (flagged or other_alts) else "",
             "area": C.address_parts({"address": ev.get("address")})[1],
@@ -4474,6 +4824,39 @@ def points_list(text: str, split, lang: str = "ko") -> list[str]:
     return out
 
 
+# runs of a guide heading that must not break across lines (the first site's 53950dfe5 · 8af1b8ff5 · 16cd8cf48, operator
+# 2026-11-04 '줄바꿈도 어색하고'): a date ('11월 14일(토)'), a month range ('11~2월'), a straight-line distance ('직선
+# 240m'), a duration or a range of them ('2시간 47분~3시간 6분') and a place name with spaces each stay on one line
+KEEP_TOGETHER = re.compile(r"\d{1,2}월 \d{1,2}일(?:\([월화수목금토일]\))?|\d{1,2}~\d{1,2}월|직선 (?:약 )?\d[\d,.]*\s?k?m"
+                           r"|\d+시간(?: \d+분)?(?:~\d+시간(?: \d+분)?)?")
+
+
+def keep_together(text: str, names: list[dict] | None = None, lang: str = "ko"):
+    """The heading as Markup with each KEEP_TOGETHER run and each guide place name that has a space in one
+    <span class="nw">; the text itself is unchanged (other languages: the plain text)."""
+    text = squash_ws(text)
+    if lang != "ko" or not text:
+        return text
+    spans = [(m.start(), m.end()) for m in KEEP_TOGETHER.finditer(text)]
+    for nm in sorted({n["name"] for n in names or [] if " " in (n.get("name") or "")}, key=len, reverse=True):
+        spans += [(m.start(), m.end()) for m in re.finditer(re.escape(nm), text)]
+    out, pos = [], 0
+    for a, b in sorted(spans):
+        # the whole word: a particle after the run ('푸드존은') or a word joined before it stays with it — a break at
+        # the span's edge would leave '은' alone on the next line
+        while a > 0 and not text[a - 1].isspace():
+            a -= 1
+        while b < len(text) and not text[b].isspace():
+            b += 1
+        if a < pos:
+            continue
+        out.append(escape(text[pos:a]))
+        out.append(Markup('<span class="nw">') + escape(text[a:b]) + Markup("</span>"))
+        pos = b
+    out.append(escape(text[pos:]))
+    return Markup("").join(out)
+
+
 def guide_sections(heads_texts: list[tuple[str, list[str]]], names: list[dict], lang: str, split,
                    cards: dict, prefix: str = "", shown: set | None = None) -> list[dict]:
     """Body sections: {n, id, heading, paras [[Markup bullet]], own [bool per paragraph: lines that already start with
@@ -4494,7 +4877,8 @@ def guide_sections(heads_texts: list[tuple[str, list[str]]], names: list[dict], 
         named = [cards[n["id"]] for n in mentions(head + " " + " ".join(paras), names, lang) if n["id"] in cards]
         places = [c for c in named if c["id"] not in shown]
         shown.update(c["id"] for c in places)
-        out.append({"n": i, "id": f"{prefix}h-b{i}", "heading": head, "paras": body, "places": places,
+        out.append({"n": i, "id": f"{prefix}h-b{i}", "heading": keep_together(head, names, lang), "paras": body,
+                    "places": places,
                     "again": [c for c in named if c not in places], "pts": [c["slug"] for c in named if c.get("geo")]})
     return out
 
@@ -4506,9 +4890,13 @@ def answer_block(sents: list[str], lang: str = "ko") -> dict:
     (pipeline.validate compares them with the JSON-LD as one run)."""
     sep = "" if lang in CJK_LANGS else " "
     first, rest = (sents[0] if sents else ""), sep.join(sents[1:])
+    skip = max(0, PLAIN_HEAD - len(first) - len(sep))
+    # two sentences or more after the answer line: one row each (the first site's operator 2026-11-04, '글 쭉 적어둔
+    # 곳들은 좀 이쁘게') — the same sentences in the same order, so the summary still reads as one run
+    pts = [rich(t, lang, skip=skip if i == 0 else 0, roll=True) for i, t in enumerate(sents[1:])] if len(sents) > 2 else []
     return {"first": first, "rest": rest, "size": answer_size(first),
             "html": rich(first, lang, skip=PLAIN_HEAD, roll=True),
-            "rest_html": rich(rest, lang, skip=max(0, PLAIN_HEAD - len(first) - len(sep)), roll=True)}
+            "rest_html": rich(rest, lang, skip=skip, roll=True), "rest_pts": pts}
 
 
 PICKS_MAX = 12
@@ -5015,7 +5403,8 @@ def side_vm(S) -> dict:
               {"key": "about", "label": W["about"], "href": "/about/", "links": []}]
     acts = []
     if S.entities:   # /plan/ is built with the places (build.common has_plan)
-        acts.append({"label": W["plan_btn"], "href": "/plan/", "track": "plan_cta", "icon": "spark", "primary": True})
+        acts.append({"label": W["plan_btn"], "href": "/plan/", "track": "plan_cta", "icon": "spark", "primary": True,
+                     "pic": "btn-plan"})   # the 3D planner (the first site's b83fcaf3f; the glyph stays without it)
     if S.courses:
         acts.append({"label": W["courses_btn"], "href": "/courses/", "track": "course_click", "icon": "", "primary": False})
     return {"groups": [g for g in groups if g], "acts": acts, "tagline": W["tagline"].format(r=region),

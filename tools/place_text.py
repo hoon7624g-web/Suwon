@@ -12,6 +12,8 @@ facts는 건드리지 않는다(CLAUDE.md 3절 7항).
   목록 기호·이름표('주차 :')는 문장에 넣지 않고, 조사는 textutil.josa로 붙인다. 같은 메뉴를 두 번 쓰지 않는다.
 - 출처마다 값이 다르면(present.contested — 화면이 '출처마다 다름'을 붙이는 값) 한쪽을 고르지 않는다. 요약·FAQ 모두
   두 값을 출처와 함께 쓰고 '방문 전에 전화로 확인해야 합니다'를 붙인다. 값이 길면 '출처마다 달라'만 쓴다.
+  단, site.json fact_conflicts가 'primary'이면(운영자 2026-11-05 '출처 마다 다른 값은 대표 값 하나만 보이도록 해')
+  화면과 같이 대표값(본값 facts) 하나만 읽고 쓴다(textutil.keep_primary_facts, 자료 파일은 그대로).
 - 종료일 없는 휴관 공지(notices.json open_end)가 있는 장소는 요약 첫 문장과 첫 FAQ가 그 공지이고 평소 값은 그 뒤에
   둔다. 그 공지 id를 summary_notices에 남긴다(공지가 끝나면 pipeline.validate가 '다시 생성' 경고를 낸다). 기간이 정해진
   휴관(7일 이상)과 바뀐 운영 시간(야간 개장 등, kind hours)도 공지가 보이는 동안 요약 첫 문장과 첫 FAQ에 쓰고 같은 자리에
@@ -28,6 +30,7 @@ facts는 건드리지 않는다(CLAUDE.md 3절 7항).
 from __future__ import annotations
 
 import argparse
+import copy
 import datetime as dt
 import json
 import re
@@ -41,7 +44,7 @@ from pipeline import city as citymod
 from pipeline import notices as noticesmod
 from pipeline import present
 from pipeline.schema import designations as shown_designations, index_groups
-from pipeline.textutil import clock_text, display_address, josa, parking_text, squash_ws
+from pipeline.textutil import clock_text, display_address, josa, keep_primary_facts, parking_text, squash_ws
 from tools import place_content as pc
 
 CALL = "방문 전에 전화로 확인해야 합니다"
@@ -1236,8 +1239,17 @@ def run(data: Path, *, every: bool = False, only: list[str] | None = None, dry_r
     todo.sort(key=lambda p: (p.get("status") != "published", -len(index_groups(p)),
                              {"attraction": 0, "food": 1, "stay": 2}.get(p.get("kind"), 3), p.get("id")))
     written, refused, faq_n, thin_n = [], [], 0, 0
+    # site.json fact_conflicts 'primary' (operator 2026-11-05 '출처 마다 다른 값은 대표 값 하나만 보이도록 해'): the text
+    # reads the record as the build shows it — its main value alone (textutil.keep_primary_facts on a copy; the data
+    # file keeps every value), so no summary or FAQ says '출처마다 달라'
+    primary = (json.loads((data / "site.json").read_text("utf-8")).get("fact_conflicts") == "primary"
+               if (data / "site.json").exists() else False)
     for p in todo:
-        res = write_place(p, city=city, notices=noticesmod.for_place(active, p["id"]), used_q=used_q, used_t=used_t)
+        shown = p
+        if primary and p.get("fact_alternatives"):
+            shown = copy.deepcopy(p)
+            keep_primary_facts([shown])
+        res = write_place(shown, city=city, notices=noticesmod.for_place(active, p["id"]), used_q=used_q, used_t=used_t)
         if res["issues"]:
             refused.append({"id": p["id"], "slug": p.get("slug"), "summary": res["summary"], "issues": res["issues"]})
             continue

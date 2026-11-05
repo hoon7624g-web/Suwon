@@ -119,7 +119,7 @@ def test_place_page_list_search_llms_and_jsonld_show_designations_with_sources(t
     assert 'class="dz' not in plain and '"award"' not in plain
     # list record: one short chip (the first designation); the lists behind the chips once, linked, without 확인일
     lst = (out / "food" / "index.html").read_text("utf-8")
-    assert re.findall(r'<span class="dz-chip">([^<]*)</span>', lst) == ["군산맛집 2026"]
+    assert re.findall(r'<span class="dz-chip(?: dz-[a-z]+)?">([^<]*)</span>', lst) == ["군산맛집 2026"]
     foot = scan_file(out / "food" / "index.html")
     assert foot.block_hrefs["designation-sources"] == [MATJIP["url"]]
     assert "군산시 문화관광 「군산맛집」 지정 현황(2026)" in foot.blocks["designation-sources"]

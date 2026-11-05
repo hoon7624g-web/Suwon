@@ -32,7 +32,7 @@
       }
     ],
     "ko_hash": "3c5ffd1495739e79",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2747097": {
     "slug": "gwanggyomarugil",
@@ -73,7 +73,7 @@
       }
     ],
     "ko_hash": "f4922ef51eafa5f5",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-125577": {
     "slug": "nosongjidae",
@@ -121,7 +121,7 @@
       }
     ],
     "ko_hash": "13f03b3a9d3dff2c",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3428384": {
     "slug": "daeyupyeonggongwon",
@@ -156,7 +156,7 @@
       }
     ],
     "ko_hash": "ed2a798352da5eab",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2613660": {
     "slug": "manseokgeogongwon",
@@ -202,7 +202,7 @@
       }
     ],
     "ko_hash": "9a328f6b8fec659b",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3351831": {
     "slug": "manseokgongwon",
@@ -237,7 +237,7 @@
       }
     ],
     "ko_hash": "05e3fe9d153156a0",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2781841": {
     "slug": "bambatcheonggaegurigongwon",
@@ -281,7 +281,7 @@
       }
     ],
     "ko_hash": "a086876c83b01f85",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2745742": {
     "slug": "bohyeonseonwon",
@@ -289,13 +289,13 @@
     "name_ko": "보현선원",
     "name_zh_hant": "普賢禪院",
     "name_zh_hant_source": "translated",
-    "summary": "普賢禪院全年無休，全天開放。無需門票即可參觀，也可以停車。",
+    "summary": "普賢禪院全年無休，開放時間為05:00–20:00。無需門票即可參觀，也可以停車。",
     "facts": {
       "address": {
         "value": "93 Suil-ro 233beon-gil (Jowon-dong), Jangan-gu, Suwon-si, Gyeonggi-do"
       },
       "usetime": {
-        "value": "全天開放"
+        "value": "05:00–20:00"
       },
       "restdate": {
         "value": "全年無休"
@@ -324,8 +324,8 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "99a3f1f428ced1f7",
-    "translated_at": "2026-10-28"
+    "ko_hash": "3c0538e1af186446",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2745737": {
     "slug": "buksuwononcheon",
@@ -371,7 +371,7 @@
       }
     ],
     "ko_hash": "3fadcd22c9fc43c6",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-125555": {
     "slug": "suwon-hwaseong",
@@ -437,7 +437,7 @@
       }
     ],
     "ko_hash": "c691e87a69319b1e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3076051": {
     "slug": "irwolsumogwon",
@@ -506,7 +506,7 @@
       }
     ],
     "ko_hash": "5f3addbb2e6b785a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3081125": {
     "slug": "irwolhosugongwon",
@@ -541,7 +541,7 @@
       }
     ],
     "ko_hash": "d36cdb2277b4dc14",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2741599": {
     "slug": "jangangongwon",
@@ -588,7 +588,7 @@
       }
     ],
     "ko_hash": "9cfd7af73dc789f1",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-482135": {
     "slug": "cheongnyeonam",
@@ -623,7 +623,7 @@
       }
     ],
     "ko_hash": "66804d4dbde50968",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2741606": {
     "slug": "hyohaenggongwon",
@@ -667,7 +667,7 @@
       }
     ],
     "ko_hash": "40a6e0617a76acf6",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-130831": {
     "slug": "gyeonggidogyoyukcheongjungangdoseogwan",
@@ -730,7 +730,7 @@
       }
     ],
     "ko_hash": "553f3d7c42fcb7f8",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3427294": {
     "slug": "gyeonggidohaengjeongyeoksagwan",
@@ -774,7 +774,7 @@
       }
     ],
     "ko_hash": "faa9aa2db4d37a8a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3335521": {
     "slug": "byeolmadangdoseogwan-seutapildeu-suwonjeom",
@@ -812,7 +812,7 @@
       }
     ],
     "ko_hash": "de39cb56fbb5cace",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3562537": {
     "slug": "bokhammunhwagonggan-111-ssiem",
@@ -847,7 +847,7 @@
       }
     ],
     "ko_hash": "48ad3eef948de95b",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3075454": {
     "slug": "suwon-sk-ateurium",
@@ -885,7 +885,7 @@
       }
     ],
     "ko_hash": "4e39e56394b24366",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-130711": {
     "slug": "suwonsirimmanseokjeonsigwan",
@@ -893,10 +893,10 @@
     "name_ko": "수원시립만석전시관",
     "name_zh_hant": "水原市立萬石展示館",
     "name_zh_hant_source": "translated",
-    "summary": "水原市立萬石展示館的開放時間為夏季（3–10月）10:00–19:00、冬季（11–2月）10:00–18:00。每週一公休（若週一為國定假日，則隔天休館）。最後入場時間為參觀結束前1小時。門票為一般4,000韓元等，也可以停車。",
+    "summary": "水原市立萬石展示館的開放時間為夏季（3–10月）10:00–19:00、冬季（11–2月）10:00–18:00。每週一公休（若週一為國定假日，則隔天休館）。最後入場時間為參觀結束前1小時。無需門票即可參觀，也可以停車。",
     "facts": {
       "address": {
-        "value": "19 Songjeong-ro (Songjuk-dong), Jangan-gu, Suwon-si, Gyeonggi-do"
+        "value": "833 Jeongjo-ro (Sinpung-dong), Paldal-gu, Suwon-si, Gyeonggi-do"
       },
       "usetime": {
         "value": "- 夏季（3月–10月）10:00–19:00\n- 冬季（11月–2月）10:00–18:00\n※ 至參觀結束前1小時可入場"
@@ -905,7 +905,7 @@
         "value": "每週一（若週一為國定假日，則隔天休館）"
       },
       "usefee": {
-        "value": "[個人]\n- 一般 4,000韓元\n- 青少年 2,000韓元\n- 兒童 1,000韓元\n[團體]\n- 一般 2,000韓元\n- 青少年 1,000韓元\n※ 免費\n- 未滿7歲／65歲以上"
+        "value": "免費"
       },
       "parking": {
         "value": "可"
@@ -938,8 +938,8 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "a543a101d3420394",
-    "translated_at": "2026-10-28"
+    "ko_hash": "c974d05c930c6fb1",
+    "translated_at": "2026-11-05"
   },
   "tourapi-130826": {
     "slug": "seulgisaemeorinidoseogwan",
@@ -992,20 +992,10 @@
         "q": "Seulgisaem兒童圖書館週一公休嗎？",
         "a": "是的，每週一及公休日休館。",
         "source": "한국관광공사 TourAPI"
-      },
-      {
-        "q": "Seulgisaem兒童圖書館需要門票嗎？",
-        "a": "不需要，無需門票即可參觀。",
-        "source": "한국관광공사 TourAPI"
-      },
-      {
-        "q": "Seulgisaem兒童圖書館的開放時間是幾點？",
-        "a": "開放時間為09:00–18:00。",
-        "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "287737862d74ecf1",
-    "translated_at": "2026-10-28"
+    "ko_hash": "73a8061a49b9e8f7",
+    "translated_at": "2026-11-05"
   },
   "tourapi-3081953": {
     "slug": "hannuriateuhol",
@@ -1045,7 +1035,7 @@
       }
     ],
     "ko_hash": "664a1c49f52aac27",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-1925403": {
     "slug": "haeujae",
@@ -1102,7 +1092,7 @@
       }
     ],
     "ko_hash": "1278beeb913eb617",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-1835368": {
     "slug": "seohocheongil",
@@ -1134,7 +1124,7 @@
       }
     ],
     "ko_hash": "8c026716e05bbb7c",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3057776": {
     "slug": "suwon-kt-wijeupakeu",
@@ -1166,7 +1156,7 @@
       }
     ],
     "ko_hash": "7a53afa6d2c5586e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3116124": {
     "slug": "seumop-suwon",
@@ -1201,7 +1191,7 @@
       }
     ],
     "ko_hash": "b97c06e3545b3247",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3081940": {
     "slug": "jeompingpakeu-jeongjajeom",
@@ -1233,7 +1223,7 @@
       }
     ],
     "ko_hash": "a754916efb0b0a93",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-132105": {
     "slug": "banditburi-yeonmusijang",
@@ -1271,7 +1261,7 @@
       }
     ],
     "ko_hash": "bdbdff31421d9761",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2753658": {
     "slug": "buksuwonsijang",
@@ -1315,7 +1305,7 @@
       }
     ],
     "ko_hash": "ca2f6c8ce8b62779",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3335600": {
     "slug": "seutapildeu-suwon",
@@ -1368,7 +1358,7 @@
       }
     ],
     "ko_hash": "5f0b309c34de2bb8",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2752967": {
     "slug": "janganmungeobuksijang",
@@ -1412,7 +1402,7 @@
       }
     ],
     "ko_hash": "ce71e2f5aeeb8b6e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2752977": {
     "slug": "jeongjasijang",
@@ -1462,7 +1452,7 @@
       }
     ],
     "ko_hash": "929cd965987aca27",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2752643": {
     "slug": "jowonsijang",
@@ -1506,7 +1496,7 @@
       }
     ],
     "ko_hash": "ffd243c7da196695",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-1770188": {
     "slug": "motellamu",
@@ -1555,7 +1545,7 @@
       }
     ],
     "ko_hash": "f44c98f4c4ffb06e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3533132": {
     "slug": "siwoljae",
@@ -1610,7 +1600,7 @@
       }
     ],
     "ko_hash": "9b2b6c03e3ada14a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3083959": {
     "slug": "tapkeullaudeuhotel-suwonjeom",
@@ -1656,7 +1646,7 @@
       }
     ],
     "ko_hash": "8d3fd958ae8fd87f",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2844721": {
     "slug": "gwanggyoheonnongwon",
@@ -1703,7 +1693,7 @@
       }
     ],
     "ko_hash": "8dcce0f7732b707a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2846370": {
     "slug": "geujip-haejangguk",
@@ -1741,7 +1731,7 @@
       }
     ],
     "ko_hash": "66636722264187dc",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2844733": {
     "slug": "geujipjjukkumibokkeum",
@@ -1785,7 +1775,7 @@
       }
     ],
     "ko_hash": "113fb759465ceb88",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-807896": {
     "slug": "gillimseong",
@@ -1832,7 +1822,7 @@
       }
     ],
     "ko_hash": "8d0f8fe1b12628d0",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2745736": {
     "slug": "riteulbonsuwongalbijip",
@@ -1884,7 +1874,7 @@
       }
     ],
     "ko_hash": "dab8d375fcdbfe60",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2835369": {
     "slug": "myeongseongdwaejigalbi",
@@ -1925,7 +1915,7 @@
       }
     ],
     "ko_hash": "90ad8e7ff3806b63",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2835388": {
     "slug": "badarogankokkirikkochang",
@@ -1969,7 +1959,7 @@
       }
     ],
     "ko_hash": "5d79aea5be33a343",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2751109": {
     "slug": "baeksesamgyetang-suwonpajangbonjeom",
@@ -2018,7 +2008,7 @@
       }
     ],
     "ko_hash": "363c91c6d1fce5cf",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2754026": {
     "slug": "baeksejjamppong-suwonbonjeom",
@@ -2068,7 +2058,7 @@
       }
     ],
     "ko_hash": "efcac72feed0a7de",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2781827": {
     "slug": "baegunjumallongjang",
@@ -2112,7 +2102,7 @@
       }
     ],
     "ko_hash": "133e13be7c4cc22a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2873600": {
     "slug": "bungmun-yuchihoegwan",
@@ -2156,7 +2146,7 @@
       }
     ],
     "ko_hash": "1829aa27da7107f6",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2844760": {
     "slug": "buksuwonhwaro",
@@ -2164,7 +2154,7 @@
     "name_ko": "북수원화로",
     "name_zh_hant": "北水原火爐",
     "name_zh_hant_source": "translated",
-    "summary": "北水原火爐的招牌菜是韓豚排骨，也有鹽烤大塊梅花肉、鮮五花肉、鮮牛排骨等。全年無休，營業時間為10:00–22:00。可以停車。",
+    "summary": "北水原火爐是水原市指定的模範餐廳，招牌菜是韓豚排骨，也有大塊鹽烤豬頸肉、鮮五花肉、鮮牛排骨等。全年無休，營業時間為10:00–22:00。可以停車。",
     "facts": {
       "address": {
         "value": "233 Cheoncheon-ro (Imok-dong), Jangan-gu, Suwon-si, Gyeonggi-do"
@@ -2199,8 +2189,8 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "d857aa1ad4cdf67c",
-    "translated_at": "2026-10-28"
+    "ko_hash": "2a1e11f87473ee12",
+    "translated_at": "2026-11-05"
   },
   "tourapi-133041": {
     "slug": "sampunggadeun",
@@ -2208,7 +2198,7 @@
     "name_ko": "삼풍가든",
     "name_zh_hant": "Sampung Garden",
     "name_zh_hant_source": "translated",
-    "summary": "Sampung Garden的招牌菜是鮮排骨，也有調味排骨、排骨套餐、烤肉等。傳統節日連假休息，營業時間為11:00–21:00。停車場可停300輛車。",
+    "summary": "Sampung Garden是水原市指定的模範餐廳，招牌菜是鮮排骨，也有調味排骨、排骨套餐、烤肉等。傳統節日連假休息，營業時間為11:00–21:00。停車場可停300輛車。",
     "facts": {
       "address": {
         "value": "2388 Seobu-ro, Jangan-gu, Suwon-si, Gyeonggi-do"
@@ -2248,8 +2238,8 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "20addf4591b3f373",
-    "translated_at": "2026-10-28"
+    "ko_hash": "3cf89f990de0dfdd",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2830470": {
     "slug": "seodongjinuikeopiraep-bonjeom",
@@ -2296,7 +2286,7 @@
       }
     ],
     "ko_hash": "8a12bb609ee02b46",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2916318": {
     "slug": "songjugyakbang",
@@ -2331,7 +2321,7 @@
       }
     ],
     "ko_hash": "0d4d89de25c6ee4f",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-602559": {
     "slug": "songpunggadeun",
@@ -2339,7 +2329,7 @@
     "name_ko": "송풍가든",
     "name_zh_hant": "Songpung Garden",
     "name_zh_hant_source": "translated",
-    "summary": "Songpung Garden的招牌菜是雙加等級韓牛特殊部位橫膈膜，也有乾式熟成雙加等級韓牛沙朗、雙加等級韓牛鮮排骨、雙加等級韓牛調味排骨等。營業時間為11:00–21:30，備餐時間15:00–17:00，最後點餐20:30，全年無休。可以停車。",
+    "summary": "Songpung Garden是水原市指定的模範餐廳。招牌菜是雙加等級韓牛特殊部位橫膈膜，也有乾式熟成雙加等級韓牛沙朗、雙加等級韓牛鮮排骨、雙加等級韓牛調味排骨等。營業時間為11:00–21:30，備餐時間15:00–17:00，最後點餐20:30，全年無休。可以停車。",
     "facts": {
       "address": {
         "value": "1013 Gyeongsu-daero (Songjuk-dong), Jangan-gu, Suwon-si, Gyeonggi-do"
@@ -2374,8 +2364,8 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "bba257e9d4cbb890",
-    "translated_at": "2026-10-28"
+    "ko_hash": "54e1c74ff7730a65",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2835405": {
     "slug": "sinsagangjeongyukjeomsikdang",
@@ -2416,7 +2406,7 @@
       }
     ],
     "ko_hash": "0cc9f7e126b62d4e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2838706": {
     "slug": "aneuk",
@@ -2457,7 +2447,7 @@
       }
     ],
     "ko_hash": "c6f4515c11132398",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2848130": {
     "slug": "yejeongakseolleongtang",
@@ -2501,7 +2491,7 @@
       }
     ],
     "ko_hash": "1db59712568782d9",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2848097": {
     "slug": "uridongne-seusikaya",
@@ -2545,7 +2535,7 @@
       }
     ],
     "ko_hash": "208cb7029efb38d5",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2844774": {
     "slug": "uridongneseusisinjo",
@@ -2589,7 +2579,7 @@
       }
     ],
     "ko_hash": "eeda08dbb65ff61b",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2753976": {
     "slug": "ujeonokganjanggejang",
@@ -2633,7 +2623,7 @@
       }
     ],
     "ko_hash": "5d8e3efcbd36d65c",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3354946": {
     "slug": "irwolsumogwon-kape-deijiwon",
@@ -2677,7 +2667,7 @@
       }
     ],
     "ko_hash": "e78a0983c02bcca4",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3081946": {
     "slug": "jangannongwon",
@@ -2712,7 +2702,7 @@
       }
     ],
     "ko_hash": "b065a8e79c6e168b",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2751121": {
     "slug": "jecheolssambap",
@@ -2761,7 +2751,7 @@
       }
     ],
     "ko_hash": "91931b85fa707f91",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3445980": {
     "slug": "taimcheimbeobaiseutemkeopi-suwonseutapildeujeom",
@@ -2805,7 +2795,7 @@
       }
     ],
     "ko_hash": "ab289428c941f179",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2929831": {
     "slug": "pachi-seongdaejeom",
@@ -2843,7 +2833,7 @@
       }
     ],
     "ko_hash": "138cffee0124a6d6",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2844781": {
     "slug": "pungeosaengseonguijeongsik",
@@ -2887,7 +2877,7 @@
       }
     ],
     "ko_hash": "b00474ef18083f64",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2835421": {
     "slug": "hyeongjenongwon",
@@ -2928,7 +2918,7 @@
       }
     ],
     "ko_hash": "e7a8f26bb324c946",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2846661": {
     "slug": "hongnammaekalguksu",
@@ -2972,7 +2962,7 @@
       }
     ],
     "ko_hash": "925eda8efa34acc8",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2754720": {
     "slug": "goryeomgongwon",
@@ -3013,7 +3003,7 @@
       }
     ],
     "ko_hash": "ae9fe3f6130f29fb",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2739465": {
     "slug": "dangsucheyukgongwon",
@@ -3062,7 +3052,7 @@
       }
     ],
     "ko_hash": "a7765152d6b31d03",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2745729": {
     "slug": "daebudukgongwon",
@@ -3100,7 +3090,7 @@
       }
     ],
     "ko_hash": "814b290ade55ca14",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2742299": {
     "slug": "majunggongwon",
@@ -3144,7 +3134,7 @@
       }
     ],
     "ko_hash": "7dd25dbf0508c8f3",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2739425": {
     "slug": "mugunghwadongsan",
@@ -3182,7 +3172,7 @@
       }
     ],
     "ko_hash": "7dac9fb6b9de456d",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2739473": {
     "slug": "suwonollimpikgongwon",
@@ -3229,7 +3219,7 @@
       }
     ],
     "ko_hash": "0a9bd18626f19d91",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2739462": {
     "slug": "yeogisangongwon",
@@ -3276,7 +3266,7 @@
       }
     ],
     "ko_hash": "d829c539b417aaf6",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3075475": {
     "slug": "omokcheoncheyukgongwon",
@@ -3314,7 +3304,7 @@
       }
     ],
     "ko_hash": "0177071f789c8c17",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2742282": {
     "slug": "omokhosugongwon",
@@ -3361,7 +3351,7 @@
       }
     ],
     "ko_hash": "313f560b667fac21",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2746031": {
     "slug": "yonghwasa",
@@ -3399,7 +3389,7 @@
       }
     ],
     "ko_hash": "d09ceb20e2c33e81",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2741603": {
     "slug": "jungbodeulgongwon",
@@ -3443,7 +3433,7 @@
       }
     ],
     "ko_hash": "5a898dbcb75276a5",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3427162": {
     "slug": "taimbillaseu-suwon",
@@ -3484,7 +3474,7 @@
       }
     ],
     "ko_hash": "e36c778846ad052d",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3081843": {
     "slug": "gyeonggidoeopsaikeulpeullaja",
@@ -3519,7 +3509,7 @@
       }
     ],
     "ko_hash": "3363142ffeb3388c",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2747132": {
     "slug": "gyeonggisangsangkaempeoseu",
@@ -3574,7 +3564,7 @@
       }
     ],
     "ko_hash": "f0829cc463bf8b52",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2747134": {
     "slug": "gosaengnyujieom",
@@ -3623,7 +3613,7 @@
       }
     ],
     "ko_hash": "35b380ab95fba6a5",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2944481": {
     "slug": "gungnimnongeopbangmulgwan",
@@ -3686,7 +3676,7 @@
       }
     ],
     "ko_hash": "358c18f89cec3a41",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-130837": {
     "slug": "seosuwondoseogwan",
@@ -3726,7 +3716,7 @@
       }
     ],
     "ko_hash": "a53ff559b689b86e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3075791": {
     "slug": "suwonmesse",
@@ -3758,7 +3748,7 @@
       }
     ],
     "ko_hash": "bcb94bececb23708",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-129718": {
     "slug": "suwonmunhwawon",
@@ -3808,7 +3798,7 @@
       }
     ],
     "ko_hash": "f82b87077700744f",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-130825": {
     "slug": "jihyesaemeorinidoseogwan",
@@ -3865,7 +3855,7 @@
       }
     ],
     "ko_hash": "33eebbbeaac7fb7b",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2745948": {
     "slug": "seosuwonjuminpyeoniksiseol",
@@ -3905,7 +3895,7 @@
       }
     ],
     "ko_hash": "e5d806b0fc8efdc3",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2909927": {
     "slug": "sollaeeumkaempingjang",
@@ -3924,11 +3914,20 @@
       "restdate": {
         "value": "全年無休"
       },
+      "openperiod": {
+        "value": "春、夏、秋、冬 · 平日與週末"
+      },
       "parkingfee": {
         "value": "免費"
       },
+      "subfacility": {
+        "value": "電力、無線網路、販售柴火、熱水、彈跳床、戲水區、運動設施、超市與便利商店"
+      },
       "infocenter": {
         "value": "070-7766-8880"
+      },
+      "pet": {
+        "value": "可"
       }
     },
     "details": [],
@@ -3939,8 +3938,8 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "8f9afb646a8f4764",
-    "translated_at": "2026-10-28"
+    "ko_hash": "998e9a4872d0a773",
+    "translated_at": "2026-11-05"
   },
   "tourapi-3078246": {
     "slug": "suwoncheryeokdallyeonjang",
@@ -3972,7 +3971,7 @@
       }
     ],
     "ko_hash": "04f20ed2a8bb501f",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2753389": {
     "slug": "gwonseonjonghapsijang",
@@ -4013,7 +4012,7 @@
       }
     ],
     "ko_hash": "ad4c55d955385cf8",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-132353": {
     "slug": "suwon-nongsusanmuldomaesijang",
@@ -4063,7 +4062,7 @@
       }
     ],
     "ko_hash": "2a6759f33f941185",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2847042": {
     "slug": "hotel-seinteu",
@@ -4109,7 +4108,7 @@
       }
     ],
     "ko_hash": "3f63349a4079ab0e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2846969": {
     "slug": "hoteramare",
@@ -4155,7 +4154,7 @@
       }
     ],
     "ko_hash": "31ea90f618175e81",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2876387": {
     "slug": "10593-beigeulkeopihauseu",
@@ -4196,7 +4195,7 @@
       }
     ],
     "ko_hash": "7909d6cf1ef937f6",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2831373": {
     "slug": "gyeongseongjip",
@@ -4240,7 +4239,7 @@
       }
     ],
     "ko_hash": "fe96d7d78513a2d9",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2844739": {
     "slug": "geumjeongchamchi-bonjeom",
@@ -4281,7 +4280,7 @@
       }
     ],
     "ko_hash": "2c898df86fdfea9b",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2747109": {
     "slug": "giwajip",
@@ -4330,7 +4329,7 @@
       }
     ],
     "ko_hash": "2260c58275825a77",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2831004": {
     "slug": "namsuwongalbi",
@@ -4374,7 +4373,7 @@
       }
     ],
     "ko_hash": "bbf6fefef0e748de",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2745722": {
     "slug": "neolbeuntteul",
@@ -4382,7 +4381,7 @@
     "name_ko": "넓은뜰",
     "name_zh_hant": "Neolbeuntteul",
     "name_zh_hant_source": "translated",
-    "summary": "Neolbeuntteul的招牌菜是皇帝套餐，也有特級套餐、特別套餐、Neolbeuntteul套餐等。營業時間為平日11:00–21:30、週末11:00–21:30等，全年無休。可以停車。",
+    "summary": "Neolbeuntteul是水原市指定的模範餐廳，招牌菜是皇帝套餐，也有特級套餐、特別套餐、Neolbeuntteul套餐等。營業時間為平日11:00–21:30、週末11:00–21:30等，全年無休。可以停車。",
     "facts": {
       "address": {
         "value": "104 Sehwa-ro (Pyeong-dong), Gwonseon-gu, Suwon-si, Gyeonggi-do"
@@ -4423,13 +4422,13 @@
         "source": "한국관광공사 TourAPI"
       },
       {
-        "q": "Neolbeuntteul有休息時間嗎？",
-        "a": "有，16:00–17:00為休息時間。",
+        "q": "Neolbeuntteul可以外帶嗎？",
+        "a": "可以，提供外帶。",
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "a4c32fc7fb194b9a",
-    "translated_at": "2026-10-28"
+    "ko_hash": "45dda9a38d5a38a1",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2873654": {
     "slug": "daraesikdang",
@@ -4473,7 +4472,7 @@
       }
     ],
     "ko_hash": "8e02283d6e90cefb",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2844749": {
     "slug": "donkkaseuyeohaeng",
@@ -4481,7 +4480,7 @@
     "name_ko": "돈까스여행",
     "name_zh_hant": "炸豬排旅行",
     "name_zh_hant_source": "translated",
-    "summary": "炸豬排旅行的招牌菜是旅行豬排，也有腰內豬排、炸魚排、香辣海鮮米線等。營業時間為11:30–21:30、準備時間15:00–17:00，全年無休。可以停車。",
+    "summary": "炸豬排旅行是水原市指定的模範餐廳，招牌菜是旅行炸豬排，也有炸腰內肉、炸魚排、香辣海鮮米線等。營業時間為11:30–21:30、準備時間15:00–17:00，全年無休。可以停車。",
     "facts": {
       "address": {
         "value": "1640 Seobu-ro (Gosaek-dong), Gwonseon-gu, Suwon-si, Gyeonggi-do"
@@ -4516,8 +4515,8 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "4c0349de6140b41f",
-    "translated_at": "2026-10-28"
+    "ko_hash": "9724bb12c5147a8c",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2873484": {
     "slug": "mapohaejang",
@@ -4561,7 +4560,7 @@
       }
     ],
     "ko_hash": "9825f0e40d626350",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2867025": {
     "slug": "mallou-peulleiseu",
@@ -4608,7 +4607,7 @@
       }
     ],
     "ko_hash": "c798078ed7bd16b8",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3354928": {
     "slug": "memori",
@@ -4649,7 +4648,7 @@
       }
     ],
     "ko_hash": "8ab6cb7a55d6c1a5",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2873631": {
     "slug": "memiljeongwon",
@@ -4693,7 +4692,7 @@
       }
     ],
     "ko_hash": "317ae10be2df181f",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2868856": {
     "slug": "myeongganesundaeguk",
@@ -4734,7 +4733,7 @@
       }
     ],
     "ko_hash": "faf8f0fdf9153fc0",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2867048": {
     "slug": "bangnejipsongtanbudaejjigae-mugongdakgalbi",
@@ -4778,7 +4777,7 @@
       }
     ],
     "ko_hash": "00a78050443096b9",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2829072": {
     "slug": "ppieseumongtejeppangso",
@@ -4827,7 +4826,7 @@
       }
     ],
     "ko_hash": "0e3b77a0e3639e17",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2831490": {
     "slug": "seosuwonsutbulgalbi",
@@ -4871,7 +4870,7 @@
       }
     ],
     "ko_hash": "d5c025a6b8945c93",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2873500": {
     "slug": "seoksanjeong",
@@ -4879,7 +4878,7 @@
     "name_ko": "석산정",
     "name_zh_hant": "Seoksanjeong",
     "name_zh_hant_source": "translated",
-    "summary": "Seoksanjeong的招牌菜是大塊鮮排骨，也有高麗薊石鍋飯套餐、韓豚調味排骨、牛腹脅肉等。全年無休，營業時間為11:00–21:30。可以停車。",
+    "summary": "Seoksanjeong是水原市指定的模範餐廳，招牌菜是大塊鮮排骨，也有高麗薊石鍋飯套餐、韓豚調味排骨、牛腹肉等。全年無休，營業時間為11:00–21:30。可以停車。",
     "facts": {
       "address": {
         "value": "7-7 Jeongjo-ro 388beon-gil (Seryu-dong), Gwonseon-gu, Suwon-si, Gyeonggi-do"
@@ -4914,8 +4913,8 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "c5a3e43b1340beb7",
-    "translated_at": "2026-10-28"
+    "ko_hash": "44a24ffbc2ad6b6e",
+    "translated_at": "2026-11-05"
   },
   "tourapi-3458446": {
     "slug": "sorot",
@@ -4953,7 +4952,7 @@
       }
     ],
     "ko_hash": "971fa1a87abca86e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2629006": {
     "slug": "songhalmeoniotdak",
@@ -4999,7 +4998,7 @@
       }
     ],
     "ko_hash": "7271e52eee80910d",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4110195": {
     "slug": "subokheon",
@@ -5040,7 +5039,7 @@
       }
     ],
     "ko_hash": "fc761e5bbef746be",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2765454": {
     "slug": "suindakbaljip",
@@ -5084,7 +5083,7 @@
       }
     ],
     "ko_hash": "18a4a7626ad98369",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2754001": {
     "slug": "anangne",
@@ -5128,7 +5127,7 @@
       }
     ],
     "ko_hash": "d69f9e572787adb0",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2831410": {
     "slug": "yeolguja",
@@ -5172,7 +5171,7 @@
       }
     ],
     "ko_hash": "8b4244266738b0a1",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3415003": {
     "slug": "orenjibeigeul",
@@ -5213,7 +5212,7 @@
       }
     ],
     "ko_hash": "7536b4b0d328fdf5",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2868656": {
     "slug": "udongilbeonga",
@@ -5254,7 +5253,7 @@
       }
     ],
     "ko_hash": "1f767f93fe6916b6",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2831365": {
     "slug": "eunmijeong-and-eunmichan",
@@ -5298,7 +5297,7 @@
       }
     ],
     "ko_hash": "321ac7f753551d16",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2873459": {
     "slug": "iribunong",
@@ -5306,28 +5305,28 @@
     "name_ko": "이리부농",
     "name_zh_hant": "Iribunong",
     "name_zh_hant_source": "translated",
-    "summary": "Iribunong的招牌菜是Iribunong奶油，也有義式濃縮咖啡、阿芙佳朵、巧克力拿鐵等。營業時間為平日10:00–22:00、週末11:00–22:00，每週一公休。可以停車，停車免費。",
+    "summary": "Iribunong的招牌菜是Iribunong奶油，也有義式濃縮咖啡、阿芙佳朵、巧克力拿鐵等。營業時間為平日10:00–22:00、週末11:00–22:00，每週一公休。可以停車。",
     "facts": {
       "address": {
         "value": "6-8 Maegok-ro, Gwonseon-gu, Suwon-si, Gyeonggi-do"
       },
       "usetime": {
-        "value": "平日10:00–22:00\n週末11:00–22:00"
+        "value": "[平日]\n10:00–22:00\n[週末]\n11:00–22:00"
       },
       "restdate": {
         "value": "每週一"
       },
       "parking": {
-        "value": "可停車，免費"
+        "value": "可"
       },
       "menu": {
         "value": "Iribunong奶油"
       },
       "treatmenu": {
-        "value": "濃縮咖啡 / 阿芙佳朵 / 巧克力拿鐵 / 蜜桃冰茶 / 檸檬茶等"
+        "value": "義式濃縮咖啡 / 阿芙佳朵 / 巧克力拿鐵等"
       },
       "infocenter": {
-        "value": "031-293-8626"
+        "value": "0507-1325-8626"
       }
     },
     "details": [],
@@ -5338,8 +5337,8 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "022a7bf99d04c7d4",
-    "translated_at": "2026-10-28"
+    "ko_hash": "8abf92ddfd8e9a64",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2866447": {
     "slug": "iseobangwangjokbalbossam-suwonbonjeom",
@@ -5347,7 +5346,7 @@
     "name_ko": "이서방왕족발보쌈 수원본점",
     "name_zh_hant": "Iseobang王豬腳菜包肉水原總店",
     "name_zh_hant_source": "translated",
-    "summary": "Iseobang王豬腳菜包肉水原總店的招牌菜是豬腳，也有菜包肉、辣味火烤豬腳、涼拌豬腳等。營業時間為11:00–23:00，備餐時間15:00–15:30，最後點餐22:30，全年無休。可以停車。",
+    "summary": "Iseobang王豬腳菜包肉水原總店是水原市指定的模範餐廳，招牌菜是滷豬腳，也有菜包肉、辣味火烤豬腳、涼拌豬腳等。營業時間為11:00–23:00，備餐時間15:00–15:30，最後點餐22:30，全年無休。可以停車。",
     "facts": {
       "address": {
         "value": "134 Segwon-ro (Seryu-dong), Gwonseon-gu, Suwon-si, Gyeonggi-do"
@@ -5382,8 +5381,8 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "772593497a0066a1",
-    "translated_at": "2026-10-28"
+    "ko_hash": "96c812ea06dcde47",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2753968": {
     "slug": "jangteoseolleongtang",
@@ -5432,7 +5431,7 @@
       }
     ],
     "ko_hash": "0af469883d5583fe",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2868543": {
     "slug": "jjamachainahomaesilbonjeom",
@@ -5479,7 +5478,7 @@
       }
     ],
     "ko_hash": "11cd6d44b0482c20",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2746015": {
     "slug": "chogajip",
@@ -5531,7 +5530,7 @@
       }
     ],
     "ko_hash": "7a2f9ff5eddf15c8",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2588610": {
     "slug": "choamgol",
@@ -5539,7 +5538,7 @@
     "name_ko": "초암골",
     "name_zh_hant": "Choamgol",
     "name_zh_hant_source": "translated",
-    "summary": "Choamgol的招牌菜是冬蟲夏草桑樹蔘雞湯，也有漆樹燉雞、漆樹燉鴨、黃漆土雞燉全雞等。營業時間為11:00–21:20（最後點餐20:40），每週日及春節、中秋節連假公休。可以停車，停車免費。",
+    "summary": "Choamgol是水原市指定的模範餐廳，招牌菜是冬蟲夏草桑樹蔘雞湯，也有漆樹雞、漆樹鴨、黃漆土雞白煮雞等。營業時間為11:00–21:20（最後點餐20:40），每週日及春節、中秋節連假公休。可以停車，停車免費。",
     "facts": {
       "address": {
         "value": "20 Gwonseon-ro 713beon-gil, Gwonseon-gu, Suwon-si, Gyeonggi-do"
@@ -5571,13 +5570,13 @@
         "source": "한국관광공사 TourAPI"
       },
       {
-        "q": "Choamgol什麼時候休息？",
-        "a": "每週日及春節、中秋節連假公休。",
-        "source": "한국관광공사 TourAPI"
+        "q": "Choamgol是指定店家嗎？",
+        "a": "是的，這裡是水原市指定的模範餐廳。",
+        "source": "https://www.data.go.kr/data/3044660/fileData.do"
       }
     ],
-    "ko_hash": "66d9cffcf306dba9",
-    "translated_at": "2026-10-28"
+    "ko_hash": "6b1d0b5d1ba704de",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2831393": {
     "slug": "choessihwaro",
@@ -5621,7 +5620,7 @@
       }
     ],
     "ko_hash": "e238c019e7428eef",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2831418": {
     "slug": "chilbohoegwan",
@@ -5665,7 +5664,7 @@
       }
     ],
     "ko_hash": "0dcc1cd88f83fc5b",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2873710": {
     "slug": "kape-7",
@@ -5712,7 +5711,7 @@
       }
     ],
     "ko_hash": "ab358f57abf1f5b2",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2829911": {
     "slug": "kape-hairaiteu",
@@ -5761,7 +5760,7 @@
       }
     ],
     "ko_hash": "60463e3eb95e018e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3456360": {
     "slug": "kapeago",
@@ -5817,7 +5816,7 @@
       }
     ],
     "ko_hash": "5b98126bfd1752af",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2828475": {
     "slug": "pokeoseuonnau",
@@ -5869,7 +5868,7 @@
       }
     ],
     "ko_hash": "1fcff562ea0ff61a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3454743": {
     "slug": "hanammisomyeongpumhanu",
@@ -5919,7 +5918,7 @@
       }
     ],
     "ko_hash": "379a2510a6a4dc5a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2831021": {
     "slug": "hanyangseolleongtang",
@@ -5960,7 +5959,7 @@
       }
     ],
     "ko_hash": "f8f44bda6f870c9c",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2781824": {
     "slug": "hanuiyagi",
@@ -5968,7 +5967,7 @@
     "name_ko": "한우이야기",
     "name_zh_hant": "韓牛故事",
     "name_zh_hant_source": "translated",
-    "summary": "韓牛故事的招牌菜是生牛肉片，也有沙朗、韓牛排骨湯、菲力等。營業時間為11:00–21:30，最後點餐20:40，全年無休。可以停車。",
+    "summary": "韓牛故事是水原市指定的模範餐廳，招牌菜是生牛肉片，也有沙朗、韓牛排骨湯、腰內肉等。營業時間為11:00–21:30，最後點餐20:40，全年無休。可以停車。",
     "facts": {
       "address": {
         "value": "139 Seosuwon-ro 594beon-gil (Ipbuk-dong), Gwonseon-gu, Suwon-si, Gyeonggi-do"
@@ -6001,10 +6000,15 @@
         "q": "韓牛故事幾點前可以點餐？",
         "a": "最後點餐時間為20:40。",
         "source": "한국관광공사 TourAPI"
+      },
+      {
+        "q": "韓牛故事是指定店家嗎？",
+        "a": "是的，這裡是水原市指定的模範餐廳。",
+        "source": "https://www.data.go.kr/data/3044660/fileData.do"
       }
     ],
-    "ko_hash": "42ad6df60113ad1d",
-    "translated_at": "2026-10-28"
+    "ko_hash": "cf8138861ac561e0",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2906356": {
     "slug": "hanjangeo",
@@ -6048,7 +6052,7 @@
       }
     ],
     "ko_hash": "b81d0532150a719b",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3356157": {
     "slug": "horang",
@@ -6083,7 +6087,7 @@
       }
     ],
     "ko_hash": "249e5fe1953cbdfd",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3494623": {
     "slug": "xr-beoseu-1795-haeng",
@@ -6130,7 +6134,7 @@
       }
     ],
     "ko_hash": "aa996c436de1fc01",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-129191": {
     "slug": "nahyeseokgeori",
@@ -6165,7 +6169,7 @@
       }
     ],
     "ko_hash": "c4eb61c28d444086",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2613657": {
     "slug": "dongbukgongsimdon",
@@ -6220,7 +6224,7 @@
       }
     ],
     "ko_hash": "fad2452373109656",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2613658": {
     "slug": "banghwasuryujeong",
@@ -6272,7 +6276,7 @@
       }
     ],
     "ko_hash": "6668ec496824522c",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-316296": {
     "slug": "bongnyeongsa",
@@ -6318,7 +6322,7 @@
       }
     ],
     "ko_hash": "dc8127aaa9693652",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2613659": {
     "slug": "bongdon",
@@ -6361,7 +6365,7 @@
       }
     ],
     "ko_hash": "e5b4d9e7bed60acc",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2781854": {
     "slug": "seohogongwon",
@@ -6405,7 +6409,7 @@
       }
     ],
     "ko_hash": "3254b30418de5742",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2739474": {
     "slug": "seohokkonmoegongwon",
@@ -6449,7 +6453,7 @@
       }
     ],
     "ko_hash": "0e89a7b81c252d98",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2667588": {
     "slug": "suwon-gongbanggeori",
@@ -6487,7 +6491,7 @@
       }
     ],
     "ko_hash": "91e798ba2b9f7b02",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3033796": {
     "slug": "suwon-gu-bugugwon",
@@ -6527,7 +6531,7 @@
       }
     ],
     "ko_hash": "df314ddfdf9e2021",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2946407": {
     "slug": "suwon-jidongbyeokhwamaeul",
@@ -6568,7 +6572,7 @@
       }
     ],
     "ko_hash": "a2bdebc99a224b04",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3081123": {
     "slug": "suwon-hyeonchungtap",
@@ -6603,7 +6607,7 @@
       }
     ],
     "ko_hash": "1a70ad6bdd6f29a3",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-736662": {
     "slug": "suwon-hwaryeongjeon",
@@ -6660,7 +6664,7 @@
       }
     ],
     "ko_hash": "2c72ed32a9c30ec2",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-486986": {
     "slug": "suwonsa",
@@ -6712,7 +6716,7 @@
       }
     ],
     "ko_hash": "a21aa97354a2111e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3080477": {
     "slug": "suwonjeontongmunhwagwan",
@@ -6767,7 +6771,7 @@
       }
     ],
     "ko_hash": "2cc5e37c504ab675",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2613664": {
     "slug": "suwontongdakgeori",
@@ -6816,7 +6820,7 @@
       }
     ],
     "ko_hash": "6c6fd4337474c320",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-264400": {
     "slug": "suwonhyanggyo",
@@ -6854,7 +6858,7 @@
       }
     ],
     "ko_hash": "eb769b7e172f9723",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2480899": {
     "slug": "suwonhwaseong-gwangwangteukgu",
@@ -6911,7 +6915,7 @@
       }
     ],
     "ko_hash": "057a7ce8562d4bbd",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4067984": {
     "slug": "suwonhwaseong-seonggwakgil",
@@ -6949,7 +6953,7 @@
       }
     ],
     "ko_hash": "f9a67cb9a37c1b8f",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2745735": {
     "slug": "sukjigongwon",
@@ -6993,7 +6997,7 @@
       }
     ],
     "ko_hash": "f37728dd986dd6fd",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-1064469": {
     "slug": "yeonmudae",
@@ -7050,7 +7054,7 @@
       }
     ],
     "ko_hash": "3290462c52c2e8e7",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3489886": {
     "slug": "wangui-golmogyeohaeng",
@@ -7096,7 +7100,7 @@
       }
     ],
     "ko_hash": "92c4e416cce9ff05",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-126618": {
     "slug": "ingyeyesulgongwon",
@@ -7153,7 +7157,7 @@
       }
     ],
     "ko_hash": "bf53c901994ac183",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-264390": {
     "slug": "janganmun",
@@ -7202,7 +7206,7 @@
       }
     ],
     "ko_hash": "3c19df55a29290c5",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-264392": {
     "slug": "changnyongmun",
@@ -7252,7 +7256,7 @@
       }
     ],
     "ko_hash": "403de9a6070d5df6",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-125512": {
     "slug": "paldalgongwon",
@@ -7293,7 +7297,7 @@
       }
     ],
     "ko_hash": "858013bfa07c7fb3",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-264386": {
     "slug": "paldalmun",
@@ -7344,7 +7348,7 @@
       }
     ],
     "ko_hash": "70912cedd92d57e1",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-482258": {
     "slug": "paldalsa",
@@ -7385,7 +7389,7 @@
       }
     ],
     "ko_hash": "3063c6de3cb822ca",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2714556": {
     "slug": "paldalsan",
@@ -7429,7 +7433,7 @@
       }
     ],
     "ko_hash": "b5cf4fc05be974cb",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2745995": {
     "slug": "haenggungdong-byeokhwamaeul",
@@ -7473,7 +7477,7 @@
       }
     ],
     "ko_hash": "447e5f36a0d6d39b",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3033047": {
     "slug": "haengnidangil",
@@ -7508,7 +7512,7 @@
       }
     ],
     "ko_hash": "039bf3b7f17fe48d",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2741604": {
     "slug": "hwaseogongwon",
@@ -7549,7 +7553,7 @@
       }
     ],
     "ko_hash": "fff221af9df53344",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-264388": {
     "slug": "hwaseomun",
@@ -7604,7 +7608,7 @@
       }
     ],
     "ko_hash": "ea1a5f5066bb345e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-264402": {
     "slug": "hwaseongeocha",
@@ -7670,7 +7674,7 @@
       }
     ],
     "ko_hash": "0d24b74d4c769321",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-129437": {
     "slug": "hwaseonghaenggung",
@@ -7678,7 +7682,7 @@
     "name_ko": "화성행궁",
     "name_zh_hant": "華城行宮",
     "name_zh_hant_source": "translated",
-    "summary": "華城行宮於2026年10月30日（週五）–11月1日（週日）09:00–21:30開放，最後入場為21:00。平時無公休日。各來源的開放時間不同，請出發前致電確認。",
+    "summary": "華城行宮的開放時間為夏季（3–10月）09:00–18:00、冬季（11–2月）09:00–17:00，全年無休。個人門票為成人2,000韓元、青少年／軍人1,500韓元、國小學生1,000韓元。可以停車，停車費為小型車最初30分鐘900韓元等。",
     "facts": {
       "address": {
         "value": "825 Jeongjo-ro (Namchang-dong), Paldal-gu, Suwon-si, Gyeonggi-do"
@@ -7733,23 +7737,18 @@
     "details": [],
     "faq": [
       {
-        "q": "華城行宮在2026年10月30日（週五）–11月1日（週日）開放到幾點？",
-        "a": "開放時間為09:00–21:30。最後入場時間為21:00。前往前請先確認公告。",
-        "source": "https://www.swcf.or.kr/?p=260"
-      },
-      {
         "q": "華城行宮週一也開放嗎？",
         "a": "是的，全年無休。",
         "source": "한국관광공사 TourAPI"
       },
       {
-        "q": "華城行宮幾點開門？",
-        "a": "各來源的開放時間不同。韓國觀光公社的資料為夏季（3–10月）09:00–18:00、冬季（11–2月）09:00–17:00。水原文化財團的資料為09:00–18:00（參觀時間結束前1小時停止入場）。請出發前致電確認。",
+        "q": "華城行宮的開放時間會依季節而不同嗎？",
+        "a": "是的，夏季（3–10月）09:00–18:00，冬季（11–2月）09:00–17:00。",
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "e0abff8338809ffa",
-    "translated_at": "2026-10-28"
+    "ko_hash": "4d81b554dccec0e5",
+    "translated_at": "2026-11-05"
   },
   "tourapi-264394": {
     "slug": "hwahongmun",
@@ -7798,7 +7797,7 @@
       }
     ],
     "ko_hash": "63184d36f2b43152",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-128985": {
     "slug": "hyowongongwon",
@@ -7858,7 +7857,7 @@
       }
     ],
     "ko_hash": "f88e7a6c1080b074",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-750947": {
     "slug": "hyowongongwon-wolhwawon",
@@ -7902,7 +7901,7 @@
       }
     ],
     "ko_hash": "e21bd741f39d6fdb",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-264408": {
     "slug": "hyowonui-jong-seojangdae",
@@ -7947,7 +7946,7 @@
       }
     ],
     "ko_hash": "aa3f17059423b81b",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3084989": {
     "slug": "gyeonggimunhwajaedan-ateuhol",
@@ -7982,7 +7981,7 @@
       }
     ],
     "ko_hash": "16837c4c86a66c60",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-130489": {
     "slug": "gyeonggiateusenteo",
@@ -8048,7 +8047,7 @@
       }
     ],
     "ko_hash": "8412cdec44ddd43a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2630998": {
     "slug": "mirinaemasulgeukdan-eunhasuhol",
@@ -8086,7 +8085,7 @@
       }
     ],
     "ko_hash": "d4fe6c765d7b1559",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3351028": {
     "slug": "suwon-woldeukeopgyeonggijang-chukgubangmulgwan",
@@ -8135,7 +8134,7 @@
       }
     ],
     "ko_hash": "8f72673ae06f67c5",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-130829": {
     "slug": "suwonseongyeongdoseogwan",
@@ -8195,7 +8194,7 @@
       }
     ],
     "ko_hash": "d02656255d72d789",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2033483": {
     "slug": "suwonsirimmisulgwan",
@@ -8258,7 +8257,7 @@
       }
     ],
     "ko_hash": "feb9e2fffb6a6d6a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-130828": {
     "slug": "suwonsiripjungangdoseogwan",
@@ -8318,7 +8317,7 @@
       }
     ],
     "ko_hash": "65221a339b1bb6ee",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4039864": {
     "slug": "suwonsimidieosenteo",
@@ -8358,7 +8357,7 @@
       }
     ],
     "ko_hash": "48102ad8db80126d",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-130095": {
     "slug": "suwonsiminhoegwan",
@@ -8387,7 +8386,7 @@
         "value": "依演出而異"
       },
       "infocenter": {
-        "value": "031-228-4612"
+        "value": "031-244-2162"
       },
       "creditcard": {
         "value": "無"
@@ -8416,15 +8415,10 @@
         "q": "參觀水原市民會館需要多久時間？",
         "a": "所需時間依演出而不同。",
         "source": "한국관광공사 TourAPI"
-      },
-      {
-        "q": "水原市民會館可以停車嗎？",
-        "a": "是的，可以停車。",
-        "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "43a0880de399b5de",
-    "translated_at": "2026-10-28"
+    "ko_hash": "266d2f9e3363152a",
+    "translated_at": "2026-11-05"
   },
   "tourapi-130094": {
     "slug": "suwonyaoeeumakdang",
@@ -8450,7 +8444,7 @@
         "value": "可"
       },
       "infocenter": {
-        "value": "水原市演出部 031-250-5300"
+        "value": "031-238-5740"
       },
       "creditcard": {
         "value": "無"
@@ -8474,15 +8468,10 @@
         "q": "水原露天音樂堂可以停車嗎？",
         "a": "是的，可以停車。",
         "source": "한국관광공사 TourAPI"
-      },
-      {
-        "q": "水原露天音樂堂的洽詢電話是多少？",
-        "a": "洽詢電話為031-250-5300。",
-        "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "abc5e98719c8c512",
-    "translated_at": "2026-10-28"
+    "ko_hash": "5d81dadbadd73baa",
+    "translated_at": "2026-11-05"
   },
   "tourapi-1921150": {
     "slug": "suwonhwaseongbangmulgwan",
@@ -8552,7 +8541,7 @@
       }
     ],
     "ko_hash": "679a7cfdb4d631c0",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3304086": {
     "slug": "jeongjotemagongyeonjang",
@@ -8584,7 +8573,7 @@
       }
     ],
     "ko_hash": "38d420a7aca0c529",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2553414": {
     "slug": "haeummisulgwan",
@@ -8635,7 +8624,7 @@
       }
     ],
     "ko_hash": "5922d78fe1fd0ed7",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-1835388": {
     "slug": "jungbokdeulgil",
@@ -8643,25 +8632,34 @@
     "name_ko": "중복들길(서호공원입구 ~ 배양교)",
     "name_zh_hant": "Jungbokdeul步道（西湖公園入口–Baeyang橋）",
     "name_zh_hant_source": "translated",
-    "summary": "Jungbokdeul步道（西湖公園入口–Baeyang橋）位於八達區西湖川路 815（華西洞），無需門票即可參觀。",
+    "summary": "Jungbokdeul步道（西湖公園入口–Baeyang橋）全年無休，全天開放。無需門票即可參觀。",
     "facts": {
       "address": {
         "value": "815 Seohocheon-gil (Hwaseo-dong), Paldal-gu, Suwon-si, Gyeonggi-do"
       },
+      "usetime": {
+        "value": "全天開放"
+      },
+      "restdate": {
+        "value": "全年無休"
+      },
       "usefee": {
         "value": "免費"
+      },
+      "infocenter": {
+        "value": "京畿古道中心 031-231-8524"
       }
     },
     "details": [],
     "faq": [
       {
-        "q": "Jungbokdeul步道（西湖公園入口–Baeyang橋）需要門票嗎？",
-        "a": "不需要，無需門票即可參觀。",
+        "q": "Jungbokdeul步道（西湖公園入口–Baeyang橋）週一也開放嗎？",
+        "a": "是的，全年無休。",
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "2b7221a5448d894e",
-    "translated_at": "2026-10-28"
+    "ko_hash": "c7b7dc17f9c82aca",
+    "translated_at": "2026-11-05"
   },
   "tourapi-131719": {
     "slug": "suwonwoldeukeopgyeonggijang",
@@ -8712,7 +8710,7 @@
       }
     ],
     "ko_hash": "e3c89a0d1381f446",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2714220": {
     "slug": "peullaing-suwon",
@@ -8720,7 +8718,7 @@
     "name_ko": "플라잉 수원",
     "name_zh_hant": "Flying水原",
     "name_zh_hant_source": "TourAPI ChtService2",
-    "summary": "Flying水原公告2026年11月1日（週日）–2027年1月31日（週日）休息。平時無公休日。各來源的開放時間不同，請出發前致電確認。",
+    "summary": "Flying水原公告2026年11月1日（週日）–2027年1月31日（週日）休息。Flying水原的開放時間為平日13:00–22:00（末班21:30）、週末11:00–22:00（末班21:30），全年無休。門票為成人24,000韓元等。",
     "facts": {
       "address": {
         "value": "697 Gyeongsu-daero (Ji-dong), Paldal-gu, Suwon-si, Gyeonggi-do"
@@ -8758,15 +8756,10 @@
         "q": "Flying水原在2026年11月1日（週日）–2027年1月31日（週日）也開放嗎？",
         "a": "不會。已公告該期間休息。前往前請先確認公告。",
         "source": "https://www.flyingsuwon.com/"
-      },
-      {
-        "q": "Flying水原幾點開門？",
-        "a": "各來源的開放時間不同。韓國觀光公社的資料為平日13:00–22:00（最後飛行21:30）、週末11:00–22:00（最後飛行21:30）。水原文化財團的資料為平日12:30–21:30、週末及國定假日11:00–22:00等。請出發前致電確認。",
-        "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "2023f4e49f858b85",
-    "translated_at": "2026-10-28"
+    "ko_hash": "9fd79d6bc3e5bc0b",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2916328": {
     "slug": "ak-peullaja-suwon",
@@ -8813,7 +8806,7 @@
       }
     ],
     "ko_hash": "fd44390552c77c51",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2753679": {
     "slug": "nammullodeosijang",
@@ -8854,7 +8847,7 @@
       }
     ],
     "ko_hash": "19ac09159148de03",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2753395": {
     "slug": "maesansijang",
@@ -8895,7 +8888,7 @@
       }
     ],
     "ko_hash": "73bec6bfc3dac813",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-1177952": {
     "slug": "motgoljonghapsijang",
@@ -8941,7 +8934,7 @@
       }
     ],
     "ko_hash": "bcadcfa101f3b4e8",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2753669": {
     "slug": "minarigwangsijang",
@@ -8985,7 +8978,7 @@
       }
     ],
     "ko_hash": "9d924d113ceb980a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2589025": {
     "slug": "suwon-nammunsijang",
@@ -9029,7 +9022,7 @@
       }
     ],
     "ko_hash": "00ea1c08501771f2",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-132352": {
     "slug": "suwon-yeongdongsijang",
@@ -9073,7 +9066,7 @@
       }
     ],
     "ko_hash": "6fe10847c4fe44a5",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2753666": {
     "slug": "suwonyeokjeonsijang",
@@ -9114,7 +9107,7 @@
       }
     ],
     "ko_hash": "5fd45945c9f92636",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3083201": {
     "slug": "seumoeo-paektori",
@@ -9155,7 +9148,7 @@
       }
     ],
     "ko_hash": "64649419e933fd28",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2752971": {
     "slug": "jidongsijang",
@@ -9199,7 +9192,7 @@
       }
     ],
     "ko_hash": "6787b33d20a66d14",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2752650": {
     "slug": "paldalmunsijang",
@@ -9243,7 +9236,7 @@
       }
     ],
     "ko_hash": "d1c20260c82c9bc2",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3351843": {
     "slug": "hwaseosijang",
@@ -9278,7 +9271,7 @@
       }
     ],
     "ko_hash": "b0515f0ed5716f9b",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3105334": {
     "slug": "133-patirum-hanokseuteijeom",
@@ -9330,7 +9323,7 @@
       }
     ],
     "ko_hash": "403ea9672824b044",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2846932": {
     "slug": "dune45-hotel",
@@ -9379,7 +9372,7 @@
       }
     ],
     "ko_hash": "6447d8bbd1410ecc",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2849741": {
     "slug": "s-stay-hotel",
@@ -9428,7 +9421,7 @@
       }
     ],
     "ko_hash": "f21a658501201f1e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2849981": {
     "slug": "neombeo-25-suwonhwaseonghaenggungjeom",
@@ -9471,7 +9464,7 @@
       }
     ],
     "ko_hash": "c5f7efdb23b9b445",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3511808": {
     "slug": "nobotel-aembaeseodeo-suwon",
@@ -9520,7 +9513,7 @@
       }
     ],
     "ko_hash": "b58dc23a30bea91e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3483793": {
     "slug": "deohyusik-aneukhotel-suwon-ingyejeom",
@@ -9569,7 +9562,7 @@
       }
     ],
     "ko_hash": "e086e42dc035151b",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2918709": {
     "slug": "dono-1796-hotel",
@@ -9612,7 +9605,7 @@
       }
     ],
     "ko_hash": "21683003e7b1bf75",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-971242": {
     "slug": "ramadapeuraja-suwonhotel",
@@ -9676,7 +9669,7 @@
       }
     ],
     "ko_hash": "0dab32afdf52f5c9",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2445211": {
     "slug": "reubonsuwonsilkeurodeuhotel",
@@ -9734,7 +9727,7 @@
       }
     ],
     "ko_hash": "f17492d9bcba8a36",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-143140": {
     "slug": "suwon-koria-hotel",
@@ -9789,7 +9782,7 @@
       }
     ],
     "ko_hash": "96bf8ab20ee5a134",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3438561": {
     "slug": "seuteiyonggung",
@@ -9844,7 +9837,7 @@
       }
     ],
     "ko_hash": "14b329d376672858",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2849935": {
     "slug": "aibi-seutei",
@@ -9893,7 +9886,7 @@
       }
     ],
     "ko_hash": "4ec317141109923c",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3102131": {
     "slug": "yeoyeojae",
@@ -9951,7 +9944,7 @@
       }
     ],
     "ko_hash": "b44c20ae5e88530b",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2848421": {
     "slug": "oreusehotel",
@@ -9994,7 +9987,7 @@
       }
     ],
     "ko_hash": "d22009fbcf391398",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-986600": {
     "slug": "ibiseu-aembaeseodeo-suwon",
@@ -10058,7 +10051,7 @@
       }
     ],
     "ko_hash": "67c22e01af813c74",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2927029": {
     "slug": "haedeunhotel-haiendeu",
@@ -10104,7 +10097,7 @@
       }
     ],
     "ko_hash": "f1f28a078b1f0122",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2849962": {
     "slug": "haesihotel",
@@ -10150,7 +10143,7 @@
       }
     ],
     "ko_hash": "921195700c834b20",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2918752": {
     "slug": "hotel-166",
@@ -10193,7 +10186,7 @@
       }
     ],
     "ko_hash": "dd1e833162ba63bf",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2848435": {
     "slug": "hotel-areutte",
@@ -10239,7 +10232,7 @@
       }
     ],
     "ko_hash": "6f14d335748db07c",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2848429": {
     "slug": "hoteldeoseutail",
@@ -10285,7 +10278,7 @@
       }
     ],
     "ko_hash": "2155b71bbb21a334",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2607118": {
     "slug": "daewonok",
@@ -10329,7 +10322,7 @@
       }
     ],
     "ko_hash": "3a71ceb65712e348",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2747099": {
     "slug": "100-nyeonhanu",
@@ -10378,7 +10371,7 @@
       }
     ],
     "ko_hash": "ea3a74703f2523fd",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2892852": {
     "slug": "91-keopi",
@@ -10386,13 +10379,13 @@
     "name_ko": "91커피",
     "name_zh_hant": "91咖啡",
     "name_zh_hant_source": "translated",
-    "summary": "91咖啡的招牌菜是91拿鐵，也有哈根達斯拿鐵、抹茶Seco、手工奶茶等。營業時間為平日10:00–20:00、最後點餐19:30，週末10:00–22:00、最後點餐19:30，全年無休。無法停車。",
+    "summary": "91咖啡的招牌菜是91拿鐵，也有哈根達斯拿鐵、抹茶Seco、手工奶茶等。營業時間為平日10:00–18:00、最後點餐17:30，週末10:00–21:00、最後點餐20:30，全年無休。無法停車。",
     "facts": {
       "address": {
         "value": "4 Haenggung-ro 26beon-gil (Namchang-dong), Paldal-gu, Suwon-si, Gyeonggi-do"
       },
       "usetime": {
-        "value": "[平日]\n- 10:00–20:00\n- 最後點餐 19:30\n[週末]\n- 10:00–22:00\n- 最後點餐 19:30"
+        "value": "[平日]\n- 10:00–18:00\n- 最後點餐 17:30\n[週末]\n- 10:00–21:00\n- 最後點餐 20:30"
       },
       "restdate": {
         "value": "全年無休"
@@ -10407,19 +10400,19 @@
         "value": "哈根達斯拿鐵 / 抹茶Secco / 手工奶茶等"
       },
       "infocenter": {
-        "value": "010-8490-6983"
+        "value": "0507-1340-6983"
       }
     },
     "details": [],
     "faq": [
       {
         "q": "91咖啡幾點前可以點餐？",
-        "a": "最後點餐時間為19:30。",
+        "a": "最後點餐時間為17:30。",
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "20a24ef1b1151f0e",
-    "translated_at": "2026-10-28"
+    "ko_hash": "b13d3803c936d907",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2892876": {
     "slug": "955-kape",
@@ -10460,7 +10453,7 @@
       }
     ],
     "ko_hash": "099f129da9877cb8",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-602895": {
     "slug": "gabojeonggalbi",
@@ -10510,7 +10503,7 @@
       }
     ],
     "ko_hash": "fb7bc078a3277f23",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2892936": {
     "slug": "gyeongandang",
@@ -10518,25 +10511,25 @@
     "name_ko": "경안당",
     "name_zh_hant": "Gyeongandang",
     "name_zh_hant_source": "translated",
-    "summary": "Gyeongandang的招牌菜是五味子，也有起司奶油烤年糕、柿餅捲、紅茶等。營業時間為週一10:30–19:00、週日10:00–21:00、週六10:30–22:00，全年無休。無法停車。",
+    "summary": "Gyeongandang的招牌菜是紅茶，也有Gyeongandang御花茶點、覆盆子氣泡飲、五味子茶等。營業時間為週二至週四11:30–20:00、週五10:00–20:00、週末10:30–21:00，每週一公休。無法停車。",
     "facts": {
       "address": {
         "value": "8-15 Hwaseomun-ro 31beon-gil (Jangan-dong), Paldal-gu, Suwon-si, Gyeonggi-do"
       },
       "usetime": {
-        "value": "- 週一 10:30–19:00\n- 週二–週五 / 週日 10:00–21:00\n- 週六 10:30–22:00"
+        "value": "[週二–週四]\n- 11:30–20:00\n[週五]\n- 10:00–20:00\n[週末]\n- 10:30–21:00"
       },
       "restdate": {
-        "value": "全年無休"
+        "value": "每週一"
       },
       "parking": {
         "value": "不可"
       },
       "menu": {
-        "value": "五味子"
+        "value": "紅茶"
       },
       "treatmenu": {
-        "value": "起司奶油烤年糕 / 柿餅捲 / 紅茶等"
+        "value": "Gyeongandang御花茶點 / 覆盆子氣泡飲 / 五味子茶等"
       },
       "infocenter": {
         "value": "0507-1304-3962"
@@ -10545,13 +10538,13 @@
     "details": [],
     "faq": [
       {
-        "q": "Gyeongandang有公休日嗎？",
-        "a": "全年營業，沒有公休日。",
+        "q": "Gyeongandang什麼時候休息？",
+        "a": "每週一公休。",
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "08db1e31300a4d9e",
-    "translated_at": "2026-10-28"
+    "ko_hash": "090361363289677d",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2747096": {
     "slug": "gogirang",
@@ -10559,7 +10552,7 @@
     "name_ko": "고기랑",
     "name_zh_hant": "Gogirang",
     "name_zh_hant_source": "translated",
-    "summary": "Gogirang的招牌菜是鮮五花肉，也有手工豬排骨、鮮梅花肉、牛肋條等。營業時間為平日11:00–23:00、準備時間15:00–16:30、最後點餐21:40。週末11:00–23:00、最後點餐20:40，全年無休。可以停車。",
+    "summary": "Gogirang是水原市指定的模範餐廳，招牌菜是鮮五花肉，也有手工豬排骨、鮮豬頸肉、牛肋條等。營業時間為平日11:00–23:00、準備時間15:00–16:30、最後點餐21:40。週末11:00–23:00、最後點餐20:40，全年無休。可以停車。",
     "facts": {
       "address": {
         "value": "49 Gwongwang-ro 196beon-gil (Ingye-dong), Paldal-gu, Suwon-si, Gyeonggi-do"
@@ -10597,13 +10590,13 @@
         "source": "한국관광공사 TourAPI"
       },
       {
-        "q": "Gogirang有休息時間嗎？",
-        "a": "有，15:00–16:30為休息時間。",
+        "q": "Gogirang可以外帶嗎？",
+        "a": "可以，提供外帶。",
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "d6f62f868a7832e6",
-    "translated_at": "2026-10-28"
+    "ko_hash": "a53cac08b3556982",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2747116": {
     "slug": "godeungbanjeom",
@@ -10611,7 +10604,7 @@
     "name_ko": "고등반점",
     "name_zh_hant": "Godeung中華餐廳",
     "name_zh_hant_source": "translated",
-    "summary": "Godeung中華餐廳的招牌菜是糖醋肉，也有炸醬麵、乾炸醬麵、炒碼麵等。營業時間為11:00–21:00，準備時間（平日）15:00–17:00，最後點餐19:50。春節及中秋節當天公休。可以停車。",
+    "summary": "Godeung中華餐廳是水原市指定的模範餐廳，招牌菜是糖醋肉，也有炸醬麵、乾炸醬麵、炒碼麵等。營業時間為11:00–21:00，準備時間（平日）15:00–17:00，最後點餐19:50。春節及中秋節當天公休。可以停車。",
     "facts": {
       "address": {
         "value": "43 Paldal-ro 52beon-gil (Godeung-dong), Paldal-gu, Suwon-si, Gyeonggi-do"
@@ -10649,13 +10642,13 @@
         "source": "한국관광공사 TourAPI"
       },
       {
-        "q": "Godeung中華餐廳什麼時候休息？",
-        "a": "春節及中秋節當天公休。",
-        "source": "한국관광공사 TourAPI"
+        "q": "Godeung中華餐廳是指定店家嗎？",
+        "a": "是的，這裡是水原市指定的模範餐廳。",
+        "source": "https://www.data.go.kr/data/3044660/fileData.do"
       }
     ],
-    "ko_hash": "b218ca61d34ff6dc",
-    "translated_at": "2026-10-28"
+    "ko_hash": "ebd746e662270855",
+    "translated_at": "2026-11-05"
   },
   "tourapi-3355253": {
     "slug": "goldiseu",
@@ -10690,7 +10683,7 @@
       }
     ],
     "ko_hash": "de6f4b0b34e24807",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3356102": {
     "slug": "kkungnyau-haenggungjeom",
@@ -10725,7 +10718,7 @@
       }
     ],
     "ko_hash": "e6de808c979c6018",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2765607": {
     "slug": "deoyuropieon",
@@ -10769,7 +10762,7 @@
       }
     ],
     "ko_hash": "f0bd77001851e81a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-133048": {
     "slug": "dukkeobijip",
@@ -10777,7 +10770,7 @@
     "name_ko": "두꺼비집",
     "name_zh_hant": "Dukkeobijip",
     "name_zh_hant_source": "translated",
-    "summary": "Dukkeobijip的招牌菜是部隊鍋，也有綜合燒烤。傳統節日連假休息，營業時間為09:30–21:00。可以停車。",
+    "summary": "Dukkeobijip是水原市指定的模範餐廳，招牌菜是部隊鍋，也有綜合燒烤。傳統節日連假休息，營業時間為09:30–21:00。可以停車。",
     "facts": {
       "address": {
         "value": "100 Hyanggyo-ro, Paldal-gu, Suwon-si, Gyeonggi-do"
@@ -10820,8 +10813,8 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "a3dfe3dc4656dadf",
-    "translated_at": "2026-10-28"
+    "ko_hash": "99a24869222def36",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2893055": {
     "slug": "raikeu-no-adeo",
@@ -10868,7 +10861,7 @@
       }
     ],
     "ko_hash": "9ae56841923bef0a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2893073": {
     "slug": "redeubeurikkeopihauseu",
@@ -10912,7 +10905,7 @@
       }
     ],
     "ko_hash": "cefc58891b9de2ee",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2846626": {
     "slug": "romagyeongyangsik",
@@ -10956,7 +10949,7 @@
       }
     ],
     "ko_hash": "82b9a12da5dfcceb",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2893147": {
     "slug": "reuppangdeupariaenbeureonchihauseu-haenggungjeom",
@@ -10964,22 +10957,25 @@
     "name_ko": "르빵드파리앤브런치하우스 행궁점",
     "name_zh_hant": "Le Pain de Paris & Brunch House行宮店",
     "name_zh_hant_source": "translated",
-    "summary": "Le Pain de Paris & Brunch House行宮店的招牌菜是青葡萄優格派，也有甜蒜可頌、烤布蕾派、蒙布朗奶油派等。營業時間為10:30–20:30，最後點餐20:00，全年無休。",
+    "summary": "Le Pain de Paris & Brunch House行宮店的招牌菜是義式濃縮咖啡，也有康寶藍、澳式黑咖啡、原創鍋煮奶油拿鐵等。營業時間為10:30–20:30（最後點餐20:00），全年無休。無法停車。",
     "facts": {
       "address": {
         "value": "3-1 Sinpung-ro 63beon-gil (Jangan-dong), Paldal-gu, Suwon-si, Gyeonggi-do"
       },
       "usetime": {
-        "value": "- 10:30–20:30\n- 最後點餐 20:00"
+        "value": "10:30–20:30（最後點餐20:00）"
       },
       "restdate": {
         "value": "全年無休"
       },
+      "parking": {
+        "value": "不可"
+      },
       "menu": {
-        "value": "青葡萄優格派"
+        "value": "義式濃縮咖啡"
       },
       "treatmenu": {
-        "value": "甜蒜可頌 / 烤布蕾派 / 蒙布朗奶油派等"
+        "value": "康寶藍 / 澳式黑咖啡 / 原創鍋煮奶油拿鐵等"
       },
       "packing": {
         "value": "可"
@@ -10996,8 +10992,8 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "ffefcfcba635229d",
-    "translated_at": "2026-10-28"
+    "ko_hash": "25545de1d3223827",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2745738": {
     "slug": "macho",
@@ -11049,7 +11045,7 @@
       }
     ],
     "ko_hash": "c0030e180d8695e0",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2745740": {
     "slug": "mapobonga",
@@ -11104,7 +11100,7 @@
       }
     ],
     "ko_hash": "f9ac4374bc334e1c",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2875136": {
     "slug": "mansujeonbok",
@@ -11148,7 +11144,7 @@
       }
     ],
     "ko_hash": "16af1ee2541277c1",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-1847681": {
     "slug": "maeilgimchidamgeuneunjip",
@@ -11194,7 +11190,7 @@
       }
     ],
     "ko_hash": "bbfe41082c795bc1",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2893186": {
     "slug": "maeteugeurin",
@@ -11202,13 +11198,13 @@
     "name_ko": "매트그린",
     "name_zh_hant": "Matte Green",
     "name_zh_hant_source": "translated",
-    "summary": "Matte Green的招牌菜是酥粒，也有純奶油、抹茶奶油、檸檬紅茶等。每週二公休，營業時間為10:30–22:00。無法停車。",
+    "summary": "Matte Green的招牌菜是酥粒，也有冰淇淋拿鐵、青梅薄荷茶、柚子抹茶拿鐵等。營業時間為週一至週四10:30–21:00（最後點餐20:30）、週五至週日10:30–22:00（最後點餐21:30），每週二公休。無法停車。",
     "facts": {
       "address": {
         "value": "8 Hwaseomun-ro 45beon-gil (Jangan-dong), Paldal-gu, Suwon-si, Gyeonggi-do"
       },
       "usetime": {
-        "value": "10:30–22:00"
+        "value": "[週一–週四]\n- 10:30–21:00\n- 最後點餐 20:30\n[週五–週日]\n- 10:30–22:00\n- 最後點餐 21:30"
       },
       "restdate": {
         "value": "每週二"
@@ -11220,7 +11216,7 @@
         "value": "酥粒"
       },
       "treatmenu": {
-        "value": "純奶油 / 抹茶奶油 / 檸檬紅茶等"
+        "value": "冰淇淋拿鐵 / 青梅薄荷茶 / 柚子抹茶拿鐵等"
       },
       "infocenter": {
         "value": "031-307-1321"
@@ -11229,13 +11225,13 @@
     "details": [],
     "faq": [
       {
-        "q": "Matte Green什麼時候休息？",
-        "a": "每週二公休。",
+        "q": "Matte Green幾點前可以點餐？",
+        "a": "最後點餐時間為20:30。",
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "29e7d841fa8deb4b",
-    "translated_at": "2026-10-28"
+    "ko_hash": "ee95be1cf5ad29b2",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2893218": {
     "slug": "memoriamanet",
@@ -11243,7 +11239,7 @@
     "name_ko": "메모리아마넷",
     "name_zh_hant": "Memoriamanet",
     "name_zh_hant_source": "translated",
-    "summary": "Memoriamanet的招牌菜是美式咖啡，也有咖啡拿鐵、BLT三明治、烤條狀年糕等。每週一公休，營業時間為11:00–22:00。",
+    "summary": "Memoriamanet的招牌菜是維也納牛奶咖啡，也有維也納黑咖啡、美式咖啡、咖啡拿鐵等。每週一公休，營業時間為11:00–22:00。無法停車。",
     "facts": {
       "address": {
         "value": "56-17 Haenggung-ro (Namchang-dong), Paldal-gu, Suwon-si, Gyeonggi-do"
@@ -11254,11 +11250,14 @@
       "restdate": {
         "value": "每週一"
       },
+      "parking": {
+        "value": "不可"
+      },
       "menu": {
-        "value": "美式咖啡"
+        "value": "維也納牛奶咖啡"
       },
       "treatmenu": {
-        "value": "拿鐵 / BLT三明治 / 烤條狀年糕等"
+        "value": "維也納黑咖啡 / 美式咖啡 / 咖啡拿鐵等"
       },
       "packing": {
         "value": "可"
@@ -11278,8 +11277,8 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "024f262a45a16189",
-    "translated_at": "2026-10-28"
+    "ko_hash": "49401c172e02bc0f",
+    "translated_at": "2026-11-05"
   },
   "tourapi-3358922": {
     "slug": "monami-kare",
@@ -11314,7 +11313,7 @@
       }
     ],
     "ko_hash": "0357cf9240ce8b16",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2867036": {
     "slug": "moikeopikeullaesik",
@@ -11358,7 +11357,7 @@
       }
     ],
     "ko_hash": "da7bcc7345a801a4",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3413591": {
     "slug": "mongtedeu",
@@ -11402,7 +11401,7 @@
       }
     ],
     "ko_hash": "cb3079a31a8e3a92",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-808072": {
     "slug": "mudeungsan",
@@ -11449,7 +11448,7 @@
       }
     ],
     "ko_hash": "e863903c68ec3c6d",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2867393": {
     "slug": "minamichamchi",
@@ -11487,7 +11486,7 @@
       }
     ],
     "ko_hash": "fa32da3c59c8b0b3",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2850331": {
     "slug": "misikgauijubang",
@@ -11528,7 +11527,7 @@
       }
     ],
     "ko_hash": "c781b38497e084ff",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2765531": {
     "slug": "baekcheongukalguksu",
@@ -11536,7 +11535,7 @@
     "name_ko": "백청우칼국수",
     "name_zh_hant": "Baekcheongu刀切麵",
     "name_zh_hant_source": "translated",
-    "summary": "Baekcheongu刀切麵的招牌菜是海鮮刀切麵，也有海鮮餃子火鍋、蒸餃、海鮮鮑魚刀切麵等。營業時間為09:40–20:30，最後點餐19:50，全年無休。可以停車。",
+    "summary": "Baekcheongu刀切麵獲指定為百年老店及模範餐廳，招牌菜是海鮮刀切麵，也有海鮮餃子火鍋、蒸餃、海鮮鮑魚刀切麵等。營業時間為09:40–20:30，最後點餐19:50，全年無休。可以停車。",
     "facts": {
       "address": {
         "value": "253 Jangdari-ro (Ingye-dong), Paldal-gu, Suwon-si, Gyeonggi-do"
@@ -11574,13 +11573,13 @@
         "source": "한국관광공사 TourAPI"
       },
       {
-        "q": "Baekcheongu刀切麵可以外帶嗎？",
-        "a": "可以，提供外帶。",
-        "source": "한국관광공사 TourAPI"
+        "q": "Baekcheongu刀切麵是指定店家嗎？",
+        "a": "是的，這裡獲指定為百年老店及模範餐廳。",
+        "source": "https://www.data.go.kr/data/15132695/fileData.do"
       }
     ],
-    "ko_hash": "aedf11f06d6b37ed",
-    "translated_at": "2026-10-28"
+    "ko_hash": "cef4ecc36f62e5fe",
+    "translated_at": "2026-11-05"
   },
   "tourapi-602854": {
     "slug": "bonsuwongalbi",
@@ -11588,7 +11587,7 @@
     "name_ko": "본수원갈비",
     "name_zh_hant": "本水原排骨",
     "name_zh_hant_source": "TourAPI ChtService2",
-    "summary": "本水原排骨的招牌菜是鮮排骨，也有調味排骨、排骨湯、冷麵等。營業時間為週一及週日11:30–21:00、最後點餐20:00，11:30–21:30、最後點餐20:30。春節及中秋節連假公休。可以停車。",
+    "summary": "本水原排骨是水原市指定的模範餐廳，招牌菜是鮮排骨，也有調味排骨、排骨湯、冷麵等。營業時間為週一及週日11:30–21:00、最後點餐20:00，11:30–21:30、最後點餐20:30。春節及中秋節連假公休。可以停車。",
     "facts": {
       "address": {
         "value": "41, Jungbu-daero 223beon-gil, Paldal-gu, Suwon-si, Gyeonggi-do"
@@ -11629,8 +11628,8 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "88f97e226ee5ce0e",
-    "translated_at": "2026-10-28"
+    "ko_hash": "1a77c527730f2e97",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2893243": {
     "slug": "bonjireureu",
@@ -11638,13 +11637,13 @@
     "name_ko": "본지르르",
     "name_zh_hant": "Bonjireureu",
     "name_zh_hant_source": "translated",
-    "summary": "Bonjireureu的招牌菜是美式咖啡，也有義式濃縮咖啡、康寶藍、香草莢拿鐵等。全年無休，營業時間為12:00–23:00。無法停車。",
+    "summary": "Bonjireureu的招牌菜是美式咖啡，也有咖啡拿鐵、香草莢拿鐵、瑞士牛奶拿鐵等。全年無休，營業時間為11:00–23:00。無法停車。",
     "facts": {
       "address": {
         "value": "838 Jeongjo-ro (Buksu-dong), Paldal-gu, Suwon-si, Gyeonggi-do"
       },
       "usetime": {
-        "value": "12:00–23:00"
+        "value": "11:00–23:00"
       },
       "restdate": {
         "value": "全年無休"
@@ -11656,7 +11655,7 @@
         "value": "美式咖啡"
       },
       "treatmenu": {
-        "value": "濃縮咖啡 / 康寶藍濃縮咖啡 / 香草籽拿鐵等"
+        "value": "咖啡拿鐵 / 香草莢拿鐵 / 瑞士牛奶拿鐵等"
       },
       "infocenter": {
         "value": "0507-1382-4398"
@@ -11670,8 +11669,8 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "da6090acde702ffa",
-    "translated_at": "2026-10-28"
+    "ko_hash": "6ffb8473d1a294ce",
+    "translated_at": "2026-11-05"
   },
   "tourapi-3355255": {
     "slug": "samchunok",
@@ -11706,7 +11705,7 @@
       }
     ],
     "ko_hash": "332f5f5aac2441d8",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2876341": {
     "slug": "senteomkeopi",
@@ -11750,7 +11749,7 @@
       }
     ],
     "ko_hash": "476ee59bd78d6b0a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2867652": {
     "slug": "suwonmandu",
@@ -11788,7 +11787,7 @@
       }
     ],
     "ko_hash": "3745ec3d36646c23",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2893530": {
     "slug": "seullousseonisaideu",
@@ -11796,13 +11795,13 @@
     "name_ko": "슬로우써니사이드",
     "name_zh_hant": "Slow Sunny Side",
     "name_zh_hant_source": "translated",
-    "summary": "Slow Sunny Side的招牌菜是香腸佐馬鈴薯泥早餐，也有農舍開放式三明治、辣味牛肉義大利麵、鷹嘴豆泥奶油麵疙瘩等。營業時間為10:30–19:30、最後點餐18:20，每週二公休。無法停車。",
+    "summary": "Slow Sunny Side的招牌菜是松露蘑菇帕尼尼，也有無花果法式吐司、辣牛肉醬義大利麵、松露馬鈴薯燉飯等。營業時間為10:30–19:30（最後點餐18:20），每週二公休。無法停車。",
     "facts": {
       "address": {
         "value": "13 Sinpung-ro 45beon-gil (Sinpung-dong), Paldal-gu, Suwon-si, Gyeonggi-do"
       },
       "usetime": {
-        "value": "- 10:30–19:30\n- 最後點餐 18:20"
+        "value": "10:30–19:30（最後點餐18:20）"
       },
       "restdate": {
         "value": "每週二"
@@ -11811,10 +11810,10 @@
         "value": "不可"
       },
       "menu": {
-        "value": "香腸薯泥早餐"
+        "value": "松露蘑菇帕尼尼"
       },
       "treatmenu": {
-        "value": "農舍開放式三明治 / 牛肉辣醬義大利麵 / 鷹嘴豆泥奶油麵疙瘩等"
+        "value": "無花果法式吐司 / 辣牛肉醬義大利麵 / 松露馬鈴薯燉飯等"
       },
       "packing": {
         "value": "可"
@@ -11831,8 +11830,8 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "695fcb698b1bd44e",
-    "translated_at": "2026-10-28"
+    "ko_hash": "c839ff05386e5903",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2867627": {
     "slug": "sigoljibureongissambap",
@@ -11873,7 +11872,7 @@
       }
     ],
     "ko_hash": "8cc1d24565c14cd2",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2867168": {
     "slug": "eogumi-bonjeom",
@@ -11925,7 +11924,7 @@
       }
     ],
     "ko_hash": "6493862d95009c1c",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2765517": {
     "slug": "eobanbelli-801",
@@ -11969,7 +11968,7 @@
       }
     ],
     "ko_hash": "7a7021719b66e1a9",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2893531": {
     "slug": "eonoldeucheom",
@@ -11977,13 +11976,13 @@
     "name_ko": "언올드첨",
     "name_zh_hant": "Eonoldeucheom",
     "name_zh_hant_source": "translated",
-    "summary": "Eonoldeucheom的招牌菜是美式咖啡，也有咖啡拿鐵、馥列白、香草拿鐵等。全年無休，營業時間為10:00–22:00。無法停車。",
+    "summary": "Eonoldeucheom的招牌菜是巴斯克起司蛋糕，也有回歸泥土、無花果蛋糕、布朗尼等。全年無休，營業時間為10:30–22:00。無法停車。",
     "facts": {
       "address": {
         "value": "76 Gohwa-ro 39beon-gil, Paldal-gu, Suwon-si, Gyeonggi-do"
       },
       "usetime": {
-        "value": "10:00–22:00"
+        "value": "10:30–22:00"
       },
       "restdate": {
         "value": "全年無休"
@@ -11992,10 +11991,10 @@
         "value": "不可"
       },
       "menu": {
-        "value": "美式咖啡"
+        "value": "巴斯克起司蛋糕"
       },
       "treatmenu": {
-        "value": "拿鐵、馥列白、香草拿鐵、黑奶油、抹茶牛奶、檸檬氣泡飲、白奶油、紅茶牛奶等"
+        "value": "回歸泥土 / 無花果蛋糕 / 布朗尼等"
       },
       "infocenter": {
         "value": "0507-1366-4129"
@@ -12009,8 +12008,8 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "784b4cc40d928013",
-    "translated_at": "2026-10-28"
+    "ko_hash": "f2b1c11dcb0bde8b",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2867885": {
     "slug": "yeonmil",
@@ -12054,7 +12053,7 @@
       }
     ],
     "ko_hash": "4d18d5cdffa44f45",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-274367": {
     "slug": "yeonpogalbi",
@@ -12062,7 +12061,7 @@
     "name_ko": "연포갈비",
     "name_zh_hant": "淵瀑排骨",
     "name_zh_hant_source": "TourAPI ChtService2",
-    "summary": "淵瀑排骨的招牌菜是調味排骨，也有鮮沙朗、鮮排骨、排骨套餐等。營業時間為11:20–21:00，最後點餐20:00，全年無休。可以停車。",
+    "summary": "淵瀑排骨是水原市指定的模範餐廳，招牌菜是調味排骨，也有鮮沙朗、鮮排骨、排骨套餐等。營業時間為11:20–21:00，最後點餐20:00，全年無休。可以停車。",
     "facts": {
       "address": {
         "value": "56-1, Jeongjo-ro 906beon-gil, Paldal-gu, Suwon-si, Gyeonggi-do"
@@ -12100,13 +12099,13 @@
         "source": "한국관광공사 TourAPI"
       },
       {
-        "q": "淵瀑排骨有公休日嗎？",
-        "a": "全年營業，沒有公休日。",
+        "q": "淵瀑排骨可以外帶嗎？",
+        "a": "可以，提供外帶。",
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "e0eca764f45ce249",
-    "translated_at": "2026-10-28"
+    "ko_hash": "056a206db7e0ade8",
+    "translated_at": "2026-11-05"
   },
   "tourapi-3355366": {
     "slug": "yeolduarudongjip",
@@ -12144,7 +12143,7 @@
       }
     ],
     "ko_hash": "5bc86b108eed570b",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2867891": {
     "slug": "yeongcheonsikdang",
@@ -12185,7 +12184,7 @@
       }
     ],
     "ko_hash": "6db12a602bc3233b",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2848162": {
     "slug": "yebaksa",
@@ -12229,7 +12228,7 @@
       }
     ],
     "ko_hash": "932955d51e3cb4ac",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2753978": {
     "slug": "oridaega",
@@ -12273,7 +12272,7 @@
       }
     ],
     "ko_hash": "0a6e6f83e541a26b",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2867664": {
     "slug": "okdongi",
@@ -12317,7 +12316,7 @@
       }
     ],
     "ko_hash": "540afee01fb5cadb",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2867501": {
     "slug": "unmello-1-hojeom",
@@ -12358,7 +12357,7 @@
       }
     ],
     "ko_hash": "a2a97b68d6c951e3",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2753972": {
     "slug": "yuchihoegwan",
@@ -12410,7 +12409,7 @@
       }
     ],
     "ko_hash": "d6db52d95c9b0dfc",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2765414": {
     "slug": "imonesonkalguksu",
@@ -12454,7 +12453,7 @@
       }
     ],
     "ko_hash": "fd566f5cb45186de",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2868632": {
     "slug": "ihwajeong",
@@ -12498,7 +12497,7 @@
       }
     ],
     "ko_hash": "776caa184aff8acc",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2892528": {
     "slug": "ilsangen",
@@ -12539,7 +12538,7 @@
       }
     ],
     "ko_hash": "179058ac283a9262",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-133405": {
     "slug": "ipjujip",
@@ -12547,7 +12546,7 @@
     "name_ko": "입주집",
     "name_zh_hant": "Ipjujip",
     "name_zh_hant_source": "translated",
-    "summary": "Ipjujip的招牌菜是綜合拼盤，也有烤牛小腸、烤牛皺胃、烤牛大腸等。營業時間為12:00–22:00、準備時間15:00–16:00、最後點餐21:20，每週日公休。可以停車。",
+    "summary": "Ipjujip獲指定為百年老店，招牌菜是綜合拼盤，也有烤牛小腸、烤牛皺胃、烤牛大腸等。營業時間為12:00–22:00、準備時間15:00–16:00、最後點餐21:20，每週日公休。可以停車。",
     "facts": {
       "address": {
         "value": "37 Paldalmun-ro 3beon-gil (Paldal-ro 1-ga), Paldal-gu, Suwon-si, Gyeonggi-do"
@@ -12579,13 +12578,13 @@
         "source": "한국관광공사 TourAPI"
       },
       {
-        "q": "Ipjujip有休息時間嗎？",
-        "a": "有，15:00–16:00為休息時間。",
-        "source": "한국관광공사 TourAPI"
+        "q": "Ipjujip是指定店家嗎？",
+        "a": "是的，這裡獲指定為百年老店。",
+        "source": "https://www.data.go.kr/data/15132695/fileData.do"
       }
     ],
-    "ko_hash": "70c99dfc287757e3",
-    "translated_at": "2026-10-28"
+    "ko_hash": "47046974dcb94036",
+    "translated_at": "2026-11-05"
   },
   "tourapi-4054880": {
     "slug": "jeongjiyeongkeopiroseuteojeu-haenggungbonjeom",
@@ -12626,7 +12625,7 @@
       }
     ],
     "ko_hash": "9d4c951d91e9f1f5",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2868608": {
     "slug": "jodaegambudaejjigae",
@@ -12670,7 +12669,7 @@
       }
     ],
     "ko_hash": "03f414e53a35e801",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3355152": {
     "slug": "jomadamkalguksu",
@@ -12702,7 +12701,7 @@
       }
     ],
     "ko_hash": "1cb3243fc2c3888b",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2873447": {
     "slug": "jinmitongdak",
@@ -12752,7 +12751,7 @@
       }
     ],
     "ko_hash": "d6c78891fefe9aea",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2904242": {
     "slug": "chaesanggung-suwonbonjeom",
@@ -12760,7 +12759,7 @@
     "name_ko": "채상궁 수원본점",
     "name_zh_hant": "Chaesanggung水原總店",
     "name_zh_hant_source": "translated",
-    "summary": "Chaesanggung水原總店的招牌菜是牛肉涮涮鍋，也有鴨肉菜包涮涮鍋。營業時間為11:00–21:30（最後點餐20:30），全年無休。可以停車。",
+    "summary": "Chaesanggung水原總店是水原市指定的模範餐廳，招牌菜是牛肉涮涮鍋，也有鴨肉菜包涮涮鍋。營業時間為11:00–21:30（最後點餐20:30），全年無休。可以停車。",
     "facts": {
       "address": {
         "value": "5-7 Suseong-ro 157beon-gil (Hwaseo-dong), Paldal-gu, Suwon-si, Gyeonggi-do"
@@ -12792,8 +12791,8 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "ef11a6a5e79b67c1",
-    "translated_at": "2026-10-28"
+    "ko_hash": "7d9a052894f75621",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2906138": {
     "slug": "kape-doan",
@@ -12834,7 +12833,7 @@
       }
     ],
     "ko_hash": "bc827770712a4292",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2851839": {
     "slug": "kape-diajeu",
@@ -12881,7 +12880,7 @@
       }
     ],
     "ko_hash": "2848c6c230c285c9",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2765417": {
     "slug": "kapemeibeun",
@@ -12931,7 +12930,7 @@
       }
     ],
     "ko_hash": "a14fcafacd8a72d6",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2875180": {
     "slug": "kollingudeu",
@@ -12981,7 +12980,7 @@
       }
     ],
     "ko_hash": "9d5e5d00f77d7095",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2905573": {
     "slug": "taerijutaek",
@@ -13022,7 +13021,7 @@
       }
     ],
     "ko_hash": "373eea47174ff5c7",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3445870": {
     "slug": "teurejeogadeun",
@@ -13063,7 +13062,7 @@
       }
     ],
     "ko_hash": "f8b091336daf11e8",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3355128": {
     "slug": "paldaljegwa",
@@ -13095,7 +13094,7 @@
       }
     ],
     "ko_hash": "afa7b14172d9ae0b",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2892874": {
     "slug": "pamtuhanok",
@@ -13103,13 +13102,13 @@
     "name_ko": "팜투하녹",
     "name_zh_hant": "Farm to Hanok",
     "name_zh_hant_source": "translated",
-    "summary": "Farm to Hanok的招牌菜是Farmtu拿鐵，也有鮭魚沙拉、墨西哥辣椒火腿起司帕尼尼、肉丸雞蛋燉菜等。營業時間為09:00–20:00，最後點餐19:00，全年無休。無法停車。",
+    "summary": "Farm to Hanok的招牌菜是Farmtu拿鐵，也有鮭魚沙拉、墨西哥辣椒火腿起司帕尼尼、肉丸雞蛋燉菜等。全年無休，營業時間為08:00–17:00。無法停車。",
     "facts": {
       "address": {
         "value": "63-18 Sinpung-ro 23beon-gil (Sinpung-dong), Paldal-gu, Suwon-si, Gyeonggi-do"
       },
       "usetime": {
-        "value": "- 09:00–20:00\n- 最後點餐 19:00"
+        "value": "08:00–17:00"
       },
       "restdate": {
         "value": "全年無休"
@@ -13130,13 +13129,13 @@
     "details": [],
     "faq": [
       {
-        "q": "Farm to Hanok幾點前可以點餐？",
-        "a": "最後點餐時間為19:00。",
+        "q": "Farm to Hanok有公休日嗎？",
+        "a": "全年營業，沒有公休日。",
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "5001bab8b77fa051",
-    "translated_at": "2026-10-28"
+    "ko_hash": "0029af5ca077b5ce",
+    "translated_at": "2026-11-05"
   },
   "tourapi-134966": {
     "slug": "hangukgwan",
@@ -13144,7 +13143,7 @@
     "name_ko": "한국관",
     "name_zh_hant": "韓國館",
     "name_zh_hant_source": "translated",
-    "summary": "韓國館的招牌菜是水原調味大排骨，也有水原鮮排骨、韓牛鮮肉特殊部位、排骨湯等。營業時間為10:30–21:30（最後點餐20:30），全年無休。可以停車。",
+    "summary": "韓國館是水原市指定的模範餐廳，招牌菜是水原調味大排骨，也有水原鮮排骨、韓牛鮮肉特殊部位、排骨湯等。營業時間為10:30–21:30（最後點餐20:30），全年無休。可以停車。",
     "facts": {
       "address": {
         "value": "16-8 Gwonseon-ro 741beon-gil (Ingye-dong), Paldal-gu, Suwon-si, Gyeonggi-do"
@@ -13176,13 +13175,13 @@
         "source": "한국관광공사 TourAPI"
       },
       {
-        "q": "韓國館有公休日嗎？",
-        "a": "全年營業，沒有公休日。",
-        "source": "한국관광공사 TourAPI"
+        "q": "韓國館是指定店家嗎？",
+        "a": "是的，這裡是水原市指定的模範餐廳。",
+        "source": "https://www.data.go.kr/data/3044660/fileData.do"
       }
     ],
-    "ko_hash": "04c13b5b08b3f6c8",
-    "translated_at": "2026-10-28"
+    "ko_hash": "f3b457db4364c5b5",
+    "translated_at": "2026-11-05"
   },
   "tourapi-3443160": {
     "slug": "hongnadeu-ingyenahyeseokjeom",
@@ -13223,7 +13222,7 @@
       }
     ],
     "ko_hash": "4fc51eafcc53a52a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2469037": {
     "slug": "himallayajeongwon",
@@ -13269,7 +13268,7 @@
       }
     ],
     "ko_hash": "d706449e4cc3e5fd",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2633915": {
     "slug": "gwanggyo-peuraibureukeujeonmangdae",
@@ -13322,7 +13321,7 @@
       }
     ],
     "ko_hash": "f1df357cb8080ef0",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2739469": {
     "slug": "gwanggyojunganggongwon",
@@ -13366,7 +13365,7 @@
       }
     ],
     "ko_hash": "863be6b0c642ad89",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2662855": {
     "slug": "gwanggyohosugongwon",
@@ -13419,7 +13418,7 @@
       }
     ],
     "ko_hash": "eb8c6628406af409",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2930334": {
     "slug": "gwanggyohosugongwon-ballyeogyeon-noriteo",
@@ -13460,7 +13459,7 @@
       }
     ],
     "ko_hash": "6df5424b627b0154",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2872885": {
     "slug": "geulbinnurigongwon",
@@ -13510,7 +13509,7 @@
       }
     ],
     "ko_hash": "a8fc7703be0836af",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2739476": {
     "slug": "maetangongwon",
@@ -13551,7 +13550,7 @@
       }
     ],
     "ko_hash": "7d9c78418ed6e274",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2781860": {
     "slug": "mulbongseoneorinigongwon",
@@ -13589,7 +13588,7 @@
       }
     ],
     "ko_hash": "4e008b266bd053c4",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2781864": {
     "slug": "bandalgongwon",
@@ -13630,7 +13629,7 @@
       }
     ],
     "ko_hash": "879bf3450daa3c06",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2745741": {
     "slug": "banyasa",
@@ -13671,7 +13670,7 @@
       }
     ],
     "ko_hash": "2065163c32b2cdf5",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2781847": {
     "slug": "bangjukgongwon",
@@ -13715,7 +13714,7 @@
       }
     ],
     "ko_hash": "082d121a020d878e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2462893": {
     "slug": "samseonginobeisyeonmyujieom",
@@ -13772,7 +13771,7 @@
       }
     ],
     "ko_hash": "2fe51d4baadd0677",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2745732": {
     "slug": "seongjukgongwon",
@@ -13813,7 +13812,7 @@
       }
     ],
     "ko_hash": "15ebef59aef31e73",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2742316": {
     "slug": "suwoneorinigyotonggongwon",
@@ -13865,7 +13864,7 @@
       }
     ],
     "ko_hash": "e7826b76e2548185",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3057779": {
     "slug": "sindongsubyeongongwon",
@@ -13900,7 +13899,7 @@
       }
     ],
     "ko_hash": "6bd0aadc9ac9351d",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-736630": {
     "slug": "simonseonsaengmyo",
@@ -13911,7 +13910,7 @@
     "summary": "沈溫先生墓全年無休，全天開放。無需門票即可參觀，但無法停車。",
     "facts": {
       "address": {
-        "value": "San 13-10, Iui-dong, Yeongtong-gu, Suwon-si, Gyeonggi-do"
+        "value": "San 13-10 Iui-dong, Yeongtong-gu, Suwon-si, Gyeonggi-do"
       },
       "usetime": {
         "value": "全天開放"
@@ -13926,7 +13925,7 @@
         "value": "不可"
       },
       "infocenter": {
-        "value": "水原市文化藝術科 031-228-3085"
+        "value": "水原市政府文化藝術科 031-228-3085"
       },
       "creditcard": {
         "value": "無"
@@ -13943,8 +13942,8 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "07a166c873cb1e51",
-    "translated_at": "2026-10-28"
+    "ko_hash": "53354ca246d31ea1",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2998800": {
     "slug": "yeongheungsumogwon",
@@ -14005,7 +14004,7 @@
       }
     ],
     "ko_hash": "a1424cc5ac2b31e2",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3426388": {
     "slug": "yeongheungsupgongwon",
@@ -14040,7 +14039,7 @@
       }
     ],
     "ko_hash": "6e9d9e55e07caf00",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-130919": {
     "slug": "gyeonggidaehakgyososeongbangmulgwan",
@@ -14094,7 +14093,7 @@
       }
     ],
     "ko_hash": "4bdbcb9d41bf68a0",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3564769": {
     "slug": "gyeonggidoseogwan",
@@ -14132,7 +14131,7 @@
       }
     ],
     "ko_hash": "f1cb7b8ea6799e08",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3033137": {
     "slug": "gwanggyoeorinicheonmundae",
@@ -14170,7 +14169,7 @@
       }
     ],
     "ko_hash": "f34e97535dac032c",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4076762": {
     "slug": "gwanggyopureunsupdoseogwan",
@@ -14208,7 +14207,7 @@
       }
     ],
     "ko_hash": "8bf23ee1fadaa4ad",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-130744": {
     "slug": "gungnipjidobangmulgwan",
@@ -14271,7 +14270,7 @@
       }
     ],
     "ko_hash": "7263a195b433dcbf",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-130827": {
     "slug": "bareunsaemeorinidoseogwan",
@@ -14334,7 +14333,7 @@
       }
     ],
     "ko_hash": "fd3a3b012a960ef2",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-130816": {
     "slug": "suwon-yeongtongdoseogwan",
@@ -14397,7 +14396,7 @@
       }
     ],
     "ko_hash": "476400beb861b93a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2379222": {
     "slug": "suwongwanggyobangmulgwan",
@@ -14466,7 +14465,7 @@
       }
     ],
     "ko_hash": "1fd47c87508cf245",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-638913": {
     "slug": "suwonbangmulgwan",
@@ -14536,7 +14535,7 @@
       }
     ],
     "ko_hash": "ce952056e09ec1bf",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3029071": {
     "slug": "suwonsiribateuseupeiseugwanggyo",
@@ -14582,7 +14581,7 @@
       }
     ],
     "ko_hash": "4e83bed549874789",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2703375": {
     "slug": "suwonkeonbensyeonsenteo",
@@ -14626,7 +14625,7 @@
       }
     ],
     "ko_hash": "a633d94c45a867e4",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-130943": {
     "slug": "ajudaehakgyodogubangmulgwan",
@@ -14683,7 +14682,7 @@
       }
     ],
     "ko_hash": "c744173e1b2f9399",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2714652": {
     "slug": "akuapeullanet-gwanggyo",
@@ -14732,7 +14731,7 @@
       }
     ],
     "ko_hash": "efaeecd7b9a4fc47",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2753042": {
     "slug": "gwanggyohosugongwon-gajokkaempingjang",
@@ -14764,7 +14763,7 @@
       }
     ],
     "ko_hash": "face2d7b3aef2224",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3057778": {
     "slug": "rorabiteu",
@@ -14796,7 +14795,7 @@
       }
     ],
     "ko_hash": "dfb381d0019c63ea",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3057775": {
     "slug": "baunseusyupeopakeu-suwonyeongtongsenteo",
@@ -14828,7 +14827,7 @@
       }
     ],
     "ko_hash": "17888df1aaeb0c44",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-131767": {
     "slug": "suwoncheyungmunhwasenteo",
@@ -14874,7 +14873,7 @@
       }
     ],
     "ko_hash": "e5881001f20fdd14",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2753656": {
     "slug": "gumaetansijang",
@@ -14918,7 +14917,7 @@
       }
     ],
     "ko_hash": "f405cd198253c838",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4054293": {
     "slug": "rotdemol-gwanggyojeom",
@@ -14965,7 +14964,7 @@
       }
     ],
     "ko_hash": "700f0087ee166565",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2926530": {
     "slug": "rotdeaullet-gwanggyojeom",
@@ -15009,7 +15008,7 @@
       }
     ],
     "ko_hash": "17e9d7b0b73ee1ee",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2849901": {
     "slug": "amoreuaensimponihotel",
@@ -15058,7 +15057,7 @@
       }
     ],
     "ko_hash": "cc13e18efa8f4660",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2752981": {
     "slug": "koteuyadeu-bai-merieoteu-suwon",
@@ -15113,7 +15112,7 @@
       }
     ],
     "ko_hash": "675989fa362dac49",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2747216": {
     "slug": "335-kichin-gwanggyoabeunyupeurangjeom",
@@ -15165,7 +15164,7 @@
       }
     ],
     "ko_hash": "6d24d4693979d656",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2844697": {
     "slug": "gawon",
@@ -15173,7 +15172,7 @@
     "name_ko": "가원",
     "name_zh_hant": "Gawon",
     "name_zh_hant_source": "translated",
-    "summary": "Gawon的招牌菜是韓牛鮮排骨，也有韓牛調味排骨、韓牛雪花鮮沙朗、韓牛生拌牛肉等。全年無休，營業時間為11:30–22:00。可以停車。",
+    "summary": "Gawon是水原市指定的模範餐廳，招牌菜是韓牛鮮排骨，也有韓牛調味排骨、韓牛雪花鮮沙朗、韓牛生拌牛肉等。全年無休，營業時間為11:30–22:00。可以停車。",
     "facts": {
       "address": {
         "value": "277-3 Yeongtong-ro (Sin-dong), Yeongtong-gu, Suwon-si, Gyeonggi-do"
@@ -15209,10 +15208,15 @@
         "q": "Gawon有公休日嗎？",
         "a": "全年營業，沒有公休日。",
         "source": "한국관광공사 TourAPI"
+      },
+      {
+        "q": "Gawon是指定店家嗎？",
+        "a": "是的，這裡是水原市指定的模範餐廳。",
+        "source": "https://www.data.go.kr/data/3044660/fileData.do"
       }
     ],
-    "ko_hash": "1d8911f47bf4f4e2",
-    "translated_at": "2026-10-28"
+    "ko_hash": "e0d47d3d068acf50",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2848359": {
     "slug": "galpungjip",
@@ -15256,7 +15260,7 @@
       }
     ],
     "ko_hash": "831f124df1a9a49d",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2848347": {
     "slug": "gogijabi-suwonbonjeom",
@@ -15303,7 +15307,7 @@
       }
     ],
     "ko_hash": "ebd1f0a4a9a1e9f3",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2835351": {
     "slug": "gwanggyogalbi",
@@ -15347,7 +15351,7 @@
       }
     ],
     "ko_hash": "62226ba2b249b9fd",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2855712": {
     "slug": "gwanggyobeolgyojip",
@@ -15355,7 +15359,7 @@
     "name_ko": "광교벌교집",
     "name_zh_hant": "光教Beolgyojip",
     "name_zh_hant_source": "translated",
-    "summary": "光教Beolgyojip的招牌菜是烤肉砂鍋，也有血蚶拌飯、鯖魚陳年泡菜、海鮮砂鍋等。全年無休，營業時間為11:00–22:00。可以停車。",
+    "summary": "光教Beolgyojip是水原市指定的模範餐廳，招牌菜是砂鍋烤肉，也有血蚶拌飯、鯖魚燉老泡菜、海鮮砂鍋等。全年無休，營業時間為11:00–22:00。可以停車。",
     "facts": {
       "address": {
         "value": "30 Gwanggyojungang-ro 266beon-gil (Ha-dong), Yeongtong-gu, Suwon-si, Gyeonggi-do"
@@ -15387,8 +15391,8 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "98e78910c75cad54",
-    "translated_at": "2026-10-28"
+    "ko_hash": "00fcd72d27bb48ca",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2848323": {
     "slug": "guseutabeu",
@@ -15432,7 +15436,7 @@
       }
     ],
     "ko_hash": "e934ae57d2d4c6d3",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2846949": {
     "slug": "gunpohaemultang",
@@ -15470,7 +15474,7 @@
       }
     ],
     "ko_hash": "275487786e3fa94e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2846354": {
     "slug": "geurotto",
@@ -15514,7 +15518,7 @@
       }
     ],
     "ko_hash": "7559ab4fd748feb1",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2754744": {
     "slug": "geumhwaru",
@@ -15555,7 +15559,7 @@
       }
     ],
     "ko_hash": "ec05abf7e34d9c5d",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2829013": {
     "slug": "gimseongminkeopi",
@@ -15596,7 +15600,7 @@
       }
     ],
     "ko_hash": "408a0948d8f3ddaf",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2892978": {
     "slug": "kkottakkotteu",
@@ -15637,7 +15641,7 @@
       }
     ],
     "ko_hash": "7b3b7ddbd7f367fb",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2846416": {
     "slug": "nodaegamgamjatangmaetanbonjeom",
@@ -15681,7 +15685,7 @@
       }
     ],
     "ko_hash": "e84ea4cd90f99767",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2867549": {
     "slug": "noranhwangtae-bonjeom",
@@ -15722,7 +15726,7 @@
       }
     ],
     "ko_hash": "cce724cb79479dca",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3470706": {
     "slug": "dalguunbaram-dwaejigalbi-yeongtongmangpojeom",
@@ -15763,7 +15767,7 @@
       }
     ],
     "ko_hash": "e6c490730a03c610",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2872836": {
     "slug": "daebakhoetjip",
@@ -15804,7 +15808,7 @@
       }
     ],
     "ko_hash": "23b1e63c66f7c40d",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2745734": {
     "slug": "dogi",
@@ -15853,7 +15857,7 @@
       }
     ],
     "ko_hash": "23d7817a64d48247",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2893042": {
     "slug": "dominikkeopiraep",
@@ -15897,7 +15901,7 @@
       }
     ],
     "ko_hash": "33fd4cd65e69e721",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2846434": {
     "slug": "dongsanchamsutgalbi",
@@ -15905,7 +15909,7 @@
     "name_ko": "동산참숯갈비",
     "name_zh_hant": "Dongsan木炭排骨",
     "name_zh_hant_source": "translated",
-    "summary": "Dongsan木炭排骨的招牌菜是Myeongseok豬肉，也有鮮排骨、鮮五花肉、韓牛鮮沙朗等。營業時間為11:00–22:00、準備時間（平日）15:00–17:00、最後點餐21:00，全年無休。可以停車。",
+    "summary": "Dongsan木炭排骨是水原市指定的模範餐廳，招牌菜是Myeongseok豬肉，也有鮮排骨、鮮五花肉、韓牛鮮沙朗等。營業時間為11:00–22:00、準備時間（平日）15:00–17:00、最後點餐21:00，全年無休。可以停車。",
     "facts": {
       "address": {
         "value": "305 Yeongtong-ro (Maetan-dong), Yeongtong-gu, Suwon-si, Gyeonggi-do"
@@ -15940,8 +15944,8 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "fea03c40065c753a",
-    "translated_at": "2026-10-28"
+    "ko_hash": "c92f0f689e751732",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2892923": {
     "slug": "dyukupeul",
@@ -15949,13 +15953,13 @@
     "name_ko": "듀쿠플(DU COUPLE)",
     "name_zh_hant": "DU COUPLE",
     "name_zh_hant_source": "translated",
-    "summary": "DU COUPLE的招牌菜是草莓鮮奶油蛋糕，也有草莓塔、軟糯餅乾、黑森林等。營業時間為平日08:00–23:00、週六08:00–21:00，每週日公休。可以停車。",
+    "summary": "DU COUPLE的招牌菜是草莓鮮奶油蛋糕，也有草莓塔、水果鮮奶油蛋糕、黑森林蛋糕等。營業時間為平日08:00–23:00、週六08:00–21:00，每週日公休。可以停車。",
     "facts": {
       "address": {
         "value": "185 Woldeukeop-ro (Woncheon-dong), Yeongtong-gu, Suwon-si, Gyeonggi-do"
       },
       "usetime": {
-        "value": "- 平日 08:00–23:00\n- 週六 08:00–21:00"
+        "value": "[平日]\n- 08:00–23:00\n[週六]\n- 08:00–21:00"
       },
       "restdate": {
         "value": "每週日"
@@ -15967,7 +15971,7 @@
         "value": "草莓鮮奶油蛋糕"
       },
       "treatmenu": {
-        "value": "草莓塔 / 軟Q餅乾 / 黑森林蛋糕等"
+        "value": "草莓塔 / 水果鮮奶油蛋糕 / 黑森林蛋糕等"
       },
       "packing": {
         "value": "可"
@@ -15987,8 +15991,8 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "b6a58c3e90db5865",
-    "translated_at": "2026-10-28"
+    "ko_hash": "a357beb27f2d4a3b",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2846605": {
     "slug": "ttaenginesogopchang",
@@ -16032,7 +16036,7 @@
       }
     ],
     "ko_hash": "cc629cc849aaa8ae",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2893108": {
     "slug": "reijihauseu",
@@ -16073,7 +16077,7 @@
       }
     ],
     "ko_hash": "08c30918160c169b",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2829069": {
     "slug": "reuditueo",
@@ -16122,7 +16126,7 @@
       }
     ],
     "ko_hash": "78da26cf658fa244",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2846649": {
     "slug": "menyagokoro",
@@ -16163,7 +16167,7 @@
       }
     ],
     "ko_hash": "1e1401c7af4c2057",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3444598": {
     "slug": "misotendong",
@@ -16204,7 +16208,7 @@
       }
     ],
     "ko_hash": "ac1c1248d49a4ccf",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2753981": {
     "slug": "beodeulchi",
@@ -16250,7 +16254,7 @@
       }
     ],
     "ko_hash": "c07c721ee2d31ae3",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2906078": {
     "slug": "beolgyojip",
@@ -16291,7 +16295,7 @@
       }
     ],
     "ko_hash": "0160d02abefbdded",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2868834": {
     "slug": "beolgyochueotang",
@@ -16338,7 +16342,7 @@
       }
     ],
     "ko_hash": "6ec160d399d01c4f",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2868679": {
     "slug": "bonghwakalguksu",
@@ -16382,7 +16386,7 @@
       }
     ],
     "ko_hash": "71dd64f47a87683e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2765543": {
     "slug": "sampoganeungil",
@@ -16434,7 +16438,7 @@
       }
     ],
     "ko_hash": "b15d9368f0155fae",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2875152": {
     "slug": "sangwonhoegwan",
@@ -16481,7 +16485,7 @@
       }
     ],
     "ko_hash": "9fbcbca08d34d49b",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2867866": {
     "slug": "saebyeokjip",
@@ -16525,7 +16529,7 @@
       }
     ],
     "ko_hash": "581b4cb74e2816a4",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2893524": {
     "slug": "seorinnakji",
@@ -16569,7 +16573,7 @@
       }
     ],
     "ko_hash": "606edd943e4e7926",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2781831": {
     "slug": "seoul-24-sigamjatanghaejangguk",
@@ -16577,7 +16581,7 @@
     "name_ko": "서울24시감자탕해장국",
     "name_zh_hant": "首爾24小時馬鈴薯豬骨湯解酒湯",
     "name_zh_hant_source": "translated",
-    "summary": "首爾24小時馬鈴薯豬骨湯解酒湯的招牌菜是陳年泡菜馬鈴薯排骨湯，也有豆渣馬鈴薯排骨湯、燉豬骨、首爾馬鈴薯排骨湯等。全年無休，營業時間為00:00–24:00。可以停車。",
+    "summary": "首爾24小時馬鈴薯豬骨湯解酒湯是水原市指定的模範餐廳，招牌菜是老泡菜馬鈴薯排骨湯，也有豆渣馬鈴薯排骨湯、燉豬骨、首爾馬鈴薯排骨湯等。全年無休，營業時間為00:00–24:00。可以停車。",
     "facts": {
       "address": {
         "value": "1485 Deogyeong-daero (Mangpo-dong), Yeongtong-gu, Suwon-si, Gyeonggi-do"
@@ -16615,13 +16619,13 @@
         "source": "한국관광공사 TourAPI"
       },
       {
-        "q": "首爾24小時馬鈴薯豬骨湯解酒湯可以外帶嗎？",
-        "a": "是的，可以外帶（外帶有折扣）。",
-        "source": "한국관광공사 TourAPI"
+        "q": "首爾24小時馬鈴薯豬骨湯解酒湯是指定店家嗎？",
+        "a": "是的，這裡是水原市指定的模範餐廳。",
+        "source": "https://www.data.go.kr/data/3044660/fileData.do"
       }
     ],
-    "ko_hash": "f4c37f8e21979c44",
-    "translated_at": "2026-10-28"
+    "ko_hash": "e049c7608a751d9f",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2867876": {
     "slug": "sebiyasikdang",
@@ -16665,7 +16669,7 @@
       }
     ],
     "ko_hash": "f2212d932ec8c253",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2906110": {
     "slug": "sutawon",
@@ -16709,7 +16713,7 @@
       }
     ],
     "ko_hash": "f7518c27e3c47e3a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2867413": {
     "slug": "seusiseuiren",
@@ -16747,7 +16751,7 @@
       }
     ],
     "ko_hash": "b8fd8d528858f67f",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2765462": {
     "slug": "seusiyukai",
@@ -16796,7 +16800,7 @@
       }
     ],
     "ko_hash": "fb55ff29ecddc77d",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3354836": {
     "slug": "sihwayeonpung",
@@ -16834,7 +16838,7 @@
       }
     ],
     "ko_hash": "7d352f6c16e55640",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2875164": {
     "slug": "sindongsundaeguk",
@@ -16878,7 +16882,7 @@
       }
     ],
     "ko_hash": "64ac3067d6dd9637",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2753992": {
     "slug": "sillagalbi",
@@ -16886,7 +16890,7 @@
     "name_ko": "신라갈비",
     "name_zh_hant": "新羅排骨",
     "name_zh_hant_source": "translated",
-    "summary": "新羅排骨的招牌菜是大塊鮮排骨，也有大塊調味排骨、韓牛鮮排骨、韓牛紐約客等。營業時間為週一–週六11:30–22:00、週日11:00–21:30，全年無休。可以停車。",
+    "summary": "新羅排骨獲指定為百年老店及模範餐廳，招牌菜是大塊鮮排骨，也有大塊調味排骨、韓牛鮮排骨、韓牛紐約客等。營業時間為週一–週六11:30–22:00、週日11:00–21:30，全年無休。可以停車。",
     "facts": {
       "address": {
         "value": "538 Dongsuwon-ro (Woncheon-dong), Yeongtong-gu, Suwon-si, Gyeonggi-do"
@@ -16924,13 +16928,13 @@
         "source": "한국관광공사 TourAPI"
       },
       {
-        "q": "新羅排骨可以外帶嗎？",
-        "a": "可以，提供外帶。",
-        "source": "한국관광공사 TourAPI"
+        "q": "新羅排骨是指定店家嗎？",
+        "a": "是的，這裡獲指定為百年老店及模範餐廳。",
+        "source": "https://www.data.go.kr/data/15132695/fileData.do"
       }
     ],
-    "ko_hash": "e10570c1d1e7d11c",
-    "translated_at": "2026-10-28"
+    "ko_hash": "e89e6350ce9c82f8",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2867433": {
     "slug": "sseonpeuransiseukomaket",
@@ -16971,7 +16975,7 @@
       }
     ],
     "ko_hash": "251d977a1b77f38d",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2829999": {
     "slug": "amiseuta",
@@ -17021,7 +17025,7 @@
       }
     ],
     "ko_hash": "4f91596896b01d64",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2893534": {
     "slug": "eipeureon",
@@ -17029,7 +17033,7 @@
     "name_ko": "에이프런",
     "name_zh_hant": "Apron",
     "name_zh_hant_source": "translated",
-    "summary": "Apron的招牌菜是紅醬蘑菇培根班尼迪克蛋，也有煙燻鮭魚酪梨班尼迪克蛋、夏日水果法式吐司、瑞可塔肉醬義大利麵等。全年無休，營業時間為09:00–18:30。可以停車，停車免費。",
+    "summary": "Apron的招牌菜是紅醬蘑菇培根班尼迪克蛋，也有煙燻鮭魚酪梨班尼迪克蛋、莓果開心果法式吐司、芝麻葉烏魚子油醋義大利麵等。全年無休，營業時間為09:00–18:30。可以停車。",
     "facts": {
       "address": {
         "value": "138 Senteureolpakeu-ro 127beon-gil (Iui-dong), Yeongtong-gu, Suwon-si, Gyeonggi-do"
@@ -17041,13 +17045,13 @@
         "value": "全年無休"
       },
       "parking": {
-        "value": "可停車，免費"
+        "value": "可"
       },
       "menu": {
         "value": "Rosso蘑菇培根班尼迪克蛋"
       },
       "treatmenu": {
-        "value": "煙燻鮭魚酪梨班尼迪克蛋 / 夏日水果法式吐司 / 瑞可塔肉醬義大利麵等"
+        "value": "煙燻鮭魚酪梨班尼迪克蛋 / 莓果開心果法式吐司 / 芝麻葉烏魚子油醋義大利麵等"
       },
       "packing": {
         "value": "可"
@@ -17067,8 +17071,8 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "0ace878a47e45e00",
-    "translated_at": "2026-10-28"
+    "ko_hash": "d1c3e89908cd5e49",
+    "translated_at": "2026-11-05"
   },
   "tourapi-3355495": {
     "slug": "yeongheungsumogwon-kape-beoteopeullai",
@@ -17109,7 +17113,7 @@
       }
     ],
     "ko_hash": "0c91665ba635e519",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2848239": {
     "slug": "yerang",
@@ -17153,7 +17157,7 @@
       }
     ],
     "ko_hash": "ded31726ea8c2beb",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2754009": {
     "slug": "oneuruichobap",
@@ -17205,7 +17209,7 @@
       }
     ],
     "ko_hash": "5624cbf535e5d4b1",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2848107": {
     "slug": "obongbereu",
@@ -17249,7 +17253,7 @@
       }
     ],
     "ko_hash": "fe0719bdbfc09dc4",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2867471": {
     "slug": "ollibeu-1999",
@@ -17287,7 +17291,7 @@
       }
     ],
     "ko_hash": "f869e202b87052e8",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2893540": {
     "slug": "waiememdi",
@@ -17295,10 +17299,10 @@
     "name_ko": "와이엠엠디",
     "name_zh_hant": "YMMD",
     "name_zh_hant_source": "translated",
-    "summary": "YMMD的招牌菜是太妃糖咖啡，也有美式咖啡、帕芙洛娃、檸檬伯爵茶等。全年無休，營業時間為10:00–22:30。可以停車，停車免費。",
+    "summary": "YMMD的招牌菜是太妃糖咖啡，也有美式咖啡、帕芙洛娃、巴斯克起司蛋糕等。全年無休，營業時間為10:00–22:30。可以停車。",
     "facts": {
       "address": {
-        "value": "B1, 144 Senteureolpakeu-ro 127beon-gil, Yeongtong-gu, Suwon-si, Gyeonggi-do"
+        "value": "144 Senteureolpakeu-ro 127beon-gil (Iui-dong), Yeongtong-gu, Suwon-si, Gyeonggi-do"
       },
       "usetime": {
         "value": "10:00–22:30"
@@ -17307,16 +17311,16 @@
         "value": "全年無休"
       },
       "parking": {
-        "value": "可停車，免費"
+        "value": "可"
       },
       "menu": {
         "value": "太妃糖咖啡"
       },
       "treatmenu": {
-        "value": "美式咖啡 / 帕芙洛娃 / 檸檬伯爵茶 / 真巧克力拿鐵 / 冷萃咖啡等"
+        "value": "美式咖啡 / 帕芙洛娃 / 巴斯克起司蛋糕等"
       },
       "infocenter": {
-        "value": "031-8019-7789"
+        "value": "0507-1406-7789"
       },
       "creditcard": {
         "value": "可"
@@ -17330,8 +17334,8 @@
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "39d7b3bfa1e98512",
-    "translated_at": "2026-10-28"
+    "ko_hash": "6cc70a7a1d68b0d7",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2765438": {
     "slug": "yundon",
@@ -17375,7 +17379,7 @@
       }
     ],
     "ko_hash": "1e24f57475b337ef",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2753967": {
     "slug": "jeongjinsikdang",
@@ -17424,7 +17428,7 @@
       }
     ],
     "ko_hash": "4bd07cfac36de986",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2753966": {
     "slug": "jejuhalmangdonga",
@@ -17432,7 +17436,7 @@
     "name_ko": "제주할망돈가",
     "name_zh_hant": "濟州Halmangdonga",
     "name_zh_hant_source": "translated",
-    "summary": "濟州Halmangdonga的招牌菜是濟州帶皮五花肉，也有梅花肉、五花肉、鮮排骨等。營業時間為11:00–22:00，最後點餐21:00，全年無休。可以停車。",
+    "summary": "濟州Halmangdonga是水原市指定的模範餐廳，招牌菜是濟州帶皮五花肉，也有豬頸肉、五花肉、鮮排骨等。營業時間為11:00–22:00，最後點餐21:00，全年無休。可以停車。",
     "facts": {
       "address": {
         "value": "454-11 Dongtanjiseong-ro (Mangpo-dong), Yeongtong-gu, Suwon-si, Gyeonggi-do"
@@ -17470,13 +17474,13 @@
         "source": "한국관광공사 TourAPI"
       },
       {
-        "q": "濟州Halmangdonga的招牌菜是什麼？",
-        "a": "招牌菜是濟州帶皮五花肉。也有梅花肉、五花肉、鮮排骨等。",
-        "source": "한국관광공사 TourAPI"
+        "q": "濟州Halmangdonga是指定店家嗎？",
+        "a": "是的，這裡是水原市指定的模範餐廳。",
+        "source": "https://www.data.go.kr/data/3044660/fileData.do"
       }
     ],
-    "ko_hash": "16a683e4260fef25",
-    "translated_at": "2026-10-28"
+    "ko_hash": "38cad0162c93c5f4",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2847005": {
     "slug": "joeunsosik",
@@ -17523,7 +17527,7 @@
       }
     ],
     "ko_hash": "ffb2c82758a32049",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2751138": {
     "slug": "cheonsanghanu",
@@ -17575,7 +17579,7 @@
       }
     ],
     "ko_hash": "78c89866d833257f",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2867518": {
     "slug": "chuncheoneseo-on-sutdak",
@@ -17619,7 +17623,7 @@
       }
     ],
     "ko_hash": "15b7d5ad00e4f17a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2892653": {
     "slug": "kape-geurubi",
@@ -17666,7 +17670,7 @@
       }
     ],
     "ko_hash": "3c15c7dcea4ac056",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2892681": {
     "slug": "kape-riping",
@@ -17707,7 +17711,7 @@
       }
     ],
     "ko_hash": "11d844343004fc30",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2892706": {
     "slug": "keopi-baibeu",
@@ -17715,13 +17719,13 @@
     "name_ko": "커피 바이브",
     "name_zh_hant": "Coffee Vibe",
     "name_zh_hant_source": "translated",
-    "summary": "Coffee Vibe的招牌菜是Latte Peak，也有冷萃煉乳拿鐵、美式咖啡、維也納咖啡等。營業時間為09:00–22:00，最後點餐21:30，全年無休。可以停車。",
+    "summary": "Coffee Vibe的招牌菜是Latte Peak，也有冷萃煉乳拿鐵、美式咖啡、維也納咖啡等。營業時間為週一、週四09:00–18:00，週二至週三、週五至週日09:00–22:00，全年無休。可以停車。",
     "facts": {
       "address": {
         "value": "277 Gwanggyohosugongwon-ro (Woncheon-dong, Gwanggyo Jungheung S-Class), Yeongtong-gu, Suwon-si, Gyeonggi-do"
       },
       "usetime": {
-        "value": "- 09:00–22:00\n- 最後點餐 21:30"
+        "value": "[週一、週四]\n- 09:00–18:00\n[週二–週三、週五–週日]\n- 09:00–22:00"
       },
       "restdate": {
         "value": "全年無休"
@@ -17745,13 +17749,13 @@
     "details": [],
     "faq": [
       {
-        "q": "Coffee Vibe幾點前可以點餐？",
-        "a": "最後點餐時間為21:30。",
+        "q": "Coffee Vibe有公休日嗎？",
+        "a": "全年營業，沒有公休日。",
         "source": "한국관광공사 TourAPI"
       }
     ],
-    "ko_hash": "fb282d2e79e969f1",
-    "translated_at": "2026-10-28"
+    "ko_hash": "260dd0808512c62b",
+    "translated_at": "2026-11-05"
   },
   "tourapi-2806730": {
     "slug": "kolseukeopi",
@@ -17792,7 +17796,7 @@
       }
     ],
     "ko_hash": "1f8c17154bbf1678",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2906226": {
     "slug": "teron",
@@ -17842,7 +17846,7 @@
       }
     ],
     "ko_hash": "42f3551f6f91e513",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3443259": {
     "slug": "tikeunik-aelliwei-gwanggyojeom",
@@ -17886,7 +17890,7 @@
       }
     ],
     "ko_hash": "07cf206437b4d00c",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2765420": {
     "slug": "podongine",
@@ -17938,7 +17942,7 @@
       }
     ],
     "ko_hash": "190de8c281cf4880",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2804503": {
     "slug": "pikel",
@@ -17979,7 +17983,7 @@
       }
     ],
     "ko_hash": "4cd2e2bbe6292664",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2893125": {
     "slug": "pikeuniktaigeo",
@@ -18020,7 +18024,7 @@
       }
     ],
     "ko_hash": "8cefe6c6f290e1d3",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2841995": {
     "slug": "hayanpungchajegwajeom-mangpojeom",
@@ -18064,7 +18068,7 @@
       }
     ],
     "ko_hash": "b11d6f4fcad7e186",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2851901": {
     "slug": "hanugap",
@@ -18108,7 +18112,7 @@
       }
     ],
     "ko_hash": "2180086a450f052c",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2848015": {
     "slug": "haenggungjeongchan",
@@ -18149,7 +18153,7 @@
       }
     ],
     "ko_hash": "6627e32cf0f1078e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3025574": {
     "slug": "hereucheu",
@@ -18190,7 +18194,7 @@
       }
     ],
     "ko_hash": "8359602f3d346e14",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2926515": {
     "slug": "abc-mateu-gs-ak-peullaja-suwonjeom",
@@ -18231,7 +18235,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "0f6a2ab10149ba18",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011472": {
     "slug": "abc-mateu-gs-seutapildeu-suwonjeom",
@@ -18272,7 +18276,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "6734c1075059fce9",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3306986": {
     "slug": "abc-mateu-se-rotdemol-gwanggyojeom",
@@ -18316,7 +18320,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "084f0a62607b6cc8",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2925133": {
     "slug": "cc-kollekteu-rotdemol-gwanggyojeom",
@@ -18360,7 +18364,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "af14a8644babab71",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011333": {
     "slug": "cos-gaelleoriabaekhwajeom-gwanggyojeom",
@@ -18398,7 +18402,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "a365ad80c2327b1f",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011458": {
     "slug": "cos-seutapildeu-suwonjeom",
@@ -18433,7 +18437,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "c7d9e4db0d393bc2",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025401": {
     "slug": "jaju-elpoteumol-gwanggyojeom",
@@ -18471,7 +18475,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "0e587579e025a48e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2918700": {
     "slug": "k2-ak-peullaja-suwonjeom",
@@ -18512,7 +18516,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "2980ef399c33325e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011386": {
     "slug": "k2-rotdemol-gwanggyojeom",
@@ -18553,7 +18557,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "ad30dd73044b408c",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011432": {
     "slug": "lap-seutapildeu-suwonjeom",
@@ -18591,7 +18595,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "88d9a4f634008095",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025397": {
     "slug": "lf-aullet-seosuwonjeom",
@@ -18632,7 +18636,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "395603089b270cfc",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011499": {
     "slug": "lg-jeonja-beseuteusyap-suwonbonjeom",
@@ -18673,7 +18677,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "391a26e65b9f51e1",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2924792": {
     "slug": "lg-jeonja-beseuteusyap-taimbillaseu-suwonjeom",
@@ -18717,7 +18721,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "b5e2e2e8d011aeae",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025429": {
     "slug": "lee-seutapildeu-suwonjeom",
@@ -18755,7 +18759,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "c5feefb5bdc0d937",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011441": {
     "slug": "mlb-seutapildeu-suwonjeom",
@@ -18796,7 +18800,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "c5161b366bbd28ef",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011483": {
     "slug": "muji-seutapildeu-suwonjeom",
@@ -18834,7 +18838,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "a85b1fdd99e2d9de",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2931378": {
     "slug": "muji-taimbillaseu-suwonjeom",
@@ -18875,7 +18879,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "44a042aa41612111",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011444": {
     "slug": "nba-seutapildeu-suwonjeom",
@@ -18913,7 +18917,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "5a854ed76536454d",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2926928": {
     "slug": "soup-taimbillaseu-suwonjeom",
@@ -18957,7 +18961,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "f8710ed9e06128d5",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2924774": {
     "slug": "zara-taimbillaseu-suwonjeom",
@@ -18998,7 +19002,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "e9fc11b52cb51fcf",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2843518": {
     "slug": "gaelleoriabaekhwajeom-gwanggyojeom",
@@ -19025,12 +19029,27 @@
       },
       "infocenter": {
         "value": "1544-6600"
+      },
+      "babycarriage": {
+        "value": "可租借"
+      },
+      "accessible_parking": {
+        "value": "設有身障停車場"
+      },
+      "wheelchair": {
+        "value": "可租借輪椅"
+      },
+      "accessible_toilet": {
+        "value": "設有身障廁所"
+      },
+      "accessible_route": {
+        "value": "通往出入口無門檻，輪椅可通行"
       }
     },
     "details": [],
     "faq": [],
-    "ko_hash": "8a833ab3e385d78d",
-    "translated_at": "2026-10-28"
+    "ko_hash": "f74967500d3112bf",
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011490": {
     "slug": "gaelleoksi-ak-peullaja-suwonjeom",
@@ -19071,7 +19090,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "6c82df37f30631a9",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2925515": {
     "slug": "gaelleoksi-taimbillaseu-suwonjeom",
@@ -19115,7 +19134,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "1dd58203e8e0a080",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2924770": {
     "slug": "gaelleoksiraipeuseutail-ak-baekhwajeom-suwonjeom",
@@ -19156,7 +19175,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "6319fdfd75e9e3fb",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2925518": {
     "slug": "gaelleoksiraipeuseutail-taimbillaseu-suwonjeom",
@@ -19200,7 +19219,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "fea3ab73e667fef5",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2918717": {
     "slug": "geseu-ak-peullaja-suwonjeom",
@@ -19241,7 +19260,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "75d615104b37c756",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2903844": {
     "slug": "geseu-rotdemol-gwanggyojeom",
@@ -19285,7 +19304,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "be3eb17f553f2755",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2926789": {
     "slug": "geseu-taimbillaseu-suwonjeom",
@@ -19326,7 +19345,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "887a457eba1d7b19",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025395": {
     "slug": "goldeunguseu-taimbillaseu-suwonjeom",
@@ -19364,7 +19383,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "cebdff1ccf7a4bbc",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2909892": {
     "slug": "goldeundyu-ak-peullaja-suwonjeom",
@@ -19405,7 +19424,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "2232befbae312913",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011325": {
     "slug": "goldeundyu-gaelleoriabaekhwajeom-gwanggyojeom",
@@ -19443,7 +19462,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "fb759698e4a51554",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2925834": {
     "slug": "gujji-taimbillaseu-suwonjeom",
@@ -19487,7 +19506,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "c6c74918cc3e51b3",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011321": {
     "slug": "geumgang-taimbillaseu-suwonjeom",
@@ -19528,7 +19547,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "886f6465183dd835",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2912754": {
     "slug": "geumgangjehwa-ak-peullaja-suwonjeom",
@@ -19569,7 +19588,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "8cd11325e96fadb5",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011372": {
     "slug": "naiseukeullap-rotdemol-gwanggyojeom",
@@ -19610,7 +19629,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "a2c1bc9b823e466f",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011370": {
     "slug": "naiki-rotdemol-gwanggyojeom",
@@ -19651,7 +19670,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "4e74384c7be31781",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2911813": {
     "slug": "naiki-seuwim-rotdemol-gwanggyojeom",
@@ -19695,7 +19714,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "7b0ca94e1d7dd4d9",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2914012": {
     "slug": "naiki-taimbillaseu-suwonjeom",
@@ -19736,7 +19755,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "26e5bb870cc96d04",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2893684": {
     "slug": "neicheoripeobeullik-suwonnammunjeom",
@@ -19774,7 +19793,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "01a47a5042f11191",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2918606": {
     "slug": "nepa-ak-peullaja-suwonjeom",
@@ -19815,7 +19834,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "a08c908e48b5e752",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2929053": {
     "slug": "nepa-rotdemol-gwanggyojeom",
@@ -19859,7 +19878,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "c33d2dab3c60e11d",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011480": {
     "slug": "nepa-seutapildeu-suwonjeom",
@@ -19897,7 +19916,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "8eae684b7d96bc58",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2926817": {
     "slug": "nepa-taimbillaseu-suwonjeom",
@@ -19941,7 +19960,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "e8dced8d9cd73566",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011394": {
     "slug": "noreudiseukeu-rotdemol-gwanggyojeom",
@@ -19982,7 +20001,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "248a888a4a52be9a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025437": {
     "slug": "nobeuraendeu-suwoncheoncheonjeom",
@@ -20020,7 +20039,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "c23b44693a85e972",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025398": {
     "slug": "nobeuraendeu-suwonhomaesil-2-jeom",
@@ -20058,7 +20077,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "c5634054d0ac6741",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025394": {
     "slug": "nobeuraendeu-suwonhomaesil-3-hojeom",
@@ -20102,7 +20121,7 @@
       }
     ],
     "ko_hash": "f144ec63e45a7c70",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025444": {
     "slug": "nobeuraendeu-suwonhwaseojeom",
@@ -20140,7 +20159,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "f963723cf6cdd123",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2931634": {
     "slug": "noseupeiseu-rotdemol-gwanggyojeom",
@@ -20184,7 +20203,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "e18ae92ba874597f",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011498": {
     "slug": "noseupeiseu-suwonnammunjeom",
@@ -20222,7 +20241,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "0d56242709b99f0a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011477": {
     "slug": "noseupeiseu-seutapildeu-suwonjeom",
@@ -20260,7 +20279,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "9449634421c72aa7",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2927033": {
     "slug": "noseupeiseu-taimbillaseu-suwonjeom",
@@ -20304,7 +20323,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "4bf97447cc675046",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025420": {
     "slug": "nonpiksyeon-seutapildeu-suwonjeom",
@@ -20342,7 +20361,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "9bb154736cc6411d",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011464": {
     "slug": "notto-seutapildeu-suwonjeom",
@@ -20380,7 +20399,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "727237dfd43227c0",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2905441": {
     "slug": "nyukoaaullet-dongsuwonjeom",
@@ -20424,7 +20443,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "4f5253369825b56c",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011468": {
     "slug": "danielteuruseu-seutapildeu-suwonjeom",
@@ -20462,7 +20481,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "1d2bfd8484985a9a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025415": {
     "slug": "dabichiangyeong-gwanggyojungangyeokjeom",
@@ -20503,7 +20522,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "ef99b7618fdbf653",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011407": {
     "slug": "dainapit-rotdemol-gwanggyojeom",
@@ -20544,7 +20563,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "7a164af98d4df42f",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011450": {
     "slug": "dainapit-seutapildeu-suwonjeom",
@@ -20582,7 +20601,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "d996876b713aeb32",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2926113": {
     "slug": "dakseugudu-taimbillaseu-suwonjeom",
@@ -20623,7 +20642,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "bb5e28bacd22ac4a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2911614": {
     "slug": "dakseunamseong-ak-peullaja-suwonjeom",
@@ -20664,7 +20683,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "29b61418f89c2360",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2926567": {
     "slug": "dakseusyujeu-rotdemol-gwanggyojeom",
@@ -20708,7 +20727,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "318297ed61df9220",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2925849": {
     "slug": "dakseuhaendeubaek-taimbillaseu-suwonjeom",
@@ -20752,7 +20771,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "218af823c4764636",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011465": {
     "slug": "dakteomatin-seutapildeu-suwonjeom",
@@ -20790,7 +20809,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "6e229bcc269998f0",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2926554": {
     "slug": "deo-renoma-rotdemol-gwanggyojeom",
@@ -20834,7 +20853,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "fff8b2c0bc724b1e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2931812": {
     "slug": "deoaijatkeolleksyeon-rotdemol-gwanggyojeom",
@@ -20878,7 +20897,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "a68427906b0cf3bb",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2926556": {
     "slug": "demu-rotdemol-gwanggyojeom",
@@ -20922,7 +20941,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "2b1946cb551ac36b",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025412": {
     "slug": "denbi-rotdemol-gwanggyojeom",
@@ -20963,7 +20982,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "071db5d3ca554e98",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2918497": {
     "slug": "diseukeobeori-ak-peullaja-suwonjeom",
@@ -21004,7 +21023,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "6307fd47f24ac6f3",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011375": {
     "slug": "diseukeobeori-rotdemol-gwanggyojeom",
@@ -21045,7 +21064,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "33778f24d8a31167",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011453": {
     "slug": "diseukeobeori-seutapildeu-suwonjeom",
@@ -21083,7 +21102,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "aebd41242587c079",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2925842": {
     "slug": "diol-hwajangpum-taimbillaseu-suwonjeom",
@@ -21127,7 +21146,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "87b64331c55ada2c",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025414": {
     "slug": "raipeuwokeu-rotdemol-gwanggyojeom",
@@ -21168,7 +21187,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "21ea5154bb9fd93e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2926814": {
     "slug": "raipeuwokeu-taimbillaseu-suwonjeom",
@@ -21209,7 +21228,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "42a1f4354ff9fb83",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011430": {
     "slug": "rakoseute-seutapildeu-suwonjeom",
@@ -21247,7 +21266,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "07a64fa97837158e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2926013": {
     "slug": "rakoseuteumeon-taimbillaseu-suwonjeom",
@@ -21291,7 +21310,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "e9ebd947b1ff4951",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011478": {
     "slug": "rakpoteu-seutapildeu-suwonjeom",
@@ -21329,7 +21348,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "e010a13135d50d35",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011399": {
     "slug": "raep-rotdemol-gwanggyojeom",
@@ -21370,7 +21389,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "1d1eb1c00319a393",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2928482": {
     "slug": "renomasyeocheu-rotdemol-gwanggyojeom",
@@ -21411,7 +21430,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "5ae86a10f1e06821",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011474": {
     "slug": "roideu-seutapildeu-suwonjeom",
@@ -21449,7 +21468,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "c51442959f65684f",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011345": {
     "slug": "rojeobibie-gaelleoriabaekhwajeom-gwanggyojeom",
@@ -21487,7 +21506,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "ff5cac38ecb5d8f9",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2926368": {
     "slug": "roksittang-taimbillaseu-suwonjeom",
@@ -21531,7 +21550,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "a5d8780c456d2f9e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025438": {
     "slug": "ronjin-ak-peullaja-suwonjeom",
@@ -21572,7 +21591,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "45c146e8fe1b74c8",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011331": {
     "slug": "ronjin-gaelleoriabaekhwajeom-gwanggyojeom",
@@ -21610,7 +21629,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "0700769abafa8cda",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2894571": {
     "slug": "rotdemateu-cheoncheonjeom",
@@ -21654,7 +21673,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "f163de0d26bf6195",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011316": {
     "slug": "rotdemateu-taimbillaseu-suwonjeom",
@@ -21701,7 +21720,7 @@
       }
     ],
     "ko_hash": "f5f8c5b7ba7c4260",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3307681": {
     "slug": "rotdehaimateu-megaseutoeo-rotdemol-gwanggyojeom",
@@ -21745,7 +21764,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "e8ee8849cfef0913",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2914420": {
     "slug": "rotdehaimateu-seosuwonjeom",
@@ -21789,7 +21808,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "9e5dd64a7db99d9f",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2914267": {
     "slug": "rotdehaimateu-suwonjeom",
@@ -21833,7 +21852,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "9899df855980fd70",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025417": {
     "slug": "rotdehaimateu-hansaemgwanggyojeom",
@@ -21871,7 +21890,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "bc2a1a6f4c1de67b",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025434": {
     "slug": "rudipeurojekteu-seutapildeu-suwonjeom",
@@ -21909,7 +21928,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "f55a031d24715d22",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2926406": {
     "slug": "rujeuaellaunji-taimbillaseu-suwonjeom",
@@ -21953,7 +21972,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "d0019c2669969283",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011320": {
     "slug": "rulluremon-taimbillaseu-suwonjeom",
@@ -21991,7 +22010,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "4353fce5a4b2c78a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011438": {
     "slug": "ribaiseu-seutapildeu-suwonjeom",
@@ -22029,7 +22048,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "5081e416be434261",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011470": {
     "slug": "marittepeurangsowajeobeo-seutapildeu-suwonjeom",
@@ -22067,7 +22086,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "01d6e002d2c9a70a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025421": {
     "slug": "masimodutti-seutapildeu-suwonjeom",
@@ -22108,7 +22127,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "bc5211c498edf640",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2931868": {
     "slug": "maeseuteuro-ak-peullaja-suwonjeom",
@@ -22149,7 +22168,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "f8c571d7c1b88c88",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025422": {
     "slug": "maikeulkoeoseu-seutapildeu-suwonjeom",
@@ -22187,7 +22206,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "ec5f53c4e77cc63b",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011451": {
     "slug": "maindeubeuritji-seutapildeu-suwonjeom",
@@ -22225,7 +22244,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "5fda286990717148",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011437": {
     "slug": "mahageurideu-seutapildeu-suwonjeom",
@@ -22263,7 +22282,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "8e0aaf7594432d73",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011427": {
     "slug": "mandarinadeok-seutapildeu-suwonjeom",
@@ -22301,7 +22320,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "7399a5e1edbfcdfe",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025435": {
     "slug": "malbongolpeu-seutapildeu-suwonjeom",
@@ -22339,7 +22358,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "08859db67b466cc7",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2925840": {
     "slug": "meteurositi-taimbillaseu-suwonjeom",
@@ -22383,7 +22402,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "c98b05f1d3d68f6f",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011398": {
     "slug": "modeonhauseu-rotdemol-gwanggyojeom",
@@ -22424,7 +22443,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "008ea007c8e16655",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2915249": {
     "slug": "mojoeseupin-rotdemol-gwanggyojeom",
@@ -22468,7 +22487,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "7006fc71d19665f3",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011423": {
     "slug": "molliseupetsyap-seutapildeu-suwonjeom",
@@ -22506,7 +22525,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "8dd5db6ae7021e2b",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2929338": {
     "slug": "mongbeullang-taimbillaseu-suwonjeom",
@@ -22550,7 +22569,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "4a253998261b9d84",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2926562": {
     "slug": "munyamunya-rotdemol-gwanggyojeom",
@@ -22594,7 +22613,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "bc330ab575af2c9e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2925874": {
     "slug": "misope-taimbillaseu-suwonjeom",
@@ -22638,7 +22657,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "daf06304f55e3c28",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011327": {
     "slug": "miumiu-gaelleoriabaekhwajeom-gwanggyojeom",
@@ -22676,7 +22695,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "7ec4f12b8e91ad34",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011347": {
     "slug": "mille-gaelleoriabaekhwajeom-gwanggyojeom",
@@ -22714,7 +22733,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "7d3e75efeb2ecd74",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2900592": {
     "slug": "bassoommeu-ak-peullaja-suwonjeom",
@@ -22755,7 +22774,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "ac55a400ec02de62",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011324": {
     "slug": "ballensiaga-taimbillaseu-suwonjeom",
@@ -22796,7 +22815,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "8ef55f00057b0384",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2918712": {
     "slug": "beokeorujin-ak-peullaja-suwonjeom",
@@ -22837,7 +22856,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "83a97554031f7629",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011462": {
     "slug": "benebene-seutapildeu-suwonjeom",
@@ -22875,7 +22894,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "2b49bda574b38c2f",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025400": {
     "slug": "belluti-gaelleoriabaekhwajeom-gwanggyojeom",
@@ -22916,7 +22935,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "8784bb1d781cebcd",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011349": {
     "slug": "bulgari-gaelleoriabaekhwajeom-gwanggyojeom",
@@ -22957,7 +22976,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "989b26d3d1c3ecfd",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011429": {
     "slug": "beurukseubeuradeoseu-seutapildeu-suwonjeom",
@@ -22995,7 +23014,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "d5fcdfa50f77f3f2",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2918648": {
     "slug": "beullaegyakeu-ak-peullaja-suwonjeom",
@@ -23036,7 +23055,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "69c944f7549cde6d",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011389": {
     "slug": "beullaegyakeu-rotdemol-gwanggyojeom",
@@ -23077,7 +23096,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "3f988f75a7562132",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2927054": {
     "slug": "beullaegyakeu-taimbillaseu-suwonjeom",
@@ -23121,7 +23140,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "01d54aa7c3ffedc5",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025405": {
     "slug": "bineoseu-rotdemol-gwanggyojeom",
@@ -23162,7 +23181,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "98850c54ca723517",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2925852": {
     "slug": "bineoseu-taimbillaseu-suwonjeom",
@@ -23206,7 +23225,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "4ca6c815ced5788f",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2924767": {
     "slug": "binpol-ak-peullaja-suwonjeom",
@@ -23247,7 +23266,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "f2635b5a264da581",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2925525": {
     "slug": "binpolmaen-taimbillaseu-suwonjeom",
@@ -23291,7 +23310,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "cdc803bf02801b32",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011489": {
     "slug": "sarangyakguk",
@@ -23329,7 +23348,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "6e1c7a7b297b18e9",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025436": {
     "slug": "sallomon-seutapildeu-suwonjeom",
@@ -23367,7 +23386,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "facc5232e995fabe",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025439": {
     "slug": "samseongseutoeo-ak-peullaja-suwonjeom",
@@ -23405,7 +23424,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "9255d47a35f13e7f",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011411": {
     "slug": "samseongseutoeo-buksuwon",
@@ -23446,7 +23465,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "2e98863f0b847862",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011290": {
     "slug": "samseongseutoeo-seosuwon",
@@ -23487,7 +23506,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "c633df7fca0e0127",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011408": {
     "slug": "samseongseutoeo-suwonsamseongjeongimobail",
@@ -23528,7 +23547,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "4ec401515a556243",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025402": {
     "slug": "samseongseutoeo-yeongtong",
@@ -23566,7 +23585,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "bc686e6411524c36",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011475": {
     "slug": "sereujiotakini-seutapildeu-suwonjeom",
@@ -23604,7 +23623,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "6fbbbe1f86d706fd",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025399": {
     "slug": "syome-gaelleoriabaekhwajeom-gwanggyojeom",
@@ -23645,7 +23664,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "93f5781c2d35051d",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025403": {
     "slug": "swijeumiseu-rotdemol-gwanggyojeom",
@@ -23686,7 +23705,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "d0520ae19bbeca5a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025425": {
     "slug": "swijeumiseu-seutapildeu-suwonjeom",
@@ -23724,7 +23743,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "d84096e34f538888",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011456": {
     "slug": "syuseupa-seutapildeu-suwonjeom",
@@ -23762,7 +23781,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "fa3c2e967f42ef1f",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2926110": {
     "slug": "syukommaboni-taimbillaseu-suwonjeom",
@@ -23803,7 +23822,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "d40a42d20435ff24",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011467": {
     "slug": "seunoupikeu-seutapildeu-suwonjeom",
@@ -23841,7 +23860,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "5e486ca19ea5e0f3",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2925865": {
     "slug": "seuwarobeuseuki-taimbillaseu-suwonjeom",
@@ -23885,7 +23904,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "33792379ed478082",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011433": {
     "slug": "seuwachi-seutapildeu-suwonjeom",
@@ -23923,7 +23942,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "d7d2d7bce0b3d21b",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2930975": {
     "slug": "seukechyeoseu-rotdemol-gwanggyojeom",
@@ -23967,7 +23986,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "9d4fe39ccef8405c",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2926074": {
     "slug": "seukechyeoseu-taimbillaseu-suwonjeom",
@@ -24011,7 +24030,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "18f09bc77a502268",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2910679": {
     "slug": "seutamongtteure-ak-peullaja-suwonjeom",
@@ -24052,7 +24071,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "3954e6fb34b5a7de",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011435": {
     "slug": "seutaendeuoil-seutapildeu-suwonjeom",
@@ -24090,7 +24109,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "56e5a126bc8571a7",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2924006": {
     "slug": "seutonhenji-ak-peullaja-suwonjeom",
@@ -24131,7 +24150,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "6acdeb90a2a30d34",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2925885": {
     "slug": "seutonhenji-taimbillaseu-suwonjeom",
@@ -24175,7 +24194,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "e1adda153cb385a3",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025440": {
     "slug": "seupao-ak-peullaja-suwonjeom",
@@ -24216,7 +24235,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "e785b9422474c534",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025426": {
     "slug": "seupao-seutapildeu-suwonjeom",
@@ -24254,7 +24273,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "511ce37867c452a4",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025404": {
     "slug": "ssaemsonaiteu-rotdemol-gwanggyojeom",
@@ -24295,7 +24314,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "3df737dbb648fb6b",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011425": {
     "slug": "ssaemsonaiteu-seutapildeu-suwonjeom",
@@ -24333,7 +24352,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "a3c2e1baa3a5a436",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011396": {
     "slug": "sseoseudeiaillaendeu-rotdemol-gwanggyojeom",
@@ -24374,7 +24393,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "da154a2817920ac9",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011431": {
     "slug": "sseoseudeiaillaendeu-seutapildeu-suwonjeom",
@@ -24412,7 +24431,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "b6572a100eb61ba4",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025406": {
     "slug": "adidaseu-rotdemol-gwanggyojeom",
@@ -24453,7 +24472,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "3526a253441e4278",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011485": {
     "slug": "adidaseu-seutapildeu-suwonjeom",
@@ -24494,7 +24513,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "63a937ebbf1df12e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025407": {
     "slug": "arena-rotdemol-gwanggyojeom",
@@ -24535,7 +24554,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "326fc53a789a8853",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025423": {
     "slug": "areuket-seutapildeu-suwonjeom",
@@ -24573,7 +24592,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "007eb0a396a5040c",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2918643": {
     "slug": "aideo-ak-peullaja-suwonjeom",
@@ -24614,7 +24633,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "ead5add103f44a03",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011403": {
     "slug": "aideo-rotdemol-gwanggyojeom",
@@ -24655,7 +24674,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "178868d5f4ca84b7",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2926872": {
     "slug": "aijatbaba-ak-peullaja-suwonjeom",
@@ -24696,7 +24715,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "8d9c8982c65fe1ae",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011410": {
     "slug": "ateubakseu-gwanggyoabeunyupeurangjeom",
@@ -24734,7 +24753,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "c64063e83a78009a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2907527": {
     "slug": "ateubakseu-suwonyeokjeom",
@@ -24778,7 +24797,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "73e7a4e34300c9cb",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2918645": {
     "slug": "ateubakseu-suwoningyejeom",
@@ -24819,7 +24838,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "1cc9428e168f305d",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025418": {
     "slug": "ateubakseu-yeongtongjeom",
@@ -24857,7 +24876,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "e3cb4efb9956b3b4",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011319": {
     "slug": "apeurikaangyeong-taimbillaseu-suwonjeom",
@@ -24895,7 +24914,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "83d040589994453a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011400": {
     "slug": "andareu-rotdemol-gwanggyojeom",
@@ -24936,7 +24955,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "18f62e4964b94243",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011337": {
     "slug": "alleksandeo-maekkwin-gaelleoriabaekhwajeom-gwanggyojeom",
@@ -24977,7 +24996,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "a2fd1f273e53052c",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011476": {
     "slug": "eseutidyupong-seutapildeu-suwonjeom",
@@ -25018,7 +25037,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "46c1f64118a58b88",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2925649": {
     "slug": "eitsekeonjeu-ak-baekhwajeom-suwonjeom",
@@ -25059,7 +25078,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "7e672b8fd0d4ab2f",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011460": {
     "slug": "eitsekeonjeu-seutapildeu-suwonjeom",
@@ -25097,7 +25116,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "24bacf734d72498f",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2927026": {
     "slug": "eitsekeonjeu-taimbillaseu-suwonjeom",
@@ -25138,7 +25157,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "6174815a0fe665f6",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025396": {
     "slug": "eteuro-taimbillaseu-suwonjeom",
@@ -25179,7 +25198,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "51338155b2921332",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011421": {
     "slug": "orenjeu-seutapildeu-suwonjeom",
@@ -25217,7 +25236,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "7e0ec4611299a458",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011335": {
     "slug": "omega-gaelleoriabaekhwajeom-gwanggyojeom",
@@ -25258,7 +25277,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "dd60513a12e00f58",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2915154": {
     "slug": "onaenon-rotdemol-gwanggyojeom",
@@ -25302,7 +25321,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "9dbb3fe3251cf28e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3305342": {
     "slug": "ollibeuyeong-gwanggyoaelliweijeom",
@@ -25340,7 +25359,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "beaccdde30069bec",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2907173": {
     "slug": "ollibeuyeong-dongsuwonjeom",
@@ -25378,7 +25397,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "f83fc1d7506da912",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4008150": {
     "slug": "ollibeuyeong-rotdemol-gwanggyojeom",
@@ -25422,7 +25441,7 @@
       }
     ],
     "ko_hash": "161c5c358a6b09e5",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2902354": {
     "slug": "ollibeuyeong-suwon-ak-yeoksajeom",
@@ -25460,7 +25479,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "a2d67c754518f44c",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4008156": {
     "slug": "ollibeuyeong-suwon-ak-taunjungangjeom",
@@ -25498,7 +25517,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "7c971dcb71635991",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3307289": {
     "slug": "ollibeuyeong-suwongyeonggidaejeom",
@@ -25536,7 +25555,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "9884b19ecbc2cd32",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3305322": {
     "slug": "ollibeuyeong-suwongwonseonjeom",
@@ -25574,7 +25593,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "85bc1acfbb5f2033",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2908842": {
     "slug": "ollibeuyeong-suwongeumgokjeom",
@@ -25612,7 +25631,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "19e6a1e90bafc248",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4008149": {
     "slug": "ollibeuyeong-suwonmangposageorijeom",
@@ -25650,7 +25669,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "705ba35e65df51eb",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2911752": {
     "slug": "ollibeuyeong-suwonmangpojeom",
@@ -25688,7 +25707,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "32b4aecc85cc6ba8",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4008158": {
     "slug": "ollibeuyeong-suwonmaegyojeom",
@@ -25726,7 +25745,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "6951e923592d5ba7",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2924761": {
     "slug": "ollibeuyeong-suwonmaetanjeom",
@@ -25764,7 +25783,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "52d8e6ad80d456e5",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2918379": {
     "slug": "ollibeuyeong-suwonseongdaejeom",
@@ -25802,7 +25821,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "9b30b88e023ca00b",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2918281": {
     "slug": "ollibeuyeong-suwonsicheongyeokjeom",
@@ -25840,7 +25859,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "c01d0eaa5f11dc44",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2928891": {
     "slug": "ollibeuyeong-suwonelpoteumoljeom",
@@ -25878,7 +25897,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "fdd3310dcd6e6387",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4008157": {
     "slug": "ollibeuyeong-suwonyeokjeom",
@@ -25916,7 +25935,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "2dec3b852f346c79",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3306668": {
     "slug": "ollibeuyeong-suwonyeongtongyeokjeom",
@@ -25954,7 +25973,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "75e5a69daae9d501",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025419": {
     "slug": "ollibeuyeong-suwonyeongtongjeom",
@@ -25989,7 +26008,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "75e060228d4f27c2",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4008146": {
     "slug": "ollibeuyeong-suwonomokcheonjeom",
@@ -26027,7 +26046,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "1f6a7f3437f3e4b5",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2906298": {
     "slug": "ollibeuyeong-suwoningyejeom",
@@ -26065,7 +26084,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "afc041c7e150117e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2914520": {
     "slug": "ollibeuyeong-suwonjangangucheongsageorijeom",
@@ -26103,7 +26122,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "5c46a5a3afbb8d3f",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2907813": {
     "slug": "ollibeuyeong-suwonjeongjajeom",
@@ -26141,7 +26160,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "4f6c6068c51ffe9e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3307711": {
     "slug": "ollibeuyeong-suwonjungangjeom",
@@ -26179,7 +26198,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "478d34606a9173c1",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2922762": {
     "slug": "ollibeuyeong-suwoncheoncheonjeom",
@@ -26217,7 +26236,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "66416ee4954c78fb",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3307097": {
     "slug": "ollibeuyeong-suwontapdongjeom",
@@ -26255,7 +26274,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "f52e2a141464cc1c",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2912762": {
     "slug": "ollibeuyeong-suwonteomineoljeom",
@@ -26293,7 +26312,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "0efe2c4b6e105379",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4008147": {
     "slug": "ollibeuyeong-suwonhomaesilsageorijeom",
@@ -26331,7 +26350,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "a9fc0ce645eb0037",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3307021": {
     "slug": "ollibeuyeong-suwonhomaesiljeom",
@@ -26369,7 +26388,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "1a86b3d20d911ad9",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4008155": {
     "slug": "ollibeuyeong-seutapildeusuwonjeom",
@@ -26410,7 +26429,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "7874a20d887680f7",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-3307334": {
     "slug": "ollibeuyeong-taimbillaseu-suwonjeom",
@@ -26448,7 +26467,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "e50613c75cec9fff",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2906286": {
     "slug": "ollibeuyeong-hompeulleoseudongsuwonjeom",
@@ -26492,7 +26511,7 @@
       }
     ],
     "ko_hash": "fe6e62818a9460ca",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2912578": {
     "slug": "ollibeuyeong-hompeulleoseubuksuwonjeom",
@@ -26536,7 +26555,7 @@
       }
     ],
     "ko_hash": "583d02059d5fcad0",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011384": {
     "slug": "oljen-rotdemol-gwanggyojeom",
@@ -26577,7 +26596,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "e816319e442c0bba",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025408": {
     "slug": "waideuaenggeul-rotdemol-gwanggyojeom",
@@ -26618,7 +26637,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "db27af3ab0fbbda7",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2927008": {
     "slug": "wakoru-taimbillaseu-suwonjeom",
@@ -26662,7 +26681,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "05fc9bb352913956",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025442": {
     "slug": "wonteu-suwonyeokjeom",
@@ -26700,7 +26719,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "5968a84af39f6546",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011442": {
     "slug": "wilseun-seutapildeu-suwonjeom",
@@ -26738,7 +26757,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "ed315a6e72f63c00",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011405": {
     "slug": "yunikeullo-rotdemol-gwanggyojeom",
@@ -26776,7 +26795,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "cbc825f8f03012c4",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2930802": {
     "slug": "yunikeullo-suwonmangpojeom",
@@ -26814,7 +26833,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "98e466fceea0542c",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011466": {
     "slug": "yunikeullo-seutapildeu-suwonjeom",
@@ -26852,7 +26871,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "cb4e01b86491554e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2916312": {
     "slug": "yunikeullo-taimbillaseu-suwonjeom",
@@ -26893,7 +26912,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "c17d181b1a2ab401",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2931729": {
     "slug": "iniseupeuri-suwonseongdaejeom",
@@ -26934,7 +26953,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "ed95f95c4d8607f3",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2931817": {
     "slug": "imateu-gwanggyojeom",
@@ -26969,7 +26988,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "535ee447933e50c1",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2931037": {
     "slug": "imateu-seosuwonjeom",
@@ -27016,7 +27035,7 @@
       }
     ],
     "ko_hash": "40185bfe7411b5d8",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025432": {
     "slug": "illekteuromateu-seutapildeusuwonjeom",
@@ -27054,7 +27073,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "f9250057bed40da5",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2931871": {
     "slug": "inmisya-taimbillaseu-suwonjeom",
@@ -27098,7 +27117,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "264a74fbfc0e9ae5",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025443": {
     "slug": "jeonggwanjang-lounge-maesallobonjeom",
@@ -27139,7 +27158,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "9a5d2e3c4e404d89",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011415": {
     "slug": "jeieseutina-seutapildeu-suwonjeom",
@@ -27177,7 +27196,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "7efcbc5341fb1860",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2929306": {
     "slug": "jeieseutina-taimbillaseu-suwonjeom",
@@ -27221,7 +27240,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "42b5ae48faafb5de",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2927047": {
     "slug": "jeijeijigoteu-taimbillaseu-suwonjeom",
@@ -27265,7 +27284,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "25042cdcf2e90ebb",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2925771": {
     "slug": "jigoteu-rotdemol-gwanggyojeom",
@@ -27309,7 +27328,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "f4098623149b2323",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2907044": {
     "slug": "jiodano-rotdemol-gwanggyojeom",
@@ -27353,7 +27372,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "73576accfa9fc84b",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025433": {
     "slug": "jiodano-seutapildeu-suwonjeom",
@@ -27391,7 +27410,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "e52061f6067c7e8a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2931376": {
     "slug": "jiodano-taimbillaseu-suwonjeom",
@@ -27432,7 +27451,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "8f083ed1fe4a5e30",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025409": {
     "slug": "jiosongjio-rotdemol-gwanggyojeom",
@@ -27473,7 +27492,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "92df6e27e258282c",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2926512": {
     "slug": "jilseutyueoteu-taimbillaseu-suwonjeom",
@@ -27514,7 +27533,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "defb574e5d38c4bd",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011417": {
     "slug": "chalseuaenkiseu-seutapildeu-suwonjeom",
@@ -27552,7 +27571,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "03714c2b1b15344e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011482": {
     "slug": "chamyaksa-suwonseutayakguk-seutapildeu-suwonjeom",
@@ -27590,7 +27609,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "ca896f11e173d6a3",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2922540": {
     "slug": "chyamseu-ak-peullaja-suwonjeom",
@@ -27631,7 +27650,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "b8fce686dff81b69",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2926974": {
     "slug": "kanggol-taimbillaseu-suwonjeom",
@@ -27672,7 +27691,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "6212d8374eec6c28",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025427": {
     "slug": "kanggolkijeu-seutapildeu-suwonjeom",
@@ -27710,7 +27729,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "5397765c82b0c1bc",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2928200": {
     "slug": "kaelbinkeullain-jin-rotdemol-gwanggyojeom",
@@ -27754,7 +27773,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "61b38ecd76aaf183",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2926877": {
     "slug": "kaelbinkeullain-jin-eondeoweeo-taimbillaseu-suwonjeom",
@@ -27795,7 +27814,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "3d58f0d6d431b5f2",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011479": {
     "slug": "kaelbinkeullaineondeoweeo-seutapildeu-suwonjeom",
@@ -27833,7 +27852,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "65569bd9b144f6d4",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025430": {
     "slug": "keobeonat-seutapildeu-suwonjeom",
@@ -27874,7 +27893,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "bfdd73834ef0e645",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2927055": {
     "slug": "keoseuteommellou-taimbillaseu-suwonjeom",
@@ -27918,7 +27937,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "da589187a7f2f761",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011471": {
     "slug": "keonbeoseu-seutapildeu-suwonjeom",
@@ -27956,7 +27975,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "fd92727ee2fb4075",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011402": {
     "slug": "keolleombia-rotdemol-gwanggyojeom",
@@ -27997,7 +28016,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "49e1d04144dcba44",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025410": {
     "slug": "kodak-rotdemol-gwanggyojeom",
@@ -28038,7 +28057,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "6431024e8400147a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025428": {
     "slug": "kodejeukeombain-seutapildeu-suwonjeom",
@@ -28079,7 +28098,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "56625f715896474c",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025431": {
     "slug": "kodeugeurapi-seutapildeu-suwonjeom",
@@ -28117,7 +28136,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "4e535bc8664bd707",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2918684": {
     "slug": "koorongseupocheu-ak-peullaja-suwonjeom",
@@ -28158,7 +28177,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "a7299a9d2f941129",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2927407": {
     "slug": "koorongseupocheu-rotdemol-gwanggyojeom",
@@ -28202,7 +28221,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "e5f0356697db5c22",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011455": {
     "slug": "koorongseupocheu-seutapildeu-suwonjeom",
@@ -28240,7 +28259,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "6d85766a77c7a0b9",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2910218": {
     "slug": "kochi-ak-peullaja-suwonjeom",
@@ -28281,7 +28300,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "651b7485a542384d",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2931597": {
     "slug": "kulteu-ak-peullaja-suwonjeom",
@@ -28322,7 +28341,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "2e97aa8ae4d307c1",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2925881": {
     "slug": "keullarangseu-taimbillaseu-suwonjeom",
@@ -28363,7 +28382,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "ec2ef87fc07aa5d9",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011439": {
     "slug": "kireusi-seutapildeu-suwonjeom",
@@ -28401,7 +28420,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "b6c0fd48332ed5b7",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2926540": {
     "slug": "killogaendeoseun-rotdemol-gwanggyojeom",
@@ -28445,7 +28464,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "6065ef9456ea3035",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2926891": {
     "slug": "tamijin-taimbillaseu-suwonjeom",
@@ -28483,7 +28502,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "93e1c002ba7c9594",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2916145": {
     "slug": "tamihilpigeo-rotdemol-gwanggyojeom",
@@ -28527,7 +28546,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "39c4bc0f8f68c2f9",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2929218": {
     "slug": "taim-rotdemol-gwanggyojeom",
@@ -28571,7 +28590,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "b32c7a29702e9593",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2923422": {
     "slug": "taptenbaelleonseu-taimbillaseu-suwonjeom",
@@ -28615,7 +28634,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "2875fd5cb4e3aecc",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011491": {
     "slug": "taegeuhoieo-ak-peullaja-suwonjeom",
@@ -28653,7 +28672,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "8f2996739fe79f41",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2925877": {
     "slug": "taendi-taimbillaseu-suwonjeom",
@@ -28694,7 +28713,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "6e208bd8ec276b8b",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025413": {
     "slug": "tempeo-rotdemol-gwanggyojeom",
@@ -28735,7 +28754,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "b0d2dccffaf6bfd6",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2927588": {
     "slug": "tomboi-rotdemol-gwanggyojeom",
@@ -28779,7 +28798,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "ca681dc12d82eec9",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011481": {
     "slug": "teureideoseu-holseilkeulleop-seutapildeu-suwonjeom",
@@ -28817,7 +28836,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "4afa74a6fa8bd658",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011419": {
     "slug": "teuwi-seutapildeu-suwonjeom",
@@ -28855,7 +28874,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "aa3ab0cb2c8aeda7",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011322": {
     "slug": "teuwi-taimbillaseu-suwonjeom",
@@ -28893,7 +28912,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "9c2de59a2dc9ebd0",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2925887": {
     "slug": "pandora-taimbillaseu-suwonjeom",
@@ -28937,7 +28956,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "0aba4e8485a17bd6",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2753682": {
     "slug": "pantajium",
@@ -28972,7 +28991,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "547232626d786f55",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025441": {
     "slug": "paldalmunollibiayakguk",
@@ -29013,7 +29032,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "8477fb6b833d7c34",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2915411": {
     "slug": "paenteom-rotdemol-gwanggyojeom",
@@ -29057,7 +29076,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "6dbab8ad01442562",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011329": {
     "slug": "pendi-gaelleoriabaekhwajeom-gwanggyojeom",
@@ -29095,7 +29114,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "90f305576433a241",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025424": {
     "slug": "pollodenim-seutapildeu-suwonjeom",
@@ -29130,7 +29149,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "729b6c89b03f87a3",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2903804": {
     "slug": "polloralpeurorennamseong-taimbillaseu-suwonjeom",
@@ -29171,7 +29190,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "3e71eb755dbf12ca",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011487": {
     "slug": "puma-seutapildeu-suwonjeom",
@@ -29209,7 +29228,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "9bb731b80d2c1b39",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025411": {
     "slug": "ping-rotdemol-gwanggyojeom",
@@ -29250,7 +29269,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "75687f39b3557ab4",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4025416": {
     "slug": "hansamin-yeongtongjeom",
@@ -29291,7 +29310,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "e7aea1492b69fea9",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2900555": {
     "slug": "hatteuraekseu-gwanggyojeom",
@@ -29335,7 +29354,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "e988b29af4dc794e",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-4011469": {
     "slug": "hejiseu-seutapildeu-suwonjeom",
@@ -29373,7 +29392,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "f6de7d176fcb2ee3",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2918711": {
     "slug": "hejiseugolpeu-ak-peullaja-suwonjeom",
@@ -29414,7 +29433,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "18819a00c3954ee9",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2903425": {
     "slug": "hollikahollika-suwollodeojeom",
@@ -29452,7 +29471,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "f9d7ad56ff4b6e29",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2901039": {
     "slug": "hompeulleoseu-megapudeumaket-suwonyeongtongjeom",
@@ -29493,7 +29512,7 @@
     "details": [],
     "faq": [],
     "ko_hash": "a15dd1869d0701cd",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "tourapi-2915108": {
     "slug": "hwilla-rotdemol-gwanggyojeom",
@@ -29537,6 +29556,6 @@
     "details": [],
     "faq": [],
     "ko_hash": "68542bee493c7d60",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   }
 }

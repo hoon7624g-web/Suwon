@@ -70,9 +70,9 @@ def menu_panel(html: str) -> str:
 
 # ------------------------------------------------------------------ the markup
 def test_every_main_nav_link_is_in_the_panel_and_the_phone_menu(built):
-    """Nothing of the old bar is lost: the footer's 둘러보기 is the main nav (nav_items), and every one of its links —
-    plus 소개·출처, the timetables and the planner — is in the panel's groups and in the phone menu's, each a page of
-    this build; the counts are the ones the lists show."""
+    """Nothing of the old bar is lost: every link of the footer's 둘러보기 (the main nav) — plus 소개·출처 and the
+    planner — is in the panel's groups and in the phone menu's, each a page of this build; no counts beside the
+    links."""
     home = page_html(built, "/")
     nav = [h for h in hrefs(block(home, '<nav class="foot-col foot-nav"')) if h != "/search/"]
     assert len(nav) >= 8 and "/videos/" in nav
@@ -91,12 +91,14 @@ def test_every_main_nav_link_is_in_the_panel_and_the_phone_menu(built):
     # the groups, in the approved order, and the counts the list pages print
     labels = re.findall(r'<span class="sg-t">([^<]+)</span>', side_nav(home))
     assert labels == ["찾기", "여행 계획", "행사 달력", "읽을거리", "소개·출처"]
+    # no counts beside the links (operator 2026-11-05 on the first site: '좌측 탭 숫자도 빼줘')
     for path in ("/places/", "/food/", "/stays/"):
-        n = re.search(r'class="count tn">(\d+)곳', page_html(built, path)).group(1)
-        assert f'href="{path}"><span class="sg-n">' in side_nav(home)
-        assert re.search(rf'href="{path}"><span class="sg-n">[^<]+</span><span class="sg-c tn">{n}곳</span>', side_nav(home)), path
-    assert re.findall(r'<span class="sg-n">([^<]+)</span>', block(side_nav(home), "여행 계획</span>", "</ul>")) == [
-        "코스", "가이드", "지도"]
+        assert re.search(rf'href="{path}"><span class="sg-n">[^<]+</span></a>', side_nav(home)), path
+    assert "sg-c" not in side_nav(home)
+    # the timetable pages join the group once their data exists (/transport/ · /sun/, 수원 2026-11-05)
+    plan = ["코스", "가이드", "지도"] + ["가는 법·시간표"] * (built / "transport" / "index.html").exists() \
+        + ["해 뜨고 지는 시각"] * (built / "sun" / "index.html").exists()
+    assert re.findall(r'<span class="sg-n">([^<]+)</span>', block(side_nav(home), "여행 계획</span>", "</ul>")) == plan
     # the panel is the header (a nav landmark with its name), after the skip link; the page's main is untouched
     assert home.index('<a class="skip-link" href="#main-content">') < home.index('<header class="mast"') < home.index(
         '<nav class="side-nav" aria-label="주 메뉴">') < home.index('<main id="main-content"')
@@ -305,7 +307,9 @@ def test_tab_order_is_the_order_on_screen(browser, built):
     for _ in range(14):
         page.keyboard.press("Tab")
         seen.append(page.evaluate("""(() => { const e = document.activeElement, r = e.getBoundingClientRect();
-          return [e.className || e.tagName, Math.round(r.top), !!e.closest('.mast')]; })()"""))
+          let s = e.parentElement;   // the panel scrolls once it is taller than the window: its content's own top
+          while (s && !(s.scrollHeight > s.clientHeight && /(auto|scroll)/.test(getComputedStyle(s).overflowY))) s = s.parentElement;
+          return [e.className || e.tagName, Math.round(r.top + (s ? s.scrollTop : 0)), !!e.closest('.mast')]; })()"""))
     inside = [s for s in seen if s[2]]
     assert len(inside) >= 10 and [s[1] for s in inside] == sorted(s[1] for s in inside), seen
     assert inside[0][0] == "wordmark" and inside[1][0] == "lang-btn" and seen.index(inside[-1]) == len(inside) - 1, seen
@@ -374,10 +378,14 @@ def test_the_weather_module_fills_its_room_after_load(browser, built):
     assert [x for x in page.evaluate("window.__ls") if x["v"] > 0.001] == [], page.evaluate("window.__ls")
     assert own(errors) == [], errors
     ctx.close()
-    # the home on a phone (the card right under the first screen): asked after load, it fills the room it kept
+    # the home on a phone (since 시안 A, 2026-11-05, the card is further down — after the opening card, the food row,
+    # the assistant and the news row): asked when the reader scrolls towards it, it fills the room it kept
     ctx, page, errors, calls = open_page(browser, built, "/", 390, 844)
     h0 = page.evaluate("[document.querySelector('.wx-home').getBoundingClientRect().height, "
                        "document.querySelector('.wx-home').classList.contains('is-ready')]")
+    page.wait_for_timeout(800)
+    assert len(calls) == 0                                   # nothing asked while the card is far from the screen
+    page.evaluate("window.scrollTo(0, document.querySelector('.wx-home').getBoundingClientRect().top + scrollY - 600)")
     page.wait_for_selector(".wx-home.is-ready", timeout=8000)
     page.wait_for_timeout(300)
     assert page.evaluate("window.__wx") == ["complete", "complete"] and len(calls) == 2

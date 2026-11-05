@@ -780,25 +780,55 @@ img.t3, img.t0, img[data-kogl="3"], img[data-kogl="0"] { object-fit: contain !im
   .vids-4 .vid-places a { padding: 11px 0 !important; margin: -11px 0 !important; }
 }
 
-/* ---------------------------------------------------------------- maps (ui.mapfig): Apple-Maps-light tiles in a rounded frame,
-   DivIcon markers (map.js), 44px controls */
+/* ---------------------------------------------------------------- maps (ui.mapfig): Kakao Maps in a rounded frame
+   (map.js: the map in .kmap, the site's own markers as CustomOverlay elements, 44px controls in .map-ctl) */
 .mapfig { margin: 0; }
 .map { position: relative; height: 420px; background: var(--bg-2); border-radius: var(--r-l); overflow: hidden; isolation: isolate; }
 .place-map .map { height: 400px; }
 .map-off { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 24px; text-align: center; font-size: 14px; color: var(--ink-3); }
 .mapfig figcaption { font-size: 12px; color: var(--ink-3); margin-top: 8px; line-height: 1.5; }
-.leaflet-container { font-family: var(--font) !important; background: #f2f2f0 !important; }
-/* tiles pushed far back (no hue, low contrast, lifted) so OSM's own pharmacy/clinic icons sit below marker contrast */
-.leaflet-tile-pane { filter: grayscale(1) contrast(.5) brightness(1.24); opacity: .86; }
-.leaflet-control-attribution { background: rgba(255, 255, 255, .86) !important; color: var(--ink-3) !important; font-size: 11px !important; padding: 2px 8px !important; border-radius: 8px 0 0 0; }
-.leaflet-control-attribution a { color: var(--ink-2) !important; }
-.leaflet-bar { border: 0 !important; border-radius: 12px !important; box-shadow: 0 2px 12px rgba(0, 0, 0, .14) !important; overflow: hidden; }
-.leaflet-bar a { width: 44px !important; height: 44px !important; line-height: 42px !important; font: 400 22px/42px var(--font) !important; color: var(--ink) !important; background: #fff !important; border-bottom-color: var(--hair) !important; }
-.leaflet-bar a:hover { background: var(--bg-2) !important; }
+/* the Kakao map fills the box (Kakao may set its own position on it, so the size is given too); z-index 0 makes it its
+   own stacking context, so Leaflet's panes (z-index 200–1000) stay inside it, under the site's controls beside it
+   (.map-ctl 2, .mk-edges 3) — without it the OSM tiles painted over the +/−, '전체 보기' and off-view stop chips */
+.kmap { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; font-family: var(--font); }
+.kmap:focus-visible { outline: 3px solid var(--blue); outline-offset: -3px; }
+.kmap img { max-width: none; max-height: none; }   /* the site's img { max-width: 100% } would hide Kakao's tiles */
+.kmap.leaflet-container { font: inherit; background: #e8edf1; }   /* map_provider 'osm': Leaflet keeps the site's type */
+.kmap.leaflet-container .mk-a { color: inherit; }
+.kmap .leaflet-control-attribution { font-size: 11px; }
+.map-ctl { position: absolute; z-index: 2; display: flex; flex-direction: column; gap: 8px; pointer-events: none; }
+.map-ctl > * { pointer-events: auto; }
+.map-tl { top: 10px; left: 10px; }
+.map-tr { top: 10px; right: 10px; align-items: flex-end; }
+/* bottom left (the far group's control): above the line of Kakao's logo and scale (bottom right), which must never be covered — a wide
+   button on a phone-width map would reach it */
+.map-bl { bottom: 34px; left: 10px; }
+.map-zoom { display: flex; flex-direction: column; border-radius: 12px; box-shadow: 0 2px 12px rgba(0, 0, 0, .14); overflow: hidden; background: #fff; }
+.map-zoom button { width: 44px; height: 44px; padding: 0; border: 0; background: #fff; font: 400 22px/1 var(--font); color: var(--ink); cursor: pointer; }
+.map-zoom button + button { border-top: 1px solid var(--hair); }
+.map-zoom button:hover { background: var(--bg-2); }
+.map-zoom button:disabled { color: var(--ink-3); cursor: default; background: #fff; }
+.map-zoom button:focus-visible { outline: 3px solid var(--blue); outline-offset: -3px; }
+/* a marker: the link (or span) round the styled dot; the dot keeps the state classes (.on .past .dim .mk-hl) */
+.mk-a { display: block; width: max-content; color: inherit; text-decoration: none; line-height: 0; cursor: pointer; }
+span.mk-a { cursor: default; }
+.mk-a:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; border-radius: 50%; }
+/* a marker that is a link answers a 44px touch round its centre — not a list map's dots (.mk-li): packed 9px dots
+   whose 44px areas would overlap (the list rows are the same links) */
+a.mk-a:not([tabindex="-1"]):not(.mk-li) { position: relative; }
+a.mk-a:not([tabindex="-1"]):not(.mk-li)::before { content: ""; position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; transform: translate(-50%, -50%); }
+.mk-foot { width: 5px; height: 5px; border-radius: 50%; background: var(--ink); opacity: .85; pointer-events: none; }
 .mk-self { width: 22px; height: 22px; border-radius: 50%; background: var(--blue); border: 4px solid #fff; box-shadow: 0 1px 6px rgba(0, 0, 0, .3); }
 .mk-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--ink); box-shadow: 0 0 0 2px #fff; transition: transform .2s var(--fb), background-color .2s var(--fb); }
 .mk-ring { width: 11px; height: 11px; border-radius: 50%; background: #fff; border: 2.5px solid var(--ink); box-shadow: 0 0 0 1.5px #fff; transition: transform .2s var(--fb); }
 .mk-sq { width: 9px; height: 9px; border-radius: 2px; background: var(--ink); box-shadow: 0 0 0 2px #fff; transition: transform .2s var(--fb); }
+/* a group of markers too close to tell apart at this scale (assets/map.js regroup): its count; pressed, the map comes
+   two levels closer. 44px touch target around a 30px disc */
+.mk-group { display: grid; place-items: center; min-width: 30px; height: 30px; padding: 0 7px; border-radius: 15px;
+  border: 0; background: var(--blue); color: #fff; font: inherit; font-size: 13px; font-weight: 700; line-height: 1; cursor: pointer;
+  box-shadow: 0 0 0 3px rgba(255,255,255,.9), 0 2px 6px rgba(0,0,0,.25); position: relative; }
+.mk-group::before { content: ""; position: absolute; inset: -7px; }
+.mk-group:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
 .mk-anchor { width: 12px; height: 12px; border-radius: 3px; background: #fff; border: 2px solid var(--ink); }
 .mk-num { width: 28px; height: 28px; border-radius: 50%; background: #fff; border: 2px solid var(--ink); font: 700 13px/24px var(--font); text-align: center; color: var(--ink); font-variant-numeric: tabular-nums; transition: transform .2s var(--fb), background-color .2s var(--fb); }
 .mk-num.past { background: var(--ink); color: #fff; }
@@ -806,7 +836,7 @@ img.t3, img.t0, img[data-kogl="3"], img[data-kogl="0"] { object-fit: contain !im
 .mk-num.extra { width: 14px; height: 14px; border-width: 2px; border-style: dashed; font-size: 0; }
 /* course maps (map.js COURSE MAPS): stops off the view pointed at from the box edge — an arrow towards them and their
    numbers in the markers' own rings; '전체 보기' (topright, the far-ctl look) */
-.mk-edges { position: absolute; inset: 0; z-index: 700; pointer-events: none; }
+.mk-edges { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
 .mk-edge { position: absolute; display: flex; align-items: center; gap: 2px; height: 32px; padding: 0 6px 0 8px; border: 0; border-radius: 980px; background: #fff; box-shadow: 0 2px 12px rgba(0, 0, 0, .16); pointer-events: auto; cursor: pointer; font: 700 11.5px/1 var(--font); color: var(--ink); white-space: nowrap; }
 .mk-edge::before { content: ""; position: absolute; inset: -6px; }   /* a 44px hit area round the 32px pill */
 .mk-edge.vert { flex-direction: column; width: 32px; height: auto; padding: 8px 0 6px; }
@@ -826,9 +856,7 @@ img.t3, img.t0, img[data-kogl="3"], img[data-kogl="0"] { object-fit: contain !im
 .mk-region.sel { font-size: 19px; }
 .far-ctl { display: flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 14px; background: #fff; border: 0; border-radius: 980px; box-shadow: 0 2px 12px rgba(0, 0, 0, .14); font: 700 13px/1.2 var(--font); color: var(--ink); cursor: pointer; }
 .far-ctl:hover { background: var(--bg-2); }
-.leaflet-tooltip.tt-map { background: #fff; border: 0; border-radius: 8px; box-shadow: 0 2px 12px rgba(0, 0, 0, .16); color: var(--ink); font: 400 13.5px/1.3 var(--font); padding: 5px 9px; }
-.leaflet-tooltip.tt-map::before { display: none; }
-.course-progress { stroke: var(--blue); }
+.tt-map { margin-bottom: 10px; background: #fff; border-radius: 8px; box-shadow: 0 2px 12px rgba(0, 0, 0, .16); color: var(--ink); font: 400 13.5px/1.3 var(--font); padding: 5px 9px; white-space: nowrap; pointer-events: none; }
 
 /* ---------------------------------------------------------------- search (ui.search_form; results by assets/search.js) */
 .search { margin-top: 20px; max-width: 46em; }
@@ -891,4 +919,48 @@ img.t3, img.t0, img[data-kogl="3"], img[data-kogl="0"] { object-fit: contain !im
   .wk-name a, .wk-src a, .u-s a, .vid-places a { display: inline-block; padding: 13px 0; margin: -13px 0; }
   .wk th, .wk td { padding: 12px 0; }
   .vid-places { padding: 4px 0 14px; line-height: 2; }
+}
+
+/* 품목별 가게 (place.html.j2, 2026-10-30 '투박하다'): the block sits on the grey band (tone-2), so the chips and cards are
+   white with a hairline and a soft shadow; each group opens with a bold title and a count pill, the lists it added in a
+   small note box; a card reads name · items · address/phone lines · badges, with 전화 · 지도 as 44px buttons at its foot */
+.shops-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.shops-nav a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 14px; border-radius: 980px; background: var(--bg); box-shadow: inset 0 0 0 1px var(--hair); color: var(--ink); font-size: 14px; font-weight: 700; text-decoration: none; }
+.shops-nav a:hover { background: var(--tint); }
+.shops-nav .tn { color: var(--sea-hi); font-size: 13px; font-weight: 700; }
+.shops-g { margin-top: 32px; scroll-margin-top: 90px; }
+.shops-head { display: grid; gap: 6px; }
+.shops-head.has-ph { grid-template-columns: 1fr; }
+.shops-gh { display: flex; align-items: center; gap: 8px; margin: 0; font: 700 19px/1.3 var(--font); color: var(--ink); letter-spacing: -.02em; }
+.shops-gn { padding: 3px 10px; border-radius: 980px; background: var(--tint); color: var(--sea-deep); font-size: 13px; font-weight: 700; letter-spacing: 0; }
+.shops-ph { margin: 0 0 6px; }
+.shops-ph img { display: block; width: 100%; aspect-ratio: 16 / 7; object-fit: cover; border-radius: var(--r-m, 14px); background: var(--bg-3); }
+.shops-ph figcaption { margin-top: 4px; font-size: 11.5px; color: var(--ink-3); }
+.shops-lics { display: flex; gap: 8px; padding: 9px 12px; border-radius: 12px; background: var(--bg); box-shadow: inset 0 0 0 1px var(--hair); }
+.shops-lics > .icon { width: 16px; height: 16px; margin-top: 2px; color: var(--sea); }
+.shops-lic { margin: 0; font-size: 12.5px; line-height: 1.5; color: var(--ink-2); }
+.shop-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin-top: 14px; padding: 0; list-style: none; }
+.shop-card { display: flex; flex-direction: column; gap: 5px; min-width: 0; padding: 14px 12px 12px; border-radius: 16px; background: var(--bg); box-shadow: inset 0 0 0 1px var(--hair), var(--shadow-1); }
+.sc-name { font: 700 16px/1.35 var(--font); color: var(--ink); letter-spacing: -.02em; word-break: keep-all; overflow-wrap: anywhere; }
+.sc-items { font-size: 13.5px; line-height: 1.4; color: var(--ink-2); overflow-wrap: anywhere; }
+.sc-meta { display: grid; gap: 3px; margin: 2px 0 0; padding: 0; list-style: none; }
+.sc-meta li { display: flex; gap: 4px; font-size: 12.5px; line-height: 1.4; color: var(--ink-3); overflow-wrap: anywhere; }
+.sc-meta .sc-ico { width: 14px; height: 14px; margin-top: 1px; color: var(--sea); }
+.sc-badges { display: flex; flex-wrap: wrap; gap: 4px; margin-top: auto; padding-top: 6px; }
+.sc-badge { padding: 3px 8px; border-radius: 980px; background: var(--tint); color: var(--sea-deep); font-size: 11.5px; font-weight: 700; line-height: 1.35; }
+.sc-badge.is-lic { background: var(--bg-2); color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--hair); }
+.sc-act { display: flex; gap: 6px; margin-top: 4px; }
+.sc-btn { flex: 1 1 0; display: inline-flex; align-items: center; justify-content: center; gap: 4px; min-width: 0; min-height: 44px; border-radius: 12px; background: var(--g0); color: var(--sea-deep); font-size: 13.5px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+.sc-btn:hover { background: var(--g1); }
+.sc-btn .icon { width: 17px; height: 17px; }
+.shops-more summary { display: flex; align-items: center; justify-content: center; min-height: 44px; margin-top: 12px; border-radius: 12px; background: var(--bg); box-shadow: inset 0 0 0 1px var(--hair); font-size: 14px; font-weight: 700; color: var(--sea-hi); cursor: pointer; list-style: none; }
+.shops-more summary::-webkit-details-marker { display: none; }
+.shops-more summary::after { content: "+"; margin-left: 6px; font-weight: 700; }
+.shops-more[open] summary::after { content: "−"; }
+.shops-src { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); }
+.shops-src a { color: inherit; }
+@media (min-width: 768px) {
+  .shops-head.has-ph { grid-template-columns: 300px 1fr; align-items: end; column-gap: 18px; }
+  .shops-head.has-ph .shops-ph { grid-row: span 2; margin: 0; }
+  .shop-cards { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
 }

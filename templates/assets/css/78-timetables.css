@@ -5,6 +5,8 @@
    The '오늘' tag (sun.js) keeps its room from the first paint under html.js (no layout shift); the visitor's day row is
    tinted with a sea rule. Contrast: big figures sea on #fff (>= 24px 700), small labels ink-3 on #fff 5.62:1 and on
    g0 5.22:1, sea-hi on #fff 6.43:1, white on sea 4.96:1. Touch targets >= 44px (chips, summaries, tiles). */
+/* sheet:times — from here to 'sheet:times end' only /sun/ and /transport/ load these rules (/assets/page-times.css,
+   pipeline/build.PAGE_SHEETS); the shared stylesheet leaves them out */
 
 /* ---------------------------------------------------------------- the answer (/sun/) */
 .sun-ans { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 4px 32px; margin-top: 18px; }
@@ -163,8 +165,6 @@
 .tt-see-a b { font: 700 19px/1.35 var(--font); letter-spacing: -.02em; color: var(--sea-deep); }
 .tt-see-a b::after { content: " →"; }
 .tt-see-s { font-size: 14.5px; line-height: 1.5; color: var(--ink-2); }
-/* the place page's day card: its sunset box leads to /sun/ (templates/_today.html.j2, Korean pages) */
-.td-sun-more { display: inline-flex; align-items: center; min-height: 44px; margin: -12px 0 -14px; color: var(--sun-ink, #6B5A1E); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 .tt-data-n { font: 700 17px/1.4 var(--font); letter-spacing: -.015em; color: var(--ink); margin-bottom: 4px; }
 .tt-data-n { font: 700 17px/1.4 var(--font); letter-spacing: -.015em; color: var(--ink); margin-bottom: 4px; }
 
@@ -187,3 +187,7 @@
   /* the text column keeps clear of the arc */
   .pg-sun .tt-hero .list-lede, .pg-sun .tt-jump, .pg-sun .sun-sub { max-width: min(46em, calc(100% - clamp(300px, 28vw, 400px) - 48px)); }
 }
+/* sheet:times end */
+
+/* the place page's day card: its sunset box leads to /sun/ (templates/_today.html.j2, Korean pages) */
+.td-sun-more { display: inline-flex; align-items: center; min-height: 44px; margin: -12px 0 -14px; color: var(--sun-ink, #6B5A1E); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }

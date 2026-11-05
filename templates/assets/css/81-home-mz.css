@@ -1,0 +1,211 @@
+/* 81-home-mz — the home's sections in the look the first site's operator approved on 2026-11-02 ('일단 반영하자', the
+   canvas ④ 시안; this city 2026-11-05 without the blog; templates/_mz.html.j2, present.home_tiles · feed_extra ·
+   home_post, site.js 'home cards'):
+     목적별 가이드   card-news tiles (.mzt: photo · sea · chick · ink · tint) and one tab per guide group (.gtab)
+     대표 장소       feed cards (.fp): the head, the photo with the name on it (KOGL-1) or whole (KOGL-3), value chips
+     다가오는 행사   D-day tickets (.tkt): a coloured stub, a perforation, the name, place · time · fee
+     SNS          the post card topped by the place it shows (.sec-mz .hsns-c, .hsns-v)
+   Pretendard 400·700 only (the site's two weights). Words sit on a photo only when it is KOGL-1 (.t1): white letters
+   with a dark outline (text-shadow, so every browser draws it), never a darkening layer; a KOGL-3 photo (.t3) is
+   whole — scaled down only — and nothing is laid on it. Touch targets ≥ 44px; the stubs' and tiles' text keeps
+   4.5:1 (white on sea-deep / ink / red, ink on chick / tint). The highlighter under a heading stays out (owner
+   2026-10-09). */
+/* sheet:home — the Korean home only (/assets/page-home.css, pipeline/build.PAGE_SHEETS) */
+
+/* ---------------------------------------------------------------- words on a KOGL-1 photo */
+.mzt-photo .mzt-n, .mzt-photo .mzt-cr, .fp-cr, .fp-cap,
+.hsns-v.t1 .hsns-cr {
+  color: #fff;
+  text-shadow: -1.5px -1.5px 0 var(--ink), 1.5px -1.5px 0 var(--ink), -1.5px 1.5px 0 var(--ink), 1.5px 1.5px 0 var(--ink),
+    0 -1.5px 0 var(--ink), 0 1.5px 0 var(--ink), -1.5px 0 0 var(--ink), 1.5px 0 0 var(--ink), 0 3px 10px rgba(23, 32, 51, .45);
+}
+.mzt-photo .mzt-n b, .fp-cap .fp-t {
+  text-shadow: -2.5px -2.5px 0 var(--ink), 2.5px -2.5px 0 var(--ink), -2.5px 2.5px 0 var(--ink), 2.5px 2.5px 0 var(--ink),
+    0 -2.5px 0 var(--ink), 0 2.5px 0 var(--ink), -2.5px 0 0 var(--ink), 2.5px 0 0 var(--ink), 1px 4px 0 var(--ink);
+}
+
+/* ---------------------------------------------------------------- 목적별 가이드: card-news tiles */
+.car-mzt .car-track > li { width: min(300px, 80vw); }
+.mzt { position: relative; isolation: isolate; display: flex; flex-direction: column; width: 100%; min-height: 330px;
+  padding: 20px 22px 22px; border-radius: var(--r-l); overflow: hidden; color: var(--ink); text-decoration: none; }
+.mzt:hover { text-decoration: none; }
+.mzt-photo { padding: 0; background: #fff; box-shadow: inset 0 0 0 1px var(--hair); }
+.mzt-sea { background: var(--sea-deep); color: #fff; }
+.mzt-chick { background: var(--chick); }
+.mzt-ink { background: var(--ink); color: #fff; }
+.mzt-tint { background: var(--tint); box-shadow: inset 0 0 0 1px var(--tint2); }
+/* a photo tile: the photo on top with the label, the credit and the figure on it; the answer under it on white */
+.mzt-ph { position: relative; flex: none; display: block; height: 184px; overflow: hidden; background: #33415c; }
+.mzt-ph picture { position: absolute; inset: 0; display: block; }
+.mzt-ph img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease); }
+.mzt-photo .mzt-top { position: absolute; top: 16px; left: 16px; right: 16px; }
+.mzt-photo .mzt-n { position: absolute; left: 18px; right: 18px; bottom: 12px; }
+.mzt-photo .mzt-b { padding: 14px 22px 22px; padding-right: 62px; margin-top: 0; }
+.mzt-photo .mzt-v { color: var(--ink-2); }
+.mzt:hover .mzt-ph img { transform: scale(1.03); }
+.mzt-top { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.mzt-k { font: 700 14px/1.2 var(--font); padding: 6px 12px; border-radius: 999px; background: #fff; color: var(--sea-deep); }
+.mzt-photo .mzt-k, .mzt-ink .mzt-k { background: var(--chick); color: var(--ink); }
+.mzt-chick .mzt-k { background: var(--ink); color: var(--chick); }
+.mzt-tint .mzt-k { background: var(--sea-deep); color: #fff; }
+.mzt-cr { font: 700 11px/1.35 var(--font); }
+.mzt-b { margin-top: auto; display: flex; flex-direction: column; gap: 8px; padding-top: 18px; padding-right: 44px; }
+.mzt-n { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; }
+.mzt-n b { font: 700 clamp(50px, 4.6vw, 72px)/1 var(--font); letter-spacing: -.04em; white-space: nowrap; }
+.mzt-n small { font: 700 17px/1.25 var(--font); letter-spacing: -.02em; }
+.mzt-n .mzt-u { margin-left: -8px; font-size: clamp(20px, 1.8vw, 26px); }
+.mzt-n b.mzt-long { font-size: clamp(38px, 3.4vw, 52px); }
+.mzt-v { font-size: 14.5px; line-height: 1.55; text-wrap: pretty; }
+.mzt-chick .mzt-v, .mzt-tint .mzt-v { color: var(--ink-2); }
+.mzt-ink .mzt-v { color: #DCE2EC; }
+.mzt-closed { display: flex; gap: 7px; font-size: 13px; line-height: 1.5; }
+.mzt-closed .sq { margin: 5px 0 0; }
+.mzt-sea .mzt-closed .sq, .mzt-ink .mzt-closed .sq { box-shadow: 0 0 0 1.5px #fff; }
+.mzt .arr { position: absolute; right: 18px; bottom: 18px; width: 38px; height: 38px; border-radius: 50%; display: flex;
+  align-items: center; justify-content: center; padding-bottom: 2px; font-size: 20px; line-height: 1; background: #fff; color: var(--sea-deep); }
+.mzt-chick .arr, .mzt-tint .arr, .mzt-photo .arr { background: var(--ink); color: #fff; }
+@media (min-width: 1024px) {
+  .car-mzt .car-view { overflow: visible; padding: 0 var(--ml); }
+  .car-mzt .car-track { width: auto; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--g); }
+  .car-mzt .car-track > li { width: auto; }
+  .car-mzt .car-foot { display: none; }
+  .mzt { min-height: 310px; }
+}
+@media (min-width: 1024px) and (max-width: 1771px) {
+  html[lang="ko"] main .car-mzt .car-view, html[lang="ko"] main .car-fp .car-view { margin-right: 0; padding-right: max(var(--ml), 124px); }
+}
+
+/* the guide groups: one tab each, the guides as #chips; without JS every group shows with its heading */
+.gtab { margin-top: clamp(28px, 3vw, 44px); padding-top: 24px; border-top: 1px solid var(--hair); }
+.gtab-l { margin: 0 0 12px; font: 700 16px/1.3 var(--font); }
+.gtab-bar { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding: 2px 2px 4px; }
+.gtab-bar::-webkit-scrollbar { display: none; }
+.gtab-bar button { white-space: nowrap; flex: none; min-height: 44px; display: inline-flex; align-items: center; gap: 6px; padding: 0 18px;
+  border: 0; border-radius: 999px; background: #fff; box-shadow: inset 0 0 0 1px var(--hair); color: var(--ink);
+  font: 400 15px/1 var(--font); cursor: pointer; }
+.gtab-bar button span { font-size: 12px; color: var(--ink-3); }
+.gtab-bar button[aria-selected="true"] { background: var(--ink); box-shadow: none; color: #fff; font-weight: 700; }
+.gtab-bar button[aria-selected="true"] span { color: var(--chick); }
+.gtab-bar button:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.gtab-p { margin-top: 14px; }
+.gtab-h { margin: 18px 0 10px; font: 700 15px/1.3 var(--font); }
+.gtab-h .tn { color: var(--ink-3); font-weight: 400; }
+html.js .gtab-h { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+html.js .gtab-p[data-tab-off] { display: none; }
+html:not(.js) .gtab-bar, html:not(.js) .gtab-l { display: none; }
+.gtab-list { display: flex; flex-wrap: wrap; gap: 10px; }
+.gtab-list a { white-space: nowrap; min-height: 44px; display: inline-flex; align-items: center; gap: 3px; padding: 0 16px; border-radius: 999px;
+  background: #fff; box-shadow: inset 0 0 0 1px var(--hair); color: var(--ink); font-size: 15px; text-decoration: none; }
+.gtab-list a span { color: var(--sea); font-weight: 700; }
+.gtab-list a:hover { box-shadow: inset 0 0 0 1px var(--sea); text-decoration: none; }
+@media (max-width: 760px) {
+  .gtab-list { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 calc(-1 * var(--m)); padding: 2px var(--m) 4px; }
+  .gtab-list::-webkit-scrollbar { display: none; }
+  .gtab-list a { flex: none; }
+}
+
+/* ---------------------------------------------------------------- 대표 장소: feed cards */
+.car-fp .car-track > li { width: 264px; }
+.fp { position: relative; display: flex; flex-direction: column; width: 100%; background: #fff; border-radius: 22px;
+  box-shadow: inset 0 0 0 1px var(--hair); overflow: hidden; transition: box-shadow .2s var(--fb); }
+.fp:hover { box-shadow: inset 0 0 0 1px var(--tint2), var(--sh-2); }
+.fp-h { display: flex; align-items: flex-start; gap: 8px; padding: 12px 12px 10px; }
+.fp-av { flex: none; width: 32px; height: 32px; border-radius: 50%; background: var(--tint); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.fp-av img { width: 28px; height: 28px; }
+.fp-hd { flex: 1; min-width: 0; }
+.fp-name { margin: 0; font: 700 15px/1.35 var(--font); letter-spacing: -.01em; word-break: keep-all; overflow-wrap: anywhere; }
+.fp-name a { color: var(--ink); text-decoration: none; }
+.fp-name a::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.fp-name a:focus-visible { outline: none; }
+.fp:has(.fp-name a:focus-visible) { outline: 3px solid var(--focus); outline-offset: 2px; }
+.fp-meta { margin: 1px 0 0; font-size: 12px; line-height: 1.4; color: var(--ink-3); }
+.fp-off { flex: none; padding: 5px 8px; border-radius: 999px; background: var(--red); color: #fff; font: 700 11px/1 var(--font); }
+.fp-ph { position: relative; margin: 0; }
+.fp-ph.t1 { height: 320px; background: #33415c; }
+.fp-ph.t1 picture { display: block; width: 100%; height: 100%; }
+.fp-ph.t1 img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.fp-cr { position: absolute; top: 9px; left: 11px; right: 50px; font: 700 10px/1.35 var(--font); }
+.fp-badge { position: absolute; top: 8px; right: 8px; width: 36px; height: 36px; border-radius: 50%; background: #fff;
+  display: flex; align-items: center; justify-content: center; overflow: hidden; box-shadow: 0 1px 4px rgba(0, 0, 0, .2); }
+.fp-badge img { width: 32px; height: 32px; }
+.fp-cap { position: absolute; left: 8px; right: 8px; bottom: 16px; margin: 0; display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; }
+.fp-t { font: 700 24px/1.15 var(--font); letter-spacing: -.03em; word-break: keep-all; }
+.fp-t.fp-t-s { font-size: 20px; }
+.fp-t.fp-t-xs { font-size: 17px; }
+.fp-l { font: 700 12px/1.35 var(--font); }
+.fp-ph.t3 { margin: 0 10px; }
+.fp-ph.t3 .fp-frame { padding: 8px; border-radius: 12px; background: var(--bg-2); }
+.fp-ph.t3 img { display: block; width: 100%; height: auto; }
+.fp-ph.t3 figcaption { display: flex; flex-direction: column; gap: 3px; padding: 12px 4px 0; }
+.fp-ph.t3 .fp-t { color: var(--ink); }
+.fp-ph.t3 .fp-l { color: var(--ink-2); }
+.fp-cr3 { margin-top: 3px; font-size: 10px; line-height: 1.4; color: var(--ink-3); }
+.fp-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: auto 0 0; padding: 12px 12px 14px; list-style: none; }
+.fpc { min-height: 28px; display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0 5px; padding: 3px 10px;
+  border-radius: 999px; box-shadow: inset 0 0 0 1px var(--hair); font-size: 12px; line-height: 1.35; }
+.fpc .kf-main { font-weight: 700; }
+.fpc .kf-more { font-size: 11px; color: var(--ink-3); }
+.fpc .kf-sub { display: none; }   /* the chip keeps the main value; the rest is on the place page ('외') */
+.fpc.is-closed { box-shadow: inset 0 0 0 1px #F1C9CB; }
+.fpc-fee, .fpc-menu { background: var(--tint); box-shadow: none; }
+.fpc-fee .kf-main, .fpc-menu .kf-main { color: var(--sea-deep); }
+.fpc.is-na { background: var(--bg-2); box-shadow: none; color: var(--ink-2); }
+
+/* ---------------------------------------------------------------- 다가오는 행사: D-day tickets */
+.tkts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin: 0; padding: 0; list-style: none; }
+@media (max-width: 1023px) {
+  .tkts { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(280px, 86%); overflow-x: auto;
+    overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 4px 2px 10px; }
+  .tkts::-webkit-scrollbar { display: none; }
+  .tkts > li { scroll-snap-align: start; }
+}
+.tkt { --notch: var(--bg); min-width: 0; }
+.tone-2 .tkt { --notch: var(--bg-2); }
+.tkt a { position: relative; display: flex; height: 100%; min-height: 212px; border-radius: 22px; background: #fff;
+  box-shadow: inset 0 0 0 1px var(--hair); overflow: hidden; color: var(--ink); text-decoration: none; transition: box-shadow .2s var(--fb); }
+.tkt a:hover { box-shadow: inset 0 0 0 1px var(--tint2), var(--sh-2); text-decoration: none; }
+.tkt a::before, .tkt a::after { content: ""; position: absolute; left: 100px; width: 24px; height: 24px; border-radius: 50%; background: var(--notch); }
+.tkt a::before { top: -12px; }
+.tkt a::after { bottom: -12px; }
+.tkt-stub { flex: none; width: 112px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 6px; padding: 14px 6px; text-align: center; border-right: 2px dashed var(--notch); }
+.tkt-red .tkt-stub { background: var(--red); color: #fff; }
+.tkt-sea .tkt-stub { background: var(--sea-deep); color: #fff; }
+.tkt-chick .tkt-stub { background: var(--chick); color: var(--ink); }
+.tkt-dd { font: 700 34px/1 var(--font); letter-spacing: -.03em; }
+.tkt-date { font-size: 13px; font-weight: 700; line-height: 1.4; }
+.tkt-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px; padding: 20px 20px 18px 22px; }
+.tkt-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tkt-chip { padding: 3px 8px; border-radius: 6px; background: var(--tint); color: var(--sea-deep); font: 700 12px/1.3 var(--font); }
+.tkt-hot { padding: 3px 9px; border-radius: 999px; background: var(--chick); color: var(--ink); font: 700 11px/1.3 var(--font); letter-spacing: .04em; }
+.tkt-name { font: 700 18px/1.4 var(--font); letter-spacing: -.02em; word-break: keep-all; overflow-wrap: anywhere; }
+.tkt-meta { margin-top: auto; display: flex; flex-wrap: wrap; gap: 2px 10px; font-size: 13.5px; line-height: 1.5; color: var(--ink-3); }
+
+/* ---------------------------------------------------------------- SNS: the place on top of each post card */
+.sec-mz .hsns-c { gap: 12px; padding: 0 0 16px; overflow: hidden; }
+.sec-mz .hsns-h, .sec-mz .hsns-n, .sec-mz .hsns-f { margin: 0 16px; }
+.sec-mz .hsns-n { display: block; -webkit-line-clamp: unset; overflow: visible; font-size: 14.5px; color: var(--ink-2); }
+.hsns-v { position: relative; display: block; height: 156px; overflow: hidden; background: var(--bg-2); }
+.hsns-v.t1 picture { display: block; width: 100%; height: 100%; }
+.hsns-v.t1 img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.hsns-v.t3 { height: 172px; }
+.hsns-v.t3 img { position: absolute; left: 10px; top: 54px; width: calc(100% - 20px); height: calc(100% - 62px); object-fit: contain; }
+.hsns-w-ink { background: var(--ink); color: #fff; }
+.hsns-w-chick { background: var(--chick); color: var(--ink); }
+.hsns-w-sea { background: var(--sea-deep); color: #fff; }
+.hsns-w-tint { background: var(--tint); color: var(--sea-deep); }
+.hsns-w-rose { background: #FDECEC; color: #A51D23; }
+.hsns-w { position: absolute; left: 16px; right: 16px; bottom: 14px; font: 700 26px/1.2 var(--font); letter-spacing: -.03em; word-break: keep-all; }
+.hsns-pl { position: absolute; top: 12px; left: 12px; max-width: calc(100% - 24px); display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 10px; border-radius: 999px; background: #fff; color: var(--ink); font: 700 12px/1.3 var(--font); box-shadow: 0 1px 4px rgba(0, 0, 0, .12); }
+.hsns-cr { position: absolute; right: 10px; bottom: 8px; left: 10px; text-align: right; font: 700 10px/1.3 var(--font); }
+.hsns-v.t3 .hsns-cr { top: 12px; bottom: auto; left: auto; max-width: 54%; color: var(--ink-3); text-align: right; }
+.hsns-v.t3 .hsns-pl { max-width: 44%; }
+.sec-mz .hsns-lang { flex: none; margin-left: auto; padding: 3px 10px; border-radius: 999px; background: var(--chick); color: var(--ink); font: 700 12px/1.3 var(--font); }
+.hsns-f { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 10px; margin-top: auto !important; }
+.sec-mz .hsns-d { margin-top: 0; }
+.hsns-go { font: 700 13px/1.3 var(--font); color: var(--sea-deep); white-space: nowrap; }
+.hsns-note { margin-top: 14px; }
+
+@media (prefers-reduced-motion: reduce) { .mzt-ph img { transition: none; } .mzt:hover .mzt-ph img { transform: none; } }
+/* sheet:home end */

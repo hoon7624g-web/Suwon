@@ -28,6 +28,14 @@
      80-side        the tab panel (operator 2026-10-31 '적용하자'): from 1200px the header is a panel at the left and the
                     page a column at its right (--cw); below 1200px the bar's menu holds the same tab groups; the day
                     card and 날씨각's weather module
+     81-home-mz     the home's sections in the first site's MZ look (2026-11-02; this city 2026-11-05): card-news guide
+                    tiles and group tabs, feed cards, D-day tickets, SNS cards with the place
+     83-partners    파트너 되기 (/partners/, the inquiry form, the panel's '문의/제휴' row; 2026-11-05)
+     84-fest        an event page's photos of the places around the venue and its day guide
+     85-guide-calm  the guide page, calmer: balanced headings, whole names and dates, a quiet answer card
+     86-polish      list ledgers as cards, designation and kind colours, the map's 동 cards, the no-photo place map
+     87-design-a    시안 A: the home's card over the opening photo, the pinned event banner, the food row, the phones'
+                    tab bar and a place's call/route bar, the place's key facts as coloured tiles
 
    Look (UI4, owner 2026-10-14, after the AIO2O proposal demo for KT Skylife — its design language only): a light
    page, white cards with a hairline border on soft sea-blue tints, one brand colour, 바다 파랑 (sea blue, the
@@ -42,7 +50,9 @@
    - Information is the skeleton, motion the punctuation. Nothing on the first screen starts hidden, clipped or
      offset; motion starting states are applied by motion.js only to elements below the fold.
    - prefers-reduced-motion or no JS = the final state (html.js is set inline in <head> before the first paint).
-   - Text never sits on a photo: captions and controls sit under photos. Photos are never darkened.
+   - Text never sits on a photo: captions and controls sit under photos. Photos are never darkened. Exceptions: the
+     home's opening card (its KOGL-1 photo under a scrim), and the home's MZ cards (81-home-mz) — a name or one line on
+     a KOGL-1 photo, outlined letters, no darkening layer; never on a KOGL-3 photo.
    - KOGL-3 photos (.t3, data-kogl="3") are never cropped, zoomed, filtered or masked: whole, native ratio, inside a
      padded rounded frame (the frame is rounded, the photo is not), no hover scale. KOGL-1 (.t1) may be cropped
      (object-fit: cover) and zoomed.

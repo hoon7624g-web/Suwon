@@ -458,11 +458,9 @@ def test_event_kind_picture_on_a_news_card_without_photo(world):
     card = next(c for c in html.split('<article class="nc nc-')[1:] if "군산새만금마라톤대회" in c)
     assert 'data-art="evkind-test"' in card and "<figcaption" not in card and 'data-pic=' not in card
     assert 'alt="일러스트: test evkind-test ko"' in card
-    if 'aria-label="1 / ' in card:     # the first slide (review 2026-10-14): the home's LCP — eager, high, preloaded
-        assert 'fetchpriority="high"' in card and 'loading="lazy"' not in card
-        assert 'rel="preload" as="image" type="image/avif" imagesrcset="/assets/art/' in html.split("</head>")[0]
-    else:
-        assert 'loading="lazy"' in card
+    # 시안 A (the first site's 8f2370215, ported 2026-11-05): the news row is under the first screen now — every card's
+    # picture lazy, none preloaded (the first screen's picture is the cover photo)
+    assert 'loading="lazy"' in card and 'imagesrcset="/assets/art/' not in html.split("</head>")[0]
     other = next(c for c in html.split('<article class="nc nc-')[1:] if "[샘플] 군산 행사 A" in c)
     assert "data-art" not in other and 'data-pic="icon-events"' in other       # kind 'other': its 3D picture slot
     race = _slug_of(world, "events/", "군산새만금마라톤대회")
