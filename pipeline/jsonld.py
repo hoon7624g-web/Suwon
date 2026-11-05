@@ -21,8 +21,8 @@ import re
 
 from .city import of as city_of
 from .schema import FACT_LABELS, designations, node_types, schema_type, serves_cuisine
-from .textutil import (clock_text, contact_org, display_address, display_value, extract_phones, parking_compatible,
-                       phone_intl, squash_ws)
+from .textutil import (clock_text, contact_org, display_address, display_value, event_start_dt, extract_phones,
+                       parking_compatible, phone_intl, squash_ws)
 
 CITY_NODE_ID = "#city"  # the City node's fragment on the home page; pipeline/en_site uses the same id
 
@@ -452,7 +452,7 @@ def course_graph(c, page_url, crumbs, stops: list[dict], based_on: str = "", des
 def event_graph(ev: dict, page_url: str, crumbs, site: dict) -> dict:
     """The newest dated edition of a series, on its own leaf page. Only values shown on the page."""
     node = {"@type": "Event", "@id": f"{page_url}#event", "name": ev["_title"], "url": page_url,
-            "startDate": ev["start_date"]}
+            "startDate": event_start_dt(ev) or ev["start_date"]}   # the start time when the page shows it as <time datetime>
     if ev.get("end_date"):
         node["endDate"] = ev["end_date"]
     # The place is named only from the data's place name or address; with neither, no location (the event's

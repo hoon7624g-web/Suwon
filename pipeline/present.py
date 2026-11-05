@@ -41,8 +41,8 @@ from .schema import (PHOTO_SOURCES, FACT_ALIASES, FACT_LABELS, KEY_FACTS, KEY_FA
                      designations, fact_label, geo_provider, geo_providers, parking_seats_half)
 from .slugs import anchor_id, initial_id
 from .textutil import (TILDE, TIME, clock_text, contact_org, course_display_name, dash_times, display_address,
-                       display_value, hyphenate_phones, link_url, normalize_name, parking_compatible, parking_text,
-                       phone_e164, restore_lines, squash_ws, url_domain, web_text, web_url)
+                       display_value, event_start_dt, hyphenate_phones, link_url, normalize_name, parking_compatible,
+                       parking_text, phone_e164, restore_lines, squash_ws, url_domain, web_text, web_url)
 
 WEEK = "월화수목금토일"
 LIST_PATH = {"attraction": "/places/", "stay": "/stays/", "food": "/food/"}
@@ -4220,6 +4220,21 @@ def event_vm(S, sr: dict) -> dict:
         notes.ref({"provider": a.get("name") or "", "checked_at": a.get("checked_at") or "", "url": a.get("url") or ""},
                   "같은 일정 확인" if a.get("agrees") else "함께 확인")
     places = [S.ent_by_slug[x] for x in sr["place_slugs"] if x in S.ent_by_slug]
+    # 사진·영상 (the first site's a0dc577a3, operator 2026-11-04 '상세 페이지에 사진, 영상 등 넣어서 다채롭게', events.json
+    # page_media): the licensed photo (KOGL-1 first) of each place the record names around the venue, the videos the
+    # record names from videos.json (about the venue's surroundings, said so on the page) and the day's guide once it
+    # is published — nothing without the record's page_media
+    pm = ev.get("page_media") or {}
+    gallery = []
+    for slug in pm.get("photo_places") or []:
+        e = S.ent_by_slug.get(slug)
+        phs = (e or {}).get("_photos") or []
+        ph = next((p for p in phs if p.get("type") == 1), phs[0] if phs else None)
+        if ph:
+            gallery.append({"e": e, "ph": ph})
+    vids_by = {v["youtube_id"]: v for v in getattr(S, "videos", None) or [] if v.get("youtube_id")}
+    near_videos = [vids_by[x] for x in pm.get("near_videos") or [] if x in vids_by]
+    day_guide = next((g for g in S.guides if pm.get("guide") and g.get("slug") == pm["guide"]), None)
     geo = ev.get("geo") or {}
     row = event_row(ev, city=C)
     point = {"self": {"lat": geo["lat"], "lng": geo["lng"], "name": row["place"] or sr["name"]}, "near": [], "anchors": []} \
@@ -4281,7 +4296,9 @@ def event_vm(S, sr: dict) -> dict:
     slots = [tile("기간", "period", Markup(f'<time datetime="{escape(start)}">{escape(row["range"] or row["period_text"])}</time>'))]
     if ev.get("playtime"):
         pt = ev_text(ev["playtime"])   # each time range stays on one line; the text around and between them may wrap
-        slots.append(tile("시간", "playtime", nowrap_times(pt)))
+        sdt = event_start_dt(ev)   # a one-day edition's start time: machine-readable too (the Event's startDate)
+        slots.append(tile("시간", "playtime", Markup(f'<time datetime="{sdt}">') + nowrap_times(pt) + Markup("</time>")
+                          if sdt else nowrap_times(pt)))
     if ev.get("fee"):
         slots.append(tile("요금", "fee", escape(ev_text(ev["fee"]))))
     if place_short:
@@ -4311,6 +4328,8 @@ def event_vm(S, sr: dict) -> dict:
             "rows": rows, "notes": notes.items, "places": places, "point": point, "route": route,
             "tel": tel, "tel_text": tel_text, "past": past, "undated": [event_row(x, city=C) for x in sr["undated"]],
             "videos": [v for v in sr.get("videos") or [] if v.get("youtube_id")], "program": program, "usual": usual,
+            "gallery": gallery, "gallery_note": squash_ws(pm.get("photo_note")), "near_videos": near_videos,
+            "near_videos_note": squash_ws(pm.get("videos_note")), "day_guide": day_guide,
             "other_alts": other_alts, "flagged": flagged or bool(other_alts),
             "confirm_line": ORGANISER_LINE if (flagged or other_alts) else "",
             "area": C.address_parts({"address": ev.get("address")})[1],

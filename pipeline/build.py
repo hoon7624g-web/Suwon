@@ -58,8 +58,9 @@ from .schema import (PHOTO_SOURCES, DEFAULT_ALLOWED_LICENSES, FACT_ALIASES, FACT
 from . import present
 from . import locales as LC
 from .slugs import COURSE_GROUP_IDS, YEAR_PREFIX, assign_slugs, series_slug, topic_slug
-from .textutil import (cell_html, display_address, display_value, drop_dead_links, event_name_key, first_sentence, josa,
-                       keep_dots, keep_units, link_url, series_key, squash_ws, url_domain, url_key, web_url)
+from .textutil import (cell_html, dash_times, display_address, display_value, drop_dead_links, event_name_key,
+                       first_sentence, josa, keep_dots, keep_primary_facts, keep_units, link_url, series_key, squash_ws,
+                       url_domain, url_key, web_url)
 
 ROOT = Path(__file__).resolve().parent.parent
 TEMPLATES = ROOT / "templates"
@@ -1724,12 +1725,16 @@ def event_description(ev: dict, series_name: str = "", limit: int = DESC_MAX) ->
     """An event page's description, the first of these within `limit`; the dates are always the whole, exact period:
     1. the answer line the page shows, '<행사명> 기간: <기간> · 장소: <장소>.', with ' 요금: <요금>.' when it fits;
     2. '<행사명> <기간>, <장소 요약>.' — the place without its bracketed notes, else its first place + '일원';
-    3. '<행사명> <기간>.', then '<행사 이름(이 페이지의 목록 이름)> <기간>.'."""
+    3. '<행사명> <기간>.', then '<행사 이름(이 페이지의 목록 이름)> <기간>.'.
+    In 2, the time the page shows goes after the period when it fits (the first site's cf4ebcd8a, operator 2026-11-04:
+    '<행사명> <기간> 20:00 (약 30분), <장소>.') — not a time other sources give differently."""
     answer = event_answer(ev)
     fee = squash_ws(ev.get("fee"))
     title, period = squash_ws(ev["_title"]), event_period(ev)
     bare, first = place_summary(ev.get("place_name"))
-    return first_fit(f"{answer}. 요금: {fee}." if fee else "", f"{answer}.",
+    time = "" if (ev.get("alternatives") or {}).get("playtime") else dash_times(squash_ws(ev.get("playtime")))
+    timed = [f"{title} {period} {time}, {p}." for p in (bare, first) if time and p]
+    return first_fit(f"{answer}. 요금: {fee}." if fee else "", f"{answer}.", *timed,
                      f"{title} {period}, {bare}." if bare else "", f"{title} {period}, {first}." if first else "",
                      f"{title} {period}.", f"{squash_ws(series_name)} {period}." if series_name else "",
                      limit=limit) or f"{title} {period}."

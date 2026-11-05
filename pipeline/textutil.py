@@ -422,6 +422,69 @@ def drop_dead_links(records: list[dict], dead: dict | None) -> list[dict]:
     return dropped
 
 
+_EVENT_TIME = re.compile(r"(\d{1,2}):(\d{2})(?:\s*[~\-–]\s*\d{1,2}:\d{2})?(?:\s*\([^()]*\))?")
+
+
+def event_start_dt(ev: dict) -> str:
+    """'2026-11-14T20:00+09:00': when a one-day edition starts, for the page's <time datetime> and the Event's
+    startDate (the first site's cf4ebcd8a, operator 2026-11-04) — only when its time (playtime) is one start time or
+    one span with at most a note in brackets ('20:00 (약 30분)', '19:00~21:00') and no other source gives it
+    differently; else ''."""
+    start, end = ev.get("start_date") or "", ev.get("end_date") or ""
+    if not start or (end and end != start) or (ev.get("alternatives") or {}).get("playtime"):
+        return ""
+    m = _EVENT_TIME.fullmatch(squash_ws(ev.get("playtime")))
+    if not m or int(m.group(1)) > 23 or int(m.group(2)) > 59:
+        return ""
+    return f"{start}T{int(m.group(1)):02d}:{m.group(2)}+09:00"
+
+
+def _note_only(value) -> bool:
+    """A value that is only a note that the shops differ ('※ 점포별 상이함'), not a time, day or fee: no digit and no
+    day word (this site's market '[칠성시장] 연중무휴 (단, 점포 별로 상이할 수 있음) [칠성야시장] 매주 화요일~수요일' is a
+    value with a note, never only a note)."""
+    v = squash_ws(value.get("value") if isinstance(value, dict) else value)
+    return bool(v) and not re.search(r"\d|[월화수목금토일]요일|연중무휴|무휴|휴무|무료|공휴일|명절", v) and "상이" in v
+
+
+def keep_primary_facts(records: list[dict]) -> list[dict]:
+    """Operator decisions 2026-10-30 (부평시장각, '출처마다 다름도 보기 좀 안 좋은데 하나로 통일'), 2026-10-31 (the first
+    site) and 2026-11-05 (this site, '출처 마다 다른 값은 대표 값 하나만 보이도록 해'): site.json fact_conflicts 'primary':
+    where another source's value differs from a record's main value (a fact_alternatives entry that is not
+    'also'), the main value — the one the data already leads with — stays alone, with its own source; the other values
+    leave the record in memory before anything reads it (pages, cards, JSON-LD, the chat documents, the hub's text). A
+    main value that is only a note ('※ 점포별 상이함') gives way to the first other value that is not, with that value's
+    source; with no main value the first other value leads. An 'also' value (a second dish, another phone line) stays.
+    The data file keeps every value. Returns one row per value set aside: {id, key, value, provider}."""
+    aside: list[dict] = []
+    for rec in records:
+        alts = rec.get("fact_alternatives") if isinstance(rec.get("fact_alternatives"), dict) else {}
+        for key in list(alts):
+            other = [a for a in alts[key] or [] if a.get("relation") != "also"]
+            if not other:
+                continue
+            facts, sources = rec.setdefault("facts", {}), rec.setdefault("fact_sources", {})
+            main = facts.get(key)
+            mv = squash_ws(main.get("value") if isinstance(main, dict) else main)
+            lead = None
+            if not mv or _note_only(mv):
+                lead = next((a for a in other if not _note_only(a.get("value"))), None) or (None if mv else other[0])
+            if lead is not None:
+                if mv:
+                    aside.append({"id": rec.get("id", ""), "key": key, "value": mv,
+                                  "provider": (sources.get(key) or {}).get("provider", "")})
+                facts[key] = lead.get("value")
+                sources[key] = {k: lead[k] for k in ("provider", "checked_at", "contentid", "url") if lead.get(k)}
+            aside += [{"id": rec.get("id", ""), "key": key, "value": squash_ws(a.get("value")),
+                       "provider": a.get("provider", "")} for a in other if a is not lead]
+            alts[key] = [a for a in alts[key] if a.get("relation") == "also"]
+            if not alts[key]:
+                alts.pop(key)
+        if "fact_alternatives" in rec and not alts:
+            rec.pop("fact_alternatives")
+    return aside
+
+
 def dash_times(text: str | None) -> str:
     """'10:00~21:00', '10:00 - 21:00' -> '10:00–21:00' (the times themselves are kept as written)."""
     return _TIME_RANGE.sub(lambda m: f"{m.group(1)}–{m.group(2)}", text or "")

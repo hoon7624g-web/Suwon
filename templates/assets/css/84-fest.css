@@ -1,0 +1,26 @@
+/* ---------------------------------------------------------------- 84 an event page's media (the first site's a0dc577a3,
+   operator 2026-11-04; event.html.j2, events.json page_media): the photos of the places around the venue — KOGL-1
+   fills its 4:3 frame, KOGL-3 sits whole on the tinted frame at most its own width (never cropped or enlarged,
+   CLAUDE.md 3.4), the name to the place and the credit under it — and the day's guide atop the main column. The
+   home's pinned-event banner is css/87-design-a.css (.ha-fest). */
+.ev-gal { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
+@media (min-width: 900px) { .ev-gal { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.ev-g { min-width: 0; }
+.ev-g-f { display: flex; align-items: center; justify-content: center; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 16px; background: var(--bg-2); }
+.ev-g.t1 .ev-g-f picture { display: block; width: 100%; height: 100%; }
+.ev-g.t1 .ev-g-f img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .4s var(--fb); }
+.ev-g.t1 .ev-g-f:hover img { transform: scale(1.04); }
+.ev-g.t3 .ev-g-f { padding: 8px; box-sizing: border-box; }
+.ev-g.t3 .ev-g-f img { display: block; width: auto; height: auto; max-width: min(100%, var(--nw, 100%)); max-height: 100%; }
+.ev-g-c { display: flex; flex-direction: column; gap: 2px; margin: 8px 2px 0; font-size: 12px; line-height: 1.45; color: var(--ink-2); }
+.ev-g-c a { font-size: 15px; font-weight: 700; color: var(--ink); text-decoration: none; word-break: keep-all; }
+.ev-g-c a:hover { color: var(--link); text-decoration: underline; }
+@media (prefers-reduced-motion: reduce) { .ev-g.t1 .ev-g-f img { transition: none; } }
+/* the day's guide (events.json page_media.guide, once published): atop the event page's main column */
+.ev-guide { margin: 0 0 18px; }
+.ev-guide a { display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 10px 16px; border-radius: 16px; background: var(--chick);
+  color: var(--ink); text-decoration: none; box-shadow: 0 10px 22px -16px rgba(120, 90, 0, .6); }
+.ev-guide a:hover { background: #FFC81F; color: var(--ink); text-decoration: none; }
+.ev-guide-k { flex: none; padding: 3px 9px; border-radius: 999px; background: var(--ink); color: var(--chick); font-size: 12.5px; font-weight: 700; }
+.ev-guide-t { flex: 1; min-width: 0; font-size: 15px; font-weight: 700; line-height: 1.4; word-break: keep-all; }
+
