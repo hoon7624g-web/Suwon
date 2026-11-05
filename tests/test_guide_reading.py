@@ -168,7 +168,10 @@ def test_answer_card_toc_sections_and_faq_markup(S, built):
     start = page.index('<div class="gd-ans">')
     head = page[start:page.index("</header>", start)]
     # answer line first, then the rest of the summary, then the mini cards (CSS order shows the cards second)
-    assert head.index('class="lede gd-ans-l') < head.index('class="dek gd-ans-r"') < head.index('class="gd-picks"')
+    # (two sentences or more after the answer line: one row each — the first site's a3de6b844)
+    rest = 'class="gd-ans-pts"' if G["ans"]["rest_pts"] else 'class="dek gd-ans-r"'
+    assert head.index('class="lede gd-ans-l') < head.index(rest) < head.index('class="gd-picks"')
+    assert head.count("<li>") >= len(G["ans"]["rest_pts"])
     assert head.count('<li class="mc') == len(G["picks"]) == len({it["t"]["slug"] for it in G["places"] if it["t"]})
     assert "사진 출처: 한국관광공사" in head
     # mini card chips: settled values only, at most two, never a value two sources give differently

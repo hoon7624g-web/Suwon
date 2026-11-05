@@ -4506,9 +4506,13 @@ def answer_block(sents: list[str], lang: str = "ko") -> dict:
     (pipeline.validate compares them with the JSON-LD as one run)."""
     sep = "" if lang in CJK_LANGS else " "
     first, rest = (sents[0] if sents else ""), sep.join(sents[1:])
+    skip = max(0, PLAIN_HEAD - len(first) - len(sep))
+    # two sentences or more after the answer line: one row each (the first site's operator 2026-11-04, '글 쭉 적어둔
+    # 곳들은 좀 이쁘게') — the same sentences in the same order, so the summary still reads as one run
+    pts = [rich(t, lang, skip=skip if i == 0 else 0, roll=True) for i, t in enumerate(sents[1:])] if len(sents) > 2 else []
     return {"first": first, "rest": rest, "size": answer_size(first),
             "html": rich(first, lang, skip=PLAIN_HEAD, roll=True),
-            "rest_html": rich(rest, lang, skip=max(0, PLAIN_HEAD - len(first) - len(sep)), roll=True)}
+            "rest_html": rich(rest, lang, skip=skip, roll=True), "rest_pts": pts}
 
 
 PICKS_MAX = 12

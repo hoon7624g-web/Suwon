@@ -51,7 +51,10 @@
         (CLAUDE.md 3.4) and only from 1024px: the provider's original is large and may not be re-encoded, so phones
         get the small renditions as a thumbnail row under the key facts. A place without a photo gets a small kind
         picture above the name (no large empty cover). -#}
-    <div class="wrap pl-hero-in pl-x{% if lead %} has-lead{% endif %}">
+    {#- no photo (the first site's operator 2026-11-04 '사진도 없고'): the place's location map where the photo would be —
+        its real position and the places round it, never a picture standing in for the place (CLAUDE.md 4) -#}
+    {% set hero_map = (not lead and p.points) %}
+    <div class="wrap pl-hero-in pl-x{% if lead or hero_map %} has-lead{% endif %}">
       <div class="pl-head">
         {% if not lead %}<p class="pl-kpic">{{ ui.kpic(ui.KIND_PIC.get((p.e._visual or ('', 'pin'))[1], 'kind-attraction'), (p.e._visual or ('', 'pin'))[1], 72, '일러스트: ' ~ p.kind_label) }}</p>{% endif %}
         <p class="kicker">{% for lab, href in p.kicker %}<a href="{{ href }}">{{ lab }}</a>{% endfor %}<span>{{ p.place_line }}</span></p>
@@ -74,6 +77,12 @@
         {% else %}<div class="pv-k3"{% if lead.w and lead.h %} style="--nw:{{ lead.w }}px;--ar:{{ lead.w }}/{{ lead.h }}"{% endif %}><img class="t3 vt-photo" src="{{ lead.url }}"{% if lead.w and lead.h %} width="{{ lead.w }}" height="{{ lead.h }}"{% endif %} alt="{{ lead.alt }}" loading="lazy" decoding="async" data-kogl="3"></div>{% endif %}
         <figcaption class="pv-cap"><span class="pv-cr">{{ md.credit(lead) }}{% if p.photos|length > 1 or p.hero_k3 %} · {% endif %}</span>{% if p.photos|length > 1 or p.hero_k3 %}<a href="#h-photos">사진 {{ p.photos|length }}장</a>{% endif %}</figcaption>
       </figure>
+      {% elif hero_map %}
+      <section class="pv pv-map" aria-labelledby="h-map">
+        <h2 id="h-map" class="pv-map-h">{{ ui.icon('map') }}<span><span class="nm">{{ nm }}</span> 지도</span></h2>
+        {{ p1.placemap(p.points, nm ~ ' 위치 지도', 'place-map', '거리는 좌표 사이 직선' ~ (' · 위치: ' ~ p.geo_src if p.geo_src else '')) }}
+        {% if p.anchors %}<ul class="anchors">{% for a in p.anchors %}<li><a href="{{ a.path }}">{{ a.name }}</a><span class="tn">직선 {{ a.m|pdist }}</span></li>{% endfor %}</ul>{% endif %}
+      </section>
       {% endif %}
       {% if p.hero_k3 %}
       {% if p.thumbs %}
@@ -132,7 +141,7 @@
       </section>
       {% endif %}
 
-      {% if p.points %}
+      {% if p.points and not hero_map %}
       <section class="block" aria-labelledby="h-map">
         <h2 id="h-map" class="h-sec"><span class="nm">{{ nm }}</span> 지도</h2>
         {{ p1.placemap(p.points, nm ~ ' 위치 지도', 'place-map', '거리는 좌표 사이 직선' ~ (' · 위치: ' ~ p.geo_src if p.geo_src else '')) }}

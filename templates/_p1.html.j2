@@ -172,7 +172,9 @@
 {%- endmacro %}
 
 {% macro dzchip(d) -%}
-{% if d %}<span class="dz-chip">{{ d.short }}</span>{% endif %}
+{#- one tone per kind of designation (css 86-polish, the first site's a3de6b844): 착한가격·나트륨 줄이기 good, 백년가게 star,
+    모범·우수숙박 model, 안심식당·여성안심 safe — by the national designation type (schema.designations) -#}
+{% if d %}{% set t = {'goodprice': 'good', 'low_sodium': 'good', 'baeknyeon': 'star', 'mobeom': 'model', 'good_stay': 'model', 'ansim': 'safe', 'women_safe_stay': 'safe'}.get(d.type, '') %}<span class="dz-chip{% if t %} dz-{{ t }}{% endif %}">{{ d.short }}</span>{% endif %}
 {%- endmacro %}
 
 {% macro dzsrc(sources) -%}
