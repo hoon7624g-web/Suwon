@@ -374,10 +374,14 @@ def test_the_weather_module_fills_its_room_after_load(browser, built):
     assert [x for x in page.evaluate("window.__ls") if x["v"] > 0.001] == [], page.evaluate("window.__ls")
     assert own(errors) == [], errors
     ctx.close()
-    # the home on a phone (the card right under the first screen): asked after load, it fills the room it kept
+    # the home on a phone (since 시안 A, 2026-11-05, the card is further down — after the opening card, the food row,
+    # the assistant and the news row): asked when the reader scrolls towards it, it fills the room it kept
     ctx, page, errors, calls = open_page(browser, built, "/", 390, 844)
     h0 = page.evaluate("[document.querySelector('.wx-home').getBoundingClientRect().height, "
                        "document.querySelector('.wx-home').classList.contains('is-ready')]")
+    page.wait_for_timeout(800)
+    assert len(calls) == 0                                   # nothing asked while the card is far from the screen
+    page.evaluate("window.scrollTo(0, document.querySelector('.wx-home').getBoundingClientRect().top + scrollY - 600)")
     page.wait_for_selector(".wx-home.is-ready", timeout=8000)
     page.wait_for_timeout(300)
     assert page.evaluate("window.__wx") == ["complete", "complete"] and len(calls) == 2

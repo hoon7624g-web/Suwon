@@ -1,4 +1,7 @@
 """Shared test helpers (pytest loads this first; tests import from it with `from conftest import …`)."""
+from pathlib import Path
+
+import pytest
 
 
 # 날씨각 (weather.o2o.kr, the tab panel's weather module — templates/_side.html.j2, assets/weather.js; operator
@@ -42,3 +45,23 @@ def route_weather(target, answer: dict | None = None, status: int = 200, feed: d
         route.fulfill(status=status, body=json.dumps(body, ensure_ascii=False),
                       headers={"content-type": "application/json", "access-control-allow-origin": "*"})
     target.route("https://weather.o2o.kr/**", fulfill)
+
+
+@pytest.fixture(scope="module")
+def engine_both_values():
+    """수원각 shows one value per fact since 2026-11-05 (site.json fact_conflicts 'primary', CLAUDE.md 3절 2항; the first
+    site's tests/conftest.py, 746e1ff61e). The engine still shows both values with '출처마다 다름' on a site without that
+    key, and the modules that check that behaviour on this city's own data (its real differing hours, fees) read
+    site.json without the key — the whole module, so module-scoped builds see it too. tests/test_fact_conflicts.py
+    checks the one-value mode."""
+    import pipeline.build as B
+    orig = B._load
+
+    def load(path, default=None):
+        v = orig(path, default)
+        if Path(path).name == "site.json" and isinstance(v, dict) and "fact_conflicts" in v:
+            v = {k: x for k, x in v.items() if k != "fact_conflicts"}
+        return v
+    with pytest.MonkeyPatch.context() as mp:
+        mp.setattr(B, "_load", load)
+        yield

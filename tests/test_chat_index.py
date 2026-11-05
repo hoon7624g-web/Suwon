@@ -19,6 +19,14 @@ from pipeline import chat_index, en_site, present
 from pipeline.build import State, build
 from pipeline.schema import FACT_ORDER, FIT_ORDER
 
+
+
+@pytest.fixture(scope="module", autouse=True)
+def _engine_both_values(engine_both_values):
+    """This module checks the engine's both-values display on this city's data (tests/conftest.py): since 2026-11-05 the
+    site shows one value per fact (site.json fact_conflicts 'primary'; tests/test_fact_conflicts.py checks that mode)."""
+
+
 ROOT = Path(__file__).resolve().parent.parent
 CITY = ROOT / "data" / "suwon"
 SAMPLE = ROOT / "data" / "sample"
@@ -355,7 +363,12 @@ def test_bytes_do_not_depend_on_the_build_date(real, tmp_path, monkeypatch):
         @classmethod
         def today(cls):
             return cls(2031, 7, 1)
-    monkeypatch.setattr(B, "dt", SimpleNamespace(date=Later, timedelta=dt.timedelta, datetime=dt.datetime))
+
+    class LaterTime(dt.datetime):   # the build date is Seoul's day (State: datetime.now(Asia/Seoul); the first site's 80ab6b8ee3)
+        @classmethod
+        def now(cls, tz=None):
+            return cls(2031, 7, 1, 12, 0, tzinfo=tz)
+    monkeypatch.setattr(B, "dt", SimpleNamespace(date=Later, timedelta=dt.timedelta, datetime=LaterTime))
     # a dated facility notice ends on its `until` day by design (pipeline/notices.py): read them as on the real build
     # day, so everything else is still checked for the build date leaking in
     real_active, real_day = B.notices.active, real["S"].today
