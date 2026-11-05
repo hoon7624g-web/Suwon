@@ -207,7 +207,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <ul class="foot-src">
           {% if site.source.name %}<li>원문 출처: {% if site.source.url %}<a href="{{ site.source.url }}" rel="noopener" data-track="official_click">{{ site.source.name }}</a>{% else %}{{ site.source.name }}{% endif %}</li>{% endif %}
           {% if tourapi_used %}<li>관광 정보·사진: 한국관광공사 TourAPI</li>{% endif %}
-          <li>지도: © OpenStreetMap contributors</li>
+          <li>{{ '지도: © OpenStreetMap 기여자' if osm_lib else '지도: 카카오맵' }}</li>
         </ul>
       </div>
       <nav class="foot-col" aria-label="안내">

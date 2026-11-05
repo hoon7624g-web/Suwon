@@ -37,6 +37,7 @@
     "lng": null
   },
   "tmap_scheme": "tmap://route?goalname={name}&goalx={lng}&goaly={lat}",
+  "map_provider": "osm",
   "publish_rules": {
     "allowed_original_licenses": [
       "KOGL-1",

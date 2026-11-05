@@ -40,7 +40,7 @@
 {% block main_class %}{% endblock %}
 {% block bodyclass %}pg-plan{% endblock %}
 {% block content %}
-<div class="trp" data-plan data-api="/api/plan/" data-places="/plan/places.json" data-site="{{ site.site_url }}" data-site-name="{{ site.site_name }}"{% if has_tickets %} data-tickets{% endif %}>
+<div class="trp" data-plan data-api="/api/plan/" data-places="/plan/places.json" data-site="{{ site.site_url }}" data-site-name="{{ site.site_name }}"{% if kakao_sdk %} data-kakao-sdk="{{ kakao_sdk }}"{% elif osm_lib %} data-osm-lib="{{ osm_lib }}"{% endif %}{% if has_tickets %} data-tickets{% endif %}>
 {% set hero_art = (art_slots or {}).get('plan.head') %}
 <section class="trp-hero{{ ' has-art' if hero_art }}" aria-labelledby="h-plan">
   <div class="wrap trp-hero-in">

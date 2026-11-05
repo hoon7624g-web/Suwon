@@ -772,7 +772,7 @@
     "ja": "原文出典："
   },
   "chrome.foot_maps": {
-    "en": "Maps: © OpenStreetMap contributors",
+    "en": "Maps: Kakao Map",
     "ja": "地図：カカオマップ"
   },
   "chrome.about": {
@@ -1088,7 +1088,7 @@
     "ja": "この地図の場所は、このページに文章でも載せています。"
   },
   "chrome.map_credit": {
-    "en": "Map: © OpenStreetMap contributors",
+    "en": "Map: Kakao Map",
     "ja": "地図：カカオマップ"
   },
   "chrome.map_of": {
@@ -2042,5 +2042,13 @@
   "chrome.notice_closed_from": {
     "en": "from {date}: closed — reopening date not announced",
     "ja": "{date}から：休業（再開日未定）"
+  },
+  "chrome.foot_maps_osm": {
+    "en": "Maps: © OpenStreetMap contributors",
+    "ja": "地図：© OpenStreetMap contributors"
+  },
+  "chrome.map_credit_osm": {
+    "en": "Map: © OpenStreetMap contributors",
+    "ja": "地図：© OpenStreetMap contributors"
   }
 }

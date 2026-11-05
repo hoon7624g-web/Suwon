@@ -521,7 +521,8 @@ class UIText:
         """The words map.js writes, for a version other than English and Korean (data-words on the map box)."""
         return json.dumps({"in": self.s("map_zoom_in"), "out": self.s("map_zoom_out"), "all": self.s("map_whole_course"),
                            "load": self.s("map_loading"), "fail": self.s("map_fail"), "off": self.s("map_off"),
-                           "keys": LC.MAP_KEYS.get(self.loc.code, "")}, ensure_ascii=False)
+                           "keys": LC.MAP_KEYS.get(self.loc.code, ""),
+                           "group": LC.MAP_GROUP_WORDS.get(self.loc.code, "")}, ensure_ascii=False)
 
 
 # ---------------------------------------------------------------------------------------------- the site

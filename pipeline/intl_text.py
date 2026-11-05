@@ -34,7 +34,8 @@ EN: dict[str, str | dict] = {
     "kto_tourapi": "Korea Tourism Organization TourAPI",
     "foot_official": "Official tourism site:",
     "foot_original": "Original texts:",
-    "foot_maps": "Maps: © OpenStreetMap contributors",
+    "foot_maps": "Maps: Kakao Map",
+    "foot_maps_osm": "Maps: © OpenStreetMap contributors",   # site.json map_provider 'osm'
     "about": "About",
     "about_site": "About this site",
     "how_made": "How the pages are made",
@@ -133,7 +134,8 @@ EN: dict[str, str | dict] = {
     # the map box's own text: what a reader without the map (no script, a text reader, an AI fetching the HTML) gets;
     # map.js puts map_loading there when it starts drawing
     "map_text": "The places on this map are also listed on this page.",
-    "map_credit": "Map: © OpenStreetMap contributors",
+    "map_credit": "Map: Kakao Map",
+    "map_credit_osm": "Map: © OpenStreetMap contributors",
     "map_of": "Map of {name}",
     "map_straight": "Distances are straight lines between coordinates",
     "map_loc": "Location: {provider}",
@@ -456,8 +458,10 @@ INTL_ONLY: dict[str, str] = {
 NOTES: dict[str, str] = {
     "foot_tourapi": "Followed by the link 'Korea Tourism Organization TourAPI'.",
     "foot_official": "Followed by the link to the city's official tourism site (its name).",
-    "foot_maps": "The map tiles' licence credit (OpenStreetMap): keep '© OpenStreetMap contributors' exactly.",
-    "map_credit": "Under each map: the tiles' licence credit; keep '© OpenStreetMap contributors' exactly.",
+    "foot_maps": "The map provider's credit: keep 'Kakao Map' as the service's name.",
+    "foot_maps_osm": "The map tiles' licence credit (OpenStreetMap): keep '© OpenStreetMap contributors' exactly.",
+    "map_credit": "Under each map: the map provider's credit; keep 'Kakao Map' as the service's name.",
+    "map_credit_osm": "Under each map: the tiles' licence credit; keep '© OpenStreetMap contributors' exactly.",
     "foot_original": "Followed by the name (a link) of the site the original texts come from.",
     "about_how_1": "{source} is the name of the city's tourism site the values also come from.",
     "about_how_3": "{source} is the name of the site whose texts are not copied.",

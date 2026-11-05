@@ -154,10 +154,19 @@ def fmt_dist(m) -> str:
     return f"{m}m" if m < 1000 else f"{m / 1000:.1f}km"
 
 
-# The first city moved its map boxes to the Kakao Maps JavaScript SDK (its owner's decision of 2026-10-14); the engine keeps
-# Leaflet + OpenStreetMap (operator 2026-10-16), so nothing below is used by a page: the helper stays inert (a city
-# whose site.json names a kakao_js_key could pass it to its map boxes) and no template global is set.
+# The map provider (site.json map_provider): 'kakao' — the Kakao Maps JavaScript SDK (the first site's owner decision
+# 2026-10-14; this site's operator 2026-11-05 '카카오맵으로 바꿔'). site.json kakao_js_key is a public key that Kakao
+# accepts only from the web domains registered for it; every map box names the SDK URL (data-kakao-sdk) and
+# assets/map.js fetches it near the screen, after load. A page without a map box never names it.
 KAKAO_SDK = "https://dapi.kakao.com/v2/maps/sdk.js?appkey={key}&autoload=false"
+# 'osm' (operator 2026-10-16, until 2026-11-05): the same map boxes drawn by Leaflet (self-hosted, assets/vendor/leaflet/)
+# on OpenStreetMap tiles — the boxes name the Leaflet folder (data-osm-lib) instead of the SDK and the credits read
+# OpenStreetMap (map.js osmKit answers the Kakao calls with Leaflet). Anything else (or no value) is Kakao.
+OSM_LIB = "/assets/vendor/leaflet/"
+
+
+def map_provider(site: dict) -> str:
+    return "osm" if str((site or {}).get("map_provider") or "").strip().lower() == "osm" else "kakao"
 
 
 def kakao_sdk_url(site: dict) -> str:
@@ -1739,6 +1748,9 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
     reg = icons.load(data_dir) or icons.registry()
     env.globals["icon_pic"] = lambda pid: icons.lookup(pid, reg)
     env.globals["icon_glyph"] = lambda pid, default="pin": icons.glyph(pid, default, reg)
+    osm = map_provider(S.site) == "osm"
+    env.globals["kakao_sdk"] = "" if osm else kakao_sdk_url(S.site)  # the map boxes' data-kakao-sdk (_ui mapfig, _p1 …)
+    env.globals["osm_lib"] = OSM_LIB if osm else ""                   # … or data-osm-lib (map_provider 'osm')
     _prepare_out(out, data_dir)
     region = S.city.region
     # Dates (P0-4): every lastmod is a data date shown on that page; aggregate pages use the newest date

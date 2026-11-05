@@ -772,7 +772,7 @@
     "es": "Textos originales:"
   },
   "chrome.foot_maps": {
-    "en": "Maps: © OpenStreetMap contributors",
+    "en": "Maps: Kakao Map",
     "es": "Mapas: Kakao Map"
   },
   "chrome.about": {
@@ -1124,7 +1124,7 @@
     "es": "Los lugares de este mapa también aparecen en texto en esta página."
   },
   "chrome.map_credit": {
-    "en": "Map: © OpenStreetMap contributors",
+    "en": "Map: Kakao Map",
     "es": "Mapa: Kakao Map"
   },
   "chrome.map_of": {
@@ -2170,5 +2170,13 @@
   "chrome.notice_closed_from": {
     "en": "from {date}: closed — reopening date not announced",
     "es": "desde el {date}: cerrado — fecha de reapertura sin anunciar"
+  },
+  "chrome.foot_maps_osm": {
+    "en": "Maps: © OpenStreetMap contributors",
+    "es": "Mapas: © OpenStreetMap contributors"
+  },
+  "chrome.map_credit_osm": {
+    "en": "Map: © OpenStreetMap contributors",
+    "es": "Mapa: © OpenStreetMap contributors"
   }
 }

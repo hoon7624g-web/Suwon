@@ -772,7 +772,7 @@
     "ru": "Исходные тексты:"
   },
   "chrome.foot_maps": {
-    "en": "Maps: © OpenStreetMap contributors",
+    "en": "Maps: Kakao Map",
     "ru": "Карты: Kakao Map"
   },
   "chrome.about": {
@@ -1160,7 +1160,7 @@
     "ru": "Места на этой карте также перечислены на этой странице."
   },
   "chrome.map_credit": {
-    "en": "Map: © OpenStreetMap contributors",
+    "en": "Map: Kakao Map",
     "ru": "Карта: Kakao Map"
   },
   "chrome.map_of": {
@@ -2298,5 +2298,13 @@
   "chrome.notice_closed_from": {
     "en": "from {date}: closed — reopening date not announced",
     "ru": "с {date}: закрыто — дата открытия не объявлена"
+  },
+  "chrome.foot_maps_osm": {
+    "en": "Maps: © OpenStreetMap contributors",
+    "ru": "Карты: © OpenStreetMap contributors"
+  },
+  "chrome.map_credit_osm": {
+    "en": "Map: © OpenStreetMap contributors",
+    "ru": "Карта: © OpenStreetMap contributors"
   }
 }

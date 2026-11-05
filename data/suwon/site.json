@@ -3,7 +3,8 @@
     "2026-10-23 생성: 군산각(gunsan.webforai.kr) 및 다도시 확장 엔진(pipeline/city.py)을 바탕으로 수원 여행 실증 사이트 수원각(Suwongak) 구성.",
     "범위: 경기도(lDongRegnCd 41) 산하 수원시 장안구(111)·권선구(113)·팔달구(115)·영통구(117) 및 수원시(110) 전역 — 5개 여행 권역(수원화성·화성행궁·행리단길, 팔달문·전통시장·통닭거리, 광교호수공원·박물관·영통, 만석공원·광교산·장안, 일월수목원·서호공원·권선).",
     "주소: https://suwon.webforai.kr (Vercel 배포 후 도메인 연결 예정). 지도 제공자는 도메인 등록 전까지 오픈소스 지도(OSM) 기본.",
-    "2026-10-24 운영자: Bing 웹마스터 도구 소유 확인 토큰(msvalidate.01)을 search_verification.bing에 넣음 — production 빌드의 모든 페이지 <head>에 나간다. 인증 뒤에도 지우지 않는다."
+    "2026-10-24 운영자: Bing 웹마스터 도구 소유 확인 토큰(msvalidate.01)을 search_verification.bing에 넣음 — production 빌드의 모든 페이지 <head>에 나간다. 인증 뒤에도 지우지 않는다.",
+    "2026-11-05 운영자 결정 '카카오맵으로 바꿔': map_provider kakao(pipeline/build.map_provider — 'osm'이면 Leaflet + OpenStreetMap), kakao_js_key는 카카오 앱의 공개 JavaScript 키 'Default JS Key 2'. 카카오 개발자 콘솔 웹 도메인에 https://suwon.webforai.kr 등록(운영자, 2026-11-05 18:34) — 등록되지 않은 주소에서는 지도 대신 '지도를 불러오지 못했습니다'."
   ],
   "site_url": "https://suwon.webforai.kr",
   "site_name": "수원각",
@@ -133,6 +134,8 @@
     "lng": 127.0155
   },
   "tmap_scheme": "tmap://route?goalname={name}&goalx={lng}&goaly={lat}",
+  "map_provider": "kakao",
+  "kakao_js_key": "82973e557953a65593a1db6259d9a9ba",
   "publish_rules": {
     "allowed_original_licenses": [
       "KOGL-1",

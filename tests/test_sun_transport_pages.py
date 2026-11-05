@@ -207,7 +207,8 @@ def built(tmp_path_factory):
     S.today = "2026-10-31"     # the data's first day (the tests do not age with the clock)
     S.tt_sun, S.tt_transport = T.sun_vm(S), T.transport_vm(S)
     env = B.make_env()
-    env.globals["kakao_sdk"] = B.kakao_sdk_url(S.site)
+    env.globals["kakao_sdk"] = B.kakao_sdk_url(S.site) if B.map_provider(S.site) == "kakao" else ""
+    env.globals["osm_lib"] = B.OSM_LIB if B.map_provider(S.site) == "osm" else ""
     out = tmp_path_factory.mktemp("tt")
 
     def render(V, make, path, tpl, kind):

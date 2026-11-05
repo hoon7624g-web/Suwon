@@ -772,7 +772,7 @@
     "zh_hant": "原文來源："
   },
   "chrome.foot_maps": {
-    "en": "Maps: © OpenStreetMap contributors",
+    "en": "Maps: Kakao Map",
     "zh_hant": "地圖：Kakao 地圖"
   },
   "chrome.about": {
@@ -1088,7 +1088,7 @@
     "zh_hant": "地圖上的地點也以文字列在本頁。"
   },
   "chrome.map_credit": {
-    "en": "Map: © OpenStreetMap contributors",
+    "en": "Map: Kakao Map",
     "zh_hant": "地圖：Kakao 地圖"
   },
   "chrome.map_of": {
@@ -2042,5 +2042,13 @@
   "chrome.notice_closed_from": {
     "en": "from {date}: closed — reopening date not announced",
     "zh_hant": "{date}起：休館，重新開放日期未公布"
+  },
+  "chrome.foot_maps_osm": {
+    "en": "Maps: © OpenStreetMap contributors",
+    "zh_hant": "地圖：© OpenStreetMap contributors"
+  },
+  "chrome.map_credit_osm": {
+    "en": "Map: © OpenStreetMap contributors",
+    "zh_hant": "地圖：© OpenStreetMap contributors"
   }
 }

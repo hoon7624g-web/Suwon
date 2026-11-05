@@ -354,25 +354,26 @@
 {%- endmacro %}
 
 {#- coursemap(m, title, caption, cls): a course's stops on the map (present.course_map {points, n_geo, n_all}; None
-    when fewer than half of the stops have coordinates — then nothing is drawn). map.js (Leaflet + OpenStreetMap,
-    fetched near the screen after load) numbers the markers as the stop list does and joins them in order by thin
+    when fewer than half of the stops have coordinates — then nothing is drawn). map.js (the Kakao Maps SDK, or
+    Leaflet + OpenStreetMap with map_provider 'osm', fetched near the screen after load) numbers the markers as the stop list does and joins them in order by thin
     straight lines; the box height is set in CSS, so nothing shifts when the map arrives. caption defaults to the
-    factual '경유지 n곳 중 좌표가 있는 m곳 · 순서대로 직선 연결'; the OpenStreetMap credit is the map's own (in its
-    corner, once). -#}
+    factual '경유지 n곳 중 좌표가 있는 m곳 · 순서대로 직선 연결'; the map credit is the map's own (in its corner,
+    once). -#}
 {% macro coursemap(m, title, caption='', cls='') -%}
 {{ mapfig({'course': m.points}, title, 'course-mapfig' ~ (' ' ~ cls if cls else ''), caption or ('경유지 ' ~ m.n_all ~ '곳 중 좌표가 있는 ' ~ m.n_geo ~ '곳 · 순서대로 직선 연결' ~ (' · 선택 경유지 ' ~ m.n_opt ~ '곳은 그리지 않음' if m.n_opt else '')), false) }}
 {%- endmacro %}
 
 {#- mapfig(data, label, cls, caption): a map box (shown only with JS; every map has a text equivalent on its page).
     data = place_vm.place_points {self, near, anchors[, radius]} | {course: […]} | {list: list_vm.points} |
-    {all, anchor_pts} | {anchors: home_vm.region_map.anchors} | {guide: …, route}. The box names the Leaflet files it
-    needs (data-leaflet-css / data-leaflet-js; map provider: Leaflet + OpenStreetMap, operator decision 2026-10-16);
-    map.js fetches them near the screen, after load. Without JS the figure is not shown (css/10-base.css) and the
+    {all, anchor_pts} | {anchors: home_vm.region_map.anchors} | {guide: …, route}. The box names what map.js loads:
+    the Kakao SDK (data-kakao-sdk: the build's kakao_sdk global, from site.json kakao_js_key; map provider 'kakao',
+    operator 2026-11-05) or the self-hosted Leaflet (data-osm-lib, map_provider 'osm'); map.js fetches it near the
+    screen, after load. Without JS the figure is not shown (css/10-base.css) and the
     page's lists are the answer. -#}
 {% macro mapfig(data, label, cls='', caption='', credit=true) -%}
 <figure class="mapfig{% if cls %} {{ cls }}{% endif %}">
-<div class="map" role="region" aria-label="{{ label }}" data-map="{{ data|tojson_attr }}" data-leaflet-css="/assets/vendor/leaflet/leaflet.css" data-leaflet-js="/assets/vendor/leaflet/leaflet.js" data-lenis-prevent><p class="map-off">이 지도의 장소는 이 페이지에 글로도 적었습니다.</p></div>
-<figcaption>{% if caption %}{{ caption }}{% if credit %} · {% endif %}{% endif %}{% if credit %}지도 © OpenStreetMap contributors{% endif %}</figcaption>
+<div class="map" role="region" aria-label="{{ label }}" data-map="{{ data|tojson_attr }}"{% if kakao_sdk %} data-kakao-sdk="{{ kakao_sdk }}"{% elif osm_lib %} data-osm-lib="{{ osm_lib }}"{% endif %} data-lenis-prevent><p class="map-off">이 지도의 장소는 이 페이지에 글로도 적었습니다.</p></div>
+<figcaption>{% if caption %}{{ caption }}{% if credit %} · {% endif %}{% endif %}{% if credit %}{{ '지도: © OpenStreetMap 기여자' if osm_lib else '지도: 카카오맵' }}{% endif %}</figcaption>
 </figure>
 {%- endmacro %}
 

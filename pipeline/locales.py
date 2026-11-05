@@ -666,6 +666,10 @@ MAP_KEYS = {
     "es": "flechas para moverse, + y − para acercar o alejar",
     "ru": "стрелки — сдвиг, + и − — масштаб",
 }
+# a cluster of markers on the Kakao map (map.js regroup, operator 2026-11-05 '카카오맵으로 바꿔'): its button's name
+MAP_GROUP_WORDS = {"ja": "ここに{n}か所：地図を拡大", "zh-hans": "此处{n}个地点：放大地图", "zh-hant": "此處{n}個地點：放大地圖",
+                   "de": "{n} Orte hier: Karte vergrößern", "fr": "{n} lieux ici : agrandir la carte",
+                   "es": "{n} lugares aquí: ampliar el mapa", "ru": "Здесь мест: {n} — приблизить карту"}
 
 
 
