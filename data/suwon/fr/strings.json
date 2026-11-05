@@ -2182,5 +2182,21 @@
   "chrome.about_how_2_one": {
     "en": "Every value names its source. Where two sources give different values, the page shows one of them, the value the data lists first (usually the local or the facility's official information or the Korea Tourism Organization's), with its source. A value no source gives is listed once as \"{missing}\".",
     "fr": "Chaque valeur indique sa source. Lorsque deux sources donnent des valeurs différentes, la page en affiche une seule, avec sa source : la valeur que les données citent en premier (le plus souvent l'information officielle de la région ou de l'établissement, ou celle de l'Organisation du tourisme de Corée). Une valeur qu'aucune source ne donne est indiquée une seule fois comme « {missing} »."
+  },
+  "designation:모범음식점(수원시 지정)": {
+    "ko": "모범음식점(수원시 지정)",
+    "fr": "Restaurant modèle (désigné par la ville de Suwon)"
+  },
+  "designation:백년가게(중소벤처기업부)": {
+    "ko": "백년가게(중소벤처기업부)",
+    "fr": "Commerce centenaire (ministère des PME et des Start-up)"
+  },
+  "designation_source:경기도 수원시 · 공공데이터포털 모범음식점 현황(2026-06-30)": {
+    "ko": "경기도 수원시 · 공공데이터포털 모범음식점 현황(2026-06-30)",
+    "fr": "Ville de Suwon, province de Gyeonggi · Portail des données publiques, liste des restaurants modèles (2026-06-30)"
+  },
+  "designation_source:소상공인시장진흥공단 · 공공데이터포털 전국 백년가게 지정리스트 현황 정보(2026-08-20)": {
+    "ko": "소상공인시장진흥공단 · 공공데이터포털 전국 백년가게 지정리스트 현황 정보(2026-08-20)",
+    "fr": "Agence des petites entreprises et des marchés · Portail des données publiques, liste nationale des commerces centenaires désignés (2026-08-20)"
   }
 }

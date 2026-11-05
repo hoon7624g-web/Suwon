@@ -2054,5 +2054,21 @@
   "chrome.about_how_2_one": {
     "en": "Every value names its source. Where two sources give different values, the page shows one of them, the value the data lists first (usually the local or the facility's official information or the Korea Tourism Organization's), with its source. A value no source gives is listed once as \"{missing}\".",
     "ja": "すべての値に出典を示します。二つの情報源で値が異なる場合は、そのうち一つ、資料に先に記された値(多くは地域や施設の公式案内、または韓国観光公社の情報)を、その出典とともに示します。どの情報源にもない値は、「{missing}」と一度だけ記します。"
+  },
+  "designation:모범음식점(수원시 지정)": {
+    "ko": "모범음식점(수원시 지정)",
+    "ja": "模範飲食店（水原市指定）"
+  },
+  "designation:백년가게(중소벤처기업부)": {
+    "ko": "백년가게(중소벤처기업부)",
+    "ja": "百年店舗（中小ベンチャー企業部）"
+  },
+  "designation_source:경기도 수원시 · 공공데이터포털 모범음식점 현황(2026-06-30)": {
+    "ko": "경기도 수원시 · 공공데이터포털 모범음식점 현황(2026-06-30)",
+    "ja": "京畿道水原市 · 公共データポータル 模範飲食店の現況（2026-06-30）"
+  },
+  "designation_source:소상공인시장진흥공단 · 공공데이터포털 전국 백년가게 지정리스트 현황 정보(2026-08-20)": {
+    "ko": "소상공인시장진흥공단 · 공공데이터포털 전국 백년가게 지정리스트 현황 정보(2026-08-20)",
+    "ja": "小商工人市場振興公団 · 公共データポータル 全国百年店舗指定リストの現況情報（2026-08-20）"
   }
 }

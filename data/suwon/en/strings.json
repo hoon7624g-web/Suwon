@@ -778,5 +778,21 @@
   "provider:수원박물관 관람안내": {
     "ko": "수원박물관 관람안내",
     "en": "Suwon Museum visitor guide"
+  },
+  "designation:모범음식점(수원시 지정)": {
+    "ko": "모범음식점(수원시 지정)",
+    "en": "Model Restaurant (designated by Suwon City)"
+  },
+  "designation:백년가게(중소벤처기업부)": {
+    "ko": "백년가게(중소벤처기업부)",
+    "en": "Centennial Shop (Ministry of SMEs and Startups)"
+  },
+  "designation_source:경기도 수원시 · 공공데이터포털 모범음식점 현황(2026-06-30)": {
+    "ko": "경기도 수원시 · 공공데이터포털 모범음식점 현황(2026-06-30)",
+    "en": "Suwon City, Gyeonggi-do · Public Data Portal, Model Restaurant list (2026-06-30)"
+  },
+  "designation_source:소상공인시장진흥공단 · 공공데이터포털 전국 백년가게 지정리스트 현황 정보(2026-08-20)": {
+    "ko": "소상공인시장진흥공단 · 공공데이터포털 전국 백년가게 지정리스트 현황 정보(2026-08-20)",
+    "en": "Small Enterprise and Market Service · Public Data Portal, national list of designated Centennial Shops (2026-08-20)"
   }
 }

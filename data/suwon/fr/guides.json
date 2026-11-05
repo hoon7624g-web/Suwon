@@ -3,11 +3,11 @@
     "slug": "suwon-hwaseong-fortress-haenggung",
     "label": "Forteresse Hwaseong de Suwon, palais Haenggung et remparts",
     "title": "Quels sont les sites des remparts (forteresse Hwaseong de Suwon, Palais Hwaseong Haenggung, pavillon Banghwasuryujeong) et les sites touristiques gratuits ouverts en permanence ?",
-    "summary": "Ce site répertorie 20 lieux liés à la forteresse Hwaseong de Suwon, à Palais Hwaseong Haenggung, aux quatre grandes portes, aux pavillons d'angle et aux remparts. 51 sites touristiques de Suwon sont ouverts toute l'année et gratuitement. Vous pouvez comparer d'un coup d'œil les horaires, les jours de fermeture et les droits d'entrée des 10 principaux sites ci-dessous.",
+    "summary": "Ce site répertorie 21 lieux liés à la forteresse Hwaseong de Suwon, à Palais Hwaseong Haenggung, aux quatre grandes portes, aux pavillons d'angle et aux remparts. 52 sites touristiques de Suwon sont ouverts toute l'année et gratuitement. Vous pouvez comparer d'un coup d'œil les horaires, les jours de fermeture et les droits d'entrée des 10 principaux sites ci-dessous.",
     "body": [
       {
-        "heading": "20 sites de la forteresse Hwaseong de Suwon, de Palais Hwaseong Haenggung et des remparts, et 51 sites touristiques gratuits ouverts toute l'année",
-        "text": "Selon le TourAPI de l'Office national du tourisme coréen, 20 sites sont liés aux remparts. Parmi eux figurent la forteresse Hwaseong de Suwon, Palais Hwaseong Haenggung, Porte Janganmun, Porte Paldalmun, la porte Hwaseomun, Porte Changnyongmun, le pavillon Banghwasuryujeong, Yeonmudae, la porte Hwahongmun, Seojangdae et Hwaryeongjeon. Parmi tous les sites touristiques de Suwon, 51 sont ouverts toute l'année avec un accès gratuit."
+        "heading": "21 sites de la forteresse Hwaseong de Suwon, de Palais Hwaseong Haenggung et des remparts, et 52 sites touristiques gratuits ouverts toute l'année",
+        "text": "Selon le TourAPI de l'Office national du tourisme coréen, 21 sites sont liés aux remparts. Parmi eux figurent la forteresse Hwaseong de Suwon, Palais Hwaseong Haenggung, Porte Janganmun, Porte Paldalmun, la porte Hwaseomun, Porte Changnyongmun, le pavillon Banghwasuryujeong, Yeonmudae, la porte Hwahongmun, Seojangdae et Hwaryeongjeon. Parmi tous les sites touristiques de Suwon, 52 sont ouverts toute l'année avec un accès gratuit."
       },
       {
         "heading": "Sections des remparts ouvertes en permanence et horaires de vente des billets du palais Haenggung et des sites d'activités",
@@ -59,7 +59,7 @@
     "faq": [
       {
         "q": "Combien y a-t-il à Suwon de sites liés à la forteresse Hwaseong de Suwon, au palais Haenggung et aux remparts, et de sites touristiques gratuits ouverts toute l'année ?",
-        "a": "On compte 20 sites liés à la forteresse Hwaseong de Suwon, à Palais Hwaseong Haenggung, aux quatre grandes portes et aux pavillons d'angle, et 51 sites touristiques gratuits ouverts toute l'année.",
+        "a": "On compte 21 sites liés à la forteresse Hwaseong de Suwon, à Palais Hwaseong Haenggung, aux quatre grandes portes et aux pavillons d'angle, et 52 sites touristiques gratuits ouverts toute l'année.",
         "source": "한국관광공사 TourAPI"
       }
     ],
@@ -69,8 +69,8 @@
         "url": "https://api.visitkorea.or.kr/"
       }
     ],
-    "ko_hash": "23cc05f8a14617b9",
-    "translated_at": "2026-10-28"
+    "ko_hash": "e65abe35c2af7ca0",
+    "translated_at": "2026-11-05"
   },
   "guide-02": {
     "slug": "suwon-with-kids",
@@ -143,17 +143,17 @@
       }
     ],
     "ko_hash": "5c72e6e5bde70c1a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "guide-03": {
     "slug": "suwon-indoor-museums",
     "label": "Jours de pluie et lieux couverts",
     "title": "Quels musées, galeries d'art, bibliothèque Starfield et équipements culturels de Suwon sont pratiques à visiter les jours de pluie ?",
-    "summary": "Ce site répertorie 43 équipements culturels de Suwon, tels que des musées, des galeries d'art, des bibliothèques et des centres d'art. 34 sites touristiques culturels, couverts ou en plein air, ont dans leur nom musée, galerie d'art, salle d'exposition, bibliothèque, Haewoojae ou Aqua Planet. Vous pouvez comparer les horaires de visite, les jours de fermeture réguliers et les droits d'entrée des 10 principaux sites ci-dessous.",
+    "summary": "Ce site répertorie 43 équipements culturels de Suwon, tels que des musées, des galeries d'art, des bibliothèques et des centres d'art. 38 sites touristiques culturels, couverts ou en plein air, ont dans leur nom musée, galerie d'art, salle d'exposition, bibliothèque, Haewoojae ou Aqua Planet. Vous pouvez comparer les horaires de visite, les jours de fermeture réguliers et les droits d'entrée des 10 principaux sites ci-dessous.",
     "body": [
       {
-        "heading": "43 équipements culturels (musées, galeries d'art, bibliothèques) et 34 sites d'exposition et de culture",
-        "text": "Selon la classification du TourAPI de l'Office national du tourisme coréen, 43 sites de Suwon sont enregistrés comme équipements culturels. On compte 34 lieux d'exposition et bibliothèques, comme Musée de Suwon Hwaseong, Musée municipal d'art de Suwon, Musée national de l'agriculture, Bibliothèque Byeolmadang – Starfield Suwon, Bibliothèque de Gyeonggi, Haewoojae et Aqua Planet Gwanggyo."
+        "heading": "43 équipements culturels (musées, galeries d'art, bibliothèques) et 38 sites d'exposition et de culture",
+        "text": "Selon la classification du TourAPI de l'Office national du tourisme coréen, 43 sites de Suwon sont enregistrés comme équipements culturels. On compte 38 lieux d'exposition et bibliothèques, comme Musée de Suwon Hwaseong, Musée municipal d'art de Suwon, Musée national de l'agriculture, Bibliothèque Byeolmadang – Starfield Suwon, Bibliothèque de Gyeonggi, Haewoojae et Aqua Planet Gwanggyo."
       },
       {
         "heading": "Comparer les horaires de visite, la fermeture du lundi et la visite gratuite ou non",
@@ -205,7 +205,7 @@
     "faq": [
       {
         "q": "Combien de lieux de Suwon sont classés comme équipements culturels, tels que des musées, des galeries d'art et des bibliothèques ?",
-        "a": "43 sites touristiques de Suwon sont enregistrés comme équipements culturels, et 34 lieux sont liés aux musées, aux galeries d'art, aux salles d'exposition, aux bibliothèques, à Haewoojae et à Aqua Planet.",
+        "a": "43 sites touristiques de Suwon sont enregistrés comme équipements culturels, et 38 lieux sont liés aux musées, aux galeries d'art, aux salles d'exposition, aux bibliothèques, à Haewoojae et à Aqua Planet.",
         "source": "한국관광공사 TourAPI"
       }
     ],
@@ -215,18 +215,18 @@
         "url": "https://api.visitkorea.or.kr/"
       }
     ],
-    "ko_hash": "9ea0ed6649e6de30",
-    "translated_at": "2026-10-28"
+    "ko_hash": "eeaa28df34cf5851",
+    "translated_at": "2026-11-05"
   },
   "guide-05": {
     "slug": "monday-open-restaurants-suwon",
     "label": "Restaurants ouverts le lundi",
     "title": "À Suwon, quels restaurants de grandes côtes, de poulet frit et de nouilles coupées au couteau, et quels cafés de Haengnidan-gil sont ouverts le lundi ?",
-    "summary": "Parmi les restaurants de Suwon répertoriés sur ce site, 176 n'indiquent pas de fermeture le lundi dans leurs jours de fermeture. On compte 54 lieux de galbi, de bœuf hanwoo et de viande grillée, et 23 de poulet frit, de nouilles coupées au couteau, de soupe contre la gueule de bois et de raviolis. On compte aussi 42 lieux de café, de boulangerie et de desserts. Vous pouvez comparer les plats et les horaires des 10 principaux.",
+    "summary": "Parmi les restaurants de Suwon répertoriés sur ce site, 175 n'indiquent pas de fermeture le lundi dans leurs jours de fermeture. On compte 55 lieux de galbi, de bœuf hanwoo et de viande grillée, et 23 de poulet frit, de nouilles coupées au couteau, de soupe contre la gueule de bois et de raviolis. On compte aussi 44 lieux de café, de boulangerie et de desserts. Vous pouvez comparer les plats et les horaires des 10 principaux.",
     "body": [
       {
-        "heading": "176 restaurants ouverts le lundi : 54 de galbi de Suwon et de grillades, 23 de poulet frit, de nouilles et de soupes de riz, 42 cafés",
-        "text": "Selon le TourAPI de l'Office national du tourisme coréen, 176 restaurants et cafés de Suwon n'ont pas le lundi parmi leurs jours de fermeture réguliers. Par type de plat, on compte 54 lieux de grandes côtes de Suwon, de bœuf hanwoo, de bulgogi, de poitrine de porc et de canard. On compte aussi 23 lieux de poulet frit, de nouilles coupées au couteau, de nouilles froides, de soupe contre la gueule de bois, de soupe d'os de bœuf et de raviolis. Enfin, 42 lieux proposent café, boulangerie et desserts."
+        "heading": "175 restaurants ouverts le lundi : 55 de galbi de Suwon et de grillades, 23 de poulet frit, de nouilles et de soupes de riz, 44 cafés",
+        "text": "Selon le TourAPI de l'Office national du tourisme coréen, 175 restaurants et cafés de Suwon n'ont pas le lundi parmi leurs jours de fermeture réguliers. Par type de plat, on compte 55 lieux de grandes côtes de Suwon, de bœuf hanwoo, de bulgogi, de poitrine de porc et de canard. On compte aussi 23 lieux de poulet frit, de nouilles coupées au couteau, de nouilles froides, de soupe contre la gueule de bois, de soupe d'os de bœuf et de raviolis. Enfin, 44 lieux proposent café, boulangerie et desserts."
       },
       {
         "heading": "Heures de pause et de dernière commande à vérifier",
@@ -278,7 +278,7 @@
     "faq": [
       {
         "q": "Combien y a-t-il à Suwon de restaurants ouverts le lundi, et parmi eux de lieux de galbi et de grillades, de poulet frit, de nouilles et de soupes de riz, et de cafés et boulangeries ?",
-        "a": "176 restaurants n'ont pas de fermeture le lundi. On compte 54 lieux de galbi, de bœuf hanwoo et de grillades, et 23 de poulet frit, de nouilles coupées au couteau, de soupe contre la gueule de bois et de raviolis. Enfin, 42 lieux proposent café, boulangerie et desserts.",
+        "a": "175 restaurants n'ont pas de fermeture le lundi. On compte 55 lieux de galbi, de bœuf hanwoo et de grillades, et 23 de poulet frit, de nouilles coupées au couteau, de soupe contre la gueule de bois et de raviolis. Enfin, 44 lieux proposent café, boulangerie et desserts.",
         "source": "한국관광공사 TourAPI"
       }
     ],
@@ -288,8 +288,8 @@
         "url": "https://api.visitkorea.or.kr/"
       }
     ],
-    "ko_hash": "10d27a57ece246bb",
-    "translated_at": "2026-10-28"
+    "ko_hash": "a57584d7eff9b137",
+    "translated_at": "2026-11-05"
   },
   "guide-06": {
     "slug": "suwon-hotels-hanok-stays",
@@ -362,6 +362,6 @@
       }
     ],
     "ko_hash": "e090e2a9577a1863",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   }
 }

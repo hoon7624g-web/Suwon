@@ -1,0 +1,22 @@
+{
+ "dataset": "전국주차장정보표준데이터",
+ "pk": "15012896",
+ "page": "https://www.data.go.kr/data/15012896/standard.do",
+ "files": [
+  {
+   "name": "파일데이터 경기도_수원시_주차장정보",
+   "provider": "경기도 수원시",
+   "registered": "2020-03-03",
+   "dpk": "uddi:268f97fb-99a3-4540-9f7b-d9be3a0535f0_202003031819",
+   "atchFileId": "FILE_000000003628108",
+   "fileDetailSn": "1",
+   "ext": "csv",
+   "modified": "2026-04-20",
+   "rows": "59",
+   "license": "이용허락범위 제한 없음",
+   "cycle": "반기",
+   "file": "raw/parking/15012896_경기도_수원시_FILE_000000003628108.csv",
+   "download": "https://www.data.go.kr/cmm/cmm/fileDownload.do?atchFileId=FILE_000000003628108&fileDetailSn=1"
+  }
+ ]
+}

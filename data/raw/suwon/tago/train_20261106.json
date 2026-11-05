@@ -1,0 +1,6714 @@
+{
+ "service": "TrainInfo",
+ "operation": "GetStrtpntAlocFndTrainInfo",
+ "provider": "국토교통부",
+ "dataset": "국토교통부_(TAGO)_열차정보",
+ "url": "https://www.data.go.kr/data/15098552/openapi.do",
+ "date": "2026-11-06",
+ "day": "weekday",
+ "fetched_at": "2026-11-05",
+ "pairs": [
+  {
+   "params": {
+    "depPlaceId": "NAT010415",
+    "arrPlaceId": "NAT010000",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 36,
+   "items": [
+    {
+     "trainno": "01172",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106070200",
+     "arrplandtime": "20261106074000",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01122",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106074100",
+     "arrplandtime": "20261106081900",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01124",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106075300",
+     "arrplandtime": "20261106083000",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01174",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106080700",
+     "arrplandtime": "20261106084700",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01176",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106093900",
+     "arrplandtime": "20261106102000",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01002",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106095200",
+     "arrplandtime": "20261106102500",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01004",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106103600",
+     "arrplandtime": "20261106110700",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01152",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106104200",
+     "arrplandtime": "20261106111500",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "00122",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106110100",
+     "arrplandtime": "20261106113400",
+     "adultcharge": "8400"
+    },
+    {
+     "trainno": "01154",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106113700",
+     "arrplandtime": "20261106121100",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01182",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106115700",
+     "arrplandtime": "20261106123600",
+     "adultcharge": "2700"
+    },
+    {
+     "trainno": "01006",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106123800",
+     "arrplandtime": "20261106131500",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01008",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106125000",
+     "arrplandtime": "20261106132200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01112",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106125600",
+     "arrplandtime": "20261106133100",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "00174",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106130300",
+     "arrplandtime": "20261106134000",
+     "adultcharge": "8400"
+    },
+    {
+     "trainno": "01156",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106145700",
+     "arrplandtime": "20261106153200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01158",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106152100",
+     "arrplandtime": "20261106155900",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "00164",
+     "traingradename": "KTX-산천",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106160100",
+     "arrplandtime": "20261106163400",
+     "adultcharge": "8400"
+    },
+    {
+     "trainno": "01010",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106162700",
+     "arrplandtime": "20261106165900",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01160",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106173300",
+     "arrplandtime": "20261106181000",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01012",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106174200",
+     "arrplandtime": "20261106181500",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "00176",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106175600",
+     "arrplandtime": "20261106182900",
+     "adultcharge": "8400"
+    },
+    {
+     "trainno": "01162",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106184800",
+     "arrplandtime": "20261106192500",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01014",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106192300",
+     "arrplandtime": "20261106195800",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01016",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106194200",
+     "arrplandtime": "20261106202100",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01164",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106202800",
+     "arrplandtime": "20261106210200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "00126",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106203800",
+     "arrplandtime": "20261106211100",
+     "adultcharge": "8400"
+    },
+    {
+     "trainno": "04542",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106205500",
+     "arrplandtime": "20261106212600",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01018",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106211600",
+     "arrplandtime": "20261106214700",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "02522",
+     "traingradename": "새마을호",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106213900",
+     "arrplandtime": "20261106221500",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01020",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106215600",
+     "arrplandtime": "20261106222900",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01022",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106222100",
+     "arrplandtime": "20261106225300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "00128",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106222900",
+     "arrplandtime": "20261106230200",
+     "adultcharge": "8400"
+    },
+    {
+     "trainno": "00178",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106223900",
+     "arrplandtime": "20261106231500",
+     "adultcharge": "8400"
+    },
+    {
+     "trainno": "01166",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106231500",
+     "arrplandtime": "20261106235400",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01024",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "서울",
+     "depplandtime": "20261106233100",
+     "arrplandtime": "20261107000200",
+     "adultcharge": "4800"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT010000",
+    "arrPlaceId": "NAT010415",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 36,
+   "items": [
+    {
+     "trainno": "01001",
+     "traingradename": "ITX-새마을",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106055400",
+     "arrplandtime": "20261106062900",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01003",
+     "traingradename": "ITX-새마을",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106061200",
+     "arrplandtime": "20261106064200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01151",
+     "traingradename": "무궁화호",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106063700",
+     "arrplandtime": "20261106071200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "00171",
+     "traingradename": "KTX",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106064800",
+     "arrplandtime": "20261106072300",
+     "adultcharge": "8400"
+    },
+    {
+     "trainno": "01005",
+     "traingradename": "ITX-새마을",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106070200",
+     "arrplandtime": "20261106073200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01153",
+     "traingradename": "무궁화호",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106071500",
+     "arrplandtime": "20261106074800",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "04541",
+     "traingradename": "무궁화호",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106074200",
+     "arrplandtime": "20261106081900",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01155",
+     "traingradename": "무궁화호",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106075400",
+     "arrplandtime": "20261106083200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "02521",
+     "traingradename": "새마을호",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106080400",
+     "arrplandtime": "20261106084100",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "00121",
+     "traingradename": "KTX",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106081200",
+     "arrplandtime": "20261106084400",
+     "adultcharge": "8400"
+    },
+    {
+     "trainno": "01007",
+     "traingradename": "ITX-마음",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106084900",
+     "arrplandtime": "20261106092000",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "00123",
+     "traingradename": "KTX",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106101200",
+     "arrplandtime": "20261106104400",
+     "adultcharge": "8400"
+    },
+    {
+     "trainno": "01009",
+     "traingradename": "ITX-새마을",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106102300",
+     "arrplandtime": "20261106105300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01011",
+     "traingradename": "ITX-마음",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106104800",
+     "arrplandtime": "20261106112200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01013",
+     "traingradename": "ITX-새마을",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106120200",
+     "arrplandtime": "20261106123300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01015",
+     "traingradename": "ITX-마음",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106122200",
+     "arrplandtime": "20261106125700",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01157",
+     "traingradename": "무궁화호",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106130200",
+     "arrplandtime": "20261106133500",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01017",
+     "traingradename": "ITX-새마을",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106135300",
+     "arrplandtime": "20261106142300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01159",
+     "traingradename": "무궁화호",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106140200",
+     "arrplandtime": "20261106143500",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01161",
+     "traingradename": "무궁화호",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106144900",
+     "arrplandtime": "20261106152100",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "00175",
+     "traingradename": "KTX",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106151900",
+     "arrplandtime": "20261106155400",
+     "adultcharge": "8400"
+    },
+    {
+     "trainno": "01019",
+     "traingradename": "ITX-새마을",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106153900",
+     "arrplandtime": "20261106161000",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "00125",
+     "traingradename": "KTX",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106160200",
+     "arrplandtime": "20261106163800",
+     "adultcharge": "8400"
+    },
+    {
+     "trainno": "01021",
+     "traingradename": "ITX-새마을",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106165000",
+     "arrplandtime": "20261106172100",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01023",
+     "traingradename": "ITX-새마을",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106165500",
+     "arrplandtime": "20261106173000",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01171",
+     "traingradename": "무궁화호",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106170200",
+     "arrplandtime": "20261106173700",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01163",
+     "traingradename": "무궁화호",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106172900",
+     "arrplandtime": "20261106180400",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01181",
+     "traingradename": "무궁화호",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106175400",
+     "arrplandtime": "20261106183000",
+     "adultcharge": "2700"
+    },
+    {
+     "trainno": "01173",
+     "traingradename": "무궁화호",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106184800",
+     "arrplandtime": "20261106192500",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "00127",
+     "traingradename": "KTX",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106185300",
+     "arrplandtime": "20261106192900",
+     "adultcharge": "8400"
+    },
+    {
+     "trainno": "01111",
+     "traingradename": "ITX-새마을",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106192500",
+     "arrplandtime": "20261106195500",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01121",
+     "traingradename": "ITX-새마을",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106193100",
+     "arrplandtime": "20261106200900",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "00177",
+     "traingradename": "KTX",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106194800",
+     "arrplandtime": "20261106202000",
+     "adultcharge": "8400"
+    },
+    {
+     "trainno": "01025",
+     "traingradename": "ITX-새마을",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106200900",
+     "arrplandtime": "20261106204300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01175",
+     "traingradename": "무궁화호",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106201800",
+     "arrplandtime": "20261106205100",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01177",
+     "traingradename": "무궁화호",
+     "depplacename": "서울",
+     "arrplacename": "수원",
+     "depplandtime": "20261106222400",
+     "arrplandtime": "20261106225900",
+     "adultcharge": "4800"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT010415",
+    "arrPlaceId": "NAT010032",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 38,
+   "items": [
+    {
+     "trainno": "01472",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106081600",
+     "arrplandtime": "20261106085500",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01272",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106082800",
+     "arrplandtime": "20261106090600",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01202",
+     "traingradename": "새마을호",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106090200",
+     "arrplandtime": "20261106093600",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01274",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106101100",
+     "arrplandtime": "20261106104300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01422",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106102200",
+     "arrplandtime": "20261106105500",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01204",
+     "traingradename": "새마을호",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106111100",
+     "arrplandtime": "20261106114300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01572",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106112300",
+     "arrplandtime": "20261106115800",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01452",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106115200",
+     "arrplandtime": "20261106122600",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01276",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106120900",
+     "arrplandtime": "20261106124100",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01424",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106122300",
+     "arrplandtime": "20261106125300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01206",
+     "traingradename": "새마을호",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106124400",
+     "arrplandtime": "20261106131600",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01502",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106131500",
+     "arrplandtime": "20261106134900",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01402",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106143900",
+     "arrplandtime": "20261106150800",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01404",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106150600",
+     "arrplandtime": "20261106153900",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01512",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106150600",
+     "arrplandtime": "20261106153900",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01278",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106151200",
+     "arrplandtime": "20261106154800",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01280",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106154900",
+     "arrplandtime": "20261106162300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01462",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106160700",
+     "arrplandtime": "20261106164600",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01442",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106164300",
+     "arrplandtime": "20261106171600",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01426",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106170600",
+     "arrplandtime": "20261106173600",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01208",
+     "traingradename": "새마을호",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106171700",
+     "arrplandtime": "20261106175100",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01574",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106181400",
+     "arrplandtime": "20261106185200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01282",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106182400",
+     "arrplandtime": "20261106185900",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01504",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106183100",
+     "arrplandtime": "20261106190600",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "02552",
+     "traingradename": "새마을호",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106185600",
+     "arrplandtime": "20261106192700",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01464",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106195100",
+     "arrplandtime": "20261106202200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01514",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106195700",
+     "arrplandtime": "20261106202700",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01406",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106195700",
+     "arrplandtime": "20261106202700",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01284",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106200700",
+     "arrplandtime": "20261106203900",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01222",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106205900",
+     "arrplandtime": "20261106213600",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01408",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106210900",
+     "arrplandtime": "20261106214000",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01286",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106212300",
+     "arrplandtime": "20261106220100",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01410",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106214900",
+     "arrplandtime": "20261106222200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01428",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106220300",
+     "arrplandtime": "20261106223700",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01210",
+     "traingradename": "새마을호",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106220900",
+     "arrplandtime": "20261106224800",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01576",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106230400",
+     "arrplandtime": "20261106233800",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01288",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261106232300",
+     "arrplandtime": "20261106235500",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01506",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "용산",
+     "depplandtime": "20261107000000",
+     "arrplandtime": "20261107003100",
+     "adultcharge": "4800"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT010032",
+    "arrPlaceId": "NAT010415",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 38,
+   "items": [
+    {
+     "trainno": "01501",
+     "traingradename": "ITX-마음",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106052500",
+     "arrplandtime": "20261106055800",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01271",
+     "traingradename": "무궁화호",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106053200",
+     "arrplandtime": "20261106060400",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01273",
+     "traingradename": "무궁화호",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106061800",
+     "arrplandtime": "20261106065300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01421",
+     "traingradename": "ITX-새마을",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106062400",
+     "arrplandtime": "20261106070100",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01503",
+     "traingradename": "ITX-새마을",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106070800",
+     "arrplandtime": "20261106074200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01275",
+     "traingradename": "무궁화호",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106072400",
+     "arrplandtime": "20261106080100",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01461",
+     "traingradename": "무궁화호",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106073300",
+     "arrplandtime": "20261106081000",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "02551",
+     "traingradename": "새마을호",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106082800",
+     "arrplandtime": "20261106090000",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01401",
+     "traingradename": "ITX-새마을",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106084400",
+     "arrplandtime": "20261106091300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01223",
+     "traingradename": "ITX-마음",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106085600",
+     "arrplandtime": "20261106093100",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01201",
+     "traingradename": "새마을호",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106091400",
+     "arrplandtime": "20261106094900",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01571",
+     "traingradename": "무궁화호",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106093800",
+     "arrplandtime": "20261106100800",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01403",
+     "traingradename": "ITX-마음",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106094700",
+     "arrplandtime": "20261106101700",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01511",
+     "traingradename": "ITX-마음",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106094700",
+     "arrplandtime": "20261106101700",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01441",
+     "traingradename": "ITX-새마을",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106095600",
+     "arrplandtime": "20261106103300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01277",
+     "traingradename": "무궁화호",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106103300",
+     "arrplandtime": "20261106110400",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01405",
+     "traingradename": "ITX-새마을",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106120700",
+     "arrplandtime": "20261106124000",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01203",
+     "traingradename": "새마을호",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106123300",
+     "arrplandtime": "20261106130500",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01279",
+     "traingradename": "무궁화호",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106125300",
+     "arrplandtime": "20261106132400",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01423",
+     "traingradename": "ITX-새마을",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106132400",
+     "arrplandtime": "20261106135300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01205",
+     "traingradename": "새마을호",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106134300",
+     "arrplandtime": "20261106141400",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01281",
+     "traingradename": "무궁화호",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106142500",
+     "arrplandtime": "20261106145900",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01463",
+     "traingradename": "무궁화호",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106145600",
+     "arrplandtime": "20261106152900",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01573",
+     "traingradename": "무궁화호",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106151000",
+     "arrplandtime": "20261106154100",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01207",
+     "traingradename": "새마을호",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106152800",
+     "arrplandtime": "20261106160300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01425",
+     "traingradename": "ITX-새마을",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106161600",
+     "arrplandtime": "20261106164800",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01283",
+     "traingradename": "무궁화호",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106162500",
+     "arrplandtime": "20261106165700",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01505",
+     "traingradename": "ITX-새마을",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106164200",
+     "arrplandtime": "20261106171100",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01507",
+     "traingradename": "ITX-마음",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106171800",
+     "arrplandtime": "20261106174800",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01407",
+     "traingradename": "ITX-마음",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106171800",
+     "arrplandtime": "20261106174800",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01209",
+     "traingradename": "새마을호",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106175200",
+     "arrplandtime": "20261106182400",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01451",
+     "traingradename": "무궁화호",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106181000",
+     "arrplandtime": "20261106184400",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01285",
+     "traingradename": "무궁화호",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106182100",
+     "arrplandtime": "20261106185900",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01409",
+     "traingradename": "ITX-새마을",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106191100",
+     "arrplandtime": "20261106194000",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01575",
+     "traingradename": "무궁화호",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106191500",
+     "arrplandtime": "20261106194600",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01427",
+     "traingradename": "ITX-새마을",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106200300",
+     "arrplandtime": "20261106203200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01287",
+     "traingradename": "무궁화호",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106204300",
+     "arrplandtime": "20261106211800",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01471",
+     "traingradename": "무궁화호",
+     "depplacename": "용산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106212200",
+     "arrplandtime": "20261106215700",
+     "adultcharge": "4800"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT010415",
+    "arrPlaceId": "NAT010091",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 74,
+   "items": [
+    {
+     "trainno": "01172",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106070200",
+     "arrplandtime": "20261106072700",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01122",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106074100",
+     "arrplandtime": "20261106080300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01124",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106075300",
+     "arrplandtime": "20261106081200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01174",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106080700",
+     "arrplandtime": "20261106083200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01472",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106081600",
+     "arrplandtime": "20261106084100",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01272",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106082800",
+     "arrplandtime": "20261106085300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01202",
+     "traingradename": "새마을호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106090200",
+     "arrplandtime": "20261106092300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01176",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106093900",
+     "arrplandtime": "20261106100400",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01002",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106095200",
+     "arrplandtime": "20261106101200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01274",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106101100",
+     "arrplandtime": "20261106103200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01422",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106102200",
+     "arrplandtime": "20261106104200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01004",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106103600",
+     "arrplandtime": "20261106105500",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01152",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106104200",
+     "arrplandtime": "20261106110300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "00122",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106110100",
+     "arrplandtime": "20261106112200",
+     "adultcharge": "8400"
+    },
+    {
+     "trainno": "01204",
+     "traingradename": "새마을호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106111100",
+     "arrplandtime": "20261106113200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01572",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106112300",
+     "arrplandtime": "20261106114700",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01154",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106113700",
+     "arrplandtime": "20261106115800",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01452",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106115200",
+     "arrplandtime": "20261106121400",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01182",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106115700",
+     "arrplandtime": "20261106122100",
+     "adultcharge": "2600"
+    },
+    {
+     "trainno": "01276",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106120900",
+     "arrplandtime": "20261106123200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01424",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106122300",
+     "arrplandtime": "20261106124300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01006",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106123800",
+     "arrplandtime": "20261106125900",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01206",
+     "traingradename": "새마을호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106124400",
+     "arrplandtime": "20261106130500",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01008",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106125000",
+     "arrplandtime": "20261106131000",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01112",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106125600",
+     "arrplandtime": "20261106131600",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "00174",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106130300",
+     "arrplandtime": "20261106132400",
+     "adultcharge": "8400"
+    },
+    {
+     "trainno": "01502",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106131500",
+     "arrplandtime": "20261106133600",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01402",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106143900",
+     "arrplandtime": "20261106145800",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01156",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106145700",
+     "arrplandtime": "20261106151800",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01404",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106150600",
+     "arrplandtime": "20261106152600",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01512",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106150600",
+     "arrplandtime": "20261106152600",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01278",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106151200",
+     "arrplandtime": "20261106153500",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01158",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106152100",
+     "arrplandtime": "20261106154200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01280",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106154900",
+     "arrplandtime": "20261106161000",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "00164",
+     "traingradename": "KTX-산천",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106160100",
+     "arrplandtime": "20261106162100",
+     "adultcharge": "8400"
+    },
+    {
+     "trainno": "01462",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106160700",
+     "arrplandtime": "20261106162900",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01010",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106162700",
+     "arrplandtime": "20261106164700",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01442",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106164300",
+     "arrplandtime": "20261106170300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01426",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106170600",
+     "arrplandtime": "20261106172600",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01208",
+     "traingradename": "새마을호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106171700",
+     "arrplandtime": "20261106173800",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01160",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106173300",
+     "arrplandtime": "20261106175700",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01012",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106174200",
+     "arrplandtime": "20261106180200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "00176",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106175600",
+     "arrplandtime": "20261106181700",
+     "adultcharge": "8400"
+    },
+    {
+     "trainno": "01574",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106181400",
+     "arrplandtime": "20261106183500",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01282",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106182400",
+     "arrplandtime": "20261106184700",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01504",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106183100",
+     "arrplandtime": "20261106185300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01162",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106184800",
+     "arrplandtime": "20261106191200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "02552",
+     "traingradename": "새마을호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106185600",
+     "arrplandtime": "20261106191700",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01014",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106192300",
+     "arrplandtime": "20261106194300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01016",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106194200",
+     "arrplandtime": "20261106200500",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01464",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106195100",
+     "arrplandtime": "20261106201200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01514",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106195700",
+     "arrplandtime": "20261106201700",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01406",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106195700",
+     "arrplandtime": "20261106201700",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01284",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106200700",
+     "arrplandtime": "20261106202800",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01164",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106202800",
+     "arrplandtime": "20261106205000",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "00126",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106203800",
+     "arrplandtime": "20261106205900",
+     "adultcharge": "8400"
+    },
+    {
+     "trainno": "04542",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106205500",
+     "arrplandtime": "20261106211400",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01222",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106205900",
+     "arrplandtime": "20261106211900",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01408",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106210900",
+     "arrplandtime": "20261106213000",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01018",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106211600",
+     "arrplandtime": "20261106213500",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01286",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106212300",
+     "arrplandtime": "20261106214400",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "02522",
+     "traingradename": "새마을호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106213900",
+     "arrplandtime": "20261106220000",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01410",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106214900",
+     "arrplandtime": "20261106220900",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01020",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106215600",
+     "arrplandtime": "20261106221600",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01428",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106220300",
+     "arrplandtime": "20261106222300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01210",
+     "traingradename": "새마을호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106220900",
+     "arrplandtime": "20261106223100",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01022",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106222100",
+     "arrplandtime": "20261106224100",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "00128",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106222900",
+     "arrplandtime": "20261106225000",
+     "adultcharge": "8400"
+    },
+    {
+     "trainno": "00178",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106223900",
+     "arrplandtime": "20261106230000",
+     "adultcharge": "8400"
+    },
+    {
+     "trainno": "01576",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106230400",
+     "arrplandtime": "20261106232800",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01166",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106231500",
+     "arrplandtime": "20261106233800",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01288",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106232300",
+     "arrplandtime": "20261106234400",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01024",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261106233100",
+     "arrplandtime": "20261106235000",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01506",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "영등포",
+     "depplandtime": "20261107000000",
+     "arrplandtime": "20261107002100",
+     "adultcharge": "4800"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT010091",
+    "arrPlaceId": "NAT010415",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 74,
+   "items": [
+    {
+     "trainno": "01501",
+     "traingradename": "ITX-마음",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106053700",
+     "arrplandtime": "20261106055800",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01271",
+     "traingradename": "무궁화호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106054200",
+     "arrplandtime": "20261106060400",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01001",
+     "traingradename": "ITX-새마을",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106060700",
+     "arrplandtime": "20261106062900",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01003",
+     "traingradename": "ITX-새마을",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106062200",
+     "arrplandtime": "20261106064200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01273",
+     "traingradename": "무궁화호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106062800",
+     "arrplandtime": "20261106065300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01421",
+     "traingradename": "ITX-새마을",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106063700",
+     "arrplandtime": "20261106070100",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01151",
+     "traingradename": "무궁화호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106064800",
+     "arrplandtime": "20261106071200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "00171",
+     "traingradename": "KTX",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106070100",
+     "arrplandtime": "20261106072300",
+     "adultcharge": "8400"
+    },
+    {
+     "trainno": "01005",
+     "traingradename": "ITX-새마을",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106071200",
+     "arrplandtime": "20261106073200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01503",
+     "traingradename": "ITX-새마을",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106072100",
+     "arrplandtime": "20261106074200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01153",
+     "traingradename": "무궁화호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106072700",
+     "arrplandtime": "20261106074800",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01275",
+     "traingradename": "무궁화호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106073600",
+     "arrplandtime": "20261106080100",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01461",
+     "traingradename": "무궁화호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106074500",
+     "arrplandtime": "20261106081000",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "04541",
+     "traingradename": "무궁화호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106075500",
+     "arrplandtime": "20261106081900",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01155",
+     "traingradename": "무궁화호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106080700",
+     "arrplandtime": "20261106083200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "02521",
+     "traingradename": "새마을호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106081700",
+     "arrplandtime": "20261106084100",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "00121",
+     "traingradename": "KTX",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106082300",
+     "arrplandtime": "20261106084400",
+     "adultcharge": "8400"
+    },
+    {
+     "trainno": "02551",
+     "traingradename": "새마을호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106083800",
+     "arrplandtime": "20261106090000",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01401",
+     "traingradename": "ITX-새마을",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106085200",
+     "arrplandtime": "20261106091300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01007",
+     "traingradename": "ITX-마음",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106085900",
+     "arrplandtime": "20261106092000",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01223",
+     "traingradename": "ITX-마음",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106090700",
+     "arrplandtime": "20261106093100",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01201",
+     "traingradename": "새마을호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106092700",
+     "arrplandtime": "20261106094900",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01571",
+     "traingradename": "무궁화호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106094700",
+     "arrplandtime": "20261106100800",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01511",
+     "traingradename": "ITX-마음",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106095600",
+     "arrplandtime": "20261106101700",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01403",
+     "traingradename": "ITX-마음",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106095600",
+     "arrplandtime": "20261106101700",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01441",
+     "traingradename": "ITX-새마을",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106101100",
+     "arrplandtime": "20261106103300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "00123",
+     "traingradename": "KTX",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106102300",
+     "arrplandtime": "20261106104400",
+     "adultcharge": "8400"
+    },
+    {
+     "trainno": "01009",
+     "traingradename": "ITX-새마을",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106103300",
+     "arrplandtime": "20261106105300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01277",
+     "traingradename": "무궁화호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106104200",
+     "arrplandtime": "20261106110400",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01011",
+     "traingradename": "ITX-마음",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106110100",
+     "arrplandtime": "20261106112200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01013",
+     "traingradename": "ITX-새마을",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106121200",
+     "arrplandtime": "20261106123300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01405",
+     "traingradename": "ITX-새마을",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106121900",
+     "arrplandtime": "20261106124000",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01015",
+     "traingradename": "ITX-마음",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106123600",
+     "arrplandtime": "20261106125700",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01203",
+     "traingradename": "새마을호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106124300",
+     "arrplandtime": "20261106130500",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01279",
+     "traingradename": "무궁화호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106130300",
+     "arrplandtime": "20261106132400",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01157",
+     "traingradename": "무궁화호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106131400",
+     "arrplandtime": "20261106133500",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01423",
+     "traingradename": "ITX-새마을",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106133200",
+     "arrplandtime": "20261106135300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01205",
+     "traingradename": "새마을호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106135300",
+     "arrplandtime": "20261106141400",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01017",
+     "traingradename": "ITX-새마을",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106140300",
+     "arrplandtime": "20261106142300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01159",
+     "traingradename": "무궁화호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106141300",
+     "arrplandtime": "20261106143500",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01281",
+     "traingradename": "무궁화호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106143700",
+     "arrplandtime": "20261106145900",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01161",
+     "traingradename": "무궁화호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106150000",
+     "arrplandtime": "20261106152100",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01463",
+     "traingradename": "무궁화호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106150800",
+     "arrplandtime": "20261106152900",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01573",
+     "traingradename": "무궁화호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106152000",
+     "arrplandtime": "20261106154100",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "00175",
+     "traingradename": "KTX",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106153200",
+     "arrplandtime": "20261106155400",
+     "adultcharge": "8400"
+    },
+    {
+     "trainno": "01207",
+     "traingradename": "새마을호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106154100",
+     "arrplandtime": "20261106160300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01019",
+     "traingradename": "ITX-새마을",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106154900",
+     "arrplandtime": "20261106161000",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "00125",
+     "traingradename": "KTX",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106161600",
+     "arrplandtime": "20261106163800",
+     "adultcharge": "8400"
+    },
+    {
+     "trainno": "01425",
+     "traingradename": "ITX-새마을",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106162800",
+     "arrplandtime": "20261106164800",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01283",
+     "traingradename": "무궁화호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106163500",
+     "arrplandtime": "20261106165700",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01505",
+     "traingradename": "ITX-새마을",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106165000",
+     "arrplandtime": "20261106171100",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01021",
+     "traingradename": "ITX-새마을",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106170000",
+     "arrplandtime": "20261106172100",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01023",
+     "traingradename": "ITX-새마을",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106170900",
+     "arrplandtime": "20261106173000",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01171",
+     "traingradename": "무궁화호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106171300",
+     "arrplandtime": "20261106173700",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01407",
+     "traingradename": "ITX-마음",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106172700",
+     "arrplandtime": "20261106174800",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01507",
+     "traingradename": "ITX-마음",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106172700",
+     "arrplandtime": "20261106174800",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01163",
+     "traingradename": "무궁화호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106174300",
+     "arrplandtime": "20261106180400",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01209",
+     "traingradename": "새마을호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106180200",
+     "arrplandtime": "20261106182400",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01181",
+     "traingradename": "무궁화호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106180700",
+     "arrplandtime": "20261106183000",
+     "adultcharge": "2600"
+    },
+    {
+     "trainno": "01451",
+     "traingradename": "무궁화호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106182200",
+     "arrplandtime": "20261106184400",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01285",
+     "traingradename": "무궁화호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106183400",
+     "arrplandtime": "20261106185900",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01173",
+     "traingradename": "무궁화호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106185900",
+     "arrplandtime": "20261106192500",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "00127",
+     "traingradename": "KTX",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106190700",
+     "arrplandtime": "20261106192900",
+     "adultcharge": "8400"
+    },
+    {
+     "trainno": "01409",
+     "traingradename": "ITX-새마을",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106191900",
+     "arrplandtime": "20261106194000",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01575",
+     "traingradename": "무궁화호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106192400",
+     "arrplandtime": "20261106194600",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01111",
+     "traingradename": "ITX-새마을",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106193500",
+     "arrplandtime": "20261106195500",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01121",
+     "traingradename": "ITX-새마을",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106194400",
+     "arrplandtime": "20261106200900",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "00177",
+     "traingradename": "KTX",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106195900",
+     "arrplandtime": "20261106202000",
+     "adultcharge": "8400"
+    },
+    {
+     "trainno": "01427",
+     "traingradename": "ITX-새마을",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106201100",
+     "arrplandtime": "20261106203200",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01025",
+     "traingradename": "ITX-새마을",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106202300",
+     "arrplandtime": "20261106204300",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01175",
+     "traingradename": "무궁화호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106202900",
+     "arrplandtime": "20261106205100",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01287",
+     "traingradename": "무궁화호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106205300",
+     "arrplandtime": "20261106211800",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01471",
+     "traingradename": "무궁화호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106213100",
+     "arrplandtime": "20261106215700",
+     "adultcharge": "4800"
+    },
+    {
+     "trainno": "01177",
+     "traingradename": "무궁화호",
+     "depplacename": "영등포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106223800",
+     "arrplandtime": "20261106225900",
+     "adultcharge": "4800"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT010415",
+    "arrPlaceId": "NAT050044",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 1,
+   "items": [
+    {
+     "trainno": "01181",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "오송",
+     "depplandtime": "20261106183200",
+     "arrplandtime": "20261106193700",
+     "adultcharge": "5800"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT050044",
+    "arrPlaceId": "NAT010415",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 1,
+   "items": [
+    {
+     "trainno": "01182",
+     "traingradename": "무궁화호",
+     "depplacename": "오송",
+     "arrplacename": "수원",
+     "depplandtime": "20261106105400",
+     "arrplandtime": "20261106115500",
+     "adultcharge": "5800"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT010415",
+    "arrPlaceId": "NAT011668",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 34,
+   "items": [
+    {
+     "trainno": "01001",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106063100",
+     "arrplandtime": "20261106075100",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01003",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106064400",
+     "arrplandtime": "20261106081300",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01151",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106071400",
+     "arrplandtime": "20261106085700",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "00171",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106072600",
+     "arrplandtime": "20261106083600",
+     "adultcharge": "12900"
+    },
+    {
+     "trainno": "01005",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106073400",
+     "arrplandtime": "20261106084900",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01153",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106075000",
+     "arrplandtime": "20261106092600",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "04541",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106082100",
+     "arrplandtime": "20261106095100",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01155",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106083400",
+     "arrplandtime": "20261106100200",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "00121",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106084600",
+     "arrplandtime": "20261106095500",
+     "adultcharge": "12900"
+    },
+    {
+     "trainno": "01007",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106092200",
+     "arrplandtime": "20261106103800",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "00123",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106104700",
+     "arrplandtime": "20261106115500",
+     "adultcharge": "12900"
+    },
+    {
+     "trainno": "01009",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106105600",
+     "arrplandtime": "20261106121600",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01011",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106112500",
+     "arrplandtime": "20261106123500",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01013",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106123500",
+     "arrplandtime": "20261106135300",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01015",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106125900",
+     "arrplandtime": "20261106141400",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01157",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106133700",
+     "arrplandtime": "20261106150400",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01017",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106142500",
+     "arrplandtime": "20261106154100",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01159",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106143800",
+     "arrplandtime": "20261106160600",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01161",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106152300",
+     "arrplandtime": "20261106164800",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "00175",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106155600",
+     "arrplandtime": "20261106170400",
+     "adultcharge": "12900"
+    },
+    {
+     "trainno": "01019",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106161200",
+     "arrplandtime": "20261106172800",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "00125",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106164200",
+     "arrplandtime": "20261106175000",
+     "adultcharge": "12900"
+    },
+    {
+     "trainno": "01021",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106172300",
+     "arrplandtime": "20261106183300",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01023",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106173200",
+     "arrplandtime": "20261106185100",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01171",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106173900",
+     "arrplandtime": "20261106191600",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01163",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106180600",
+     "arrplandtime": "20261106193700",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01173",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106192700",
+     "arrplandtime": "20261106210500",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "00127",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106193300",
+     "arrplandtime": "20261106204100",
+     "adultcharge": "12900"
+    },
+    {
+     "trainno": "01111",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106195700",
+     "arrplandtime": "20261106210900",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01121",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106201100",
+     "arrplandtime": "20261106214500",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "00177",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106202300",
+     "arrplandtime": "20261106213100",
+     "adultcharge": "12900"
+    },
+    {
+     "trainno": "01025",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106204500",
+     "arrplandtime": "20261106215800",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01175",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106205300",
+     "arrplandtime": "20261106222300",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01177",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "대전",
+     "depplandtime": "20261106230100",
+     "arrplandtime": "20261107001800",
+     "adultcharge": "12000"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT011668",
+    "arrPlaceId": "NAT010415",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 34,
+   "items": [
+    {
+     "trainno": "01172",
+     "traingradename": "무궁화호",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106052800",
+     "arrplandtime": "20261106065900",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01122",
+     "traingradename": "ITX-새마을",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106061400",
+     "arrplandtime": "20261106073600",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01174",
+     "traingradename": "무궁화호",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106062700",
+     "arrplandtime": "20261106080500",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01124",
+     "traingradename": "ITX-마음",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106063600",
+     "arrplandtime": "20261106074800",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01176",
+     "traingradename": "무궁화호",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106080000",
+     "arrplandtime": "20261106093600",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01002",
+     "traingradename": "ITX-새마을",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106082500",
+     "arrplandtime": "20261106095000",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01152",
+     "traingradename": "무궁화호",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106091000",
+     "arrplandtime": "20261106103900",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01004",
+     "traingradename": "ITX-새마을",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106092200",
+     "arrplandtime": "20261106103400",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "00122",
+     "traingradename": "KTX",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106095100",
+     "arrplandtime": "20261106105800",
+     "adultcharge": "12900"
+    },
+    {
+     "trainno": "01154",
+     "traingradename": "무궁화호",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106101000",
+     "arrplandtime": "20261106113500",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01006",
+     "traingradename": "ITX-새마을",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106111700",
+     "arrplandtime": "20261106123600",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01008",
+     "traingradename": "ITX-새마을",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106113100",
+     "arrplandtime": "20261106124800",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01112",
+     "traingradename": "ITX-새마을",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106114000",
+     "arrplandtime": "20261106125400",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "00174",
+     "traingradename": "KTX",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106115300",
+     "arrplandtime": "20261106130100",
+     "adultcharge": "12900"
+    },
+    {
+     "trainno": "01156",
+     "traingradename": "무궁화호",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106132900",
+     "arrplandtime": "20261106145400",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01158",
+     "traingradename": "무궁화호",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106135700",
+     "arrplandtime": "20261106151800",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "00164",
+     "traingradename": "KTX-산천",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106144900",
+     "arrplandtime": "20261106155700",
+     "adultcharge": "12900"
+    },
+    {
+     "trainno": "01010",
+     "traingradename": "ITX-새마을",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106150700",
+     "arrplandtime": "20261106162400",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01160",
+     "traingradename": "무궁화호",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106160800",
+     "arrplandtime": "20261106173100",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01012",
+     "traingradename": "ITX-새마을",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106162200",
+     "arrplandtime": "20261106173900",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "00176",
+     "traingradename": "KTX",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106164500",
+     "arrplandtime": "20261106175200",
+     "adultcharge": "12900"
+    },
+    {
+     "trainno": "01162",
+     "traingradename": "무궁화호",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106171500",
+     "arrplandtime": "20261106184500",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01014",
+     "traingradename": "ITX-마음",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106175000",
+     "arrplandtime": "20261106192000",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01016",
+     "traingradename": "ITX-새마을",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106182000",
+     "arrplandtime": "20261106193900",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01164",
+     "traingradename": "무궁화호",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106185600",
+     "arrplandtime": "20261106202500",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "00126",
+     "traingradename": "KTX",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106192700",
+     "arrplandtime": "20261106203400",
+     "adultcharge": "12900"
+    },
+    {
+     "trainno": "04542",
+     "traingradename": "무궁화호",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106193000",
+     "arrplandtime": "20261106205300",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01018",
+     "traingradename": "ITX-마음",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106200100",
+     "arrplandtime": "20261106211300",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01020",
+     "traingradename": "ITX-새마을",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106203700",
+     "arrplandtime": "20261106215400",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01022",
+     "traingradename": "ITX-새마을",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106210400",
+     "arrplandtime": "20261106221900",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "00128",
+     "traingradename": "KTX",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106211900",
+     "arrplandtime": "20261106222600",
+     "adultcharge": "12900"
+    },
+    {
+     "trainno": "00178",
+     "traingradename": "KTX",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106212800",
+     "arrplandtime": "20261106223600",
+     "adultcharge": "12900"
+    },
+    {
+     "trainno": "01166",
+     "traingradename": "무궁화호",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106214900",
+     "arrplandtime": "20261106231300",
+     "adultcharge": "12000"
+    },
+    {
+     "trainno": "01024",
+     "traingradename": "ITX-새마을",
+     "depplacename": "대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106221800",
+     "arrplandtime": "20261106232900",
+     "adultcharge": "12000"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT010415",
+    "arrPlaceId": "NAT030057",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 23,
+   "items": [
+    {
+     "trainno": "01501",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "서대전",
+     "depplandtime": "20261106060000",
+     "arrplandtime": "20261106072800",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01421",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "서대전",
+     "depplandtime": "20261106070300",
+     "arrplandtime": "20261106083300",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01503",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "서대전",
+     "depplandtime": "20261106074400",
+     "arrplandtime": "20261106090600",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01461",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "서대전",
+     "depplandtime": "20261106081300",
+     "arrplandtime": "20261106094900",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "02521",
+     "traingradename": "새마을호",
+     "depplacename": "수원",
+     "arrplacename": "서대전",
+     "depplandtime": "20261106084800",
+     "arrplandtime": "20261106100700",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01401",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "서대전",
+     "depplandtime": "20261106091500",
+     "arrplandtime": "20261106103400",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01571",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "서대전",
+     "depplandtime": "20261106101000",
+     "arrplandtime": "20261106114800",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01403",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "서대전",
+     "depplandtime": "20261106101900",
+     "arrplandtime": "20261106113400",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01511",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "서대전",
+     "depplandtime": "20261106101900",
+     "arrplandtime": "20261106113400",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01441",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "서대전",
+     "depplandtime": "20261106103500",
+     "arrplandtime": "20261106120000",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01405",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "서대전",
+     "depplandtime": "20261106124200",
+     "arrplandtime": "20261106140300",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01423",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "서대전",
+     "depplandtime": "20261106135500",
+     "arrplandtime": "20261106151900",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01463",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "서대전",
+     "depplandtime": "20261106153200",
+     "arrplandtime": "20261106165800",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01573",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "서대전",
+     "depplandtime": "20261106154400",
+     "arrplandtime": "20261106172000",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01425",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "서대전",
+     "depplandtime": "20261106165100",
+     "arrplandtime": "20261106181700",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01505",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "서대전",
+     "depplandtime": "20261106171300",
+     "arrplandtime": "20261106183000",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01507",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "서대전",
+     "depplandtime": "20261106175000",
+     "arrplandtime": "20261106190200",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01407",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "서대전",
+     "depplandtime": "20261106175000",
+     "arrplandtime": "20261106190200",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01451",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "서대전",
+     "depplandtime": "20261106184600",
+     "arrplandtime": "20261106201500",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01409",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "서대전",
+     "depplandtime": "20261106194200",
+     "arrplandtime": "20261106210200",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01575",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "서대전",
+     "depplandtime": "20261106194900",
+     "arrplandtime": "20261106212000",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01427",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "서대전",
+     "depplandtime": "20261106203400",
+     "arrplandtime": "20261106215100",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01471",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "서대전",
+     "depplandtime": "20261106215900",
+     "arrplandtime": "20261106232800",
+     "adultcharge": "12100"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT030057",
+    "arrPlaceId": "NAT010415",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 23,
+   "items": [
+    {
+     "trainno": "01472",
+     "traingradename": "무궁화호",
+     "depplacename": "서대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106063900",
+     "arrplandtime": "20261106081300",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01422",
+     "traingradename": "ITX-새마을",
+     "depplacename": "서대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106090400",
+     "arrplandtime": "20261106102000",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01572",
+     "traingradename": "무궁화호",
+     "depplacename": "서대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106095200",
+     "arrplandtime": "20261106112000",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01452",
+     "traingradename": "무궁화호",
+     "depplacename": "서대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106101600",
+     "arrplandtime": "20261106114900",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01424",
+     "traingradename": "ITX-새마을",
+     "depplacename": "서대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106110800",
+     "arrplandtime": "20261106122100",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01502",
+     "traingradename": "ITX-새마을",
+     "depplacename": "서대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106114600",
+     "arrplandtime": "20261106131200",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01402",
+     "traingradename": "ITX-새마을",
+     "depplacename": "서대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106131900",
+     "arrplandtime": "20261106143600",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01404",
+     "traingradename": "ITX-마음",
+     "depplacename": "서대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106135200",
+     "arrplandtime": "20261106150300",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01512",
+     "traingradename": "ITX-마음",
+     "depplacename": "서대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106135200",
+     "arrplandtime": "20261106150300",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01462",
+     "traingradename": "무궁화호",
+     "depplacename": "서대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106143000",
+     "arrplandtime": "20261106160500",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01442",
+     "traingradename": "ITX-새마을",
+     "depplacename": "서대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106151900",
+     "arrplandtime": "20261106164000",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01426",
+     "traingradename": "ITX-새마을",
+     "depplacename": "서대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106154800",
+     "arrplandtime": "20261106170400",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01574",
+     "traingradename": "무궁화호",
+     "depplacename": "서대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106163200",
+     "arrplandtime": "20261106181100",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01504",
+     "traingradename": "ITX-새마을",
+     "depplacename": "서대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106170900",
+     "arrplandtime": "20261106182900",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01464",
+     "traingradename": "무궁화호",
+     "depplacename": "서대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106180100",
+     "arrplandtime": "20261106194900",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01406",
+     "traingradename": "ITX-마음",
+     "depplacename": "서대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106183800",
+     "arrplandtime": "20261106195500",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01514",
+     "traingradename": "ITX-마음",
+     "depplacename": "서대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106183800",
+     "arrplandtime": "20261106195500",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01408",
+     "traingradename": "ITX-새마을",
+     "depplacename": "서대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106193600",
+     "arrplandtime": "20261106210700",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "02522",
+     "traingradename": "새마을호",
+     "depplacename": "서대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106201900",
+     "arrplandtime": "20261106213600",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01410",
+     "traingradename": "ITX-새마을",
+     "depplacename": "서대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106202900",
+     "arrplandtime": "20261106214600",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01428",
+     "traingradename": "ITX-새마을",
+     "depplacename": "서대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106204500",
+     "arrplandtime": "20261106220000",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01576",
+     "traingradename": "무궁화호",
+     "depplacename": "서대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106214000",
+     "arrplandtime": "20261106230100",
+     "adultcharge": "12100"
+    },
+    {
+     "trainno": "01506",
+     "traingradename": "ITX-마음",
+     "depplacename": "서대전",
+     "arrplacename": "수원",
+     "depplandtime": "20261106223300",
+     "arrplandtime": "20261106235700",
+     "adultcharge": "12100"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT010415",
+    "arrPlaceId": "NAT013271",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 28,
+   "items": [
+    {
+     "trainno": "01001",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "동대구",
+     "depplandtime": "20261106063100",
+     "arrplandtime": "20261106094000",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "01003",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "동대구",
+     "depplandtime": "20261106064400",
+     "arrplandtime": "20261106101300",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "01151",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "동대구",
+     "depplandtime": "20261106071400",
+     "arrplandtime": "20261106110500",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "00171",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "동대구",
+     "depplandtime": "20261106072600",
+     "arrplandtime": "20261106092700",
+     "adultcharge": "31300"
+    },
+    {
+     "trainno": "01005",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "동대구",
+     "depplandtime": "20261106073400",
+     "arrplandtime": "20261106103300",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "01153",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "동대구",
+     "depplandtime": "20261106075000",
+     "arrplandtime": "20261106112400",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "01155",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "동대구",
+     "depplandtime": "20261106083400",
+     "arrplandtime": "20261106120900",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "00121",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "동대구",
+     "depplandtime": "20261106084600",
+     "arrplandtime": "20261106103900",
+     "adultcharge": "31300"
+    },
+    {
+     "trainno": "01007",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "동대구",
+     "depplandtime": "20261106092200",
+     "arrplandtime": "20261106122300",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "00123",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "동대구",
+     "depplandtime": "20261106104700",
+     "arrplandtime": "20261106124100",
+     "adultcharge": "31300"
+    },
+    {
+     "trainno": "01009",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "동대구",
+     "depplandtime": "20261106105600",
+     "arrplandtime": "20261106140500",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "01011",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "동대구",
+     "depplandtime": "20261106112500",
+     "arrplandtime": "20261106142100",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "01013",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "동대구",
+     "depplandtime": "20261106123500",
+     "arrplandtime": "20261106153700",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "01015",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "동대구",
+     "depplandtime": "20261106125900",
+     "arrplandtime": "20261106160500",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "01157",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "동대구",
+     "depplandtime": "20261106133700",
+     "arrplandtime": "20261106171700",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "01017",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "동대구",
+     "depplandtime": "20261106142500",
+     "arrplandtime": "20261106172900",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "01159",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "동대구",
+     "depplandtime": "20261106143800",
+     "arrplandtime": "20261106180400",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "01161",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "동대구",
+     "depplandtime": "20261106152300",
+     "arrplandtime": "20261106184000",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "00175",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "동대구",
+     "depplandtime": "20261106155600",
+     "arrplandtime": "20261106174900",
+     "adultcharge": "31300"
+    },
+    {
+     "trainno": "01019",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "동대구",
+     "depplandtime": "20261106161200",
+     "arrplandtime": "20261106191700",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "00125",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "동대구",
+     "depplandtime": "20261106164200",
+     "arrplandtime": "20261106183500",
+     "adultcharge": "31300"
+    },
+    {
+     "trainno": "01021",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "동대구",
+     "depplandtime": "20261106172300",
+     "arrplandtime": "20261106201600",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "01023",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "동대구",
+     "depplandtime": "20261106173200",
+     "arrplandtime": "20261106204200",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "01163",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "동대구",
+     "depplandtime": "20261106180600",
+     "arrplandtime": "20261106214500",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "00127",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "동대구",
+     "depplandtime": "20261106193300",
+     "arrplandtime": "20261106212600",
+     "adultcharge": "31300"
+    },
+    {
+     "trainno": "01111",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "동대구",
+     "depplandtime": "20261106195700",
+     "arrplandtime": "20261106225400",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "00177",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "동대구",
+     "depplandtime": "20261106202300",
+     "arrplandtime": "20261106222000",
+     "adultcharge": "31300"
+    },
+    {
+     "trainno": "01025",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "동대구",
+     "depplandtime": "20261106204500",
+     "arrplandtime": "20261106234700",
+     "adultcharge": "27400"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT013271",
+    "arrPlaceId": "NAT010415",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 28,
+   "items": [
+    {
+     "trainno": "01002",
+     "traingradename": "ITX-새마을",
+     "depplacename": "동대구",
+     "arrplacename": "수원",
+     "depplandtime": "20261106062200",
+     "arrplandtime": "20261106095000",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "01152",
+     "traingradename": "무궁화호",
+     "depplacename": "동대구",
+     "arrplacename": "수원",
+     "depplandtime": "20261106065900",
+     "arrplandtime": "20261106103900",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "01004",
+     "traingradename": "ITX-새마을",
+     "depplacename": "동대구",
+     "arrplacename": "수원",
+     "depplandtime": "20261106073900",
+     "arrplandtime": "20261106103400",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "01154",
+     "traingradename": "무궁화호",
+     "depplacename": "동대구",
+     "arrplacename": "수원",
+     "depplandtime": "20261106080500",
+     "arrplandtime": "20261106113500",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "00122",
+     "traingradename": "KTX",
+     "depplacename": "동대구",
+     "arrplacename": "수원",
+     "depplandtime": "20261106090800",
+     "arrplandtime": "20261106105800",
+     "adultcharge": "31300"
+    },
+    {
+     "trainno": "01006",
+     "traingradename": "ITX-새마을",
+     "depplacename": "동대구",
+     "arrplacename": "수원",
+     "depplandtime": "20261106092600",
+     "arrplandtime": "20261106123600",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "01008",
+     "traingradename": "ITX-새마을",
+     "depplacename": "동대구",
+     "arrplacename": "수원",
+     "depplandtime": "20261106094300",
+     "arrplandtime": "20261106124800",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "01112",
+     "traingradename": "ITX-새마을",
+     "depplacename": "동대구",
+     "arrplacename": "수원",
+     "depplandtime": "20261106095400",
+     "arrplandtime": "20261106125400",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "00174",
+     "traingradename": "KTX",
+     "depplacename": "동대구",
+     "arrplacename": "수원",
+     "depplandtime": "20261106110500",
+     "arrplandtime": "20261106130100",
+     "adultcharge": "31300"
+    },
+    {
+     "trainno": "01156",
+     "traingradename": "무궁화호",
+     "depplacename": "동대구",
+     "arrplacename": "수원",
+     "depplandtime": "20261106112600",
+     "arrplandtime": "20261106145400",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "01158",
+     "traingradename": "무궁화호",
+     "depplacename": "동대구",
+     "arrplacename": "수원",
+     "depplandtime": "20261106115400",
+     "arrplandtime": "20261106151800",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "01010",
+     "traingradename": "ITX-새마을",
+     "depplacename": "동대구",
+     "arrplacename": "수원",
+     "depplandtime": "20261106131600",
+     "arrplandtime": "20261106162400",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "00164",
+     "traingradename": "KTX-산천",
+     "depplacename": "동대구",
+     "arrplacename": "수원",
+     "depplandtime": "20261106140500",
+     "arrplandtime": "20261106155700",
+     "adultcharge": "31300"
+    },
+    {
+     "trainno": "01160",
+     "traingradename": "무궁화호",
+     "depplacename": "동대구",
+     "arrplacename": "수원",
+     "depplandtime": "20261106141000",
+     "arrplandtime": "20261106173100",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "01012",
+     "traingradename": "ITX-새마을",
+     "depplacename": "동대구",
+     "arrplacename": "수원",
+     "depplandtime": "20261106143500",
+     "arrplandtime": "20261106173900",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "01162",
+     "traingradename": "무궁화호",
+     "depplacename": "동대구",
+     "arrplacename": "수원",
+     "depplandtime": "20261106150000",
+     "arrplandtime": "20261106184500",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "01014",
+     "traingradename": "ITX-마음",
+     "depplacename": "동대구",
+     "arrplacename": "수원",
+     "depplandtime": "20261106155900",
+     "arrplandtime": "20261106192000",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "00176",
+     "traingradename": "KTX",
+     "depplacename": "동대구",
+     "arrplacename": "수원",
+     "depplandtime": "20261106160100",
+     "arrplandtime": "20261106175200",
+     "adultcharge": "31300"
+    },
+    {
+     "trainno": "01016",
+     "traingradename": "ITX-새마을",
+     "depplacename": "동대구",
+     "arrplacename": "수원",
+     "depplandtime": "20261106162500",
+     "arrplandtime": "20261106193900",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "01164",
+     "traingradename": "무궁화호",
+     "depplacename": "동대구",
+     "arrplacename": "수원",
+     "depplandtime": "20261106165400",
+     "arrplandtime": "20261106202500",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "01018",
+     "traingradename": "ITX-마음",
+     "depplacename": "동대구",
+     "arrplacename": "수원",
+     "depplandtime": "20261106181400",
+     "arrplandtime": "20261106211300",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "00126",
+     "traingradename": "KTX",
+     "depplacename": "동대구",
+     "arrplacename": "수원",
+     "depplandtime": "20261106184300",
+     "arrplandtime": "20261106203400",
+     "adultcharge": "31300"
+    },
+    {
+     "trainno": "01020",
+     "traingradename": "ITX-새마을",
+     "depplacename": "동대구",
+     "arrplacename": "수원",
+     "depplandtime": "20261106184500",
+     "arrplandtime": "20261106215400",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "01022",
+     "traingradename": "ITX-새마을",
+     "depplacename": "동대구",
+     "arrplacename": "수원",
+     "depplandtime": "20261106191900",
+     "arrplandtime": "20261106221900",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "01166",
+     "traingradename": "무궁화호",
+     "depplacename": "동대구",
+     "arrplacename": "수원",
+     "depplandtime": "20261106195100",
+     "arrplandtime": "20261106231300",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "00128",
+     "traingradename": "KTX",
+     "depplacename": "동대구",
+     "arrplacename": "수원",
+     "depplandtime": "20261106203500",
+     "arrplandtime": "20261106222600",
+     "adultcharge": "31300"
+    },
+    {
+     "trainno": "01024",
+     "traingradename": "ITX-새마을",
+     "depplacename": "동대구",
+     "arrplacename": "수원",
+     "depplandtime": "20261106203500",
+     "arrplandtime": "20261106232900",
+     "adultcharge": "27400"
+    },
+    {
+     "trainno": "00178",
+     "traingradename": "KTX",
+     "depplacename": "동대구",
+     "arrplacename": "수원",
+     "depplandtime": "20261106204500",
+     "arrplandtime": "20261106223600",
+     "adultcharge": "31300"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT010415",
+    "arrPlaceId": "NAT014445",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 27,
+   "items": [
+    {
+     "trainno": "01001",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "부산",
+     "depplandtime": "20261106063100",
+     "arrplandtime": "20261106110900",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "01003",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "부산",
+     "depplandtime": "20261106064400",
+     "arrplandtime": "20261106112800",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "01151",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "부산",
+     "depplandtime": "20261106071400",
+     "arrplandtime": "20261106125300",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "00171",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "부산",
+     "depplandtime": "20261106072600",
+     "arrplandtime": "20261106101500",
+     "adultcharge": "46300"
+    },
+    {
+     "trainno": "01005",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "부산",
+     "depplandtime": "20261106073400",
+     "arrplandtime": "20261106114700",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "01153",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "부산",
+     "depplandtime": "20261106075000",
+     "arrplandtime": "20261106130400",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "01155",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "부산",
+     "depplandtime": "20261106083400",
+     "arrplandtime": "20261106134300",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "00121",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "부산",
+     "depplandtime": "20261106084600",
+     "arrplandtime": "20261106113300",
+     "adultcharge": "46300"
+    },
+    {
+     "trainno": "01007",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "부산",
+     "depplandtime": "20261106092200",
+     "arrplandtime": "20261106133800",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "00123",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "부산",
+     "depplandtime": "20261106104700",
+     "arrplandtime": "20261106133500",
+     "adultcharge": "46300"
+    },
+    {
+     "trainno": "01009",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "부산",
+     "depplandtime": "20261106105600",
+     "arrplandtime": "20261106152100",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "01011",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "부산",
+     "depplandtime": "20261106112500",
+     "arrplandtime": "20261106153100",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "01013",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "부산",
+     "depplandtime": "20261106123500",
+     "arrplandtime": "20261106165400",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "01015",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "부산",
+     "depplandtime": "20261106125900",
+     "arrplandtime": "20261106172700",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "01157",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "부산",
+     "depplandtime": "20261106133700",
+     "arrplandtime": "20261106185700",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "01017",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "부산",
+     "depplandtime": "20261106142500",
+     "arrplandtime": "20261106184500",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "01159",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "부산",
+     "depplandtime": "20261106143800",
+     "arrplandtime": "20261106195000",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "01161",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "부산",
+     "depplandtime": "20261106152300",
+     "arrplandtime": "20261106200900",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "00175",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "부산",
+     "depplandtime": "20261106155600",
+     "arrplandtime": "20261106183800",
+     "adultcharge": "46300"
+    },
+    {
+     "trainno": "01019",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "부산",
+     "depplandtime": "20261106161200",
+     "arrplandtime": "20261106203200",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "00125",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "부산",
+     "depplandtime": "20261106164200",
+     "arrplandtime": "20261106192300",
+     "adultcharge": "46300"
+    },
+    {
+     "trainno": "01021",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "부산",
+     "depplandtime": "20261106172300",
+     "arrplandtime": "20261106212400",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "01023",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "부산",
+     "depplandtime": "20261106173200",
+     "arrplandtime": "20261106221100",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "01163",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "부산",
+     "depplandtime": "20261106180600",
+     "arrplandtime": "20261106231300",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "00127",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "부산",
+     "depplandtime": "20261106193300",
+     "arrplandtime": "20261106221400",
+     "adultcharge": "46300"
+    },
+    {
+     "trainno": "00177",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "부산",
+     "depplandtime": "20261106202300",
+     "arrplandtime": "20261106230900",
+     "adultcharge": "46300"
+    },
+    {
+     "trainno": "01025",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "부산",
+     "depplandtime": "20261106204500",
+     "arrplandtime": "20261107005700",
+     "adultcharge": "38600"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT014445",
+    "arrPlaceId": "NAT010415",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 27,
+   "items": [
+    {
+     "trainno": "01002",
+     "traingradename": "ITX-새마을",
+     "depplacename": "부산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106050200",
+     "arrplandtime": "20261106095000",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "01152",
+     "traingradename": "무궁화호",
+     "depplacename": "부산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106052000",
+     "arrplandtime": "20261106103900",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "01004",
+     "traingradename": "ITX-새마을",
+     "depplacename": "부산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106062600",
+     "arrplandtime": "20261106103400",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "01154",
+     "traingradename": "무궁화호",
+     "depplacename": "부산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106063000",
+     "arrplandtime": "20261106113500",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "01006",
+     "traingradename": "ITX-새마을",
+     "depplacename": "부산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106081000",
+     "arrplandtime": "20261106123600",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "01008",
+     "traingradename": "ITX-새마을",
+     "depplacename": "부산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106081900",
+     "arrplandtime": "20261106124800",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "00122",
+     "traingradename": "KTX",
+     "depplacename": "부산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106082000",
+     "arrplandtime": "20261106105800",
+     "adultcharge": "46300"
+    },
+    {
+     "trainno": "01156",
+     "traingradename": "무궁화호",
+     "depplacename": "부산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106094200",
+     "arrplandtime": "20261106145400",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "00174",
+     "traingradename": "KTX",
+     "depplacename": "부산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106101700",
+     "arrplandtime": "20261106130100",
+     "adultcharge": "46300"
+    },
+    {
+     "trainno": "01158",
+     "traingradename": "무궁화호",
+     "depplacename": "부산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106102100",
+     "arrplandtime": "20261106151800",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "01010",
+     "traingradename": "ITX-새마을",
+     "depplacename": "부산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106115600",
+     "arrplandtime": "20261106162400",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "01160",
+     "traingradename": "무궁화호",
+     "depplacename": "부산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106123300",
+     "arrplandtime": "20261106173100",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "01012",
+     "traingradename": "ITX-새마을",
+     "depplacename": "부산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106130700",
+     "arrplandtime": "20261106173900",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "00164",
+     "traingradename": "KTX-산천",
+     "depplacename": "부산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106131700",
+     "arrplandtime": "20261106155700",
+     "adultcharge": "46300"
+    },
+    {
+     "trainno": "01162",
+     "traingradename": "무궁화호",
+     "depplacename": "부산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106133400",
+     "arrplandtime": "20261106184500",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "01014",
+     "traingradename": "ITX-마음",
+     "depplacename": "부산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106144200",
+     "arrplandtime": "20261106192000",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "01016",
+     "traingradename": "ITX-새마을",
+     "depplacename": "부산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106150400",
+     "arrplandtime": "20261106193900",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "00176",
+     "traingradename": "KTX",
+     "depplacename": "부산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106152000",
+     "arrplandtime": "20261106175200",
+     "adultcharge": "46300"
+    },
+    {
+     "trainno": "01164",
+     "traingradename": "무궁화호",
+     "depplacename": "부산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106152900",
+     "arrplandtime": "20261106202500",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "01018",
+     "traingradename": "ITX-마음",
+     "depplacename": "부산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106170400",
+     "arrplandtime": "20261106211300",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "01020",
+     "traingradename": "ITX-새마을",
+     "depplacename": "부산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106172700",
+     "arrplandtime": "20261106215400",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "00126",
+     "traingradename": "KTX",
+     "depplacename": "부산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106175000",
+     "arrplandtime": "20261106203400",
+     "adultcharge": "46300"
+    },
+    {
+     "trainno": "01022",
+     "traingradename": "ITX-새마을",
+     "depplacename": "부산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106180800",
+     "arrplandtime": "20261106221900",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "01166",
+     "traingradename": "무궁화호",
+     "depplacename": "부산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106181500",
+     "arrplandtime": "20261106231300",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "01024",
+     "traingradename": "ITX-새마을",
+     "depplacename": "부산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106192300",
+     "arrplandtime": "20261106232900",
+     "adultcharge": "38600"
+    },
+    {
+     "trainno": "00128",
+     "traingradename": "KTX",
+     "depplacename": "부산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106195400",
+     "arrplandtime": "20261106222600",
+     "adultcharge": "46300"
+    },
+    {
+     "trainno": "00178",
+     "traingradename": "KTX",
+     "depplacename": "부산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106200400",
+     "arrplandtime": "20261106223600",
+     "adultcharge": "46300"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT010415",
+    "arrPlaceId": "NATH13717",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 4,
+   "items": [
+    {
+     "trainno": "00171",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "울산",
+     "depplandtime": "20261106072600",
+     "arrplandtime": "20261106095200",
+     "adultcharge": "40500"
+    },
+    {
+     "trainno": "00121",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "울산",
+     "depplandtime": "20261106084600",
+     "arrplandtime": "20261106111000",
+     "adultcharge": "40500"
+    },
+    {
+     "trainno": "00123",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "울산",
+     "depplandtime": "20261106104700",
+     "arrplandtime": "20261106131200",
+     "adultcharge": "40500"
+    },
+    {
+     "trainno": "00175",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "울산",
+     "depplandtime": "20261106155600",
+     "arrplandtime": "20261106181500",
+     "adultcharge": "40500"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NATH13717",
+    "arrPlaceId": "NAT010415",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 4,
+   "items": [
+    {
+     "trainno": "00122",
+     "traingradename": "KTX",
+     "depplacename": "울산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106084300",
+     "arrplandtime": "20261106105800",
+     "adultcharge": "40500"
+    },
+    {
+     "trainno": "00174",
+     "traingradename": "KTX",
+     "depplacename": "울산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106104000",
+     "arrplandtime": "20261106130100",
+     "adultcharge": "40500"
+    },
+    {
+     "trainno": "00164",
+     "traingradename": "KTX-산천",
+     "depplacename": "울산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106134000",
+     "arrplandtime": "20261106155700",
+     "adultcharge": "40500"
+    },
+    {
+     "trainno": "00126",
+     "traingradename": "KTX",
+     "depplacename": "울산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106181300",
+     "arrplandtime": "20261106203400",
+     "adultcharge": "40500"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT010415",
+    "arrPlaceId": "NATH13421",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 5,
+   "items": [
+    {
+     "trainno": "00121",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "경주",
+     "depplandtime": "20261106084600",
+     "arrplandtime": "20261106105800",
+     "adultcharge": "36600"
+    },
+    {
+     "trainno": "00123",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "경주",
+     "depplandtime": "20261106104700",
+     "arrplandtime": "20261106130000",
+     "adultcharge": "36600"
+    },
+    {
+     "trainno": "00125",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "경주",
+     "depplandtime": "20261106164200",
+     "arrplandtime": "20261106185400",
+     "adultcharge": "36600"
+    },
+    {
+     "trainno": "00127",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "경주",
+     "depplandtime": "20261106193300",
+     "arrplandtime": "20261106214500",
+     "adultcharge": "36600"
+    },
+    {
+     "trainno": "00177",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "경주",
+     "depplandtime": "20261106202300",
+     "arrplandtime": "20261106223900",
+     "adultcharge": "36600"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NATH13421",
+    "arrPlaceId": "NAT010415",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 1,
+   "items": [
+    {
+     "trainno": "00126",
+     "traingradename": "KTX",
+     "depplacename": "경주",
+     "arrplacename": "수원",
+     "depplandtime": "20261106182500",
+     "arrplandtime": "20261106203400",
+     "adultcharge": "36600"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT010415",
+    "arrPlaceId": "NAT031857",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 6,
+   "items": [
+    {
+     "trainno": "01401",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "광주송정",
+     "depplandtime": "20261106091500",
+     "arrplandtime": "20261106124300",
+     "adultcharge": "29500"
+    },
+    {
+     "trainno": "01403",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "광주송정",
+     "depplandtime": "20261106101900",
+     "arrplandtime": "20261106133100",
+     "adultcharge": "29500"
+    },
+    {
+     "trainno": "01405",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "광주송정",
+     "depplandtime": "20261106124200",
+     "arrplandtime": "20261106160800",
+     "adultcharge": "29500"
+    },
+    {
+     "trainno": "01407",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "광주송정",
+     "depplandtime": "20261106175000",
+     "arrplandtime": "20261106205900",
+     "adultcharge": "29500"
+    },
+    {
+     "trainno": "01451",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "광주송정",
+     "depplandtime": "20261106184600",
+     "arrplandtime": "20261106223600",
+     "adultcharge": "29500"
+    },
+    {
+     "trainno": "01409",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "광주송정",
+     "depplandtime": "20261106194200",
+     "arrplandtime": "20261106230800",
+     "adultcharge": "29500"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT031857",
+    "arrPlaceId": "NAT010415",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 6,
+   "items": [
+    {
+     "trainno": "01452",
+     "traingradename": "무궁화호",
+     "depplacename": "광주송정",
+     "arrplacename": "수원",
+     "depplandtime": "20261106075000",
+     "arrplandtime": "20261106114900",
+     "adultcharge": "29500"
+    },
+    {
+     "trainno": "01402",
+     "traingradename": "ITX-새마을",
+     "depplacename": "광주송정",
+     "arrplacename": "수원",
+     "depplandtime": "20261106110900",
+     "arrplandtime": "20261106143600",
+     "adultcharge": "29500"
+    },
+    {
+     "trainno": "01404",
+     "traingradename": "ITX-마음",
+     "depplacename": "광주송정",
+     "arrplacename": "수원",
+     "depplandtime": "20261106114600",
+     "arrplandtime": "20261106150300",
+     "adultcharge": "29500"
+    },
+    {
+     "trainno": "01406",
+     "traingradename": "ITX-마음",
+     "depplacename": "광주송정",
+     "arrplacename": "수원",
+     "depplandtime": "20261106163400",
+     "arrplandtime": "20261106195500",
+     "adultcharge": "29500"
+    },
+    {
+     "trainno": "01408",
+     "traingradename": "ITX-새마을",
+     "depplacename": "광주송정",
+     "arrplacename": "수원",
+     "depplandtime": "20261106170800",
+     "arrplandtime": "20261106210700",
+     "adultcharge": "29500"
+    },
+    {
+     "trainno": "01410",
+     "traingradename": "ITX-새마을",
+     "depplacename": "광주송정",
+     "arrplacename": "수원",
+     "depplandtime": "20261106182200",
+     "arrplandtime": "20261106214600",
+     "adultcharge": "29500"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT010415",
+    "arrPlaceId": "NAT032563",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 6,
+   "items": [
+    {
+     "trainno": "01401",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "목포",
+     "depplandtime": "20261106091500",
+     "arrplandtime": "20261106134300",
+     "adultcharge": "35900"
+    },
+    {
+     "trainno": "01403",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "목포",
+     "depplandtime": "20261106101900",
+     "arrplandtime": "20261106141200",
+     "adultcharge": "35900"
+    },
+    {
+     "trainno": "01405",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "목포",
+     "depplandtime": "20261106124200",
+     "arrplandtime": "20261106165600",
+     "adultcharge": "35900"
+    },
+    {
+     "trainno": "01407",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "목포",
+     "depplandtime": "20261106175000",
+     "arrplandtime": "20261106213800",
+     "adultcharge": "35900"
+    },
+    {
+     "trainno": "01451",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "목포",
+     "depplandtime": "20261106184600",
+     "arrplandtime": "20261106232400",
+     "adultcharge": "35900"
+    },
+    {
+     "trainno": "01409",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "목포",
+     "depplandtime": "20261106194200",
+     "arrplandtime": "20261106235600",
+     "adultcharge": "35900"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT032563",
+    "arrPlaceId": "NAT010415",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 6,
+   "items": [
+    {
+     "trainno": "01452",
+     "traingradename": "무궁화호",
+     "depplacename": "목포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106065000",
+     "arrplandtime": "20261106114900",
+     "adultcharge": "35900"
+    },
+    {
+     "trainno": "01402",
+     "traingradename": "ITX-새마을",
+     "depplacename": "목포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106101600",
+     "arrplandtime": "20261106143600",
+     "adultcharge": "35900"
+    },
+    {
+     "trainno": "01404",
+     "traingradename": "ITX-마음",
+     "depplacename": "목포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106110200",
+     "arrplandtime": "20261106150300",
+     "adultcharge": "35900"
+    },
+    {
+     "trainno": "01406",
+     "traingradename": "ITX-마음",
+     "depplacename": "목포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106155400",
+     "arrplandtime": "20261106195500",
+     "adultcharge": "35900"
+    },
+    {
+     "trainno": "01408",
+     "traingradename": "ITX-새마을",
+     "depplacename": "목포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106162100",
+     "arrplandtime": "20261106210700",
+     "adultcharge": "35900"
+    },
+    {
+     "trainno": "01410",
+     "traingradename": "ITX-새마을",
+     "depplacename": "목포",
+     "arrplacename": "수원",
+     "depplandtime": "20261106173800",
+     "arrplandtime": "20261106214600",
+     "adultcharge": "35900"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT010415",
+    "arrPlaceId": "NAT041993",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 8,
+   "items": [
+    {
+     "trainno": "01501",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "여수EXPO",
+     "depplandtime": "20261106060000",
+     "arrplandtime": "20261106103600",
+     "adultcharge": "37400"
+    },
+    {
+     "trainno": "01503",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "여수EXPO",
+     "depplandtime": "20261106074400",
+     "arrplandtime": "20261106121000",
+     "adultcharge": "37400"
+    },
+    {
+     "trainno": "02521",
+     "traingradename": "새마을호",
+     "depplacename": "수원",
+     "arrplacename": "여수EXPO",
+     "depplandtime": "20261106084800",
+     "arrplandtime": "20261106130500",
+     "adultcharge": "37400"
+    },
+    {
+     "trainno": "01571",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "여수EXPO",
+     "depplandtime": "20261106101000",
+     "arrplandtime": "20261106151100",
+     "adultcharge": "37400"
+    },
+    {
+     "trainno": "01573",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "여수EXPO",
+     "depplandtime": "20261106154400",
+     "arrplandtime": "20261106205200",
+     "adultcharge": "37400"
+    },
+    {
+     "trainno": "01505",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "여수EXPO",
+     "depplandtime": "20261106171300",
+     "arrplandtime": "20261106212700",
+     "adultcharge": "37400"
+    },
+    {
+     "trainno": "01507",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "여수EXPO",
+     "depplandtime": "20261106175000",
+     "arrplandtime": "20261106214300",
+     "adultcharge": "37400"
+    },
+    {
+     "trainno": "01575",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "여수EXPO",
+     "depplandtime": "20261106194900",
+     "arrplandtime": "20261107002600",
+     "adultcharge": "37400"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT041993",
+    "arrPlaceId": "NAT010415",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 7,
+   "items": [
+    {
+     "trainno": "01572",
+     "traingradename": "무궁화호",
+     "depplacename": "여수EXPO",
+     "arrplacename": "수원",
+     "depplandtime": "20261106063000",
+     "arrplandtime": "20261106112000",
+     "adultcharge": "37400"
+    },
+    {
+     "trainno": "01502",
+     "traingradename": "ITX-새마을",
+     "depplacename": "여수EXPO",
+     "arrplacename": "수원",
+     "depplandtime": "20261106085600",
+     "arrplandtime": "20261106131200",
+     "adultcharge": "37400"
+    },
+    {
+     "trainno": "01574",
+     "traingradename": "무궁화호",
+     "depplacename": "여수EXPO",
+     "arrplacename": "수원",
+     "depplandtime": "20261106131100",
+     "arrplandtime": "20261106181100",
+     "adultcharge": "37400"
+    },
+    {
+     "trainno": "01504",
+     "traingradename": "ITX-새마을",
+     "depplacename": "여수EXPO",
+     "arrplacename": "수원",
+     "depplandtime": "20261106141000",
+     "arrplandtime": "20261106182900",
+     "adultcharge": "37400"
+    },
+    {
+     "trainno": "02522",
+     "traingradename": "새마을호",
+     "depplacename": "여수EXPO",
+     "arrplacename": "수원",
+     "depplandtime": "20261106172200",
+     "arrplandtime": "20261106213600",
+     "adultcharge": "37400"
+    },
+    {
+     "trainno": "01576",
+     "traingradename": "무궁화호",
+     "depplacename": "여수EXPO",
+     "arrplacename": "수원",
+     "depplandtime": "20261106181200",
+     "arrplandtime": "20261106230100",
+     "adultcharge": "37400"
+    },
+    {
+     "trainno": "01506",
+     "traingradename": "ITX-마음",
+     "depplacename": "여수EXPO",
+     "arrplacename": "수원",
+     "depplandtime": "20261106191500",
+     "arrplandtime": "20261106235700",
+     "adultcharge": "37400"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT010415",
+    "arrPlaceId": "NAT041595",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 9,
+   "items": [
+    {
+     "trainno": "01501",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "순천",
+     "depplandtime": "20261106060000",
+     "arrplandtime": "20261106101200",
+     "adultcharge": "34100"
+    },
+    {
+     "trainno": "01503",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "순천",
+     "depplandtime": "20261106074400",
+     "arrplandtime": "20261106114200",
+     "adultcharge": "34100"
+    },
+    {
+     "trainno": "02521",
+     "traingradename": "새마을호",
+     "depplacename": "수원",
+     "arrplacename": "순천",
+     "depplandtime": "20261106084800",
+     "arrplandtime": "20261106124000",
+     "adultcharge": "34100"
+    },
+    {
+     "trainno": "01571",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "순천",
+     "depplandtime": "20261106101000",
+     "arrplandtime": "20261106144300",
+     "adultcharge": "34100"
+    },
+    {
+     "trainno": "01511",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "순천",
+     "depplandtime": "20261106101900",
+     "arrplandtime": "20261106135900",
+     "adultcharge": "34100"
+    },
+    {
+     "trainno": "01573",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "순천",
+     "depplandtime": "20261106154400",
+     "arrplandtime": "20261106202600",
+     "adultcharge": "34100"
+    },
+    {
+     "trainno": "01505",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "순천",
+     "depplandtime": "20261106171300",
+     "arrplandtime": "20261106210200",
+     "adultcharge": "34100"
+    },
+    {
+     "trainno": "01507",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "순천",
+     "depplandtime": "20261106175000",
+     "arrplandtime": "20261106211800",
+     "adultcharge": "34100"
+    },
+    {
+     "trainno": "01575",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "순천",
+     "depplandtime": "20261106194900",
+     "arrplandtime": "20261107000100",
+     "adultcharge": "34100"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT041595",
+    "arrPlaceId": "NAT010415",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 9,
+   "items": [
+    {
+     "trainno": "01572",
+     "traingradename": "무궁화호",
+     "depplacename": "순천",
+     "arrplacename": "수원",
+     "depplandtime": "20261106065400",
+     "arrplandtime": "20261106112000",
+     "adultcharge": "34100"
+    },
+    {
+     "trainno": "01502",
+     "traingradename": "ITX-새마을",
+     "depplacename": "순천",
+     "arrplacename": "수원",
+     "depplandtime": "20261106091900",
+     "arrplandtime": "20261106131200",
+     "adultcharge": "34100"
+    },
+    {
+     "trainno": "01512",
+     "traingradename": "ITX-마음",
+     "depplacename": "순천",
+     "arrplacename": "수원",
+     "depplandtime": "20261106112700",
+     "arrplandtime": "20261106150300",
+     "adultcharge": "34100"
+    },
+    {
+     "trainno": "01574",
+     "traingradename": "무궁화호",
+     "depplacename": "순천",
+     "arrplacename": "수원",
+     "depplandtime": "20261106133700",
+     "arrplandtime": "20261106181100",
+     "adultcharge": "34100"
+    },
+    {
+     "trainno": "01504",
+     "traingradename": "ITX-새마을",
+     "depplacename": "순천",
+     "arrplacename": "수원",
+     "depplandtime": "20261106143400",
+     "arrplandtime": "20261106182900",
+     "adultcharge": "34100"
+    },
+    {
+     "trainno": "01514",
+     "traingradename": "ITX-마음",
+     "depplacename": "순천",
+     "arrplacename": "수원",
+     "depplandtime": "20261106160200",
+     "arrplandtime": "20261106195500",
+     "adultcharge": "34100"
+    },
+    {
+     "trainno": "02522",
+     "traingradename": "새마을호",
+     "depplacename": "순천",
+     "arrplacename": "수원",
+     "depplandtime": "20261106174600",
+     "arrplandtime": "20261106213600",
+     "adultcharge": "34100"
+    },
+    {
+     "trainno": "01576",
+     "traingradename": "무궁화호",
+     "depplacename": "순천",
+     "arrplacename": "수원",
+     "depplandtime": "20261106183800",
+     "arrplandtime": "20261106230100",
+     "adultcharge": "34100"
+    },
+    {
+     "trainno": "01506",
+     "traingradename": "ITX-마음",
+     "depplacename": "순천",
+     "arrplacename": "수원",
+     "depplandtime": "20261106193900",
+     "arrplandtime": "20261106235700",
+     "adultcharge": "34100"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT010415",
+    "arrPlaceId": "NAT040257",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 9,
+   "items": [
+    {
+     "trainno": "01501",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "전주",
+     "depplandtime": "20261106060000",
+     "arrplandtime": "20261106085600",
+     "adultcharge": "22500"
+    },
+    {
+     "trainno": "01503",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "전주",
+     "depplandtime": "20261106074400",
+     "arrplandtime": "20261106103300",
+     "adultcharge": "22500"
+    },
+    {
+     "trainno": "02521",
+     "traingradename": "새마을호",
+     "depplacename": "수원",
+     "arrplacename": "전주",
+     "depplandtime": "20261106084800",
+     "arrplandtime": "20261106111900",
+     "adultcharge": "22500"
+    },
+    {
+     "trainno": "01571",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "전주",
+     "depplandtime": "20261106101000",
+     "arrplandtime": "20261106132200",
+     "adultcharge": "22500"
+    },
+    {
+     "trainno": "01511",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "전주",
+     "depplandtime": "20261106101900",
+     "arrplandtime": "20261106125100",
+     "adultcharge": "22500"
+    },
+    {
+     "trainno": "01573",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "전주",
+     "depplandtime": "20261106154400",
+     "arrplandtime": "20261106185900",
+     "adultcharge": "22500"
+    },
+    {
+     "trainno": "01505",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "전주",
+     "depplandtime": "20261106171300",
+     "arrplandtime": "20261106195300",
+     "adultcharge": "22500"
+    },
+    {
+     "trainno": "01507",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "전주",
+     "depplandtime": "20261106175000",
+     "arrplandtime": "20261106201800",
+     "adultcharge": "22500"
+    },
+    {
+     "trainno": "01575",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "전주",
+     "depplandtime": "20261106194900",
+     "arrplandtime": "20261106224400",
+     "adultcharge": "22500"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT040257",
+    "arrPlaceId": "NAT010415",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 9,
+   "items": [
+    {
+     "trainno": "01572",
+     "traingradename": "무궁화호",
+     "depplacename": "전주",
+     "arrplacename": "수원",
+     "depplandtime": "20261106081700",
+     "arrplandtime": "20261106112000",
+     "adultcharge": "22500"
+    },
+    {
+     "trainno": "01502",
+     "traingradename": "ITX-새마을",
+     "depplacename": "전주",
+     "arrplacename": "수원",
+     "depplandtime": "20261106102800",
+     "arrplandtime": "20261106131200",
+     "adultcharge": "22500"
+    },
+    {
+     "trainno": "01512",
+     "traingradename": "ITX-마음",
+     "depplacename": "전주",
+     "arrplacename": "수원",
+     "depplandtime": "20261106123100",
+     "arrplandtime": "20261106150300",
+     "adultcharge": "22500"
+    },
+    {
+     "trainno": "01574",
+     "traingradename": "무궁화호",
+     "depplacename": "전주",
+     "arrplacename": "수원",
+     "depplandtime": "20261106150300",
+     "arrplandtime": "20261106181100",
+     "adultcharge": "22500"
+    },
+    {
+     "trainno": "01504",
+     "traingradename": "ITX-새마을",
+     "depplacename": "전주",
+     "arrplacename": "수원",
+     "depplandtime": "20261106154400",
+     "arrplandtime": "20261106182900",
+     "adultcharge": "22500"
+    },
+    {
+     "trainno": "01514",
+     "traingradename": "ITX-마음",
+     "depplacename": "전주",
+     "arrplacename": "수원",
+     "depplandtime": "20261106171800",
+     "arrplandtime": "20261106195500",
+     "adultcharge": "22500"
+    },
+    {
+     "trainno": "02522",
+     "traingradename": "새마을호",
+     "depplacename": "전주",
+     "arrplacename": "수원",
+     "depplandtime": "20261106190100",
+     "arrplandtime": "20261106213600",
+     "adultcharge": "22500"
+    },
+    {
+     "trainno": "01576",
+     "traingradename": "무궁화호",
+     "depplacename": "전주",
+     "arrplacename": "수원",
+     "depplandtime": "20261106200300",
+     "arrplandtime": "20261106230100",
+     "adultcharge": "22500"
+    },
+    {
+     "trainno": "01506",
+     "traingradename": "ITX-마음",
+     "depplacename": "전주",
+     "arrplacename": "수원",
+     "depplandtime": "20261106210400",
+     "arrplandtime": "20261106235700",
+     "adultcharge": "22500"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT010415",
+    "arrPlaceId": "NAT030879",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 38,
+   "items": [
+    {
+     "trainno": "01501",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106060000",
+     "arrplandtime": "20261106083600",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01271",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106060600",
+     "arrplandtime": "20261106092100",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01273",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106065500",
+     "arrplandtime": "20261106100500",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01421",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106070300",
+     "arrplandtime": "20261106093800",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01503",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106074400",
+     "arrplandtime": "20261106101600",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01275",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106080400",
+     "arrplandtime": "20261106112000",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01461",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106081300",
+     "arrplandtime": "20261106110900",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "02521",
+     "traingradename": "새마을호",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106084800",
+     "arrplandtime": "20261106110200",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "02551",
+     "traingradename": "새마을호",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106090200",
+     "arrplandtime": "20261106115500",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01401",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106091500",
+     "arrplandtime": "20261106114100",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01201",
+     "traingradename": "새마을호",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106095100",
+     "arrplandtime": "20261106124900",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01571",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106101000",
+     "arrplandtime": "20261106130200",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01403",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106101900",
+     "arrplandtime": "20261106123200",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01511",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106101900",
+     "arrplandtime": "20261106123200",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01441",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106103500",
+     "arrplandtime": "20261106130800",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01277",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106110600",
+     "arrplandtime": "20261106141600",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01405",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106124200",
+     "arrplandtime": "20261106150600",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01203",
+     "traingradename": "새마을호",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106130800",
+     "arrplandtime": "20261106160700",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01279",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106132600",
+     "arrplandtime": "20261106164100",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01423",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106135500",
+     "arrplandtime": "20261106162200",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01205",
+     "traingradename": "새마을호",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106141600",
+     "arrplandtime": "20261106171500",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01281",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106150100",
+     "arrplandtime": "20261106182000",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01463",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106153200",
+     "arrplandtime": "20261106181800",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01573",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106154400",
+     "arrplandtime": "20261106183800",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01207",
+     "traingradename": "새마을호",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106160500",
+     "arrplandtime": "20261106191400",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01425",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106165100",
+     "arrplandtime": "20261106192100",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01283",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106165900",
+     "arrplandtime": "20261106201700",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01505",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106171300",
+     "arrplandtime": "20261106193300",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01507",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106175000",
+     "arrplandtime": "20261106195900",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01407",
+     "traingradename": "ITX-마음",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106175000",
+     "arrplandtime": "20261106195900",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01209",
+     "traingradename": "새마을호",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106182600",
+     "arrplandtime": "20261106212700",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01451",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106184600",
+     "arrplandtime": "20261106212600",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01285",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106190100",
+     "arrplandtime": "20261106221400",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01409",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106194200",
+     "arrplandtime": "20261106220500",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01575",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106194900",
+     "arrplandtime": "20261106222500",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01427",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106203400",
+     "arrplandtime": "20261106225100",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01287",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106212000",
+     "arrplandtime": "20261107003000",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01471",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "익산",
+     "depplandtime": "20261106215900",
+     "arrplandtime": "20261107003800",
+     "adultcharge": "20000"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT030879",
+    "arrPlaceId": "NAT010415",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 38,
+   "items": [
+    {
+     "trainno": "01272",
+     "traingradename": "무궁화호",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106051500",
+     "arrplandtime": "20261106082500",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01472",
+     "traingradename": "무궁화호",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106053000",
+     "arrplandtime": "20261106081300",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01202",
+     "traingradename": "새마을호",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106055400",
+     "arrplandtime": "20261106085900",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01274",
+     "traingradename": "무궁화호",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106065000",
+     "arrplandtime": "20261106100800",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01204",
+     "traingradename": "새마을호",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106080200",
+     "arrplandtime": "20261106110900",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01422",
+     "traingradename": "ITX-새마을",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106080400",
+     "arrplandtime": "20261106102000",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01572",
+     "traingradename": "무궁화호",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106083900",
+     "arrplandtime": "20261106112000",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01276",
+     "traingradename": "무궁화호",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106084100",
+     "arrplandtime": "20261106120600",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01452",
+     "traingradename": "무궁화호",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106090000",
+     "arrplandtime": "20261106114900",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01206",
+     "traingradename": "새마을호",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106094400",
+     "arrplandtime": "20261106124200",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01424",
+     "traingradename": "ITX-새마을",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106100500",
+     "arrplandtime": "20261106122100",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01502",
+     "traingradename": "ITX-새마을",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106104600",
+     "arrplandtime": "20261106131200",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01278",
+     "traingradename": "무궁화호",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106114400",
+     "arrplandtime": "20261106151000",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01402",
+     "traingradename": "ITX-새마을",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106121400",
+     "arrplandtime": "20261106143600",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01280",
+     "traingradename": "무궁화호",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106123000",
+     "arrplandtime": "20261106154700",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01404",
+     "traingradename": "ITX-마음",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106125300",
+     "arrplandtime": "20261106150300",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01512",
+     "traingradename": "ITX-마음",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106125300",
+     "arrplandtime": "20261106150300",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01462",
+     "traingradename": "무궁화호",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106131600",
+     "arrplandtime": "20261106160500",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01442",
+     "traingradename": "ITX-새마을",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106141500",
+     "arrplandtime": "20261106164000",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01208",
+     "traingradename": "새마을호",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106141900",
+     "arrplandtime": "20261106171400",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01426",
+     "traingradename": "ITX-새마을",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106144800",
+     "arrplandtime": "20261106170400",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01282",
+     "traingradename": "무궁화호",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106145800",
+     "arrplandtime": "20261106182200",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01574",
+     "traingradename": "무궁화호",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106152100",
+     "arrplandtime": "20261106181100",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "02552",
+     "traingradename": "새마을호",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106155700",
+     "arrplandtime": "20261106185400",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01504",
+     "traingradename": "ITX-새마을",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106160600",
+     "arrplandtime": "20261106182900",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01464",
+     "traingradename": "무궁화호",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106164500",
+     "arrplandtime": "20261106194900",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01284",
+     "traingradename": "무궁화호",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106165300",
+     "arrplandtime": "20261106200500",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01406",
+     "traingradename": "ITX-마음",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106174000",
+     "arrplandtime": "20261106195500",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01514",
+     "traingradename": "ITX-마음",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106174000",
+     "arrplandtime": "20261106195500",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01286",
+     "traingradename": "무궁화호",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106180500",
+     "arrplandtime": "20261106212100",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01408",
+     "traingradename": "ITX-새마을",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106182100",
+     "arrplandtime": "20261106210700",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01210",
+     "traingradename": "새마을호",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106190500",
+     "arrplandtime": "20261106220700",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "02522",
+     "traingradename": "새마을호",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106191900",
+     "arrplandtime": "20261106213600",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01410",
+     "traingradename": "ITX-새마을",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106192500",
+     "arrplandtime": "20261106214600",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01428",
+     "traingradename": "ITX-새마을",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106194300",
+     "arrplandtime": "20261106220000",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01288",
+     "traingradename": "무궁화호",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106200700",
+     "arrplandtime": "20261106232100",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01576",
+     "traingradename": "무궁화호",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106202400",
+     "arrplandtime": "20261106230100",
+     "adultcharge": "20000"
+    },
+    {
+     "trainno": "01506",
+     "traingradename": "ITX-마음",
+     "depplacename": "익산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106212500",
+     "arrplandtime": "20261106235700",
+     "adultcharge": "20000"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT010415",
+    "arrPlaceId": "NAT881014",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 1,
+   "items": [
+    {
+     "trainno": "01111",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "진주",
+     "depplandtime": "20261106195700",
+     "arrplandtime": "20261107004500",
+     "adultcharge": "41900"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT881014",
+    "arrPlaceId": "NAT010415",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 1,
+   "items": [
+    {
+     "trainno": "01112",
+     "traingradename": "ITX-새마을",
+     "depplacename": "진주",
+     "arrplacename": "수원",
+     "depplandtime": "20261106080300",
+     "arrplandtime": "20261106125400",
+     "adultcharge": "41900"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT010415",
+    "arrPlaceId": "NAT880281",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 1,
+   "items": [
+    {
+     "trainno": "01111",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "창원중앙",
+     "depplandtime": "20261106195700",
+     "arrplandtime": "20261106235800",
+     "adultcharge": "36500"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT880281",
+    "arrPlaceId": "NAT010415",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 1,
+   "items": [
+    {
+     "trainno": "01112",
+     "traingradename": "ITX-새마을",
+     "depplacename": "창원중앙",
+     "arrplacename": "수원",
+     "depplandtime": "20261106085000",
+     "arrplandtime": "20261106125400",
+     "adultcharge": "36500"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT010415",
+    "arrPlaceId": "NAT880345",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 1,
+   "items": [
+    {
+     "trainno": "01111",
+     "traingradename": "ITX-새마을",
+     "depplacename": "수원",
+     "arrplacename": "마산",
+     "depplandtime": "20261106195700",
+     "arrplandtime": "20261107001300",
+     "adultcharge": "37100"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT880345",
+    "arrPlaceId": "NAT010415",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 1,
+   "items": [
+    {
+     "trainno": "01112",
+     "traingradename": "ITX-새마을",
+     "depplacename": "마산",
+     "arrplacename": "수원",
+     "depplandtime": "20261106083400",
+     "arrplandtime": "20261106125400",
+     "adultcharge": "37100"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT010415",
+    "arrPlaceId": "NAT021549",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 1,
+   "items": [
+    {
+     "trainno": "01181",
+     "traingradename": "무궁화호",
+     "depplacename": "수원",
+     "arrplacename": "제천",
+     "depplandtime": "20261106183200",
+     "arrplandtime": "20261106211200",
+     "adultcharge": "13200"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT021549",
+    "arrPlaceId": "NAT010415",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 1,
+   "items": [
+    {
+     "trainno": "01182",
+     "traingradename": "무궁화호",
+     "depplacename": "제천",
+     "arrplacename": "수원",
+     "depplandtime": "20261106091400",
+     "arrplandtime": "20261106115500",
+     "adultcharge": "13200"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NAT010415",
+    "arrPlaceId": "NATH12383",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 2,
+   "items": [
+    {
+     "trainno": "00171",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "김천구미",
+     "depplandtime": "20261106072600",
+     "arrplandtime": "20261106090200",
+     "adultcharge": "21700"
+    },
+    {
+     "trainno": "00177",
+     "traingradename": "KTX",
+     "depplacename": "수원",
+     "arrplacename": "김천구미",
+     "depplandtime": "20261106202300",
+     "arrplandtime": "20261106215600",
+     "adultcharge": "21700"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depPlaceId": "NATH12383",
+    "arrPlaceId": "NAT010415",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 1,
+   "items": [
+    {
+     "trainno": "00174",
+     "traingradename": "KTX",
+     "depplacename": "김천구미",
+     "arrplacename": "수원",
+     "depplandtime": "20261106112800",
+     "arrplandtime": "20261106130100",
+     "adultcharge": "21700"
+    }
+   ]
+  }
+ ]
+}

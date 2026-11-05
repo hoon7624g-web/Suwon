@@ -2597,6 +2597,123 @@ def lot_row(S, lot: dict, meters: int, place: str) -> dict:
     }
 
 
+SHOP_FOLD = 30   # a group with more than SHOP_FOLD + SHOP_FOLD_MIN shops shows the first 30 and folds the rest
+SHOP_FOLD_MIN = 10   # (folding fewer than this many would hide a line or two behind a button)
+SHOP_CARDS = 12      # the page's cards: the first 12 of a group, the rest behind '더 보기' (when more than 4 are left)
+SHOP_CARDS_MIN = 4
+
+
+def _shop_key(name: str) -> str:
+    """A shop name for joining two lists (tools/market_data_bpss.norm_name): brackets, spaces and punctuation out,
+    '방앗간' read as '방아간'."""
+    s = re.sub(r"\(.*?\)|\[.*?\]", "", name or "").replace("주식회사", "").replace("방앗간", "방아간")
+    return re.sub(r"[\s\W_]+", "", s).lower()
+
+
+def _lic_note(lc: dict, addr: dict) -> str:
+    """The group head's line for one more list (tools/market_data_bpss: a 2026 licence list adds cards, a 상가정보 kind
+    adds its stores, an old licence list only marks shops the group already has)."""
+    kinds = "·".join(sorted({x["kind"] for x in lc.get("rows") or [] if x.get("kind")}))
+    n, m = len(lc.get("rows") or []), int(addr.get("match_m") or 300)
+    mois = (lc.get("source") or {}).get("provider") == "행정안전부"   # the daily 인허가 service: in-business rows only
+    if lc.get("mode") == "store":
+        return f"상가(상권)정보에서 업종이 {kinds.replace(' 점포', '')}인 시장 {m}m 안 점포 {n}곳을 함께 실었습니다."
+    if lc.get("mode") == "support":
+        if mois:
+            return f"행정안전부 인허가 정보({kinds})에 영업 중으로 적힌 같은 이름의 {n}곳에는 배지·주소·전화를 붙였습니다."
+        return f"오래된 구청 인허가 목록({kinds})에도 같은 이름이 있는 {n}곳에는 배지와 주소를 붙였습니다."
+    if mois:
+        return f"행정안전부 인허가 정보({kinds})에서 영업 중으로 적히고 시장 {m}m 안 주소인 {n}곳을 함께 실었습니다."
+    return f"구청 인허가 목록({kinds})에서 시장 {m}m 안 주소로 적힌 {n}곳을 함께 실었습니다."
+
+
+def _shop_cards(g: dict, lic: list[dict]) -> list[dict]:
+    """A group's cards (2026-10-30 '카드로'): one per shop name — the 온누리 shop (badge '온누리 가맹', its items as
+    written) and the licence rows near the market (badge: the licence kind) joined when the names match, else cards of
+    their own; the address from the 상가정보 match or the licence row, the licence row's phone (tel), and a 카카오맵 link
+    at that point. 가나다 order."""
+    cards: dict[str, dict] = {}
+    for s in g.get("shops") or []:
+        cards.setdefault(_shop_key(s["name"]) or s["name"], {"name": s["name"], "items": s.get("items") or "",
+                                                            "addr": s.get("addr") or "", "geo": s.get("geo"),
+                                                            "badges": ["온누리 가맹"]})
+    for lc in sorted(lic, key=lambda lc: lc.get("mode") == "support"):   # an old list only marks cards already there
+        for x in lc.get("rows") or []:
+            c = cards.get(_shop_key(x["name"]) or x["name"])
+            if c is None and lc.get("mode") == "support":
+                continue
+            if c is None:
+                c = cards[_shop_key(x["name"]) or x["name"]] = {"name": x["name"], "items": "", "addr": x.get("addr") or "",
+                                                              "geo": x.get("geo"), "badges": []}
+            if x.get("kind") and x["kind"] not in c["badges"]:
+                c["badges"].append(x["kind"])
+            if not c["addr"]:
+                c["addr"], c["geo"] = x.get("addr") or "", c["geo"] or x.get("geo")
+            if x.get("tel") and not c.get("tel"):
+                c["tel"] = x["tel"]
+    out = sorted(cards.values(), key=lambda c: c["name"])
+    for c in out:
+        geo = c.pop("geo", None)
+        c["map"] = (f"https://map.kakao.com/link/map/{quote(c['name'], safe='')},{geo[0]},{geo[1]}"
+                    if geo and len(geo) == 2 else "")
+        if c.get("tel"):
+            c["tel"] = (c["tel"], tel_href(c["tel"]))
+    return out
+
+
+def market_shops(e: dict) -> dict | None:
+    """A market's shops by item group (place['market']['shops'], tools/market_data_bpss.py — the 온누리상품권 가맹점
+    list of 소상공인시장진흥공단, whose rows name the market a shop belongs to): {groups [{key, label, n, shops [{name,
+    items}], fold}], n (distinct names), stalls (rows named '노점', counted without names), source {name, url}}. The
+    groups are the site's own; each name keeps the list's 취급품목 as written, and its address (addr) when one 상가(상권)
+    정보 store of that name stands near the market (addr_source, with_addr, match_m). None without such a list."""
+    rows = (e.get("market") or {}).get("shops") or []
+    r = rows[0] if rows else None
+
+    def label(src: dict, default: str) -> dict:
+        # the dataset name without its provider and its date ('…_20260902'); the 행안부 services carry no date
+        bits = str(src.get("dataset") or "").split("_")[1:]
+        nm = " ".join(bits[:-1] if bits and bits[-1].isdigit() else bits) or default
+        return {"name": f"{src.get('provider') or ''} {nm}".strip(), "url": src.get("url") or ""}
+    cut = lambda xs: SHOP_FOLD if len(xs) > SHOP_FOLD + SHOP_FOLD_MIN else len(xs)
+    lic: dict[str, list[dict]] = {}
+    for lc in (r or {}).get("licensed") or []:
+        lic.setdefault(lc["group"], []).append(lc)
+    groups = [{"key": g["key"], "label": g["label"], "n": len(g["shops"]), "shops": g["shops"][:cut(g["shops"])],
+               "fold": g["shops"][cut(g["shops"]):],
+               # the 구청 licence lists near the market (tools/market_data_bpss.LICENSES): one line per list, as written
+               "licensed": [{"rows": lc["rows"], "kinds": sorted({x["kind"] for x in lc["rows"] if x["kind"]}),
+                             "mode": lc.get("mode") or "add", "source": label(lc["source"], "인허가 목록"),
+                             "note": _lic_note(lc, (r or {}).get("addr_source") or {})}
+                            for lc in lic.get(g["key"]) or []],
+               "cards": _shop_cards(g, lic.get(g["key"]) or []), "photo": g.get("photo")}
+              for g in (r or {}).get("groups") or [] if g.get("shops")]
+    if not groups:
+        return None
+    # one shop in two groups (용가네기름집: 온누리 '고추.기름' under 청과·채소, its 인허가 under 기름·방앗간·떡) shows the
+    # same facts on both cards: every list it is on (badges), the 온누리 items, the address, its map link and the phone
+    same: dict[str, list[dict]] = {}
+    for g in groups:
+        for c in g["cards"]:
+            same.setdefault(_shop_key(c["name"]), []).append(c)
+    for cs in (cs for cs in same.values() if len(cs) > 1):
+        badges = list(dict.fromkeys(b for c in sorted(cs, key=lambda c: "온누리 가맹" not in c["badges"]) for b in c["badges"]))
+        for c in cs:
+            c["badges"] = list(badges)
+            for k in ("items", "addr", "map", "tel"):
+                if not c.get(k) and any(o.get(k) for o in cs):
+                    c[k] = next(o[k] for o in cs if o.get(k))
+    for g in groups:   # the page shows the first cards, the rest behind '더 보기' (never a handful)
+        k = SHOP_CARDS if len(g["cards"]) > SHOP_CARDS + SHOP_CARDS_MIN else len(g["cards"])
+        g["cards"], g["more"], g["n_cards"] = g["cards"][:k], g["cards"][k:], len(g["cards"])
+    addr = r.get("addr_source") or {}
+    return {"groups": groups, "n": len({s["name"] for g in groups for s in g["shops"] + g["fold"]}),
+            "stalls": int(r.get("stalls") or 0), "source": label(r, "온누리상품권 가맹점 현황"),
+            # the shops' addresses: a 상가정보 store of the same name near the market (tools/market_data_bpss.py)
+            "addr_source": label(addr, "상가(상권)정보") if addr else None,
+            "with_addr": int(addr.get("with_addr") or 0), "match_m": int(addr.get("match_m") or 0)}
+
+
 def access_vm(S, e: dict) -> dict | None:
     """The place page's '근처 주차·버스' block, or None (no coordinates, no entry, or nothing within the radius)."""
     entry = (getattr(S, "nearby", None) or {}).get(e.get("id"))
@@ -2905,6 +3022,8 @@ def place_vm(S, e: dict, ctx: dict) -> dict:
         "today": today_vm(S, e),      # 오늘의 상태 · 오늘의 바다 (2026-10-31): the day card after the opening
         "biz": license_vm(S, e),      # 영업 확인 (licenses.json, 2026-10-31): a line in 방문 전 확인
         "went_next": went_next,          # 이어서 많이 간 곳 (related.json, 2026-10-31): rows in 주변·함께 가기
+        # a market's shops by item group (온누리상품권 가맹점 명부·상가정보, 2026-11-05 수집 병합; 군산각 2026-10-30 블록)
+        "shops": market_shops(e),
         "conflicts": [r for r in all_rows if r["conflict"]], "tel": tel, "tel_text": tel_text,
         **links, "precise": bool(e["_geo"]),
         "photos": e["_photos"], "geo": e["_geo"], "place_points": place_points, "anchors": anchors,

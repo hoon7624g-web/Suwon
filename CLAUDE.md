@@ -71,6 +71,14 @@ python tools/harvest_merge.py --data data/suwon --photos --pet --camping --add-c
 python tools/tourapi_bulk.py --data data/suwon --barrier-free --max-calls 600                          # 6. 무장애 여행 정보 병합
 python tools/image_sizes.py --data data/suwon                            # 7. 사진 크기 기록
 
+# 공공데이터 다시 받기 (DATA_GO_KR_KEY 환경 변수, 설정은 site.json public_data, 결과는 data/cache/public_data/out/suwon/ → 확인 뒤 data/suwon/에 복사, 원자료 raw/는 data/raw/suwon/<묶음>/)
+DATA_GO_KR_KEY=… python tools/public_data/tourapi_related.py --site suwon crowd --apply   # 집중률 예측 crowd.json — 30일 예보라 매달 다시 받는다
+DATA_GO_KR_KEY=… python tools/public_data/tourapi_related.py --site suwon --apply         # 연관 관광지 related.json
+DATA_GO_KR_KEY=… python tools/public_data/almanac.py --site suwon --apply                 # 해 뜨고 지는 시각 almanac.json — 120일치라 기간이 끝나기 전에 다시 받는다
+DATA_GO_KR_KEY=… python tools/public_data/tago.py --site suwon --apply                    # 열차·고속·시외버스 시간표 transport_tago.json
+DATA_GO_KR_KEY=… python tools/public_data/mois_licenses.py --site suwon fetch && python tools/public_data/mois_licenses.py --site suwon --apply   # 인허가 licenses.json(폐업 확인 장소는 목록만, 공개 상태는 운영자)
+DATA_GO_KR_KEY=… python tools/public_data/datalab.py --site suwon --apply                 # 일별 방문자 visitors_daily.json(엔진은 아직 읽지 않음)
+
 # 외국어 판 번역 (작업 브랜치 claude/keen-maxwell-rul4fa, 한국어가 바뀐 뒤 빌드 전에; <코드> = en·ja·zh-hans·zh-hant·de·fr·es·ru)
 python tools/intl_table.py extract --data data/suwon --lang <코드> --out todo.json   # 번역표에 없는 단위·이름({id: {kind, ko, where}})
 python tools/intl_table.py fill --data data/suwon --lang <코드> answers.json         # 번역({id: 번역}, 자리표시 {name}·{m1}·{w1}·{t1}·{p1} 유지)을 표에 넣기

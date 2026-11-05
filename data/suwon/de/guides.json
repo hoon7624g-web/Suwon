@@ -3,11 +3,11 @@
     "slug": "suwon-hwaseong-fortress-haenggung",
     "label": "Festung Suwon Hwaseong, Palast und Festungsmauer",
     "title": "Welche Orte an der Festungsmauer wie die Festung Suwon Hwaseong, Palast Hwaseong Haenggung und der Pavillon Banghwasuryujeong sowie jederzeit zugängliche kostenlose Sehenswürdigkeiten gibt es?",
-    "summary": "Diese Website führt 20 Orte rund um die Festung Suwon Hwaseong, Palast Hwaseong Haenggung, die vier Haupttore, die Ecktürme und die Festungsmauer. Ganzjährig ohne Ruhetag und kostenlos geöffnet sind 51 Sehenswürdigkeiten in Suwon. Unten lassen sich Öffnungszeiten, Ruhetage und Eintrittspreise von 10 wichtigen Orten auf einen Blick vergleichen.",
+    "summary": "Diese Website führt 21 Orte rund um die Festung Suwon Hwaseong, Palast Hwaseong Haenggung, die vier Haupttore, die Ecktürme und die Festungsmauer. Ganzjährig ohne Ruhetag und kostenlos geöffnet sind 52 Sehenswürdigkeiten in Suwon. Unten lassen sich Öffnungszeiten, Ruhetage und Eintrittspreise von 10 wichtigen Orten auf einen Blick vergleichen.",
     "body": [
       {
-        "heading": "20 Orte rund um Festung Suwon Hwaseong, Palast Hwaseong Haenggung und Festungsmauer sowie 51 kostenlose Sehenswürdigkeiten ohne Ruhetag",
-        "text": "Laut TourAPI der Koreanischen Tourismusorganisation gibt es 20 Orte rund um die Festungsmauer, darunter die Festung Suwon Hwaseong, Palast Hwaseong Haenggung, Tor Janganmun, Tor Paldalmun, Hwaseomun, Tor Changnyongmun, Banghwasuryujeong, Yeonmudae, Hwahongmun, Seojangdae und Hwaryeongjeon. Von allen Sehenswürdigkeiten in Suwon sind 51 ganzjährig ohne Ruhetag geöffnet und kostenlos."
+        "heading": "21 Orte rund um die Festung Suwon Hwaseong, Palast Hwaseong Haenggung und die Festungsmauer sowie 52 kostenlose Sehenswürdigkeiten ohne Ruhetag",
+        "text": "Laut TourAPI der Koreanischen Tourismusorganisation gibt es 21 Orte rund um die Festungsmauer, darunter die Festung Suwon Hwaseong, Palast Hwaseong Haenggung, Tor Janganmun, Tor Paldalmun, Hwaseomun, Tor Changnyongmun, Banghwasuryujeong, Yeonmudae, Hwahongmun, Seojangdae und Hwaryeongjeon. Von allen Sehenswürdigkeiten in Suwon sind 52 ganzjährig ohne Ruhetag geöffnet und kostenlos."
       },
       {
         "heading": "Jederzeit zugängliche Mauerabschnitte und Ticketzeiten für Palast und Erlebnisangebote prüfen",
@@ -59,7 +59,7 @@
     "faq": [
       {
         "q": "Wie viele Orte rund um Festung Suwon Hwaseong, Palast und Festungsmauer sowie kostenlose Sehenswürdigkeiten ohne Ruhetag gibt es jeweils in Suwon?",
-        "a": "Es gibt 20 Orte rund um die Festung Suwon Hwaseong, Palast Hwaseong Haenggung, die vier Haupttore und die Ecktürme sowie 51 kostenlose Sehenswürdigkeiten ohne Ruhetag.",
+        "a": "Es gibt 21 Orte rund um die Festung Suwon Hwaseong, Palast Hwaseong Haenggung, die vier Haupttore und die Ecktürme sowie 52 kostenlose Sehenswürdigkeiten ohne Ruhetag.",
         "source": "한국관광공사 TourAPI"
       }
     ],
@@ -69,8 +69,8 @@
         "url": "https://api.visitkorea.or.kr/"
       }
     ],
-    "ko_hash": "23cc05f8a14617b9",
-    "translated_at": "2026-10-28"
+    "ko_hash": "e65abe35c2af7ca0",
+    "translated_at": "2026-11-05"
   },
   "guide-02": {
     "slug": "suwon-with-kids",
@@ -143,17 +143,17 @@
       }
     ],
     "ko_hash": "5c72e6e5bde70c1a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "guide-03": {
     "slug": "suwon-indoor-museums",
     "label": "Regentage · Drinnen",
     "title": "Welche Museen, Kunstmuseen, die Starfield Library und andere Kultureinrichtungen in Suwon eignen sich für Regentage?",
-    "summary": "Diese Website führt insgesamt 43 Kultureinrichtungen in Suwon wie Museen, Kunstmuseen, Bibliotheken und Kunstzentren. Kulturelle Sehenswürdigkeiten drinnen und draußen mit Museum, Kunstmuseum, Ausstellungshalle, Bibliothek, Haewoojae oder Aqua Planet im Namen gibt es 34. Unten lassen sich die Besuchszeiten, die regelmäßigen Ruhetage und die Eintrittspreise von 10 wichtigen Orten vergleichen.",
+    "summary": "Diese Website führt insgesamt 43 Kultureinrichtungen in Suwon wie Museen, Kunstmuseen, Bibliotheken und Kunstzentren. Kulturelle Sehenswürdigkeiten drinnen und draußen mit Museum, Kunstmuseum, Ausstellungshalle, Bibliothek, Haewoojae oder Aqua Planet im Namen gibt es 38. Unten lassen sich die Besuchszeiten, die regelmäßigen Ruhetage und die Eintrittspreise von 10 wichtigen Orten vergleichen.",
     "body": [
       {
-        "heading": "43 Kultureinrichtungen wie Museen, Kunstmuseen und Bibliotheken sowie 34 Ausstellungs- und Kulturorte",
-        "text": "Nach der Einteilung von TourAPI der Koreanischen Tourismusorganisation sind in Suwon 43 Orte als Kultureinrichtungen eingetragen. Ausstellungs- und Bibliotheksorte wie Museum der Festung Suwon Hwaseong, Kunstmuseum Suwon, Nationales Landwirtschaftsmuseum, Starfield Library Suwon, Gyeonggi-Bibliothek, Haewoojae und Aqua Planet Gwanggyo gibt es 34."
+        "heading": "43 Kultureinrichtungen wie Museen, Kunstmuseen und Bibliotheken sowie 38 Ausstellungs- und Kulturorte",
+        "text": "Nach der Einteilung von TourAPI der Koreanischen Tourismusorganisation sind in Suwon 43 Orte als Kultureinrichtungen eingetragen. Ausstellungs- und Bibliotheksorte wie Museum der Festung Suwon Hwaseong, Kunstmuseum Suwon, Nationales Landwirtschaftsmuseum, Starfield Library Suwon, Gyeonggi-Bibliothek, Haewoojae und Aqua Planet Gwanggyo gibt es 38."
       },
       {
         "heading": "Besuchszeiten, Schließung am Montag und kostenlose Besichtigung vergleichen",
@@ -205,7 +205,7 @@
     "faq": [
       {
         "q": "Wie viele Orte in Suwon sind insgesamt als Kultureinrichtungen wie Museen, Kunstmuseen und Bibliotheken eingestuft?",
-        "a": "43 Sehenswürdigkeiten in Suwon sind als Kultureinrichtungen eingetragen; Orte rund um Museen, Kunstmuseen, Ausstellungshallen, Bibliotheken, Haewoojae und Aqua Planet gibt es 34.",
+        "a": "43 Sehenswürdigkeiten in Suwon sind als Kultureinrichtungen eingetragen; Orte rund um Museen, Kunstmuseen, Ausstellungshallen, Bibliotheken, Haewoojae und Aqua Planet gibt es 38.",
         "source": "한국관광공사 TourAPI"
       }
     ],
@@ -215,18 +215,18 @@
         "url": "https://api.visitkorea.or.kr/"
       }
     ],
-    "ko_hash": "9ea0ed6649e6de30",
-    "translated_at": "2026-10-28"
+    "ko_hash": "eeaa28df34cf5851",
+    "translated_at": "2026-11-05"
   },
   "guide-05": {
     "slug": "monday-open-restaurants-suwon",
     "label": "Am Montag geöffnet · Essen",
     "title": "Welche Lokale für große Rippen, Brathähnchen und Kalguksu sowie Cafés an der Straße Haengnidan-gil in Suwon sind am Montag geöffnet?",
-    "summary": "Von den Restaurants in Suwon auf dieser Website haben 176 keinen Montag als Ruhetag angegeben. Es gibt 54 Lokale für Rippen, koreanisches Rind und Grillfleisch, 23 für Brathähnchen, Kalguksu, Haejangguk und Mandu sowie 42 für Kaffee, Backwaren und Desserts. Davon lassen sich Menüs und Öffnungszeiten von 10 wichtigen Orten vergleichen.",
+    "summary": "Von den Restaurants in Suwon auf dieser Website haben 175 keinen Montag als Ruhetag angegeben. Sie können Speisekarten und Öffnungszeiten von 10 wichtigen Lokalen vergleichen, ausgewählt aus 55 Lokalen für Rippen, koreanisches Rind und Gegrilltes, 23 für Brathähnchen, Nudelsuppe, Katersuppe und Teigtaschen sowie 44 für Kaffee, Backwaren und Desserts.",
     "body": [
       {
-        "heading": "176 am Montag geöffnete Lokale sowie 54 für Suwon-Rippen und Gegrilltes, 23 für Brathähnchen, Nudeln und Reissuppen und 42 Cafés",
-        "text": "Laut TourAPI der Koreanischen Tourismusorganisation gibt es in Suwon 176 Restaurants und Cafés, deren regelmäßige Ruhetage den Montag nicht einschließen. Nach Gerichten sind 54 Lokale für große Suwon-Rippen, koreanisches Rind, Bulgogi, Schweinebauch und Ente eingetragen, 23 für Brathähnchen, Kalguksu, Naengmyeon, Haejangguk, Seolleongtang und Mandu sowie 42 für Kaffee, Backwaren und Desserts."
+        "heading": "175 Restaurants am Montag geöffnet, darunter 55 für Suwon-Rippen und Gegrilltes, 23 für Hähnchen, Nudeln und Reissuppe sowie 44 Cafés",
+        "text": "Laut TourAPI der Koreanischen Tourismusorganisation haben 175 Restaurants und Cafés in Suwon keinen Montag unter ihren regelmäßigen Ruhetagen. Nach Speisen sind 55 Lokale für große Suwon-Rippen, koreanisches Rind, Bulgogi, Schweinebauch und Ente, 23 für Brathähnchen, Nudelsuppe, kalte Nudeln, Katersuppe, Rinderknochensuppe und Teigtaschen sowie 44 für Kaffee, Backwaren und Desserts eingetragen."
       },
       {
         "heading": "Pausenzeiten und letzte Bestellung prüfen",
@@ -278,7 +278,7 @@
     "faq": [
       {
         "q": "Wie viele Restaurants in Suwon sind am Montag geöffnet, und wie viele Lokale gibt es jeweils für Rippen und Gegrilltes, Brathähnchen, Nudeln und Reissuppen sowie Kaffee und Backwaren?",
-        "a": "176 Restaurants haben am Montag keinen Ruhetag. Es gibt 54 Lokale für Rippen, koreanisches Rind und Gegrilltes, 23 für Brathähnchen, Kalguksu, Haejangguk und Mandu sowie 42 für Kaffee, Backwaren und Desserts.",
+        "a": "175 Restaurants haben am Montag keinen Ruhetag. Es gibt 55 Lokale für Rippen, koreanisches Rind und Gegrilltes, 23 für Brathähnchen, Nudelsuppe, Katersuppe und Teigtaschen sowie 44 für Kaffee, Backwaren und Desserts.",
         "source": "한국관광공사 TourAPI"
       }
     ],
@@ -288,8 +288,8 @@
         "url": "https://api.visitkorea.or.kr/"
       }
     ],
-    "ko_hash": "10d27a57ece246bb",
-    "translated_at": "2026-10-28"
+    "ko_hash": "a57584d7eff9b137",
+    "translated_at": "2026-11-05"
   },
   "guide-06": {
     "slug": "suwon-hotels-hanok-stays",
@@ -362,6 +362,6 @@
       }
     ],
     "ko_hash": "e090e2a9577a1863",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   }
 }

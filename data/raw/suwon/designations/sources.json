@@ -1,0 +1,98 @@
+{
+ "checked_at": "2026-11-05",
+ "lists": [
+  {
+   "key": "baeknyeon",
+   "pk": "15132695",
+   "use": "write",
+   "type": "baeknyeon",
+   "label": "백년가게(중소벤처기업부)",
+   "source_name": "소상공인시장진흥공단 · 공공데이터포털 전국 백년가게 지정리스트 현황 정보(2026-08-20)",
+   "url": "https://www.data.go.kr/data/15132695/fileData.do",
+   "dataset_id": "15132695",
+   "base_date": "2026-08-20",
+   "dataset": "소상공인시장진흥공단_전국 백년가게 지정리스트 현황 정보_20260820",
+   "provider": "소상공인시장진흥공단",
+   "license": "이용허락범위 제한 없음",
+   "modified": "2026-08-30",
+   "columns": {
+    "name": "업체명",
+    "address": "업체주소",
+    "phone": "연락처"
+   },
+   "place_kinds": [
+    "food",
+    "stay",
+    "attraction"
+   ],
+   "year": null,
+   "row_kind": "any",
+   "file": "baeknyeon_15132695.csv",
+   "rows_in_site": 18
+  },
+  {
+   "key": "goodprice_mois",
+   "pk": "3045247",
+   "use": "write",
+   "type": "goodprice",
+   "label": "착한가격업소(수원시)",
+   "source_name": "행정안전부 · 공공데이터포털 착한가격업소 현황(2026-09-30)",
+   "url": "https://www.data.go.kr/data/3045247/fileData.do",
+   "dataset_id": "3045247",
+   "base_date": "2026-09-30",
+   "dataset": "행정안전부_착한가격업소 현황_20260930",
+   "provider": "행정안전부",
+   "license": "이용허락범위 제한 없음",
+   "modified": "2026-10-16",
+   "columns": {
+    "name": "업소명",
+    "address": "주소"
+   },
+   "place_kinds": [
+    "food",
+    "stay"
+   ],
+   "kinds": {
+    "col": "업종",
+    "food": [
+     "한식",
+     "기타요식업",
+     "중식",
+     "일식",
+     "양식",
+     "베이커리"
+    ],
+    "stay": [
+     "숙박업"
+    ]
+   },
+   "file": "goodprice_mois_3045247.csv",
+   "rows_in_site": 182
+  },
+  {
+   "key": "mobeom_suwon",
+   "pk": "3044660",
+   "use": "write",
+   "type": "mobeom",
+   "label": "모범음식점(수원시 지정)",
+   "source_name": "경기도 수원시 · 공공데이터포털 모범음식점 현황(2026-06-30)",
+   "url": "https://www.data.go.kr/data/3044660/fileData.do",
+   "dataset_id": "3044660",
+   "base_date": "2026-06-30",
+   "dataset": "경기도 수원시_모범음식점 현황_20260630",
+   "provider": "경기도 수원시",
+   "license": "이용허락범위 제한 없음",
+   "modified": "2026-07-16",
+   "columns": {
+    "name": "모범업소명",
+    "address": "소재지도로명주소",
+    "phone": "전화번호"
+   },
+   "place_kinds": [
+    "food"
+   ],
+   "file": "mobeom_suwon_3044660.csv",
+   "rows_in_site": 154
+  }
+ ]
+}

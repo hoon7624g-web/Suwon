@@ -3,11 +3,11 @@
     "slug": "suwon-hwaseong-fortress-haenggung",
     "label": "Suwon Hwaseong, Haenggung y murallas",
     "title": "¿Dónde están los lugares de la muralla de Suwon Hwaseong, Palacio Hwaseonghaenggung y Banghwasuryujeong, y los lugares turísticos gratuitos siempre abiertos?",
-    "summary": "Este sitio recoge 20 lugares relacionados con Suwon Hwaseong, Palacio Hwaseonghaenggung, las cuatro puertas principales, los pabellones de esquina y la muralla, y 51 lugares turísticos de Suwon abiertos todo el año y gratuitos. Abajo se pueden comparar de un vistazo el horario, los días de cierre y las tarifas de entrada de 10 lugares principales.",
+    "summary": "Este sitio recoge 21 lugares relacionados con la Fortaleza Hwaseong de Suwon, Palacio Hwaseonghaenggung, las cuatro puertas principales, los pabellones de esquina y la muralla, y 52 atracciones de Suwon abiertas todo el año y gratuitas. Abajo se pueden comparar de un vistazo el horario, los días de cierre y las tarifas de entrada de 10 lugares principales.",
     "body": [
       {
-        "heading": "20 lugares de Suwon Hwaseong, Palacio Hwaseonghaenggung y la muralla, y 51 lugares turísticos gratuitos abiertos todo el año",
-        "text": "Según TourAPI de la Organización de Turismo de Corea, hay 20 lugares relacionados con la muralla, como Suwon Hwaseong y Palacio Hwaseonghaenggung, Puerta Janganmun, Puerta Paldalmun, la puerta Hwaseomun, Puerta Changnyongmun, Banghwasuryujeong, Yeonmudae, Hwahongmun, Seojangdae y Hwaryeongjeon. De todos los lugares turísticos de Suwon, 51 abren todo el año y son de uso gratuito."
+        "heading": "21 lugares de la Fortaleza Hwaseong de Suwon, Palacio Hwaseonghaenggung y la muralla, y 52 atracciones abiertas todo el año y gratuitas",
+        "text": "Según TourAPI de la Organización de Turismo de Corea, hay 21 lugares ligados a la fortaleza. Entre ellos están la Fortaleza Hwaseong de Suwon, Palacio Hwaseonghaenggung, Puerta Janganmun, Puerta Paldalmun, la Puerta Hwaseomun, Puerta Changnyongmun, el Pabellón Banghwasuryujeong, Yeonmudae, la Puerta Hwahongmun, Seojangdae y el Salón Hwaryeongjeon. De todas las atracciones de Suwon, 52 abren todo el año y son gratuitas."
       },
       {
         "heading": "Tramos de la muralla siempre abiertos y horarios de taquilla de Haenggung y de las instalaciones de actividades",
@@ -59,7 +59,7 @@
     "faq": [
       {
         "q": "¿Cuántos lugares relacionados con Suwon Hwaseong, Haenggung y la muralla, y cuántos lugares turísticos gratuitos abiertos todo el año hay en Suwon?",
-        "a": "Hay 20 lugares relacionados con Suwon Hwaseong, Palacio Hwaseonghaenggung, las cuatro puertas principales y los pabellones de esquina, y 51 lugares turísticos gratuitos abiertos todo el año.",
+        "a": "Hay 21 lugares relacionados con la Fortaleza Hwaseong de Suwon, Palacio Hwaseonghaenggung, las cuatro puertas principales y los pabellones de esquina, y 52 atracciones abiertas todo el año y gratuitas.",
         "source": "한국관광공사 TourAPI"
       }
     ],
@@ -69,8 +69,8 @@
         "url": "https://api.visitkorea.or.kr/"
       }
     ],
-    "ko_hash": "23cc05f8a14617b9",
-    "translated_at": "2026-10-28"
+    "ko_hash": "e65abe35c2af7ca0",
+    "translated_at": "2026-11-05"
   },
   "guide-02": {
     "slug": "suwon-with-kids",
@@ -143,17 +143,17 @@
       }
     ],
     "ko_hash": "5c72e6e5bde70c1a",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   },
   "guide-03": {
     "slug": "suwon-indoor-museums",
     "label": "Días de lluvia · Interiores",
     "title": "¿Qué museos, galerías de arte, la Biblioteca Starfield y otras instalaciones culturales de Suwon son cómodos para visitar un día de lluvia?",
-    "summary": "Este sitio recoge 43 instalaciones culturales de Suwon, como museos, galerías de arte, bibliotecas y centros de arte. Además, 34 lugares turísticos culturales, interiores y exteriores, incluyen en su nombre museo, galería de arte, sala de exposiciones, biblioteca, Haewoojae o Aqua Planet. Abajo se pueden comparar el horario de visita, los días de cierre regulares y las tarifas de entrada de 10 lugares principales.",
+    "summary": "Este sitio recoge 43 instalaciones culturales de Suwon, como museos, museos de arte, bibliotecas y centros de arte, y 38 atracciones culturales cuyo nombre incluye museo, museo de arte, sala de exposiciones, biblioteca, Haewoojae o Aqua Planet. Abajo se pueden comparar el horario de visita, los días de cierre regulares y las tarifas de entrada de 10 lugares principales.",
     "body": [
       {
-        "heading": "43 instalaciones culturales (museos, galerías de arte y bibliotecas) y 34 lugares de exposiciones y cultura",
-        "text": "Según la clasificación de TourAPI de la Organización de Turismo de Corea, 43 lugares de Suwon están registrados como instalaciones culturales. Hay 34 lugares de exposiciones y bibliotecas, como Museo de la Fortaleza de Hwaseong de Suwon, Museo Municipal de Arte de Suwon, Museo Nacional de Agricultura, Biblioteca Byeolmadang del Starfield Suwon, Biblioteca de Gyeonggi-do, Haewoojae y Aqua Planet Gwanggyo."
+        "heading": "43 instalaciones culturales como museos, museos de arte y bibliotecas, y 38 lugares de exposiciones y cultura",
+        "text": "Según la clasificación de TourAPI de la Organización de Turismo de Corea, 43 lugares de Suwon son instalaciones culturales. Hay 38 lugares de exposiciones y bibliotecas, como Museo de la Fortaleza de Hwaseong de Suwon, Museo Municipal de Arte de Suwon, Museo Nacional de Agricultura, Biblioteca Byeolmadang del Starfield Suwon, Biblioteca de Gyeonggi-do, Haewoojae y Aqua Planet Gwanggyo."
       },
       {
         "heading": "Comparación del horario de visita, el cierre de los lunes y la entrada gratuita",
@@ -205,7 +205,7 @@
     "faq": [
       {
         "q": "¿Cuántos lugares de Suwon están clasificados como instalaciones culturales, como museos, galerías de arte y bibliotecas?",
-        "a": "43 lugares turísticos de Suwon están registrados como instalaciones culturales, y 34 lugares se relacionan con museos, galerías de arte, salas de exposiciones, bibliotecas, Haewoojae o Aqua Planet.",
+        "a": "Hay 43 atracciones de Suwon registradas como instalaciones culturales y 38 lugares relacionados con museos, museos de arte, salas de exposiciones, bibliotecas, Haewoojae o Aqua Planet.",
         "source": "한국관광공사 TourAPI"
       }
     ],
@@ -215,18 +215,18 @@
         "url": "https://api.visitkorea.or.kr/"
       }
     ],
-    "ko_hash": "9ea0ed6649e6de30",
-    "translated_at": "2026-10-28"
+    "ko_hash": "eeaa28df34cf5851",
+    "translated_at": "2026-11-05"
   },
   "guide-05": {
     "slug": "monday-open-restaurants-suwon",
     "label": "Abiertos los lunes · Dónde comer",
     "title": "¿Qué locales de costilla grande, pollo frito entero, kalguksu y cafés de Calle Haengnidan-gil abren los lunes en Suwon?",
-    "summary": "De los restaurantes de Suwon recogidos en este sitio, 176 no tienen el lunes entre sus días de cierre. Entre 54 locales de galbi, hanwoo y carne a la parrilla, 23 de pollo frito entero, kalguksu, haejangguk y mandu, y 42 de café, panadería y postres, se pueden comparar los platos y el horario de 10 principales.",
+    "summary": "De los restaurantes de Suwon de este sitio, 175 no tienen el lunes entre sus días de cierre. Puede comparar los menús y horarios de 10 lugares destacados entre 55 de costilla, ternera coreana y carne a la parrilla, 23 de pollo frito, fideos, sopas y empanadillas, y 44 de café, panadería y postres.",
     "body": [
       {
-        "heading": "176 locales abiertos los lunes: 54 de galbi de Suwon y parrilla, 23 de pollo frito entero, fideos y sopas con arroz, y 42 cafés",
-        "text": "Según TourAPI de la Organización de Turismo de Corea, 176 restaurantes y cafeterías de Suwon no incluyen el lunes entre sus días de cierre regulares. Por platos, hay registrados 54 locales de costilla grande de Suwon, hanwoo, bulgogi, panceta de cerdo y pato; 23 de pollo frito entero, kalguksu, naengmyeon, haejangguk, seolleongtang y mandu; y 42 de café, panadería y postres."
+        "heading": "175 abiertos los lunes, con 55 de costilla de Suwon y parrilla, 23 de pollo, fideos y sopa con arroz y 44 cafeterías",
+        "text": "Según TourAPI de la Organización de Turismo de Corea, 175 restaurantes y cafeterías de Suwon no incluyen el lunes en sus días de cierre habituales. Por menú, hay 55 lugares de costilla grande de Suwon, ternera coreana, bulgogi, panceta o pato; 23 de pollo frito, fideos, fideos fríos, sopas y empanadillas; y 44 de café, panadería y postres."
       },
       {
         "heading": "Horas de pausa y de último pedido",
@@ -278,7 +278,7 @@
     "faq": [
       {
         "q": "¿Cuántos restaurantes abren los lunes en Suwon, y cuántos son de galbi y parrilla, de pollo frito entero, fideos y sopas con arroz, o de café y panadería?",
-        "a": "176 restaurantes no tienen el lunes entre sus días de cierre: 54 de galbi, hanwoo y parrilla, 23 de pollo frito entero, kalguksu, haejangguk y mandu, y 42 de café, panadería y postres.",
+        "a": "Hay 175 restaurantes que no cierran los lunes: 55 de costilla, ternera coreana y parrilla, 23 de pollo frito, fideos, sopas y empanadillas, y 44 de café, panadería y postres.",
         "source": "한국관광공사 TourAPI"
       }
     ],
@@ -288,8 +288,8 @@
         "url": "https://api.visitkorea.or.kr/"
       }
     ],
-    "ko_hash": "10d27a57ece246bb",
-    "translated_at": "2026-10-28"
+    "ko_hash": "a57584d7eff9b137",
+    "translated_at": "2026-11-05"
   },
   "guide-06": {
     "slug": "suwon-hotels-hanok-stays",
@@ -362,6 +362,6 @@
       }
     ],
     "ko_hash": "e090e2a9577a1863",
-    "translated_at": "2026-10-28"
+    "translated_at": "2026-11-05"
   }
 }

@@ -634,6 +634,26 @@ class Knowledge:
         for d in designations(e, city=S.city):
             L.append(f"- 지정: {d['label']} (출처: {_clean(d.get('source_name'))} {d.get('url') or ''})".rstrip())
             self.keep_url(d.get("url"))
+        shops = present.market_shops(e)
+        if shops:
+            # the market page's 품목별 가게 (온누리상품권 가맹점 list): names and their items as written, no place or hours
+            addr = shops["addr_source"]
+            L.append(f"품목별 가게 {shops['n']}곳(온누리상품권 가맹점 명부에 소속 시장이 이곳으로 적힌 가게, 괄호 안은 명부의 "
+                     f"취급품목" + (f"과 주소(상가(상권)정보에서 같은 이름의 점포가 시장에서 {shops['match_m']}m 안에 한 곳뿐일 때만, "
+                                  f"{shops['with_addr']}곳)" if addr else "") + ". 영업시간은 없음"
+                     + (f", 노점 {shops['stalls']}곳은 이름 없이 수만" if shops["stalls"] else "")
+                     + f" — 출처: {shops['source']['name']} {shops['source']['url']}"
+                     + (f"; 주소 {addr['name']} {addr['url']}" if addr else "") + "):")
+            for g in shops["groups"]:
+                L.append(f"- {g['label']} {g['n']}곳: " + ", ".join(
+                    s["name"] + (f"({' · '.join(x for x in (s['items'], s.get('addr') or '') if x)})" if s["items"] or s.get("addr") else "")
+                    for s in g["shops"] + g["fold"]))
+                for lc in g["licensed"]:
+                    L.append(f"  - {lc['note']} — 출처: {lc['source']['name']} {lc['source']['url']}: "
+                             + ", ".join(f"{x['name']}({' · '.join(v for v in (x['addr'], x.get('tel') or '') if v)})"
+                                         for x in lc["rows"]))
+                    self.keep_url(lc["source"]["url"])
+            self.keep_url(shops["source"]["url"], *([addr["url"]] if addr else []))
         # 영업 확인 (licenses.json: 행정안전부 인허가, 식품안심업소 지정) and 이어서 많이 간 곳 (related.json: 한국관광공사
         # 관광지별 연관 관광지, TMAP 이동 기록 — not a recommendation), as the page shows them (2026-10-31)
         biz = present.license_vm(S, e, any_day=True)

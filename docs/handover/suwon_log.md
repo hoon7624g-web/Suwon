@@ -55,3 +55,31 @@
 - 화면 확인 2회: 목록 권역 머리가 '수원화 성·'처럼 끊기던 것(이식으로 생김), 1024px 목록 머리 제목이 한 글자씩 끊기던 것(main부터 있던 것)을 고침. 최종 캡처 `docs/reference/upgrade_2026-11-05/`(홈·화성행궁·음식점 목록·/partners/·/map/, 360·390·768·1024·1440, 2배율, 가로 넘침 없음).
 - 확인: build·validate sample·preview·production 오류 0. npm test 331 통과. pytest 파일별 실행에서 이식으로 깨진 시험(옛 홈 첫 화면을 보던 브라우저 시험, 두 값 표시를 보던 챗 색인 시험)은 새 배치·대표값 방식에 맞게 고침(conftest.engine_both_values). main부터 실패하던 시험: test_audit_engine 1건, test_ask_browser 런처 대화 2건. 가끔 실패하는 시험: test_ask_browser 새 탭 열기(main에서도 6번 중 1번), test_list_conditions 브라우저(부하 중 1번).
 - 속도(tools/perf_check.py 조건, 외부 사진 막음): gzip 서버로 홈 LCP 0.98초·화성행궁 1.11초·관광지 목록 1.21초·지도 1.15초, CLS 0(main 1.08·0.98·1.16·1.10초). 음식점 목록 2.8초(main 2.7초, 목록 사진). 압축 없는 perf_check 그대로는 모든 페이지 2.5초 초과(main도 같음). 첫 방문 글꼴 측정값 409KB(main 401KB)로 300KB 목표를 main부터 넘음.
+
+## 2026-11-05 공공데이터 수집분 병합 + 9개 언어 번역(운영자 '다 받으면 9개국어 번역까지 진행하고', '그래 최대한 다 긁어모아', 작업 브랜치 claude/trusting-shannon-ec29su — 배포 안 함)
+지시문: `data/raw/suwon/collect_2026-11-05/MERGE.md`. 묶음 세 개(pubdata·filedata·tourapi_delta)는 원자료 기록으로 그대로 둠. 엔진 참고는 군산각 같은 브랜치(시장 가게 블록).
+
+### 넣은 것
+- **TourAPI 변경분**(실호출 0, `apply_delta`로 옛 묶음 9,191개 + 변경분 345개를 `data/cache/tourapi/`에): 새 숙소 5곳 **draft**(23-1 하우스·스테이 해성·두드림하우스·스테이우브·해성공간), 바뀐 공개 장소 39곳 중 사실 값이 바뀐 곳 25곳(필드별 출처·확인일 2026-11-05), 행사 18건 확인일만 갱신(새·바뀐 행사 0), 무장애 값 2곳(갤러리아백화점 광교점 5칸·1곳), 고캠핑 솔내음캠핑장 3칸, `--gallery`(묶음 README 순서) TourAPI 상세 사진 1,494장을 공개 362곳에 더함(제1유형 498·제3유형 993 등, 규칙대로 유형 표시), 관광사진 갤러리는 맞는 장소 0(더할 곳 없음).
+- 새 TourAPI 응답은 `<br>` 줄바꿈이 빠져 '09:00~18:00- 주말'처럼 붙어 옴: 글자만 같고 줄만 빠진 값 4칸은 옛 값을 두고, 값이 바뀐 시간표 6칸은 '[요일]'·'- '·'※' 앞에서 줄을 다시 나눔(글자는 그대로).
+- **API 데이터**(pubdata → `data/suwon/`): 인허가 licenses.json 209곳(영업 201·폐업 확인 8), 연관 관광지 related.json 56곳, 집중률 예측 crowd.json 68곳(2026-11-05~12-04), 해 almanac.json 120일(2026-11-05~2027-03-04), TAGO transport_tago.json 168짝(기준 11-06 금·11-07 토), 일별 방문자 visitors_daily.json(엔진은 아직 읽지 않음). 원자료는 `data/raw/suwon/{licenses,tago,almanac,datalab,tourapi_crowd,tourapi_related}/`, 설정은 `site.json` `public_data`, 수집 도구는 `tools/public_data/`(설정이 없으면 site.json을 읽고 작업 폴더는 `data/cache/public_data`), 다시 받는 명령은 CLAUDE.md 5절.
+- **파일 데이터**(filedata): 근처 공영주차장·버스 정류장 nearby.json·parking_lots.json(이전 파일 없음 → 공개 장소 근처 주차 385곳·정류장 675곳, 잃는 값 없음), 지정 26곳(수원시 모범음식점 23·백년가게 3, 새 지정만; 착한가격업소 맞춤 0), 시장 market 16곳(온누리 가맹점·상가정보 주소). 문화축제 표준데이터는 끝나지 않은 새 축제 0이라 행사 추가 0. staged_tourist_spots·toilets·goodprice_menus는 묶음 안 원자료로만 둠. 원자료 `data/raw/suwon/{designations,markets,parking,std_festival,std_tourist}/`.
+- **엔진**: 군산각의 시장 '품목별 가게' 블록(present.market_shops, place 템플릿·CSS·챗봇 색인)을 옮김 — 수원 엔진에 없어 market 값이 화면에 안 나왔음. /transport/ 제목·설명·데이터셋 이름이 자료에 있는 교통수단만 말하게 고침(수원은 항공편 0인데 '수원공항'이 적혀 있었음). 오늘의 상태(붐빔·해)·영업 확인·이어서 많이 간 곳·/sun/·/transport/는 이식된 엔진으로 그대로 나옴(해수욕장·섬 항로는 수원 자료 없음).
+- **한국어 문장**: 사실·지정이 바뀐 53곳 요약·FAQ를 `tools/place_text.py --only`로 다시 만듦(지정 문장 '수원시가 모범음식점으로 지정한 곳으로…' 포함, 거절 0). 가이드 숫자 다시 셈: guide-01 21·52곳, guide-03 38곳, guide-05 175·55·44곳.
+- **번역**: 8개 언어마다 91단위(문장 56·값 28·글 3·화면 문구 4) 번역 → fill → apply --merge. `report` 8개 언어 모두 소리 옮김 0·낡은 번역 0·번역 없음 0. `intl.require_complete` 켠 채.
+
+### 뺀 것과 까닭
+- `en_content.py names --offline`을 다시 돌리면 예전에 손으로 고친 외국어 이름(예: 팔달사가 'Paldalmun Gate'로, 수원야외음악당이 다른 시설 이름으로)이 278곳 되돌아가서 names.json은 그대로 둠(새 장소의 외국어 공식 이름은 0건).
+- patch_visitors·patch_hygiene는 수원 묶음에 없음(월별 관광객 파일 없음, 식품안심업소 전국 파일 못 받음).
+
+### 사람 확인 목록(공개 상태는 바꾸지 않음)
+- 인허가 '폐업 확인' 공개 장소 8곳: 100년한우, 바다로간코끼리꼬창, 멘야고코로, 센텀커피, 메모리, 카페아고, 소롯, 본수원갈비(본수원갈비는 별관 인허가만 폐업 — 같은 주소에 '주식회사 본수원' 영업 중이라 오판으로 보임).
+- TourAPI에서 지워진 공개 장소 4곳: 100년한우(2747099), 라이크 노 아더(2893055), 레드브릭커피하우스(2893073), 서린낙지(2893524).
+- 새 draft 숙소 5곳(위), 새 행사 0. 월별 관광객 애매 목록 없음.
+- TourAPI가 바꾼 값 중 확인할 것: 수원시립만석전시관 주소가 '팔달구 정조로 833'(수원시립미술관 본관 주소)으로, 요금이 '무료'로 바뀜 — 같은 응답의 소개문은 '장안구 송죽동 만석공원 안'이라 맞지 않음. 출처 값 그대로 두었으니 시설에 확인 필요.
+- guide-01·02 항목 문장의 화성행궁 야간 개장(10월 30일~11월 1일)은 기간이 지났음(이번 병합 전부터의 문장, check-guide에서 걸림).
+
+### 확인
+- build·validate: sample·preview·production 오류 0. npm test 339개 중 331 통과·실패 0.
+- 캡처 `docs/reference/upgrade_2026-11-05/data_{today,related,license,designation,shops,sun,transport,en}-{390,1440}.png`(배율 2, 외부 사진 막음, 가로 넘침 없음).
+- perf_check(압축 없는 로컬 서버, 외부 사진 막음, pytest가 함께 도는 중): 홈 LCP 4.5초, 화성행궁 3.3초, 연무대 3.2초, 팔달문시장 3.6초, /transport/ 4.5초, CLS 모두 0. 이식 때처럼 압축 없는 측정은 main부터 2.5초를 넘음. 글꼴 341~436KB로 300KB 목표를 main부터 넘음.

@@ -920,3 +920,47 @@ a.mk-a:not([tabindex="-1"]):not(.mk-li)::before { content: ""; position: absolut
   .wk th, .wk td { padding: 12px 0; }
   .vid-places { padding: 4px 0 14px; line-height: 2; }
 }
+
+/* 품목별 가게 (place.html.j2, 2026-10-30 '투박하다'): the block sits on the grey band (tone-2), so the chips and cards are
+   white with a hairline and a soft shadow; each group opens with a bold title and a count pill, the lists it added in a
+   small note box; a card reads name · items · address/phone lines · badges, with 전화 · 지도 as 44px buttons at its foot */
+.shops-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.shops-nav a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 14px; border-radius: 980px; background: var(--bg); box-shadow: inset 0 0 0 1px var(--hair); color: var(--ink); font-size: 14px; font-weight: 700; text-decoration: none; }
+.shops-nav a:hover { background: var(--tint); }
+.shops-nav .tn { color: var(--sea-hi); font-size: 13px; font-weight: 700; }
+.shops-g { margin-top: 32px; scroll-margin-top: 90px; }
+.shops-head { display: grid; gap: 6px; }
+.shops-head.has-ph { grid-template-columns: 1fr; }
+.shops-gh { display: flex; align-items: center; gap: 8px; margin: 0; font: 700 19px/1.3 var(--font); color: var(--ink); letter-spacing: -.02em; }
+.shops-gn { padding: 3px 10px; border-radius: 980px; background: var(--tint); color: var(--sea-deep); font-size: 13px; font-weight: 700; letter-spacing: 0; }
+.shops-ph { margin: 0 0 6px; }
+.shops-ph img { display: block; width: 100%; aspect-ratio: 16 / 7; object-fit: cover; border-radius: var(--r-m, 14px); background: var(--bg-3); }
+.shops-ph figcaption { margin-top: 4px; font-size: 11.5px; color: var(--ink-3); }
+.shops-lics { display: flex; gap: 8px; padding: 9px 12px; border-radius: 12px; background: var(--bg); box-shadow: inset 0 0 0 1px var(--hair); }
+.shops-lics > .icon { width: 16px; height: 16px; margin-top: 2px; color: var(--sea); }
+.shops-lic { margin: 0; font-size: 12.5px; line-height: 1.5; color: var(--ink-2); }
+.shop-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin-top: 14px; padding: 0; list-style: none; }
+.shop-card { display: flex; flex-direction: column; gap: 5px; min-width: 0; padding: 14px 12px 12px; border-radius: 16px; background: var(--bg); box-shadow: inset 0 0 0 1px var(--hair), var(--shadow-1); }
+.sc-name { font: 700 16px/1.35 var(--font); color: var(--ink); letter-spacing: -.02em; word-break: keep-all; overflow-wrap: anywhere; }
+.sc-items { font-size: 13.5px; line-height: 1.4; color: var(--ink-2); overflow-wrap: anywhere; }
+.sc-meta { display: grid; gap: 3px; margin: 2px 0 0; padding: 0; list-style: none; }
+.sc-meta li { display: flex; gap: 4px; font-size: 12.5px; line-height: 1.4; color: var(--ink-3); overflow-wrap: anywhere; }
+.sc-meta .sc-ico { width: 14px; height: 14px; margin-top: 1px; color: var(--sea); }
+.sc-badges { display: flex; flex-wrap: wrap; gap: 4px; margin-top: auto; padding-top: 6px; }
+.sc-badge { padding: 3px 8px; border-radius: 980px; background: var(--tint); color: var(--sea-deep); font-size: 11.5px; font-weight: 700; line-height: 1.35; }
+.sc-badge.is-lic { background: var(--bg-2); color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--hair); }
+.sc-act { display: flex; gap: 6px; margin-top: 4px; }
+.sc-btn { flex: 1 1 0; display: inline-flex; align-items: center; justify-content: center; gap: 4px; min-width: 0; min-height: 44px; border-radius: 12px; background: var(--g0); color: var(--sea-deep); font-size: 13.5px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+.sc-btn:hover { background: var(--g1); }
+.sc-btn .icon { width: 17px; height: 17px; }
+.shops-more summary { display: flex; align-items: center; justify-content: center; min-height: 44px; margin-top: 12px; border-radius: 12px; background: var(--bg); box-shadow: inset 0 0 0 1px var(--hair); font-size: 14px; font-weight: 700; color: var(--sea-hi); cursor: pointer; list-style: none; }
+.shops-more summary::-webkit-details-marker { display: none; }
+.shops-more summary::after { content: "+"; margin-left: 6px; font-weight: 700; }
+.shops-more[open] summary::after { content: "−"; }
+.shops-src { margin-top: 22px; font-size: 12.5px; color: var(--ink-3); }
+.shops-src a { color: inherit; }
+@media (min-width: 768px) {
+  .shops-head.has-ph { grid-template-columns: 300px 1fr; align-items: end; column-gap: 18px; }
+  .shops-head.has-ph .shops-ph { grid-row: span 2; margin: 0; }
+  .shop-cards { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+}

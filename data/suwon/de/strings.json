@@ -2182,5 +2182,21 @@
   "chrome.about_how_2_one": {
     "en": "Every value names its source. Where two sources give different values, the page shows one of them, the value the data lists first (usually the local or the facility's official information or the Korea Tourism Organization's), with its source. A value no source gives is listed once as \"{missing}\".",
     "de": "Jeder Wert nennt seine Quelle. Wo zwei Quellen unterschiedliche Werte nennen, zeigt die Seite einen davon mit seiner Quelle: den Wert, den die Daten zuerst nennen (meist die offizielle Angabe der Region oder der Einrichtung oder die der Koreanischen Tourismusorganisation). Ein Wert, den keine Quelle nennt, wird einmal als „{missing}“ aufgeführt."
+  },
+  "designation:모범음식점(수원시 지정)": {
+    "ko": "모범음식점(수원시 지정)",
+    "de": "Musterrestaurant (ausgezeichnet von der Stadt Suwon)"
+  },
+  "designation:백년가게(중소벤처기업부)": {
+    "ko": "백년가게(중소벤처기업부)",
+    "de": "Jahrhundertgeschäft (Ministerium für KMU und Start-ups)"
+  },
+  "designation_source:경기도 수원시 · 공공데이터포털 모범음식점 현황(2026-06-30)": {
+    "ko": "경기도 수원시 · 공공데이터포털 모범음식점 현황(2026-06-30)",
+    "de": "Stadt Suwon, Provinz Gyeonggi · Portal für öffentliche Daten, Liste der Musterrestaurants (2026-06-30)"
+  },
+  "designation_source:소상공인시장진흥공단 · 공공데이터포털 전국 백년가게 지정리스트 현황 정보(2026-08-20)": {
+    "ko": "소상공인시장진흥공단 · 공공데이터포털 전국 백년가게 지정리스트 현황 정보(2026-08-20)",
+    "de": "Agentur für Kleinunternehmen und Märkte · Portal für öffentliche Daten, landesweite Liste der ausgezeichneten Jahrhundertgeschäfte (2026-08-20)"
   }
 }

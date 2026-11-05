@@ -1,0 +1,1240 @@
+{
+ "service": "SuburbsBusInfo",
+ "operation": "GetStrtpntAlocFndSuberbsBusInfo",
+ "provider": "국토교통부",
+ "dataset": "국토교통부_(TAGO)_시외버스정보",
+ "url": "https://www.data.go.kr/data/15098541/openapi.do",
+ "date": "2026-11-06",
+ "day": "weekday",
+ "fetched_at": "2026-11-05",
+ "pairs": [
+  {
+   "params": {
+    "depTerminalId": "NAI1658501",
+    "arrTerminalId": "NAI1529901",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 0,
+   "items": []
+  },
+  {
+   "params": {
+    "depTerminalId": "NAI1529901",
+    "arrTerminalId": "NAI1658501",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 21,
+   "items": [
+    {
+     "routeId": "NAIRT201605273074364",
+     "depPlaceNm": "안산터미널",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106070000,
+     "arrPlandTime": 20261106074000,
+     "charge": 4500,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201605273074364",
+     "depPlaceNm": "안산터미널",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106072000,
+     "arrPlandTime": 20261106080000,
+     "charge": 4500,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201605273074364",
+     "depPlaceNm": "안산터미널",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106073000,
+     "arrPlandTime": 20261106081000,
+     "charge": 4500,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201605273074364",
+     "depPlaceNm": "안산터미널",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106083000,
+     "arrPlandTime": 20261106091000,
+     "charge": 4500,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201605273074364",
+     "depPlaceNm": "안산터미널",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106091000,
+     "arrPlandTime": 20261106095000,
+     "charge": 4500,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201605273074364",
+     "depPlaceNm": "안산터미널",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106093000,
+     "arrPlandTime": 20261106101000,
+     "charge": 4500,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201605273074364",
+     "depPlaceNm": "안산터미널",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106111000,
+     "arrPlandTime": 20261106115000,
+     "charge": 4500,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201605273074364",
+     "depPlaceNm": "안산터미널",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106112000,
+     "arrPlandTime": 20261106120000,
+     "charge": 4500,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201605273074364",
+     "depPlaceNm": "안산터미널",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106114000,
+     "arrPlandTime": 20261106122000,
+     "charge": 4500,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201605273074364",
+     "depPlaceNm": "안산터미널",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106121000,
+     "arrPlandTime": 20261106125000,
+     "charge": 4500,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201605273074364",
+     "depPlaceNm": "안산터미널",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106121500,
+     "arrPlandTime": 20261106125500,
+     "charge": 4500,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201605273074364",
+     "depPlaceNm": "안산터미널",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106134000,
+     "arrPlandTime": 20261106142000,
+     "charge": 4500,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201605273074364",
+     "depPlaceNm": "안산터미널",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106141000,
+     "arrPlandTime": 20261106145000,
+     "charge": 4500,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201605273074364",
+     "depPlaceNm": "안산터미널",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106143000,
+     "arrPlandTime": 20261106151000,
+     "charge": 4500,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201605273074364",
+     "depPlaceNm": "안산터미널",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106151000,
+     "arrPlandTime": 20261106155000,
+     "charge": 4500,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201605273074364",
+     "depPlaceNm": "안산터미널",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106154000,
+     "arrPlandTime": 20261106162000,
+     "charge": 4500,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201605273074364",
+     "depPlaceNm": "안산터미널",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106155000,
+     "arrPlandTime": 20261106163000,
+     "charge": 4500,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201605273074364",
+     "depPlaceNm": "안산터미널",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106162000,
+     "arrPlandTime": 20261106170000,
+     "charge": 4500,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201605273074364",
+     "depPlaceNm": "안산터미널",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106164000,
+     "arrPlandTime": 20261106172000,
+     "charge": 4500,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201605273074364",
+     "depPlaceNm": "안산터미널",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106170000,
+     "arrPlandTime": 20261106174000,
+     "charge": 4500,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201605273074364",
+     "depPlaceNm": "안산터미널",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106181000,
+     "arrPlandTime": 20261106185000,
+     "charge": 4500,
+     "gradeNm": "우등"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depTerminalId": "NAI1658501",
+    "arrTerminalId": "NAI1737301",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 0,
+   "items": []
+  },
+  {
+   "params": {
+    "depTerminalId": "NAI1737301",
+    "arrTerminalId": "NAI1658501",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 2,
+   "items": [
+    {
+     "routeId": "NAIRT202407198093593",
+     "depPlaceNm": "이천",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106082000,
+     "arrPlandTime": 20261106093000,
+     "charge": 6500,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT202407198093593",
+     "depPlaceNm": "이천",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106200000,
+     "arrPlandTime": 20261106211000,
+     "charge": 6500,
+     "gradeNm": "일반"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depTerminalId": "NAI1658501",
+    "arrTerminalId": "NAI1263101",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 0,
+   "items": []
+  },
+  {
+   "params": {
+    "depTerminalId": "NAI1263101",
+    "arrTerminalId": "NAI1658501",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 4,
+   "items": [
+    {
+     "routeId": "NAIRT202407188093591",
+     "depPlaceNm": "여주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106063000,
+     "arrPlandTime": 20261106080300,
+     "charge": 9600,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT202407188093591",
+     "depPlaceNm": "여주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106100000,
+     "arrPlandTime": 20261106113300,
+     "charge": 9600,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT202407188093591",
+     "depPlaceNm": "여주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106150000,
+     "arrPlandTime": 20261106163300,
+     "charge": 9600,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT202407188093591",
+     "depPlaceNm": "여주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106185000,
+     "arrPlandTime": 20261106202300,
+     "charge": 9600,
+     "gradeNm": "일반"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depTerminalId": "NAI1658501",
+    "arrTerminalId": "NAI2638201",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 0,
+   "items": []
+  },
+  {
+   "params": {
+    "depTerminalId": "NAI2638201",
+    "arrTerminalId": "NAI1658501",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 16,
+   "items": [
+    {
+     "routeId": "NAIRT201611258074681",
+     "depPlaceNm": "원주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106071000,
+     "arrPlandTime": 20261106090300,
+     "charge": 9700,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201611258074681",
+     "depPlaceNm": "원주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106080500,
+     "arrPlandTime": 20261106095800,
+     "charge": 9700,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201611258074681",
+     "depPlaceNm": "원주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106090000,
+     "arrPlandTime": 20261106105300,
+     "charge": 9700,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201611258074681",
+     "depPlaceNm": "원주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106095500,
+     "arrPlandTime": 20261106114800,
+     "charge": 9700,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201611258074681",
+     "depPlaceNm": "원주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106105000,
+     "arrPlandTime": 20261106124300,
+     "charge": 9700,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201611258074681",
+     "depPlaceNm": "원주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106114500,
+     "arrPlandTime": 20261106133800,
+     "charge": 9700,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201611258074681",
+     "depPlaceNm": "원주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106124000,
+     "arrPlandTime": 20261106143300,
+     "charge": 9700,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201611258074681",
+     "depPlaceNm": "원주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106133500,
+     "arrPlandTime": 20261106152800,
+     "charge": 9700,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201611258074681",
+     "depPlaceNm": "원주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106143000,
+     "arrPlandTime": 20261106162300,
+     "charge": 9700,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201611258074681",
+     "depPlaceNm": "원주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106150000,
+     "arrPlandTime": 20261106165300,
+     "charge": 9700,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201611258074681",
+     "depPlaceNm": "원주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106152500,
+     "arrPlandTime": 20261106171800,
+     "charge": 9700,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201611258074681",
+     "depPlaceNm": "원주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106162000,
+     "arrPlandTime": 20261106181300,
+     "charge": 9700,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201611258074681",
+     "depPlaceNm": "원주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106171500,
+     "arrPlandTime": 20261106190800,
+     "charge": 9700,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201611258074681",
+     "depPlaceNm": "원주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106181000,
+     "arrPlandTime": 20261106200300,
+     "charge": 9700,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201611258074681",
+     "depPlaceNm": "원주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106190500,
+     "arrPlandTime": 20261106205800,
+     "charge": 9700,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201611258074681",
+     "depPlaceNm": "원주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106200000,
+     "arrPlandTime": 20261106215300,
+     "charge": 9700,
+     "gradeNm": "일반"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depTerminalId": "NAI1658501",
+    "arrTerminalId": "NAI2482701",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 0,
+   "items": []
+  },
+  {
+   "params": {
+    "depTerminalId": "NAI2482701",
+    "arrTerminalId": "NAI1658501",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 5,
+   "items": [
+    {
+     "routeId": "NAIRT201706108077762",
+     "depPlaceNm": "속초",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106104000,
+     "arrPlandTime": 20261106141000,
+     "charge": 29800,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201806088082754",
+     "depPlaceNm": "속초",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106072500,
+     "arrPlandTime": 20261106105500,
+     "charge": 38500,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201806088082754",
+     "depPlaceNm": "속초",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106160000,
+     "arrPlandTime": 20261106193000,
+     "charge": 38500,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201806088082754",
+     "depPlaceNm": "속초",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106181000,
+     "arrPlandTime": 20261106214000,
+     "charge": 38500,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT202105178091704",
+     "depPlaceNm": "속초",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106131000,
+     "arrPlandTime": 20261106164000,
+     "charge": 29800,
+     "gradeNm": "일반"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depTerminalId": "NAI1658501",
+    "arrTerminalId": "NAI2839701",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 0,
+   "items": []
+  },
+  {
+   "params": {
+    "depTerminalId": "NAI2839701",
+    "arrTerminalId": "NAI1658501",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 24,
+   "items": [
+    {
+     "routeId": "NAIRT201605233073510",
+     "depPlaceNm": "청주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106071600,
+     "arrPlandTime": 20261106084600,
+     "charge": 9800,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201605233073510",
+     "depPlaceNm": "청주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106080400,
+     "arrPlandTime": 20261106093400,
+     "charge": 9800,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201605233073510",
+     "depPlaceNm": "청주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106091600,
+     "arrPlandTime": 20261106104600,
+     "charge": 9800,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201605233073510",
+     "depPlaceNm": "청주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106102800,
+     "arrPlandTime": 20261106115800,
+     "charge": 9800,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201605233073510",
+     "depPlaceNm": "청주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106114000,
+     "arrPlandTime": 20261106131000,
+     "charge": 9800,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201605233073510",
+     "depPlaceNm": "청주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106131600,
+     "arrPlandTime": 20261106144600,
+     "charge": 9800,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201605233073510",
+     "depPlaceNm": "청주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106135200,
+     "arrPlandTime": 20261106152200,
+     "charge": 9800,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201605233073510",
+     "depPlaceNm": "청주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106141600,
+     "arrPlandTime": 20261106154600,
+     "charge": 9800,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201605233073510",
+     "depPlaceNm": "청주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106150400,
+     "arrPlandTime": 20261106163400,
+     "charge": 9800,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201605233073510",
+     "depPlaceNm": "청주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106162800,
+     "arrPlandTime": 20261106175800,
+     "charge": 9800,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201605233073510",
+     "depPlaceNm": "청주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106170400,
+     "arrPlandTime": 20261106183400,
+     "charge": 9800,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201605233073510",
+     "depPlaceNm": "청주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106182800,
+     "arrPlandTime": 20261106195800,
+     "charge": 9800,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201605233073510",
+     "depPlaceNm": "청주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106191600,
+     "arrPlandTime": 20261106204600,
+     "charge": 9800,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201607133076820",
+     "depPlaceNm": "청주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106100400,
+     "arrPlandTime": 20261106113400,
+     "charge": 12700,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201607133076820",
+     "depPlaceNm": "청주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106111600,
+     "arrPlandTime": 20261106124600,
+     "charge": 12700,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201607133076820",
+     "depPlaceNm": "청주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106165200,
+     "arrPlandTime": 20261106182200,
+     "charge": 12700,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT202207048092373",
+     "depPlaceNm": "청주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106070400,
+     "arrPlandTime": 20261106082900,
+     "charge": 12700,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT202207048092373",
+     "depPlaceNm": "청주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106112800,
+     "arrPlandTime": 20261106125300,
+     "charge": 12700,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT202207048092373",
+     "depPlaceNm": "청주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106122800,
+     "arrPlandTime": 20261106135300,
+     "charge": 12700,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT202207048092373",
+     "depPlaceNm": "청주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106160400,
+     "arrPlandTime": 20261106172900,
+     "charge": 12700,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT202207048092373",
+     "depPlaceNm": "청주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106180400,
+     "arrPlandTime": 20261106192900,
+     "charge": 12700,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT202207048092373",
+     "depPlaceNm": "청주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106085200,
+     "arrPlandTime": 20261106101700,
+     "charge": 12700,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT202207048092373",
+     "depPlaceNm": "청주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106134000,
+     "arrPlandTime": 20261106150500,
+     "charge": 12700,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT202207048092373",
+     "depPlaceNm": "청주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106190400,
+     "arrPlandTime": 20261106202900,
+     "charge": 12700,
+     "gradeNm": "우등"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depTerminalId": "NAI1658501",
+    "arrTerminalId": "NAI2736001",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 0,
+   "items": []
+  },
+  {
+   "params": {
+    "depTerminalId": "NAI2736001",
+    "arrTerminalId": "NAI1658501",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 12,
+   "items": [
+    {
+     "routeId": "NAIRT201611018074484",
+     "depPlaceNm": "충주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106090000,
+     "arrPlandTime": 20261106104000,
+     "charge": 10600,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201611018074485",
+     "depPlaceNm": "충주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106065000,
+     "arrPlandTime": 20261106081000,
+     "charge": 13700,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201611018074485",
+     "depPlaceNm": "충주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106113000,
+     "arrPlandTime": 20261106125000,
+     "charge": 13700,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201611018074485",
+     "depPlaceNm": "충주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106150000,
+     "arrPlandTime": 20261106162000,
+     "charge": 10600,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201611018074485",
+     "depPlaceNm": "충주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106183000,
+     "arrPlandTime": 20261106195000,
+     "charge": 13700,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201611018074485",
+     "depPlaceNm": "충주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106203000,
+     "arrPlandTime": 20261106215000,
+     "charge": 10600,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201611018074485",
+     "depPlaceNm": "충주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106080000,
+     "arrPlandTime": 20261106092000,
+     "charge": 13700,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT202103118091565",
+     "depPlaceNm": "충주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106133000,
+     "arrPlandTime": 20261106155000,
+     "charge": 13700,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT202205108092244",
+     "depPlaceNm": "충주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106100000,
+     "arrPlandTime": 20261106121000,
+     "charge": 10600,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT202205108092244",
+     "depPlaceNm": "충주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106170000,
+     "arrPlandTime": 20261106191000,
+     "charge": 10600,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT202410048093788",
+     "depPlaceNm": "충주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106161000,
+     "arrPlandTime": 20261106173500,
+     "charge": 13700,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT202410048093788",
+     "depPlaceNm": "충주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106104000,
+     "arrPlandTime": 20261106120500,
+     "charge": 13700,
+     "gradeNm": "우등"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depTerminalId": "NAI1658501",
+    "arrTerminalId": "NAI3112001",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 0,
+   "items": []
+  },
+  {
+   "params": {
+    "depTerminalId": "NAI3112001",
+    "arrTerminalId": "NAI1658501",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 8,
+   "items": [
+    {
+     "routeId": "NAIRT202502058094380",
+     "depPlaceNm": "천안",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106083000,
+     "arrPlandTime": 20261106093000,
+     "charge": 6600,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT202502058094380",
+     "depPlaceNm": "천안",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106103000,
+     "arrPlandTime": 20261106113000,
+     "charge": 6600,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT202502058094380",
+     "depPlaceNm": "천안",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106124000,
+     "arrPlandTime": 20261106134000,
+     "charge": 6600,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT202502058094380",
+     "depPlaceNm": "천안",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106170000,
+     "arrPlandTime": 20261106180000,
+     "charge": 6600,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT202502058094380",
+     "depPlaceNm": "천안",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106213000,
+     "arrPlandTime": 20261106223000,
+     "charge": 6600,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT202502058094380",
+     "depPlaceNm": "천안",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106062000,
+     "arrPlandTime": 20261106072000,
+     "charge": 6600,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT202502058094380",
+     "depPlaceNm": "천안",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106145000,
+     "arrPlandTime": 20261106155000,
+     "charge": 6600,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT202502058094380",
+     "depPlaceNm": "천안",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106191000,
+     "arrPlandTime": 20261106201000,
+     "charge": 6600,
+     "gradeNm": "일반"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depTerminalId": "NAI1658501",
+    "arrTerminalId": "NAI3258501",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 0,
+   "items": []
+  },
+  {
+   "params": {
+    "depTerminalId": "NAI3258501",
+    "arrTerminalId": "NAI1658501",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 1,
+   "items": [
+    {
+     "routeId": "NAIRT202001148090829",
+     "depPlaceNm": "공주",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106070000,
+     "arrPlandTime": 20261106095000,
+     "charge": 16700,
+     "gradeNm": "우등"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depTerminalId": "NAI1658501",
+    "arrTerminalId": "NAI3455101",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 0,
+   "items": []
+  },
+  {
+   "params": {
+    "depTerminalId": "NAI3455101",
+    "arrTerminalId": "NAI1658501",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 7,
+   "items": [
+    {
+     "routeId": "NAIRT201603283068446",
+     "depPlaceNm": "대전복합",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106073000,
+     "arrPlandTime": 20261106092200,
+     "charge": 15500,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201603283068446",
+     "depPlaceNm": "대전복합",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106170000,
+     "arrPlandTime": 20261106185200,
+     "charge": 15500,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201603283068446",
+     "depPlaceNm": "대전복합",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106091000,
+     "arrPlandTime": 20261106110200,
+     "charge": 15500,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201603283068446",
+     "depPlaceNm": "대전복합",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106114000,
+     "arrPlandTime": 20261106133200,
+     "charge": 15500,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201603283068446",
+     "depPlaceNm": "대전복합",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106134000,
+     "arrPlandTime": 20261106153200,
+     "charge": 15500,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201603283068446",
+     "depPlaceNm": "대전복합",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106151000,
+     "arrPlandTime": 20261106170200,
+     "charge": 15500,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT201603283068446",
+     "depPlaceNm": "대전복합",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106191000,
+     "arrPlandTime": 20261106210200,
+     "charge": 15500,
+     "gradeNm": "우등"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depTerminalId": "NAI1658501",
+    "arrTerminalId": "NAI3417501",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 0,
+   "items": []
+  },
+  {
+   "params": {
+    "depTerminalId": "NAI3417501",
+    "arrTerminalId": "NAI1658501",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 6,
+   "items": [
+    {
+     "routeId": "NAIRT202308078093005",
+     "depPlaceNm": "유성복합",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106063000,
+     "arrPlandTime": 20261106082500,
+     "charge": 17600,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT202308078093005",
+     "depPlaceNm": "유성복합",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106083000,
+     "arrPlandTime": 20261106102500,
+     "charge": 17600,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT202308078093005",
+     "depPlaceNm": "유성복합",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106100000,
+     "arrPlandTime": 20261106115500,
+     "charge": 17600,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT202308078093005",
+     "depPlaceNm": "유성복합",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106130000,
+     "arrPlandTime": 20261106145500,
+     "charge": 17600,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT202308078093005",
+     "depPlaceNm": "유성복합",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106160000,
+     "arrPlandTime": 20261106175500,
+     "charge": 17600,
+     "gradeNm": "우등"
+    },
+    {
+     "routeId": "NAIRT202308078093005",
+     "depPlaceNm": "유성복합",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106181000,
+     "arrPlandTime": 20261106200500,
+     "charge": 17600,
+     "gradeNm": "우등"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depTerminalId": "NAI1658501",
+    "arrTerminalId": "NAI1640501",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 0,
+   "items": []
+  },
+  {
+   "params": {
+    "depTerminalId": "NAI1640501",
+    "arrTerminalId": "NAI1658501",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 2,
+   "items": [
+    {
+     "routeId": "NAIRT201605243073751",
+     "depPlaceNm": "서수원",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106235900,
+     "arrPlandTime": 20261107001900,
+     "charge": 1900,
+     "gradeNm": "일반"
+    },
+    {
+     "routeId": "NAIRT201607143076833",
+     "depPlaceNm": "서수원",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106235900,
+     "arrPlandTime": 20261107001900,
+     "charge": 1900,
+     "gradeNm": "일반"
+    }
+   ]
+  },
+  {
+   "params": {
+    "depTerminalId": "NAI1658501",
+    "arrTerminalId": "NAI1813701",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 0,
+   "items": []
+  },
+  {
+   "params": {
+    "depTerminalId": "NAI1813701",
+    "arrTerminalId": "NAI1658501",
+    "depPlandTime": "20261106"
+   },
+   "totalCount": 1,
+   "items": [
+    {
+     "routeId": "NAIRT201712048079820",
+     "depPlaceNm": "오산",
+     "arrPlaceNm": "수원터미널",
+     "depPlandTime": 20261106235900,
+     "arrPlandTime": 20261107002900,
+     "charge": 2200,
+     "gradeNm": "일반"
+    }
+   ]
+  }
+ ]
+}

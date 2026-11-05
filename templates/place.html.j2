@@ -32,6 +32,7 @@
 {% block lnav %}
 {% set links = [('정보', '#h-facts')] %}
 {% if p.photos|length > 1 or p.hero_k3 %}{% set _ = links.append(('사진', '#h-photos')) %}{% endif %}
+{% if p.shops %}{% set _ = links.append(('가게', '#h-shops')) %}{% endif %}
 {% set _ = links.append(('지도', '#h-map' if p.points else '#h-dir')) %}
 {% if has_near %}{% set _ = links.append(('주변', '#h-near')) %}{% endif %}
 {% if p.details %}{% set _ = links.append(('자세히', '#h-details')) %}{% endif %}
@@ -142,6 +143,37 @@
       <section class="block" aria-labelledby="h-fit" data-block="facts">
         <h2 id="h-fit" class="h-sec"><span class="nm">{{ nm }}</span> 이용 편의</h2>
         <dl class="facts facts-more">{% for r in p.fit %}{{ p1.factrow(r, fn, p.e.id) }}{% endfor %}</dl>
+      </section>
+      {% endif %}
+
+      {% if p.shops %}
+      {#- a market's shops by item group (present.market_shops), as cards (2026-10-30 '카드로, 사진도'): a jump row of the
+          groups; per group a head with a 공공누리 photo of that kind of stall when one of the market's photos shows it
+          (tools/market_data_gunsan.SHOP_PHOTOS — never a photo of a listed shop) and the count, then one card per shop —
+          name, the 온누리 list's 취급품목 as written, the address (상가정보 match or the licence row), the lists it is on
+          (badges) and a 카카오맵 link at that point; the first 12 cards, the rest behind '더 보기'. The list has no hours,
+          and a shop that takes no 온누리상품권 is not on it — the note says so -#}
+      {#- a shop card (2026-10-30 '투박하다'): name, the list's items, address and phone lines, the lists it is on as badges,
+          then 전화 · 지도 as two 44px buttons along the bottom -#}
+      {% macro shop_card(c) -%}
+      <li class="shop-card"><p class="sc-name">{{ c.name }}</p>{% if c['items'] %}<p class="sc-items">{{ c['items'] }}</p>{% endif %}{% if c.addr or c.tel %}<ul class="sc-meta">{% if c.addr %}<li class="sc-addr">{{ ui.icon('pin', 'icon sc-ico') }}<span>{{ c.addr }}</span></li>{% endif %}{% if c.tel %}<li class="sc-telno tn">{{ ui.icon('phone', 'icon sc-ico') }}<span>{{ c.tel[0] }}</span></li>{% endif %}</ul>{% endif %}<p class="sc-badges">{% for b in c.badges %}<span class="sc-badge{{ ' is-lic' if b != '온누리 가맹' }}">{{ b }}</span>{% endfor %}</p>{% if c.tel or c.map %}<p class="sc-act">{% if c.tel %}<a class="sc-btn sc-tel" href="tel:{{ c.tel[1] }}" data-track="tel_click" aria-label="{{ c.name }} 전화 {{ c.tel[0] }}">{{ ui.icon('phone') }}전화</a>{% endif %}{% if c.map %}<a class="sc-btn sc-map" href="{{ c.map }}" target="_blank" rel="noopener" data-track="map_click" data-provider="kakao" aria-label="{{ c.name }} 카카오맵에서 보기">{{ ui.icon('map') }}지도</a>{% endif %}</p>{% endif %}</li>
+      {%- endmacro %}
+      <section class="block shops" aria-labelledby="h-shops" data-block="shops">
+        <h2 id="h-shops" class="h-sec"><span class="nm">{{ nm }}</span> 품목별 가게 <span class="tn">{{ p.shops.n }}곳</span></h2>
+        <p class="shops-note">온누리상품권 가맹점 명부에 소속 시장이 이곳으로 적힌 가게를 취급품목으로 묶었습니다. 카드의 품목은 명부에 적힌 그대로이고{% if p.shops.with_addr %}, 주소는 상가(상권)정보에서 이름이 같은 점포가 시장에서 {{ p.shops.match_m }}m 안에 한 곳뿐일 때만 붙였습니다{% endif %}. 영업시간은 두 자료 모두에 없습니다{% if p.shops.groups|selectattr('licensed')|list %}. 인허가 정보와 상가정보에서 더한 가게는 한 시장에만 실었습니다(명부에 같은 이름이 있으면 명부의 시장, 없으면 가장 가까운 시장). 전화번호는 인허가 정보에 적힌 그대로입니다{% endif %}{% if p.shops.stalls %}. 노점 {{ p.shops.stalls }}곳은 이름 없이 수만 셉니다{% endif %}.</p>
+        <nav class="shops-nav" aria-label="품목 바로가기">{% for g in p.shops.groups %}<a href="#shops-{{ g.key }}">{{ g.label }} <span class="tn">{{ g.n_cards }}</span></a>{% endfor %}</nav>
+        {% for g in p.shops.groups %}
+        <div class="shops-g" id="shops-{{ g.key }}" data-group="{{ g.key }}">
+          <div class="shops-head{{ ' has-ph' if g.photo }}">
+            {% if g.photo %}<figure class="shops-ph"><img src="{{ g.photo.url }}" alt="{{ g.photo.alt }}" loading="lazy" decoding="async"><figcaption>사진: {{ g.photo.credit }} · {{ g.photo.license|license_label }}</figcaption></figure>{% endif %}
+            <h3 class="shops-gh">{{ g.label }} <span class="shops-gn tn">{{ g.n_cards }}곳</span></h3>
+            {% if g.licensed %}<div class="shops-lics">{{ ui.icon('info', 'icon') }}<div>{% for lc in g.licensed %}<p class="shops-lic">{{ lc.note }}</p>{% endfor %}</div></div>{% endif %}
+          </div>
+          <ul class="shop-cards">{% for c in g.cards %}{{ shop_card(c) }}{% endfor %}</ul>
+          {% if g.more %}<details class="shops-more"><summary>{{ g.more|length }}곳 더 보기</summary><ul class="shop-cards">{% for c in g.more %}{{ shop_card(c) }}{% endfor %}</ul></details>{% endif %}
+        </div>
+        {% endfor %}
+        <p class="shops-src">출처: {% if p.shops.source.url %}<a href="{{ p.shops.source.url }}" rel="noopener">{{ p.shops.source.name }}</a>{% else %}{{ p.shops.source.name }}{% endif %}{% if p.shops.addr_source %} · 주소: <a href="{{ p.shops.addr_source.url }}" rel="noopener">{{ p.shops.addr_source.name }}</a>{% endif %}{% set lic_src = [] %}{% for g in p.shops.groups %}{% for lc in g.licensed %}{% if lc.mode != 'store' and lc.source.url not in lic_src %}{% set _ = lic_src.append(lc.source.url) %} · 인허가: <a href="{{ lc.source.url }}" rel="noopener">{{ lc.source.name }}</a>{% endif %}{% endfor %}{% endfor %}</p>
       </section>
       {% endif %}
 
