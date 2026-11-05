@@ -10,6 +10,7 @@
    whole — scaled down only — and nothing is laid on it. Touch targets ≥ 44px; the stubs' and tiles' text keeps
    4.5:1 (white on sea-deep / ink / red, ink on chick / tint). The highlighter under a heading stays out (owner
    2026-10-09). */
+/* sheet:home — the Korean home only (/assets/page-home.css, pipeline/build.PAGE_SHEETS) */
 
 /* ---------------------------------------------------------------- words on a KOGL-1 photo */
 .mzt-photo .mzt-n, .mzt-photo .mzt-cr, .fp-cr, .fp-cap,
@@ -207,3 +208,4 @@ html:not(.js) .gtab-bar, html:not(.js) .gtab-l { display: none; }
 .hsns-note { margin-top: 14px; }
 
 @media (prefers-reduced-motion: reduce) { .mzt-ph img { transition: none; } .mzt:hover .mzt-ph img { transform: none; } }
+/* sheet:home end */

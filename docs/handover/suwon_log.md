@@ -84,3 +84,34 @@
 - pytest 전체: 남은 실패는 main부터 있던 3건(test_audit_engine 1, test_ask_browser 런처 대화 2). 이번 데이터로 처음 돌거나 깨진 시험은 고침 — test_sun_transport_pages(자료가 없어 건너뛰던 시험이 군산 값을 기대하던 것 → 수원 자료 값으로, 두 날 요약이 같고 시각이 다른 목록 경우 추가, 항공편 없는 제목 시험 추가), test_chat_index(근처 주차장 문장은 화면에 있는 곳에만 / 다른 이름이 붙은 카탈로그 줄), test_sidebar_layout(시간표 두 링크, 패널이 길어져 스크롤된 뒤의 탭 순서를 패널 안 위치로 잼). 병합 도구가 공식 페이지 주소(fact_sources.confirmed_urls) 33칸을 지운 것을 되살림(test_official_pages).
 - 캡처 `docs/reference/upgrade_2026-11-05/data_{today,related,license,designation,shops,sun,transport,en}-{390,1440}.png`(배율 2, 외부 사진 막음, 가로 넘침 없음).
 - perf_check(압축 없는 로컬 서버, 외부 사진 막음, pytest가 함께 도는 중): 홈 LCP 4.5초, 화성행궁 3.3초, 연무대 3.2초, 팔달문시장 3.6초, /transport/ 4.5초, CLS 모두 0. 이식 때처럼 압축 없는 측정은 main부터 2.5초를 넘음. 글꼴 341~436KB로 300KB 목표를 main부터 넘음.
+
+## 2026-11-05 모바일 속도 작업(운영자 '속도 작업도 병합 끝나는 대로 바로 시작해', 작업 브랜치 claude/trusting-shannon-ec29su — 배포 안 함)
+측정: `tools/perf_check.py --compress --motion on`(느린 4G 1.6Mbps·지연 150ms, CPU 4배 감속, 390px, 모션 켬, Vercel처럼 글 파일 gzip). 공개(production) 빌드, 페이지마다 3번 잰 가운데값.
+
+### 바꾼 것
+- **perf_check `--compress`**: 글 파일(HTML·CSS·JS·JSON·SVG·XML·txt)을 gzip으로 보내는 로컬 서버(woff2·사진은 그대로). `--motion on|off|both`. 끝 코드에 CLS 0.1·첫 방문 글꼴 300KB 기준도 더함. 홈 첫 소식 그림 기준은 그림이 첫 화면에 있을 때만 셈 — 수원 홈의 첫 소식은 첫 화면 아래의 lazy 3D 아이콘이라 LCP가 될 수 없음(첫 화면에 있으면 전처럼 2.5초 안에 불러와야 함).
+- **글꼴**: `tools/font_subset.py`로 Pretendard 400·700 조각을 이번 공개·미리보기 빌드 글자로 다시 만듦(사이트 글자 3,385자, 핵심 조각 867자 약 70KB, 굵기마다 49조각). 병합 뒤 새 글자가 일반 조각(300자)으로 받아지던 것이 원인이었음 — /places/ 729KB, /map/ 700KB.
+- **첫 화면을 막는 CSS**: 파셜 안 `/* sheet:<이름> */ … /* sheet:<이름> end */` 구간을 공유 style.css에서 빼고 따로 씀(`pipeline/build.PAGE_SHEETS`): `page-times.css`(/sun/·/transport/, 78-timetables — 장소 페이지의 /sun/ 링크 규칙만 공유에 남김), `page-home.css`(한국어 홈 MZ 묶음, 81-home-mz), `page-partners.css`(/partners/·/partners/contact/, 83-partners — 패널·메뉴의 '문의/제휴' 줄은 공유), `wide.css`(80-side의 1200px 이상 패널 규칙과 패널 날씨 카드, `media="(min-width: 1200px)"`로 걸어 휴대폰은 기다리지 않음). style.css 322KB(gzip 64KB) → 287KB(gzip 58KB). 46-home-open은 87-design-a와 같은 요소를 겹쳐 꾸며 순서가 바뀌면 화면이 달라질 수 있어 옮기지 않음. validate의 'CSS 배경 AI 그림' 검사는 새 시트도 봄.
+- **이미지**: 홈 대표 장소 카드의 마스코트 아이콘(69개, 첫 화면 아래)에 `loading="lazy"`(`_mascot.html.j2` pic의 lazy). 홈 LCP는 그대로 미리 받는 방화수류정 표지 AVIF(제1유형 파생, `IMG.ha-bg-img`).
+
+### 결과(전 → 뒤, LCP 가운데값 · CLS · 첫 방문 글꼴)
+| 페이지 | LCP | CLS | 글꼴 |
+|---|---|---|---|
+| / | 1.07 → 1.04초 | 0 → 0 | 304 → 201KB |
+| /places/hwaseonghaenggung/ | 1.21 → 1.08초 | 0 → 0 | 383 → 179KB |
+| /food/ | 1.45 → 1.44초 | 0 → 0 | 358 → 187KB |
+| /places/ | 1.24 → 1.17초 | 0 → 0 | 729 → 187KB |
+| /partners/ | 1.07 → 0.92초 | 0 → 0 | 388 → 193KB |
+| /map/ | 1.29 → 1.26초 | 0 → 0 | 700 → 154KB |
+| /sun/ | 1.04 → 0.99초 | 0 → 0 | 341 → 198KB |
+| /transport/ | 1.00 → 0.95초 | 0 → 0 | 341 → 206KB |
+1440px 글꼴(패널 글자까지): 138~234KB.
+
+### 화면 확인
+- 전·후 캡처 비교(모션 줄임, 지도·분석 막음): 위 8페이지 + 영어 홈·/plan/·문의·행사·가이드·영어 장소를 390·1100·1280·1440·1700px 전체 페이지로 비교해 픽셀이 같음. 러시아어·독일어·프랑스어·스페인어 페이지는 키릴·악센트 글자가 이제 한 조각에 들어 원본 글꼴의 자간(커닝)이 적용돼 글자 위치가 1px 안쪽으로 달라짐(같은 글자·같은 줄바꿈·같은 페이지 높이). 일본어·중국어 홈은 같음.
+- 남긴 캡처: `docs/reference/upgrade_2026-11-05/perf_{home,place,food,places,partners,map,sun,transport}_{390,1440}.png`(첫 화면, 배율 2, 한국관광공사 사진 서버만 열고 지도·분석은 막음).
+
+### 확인
+- build·validate: sample·preview·production 오류 0. `intl_table.py report` 8개 언어 소리 옮김·낡은 번역·번역 없음 0. npm test 339개 중 331 통과·실패 0.
+- pytest 전체: 실패 4건 중 3건은 바꾸기 전 커밋(94b8c987b)에서도 똑같이 실패(test_audit_engine 1, test_ask_browser 런처 대화 2 — 앞 기록과 같음), test_list_conditions 브라우저 1건은 전체 실행 부하 중 view transition 경고로 실패하고 따로 돌리면 통과(앞 기록의 가끔 실패하는 시험).
+- `public/`은 다시 만들지 않음(이 브랜치는 배포하지 않음, 병합 뒤 공개 빌드에서 반영).

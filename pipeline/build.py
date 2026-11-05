@@ -249,14 +249,18 @@ def css_source() -> str:
     return "\n".join(f.read_text("utf-8") for f in sorted(CSS_DIR.glob("*.css")))
 
 
-def site_css(art_slots: bool = False) -> str:
-    """/assets/style.css: the partials in one request, comments stripped and whitespace collapsed (spaces after
-    commas and inside values are kept, so font stacks and calc() stay as written). The stylesheet blocks the first
-    paint and shares the line with the HTML, so every byte shows in the first paint on a slow line (2026-10-09:
-    5 KB less = the stylesheet in ~80 ms earlier on the guide hub, tools/perf_check conditions): the space after a
-    declaration's colon and the line break after a selector list's comma go too. art_slots: keep the AI art slot
-    rules (ART_SLOT_CSS) — True when a built page shows one of those pictures."""
-    css = css_source() if art_slots else ART_SLOT_CSS.sub("", css_source())
+# Page sheets (the mobile speed work, 2026-11-05): a region of a partial between '/* sheet:<name> …*/' and
+# '/* sheet:<name> end */' is left out of /assets/style.css and written to its own file, linked only where it is used —
+# so the stylesheet every page waits for before its first paint carries no other page's rules. 'wide' is linked on
+# every page with media="(min-width: 1200px)" (the panel, its weather card): a phone does not wait for it.
+SHEET_RX = re.compile(r"/\* sheet:([a-z][a-z-]*)\b.*?\*/(.*?)/\* sheet:\1 end \*/", re.S)
+PAGE_SHEETS = {"home": "page-home.css", "times": "page-times.css", "partners": "page-partners.css", "wide": "wide.css"}
+
+
+def minify_css(css: str) -> str:
+    """Comments stripped and whitespace collapsed (spaces after commas and inside values are kept, so font stacks and
+    calc() stay as written). The space after a declaration's colon and the line break after a selector list's comma
+    go too."""
     css = re.sub(r"/\*.*?\*/", "", css, flags=re.S)
     css = re.sub(r"\s*\n\s*", "\n", css)
     css = re.sub(r"[ \t]{2,}", " ", css)
@@ -264,6 +268,24 @@ def site_css(art_slots: bool = False) -> str:
     css = re.sub(r"([{;])(-*[A-Za-z][\w-]*):\s+", r"\1\2:", css)   # 'color: x' -> 'color:x' (a declaration's name)
     css = css.replace(",\n", ",")
     return css.strip() + "\n"
+
+
+def site_css(art_slots: bool = False) -> str:
+    """/assets/style.css: the partials in one request, minified (minify_css), without the page sheets' regions
+    (SHEET_RX). The stylesheet blocks the first paint and shares the line with the HTML, so every byte shows in the
+    first paint on a slow line (2026-10-09: 5 KB less = the stylesheet in ~80 ms earlier on the guide hub,
+    tools/perf_check conditions). art_slots: keep the AI art slot rules (ART_SLOT_CSS) — True when a built page shows
+    one of those pictures."""
+    css = css_source() if art_slots else ART_SLOT_CSS.sub("", css_source())
+    unknown = {m.group(1) for m in SHEET_RX.finditer(css)} - set(PAGE_SHEETS)
+    if unknown:
+        raise ValueError(f"css sheet markers without a PAGE_SHEETS file: {sorted(unknown)}")
+    return minify_css(SHEET_RX.sub("", css))
+
+
+def page_css(name: str) -> str:
+    """/assets/<PAGE_SHEETS[name]>: the regions of the partials marked 'sheet:<name>', in file-name order, minified."""
+    return minify_css("\n".join(m.group(2) for m in SHEET_RX.finditer(css_source()) if m.group(1) == name))
 
 
 SLUG_NAME_KEYS = {"place": "name", "course": "name", "guide": "title"}
@@ -2184,7 +2206,8 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
             print(f"오류: {x}", file=sys.stderr)
         raise SystemExit(f"외국어 판 번역이 모자라 빌드를 멈춥니다({len(incomplete)}건, site.json intl.require_complete)")
 
-    # assets: the partials in templates/assets/css become one /assets/style.css (see site_css); the folder itself
+    # assets: the partials in templates/assets/css become /assets/style.css (see site_css) and the page sheets
+    # (PAGE_SHEETS: wide.css, page-home.css, page-times.css, page-partners.css); the folder itself
     # is not published. AI art renditions (templates/assets/art, pipeline/art.py) go out only when a page uses them.
     shutil.copytree(TEMPLATES / "assets", out / "assets", ignore=shutil.ignore_patterns("css", "art"))
     art.copy_used(out)
@@ -2194,6 +2217,8 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
         if (brand / src).exists():
             shutil.copyfile(brand / src, out / dst)
     (out / "assets" / "style.css").write_text(site_css(art.slot_css_needed(out)), "utf-8")
+    for name, file in PAGE_SHEETS.items():
+        (out / "assets" / file).write_text(page_css(name), "utf-8")
     (out / "robots.txt").write_text(robots_txt(S), "utf-8")
     (out / "sitemap.xml").write_text(sitemap_xml(S), "utf-8")
     (out / "rss.xml").write_text(rss_xml(S), "utf-8")

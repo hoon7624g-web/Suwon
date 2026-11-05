@@ -157,25 +157,6 @@ html.js .wx-home.wx-intl { height: 294px; }
 @media (min-width: 761px) {   /* wider: the cells beside the orb's column are still one row under it, centred */
   .wx-home .wx-b { max-width: 520px; margin: 0 auto; width: 100%; }
 }
-/* the panel's card (small) */
-.wx-side .wx-sky { height: 92px; }
-.wx-side .wx-orb { width: 80px; height: 80px; margin-left: -40px; top: 4px; }
-.wx-side .wx-sl { font-size: 9.5px; }
-.wx-side .wx-sc { font-size: 32px; }
-.wx-side .wx-cloud { height: 20px; width: 52px; }
-.wx-side .wx-c1 { top: 26px; left: 0; }
-.wx-side .wx-c2 { top: 62px; left: 66%; width: 58px; height: 22px; }
-.wx-side .wx-c3 { top: 18px; left: 76%; width: 42px; height: 18px; }
-.wx-side .wx-bub { margin-top: 2px; font-size: 18px; }
-.wx-side .wx-sum { font-size: 12.5px; }
-.wx-side .wx-st { margin-top: 3px; gap: 0 4px; font-size: 11.5px; }
-.wx-side .wx-cells { margin-top: 8px; gap: 2px; padding: 2px; border-radius: 14px; }
-.wx-side .wx-cells li { padding: 4px 0; border-radius: 11px; }
-.wx-side .wx-cn { font-size: 11px; }
-.wx-side .wx-i { width: 18px; height: 18px; margin: 1px 0; }
-.wx-side .wx-ct { font-size: 13px; }
-html.js .wx-side.wx-ko { height: 282px; }
-html.js .wx-side.wx-intl { height: 218px; }
 @media (max-width: 760px) {   /* a 44px target for the link while the card is the plain one */
   html.js .wx-home { padding-bottom: 56px; }
   html.js .wx-home .wx-go { bottom: 6px; height: 44px; line-height: 44px; }
@@ -201,6 +182,29 @@ html.js .wx-side.wx-intl { height: 218px; }
   .menu-panel { padding-left: max(var(--m), calc((100vw - 760px) / 2)); padding-right: max(var(--m), calc((100vw - 760px) / 2)); }
 }
 
+/* sheet:wide — from here to 'sheet:wide end' only windows from 1200px use these rules: they go to /assets/wide.css,
+   linked with media="(min-width: 1200px)" so a phone never waits for them (pipeline/build.PAGE_SHEETS) */
+/* the panel's card (small) — shown only in the panel (from 1200px) */
+@media (min-width: 1200px) {
+  .wx-side .wx-sky { height: 92px; }
+  .wx-side .wx-orb { width: 80px; height: 80px; margin-left: -40px; top: 4px; }
+  .wx-side .wx-sl { font-size: 9.5px; }
+  .wx-side .wx-sc { font-size: 32px; }
+  .wx-side .wx-cloud { height: 20px; width: 52px; }
+  .wx-side .wx-c1 { top: 26px; left: 0; }
+  .wx-side .wx-c2 { top: 62px; left: 66%; width: 58px; height: 22px; }
+  .wx-side .wx-c3 { top: 18px; left: 76%; width: 42px; height: 18px; }
+  .wx-side .wx-bub { margin-top: 2px; font-size: 18px; }
+  .wx-side .wx-sum { font-size: 12.5px; }
+  .wx-side .wx-st { margin-top: 3px; gap: 0 4px; font-size: 11.5px; }
+  .wx-side .wx-cells { margin-top: 8px; gap: 2px; padding: 2px; border-radius: 14px; }
+  .wx-side .wx-cells li { padding: 4px 0; border-radius: 11px; }
+  .wx-side .wx-cn { font-size: 11px; }
+  .wx-side .wx-i { width: 18px; height: 18px; margin: 1px 0; }
+  .wx-side .wx-ct { font-size: 13px; }
+  html.js .wx-side.wx-ko { height: 282px; }
+  html.js .wx-side.wx-intl { height: 218px; }
+}
 /* ---------------------------------------------------------------- from 1200px: the panel and the column */
 @media (min-width: 1200px) {
   :root { --bar: 0px; --mh: 0px; --mh-s: 0px; --cw: calc(100vw - var(--side-x)); --m: clamp(24px, calc(var(--cw) * .046), 64px); }
@@ -270,6 +274,7 @@ html.js .wx-side.wx-intl { height: 218px; }
   .mast, .has-lnav .mast { gap: 12px; padding-top: 16px; }
   .sg-s { min-height: 46px; }
 }
+/* sheet:wide end */
 @media print {
   body { padding-left: 0 !important; }
   .side, .menu { display: none !important; }

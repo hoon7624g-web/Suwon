@@ -1876,9 +1876,11 @@ def validate(data_dir: Path, out: Path, mode: str = "production") -> tuple[list[
     for problem in tickets.problems(S.tickets, {p["id"]: p for p in S.entities_all}, {e["id"] for e in S.entities},
                                     plan.plan_config(S.site)["resident_label"]):
         E("tickets.json", problem)
-    style = out / "assets" / "style.css"
-    if style.exists() and art.URL_PREFIX in style.read_text("utf-8"):
-        E("style.css", "CSS 배경으로 AI 그림을 씀 — templates/_art.html.j2 figure()의 <img>로만(표기·alt 규칙)")
+    from pipeline.build import PAGE_SHEETS  # the shared stylesheet and the page sheets (wide.css, page-*.css)
+    for sheet in ("style.css", *PAGE_SHEETS.values()):
+        style = out / "assets" / sheet
+        if style.exists() and art.URL_PREFIX in style.read_text("utf-8"):
+            E(sheet, "CSS 배경으로 AI 그림을 씀 — templates/_art.html.j2 figure()의 <img>로만(표기·alt 규칙)")
     for e in S.entities:
         where = f"{e['id']} {e['name']}"
         f = _file_for(out, e["_path"])

@@ -88,6 +88,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="stylesheet" href="/assets/vendor/pretendard/pretendard.css">
 <link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/assets/wide.css" media="(min-width: 1200px)">
+{# sheets block: the page's own rules (pipeline/build.PAGE_SHEETS — page-home.css, page-times.css, page-partners.css),
+   kept out of the shared style.css so other pages do not wait for them; wide.css (the panel, from 1200px) is linked
+   with its media query, so a phone does not wait for it either. #}
+{% block sheets %}{% endblock %}
 <style>@view-transition{navigation:auto}@media (prefers-reduced-motion:reduce){@view-transition{navigation:none}}</style>
 {# head block: a page whose first screen shows a KOGL-1 photo may preload it here with md.preload(ph)
    (_media.html.j2) instead of page.preload. The behaviour states are folded into the one built stylesheet
