@@ -622,6 +622,11 @@ class PageScan(HTMLParser):
             if self._lstack[i][0] == tag:
                 del self._lstack[i:]
                 break
+        if tag in ("p", "div", "li", "h3", "h4"):
+            # a row's lines are read apart: '… 표기 신천교고가도로밑주차장' then '대구광역시 북구 자료 …' — glued, the
+            # name's last token ran into the next line's first (a one-value site ends that line with the name)
+            for r in self._rows_open:
+                r["parts"].append(" ")
         while self._rows_open and self._rows_open[-1]["depth"] > len(self._stack):
             r = self._rows_open.pop()
             self.access_rows.append({"kind": r["kind"], "id": r["id"], "text": squash_ws("".join(r["parts"])),
