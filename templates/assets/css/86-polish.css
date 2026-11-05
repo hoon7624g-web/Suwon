@@ -20,9 +20,11 @@
 .ledger .rec:focus-within { outline-offset: 2px; border-radius: 18px; }
 .lg-head { margin-top: 18px; margin-bottom: 4px; padding: 11px 19px 10px; border: 0; border-radius: 12px; background: rgba(244, 247, 251, .94); font-size: 12.5px; letter-spacing: .01em; }
 .lg-group { margin-top: 30px; }
-.lg-g { display: flex; align-items: center; gap: 10px; padding: 0 4px 12px; font-size: 22px; }
-.lg-g::before { content: ""; width: 4px; height: 20px; border-radius: 4px; background: var(--sea); }
-.lg-g .tn { margin-left: 0; padding: 3px 10px 4px; border-radius: 999px; background: var(--tint); color: var(--sea-deep); font-size: 13px; font-weight: 700; letter-spacing: 0; }
+/* a block, not a flex row: the name's own line-break groups (<span class="dj">…</span><wbr>) would each become a flex
+   item and break mid-word ('수원화 / 성·', 2026-11-05 screenshot check) — the bar and the count pill sit inline */
+.lg-g { display: block; padding: 0 4px 12px; font-size: 22px; }
+.lg-g::before { content: ""; display: inline-block; width: 4px; height: 20px; margin-right: 10px; border-radius: 4px; background: var(--sea); vertical-align: -3px; }
+.lg-g .tn { display: inline-block; margin-left: 6px; padding: 3px 10px 4px; border-radius: 999px; background: var(--tint); color: var(--sea-deep); font-size: 13px; font-weight: 700; letter-spacing: 0; }
 
 /* the picture first, the name block beside it */
 .rec-name { grid-template-columns: 72px minmax(0, 1fr); column-gap: 14px; }
