@@ -108,6 +108,13 @@
                                     [data-hcar-count] is aria-live="polite" only while autoplay is stopped. A row that
                                     fits gets .no-scroll (the controls keep their room, hidden). An article's preview
                                     picture (.nc-og) that does not load is removed with its credit line (.nc-cr)
+   Home cards (the first site's a11b69248, operator 2026-11-02; templates/_mz.html.j2, css/81-home-mz.css)
+     [data-dday=YYYY-MM-DD][data-dday-end]   a ticket's D-n recounted for today (D-DAY · 진행 중 · 끝남)
+     [data-closed-days="월"] [data-today-off]   a feed card's '오늘 휴관', shown on its weekly closed days
+     [data-tabs] [role=tab][aria-controls]   the guide groups' tabs: the chosen panel shows, the others get
+                                    data-tab-off (hidden only with JS: html.js); arrow keys, Home, End
+   Phones' tab bar (시안 A, base.html.j2 nav.tabbar)
+     [data-tab-chat]                'AI 챗봇' presses the floating launcher (the page's one chat opener)
    파트너 문의 (/partners/contact/, templates/partners_contact.html.j2)
      [data-pc-form][data-to][data-site]   the inquiry form writes the mail in the visitor's mail app (nothing stored
                                     or sent by the site); [data-pc-alt] [data-pc-pre] [data-pc-copy] the copy fallback
@@ -1491,6 +1498,54 @@
       });
     });
   }
+
+  // ------------------------------------------------------------ home cards (the first site's a11b69248, _mz.html.j2)
+  // the D-day recounted for today, '오늘 휴관' on a card's weekly closed days, and the guide groups' tabs (arrow keys,
+  // Home / End). Without this the built page stands: the build's D-day, no badge, every group shown with its heading.
+  (function () {
+    var d0 = new Date(), dayMs = 86400000;
+    var today = Date.UTC(d0.getFullYear(), d0.getMonth(), d0.getDate());
+    var utc = function (iso) { var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || ""); return m ? Date.UTC(+m[1], +m[2] - 1, +m[3]) : NaN; };
+    $all("[data-dday]").forEach(function (el) {
+      var s = utc(el.getAttribute("data-dday")), e = utc(el.getAttribute("data-dday-end"));
+      if (isNaN(s)) return;
+      if (isNaN(e)) e = s;
+      var n = Math.round((s - today) / dayMs);
+      el.textContent = n > 0 ? "D-" + n : n === 0 ? "D-DAY" : (today <= e ? "진행 중" : "끝남");
+    });
+    var dow = "일월화수목금토".charAt(d0.getDay());
+    $all("[data-closed-days]").forEach(function (card) {
+      var b = card.querySelector("[data-today-off]");
+      if (b) b.hidden = card.getAttribute("data-closed-days").indexOf(dow) < 0;
+    });
+    $all("[data-tabs]").forEach(function (box) {
+      var tabs = $all('[role="tab"]', box);
+      var pick = function (t, focus) {
+        tabs.forEach(function (x) {
+          var on = x === t, p = doc.getElementById(x.getAttribute("aria-controls"));
+          x.setAttribute("aria-selected", String(on));
+          x.tabIndex = on ? 0 : -1;
+          if (p) { if (on) p.removeAttribute("data-tab-off"); else p.setAttribute("data-tab-off", ""); }
+        });
+        if (focus) t.focus();
+      };
+      tabs.forEach(function (t, i) {
+        t.addEventListener("click", function () { pick(t); });
+        t.addEventListener("keydown", function (ev) {
+          var k = ev.key, j = k === "ArrowRight" ? i + 1 : k === "ArrowLeft" ? i - 1 : k === "Home" ? 0 : k === "End" ? tabs.length - 1 : null;
+          if (j === null) return;
+          ev.preventDefault();
+          pick(tabs[(j + tabs.length) % tabs.length], true);
+        });
+      });
+    });
+  })();
+
+  // ------------------------------------------------------------ phones' tab bar (시안 A, css 87-design-a)
+  // 'AI 챗봇' presses the launcher: the page keeps one chat opener ([data-chat-open], the floating button)
+  $all("[data-tab-chat]").forEach(function (b) {
+    b.addEventListener("click", function () { var fab = doc.querySelector(".chat-fab"); if (fab) fab.click(); });
+  });
 
   // ------------------------------------------------------------ 파트너 문의 (/partners/contact/, the first site's 3ee5bff35)
   // [data-pc-form]: sending writes the mail in the visitor's mail app — to data-to, the subject '[<site> 파트너 문의]

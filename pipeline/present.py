@@ -3439,7 +3439,7 @@ def home_vm(S) -> dict:
     if not lines:   # no course states a duration (the source gives none): the courses in file order, never an empty list
         lines = [S.course_vms[c["slug"]] for c in S.courses]
     annual_n = sum(1 for ev in S.events if not ev.get("start_date") and "매년" in str(ev.get("period_text") or ""))
-    h = {"answers": answers, "search_example": search_example(S), "guides": S.guides, "guide_groups": guide_groups(S), "events": events, "ev_head": ev_head, "annual_n": annual_n,
+    h = {"answers": home_tiles(S, answers), "search_example": search_example(S), "guides": S.guides, "guide_groups": guide_groups(S), "events": events, "ev_head": ev_head, "annual_n": annual_n,
          "last_event": event_row(past[0], city=C) if past and not events else None,
          "lines": lines, "course_total": len(S.courses), "regions": home_regions(S), "region_mode": C.region_mode,
          "counts": {k: len(v) for k, v in S.lists.items()}, "official": S.site.get("official_links") or [],
@@ -3651,6 +3651,194 @@ def home_story(S, cen: dict | None = None, photos_: dict | None = None) -> list[
     return out
 
 
+# ----------------------------------------------------------------------------- home cards (the first site's
+# a11b69248, operator 2026-11-02 '일단 반영하자'; this city: 2026-11-05 upgrade)
+# The home's sections in the look the first site's operator approved on the canvas: 목적별 가이드 as card-news tiles
+# (photo · sea · chick · ink · tint), 대표 장소 as feed cards, 다가오는 행사 as D-day tickets, SNS as post cards topped by
+# the place they show (no blog: this city has none, operator 2026-11-05 '블로그는 없어'). Pretendard 400·700 only. A name
+# or one line is written on a photo only when the photo is KOGL-1 (CLAUDE.md 3.4 allows changes to it); a KOGL-3 photo
+# stays whole, uncropped, with nothing laid on it.
+HOME_TILE_TONES = ("photo", "sea", "chick", "photo", "ink", "tint")
+OFF_EN = {"월": "MON", "화": "TUE", "수": "WED", "목": "THU", "금": "FRI", "토": "SAT", "일": "SUN"}
+WEEKDAYS = "월화수목금토일"
+POST_LANGS = ("일본어", "베트남어", "영어", "중국어", "태국어", "스페인어", "프랑스어", "독일어", "러시아어", "인도네시아어",
+              "말레이어", "타갈로그어", "이탈리아어", "포르투갈어", "아랍어", "몽골어", "튀르키예어", "힌디어")
+
+
+def kogl1_photo(e: dict | None, used: set | None = None) -> dict | None:
+    """The place's first KOGL-1 photo (not in used); None when it has none."""
+    return next((p for p in (e or {}).get("_photos") or [] if p.get("type") == 1 and p["url"] not in (used or ())), None)
+
+
+def off_word(e: dict) -> str:
+    """The short closed-day word a feed card writes on its photo: 'EVERYDAY' (연중무휴 · 상시 개방), 'MON OFF' or
+    'MON·TUE OFF' (one or two weekly days); '' when the text says neither, names more days, a partial day or is
+    contested (the card's value chips keep the whole text)."""
+    text, cont = closed_text(e)
+    if not text or cont:
+        return ""
+    wc = week_closure(text)
+    if wc["open"] and not wc["days"] and not wc["partial"]:
+        return "EVERYDAY"
+    if wc["days"] and not wc["partial"] and len(wc["days"]) <= 2:
+        return "·".join(OFF_EN[d] for d in WEEKDAYS if d in wc["days"]) + " OFF"
+    return ""
+
+
+def feed_extra(e: dict, kf: dict, region: str = "") -> dict:
+    """A feed card's photo words: title ("<region> '<name>'", or the name itself when it starts with the region), line
+    ('<동> / EVERYDAY / 무료': the 동 or street, off_word, a short fee or menu) and closed_days (the weekly closed days,
+    '월': the page marks '오늘 휴관' on those days in the browser)."""
+    name = e["name"]
+    title = name if not region or name.startswith(region) else f"{region} '{name}'"
+    short = next((s["main"] for s in kf.get("slots") or []
+                  if s["key"] in ("fee", "menu") and s.get("main") and not s.get("missing") and not s.get("conflict")
+                  and len(s["main"]) <= 12), "")
+    line = " / ".join(x for x in (e.get("_area") or e.get("_street") or "", off_word(e), short) if x)
+    return {"title": title, "line": line, "closed_days": "".join(d for d in WEEKDAYS if d in closed_days(e))}
+
+
+def answer_places(S, a: dict) -> list[dict]:
+    """The places an answer tile's page is about: a guide's items, the 당일 courses' stops; [] for anything else."""
+    href = a.get("href") or ""
+    if href.startswith("/courses/"):
+        out = []
+        for c in S.courses:
+            if c.get("duration") == "당일":
+                out += [S.ent_by_slug.get(st["t"]["slug"]) for st in S.course_vms[c["slug"]]["stops"] if st.get("t")]
+        return [e for e in out if e]
+    g = next((x for x in S.guides if x.get("_path") == href), None)
+    return [S.ent_by_slug[it["place_slug"]] for it in (g or {}).get("items") or [] if it.get("place_slug") in S.ent_by_slug]
+
+
+def home_tiles(S, answers: list[dict]) -> list[dict]:
+    """The 목적별 가이드 tiles: each answer row with its tone (HOME_TILE_TONES in turn) and, on a photo tile, the first
+    KOGL-1 photo of a place its page is about (no photo twice); a photo tile without one takes the sea tone."""
+    used: set[str] = set()
+    out = []
+    for i, a in enumerate(answers):
+        tone, ph = HOME_TILE_TONES[i % len(HOME_TILE_TONES)], None
+        if tone == "photo":
+            ph = next((p for p in (kogl1_photo(e, used) for e in answer_places(S, a)) if p), None)
+            if ph:
+                used.add(ph["url"])
+            else:
+                tone = "sea"
+        out.append({**a, "tone": tone, "photo": ph})
+    return out
+
+
+def post_lang(note: str | None) -> str:
+    """The language our one-line note says the post is written in ('일본어 계정이 …' → '일본어'); '' when it says none."""
+    t = squash_ws(note)
+    hits = [(t.find(w), w) for w in POST_LANGS if w in t]
+    return min(hits)[1] if hits else ""
+
+
+def _free_photo(e: dict | None, used: set) -> dict | None:
+    phs = (e or {}).get("_photos") or []
+    return next((p for p in phs if p.get("type") == 1 and p["url"] not in used), None) \
+        or next((p for p in phs if p["url"] not in used), None)
+
+
+def home_post(a: dict, used: set | None = None) -> dict:
+    """An SNS card on the home: the post with lang (post_lang), place (a place it shows that this site has) and photo
+    (a licensed photo of it, KOGL-1 first, not one an earlier card used — the place changes to another it shows if
+    need be; None: the card names the place, or the language, in words). used collects the photos shown. (The first
+    site also lays a 'related' photo on a post that shows none of its places, from a table of its own 동 and topics;
+    this engine has no such table, so such a card keeps its words.)"""
+    used = used if used is not None else set()
+    places = a.get("_places") or []
+    pick = None
+    for e in places:
+        ph = _free_photo(e, used)
+        if ph:
+            pick = (e, ph)
+            break
+    e, photo = pick if pick else (places[0] if places else None, None)
+    if photo:
+        used.add(photo["url"])
+    return {**a, "lang": post_lang(a.get("note")), "place": e, "photo": photo,
+            "place_short": re.sub(r"\s*\([^()]*\)$", "", (e or {}).get("name") or "")}
+
+
+def home_posts(posts: list[dict]) -> list[dict]:
+    """The home's SNS cards in order (home_post), no photo twice among them; the posts with a place's photo pick theirs
+    first."""
+    used: set[str] = set()
+    own = {id(a): home_post(a, used) for a in posts if any(_free_photo(e, set()) for e in a.get("_places") or [])}
+    return [own.get(id(a)) or home_post(a, used) for a in posts]
+
+
+def home_fest(rows: list[dict], guides: list[dict] | None = None) -> dict | None:
+    """The home's pinned-event band (the first site's cf4ebcd8a / c4020e9bd, operator 2026-11-04; 시안 A banner under
+    the first screen's card): the edition the operator pinned (events.json pin_home) while it is not over (ranked_events
+    rows, so the band leaves by itself the day after) — its D-day, day and time (start_dt: a <time datetime> when the
+    time is one start), place, the programme lines the record names (pin_points: highlights by index, each split at
+    ' — ' into the fact and its note), the source (without a quoted release title) and the event page; the guides the
+    record names (page_media.guide, page_media.series: guide slugs) once they are published. None without a pinned
+    edition. (The first site's band also carries its own Instagram reel; this engine shows a reel only through the
+    event page's videos.)"""
+    r = next((x for x in rows if x["ev"].get("pin_home")), None)
+    if not r:
+        return None
+    ev, hl = r["ev"], r["ev"].get("highlights") or []
+    points = []
+    for i in ev.get("pin_points") or []:
+        if isinstance(i, int) and 0 <= i < len(hl):
+            head, _, note = squash_ws(hl[i]).partition(" — ")
+            points.append({"t": head, "d": note})
+    m = re.fullmatch(r"(.+?)\s+('[^']+')", r["title"])
+    d = dt.date.fromisoformat(r["start"])
+    pm = ev.get("page_media") or {}
+    by_slug = {g.get("slug"): g for g in guides or []}
+    series = []
+    for slug in [pm.get("guide"), *(pm.get("series") or [])]:
+        g = by_slug.get(slug)
+        if g and all(x["path"] != g["_path"] for x in series):
+            head, _, q = (g.get("title") or "").partition(", ")
+            series.append({"path": g["_path"], "label": g.get("label") or head, "q": q or head})
+    return {"r": r, "points": points, "series": series[:3],
+            "h": m.group(1) if m else r["title"], "sub": m.group(2) if m else "",
+            "when": f"{d.month}월 {d.day}일({WEEK[d.weekday()]})", "time": r["time"],
+            "start_dt": event_start_dt(ev) or r["start"],
+            "src": squash_ws(re.sub(r"\s*'.*'\s*", " ", r["source"]))}
+
+
+def home_food_row(S, n: int = 4) -> dict | None:
+    """시안 A (the first site's 48f2a64c9, operator 2026-11-05 '음식점 카드 줄도 바꿔줘'): four food places of the food
+    list's first group (this city's first 권역 / 구·군, site.json regions), the ones with a photo first, then the ones that
+    answer more of the list's cells, then by name — an order of what can be shown, not a recommendation (the line under
+    the row says so). Each: its photo (KOGL-1 may fill its box; KOGL-3 sits whole on a tint, never cropped) or its kind
+    picture, its designation chip, and its dish · hours · closed day exactly as the list shows them (a value the list
+    lacks is left out, never filled)."""
+    if not S.lists.get("food"):
+        return None
+    L = list_vm(S, "food")
+    groups = L.get("groups") or []
+    if not groups:
+        return None
+    g = groups[0]
+    pick = sorted(g["recs"], key=lambda r: (r.get("photo") is None, -(r.get("answered") or 0), name_key(r["name"])))[:n]
+    recs = []
+    for r in pick:
+        sl = {x["key"]: x for x in r.get("slots") or []}
+        val = lambda k: (sl.get(k) or {}).get("main") if sl.get(k) and not sl[k].get("missing") and not sl[k].get("conflict") else ""  # noqa: E731
+        recs.append({"name": r["name"], "path": r["path"], "e": r["e"], "photo": r.get("photo"), "dz": r.get("dz"),
+                     "menu": val("menu"), "hours": val("hours"), "closed": val("closed"),
+                     "is_closed": bool((sl.get("closed") or {}).get("closed"))})
+    lics = sorted({str(r["photo"]["type"]) for r in recs if r.get("photo")})
+    return {"group": g["name"], "total": L.get("count") or 0, "recs": recs, "lics": lics}
+
+
+def search_hint(S) -> str:
+    """The first-screen search box's placeholder (시안 A): two of the search examples (home_focus's dish first, then
+    site.json search_examples), '<a>, <b>처럼 찾아보세요'; '' when there are none."""
+    focus = home_focus(S)
+    words = list(dict.fromkeys(([focus["dish"]] if focus else []) + list(S.city.search_examples)))[:2]
+    return (", ".join(words) + "처럼 찾아보세요") if words else ""
+
+
 def home_showcase(S, h: dict) -> dict:
     """The Apple home's view model, added to home_vm: hero (KOGL-1 slides) and cover (the full-bleed opening photo,
     home.media), opening + news + services (the Korean opening's kicker, its one-card news carousel and its round
@@ -3688,8 +3876,12 @@ def home_showcase(S, h: dict) -> dict:
         e = by[slug]
         if closure_notice(e):   # closed until further notice: not a place to start from (its course stop says so)
             continue
-        ph = next((p for p in e["_photos"] if p["url"] not in used), e["_photos"][0] if e["_photos"] else None)
-        featured.append({**card_vm(e, ph), "n_courses": k, "n_courses_label": n_label})
+        # a KOGL-1 photo first: the feed card writes the name on it (_mz.html.j2 feed, the first site's a11b69248);
+        # KOGL-3 stays whole
+        ph = (next((p for p in e["_photos"] if p["type"] == 1 and p["url"] not in used), None)
+              or next((p for p in e["_photos"] if p["url"] not in used), e["_photos"][0] if e["_photos"] else None))
+        c = card_vm(e, ph)
+        featured.append({**c, "n_courses": k, "n_courses_label": n_label, **feed_extra(e, c["kf"], C.region or "")})
     ranked = ranked_events(S)
     regions2 = [{**r, "dongs": r["dongs"][:3]} for r in h.get("regions") or []]
     anchors = [{"lat": r["anchor"]["geo"]["lat"], "lng": r["anchor"]["geo"]["lng"], "name": r["name"], "label": r["name"],
@@ -3710,6 +3902,7 @@ def home_showcase(S, h: dict) -> dict:
             "opening": home_opening(S), "news": home_news(S), "services": home_services(S, len(ranked)),
             "next_event": pick_next_event(ranked),
             "events_ranked": pinned_first(ranked)[:3], "n_upcoming": len(ranked), "featured": featured,
+            "fest": home_fest(ranked, S.guides), "food_row": home_food_row(S), "search_hint": search_hint(S),
             "featured_min": featured_min, "regions2": regions2, "region_map": {"anchors": anchors} if anchors else None,
             "chapters": home_story(S, cen, slots.get("story")), "gallery": gallery, "gallery_cfg": gcfg if gallery else None,
             "gallery_fact": {"region": region,

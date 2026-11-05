@@ -2129,8 +2129,9 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
             themes=[t for t in S.themes if any(t["slug"] in (e.get("themes") or []) for e in S.entities)], h=h,
             ask_starters=ask_starters,
             # the SNS row (owner 2026-10-14: 'SNS 게시물이 좀 더 잘 보이면'): the newest published posts, our notes only
-            home_posts=sorted([a for a in getattr(S, "abroad", None) or [] if a.get("kind") == "post"],
-                              key=lambda a: (a.get("date") or "", a["id"]), reverse=True)[:8],
+            # each card topped by the place it shows (present.home_posts, the first site's a11b69248)
+            home_posts=present.home_posts(sorted([a for a in getattr(S, "abroad", None) or [] if a.get("kind") == "post"],
+                                                 key=lambda a: (a.get("date") or "", a["id"]), reverse=True)[:8]),
             n_posts=sum(a.get("kind") == "post" for a in getattr(S, "abroad", None) or []))
 
     # the 404 page is never indexed (it answers no question; Vercel serves it with status 404), and it says what it is

@@ -1,39 +1,26 @@
 {% extends "base.html.j2" %}
 {% import "_p2.html.j2" as p2 %}
+{% import "_p1.html.j2" as p1 %}
 {% import "_media.html.j2" as md %}
 {% import "_art.html.j2" as artm %}
 {% import "_ask.html.j2" as askm %}
 {% import "_pic.html.j2" as pk %}
 {% import "_abroad.html.j2" as ab %}
 {% import "_side.html.j2" as sdm %}
-{#- The home page. UI4 (owner 2026-10-14, after the AIO2O proposal demo for KT Skylife — its design language only;
-    the first site's UI4 specs): a LIGHT opening — a soft sea-blue gradient,
-    at the left the eyebrow pill (h.opening.kicker), the H1, one plain lede, the primary pill button and the slide
-    controls (pause · ‹ n/N › · progress, '소식 전체'), at the right one big rounded card per news item
-    (present.home_news: its real TourAPI photo, credited under it — KOGL-3 whole on a tinted frame, never cropped —
-    or the outlet's own preview image, or its illustration; its chip, title and date), one at a time: a native
-    scroll-snap row that works without JS, site.js [data-hcar] advances it every 6 s (never with reduced motion; it
-    stops for hover, focus, a hidden tab, a swipe and the pause button). Then the white card overlapping the opening's
-    bottom edge: the AI assistant (_ask.html.j2 box, owner 2026-10-14 '페이지 상단에는 검색, 중앙 부분에는 AI챗봇': its
-    head, one question box with one button '물어보기', without JS the form searches; the site search itself is in the
-    header), the recommended questions (ask.json) as '#' tags, and the 3D icon menu (present.home_services, pictures
-    by ID through _pic.html.j2). The conversation opens right under the card (askm.panel, chat.js dock mode). Below: 목적별 가이드 → 대표 장소 → 다가오는 행사
-    → SNS → 여행 권역 / 구·군 (cityv.region_label) → 이야기 (site.json home.story, light now) → 갤러리 (home.gallery)
-    → 코스 ('공식' only when the courses' source is official: course_src) → 영상 → 공식 안내, restyled with the
-    reference's parts (css/46-home-open.css). Every figure comes from present.home_vm (h) or the list counts; the
-    city's words from cityv / site.json; a section whose data or configuration is missing is left out (no AI art yet:
-    a news card without a photo or preview image shows its kind's small 3D picture, _pic.html.j2). Nothing on the
-    first screen starts hidden.
-    Phones (< 768px; operator 2026-10-15, after an outside mobile UX review — css/46-home-open.css 5.): the first screen
-    (360x800, 390x844) holds the header, the kicker, the H1, the lede, the course button (.ho-cta, full width under the
-    lede), ONE compact news card — an 88px frame at the left (KOGL-1 fills it; KOGL-3 and the outlet's preview image
-    whole on its tint, never cropped; the square illustration whole), the chip/status, the title (two lines), the
-    date · venue (one line), the photo credit under both — with its controls (44px), and the whole question box with
-    its '#' tags. The row does not turn by itself there (site.js: stopped on the first card until the reader acts; the
-    play button starts it); from 768px it turns every 6 s as before. The floating launcher steps aside below 1024px
-    while the question box is on screen (body.has-ask, css/49-chat.css, site.js html.ask-out). The icon menu leads
-    with the core four (present.home_services core: 가볼만한 곳 · 맛집 · 숙소 · 가는 법) — one row of four tiles on
-    phones, the other five as chips that wrap under them; one row of all nine from 1024px. -#}
+{% import "_mz.html.j2" as mz %}
+{#- The home page (시안 A, the first site's 2026-11-02~05 home ported 2026-11-05 — operator '군산각에 맞춰서 업그레이드'):
+    the first screen is one card over the opening photo (site.json home.media.cover, KOGL-1) — the H1, the lede, the big
+    site search, the four core lists (관광지 · 음식점 · 숙소 · 코스) and 내 일정 만들기 —, then the pinned event's banner
+    (events.json pin_home, present.home_fest; none without one), the first 권역 / 구·군's food row (present.home_food_row,
+    '추천 순서가 아닙니다'), the AI assistant card with the 3D icon menu (_ask.html.j2, present.home_services), the news
+    row (present.home_news, a scroll-snap carousel: site.js [data-hcar]) and 날씨각's card. Below: 목적별 가이드 (card-news
+    tiles, present.home_tiles, and the guide groups' tabs) → 대표 장소 (feed cards, _mz.html.j2 feed) → 다가오는 행사 (D-day
+    tickets) → SNS (post cards topped by the place they show, present.home_posts) → 여행 권역 / 구·군 (cityv.region_label)
+    → 이야기 (site.json home.story) → 갤러리 (home.gallery) → 코스 ('공식' only when the courses' source is official:
+    course_src) → 영상 → 공식 안내. No blog section (this city has none) and no 숙박 예약하기 (no booking page) —
+    operator 2026-11-05. Every figure comes from present.home_vm (h) or the list counts; the city's words from cityv /
+    site.json; a section whose data or configuration is missing is left out. Nothing on the first screen starts
+    hidden; KOGL-3 photos are never cropped (CLAUDE.md 3.4). -#}
 {#- the news card's picture: the big card from 768px; below it the compact card's 88px thumbnail (css/46-home-open.css)
     — so the first slide is preloaded only where it is big (SLIDE_MEDIA): on a phone it is a small eager image and the
     opening's cover photo keeps the bandwidth -#}
@@ -41,67 +28,79 @@
 {% set SLIDE_MEDIA = '(min-width: 768px)' %}
 {% block bodyclass %}pg-home pg-ko-home pg-h4{% if ask_starters is defined and ask_starters is not none %} has-ask{% endif %}{% endblock %}
 {% block main_class %}{% endblock %}
-{% block head %}{% if h.cover and h.cover.type == 1 and h.cover.avif %}{{ md.preload(h.cover, '(min-width: 1200px) calc(100vw - 336px), (min-width: 1024px) 100vw, 360px') }}{% endif %}{% set c0 = h.news[0] if h.news else none %}{% if c0 and c0.photo %}{% if c0.photo.type == 1 and c0.photo.avif %}{{ md.preload(c0.photo, SLIDE_SIZES, SLIDE_MEDIA) }}{% endif %}{% elif c0 and c0.art and not c0.og %}<link rel="preload" as="image" type="image/avif" imagesrcset="{{ c0.art.avif }}" imagesizes="{{ SLIDE_SIZES }}" media="{{ SLIDE_MEDIA }}" fetchpriority="high">{% endif %}{% endblock %}
+{#- 시안 A with the opening photo (the first site's 48f2a64c9; this city's photo: site.json home.media.cover): the card's
+    KOGL-1 photo is the first screen's LCP candidate, a local AVIF derivative, preloaded -#}
+{% block head %}{% if h.cover and h.cover.type == 1 and h.cover.avif %}{{ md.preload(h.cover, '(min-width: 1200px) calc(100vw - 360px), 100vw') }}{% endif %}{% endblock %}
 {% block content %}
 {% set T = namespace(i=0) %}
 {% set N = h.news|length %}
 {% set ASK = ask_starters is defined and ask_starters is not none %}
 <div class="hk"{% if ASK %} data-chat-dock{% endif %}>
-{#- the opening photo (owner 2026-10-14: '고화질 실사 배경'): h.cover (site.json home.media.cover, media.slot_photos), an
-    official KOGL-1 photo with its AVIF derivatives (cropping allowed, CLAUDE.md 3.4), full-bleed behind the opening
-    under a navy scrim, its credit at the bottom right; without one the opening keeps its soft gradient -#}
+{#- 시안 A (the first site's c4020e9bd · 48f2a64c9 · 51a88a413, operator 2026-11-05; css/87-design-a.css): a card in
+    the middle over the opening photo (h.cover: site.json home.media.cover, KOGL-1, cropped to the card, a navy scrim,
+    the credit at the bottom right; without one a white card) — the H1 with '모든 것' in the sea blue, the lede, the site
+    search (the header's on phones, the side panel's from 1024px, here big), the four core lists with their pictures
+    (no counts) and 내 일정 만들기 (no 숙박 예약하기: this city has no booking page, operator 2026-11-05 '제휴링크는
+    일단 제외하자'). Under it the pinned event as a wide banner (only while events.json pins one) and its guides; the
+    food row, the assistant, the news row and the rest follow. Nothing starts hidden; the photo is the LCP candidate,
+    a local AVIF derivative, preloaded. -#}
+{% set TILES = [('/places/', '관광지', 'a'), ('/food/', '음식점', 'f'), ('/stays/', '숙소', 's'), ('/courses/', '코스', 'c')] %}
 {% set cv = h.cover if h.cover and h.cover.type == 1 and h.cover.avif else none %}
-<section class="ho{% if cv %} ho-ph{% endif %}" aria-labelledby="h-home">
-  {% if cv %}<div class="ho-bg" aria-hidden="true">{{ md.picture(cv, '(min-width: 1200px) calc(100vw - 336px), (min-width: 1024px) 100vw, 360px', true, 'ho-bg-img', false, true) }}</div>{% endif %}
-  <div class="wrap ho-in"{% if N %} data-hcar aria-roledescription="carousel" aria-label="지금 {{ site.region }} 소식"{% endif %}>
-    <div class="ho-text">
-      <p class="ho-k"><span class="ho-dot" aria-hidden="true"></span>{{ h.opening.kicker }}</p>
-      <h1 id="h-home" class="op-h1 hk-h1">{{ (site.region ~ ' 여행의 모든 것') if site.region else site.site_name }}</h1>
-      <p class="ho-lede">관광지·음식점·숙소의 여는 시간과 요금, 가는 길을 한곳에 모았습니다.</p>
-      <div class="ho-cta{{ ' ho-cta-2' if has_plan }}">{% if has_plan %}<a class="btn-sea" href="/plan/" data-track="plan_cta">내 일정 만들기<span class="arr" aria-hidden="true">→</span></a>{% endif %}{% if courses %}<a class="btn-sea{{ ' btn-sea-w' if has_plan }}" href="/courses/" data-track="course_click">{{ site.locality or site.region }} 추천 코스<span class="arr" aria-hidden="true">→</span></a>{% else %}<a class="btn-sea{{ ' btn-sea-w' if has_plan }}" href="/places/">가볼만한 곳 보기<span class="arr" aria-hidden="true">→</span></a>{% endif %}</div>
-      {% if N > 1 %}<div class="ho-ctl">
-        <div class="hv-ctl">
-          <button type="button" class="hv-c hv-pause" data-hcar-pause aria-label="소식 자동 넘김 멈추기" data-label-play="소식 자동 넘김 시작" data-label-pause="소식 자동 넘김 멈추기">{{ ui.icon('pause', 'icon i-pause') }}{{ ui.icon('resume', 'icon i-play') }}</button>
-          <button type="button" class="hv-c" data-hcar-dir="-1" aria-controls="hv-track" aria-label="이전 소식">{{ ui.icon('prev') }}</button>
-          <p class="hv-count tn" data-hcar-count aria-live="off"><span class="vh">소식 </span><span data-hcar-cur>1</span> / {{ N }}</p>
-          <button type="button" class="hv-c" data-hcar-dir="1" aria-controls="hv-track" aria-label="다음 소식">{{ ui.icon('next') }}</button>
-          <span class="hv-prog" aria-hidden="true"><i data-hcar-prog></i></span>
-        </div>
-        {% if has_events %}<a class="ho-all" href="/events/">소식 전체<span class="arr" aria-hidden="true">→</span></a>{% endif %}
-      </div>{% endif %}
-    </div>
-    {% if N %}
-    <div class="ho-news">
-      <h2 class="vh">지금 {{ site.region }} 소식</h2>
-      <div class="hv-view" data-hcar-view>
-        <div class="hv-track" id="hv-track">
-          {% for c in h.news %}
-          <article class="nc nc-{{ c.kind }}" role="group" aria-roledescription="slide" aria-label="{{ loop.index }} / {{ N }}" data-hcar-item>
-            <div class="nc-frame{% if c.photo %} t{{ c.photo.type }}{% elif c.og %} nc-ogf{% elif c.art %} nc-artf{% else %} nc-icof{% endif %}">
-              {%- if c.photo %}{{ ui.img(c.photo, SLIDE_SIZES, loop.first, 'nc-img', false, loop.first) }}
-              {%- elif c.og %}<img class="nc-og" src="{{ c.og }}" alt="" width="600" height="315" loading="lazy" decoding="async" referrerpolicy="no-referrer">
-              {%- elif c.art %}{{ artm.figure(c.art, 'ko', SLIDE_SIZES, loop.first, 'nc-art', false, loop.first) }}
-              {%- else %}{{ pk.pic({'event': 'icon-events', 'festival': 'icon-events', 'video': 'icon-video', 'abroad': 'icon-abroad', 'guide': 'guide'}.get(c.kind, 'icon-events'), c.icon, 120) }}{% endif %}</div>
-            <div class="nc-body">
-              <p class="nc-chips"><span class="nc-chip">{{ c.chip }}</span>{% if c.status %}<span class="nc-st">{{ c.status }}</span>{% endif %}</p>
-              <h3 class="nc-t"><a href="{{ c.href }}"{% if c.ext %} rel="noopener"{% endif %}{% if c.lang %} lang="{{ c.lang }}"{% endif %}{% if c.track %} data-track="{{ c.track }}"{% endif %}>{{ c.title }}{% if c.ext %}<span class="nc-x" aria-hidden="true">↗</span>{% endif %}</a></h3>
-              {% if c.when or c.sub %}<p class="nc-meta">{% if c.when %}<time datetime="{{ c.when_iso }}" class="tn">{{ c.when }}</time>{% endif %}{% if c.when and c.sub %}<span aria-hidden="true"> · </span>{% endif %}{% if c.sub %}<span>{{ c.sub }}</span>{% endif %}</p>{% endif %}
-              {% if c.photo %}<p class="nc-cr">사진 {{ c.photo.place }} · {{ md.credit(c.photo) }}</p>{% elif c.og %}<p class="nc-cr">사진: {{ c.outlet }} 미리보기 이미지</p>{% elif c.art %}<p class="nc-cr">{{ ART_CARD_NOTE.ko }}</p>{% endif %}
-            </div>
-          </article>
-          {% endfor %}
-        </div>
+<section class="ha" aria-labelledby="h-home">
+  <div class="wrap"><div class="ha-card{{ ' ha-ph' if cv }}">
+    {% if cv %}<div class="ha-bg" aria-hidden="true">{{ md.picture(cv, '(min-width: 1200px) calc(100vw - 360px), 100vw', true, 'ha-bg-img', false, true) }}</div>{% endif %}
+    <h1 id="h-home" class="op-h1 ha-h1">{% if site.region %}{{ site.region }} 여행의 <span class="ha-em">모든 것</span>{% else %}{{ site.site_name }}{% endif %}</h1>
+    <p class="ha-lede">관광지·음식점·숙소의 여는 시간과 요금, 가는 길을 한곳에 모았습니다.</p>
+    <form class="ha-search" action="/search/" method="get" role="search">
+      <label class="vh" for="ha-q">장소·음식·지역 검색</label>
+      {{ ui.icon('search', 'icon ha-s-ic') }}
+      <input id="ha-q" name="q" type="search" placeholder="{{ h.search_hint or '장소·음식·지역 이름으로 찾아보세요' }}" autocomplete="off" enterkeyhint="search">
+      <button type="submit">검색</button>
+    </form>
+    {% set svc = {} %}{% for s in h.services %}{% set _ = svc.update({s.href: s}) %}{% endfor %}
+    <ul class="ha-tiles">{% for href, lab, k in TILES %}{% set s = svc.get(href) %}{% if s %}<li><a class="ha-tile ha-{{ k }}" href="{{ href }}"{% if s.track %} data-track="{{ s.track }}"{% endif %}>{{ pk.pic(s.pic, s.icon, 52) }}<span class="ha-tl">{{ lab }}</span></a></li>{% elif href == '/courses/' and courses %}<li><a class="ha-tile ha-{{ k }}" href="{{ href }}" data-track="course_click">{{ pk.pic('icon-course', 'route', 52) }}<span class="ha-tl">{{ lab }}</span></a></li>{% endif %}{% endfor %}</ul>
+    <p class="ha-cta">{% if has_plan %}<a class="ha-btn ha-plan" href="/plan/" data-track="plan_cta">{{ pk.pic('btn-plan', 'spark', 28) }}<span>내 일정 만들기</span></a>{% endif %}{% if courses %}<a class="ha-btn ha-co" href="/courses/" data-track="course_click"><span>{{ '공식 코스 보기' if course_src.official else (site.region or site.locality) ~ ' 추천 코스' }}</span></a>{% endif %}</p>
+    {% if cv %}<p class="ha-cap">사진 {% if cv.path %}<a href="{{ cv.path }}">{{ cv.place or cv.name }}</a>{% else %}{{ cv.place or cv.name }}{% endif %} · {{ md.credit(cv) }}</p>{% endif %}
+  </div></div>
+</section>
+{#- the pinned event (events.json pin_home, present.home_fest; the first site's cf4ebcd8a): a wide banner — the D-day
+    recounted in the browser, the name, day · time · place, the programme lines the record names, the event page and
+    the source; the guides the record names as cards. Only while an edition is pinned and not over; nothing else. -#}
+{% if h.fest %}{% set F = h.fest %}
+<section class="ha-fest" aria-labelledby="h-fw">
+  <div class="wrap">
+    <div class="haf">
+      <div class="haf-t">
+        <p class="haf-dd"><b class="tn" data-dday="{{ F.r.start }}" data-dday-end="{{ F.r.last }}">{% if F.r.days > 0 %}D-{{ F.r.days }}{% elif F.r.days == 0 %}D-DAY{% else %}진행 중{% endif %}</b></p>
+        <h2 id="h-fw" class="haf-h">{{ F.h }}{% if F.sub %} <span class="haf-sub">{{ F.sub }}</span>{% endif %}</h2>
+        <p class="haf-m"><time datetime="{{ F.start_dt }}">{{ F.when }}{% if F.time %} {{ F.time }}{% endif %}</time>{% if F.r.place %}<br>{{ F.r.place }}{% endif %}</p>
+        {% if F.points %}<ul class="haf-pts">{% for x in F.points %}<li><b>{{ x.t }}</b>{% if x.d %}<span>{{ x.d }}</span>{% endif %}</li>{% endfor %}</ul>{% endif %}
+        <p class="haf-cta">{% if F.r.path %}<a class="haf-btn haf-go" href="{{ F.r.path }}" data-track="fest_click">행사 정보 보기</a>{% elif F.r.source_url %}<a class="haf-btn haf-go" href="{{ F.r.source_url }}" rel="noopener" data-track="official_click">행사 정보 보기</a>{% endif %}</p>
+        {% if F.src %}<p class="haf-cr">출처: {{ F.src }}</p>{% endif %}
       </div>
     </div>
-    {% endif %}
+    {% if F.series %}<ul class="ha-guides">{% for x in F.series %}<li><a href="{{ x.path }}" data-track="guide_click"><span class="hag-k">가이드</span><b class="hag-t">{{ x.label }}</b><span class="hag-q">{{ x.q }}</span></a></li>{% endfor %}</ul>{% endif %}
   </div>
-  {% if cv %}<p class="ho-cap">사진 {% if cv.path %}<a href="{{ cv.path }}">{{ cv.place or cv.name }}</a>{% else %}{{ cv.place or cv.name }}{% endif %} · {{ md.credit(cv) }}</p>{% endif %}
 </section>
+{% endif %}
 {#- the white card: the AI assistant (_ask.html.j2 box: its head, one question box with one button '물어보기', the '#'
     tags — the site search is the header's, owner 2026-10-14), then the 3D icon menu of the service links. The menu has
     no '물어보기' item any more: the card right above it IS the assistant and the launcher is on screen too, so a third
     door to the same chat would only bring back the doubt the owner pointed at. Without the assistant (no ask.json)
     the card keeps the menu only: the search is in the header. -#}
+{% if h.food_row and h.food_row.recs %}{% set FR = h.food_row %}
+<section class="ha-food" aria-labelledby="h-hfood">
+  <div class="wrap"><div class="hfo">
+    <div class="hfo-head"><h2 id="h-hfood" class="hfo-h">{{ FR.group }} 음식점</h2><a class="hfo-all" href="/food/" data-track="food_click">전체 <span class="tn">{{ FR.total }}</span>곳 보기</a></div>
+    <ul class="hfo-row">{% for r in FR.recs %}<li><a href="{{ r.path }}" data-track="food_click" data-place="{{ r.e.id }}">
+      <span class="hfo-ph{% if r.photo %} t{{ r.photo.type }}{% else %} hfo-ic{% endif %}">{% if r.photo %}<img class="t{{ r.photo.type }}" src="{{ r.photo.url }}"{% if r.photo.w and r.photo.h %} width="{{ r.photo.w }}" height="{{ r.photo.h }}"{% endif %} alt="" loading="lazy" decoding="async" data-kogl="{{ r.photo.type }}">{% else %}{{ ui.type_icon(r.e, 64) }}{% endif %}</span>
+      <span class="hfo-nm"><b>{{ r.name }}</b>{{ p1.dzchip(r.dz) }}</span>
+      <span class="hfo-l">{% if r.menu %}<b>{{ r.menu }}</b>{% endif %}{% if r.hours %}{% if r.menu %} · {% endif %}<span class="tn">{{ r.hours }}</span>{% endif %}{% if r.closed %} · <span class="{{ 'hfo-cl' if r.is_closed else '' }}">{{ r.closed }}</span>{% endif %}</span>
+    </a></li>{% endfor %}</ul>
+    <p class="hfo-note">사진이 있는 곳부터 · 추천 순서가 아닙니다{% if FR.lics %} · 사진: 한국관광공사 · 공공누리 제{{ FR.lics|join('·') }}유형{% endif %}</p>
+  </div></div>
+</section>
+{% endif %}
 {% if ASK or h.services %}
 <section class="hq"{% if ASK %} aria-labelledby="h-ask"{% endif %}>
   <div class="wrap"><div class="hq-card{{ ' hq-menu-only' if not ASK }}">
@@ -117,23 +116,70 @@
 </section>
 {% endif %}
 {% if ASK %}{{ askm.panel() }}{% endif %}
+{% if N %}
+<section class="hn" aria-labelledby="h-news">
+  <div class="wrap">
+    <h2 id="h-news" class="hn-h">지금 {{ site.region }} 소식</h2>
+    <div class="hn-in" data-hcar aria-roledescription="carousel" aria-label="지금 {{ site.region }} 소식">
+    {% if N %}
+    <div class="ho-news">
+      <div class="hv-view" data-hcar-view>
+        <div class="hv-track" id="hv-track">
+          {% for c in h.news %}
+          <article class="nc nc-{{ c.kind }}" role="group" aria-roledescription="slide" aria-label="{{ loop.index }} / {{ N }}" data-hcar-item>
+            <div class="nc-frame{% if c.photo %} t{{ c.photo.type }}{% elif c.og %} nc-ogf{% elif c.art %} nc-artf{% else %} nc-icof{% endif %}">
+              {%- if c.photo %}{{ ui.img(c.photo, SLIDE_SIZES, false, 'nc-img', false, false) }}
+              {%- elif c.og %}<img class="nc-og" src="{{ c.og }}" alt="" width="600" height="315" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+              {%- elif c.art %}{{ artm.figure(c.art, 'ko', SLIDE_SIZES, false, 'nc-art', false, false) }}
+              {%- else %}{{ pk.pic({'event': 'icon-events', 'festival': 'icon-events', 'video': 'icon-video', 'abroad': 'icon-abroad', 'guide': 'guide'}.get(c.kind, 'icon-events'), c.icon, 120) }}{% endif %}</div>
+            <div class="nc-body">
+              <p class="nc-chips"><span class="nc-chip">{{ c.chip }}</span>{% if c.status %}<span class="nc-st">{{ c.status }}</span>{% endif %}</p>
+              <h3 class="nc-t"><a href="{{ c.href }}"{% if c.ext %} rel="noopener"{% endif %}{% if c.lang %} lang="{{ c.lang }}"{% endif %}{% if c.track %} data-track="{{ c.track }}"{% endif %}>{{ c.title }}{% if c.ext %}<span class="nc-x" aria-hidden="true">↗</span>{% endif %}</a></h3>
+              {% if c.when or c.sub %}<p class="nc-meta">{% if c.when %}<time datetime="{{ c.when_iso }}" class="tn">{{ c.when }}</time>{% endif %}{% if c.when and c.sub %}<span aria-hidden="true"> · </span>{% endif %}{% if c.sub %}<span>{{ c.sub }}</span>{% endif %}</p>{% endif %}
+              {% if c.photo %}<p class="nc-cr">사진 {{ c.photo.place }} · {{ md.credit(c.photo) }}</p>{% elif c.og %}<p class="nc-cr">사진: {{ c.outlet }} 미리보기 이미지</p>{% elif c.art %}<p class="nc-cr">{{ ART_CARD_NOTE.ko }}</p>{% endif %}
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+      {% if N > 1 %}<div class="ho-ctl">
+        <div class="hv-ctl">
+          <button type="button" class="hv-c hv-pause" data-hcar-pause aria-label="소식 자동 넘김 멈추기" data-label-play="소식 자동 넘김 시작" data-label-pause="소식 자동 넘김 멈추기">{{ ui.icon('pause', 'icon i-pause') }}{{ ui.icon('resume', 'icon i-play') }}</button>
+          <button type="button" class="hv-c" data-hcar-dir="-1" aria-controls="hv-track" aria-label="이전 소식">{{ ui.icon('prev') }}</button>
+          <p class="hv-count tn" data-hcar-count aria-live="off"><span class="vh">소식 </span><span data-hcar-cur>1</span> / {{ N }}</p>
+          <button type="button" class="hv-c" data-hcar-dir="1" aria-controls="hv-track" aria-label="다음 소식">{{ ui.icon('next') }}</button>
+          <span class="hv-prog" aria-hidden="true"><i data-hcar-prog></i></span>
+        </div>
+        {% if has_events %}<a class="ho-all" href="/events/">소식 전체<span class="arr" aria-hidden="true">→</span></a>{% endif %}
+      </div>{% endif %}
+    </div>
+  </div>
+</section>
+{% endif %}
 </div>
 {#- 날씨각's weather module (operator 2026-10-31), under the first screen: the same small module as the panel's
     (templates/_side.html.j2 weather; its values come in the browser after load — none in this HTML) -#}
 {% if side and side.wx %}<div class="wrap hwx">{{ sdm.weather(side.wx, 'home') }}</div>{% endif %}
 
-{# 목적별 가이드: the answer tiles (figures checked against each guide's own text) and every guide #}
+{# 목적별 가이드 (operator 2026-11-02, _mz.html.j2 tile): card-news tiles — the answers (figures checked against each
+   guide's own text) on a place's KOGL-1 photo or a colour — and every guide in its group behind one tab per group #}
 {% if h.answers %}
 {% set T.i = T.i + 1 %}
-<section class="sec sec-ans{{ ' tone-2' if T.i is odd }}" aria-labelledby="h-ans">
-  <div class="wrap">{{ ui.sec_head('목적별 가이드', '어떤 여행을 계획하세요?', 'h-ans', '/guides/' if h.guides else '', '가이드 ' ~ h.guides|length ~ '편 모두' if h.guides else '') }}</div>
-  <div class="car car-ans" data-gallery>
-    <div class="car-view" data-gal-view><ol class="answers answers-2 car-track">{% for a in h.answers %}{{ p2.answer(a) }}{% endfor %}</ol></div>
-    <div class="wrap car-foot">{{ ui.carnav('답') }}</div>
+<section class="sec sec-ans sec-mz{{ ' tone-2' if T.i is odd }}" aria-labelledby="h-ans">
+  <div class="wrap">{{ ui.sec_head('목적별 가이드', '취향대로 고르는 ' ~ site.region ~ ' 총정리', 'h-ans', '/guides/' if h.guides else '', '가이드 ' ~ h.guides|length ~ '편 모두' if h.guides else '') }}</div>
+  <div class="car car-mzt" data-gallery>
+    <div class="car-view" data-gal-view><ol class="mzts car-track">{% for a in h.answers %}{{ mz.tile(a) }}{% endfor %}</ol></div>
+    <div class="wrap car-foot">{{ ui.carnav('가이드') }}</div>
   </div>
-  {#- every guide, in groups read off the guides (present.guide_groups): the group's name and count, then its guides —
-      one wrapping row on desktop, one row that scrolls sideways on phones (operator 2026-10-31: a wall of chips) -#}
-  {% if h.guide_groups %}<div class="wrap"><div class="gix">{% for grp in h.guide_groups %}<div class="gix-row" data-reveal><h3 class="gix-h">{{ grp.name }} <span class="tn">{{ grp.guides|length }}편</span></h3><ul class="gix-list">{% for g in grp.guides %}<li><a href="{{ g._path }}" data-track="guide_click">{{ g.label or g.title }}</a></li>{% endfor %}</ul></div>{% endfor %}</div></div>{% endif %}
+  {#- every guide, in groups read off the guides (present.guide_groups): one tab per group (its name and count), its
+      guides as #chips; without JS every group shows with its heading (site.js [data-tabs]) -#}
+  {% if h.guide_groups %}<div class="wrap"><div class="gtab" data-tabs>
+    <p class="gtab-l">주제로 찾기</p>
+    <div class="gtab-bar" role="tablist" aria-label="가이드 묶음">{% for grp in h.guide_groups %}<button type="button" role="tab" id="gtab-{{ loop.index }}" aria-controls="gtab-p{{ loop.index }}" aria-selected="{{ 'true' if loop.first else 'false' }}"{% if not loop.first %} tabindex="-1"{% endif %}>{{ grp.name }}<span class="tn">{{ grp.guides|length }}편</span></button>{% endfor %}</div>
+    {% for grp in h.guide_groups %}<div class="gtab-p" role="tabpanel" id="gtab-p{{ loop.index }}" aria-labelledby="gtab-{{ loop.index }}"{% if not loop.first %} data-tab-off{% endif %}><h3 class="gtab-h">{{ grp.name }} <span class="tn">{{ grp.guides|length }}편</span></h3><ul class="gtab-list">{% for g in grp.guides %}<li><a href="{{ g._path }}" data-track="guide_click"><span aria-hidden="true">#</span>{{ g.label or g.title }}</a></li>{% endfor %}</ul></div>{% endfor %}
+  </div></div>{% endif %}
 </section>
 {% endif %}
 
@@ -141,10 +187,10 @@
    photos and visit information; without any place, the honest empty state #}
 {% set T.i = T.i + 1 %}
 {% if h.featured %}
-<section class="sec sec-feat{{ ' tone-2' if T.i is odd }}" aria-labelledby="h-feat">
-  <div class="wrap">{{ ui.sec_head(('공식 ' if course_src.official else '') ~ ('코스에 가장 많이 든 곳' if h.featured_min > 1 else '코스가 지나는 곳'), '대표 장소', 'h-feat', '', '', (course_src.label or '코스') ~ ' ' ~ n_courses ~ '개 가운데 ' ~ h.featured_min ~ '개 이상에 들어 있는 관광지' ~ (' · 여러 코스에 든 곳부터' if h.featured_min == 1 and h.featured|length > 1 and h.featured[0].n_courses > 1 else '')) }}</div>
-  <div class="car car-feat" data-gallery>
-    <div class="car-view" data-gal-view><ol class="cards cards-4 car-track">{% for c in h.featured %}<li>{{ ui.card(c) }}</li>{% endfor %}</ol></div>
+<section class="sec sec-feat sec-mz{{ ' tone-2' if T.i is odd }}" aria-labelledby="h-feat">
+  <div class="wrap">{{ ui.sec_head(('공식 ' if course_src.official else '') ~ ('코스에 가장 많이 든 곳' if h.featured_min > 1 else '코스가 지나는 곳'), ('공식 ' if course_src.official else '') ~ '코스 단골 ' ~ h.featured|length ~ '곳', 'h-feat', '', '', (course_src.label or '코스') ~ ' ' ~ n_courses ~ '개 가운데 ' ~ h.featured_min ~ '개 이상에 들어 있는 관광지' ~ (' · 여러 코스에 든 곳부터' if h.featured_min == 1 and h.featured|length > 1 and h.featured[0].n_courses > 1 else '')) }}</div>
+  <div class="car car-fp" data-gallery>
+    <div class="car-view" data-gal-view><ol class="fps car-track">{% for c in h.featured %}<li>{{ mz.feed(c) }}</li>{% endfor %}</ol></div>
     <div class="wrap car-foot">{{ ui.carnav('장소') }}</div>
   </div>
 </section>
@@ -170,10 +216,10 @@
 {# 다가오는 행사: dated tiles ranked today → tomorrow → this week → running (present.ranked_events) #}
 {% if has_events %}
 {% set T.i = T.i + 1 %}
-<section class="sec evband{{ ' tone-2' if T.i is odd }}" aria-labelledby="h-ev">
+<section class="sec evband sec-mz{{ ' tone-2' if T.i is odd }}" aria-labelledby="h-ev">
   <div class="wrap">
-    {{ ui.sec_head('행사·축제', '다가오는 행사', 'h-ev', '/events/', ('진행·예정 ' ~ h.n_upcoming ~ '건 · 전체 일정') if h.n_upcoming else '행사 일정 모두') }}
-    {% if h.events_ranked %}<ol class="evrows">{% for r in h.events_ranked %}{{ ui.evrow(r) }}{% endfor %}</ol>
+    {{ ui.sec_head('행사·축제', '캘린더에 찜해 둘 행사', 'h-ev', '/events/', ('진행·예정 ' ~ h.n_upcoming ~ '건 · 전체 일정') if h.n_upcoming else '행사 일정 모두') }}
+    {% if h.events_ranked %}<ol class="tkts">{% for r in h.events_ranked %}{{ mz.ticket(r, loop.index0) }}{% endfor %}</ol>
     {% else %}<p class="p2-none">진행 중이거나 일정이 발표된 행사가 없습니다. <a href="/events/">해마다 열리는 행사와 지난 회차</a></p>{% endif %}
   </div>
 </section>
@@ -185,10 +231,11 @@
    2 columns from 700px, 4 from 1024px (css/48-abroad.css .hsns). #}
 {% if home_posts %}
 {% set T.i = T.i + 1 %}
-<section class="sec sec-sns{{ ' tone-2' if T.i is odd }}" aria-labelledby="h-sns">
+<section class="sec sec-sns sec-mz{{ ' tone-2' if T.i is odd }}" aria-labelledby="h-sns">
   <div class="wrap">
-    {{ ui.sec_head('해외에서 본 ' ~ site.region, 'SNS에서 본 ' ~ site.region, 'h-sns', '/abroad/#ab-sns', 'SNS 게시물 ' ~ n_posts ~ '개 모두') }}
-    <ul class="hsns">{% for a in home_posts %}<li><a class="hsns-c" href="/abroad/#{{ a.id }}" data-track="abroad_click"><span class="hsns-h">{{ ab.svc(a.platform) }}<span class="hsns-who"><b>{{ a.platform_label }}</b>{% if a.author %} · {{ a.author }}{% endif %}</span></span><span class="hsns-n">{{ a.note }}</span>{% if a.date %}<span class="hsns-d tn">{{ ab.when(a.date) }}</span>{% endif %}</a></li>{% endfor %}</ul>
+    {{ ui.sec_head('해외에서 본 ' ~ site.region, '해외 피드에 뜬 ' ~ site.region, 'h-sns', '/abroad/#ab-sns', 'SNS 게시물 ' ~ n_posts ~ '개 모두') }}
+    <ul class="hsns">{% for a in home_posts %}{{ mz.sns(a, loop.index0) }}{% endfor %}</ul>
+    <p class="note hsns-note">원문 문장과 게시물 사진은 옮기지 않습니다. 카드 위 사진은 게시물에 나온 장소의 사진(한국관광공사)이고, 나온 장소의 사진이 없으면 장소 이름이나 게시물의 언어를 적습니다. 게시물은 각 서비스의 공식 임베드로 엽니다.</p>
   </div>
 </section>
 {% endif %}

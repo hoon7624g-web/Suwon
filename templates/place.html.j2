@@ -94,6 +94,10 @@
       {% endif %}
     </div>
   </header>
+  {#- phones (시안 A, the first site's c4020e9bd, operator 2026-11-05): the two things a visitor does next, held at the
+      bottom — call (when one number is settled) and the main route link; the floating assistant steps up above it
+      (css 87-design-a) -#}
+  {% if p.primary or p.kf.tel[1] %}<div class="pl-bar">{% if p.kf.tel[1] %}<a class="pl-bar-tel" href="tel:{{ p.kf.tel[1] }}" data-track="tel_click" data-place="{{ p.e.id }}">{{ ui.icon('phone') }}전화</a>{% endif %}{% if p.primary %}<a class="pl-bar-go" href="{{ p.primary.url }}" rel="noopener" target="_blank" data-track="{{ 'route_click' if p.primary.role == 'route' else 'map_click' }}" data-provider="{{ p.primary.key }}" data-place="{{ p.e.id }}">{{ ui.icon('route') }}{{ p.primary.label }}<span class="vh"> (새 창)</span></a>{% endif %}</div>{% endif %}
 
   <div class="pl-band tone-2">
   <div class="wrap pl-grid{% if not lead %} lift{% endif %}">

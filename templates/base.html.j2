@@ -234,6 +234,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </footer>
 {% endif %}
+{#- phones (시안 A, the first site's c4020e9bd · c2552acc7, operator 2026-11-05): a tab bar at the bottom of the Korean
+    pages — 홈 · 지도 · 코스 · AI 챗봇 (the chat's own opener: [data-tab-chat] presses the launcher, site.js; 지도 and 코스
+    only when the build has those pages; the first site's 숙박 tab only with a booking page, which this city has not —
+    operator 2026-11-05). The floating launcher gives way to it there, and a place page shows its call/route bar
+    instead (css 87-design-a). -#}
+{% if lang == 'ko' %}<nav class="tabbar" aria-label="아래 빠른 메뉴">
+  <a href="/"{% if page_kind == 'home' %} aria-current="page"{% endif %}><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 11 12 4l8 7v9H4z"/></svg><span>홈</span></a>
+  {% if has_map %}<a href="/map/"{% if nav_current == '/map/' %} aria-current="page"{% endif %}>{{ ui.icon('map') }}<span>지도</span></a>{% endif %}
+  {% if has_courses %}<a href="/courses/"{% if nav_current == '/courses/' %} aria-current="page"{% endif %} data-track="course_click">{{ ui.icon('route') }}<span>코스</span></a>{% endif %}
+  <button type="button" data-tab-chat aria-haspopup="dialog">{{ ui.icon('chat') }}<span>AI 챗봇</span></button>
+</nav>{% endif %}
 {# the site assistant's launcher, the last thing in <body> on every page (_chat.html.j2; the chat loads on its press) #}
 {% include "_chat.html.j2" %}
 </body>

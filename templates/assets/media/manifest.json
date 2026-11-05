@@ -1518,45 +1518,6 @@
    ]
   ]
  },
- "https://tong.visitkorea.or.kr/cms2/website/43/3343243.jpg": {
-  "avif": [
-   [
-    "/assets/media/3343243-480.avif",
-    480,
-    40637
-   ],
-   [
-    "/assets/media/3343243-940.avif",
-    940,
-    131019
-   ],
-   [
-    "/assets/media/3343243-1280.avif",
-    1280,
-    218454
-   ]
-  ],
-  "h": 853,
-  "slot": "cover",
-  "w": 1280,
-  "webp": [
-   [
-    "/assets/media/3343243-480.webp",
-    480,
-    51048
-   ],
-   [
-    "/assets/media/3343243-940.webp",
-    940,
-    164940
-   ],
-   [
-    "/assets/media/3343243-1280.webp",
-    1280,
-    284690
-   ]
-  ]
- },
  "https://tong.visitkorea.or.kr/cms2/website/48/3343248.jpg": {
   "avif": [
    [
@@ -1632,6 +1593,45 @@
     "/assets/media/3589690-1280h.webp",
     1280,
     320942
+   ]
+  ]
+ },
+ "https://tong.visitkorea.or.kr/cms2/website/85/2446185.jpg": {
+  "avif": [
+   [
+    "/assets/media/2446185-480.avif",
+    480,
+    27682
+   ],
+   [
+    "/assets/media/2446185-940.avif",
+    940,
+    88991
+   ],
+   [
+    "/assets/media/2446185-1280.avif",
+    1280,
+    144706
+   ]
+  ],
+  "h": 853,
+  "slot": "cover",
+  "w": 1280,
+  "webp": [
+   [
+    "/assets/media/2446185-480.webp",
+    480,
+    31776
+   ],
+   [
+    "/assets/media/2446185-940.webp",
+    940,
+    101784
+   ],
+   [
+    "/assets/media/2446185-1280.webp",
+    1280,
+    169630
    ]
   ]
  }
