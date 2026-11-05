@@ -108,6 +108,9 @@
                                     [data-hcar-count] is aria-live="polite" only while autoplay is stopped. A row that
                                     fits gets .no-scroll (the controls keep their room, hidden). An article's preview
                                     picture (.nc-og) that does not load is removed with its credit line (.nc-cr)
+   파트너 문의 (/partners/contact/, templates/partners_contact.html.j2)
+     [data-pc-form][data-to][data-site]   the inquiry form writes the mail in the visitor's mail app (nothing stored
+                                    or sent by the site); [data-pc-alt] [data-pc-pre] [data-pc-copy] the copy fallback
    Guides
      [data-sec=ID][data-pts="a b"]  body sections: the current one marks [data-toc-link=ID] (aria-current) inside
      [data-toc]                     the table of contents, and on ≥1024px tells the map its places (gs:focus {ids}).
@@ -1488,6 +1491,41 @@
       });
     });
   }
+
+  // ------------------------------------------------------------ 파트너 문의 (/partners/contact/, the first site's 3ee5bff35)
+  // [data-pc-form]: sending writes the mail in the visitor's mail app — to data-to, the subject '[<site> 파트너 문의]
+  // <kind> · <name>', the body one line per filled field. Nothing is stored or sent by the site. A moment later the
+  // same text shows under the form with a copy button, for a device with no mail app. Without JS the form posts to
+  // its mailto: action as plain text.
+  $all("[data-pc-form]").forEach(function (form) {
+    var to = form.getAttribute("data-to"), site = form.getAttribute("data-site") || "";
+    var alt = form.querySelector("[data-pc-alt]"), pre = form.querySelector("[data-pc-pre]");
+    var labels = {person: "담당자", tel: "연락처", email: "답장 받을 이메일", url: "홈페이지·SNS 주소"};
+    function compose() {
+      var f = form.elements, kind = (form.querySelector("input[name=kind]:checked") || {}).value || "";
+      var name = (f.name.value || "").trim(), lines = ["문의 종류: " + kind, "숙소·채널 이름: " + name];
+      Object.keys(labels).forEach(function (k) { var v = (f[k].value || "").trim(); if (v) lines.push(labels[k] + ": " + v); });
+      var msg = (f.message.value || "").trim();
+      if (msg) lines.push("", "문의 내용:", msg);
+      lines.push("", "— " + site + " 파트너 문의 페이지에서 보냄");
+      return {subject: "[" + site + " 파트너 문의] " + kind + " · " + name, body: lines.join("\n")};
+    }
+    form.addEventListener("submit", function (ev) {
+      if (!form.reportValidity || !form.reportValidity()) { ev.preventDefault(); return; }
+      ev.preventDefault();
+      var m = compose();
+      location.href = "mailto:" + to + "?subject=" + encodeURIComponent(m.subject) + "&body=" + encodeURIComponent(m.body);
+      if (pre) pre.textContent = "받는 사람: " + to + "\n제목: " + m.subject + "\n\n" + m.body;
+      if (alt) setTimeout(function () { alt.hidden = false; }, 1200);
+    });
+    var copy = form.querySelector("[data-pc-copy]"), done = form.querySelector("[data-pc-copied]");
+    if (copy) copy.addEventListener("click", function () {
+      var text = pre ? pre.textContent : "";
+      var ok = function () { if (done) { done.hidden = false; setTimeout(function () { done.hidden = true; }, 2500); } };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok, function () {});
+      else { var r = doc.createRange(); r.selectNodeContents(pre); var sel = win.getSelection(); sel.removeAllRanges(); sel.addRange(r); ok(); }
+    });
+  });
 
   // ------------------------------------------------------------ videos page: '공식 채널만'
   var vOff = doc.querySelector("[data-v-official]"), vWrap = doc.querySelector("[data-videos]");

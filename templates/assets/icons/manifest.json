@@ -1,4 +1,74 @@
 {
+ "btn-partner": {
+  "px": [
+   64,
+   128,
+   240
+  ],
+  "avif": [
+   [
+    "btn-partner-64.avif",
+    64
+   ],
+   [
+    "btn-partner-128.avif",
+    128
+   ],
+   [
+    "btn-partner-240.avif",
+    240
+   ]
+  ],
+  "webp": [
+   [
+    "btn-partner-64.webp",
+    64
+   ],
+   [
+    "btn-partner-128.webp",
+    128
+   ],
+   [
+    "btn-partner-240.webp",
+    240
+   ]
+  ]
+ },
+ "btn-plan": {
+  "px": [
+   64,
+   128,
+   240
+  ],
+  "avif": [
+   [
+    "btn-plan-64.avif",
+    64
+   ],
+   [
+    "btn-plan-128.avif",
+    128
+   ],
+   [
+    "btn-plan-240.avif",
+    240
+   ]
+  ],
+  "webp": [
+   [
+    "btn-plan-64.webp",
+    64
+   ],
+   [
+    "btn-plan-128.webp",
+    128
+   ],
+   [
+    "btn-plan-240.webp",
+    240
+   ]
+  ]
+ },
  "cond-parking": {
   "px": [
    64,
@@ -1395,6 +1465,111 @@
    ],
    [
     "plan-with-solo-240.webp",
+    240
+   ]
+  ]
+ },
+ "pn-content": {
+  "px": [
+   64,
+   128,
+   240
+  ],
+  "avif": [
+   [
+    "pn-content-64.avif",
+    64
+   ],
+   [
+    "pn-content-128.avif",
+    128
+   ],
+   [
+    "pn-content-240.avif",
+    240
+   ]
+  ],
+  "webp": [
+   [
+    "pn-content-64.webp",
+    64
+   ],
+   [
+    "pn-content-128.webp",
+    128
+   ],
+   [
+    "pn-content-240.webp",
+    240
+   ]
+  ]
+ },
+ "pn-direct": {
+  "px": [
+   64,
+   128,
+   240
+  ],
+  "avif": [
+   [
+    "pn-direct-64.avif",
+    64
+   ],
+   [
+    "pn-direct-128.avif",
+    128
+   ],
+   [
+    "pn-direct-240.avif",
+    240
+   ]
+  ],
+  "webp": [
+   [
+    "pn-direct-64.webp",
+    64
+   ],
+   [
+    "pn-direct-128.webp",
+    128
+   ],
+   [
+    "pn-direct-240.webp",
+    240
+   ]
+  ]
+ },
+ "pn-site": {
+  "px": [
+   64,
+   128,
+   240
+  ],
+  "avif": [
+   [
+    "pn-site-64.avif",
+    64
+   ],
+   [
+    "pn-site-128.avif",
+    128
+   ],
+   [
+    "pn-site-240.avif",
+    240
+   ]
+  ],
+  "webp": [
+   [
+    "pn-site-64.webp",
+    64
+   ],
+   [
+    "pn-site-128.webp",
+    128
+   ],
+   [
+    "pn-site-240.webp",
     240
    ]
   ]

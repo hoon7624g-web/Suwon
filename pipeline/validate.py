@@ -111,7 +111,8 @@ from urllib.parse import unquote, urlsplit
 
 from collections import Counter
 
-from . import art, ask, booking, chat_index, en_site, intl_check, media, notices, plan, present, relations, tickets
+from . import (art, ask, booking, chat_index, en_site, intl_check, media, notices, partners, plan, present, relations,
+               tickets)
 from . import locales as LC
 from .build import DESC_MAX, HL_VIEWER, LISTS, MODES, State, fact_row, index_counts, load_abroad
 from .jsonld import AMENITY_VALUES, amenity_value
@@ -1774,6 +1775,8 @@ def validate(data_dir: Path, out: Path, mode: str = "production") -> tuple[list[
     W = lambda where, msg: warns.append(f"[{where}] {msg}")
     for problem in media.cover_problems(S):   # the home's opening photo is shown (pipeline/media.py)
         (E if strict else W)("home cover", problem)
+    for problem in partners.data_problems(S):   # 파트너 되기 (pipeline/partners.py): partners.json itself
+        E("partners.json", problem)
     sitemap = _sitemap_locs(out)
     llms = {name: (out / name).read_text("utf-8") if (out / name).exists() else ""
             for name in ("llms.txt", "llms-full.txt")}

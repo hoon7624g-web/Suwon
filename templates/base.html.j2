@@ -174,6 +174,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <nav class="menu-panel" aria-label="전체 메뉴">
         {% if sd %}{{ sdm.acts(sd.acts, nav_current) }}
         {{ sdm.groups(SG, nav_current, 'menu') }}
+        {{ sdm.partner(partners_path|default(''), nav_current, site.site_name) }}
         {{ sdm.day(sd, 'menu') }}{% endif %}
         <ul class="menu-sub">{% if has_search %}<li><a href="/search/"{% if nav_current == '/search/' %} aria-current="page"{% endif %}>검색</a></li>{% endif %}{% if not sd %}<li><a href="/about/"{% if nav_current == '/about/' %} aria-current="page"{% endif %}>소개·출처</a></li>{% endif %}{{ lg.others(langs) }}</ul>
       </nav>
@@ -183,6 +184,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     {{ sdm.day(sd, 'side') }}
     {{ sdm.acts(sd.acts, nav_current) }}
     <nav class="side-nav" aria-label="주 메뉴">{{ sdm.groups(SG, nav_current, 'side') }}</nav>
+    {{ sdm.partner(partners_path|default(''), nav_current, site.site_name) }}
   </div>{% endif %}
 </header>
 {% endif %}
@@ -212,7 +214,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <nav class="foot-col" aria-label="안내">
         <h2>안내</h2>
-        <ul>{% if has_transport %}<li><a href="/transport/">{{ site.region }} 교통 시간표</a></li>{% endif %}{% if has_sun %}<li><a href="/sun/">{{ site.region }} 일출·일몰 시간</a></li>{% endif %}{% if has_videos %}<li><a href="/videos/">영상으로 보는 {{ site.region }}</a></li>{% endif %}{% if has_abroad %}<li><a href="/abroad/">해외에서 본 {{ site.region }}</a></li>{% endif %}<li><a href="/about/">소개·출처</a></li><li><a href="/about/#how">이 사이트를 만드는 방법</a></li><li><a href="/about/#correction">정정 요청</a></li><li><a href="/llms.txt">AI용 안내(llms.txt)</a></li><li><a href="/sitemap.xml">사이트맵</a></li>{{ lg.others(langs) }}</ul>
+        <ul>{% if partners_path is defined and partners_path %}<li><a href="{{ partners_path }}" data-track="partner_cta">파트너 문의·제휴</a></li>{% endif %}{% if has_transport %}<li><a href="/transport/">{{ site.region }} 교통 시간표</a></li>{% endif %}{% if has_sun %}<li><a href="/sun/">{{ site.region }} 일출·일몰 시간</a></li>{% endif %}{% if has_videos %}<li><a href="/videos/">영상으로 보는 {{ site.region }}</a></li>{% endif %}{% if has_abroad %}<li><a href="/abroad/">해외에서 본 {{ site.region }}</a></li>{% endif %}<li><a href="/about/">소개·출처</a></li><li><a href="/about/#how">이 사이트를 만드는 방법</a></li><li><a href="/about/#correction">정정 요청</a></li><li><a href="/llms.txt">AI용 안내(llms.txt)</a></li><li><a href="/sitemap.xml">사이트맵</a></li>{{ lg.others(langs) }}</ul>
       </nav>
     </div>
     <div class="foot-id">

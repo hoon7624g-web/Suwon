@@ -5072,7 +5072,8 @@ def side_vm(S) -> dict:
               {"key": "about", "label": W["about"], "href": "/about/", "links": []}]
     acts = []
     if S.entities:   # /plan/ is built with the places (build.common has_plan)
-        acts.append({"label": W["plan_btn"], "href": "/plan/", "track": "plan_cta", "icon": "spark", "primary": True})
+        acts.append({"label": W["plan_btn"], "href": "/plan/", "track": "plan_cta", "icon": "spark", "primary": True,
+                     "pic": "btn-plan"})   # the 3D planner (the first site's b83fcaf3f; the glyph stays without it)
     if S.courses:
         acts.append({"label": W["courses_btn"], "href": "/courses/", "track": "course_click", "icon": "", "primary": False})
     return {"groups": [g for g in groups if g], "acts": acts, "tagline": W["tagline"].format(r=region),

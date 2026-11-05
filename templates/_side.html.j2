@@ -25,6 +25,7 @@
       moon in its phase; day: the sun), '지금 날씨 점수' and the score, clouds either side, the provider's own Korean
       lines (Korean pages only) and the four cells 아침 · 낮 · 저녁 · 지금. variant 'home' (big) or 'side' (small). -#}
 {% import "_ui.html.j2" as ui %}
+{% import "_pic.html.j2" as pk %}
 
 {% macro groups(G, current, mode) -%}
 <ul class="sg-list sg-{{ mode }}">
@@ -37,7 +38,15 @@
 {%- endmacro %}
 
 {% macro acts(A, current) -%}
-{% if A %}<p class="sd-acts">{% for a in A %}<a class="sd-act{{ ' is-pri' if a.primary }}" href="{{ a.href }}"{% if a.href == current %} aria-current="page"{% endif %}{% if a.track %} data-track="{{ a.track }}"{% endif %}>{% if a.icon %}{{ ui.icon(a.icon, 'icon') }}{% endif %}<span>{{ a.label }}</span></a>{% endfor %}</p>{% endif %}
+{% if A %}<p class="sd-acts">{% for a in A %}<a class="sd-act{{ ' is-pri' if a.primary }}" href="{{ a.href }}"{% if a.href == current %} aria-current="page"{% endif %}{% if a.track %} data-track="{{ a.track }}"{% endif %}>{% if a.pic %}{{ pk.pic(a.pic, a.icon, 24, '', true, 'sd-act-pic') }}{% elif a.icon %}{{ ui.icon(a.icon, 'icon') }}{% endif %}<span>{{ a.label }}</span></a>{% endfor %}</p>{% endif %}
+{%- endmacro %}
+
+{#- partner(path, current, name): the '문의/제휴' link (the first site's 7f2afaad7 · a0dc577a3, operator 2026-11-04
+    meeting; this city 2026-11-05 '파트너는 … 파트너 되기 페이지만'): a quiet, always-there call to action at the foot of
+    the panel and in the phone menu, to /partners/ where the inquiry form is — after the groups; nothing without the
+    page (data/<region>/partners.json, pipeline/partners.py). name: the site's name ('<name> 파트너 되기'). -#}
+{% macro partner(path, current, name='') -%}
+{% if path %}<p class="sd-pt"><a class="sd-pt-a" href="{{ path }}"{% if path == current %} aria-current="page"{% endif %} data-track="partner_cta"><span class="sd-pt-ic" aria-hidden="true">{{ pk.pic('btn-partner', 'spark', 32) }}</span><span class="sd-pt-t"><span class="sd-pt-k">문의/제휴</span><span class="sd-pt-s">{{ name }} 파트너 되기</span></span><i class="sg-i sg-i-r" aria-hidden="true"></i></a></p>{% endif %}
 {%- endmacro %}
 
 {% macro weather(wx, variant) -%}

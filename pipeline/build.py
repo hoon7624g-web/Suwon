@@ -47,7 +47,7 @@ from urllib.parse import quote
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from markupsafe import Markup, escape
 
-from . import art, ask, chat_index, en_site, icons, jsonld, notices, plan, relations, tickets, timetables
+from . import art, ask, chat_index, en_site, icons, jsonld, notices, partners, plan, relations, tickets, timetables
 from .city import of as city_of
 from .enrich import haversine_m
 from .maplinks import DEFAULT_TMAP_SCHEME, build_links, precision_summary, search_link
@@ -501,6 +501,8 @@ class State:
         self.dead_dropped = drop_dead_links(self.entities_all + self.events_all, self.dead_links)
         # 예약하기 (step 1): the official booking pages pages link as buttons (pipeline/booking.py); none without the file
         self.booking = _load(data_dir / "booking.json", {})
+        # 파트너 되기 (pipeline/partners.py, operator 2026-11-05): /partners/ and the '문의/제휴' links; none without the file
+        self.partners = _load(data_dir / "partners.json", {})
         # URL slugs over every record of a file (a draft's stored slug is reserved too); the problems — a malformed
         # or duplicate stored slug — are errors in pipeline.validate
         self.slug_problems = (assign_record_slugs(self.entities_all, "place", self.city)
@@ -721,6 +723,8 @@ class State:
                 "tourapi_used": self.tourapi_used, "has_map": bool(self.entities), "has_videos": bool(self.videos),
                 "has_search": bool(self.entities), "has_abroad": bool(self.abroad or self.abroad_videos),
                 "has_plan": bool(self.entities),   # /plan/, the AI course planner (Korean pages, pipeline/plan.py)
+                # 파트너 되기 (pipeline/partners.py): the side panel / phone menu / footer link to /partners/
+                "partners_path": partners.PATH if self.partners else "",
                 "has_sun": bool(self.tt_sun), "has_transport": bool(self.tt_transport),   # /sun/ · /transport/
                 "tt_guides": timetables.TRANSPORT_GUIDES if self.tt_transport else (),   # guides that link /transport/
                 "art_slots": art.for_lang(self.art, "ko"), "side": self.side, **self.common_vm,
@@ -2003,6 +2007,28 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
         if hl:   # the viewer (templates/_abroad_hl.html.j2 dialog) arrives with highlights.js on the first press
             viewer = env.get_template("_abroad_hl.html.j2").module.dialog(hl)
             (out / HL_VIEWER.strip("/")).write_text(json.dumps({"html": str(viewer)}, ensure_ascii=False), "utf-8")
+
+    if S.partners:
+        # /partners/ 파트너 되기 (the first site's 7f2afaad7, operator 2026-11-04 meeting; this city 2026-11-05 — the
+        # recruiting page alone): the stay and content partnerships and one inquiry form (pipeline/partners.py). Korean
+        # only; no partner stay is listed.
+        path = partners.PATH
+        site_name = S.site.get("site_name", "")
+        crumbs = [("홈", S.site_url + "/"), ("파트너", S.abs(path))]
+        P = partners.page_vm(S)
+        desc = first_fit(f"{site_name} 숙소 파트너(AI 검색에 맞춘 홈페이지와 영상·직접 예약 문의)와 콘텐츠 파트너(배너 교환·크리에이터 큐레이션)를 모집합니다.",
+                         f"{site_name} 숙소·콘텐츠 파트너를 모집합니다.")
+        page = _simple_page(S, path, f"{site_name} 파트너 — 숙소·콘텐츠 제휴 안내", desc, crumbs, None)
+        _render(env, S, out, "partners.html.j2", path, page, "partners", None, P=P)
+        # /partners/contact/ 파트너 문의 (the first site's 3ee5bff35): a form that writes the mail to partners.contact in
+        # the visitor's mail app (site.js [data-pc-form]; without JS the form posts to the mailto: address). Nothing is
+        # stored or sent by the site. Not in the sitemap.
+        if P["contact"]:
+            cpath = partners.CONTACT_PATH
+            cpage = _simple_page(S, cpath, f"{site_name} 파트너 문의",
+                                 f"{site_name} 숙소·콘텐츠 파트너 제휴를 문의합니다. 입력한 내용은 메일로 {P['contact']}에 갑니다.",
+                                 [*crumbs, ("문의", S.abs(cpath))], None)
+            _render(env, S, out, "partners_contact.html.j2", cpath, cpage, "partners", None, in_sitemap=False, P=P)
 
     # /sun/ 일출·일몰 시간 and /transport/ 교통 시간표 (pipeline/timetables.py, operator 2026-10-31: the new public
     # data on the site, for search and AI answers): Korean pages, WebPage + BreadcrumbList + Dataset, lastmod the data's
