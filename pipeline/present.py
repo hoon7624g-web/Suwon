@@ -4474,6 +4474,39 @@ def points_list(text: str, split, lang: str = "ko") -> list[str]:
     return out
 
 
+# runs of a guide heading that must not break across lines (the first site's 53950dfe5 · 8af1b8ff5 · 16cd8cf48, operator
+# 2026-11-04 '줄바꿈도 어색하고'): a date ('11월 14일(토)'), a month range ('11~2월'), a straight-line distance ('직선
+# 240m'), a duration or a range of them ('2시간 47분~3시간 6분') and a place name with spaces each stay on one line
+KEEP_TOGETHER = re.compile(r"\d{1,2}월 \d{1,2}일(?:\([월화수목금토일]\))?|\d{1,2}~\d{1,2}월|직선 (?:약 )?\d[\d,.]*\s?k?m"
+                           r"|\d+시간(?: \d+분)?(?:~\d+시간(?: \d+분)?)?")
+
+
+def keep_together(text: str, names: list[dict] | None = None, lang: str = "ko"):
+    """The heading as Markup with each KEEP_TOGETHER run and each guide place name that has a space in one
+    <span class="nw">; the text itself is unchanged (other languages: the plain text)."""
+    text = squash_ws(text)
+    if lang != "ko" or not text:
+        return text
+    spans = [(m.start(), m.end()) for m in KEEP_TOGETHER.finditer(text)]
+    for nm in sorted({n["name"] for n in names or [] if " " in (n.get("name") or "")}, key=len, reverse=True):
+        spans += [(m.start(), m.end()) for m in re.finditer(re.escape(nm), text)]
+    out, pos = [], 0
+    for a, b in sorted(spans):
+        # the whole word: a particle after the run ('푸드존은') or a word joined before it stays with it — a break at
+        # the span's edge would leave '은' alone on the next line
+        while a > 0 and not text[a - 1].isspace():
+            a -= 1
+        while b < len(text) and not text[b].isspace():
+            b += 1
+        if a < pos:
+            continue
+        out.append(escape(text[pos:a]))
+        out.append(Markup('<span class="nw">') + escape(text[a:b]) + Markup("</span>"))
+        pos = b
+    out.append(escape(text[pos:]))
+    return Markup("").join(out)
+
+
 def guide_sections(heads_texts: list[tuple[str, list[str]]], names: list[dict], lang: str, split,
                    cards: dict, prefix: str = "", shown: set | None = None) -> list[dict]:
     """Body sections: {n, id, heading, paras [[Markup bullet]], own [bool per paragraph: lines that already start with
@@ -4494,7 +4527,8 @@ def guide_sections(heads_texts: list[tuple[str, list[str]]], names: list[dict], 
         named = [cards[n["id"]] for n in mentions(head + " " + " ".join(paras), names, lang) if n["id"] in cards]
         places = [c for c in named if c["id"] not in shown]
         shown.update(c["id"] for c in places)
-        out.append({"n": i, "id": f"{prefix}h-b{i}", "heading": head, "paras": body, "places": places,
+        out.append({"n": i, "id": f"{prefix}h-b{i}", "heading": keep_together(head, names, lang), "paras": body,
+                    "places": places,
                     "again": [c for c in named if c not in places], "pts": [c["slug"] for c in named if c.get("geo")]})
     return out
 

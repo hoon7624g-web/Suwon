@@ -6,6 +6,7 @@ FAQ as an accordion with every answer in the DOM. Also: a menu price is never cu
 Built from gunsan_subset (its five guides: guide-02 has 'again' rows, guide-13 more places than PICKS_MAX) with
 tests/fixtures/en_min laid over it (the English guide-13); guides are looked up by id."""
 import html as htmlmod
+import json
 import re
 import shutil
 from pathlib import Path
@@ -118,6 +119,25 @@ def test_menu_price_is_never_cut_at_its_thousands_comma():
     b = present.brief_menu("한우떡갈비(200g)24,000원, 돼지떡갈비(200g)11,000원")
     assert b["main"] == "한우떡갈비(200g)24,000원" and b["more"]
     assert en_site.brief_en("menu", "Hanwoo tteokgalbi (200 g) 24,000 won, pork tteokgalbi 11,000 won")["main"].endswith("24,000 won")
+
+
+def test_heading_keeps_dates_and_durations_on_one_line():
+    """A guide heading's date, distance and duration stay on one line (the first site's 16cd8cf48; present.keep_together):
+    each in one <span class="nw">, the text itself unchanged."""
+    h = str(present.keep_together("자가용은 서울에서 2시간 47분~3시간 6분 걸리고, 11월 14일(토) 밤에는 직선 240m 안"))
+    assert '<span class="nw">2시간 47분~3시간 6분</span>' in h
+    assert '<span class="nw">11월 14일(토)</span>' in h and '<span class="nw">직선 240m</span>' in h
+    assert re.sub(r"<[^>]+>", "", h) == "자가용은 서울에서 2시간 47분~3시간 6분 걸리고, 11월 14일(토) 밤에는 직선 240m 안"
+    assert present.keep_together("Two hours", lang="en") == "Two hours"
+
+
+def test_guide_subheadings_are_polite():
+    """Every guide subheading is 존댓말 or a noun phrase (the first site's 397fa5038, operator 2026-11-04 '반말 … 존댓말로
+    바꿔'): none ends in the plain '~다' or '~나'."""
+    guides = json.loads((ROOT / "data" / "suwon" / "guides.json").read_text("utf-8"))
+    plain = [(g["id"], b["heading"]) for g in guides for b in g.get("body") or []
+             if re.search(r"(?<!니)다$|[^요]나$|[가-힣]냐$", b.get("heading", "").rstrip("?!. "))]
+    assert plain == []
 
 
 def _guide_pages(S, built, DATA):

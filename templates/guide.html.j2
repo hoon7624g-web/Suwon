@@ -47,7 +47,9 @@
     {#- a title with ' — ' reads as the question and, in grey on its own line, its list (Apple two-tone head); the
         H1's text stays the whole title -#}
     {% set tp = G.title.split(' — ', 1) %}
-    <h1 class="d1 d1-q vt-title">{% if tp|length == 2 %}{{ tp[0] }} <span class="d1-sub"><span class="vh">— </span>{{ p2.dotwrap(tp[1]) }}</span>{% else %}{{ G.title }}{% endif %}</h1>
+    {#- a title of two clauses breaks after its comma (the first site's 8af1b8ff5): each clause one unit -#}
+    {% set cl = G.title.split(', ', 1) %}
+    <h1 class="d1 d1-q vt-title">{% if tp|length == 2 %}{{ tp[0] }} <span class="d1-sub"><span class="vh">— </span>{{ p2.dotwrap(tp[1]) }}</span>{% elif cl|length == 2 %}<span class="d1-cl">{{ cl[0] }},</span> <span class="d1-cl">{{ cl[1] }}</span>{% else %}{{ G.title }}{% endif %}</h1>
     {% if G.route %}
     <dl class="datarow">
       <div><dt>동선</dt><dd class="tn">{{ G.route.stops|length }}곳</dd></div>
