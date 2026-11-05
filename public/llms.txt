@@ -5,11 +5,11 @@
 관광 정보·사진: 한국관광공사 TourAPI. 방문 정보마다 출처를 적었습니다. 운영: 에이아이오투오.
 
 ## 목적별 가이드
-- [수원화성·화성행궁·방화수류정 성곽 명소와 상시 개방 무료 관광지는 어디일까요?](https://suwon.webforai.kr/guides/suwon-hwaseong-fortress-haenggung/): 이 사이트에 실린 수원화성·화성행궁·사대문·각루·성곽 관련 명소는 20곳이며, 연중무휴·무료로 개방하는 수원 관광지는 51곳입니다.
-- [월요일에 영업하는 수원 왕갈비·통닭·칼국수·행리단길 카페는 어디일까요?](https://suwon.webforai.kr/guides/monday-open-restaurants-suwon/): 이 사이트에 실린 수원 음식점 가운데 쉬는 날 정보에 월요일 휴무가 없는 곳은 176곳입니다.
+- [수원화성·화성행궁·방화수류정 성곽 명소와 상시 개방 무료 관광지는 어디일까요?](https://suwon.webforai.kr/guides/suwon-hwaseong-fortress-haenggung/): 이 사이트에 실린 수원화성·화성행궁·사대문·각루·성곽 관련 명소는 21곳이며, 연중무휴·무료로 개방하는 수원 관광지는 52곳입니다.
+- [월요일에 영업하는 수원 왕갈비·통닭·칼국수·행리단길 카페는 어디일까요?](https://suwon.webforai.kr/guides/monday-open-restaurants-suwon/): 이 사이트에 실린 수원 음식점 가운데 쉬는 날 정보에 월요일 휴무가 없는 곳은 175곳입니다.
 - [수원 호텔·한옥스테이·숙소 27곳은 어떻게 고를까요?](https://suwon.webforai.kr/guides/suwon-hotels-hanok-stays/): 이 사이트에 수록된 수원 호텔·한옥스테이·숙소는 모두 27곳이며, 주차 안내가 기재된 숙소는 27곳입니다.
 - [아이와 함께 가기 편한 수원 수목원·아쿠아플라넷·박물관·공원 명소는 어디일까요?](https://suwon.webforai.kr/guides/suwon-with-kids/): 수목원·호수·공원·아쿠아플라넷·천문대·박물관·미술관이 이름에 포함된 수원 관광지는 52곳이며, 박물관·미술관·도서관 등 문화시설은 43곳입니다.
-- [비 오는 날 둘러보기 편한 수원 박물관·미술관·별마당도서관·문화시설은 어디일까요?](https://suwon.webforai.kr/guides/suwon-indoor-museums/): 이 사이트에 수록된 수원 박물관·미술관·도서관·아트센터 등 문화시설은 모두 43곳이며, 박물관·미술관·전시관·도서관·해우재·아쿠아플라넷이 이름에 포함된 실내외 문화 관광지는 34…
+- [비 오는 날 둘러보기 편한 수원 박물관·미술관·별마당도서관·문화시설은 어디일까요?](https://suwon.webforai.kr/guides/suwon-indoor-museums/): 이 사이트에 수록된 수원 박물관·미술관·도서관·아트센터 등 문화시설은 모두 43곳이며, 박물관·미술관·전시관·도서관·해우재·아쿠아플라넷이 이름에 포함된 실내외 문화 관광지는 38…
 
 ## 관광지
 - [PLAY your TRIP](https://suwon.webforai.kr/places/play-your-trip/): PLAY your TRIP는 11:00~20:00에 문을 엽니다.
@@ -19,7 +19,7 @@
 - [만석거공원](https://suwon.webforai.kr/places/manseokgeogongwon/): 만석거공원은 쉬는 날 없이 상시 개방합니다.
 - [만석공원](https://suwon.webforai.kr/places/manseokgongwon/): 만석공원은 장안구 정조로 1088(송죽동)에 있고, 상시 개방합니다.
 - [밤밭청개구리공원](https://suwon.webforai.kr/places/bambatcheonggaegurigongwon/): 밤밭청개구리공원은 쉬는 날 없이 상시 개방합니다.
-- [보현선원](https://suwon.webforai.kr/places/bohyeonseonwon/): 보현선원은 쉬는 날 없이 상시 개방합니다.
+- [보현선원](https://suwon.webforai.kr/places/bohyeonseonwon/): 보현선원은 연중무휴로 05:00~20:00에 문을 엽니다.
 - [북수원온천](https://suwon.webforai.kr/places/buksuwononcheon/): 북수원온천은 쉬는 날 없이 상시 개방합니다.
 - [수원 화성](https://suwon.webforai.kr/places/suwon-hwaseong/): 수원 화성은 쉬는 날 없이 상시 개방합니다.
 - [일월수목원](https://suwon.webforai.kr/places/irwolsumogwon/): 일월수목원은 2026년 10월 30일(금)–10월 31일(토)에 09:30–21:00 운영하고, 입장은 20:30에 마감합니다.
@@ -248,7 +248,7 @@
 - [화서공원](https://suwon.webforai.kr/places/hwaseogongwon/): 화서공원은 쉬는 날 없이 상시 개방합니다.
 - [화서문(華西門)](https://suwon.webforai.kr/places/hwaseomun/): 화서문(華西門)은 쉬는 날 없이 상시 개방합니다.
 - [화성어차](https://suwon.webforai.kr/places/hwaseongeocha/): 화성어차는 매주 월요일에 쉬고, 09:40~17:00에 문을 엽니다.
-- [화성행궁](https://suwon.webforai.kr/places/hwaseonghaenggung/): 화성행궁은 2026년 10월 30일(금)–11월 1일(일)에 09:00–21:30 운영하고, 입장은 21:00에 마감합니다.
+- [화성행궁](https://suwon.webforai.kr/places/hwaseonghaenggung/): 화성행궁의 이용시간은 하절기(3~10월) 09:00~18:00, 동절기(11~2월) 09:00~17:00이고 연중무휴입니다.
 - [화홍문(華虹門)](https://suwon.webforai.kr/places/hwahongmun/): 화홍문(華虹門)의 이용시간은 하절기(3~10월) 09:00~18:00, 동절기(11~2월) 09:00~17:00이고 연중무휴입니다.
 - [효원공원](https://suwon.webforai.kr/places/hyowongongwon/): 효원공원은 연중무휴로 09:00~22:00에 문을 엽니다.
 - [효원공원 월화원](https://suwon.webforai.kr/places/hyowongongwon-wolhwawon/): 효원공원 월화원은 연중무휴로 09:00~22:00에 문을 엽니다.
@@ -266,6 +266,7 @@
 - [수원화성박물관](https://suwon.webforai.kr/places/suwonhwaseongbangmulgwan/): 수원화성박물관의 이용시간은 09:00~18:00(매표 마감 17:00)이고, 매주 월요일과 그 밖에 시장이 정하는 휴관일에 쉽니다.
 - [정조테마공연장](https://suwon.webforai.kr/places/jeongjotemagongyeonjang/): 정조테마공연장의 이용시간은 화요일~금요일 13:00~17:00, 주말 및 공휴일 10:00~17:00이고, 매주 월요일에 쉽니다.
 - [해움미술관](https://suwon.webforai.kr/places/haeummisulgwan/): 해움미술관은 매주 월요일과 법정공휴일에 쉬고, 10:00~18:00에 문을 엽니다.
+- [중복들길(서호공원입구 ~ 배양교)](https://suwon.webforai.kr/places/jungbokdeulgil/): 중복들길(서호공원입구 ~ 배양교)은 쉬는 날 없이 상시 개방합니다.
 - [수원월드컵경기장](https://suwon.webforai.kr/places/suwonwoldeukeopgyeonggijang/): 수원월드컵경기장은 팔달구 월드컵로 310에 있고, 연중무휴로 09:00~18:00에 문을 엽니다.
 - [플라잉 수원](https://suwon.webforai.kr/places/peullaing-suwon/): 플라잉 수원은 2026년 11월 1일(일)–2027년 1월 31일(일)에 쉰다고 공지했습니다.
 - [ABC마트 GS AK플라자 수원점](https://suwon.webforai.kr/places/abc-mateu-gs-ak-peullaja-suwonjeom/): ABC마트 GS AK플라자 수원점은 10:30~20:00에 문을 엽니다.
@@ -497,11 +498,11 @@
 - [백세짬뽕 수원본점](https://suwon.webforai.kr/places/baeksejjamppong-suwonbonjeom/): 백세짬뽕 수원본점의 대표 메뉴는 백세짬뽕이고, 차돌짬뽕·백세짜장·맑은짬뽕 등도 있습니다.
 - [백운주말농장](https://suwon.webforai.kr/places/baegunjumallongjang/): 백운주말농장의 대표 메뉴는 숯불바베큐이고, 보리밥·해물파전·한방닭백숙 등도 있습니다.
 - [북문 유치회관](https://suwon.webforai.kr/places/bungmun-yuchihoegwan/): 북문 유치회관의 대표 메뉴는 해장국이고, 술국·수육 등도 있습니다.
-- [북수원화로](https://suwon.webforai.kr/places/buksuwonhwaro/): 북수원화로의 대표 메뉴는 한돈갈비이고, 목살 왕 소금·생 삼겹살·소 생갈비 등도 있습니다.
-- [삼풍가든](https://suwon.webforai.kr/places/sampunggadeun/): 삼풍가든의 대표 메뉴는 생갈비이고, 양념갈비·갈비정식·불고기 등도 있습니다.
+- [북수원화로](https://suwon.webforai.kr/places/buksuwonhwaro/): 북수원화로는 수원시가 모범음식점으로 지정한 곳으로, 대표 메뉴는 한돈갈비이고 목살 왕 소금·생 삼겹살·소 생갈비 등도 있습니다. 지정: 모범음식점.
+- [삼풍가든](https://suwon.webforai.kr/places/sampunggadeun/): 삼풍가든은 수원시가 모범음식점으로 지정한 곳으로, 대표 메뉴는 생갈비이고 양념갈비·갈비정식·불고기 등도 있습니다. 지정: 모범음식점.
 - [서동진의커피랩 본점](https://suwon.webforai.kr/places/seodongjinuikeopiraep-bonjeom/): 서동진의커피랩 본점의 대표 메뉴는 아메리카노이고, 카페라떼·카푸치노·코코넛카페라떼 등도 있습니다.
 - [송죽약방](https://suwon.webforai.kr/places/songjugyakbang/): 송죽약방의 대표 메뉴는 마파두부밥이고, 비빔탄탄면·도삭면·어향가지튀김 등도 있습니다.
-- [송풍가든](https://suwon.webforai.kr/places/songpunggadeun/): 송풍가든의 대표 메뉴는 투뿔 한우 특수부위 안창살이고, 드라이에이징 투뿔 한우 등심·투뿔 한우 생갈비·두뿔 한우 양념갈비 등도 있습니다.
+- [송풍가든](https://suwon.webforai.kr/places/songpunggadeun/): 송풍가든은 수원시가 모범음식점으로 지정한 곳으로, 대표 메뉴는 투뿔 한우 특수부위 안창살이고 드라이에이징 투뿔 한우 등심·투뿔 한우 생갈비·두뿔 한우 양념갈비 등도 있습니다. 지정: 모범음식점.
 - [신사강정육점식당](https://suwon.webforai.kr/places/sinsagangjeongyukjeomsikdang/): 신사강정육점식당의 대표 메뉴는 삼겹살이고, 생등심·특수부위·갈매기살 등도 있습니다.
 - [아늑](https://suwon.webforai.kr/places/aneuk/): 아늑의 대표 메뉴는 스파이시까르보나라이고, 해산물스파이시올리오·우삼겹해장파스타·슈퍼디럭스피자 등도 있습니다.
 - [예전각설렁탕](https://suwon.webforai.kr/places/yejeongakseolleongtang/): 예전각설렁탕의 대표 메뉴는 설렁탕이고, 진짜무릎도가니탕·꼬리곰탕·갈비찜 등도 있습니다.
@@ -521,9 +522,9 @@
 - [금정참치 본점](https://suwon.webforai.kr/places/geumjeongchamchi-bonjeom/): 금정참치 본점의 대표 메뉴는 오마카세입니다.
 - [기와집](https://suwon.webforai.kr/places/giwajip/): 기와집의 대표 메뉴는 풍천민물장어구이이고, 한우등심·육회·장어탕 등도 있습니다.
 - [남수원갈비](https://suwon.webforai.kr/places/namsuwongalbi/): 남수원갈비의 대표 메뉴는 남수원왕갈비이고, 양념LA갈비·국내산오겹살·소생갈비 등도 있습니다.
-- [넓은뜰](https://suwon.webforai.kr/places/neolbeuntteul/): 넓은뜰의 대표 메뉴는 황제밥상이고, 특급밥상·특별밥상·넓은뜰밥상 등도 있습니다.
+- [넓은뜰](https://suwon.webforai.kr/places/neolbeuntteul/): 넓은뜰은 수원시가 모범음식점으로 지정한 곳으로, 대표 메뉴는 황제밥상이고 특급밥상·특별밥상·넓은뜰밥상 등도 있습니다. 지정: 모범음식점.
 - [다래식당](https://suwon.webforai.kr/places/daraesikdang/): 다래식당의 대표 메뉴는 동태찌개이고, 동태지리도 있습니다.
-- [돈까스여행](https://suwon.webforai.kr/places/donkkaseuyeohaeng/): 돈까스여행의 대표 메뉴는 여행돈가스이고, 안심까스·생선까스·매콤해산물쌀국수 등도 있습니다.
+- [돈까스여행](https://suwon.webforai.kr/places/donkkaseuyeohaeng/): 돈까스여행은 수원시가 모범음식점으로 지정한 곳으로, 대표 메뉴는 여행돈가스이고 안심까스·생선까스·매콤해산물쌀국수 등도 있습니다. 지정: 모범음식점.
 - [마포해장](https://suwon.webforai.kr/places/mapohaejang/): 마포해장의 대표 메뉴는 해장국이고, 양곱탕·내장탕·갈비탕 등도 있습니다.
 - [말로우 플레이스](https://suwon.webforai.kr/places/mallou-peulleiseu/): 말로우 플레이스의 대표 메뉴는 말로우슈페너이고, 말로우 치즈케이크·말로우 티라미수·아메리카노 등도 있습니다.
 - [메모리](https://suwon.webforai.kr/places/memori/): 메모리는 매주 월요일에 쉬고, 10:00~18:00에 영업합니다.
@@ -532,7 +533,7 @@
 - [박네집송탄부대찌개 무공닭갈비](https://suwon.webforai.kr/places/bangnejipsongtanbudaejjigae-mugongdakgalbi/): 박네집송탄부대찌개 무공닭갈비의 대표 메뉴는 부대찌개이고, 베이컨구이·무공닭갈비·무공치즈달갈비도 있습니다.
 - [삐에스몽테제빵소](https://suwon.webforai.kr/places/ppieseumongtejeppangso/): 삐에스몽테제빵소의 대표 메뉴는 쌀소금빵이고, 누룽지 소금빵·몽블랑·호박 쌀케이크 등도 있습니다.
 - [서수원숯불갈비](https://suwon.webforai.kr/places/seosuwonsutbulgalbi/): 서수원숯불갈비의 대표 메뉴는 명품 한우 꽃등심이고, 수제돼지갈비·살치살·안창살한판 등도 있습니다.
-- [석산정](https://suwon.webforai.kr/places/seoksanjeong/): 석산정의 대표 메뉴는 왕생갈비이고, 곤드레솥밥정식·한돈양념갈비·치마살 등도 있습니다.
+- [석산정](https://suwon.webforai.kr/places/seoksanjeong/): 석산정은 수원시가 모범음식점으로 지정한 곳으로, 대표 메뉴는 왕생갈비이고 곤드레솥밥정식·한돈양념갈비·치마살 등도 있습니다. 지정: 모범음식점.
 - [소롯](https://suwon.webforai.kr/places/sorot/): 소롯의 영업시간은 매일 10:30~22:00이고, 법정휴무일에 쉽니다.
 - [송할머니옻닭](https://suwon.webforai.kr/places/songhalmeoniotdak/): 송할머니옻닭의 대표 메뉴는 옻닭입니다.
 - [수복헌](https://suwon.webforai.kr/places/subokheon/): 수복헌의 대표 메뉴는 수복정차이고, 수복쌍화차·산사발효차·산사에이드 등도 있습니다.
@@ -543,11 +544,11 @@
 - [우동일번가](https://suwon.webforai.kr/places/udongilbeonga/): 우동일번가의 대표 메뉴는 가케우동이고, 붓가케우동·냉모밀·주먹밥 등도 있습니다.
 - [은미정&은미찬](https://suwon.webforai.kr/places/eunmijeong-and-eunmichan/): 은미정&은미찬의 대표 메뉴는 한우우거지 해장국이고, 시래기 불고기 뚝배기·시래기 두루치기·왕갈비탕 등도 있습니다.
 - [이리부농](https://suwon.webforai.kr/places/iribunong/): 이리부농의 대표 메뉴는 이리부농 크림이고, 에스프레소·아포카토·초코라떼 등도 있습니다.
-- [이서방왕족발보쌈 수원본점](https://suwon.webforai.kr/places/iseobangwangjokbalbossam-suwonbonjeom/): 이서방왕족발보쌈 수원본점의 대표 메뉴는 족발이고, 보쌈·매운 불족발·냉채족발 등도 있습니다.
+- [이서방왕족발보쌈 수원본점](https://suwon.webforai.kr/places/iseobangwangjokbalbossam-suwonbonjeom/): 이서방왕족발보쌈 수원본점은 수원시가 모범음식점으로 지정한 곳으로, 대표 메뉴는 족발이고 보쌈·매운 불족발·냉채족발 등도 있습니다. 지정: 모범음식점.
 - [장터설렁탕](https://suwon.webforai.kr/places/jangteoseolleongtang/): 장터설렁탕의 대표 메뉴는 설렁탕이고, 해장국·갈비탕·도가니탕 등도 있습니다.
 - [짜마차이나호매실본점](https://suwon.webforai.kr/places/jjamachainahomaesilbonjeom/): 짜마차이나호매실본점의 대표 메뉴는 동파육이고, 삼선짬뽕·짜장면·가지튀김 등도 있습니다.
 - [초가집](https://suwon.webforai.kr/places/chogajip/): 초가집의 대표 메뉴는 낙지덮밥이고, 낙지보쌈·낙지볶음·연포탕 등도 있습니다.
-- [초암골](https://suwon.webforai.kr/places/choamgol/): 초암골의 대표 메뉴는 동충하초뽕나무 삼계탕이고, 옻닭·옻오리·황칠토종닭백숙 등도 있습니다.
+- [초암골](https://suwon.webforai.kr/places/choamgol/): 초암골은 수원시가 모범음식점으로 지정한 곳으로, 대표 메뉴는 동충하초뽕나무 삼계탕이고 옻닭·옻오리·황칠토종닭백숙 등도 있습니다. 지정: 모범음식점.
 - [최씨화로](https://suwon.webforai.kr/places/choessihwaro/): 최씨화로의 대표 메뉴는 최씨 스페셜 한우 모둠이고, 최씨 스페셜 한돈 모둠·소갈비살 정식·최씨 스페셜 생갈비 등도 있습니다.
 - [칠보회관](https://suwon.webforai.kr/places/chilbohoegwan/): 칠보회관의 대표 메뉴는 냉동삼겹살이고, 고추장삼겹살·된장찌개백반·김치찌개백반 등도 있습니다.
 - [카페 7](https://suwon.webforai.kr/places/kape-7/): 카페 7의 대표 메뉴는 플레인와플이고, 에스프레소·아메리카노·카페라떼 등도 있습니다.
@@ -556,7 +557,7 @@
 - [포커스온나우](https://suwon.webforai.kr/places/pokeoseuonnau/): 포커스온나우의 대표 메뉴는 오픈샌드위치 3종이고, 매콤크림파스타·머쉬룸오픈샌드위치·일리흑임자라떼 등도 있습니다.
 - [하남미소명품한우](https://suwon.webforai.kr/places/hanammisomyeongpumhanu/): 하남미소명품한우의 대표 메뉴는 한우 우거지탕이고, 한우 갈비탕·꽃등심·한우 생갈비살 모듬 정식(점심특선) 등도 있습니다.
 - [한양설렁탕](https://suwon.webforai.kr/places/hanyangseolleongtang/): 한양설렁탕의 대표 메뉴는 마늘설렁탕입니다.
-- [한우이야기](https://suwon.webforai.kr/places/hanuiyagi/): 한우이야기의 대표 메뉴는 육사시미이고, 등심·한우갈비탕·안심 등도 있습니다.
+- [한우이야기](https://suwon.webforai.kr/places/hanuiyagi/): 한우이야기는 수원시가 모범음식점으로 지정한 곳으로, 대표 메뉴는 육사시미이고 등심·한우갈비탕·안심 등도 있습니다. 지정: 모범음식점.
 - [한장어](https://suwon.webforai.kr/places/hanjangeo/): 한장어의 대표 메뉴는 민물장어이고, 장어탕·돼지목살양념구이·LA갈비 등도 있습니다.
 - [호랑](https://suwon.webforai.kr/places/horang/): 호랑은 화요일에 쉬고, 12:30~21:00에 영업합니다.
 - [(신)대원옥](https://suwon.webforai.kr/places/daewonok/): (신)대원옥의 대표 메뉴는 평양냉면이고, 비빔냉면·수육·녹두지짐 등도 있습니다.
@@ -564,42 +565,42 @@
 - [91커피](https://suwon.webforai.kr/places/91-keopi/): 91커피의 대표 메뉴는 91라떼이고, 하겐다즈라떼·말차세코·수제밀크티 등도 있습니다.
 - [955카페](https://suwon.webforai.kr/places/955-kape/): 955카페의 대표 메뉴는 곰의 라임 오렌지나무이고, 수제바닐라빈라떼·패션후르츠 크림슨 아이스티·아메리카노 등도 있습니다.
 - [가보정갈비](https://suwon.webforai.kr/places/gabojeonggalbi/): 가보정갈비의 대표 메뉴는 한우 양념갈비이고, 한우 생갈비·한우 채끝등심·한우 육회 등도 있습니다.
-- [경안당](https://suwon.webforai.kr/places/gyeongandang/): 경안당의 대표 메뉴는 오미자이고, 치즈버터구이떡·곶감말이·홍차 등도 있습니다.
-- [고기랑](https://suwon.webforai.kr/places/gogirang/): 고기랑의 대표 메뉴는 생삼겹살이고, 수제돼지갈비·생목살·소갈비살 등도 있습니다.
-- [고등반점](https://suwon.webforai.kr/places/godeungbanjeom/): 고등반점의 대표 메뉴는 탕수육이고, 짜장면·간짜장·짬뽕 등도 있습니다.
+- [경안당](https://suwon.webforai.kr/places/gyeongandang/): 경안당의 대표 메뉴는 홍차이고, 경안당 어화다과·복분자 에이드·오미자차 등도 있습니다.
+- [고기랑](https://suwon.webforai.kr/places/gogirang/): 고기랑은 수원시가 모범음식점으로 지정한 곳으로, 대표 메뉴는 생삼겹살이고 수제돼지갈비·생목살·소갈비살 등도 있습니다. 지정: 모범음식점.
+- [고등반점](https://suwon.webforai.kr/places/godeungbanjeom/): 고등반점은 수원시가 모범음식점으로 지정한 곳으로, 대표 메뉴는 탕수육이고 짜장면·간짜장·짬뽕 등도 있습니다. 지정: 모범음식점.
 - [골디스](https://suwon.webforai.kr/places/goldiseu/): 골디스의 영업시간은 10:30~22:00(라스트 오더 21:30)이고 연중무휴입니다.
 - [꿍냐우 행궁점](https://suwon.webforai.kr/places/kkungnyau-haenggungjeom/): 꿍냐우 행궁점의 영업시간은 11:00~20:30(브레이크 타임 15:30-17:00)이고 연중무휴입니다.
 - [더유로피언](https://suwon.webforai.kr/places/deoyuropieon/): 더유로피언의 대표 메뉴는 시그니처 바질 부라타 치즈 피자이고, 그라브락스 연어·티본 스테이크·부라타 하몽 멜론 등도 있습니다.
-- [두꺼비집](https://suwon.webforai.kr/places/dukkeobijip/): 두꺼비집의 대표 메뉴는 부대찌개이고, 모둠구이도 있습니다.
+- [두꺼비집](https://suwon.webforai.kr/places/dukkeobijip/): 두꺼비집은 수원시가 모범음식점으로 지정한 곳으로, 대표 메뉴는 부대찌개이고 모둠구이도 있습니다. 지정: 모범음식점.
 - [라이크 노 아더](https://suwon.webforai.kr/places/raikeu-no-adeo/): 라이크 노 아더의 대표 메뉴는 아몬드밤라떼이고, 코코넛티커피·썸머라떼·솔티카라멜모카케이크 등도 있습니다.
 - [레드브릭커피하우스](https://suwon.webforai.kr/places/redeubeurikkeopihauseu/): 레드브릭커피하우스의 대표 메뉴는 아메리카노이고, 크림모카·아인슈패너·허브티 등도 있습니다.
 - [로마경양식](https://suwon.webforai.kr/places/romagyeongyangsik/): 로마경양식의 대표 메뉴는 왕돈까스이고, 돈까스·함박스텍·생선까스 등도 있습니다.
-- [르빵드파리앤브런치하우스 행궁점](https://suwon.webforai.kr/places/reuppangdeupariaenbeureonchihauseu-haenggungjeom/): 르빵드파리앤브런치하우스 행궁점의 대표 메뉴는 청포도 요거트 파이이고, 스윗갈릭크로와상·크림브륄레파이·몽블랑크림파이 등도 있습니다.
+- [르빵드파리앤브런치하우스 행궁점](https://suwon.webforai.kr/places/reuppangdeupariaenbeureonchihauseu-haenggungjeom/): 르빵드파리앤브런치하우스 행궁점의 대표 메뉴는 에스프레소이고, 에스프레소 콘파냐·롱블랙·오리지널 퐁듀 크림 라떼 등도 있습니다.
 - [마초](https://suwon.webforai.kr/places/macho/): 마초의 대표 메뉴는 흰살숙성초밥이고, 참다랑어초밥·방어초밥·뚝배기우동 등도 있습니다.
 - [마포본가](https://suwon.webforai.kr/places/mapobonga/): 마포본가의 대표 메뉴는 돼지양념구이이고, 물냉면·비빔냉면·된장찌개 등도 있습니다.
 - [만수전복](https://suwon.webforai.kr/places/mansujeonbok/): 만수전복의 대표 메뉴는 전복회이고, 전복찜·전복구이·전복무침 등도 있습니다.
 - [매일김치담그는집](https://suwon.webforai.kr/places/maeilgimchidamgeuneunjip/): 매일김치담그는집의 대표 메뉴는 소양념갈비살이고, 소생갈비살·차돌구이·숯불간장닭갈비 등도 있습니다.
-- [매트그린](https://suwon.webforai.kr/places/maeteugeurin/): 매트그린의 대표 메뉴는 크럼블이고, 퓨어크림·말차크림·레몬홍차 등도 있습니다.
-- [메모리아마넷](https://suwon.webforai.kr/places/memoriamanet/): 메모리아마넷의 대표 메뉴는 아메리카노이고, 카페라떼·BLT샌드위치·가래떡구이 등도 있습니다.
+- [매트그린](https://suwon.webforai.kr/places/maeteugeurin/): 매트그린의 대표 메뉴는 크럼블이고, 아이스크림 라떼·매실 민트 티·유자 말차 라떼 등도 있습니다.
+- [메모리아마넷](https://suwon.webforai.kr/places/memoriamanet/): 메모리아마넷의 대표 메뉴는 아인슈패너 밀크이고, 아인슈패너 블랙·아메리카노·카페라떼 등도 있습니다.
 - [모나미 카레](https://suwon.webforai.kr/places/monami-kare/): 모나미 카레의 영업시간은 11:30~21:00(브레이크타임 15:00~17:00, 라스트 오더 20:00)이고 연중무휴입니다.
 - [모이커피클래식](https://suwon.webforai.kr/places/moikeopikeullaesik/): 모이커피클래식의 대표 메뉴는 모래사막이고, 수플레팬케이크·아메리카노·라떼 등도 있습니다.
 - [몽테드](https://suwon.webforai.kr/places/mongtedeu/): 몽테드의 대표 메뉴는 소금빵이고, 앙버터 소금빵·토마토바질소금빵·베이컨쪽파크림치즈소금빵 등도 있습니다.
 - [무등산](https://suwon.webforai.kr/places/mudeungsan/): 무등산의 대표 메뉴는 무등산정식이고, 청국장·영광보리굴비정식·병어조림 등도 있습니다.
 - [미나미참치](https://suwon.webforai.kr/places/minamichamchi/): 미나미참치의 대표 메뉴는 코스요리입니다.
 - [미식가의주방](https://suwon.webforai.kr/places/misikgauijubang/): 미식가의주방의 대표 메뉴는 만조 양송이 크림 리조또이고, 해산물 팟타이·블랙타이거 감베리 파스타·호두 페스토 파스타 등도 있습니다.
-- [백청우칼국수](https://suwon.webforai.kr/places/baekcheongukalguksu/): 백청우칼국수의 대표 메뉴는 해물칼국수이고, 해물만두전골·찐만두·해물 전복 칼국수 등도 있습니다.
-- [본수원갈비](https://suwon.webforai.kr/places/bonsuwongalbi/): 본수원갈비의 대표 메뉴는 생갈비이고, 양념갈비·갈비탕·냉면 등도 있습니다.
-- [본지르르](https://suwon.webforai.kr/places/bonjireureu/): 본지르르의 대표 메뉴는 아메리카노이고, 에스프레소·에스프레소 콘파냐·바닐라빈 라떼 등도 있습니다.
+- [백청우칼국수](https://suwon.webforai.kr/places/baekcheongukalguksu/): 백청우칼국수는 백년가게·모범음식점으로 지정된 곳으로, 대표 메뉴는 해물칼국수이고 해물만두전골·찐만두·해물 전복 칼국수 등도 있습니다. 지정: 백년가게·모범음식점.
+- [본수원갈비](https://suwon.webforai.kr/places/bonsuwongalbi/): 본수원갈비는 수원시가 모범음식점으로 지정한 곳으로, 대표 메뉴는 생갈비이고 양념갈비·갈비탕·냉면 등도 있습니다. 지정: 모범음식점.
+- [본지르르](https://suwon.webforai.kr/places/bonjireureu/): 본지르르의 대표 메뉴는 아메리카노이고, 카페라떼·바닐라빈 라떼·스위스 밀크 라떼 등도 있습니다.
 - [삼춘옥](https://suwon.webforai.kr/places/samchunok/): 삼춘옥의 영업시간은 10:00~22:00(라스트 오더 21:00)이고 연중무휴입니다.
 - [센텀커피](https://suwon.webforai.kr/places/senteomkeopi/): 센텀커피의 대표 메뉴는 아메리카노이고, 카페라떼·바닐라라떼·카푸치노 등도 있습니다.
 - [수원만두](https://suwon.webforai.kr/places/suwonmandu/): 수원만두의 대표 메뉴는 군만두이고, 찐만두·소고기탕면·볶음면 등도 있습니다.
-- [슬로우써니사이드](https://suwon.webforai.kr/places/seullousseonisaideu/): 슬로우써니사이드의 대표 메뉴는 뱅거스앤매쉬 브렉퍼스트이고, 코티지 오픈 샌드위치·비프칠리 파스타·후무스크림 뇨키 등도 있습니다.
+- [슬로우써니사이드](https://suwon.webforai.kr/places/seullousseonisaideu/): 슬로우써니사이드의 대표 메뉴는 트러플 머쉬룸 파니니이고, 무화과 프렌치토스트·비프칠리 파스타·트러플 포테이토 리조또 등도 있습니다.
 - [시골집우렁이쌈밥](https://suwon.webforai.kr/places/sigoljibureongissambap/): 시골집우렁이쌈밥의 대표 메뉴는 우렁쌈밥이고, 우렁제육쌈밥·우렁소불고기쌈밥 등도 있습니다.
 - [어구미 본점](https://suwon.webforai.kr/places/eogumi-bonjeom/): 어구미 본점의 대표 메뉴는 고등어구이정식이고, 임연수구이정식·가자미구이정식·삼치구이정식 등도 있습니다.
 - [어반벨리801](https://suwon.webforai.kr/places/eobanbelli-801/): 어반벨리801의 대표 메뉴는 제주감귤 수플레이고, 카이막·휘낭시에 티라미수·휘낭시에 라떼 등도 있습니다.
-- [언올드첨](https://suwon.webforai.kr/places/eonoldeucheom/): 언올드첨의 대표 메뉴는 아메리카노이고, 카페라떼·플랫화이트·바닐라라떼 등도 있습니다.
+- [언올드첨](https://suwon.webforai.kr/places/eonoldeucheom/): 언올드첨의 대표 메뉴는 바스크치즈케이크이고, 다시 흙으로·무화과 케이크·브라우니 등도 있습니다.
 - [연밀](https://suwon.webforai.kr/places/yeonmil/): 연밀의 대표 메뉴는 새우육즙만두이고, 고기육즙만두·호박찐만두·수제비 등도 있습니다.
-- [연포갈비](https://suwon.webforai.kr/places/yeonpogalbi/): 연포갈비의 대표 메뉴는 양념갈비이고, 생등심·생갈비·갈비정식 등도 있습니다.
+- [연포갈비](https://suwon.webforai.kr/places/yeonpogalbi/): 연포갈비는 수원시가 모범음식점으로 지정한 곳으로, 대표 메뉴는 양념갈비이고 생등심·생갈비·갈비정식 등도 있습니다. 지정: 모범음식점.
 - [열두알우동집](https://suwon.webforai.kr/places/yeolduarudongjip/): 열두알우동집의 영업시간은 월~금 11:30~20:30, 토~일 11:30~20:00 등이고 연중무휴입니다.
 - [영천식당](https://suwon.webforai.kr/places/yeongcheonsikdang/): 영천식당의 대표 메뉴는 한우투뿔등심이고, 안창살·특수부위·갈비살 등도 있습니다.
 - [예박사](https://suwon.webforai.kr/places/yebaksa/): 예박사의 대표 메뉴는 양념 소 갈비살이고, 생 소 갈비살·양념 소 부채살·양념 LA갈비 등도 있습니다.
@@ -610,12 +611,12 @@
 - [이모네손칼국수](https://suwon.webforai.kr/places/imonesonkalguksu/): 이모네손칼국수의 대표 메뉴는 손칼국수이고, 칼국수 곱빼기·공기밥 등도 있습니다.
 - [이화정](https://suwon.webforai.kr/places/ihwajeong/): 이화정의 대표 메뉴는 돌솥밥한상이고, 해물된장·명이나물보쌈·LA갈비구이 등도 있습니다.
 - [일상엔](https://suwon.webforai.kr/places/ilsangen/): 일상엔의 대표 메뉴는 바노피 타르트이고, 리치라임 아이스티·바닐라빈라떼·아발론 소금빵 등도 있습니다.
-- [입주집](https://suwon.webforai.kr/places/ipjujip/): 입주집의 대표 메뉴는 모듬한판이고, 소곱창구이·소막창구이·소대창구이 등도 있습니다.
+- [입주집](https://suwon.webforai.kr/places/ipjujip/): 입주집은 백년가게로 지정된 곳으로, 대표 메뉴는 모듬한판이고 소곱창구이·소막창구이·소대창구이 등도 있습니다. 지정: 백년가게.
 - [정지영커피로스터즈 행궁본점](https://suwon.webforai.kr/places/jeongjiyeongkeopiroseuteojeu-haenggungbonjeom/): 정지영커피로스터즈 행궁본점의 대표 메뉴는 코코넛커피이고, 플랫화이트·아메리카노·핸드드립 등도 있습니다.
 - [조대감부대찌개](https://suwon.webforai.kr/places/jodaegambudaejjigae/): 조대감부대찌개의 대표 메뉴는 조대감부대찌개입니다.
 - [조마담칼국수](https://suwon.webforai.kr/places/jomadamkalguksu/): 조마담칼국수의 영업시간은 10:30~21:00(라스트오더 20:30, 브레이크타임 평일 15:00~16:30)입니다.
 - [진미통닭](https://suwon.webforai.kr/places/jinmitongdak/): 진미통닭의 대표 메뉴는 통닭이고, 후라이드·양념·반반 등도 있습니다.
-- [채상궁 수원본점](https://suwon.webforai.kr/places/chaesanggung-suwonbonjeom/): 채상궁 수원본점의 대표 메뉴는 소고기샤브샤브이고, 오리보쌈 샤브샤브도 있습니다.
+- [채상궁 수원본점](https://suwon.webforai.kr/places/chaesanggung-suwonbonjeom/): 채상궁 수원본점은 수원시가 모범음식점으로 지정한 곳으로, 대표 메뉴는 소고기샤브샤브이고 오리보쌈 샤브샤브도 있습니다. 지정: 모범음식점.
 - [카페 도안](https://suwon.webforai.kr/places/kape-doan/): 카페 도안의 대표 메뉴는 브루잉이고, 말차오레·아메리카노·코르타도 등도 있습니다.
 - [카페 디아즈](https://suwon.webforai.kr/places/kape-diajeu/): 카페 디아즈의 대표 메뉴는 딸기 생크림 케이크이고, 아메리카노·카페라떼·골드브루 등도 있습니다.
 - [카페메이븐](https://suwon.webforai.kr/places/kapemeibeun/): 카페메이븐의 대표 메뉴는 메이븐 라자냐이고, 클램차우더 조개 관자 스프·브런치 플레이트·메이븐 샐러드 파스타 등도 있습니다.
@@ -624,15 +625,15 @@
 - [트레저가든](https://suwon.webforai.kr/places/teurejeogadeun/): 트레저가든의 대표 메뉴는 찹 스테잌이고, 갈비 크림 리조또도 있습니다.
 - [팔달제과](https://suwon.webforai.kr/places/paldaljegwa/): 팔달제과는 09:00~21:00에 영업합니다.
 - [팜투하녹](https://suwon.webforai.kr/places/pamtuhanok/): 팜투하녹의 대표 메뉴는 팜투라떼이고, 연어샐러드·할라피뇨햄치즈파니니·미트볼 에그 스튜 등도 있습니다.
-- [한국관](https://suwon.webforai.kr/places/hangukgwan/): 한국관의 대표 메뉴는 수원양념왕갈비이고, 수원생갈비·한우생고기 특수부위·갈비탕 등도 있습니다.
+- [한국관](https://suwon.webforai.kr/places/hangukgwan/): 한국관은 수원시가 모범음식점으로 지정한 곳으로, 대표 메뉴는 수원양념왕갈비이고 수원생갈비·한우생고기 특수부위·갈비탕 등도 있습니다. 지정: 모범음식점.
 - [홍라드 인계나혜석점](https://suwon.webforai.kr/places/hongnadeu-ingyenahyeseokjeom/): 홍라드 인계나혜석점의 대표 메뉴는 브라운크로플이고, 곰돌이말차슈페너·옥수수크림커피도 있습니다.
 - [히말라야정원](https://suwon.webforai.kr/places/himallayajeongwon/): 히말라야정원의 대표 메뉴는 버터치킨카레(치킨마크니)이고, 인도스파게티·탄두리치킨·치킨브리아니 등도 있습니다.
 - [335키친 광교아브뉴프랑점](https://suwon.webforai.kr/places/335-kichin-gwanggyoabeunyupeurangjeom/): 335키친 광교아브뉴프랑점의 대표 메뉴는 소고기 샤브샤브이고, 얼큰전복대파탕·월남쌈 등도 있습니다.
-- [가원](https://suwon.webforai.kr/places/gawon/): 가원의 대표 메뉴는 한우 생갈비이고, 한우 양념갈비·한우설화 생등심·한우육회 등도 있습니다.
+- [가원](https://suwon.webforai.kr/places/gawon/): 가원은 수원시가 모범음식점으로 지정한 곳으로, 대표 메뉴는 한우 생갈비이고 한우 양념갈비·한우설화 생등심·한우육회 등도 있습니다. 지정: 모범음식점.
 - [갈풍집](https://suwon.webforai.kr/places/galpungjip/): 갈풍집의 대표 메뉴는 맬콤갈비살이고, 마늘갈비살·생갈비살·생안창살구이 등도 있습니다.
 - [고기잡이 수원본점](https://suwon.webforai.kr/places/gogijabi-suwonbonjeom/): 고기잡이 수원본점의 대표 메뉴는 민어코스이고, 병어 조림·민어곰탕·생선구이정식 등도 있습니다.
 - [광교갈비](https://suwon.webforai.kr/places/gwanggyogalbi/): 광교갈비의 대표 메뉴는 제주흑돼지 양념갈비이고, 남도양념게장·제주흑돼지 양념목살·된장찌개 등도 있습니다.
-- [광교벌교집](https://suwon.webforai.kr/places/gwanggyobeolgyojip/): 광교벌교집의 대표 메뉴는 불고기뚝배기이고, 꼬막비빔밥·고등어묵은지·해물뚝배기 등도 있습니다.
+- [광교벌교집](https://suwon.webforai.kr/places/gwanggyobeolgyojip/): 광교벌교집은 수원시가 모범음식점으로 지정한 곳으로, 대표 메뉴는 불고기뚝배기이고 꼬막비빔밥·고등어묵은지·해물뚝배기 등도 있습니다. 지정: 모범음식점.
 - [구스타브](https://suwon.webforai.kr/places/guseutabeu/): 구스타브의 대표 메뉴는 구스타브 에이드이고, 구스타브 흑임자 크림·구스타브 인절미 크림·클림트 키스 에이드 등도 있습니다.
 - [군포해물탕](https://suwon.webforai.kr/places/gunpohaemultang/): 군포해물탕의 대표 메뉴는 해물탕입니다.
 - [그로또](https://suwon.webforai.kr/places/geurotto/): 그로또의 대표 메뉴는 멕시코 크림 파스타이고, 해산물 토타토 파스타·안심 스테이크·슈퍼 마리오 샐러드 등도 있습니다.
@@ -645,8 +646,8 @@
 - [대박횟집](https://suwon.webforai.kr/places/daebakhoetjip/): 대박횟집의 대표 메뉴는 대박특회정식이고, 활어회 초밥·광어·대방어 등도 있습니다.
 - [도기](https://suwon.webforai.kr/places/dogi/): 도기의 대표 메뉴는 아메리카노이고, 카페라떼·바닐라라떼·카모마일 등도 있습니다.
 - [도미닉커피랩](https://suwon.webforai.kr/places/dominikkeopiraep/): 도미닉커피랩의 대표 메뉴는 코코넛 라떼이고, 아메리카노·플랫화이트·카페 라떼 등도 있습니다.
-- [동산참숯갈비](https://suwon.webforai.kr/places/dongsanchamsutgalbi/): 동산참숯갈비의 대표 메뉴는 명석돼지이고, 생갈비·생삼겹살·한우생등심 등도 있습니다.
-- [듀쿠플(DU COUPLE)](https://suwon.webforai.kr/places/dyukupeul/): 듀쿠플(DU COUPLE)의 대표 메뉴는 딸기 생크림케이크이고, 딸기타르트·쫀득쿠키·블랙 포레스트 등도 있습니다.
+- [동산참숯갈비](https://suwon.webforai.kr/places/dongsanchamsutgalbi/): 동산참숯갈비는 수원시가 모범음식점으로 지정한 곳으로, 대표 메뉴는 명석돼지이고 생갈비·생삼겹살·한우생등심 등도 있습니다. 지정: 모범음식점.
+- [듀쿠플(DU COUPLE)](https://suwon.webforai.kr/places/dyukupeul/): 듀쿠플(DU COUPLE)의 대표 메뉴는 딸기 생크림케이크이고, 딸기타르트·과일 생크림·블랙 포레스트 등도 있습니다.
 - [땡이네소곱창](https://suwon.webforai.kr/places/ttaenginesogopchang/): 땡이네소곱창의 대표 메뉴는 황소곱창이고, 황소대창·염통·얼큰라면 등도 있습니다.
 - [레이지하우스](https://suwon.webforai.kr/places/reijihauseu/): 레이지하우스의 대표 메뉴는 바닐라 플랫화이트이고, 아메리카노·라테·바닐라라테 등도 있습니다.
 - [르디투어](https://suwon.webforai.kr/places/reuditueo/): 르디투어의 대표 메뉴는 아메리카노이고, 크루아상·에쉬레 바게트 소금빵·피스타치오 레이어드 페이스트리 등도 있습니다.
@@ -660,32 +661,32 @@
 - [상원회관](https://suwon.webforai.kr/places/sangwonhoegwan/): 상원회관의 대표 메뉴는 특수모듬이고, 등심·채끝·안심 등도 있습니다.
 - [새벽집](https://suwon.webforai.kr/places/saebyeokjip/): 새벽집의 대표 메뉴는 꽃등심이고, 생등심·살치살·안창살 등도 있습니다.
 - [서린낙지](https://suwon.webforai.kr/places/seorinnakji/): 서린낙지의 대표 메뉴는 낙지모음요리이고, 해물찜·낙지덮밥·산낙지볶음 등도 있습니다.
-- [서울24시감자탕해장국](https://suwon.webforai.kr/places/seoul-24-sigamjatanghaejangguk/): 서울24시감자탕해장국의 대표 메뉴는 묵은지 감자탕이고, 콩비지 감자탕·뼈찜·서울 감자탕 등도 있습니다.
+- [서울24시감자탕해장국](https://suwon.webforai.kr/places/seoul-24-sigamjatanghaejangguk/): 서울24시감자탕해장국은 수원시가 모범음식점으로 지정한 곳으로, 대표 메뉴는 묵은지 감자탕이고 콩비지 감자탕·뼈찜·서울 감자탕 등도 있습니다. 지정: 모범음식점.
 - [세비야식당](https://suwon.webforai.kr/places/sebiyasikdang/): 세비야식당의 대표 메뉴는 문어 오븐구이이고, 랍스타 빠에야·양갈비 스테이크·하몽 샐러드 등도 있습니다.
 - [수타원](https://suwon.webforai.kr/places/sutawon/): 수타원의 대표 메뉴는 소갈비짬뽕이고, 해물짬뽕·굴짬뽕·삼선짜장면 등도 있습니다.
 - [스시스이렌](https://suwon.webforai.kr/places/seusiseuiren/): 스시스이렌의 대표 메뉴는 오마카세입니다.
 - [스시유카이](https://suwon.webforai.kr/places/seusiyukai/): 스시유카이의 대표 메뉴는 오마카세입니다.
 - [시화연풍](https://suwon.webforai.kr/places/sihwayeonpung/): 시화연풍은 연중무휴로 09:00~19:00에 영업합니다.
 - [신동순대국](https://suwon.webforai.kr/places/sindongsundaeguk/): 신동순대국의 대표 메뉴는 순대국이고, 곰탕·뼈해장국·술국 등도 있습니다.
-- [신라갈비](https://suwon.webforai.kr/places/sillagalbi/): 신라갈비의 대표 메뉴는 왕생갈비이고, 왕양념갈비·한우생갈비·한우채끝등심 등도 있습니다.
+- [신라갈비](https://suwon.webforai.kr/places/sillagalbi/): 신라갈비는 백년가게·모범음식점으로 지정된 곳으로, 대표 메뉴는 왕생갈비이고 왕양념갈비·한우생갈비·한우채끝등심 등도 있습니다. 지정: 백년가게·모범음식점.
 - [썬프란시스코마켓](https://suwon.webforai.kr/places/sseonpeuransiseukomaket/): 썬프란시스코마켓의 대표 메뉴는 클램차우더와 치즈 브레드이고, 썬프란시스코 피자·파스타·그램스 새우 로제 떡볶이 등도 있습니다.
 - [아미스타](https://suwon.webforai.kr/places/amiseuta/): 아미스타의 대표 메뉴는 아메리카노이고, 에스프레소·카푸치노·카페라떼 등도 있습니다.
-- [에이프런](https://suwon.webforai.kr/places/eipeureon/): 에이프런의 대표 메뉴는 로쏘 머쉬룸 베이컨 에그 베네딕트이고, 스모크 살몬 아보카도 에그 베네딕트·썸머 프룻 프렌치 토스트·리코타 라구 파스타 등도 있습니다.
+- [에이프런](https://suwon.webforai.kr/places/eipeureon/): 에이프런의 대표 메뉴는 로쏘 머쉬룸 베이컨 에그 베네딕트이고, 스모크 살몬 아보카도 에그 베네딕트·베리 앤 피스타치오 프렌치토스트·루꼴라 보타르가 오일 파스타 등도 있습니다.
 - [영흥수목원 카페 버터플라이](https://suwon.webforai.kr/places/yeongheungsumogwon-kape-beoteopeullai/): 영흥수목원 카페 버터플라이는 매주 월요일에 쉬고, 09:00~18:00에 영업합니다.
 - [예랑](https://suwon.webforai.kr/places/yerang/): 예랑의 대표 메뉴는 궁정식이고, 예정식·랑정식·특정식 등도 있습니다.
 - [오늘의초밥](https://suwon.webforai.kr/places/oneuruichobap/): 오늘의초밥의 대표 메뉴는 오늘의초밥이고, 제이타쿠동·카이센동·후토마끼 등도 있습니다.
 - [오봉베르](https://suwon.webforai.kr/places/obongbereu/): 오봉베르의 대표 메뉴는 아메리카노이고, 카페라떼·플렛화이트·카푸치노 등도 있습니다.
 - [올리브 1999](https://suwon.webforai.kr/places/ollibeu-1999/): 올리브 1999의 대표 메뉴는 뼈등심 돈가스이고, 부라타치즈 샐러드·페퍼로니 피자·화이트 스파게티 등도 있습니다.
-- [와이엠엠디](https://suwon.webforai.kr/places/waiememdi/): 와이엠엠디의 대표 메뉴는 토피커피이고, 아메리카노·파블로바·레몬얼그레이티 등도 있습니다.
+- [와이엠엠디](https://suwon.webforai.kr/places/waiememdi/): 와이엠엠디의 대표 메뉴는 토피커피이고, 아메리카노·파블로바·바스크치즈케이크 등도 있습니다.
 - [윤돈](https://suwon.webforai.kr/places/yundon/): 윤돈의 대표 메뉴는 상로스카츠이고, 모둠카츠·로스카츠·히레카츠 등도 있습니다.
 - [정진식당](https://suwon.webforai.kr/places/jeongjinsikdang/): 정진식당의 대표 메뉴는 명품제주오겹살이고, 명품삼겹살·명품목살·한돈수제갈비 등도 있습니다.
-- [제주할망돈가](https://suwon.webforai.kr/places/jejuhalmangdonga/): 제주할망돈가의 대표 메뉴는 제주 오겹살이고, 목살·삼겹살·생갈비 등도 있습니다.
+- [제주할망돈가](https://suwon.webforai.kr/places/jejuhalmangdonga/): 제주할망돈가는 수원시가 모범음식점으로 지정한 곳으로, 대표 메뉴는 제주 오겹살이고 목살·삼겹살·생갈비 등도 있습니다. 지정: 모범음식점.
 - [좋은소식](https://suwon.webforai.kr/places/joeunsosik/): 좋은소식의 대표 메뉴는 우니사케동이고, 시로미동·혼마구로사시미·광어초된장 등도 있습니다.
 - [천상한우](https://suwon.webforai.kr/places/cheonsanghanu/): 천상한우의 대표 메뉴는 스페셜한마리이고, 천상등심·숙성등심·천상채끝 등도 있습니다.
 - [춘천에서 온 숯닭](https://suwon.webforai.kr/places/chuncheoneseo-on-sutdak/): 춘천에서 온 숯닭의 대표 메뉴는 간장닭갈비이고, 소금닭갈비·고추장닭갈비·매운무뼈닭발 등도 있습니다.
 - [카페 그루비](https://suwon.webforai.kr/places/kape-geurubi/): 카페 그루비의 대표 메뉴는 아메리카노이고, 아이스 라떼·카푸치노·뱅쇼 등도 있습니다.
 - [카페 리핑](https://suwon.webforai.kr/places/kape-riping/): 카페 리핑의 대표 메뉴는 딸기 수플레이고, 딸기요거트 수플레·감자스프·콘스프 등도 있습니다.
-- [커피 바이브](https://suwon.webforai.kr/places/keopi-baibeu/): 커피 바이브의 대표 메뉴는 라테피크이고, 콜드브루 연유라테·아메리카노·아인슈페너 등도 있습니다.
+- [커피 바이브](https://suwon.webforai.kr/places/keopi-baibeu/): 커피 바이브의 대표 메뉴는 라테 피크이고, 콜드브루 연유라테·아메리카노·아인슈페너 등도 있습니다.
 - [콜스커피](https://suwon.webforai.kr/places/kolseukeopi/): 콜스커피의 대표 메뉴는 리스트레또이고, 롱블랙·피콜로·플랫화이트 등도 있습니다.
 - [텔온](https://suwon.webforai.kr/places/teron/): 텔온의 대표 메뉴는 시그니처 바닐라이고, 오레오 크로플·오리지널 바스크 치즈케이크·피스타치오 라떼 등도 있습니다.
 - [티크닉 앨리웨이 광교점](https://suwon.webforai.kr/places/tikeunik-aelliwei-gwanggyojeom/): 티크닉 앨리웨이 광교점의 영업시간은 11:00~21:00(20:30 라스트오더)이고, 설날 추석 당일에 쉽니다.
@@ -729,14 +730,18 @@
 ## 해외에서 본 수원
 - [해외에서 본 수원](https://suwon.webforai.kr/abroad/): 외신·해외 매체 기사 0건(우리가 쓴 한 줄 소개와 원문 링크, 일부는 원문 한두 문장 인용)과 외국어 영상 12편
 
+## 해·교통 시각표
+- [수원 일출·일몰 시간표](https://suwon.webforai.kr/sun/): 한국천문연구원 '수원' 지점의 날짜별 일출·일몰·시민박명 시각(2026년 11월 6일~2027년 3월 4일, 119일).
+- [수원 교통 시간표](https://suwon.webforai.kr/transport/): 국토교통부 TAGO 2026년 11월 6일(금)·7일(토) 배차 — 열차·고속버스·시외버스의 노선별 첫차·막차·하루 횟수·걸린 시간·요금.
+
 ## 이용 안내
 - [출처·이용 안내](https://suwon.webforai.kr/about/): 원문 이용조건, 사진, 운영 주체, 정정 요청
 
 ## English
 - [Suwongak](https://suwon.webforai.kr/en/): Suwon attractions, restaurants and places to stay with hours, prices, parking and directions; travel courses and festival dates.
-- [Which Suwon king-size galbi, whole fried chicken, kalguksu, and Haengnidan Street café spots are open on Mondays?](https://suwon.webforai.kr/en/guides/monday-open-restaurants-suwon/): Of the Suwon restaurants on this site, 176 do not list Monday among their closing days.
+- [Which Suwon king-size galbi, whole fried chicken, kalguksu, and Haengnidan Street café spots are open on Mondays?](https://suwon.webforai.kr/en/guides/monday-open-restaurants-suwon/): Of the Suwon restaurants on this site, 175 do not list Monday among their closing days.
 - [How do you choose among the 27 hotels, hanok stays, and other lodgings in Suwon?](https://suwon.webforai.kr/en/guides/suwon-hotels-hanok-stays/): This site lists 27 hotels, hanok stays, and other lodgings in Suwon, and 27 of them include parking information.
-- [Where are the fortress sights such as Suwon Hwaseong Fortress, Hwaseong Haenggung Palace, and Banghwasuryujeong Pavilion, and the free attractions that are always open?](https://suwon.webforai.kr/en/guides/suwon-hwaseong-fortress-haenggung/): This site lists 20 sights related to Suwon Hwaseong Fortress, Hwaseong Haenggung Palace, the four main gates, the corner pavilions, and the fortress walls, and 51 Suwon attractions open year-round and free of charge.
+- [Where are the fortress sights such as Suwon Hwaseong Fortress, Hwaseong Haenggung Palace, and Banghwasuryujeong Pavilion, and the free attractions that are always open?](https://suwon.webforai.kr/en/guides/suwon-hwaseong-fortress-haenggung/): This site lists 21 sights related to Suwon Hwaseong Fortress, Hwaseong Haenggung Palace, the four main gates, the corner pavilions, and the fortress walls, and 52 Suwon attractions open every day of the year free of charge.
 - [Things to Do in Suwon](https://suwon.webforai.kr/en/places/): 444 attractions
 - [Where to Eat in Suwon](https://suwon.webforai.kr/en/food/): 210 restaurants
 - [Where to Stay in Suwon](https://suwon.webforai.kr/en/stays/): 27 stays
@@ -755,10 +760,11 @@
 - [Gyeonggi Art Center](https://suwon.webforai.kr/en/places/gyeonggiateusenteo/): Gyeonggi Art Center operates with no closing days.
 - [Gyeonggi Library](https://suwon.webforai.kr/en/places/gyeonggidoseogwan/): Gyeonggi Library is open 10:00–21:00 on weekdays and 10:00–18:00 on weekends.
 - [Gyeonggi Sangsang Campus](https://suwon.webforai.kr/en/places/gyeonggisangsangkaempeoseu/): Gyeonggi Sangsang Campus is closed every Monday, on January 1, and on Seollal and Chuseok days, and it is open 10:00–18:00.
+- [Haengnidan Street](https://suwon.webforai.kr/en/places/haengnidangil/): Haengnidan Street is always open, with no closing days.
 - [Haewoojae Museum (Mr. Toilet House)](https://suwon.webforai.kr/en/places/haeujae/): Haewoojae Museum (Mr. Toilet House) is open 10:00–18:00 in the summer season (March–October, last admission 17:30) and 10:00–17:00 in the winter season (November–February, last admission 16:30).
 - [Hwahongmun Gate)](https://suwon.webforai.kr/en/places/hwahongmun/): Hwahongmun Gate) is open 09:00–18:00 in the summer season (March–October) and 09:00–17:00 in the winter season (November–February), and it is open year-round.
 - [Hwaseomun Gate](https://suwon.webforai.kr/en/places/hwaseomun/): Hwaseomun Gate is always open, with no closing days.
-- [Hwaseong Haenggung Palace](https://suwon.webforai.kr/en/places/hwaseonghaenggung/): Hwaseong Haenggung Palace is open 09:00–21:30 from Friday, October 30 to Sunday, November 1, 2026, and last admission is at 21:00.
+- [Hwaseong Haenggung Palace](https://suwon.webforai.kr/en/places/hwaseonghaenggung/): Hwaseong Haenggung Palace is open 09:00–18:00 in the summer season (March–October) and 09:00–17:00 in the winter season (November–February), and it is open year-round.
 - [Hyowon Park](https://suwon.webforai.kr/en/places/hyowongongwon/): Hyowon Park is open 09:00–22:00 all year round.
 - [Irwolhosu Park](https://suwon.webforai.kr/en/places/irwolhosugongwon/): Irwolhosu Park is always open, with no closing days.
 - [Janganmun Gate](https://suwon.webforai.kr/en/places/janganmun/): Janganmun Gate is open 09:00–18:00 in the summer season (March–October) and 09:00–17:00 in the winter season (November–February), and it is open year-round.
@@ -773,6 +779,7 @@
 - [Suwon Arboretum Irwol](https://suwon.webforai.kr/en/places/irwolsumogwon/): Suwon Arboretum Irwol is open 09:30–21:00 from Friday, October 30 to Saturday, October 31, 2026, and last admission is at 20:30.
 - [Suwon Bongnyeongsa Temple](https://suwon.webforai.kr/en/places/bongnyeongsa/): Suwon Bongnyeongsa Temple is open 09:00–17:00 all year round.
 - [Suwon Chicken Street](https://suwon.webforai.kr/en/places/suwontongdakgeori/): Opening hours at Suwon Chicken Street vary by shop.
+- [Suwon Gwanggyo Museum](https://suwon.webforai.kr/en/places/suwongwanggyobangmulgwan/): Suwon Gwanggyo Museum is open 09:00–18:00 and is closed every Monday and on other closing days set by the mayor.
 - [Suwon Hwaryeongjeon Shrine](https://suwon.webforai.kr/en/places/suwon-hwaryeongjeon/): Suwon Hwaryeongjeon Shrine is open 09:00–18:00 in the summer season (March–October) and 09:00–17:00 in the winter season (November–February), and it is open year-round.
 - [Suwon Hwaseong Museum](https://suwon.webforai.kr/en/places/suwonhwaseongbangmulgwan/): Suwon Hwaseong Museum is open 09:00–18:00 (ticket sales end 17:00) and is closed every Monday and on other closing days set by the mayor.
 - [Suwon Museum](https://suwon.webforai.kr/en/places/suwonbangmulgwan/): Suwon Museum is open 09:00–18:00 (ticket sales end 17:00) and is closed every Monday (if Monday is a legal public holiday, it closes the next day).
@@ -782,9 +789,7 @@
 - [Wolhwawon Garden (Hyowon Park)](https://suwon.webforai.kr/en/places/hyowongongwon-wolhwawon/): Wolhwawon Garden (Hyowon Park) is open 09:00–22:00 all year round.
 - [Yeongheung Arboretum](https://suwon.webforai.kr/en/places/yeongheungsumogwon/): Yeongheung Arboretum is open 09:30–21:00 from Friday, October 30 to Saturday, October 31, 2026, and last admission is at 20:30.
 - [Yeonmudae (Dongjangdae)](https://suwon.webforai.kr/en/places/yeonmudae/): Yeonmudae (Dongjangdae) is always open, with no closing days.
-- [Haengnidan Street](https://suwon.webforai.kr/en/places/haengnidangil/): Haengnidan Street is always open, with no closing days.
 - [Paldalmun Gate](https://suwon.webforai.kr/en/places/paldalmun/): Paldalmun Gate is open 09:00–18:00 in the summer season (March–October) and 09:00–17:00 in the winter season (November–February), and it is open year-round.
-- [Suwon Gwanggyo Museum](https://suwon.webforai.kr/en/places/suwongwanggyobangmulgwan/): Suwon Gwanggyo Museum is open 09:00–18:00 and is closed every Monday and on other closing days set by the mayor.
 - [(Sin) Daewonok](https://suwon.webforai.kr/en/places/daewonok/): The signature dish at (Sin) Daewonok is Pyongyang-style cold noodles; the menu also includes spicy mixed cold noodles, boiled meat slices, mung bean pancakes, and more.
 - [100 Nyeon Hanu](https://suwon.webforai.kr/en/places/100-nyeonhanu/): The signature dish at 100 Nyeon Hanu is aged double-plus grade sirloin; the menu also includes hanwoo rib finger meat, flame-grilled sirloin, Handon pork ribs, and more.
 - [10593 Beigeul Coffee House](https://suwon.webforai.kr/en/places/10593-beigeulkeopihauseu/): The signature item at 10593 Beigeul Coffee House is Americano; the menu also includes almond cloud, Ppama shake, coco pine shake, and more.
@@ -799,70 +804,70 @@
 - [Anangne](https://suwon.webforai.kr/en/places/anangne/): The signature dish at Anangne is seafood cold raw fish soup; the menu also includes spicy braised monkfish, spicy braised seafood, cold raw fish soup, and more.
 - [Badarogankokkirikkochang](https://suwon.webforai.kr/en/places/badarogankokkirikkochang/): The signature dish at Badarogankokkirikkochang is assorted sashimi; the menu also includes spicy fish bone stew.
 - [Baegunjumallongjang](https://suwon.webforai.kr/en/places/baegunjumallongjang/): The signature dish at Baegunjumallongjang is charcoal barbecue; the menu also includes barley rice, seafood green onion pancake, herbal boiled chicken, and more.
-- [Baekcheongu Kalguksu](https://suwon.webforai.kr/en/places/baekcheongukalguksu/): The signature dish at Baekcheongu Kalguksu is seafood kalguksu (knife-cut noodle soup); the menu also includes seafood dumpling hot pot, steamed dumplings, seafood abalone kalguksu, and more.
+- [Baekcheongu Kalguksu](https://suwon.webforai.kr/en/places/baekcheongukalguksu/): Baekcheongu Kalguksu has been designated both a Centennial Shop and a Model Restaurant; its signature dish is seafood kalguksu (knife-cut noodle soup), and the menu also includes seafood dumpling hot pot, steamed dumplings, seafood and abalone kalguksu, and more.
 - [Baekse Jjamppong Suwon Main Branch](https://suwon.webforai.kr/en/places/baeksejjamppong-suwonbonjeom/): The signature dish at Baekse Jjamppong Suwon Main Branch is Baekse jjamppong; the menu also includes brisket jjamppong, Baekse-style jjajang, clear jjamppong, and more.
 - [Baeksesamgyetang Suwon Pajang Main Branch](https://suwon.webforai.kr/en/places/baeksesamgyetang-suwonpajangbonjeom/): The signature dish at Baeksesamgyetang Suwon Pajang Main Branch is sanghwang mushroom samgyetang (ginseng chicken soup); the menu also includes herbal samgyetang, abalone and sanghwang mushroom chicken porridge, pressed chicken feet slices, and more.
 - [Bambatcheonggaeguri Park](https://suwon.webforai.kr/en/places/bambatcheonggaegurigongwon/): Bambatcheonggaeguri Park is always open, with no closing days.
 
 ## 日本語
 - [水原閣](https://suwon.webforai.kr/ja/): 水原の観光地・飲食店・宿泊施設の営業時間・料金・駐車場・道案内、旅行コースと祭りの日程。
-- [月曜日に営業している水原の王カルビ・丸鶏の揚げ物・カルグクス・ヘンニダンギルのカフェはどこでしょうか？](https://suwon.webforai.kr/ja/guides/monday-open-restaurants-suwon/): このサイトに載っている水原の飲食店のうち、休みの日の情報に月曜日の休業がないところは176か所です。
+- [月曜日に営業している水原の王カルビ・丸鶏の揚げ物・カルグクス・ヘンニダンギルのカフェはどこでしょうか？](https://suwon.webforai.kr/ja/guides/monday-open-restaurants-suwon/): このサイトに載っている水原の飲食店のうち、休みの日の情報に月曜日の休業がないところは175か所です。
 - [水原のホテル・韓屋ステイ・宿泊施設27か所は、どう選べばよいでしょうか？](https://suwon.webforai.kr/ja/guides/suwon-hotels-hanok-stays/): このサイトに収録された水原のホテル・韓屋ステイ・宿泊施設は全部で27か所で、駐車案内が記載された宿泊施設は27か所です。
-- [水原華城・華城行宮・訪花随柳亭の城郭スポットと、常時開放の無料観光地はどこでしょうか？](https://suwon.webforai.kr/ja/guides/suwon-hwaseong-fortress-haenggung/): このサイトに載っている水原華城・華城行宮・四大門・角楼・城郭関連のスポットは20か所です。
+- [水原華城・華城行宮・訪花随柳亭の城郭スポットと、常時開放の無料観光地はどこでしょうか？](https://suwon.webforai.kr/ja/guides/suwon-hwaseong-fortress-haenggung/): このサイトに載っている水原華城・華城行宮・四大門・角楼・城郭関連のスポットは21か所です。
 - [水原の見どころ](https://suwon.webforai.kr/ja/places/): 観光地444か所
 - [水原のグルメ](https://suwon.webforai.kr/ja/food/): 飲食店210か所
 - [水原の宿泊施設](https://suwon.webforai.kr/ja/stays/): 宿泊施設27か所
 
 ## 中文(简体)
 - [水原阁](https://suwon.webforai.kr/zh-hans/): 水原景点、餐厅与住宿的开放时间、费用、停车和路线；旅游路线与庆典日期。
-- [周一营业的水原大排骨、整鸡、刀切面、行理团路咖啡馆有哪些？](https://suwon.webforai.kr/zh-hans/guides/monday-open-restaurants-suwon/): 本网站收录的水原餐厅中，休息日信息里没有周一休息的共176家。
+- [周一营业的水原大排骨、整鸡、刀切面、行理团路咖啡馆有哪些？](https://suwon.webforai.kr/zh-hans/guides/monday-open-restaurants-suwon/): 本网站收录的水原餐厅中，休息日信息里没有周一休息的共175家。
 - [水原的酒店、韩屋住宿等27家住宿设施该如何选择？](https://suwon.webforai.kr/zh-hans/guides/suwon-hotels-hanok-stays/): 本网站收录的水原酒店、韩屋住宿等住宿设施共27家，标有停车信息的共27家。
-- [水原华城、华城行宫、访花随柳亭等城郭名胜和随时免费开放的景点有哪些？](https://suwon.webforai.kr/zh-hans/guides/suwon-hwaseong-fortress-haenggung/): 本网站收录的水原华城、华城行宫、四大门、角楼及城郭相关名胜共20处，全年无休、免费开放的水原景点共51处。
+- [水原华城、华城行宫、访花随柳亭等城郭名胜和随时免费开放的景点有哪些？](https://suwon.webforai.kr/zh-hans/guides/suwon-hwaseong-fortress-haenggung/): 本网站收录的水原华城、华城行宫、四大门、角楼、城郭相关名胜共21处，全年无休、免费开放的水原景点共52处。
 - [水原游玩](https://suwon.webforai.kr/zh-hans/places/): 444个景点
 - [水原美食](https://suwon.webforai.kr/zh-hans/food/): 210家餐厅
 - [水原住宿](https://suwon.webforai.kr/zh-hans/stays/): 27家住宿
 
 ## 中文(繁體)
 - [水原閣](https://suwon.webforai.kr/zh-hant/): 水原景點、餐廳與住宿的開放時間、費用、停車和路線；旅遊路線與慶典日期。
-- [週一營業的水原大排骨、炸雞、刀切麵、行理團路咖啡廳有哪些？](https://suwon.webforai.kr/zh-hant/guides/monday-open-restaurants-suwon/): 本網站收錄的水原餐廳中，公休資訊未列週一公休的有176處。
+- [週一營業的水原大排骨、炸雞、刀切麵、行理團路咖啡廳有哪些？](https://suwon.webforai.kr/zh-hant/guides/monday-open-restaurants-suwon/): 本網站收錄的水原餐廳中，公休資訊未列週一公休的有175處。
 - [水原的飯店、韓屋住宿等27處住宿該如何挑選？](https://suwon.webforai.kr/zh-hant/guides/suwon-hotels-hanok-stays/): 本網站收錄的水原飯店、韓屋住宿等住宿共27處，有停車資訊的住宿有27處。
-- [水原華城、華城行宮、訪花隨柳亭等城郭景點與全天開放的免費景點有哪些？](https://suwon.webforai.kr/zh-hant/guides/suwon-hwaseong-fortress-haenggung/): 本網站收錄的水原華城、華城行宮、四大門、角樓等城郭相關景點有20處。
+- [水原華城、華城行宮、訪花隨柳亭等城郭景點與全天開放的免費景點有哪些？](https://suwon.webforai.kr/zh-hant/guides/suwon-hwaseong-fortress-haenggung/): 本網站收錄的水原華城、華城行宮、四大門、角樓、城郭相關景點有21處，全年無休、免費開放的水原景點有52處。
 - [水原景點](https://suwon.webforai.kr/zh-hant/places/): 444處景點
 - [水原美食](https://suwon.webforai.kr/zh-hant/food/): 210家餐廳
 - [水原住宿](https://suwon.webforai.kr/zh-hant/stays/): 27處住宿
 
 ## Deutsch
 - [Suwongak](https://suwon.webforai.kr/de/): Sehenswürdigkeiten, Restaurants und Unterkünfte in Suwon mit Öffnungszeiten, Preisen, Parkplätzen und Anfahrt; Reiserouten und Festtermine.
-- [Welche Lokale für große Rippen, Brathähnchen und Kalguksu sowie Cafés an der Straße Haengnidan-gil in Suwon sind am Montag geöffnet?](https://suwon.webforai.kr/de/guides/monday-open-restaurants-suwon/): Von den Restaurants in Suwon auf dieser Website haben 176 keinen Montag als Ruhetag angegeben.
+- [Welche Lokale für große Rippen, Brathähnchen und Kalguksu sowie Cafés an der Straße Haengnidan-gil in Suwon sind am Montag geöffnet?](https://suwon.webforai.kr/de/guides/monday-open-restaurants-suwon/): Von den Restaurants in Suwon auf dieser Website haben 175 keinen Montag als Ruhetag angegeben.
 - [Wie wählt man unter den 27 Hotels, Hanok-Aufenthalten und Unterkünften in Suwon?](https://suwon.webforai.kr/de/guides/suwon-hotels-hanok-stays/): Diese Website führt insgesamt 27 Hotels, Hanok-Aufenthalte und Unterkünfte in Suwon; für 27 Unterkünfte sind Parkhinweise angegeben.
-- [Welche Orte an der Festungsmauer wie die Festung Suwon Hwaseong, Palast Hwaseong Haenggung und der Pavillon Banghwasuryujeong sowie jederzeit zugängliche kostenlose Sehenswürdigkeiten gibt es?](https://suwon.webforai.kr/de/guides/suwon-hwaseong-fortress-haenggung/): Diese Website führt 20 Orte rund um die Festung Suwon Hwaseong, Palast Hwaseong Haenggung, die vier Haupttore, die Ecktürme und die Festungsmauer.
+- [Welche Orte an der Festungsmauer wie die Festung Suwon Hwaseong, Palast Hwaseong Haenggung und der Pavillon Banghwasuryujeong sowie jederzeit zugängliche kostenlose Sehenswürdigkeiten gibt es?](https://suwon.webforai.kr/de/guides/suwon-hwaseong-fortress-haenggung/): Diese Website führt 21 Orte rund um die Festung Suwon Hwaseong, Palast Hwaseong Haenggung, die vier Haupttore, die Ecktürme und die Festungsmauer.
 - [Sehenswertes in Suwon](https://suwon.webforai.kr/de/places/): 444 Sehenswürdigkeiten
 - [Essen in Suwon](https://suwon.webforai.kr/de/food/): 210 Restaurants
 - [Übernachten in Suwon](https://suwon.webforai.kr/de/stays/): 27 Unterkünfte
 
 ## Français
 - [Suwongak](https://suwon.webforai.kr/fr/): Sites touristiques, restaurants et hébergements à Suwon avec horaires, tarifs, stationnement et accès ; parcours de voyage et dates des festivals.
-- [À Suwon, quels restaurants de grandes côtes, de poulet frit et de nouilles coupées au couteau, et quels cafés de Haengnidan-gil sont ouverts le lundi ?](https://suwon.webforai.kr/fr/guides/monday-open-restaurants-suwon/): Parmi les restaurants de Suwon répertoriés sur ce site, 176 n'indiquent pas de fermeture le lundi dans leurs jours de fermeture.
+- [À Suwon, quels restaurants de grandes côtes, de poulet frit et de nouilles coupées au couteau, et quels cafés de Haengnidan-gil sont ouverts le lundi ?](https://suwon.webforai.kr/fr/guides/monday-open-restaurants-suwon/): Parmi les restaurants de Suwon répertoriés sur ce site, 175 n'indiquent pas de fermeture le lundi dans leurs jours de fermeture.
 - [Comment choisir parmi les 27 hôtels, séjours en hanok et hébergements de Suwon ?](https://suwon.webforai.kr/fr/guides/suwon-hotels-hanok-stays/): Ce site répertorie 27 hôtels, séjours en hanok et hébergements à Suwon, et 27 hébergements indiquent des informations sur le stationnement.
-- [Quels sont les sites des remparts (forteresse Hwaseong de Suwon, Palais Hwaseong Haenggung, pavillon Banghwasuryujeong) et les sites touristiques gratuits ouverts en permanence ?](https://suwon.webforai.kr/fr/guides/suwon-hwaseong-fortress-haenggung/): Ce site répertorie 20 lieux liés à la forteresse Hwaseong de Suwon, à Palais Hwaseong Haenggung, aux quatre grandes portes, aux pavillons d'angle et aux remparts.
+- [Quels sont les sites des remparts (forteresse Hwaseong de Suwon, Palais Hwaseong Haenggung, pavillon Banghwasuryujeong) et les sites touristiques gratuits ouverts en permanence ?](https://suwon.webforai.kr/fr/guides/suwon-hwaseong-fortress-haenggung/): Ce site répertorie 21 lieux liés à la forteresse Hwaseong de Suwon, à Palais Hwaseong Haenggung, aux quatre grandes portes, aux pavillons d'angle et aux remparts.
 - [À voir et à faire à Suwon](https://suwon.webforai.kr/fr/places/): 444 sites touristiques
 - [Où manger à Suwon](https://suwon.webforai.kr/fr/food/): 210 restaurants
 - [Où dormir à Suwon](https://suwon.webforai.kr/fr/stays/): 27 hébergements
 
 ## Español
 - [Suwongak](https://suwon.webforai.kr/es/): Atracciones, restaurantes y alojamientos en Suwon con horarios, precios, aparcamiento y cómo llegar; rutas de viaje y fechas de festivales.
-- [¿Qué locales de costilla grande, pollo frito entero, kalguksu y cafés de Calle Haengnidan-gil abren los lunes en Suwon?](https://suwon.webforai.kr/es/guides/monday-open-restaurants-suwon/): De los restaurantes de Suwon recogidos en este sitio, 176 no tienen el lunes entre sus días de cierre.
+- [¿Qué locales de costilla grande, pollo frito entero, kalguksu y cafés de Calle Haengnidan-gil abren los lunes en Suwon?](https://suwon.webforai.kr/es/guides/monday-open-restaurants-suwon/): De los restaurantes de Suwon de este sitio, 175 no tienen el lunes entre sus días de cierre.
 - [¿Cómo elegir entre los 27 alojamientos de Suwon, entre hoteles, estancias en hanok y otros?](https://suwon.webforai.kr/es/guides/suwon-hotels-hanok-stays/): Este sitio recoge 27 alojamientos de Suwon, entre hoteles, estancias en hanok y otros, y 27 de ellos tienen información de aparcamiento.
-- [¿Dónde están los lugares de la muralla de Suwon Hwaseong, Palacio Hwaseonghaenggung y Banghwasuryujeong, y los lugares turísticos gratuitos siempre abiertos?](https://suwon.webforai.kr/es/guides/suwon-hwaseong-fortress-haenggung/): Este sitio recoge 20 lugares relacionados con Suwon Hwaseong, Palacio Hwaseonghaenggung, las cuatro puertas principales, los pabellones de esquina y la muralla, y 51 lugares turísticos de Suwon abiertos todo el año y gratuitos.
+- [¿Dónde están los lugares de la muralla de Suwon Hwaseong, Palacio Hwaseonghaenggung y Banghwasuryujeong, y los lugares turísticos gratuitos siempre abiertos?](https://suwon.webforai.kr/es/guides/suwon-hwaseong-fortress-haenggung/): Este sitio recoge 21 lugares relacionados con la Fortaleza Hwaseong de Suwon, Palacio Hwaseonghaenggung, las cuatro puertas principales, los pabellones de esquina y la muralla, y 52 atracciones de Suwon abiertas todo el año y gratuitas.
 - [Qué hacer en Suwon](https://suwon.webforai.kr/es/places/): 444 lugares turísticos
 - [Dónde comer en Suwon](https://suwon.webforai.kr/es/food/): 210 restaurantes
 - [Dónde alojarse en Suwon](https://suwon.webforai.kr/es/stays/): 27 alojamientos
 
 ## Русский
 - [Сувонгак](https://suwon.webforai.kr/ru/): Регион Сувон: достопримечательности, рестораны и жильё с часами работы, ценами, парковкой и схемой проезда; маршруты и даты фестивалей.
-- [Где в Сувоне по понедельникам открыты заведения с большими рёбрышками кальби, жареной курицей, лапшой кальгуксу и кафе на Улица Хэннидан-киль?](https://suwon.webforai.kr/ru/guides/monday-open-restaurants-suwon/): Среди ресторанов Сувона на этом сайте 176 таких, у которых в сведениях о выходных нет закрытия по понедельникам.
+- [Где в Сувоне по понедельникам открыты заведения с большими рёбрышками кальби, жареной курицей, лапшой кальгуксу и кафе на Улица Хэннидан-киль?](https://suwon.webforai.kr/ru/guides/monday-open-restaurants-suwon/): Среди ресторанов Сувона на этом сайте 175 таких, у которых в сведениях о выходных нет закрытия по понедельникам.
 - [Как выбрать среди 27 отелей, ханок-стэй и других мест проживания в Сувоне?](https://suwon.webforai.kr/ru/guides/suwon-hotels-hanok-stays/): На этом сайте 27 отелей, ханок-стэй и других мест проживания в Сувоне; информация о парковке указана у 27 из них.
-- [Где в Сувоне места у крепостных стен — крепость Хвасон, Дворец Хвасон-хэнгун, павильон Панхвасурюджон — и бесплатные достопримечательности, открытые всегда?](https://suwon.webforai.kr/ru/guides/suwon-hwaseong-fortress-haenggung/): На этом сайте 20 мест, связанных с крепостью Хвасон, Дворец Хвасон-хэнгун, четырьмя главными воротами, угловыми башнями и крепостными стенами.
+- [Где в Сувоне места у крепостных стен — крепость Хвасон, Дворец Хвасон-хэнгун, павильон Панхвасурюджон — и бесплатные достопримечательности, открытые всегда?](https://suwon.webforai.kr/ru/guides/suwon-hwaseong-fortress-haenggung/): На этом сайте 21 место, связанное с крепостью Хвасон, Дворец Хвасон-хэнгун, четырьмя главными воротами, угловыми башнями и крепостными стенами.
 - [Сувон: что посмотреть](https://suwon.webforai.kr/ru/places/): 444 достопримечательности
 - [Сувон: где поесть](https://suwon.webforai.kr/ru/food/): 210 ресторанов
 - [Сувон: где остановиться](https://suwon.webforai.kr/ru/stays/): 27 вариантов жилья
