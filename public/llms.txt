@@ -6,7 +6,7 @@
 
 ## 목적별 가이드
 - [수원화성·화성행궁·방화수류정 성곽 명소와 상시 개방 무료 관광지는 어디일까요?](https://suwon.webforai.kr/guides/suwon-hwaseong-fortress-haenggung/): 이 사이트에 실린 수원화성·화성행궁·사대문·각루·성곽 관련 명소는 21곳이며, 연중무휴·무료로 개방하는 수원 관광지는 52곳입니다.
-- [월요일에 영업하는 수원 왕갈비·통닭·칼국수·행리단길 카페는 어디일까요?](https://suwon.webforai.kr/guides/monday-open-restaurants-suwon/): 이 사이트에 실린 수원 음식점 가운데 쉬는 날 정보에 월요일 휴무가 없는 곳은 175곳입니다.
+- [월요일에 영업하는 수원 왕갈비·통닭·칼국수·행리단길 카페는 어디일까요?](https://suwon.webforai.kr/guides/monday-open-restaurants-suwon/): 이 사이트에 실린 수원 음식점 가운데 쉬는 날 정보에 월요일 휴무가 없는 곳은 168곳입니다.
 - [수원 호텔·한옥스테이·숙소 27곳은 어떻게 고를까요?](https://suwon.webforai.kr/guides/suwon-hotels-hanok-stays/): 이 사이트에 수록된 수원 호텔·한옥스테이·숙소는 모두 27곳이며, 주차 안내가 기재된 숙소는 27곳입니다.
 - [아이와 함께 가기 편한 수원 수목원·아쿠아플라넷·박물관·공원 명소는 어디일까요?](https://suwon.webforai.kr/guides/suwon-with-kids/): 수목원·호수·공원·아쿠아플라넷·천문대·박물관·미술관이 이름에 포함된 수원 관광지는 52곳이며, 박물관·미술관·도서관 등 문화시설은 43곳입니다.
 - [비 오는 날 둘러보기 편한 수원 박물관·미술관·별마당도서관·문화시설은 어디일까요?](https://suwon.webforai.kr/guides/suwon-indoor-museums/): 이 사이트에 수록된 수원 박물관·미술관·도서관·아트센터 등 문화시설은 모두 43곳이며, 박물관·미술관·전시관·도서관·해우재·아쿠아플라넷이 이름에 포함된 실내외 문화 관광지는 38…
@@ -729,7 +729,7 @@
 
 ## English
 - [Suwongak](https://suwon.webforai.kr/en/): Suwon attractions, restaurants and places to stay with hours, prices, parking and directions; travel courses and festival dates.
-- [Which Suwon king-size galbi, whole fried chicken, kalguksu, and Haengnidan Street café spots are open on Mondays?](https://suwon.webforai.kr/en/guides/monday-open-restaurants-suwon/): Of the Suwon restaurants on this site, 175 do not list Monday among their closing days.
+- [Which Suwon king-size galbi, whole fried chicken, kalguksu, and Haengnidan Street café spots are open on Mondays?](https://suwon.webforai.kr/en/guides/monday-open-restaurants-suwon/): Of the Suwon restaurants on this site, 168 do not list Monday among their closing days.
 - [How do you choose among the 27 hotels, hanok stays, and other lodgings in Suwon?](https://suwon.webforai.kr/en/guides/suwon-hotels-hanok-stays/): This site lists 27 hotels, hanok stays, and other lodgings in Suwon, and 27 of them include parking information.
 - [Where are the fortress sights such as Suwon Hwaseong Fortress, Hwaseong Haenggung Palace, and Banghwasuryujeong Pavilion, and the free attractions that are always open?](https://suwon.webforai.kr/en/guides/suwon-hwaseong-fortress-haenggung/): This site lists 21 sights related to Suwon Hwaseong Fortress, Hwaseong Haenggung Palace, the four main gates, the corner pavilions, and the fortress walls, and 52 Suwon attractions open every day of the year free of charge.
 - [Things to Do in Suwon](https://suwon.webforai.kr/en/places/): 444 attractions
@@ -801,7 +801,7 @@
 
 ## 日本語
 - [水原閣](https://suwon.webforai.kr/ja/): 水原の観光地・飲食店・宿泊施設の営業時間・料金・駐車場・道案内、旅行コースと祭りの日程。
-- [月曜日に営業している水原の王カルビ・丸鶏の揚げ物・カルグクス・ヘンニダンギルのカフェはどこでしょうか？](https://suwon.webforai.kr/ja/guides/monday-open-restaurants-suwon/): このサイトに載っている水原の飲食店のうち、休みの日の情報に月曜日の休業がないところは175か所です。
+- [月曜日に営業している水原の王カルビ・丸鶏の揚げ物・カルグクス・ヘンニダンギルのカフェはどこでしょうか？](https://suwon.webforai.kr/ja/guides/monday-open-restaurants-suwon/): このサイトに載っている水原の飲食店のうち、休みの日の情報に月曜日の休業がないところは168か所です。
 - [水原のホテル・韓屋ステイ・宿泊施設27か所は、どう選べばよいでしょうか？](https://suwon.webforai.kr/ja/guides/suwon-hotels-hanok-stays/): このサイトに収録された水原のホテル・韓屋ステイ・宿泊施設は全部で27か所で、駐車案内が記載された宿泊施設は27か所です。
 - [水原華城・華城行宮・訪花随柳亭の城郭スポットと、常時開放の無料観光地はどこでしょうか？](https://suwon.webforai.kr/ja/guides/suwon-hwaseong-fortress-haenggung/): このサイトに載っている水原華城・華城行宮・四大門・角楼・城郭関連のスポットは21か所です。
 - [水原の見どころ](https://suwon.webforai.kr/ja/places/): 観光地444か所
@@ -810,7 +810,7 @@
 
 ## 中文(简体)
 - [水原阁](https://suwon.webforai.kr/zh-hans/): 水原景点、餐厅与住宿的开放时间、费用、停车和路线；旅游路线与庆典日期。
-- [周一营业的水原大排骨、整鸡、刀切面、行理团路咖啡馆有哪些？](https://suwon.webforai.kr/zh-hans/guides/monday-open-restaurants-suwon/): 本网站收录的水原餐厅中，休息日信息里没有周一休息的共175家。
+- [周一营业的水原大排骨、整鸡、刀切面、行理团路咖啡馆有哪些？](https://suwon.webforai.kr/zh-hans/guides/monday-open-restaurants-suwon/): 本网站收录的水原餐厅中，休息日信息里没有周一休息的共168家。
 - [水原的酒店、韩屋住宿等27家住宿设施该如何选择？](https://suwon.webforai.kr/zh-hans/guides/suwon-hotels-hanok-stays/): 本网站收录的水原酒店、韩屋住宿等住宿设施共27家，标有停车信息的共27家。
 - [水原华城、华城行宫、访花随柳亭等城郭名胜和随时免费开放的景点有哪些？](https://suwon.webforai.kr/zh-hans/guides/suwon-hwaseong-fortress-haenggung/): 本网站收录的水原华城、华城行宫、四大门、角楼、城郭相关名胜共21处，全年无休、免费开放的水原景点共52处。
 - [水原游玩](https://suwon.webforai.kr/zh-hans/places/): 444个景点
@@ -819,7 +819,7 @@
 
 ## 中文(繁體)
 - [水原閣](https://suwon.webforai.kr/zh-hant/): 水原景點、餐廳與住宿的開放時間、費用、停車和路線；旅遊路線與慶典日期。
-- [週一營業的水原大排骨、炸雞、刀切麵、行理團路咖啡廳有哪些？](https://suwon.webforai.kr/zh-hant/guides/monday-open-restaurants-suwon/): 本網站收錄的水原餐廳中，公休資訊未列週一公休的有175處。
+- [週一營業的水原大排骨、炸雞、刀切麵、行理團路咖啡廳有哪些？](https://suwon.webforai.kr/zh-hant/guides/monday-open-restaurants-suwon/): 本網站收錄的水原餐廳中，公休資訊未列週一公休的有168處。
 - [水原的飯店、韓屋住宿等27處住宿該如何挑選？](https://suwon.webforai.kr/zh-hant/guides/suwon-hotels-hanok-stays/): 本網站收錄的水原飯店、韓屋住宿等住宿共27處，有停車資訊的住宿有27處。
 - [水原華城、華城行宮、訪花隨柳亭等城郭景點與全天開放的免費景點有哪些？](https://suwon.webforai.kr/zh-hant/guides/suwon-hwaseong-fortress-haenggung/): 本網站收錄的水原華城、華城行宮、四大門、角樓、城郭相關景點有21處，全年無休、免費開放的水原景點有52處。
 - [水原景點](https://suwon.webforai.kr/zh-hant/places/): 444處景點
@@ -828,7 +828,7 @@
 
 ## Deutsch
 - [Suwongak](https://suwon.webforai.kr/de/): Sehenswürdigkeiten, Restaurants und Unterkünfte in Suwon mit Öffnungszeiten, Preisen, Parkplätzen und Anfahrt; Reiserouten und Festtermine.
-- [Welche Lokale für große Rippen, Brathähnchen und Kalguksu sowie Cafés an der Straße Haengnidan-gil in Suwon sind am Montag geöffnet?](https://suwon.webforai.kr/de/guides/monday-open-restaurants-suwon/): Von den Restaurants in Suwon auf dieser Website haben 175 keinen Montag als Ruhetag angegeben.
+- [Welche Lokale für große Rippen, Brathähnchen und Kalguksu sowie Cafés an der Straße Haengnidan-gil in Suwon sind am Montag geöffnet?](https://suwon.webforai.kr/de/guides/monday-open-restaurants-suwon/): Von den Restaurants in Suwon auf dieser Website haben 168 keinen Montag als Ruhetag angegeben.
 - [Wie wählt man unter den 27 Hotels, Hanok-Aufenthalten und Unterkünften in Suwon?](https://suwon.webforai.kr/de/guides/suwon-hotels-hanok-stays/): Diese Website führt insgesamt 27 Hotels, Hanok-Aufenthalte und Unterkünfte in Suwon; für 27 Unterkünfte sind Parkhinweise angegeben.
 - [Welche Orte an der Festungsmauer wie die Festung Suwon Hwaseong, Palast Hwaseong Haenggung und der Pavillon Banghwasuryujeong sowie jederzeit zugängliche kostenlose Sehenswürdigkeiten gibt es?](https://suwon.webforai.kr/de/guides/suwon-hwaseong-fortress-haenggung/): Diese Website führt 21 Orte rund um die Festung Suwon Hwaseong, Palast Hwaseong Haenggung, die vier Haupttore, die Ecktürme und die Festungsmauer.
 - [Sehenswertes in Suwon](https://suwon.webforai.kr/de/places/): 444 Sehenswürdigkeiten
@@ -837,7 +837,7 @@
 
 ## Français
 - [Suwongak](https://suwon.webforai.kr/fr/): Sites touristiques, restaurants et hébergements à Suwon avec horaires, tarifs, stationnement et accès ; parcours de voyage et dates des festivals.
-- [À Suwon, quels restaurants de grandes côtes, de poulet frit et de nouilles coupées au couteau, et quels cafés de Haengnidan-gil sont ouverts le lundi ?](https://suwon.webforai.kr/fr/guides/monday-open-restaurants-suwon/): Parmi les restaurants de Suwon répertoriés sur ce site, 175 n'indiquent pas de fermeture le lundi dans leurs jours de fermeture.
+- [À Suwon, quels restaurants de grandes côtes, de poulet frit et de nouilles coupées au couteau, et quels cafés de Haengnidan-gil sont ouverts le lundi ?](https://suwon.webforai.kr/fr/guides/monday-open-restaurants-suwon/): Parmi les restaurants de Suwon répertoriés sur ce site, 168 n'indiquent pas de fermeture le lundi dans leurs jours de fermeture.
 - [Comment choisir parmi les 27 hôtels, séjours en hanok et hébergements de Suwon ?](https://suwon.webforai.kr/fr/guides/suwon-hotels-hanok-stays/): Ce site répertorie 27 hôtels, séjours en hanok et hébergements à Suwon, et 27 hébergements indiquent des informations sur le stationnement.
 - [Quels sont les sites des remparts (forteresse Hwaseong de Suwon, Palais Hwaseong Haenggung, pavillon Banghwasuryujeong) et les sites touristiques gratuits ouverts en permanence ?](https://suwon.webforai.kr/fr/guides/suwon-hwaseong-fortress-haenggung/): Ce site répertorie 21 lieux liés à la forteresse Hwaseong de Suwon, à Palais Hwaseong Haenggung, aux quatre grandes portes, aux pavillons d'angle et aux remparts.
 - [À voir et à faire à Suwon](https://suwon.webforai.kr/fr/places/): 444 sites touristiques
@@ -846,7 +846,7 @@
 
 ## Español
 - [Suwongak](https://suwon.webforai.kr/es/): Atracciones, restaurantes y alojamientos en Suwon con horarios, precios, aparcamiento y cómo llegar; rutas de viaje y fechas de festivales.
-- [¿Qué locales de costilla grande, pollo frito entero, kalguksu y cafés de Calle Haengnidan-gil abren los lunes en Suwon?](https://suwon.webforai.kr/es/guides/monday-open-restaurants-suwon/): De los restaurantes de Suwon de este sitio, 175 no tienen el lunes entre sus días de cierre.
+- [¿Qué locales de costilla grande, pollo frito entero, kalguksu y cafés de Calle Haengnidan-gil abren los lunes en Suwon?](https://suwon.webforai.kr/es/guides/monday-open-restaurants-suwon/): De los restaurantes de Suwon de este sitio, 168 no tienen el lunes entre sus días de cierre.
 - [¿Cómo elegir entre los 27 alojamientos de Suwon, entre hoteles, estancias en hanok y otros?](https://suwon.webforai.kr/es/guides/suwon-hotels-hanok-stays/): Este sitio recoge 27 alojamientos de Suwon, entre hoteles, estancias en hanok y otros, y 27 de ellos tienen información de aparcamiento.
 - [¿Dónde están los lugares de la muralla de Suwon Hwaseong, Palacio Hwaseonghaenggung y Banghwasuryujeong, y los lugares turísticos gratuitos siempre abiertos?](https://suwon.webforai.kr/es/guides/suwon-hwaseong-fortress-haenggung/): Este sitio recoge 21 lugares relacionados con la Fortaleza Hwaseong de Suwon, Palacio Hwaseonghaenggung, las cuatro puertas principales, los pabellones de esquina y la muralla, y 52 atracciones de Suwon abiertas todo el año y gratuitas.
 - [Qué hacer en Suwon](https://suwon.webforai.kr/es/places/): 444 lugares turísticos
@@ -855,7 +855,7 @@
 
 ## Русский
 - [Сувонгак](https://suwon.webforai.kr/ru/): Регион Сувон: достопримечательности, рестораны и жильё с часами работы, ценами, парковкой и схемой проезда; маршруты и даты фестивалей.
-- [Где в Сувоне по понедельникам открыты заведения с большими рёбрышками кальби, жареной курицей, лапшой кальгуксу и кафе на Улица Хэннидан-киль?](https://suwon.webforai.kr/ru/guides/monday-open-restaurants-suwon/): Среди ресторанов Сувона на этом сайте 175 таких, у которых в сведениях о выходных нет закрытия по понедельникам.
+- [Где в Сувоне по понедельникам открыты заведения с большими рёбрышками кальби, жареной курицей, лапшой кальгуксу и кафе на Улица Хэннидан-киль?](https://suwon.webforai.kr/ru/guides/monday-open-restaurants-suwon/): Среди ресторанов Сувона на этом сайте 168 таких, у которых в сведениях о выходных нет закрытия по понедельникам.
 - [Как выбрать среди 27 отелей, ханок-стэй и других мест проживания в Сувоне?](https://suwon.webforai.kr/ru/guides/suwon-hotels-hanok-stays/): На этом сайте 27 отелей, ханок-стэй и других мест проживания в Сувоне; информация о парковке указана у 27 из них.
 - [Где в Сувоне места у крепостных стен — крепость Хвасон, Дворец Хвасон-хэнгун, павильон Панхвасурюджон — и бесплатные достопримечательности, открытые всегда?](https://suwon.webforai.kr/ru/guides/suwon-hwaseong-fortress-haenggung/): На этом сайте 21 место, связанное с крепостью Хвасон, Дворец Хвасон-хэнгун, четырьмя главными воротами, угловыми башнями и крепостными стенами.
 - [Сувон: что посмотреть](https://suwon.webforai.kr/ru/places/): 444 достопримечательности
