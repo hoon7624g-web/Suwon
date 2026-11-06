@@ -542,6 +542,11 @@ class State:
                               + assign_record_slugs(self.guides_all, "guide", self.city))
         self.attraction_groups, self.mountain = list_filters(self.city)
         self.entities = keep(self.entities_all)
+        # places the operator took off the site because they closed or left TourAPI (an 'unpublished' record): their
+        # slugs and TourAPI contentids, so no page lists them as a nearby place either (the map-search row a place
+        # without a page gets would send visitors to a closed business — operator decision 2026-11-06, 대구각 7130a47e2)
+        self.withdrawn = {str(x) for e in self.entities_all if e.get("unpublished")
+                          for x in (e.get("slug"), (e.get("id") or "").removeprefix("tourapi-")) if x}
         self.courses = keep(self.courses_all)
         self.guides = [g for g in keep(self.guides_all)
                        if g.get("status") != "draft" or guide_has_content(g)]
@@ -1075,6 +1080,8 @@ def entity_ctx(e: dict, S: State) -> dict:
     # the page's own family (parent, parts, same-building partners) has its own lines, and an alias never shows beside
     # its parent (pipeline/relations.py): both left out of the nearby rows
     for n in relations.keep_rows(e, e.get("nearby") or [], lambda n: near_target(S, n)):
+        if {str(n.get("internal_slug") or ""), str(n.get("contentid") or "")} & S.withdrawn:
+            continue
         target = near_target(S, n)
         track = {"stay": "stay_click", "food": "food_click"}.get(n.get("kind"), "nearby_click")
         # a nearby record's own address names its 구·군; without one the search says the region only
