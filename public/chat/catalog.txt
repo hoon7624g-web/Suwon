@@ -449,7 +449,7 @@ P /places/soup-taimbillaseu-suwonjeom/ | SOUP 타임빌라스 수원점 (SOUP Ti
 P /places/xr-beoseu-1795-haeng/ | XR버스 1795행 | 행리단길·시장·체험 | 팔달구 | 휴무 매주 월요일~화요일; 요금 무료 외
 P /places/zara-taimbillaseu-suwonjeom/ | ZARA 타임빌라스 수원점 (ZARA Timevillas Suwon Branch) | 시장·쇼핑 | 권선구
 
-## 음식점 210곳 — 목록 /food/
+## 음식점 200곳 — 목록 /food/
 P /places/gabojeonggalbi/ | 가보정갈비 | 한식 | 팔달구 | 메뉴 한우 양념갈비; 연중무휴
 P /places/gawon/ | 가원 | 한식 | 영통구 | 메뉴 한우 생갈비; 연중무휴 | 지정 모범음식점
 P /places/galpungjip/ | 갈풍집 | 한식 | 영통구 | 메뉴 맬콤갈비살; 연중무휴
@@ -489,8 +489,6 @@ P /places/dongsanchamsutgalbi/ | 동산참숯갈비 | 한식 | 영통구 | 메�
 P /places/dukkeobijip/ | 두꺼비집 | 한식 | 팔달구 | 메뉴 부대찌개; 휴무 명절 연휴 | 지정 모범음식점
 P /places/dyukupeul/ | 듀쿠플(DU COUPLE) | 제과 | 영통구 | 메뉴 딸기 생크림케이크; 휴무 매주 일요일
 P /places/ttaenginesogopchang/ | 땡이네소곱창 | 한식 | 영통구 | 메뉴 황소곱창; 휴무 매주 일요일 / 공휴일
-P /places/raikeu-no-adeo/ | 라이크 노 아더 | 카페 | 팔달구 | 메뉴 아몬드밤라떼; 연중무휴
-P /places/redeubeurikkeopihauseu/ | 레드브릭커피하우스 | 카페 | 팔달구 | 메뉴 아메리카노; 연중무휴
 P /places/reijihauseu/ | 레이지하우스 | 카페 | 영통구 | 메뉴 바닐라 플랫화이트; 휴무 매주 화요일
 P /places/romagyeongyangsik/ | 로마경양식 | 서양식 | 팔달구 | 메뉴 왕돈까스; 휴무 메주 월요일 / 설·추석 연휴
 P /places/reuditueo/ | 르디투어 | 카페 | 영통구 | 메뉴 아메리카노; 연중무휴
@@ -503,10 +501,8 @@ P /places/mansujeonbok/ | 만수전복 | 한식 | 팔달구 | 메뉴 전복회; 
 P /places/mallou-peulleiseu/ | 말로우 플레이스 | 한식 | 권선구 | 메뉴 말로우슈페너; 연중무휴
 P /places/maeilgimchidamgeuneunjip/ | 매일김치담그는집 | 한식 | 팔달구 | 메뉴 소양념갈비살; 휴무 매주 월요일
 P /places/maeteugeurin/ | 매트그린 | 카페 | 팔달구 | 메뉴 크럼블; 휴무 매주 화요일
-P /places/memori/ | 메모리 | 카페 | 권선구 | 휴무 매주 월요일
 P /places/memoriamanet/ | 메모리아마넷 | 카페 | 팔달구 | 메뉴 아인슈패너 밀크; 휴무 매주 월요일
 P /places/memiljeongwon/ | 메밀정원 | 한식 | 권선구 | 메뉴 메밀정식; 연중무휴
-P /places/menyagokoro/ | 멘야고코로 | 일식 | 영통구 | 메뉴 마제멘; 휴무 매주 일요일
 P /places/myeongganesundaeguk/ | 명가네순대국 | 한식 | 권선구 | 메뉴 순대국; 휴무 매주 월요일 / 화요일
 P /places/myeongseongdwaejigalbi/ | 명성돼지갈비 | 한식 | 장안구 | 메뉴 돼지갈비; 연중무휴
 P /places/monami-kare/ | 모나미 카레 | 서양식 | 팔달구 | 연중무휴
@@ -516,7 +512,6 @@ P /places/mudeungsan/ | 무등산 | 한식 | 팔달구 | 메뉴 무등산정식;
 P /places/minamichamchi/ | 미나미참치 | 일식 | 팔달구 | 메뉴 코스요리; 휴무 매주 일요일
 P /places/misotendong/ | 미소텐동 | 일식 | 영통구 | 메뉴 미소텐동, 아나고텐동; 휴무 명절 당일
 P /places/misikgauijubang/ | 미식가의주방 | 서양식 | 팔달구 | 메뉴 만조 양송이 크림 리조또; 연중무휴
-P /places/badarogankokkirikkochang/ | 바다로간코끼리꼬창 | 한식 | 장안구 | 메뉴 모듬회; 휴무 매주 월요일
 P /places/bangnejipsongtanbudaejjigae-mugongdakgalbi/ | 박네집송탄부대찌개 무공닭갈비 | 한식 | 권선구 | 메뉴 부대찌개; 휴무 1,3번째 월요일
 P /places/baeksesamgyetang-suwonpajangbonjeom/ | 백세삼계탕 수원파장본점 | 한식 | 장안구 | 메뉴 상황삼계탕; 연중무휴
 P /places/baeksejjamppong-suwonbonjeom/ | 백세짬뽕 수원본점 | 중식 | 장안구 | 메뉴 백세짬뽕; 연중무휴
@@ -537,13 +532,10 @@ P /places/sampunggadeun/ | 삼풍가든 | 한식 | 장안구 | 메뉴 생갈비;
 P /places/sangwonhoegwan/ | 상원회관 | 한식 | 영통구 | 메뉴 특수모듬; 연중무휴
 P /places/saebyeokjip/ | 새벽집 | 한식 | 영통구 | 메뉴 꽃등심; 연중무휴
 P /places/seodongjinuikeopiraep-bonjeom/ | 서동진의커피랩 본점 | 카페 | 장안구 | 메뉴 아메리카노; 연중무휴
-P /places/seorinnakji/ | 서린낙지 | 한식 | 영통구 | 메뉴 낙지모음요리; 연중무휴
 P /places/seosuwonsutbulgalbi/ | 서수원숯불갈비 | 한식 | 권선구 | 메뉴 명품 한우 꽃등심; 휴무 매주 월요일 (단, 월요일이 공휴일인 경우 정상 영업)
 P /places/seoul-24-sigamjatanghaejangguk/ | 서울24시감자탕해장국 | 한식 | 영통구 | 메뉴 묵은지 감자탕; 연중무휴 | 지정 모범음식점
 P /places/seoksanjeong/ | 석산정 | 한식 | 권선구 | 메뉴 왕생갈비; 연중무휴 | 지정 모범음식점
 P /places/sebiyasikdang/ | 세비야식당 | 서양식 | 영통구 | 메뉴 문어 오븐구이; 연중무휴
-P /places/senteomkeopi/ | 센텀커피 | 카페 | 팔달구 | 메뉴 아메리카노; 연중무휴
-P /places/sorot/ | 소롯 | 한식 | 권선구 | 휴무 법정휴무일
 P /places/songjugyakbang/ | 송죽약방 | 중식 | 장안구 | 메뉴 마파두부밥
 P /places/songpunggadeun/ | 송풍가든 | 한식 | 장안구 | 메뉴 투뿔 한우 특수부위 안창살; 연중무휴 | 지정 모범음식점
 P /places/songhalmeoniotdak/ | 송할머니옻닭 | 한식 | 권선구 | 메뉴 옻닭; 휴무 매주 일요일
@@ -623,7 +615,6 @@ P /places/kape-diajeu/ | 카페 디아즈 | 카페 | 팔달구 | 메뉴 딸기 �
 P /places/kape-riping/ | 카페 리핑 | 카페 | 영통구 | 메뉴 딸기 수플레; 연중무휴
 P /places/kape-hairaiteu/ | 카페 하이라이트 | 카페 | 권선구 | 메뉴 코코넛 라떼; 연중무휴
 P /places/kapemeibeun/ | 카페메이븐 | 카페 | 팔달구 | 메뉴 메이븐 라자냐; 연중무휴
-P /places/kapeago/ | 카페아고 | 카페 | 권선구 | 메뉴 딸기 산도, 샤인머스켓 산도 외; 연중무휴
 P /places/keopi-baibeu/ | 커피 바이브 | 카페 | 영통구 | 메뉴 라테 피크; 연중무휴
 P /places/kollingudeu/ | 콜링우드 | 카페 | 팔달구 | 메뉴 생딸기케이크; 연중무휴
 P /places/kolseukeopi/ | 콜스커피 | 카페 | 영통구 | 메뉴 리스트레또; 휴무 매주 월요일
@@ -655,7 +646,6 @@ P /places/hongnammaekalguksu/ | 홍남매칼국수 | 한식 | 장안구 | 메뉴
 P /places/hongnadeu-ingyenahyeseokjeom/ | 홍라드 인계나혜석점 | 카페 | 팔달구 | 메뉴 브라운크로플/곰돌이말차슈페너/옥수수크림커피; 연중무휴
 P /places/himallayajeongwon/ | 히말라야정원 | 기타외국식 | 팔달구 | 메뉴 버터치킨카레 (치킨마크니); 연중무휴
 P /places/daewonok/ | (신)대원옥 | 한식 | 팔달구 | 메뉴 평양냉면; 휴무 매주 월요일
-P /places/100-nyeonhanu/ | 100년한우 | 한식 | 팔달구 | 메뉴 투뿔숙성등심; 연중무휴
 P /places/10593-beigeulkeopihauseu/ | 10593 베이글커피하우스 | 카페 | 권선구 | 메뉴 아메리카노; 연중무휴
 P /places/335-kichin-gwanggyoabeunyupeurangjeom/ | 335키친 광교아브뉴프랑점 | 한식 | 영통구 | 메뉴 소고기 샤브샤브; 연중무휴
 P /places/91-keopi/ | 91커피 | 카페 | 팔달구 | 메뉴 91라떼; 연중무휴
@@ -741,9 +731,9 @@ T /themes/alleys-culture/ | 행리단길·시장·체험 여행지 199곳 | 행�
 T /themes/islands-sea/ | 호수·수변·야경 여행지 11곳 | 광교호수공원, 방화수류정 용연, 서호공원, 만석공원 등 수원의 호수와 수변 야경 명소
 T /themes/modern-history/ | 수원화성·역사·박물관 여행지 71곳 | 유네스코 세계문화유산 수원화성과 화성행궁, 수원화성박물관·수원시립미술관·삼성이노베이션뮤지엄 등 역사와 전시
 T /themes/parks-nature/ | 수목원·숲·공원 여행지 44곳 | 일월수목원, 영흥수목원, 광교산, 칠보산, 효원공원 월화원 등 도심 속 정원과 숲길
-S / | 홈 — 수원각: 관광지 444곳·음식점 210곳·숙소 27곳, 가이드 5편·코스 6개·행사 18개·영상 41편
+S / | 홈 — 수원각: 관광지 444곳·음식점 200곳·숙소 27곳, 가이드 5편·코스 6개·행사 18개·영상 41편
 S /places/ | 관광지 목록 444곳 (유형·권역으로 거르기, 지도)
-S /food/ | 음식점 목록 210곳 (대표 메뉴·영업시간·쉬는 날)
+S /food/ | 음식점 목록 200곳 (대표 메뉴·영업시간·쉬는 날)
 S /stays/ | 숙소 목록 27곳 (체크인·체크아웃·주차·문의)
 S /guides/ | 목적별 가이드 5편
 S /courses/ | 여행 코스 6개
