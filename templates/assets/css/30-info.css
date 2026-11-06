@@ -587,6 +587,11 @@ a.kf-more { display: inline-flex; align-items: center; min-height: 28px; }
    piled up): the head or the time bold on the first line, the season or days before a time and the last entry after
    it in the value's size but quiet, a bracket of words as a small line under it, the second part as the small line
    (.kf-sub), '외' glued to the last word in grey (the whole row is the link to the place) */
+/* this .cv is a cell's value, not the render containment of css/60-motion.css (.cv: content-visibility auto, 900px
+   placeholder): on phones the cells are pills (flex), the values become blocks, and before their first paint each took
+   the 900px placeholder width — /food/ and /places/ laid out 970px wide on a 390px phone until 'load' (the page zoomed
+   out) and a page transition back to the list was aborted, 'Viewport size changed' (found on 대구각 2026-11-05) */
+.kf-main.cv, .kf-sub.cv { content-visibility: visible; }
 .rec .kf-main.cv { font-weight: 400; }
 .cv .cv-h, .cv .cv-t { font-weight: 700; color: inherit; }
 .kf-main.cv:not(.closed) .cv-h, .kf-main.cv .cv-t { color: var(--ink); }
