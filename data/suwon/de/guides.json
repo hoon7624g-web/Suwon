@@ -70,7 +70,7 @@
       }
     ],
     "ko_hash": "e65abe35c2af7ca0",
-    "translated_at": "2026-11-05"
+    "translated_at": "2026-11-06"
   },
   "guide-02": {
     "slug": "suwon-with-kids",
@@ -143,7 +143,7 @@
       }
     ],
     "ko_hash": "5c72e6e5bde70c1a",
-    "translated_at": "2026-11-05"
+    "translated_at": "2026-11-06"
   },
   "guide-03": {
     "slug": "suwon-indoor-museums",
@@ -216,17 +216,17 @@
       }
     ],
     "ko_hash": "eeaa28df34cf5851",
-    "translated_at": "2026-11-05"
+    "translated_at": "2026-11-06"
   },
   "guide-05": {
     "slug": "monday-open-restaurants-suwon",
     "label": "Am Montag geöffnet · Essen",
     "title": "Welche Lokale für große Rippen, Brathähnchen und Kalguksu sowie Cafés an der Straße Haengnidan-gil in Suwon sind am Montag geöffnet?",
-    "summary": "Von den Restaurants in Suwon auf dieser Website haben 175 keinen Montag als Ruhetag angegeben. Sie können Speisekarten und Öffnungszeiten von 10 wichtigen Lokalen vergleichen, ausgewählt aus 55 Lokalen für Rippen, koreanisches Rind und Gegrilltes, 23 für Brathähnchen, Nudelsuppe, Katersuppe und Teigtaschen sowie 44 für Kaffee, Backwaren und Desserts.",
+    "summary": "Von den Restaurants in Suwon auf dieser Website haben 168 keinen Montag als Ruhetag angegeben. Sie können Speisekarten und Öffnungszeiten von 10 wichtigen Lokalen vergleichen, ausgewählt aus 54 Lokalen für Rippen, koreanisches Rind und Gegrilltes, 23 für Brathähnchen, Nudelsuppe, Katersuppe und Teigtaschen sowie 41 für Kaffee, Backwaren und Desserts.",
     "body": [
       {
-        "heading": "175 Restaurants am Montag geöffnet, darunter 55 für Suwon-Rippen und Gegrilltes, 23 für Hähnchen, Nudeln und Reissuppe sowie 44 Cafés",
-        "text": "Laut TourAPI der Koreanischen Tourismusorganisation haben 175 Restaurants und Cafés in Suwon keinen Montag unter ihren regelmäßigen Ruhetagen. Nach Speisen sind 55 Lokale für große Suwon-Rippen, koreanisches Rind, Bulgogi, Schweinebauch und Ente, 23 für Brathähnchen, Nudelsuppe, kalte Nudeln, Katersuppe, Rinderknochensuppe und Teigtaschen sowie 44 für Kaffee, Backwaren und Desserts eingetragen."
+        "heading": "168 Restaurants am Montag geöffnet, darunter 54 für Suwon-Rippen und Gegrilltes, 23 für Hähnchen, Nudeln und Reissuppe sowie 41 Cafés",
+        "text": "Laut TourAPI der Koreanischen Tourismusorganisation haben 168 Restaurants und Cafés in Suwon keinen Montag unter ihren regelmäßigen Ruhetagen. Nach Speisen sind 54 Lokale für große Suwon-Rippen, koreanisches Rind, Bulgogi, Schweinebauch und Ente, 23 für Brathähnchen, Nudelsuppe, kalte Nudeln, Katersuppe, Rinderknochensuppe und Teigtaschen sowie 41 für Kaffee, Backwaren und Desserts eingetragen."
       },
       {
         "heading": "Pausenzeiten und letzte Bestellung prüfen",
@@ -278,7 +278,7 @@
     "faq": [
       {
         "q": "Wie viele Restaurants in Suwon sind am Montag geöffnet, und wie viele Lokale gibt es jeweils für Rippen und Gegrilltes, Brathähnchen, Nudeln und Reissuppen sowie Kaffee und Backwaren?",
-        "a": "175 Restaurants haben am Montag keinen Ruhetag. Es gibt 55 Lokale für Rippen, koreanisches Rind und Gegrilltes, 23 für Brathähnchen, Nudelsuppe, Katersuppe und Teigtaschen sowie 44 für Kaffee, Backwaren und Desserts.",
+        "a": "168 Restaurants haben am Montag keinen Ruhetag. Es gibt 54 Lokale für Rippen, koreanisches Rind und Gegrilltes, 23 für Brathähnchen, Nudelsuppe, Katersuppe und Teigtaschen sowie 41 für Kaffee, Backwaren und Desserts.",
         "source": "한국관광공사 TourAPI"
       }
     ],
@@ -288,8 +288,8 @@
         "url": "https://api.visitkorea.or.kr/"
       }
     ],
-    "ko_hash": "a57584d7eff9b137",
-    "translated_at": "2026-11-05"
+    "ko_hash": "4e2fe439bf762b68",
+    "translated_at": "2026-11-06"
   },
   "guide-06": {
     "slug": "suwon-hotels-hanok-stays",
@@ -362,6 +362,6 @@
       }
     ],
     "ko_hash": "e090e2a9577a1863",
-    "translated_at": "2026-11-05"
+    "translated_at": "2026-11-06"
   }
 }

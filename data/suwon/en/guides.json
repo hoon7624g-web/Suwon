@@ -70,7 +70,7 @@
       }
     ],
     "ko_hash": "e65abe35c2af7ca0",
-    "translated_at": "2026-11-05"
+    "translated_at": "2026-11-06"
   },
   "guide-02": {
     "slug": "suwon-with-kids",
@@ -143,7 +143,7 @@
       }
     ],
     "ko_hash": "5c72e6e5bde70c1a",
-    "translated_at": "2026-11-05"
+    "translated_at": "2026-11-06"
   },
   "guide-03": {
     "slug": "suwon-indoor-museums",
@@ -216,17 +216,17 @@
       }
     ],
     "ko_hash": "eeaa28df34cf5851",
-    "translated_at": "2026-11-05"
+    "translated_at": "2026-11-06"
   },
   "guide-05": {
     "slug": "monday-open-restaurants-suwon",
     "label": "Open on Mondays · Places to Eat",
     "title": "Which Suwon king-size galbi, whole fried chicken, kalguksu, and Haengnidan Street café spots are open on Mondays?",
-    "summary": "Of the Suwon restaurants on this site, 175 do not list Monday among their closing days. You can compare the menus and hours of 10 leading places among 55 galbi, hanu, and grilled-meat restaurants, 23 fried chicken, kalguksu, haejangguk, and dumpling restaurants, and 44 coffee, bakery, and dessert places.",
+    "summary": "Of the Suwon restaurants on this site, 168 do not list Monday among their closing days. You can compare the menus and hours of 10 leading places among 54 galbi, hanu, and grilled-meat restaurants, 23 fried chicken, kalguksu, haejangguk, and dumpling restaurants, and 41 coffee, bakery, and dessert places.",
     "body": [
       {
-        "heading": "175 restaurants open on Mondays, with 55 Suwon galbi and grill places, 23 chicken, noodle, and rice soup places, and 44 cafés",
-        "text": "Based on the Korea Tourism Organization's TourAPI, 175 Suwon restaurants and cafés do not include Monday in their regular closing days. By menu, 55 places serve Suwon jumbo galbi, hanu, bulgogi, pork belly, or duck; 23 serve fried chicken, kalguksu, naengmyeon, haejangguk, seolleongtang, or dumplings; and 44 serve coffee, bakery items, or desserts."
+        "heading": "168 restaurants open on Mondays, with 54 Suwon galbi and grill places, 23 chicken, noodle, and rice soup places, and 41 cafés",
+        "text": "Based on the Korea Tourism Organization's TourAPI, 168 Suwon restaurants and cafés do not include Monday in their regular closing days. By menu, 54 places serve Suwon jumbo galbi, hanu, bulgogi, pork belly, or duck; 23 serve fried chicken, kalguksu, naengmyeon, haejangguk, seolleongtang, or dumplings; and 41 serve coffee, bakery items, or desserts."
       },
       {
         "heading": "Check break times and last order times",
@@ -278,7 +278,7 @@
     "faq": [
       {
         "q": "In Suwon, how many restaurants are open on Mondays, and how many of them are galbi and grill, fried chicken, noodle, and rice soup, or coffee and bakery places?",
-        "a": "175 restaurants have no Monday closing; among them are 55 galbi, hanu, and grill places, 23 fried chicken, kalguksu, haejangguk, and dumpling places, and 44 coffee, bakery, and dessert places.",
+        "a": "168 restaurants have no Monday closing; among them are 54 galbi, hanu, and grill places, 23 fried chicken, kalguksu, haejangguk, and dumpling places, and 41 coffee, bakery, and dessert places.",
         "source": "한국관광공사 TourAPI"
       }
     ],
@@ -288,8 +288,8 @@
         "url": "https://api.visitkorea.or.kr/"
       }
     ],
-    "ko_hash": "a57584d7eff9b137",
-    "translated_at": "2026-11-05"
+    "ko_hash": "4e2fe439bf762b68",
+    "translated_at": "2026-11-06"
   },
   "guide-06": {
     "slug": "suwon-hotels-hanok-stays",
@@ -362,6 +362,6 @@
       }
     ],
     "ko_hash": "e090e2a9577a1863",
-    "translated_at": "2026-11-05"
+    "translated_at": "2026-11-06"
   }
 }

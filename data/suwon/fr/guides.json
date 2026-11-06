@@ -70,7 +70,7 @@
       }
     ],
     "ko_hash": "e65abe35c2af7ca0",
-    "translated_at": "2026-11-05"
+    "translated_at": "2026-11-06"
   },
   "guide-02": {
     "slug": "suwon-with-kids",
@@ -143,7 +143,7 @@
       }
     ],
     "ko_hash": "5c72e6e5bde70c1a",
-    "translated_at": "2026-11-05"
+    "translated_at": "2026-11-06"
   },
   "guide-03": {
     "slug": "suwon-indoor-museums",
@@ -216,17 +216,17 @@
       }
     ],
     "ko_hash": "eeaa28df34cf5851",
-    "translated_at": "2026-11-05"
+    "translated_at": "2026-11-06"
   },
   "guide-05": {
     "slug": "monday-open-restaurants-suwon",
     "label": "Restaurants ouverts le lundi",
     "title": "À Suwon, quels restaurants de grandes côtes, de poulet frit et de nouilles coupées au couteau, et quels cafés de Haengnidan-gil sont ouverts le lundi ?",
-    "summary": "Parmi les restaurants de Suwon répertoriés sur ce site, 175 n'indiquent pas de fermeture le lundi dans leurs jours de fermeture. On compte 55 lieux de galbi, de bœuf hanwoo et de viande grillée, et 23 de poulet frit, de nouilles coupées au couteau, de soupe contre la gueule de bois et de raviolis. On compte aussi 44 lieux de café, de boulangerie et de desserts. Vous pouvez comparer les plats et les horaires des 10 principaux.",
+    "summary": "Parmi les restaurants de Suwon répertoriés sur ce site, 168 n'indiquent pas de fermeture le lundi dans leurs jours de fermeture. On compte 54 lieux de galbi, de bœuf hanwoo et de viande grillée, et 23 de poulet frit, de nouilles coupées au couteau, de soupe contre la gueule de bois et de raviolis. On compte aussi 41 lieux de café, de boulangerie et de desserts. Vous pouvez comparer les plats et les horaires des 10 principaux.",
     "body": [
       {
-        "heading": "175 restaurants ouverts le lundi : 55 de galbi de Suwon et de grillades, 23 de poulet frit, de nouilles et de soupes de riz, 44 cafés",
-        "text": "Selon le TourAPI de l'Office national du tourisme coréen, 175 restaurants et cafés de Suwon n'ont pas le lundi parmi leurs jours de fermeture réguliers. Par type de plat, on compte 55 lieux de grandes côtes de Suwon, de bœuf hanwoo, de bulgogi, de poitrine de porc et de canard. On compte aussi 23 lieux de poulet frit, de nouilles coupées au couteau, de nouilles froides, de soupe contre la gueule de bois, de soupe d'os de bœuf et de raviolis. Enfin, 44 lieux proposent café, boulangerie et desserts."
+        "heading": "168 restaurants ouverts le lundi : 54 de galbi de Suwon et de grillades, 23 de poulet frit, de nouilles et de soupes de riz, 41 cafés",
+        "text": "Selon le TourAPI de l'Office national du tourisme coréen, 168 restaurants et cafés de Suwon n'ont pas le lundi parmi leurs jours de fermeture réguliers. Par type de plat, on compte 54 lieux de grandes côtes de Suwon, de bœuf hanwoo, de bulgogi, de poitrine de porc et de canard. On compte aussi 23 lieux de poulet frit, de nouilles coupées au couteau, de nouilles froides, de soupe contre la gueule de bois, de soupe d'os de bœuf et de raviolis. Enfin, 41 lieux proposent café, boulangerie et desserts."
       },
       {
         "heading": "Heures de pause et de dernière commande à vérifier",
@@ -278,7 +278,7 @@
     "faq": [
       {
         "q": "Combien y a-t-il à Suwon de restaurants ouverts le lundi, et parmi eux de lieux de galbi et de grillades, de poulet frit, de nouilles et de soupes de riz, et de cafés et boulangeries ?",
-        "a": "175 restaurants n'ont pas de fermeture le lundi. On compte 55 lieux de galbi, de bœuf hanwoo et de grillades, et 23 de poulet frit, de nouilles coupées au couteau, de soupe contre la gueule de bois et de raviolis. Enfin, 44 lieux proposent café, boulangerie et desserts.",
+        "a": "168 restaurants n'ont pas de fermeture le lundi. On compte 54 lieux de galbi, de bœuf hanwoo et de grillades, et 23 de poulet frit, de nouilles coupées au couteau, de soupe contre la gueule de bois et de raviolis. Enfin, 41 lieux proposent café, boulangerie et desserts.",
         "source": "한국관광공사 TourAPI"
       }
     ],
@@ -288,8 +288,8 @@
         "url": "https://api.visitkorea.or.kr/"
       }
     ],
-    "ko_hash": "a57584d7eff9b137",
-    "translated_at": "2026-11-05"
+    "ko_hash": "4e2fe439bf762b68",
+    "translated_at": "2026-11-06"
   },
   "guide-06": {
     "slug": "suwon-hotels-hanok-stays",
@@ -362,6 +362,6 @@
       }
     ],
     "ko_hash": "e090e2a9577a1863",
-    "translated_at": "2026-11-05"
+    "translated_at": "2026-11-06"
   }
 }
