@@ -28381,7 +28381,7 @@
     "kind": "food",
     "category": "음식점",
     "tier": "full",
-    "status": "published",
+    "status": "draft",
     "official": {},
     "original": {},
     "map_ids": {
@@ -28598,7 +28598,15 @@
     ],
     "reviewed_at": "2026-10-23",
     "approved_at": "2026-10-23",
-    "summary_auto": true
+    "summary_auto": true,
+    "unpublished": {
+      "at": "2026-11-06",
+      "reason": "인허가 폐업",
+      "detail": "행정안전부 인허가 일반음식점 '바다로간코끼리(ko-chang)' 폐업 2021-07-13, 같은 주소에 영업 중인 인허가 없음",
+      "source": "data/<site>/licenses.json closed",
+      "mng_no": "3750000-101-2013-00171",
+      "by": "운영자 결정 2026-11-06 '폐업으로 나온 장소와 TourAPI에서 사라진 장소를 공개에서 빼'"
+    }
   },
   {
     "id": "tourapi-2751109",
@@ -54417,7 +54425,7 @@
     "kind": "food",
     "category": "음식점",
     "tier": "full",
-    "status": "published",
+    "status": "draft",
     "official": {},
     "original": {},
     "map_ids": {
@@ -54629,7 +54637,15 @@
     ],
     "reviewed_at": "2026-10-23",
     "approved_at": "2026-10-23",
-    "summary_auto": true
+    "summary_auto": true,
+    "unpublished": {
+      "at": "2026-11-06",
+      "reason": "인허가 폐업",
+      "detail": "행정안전부 인허가 휴게음식점 '메모리' 폐업 2026-06-29, 같은 주소에 다른 업소 영업(명성에프엠씨 농업박물관 카페, (주)명성 농업박물관, (명성)그라운드결)",
+      "source": "data/<site>/licenses.json closed",
+      "mng_no": "3760000-104-2023-00050",
+      "by": "운영자 결정 2026-11-06 '폐업으로 나온 장소와 TourAPI에서 사라진 장소를 공개에서 빼'"
+    }
   },
   {
     "id": "tourapi-2873631",
@@ -55823,7 +55839,7 @@
     "kind": "food",
     "category": "음식점",
     "tier": "full",
-    "status": "published",
+    "status": "draft",
     "official": {},
     "original": {},
     "map_ids": {
@@ -56029,7 +56045,15 @@
     ],
     "reviewed_at": "2026-10-23",
     "approved_at": "2026-10-23",
-    "summary_auto": true
+    "summary_auto": true,
+    "unpublished": {
+      "at": "2026-11-06",
+      "reason": "인허가 폐업",
+      "detail": "행정안전부 인허가 일반음식점 '소롯 롯데몰 수원점' 폐업 2025-08-11, 같은 주소에 다른 업소 영업(꽁시면관롯데몰수원점, 남도분식, 미스터시래기롯데몰수원점)",
+      "source": "data/<site>/licenses.json closed",
+      "mng_no": "3760000-101-2024-00121",
+      "by": "운영자 결정 2026-11-06 '폐업으로 나온 장소와 TourAPI에서 사라진 장소를 공개에서 빼'"
+    }
   },
   {
     "id": "tourapi-2629006",
@@ -59646,7 +59670,7 @@
     "kind": "food",
     "category": "음식점",
     "tier": "full",
-    "status": "published",
+    "status": "draft",
     "official": {},
     "original": {},
     "map_ids": {
@@ -59888,7 +59912,15 @@
     ],
     "reviewed_at": "2026-10-23",
     "approved_at": "2026-10-23",
-    "summary_auto": true
+    "summary_auto": true,
+    "unpublished": {
+      "at": "2026-11-06",
+      "reason": "인허가 폐업",
+      "detail": "행정안전부 인허가 제과점영업 '카페아고 타임빌라스수원점' 폐업 2025-06-05, 같은 주소에 다른 업소 영업(꽁시면관롯데몰수원점, 남도분식, 미스터시래기롯데몰수원점)",
+      "source": "data/<site>/licenses.json closed",
+      "mng_no": "3760000-121-2024-00014",
+      "by": "운영자 결정 2026-11-06 '폐업으로 나온 장소와 TourAPI에서 사라진 장소를 공개에서 빼'"
+    }
   },
   {
     "id": "tourapi-2828475",
@@ -98334,7 +98366,7 @@
     "kind": "food",
     "category": "음식점",
     "tier": "full",
-    "status": "published",
+    "status": "draft",
     "official": {},
     "original": {},
     "map_ids": {
@@ -98557,7 +98589,14 @@
     ],
     "reviewed_at": "2026-10-23",
     "approved_at": "2026-10-23",
-    "summary_auto": true
+    "summary_auto": true,
+    "unpublished": {
+      "at": "2026-11-06",
+      "reason": "TourAPI에서 사라짐",
+      "detail": "TourAPI contentid 2747099 목록에서 빠지고 상세(detailCommon2)가 빈 응답(2026-11-05 확인)",
+      "source": "2026-11-05 TourAPI 변경분 diff.json gone",
+      "by": "운영자 결정 2026-11-06 '폐업으로 나온 장소와 TourAPI에서 사라진 장소를 공개에서 빼'"
+    }
   },
   {
     "id": "tourapi-2892852",
@@ -100791,7 +100830,7 @@
     "kind": "food",
     "category": "음식점",
     "tier": "full",
-    "status": "published",
+    "status": "draft",
     "official": {},
     "original": {},
     "map_ids": {
@@ -101014,7 +101053,14 @@
     ],
     "reviewed_at": "2026-10-23",
     "approved_at": "2026-10-23",
-    "summary_auto": true
+    "summary_auto": true,
+    "unpublished": {
+      "at": "2026-11-06",
+      "reason": "TourAPI에서 사라짐",
+      "detail": "TourAPI contentid 2893055 목록에서 빠지고 상세(detailCommon2)가 빈 응답(2026-11-05 확인)",
+      "source": "2026-11-05 TourAPI 변경분 diff.json gone",
+      "by": "운영자 결정 2026-11-06 '폐업으로 나온 장소와 TourAPI에서 사라진 장소를 공개에서 빼'"
+    }
   },
   {
     "id": "tourapi-2893073",
@@ -101023,7 +101069,7 @@
     "kind": "food",
     "category": "음식점",
     "tier": "full",
-    "status": "published",
+    "status": "draft",
     "official": {},
     "original": {},
     "map_ids": {
@@ -101240,7 +101286,14 @@
     ],
     "reviewed_at": "2026-10-23",
     "approved_at": "2026-10-23",
-    "summary_auto": true
+    "summary_auto": true,
+    "unpublished": {
+      "at": "2026-11-06",
+      "reason": "TourAPI에서 사라짐",
+      "detail": "TourAPI contentid 2893073 목록에서 빠지고 상세(detailCommon2)가 빈 응답(2026-11-05 확인)",
+      "source": "2026-11-05 TourAPI 변경분 diff.json gone",
+      "by": "운영자 결정 2026-11-06 '폐업으로 나온 장소와 TourAPI에서 사라진 장소를 공개에서 빼'"
+    }
   },
   {
     "id": "tourapi-2846626",
@@ -105155,7 +105208,7 @@
     "kind": "food",
     "category": "음식점",
     "tier": "full",
-    "status": "published",
+    "status": "draft",
     "official": {},
     "original": {},
     "map_ids": {
@@ -105366,7 +105419,15 @@
     ],
     "reviewed_at": "2026-10-23",
     "approved_at": "2026-10-23",
-    "summary_auto": true
+    "summary_auto": true,
+    "unpublished": {
+      "at": "2026-11-06",
+      "reason": "인허가 폐업",
+      "detail": "행정안전부 인허가 휴게음식점 '센텀커피(Centum Coffee)' 폐업 2025-12-17, 같은 주소에 영업 중인 인허가 없음",
+      "source": "data/<site>/licenses.json closed",
+      "mng_no": "3770000-104-2018-00169",
+      "by": "운영자 결정 2026-11-06 '폐업으로 나온 장소와 TourAPI에서 사라진 장소를 공개에서 빼'"
+    }
   },
   {
     "id": "tourapi-2867652",
@@ -142770,7 +142831,7 @@
     "kind": "food",
     "category": "음식점",
     "tier": "full",
-    "status": "published",
+    "status": "draft",
     "official": {},
     "original": {},
     "map_ids": {
@@ -142974,7 +143035,15 @@
     ],
     "reviewed_at": "2026-10-23",
     "approved_at": "2026-10-23",
-    "summary_auto": true
+    "summary_auto": true,
+    "unpublished": {
+      "at": "2026-11-06",
+      "reason": "인허가 폐업",
+      "detail": "행정안전부 인허가 일반음식점 '멘야고코로' 폐업 2026-08-13, 같은 주소에 다른 업소 영업(3066, 해이커피)",
+      "source": "data/<site>/licenses.json closed",
+      "mng_no": "5610000-101-2008-00020",
+      "by": "운영자 결정 2026-11-06 '폐업으로 나온 장소와 TourAPI에서 사라진 장소를 공개에서 빼'"
+    }
   },
   {
     "id": "tourapi-3444598",
@@ -144559,7 +144628,7 @@
     "kind": "food",
     "category": "음식점",
     "tier": "full",
-    "status": "published",
+    "status": "draft",
     "official": {},
     "original": {},
     "map_ids": {
@@ -144770,7 +144839,14 @@
     ],
     "reviewed_at": "2026-10-23",
     "approved_at": "2026-10-23",
-    "summary_auto": true
+    "summary_auto": true,
+    "unpublished": {
+      "at": "2026-11-06",
+      "reason": "TourAPI에서 사라짐",
+      "detail": "TourAPI contentid 2893524 목록에서 빠지고 상세(detailCommon2)가 빈 응답(2026-11-05 확인)",
+      "source": "2026-11-05 TourAPI 변경분 diff.json gone",
+      "by": "운영자 결정 2026-11-06 '폐업으로 나온 장소와 TourAPI에서 사라진 장소를 공개에서 빼'"
+    }
   },
   {
     "id": "tourapi-2781831",
