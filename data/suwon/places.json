@@ -32087,7 +32087,7 @@
       "restdate": "연중무휴",
       "infocenter": "031-690-1451",
       "menu": "코코바닐라,리치화이트,바닐라 빈 크림 라떼",
-      "treatmenu": "카페라뗴,카푸치노,콜드 블,청송 사과 얼그레이",
+      "treatmenu": "카페라떼,카푸치노,콜드 블,청송 사과 얼그레이",
       "accessible_parking": "지하주차장에 다수 있음",
       "accessible_toilet": "장애인 화장실 있음"
     },
@@ -32138,7 +32138,7 @@
         "contentid": "3445980"
       }
     },
-    "summary": "타임체임버바이스템커피 수원스타필드점의 대표 메뉴는 코코바닐라이고, 리치화이트·바닐라 빈 크림 라떼·카페라뗴 등도 있습니다. 영업시간은 매일 10:00~22:00이고 연중무휴입니다.",
+    "summary": "타임체임버바이스템커피 수원스타필드점의 대표 메뉴는 코코바닐라이고, 리치화이트·바닐라 빈 크림 라떼·카페라떼 등도 있습니다. 영업시간은 매일 10:00~22:00이고 연중무휴입니다.",
     "tourapi": {
       "contentid": "3445980",
       "contenttypeid": "39",
@@ -32247,7 +32247,20 @@
     ],
     "reviewed_at": "2026-10-23",
     "approved_at": "2026-10-23",
-    "summary_auto": true
+    "summary_auto": true,
+    "corrections": [
+      {
+        "field": "facts.treatmenu",
+        "old": "카페라뗴,카푸치노,콜드 블,청송 사과 얼그레이",
+        "new": "카페라떼,카푸치노,콜드 블,청송 사과 얼그레이",
+        "reason": "원본 오타(운영자 지시 2026-11-08)",
+        "source": "원본 값(출처 표기 그대로)",
+        "date": "2026-11-08"
+      }
+    ],
+    "locks": [
+      "treatmenu"
+    ]
   },
   {
     "id": "tourapi-2929831",
@@ -70617,7 +70630,7 @@
     "facts": {
       "address": "경기도 수원시 팔달구 인계로 178 (인계동)",
       "usetime": "09:00~18:00",
-      "restdate": "매주 토요일 / 일요",
+      "restdate": "매주 토요일 / 일요일",
       "parkingfee": "10분당 400원 식 추가 요금 발생",
       "infocenter": "031-231-7200",
       "homepage": "https://ggcf.kr/"
@@ -70768,7 +70781,20 @@
     ],
     "reviewed_at": "2026-10-23",
     "approved_at": "2026-10-23",
-    "summary_auto": true
+    "summary_auto": true,
+    "corrections": [
+      {
+        "field": "facts.restdate",
+        "old": "매주 토요일 / 일요",
+        "new": "매주 토요일 / 일요일",
+        "reason": "원본 오타(운영자 지시 2026-11-08)",
+        "source": "원본 값(출처 표기 그대로)",
+        "date": "2026-11-08"
+      }
+    ],
+    "locks": [
+      "restdate"
+    ]
   },
   {
     "id": "tourapi-130489",
