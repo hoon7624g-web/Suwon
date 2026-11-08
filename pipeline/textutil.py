@@ -494,6 +494,23 @@ def dash_times(text: str | None) -> str:
 _GLUED_TIME_LABEL = re.compile(r"(?<=\d:\d\d)(?=(?:[월화수목금토일]요일|주말|주중|평일|하절기|동절기|체험\s*운영))")
 
 
+# a closing form ('…있음', '…쉬움', '…가능', '2대', '…위치', '…앞') then a period glued to the next sentence: TourAPI lost the
+# line break there ('휠체어 사용자 이용 쉬움.내부 턱 없음', '여유공간 있음.관광지까지의 거리'). Pages break the line after it
+# (present.lines_html) without adding or changing a character; items joined by a period ('마트.편의점', '농.축산물',
+# '유아.초.중.고', '토.일') and a '(' still open on the line are left alone.
+GLUED_SENTENCE = re.compile(r"(?:(?<=[가-힣])[음움함됨임짐]|가능|(?<=\d)대|위치|표시|충분|앞에?)\.(?=[가-힣])")
+
+
+def glued_sentence_ends(line: str) -> list[int]:
+    """Positions right after the period of each sentence glued to the next one in a line (GLUED_SENTENCE)."""
+    out = []
+    for m in GLUED_SENTENCE.finditer(str(line or "")):
+        before = line[:m.start()]
+        if before.count("(") <= before.count(")"):
+            out.append(m.end())
+    return out
+
+
 def restore_lines(raw: str | None) -> list[str]:
     """Line breaks that TourAPI text lost: before '[group]' (also after a space: '… 19:00 [주말/공휴일] …') and
     after it, before a glued '- item', before '※ note', before a day or season label glued to a time ('19:00주말 …').

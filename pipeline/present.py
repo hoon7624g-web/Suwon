@@ -40,6 +40,7 @@ from .romanize import romanize
 from .schema import (PHOTO_SOURCES, FACT_ALIASES, FACT_LABELS, KEY_FACTS, KEY_FACTS_BY_CATEGORY, KIND_LABELS, alias_holds,
                      designations, fact_label, geo_provider, geo_providers, parking_seats_half)
 from .slugs import anchor_id, initial_id
+from .textutil import glued_sentence_ends
 from .textutil import (TILDE, TIME, clock_text, contact_org, course_display_name, dash_times, display_address,
                        display_value, event_start_dt, hyphenate_phones, link_url, normalize_name, parking_compatible,
                        parking_text, phone_e164, restore_lines, squash_ws, url_domain, web_text, web_url)
@@ -291,7 +292,22 @@ def nowrap_numbers(text: str | None) -> Markup:
 
 
 def lines_html(text: str | None) -> Markup:
-    return Markup("<br>").join(escape(x) for x in str(text or "").split("\n"))
+    return Markup("<br>").join(_line_html(x) for x in str(text or "").split("\n"))
+
+
+def _line_html(line: str) -> Markup:
+    """One line; after a sentence TourAPI glued to the next by its period (textutil.glued_sentence_ends) an empty
+    <span class="lb"> (display: block) starts a new line on screen. No character is added, so the row's text is
+    still the stored value's as displayed (pipeline.validate reads it verbatim)."""
+    cuts = glued_sentence_ends(line)
+    if not cuts:
+        return escape(line)
+    parts, last = [], 0
+    for c in cuts:
+        parts.append(escape(line[last:c]))
+        last = c
+    parts.append(escape(line[last:]))
+    return Markup('<span class="lb"></span>').join(parts)
 
 
 def kind_type(e: dict, theme_names: dict, *, city) -> str:
