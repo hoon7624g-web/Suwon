@@ -511,7 +511,7 @@
 - [일월수목원 카페 데이지원](https://suwon.webforai.kr/places/irwolsumogwon-kape-deijiwon/): 일월수목원 카페 데이지원은 매주 월요일에 쉬고, 09:00~20:00에 영업합니다.
 - [장안농원](https://suwon.webforai.kr/places/jangannongwon/): 장안농원의 대표 메뉴는 보리밥이고, 잔치국수·감자전·해물파전 등도 있습니다.
 - [제철쌈밥](https://suwon.webforai.kr/places/jecheolssambap/): 제철쌈밥의 대표 메뉴는 법성포 황금 보리굴비 밥상이고, 도드람 생고기 직화구이 밥상·불맛 직화구이 소불고기 밥상·바다내음 고등어구이 밥상 등도 있습니다.
-- [타임체임버바이스템커피 수원스타필드점](https://suwon.webforai.kr/places/taimcheimbeobaiseutemkeopi-suwonseutapildeujeom/): 타임체임버바이스템커피 수원스타필드점의 대표 메뉴는 코코바닐라이고, 리치화이트·바닐라 빈 크림 라떼·카페라뗴 등도 있습니다.
+- [타임체임버바이스템커피 수원스타필드점](https://suwon.webforai.kr/places/taimcheimbeobaiseutemkeopi-suwonseutapildeujeom/): 타임체임버바이스템커피 수원스타필드점의 대표 메뉴는 코코바닐라이고, 리치화이트·바닐라 빈 크림 라떼·카페라떼 등도 있습니다.
 - [파치 성대점](https://suwon.webforai.kr/places/pachi-seongdaejeom/): 파치 성대점의 대표 메뉴는 투움바이고, 매운 새우토마토 파스타·까르보나라·훈제삼겹필라프 등도 있습니다.
 - [풍어생선구이정식](https://suwon.webforai.kr/places/pungeosaengseonguijeongsik/): 풍어생선구이정식의 대표 메뉴는 갈치구이이고, 삼치구이·고등어구이·임연수구이 등도 있습니다.
 - [형제농원](https://suwon.webforai.kr/places/hyeongjenongwon/): 형제농원의 대표 메뉴는 숯불바베큐이고, 고등어구이·김치청국장·묵밥 등도 있습니다.

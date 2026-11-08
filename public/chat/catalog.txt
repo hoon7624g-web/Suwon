@@ -17,7 +17,7 @@ P /places/gyeonggidogyoyukcheongjungangdoseogwan/ | 경기도교육청중앙도�
 P /places/gyeonggidoseogwan/ | 경기도서관 (Gyeonggi Library) | 문화시설 | 영통구 | 휴무 매월 둘째, 넷째 월요일, 1월 1일, 설·추석 당일; 요금 무료
 P /places/gyeonggidoeopsaikeulpeullaja/ | 경기도업사이클플라자 (Gyeonggidoeopsaikeul Plaza) | 문화시설 | 권선구 | 휴무 매주 월요일, 1월 1일, 설·추석 당일; 요금 무료
 P /places/gyeonggidohaengjeongyeoksagwan/ | 경기도행정역사관 (Gyeonggidohaengjeong History Hall) | 문화시설 | 장안구 | 휴무 매주 토요일, 일요일; 요금 무료
-P /places/gyeonggimunhwajaedan-ateuhol/ | 경기문화재단 아트홀(구 다산홀) (Gyeonggimunhwajaedan Art Hol (Gu Dasanhol)) | 박물관·미술관·전시 | 팔달구 | 휴무 매주 토요일 / 일요
+P /places/gyeonggimunhwajaedan-ateuhol/ | 경기문화재단 아트홀(구 다산홀) (Gyeonggimunhwajaedan Art Hol (Gu Dasanhol)) | 박물관·미술관·전시 | 팔달구 | 휴무 매주 토요일 / 일요일
 P /places/gyeonggisangsangkaempeoseu/ | 경기상상캠퍼스 (Gyeonggi Sangsang Campus) | 문화시설 | 권선구 | 휴무 매주 월요일, 1월 1일, 설·추석 당일; 요금 무료 외
 P /places/gyeonggiateusenteo/ | 경기아트센터 (Gyeonggi Art Center) | 박물관·미술관·전시 | 팔달구 | 연중무휴; 요금 공연에 따라 상이
 P /places/goryeomgongwon/ | 고렴공원 (Goryeom Park) | 호수·수목원·공원·산 | 권선구 | 연중무휴
