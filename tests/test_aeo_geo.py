@@ -504,23 +504,23 @@ def test_the_company_record_is_in_the_footer_the_about_page_and_the_publisher_no
     op = {"name": "에이아이오투오", "legal_name": "주식회사 에이아이오투오", "name_en": "AIO2O", "ceo": "안성민",
           "business_no": "620-87-00810", "corporate_no": "140111-0070330", "founded": "2017-08-16",
           "head_office": "대구광역시 북구 옥산로 111", "head_office_postal": "41593", "lab": "경기도 성남시 수정구 금토로 32",
-          "tel": "070-4260-8310", "email": "contact@o2o.kr", "contact": "shyun@o2o.kr"}
+          "tel": "070-4260-8310", "email": "sales@o2o.kr", "contact": "sales@o2o.kr"}
     data = data_with(tmp_path, site={"operator": op})
     out = tmp_path / "s"
     build(data, out, "sample")
     home = (out / "index.html").read_text("utf-8")
     assert "대표이사 안성민" in home and "사업자등록번호 620-87-00810" in home and "본사 (41593) 대구광역시 북구 옥산로 111" in home
-    for v in ("법인등록번호 140111-0070330", "설립 2017년 8월 16일", "연구소 경기도 성남시 수정구 금토로 32", "이메일", "contact@o2o.kr"):
+    for v in ("법인등록번호 140111-0070330", "설립 2017년 8월 16일", "연구소 경기도 성남시 수정구 금토로 32", "이메일", "sales@o2o.kr"):
         assert v in home, v
     assert 'href="tel:07042608310"' in home and 'href="/about/#company"' in home
     assert "Copyright © 주식회사 에이아이오투오" in home
     about = scan_file(out / "about/index.html").body
-    for v in ("법인등록번호", "140111-0070330", "2017년 8월 16일", "(41593) 대구광역시 북구 옥산로 111", "연구소", "contact@o2o.kr"):
+    for v in ("법인등록번호", "140111-0070330", "2017년 8월 16일", "(41593) 대구광역시 북구 옥산로 111", "연구소", "sales@o2o.kr"):
         assert v in about, v
     org = next(n for n in nodes(out / "index.html") if n["@type"] == "Organization")
     # the node carries what the footer prints (validate: every value on the page); the founding date is printed in
     # words, so it stays off the node
-    assert org["legalName"] == "주식회사 에이아이오투오" and org["taxID"] == "620-87-00810" and org["email"] == "contact@o2o.kr"
+    assert org["legalName"] == "주식회사 에이아이오투오" and org["taxID"] == "620-87-00810" and org["email"] == "sales@o2o.kr"
     assert org["address"]["postalCode"] == "41593" and org["telephone"] == "+82-70-4260-8310"
     assert "foundingDate" not in org
     assert not validate(data, out, "sample")[0]
