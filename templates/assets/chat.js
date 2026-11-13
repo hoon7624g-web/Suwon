@@ -703,7 +703,10 @@
     setModal(false);
     state.open = false;
     save();
-    var back = opener && opener.isConnected ? opener : doc.querySelector(".chat-fab");
+    // back to the button that opened it. On a phone the launcher is not on screen: the tab bar's or a place page's
+    // bar's own 'AI 챗봇' button pressed it for the reader (site.js [data-tab-chat]) — the focus goes to that button
+    var shown = function (el) { return !!(el && el.isConnected && el.getClientRects().length); };
+    var back = shown(opener) ? opener : [].slice.call(doc.querySelectorAll("[data-tab-chat], .chat-fab")).filter(shown)[0];
     if (back) back.focus({ preventScroll: true });
   }
   function reset() {

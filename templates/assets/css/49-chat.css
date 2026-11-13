@@ -2,7 +2,9 @@
    chat.js on the first press. On every page from the first paint, fixed bottom right: a white round button with the
    mascot (room set by width/height) and its label on a sea tag (owner 2026-10-13, 10-14). Owner 2026-10-31 ('더 잘
    보이게 키워'): 76px, 100px from 1024px, a sea ring, a halo three times after load. Hidden without JS, while the chat
-   is open and in print; the footer keeps its height free. */
+   is open and in print; the footer keeps its height free. From 1200px — the pages with the tab panel — css/90-refine
+   (the calm pass 2026-11-10) sets it 68px inside the page's right margin, so that it lies over no card; on a phone's
+   place page the bottom bar's 'AI 챗봇' button stands for it. */
 .chat-fab { position: fixed; z-index: 90; right: max(16px, env(safe-area-inset-right)); bottom: max(18px, calc(env(safe-area-inset-bottom) + 10px));
   display: grid; place-items: center; width: 76px; height: 76px; padding: 0; border: 0; border-radius: 50%; overflow: visible;
   background: #fff; color: var(--ink); cursor: pointer;

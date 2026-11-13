@@ -327,6 +327,32 @@ def test_in_a_browser_the_chips_combine_and_each_row_says_why(built, browser):
         ctx.close()
 
 
+def test_in_a_browser_the_list_is_the_phones_width_from_its_first_frame(built, browser):
+    """The cells' values (.kf-main.cv) are not the render containment .cv (css/60-motion.css): as phone pills they once
+    took its 900px placeholder before their first paint, and /food/ laid out 970px wide until 'load' (2026-11-06)."""
+    ctx, page, errors = _page(browser, built)
+    try:
+        ctx.add_init_script("addEventListener('pagereveal', () => { window.__w = innerWidth; })")
+        page.goto("http://site.test/food/", wait_until="load")
+        assert page.evaluate("window.__w") == 390
+        assert errors == [], errors
+    finally:
+        ctx.close()
+
+
+def test_in_a_browser_the_list_is_the_phones_width_from_its_first_frame(built, browser):
+    """The cells' values (.kf-main.cv) are not the render containment .cv (css/60-motion.css): as phone pills they once
+    took its 900px placeholder before their first paint, and /food/ laid out 970px wide until 'load' (2026-11-06)."""
+    ctx, page, errors = _page(browser, built)
+    try:
+        ctx.add_init_script("addEventListener('pagereveal', () => { window.__w = innerWidth; })")
+        page.goto("http://site.test/food/", wait_until="load")
+        assert page.evaluate("window.__w") == 390
+        assert errors == [], errors
+    finally:
+        ctx.close()
+
+
 def test_in_a_browser_the_url_keeps_the_conditions_and_a_way_back_restores_them(built, browser):
     ctx, page, errors = _page(browser, built)
     try:

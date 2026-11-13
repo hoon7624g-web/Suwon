@@ -413,7 +413,7 @@
       var a = e.target.closest && e.target.closest('a[href^="#"]');
       if (!a || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
       var id = decodeURIComponent(a.getAttribute("href").slice(1)), t = id && doc.getElementById(id);
-      if (!t) return;
+      if (!t || (t.closest && t.closest("[data-lenis-prevent]"))) return;
       e.preventDefault();
       lenis.scrollTo(t, { offset: -(mastH() + 16), duration: 0.9, onComplete: function () {
         if (!t.hasAttribute("tabindex") && !/^(A|BUTTON|INPUT|SELECT|TEXTAREA|SUMMARY)$/.test(t.tagName)) t.setAttribute("tabindex", "-1");

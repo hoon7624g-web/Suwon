@@ -3,8 +3,8 @@ together with a fake /api/chat/ that streams its answer over about a second (SSE
 
 The Korean home (owner 2026-10-13 night: '이 상자를 챗봇 질문창으로'; UI4 2026-10-14: the white question card under the
 light opening; owner 2026-10-14: '페이지 상단에는 검색, 중앙 부분에는 AI챗봇으로 확실히 구분'): the card is the assistant
-only — its box sits in a 390×844 and a 1440×900 first screen — and the conversation opens in its own panel right under
-the card. Asking from the box at 390
+only — since 시안 A (operator 2026-11-05) it comes after the opening's picture and lists, within two screens of the top at
+390×844 and 1440×900 — and the conversation opens in its own panel right under the card. Asking from the box at 390
 and 1440 shows the panel at once and brings it into view, the streamed answer, its checked link and link card come in
 the panel (announced once) while nothing above the panel moves and nothing below it moves while it streams, and the
 floating panel is never built there; the panel's own box asks the next question into the same conversation; a starter
@@ -13,8 +13,10 @@ nothing, in either box, while the Enter that ends a Korean syllable asks at once
 host (data/daegu/site.json site_url) too (the first site's 2026-10-14 bug: that Enter was swallowed); the button stops an answer; the
 header's search goes to /search/?q= (desktop: its field; phones: '검색' opens it over the bar; without JS a link);
 Korean + not_configured lands on /search/?q=…; without
-chat.js the box searches and a starter follows its link; the launcher is there from the first paint (390 and 1440),
-puts the focus in the box (or in the open conversation's own box) and never steps aside (owner 2026-10-14);
+chat.js the box searches and a starter follows its link; the launcher is there from the start wherever the box is
+not on screen and steps aside while it is (operator 2026-10-15, 10-21) — 76px, 100px from 1024px, 68px in the page's
+margin from 1200px (the calm pass 2026-11-10); a Korean phone has the tab bar's 'AI 챗봇' button in its stead (시안 A);
+either puts the focus in the box (or in the open conversation's own box);
 the same conversation shows in the floating panel on another page; nothing of the chat loads and nothing shifts while
 the page loads (fonts already cached, as on any second page); no console errors. Skipped where Playwright or its
 Chromium is missing."""
@@ -366,13 +368,23 @@ def test_starters_ask_and_the_boxes_ignore_input_methods_and_empty_questions(bro
     page.evaluate("document.querySelector('.hk-pill').scrollIntoView({block: 'center', behavior: 'instant'})")
     page.wait_for_function("!document.documentElement.classList.contains('ask-out')", timeout=3000)
     page.wait_for_timeout(500)   # the launcher's fade as the box comes on screen
-    # with a modifier key a starter is a link (a new tab), and nothing is asked
-    with ctx.expect_page() as other:
-        chip.click(modifiers=["Control"])
-    other.value.wait_for_url(lambda u: not u.startswith("about:"))   # a new tab starts at about:blank, then navigates
-    other.value.wait_for_load_state()
-    assert unquote(urlsplit(other.value.url).path) == href and API["calls"] == []
-    other.value.close()
+    # with a modifier key a starter is a link (a new tab), and nothing is asked. Headless Chromium now and then opens
+    # no tab for a Ctrl+click or leaves it at about:blank (any link does, about 1 press in 10 on a busy machine —
+    # measured on 군산각 2026-11-10): the press is repeated then; the tab that comes is the starter's page
+    tab = None
+    for _ in range(3):
+        try:
+            with ctx.expect_page(timeout=6000) as other:
+                chip.click(modifiers=["Control"])
+            other.value.wait_for_url(lambda u: not u.startswith("about:"), timeout=6000)   # about:blank, then the page
+            other.value.wait_for_load_state()
+            tab = other.value
+            break
+        except sync_api.TimeoutError:
+            for stuck in ctx.pages[1:]:
+                stuck.close()
+    assert tab is not None and unquote(urlsplit(tab.url).path) == href and API["calls"] == []
+    tab.close()
     # an Enter the input method keeps (a conversion) commits the text; an empty box only takes the focus — nothing
     # is asked
     page.fill("#ask-q", "은파 주")
@@ -402,6 +414,11 @@ def test_starters_ask_and_the_boxes_ignore_input_methods_and_empty_questions(bro
     page.fill("#ask-q2", "주차 요금은 얼마인가")
     korean_enter(page, "요")
     page.wait_for_function(f"document.querySelectorAll('.ask-log .chat-u').length === {n + 1}")
+    for _ in range(50):                                              # its request reaches the server a moment after
+        if len(API["calls"]) > n:                                    # the question's bubble is drawn
+            break
+        page.wait_for_timeout(100)
+    assert len(API["calls"]) == n + 1
     assert API["calls"][-1]["messages"][-1] == {"role": "user", "content": "주차 요금은 얼마인가요"}
     assert page.locator("[data-ask-search]").count() == 0   # the card has no '검색': the search is the header's
     assert errors == []
@@ -438,7 +455,7 @@ def test_without_chat_js_the_box_searches_and_a_starter_follows_its_link(browser
     ctx.close()
 
 
-@pytest.mark.parametrize("width,height", [(390, 844), (1440, 900)])
+@pytest.mark.parametrize("width,height", [(390, 844), (820, 1180), (1100, 800), (1440, 900)])
 def test_the_launcher_is_there_from_the_start_and_goes_to_the_box(browser, site, width, height):
     ctx, page, errors = open_home(browser, site, width, height)
     fab = page.locator(".chat-fab")
@@ -474,7 +491,7 @@ def test_the_launcher_is_there_from_the_start_and_goes_to_the_box(browser, site,
     assert fab.get_attribute("aria-label").startswith("AI 챗봇")
     page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
     page.wait_for_timeout(400)
-    fab.click()                                                      # nothing asked yet: the card's question box
+    opener.click()                                                   # nothing asked yet: the card's question box
     page.wait_for_timeout(1000)
     assert page.evaluate("document.activeElement.id") == "ask-q" and in_viewport(page, ".hk-box")
     assert page.locator("#chat").count() == 0 and page.locator("[data-ask-log]").is_hidden()

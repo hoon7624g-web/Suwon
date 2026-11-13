@@ -1,6 +1,7 @@
 {% extends "base.html.j2" %}
 {% import "_art.html.j2" as artm %}
 {% import "_p2.html.j2" as p2 %}
+{% import "_abroad.html.j2" as ab %}
 {#- A purpose guide (Apple direction + the reading layer, owner 2026-10-09: "줄글이라 사람이 읽기 불편"). Every sentence
     of the guide is in the HTML, verbatim and in order; the page adds a layer to scan:
     - the answer card: the summary's first sentence as the answer line (big), the guide's places as mini cards, then
@@ -22,8 +23,10 @@
 {% set links = [] %}
 {% if G.booking %}{% set _ = links.append((G.bw.nav, '#h-book')) %}{% endif %}
 {% if G.route %}{% set _ = links.append(('걷는 순서', '#h-route')) %}{% endif %}
+{% if G.g._insta %}{% set _ = links.append(('인스타그램', '#h-insta')) %}{% endif %}
 {% if G.places %}{% set _ = links.append(('장소', '#h-items')) %}{% endif %}
 {% if G.faqs %}{% set _ = links.append(('질문', '#h-faq')) %}{% endif %}
+{% if see %}{% set _ = links.append(('이어서 보기', '#h-see')) %}{% endif %}
 {% set _ = links.append(('출처', '#h-src')) %}
 {% if G.route %}{% set cta = {'url': '#h-route', 'label': '걷는 순서'} %}
 {% elif has_courses %}{% set cta = {'url': '/courses/', 'label': '코스 보기', 'track': 'course_click'} %}
@@ -35,6 +38,10 @@
 {% set ts = cards|selectattr('photo')|map(attribute='photo.type')|unique|sort|list %}{% if ts %}사진 출처: 한국관광공사 · 공공누리 {% for t in ts %}제{{ t }}유형{% if t == 3 %}(변경금지){% endif %}{% if not loop.last %}·{% endif %}{% endfor %}{% endif %}
 {%- endmacro %}
 {% set types = G.places|selectattr('photo')|map(attribute='photo.type')|unique|sort|list %}
+{#- a section's paragraphs: sentence bullets, a one-sentence paragraph as a plain paragraph -#}
+{% macro paras(ps) -%}
+{% for para in ps %}{% if para|length > 1 %}<ul class="gd-pts">{% for b in para %}<li{% if b.own %} class="own"{% endif %}>{{ b.html }}</li>{% endfor %}</ul>{% else %}<p class="gd-p">{{ para[0].html }}</p>{% endif %}{% endfor %}
+{%- endmacro %}
 <article class="guide">
 {% if G.picks %}{{ ui.sprite(G.icons) }}{% endif %}
   {% set camp = (art_slots or {}).get('guide.banner.' ~ G.g.id) %}
@@ -61,7 +68,7 @@
       <div class="summary" data-block="summary">{% if G.ans.first %}<p class="lede gd-ans-l {{ G.ans.size }}">{{ G.ans.html }}</p>{% if G.ans.rest_pts %}<ul class="gd-ans-pts">{% for t in G.ans.rest_pts %}<li>{{ t }}</li>{% endfor %}</ul>{% elif G.ans.rest %}<p class="dek gd-ans-r">{{ G.ans.rest_html }}</p>{% endif %}{% else %}<p class="lede">방문 정보를 확인하며 가이드를 준비하고 있습니다.</p>{% endif %}</div>
       {% if G.picks %}
       <div class="gd-picks">
-        <p class="gd-picks-h"><span>이 가이드의 장소 <b class="tn">{{ G.picks_total }}</b>곳</span>{% if G.places %}<a href="#h-items">전체 목록</a>{% endif %}</p>
+        <p class="gd-picks-h"><span>이 가이드의 장소 <b class="tn">{{ G.picks_total }}</b>곳</span><span>{% if G.g._insta %}<a href="#h-insta">인스타그램 미리보기 <span class="tn">{{ G.g._insta|length }}</span>편</a> · {% endif %}{% if G.places %}<a href="#h-items">전체 목록</a>{% endif %}</span></p>
         {% set more = {'n': '외 %d곳'|format(G.picks_more), 'text': '전체 목록 보기', 'href': '#h-items'} if G.picks_more and G.places else none %}
         {{ ui.shelf(G.picks, '이 가이드의 장소', credit_ko(G.picks), more=more) }}
       </div>
@@ -89,8 +96,17 @@
       {% for s in G.sections %}
       <section class="gd-sec" aria-labelledby="{{ s.id }}" data-sec="{{ s.id }}" data-pts="{{ s.pts|join(' ') }}">
         <p class="gd-sec-n tn" aria-hidden="true">{{ '%02d'|format(s.n) }}</p>
-        <h2 id="{{ s.id }}" class="h-sec" data-split>{{ s.heading }}</h2>
-        {% for para in s.paras %}{% if para|length > 1 %}<ul class="gd-pts">{% for b in para %}<li{% if b.own %} class="own"{% endif %}>{{ b.html }}</li>{% endfor %}</ul>{% else %}<p class="gd-p">{{ para[0].html }}</p>{% endif %}{% endfor %}
+        {#- operator 2026-11-10 ('글이 너무 많아서 별로'; present.section_reading): a short heading, the record's
+            heading sentence as the section's lead, the first sentences, the rest behind '자세히' (a <details>: every
+            sentence stays in the HTML, in the record's order). A 'label: detail' heading keeps one <h2> on two lines. -#}
+        {% if s.lead %}<h2 id="{{ s.id }}" class="h-sec gd-h" data-split>{{ s.toc }}</h2>
+        <p class="gd-lead">{{ s.heading }}</p>
+        {% elif s.head_label %}<h2 id="{{ s.id }}" class="h-sec gd-h gd-h2l">{{ s.head_label }}<span class="vh">: </span><span class="gd-h-sub">{{ s.head_sub }}</span></h2>
+        {% else %}<h2 id="{{ s.id }}" class="h-sec gd-h" data-split>{{ s.heading }}</h2>
+        {% endif %}
+        {{ paras(s.vis) }}
+        {% if s.more %}<details class="gd-more"><summary><span class="gd-more-t">자세히</span><span class="gd-more-n tn">{{ s.more_n }}문장</span><i class="gd-more-i" aria-hidden="true"></i></summary>
+        {{ paras(s.more) }}</details>{% endif %}
         {% if s.places %}{{ ui.shelf(s.places, '이 단락에 나온 장소 ' ~ s.places|length ~ '곳', credit_ko(s.places), cls='mcs-sec', nav_js=true) }}{% endif %}
         {% if s.again %}{{ ui.again(s.again, '이 단락에 나온 장소 중 위 카드에 있는 ' ~ s.again|length ~ '곳') }}{% endif %}
       </section>
@@ -118,6 +134,35 @@
   {% endif %}
 
   {% if G.places %}
+  {% if G.g._insta %}
+  <section class="ab-sns chapter cv" id="h-insta" aria-labelledby="h-insta-h">
+    <div class="wrap">
+      <h2 id="h-insta-h" class="ab-h">인스타그램에서 많이 찾은 {{ site.region }} <span class="tn">{{ G.g._insta|length }}</span></h2>
+      <p class="ab-sns-lede">{% if G.g._insta_multi %}모음 큐레이션 <span class="tn">{{ G.g._insta_multi|length }}</span>{% endif %}{% if G.g._insta_multi and G.g._insta_spot %}<span aria-hidden="true"> · </span>{% endif %}{% if G.g._insta_spot %}장소별 미리보기 <span class="tn">{{ G.g._insta_spot|length }}</span>{% endif %}{% if G.g._insta_channels %}<span aria-hidden="true"> · </span>인기 채널 <span class="tn">{{ G.g._insta_channels|length }}</span>{% endif %} — 게시물마다 우리가 쓴 한 줄 소개와 {{ site.site_name }} 장소 바로가기를 달고, 미리보기는 Instagram 공식 임베드로 보여 줍니다.</p>
+      {% if G.g._insta_channels %}
+      <h3 class="ab-sub" id="h-insta-channels">{{ site.region }} 관련 인기 인스타그램 채널 <span class="tn">{{ G.g._insta_channels|length }}</span></h3>
+      <ul class="ig-ch-grid ig-ch-guide">
+        {% for ch in G.g._insta_channels %}
+        <li class="ig-ch-card">
+          <div class="ig-ch-head">{{ ab.svc('instagram') }}<div class="ig-ch-who"><b>{{ ch.name }}</b><span>{{ ch.handle }}</span></div>{% if ch.badge %}<span class="ig-ch-badge">{{ ch.badge }}</span>{% endif %}</div>
+          <p class="ig-ch-note">{{ ch.note }}</p>
+          <p class="ig-ch-links"><a class="ig-ch-go" href="{{ ch.url }}" target="_blank" rel="noopener" data-track="abroad_click">채널 보기<span class="arr" aria-hidden="true">↗</span></a>{% for l in ch.links or [] %}<a class="ig-ch-chip" href="{{ l.href }}">{{ l.label }}</a>{% endfor %}</p>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% if G.g._insta_multi %}
+      <h3 class="ab-sub" id="h-insta-multi">크리에이터가 꼽은 {{ site.region }} 모음 <span class="tn">{{ G.g._insta_multi|length }}</span></h3>
+      <div class="ab-wallbox"><ul class="ab-wall" data-wall>{% for a in G.g._insta_multi %}{{ ab.post(a) }}{% endfor %}</ul></div>
+      {% endif %}
+      {% if G.g._insta_spot %}
+      <h3 class="ab-sub" id="h-insta-spot">장소별 인스타그램 미리보기·바로가기 <span class="tn">{{ G.g._insta_spot|length }}</span></h3>
+      <div class="ab-wallbox"><ul class="ab-wall" data-wall>{% for a in G.g._insta_spot %}{{ ab.post(a) }}{% endfor %}</ul></div>
+      {% endif %}
+      <p class="note ab-src-note">게시물의 글·사진·영상은 각 작성자의 것입니다. 원문 문장과 사진은 서버에 옮겨 싣지 않고 우리가 쓴 한 줄 소개와 원문 링크만 실었으며, 게시물 미리보기는 화면에 가까워지면 Instagram의 공식 임베드로 불러옵니다.</p>
+    </div>
+  </section>
+  {% endif %}
   <section class="wrap chapter cv" aria-labelledby="h-items">
     {{ ui.chead('이 가이드의 장소 ' ~ G.places|length ~ '곳', 'h-items') }}
     <ol class="gitems">
@@ -146,6 +191,7 @@
   </section>
   {% endif %}
 
+  {{ ui.seealso(see) }}
   <section class="wrap chapter ch-rail ch-src cv" aria-labelledby="h-src">
     <h2 id="h-src" class="rail-label">출처</h2>
     <div class="rail-body">

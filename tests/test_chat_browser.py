@@ -239,6 +239,41 @@ def test_phone_sheet_and_error_states(browser, site):
     ctx.close()
 
 
+def test_on_a_phone_the_bar_s_button_opens_the_chat_and_gets_the_focus_back(browser, site):
+    """On a phone the launcher is not on screen: the tab bar's 'AI 챗봇' (시안 A, 2026-11-05) and, on a place page, the
+    bottom bar's (the calm pass 2026-11-10) press it for the reader (site.js [data-tab-chat]). While the sheet is open
+    the bar is not drawn (it lay over half of the question box and the send button — found on the live site); closing
+    the chat brings it back and gives the focus to the button that was pressed — it went to the hidden launcher, that
+    is to <body>."""
+    ctx, page, errors, calls = open_page(browser, 390, 844, [OK])
+    for path, bar in (("/places/eunpa-lake-park/", ".pl-bar"), ("/places/", ".tabbar")):
+        page.goto(site + path)
+        button = page.locator(f"{bar} [data-tab-chat]")
+        assert button.is_visible() and not page.locator(".chat-fab").is_visible()
+        assert "AI 챗봇" in button.inner_text()
+        box = button.bounding_box()
+        assert box["height"] >= 44 and box["width"] >= 44
+        for close in ("Escape", "button"):
+            button.focus()
+            page.keyboard.press("Enter")
+            panel = page.locator("#chat")
+            panel.wait_for(state="visible")
+            assert panel.get_attribute("aria-modal") == "true"
+            # the bar steps out while the sheet is open: it was drawn over the question box and the send button
+            assert not page.locator(bar).is_visible(), (path, close)
+            send = page.locator(".chat-send").bounding_box()
+            assert page.evaluate("([x, y]) => !!document.elementFromPoint(x, y).closest('#chat')",
+                                 [send["x"] + send["width"] / 2, send["y"] + send["height"] - 3]), (path, close)
+            if close == "Escape":
+                page.keyboard.press("Escape")
+            else:
+                page.click('.chat-ib[aria-label="닫기"]')
+            assert panel.is_hidden()
+            assert page.evaluate("b => document.activeElement === document.querySelector(b + ' [data-tab-chat]')", bar), (path, close)
+    assert errors == []
+    ctx.close()
+
+
 def test_each_limit_tells_the_reader_what_it_is(browser, site):
     """The client's minute (and the Firewall's 429): 'ask again in a minute', with retry. The client's day: the day's
     limit, no retry, the site search instead. The whole instance full: 'cannot answer right now', not the reader's

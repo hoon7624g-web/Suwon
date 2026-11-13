@@ -358,7 +358,7 @@ def test_the_weather_module_fills_its_room_after_load(browser, built):
     once, after the page has loaded; the sky of the hour (data-t), '지금 날씨 점수' and the score, the moon at night,
     '지금은 러닝각!', the summary and the status line (Korean only), the four cells 아침 · 낮 · 저녁 · 지금 (지금 last, its
     figure the hero's); the card keeps its height, so nothing moves; no console error."""
-    ctx, page, errors, calls = open_page(browser, built, "/", 1440)
+    ctx, page, errors, calls = open_page(browser, built, "/", 1440, 1080)   # the whole card: from 1020px of height (css/90-refine)
     page.wait_for_selector(".wx-side.is-ready", timeout=8000)
     box = page.locator(".wx-side")
     assert page.evaluate("window.__wx") == ["complete", "complete"] and len(calls) == 2
@@ -387,7 +387,6 @@ def test_the_weather_module_fills_its_room_after_load(browser, built):
     assert len(calls) == 0                                   # nothing asked while the card is far from the screen
     page.evaluate("window.scrollTo(0, document.querySelector('.wx-home').getBoundingClientRect().top + scrollY - 600)")
     page.wait_for_selector(".wx-home.is-ready", timeout=8000)
-    page.wait_for_timeout(300)
     assert page.evaluate("window.__wx") == ["complete", "complete"] and len(calls) == 2
     assert h0[1] or page.locator(".wx-home").bounding_box()["height"] == h0[0], h0
     assert page.locator(".wx-home .wx-bub").inner_text() == "지금은 러닝각!"
@@ -402,7 +401,7 @@ def test_the_weather_module_fills_its_room_after_load(browser, built):
 
 
 def test_by_day_the_card_has_the_sun(browser, built):
-    ctx, page, errors, calls = open_page(browser, built, "/", 1440, weather=None)
+    ctx, page, errors, calls = open_page(browser, built, "/", 1440, 1080, weather=None)
     route_weather(ctx, feed=weather_feed(sky_mode="day"))
     page.reload(wait_until="load")
     page.wait_for_selector(".wx-side.is-ready", timeout=8000)
@@ -415,7 +414,7 @@ def test_by_day_the_card_has_the_sun(browser, built):
 
 @pytest.mark.parametrize("code", ("en", "ja"))
 def test_the_other_versions_show_figures_and_icons_only(browser, built, code):
-    ctx, page, errors, _ = open_page(browser, built, f"/{code}/", 1440)
+    ctx, page, errors, _ = open_page(browser, built, f"/{code}/", 1440, 1080)
     page.wait_for_selector(".wx-side.is-ready", timeout=8000)
     text = page.locator(".wx-side").inner_text()
     assert not HANGUL.search(text) and page.locator(".wx-side .wx-bub").count() == 0, text
@@ -430,7 +429,7 @@ def test_the_other_versions_show_figures_and_icons_only(browser, built, code):
 
 def test_without_an_answer_or_js_the_link_stays(browser, built):
     # refused (a console line from the refused request is the browser's own, not the page's)
-    ctx, page, errors, calls = open_page(browser, built, "/", 1440, weather="fail")
+    ctx, page, errors, calls = open_page(browser, built, "/", 1440, 1080, weather="fail")
     page.wait_for_selector(".wx-side.is-failed", timeout=8000)
     go = page.locator(".wx-side .wx-go")
     assert go.is_visible() and go.inner_text().strip() == "수원 팔달구 날씨 보기" and page.locator(".wx-side .wx-sc").count() == 0
@@ -438,7 +437,7 @@ def test_without_an_answer_or_js_the_link_stays(browser, built):
     assert own(errors) == [], errors
     ctx.close()
     # an answer that is not today's: the same
-    ctx, page, errors, calls = open_page(browser, built, "/", 1440, weather=None)
+    ctx, page, errors, calls = open_page(browser, built, "/", 1440, 1080, weather=None)
     route_weather(ctx, weather_answer("2000-01-01"), feed=weather_feed("2000-01-01"))
     page.reload(wait_until="load")
     page.wait_for_selector(".wx-side.is-failed", timeout=8000)
@@ -451,6 +450,58 @@ def test_without_an_answer_or_js_the_link_stays(browser, built):
     assert page.locator(".wx-side").bounding_box()["height"] < 100
     assert page.locator(".side-nav").is_visible() and page.locator(".mast #hs-q").is_visible()
     ctx.close()
+
+
+@pytest.mark.parametrize("height,card,intl", ((1080, 246, 220), (900, 170, 170), (768, 98, 98)))
+def test_on_a_short_window_the_day_card_folds_and_the_menu_shows(browser, built, height, card, intl):
+    """The calm pass 2026-11-10 (css/90-refine.css; the review the operator asked to have carried out: '메뉴를 위로
+    올리고 날씨는 한 줄로'): the menu began 757px down the panel, so on a 768–900px
+    window none of its links was on screen. Under 1020px of height the weather card is 170px (its four cells step
+    out), under 880px one 98px row and the next event steps out; from 1020px it is 날씨각's drawn size. At every height
+    the card has its size from the first paint (nothing shifts when the answer comes), its link is the card, every
+    row of the panel is 44px or more, and on the short windows the first group's first link is whole above the
+    '문의/제휴' row. The other versions' card, which has no words of its own, is never a bare number."""
+    for path, want in (("/", card), ("/en/", intl)):
+        ctx, page, errors, _ = open_page(browser, built, path, 1440, height)
+        h0 = page.locator(".wx-side").bounding_box()["height"]
+        page.wait_for_selector(".wx-side.is-ready", timeout=8000)
+        c = page.evaluate(CARD, ".wx-side")
+        assert h0 == want and c["h"] == want and c["inside"] and c["link"] == "https://weather.o2o.kr/", (path, height, h0, c)
+        strip = page.evaluate("getComputedStyle(document.querySelector('.wx-side .wx-strip')).display")
+        assert (strip == "none") == (height < 1020), (path, height, strip)
+        if path == "/en/":
+            # the other versions' card has no words of its own: folded, a line says the temperature now and — in one
+            # row, where the label inside the sun is not shown — what the number is (it was a bare number: found on
+            # the live site 2026-11-10); whole, the four cells say the day and the line is not shown
+            words = page.evaluate("""() => { const b = document.querySelector('.wx-side'), shown = e => !!e && e.getClientRects().length > 0;
+              return {fold: shown(b.querySelector('.wx-fold')), label: shown(b.querySelector('.wx-fl')), now: shown(b.querySelector('.wx-fn')),
+                      inorb: shown(b.querySelector('.wx-sc small')), text: (b.querySelector('.wx-fold') || {}).textContent || ''}; }""")
+            assert words["fold"] == (height < 1020) and words["now"] == (height < 1020), (height, words)
+            assert words["label"] == (height < 880) and (words["inorb"] or words["label"]), (height, words)
+            assert re.search(r"\d+°", words["text"]) and "score" in words["text"].lower(), (height, words)
+        assert page.locator(".side .sd-ev").is_visible() == (height >= 880), (path, height)
+        assert [x for x in page.evaluate("window.__ls") if x["v"] > 0.001] == [], page.evaluate("window.__ls")
+        for sel in (".side .sg-a", ".side .sg-s", ".side .sd-act", ".side .sd-sun", ".mast .lang-btn"):
+            if page.locator(sel).count():
+                box = page.locator(sel).first.bounding_box()
+                assert box and box["height"] >= 44, (path, height, sel, box)
+        if height < 1020:
+            # the first group's first link: whole on screen, and the point at its middle is the link (not the pinned row)
+            a = page.locator(".side-nav .sg-d[open] .sg-a").first
+            box = a.bounding_box()
+            assert box["y"] >= 0 and box["y"] + box["height"] <= height - 16, (path, height, box)
+            hit = page.evaluate("([x, y]) => { const e = document.elementFromPoint(x, y); return !!(e && e.closest('.sg-a')); }",
+                                [box["x"] + box["width"] / 2, box["y"] + box["height"] / 2])
+            assert hit, (path, height, box)
+        assert own(errors) == [], (path, errors)
+        ctx.close()
+    # no answer on the smallest card: the link sits under the card's name, not over it
+    if height < 880:
+        ctx, page, errors, _ = open_page(browser, built, "/", 1440, height, weather="fail")
+        page.wait_for_selector(".wx-side.is-failed", timeout=8000)
+        go, name = page.locator(".wx-side .wx-go").bounding_box(), page.locator(".wx-side .wx-t").bounding_box()
+        assert go["height"] >= 44 and go["y"] >= name["y"] + name["height"], (go, name)
+        ctx.close()
 
 
 def test_the_panels_sunrise_follows_the_visitors_day(browser, built):

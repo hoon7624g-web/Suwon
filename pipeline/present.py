@@ -3050,7 +3050,8 @@ def place_vm(S, e: dict, ctx: dict) -> dict:
         # whose point this is: the map caption's '위치: …' (the nearby note prints nearby_source.provider, which
         # tools/tourapi_bulk.compute_nearby writes from every point it used; validate.nearby_provenance_problems)
         "geo_src": geo_provider(e["_geo"]) if e["_geo"] else "",
-        "guide_cards": guide_cards, "event_cards": event_cards, "twin_rows": twin_rows, "rel_rows": rel_rows,
+        "guide_cards": guide_cards, "column_cards": place_columns(S, e), "event_cards": event_cards,
+        "twin_rows": twin_rows, "rel_rows": rel_rows,
         # places that belong together (pipeline/relations.py): the line under the name, the parts list of a parent
         "relation": relation, "parts": parts,
         "photo_lics": photo_lics, "nw": LC.NEAR_WORDS["ko"],
@@ -4804,7 +4805,11 @@ def rich(text: str | None, lang: str = "ko", names: list[dict] | None = None, se
         elif kind == "web":
             out.append(web_anchor(seg, web_href(v.group(1), v.group(2), lang != "ko")))
         else:
-            r = Markup(" data-numroll") if roll and re.search(r"\d", v) else Markup("")
+            # a plain count of places or things ('34곳', '5개') says how many, not when or how much: marked data-k="n"
+            # in the Korean body text, where the page sets it at the text's own weight (css/90-refine; 군산각 정돈
+            # 2026-11-10 '글이 너무 많아서') — never on the answer card's rolling figures
+            r = Markup(" data-numroll") if roll and re.search(r"\d", v) else \
+                Markup(' data-k="n"') if lang == "ko" and not roll and v[-1:] in ("곳", "개") else Markup("")
             # a run of numbers joined by '·' ('309·403·609·649·990·991번') has no break opportunity of its own: it may
             # break after each dot, or a long list of routes runs off a phone's width
             if len(v) > 12:
@@ -4860,9 +4865,12 @@ def keep_together(text: str, names: list[dict] | None = None, lang: str = "ko"):
     for a, b in sorted(spans):
         # the whole word: a particle after the run ('푸드존은') or a word joined before it stays with it — a break at
         # the span's edge would leave '은' alone on the next line
-        while a > 0 and not text[a - 1].isspace():
+        # … up to a middle dot: names chained with '·' ('산마루·신자네연탄구이·안동집·…') are not one word — kept
+        # whole they were one unbreakable run of up to 49 characters, wider than a phone (found 2026-11-10: the page
+        # then scrolled sideways)
+        while a > 0 and not (text[a - 1].isspace() or text[a - 1] == "·"):
             a -= 1
-        while b < len(text) and not text[b].isspace():
+        while b < len(text) and not (text[b].isspace() or text[b] == "·"):
             b += 1
         if a < pos:
             continue
@@ -4897,6 +4905,49 @@ def guide_sections(heads_texts: list[tuple[str, list[str]]], names: list[dict], 
                     "places": places,
                     "again": [c for c in named if c not in places], "pts": [c["slug"] for c in named if c.get("geo")]})
     return out
+
+
+# The Korean guide's reading layer (operator 2026-11-10, a guide section on a phone: '이런 곳도 글이 너무 많아서 별로인 것
+# 같은데'): a section's heading is a whole answer sentence (median 50 characters, up to 113) and every sentence under it
+# a bullet. The page now shows a short heading, that sentence as the section's lead, the first GUIDE_KEEP sentences,
+# and the rest behind '자세히' (a <details>: in the HTML, open without JavaScript by a click). Nothing is rewritten:
+# heading and sentences are the record's, in order — the JSON-LD, llms-full and the other versions read the same record.
+GUIDE_KEEP = 2                                    # sentences shown under the lead, at most
+GUIDE_KEEP_CHARS = 170                            # … the second only while the two together stay this short
+GUIDE_FOLD_MIN = 2                                # fold only when at least this many would go behind '자세히'
+HEAD_COLON = re.compile(r"^(.{2,22}?): (.+)$")    # '어린이 요금: 6세 이하 무료인 곳, …' — a label and its detail
+
+
+def section_reading(sec: dict, heading: str, short: str = "") -> dict:
+    """What the Korean guide page adds to a section of guide_sections: toc (the short heading: body[].short, else the
+    label before a heading's colon, else ''), lead (True: the heading sentence is shown under the short heading),
+    head_label / head_sub (a 'label: detail' heading without a short one, split for two lines of one <h2>),
+    vis / more (the paragraphs' bullets shown and folded) and more_n (how many sentences are folded)."""
+    m = None if short else HEAD_COLON.match(heading)
+    paras = sec.get("paras") or []
+    flat = [len(re.sub(r"<[^>]+>", "", str(b["html"]))) for p in paras for b in p]
+    total = len(flat)
+    # the first sentence always; the second when the two are short together (a sentence that lists a dozen names is
+    # the detail, not the gist)
+    keep = GUIDE_KEEP if total > 1 and sum(flat[:GUIDE_KEEP]) <= GUIDE_KEEP_CHARS else 1
+    vis, more = paras, []
+    # a list the record writes as its own marked lines ('· 「작품」: 장소 …') is the answer itself: it stays whole
+    listed = any(b.get("own") for p in paras for b in p)
+    if not listed and total - keep >= GUIDE_FOLD_MIN:
+        vis, more, left = [], [], keep
+        for p in paras:
+            if left <= 0:
+                more.append(p)
+            elif len(p) <= left:
+                vis.append(p)
+                left -= len(p)
+            else:
+                vis.append(p[:left])
+                more.append(p[left:])
+                left = 0
+    return {"toc": short or (m.group(1) if m else ""), "lead": bool(short),
+            "head_label": m.group(1) if m else "", "head_sub": m.group(2) if m else "",
+            "vis": vis, "more": more, "more_n": sum(len(p) for p in more)}
 
 
 def answer_block(sents: list[str], lang: str = "ko") -> dict:
@@ -5023,6 +5074,8 @@ def guide_vm(S, g: dict) -> dict:
         paras = [decaution(squash_ws(p)) for p in str(b.get("text") or "").split("\n") if p.strip()]
         heads.append((squash_ws(b.get("heading")), [p for p in paras if p]))
     reading = guide_reading(ko_sentences(decaution(g.get("summary"))), heads, names, cards, "ko", ko_sentences, len(items))
+    for sec, b in zip(reading.get("sections") or [], g.get("body") or []):
+        sec.update(section_reading(sec, squash_ws(b.get("heading")), squash_ws(b.get("short"))))
     return {**reading, "g": g, "label": g.get("label") or "", "title": g["title"], "lede": ss[0] if ss else "",
             "dek": " ".join(ss[1:]), "dek_html": tel_markup(" ".join(ss[1:])),
             "body": [{"heading": squash_ws(b.get("heading")), "text": squash_ws(b.get("text")),
@@ -5036,6 +5089,64 @@ def guide_vm(S, g: dict) -> dict:
             "booking": booking.view(booking.guide_targets(S, g), "ko"), "bw": LC.BOOK_WORDS["ko"]}
 
 
+# ----------------------------------------------------------------------------- 이어서 보기 (cross-links)
+# operator 2026-11-10 ('정보들 간의 연결성도 좋게'): a guide, a column and a course ended at their sources — nothing led
+# from one kind of page to another about the same places. see_also lists them by a stated rule: the pages whose own
+# place lists (a guide's and a column's items, a course's stops) share places with this page, most shared first.
+# It is a rule the page prints, not a recommendation, and it reads only what the records already say.
+SEE_MAX = {"guide": 4, "column": 3, "course": 3}
+SEE_TITLES = {"guide": "가이드", "column": "칼럼", "course": "공식 코스"}
+
+
+def _record_places(kind: str, rec: dict) -> list[str]:
+    rows = rec.get("stops") if kind == "course" else rec.get("items")
+    return list(dict.fromkeys(r.get("place_slug") for r in rows or [] if isinstance(r, dict) and r.get("place_slug")))
+
+
+def see_also(S, kind: str, rec: dict) -> list[dict]:
+    """Groups for ui.seealso on a guide, column or course page: [{kind, title, items [{title, label, path, n (places
+    shared), names (up to three of them)}]}] — guides, columns and courses that share at least two places with the
+    page (one when the page has fewer than four places), most shared first, ties in the data's order; the page itself
+    never; [] when nothing shares a place."""
+    mine = [x for x in _record_places(kind, rec) if x in S.ent_by_slug]
+    if not mine:
+        return []
+    need = 2 if len(mine) >= 4 else 1
+    pools = {"guide": getattr(S, "guides", None) or [], "column": getattr(S, "columns", None) or [],
+             "course": getattr(S, "courses", None) or []}
+    out = []
+    for k in ("guide", "column", "course"):
+        rows = []
+        for i, r in enumerate(pools[k]):
+            if (k == kind and r.get("id") == rec.get("id")) or not r.get("_path"):
+                continue
+            theirs = set(_record_places(k, r))
+            shared = [x for x in mine if x in theirs]
+            if len(shared) >= need:
+                rows.append((-len(shared), i, r, shared))
+        rows.sort(key=lambda x: x[:2])
+        items = []
+        for _, _, r, shared in rows[:SEE_MAX[k]]:
+            if k == "course":
+                cv = (getattr(S, "course_vms", None) or {}).get(r.get("slug")) or {}
+                title, label = cv.get("display") or squash_ws(r.get("name")), squash_ws(r.get("group"))
+            elif k == "column":
+                title, label = squash_ws(r.get("title")), squash_ws(r.get("category"))
+            else:
+                title, label = squash_ws(r.get("title")), squash_ws(r.get("label"))
+            items.append({"title": title, "label": label if label != title else "", "path": r["_path"], "n": len(shared),
+                          "names": [S.ent_by_slug[x]["name"] for x in shared[:3]]})
+        if items:
+            out.append({"kind": k, "title": SEE_TITLES[k], "items": items})
+    return out
+
+
+def place_columns(S, e: dict) -> list[dict]:
+    """The columns whose place list holds this place, as cards for the place page's 주변·함께 가기 (the guides' cards
+    beside them): [{title, path}] (_near.html.j2 card: the title is the link), in the data's order."""
+    return [{"title": squash_ws(c.get("title")), "path": c["_path"]}
+            for c in getattr(S, "columns", None) or []
+            if c.get("_path") and e.get("slug") in _record_places("column", c)]
 # ----------------------------------------------------------------------------- map page
 def map_vm(S) -> dict:
     """/map/: 권역 → 동 groups (anchors mode) or 구·군 → 동·읍·면 groups (district mode: the 권역 is the 구·군), anchors

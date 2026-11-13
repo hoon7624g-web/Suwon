@@ -10,6 +10,7 @@
     The header band: the AI art of the index (list.head.videos) or of the topic (videos.head.<topic.art>, the keys of
     build.VIDEO_TOPIC_ART). -#}
 {% import "_p1.html.j2" as p1 %}
+{% import "_abroad.html.j2" as ab %}
 {% set label = (('그 밖의' if topic.title == '기타' else topic.title) if topic else '') %}
 {% macro lites(vs) -%}
 {% for v in vs %}{% set linked = [] %}{% for s in v.place_slugs or [] %}{% if s in places %}{% set _ = linked.append(places[s]) %}{% endif %}{% endfor %}{{ ui.vlite(v, linked) }}{% endfor %}
@@ -26,11 +27,41 @@
     <div class="v-tools">
       {% if official %}<button type="button" class="v-off" aria-pressed="false" data-v-official>공식 채널만 <span class="tn">{{ official }}</span></button>{% endif %}
       {% if topic %}<a class="v-all" href="/videos/">모든 주제 보기<span class="arr" aria-hidden="true">›</span></a>
-      {% else %}<nav class="v-nav" aria-label="영상 주제">{% for g in video_groups %}<a href="#{{ g.id }}">{{ '그 밖의 영상' if g.title == '기타' else g.title }} <span class="tn">{{ g.vids|length }}</span></a>{% endfor %}</nav>{% endif %}
+      {% else %}<nav class="v-nav" aria-label="영상 주제">{% if yt_channels %}<a href="#yt-channels">인기 채널 <span class="tn">{{ yt_channels|length }}</span></a>{% endif %}{% if popular_videos %}<a href="#yt-popular">화제의 인기 영상 <span class="tn">{{ popular_videos|length }}</span></a>{% endif %}{% for g in video_groups %}<a href="#{{ g.id }}">{{ '그 밖의 영상' if g.title == '기타' else g.title }} <span class="tn">{{ g.vids|length }}</span></a>{% endfor %}</nav>{% endif %}
     </div>
   </div>
 </section>
 <div class="wrap v-wrap" data-videos>
+  {% if not topic and yt_channels %}
+  <section class="v-sec yt-pop-sec" id="yt-channels" aria-labelledby="yt-channels-h">
+    {{ ui.chead(site.region ~ ' 관련 인기 유튜브 채널', 'yt-channels-h', '', '', '', site.region ~ ' 여행·맛집·로컬 문화를 다룬 크리에이터와 공식·방송 채널', yt_channels|length) }}
+    <ul class="ig-ch-grid">
+      {% for ch in yt_channels %}
+      <li class="ig-ch-card" id="{{ ch.id }}">
+        <div class="ig-ch-head">{{ ab.svc('youtube') }}<div class="ig-ch-who"><b>{{ ch.name }}</b><span>{{ ch.handle }}</span></div>{% if ch.badge %}<span class="ig-ch-badge">{{ ch.badge }}</span>{% endif %}</div>
+        <p class="ig-ch-note">{{ ch.note }}</p>
+        <p class="ig-ch-links"><a class="ig-ch-go" href="{{ ch.url }}" target="_blank" rel="noopener" data-track="video_click">채널 보기<span class="arr" aria-hidden="true">↗</span></a>{% for l in ch.links or [] %}<a class="ig-ch-chip" href="{{ l.href }}">{{ l.label }}</a>{% endfor %}</p>
+      </li>
+      {% endfor %}
+    </ul>
+    <p class="note yt-ch-note">구독자 수와 조회수는 채널을 골라 실은 때의 값이라 지금과 다를 수 있습니다. 소개 글은 {{ site.site_name|josa('이/가') }} 썼고, 영상은 각 채널의 것입니다.</p>
+  </section>
+  {% endif %}
+  {% if not topic and popular_videos %}
+  {% set pop_rest = popular_videos[8:] %}
+  <section class="v-sec yt-pop-sec cv" id="yt-popular" aria-labelledby="yt-popular-h">
+    {{ ui.chead('화제의 ' ~ site.region ~ ' 인기 유튜브 영상', 'yt-popular-h', '', '', '', '이 사이트에 실은 ' ~ site.region ~ ' 영상 가운데 조회수가 많은 영상', popular_videos|length) }}
+    {#- in the order of their views, each with its rank (군산각 2026-11-10 '순위별로 큐레이션'; the numbers are
+        drawn by css/47-rank.css — the first list's eight, then the folded list's from nine) -#}
+    <ul class="vids vids-4">{{ p1.vgrid(popular_videos[:8], places) }}</ul>
+    {% if pop_rest %}
+    <details class="v-more"><summary>화제의 인기 영상 {{ pop_rest|length }}편 더 보기</summary>
+    <ul class="vlist">{{ lites(pop_rest) }}</ul>
+    </details>
+    {% endif %}
+    <p class="note yt-rank-note">{{ site.site_name|josa('이/가') }} 고른 {{ popular_videos|length }}편을 조회수가 많은 순으로 실었고, 추천 순서가 아닙니다. 조회수는 목록에 실은 때의 값이라 지금과 다를 수 있습니다.</p>
+  </section>
+  {% endif %}
   {% for g in video_groups %}
   {% set gl = '그 밖의' if g.title == '기타' else g.title %}
   {% set rest = g.vids[8:] %}

@@ -15,7 +15,11 @@
     floating quick menu sits above it (css/46-quick.css, css/49-chat.css): a white vertical pill with the few real
     actions — 검색, 지도, 행사 달력 (each only when its page is built; on a place page 길찾기, its own block instead of
     행사 달력), 맨 위로 (#main-content, the top of the page's content, without JS too) — 44px round targets with their names (aria-label + title, a tooltip on
-    hover/focus); it comes after the footer in the reading order. Phones: only the launcher. -#}
+    hover/focus); it comes after the footer in the reading order. Phones: only the launcher.
+    The calm pass 2026-11-10 (css/90-refine, 군산각 2026-11-10): from 1200px — the pages with the tab panel, which holds the search and
+    every list — the launcher is 68px inside the page's right margin and the quick menu is its last link only
+    ('맨 위로'); 1024–1199px keep the pill and the 100px launcher in their gutter. On a phone the tab bar's and a place
+    page's bar's 'AI 챗봇' button ([data-tab-chat], base.html.j2 · place.html.j2) opens the chat in the launcher's stead. -#}
 {% import "_mascot.html.j2" as mm %}
 {% set chat_cfg = chat_ui(site, lang) if site is defined and site else {} %}
 {% set chat_region = chat_cfg.region if chat_cfg else '' %}

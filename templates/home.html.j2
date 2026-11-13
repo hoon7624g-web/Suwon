@@ -36,6 +36,94 @@
 {% set T = namespace(i=0) %}
 {% set N = h.news|length %}
 {% set ASK = ask_starters is defined and ask_starters is not none %}
+{#- IG: the guide whose #h-insta chapter the Instagram cards open in ('' when this build does not publish it: then no
+    Instagram tab, list or section — they would only link to a page that is not there) -#}
+{% set IG = insta_guide|default('') %}
+{#- the board (from 1680px, css/48-abroad.css): a YouTube panel and an Instagram panel behind two tabs — each panel
+    whole in its own <div> whatever data is there (2026-11-10: the first panel was opened by one condition and closed
+    by another, so a build without curated videos or without the Instagram guide left the markup unbalanced). It
+    carries the ranks on a wide window (군산각 2026-11-10 '순위별로 큐레이션해서 굉장히 잘 보이는 곳에'): each
+    panel opens with its ranked list — the videos by views with the rank on the picture, the posts by likes — then
+    the channels; the rank block in the column (.hrk, below) shows the list of the tab that is not open, and both
+    lists where there is no board. -#}
+{% set RS_YT = has_videos and (popular_videos or yt_channels) %}
+{% set RS_IG = IG and (insta_channels or home_insta) %}
+{% if RS_YT or RS_IG %}
+<aside class="h-rside" aria-label="{{ site.region }} 인기 유튜브·인스타그램 큐레이션" data-lenis-prevent{% if RS_YT and RS_IG %} data-tabs{% endif %}>
+  <div class="hrs-head">
+    <h2 class="hrs-title">지금 많이 보는 {{ site.region }}</h2>
+    {% if RS_YT and RS_IG %}<div class="hrs-tabs" role="tablist" aria-label="유튜브·인스타그램 전환">
+      <button type="button" class="hrs-tab is-yt" role="tab" id="hrs-tab-yt" aria-controls="hrs-panel-yt" aria-selected="true">{{ ab.svc('youtube') }}<span>유튜브</span></button>
+      <button type="button" class="hrs-tab is-ig" role="tab" id="hrs-tab-ig" aria-controls="hrs-panel-ig" aria-selected="false" tabindex="-1">{{ ab.svc('instagram') }}<span>인스타그램</span></button>
+    </div>{% endif %}
+  </div>
+  {% if RS_YT %}
+  <div class="hrs-panel"{% if RS_IG %} role="tabpanel" aria-labelledby="hrs-tab-yt"{% endif %} id="hrs-panel-yt">
+  {% if popular_videos %}
+  <div class="hrs-sec" id="hrs-yt">
+    <div class="hrs-sh"><h3>화제의 {{ site.region }} 유튜브 <em class="hrs-by">조회수 순</em></h3><a href="/videos/#yt-popular">전체 보기<span class="arr" aria-hidden="true">→</span></a></div>
+    <ul class="hrs-vlist">
+      {% for v in popular_videos[:5] %}
+      {% set t = v.thumbnail or {} %}
+      <li class="hrs-v">
+        <a class="hrs-va" href="{{ v.url }}" target="_blank" rel="noopener" data-track="video_click">
+          <span class="hrs-vth">{% if t.url %}<img src="{{ t.url }}" width="116" height="65" alt="" loading="lazy" decoding="async">{% endif %}<span class="hrs-rk tn">{{ loop.index }}<span class="vh">위 </span></span><span class="hrs-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="11" height="11"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg></span></span><span class="hrs-vtxt"><span class="hrs-vtop"><b class="hrs-vch">{{ v.channel }}</b>{% if v.short_view_text or v.view_text %}<span class="hrs-vviews tn">{{ (v.short_view_text or v.view_text)|replace('조회수 ', '') }}</span>{% endif %}</span><span class="hrs-vt">{{ v.title }}</span></span>
+        </a>
+        {% if v._places %}<p class="hrs-vp">{% for x in v._places[:3] %}<a href="{{ x._path }}">{{ x.name }}</a>{% endfor %}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    <p class="hrs-note">{{ site.site_name|josa('이/가') }} 고른 영상 {{ n_popular|default(popular_videos|length) }}편 안의 조회수 순 · 추천 순서가 아님 · 숫자는 실은 때의 값</p>
+  </div>
+  {% endif %}
+  {% if yt_channels %}
+  <div class="hrs-sec">
+    <div class="hrs-sh"><h3>인기 유튜브 채널 <span class="tn">{{ yt_channels|length }}</span></h3><a href="/videos/#yt-channels">모두 보기<span class="arr" aria-hidden="true">→</span></a></div>
+    <ul class="hrs-clist">
+      {% for ch in yt_channels %}
+      <li class="hrs-c">
+        <a class="hrs-ctop" href="{{ ch.url }}" target="_blank" rel="noopener" data-track="video_click"><span class="hrs-num tn">{{ '%02d'|format(loop.index) }}</span><span class="hrs-cn"><span class="hrs-crow"><strong class="hrs-cname">{{ ch.name }}<span class="hrs-ext" aria-hidden="true">↗</span></strong>{% if ch.badge %}<em class="hrs-badge">{{ ch.badge }}</em>{% endif %}</span><span class="hrs-csub">{{ ch.handle }}</span></span></a>
+        {% if ch.links %}<p class="hrs-clinks">{% for l in ch.links[:3] %}<a href="{{ l.href }}">{{ l.label }}</a>{% endfor %}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+  </div>
+  {% endif %}
+  {% if RS_IG %}
+  <div class="hrs-panel"{% if RS_YT %} role="tabpanel" aria-labelledby="hrs-tab-ig" data-tab-off{% endif %} id="hrs-panel-ig">
+  {% if home_insta %}
+  <div class="hrs-sec">
+    <div class="hrs-sh"><h3>화제의 {{ site.region }} 인스타그램 <em class="hrs-by">좋아요 순</em></h3><a href="{{ IG }}#h-insta">전체 {{ n_insta }}편<span class="arr" aria-hidden="true">→</span></a></div>
+    <ul class="hrs-clist">
+      {% for a in home_insta[:5] %}
+      <li class="hrs-c">
+        <a class="hrs-ctop" href="{{ IG }}#{{ a.id }}" data-track="abroad_click"><span class="hrs-num tn">{{ '%02d'|format(loop.index) }}</span><span class="hrs-cn"><span class="hrs-crow"><strong class="hrs-cname">{{ a.author or 'Instagram' }}<span class="hrs-ext" aria-hidden="true">›</span></strong>{% if a.likes %}<span class="hrs-vviews tn">좋아요 {{ '{:,}'.format(a.likes|int) }}</span>{% endif %}</span><span class="hrs-ig-note">{{ a.note }}</span></span></a>
+        {% if a.place_slugs %}<p class="hrs-clinks">{% for s in a.place_slugs[:3] %}{% if s in places %}<a href="{{ places[s]._path }}">{{ places[s].name }}</a>{% endif %}{% endfor %}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    <p class="hrs-note">{{ site.site_name|josa('이/가') }} 고른 게시물 {{ n_insta }}편 안의 좋아요 순 · 추천 순서가 아님 · 숫자는 실은 때의 값</p>
+  </div>
+  {% endif %}
+  {% if insta_channels %}
+  <div class="hrs-sec" id="hrs-ig">
+    <div class="hrs-sh"><h3>인기 인스타 채널 <span class="tn">{{ insta_channels|length }}</span></h3><a href="{{ IG }}#h-insta">모아 보기<span class="arr" aria-hidden="true">→</span></a></div>
+    <ul class="hrs-clist">
+      {% for ch in insta_channels %}
+      <li class="hrs-c">
+        <a class="hrs-ctop" href="{{ ch.url }}" target="_blank" rel="noopener" data-track="abroad_click"><span class="hrs-num tn">{{ '%02d'|format(loop.index) }}</span><span class="hrs-cn"><span class="hrs-crow"><strong class="hrs-cname">{{ ch.name }}<span class="hrs-ext" aria-hidden="true">↗</span></strong>{% if ch.badge %}<em class="hrs-badge">{{ ch.badge }}</em>{% endif %}</span><span class="hrs-csub">{{ ch.handle }}</span></span></a>
+        {% if ch.links %}<p class="hrs-clinks">{% for l in ch.links[:3] %}<a href="{{ l.href }}">{{ l.label }}</a>{% endfor %}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+  </div>
+  {% endif %}
+</aside>
+{% endif %}
 <div class="hk"{% if ASK %} data-chat-dock{% endif %}>
 {#- 시안 A (the first site's c4020e9bd · 48f2a64c9 · 51a88a413, operator 2026-11-05; css/87-design-a.css): a card in
     the middle over the opening photo (h.cover: site.json home.media.cover, KOGL-1, cropped to the card, a navy scrim,
@@ -60,7 +148,7 @@
     </form>
     {% set svc = {} %}{% for s in h.services %}{% set _ = svc.update({s.href: s}) %}{% endfor %}
     <ul class="ha-tiles">{% for href, lab, k in TILES %}{% set s = svc.get(href) %}{% if s %}<li><a class="ha-tile ha-{{ k }}" href="{{ href }}"{% if s.track %} data-track="{{ s.track }}"{% endif %}>{{ pk.pic(s.pic, s.icon, 52) }}<span class="ha-tl">{{ lab }}</span></a></li>{% elif href == '/courses/' and courses %}<li><a class="ha-tile ha-{{ k }}" href="{{ href }}" data-track="course_click">{{ pk.pic('icon-course', 'route', 52) }}<span class="ha-tl">{{ lab }}</span></a></li>{% endif %}{% endfor %}</ul>
-    <p class="ha-cta">{% if has_plan %}<a class="ha-btn ha-plan" href="/plan/" data-track="plan_cta">{{ pk.pic('btn-plan', 'spark', 28) }}<span>내 일정 만들기</span></a>{% endif %}{% if courses %}<a class="ha-btn ha-co" href="/courses/" data-track="course_click"><span>{{ '공식 코스 보기' if course_src.official else (site.region or site.locality) ~ ' 추천 코스' }}</span></a>{% endif %}</p>
+    <p class="ha-cta">{% if has_plan %}<a class="ha-btn ha-plan" href="/plan/" data-track="plan_cta">{{ pk.pic('btn-plan', 'spark', 28) }}<span>AI 코스 만들기</span></a>{% endif %}{% if courses %}<a class="ha-btn ha-co" href="/courses/" data-track="course_click"><span>{{ '공식 코스 보기' if course_src.official else (site.region or site.locality) ~ ' 추천 코스' }}</span></a>{% endif %}</p>
     {% if cv %}<p class="ha-cap">사진 {% if cv.path %}<a href="{{ cv.path }}">{{ cv.place or cv.name }}</a>{% else %}{{ cv.place or cv.name }}{% endif %} · {{ md.credit(cv) }}</p>{% endif %}
   </div></div>
 </section>
@@ -82,6 +170,70 @@
     </div>
     {% if F.series %}<ul class="ha-guides">{% for x in F.series %}<li><a href="{{ x.path }}" data-track="guide_click"><span class="hag-k">가이드</span><b class="hag-t">{{ x.label }}</b><span class="hag-q">{{ x.q }}</span></a></li>{% endfor %}</ul>{% endif %}
   </div>
+</section>
+{% endif %}
+{#- 유튜브·인스타그램 인기 순위 (군산각 operator 2026-11-10 '유튜브, 인스타도 순위별로 큐레이션해서 굉장히 잘 보이는 곳에'): right
+    under the opening — after the festival card while there is one — the curated videos by their view counts and the
+    curated Instagram posts by their likes, five each with the rank (three while one column), then the doors to the whole
+    lists and the channels (css/47-rank.css). The order is a stated rule, not a recommendation (CLAUDE.md 3.10):
+    the note says so and that the counts are those of the day the lists were made (the day itself stays in the
+    data — validate.visible_check_dates). A video's row goes to YouTube; a post's row to its card in
+    the guide's Instagram chapter, where the official embed is. An Instagram row's small picture is a licensed photo of a place the
+    post shows (KOGL-1 cut to the box, KOGL-3 whole), never the post's own; without one the row shows the service's
+    mark. The home's own YouTube row and Instagram section are this block now. From 1680px the board beside the
+    column shows one of the two lists all the time, behind its tabs: there the block shows the other one — the
+    Instagram ranks while the board is on YouTube, and the reverse — five cards across (css/47-rank.css; the
+    .hrk-w-yt / .hrk-w-ig parts are what steps out). So both lists are on the screen and neither twice (operator
+    2026-11-10: on a wide window 'the way you find reasonable'). Without the tabs (no script) the board shows both
+    lists and the block steps out. -#}
+{% set RK_YT = popular_videos[:5] if has_videos else [] %}
+{% set RK_IG = home_insta[:5] if IG else [] %}
+{% if RK_YT or RK_IG %}
+{% set rk_types = [] %}{% for a in RK_IG if a.photo and not a.related and a.photo.type not in rk_types %}{% set _ = rk_types.append(a.photo.type) %}{% endfor %}
+<section class="hrk" aria-labelledby="h-rank">
+  <div class="wrap"><div class="hrk-card">
+    <div class="hrk-head"><h2 id="h-rank" class="hrk-h">{% if RK_YT %}<span class="hrk-w-yt">유튜브</span>{% endif %}{% if RK_YT and RK_IG %}<span class="hrk-w-dot">·</span>{% endif %}{% if RK_IG %}<span class="hrk-w-ig">인스타그램</span>{% endif %} 인기 순위</h2><p class="hrk-sub">{{ site.site_name|josa('이/가') }} 고른 {% if RK_YT %}<span class="hrk-w-yt">영상 <span class="tn">{{ n_popular|default(popular_videos|length) }}</span>편</span>{% endif %}{% if RK_YT and RK_IG %}<span class="hrk-w-dot">·</span>{% endif %}{% if RK_IG %}<span class="hrk-w-ig">게시물 <span class="tn">{{ n_insta }}</span>편</span>{% endif %} 가운데</p></div>
+    <div class="hrk-cols{{ ' hrk-one' if not (RK_YT and RK_IG) }}">
+      {% if RK_YT %}
+      <div class="hrk-col hrk-w-yt">
+        <div class="hrk-sh"><h3>{{ ab.svc('youtube', 'ab-svc hrk-svc') }}<span>유튜브</span><em>조회수 순</em></h3><a href="/videos/#yt-popular">{{ n_popular|default(popular_videos|length) }}편 모두<span class="arr" aria-hidden="true">›</span></a></div>
+        <ol class="hrk-list" role="list">
+          {% for v in RK_YT %}{% set t = v.thumbnail or {} %}
+          <li class="hrk-i{{ ' hrk-x' if loop.index > 3 }}">
+            <a class="hrk-a" href="{{ v.url }}" target="_blank" rel="noopener" data-track="video_click">
+              <span class="hrk-n tn">{{ loop.index }}<span class="vh">위</span></span>
+              <span class="hrk-th">{% if t.url %}<img src="{{ t.url }}"{% if t.width and t.height %} width="{{ t.width }}" height="{{ t.height }}"{% endif %} alt="" loading="lazy" decoding="async">{% endif %}<span class="hrk-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="11" height="11"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg></span></span>
+              <span class="hrk-tx"><span class="hrk-top"><b class="hrk-who">{{ v.channel }}</b>{% if v.short_view_text or v.view_text %}<span class="hrk-cnt tn">{{ v.short_view_text or v.view_text }}</span>{% endif %}</span><span class="hrk-t">{{ v.title }}</span><span class="vh"> (YouTube, 새 창)</span></span>
+            </a>
+            {% if v._places %}<p class="hrk-pl">{% for x in v._places[:3] %}<a href="{{ x._path }}">{{ x.name }}</a>{% endfor %}</p>{% endif %}
+          </li>
+          {% endfor %}
+        </ol>
+        <p class="hrk-doors">{% if yt_channels %}<a href="/videos/#yt-channels"><span>인기 채널 <span class="tn">{{ yt_channels|length }}</span>곳</span><span class="arr" aria-hidden="true">›</span></a>{% endif %}<a href="/videos/"><span>주제별 영상 <span class="tn">{{ h.n_videos }}</span>편</span><span class="arr" aria-hidden="true">›</span></a></p>
+      </div>
+      {% endif %}
+      {% if RK_IG %}
+      <div class="hrk-col hrk-w-ig">
+        <div class="hrk-sh"><h3>{{ ab.svc('instagram', 'ab-svc hrk-svc') }}<span>인스타그램</span><em>좋아요 순</em></h3><a href="{{ IG }}#h-insta">{{ n_insta }}편 모두<span class="arr" aria-hidden="true">›</span></a></div>
+        <ol class="hrk-list" role="list">
+          {% for a in RK_IG %}{% set ph = a.photo if a.photo and not a.related else none %}
+          <li class="hrk-i{{ ' hrk-x' if loop.index > 3 }}">
+            <a class="hrk-a" href="{{ IG }}#{{ a.id }}" data-track="abroad_click">
+              <span class="hrk-n tn">{{ loop.index }}<span class="vh">위</span></span>
+              <span class="hrk-th hrk-ig{% if ph %} t{{ ph.type }}{% endif %}">{% if ph %}{{ ui.img(ph, '(min-width: 1680px) 220px, 112px', false, 'hrk-img') }}{% else %}{{ ab.svc('instagram', 'ab-svc hrk-glyph') }}{% endif %}</span>
+              <span class="hrk-tx"><span class="hrk-top"><b class="hrk-who">{{ a.author or 'Instagram' }}</b>{% if a.likes %}<span class="hrk-cnt tn">좋아요 {{ '{:,}'.format(a.likes|int) }}</span>{% endif %}</span><span class="hrk-t">{{ a.note }}</span></span>
+            </a>
+            {% set pls = [] %}{% for sl in a.place_slugs or [] if sl in places %}{% set _ = pls.append(places[sl]) %}{% endfor %}
+            {% if pls %}<p class="hrk-pl">{% for x in pls[:3] %}<a href="{{ x._path }}">{{ x.name }}</a>{% endfor %}</p>{% endif %}
+          </li>
+          {% endfor %}
+        </ol>
+        <p class="hrk-doors">{% if insta_channels %}<a href="{{ IG }}#h-insta-channels"><span>인기 채널 <span class="tn">{{ insta_channels|length }}</span>곳</span><span class="arr" aria-hidden="true">›</span></a>{% endif %}</p>
+      </div>
+      {% endif %}
+    </div>
+    <p class="hrk-note">{{ site.site_name|josa('이/가') }} 고른 목록 안에서 {% if RK_YT %}유튜브는 조회수{% endif %}{% if RK_YT and RK_IG %}, {% endif %}{% if RK_IG %}인스타그램은 좋아요 수{% endif %}가 많은 순서이고, 추천 순서가 아닙니다. 숫자는 목록에 실은 때의 값이라 지금과 다를 수 있습니다.{% if rk_types %} 인스타그램 줄의 사진은 게시물에 나온 장소의 사진입니다(출처: 한국관광공사 · 공공누리 제{{ rk_types|sort|join('·') }}유형).{% endif %}</p>
+  </div></div>
 </section>
 {% endif %}
 {#- the white card: the AI assistant (_ask.html.j2 box: its head, one question box with one button '물어보기', the '#'
@@ -226,21 +378,6 @@
 </section>
 {% endif %}
 
-{# SNS에서 본 <region> (owner 2026-10-14: 'SNS 게시물이 좀 더 잘 보이면 좋겠는데 지금은 너무 구석에'): the newest posts as our
-   own cards — the service's mark, the service · account, our one-line note, the date — each to its card on /abroad/
-   (the official embed is there); nothing loads from the services on the home. A row that scrolls sideways on phones,
-   2 columns from 700px, 4 from 1024px (css/48-abroad.css .hsns). #}
-{% if home_posts %}
-{% set T.i = T.i + 1 %}
-<section class="sec sec-sns sec-mz{{ ' tone-2' if T.i is odd }}" aria-labelledby="h-sns">
-  <div class="wrap">
-    {{ ui.sec_head('해외에서 본 ' ~ site.region, '해외 피드에 뜬 ' ~ site.region, 'h-sns', '/abroad/#ab-sns', 'SNS 게시물 ' ~ n_posts ~ '개 모두') }}
-    <ul class="hsns">{% for a in home_posts %}{{ mz.sns(a, loop.index0) }}{% endfor %}</ul>
-    <p class="note hsns-note">원문 문장과 게시물 사진은 옮기지 않습니다. 카드 위 사진은 게시물에 나온 장소의 사진(한국관광공사)이고, 나온 장소의 사진이 없으면 장소 이름이나 게시물의 언어를 적습니다. 게시물은 각 서비스의 공식 임베드로 엽니다.</p>
-  </div>
-</section>
-{% endif %}
-
 {# 여행 권역 / 구·군: counts by group (cityv.region_label), the rule that drew them; in anchors mode the anchors on a
    small map — district mode has no map (a 구·군 office's coordinates would be a new fact, design 3.4) #}
 {% if h.regions2 %}
@@ -357,9 +494,28 @@
 </section>
 {% endif %}
 
+{#- the calm pass (군산각 2026-11-10): the posts from abroad come after the site's own visit information (권역 ·
+    이야기 · 갤러리 · 코스); YouTube and Instagram are the rank block under the opening. -#}
+{# SNS에서 본 <region> (owner 2026-10-14: 'SNS 게시물이 좀 더 잘 보이면 좋겠는데 지금은 너무 구석에'): the newest posts as our
+   own cards — the service's mark, the service · account, our one-line note, the date — each to its card on /abroad/
+   (the official embed is there); nothing loads from the services on the home. A row that scrolls sideways on phones,
+   2 columns from 700px, 4 from 1024px (css/48-abroad.css .hsns). #}
+{% if home_posts %}
+{% set T.i = T.i + 1 %}
+<section class="sec sec-sns sec-mz{{ ' tone-2' if T.i is odd }}" aria-labelledby="h-sns">
+  <div class="wrap">
+    {{ ui.sec_head('해외에서 본 ' ~ site.region, '해외 피드에 뜬 ' ~ site.region, 'h-sns', '/abroad/#ab-sns', 'SNS 게시물 ' ~ n_posts ~ '개 모두') }}
+    <ul class="hsns">{% for a in home_posts %}{{ mz.sns(a, loop.index0) }}{% endfor %}</ul>
+    <p class="note hsns-note">원문 문장과 게시물 사진은 옮기지 않습니다. 카드 위 사진은 게시물에 나온 장소의 사진(한국관광공사)이고, 나온 장소의 사진이 없으면 장소 이름이나 게시물의 언어를 적습니다. 게시물은 각 서비스의 공식 임베드로 엽니다.</p>
+  </div>
+</section>
+{% endif %}
+
 {# 영상으로 보는 <region>: one featured video (thumbnail facade — nothing loads from YouTube before the press), the top
-   video of the configured topics (home.video_rows), every topic with its count and its own page #}
-{% if h.vfeat %}
+   video of the configured topics (home.video_rows), every topic with its count and its own page — only in a build
+   without curated popular videos (yt_channels.json): with them the videos are the rank block under the opening
+   (군산각 2026-11-10) #}
+{% if h.vfeat and not popular_videos %}
 {% set T.i = T.i + 1 %}
 <section class="sec sec-vid{{ ' tone-2' if T.i is odd }}" aria-labelledby="h-vid">
   <div class="wrap">

@@ -133,7 +133,7 @@
 {%- endif %}
 {%- endmacro %}
 
-{% macro rec(it, kind) -%}
+{% macro rec(it, kind, need='') -%}
 {#- empty type/theme keys are left out (a list page carries ~170 of these rows); the name link is the view-transition
     title without data-vt (site.js takes the link in .rec-name of a [data-vt-scope] row) -#}
 <li class="rec" data-vt-scope id="{{ it.id }}" data-group="{{ it.e._group }}" data-area="{{ it.dong }}"{{ fb.rec_attrs(it) }}>

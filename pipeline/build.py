@@ -652,14 +652,18 @@ class State:
         # slugs are fixed here (site.json video_topics), before present reads video_groups.
         self.videos = load_videos(data_dir, self.cfg["statuses"])
         self.video_groups = video_groups(self.videos, self.city.video_topics)
-        # a place page's videos: the Korean ones first; a video in another language only fills the slots left
+        for v in self.videos:
+            v["_places"] = [self.ent_by_slug[s] for s in v.get("place_slugs") or [] if s in self.ent_by_slug]
+        # 화제 영상 (data/<region>/yt_channels.json, 군산각 2026-11-10): the curated list in view-count order
+        self.yt_channels, self.popular_videos = load_yt_channels(data_dir, self.videos)
+        # a place page's videos: the curated popular ones first, then the Korean ones; a video in another language only fills the slots left
         for e in self.entities:
             e["_videos"] = sorted((v for v in self.videos if e["slug"] in (v.get("place_slugs") or [])),
-                                  key=lambda v: ((v.get("lang") or "ko") != "ko", video_rank(v)))[:VIDEOS_PER_PAGE]
+                                  key=lambda v: (not v.get("popular_curated"), (v.get("lang") or "ko") != "ko", video_rank(v)))[:VIDEOS_PER_PAGE]
         for sr in self.series:
             sr["videos"] = sorted((v for v in self.videos
                                    if sr["keys"] & {event_name_key(n) for n in v.get("event_names") or []}),
-                                  key=video_rank)[:VIDEOS_PER_PAGE]
+                                  key=lambda v: (not v.get("popular_curated"), video_rank(v)))[:VIDEOS_PER_PAGE]
         # 해외에서 본 <region> (data/<region>/abroad.json, owner 2026-10-13): foreign press and social posts, shown as our
         # own one-line note + the link (+ the outlet's og:image, from its address; posts load the service's official
         # embed near the screen). The mode's statuses, as every record: production shows published items only.
@@ -680,6 +684,20 @@ class State:
         for h in self.abroad_highlights:   # an article card on /abroad/ shows its highlight's quotation too (2026-10-14)
             if h["quote"]:
                 h["item"]["_quote"] = {"text": h["quote"], "lang": h["quote_lang"]}
+        # 인스타그램 인기 큐레이션 (data/<region>/insta.json, 군산각 2026-11-10): domestic Instagram posts curated with our
+        # own one-line note + original link + official Instagram embed ([data-embed="instagram"]). Optional: without the
+        # file (or with no published items) nothing of it is shown.
+        self.insta = load_insta(data_dir)
+        self.insta_channels = load_insta_channels(data_dir)
+        for a in self.insta:
+            a["_places"] = [self.ent_by_slug[s] for s in a["place_slugs"] if s in self.ent_by_slug]
+        for e in self.entities:
+            e["_insta"] = [a for a in self.insta if e["slug"] in a["place_slugs"]]
+        for g in self.guides:
+            g["_insta"] = [a for a in self.insta if g["id"] in a["guide_ids"]]
+            g["_insta_multi"] = [a for a in g["_insta"] if a.get("curation_group") == "multi"]
+            g["_insta_spot"] = [a for a in g["_insta"] if a.get("curation_group") != "multi"]
+            g["_insta_channels"] = self.insta_channels if g["_insta"] else []
         self.lists = {k: [e for e in self.entities if e.get("kind") == k] for k in LISTS}
         self.tourapi_used = any(
             any("TourAPI" in str((src or {}).get("provider", ""))
@@ -758,6 +776,9 @@ class State:
                 "has_guides": bool(self.guides), "has_courses": bool(self.courses), "build_date": self.today,
                 "list_nav": [(k, v["path"], v["title"]) for k, v in LISTS.items() if self.lists[k] or k == "attraction"],
                 "tourapi_used": self.tourapi_used, "has_map": bool(self.entities), "has_videos": bool(self.videos),
+                # the guide whose #h-insta chapter the Instagram cards open in ('' when this build does not publish
+                # it: the home then has no Instagram section and a place page no link to it)
+                "insta_guide": next((g["_path"] for g in self.guides if g.get("_insta")), ""),
                 "has_search": bool(self.entities), "has_abroad": bool(self.abroad or self.abroad_videos),
                 "has_plan": bool(self.entities),   # /plan/, the AI course planner (Korean pages, pipeline/plan.py)
                 # 파트너 되기 (pipeline/partners.py): the side panel / phone menu / footer link to /partners/
@@ -1522,7 +1543,7 @@ def event_series(events: list[dict], S: State) -> list[dict]:
 
 
 COURSE_DURATIONS = tuple(COURSE_GROUP_IDS)  # '당일', '1박 2일', '2박 3일': the order /courses/ names them in
-VIDEOS_PER_PAGE = 3
+VIDEOS_PER_PAGE = 4
 OTHER_TOPIC = "기타"  # a video without a topic; its page is /videos/other/ (slugs.topic_slug)
 
 
@@ -1554,6 +1575,80 @@ def load_abroad(data_dir: Path, statuses=("published",)) -> list[dict]:
                       "image": a["image"] if str(a.get("image") or "").startswith("https://") and not ref else "",
                       "platform_label": ABROAD_PLATFORMS.get(a.get("platform"), "")})
     return sorted(items, key=lambda a: a.get("date") or "", reverse=True)   # '' (undated) sorts last
+
+
+def load_insta(data_dir: Path) -> list[dict]:
+    """data/<region>/insta.json: curated domestic Instagram posts (e.g. a region's popular cafes), shown as our own
+    one-line note + the link + Instagram's official embed ([data-embed="instagram"]). Published only."""
+    raw = _load(data_dir / "insta.json", {}) or {}
+    items = []
+    for a in raw.get("items") or []:
+        if a.get("status") != "published" or not a.get("url") or not squash_ws(a.get("note")):
+            continue
+        if a.get("platform") not in ABROAD_PLATFORMS:
+            continue
+        items.append({**a, "kind": "post",
+                      "place_slugs": list(a.get("place_slugs") or []),
+                      "guide_ids": list(a.get("guide_ids") or []),
+                      "platform_label": ABROAD_PLATFORMS.get(a.get("platform"), "Instagram")})
+    return items
+
+
+def live_channels(S, channels: list[dict]) -> list[dict]:
+    """A curated channel list (yt_channels.json, insta.json channels) without the links to pages this build does not
+    publish: a place, guide, column or course that is not in the build, a list without rows, /events/ without events,
+    /videos/ (and a topic page under it) without videos. Any other link is kept as written (/abroad/, /blog/, /map/ …).
+    Found 2026-11-10: a build with no guides still linked /guides/ from the home (tests/test_uiux.py
+    test_empty_real_data_has_honest_working_visitor_choices had failed since the channel lists were added)."""
+    own = {"/places/": {e["_path"] for e in S.entities} | ({"/places/"} if S.lists.get("attraction") else set()),
+           "/guides/": {g["_path"] for g in S.guides} | ({"/guides/"} if S.guides else set()),
+           "/columns/": {c["_path"] for c in getattr(S, "columns", None) or []}
+           | ({"/columns/"} if getattr(S, "columns", None) else set()),
+           "/courses/": {c["_path"] for c in S.courses} | ({"/courses/"} if S.courses else set()),
+           "/videos/": ({"/videos/"} | {g["_path"] for g in S.video_groups if g.get("_path")}) if S.videos else set()}
+    # a list or section that exists whole or not at all: any page under it stands when it has rows
+    whole = {"/food/": S.lists.get("food"), "/stays/": S.lists.get("stay"), "/events/": S.events}
+
+    def live(href: str) -> bool:
+        path = str(href or "").split("#")[0]
+        for prefix, rows in whole.items():
+            if path.startswith(prefix):
+                return bool(rows)
+        for prefix, paths in own.items():
+            if path.startswith(prefix):
+                return path in paths
+        return True
+
+    return [{**c, "links": [x for x in c.get("links") or [] if live(x.get("href"))]} for c in channels or []]
+
+
+def load_insta_channels(data_dir: Path) -> list[dict]:
+    """data/<region>/insta.json channels: curated popular regional Instagram channels."""
+    raw = _load(data_dir / "insta.json", {}) or {}
+    return [c for c in raw.get("channels") or []
+            if c.get("status") == "published" and c.get("url") and c.get("handle") and squash_ws(c.get("note"))]
+
+
+def load_yt_channels(data_dir: Path, videos: list[dict]) -> tuple[list[dict], list[dict]]:
+    """data/<region>/yt_channels.json: curated popular regional YouTube channels and popular video ids."""
+    raw = _load(data_dir / "yt_channels.json", {}) or {}
+    chs = [c for c in raw.get("channels") or []
+           if c.get("status") == "published" and c.get("url") and c.get("name") and squash_ws(c.get("note"))]
+    by_id = {v["youtube_id"]: v for v in videos if v.get("youtube_id")}
+    pop = [by_id[yid] for yid in raw.get("popular_video_ids") or [] if yid in by_id]
+    # the curated videos are shown with their rank (operator 2026-11-10 '순위별로 큐레이션'): by view count, most first —
+    # the file is kept in that order, and the sort makes the rank hold whatever is added to it (ties keep file order)
+    pop.sort(key=lambda v: -view_count(v))
+    for v in pop:   # the list's videos lead a place's and an event's videos and show their count (_ui.vcard)
+        v["popular_curated"] = True
+    return chs, pop
+
+
+def view_count(v: dict) -> int:
+    """The number in a video's view_text ('조회수 3,486,762회' → 3486762). 0 without a whole count: a short form
+    ('349만회', '1.2만회') is not read as its digits."""
+    m = re.search(r"(\d[\d,]*)\s*회", str(v.get("view_text") or ""))
+    return int(m.group(1).replace(",", "")) if m else 0
 
 
 HL_SMALL_MAX = 60_000   # bytes: the provider's small rendition is used in a highlight circle only up to this size
@@ -1885,7 +1980,7 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
                     S.site_url, g["_url"], crumbs, about, [t["_url"] for t in unique], g["_page_date"] or "",
                     site=S.site))]}
         _render(env, S, out, "guide.html.j2", g["_path"], page, "guide", g["_page_date"], g=g, items=items,
-                points=points, G=present.guide_vm(S, g))
+                points=points, G=present.guide_vm(S, g), see=present.see_also(S, "guide", g))
     if S.guides:
         path = "/guides/"
         crumbs = [("홈", S.site_url + "/"), ("목적별 가이드", S.abs(path))]
@@ -1933,6 +2028,7 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
                                                             description=course_lede))]}
         linked = sum(1 for s in stops if s["target"])
         _render(env, S, out, "course.html.j2", c["_path"], page, "course", c["_page_date"],
+                see=present.see_also(S, "course", c),
                 c=c, stops=stops, orig=orig, show_original=show_original, linked=linked, legs=legs,
                 co=co, course_lede=course_lede, lede=course_lede, course_name=name, orig_url=orig.get("source_url") or "",
                 orig_name=(orig.get("source_name") or (S.site.get("source") or {}).get("name")
@@ -2000,7 +2096,8 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
                             None, videos=True)  # no ItemList: the items are YouTube pages, not this site's URLs
         _render(env, S, out, "videos.html.j2", path, page, "videos", checked, groups=groups, checked=checked,
                 official=official, total=len(S.videos), places=S.ent_by_slug, topic=None,
-                video_groups=present.video_groups_vm(groups))
+                video_groups=present.video_groups_vm(groups), yt_channels=live_channels(S, S.yt_channels),
+                popular_videos=S.popular_videos)
         for g in groups:
             label = "그 밖의" if g["title"] == OTHER_TOPIC else g["title"]
             tcrumbs = crumbs + [(f"{label} 영상", S.abs(g["_path"]))]
@@ -2171,7 +2268,16 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
             # each card topped by the place it shows (present.home_posts, the first site's a11b69248)
             home_posts=present.home_posts(sorted([a for a in getattr(S, "abroad", None) or [] if a.get("kind") == "post"],
                                                  key=lambda a: (a.get("date") or "", a["id"]), reverse=True)[:8]),
-            n_posts=sum(a.get("kind") == "post" for a in getattr(S, "abroad", None) or []))
+            n_posts=sum(a.get("kind") == "post" for a in getattr(S, "abroad", None) or []),
+            # 유튜브·인스타그램 인기 순위 (군산각 2026-11-10): the curated lists, ranked; no insta.json → YouTube only
+            home_insta=present.home_posts(sorted(getattr(S, "insta", None) or [],
+                                                 key=lambda a: (int(a.get("likes") or 0), a["id"]), reverse=True)[:5]),
+            n_insta=len(getattr(S, "insta", None) or []),
+            insta_channels=live_channels(S, getattr(S, "insta_channels", None) or []),
+            yt_channels=live_channels(S, getattr(S, "yt_channels", None) or []),
+            popular_videos=(getattr(S, "popular_videos", None) or [])[:5],   # the rank block's and the board's five
+            n_popular=len(getattr(S, "popular_videos", None) or []),   # the door to /videos/#yt-popular counts that list, not the home's slice
+            places=S.ent_by_slug)
 
     # the 404 page is never indexed (it answers no question; Vercel serves it with status 404), and it says what it is
     page = {"title": f"페이지를 찾을 수 없습니다 | {S.site['site_name']}",

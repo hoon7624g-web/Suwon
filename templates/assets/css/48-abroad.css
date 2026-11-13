@@ -146,27 +146,31 @@ html.embed-manual .ab-ph-msg { display: none; }
   .ab-wall > :not([data-embed="x"]) .ab-embed { margin-inline: -16px; }
   .ab-wall > :not([data-embed="x"]) .ab-ph { border-radius: 0; box-shadow: none; }
 }
-@media (min-width: 740px) { .ab-wall { --wall-gap: 18px; grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (min-width: 1200px) { .ab-wall { --wall-gap: 20px; grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (min-width: 1760px) {
-  .ab-sns > .wrap { max-width: calc(1640px + 240px); padding-inline: 120px; }
-  .ab-wall { --wall-gap: 22px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
-}
+/* the columns go by the wall's own room (.ab-wallbox, a container), not by the window: an Instagram embed is 326px
+   wide at least, and the room is the window less the tab panel (from 1200px), the page's margins and, on a place
+   page, the side column. By the window's width the tiles were 248px at 1280 and 277px at 1366: every embed ran over
+   the next one and out under the launcher (the independent check of the live site, 2026-11-10). Two columns from
+   670px of room (2 x 326 + the gap), three from 1018px, four from 1370px. */
+.ab-wallbox { container: wall / inline-size; }
+@container wall (min-width: 670px) { .ab-wall { --wall-gap: 18px; grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@container wall (min-width: 1018px) { .ab-wall { --wall-gap: 20px; grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@container wall (min-width: 1370px) { .ab-wall { --wall-gap: 22px; grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (min-width: 1760px) { .ab-sns > .wrap { max-width: calc(1640px + 240px); padding-inline: 120px; } }
 .ab-wall.is-masonry > .ab-post { align-self: start; }
-@media (min-width: 740px) {
+@container wall (min-width: 670px) {
   .ab-wall.is-masonry { grid-auto-rows: 4px; row-gap: 0; grid-auto-flow: row dense; }
   .ab-wall.is-masonry > .ab-post { grid-row-end: span var(--span, 1); }
 }
-@media (min-width: 740px) and (max-width: 1199px) {
+@container wall (min-width: 670px) and (max-width: 1017.98px) {
   .ab-wall.is-masonry > :nth-child(2n+1) { grid-column: 1; }
   .ab-wall.is-masonry > :nth-child(2n) { grid-column: 2; }
 }
-@media (min-width: 1200px) and (max-width: 1759px) {
+@container wall (min-width: 1018px) and (max-width: 1369.98px) {
   .ab-wall.is-masonry > :nth-child(3n+1) { grid-column: 1; }
   .ab-wall.is-masonry > :nth-child(3n+2) { grid-column: 2; }
   .ab-wall.is-masonry > :nth-child(3n) { grid-column: 3; }
 }
-@media (min-width: 1760px) {
+@container wall (min-width: 1370px) {
   .ab-wall.is-masonry > :nth-child(4n+1) { grid-column: 1; }
   .ab-wall.is-masonry > :nth-child(4n+2) { grid-column: 2; }
   .ab-wall.is-masonry > :nth-child(4n+3) { grid-column: 3; }
@@ -193,4 +197,120 @@ html.embed-manual .ab-ph-msg { display: none; }
 .hsns-n { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5; overflow: hidden; font-size: 15.5px; line-height: 1.6; }
 .hsns-d { margin-top: auto; font-size: 13px; color: var(--ink-3); }
 .ab-sns-top { margin-top: 0; }
+.ab-wall + .ab-sub { margin-top: clamp(28px, 3.6vw, 44px); }
+/* a place page's wall: two columns at most */
+@container wall (min-width: 1018px) {
+  .ab-wall.ab-wall-place { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ab-wall.ab-wall-place.is-masonry > :nth-child(n) { grid-column: auto; }
+  .ab-wall.ab-wall-place.is-masonry > :nth-child(2n+1) { grid-column: 1; }
+  .ab-wall.ab-wall-place.is-masonry > :nth-child(2n) { grid-column: 2; }
+}
+.ab-wall.ab-wall-place:has(> :only-child) { grid-template-columns: minmax(0, 540px); }
+/* ---------------------------------------------------------------- 군산 관련 인기 인스타그램 채널 큐레이션 (홈 & 카페 가이드) */
+.ig-ch-sub { margin: 24px 0 14px; font: 700 clamp(17px, 1.8vw, 20px)/1.35 var(--font); letter-spacing: -.015em; color: var(--ink); }
+.ig-ch-sub .tn { color: var(--ink-3); font-weight: 400; margin-left: 4px; }
+.ig-ch-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; margin: 0 0 28px; padding: 0; list-style: none; }
+@media (min-width: 680px) { .ig-ch-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; } }
+@media (min-width: 1080px) { .ig-ch-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; } }
+.ig-ch-card { display: flex; flex-direction: column; gap: 10px; padding: 16px 18px 14px; border-radius: var(--r);
+  background: #fff; box-shadow: inset 0 0 0 1px var(--hair), var(--shadow-1); }
+.ig-ch-head { display: flex; align-items: flex-start; gap: 10px; min-width: 0; }
+.ig-ch-who { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.ig-ch-who b { font: 800 17.5px/1.3 var(--font); color: var(--ink); letter-spacing: -.02em; word-break: keep-all; }
+.ig-ch-who span { font: 400 13.5px/1.35 var(--font); color: var(--ink-2); }
+.ig-ch-badge { flex: none; padding: 3px 9px; border-radius: 999px; background: var(--tint); color: var(--sea-deep);
+  font: 700 12px/1.3 var(--font); }
+.ig-ch-note { margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--ink-2); word-break: keep-all; }
+.ig-ch-links { margin: auto 0 0; padding-top: 6px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 13px; line-height: 1.25; }
+.ig-ch-links a { display: inline-flex; align-items: center; min-height: 32px; padding: 4px 11px; border-radius: 999px; text-decoration: none; }
+.ig-ch-go { background: var(--tint); color: var(--sea-deep); font-weight: 700; }
+.ig-ch-go:hover { background: var(--tint2); }
+.ig-ch-go .arr { margin-left: 3px; }
+.ig-ch-chip { background: var(--bg-2); color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--hair); }
+.ig-ch-chip:hover { background: var(--g1); color: var(--ink); }
+.svc-youtube { background: #e62117; color: #fff; }
+.vid-ch { font-weight: 700; color: var(--ink); }
+.yt-pop-sec { margin-bottom: clamp(28px, 4vw, 48px); }
+/* ---------------------------------------------------------------- 홈 우측 인기 유튜브·인스타 고정 큐레이션 보드 (.h-rside)
+   From 1680px only (operator 2026-11-10 '니가 지적한 부분들 다 수정'): from 1360px the board left the home's column
+   676–970px wide — narrower than at 1280px without it (960px) — and the event tickets, the channel cards and the guide
+   tiles' big figures broke on the commonest laptop widths (1366 · 1440 · 1536). At 1680px the column keeps 972px. */
+.h-rside { display: none; }
+@media (min-width: 1680px) {
+  :root { --rside-w: 356px; --rside-x: calc(var(--rside-w) + 2 * var(--side-in)); }
+  body.pg-ko-home { --cw: calc(100vw - var(--side-x) - var(--rside-x)); padding-right: var(--rside-x); }
+  html[lang="ko"] body.pg-ko-home main .wrap,
+  html[lang="ko"] body.pg-ko-home .foot .wrap,
+  html[lang="ko"] body.pg-ko-home .crumbs-bar .wrap { padding-right: var(--m); }
+  html[lang="ko"] body.pg-ko-home main .car-view { margin-right: 0; }
+  html[lang="ko"] body.pg-ko-home main .car-ans .car-view,
+  html[lang="ko"] body.pg-ko-home main .car-feat .car-view { padding-right: var(--ml); }
+  body.pg-ko-home .hn-in { max-width: none; }
+  body.pg-ko-home .qm { right: calc(var(--rside-x) + 12px); }
+  body.pg-ko-home .chat-fab { right: calc(var(--rside-x) + 8px); }
+  .h-rside {
+    position: fixed; z-index: 48; top: var(--side-in); bottom: var(--side-in); right: var(--side-in); width: var(--rside-w);
+    display: flex; flex-direction: column; gap: 16px; padding: 18px 16px 20px;
+    overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: var(--hair) transparent;
+    background: #fff; border: 1px solid var(--hair); border-radius: var(--r-l); box-shadow: var(--shadow-1);
+  }
+}
+.hrs-head { display: flex; flex-direction: column; gap: 10px; padding-bottom: 14px; border-bottom: 1px solid var(--bg-3); }
+.hrs-title { margin: 0; font: 700 18.5px/1.25 var(--font); color: var(--ink); letter-spacing: -.035em; }
+.hrs-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; border-radius: 13px; background: var(--bg-2); }
+.hrs-tab { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 36px; padding: 0 10px;
+  border: 0; border-radius: 9px; background: transparent; color: var(--ink-3); font: 700 13.5px/1 var(--font); letter-spacing: -.015em; text-decoration: none; cursor: pointer; transition: background .18s var(--fb), color .18s var(--fb), box-shadow .18s var(--fb); }
+.hrs-tab:hover { color: var(--ink); text-decoration: none; }
+.hrs-tab[aria-selected="true"] { background: #fff; color: var(--ink); box-shadow: 0 2px 6px rgba(15, 23, 42, .08); }
+.hrs-tab:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.hrs-tab .ab-svc { width: 18px; height: 18px; }
+.hrs-tab .ab-svc svg { width: 11px; height: 11px; }
+.hrs-panel { display: flex; flex-direction: column; gap: 20px; }
+html.js .hrs-panel[data-tab-off] { display: none; }
+.hrs-sec { display: flex; flex-direction: column; gap: 10px; }
+.hrs-sec + .hrs-sec { padding-top: 16px; border-top: 1px solid var(--bg-3); }
+.hrs-sh { display: flex; align-items: baseline; justify-content: space-between; gap: 6px; padding: 0 2px; }
+.hrs-sh h3 { margin: 0; font: 700 15px/1.3 var(--font); color: var(--ink); letter-spacing: -.025em; }
+.hrs-sh .tn { color: var(--ink-3); font-weight: 400; margin-left: 2px; }
+.hrs-sh a { font: 400 12.5px/1.3 var(--font); color: var(--ink-3); text-decoration: none; white-space: nowrap; }
+.hrs-sh a:hover { color: var(--sea-deep); text-decoration: none; }
+.hrs-vlist, .hrs-clist { display: flex; flex-direction: column; margin: 0; padding: 0; list-style: none; }
+.hrs-v { display: flex; flex-direction: column; gap: 7px; padding: 11px 4px; border-bottom: 1px solid var(--bg-3); }
+.hrs-v:first-child { padding-top: 4px; }
+.hrs-v:last-child { border-bottom: 0; padding-bottom: 2px; }
+.hrs-va { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 11px; align-items: start; color: var(--ink); text-decoration: none; }
+.hrs-va:hover { text-decoration: none; }
+.hrs-va:hover .hrs-vch { color: var(--sea-deep); }
+.hrs-va:hover .hrs-vt { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
+.hrs-vth { position: relative; display: block; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; background: var(--bg-3); box-shadow: inset 0 0 0 1px rgba(15, 23, 42, .06); }
+.hrs-vth img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .25s var(--fb); }
+.hrs-va:hover .hrs-vth img { transform: scale(1.03); }
+.hrs-play { position: absolute; right: 6px; bottom: 5px; width: 22px; height: 22px; border-radius: 50%;
+  background: rgba(15, 23, 42, .74); backdrop-filter: blur(4px); color: #fff; display: grid; place-items: center; }
+.hrs-vtxt { display: flex; flex-direction: column; gap: 3px; min-width: 0; padding-top: 1px; }
+.hrs-vtop { display: flex; align-items: baseline; justify-content: space-between; gap: 6px; min-width: 0; }
+.hrs-vch { font: 700 15px/1.25 var(--font); color: var(--ink); letter-spacing: -.025em; word-break: keep-all; }
+.hrs-vviews { flex: none; font: 400 11.5px/1.2 var(--font); color: var(--ink-3); }
+.hrs-vt { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;
+  font: 400 12.5px/1.42 var(--font); color: var(--ink-2); letter-spacing: -.01em; }
+.hrs-vp, .hrs-clinks { display: flex; flex-wrap: wrap; gap: 5px; margin: 0; }
+.hrs-clinks { padding-left: 26px; }
+.hrs-vp a, .hrs-clinks a { display: inline-flex; align-items: center; min-height: 24px; padding: 2px 8px;
+  border-radius: 7px; background: var(--bg-2); color: var(--ink-2);
+  font: 400 11.5px/1.2 var(--font); letter-spacing: -.01em; text-decoration: none; transition: background .15s, color .15s; }
+.hrs-vp a:hover, .hrs-clinks a:hover { background: var(--tint); color: var(--sea-deep); text-decoration: none; }
+.hrs-c { display: flex; flex-direction: column; gap: 6px; padding: 10px 4px; border-bottom: 1px solid var(--bg-3); }
+.hrs-c:first-child { padding-top: 4px; }
+.hrs-c:last-child { border-bottom: 0; padding-bottom: 2px; }
+.hrs-ctop { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 6px; align-items: baseline; min-width: 0; color: var(--ink); text-decoration: none; }
+.hrs-ctop:hover { text-decoration: none; }
+.hrs-ctop:hover .hrs-cname { color: var(--sea-deep); text-decoration: underline; text-underline-offset: 2px; }
+.hrs-num { font: 700 12.5px/1.3 var(--font); color: var(--sea); letter-spacing: -.02em; }
+.hrs-cn { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.hrs-crow { display: flex; align-items: baseline; justify-content: space-between; gap: 6px; min-width: 0; }
+.hrs-cname { display: inline-flex; align-items: baseline; gap: 3px; font: 700 15.5px/1.3 var(--font); color: var(--ink); letter-spacing: -.025em; word-break: keep-all; }
+.hrs-ext { font-size: 11.5px; font-weight: 400; color: var(--ink-3); }
+.hrs-csub { font: 400 12px/1.35 var(--font); color: var(--ink-3); }
+.hrs-ig-note { font: 400 12.5px/1.42 var(--font); color: var(--ink-2); word-break: keep-all; }
+.hrs-badge { flex: none; font-style: normal; font: 700 11px/1.2 var(--font); color: var(--sea-deep); letter-spacing: -.01em; }
 

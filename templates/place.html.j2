@@ -20,12 +20,12 @@
 {% import "_today.html.j2" as tdy %}
 {% set fn = p.notes|length > 1 %}
 {#- the media block (영상 · 소식 · 해외 기사 · SNS): its parts name the heading and the page-nav link -#}
-{% set abroad = p.e._abroad or [] %}{% set ab_all = abroad|selectattr('kind', 'equalto', 'article')|list %}{% set ab_ref = ab_all|selectattr('source_type', 'equalto', 'reference')|list %}{% set ab_art = ab_all|rejectattr('source_type', 'equalto', 'reference')|list %}{% set ab_post = abroad|selectattr('kind', 'equalto', 'post')|list %}{% set media_parts = (['영상'] if p.videos else []) + (['소식'] if (media or {}).news else []) + (['해외 기사'] if ab_art else []) + (['SNS'] if ab_post else []) + (['외국어 참고자료'] if ab_ref else []) %}
+{% set insta = p.e._insta or [] %}{% set abroad = p.e._abroad or [] %}{% set ab_all = abroad|selectattr('kind', 'equalto', 'article')|list %}{% set ab_ref = ab_all|selectattr('source_type', 'equalto', 'reference')|list %}{% set ab_art = ab_all|rejectattr('source_type', 'equalto', 'reference')|list %}{% set ab_post = abroad|selectattr('kind', 'equalto', 'post')|list %}{% set media_parts = (['영상'] if p.videos else []) + (['소식'] if (media or {}).news else []) + (['인스타그램'] if insta else []) + (['해외 기사'] if ab_art else []) + (['SNS'] if ab_post else []) + (['외국어 참고자료'] if ab_ref else []) %}
 {% set nm = p.name %}
 {% set lead = p.hero_k1 or p.hero_k3 %}
 {% set kind_word = {'attraction': '볼거리', 'stay': '숙소', 'food': '음식점'}[p.kind] %}
 {% set show_same = p.same_label and p.area_same and (p.compact or not (p.near_sights or p.near_biz)) %}
-{% set has_near = p.parts or p.segs or p.near_sights or p.near_biz or p.went_next or p.guide_cards or p.event_cards or p.twin_rows or p.rel_rows or show_same %}
+{% set has_near = p.parts or p.segs or p.near_sights or p.near_biz or p.went_next or p.guide_cards or p.column_cards or p.event_cards or p.twin_rows or p.rel_rows or show_same %}
 {% block main_class %}{% endblock %}
 {% block bodyclass %}pg-place kind-{{ p.kind }}{% if lead %} has-photo{% else %} no-photo{% endif %}{% endblock %}
 {% block head %}{% if p.hero_k1 %}{{ md.preload(p.hero_k1, '100vw') }}{% endif %}{% endblock %}
@@ -34,8 +34,8 @@
 {% if p.photos|length > 1 or p.hero_k3 %}{% set _ = links.append(('사진', '#h-photos')) %}{% endif %}
 {% if p.shops %}{% set _ = links.append(('가게', '#h-shops')) %}{% endif %}
 {% set _ = links.append(('지도', '#h-map' if p.points else '#h-dir')) %}
-{% if has_near %}{% set _ = links.append(('주변', '#h-near')) %}{% endif %}
 {% if p.details %}{% set _ = links.append(('자세히', '#h-details')) %}{% endif %}
+{% if has_near %}{% set _ = links.append(('주변', '#h-near')) %}{% endif %}
 {% if media_parts %}{% set _ = links.append((media_parts[0], '#h-media')) %}{% endif %}
 {% if p.faqs %}{% set _ = links.append(('질문', '#h-faq')) %}{% endif %}
 {% set _ = links.append(('출처', '#h-src')) %}
@@ -96,9 +96,11 @@
     </div>
   </header>
   {#- phones (시안 A, the first site's c4020e9bd, operator 2026-11-05): the two things a visitor does next, held at the
-      bottom — call (when one number is settled) and the main route link; the floating assistant steps up above it
-      (css 87-design-a) -#}
-  {% if p.primary or p.kf.tel[1] %}<div class="pl-bar">{% if p.kf.tel[1] %}<a class="pl-bar-tel" href="tel:{{ p.kf.tel[1] }}" data-track="tel_click" data-place="{{ p.e.id }}">{{ ui.icon('phone') }}전화</a>{% endif %}{% if p.primary %}<a class="pl-bar-go" href="{{ p.primary.url }}" rel="noopener" target="_blank" data-track="{{ 'route_click' if p.primary.role == 'route' else 'map_click' }}" data-provider="{{ p.primary.key }}" data-place="{{ p.e.id }}">{{ ui.icon('route') }}{{ p.primary.label }}<span class="vh"> (새 창)</span></a>{% endif %}</div>{% endif %}
+      bottom — call (when one number is settled) and the main route link; the assistant is the bar's third button, 'AI
+      챗봇' as on the tab bar (군산각 정돈 2026-11-10: the floating launcher above the bar covered the phone tile and the
+      photo credit — css 90-refine; [data-tab-chat] presses the launcher, site.js, and the chat gives the focus back to
+      this button, chat.js) -#}
+  {% if p.primary or p.kf.tel[1] %}<div class="pl-bar">{% if p.kf.tel[1] %}<a class="pl-bar-tel" href="tel:{{ p.kf.tel[1] }}" data-track="tel_click" data-place="{{ p.e.id }}">{{ ui.icon('phone') }}전화</a>{% endif %}{% if p.primary %}<a class="pl-bar-go" href="{{ p.primary.url }}" rel="noopener" target="_blank" data-track="{{ 'route_click' if p.primary.role == 'route' else 'map_click' }}" data-provider="{{ p.primary.key }}" data-place="{{ p.e.id }}">{{ ui.icon('route') }}{{ p.primary.label }}<span class="vh"> (새 창)</span></a>{% endif %}<button type="button" class="pl-bar-chat" data-tab-chat aria-haspopup="dialog" aria-label="AI 챗봇 — {{ site.region }} 여행 질문하기">{{ ui.icon('chat') }}<span aria-hidden="true">AI 챗봇</span></button></div>{% endif %}
 
   <div class="pl-band tone-2">
   <div class="wrap pl-grid{% if not lead %} lift{% endif %}">
@@ -189,6 +191,19 @@
   </div>
   </div>
 
+  {#- the calm pass 2026-11-10: the place's own story comes right after its facts and map, before the
+      neighbours — on a phone it began on the tenth screen, under the nearby lists -#}
+  {% if p.details %}
+  <section class="wrap chapter ch-rail" aria-labelledby="h-details" data-block="details">
+    <h2 id="h-details" class="rail-label"><span class="nm">{{ nm }}</span> 자세히</h2>
+    <div class="rail-body prose details">
+      {% for d in p.details %}<h3>{{ d.heading }}</h3><p>{{ d.text|decaution|tel(p.e.id) }}{% if p.detail_notes|length > 1 %}{{ d.n|csup }}{% endif %}</p>{% endfor %}
+      {{ p1.chnotes(p.detail_notes, p.e.id) }}
+    </div>
+  </section>
+  {% endif %}
+
+
   {% if has_near %}
   {#- 주변·함께 가기 (templates/_near.html.j2): the official courses through the place as segments (prev ── here ── next,
       straight-line legs, one chip per course), the nearby places on one straight-line scale (both groups), the
@@ -222,6 +237,9 @@
       {% endif %}
       {% if p.guide_cards %}<div class="nb-part"><h3 class="h-sub nb-h">{{ ui.kpic('guide', '', 40) }}<span>이곳이 포함된 가이드</span></h3>
         {{ nb.cards(p.guide_cards, p.e.id, w, 'guide_click', w.more_guides) }}</div>{% endif %}
+      {#- the columns whose place list holds this place (present.place_columns; operator 2026-11-10 '연결성') -#}
+      {% if p.column_cards %}<div class="nb-part" data-block="columns"><h3 class="h-sub nb-h"><span>이곳이 나오는 칼럼</span></h3>
+        {{ nb.cards(p.column_cards, p.e.id, w, '', '칼럼 더 보기 ({n})') }}</div>{% endif %}
       {% if p.event_cards %}<div class="nb-part"><h3 class="h-sub nb-h">{{ ui.kpic('icon-events', '', 40) }}<span>이곳에서 열리는 행사</span></h3>
         {{ nb.cards(p.event_cards, p.e.id, w, '', w.more_events) }}</div>{% endif %}
       {% for title, xs, blk in [('같은 건물의 다른 이름', p.twin_rows, 'twins'), ('이름이 비슷한 곳', p.rel_rows, 'similar')] if xs %}
@@ -232,26 +250,23 @@
   </section>
   {% endif %}
 
-  {% if p.details %}
-  <section class="wrap chapter ch-rail" aria-labelledby="h-details" data-block="details">
-    <h2 id="h-details" class="rail-label"><span class="nm">{{ nm }}</span> 자세히</h2>
-    <div class="rail-body prose details">
-      {% for d in p.details %}<h3>{{ d.heading }}</h3><p>{{ d.text|decaution|tel(p.e.id) }}{% if p.detail_notes|length > 1 %}{{ d.n|csup }}{% endif %}</p>{% endfor %}
-      {{ p1.chnotes(p.detail_notes, p.e.id) }}
-    </div>
-  </section>
-  {% endif %}
-
   {% set news = (media or {}).news or [] %}
   {% if media_parts %}
   <section class="wrap chapter ch-rail" aria-labelledby="h-media" data-block="media">
     <h2 id="h-media" class="rail-label"><span class="nm">{{ nm }}</span> {{ media_parts|join('·') }}</h2>
     <div class="rail-body">
-      {% if p.videos %}<ul class="vids">{% for v in p.videos %}{{ ui.video(v, p.e.id, [], false, 'li') }}{% endfor %}</ul>
+      {% if p.videos %}<ul class="vids">{% for v in p.videos %}{% set other_p = [] %}{% for x in v._places or [] %}{% if x.slug != p.e.slug %}{% set _ = other_p.append(x) %}{% endif %}{% endfor %}{{ ui.video(v, p.e.id, other_p, false, 'li') }}{% endfor %}</ul>
       {% if has_videos %}<p class="note"><a href="/videos/">영상 모아 보기</a></p>{% endif %}{% endif %}
       {% if news %}<ul class="xlinks">{% for n in news %}<li><a href="{{ n.url }}" rel="noopener" data-track="news_click" data-place="{{ p.e.id }}">{{ n.title }}</a><span class="same-t">{{ n.publisher }}{% if n.date %} · <span class="tn">{{ n.date }}</span>{% endif %}</span></li>{% endfor %}</ul>{% endif %}
-      {% if ab_art or ab_post %}<h3 class="ab-sub">해외에서 본 {{ nm }}</h3>
-      <ul class="ab-list ab-in">{% for a in ab_art %}{{ ab.article(a, false, false) }}{% endfor %}{% for a in ab_post %}{{ ab.post(a, false) }}{% endfor %}</ul>{% endif %}
+      {#- 군산각 정돈 2026-11-10: two cards of each list, the rest behind '더 보기' (a <details>: in the HTML; an official
+          embed loads when its card comes near the screen, as before) -#}
+      {% if insta %}<h3 class="ab-sub">인스타그램에서 본 {{ nm }} <span class="tn">{{ insta|length }}</span></h3>
+      <div class="ab-wallbox"><ul class="ab-wall ab-wall-place" data-wall>{% for a in insta[:2] %}{{ ab.post(a, (a._places|length) > 1) }}{% endfor %}</ul></div>
+      {% if insta|length > 2 %}<details class="fold"><summary>인스타그램 게시물 <span class="tn">{{ insta|length - 2 }}개</span> 더 보기</summary><div class="ab-wallbox"><ul class="ab-wall ab-wall-place" data-wall>{% for a in insta[2:] %}{{ ab.post(a, (a._places|length) > 1) }}{% endfor %}</ul></div></details>{% endif %}
+      {% if insta_guide %}<p class="note"><a href="{{ insta_guide }}#h-insta">{{ site.region }} 인스타그램 큐레이션 모아 보기 →</a></p>{% endif %}{% endif %}
+      {% if ab_art or ab_post %}{% set ab_two = ab_art + ab_post %}<h3 class="ab-sub">해외에서 본 {{ nm }} <span class="tn">{{ ab_two|length }}</span></h3>
+      <ul class="ab-list ab-in">{% for a in ab_two[:2] %}{% if a.kind == 'article' %}{{ ab.article(a, false, false) }}{% else %}{{ ab.post(a, false) }}{% endif %}{% endfor %}</ul>
+      {% if ab_two|length > 2 %}<details class="fold"><summary>해외 기사·게시물 <span class="tn">{{ ab_two|length - 2 }}건</span> 더 보기</summary><ul class="ab-list ab-in">{% for a in ab_two[2:] %}{% if a.kind == 'article' %}{{ ab.article(a, false, false) }}{% else %}{{ ab.post(a, false) }}{% endif %}{% endfor %}</ul></details>{% endif %}{% endif %}
       {% if ab_ref %}<h3 class="ab-sub">외국어 참고자료</h3>
       <ul class="ab-list ab-in">{% for a in ab_ref %}{{ ab.article(a, false, false) }}{% endfor %}</ul>{% endif %}
       {% if abroad %}<p class="note"><a href="/abroad/">해외에서 본 {{ site.region }} 모아 보기</a></p>{% endif %}

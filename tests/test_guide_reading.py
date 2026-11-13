@@ -282,3 +282,93 @@ def test_english_figures_match_the_korean_units():
     # an age in months is the months figure, not 'ages 18' cut off from its unit
     h = present.rich("Activities are open to ages 18 months through adults; ages 7–12 pay 1,000 won.", "en")
     assert re.findall(r'class="gk"[^>]*>([^<]+)</b>', h) == ["18 months", "ages 7–12", "1,000 won"]
+
+
+# ---------------------------------------------------------------- the calm pass (2026-11-10)
+def test_heading_runs_stop_at_a_middle_dot_and_a_long_title_part_wraps():
+    """Found 2026-11-10 on a phone: names chained with '·' were kept as one unbreakable run (up to 49 characters) and a
+    title's long part as another, so the page scrolled sideways. A kept run ends at a middle dot; a title part longer
+    than 12 characters is plain text."""
+    h = str(present.keep_together("밤늦게 먹을 곳은 산마루·신자네연탄구이·안동집·최동민양푼갈비 군산본점 7곳입니다",
+                                  [{"name": "최동민양푼갈비 군산본점"}]))
+    assert '<span class="nw">최동민양푼갈비 군산본점</span>' in h and "산마루·신자네연탄구이·안동집·<span" in h
+    assert re.sub(r"<[^>]+>", "", h) == "밤늦게 먹을 곳은 산마루·신자네연탄구이·안동집·최동민양푼갈비 군산본점 7곳입니다"
+    from pipeline.build import make_env
+    dot = make_env().get_template("_p2.html.j2").module.dotwrap
+    out = str(dot("밤 10시 반이나 그보다 늦게 닫는 14곳, 24시간 국밥집부터 익일 02:00까지 여는 갈빗집까지"))
+    assert 'class="nw"' not in out and "갈빗집까지" in out
+    out = str(dot("짬뽕·꽃게장·박대"))
+    assert out.count('<span class="nw">') == 3 and re.sub(r"<[^>]+>", "", out) == "짬뽕·꽃게장·박대"
+
+
+def test_korean_guide_section_shows_a_short_heading_its_lead_and_folds_the_rest(S, built):
+    """A section's heading sentence stays on the page as the section's lead under a short heading (body[].short), the
+    first sentence or two stay in view and the rest sit in a <details> — every sentence, in the record's order. A list
+    the record writes as its own marked lines is never folded."""
+    folded = listed = 0
+    for g in S.guides:
+        G = present.guide_vm(S, g)
+        page = (built / "guides" / g["slug"] / "index.html").read_text("utf-8")
+        for sec, b in zip(G["sections"], g["body"]):
+            flat = [x for p in sec["paras"] for x in p]
+            vis, more = [x for p in sec["vis"] for x in p], [x for p in sec["more"] for x in p]
+            assert vis + more == flat, g["slug"]                                  # nothing dropped or moved
+            assert sec["more_n"] == len(more) and len(vis) >= min(1, len(flat))
+            if any(x["own"] for x in flat):                                       # a marked list: whole
+                listed += 1
+                assert not more, (g["slug"], sec["id"])
+            if more:
+                folded += 1
+                assert len(vis) <= present.GUIDE_KEEP and len(more) >= present.GUIDE_FOLD_MIN, (g["slug"], sec["id"])
+                # on the page: the kept sentences before the fold, the folded ones inside it, the fold says how many
+                html = page[page.index(f'<h2 id="{sec["id"]}"'):]
+                html = html[:html.index("</section>")]
+                d0, d1 = html.index('<details class="gd-more">'), html.index("</details>")
+                assert html.count('<details class="gd-more">') == 1 and f'{len(more)}문장</span>' in html[d0:d1]
+                assert all(html.index(str(x["html"])) < d0 for x in vis), (g["slug"], sec["id"])
+                assert all(d0 < html.index(str(x["html"]), d0) < d1 for x in more), (g["slug"], sec["id"])
+            short = squash_ws(b.get("short"))
+            if short:
+                assert len(short) <= 22 and sec["lead"] and sec["toc"] == short
+                h2 = re.search(rf'<h2 id="{sec["id"]}" class="h-sec gd-h" data-split>(.*?)</h2>', page, re.S)
+                assert h2 and text_of(h2.group(1)) == short, (g["slug"], short)     # (the build may wrap a '·' pair)
+                assert text_of(page).count(squash_ws(b["heading"])) >= 1               # the sentence is the lead
+                # a figure in the short heading is one the heading sentence states (whole figures, not substrings)
+                stated = re.findall(r"\d[\d,.:]*", b["heading"])
+                assert all(n in stated for n in re.findall(r"\d[\d,.:]*", short)), short
+            elif sec["head_label"]:
+                assert f'{sec["head_label"]}: {sec["head_sub"]}' == squash_ws(b["heading"])
+        assert page.count('<details class="gd-more">') == sum(1 for s in G["sections"] if s["more"])
+    assert folded > 100 and listed >= 1, (folded, listed)
+    # a plain count is marked so the page sets it at the text's weight; a time and a price stay marked as before
+    h = str(present.rich("짬뽕 20곳, 10:00~19:00, 3,000원"))
+    assert '<b class="gk" data-k="n">20곳</b>' in h and '<b class="gk">10:00~19:00</b>' in h and '<b class="gk">3,000원</b>' in h
+    assert 'data-k' not in str(present.rich("짬뽕 20곳", roll=True)) and 'data-k' not in str(present.rich("20 places", "en"))
+    assert 'data-k' not in str(present.rich("5개월 동안 11~19·61번"))
+
+
+def test_see_also_lists_the_pages_that_share_places_most_shared_first(S, built):
+    """이어서 보기 (operator 2026-11-10 '정보들 간의 연결성'): the guides, columns and courses whose own place lists share
+    places with the page — at least two (one for a page of fewer than four places), most shared first, never itself."""
+    seen = 0
+    for kind, recs, folder in (("guide", S.guides, "guides"), ("column", S.columns, "columns"), ("course", S.courses, "courses")):
+        for r in recs:
+            groups = present.see_also(S, kind, r)
+            mine = {x for x in present._record_places(kind, r) if x in S.ent_by_slug}
+            need = 2 if len(mine) >= 4 else 1
+            page = (built / folder / r["slug"] / "index.html").read_text("utf-8")
+            assert ('data-block="see-also"' in page) == bool(groups), r["slug"]
+            for grp in groups:
+                seen += 1
+                ns = [x["n"] for x in grp["items"]]
+                assert ns == sorted(ns, reverse=True) and min(ns) >= need and len(ns) <= present.SEE_MAX[grp["kind"]]
+                for x in grp["items"]:
+                    assert x["path"] != r["_path"] and f'href="{x["path"]}"' in page
+                    assert set(x["names"]) <= {S.ent_by_slug[m]["name"] for m in mine}
+    assert seen > 30
+    # a place page names the columns that hold it
+    e = S.ent_by_slug["초원사진관"]
+    cols = present.place_columns(S, e)
+    assert cols and all("초원사진관" in present._record_places("column", c) for c in S.columns if c["_path"] in {x["path"] for x in cols})
+    page = (built / "places" / e["slug"] / "index.html").read_text("utf-8")
+    assert 'data-block="columns"' in page and all(f'href="{x["path"]}"' in page for x in cols)

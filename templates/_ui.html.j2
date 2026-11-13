@@ -667,7 +667,7 @@
 </a>
 </div>
 {% endif %}
-<div class="vid-text"><p class="vid-title">{{ v.title }}</p>{% if v.channel %}<p class="vid-meta">{{ v.channel }}{% if v.channel_kind == 'official' %} (공식 채널){% endif %}{% if v.published_date %} · <time datetime="{{ v.published_date }}" class="tn">{{ v.published_date|ko_date }}</time> 게시{% endif %}</p>{% endif %}{% if linked %}<p class="vid-places">관련 장소 {% for x in linked %}<a href="{{ x._path }}">{{ x.name }}</a>{% if not loop.last %}<span aria-hidden="true"> · </span>{% endif %}{% endfor %}</p>{% endif %}{% if v.url %}<a class="vid-link" href="{{ v.url }}" rel="noopener" data-track="video_click"{% if place %} data-place="{{ place }}"{% endif %}>YouTube에서 보기<span class="arr" aria-hidden="true">↗</span></a>{% endif %}</div>
+<div class="vid-text"><p class="vid-title">{{ v.title }}</p>{% if v.channel %}<p class="vid-meta"><b class="vid-ch">{{ v.channel }}</b>{% if v.channel_kind == 'official' %} (공식 채널){% endif %}{% if v.popular_curated and v.view_text %} · <span class="tn">{{ v.view_text }}</span>{% endif %}{% if v.published_date %} · <time datetime="{{ v.published_date }}" class="tn">{{ v.published_date|ko_date }}</time> 게시{% endif %}</p>{% endif %}{% if linked %}<p class="vid-places">관련 장소 {% for x in linked %}<a href="{{ x._path }}">{{ x.name }}</a>{% if not loop.last %}<span aria-hidden="true"> · </span>{% endif %}{% endfor %}</p>{% endif %}{% if v.url %}<a class="vid-link" href="{{ v.url }}" rel="noopener" data-track="video_click"{% if place %} data-place="{{ place }}"{% endif %}>YouTube에서 보기<span class="arr" aria-hidden="true">↗</span></a>{% endif %}</div>
 </{{ tag }}>
 {%- endmacro %}
 
@@ -683,7 +683,7 @@
 {#- vlite(v, linked): the folded-list row (/videos/ "더 보기" parts): a small 320×180 thumbnail (or a grey
     placeholder), title and channel · 공식 · date, one link to YouTube. No player, nothing loaded before the press. -#}
 {% macro vlite(v, linked=[]) -%}
-{% set t = v.thumbnail or {} %}<li class="vid vl{% if v.channel_kind == 'official' %} is-official{% endif %}"><a class="vl-a" href="{{ v.url }}" rel="noopener" data-track="video_click">{% if t.url %}<img src="{{ t.url }}" width="{{ t.width or 320 }}" height="{{ t.height or 180 }}" alt="" loading="lazy" decoding="async">{% else %}<span class="vl-ph"></span>{% endif %}<span class="vl-t">{{ v.title }}</span><span class="vl-m">{{ v.channel }}{% if v.channel_kind == 'official' %} · 공식{% endif %}{% if v.published_date %} · <time datetime="{{ v.published_date }}" class="tn">{{ v.published_date|short_iso }}</time>{% endif %}</span></a>{% if linked %}<p class="vid-places">관련 장소 {% for x in linked %}<a href="{{ x._path }}">{{ x.name }}</a>{% if not loop.last %}<span aria-hidden="true"> · </span>{% endif %}{% endfor %}</p>{% endif %}</li>
+{% set t = v.thumbnail or {} %}<li class="vid vl{% if v.channel_kind == 'official' %} is-official{% endif %}"><a class="vl-a" href="{{ v.url }}" rel="noopener" data-track="video_click">{% if t.url %}<img src="{{ t.url }}" width="{{ t.width or 320 }}" height="{{ t.height or 180 }}" alt="" loading="lazy" decoding="async">{% else %}<span class="vl-ph"></span>{% endif %}<span class="vl-t">{{ v.title }}</span><span class="vl-m"><b class="vid-ch">{{ v.channel }}</b>{% if v.channel_kind == 'official' %} · 공식{% endif %}{% if v.popular_curated and v.view_text %} · <span class="tn">{{ v.view_text }}</span>{% endif %}{% if v.published_date %} · <time datetime="{{ v.published_date }}" class="tn">{{ v.published_date|short_iso }}</time>{% endif %}</span></a>{% if linked %}<p class="vid-places">관련 장소 {% for x in linked %}<a href="{{ x._path }}">{{ x.name }}</a>{% if not loop.last %}<span aria-hidden="true"> · </span>{% endif %}{% endfor %}</p>{% endif %}</li>
 {%- endmacro %}
 
 {#- search_form(id, value, label, placeholder, live, note, data): GET /search/. live=true adds data-search
@@ -781,6 +781,22 @@
     section): a one-line row each — the name (its link covers the row) and one short fact of the card (c.brief: the
     value whole; a long one is left out, the card and the place list have it). Not the whole card again (review
     2026-10-09: the same card four times on one page). Phones: one row that scrolls sideways; wider: rows that wrap. -#}
+{#- seealso(groups): 이어서 보기 (present.see_also; operator 2026-11-10 '정보들 간의 연결성도 좋게') — the guides, columns
+    and official courses that share places with this page, most shared first, each with how many places it shares and
+    up to three of their names. The rule is printed under the heading: it is not a recommendation. Nothing without
+    groups. -#}
+{% macro seealso(groups) -%}
+{% if groups %}<section class="wrap chapter cv see" aria-labelledby="h-see" data-block="see-also">
+  <h2 id="h-see" class="h-sec see-h">이어서 보기</h2>
+  <p class="see-rule">이 페이지와 같은 장소를 다루는 글과 코스입니다. 겹치는 장소가 많은 순서입니다.</p>
+  <div class="see-g">{% for g in groups %}
+    <div class="see-col see-{{ g.kind }}"><h3 class="see-k">{{ g.title }}</h3>
+      <ul class="see-l">{% for x in g['items'] %}<li><a class="see-a" href="{{ x.path }}"{% if g.kind == 'guide' %} data-track="guide_click"{% elif g.kind == 'course' %} data-track="course_click"{% endif %}>{% if x.label %}<span class="see-lab">{{ x.label }}</span>{% endif %}<b class="see-t">{{ x.title }}</b><span class="see-m">겹치는 장소 <span class="tn">{{ x.n }}</span>곳 · {{ x.names|join(' · ') }}{% if x.n > x.names|length %} 외{% endif %}</span></a></li>{% endfor %}</ul>
+    </div>{% endfor %}
+  </div>
+</section>{% endif %}
+{%- endmacro %}
+
 {% macro again(cards, label, track='nearby_click') -%}
 <ul class="mcr" aria-label="{{ label }}">{% for c in cards %}<li>{% if c.path %}<a href="{{ c.path }}" data-track="{{ track }}" data-place="{{ c.id }}">{{ c.name }}</a>{% else %}<b>{{ c.name }}</b>{% endif %}
 {%- if c.brief %}<span class="mcr-kf"><span class="mcr-l">{{ c.brief.label }}</span> <span class="kf-main tn{% if c.brief.closed %} closed{% endif %}">{{ c.brief.main|nwt }}</span></span>{% endif %}</li>{% endfor %}</ul>
@@ -789,6 +805,6 @@
 {% macro gtoc(sections, label='이 가이드의 차례', head='차례') -%}
 <nav class="gd-toc" aria-label="{{ label }}" data-toc>
 <p class="gd-toc-h" aria-hidden="true">{{ head }}</p>
-<ol class="gd-toc-l">{% for s in sections %}<li><a href="#{{ s.id }}" data-toc-link="{{ s.id }}"><span class="toc-n tn">{{ '%02d'|format(s.n) }}</span><span class="toc-t">{{ s.heading }}</span></a></li>{% endfor %}</ol>
+<ol class="gd-toc-l">{% for s in sections %}<li><a href="#{{ s.id }}" data-toc-link="{{ s.id }}"><span class="toc-n tn">{{ '%02d'|format(s.n) }}</span><span class="toc-t">{{ s.toc or s.heading }}</span></a></li>{% endfor %}</ol>
 </nav>
 {%- endmacro %}

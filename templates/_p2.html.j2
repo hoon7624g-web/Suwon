@@ -30,9 +30,11 @@
 </a></li>
 {%- endmacro %}
 
-{#- dotwrap(t): a '·' list that may wrap only after a dot, never before it (Korean lines otherwise break before '·'). -#}
+{#- dotwrap(t): a '·' list that may wrap only after a dot, never before it (Korean lines otherwise break before '·').
+    A part longer than 12 characters is a phrase, not a list item ('밤 10시 반이나 그보다 늦게 닫는 14곳, 24시간 …'):
+    it wraps as text — kept whole it was wider than a phone and the page scrolled sideways (found 2026-11-10). -#}
 {% macro dotwrap(t) -%}
-{% for w in (t or '').split('·') %}<span class="nw">{{ w }}{{ '·' if not loop.last }}</span>{% if not loop.last %}<wbr>{% endif %}{% endfor %}
+{% for w in (t or '').split('·') %}{% if w|length <= 12 %}<span class="nw">{{ w }}{{ '·' if not loop.last }}</span>{% else %}{{ w }}{{ '·' if not loop.last }}{% endif %}{% if not loop.last %}<wbr>{% endif %}{% endfor %}
 {%- endmacro %}
 
 {#- abar: see ui.abar for the parts. placeholder: the field's own words; hints: the search examples (site.json

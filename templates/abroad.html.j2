@@ -31,7 +31,7 @@
     <h2 id="ab-sns-h" class="ab-h">SNS 게시물 <span class="tn">{{ posts|length }}</span></h2>
     {% set svc_n = [] %}{% for g in posts|groupby('platform_label') %}{% set _ = svc_n.append((g.list|length, g.grouper)) %}{% endfor %}
     <p class="ab-sns-lede">{% for n, label in svc_n|sort(reverse=true) %}{{ label }} <span class="tn">{{ n }}</span>{% if not loop.last %}<span aria-hidden="true"> · </span>{% endif %}{% endfor %} — 게시물마다 우리가 쓴 한 줄 소개를 달고, 게시물은 각 서비스의 공식 임베드로 보여 줍니다.</p>
-    <ul class="ab-wall" data-wall>{% for a in posts %}{{ ab.post(a) }}{% endfor %}</ul>
+    <div class="ab-wallbox"><ul class="ab-wall" data-wall>{% for a in posts %}{{ ab.post(a) }}{% endfor %}</ul></div>
   </div>
 </section>
 {% endif %}

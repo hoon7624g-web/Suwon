@@ -432,7 +432,8 @@
     // while the question box is on screen (operator 2026-10-15: it covered the box's '#' tags) — css/49-chat.css hides
     // it from the first paint on a page with the box (body.has-ask) until html.ask-out says the box has left the
     // screen; without IntersectionObserver html.no-askio keeps it there as before
-    $all("[data-chat-open]").forEach(function (b) { b.removeAttribute("aria-haspopup"); });
+    // (the phone tab bar's 'AI 챗봇' button presses the launcher: it goes to the box too)
+    $all("[data-chat-open], [data-tab-chat]").forEach(function (b) { b.removeAttribute("aria-haspopup"); });
     if ("IntersectionObserver" in win) {
       new IntersectionObserver(function (es) {
         root.classList.toggle("ask-out", !es[es.length - 1].isIntersecting);
@@ -1529,6 +1530,7 @@
           x.tabIndex = on ? 0 : -1;
           if (p) { if (on) p.removeAttribute("data-tab-off"); else p.setAttribute("data-tab-off", ""); }
         });
+        if (box.scrollTop > 0) box.scrollTop = 0;
         if (focus) t.focus();
       };
       tabs.forEach(function (t, i) {
@@ -1547,6 +1549,14 @@
   // 'AI 챗봇' presses the launcher: the page keeps one chat opener ([data-chat-open], the floating button)
   $all("[data-tab-chat]").forEach(function (b) {
     b.addEventListener("click", function () { var fab = doc.querySelector(".chat-fab"); if (fab) fab.click(); });
+  });
+  // print: a folded '자세히' (a guide's section) or '더 보기' (a place's further cards) is on the paper too — a closed
+  // <details> prints only its summary; it is closed again after printing (css/90-refine.css, the calm pass 2026-11-10)
+  win.addEventListener("beforeprint", function () {
+    $all("details.gd-more:not([open]), details.fold:not([open])").forEach(function (d) { d.open = true; d.setAttribute("data-print", ""); });
+  });
+  win.addEventListener("afterprint", function () {
+    $all("details[data-print]").forEach(function (d) { d.open = false; d.removeAttribute("data-print"); });
   });
 
   // ------------------------------------------------------------ 파트너 문의 (/partners/contact/, the first site's 3ee5bff35)

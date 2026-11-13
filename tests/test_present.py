@@ -1428,9 +1428,8 @@ def test_home_news_row_turns_by_itself_and_stops_for_the_reader(built):
             assert page.evaluate("document.querySelector('.hq-card').getBoundingClientRect().bottom <= "
                                  "document.querySelector('[data-hcar-view]').getBoundingClientRect().top")
             assert page.evaluate("document.querySelector('[data-hcar-view]').getBoundingClientRect().height") < 200
-            assert page.evaluate("(() => { const f = document.querySelector('[data-hcar-item] .nc-frame')"
-                                 ".getBoundingClientRect(), t = document.querySelector('[data-hcar-item] .nc-t')"
-                                 ".getBoundingClientRect(); return f.width <= 96 && f.right <= t.left; })()")
+            frame_w, beside = page.evaluate(side_by_side)
+            assert frame_w <= 96 and beside
             assert "is-stopped" in page.get_attribute("[data-hcar]", "class")
             assert page.get_attribute("[data-hcar-pause]", "aria-label") == "소식 자동 넘김 시작"
             assert page.text_content("[data-hcar-cur]") == "1"
@@ -1537,6 +1536,8 @@ def test_launcher_and_quick_menu_are_there_at_load(built_en):
                     page.goto("http://site.test" + path, wait_until="load")
                     page.wait_for_timeout(300)
                     assert page.evaluate("window.scrollY") == 0
+                    shifted = page.evaluate("window.__ls.slice()")      # while the page loaded, before any scrolling
+                    box_at_load = True
                     qm = page.locator(".qm")
                     fab_style = "getComputedStyle(document.querySelector('.chat-fab'))"
                     if path == "/en/":
@@ -1589,21 +1590,41 @@ def test_launcher_and_quick_menu_are_there_at_load(built_en):
                         names = [items.nth(i).get_attribute("aria-label") for i in range(items.count())]
                         assert names[0] == "검색" and names[1] == "지도" and names[-1] == "맨 위로"
                         assert names[2] == ("길찾기" if path.startswith("/places/") else "행사 달력")
-                        for i in range(items.count()):
+                        shown = [i for i in range(items.count()) if items.nth(i).is_visible()]
+                        # from 1200px the menu is its last link: the panel holds the search, the map and the calendar
+                        assert [names[i] for i in shown] == ["맨 위로"], (w, path)
+                        for i in shown:
                             bb = items.nth(i).bounding_box()
                             assert bb["width"] >= 44 and bb["height"] >= 44
                         q, f = qm.bounding_box(), page.locator(".chat-fab").bounding_box()
                         assert q["y"] + q["height"] <= f["y"]                     # above the launcher
+                        assert f["width"] == 68 and f["height"] == 68, (w, path, f)
+                        # both inside the page's right margin: over no part of the content column
+                        edge = page.evaluate("document.querySelector('main .wrap').getBoundingClientRect().right"
+                                             " - parseFloat(getComputedStyle(document.querySelector('main .wrap')).paddingRight)")
+                        assert f["x"] >= edge and q["x"] >= edge, (w, path, edge, f, q)
                         if path.startswith("/places/"):
                             assert page.locator("#h-dir").count() == 1
                     if path == "/en/":
                         page.evaluate("window.scrollTo(0, 0)")
                         page.wait_for_function("!document.documentElement.classList.contains('ask-out')", timeout=3000)
                     if path == "/":
-                        assert page.evaluate("window.__ls") == [], w           # nothing shifts while the home loads
+                        assert shifted == [], w                                # nothing shifts while the home loads
                     assert "AI 생성 이미지" not in page.inner_text("body")
                     assert [e for e in errors if "ERR_FAILED" not in e] == [], (w, path, errors)
                     ctx.close()
+            # 1024–1199px (no tab panel): the pill with its four links above the 100px launcher, in the page's gutter
+            ctx = browser.new_context(viewport={"width": 1100, "height": 800})
+            ctx.route("**/*", serve)
+            page = ctx.new_page()
+            page.goto("http://site.test/places/이성당/", wait_until="load")
+            page.wait_for_timeout(300)
+            items = page.locator(".qm-i")
+            assert [items.nth(i).get_attribute("aria-label") for i in range(items.count()) if items.nth(i).is_visible()] \
+                == ["검색", "지도", "길찾기", "맨 위로"]
+            f = page.locator(".chat-fab").bounding_box()
+            assert f["width"] == 100 and f["height"] == 100, f
+            ctx.close()
         finally:
             browser.close()
 
@@ -2229,7 +2250,7 @@ def test_the_story_stage_keeps_its_text_years_and_photo_together_on_tall_windows
             pytest.skip(f"Chromium 없음: {ex}")
         try:
             gaps = {}
-            for w, h in ((1440, 900), (1900, 1840)):
+            for w, h in ((1440, 900), (1900, 900), (1900, 1840)):
                 ctx = browser.new_context(viewport={"width": w, "height": h}, reduced_motion="no-preference")
                 ctx.route("**/*", _serve(built))
                 page = ctx.new_page()
@@ -2242,8 +2263,8 @@ def test_the_story_stage_keeps_its_text_years_and_photo_together_on_tall_windows
                     page.evaluate("y => window.scrollTo(0, y)", top + (height - h) * (k / n + .12))
                     page.wait_for_timeout(700)
                     m = page.evaluate(measure)
-                    gaps[(h, k)] = m["rail"][0] - m["text"]
-                    assert 0 < gaps[(h, k)] <= 160, (w, h, k, m)    # the years right under the text (its row holds the longest)
+                    gaps[(w, h, k)] = m["rail"][0] - m["text"]
+                    assert 0 < gaps[(w, h, k)] <= 160, (w, h, k, m)  # the years right under the text (its row holds the longest)
                     block, photo = (m["head"] + m["rail"][1]) / 2, sum(m["photo"]) / 2
                     assert abs(block - photo) <= 60 and m["rail"][1] <= h, (w, h, k, m)
                 ctx.close()

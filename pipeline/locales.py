@@ -1766,7 +1766,7 @@ RELATED_WORDS = {
 # time. Korean-only keys (the actions, 가는 법·시간표, 해 뜨고 지는 시각, 일출·일몰) live in "ko".
 SIDE_WORDS = {
     "ko": {"find": "찾기", "plan": "여행 계획", "events": "행사 달력", "read": "읽을거리", "about": "소개·출처",
-           "tagline": "{r} 여행 정보", "next": "다음 행사", "plan_btn": "내 일정 만들기", "courses_btn": "추천 코스",
+           "tagline": "{r} 여행 정보", "next": "다음 행사", "plan_btn": "AI 코스 만들기", "courses_btn": "추천 코스",
            "transport": "가는 법·시간표", "sun": "해 뜨고 지는 시각", "sunrise": "일출", "sunset": "일몰",
            "wx_title": "{r} 날씨", "wx_rain": "강수확률 {p}%", "wx_issued": "{t} 발표", "wx_go": "{r} 날씨 보기", "wx_score": "지금 날씨 점수", "wx_slots": {"morning": "아침", "day": "낮", "evening": "저녁", "now": "지금"},
            "sky": {"sun": "맑음", "moon": "맑음", "cloud": "구름", "sunset": "노을", "rain": "비", "snow": "눈"}},

@@ -1,0 +1,139 @@
+/* 47-rank — 유튜브·인스타그램 인기 순위 (templates/home.html.j2 .hrk; operator 2026-11-10 '유튜브, 인스타도 순위별로
+   큐레이션해서 굉장히 잘 보이는 곳에'): a white card of the opening group, right under the hero (after the festival
+   card while there is one), on every window narrower than the board's 1680px. Two columns from 720px — the curated
+   videos by views, the curated Instagram posts by likes — one under the other below that; five ranks each, three
+   while the lists are one column (.hrk-x). Set as the board's lists are
+   (css/48-abroad .hrs-*, the operator's own of the same day): hairlines, the rank in the sea blue, who in bold with
+   the count the rank comes from at the end of its line, then the title or our note at the text's weight, two lines
+   of it (the whole is where the row leads). From 1024px a quiet line of the places it shows, each to its page; narrower
+   the row stays short and the places are where the row leads. An Instagram row's picture is a place photo: KOGL-1 cut
+   to the box, KOGL-3 whole inside it. Every link is a 44px target where fingers are (below 1024px). */
+.hrk { padding-top: 16px; }
+.hrk-card { padding: clamp(18px, 2.4vw, 28px); border-radius: 32px; background: #fff; }
+.hrk-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
+.hrk-h { margin: 0; font-size: clamp(20px, 2vw, 24px); font-weight: 700; letter-spacing: -.04em; }
+.hrk-sub { margin: 0; font-size: 14px; line-height: 1.45; color: var(--ink-3); }
+.hrk-cols { display: grid; gap: 22px; margin-top: 14px; }
+.hrk-col { display: flex; flex-direction: column; min-width: 0; }
+.hrk-sh { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 44px; border-bottom: 1px solid var(--ink); }
+.hrk-sh h3 { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 8px; margin: 0; font: 700 16.5px/1.3 var(--font); letter-spacing: -.03em; color: var(--ink); }
+.hrk-sh h3 em { font-style: normal; font-weight: 400; font-size: 13px; letter-spacing: -.01em; color: var(--ink-3); }
+.hrk .hrk-svc { width: 24px; height: 24px; }   /* .ab-svc (css/48-abroad) is 30px */
+.hrk .hrk-svc svg { width: 13px; height: 13px; }
+.hrk-sh > a { flex: none; display: inline-flex; align-items: center; gap: 3px; min-height: 44px; font: 400 13.5px/1 var(--font); color: var(--ink-3); text-decoration: none; white-space: nowrap; }
+.hrk-sh > a:hover { color: var(--sea-deep); text-decoration: none; }
+.hrk-list { margin: 0; padding: 0; list-style: none; }
+.hrk-i { padding: 11px 0 10px; border-bottom: 1px solid var(--bg-3); }
+.hrk-a { display: grid; grid-template-columns: 22px 96px minmax(0, 1fr); gap: 10px; align-items: start; min-height: 44px; color: var(--ink); text-decoration: none; }
+.hrk-a:hover { color: var(--ink); text-decoration: none; }
+.hrk-a:hover .hrk-who { color: var(--sea-deep); }
+.hrk-a:hover .hrk-t { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; }
+.hrk-a:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 10px; }
+.hrk-n { align-self: center; font: 700 21px/1 var(--font); letter-spacing: -.04em; text-align: center; color: var(--sea); }
+.hrk-th { position: relative; display: block; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 10px; background: var(--bg-2); box-shadow: inset 0 0 0 1px rgba(15, 23, 42, .06); }
+.hrk-th picture { display: block; width: 100%; height: 100%; }
+.hrk-th img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.hrk-th.t3 img { object-fit: contain; }   /* KOGL-3: whole, never cropped or enlarged past its box */
+/* the service's mark, where a post has no place photo: centred in the box. A photo's box stays a plain block — as
+   a grid the picture's height no longer followed the box and its lower edge was cut (a KOGL-3 photo must be whole) */
+.hrk-ig:not(.t1):not(.t3) { display: grid; place-items: center; }
+.hrk .hrk-glyph { width: 30px; height: 30px; }
+.hrk-play { position: absolute; right: 6px; bottom: 5px; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: rgba(15, 23, 42, .74); color: #fff; }
+.hrk-tx { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.hrk-top { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 1px 10px; min-width: 0; }
+.hrk-who { font: 700 15px/1.3 var(--font); letter-spacing: -.025em; color: var(--ink); word-break: keep-all; overflow-wrap: anywhere; }
+.hrk-cnt { font: 400 13px/1.3 var(--font); color: var(--ink-2); white-space: nowrap; }
+.hrk-t { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; font: 400 14px/1.45 var(--font); letter-spacing: -.012em; color: var(--ink-2); word-break: keep-all; overflow-wrap: anywhere; }
+.hrk-pl { display: none; }
+.hrk-doors { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 0; }
+.hrk-doors a { display: inline-flex; align-items: center; gap: 4px; min-height: 44px; padding: 0 16px; border-radius: 999px; background: var(--bg-2); font: 400 14px/1.2 var(--font); letter-spacing: -.01em; color: var(--ink); text-decoration: none; }
+.hrk-doors a:hover { background: var(--tint); color: var(--sea-deep); text-decoration: none; }
+.hrk-doors .arr { color: var(--ink-3); }
+.hrk-note { margin: 14px 2px 0; font-size: 12px; line-height: 1.55; color: var(--ink-3); word-break: keep-all; }
+@media (max-width: 719px) {
+  .hrk-x { display: none; }   /* one column: the first three of each list; the head's link has them all */
+}
+@media (max-width: 599px) {
+  .hrk-card { border-radius: 28px; }
+}
+@media (max-width: 389px), (min-width: 720px) and (max-width: 899px) {
+  /* the narrowest phones, and two columns on a small tablet: a smaller picture, so that who and the count stay on
+     one line and the rows of the two lists are level */
+  .hrk-a { grid-template-columns: 20px 72px minmax(0, 1fr); gap: 8px; }
+  .hrk-doors { gap: 6px; }
+  .hrk-doors a { padding: 0 11px; font-size: 13.5px; }
+}
+@media (min-width: 720px) {
+  .hrk-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 3vw, 44px); }
+  .hrk-cols.hrk-one { grid-template-columns: minmax(0, 640px); }
+}
+/* the two lists side by side (below the board's 1680px): a row of one is as tall as the same row of the other — a
+   long channel name puts its count on a second line, and the rows after it and the buttons under the lists stood
+   18px apart (the independent check of the live site, 2026-11-10). The columns take their rows from the card: the
+   head, five rows, the buttons. */
+@media (min-width: 720px) and (max-width: 1679.98px) {
+  .hrk-cols:not(.hrk-one) { grid-template-rows: auto repeat(5, auto) auto; row-gap: 0; }
+  .hrk-cols:not(.hrk-one) > .hrk-col { display: grid; grid-template-rows: subgrid; grid-row: 1 / span 7; }
+  .hrk-cols:not(.hrk-one) .hrk-list { display: grid; grid-template-rows: subgrid; grid-row: 2 / span 5; }
+}
+@media (min-width: 1024px) {
+  .hrk-a { grid-template-columns: 24px 112px minmax(0, 1fr); gap: 12px; }
+  .hrk-n { font-size: 22px; }
+  .hrk-who { font-size: 15.5px; }
+  .hrk-t { font-size: 14.5px; }
+  /* the places a row shows, each to its page: one quiet line under the row, from the picture's left edge (under
+     the text three names did not fit one line at 1024–1366px) */
+  .hrk-pl { display: flex; flex-wrap: wrap; gap: 2px 12px; margin: 6px 0 0; padding-left: 36px; }
+  .hrk-pl a { font: 400 13px/1.5 var(--font); color: var(--sea-deep); text-decoration: underline; text-decoration-color: rgba(47, 111, 201, .45); text-decoration-thickness: 1px; text-underline-offset: .2em; }
+  .hrk-pl a:hover { text-decoration-color: currentColor; }
+  .hrk-pl a:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+  .hrk-doors a { min-height: 40px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  /* a video's picture only: a place photo is never enlarged (KOGL-3) */
+  .hrk-th:not(.hrk-ig) img { transition: transform .25s var(--fb); }
+  .hrk-a:hover .hrk-th:not(.hrk-ig) img { transform: scale(1.03); }
+}
+@media print { .hrk-play { display: none; } }
+/* from 1680px the board beside the column (css/48-abroad .h-rside) shows one of the two lists all the time, behind
+   its tabs (site.js [data-tabs]: the panel that is not open carries data-tab-off). The block shows the other one, so
+   that both lists are on the screen and neither twice: the Instagram ranks while the board is on YouTube, the videos
+   while it is on Instagram — one list across the card as five cards, the rank on the picture. Without the tabs (no
+   script: the board shows both lists) the block steps out. */
+@media (min-width: 1680px) {
+  body.pg-ko-home:has(.h-rside) .hrk { display: none; }
+  html.js body.pg-ko-home:has(.h-rside .hrs-panel[data-tab-off]) .hrk { display: block; }
+  html.js body.pg-ko-home:has(#hrs-panel-ig[data-tab-off]) .hrk :is(.hrk-w-yt, .hrk-w-dot),
+  html.js body.pg-ko-home:has(#hrs-panel-yt[data-tab-off]) .hrk :is(.hrk-w-ig, .hrk-w-dot) { display: none; }
+  body.pg-ko-home:has(.h-rside) .hrk-cols { grid-template-columns: minmax(0, 1fr); }
+  body.pg-ko-home:has(.h-rside) .hrk-list { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 20px; padding-top: 16px; }
+  body.pg-ko-home:has(.h-rside) .hrk-i { padding: 0; border-bottom: 0; }
+  body.pg-ko-home:has(.h-rside) .hrk-a { position: relative; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  body.pg-ko-home:has(.h-rside) .hrk-n { position: absolute; left: 0; top: 0; z-index: 1; display: grid; place-items: center; min-width: 30px; height: 30px; padding: 0 7px; border-radius: 10px 0 10px 0; background: var(--ink); color: #fff; font-size: 15px; letter-spacing: 0; }
+  /* the Instagram cards' pictures are TourAPI photos (KOGL-3 is shown whole, with nothing drawn over it — CLAUDE.md
+     3.4; the badge lay over 15–18px of four of the five, found by the live check 2026-11-10): their rank stands above
+     the picture */
+  body.pg-ko-home:has(.h-rside) .hrk-w-ig .hrk-a { padding-top: 38px; }
+  body.pg-ko-home:has(.h-rside) .hrk-w-ig .hrk-n { border-radius: 10px; }
+  body.pg-ko-home:has(.h-rside) .hrk-t { -webkit-line-clamp: 3; }
+  body.pg-ko-home:has(.h-rside) .hrk-pl { margin-top: 8px; padding-left: 0; }
+  body.pg-ko-home:has(.h-rside) .hrk-doors { margin-top: 18px; }
+}
+
+/* the board's lists (css/48-abroad .hrs-*) say what their order is and that it is no recommendation, and a video
+   carries its rank on its picture */
+.hrs-note { margin: 2px 2px 0; font: 400 11.5px/1.5 var(--font); color: var(--ink-3); word-break: keep-all; }
+.hrs-by { margin-left: 4px; font-style: normal; font: 400 12px/1.3 var(--font); color: var(--ink-3); letter-spacing: -.01em; }
+.hrs-rk { position: absolute; left: 0; top: 0; display: grid; place-items: center; min-width: 22px; height: 22px; padding: 0 5px; border-radius: 10px 0 8px 0; background: var(--ink); color: #fff; font: 700 12.5px/1 var(--font); }
+
+/* /videos/ 화제의 인기 영상: the curated videos in the order of their views, each with its rank — eight cards, then
+   the folded rows from nine (templates/videos.html.j2; the counters are set on the two lists themselves: the section
+   skips its rendering while off screen, css .cv) */
+#yt-popular .vids-4 { counter-reset: ytr; }
+#yt-popular .vlist { counter-reset: ytr 8; }
+#yt-popular .vids-4 > li, #yt-popular .vlist > li { counter-increment: ytr; }
+#yt-popular .vid-box::after, #yt-popular .vl-a::before { content: counter(ytr); position: absolute; left: 0; top: 0; z-index: 1; display: grid; place-items: center; min-width: 28px; height: 28px; padding: 0 7px; border-radius: 10px 0 10px 0; background: var(--ink); color: #fff; font: 700 14px/1 var(--font); pointer-events: none; }
+#yt-popular .vid-box.is-playing::after { content: none; }
+#yt-popular .vl-a { position: relative; }
+#yt-popular .vl-a::before { min-width: 24px; height: 24px; padding: 0 6px; font-size: 12.5px; }
+.yt-rank-note { margin-top: 14px; }
