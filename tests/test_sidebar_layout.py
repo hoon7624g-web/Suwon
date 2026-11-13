@@ -24,6 +24,7 @@ from pipeline.build import build
 from conftest import route_weather, weather_answer, weather_feed
 
 ROOT = Path(__file__).resolve().parent.parent
+WX_PAGE = "https://weather.o2o.kr/today/gyeonggi/suwon"   # 날씨각의 수원시 페이지 (자세히 보기, site.json weather.page_path)
 DATA, SAMPLE = ROOT / "data" / "suwon", ROOT / "data" / "sample"
 HANGUL = re.compile(r"[가-힣]")
 PLACE = "/places/jinmitongdak/"   # a restaurant (진미통닭)
@@ -168,7 +169,7 @@ def test_the_weather_module_holds_no_value_in_the_html(built):
     operator's own service). Nor does anything else the build writes (llms.txt, the chat's files)."""
     for path in ("/", PLACE, "/en/", "/ja/"):
         html = page_html(built, path)
-        mods = re.findall(r'<a class="wx wx-(side|home) wx-(ko|intl)" href="https://weather.o2o.kr/" rel="noopener" '
+        mods = re.findall(r'<a class="wx wx-(side|home) wx-(ko|intl)" href="https://weather.o2o.kr/today/gyeonggi/suwon" rel="noopener" '
                           r'data-track="weather_click" data-wx="([^"]+)" data-wx-t="([^"]+)" data-wx-w="([^"]+)">(.*?)</a>',
                           html, re.S)
         assert [m[0] for m in mods] == (["side", "home"] if path in ("/", "/en/", "/ja/") else ["side"]), path
@@ -371,7 +372,7 @@ def test_the_weather_module_fills_its_room_after_load(browser, built):
     assert "is-now" in cells.nth(3).get_attribute("class") and cells.nth(3).locator(".wx-ct").inner_text() == "7°"
     temps = {f"{int(s['temp_c'])}°" for s in weather_answer()["slots"]}
     assert all(cells.nth(i).locator(".wx-ct").inner_text() in temps for i in range(3))
-    assert box.get_attribute("href") == "https://weather.o2o.kr/" and not box.locator(".wx-go").is_visible()
+    assert box.get_attribute("href") == WX_PAGE and not box.locator(".wx-go").is_visible()
     assert "출처" not in box.inner_text()
     assert box.bounding_box()["height"] == 282 and page.evaluate("[...document.querySelectorAll('.wx-side .wx-cells li')]"
                                                                  ".every(e => e.getBoundingClientRect().bottom <= document.querySelector('.wx-side').getBoundingClientRect().bottom + .5)")
@@ -466,7 +467,7 @@ def test_on_a_short_window_the_day_card_folds_and_the_menu_shows(browser, built,
         h0 = page.locator(".wx-side").bounding_box()["height"]
         page.wait_for_selector(".wx-side.is-ready", timeout=8000)
         c = page.evaluate(CARD, ".wx-side")
-        assert h0 == want and c["h"] == want and c["inside"] and c["link"] == "https://weather.o2o.kr/", (path, height, h0, c)
+        assert h0 == want and c["h"] == want and c["inside"] and c["link"] == WX_PAGE, (path, height, h0, c)
         strip = page.evaluate("getComputedStyle(document.querySelector('.wx-side .wx-strip')).display")
         assert (strip == "none") == (height < 1020), (path, height, strip)
         if path == "/en/":

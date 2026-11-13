@@ -17,13 +17,13 @@
       date written out (in the panel weather.js moves it to the visitor's day; never '오늘' in the HTML), linked to /sun/,
       and the next
       event with its dates written out, linked to its page.
-    weather(wx, variant): 날씨각's card (operator 2026-10-31: '날씨각 실제 디자인으로' — its home card as it is; no
-      '출처' line, 날씨각 is the operator's own service). The whole card is one link to weather.o2o.kr. The HTML holds no
-      weather value: its title and '수원 팔달구 날씨 보기', which is all a reader without JavaScript (or after a failed
-      or late answer) gets. assets/weather.js (site.js attaches it after the page has loaded, when a card is on screen)
-      asks /v1/feed and /v1/weather/today and draws in the kept room: the sky of the hour (night: navy, stars, the
-      moon in its phase; day: the sun), '지금 날씨 점수' and the score, clouds either side, the provider's own Korean
-      lines (Korean pages only) and the four cells 아침 · 낮 · 저녁 · 지금. variant 'home' (big) or 'side' (small). -#}
+    weather(wx, variant): 날씨각's own first-screen card (operator 2026-10-31 '날씨각 실제 디자인으로'), 'home' (the
+      homes, under the first screen: the card as 날씨각 draws it) or 'side' (the panel: the same card, small — the sun or
+      moon with the score, the bubble, the four cells). The HTML holds no weather value: the card's name and the link
+      to the region's 날씨각 page (weather.o2o.kr/today/<path>, present.WEATHER_PAGE; '수원 팔달구 날씨 보기' — no source words: 날씨각 is the operator's), which is all a reader without
+      JavaScript (or after a failed or late answer) gets. assets/weather.js (site.js attaches it after the page has
+      loaded, when a card is on screen) asks the feed (data-wx) and the day's slots (data-wx-day) and draws the card
+      in the room css/80-side.css keeps for it; the drawn card is one link (its 자세히 보기 covers it). -#}
 {% import "_ui.html.j2" as ui %}
 {% import "_pic.html.j2" as pk %}
 

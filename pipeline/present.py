@@ -5427,11 +5427,16 @@ def page_chrome(page_kind: str, has_courses: bool) -> dict:
 WEATHER_API = "https://weather.o2o.kr/v1/weather/today?region={code}"   # the day's 3-hour slots (the four cells)
 WEATHER_FEED = "https://weather.o2o.kr/v1/feed?region={code}"           # the card: sky, score, moon, headline
 WEATHER_HOME = "https://weather.o2o.kr/"
+# '자세히 보기' opens 날씨각's page of the region, not its home (군산각 2026-11-12, 날씨각 메일 '[공유]날씨각 지역 주소
+# 목록': the home shows the reader's own location): https://weather.o2o.kr/today/{path}, path = site.json
+# weather.page_path, from 날씨각's region list (the page's region must be the widget's region_code)
+WEATHER_PAGE = "https://weather.o2o.kr/today/{path}"
 
 
 def weather_vm(site: dict, code: str, region_label: str) -> dict | None:
     """The weather module's hook ({api, home, title, go, js}) in one version, or None for a site with no 날씨각 region
-    (site.json weather.region_code: the 행정표준코드 of the 시·군·구 날씨각 answers for — a city of several 구 names
+    (home: 날씨각's page of the region, https://weather.o2o.kr/today/<site.json weather.page_path>, else its home;
+    site.json weather.region_code: the 행정표준코드 of the 시·군·구 날씨각 answers for — a city of several 구 names
     the one of its home's first area, weather.area). region_label: this version's place name for the title. js: the
     words weather.js needs (the score's label, the four cells' names, the sky words for the icons' alt) and ko (the
     Korean pages show the provider's own Korean lines — its '지금은 ○○각!', the summary and the status line; the other
@@ -5441,7 +5446,10 @@ def weather_vm(site: dict, code: str, region_label: str) -> dict | None:
     if not re.fullmatch(r"\d{10}", rc):
         return None
     w = LC.SIDE_WORDS[code]
-    return {"api": WEATHER_API.format(code=rc), "feed": WEATHER_FEED.format(code=rc), "home": WEATHER_HOME,
+    # home: '자세히 보기' — the region's own 날씨각 page (weather.page_path), else 날씨각's home
+    path = squash_ws(str(((site or {}).get("weather") or {}).get("page_path") or ""))
+    home = WEATHER_PAGE.format(path=path) if re.fullmatch(r"[a-z]+(?:/[a-z-]+)+", path) else WEATHER_HOME
+    return {"api": WEATHER_API.format(code=rc), "feed": WEATHER_FEED.format(code=rc), "home": home,
             "title": w["wx_title"].format(r=region_label), "go": w["wx_go"].format(r=region_label),
             "js": {"score": w["wx_score"], "slots": w["wx_slots"], "sky": w["sky"], "ko": code == "ko"}}
 
