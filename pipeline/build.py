@@ -697,6 +697,7 @@ class State:
         # file (or with no published items) nothing of it is shown.
         self.insta = load_insta(data_dir)
         self.insta_channels = load_insta_channels(data_dir)
+        self.insta_words = load_insta_words(data_dir)
         for a in self.insta:
             a["_places"] = [self.ent_by_slug[s] for s in a["place_slugs"] if s in self.ent_by_slug]
         for e in self.entities:
@@ -789,6 +790,7 @@ class State:
                 # the guide whose #h-insta chapter the Instagram cards open in ('' when this build does not publish
                 # it: the home then has no Instagram section and a place page no link to it)
                 "insta_guide": next((g["_path"] for g in self.guides if g.get("_insta")), ""),
+                "insta_words": self.insta_words,   # {topic, noun}: the Instagram headings (load_insta_words)
                 "has_search": bool(self.entities), "has_abroad": bool(self.abroad or self.abroad_videos),
                 "has_plan": bool(self.entities),   # /plan/, the AI course planner (Korean pages, pipeline/plan.py)
                 # 파트너 되기 (pipeline/partners.py): the side panel / phone menu / footer link to /partners/
@@ -1637,6 +1639,17 @@ def live_channels(S, channels: list[dict]) -> list[dict]:
         return True
 
     return [{**c, "links": [x for x in c.get("links") or [] if live(x.get("href"))]} for c in channels or []]
+
+
+# the Instagram lists' words (군산각's were '대형·감성 카페' / '카페'): a region's posts are of any kind of place, so the
+# defaults are neutral; insta.json topic / noun name them when the curation is narrower (조정 세션 2026-11-13)
+INSTA_WORDS = {"topic": "여행지·맛집", "noun": "장소"}
+
+
+def load_insta_words(data_dir: Path) -> dict:
+    """{topic, noun} for the Instagram headings: insta.json's own words where it gives them, else INSTA_WORDS."""
+    raw = _load(data_dir / "insta.json", {}) or {}
+    return {k: squash_ws(raw.get(k)) or v for k, v in INSTA_WORDS.items()} if isinstance(raw, dict) else dict(INSTA_WORDS)
 
 
 def load_insta_channels(data_dir: Path) -> list[dict]:

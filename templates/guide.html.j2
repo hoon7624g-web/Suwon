@@ -138,7 +138,7 @@
   {% if G.g._insta %}
   <section class="ab-sns chapter cv" id="h-insta" aria-labelledby="h-insta-h">
     <div class="wrap">
-      <h2 id="h-insta-h" class="ab-h">인스타그램에서 많이 찾은 {{ site.region }} <span class="tn">{{ G.g._insta|length }}</span></h2>
+      <h2 id="h-insta-h" class="ab-h">인스타그램에서 많이 찾은 {{ site.region }} {{ insta_words.topic }} <span class="tn">{{ G.g._insta|length }}</span></h2>
       <p class="ab-sns-lede">{% if G.g._insta_multi %}모음 큐레이션 <span class="tn">{{ G.g._insta_multi|length }}</span>{% endif %}{% if G.g._insta_multi and G.g._insta_spot %}<span aria-hidden="true"> · </span>{% endif %}{% if G.g._insta_spot %}장소별 미리보기 <span class="tn">{{ G.g._insta_spot|length }}</span>{% endif %}{% if G.g._insta_channels %}<span aria-hidden="true"> · </span>인기 채널 <span class="tn">{{ G.g._insta_channels|length }}</span>{% endif %} — 게시물마다 우리가 쓴 한 줄 소개와 {{ site.site_name }} 장소 바로가기를 달고, 미리보기는 Instagram 공식 임베드로 보여 줍니다.</p>
       {% if G.g._insta_channels %}
       <h3 class="ab-sub" id="h-insta-channels">{{ site.region }} 관련 인기 인스타그램 채널 <span class="tn">{{ G.g._insta_channels|length }}</span></h3>
@@ -153,11 +153,11 @@
       </ul>
       {% endif %}
       {% if G.g._insta_multi %}
-      <h3 class="ab-sub" id="h-insta-multi">크리에이터가 꼽은 {{ site.region }} 모음 <span class="tn">{{ G.g._insta_multi|length }}</span></h3>
+      <h3 class="ab-sub" id="h-insta-multi">크리에이터가 꼽은 {{ site.region }} {{ insta_words.topic }} 모음 <span class="tn">{{ G.g._insta_multi|length }}</span></h3>
       <div class="ab-wallbox"><ul class="ab-wall" data-wall>{% for a in G.g._insta_multi %}{{ ab.post(a) }}{% endfor %}</ul></div>
       {% endif %}
       {% if G.g._insta_spot %}
-      <h3 class="ab-sub" id="h-insta-spot">장소별 인스타그램 미리보기·바로가기 <span class="tn">{{ G.g._insta_spot|length }}</span></h3>
+      <h3 class="ab-sub" id="h-insta-spot">{{ insta_words.noun }}별 인스타그램 미리보기·바로가기 <span class="tn">{{ G.g._insta_spot|length }}</span></h3>
       <div class="ab-wallbox"><ul class="ab-wall" data-wall>{% for a in G.g._insta_spot %}{{ ab.post(a) }}{% endfor %}</ul></div>
       {% endif %}
       <p class="note ab-src-note">게시물의 글·사진·영상은 각 작성자의 것입니다. 원문 문장과 사진은 서버에 옮겨 싣지 않고 우리가 쓴 한 줄 소개와 원문 링크만 실었으며, 게시물 미리보기는 화면에 가까워지면 Instagram의 공식 임베드로 불러옵니다.</p>

@@ -97,7 +97,7 @@
   <div class="hrs-panel"{% if RS_YT %} role="tabpanel" aria-labelledby="hrs-tab-ig" data-tab-off{% endif %} id="hrs-panel-ig">
   {% if home_insta %}
   <div class="hrs-sec">
-    <div class="hrs-sh"><h3>화제의 {{ site.region }} 인스타그램 <em class="hrs-by">좋아요 순</em></h3><a href="{{ IG }}#h-insta">전체 {{ n_insta }}편<span class="arr" aria-hidden="true">→</span></a></div>
+    <div class="hrs-sh"><h3>화제의 {{ site.region }} {{ insta_words.topic }} 인스타그램 <em class="hrs-by">좋아요 순</em></h3><a href="{{ IG }}#h-insta">전체 {{ n_insta }}편<span class="arr" aria-hidden="true">→</span></a></div>
     <ul class="hrs-clist">
       {% for a in home_insta[:5] %}
       <li class="hrs-c">

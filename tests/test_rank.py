@@ -67,3 +67,20 @@ def test_the_curated_videos_are_ranked_by_views_and_the_lists_say_what_the_order
         assert "data-tabs" not in board and "hrs-panel-ig" not in board and "인스타" not in board
         assert "hrk-w-ig" not in home and "인스타그램" not in note
         assert not any('id="h-insta"' in p.read_text("utf-8") for p in out.glob("guides/*/index.html"))
+
+
+def test_the_instagram_words_are_neutral_unless_insta_json_names_them(tmp_path, world):
+    """The first site's lists were of cafes ('대형·감성 카페'); a region's posts are of any kind of place: the headings
+    say '여행지·맛집' / '장소' unless insta.json's topic / noun name the curation (조정 세션 2026-11-13)."""
+    from pipeline.build import INSTA_WORDS, load_insta_words
+    assert INSTA_WORDS == {"topic": "여행지·맛집", "noun": "장소"}
+    assert load_insta_words(tmp_path) == INSTA_WORDS                       # no insta.json
+    (tmp_path / "insta.json").write_text(json.dumps({"topic": "카페", "noun": "카페", "items": []}, ensure_ascii=False), "utf-8")
+    assert load_insta_words(tmp_path) == {"topic": "카페", "noun": "카페"}
+    insta, S, out = world
+    if insta:
+        guide = next(p.read_text("utf-8") for p in out.glob("guides/*/index.html") if 'id="h-insta"' in p.read_text("utf-8"))
+        guide = re.sub(r"<[^>]+>", "", guide)   # the build keeps '·' with the word before it (textutil.keep_dots: a span)
+        assert "인스타그램에서 많이 찾은" in guide and "여행지·맛집" in guide and "장소별 인스타그램 미리보기" in guide
+        assert "감성 카페" not in guide and "카페별" not in guide
+        assert "여행지·맛집 인스타그램" in re.sub(r"<[^>]+>", "", (out / "index.html").read_text("utf-8"))
