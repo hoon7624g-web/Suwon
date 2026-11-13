@@ -205,6 +205,22 @@ html.js .wx-home.wx-intl { height: 294px; }
   html.js .wx-side.wx-ko { height: 282px; }
   html.js .wx-side.wx-intl { height: 218px; }
 }
+/* the panel's card on a short window (the calm pass, 군산각 2026-11-10 '메뉴를 위로 올리고 날씨는 한 줄로'; css/90-refine):
+   the menu's first group is to show — under 1020px of height the four cells step out (the score, the moon or sun and
+   the provider's lines stay), under 880px the Korean summary and status line too; the card keeps its height from the
+   first paint (nothing shifts when the answer comes) */
+@media (min-width: 1200px) and (max-height: 1019px) {
+  .wx-side .wx-cells { display: none; }
+  html.js .wx-side.wx-ko { height: 211px; }
+  html.js .wx-side.wx-intl { height: 147px; }
+}
+@media (min-width: 1200px) and (max-height: 879px) {
+  .wx-side .wx-sum, .wx-side .wx-st { display: none; }
+  .wx-side .wx-sky { height: 80px; }
+  .wx-side .wx-orb { width: 70px; height: 70px; margin-left: -35px; top: 3px; }
+  .wx-side .wx-sc { font-size: 28px; }
+  html.js .wx-side.wx-ko { height: 150px; }
+}
 /* ---------------------------------------------------------------- from 1200px: the panel and the column */
 @media (min-width: 1200px) {
   :root { --bar: 0px; --mh: 0px; --mh-s: 0px; --cw: calc(100vw - var(--side-x)); --m: clamp(24px, calc(var(--cw) * .046), 64px); }

@@ -482,7 +482,16 @@ def test_the_launcher_is_there_from_the_start_and_goes_to_the_box(browser, site,
         page.wait_for_timeout(400)
     assert fab.is_visible()                                          # from the first paint, on the home too
     b = fab.bounding_box()
-    assert b["height"] == (100 if width >= 1024 else 76) and b["y"] + b["height"] <= height - 16 and b["x"] + b["width"] <= width - 16
+    # 76px, 100px from 1024px, 68px in the page's right margin from 1200px (the calm pass, 군산각 2026-11-10; css/90-refine)
+    want = 68 if width >= 1200 else 100 if width >= 1024 else 76
+    assert b["height"] == want, b
+    if width >= 1200:
+        # inside the page's right margin, over no part of the content column
+        edge = page.evaluate("document.querySelector('main .wrap').getBoundingClientRect().right"
+                             " - parseFloat(getComputedStyle(document.querySelector('main .wrap')).paddingRight)")
+        assert b["x"] >= edge and b["x"] + b["width"] <= width - 8 and b["y"] + b["height"] <= height - 16, (b, edge)
+    else:
+        assert b["y"] + b["height"] <= height - 16 and b["x"] + b["width"] <= width - 16, b
     assert fab.get_attribute("aria-haspopup") is None                # here it goes to the box, it opens no dialog
     # a round button at every width, its label 'AI 챗봇' always on the tag across its bottom (owner 2026-10-14: 'AI
     # 챗봇인 거 더 크게 잘 보이면'), the start of its accessible name
@@ -491,7 +500,7 @@ def test_the_launcher_is_there_from_the_start_and_goes_to_the_box(browser, site,
     assert fab.get_attribute("aria-label").startswith("AI 챗봇")
     page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
     page.wait_for_timeout(400)
-    opener.click()                                                   # nothing asked yet: the card's question box
+    fab.click()                                                      # nothing asked yet: the card's question box
     page.wait_for_timeout(1000)
     assert page.evaluate("document.activeElement.id") == "ask-q" and in_viewport(page, ".hk-box")
     assert page.locator("#chat").count() == 0 and page.locator("[data-ask-log]").is_hidden()

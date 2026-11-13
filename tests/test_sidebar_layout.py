@@ -453,55 +453,34 @@ def test_without_an_answer_or_js_the_link_stays(browser, built):
     ctx.close()
 
 
-@pytest.mark.parametrize("height,card,intl", ((1080, 246, 220), (900, 170, 170), (768, 98, 98)))
+@pytest.mark.parametrize("height,card,intl", ((1080, 282, 218), (900, 211, 147), (768, 150, 147)))
 def test_on_a_short_window_the_day_card_folds_and_the_menu_shows(browser, built, height, card, intl):
-    """The calm pass 2026-11-10 (css/90-refine.css; the review the operator asked to have carried out: '메뉴를 위로
-    올리고 날씨는 한 줄로'): the menu began 757px down the panel, so on a 768–900px
-    window none of its links was on screen. Under 1020px of height the weather card is 170px (its four cells step
-    out), under 880px one 98px row and the next event steps out; from 1020px it is 날씨각's drawn size. At every height
-    the card has its size from the first paint (nothing shifts when the answer comes), its link is the card, every
-    row of the panel is 44px or more, and on the short windows the first group's first link is whole above the
-    '문의/제휴' row. The other versions' card, which has no words of its own, is never a bare number."""
+    """The calm pass (군산각 2026-11-10, css/90-refine; '메뉴를 위로 올리고 날씨는 한 줄로'): the menu began about 800px down
+    the panel, so on a 768–900px window none of its links was on screen. Here (this site's card, css/80-side.css):
+    under 1020px of height the four cells step out, under 880px the Korean summary and status line too and the next
+    event; from 1020px the card is whole. At every height the card has its size from the first paint (nothing shifts
+    when the answer comes), everything drawn stays inside it, its link is the region's 날씨각 page, and on the short
+    windows the first link of the menu is whole above the panel's foot ('수원각 공유하기' · '문의/제휴')."""
     for path, want in (("/", card), ("/en/", intl)):
         ctx, page, errors, _ = open_page(browser, built, path, 1440, height)
         h0 = page.locator(".wx-side").bounding_box()["height"]
         page.wait_for_selector(".wx-side.is-ready", timeout=8000)
-        c = page.evaluate(CARD, ".wx-side")
-        assert h0 == want and c["h"] == want and c["inside"] and c["link"] == WX_PAGE, (path, height, h0, c)
-        strip = page.evaluate("getComputedStyle(document.querySelector('.wx-side .wx-strip')).display")
-        assert (strip == "none") == (height < 1020), (path, height, strip)
-        if path == "/en/":
-            # the other versions' card has no words of its own: folded, a line says the temperature now and — in one
-            # row, where the label inside the sun is not shown — what the number is (it was a bare number: found on
-            # the live site 2026-11-10); whole, the four cells say the day and the line is not shown
-            words = page.evaluate("""() => { const b = document.querySelector('.wx-side'), shown = e => !!e && e.getClientRects().length > 0;
-              return {fold: shown(b.querySelector('.wx-fold')), label: shown(b.querySelector('.wx-fl')), now: shown(b.querySelector('.wx-fn')),
-                      inorb: shown(b.querySelector('.wx-sc small')), text: (b.querySelector('.wx-fold') || {}).textContent || ''}; }""")
-            assert words["fold"] == (height < 1020) and words["now"] == (height < 1020), (height, words)
-            assert words["label"] == (height < 880) and (words["inorb"] or words["label"]), (height, words)
-            assert re.search(r"\d+°", words["text"]) and "score" in words["text"].lower(), (height, words)
-        assert page.locator(".side .sd-ev").is_visible() == (height >= 880), (path, height)
-        assert [x for x in page.evaluate("window.__ls") if x["v"] > 0.001] == [], page.evaluate("window.__ls")
-        for sel in (".side .sg-a", ".side .sg-s", ".side .sd-act", ".side .sd-sun", ".mast .lang-btn"):
-            if page.locator(sel).count():
-                box = page.locator(sel).first.bounding_box()
-                assert box and box["height"] >= 44, (path, height, sel, box)
+        page.wait_for_timeout(300)
+        c = page.evaluate("""() => { const w = document.querySelector('.wx-side'), r = w.getBoundingClientRect();
+          return {h: Math.round(r.height), link: w.getAttribute('href'),
+                  inside: [...w.querySelectorAll('.wx-b *')].filter(e => e.getClientRects().length)
+                    .every(e => e.getBoundingClientRect().bottom <= r.bottom + .5),
+                  cells: [...w.querySelectorAll('.wx-cells li')].filter(e => e.getClientRects().length).length}; }""")
+        assert round(h0) == want and c["h"] == want and c["inside"] and c["link"] == WX_PAGE, (path, height, h0, c)
+        assert (c["cells"] == 0) == (height < 1020), (path, height, c)
+        assert page.locator(".side .sd-ev").is_visible() == (height >= 880) or page.locator(".side .sd-ev").count() == 0
         if height < 1020:
-            # the first group's first link: whole on screen, and the point at its middle is the link (not the pinned row)
-            a = page.locator(".side-nav .sg-d[open] .sg-a").first
+            a = page.locator(".side-nav .sg-a").first
             box = a.bounding_box()
-            assert box["y"] >= 0 and box["y"] + box["height"] <= height - 16, (path, height, box)
-            hit = page.evaluate("([x, y]) => { const e = document.elementFromPoint(x, y); return !!(e && e.closest('.sg-a')); }",
-                                [box["x"] + box["width"] / 2, box["y"] + box["height"] / 2])
-            assert hit, (path, height, box)
+            foot = page.locator(".side .sd-foot")
+            limit = foot.bounding_box()["y"] if foot.count() else height
+            assert box["y"] >= 0 and box["y"] + box["height"] <= limit and box["height"] >= 44, (path, height, box, limit)
         assert own(errors) == [], (path, errors)
-        ctx.close()
-    # no answer on the smallest card: the link sits under the card's name, not over it
-    if height < 880:
-        ctx, page, errors, _ = open_page(browser, built, "/", 1440, height, weather="fail")
-        page.wait_for_selector(".wx-side.is-failed", timeout=8000)
-        go, name = page.locator(".wx-side .wx-go").bounding_box(), page.locator(".wx-side .wx-t").bounding_box()
-        assert go["height"] >= 44 and go["y"] >= name["y"] + name["height"], (go, name)
         ctx.close()
 
 

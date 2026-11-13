@@ -1912,8 +1912,9 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
     env.globals["kakao_sdk"] = "" if osm else kakao_sdk_url(S.site)  # the map boxes' data-kakao-sdk (_ui mapfig, _p1 …)
     env.globals["osm_lib"] = OSM_LIB if osm else ""                   # … or data-osm-lib (map_provider 'osm')
     # 보내기 (pipeline/share.py, 군산각 2026-11-11): the Kakao share uses the maps' key (the domain registered for it);
-    # without a key the box has no 카카오톡 tile
-    env.globals["kakao_key"] = str(S.site.get("kakao_js_key") or "").strip()
+    # without a key — or on an OSM site, whose pages carry no Kakao key at all (tests/test_osm_map.py) — the box has no
+    # 카카오톡 tile
+    env.globals["kakao_key"] = "" if osm else str(S.site.get("kakao_js_key") or "").strip()
     env.globals["kakao_share_sdk"], env.globals["kakao_share_sri"] = share.SDK, share.SDK_SRI
     _prepare_out(out, data_dir)
     region = S.city.region

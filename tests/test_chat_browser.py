@@ -190,17 +190,15 @@ def test_desktop_card(browser, site):
 
 def test_phone_sheet_and_error_states(browser, site):
     ctx, page, errors, calls = open_page(browser, 390, 844, [NOT_CONFIGURED, BUSY, OK])
-    # a place page with its call/route bar (시안 A, ported 2026-11-05): the launcher's round face sits above the bar,
-    # there from the first paint and while scrolling
+    # a place page with its call/route bar (시안 A, ported 2026-11-05): since the calm pass (군산각 2026-11-10) the bar's
+    # own 'AI 챗봇' button stands for the launcher, which is not drawn there (it covered the phone tile and the credit)
     page.goto(site["url"] + "/places/eunpa-lake-park/")
     fab = page.locator(".chat-fab")
-    assert fab.is_visible() and page.locator(".pl-bar").is_visible()
-    box, bar = fab.bounding_box(), page.locator(".pl-bar").bounding_box()
-    assert box["height"] == 76 and box["width"] == 76 and box["y"] + box["height"] <= bar["y"]   # a round face (the first site's owner 2026-10-14: bigger; 10-31: 76px)
+    bar_chat = page.locator(".pl-bar [data-tab-chat]")
+    assert bar_chat.is_visible() and not fab.is_visible()
     page.mouse.wheel(0, 700)
     page.wait_for_timeout(500)
-    assert fab.is_visible() and fab.bounding_box()["height"] == 76                               # the same face while scrolling
-    assert fab.get_attribute("aria-label").startswith("AI 챗봇")                                   # the name stays
+    assert bar_chat.is_visible() and "AI 챗봇" in bar_chat.inner_text()          # the bar stays while scrolling
     # the home on a phone: the tab bar's 'AI 챗봇' is the page's one chat opener (it presses the launcher, site.js
     # [data-tab-chat]; the first site's c2552acc7) — the launcher's face is not shown beside it
     page.goto(site["url"] + "/")
@@ -247,7 +245,7 @@ def test_on_a_phone_the_bar_s_button_opens_the_chat_and_gets_the_focus_back(brow
     is to <body>."""
     ctx, page, errors, calls = open_page(browser, 390, 844, [OK])
     for path, bar in (("/places/eunpa-lake-park/", ".pl-bar"), ("/places/", ".tabbar")):
-        page.goto(site + path)
+        page.goto(site["url"] + path)
         button = page.locator(f"{bar} [data-tab-chat]")
         assert button.is_visible() and not page.locator(".chat-fab").is_visible()
         assert "AI 챗봇" in button.inner_text()
