@@ -364,3 +364,9 @@ html[lang="ko"] .pl-src .rail-label .nm { display: inline; margin: 0; font-size:
    scrolled sideways (found 2026-11-10 at 390px: 113 of the 123 guide pages of ja · zh-Hans · zh-Hant in the public
    build). They break between characters, as css/77-lang.css sets for those versions. */
 html:is([lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) :is(.guide .d1-q, .guide .gd-ans-l, .guide .gd-ans-r, .gd-sec .h-sec, .gd-pts li, .gd-sec .gd-p) { word-break: normal; }
+
+/* ---- the story's year rail (this site: one button per chapter) in the narrower text column of 1200–1771px: it was
+   wider than its column and the page scrolled sideways (1200px before the calm pass, 1200–1280px with it) — it wraps
+   inside the column instead */
+.story.is-staged .st-rail { flex-wrap: wrap; max-width: 100%; border-radius: 26px; }
+.story.is-staged .st-rail button { max-width: 100%; min-width: 0; flex-wrap: wrap; text-align: left; white-space: normal; padding-top: 8px; padding-bottom: 8px; line-height: 1.3; }

@@ -266,7 +266,7 @@
       {% if insta %}<h3 class="ab-sub">인스타그램에서 본 {{ nm }} <span class="tn">{{ insta|length }}</span></h3>
       <div class="ab-wallbox"><ul class="ab-wall ab-wall-place" data-wall>{% for a in insta[:2] %}{{ ab.post(a, (a._places|length) > 1) }}{% endfor %}</ul></div>
       {% if insta|length > 2 %}<details class="fold"><summary>인스타그램 게시물 <span class="tn">{{ insta|length - 2 }}개</span> 더 보기</summary><div class="ab-wallbox"><ul class="ab-wall ab-wall-place" data-wall>{% for a in insta[2:] %}{{ ab.post(a, (a._places|length) > 1) }}{% endfor %}</ul></div></details>{% endif %}
-      {% if insta_guide %}<p class="note"><a href="{{ insta_guide }}#h-insta">{{ site.region }} {{ insta_words.topic }} 인스타그램 큐레이션 모아 보기 →</a></p>{% endif %}{% endif %}
+      {% if insta_page %}<p class="note"><a href="{{ insta_page }}">인스타그램에서 본 {{ site.region }} 모두 보기 →</a></p>{% endif %}{% endif %}
       {% if ab_art or ab_post %}{% set ab_two = ab_art + ab_post %}<h3 class="ab-sub">해외에서 본 {{ nm }} <span class="tn">{{ ab_two|length }}</span></h3>
       <ul class="ab-list ab-in">{% for a in ab_two[:2] %}{% if a.kind == 'article' %}{{ ab.article(a, false, false) }}{% else %}{{ ab.post(a, false) }}{% endif %}{% endfor %}</ul>
       {% if ab_two|length > 2 %}<details class="fold"><summary>해외 기사·게시물 <span class="tn">{{ ab_two|length - 2 }}건</span> 더 보기</summary><ul class="ab-list ab-in">{% for a in ab_two[2:] %}{% if a.kind == 'article' %}{{ ab.article(a, false, false) }}{% else %}{{ ab.post(a, false) }}{% endif %}{% endfor %}</ul></details>{% endif %}{% endif %}

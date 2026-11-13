@@ -791,6 +791,9 @@ class State:
                 # it: the home then has no Instagram section and a place page no link to it)
                 "insta_guide": next((g["_path"] for g in self.guides if g.get("_insta")), ""),
                 "insta_words": self.insta_words,   # {topic, noun}: the Instagram headings (load_insta_words)
+                # /insta/ (인스타그램에서 본 <region>, 조정 세션 2026-11-13): every curated post — the rank rows, '전체'
+                # and the channels link there; '' without insta.json
+                "insta_page": "/insta/" if self.insta else "",
                 "has_search": bool(self.entities), "has_abroad": bool(self.abroad or self.abroad_videos),
                 "has_plan": bool(self.entities),   # /plan/, the AI course planner (Korean pages, pipeline/plan.py)
                 # 파트너 되기 (pipeline/partners.py): the side panel / phone menu / footer link to /partners/
@@ -1671,7 +1674,22 @@ def load_yt_channels(data_dir: Path, videos: list[dict]) -> tuple[list[dict], li
     pop.sort(key=lambda v: -view_count(v))
     for v in pop:   # the list's videos lead a place's and an event's videos and show their count (_ui.vcard)
         v["popular_curated"] = True
+        v["short_view_text"] = short_views(view_count(v))
     return chs, pop
+
+
+def short_views(n: int) -> str:
+    """The rank rows' short count, from the whole number (never from a short form): '조회수 349만회' from 1,000,000 up
+    (rounded to a whole 만), '조회수 91.6만회' from 10,000 (one decimal, rounded; '.0' dropped), the number itself below.
+    '' for 0."""
+    if n <= 0:
+        return ""
+    if n >= 1_000_000:
+        return f"조회수 {round(n / 10_000):,}만회"
+    if n >= 10_000:
+        x = round(n / 10_000, 1)
+        return f"조회수 {x:g}만회"
+    return f"조회수 {n:,}회"
 
 
 def view_count(v: dict) -> int:
@@ -2178,6 +2196,23 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
         if hl:   # the viewer (templates/_abroad_hl.html.j2 dialog) arrives with highlights.js on the first press
             viewer = env.get_template("_abroad_hl.html.j2").module.dialog(hl)
             (out / HL_VIEWER.strip("/")).write_text(json.dumps({"html": str(viewer)}, ensure_ascii=False), "utf-8")
+
+    if S.insta:
+        # /insta/ 인스타그램에서 본 <region> (조정 세션 2026-11-13, the operator's word): the curated posts by their likes
+        # — our one-line note, the account, the count of the day they were put in (no date on the screen), the places
+        # this site has, the original link and Instagram's official embed (loaded near the screen, as on /abroad/) —
+        # and the curated channels. Korean only.
+        path = "/insta/"
+        crumbs = [("홈", S.site_url + "/"), ("인스타그램에서 본 " + region, S.abs(path))]
+        posts = sorted(S.insta, key=lambda a: (-int(a.get("likes") or 0), a["id"]))
+        chans = live_channels(S, S.insta_channels)
+        desc = first_fit(f"{josa(S.site['site_name'], '이/가')} 고른 {region} 인스타그램 게시물 {len(posts)}편을 좋아요 순으로 모으고 "
+                         f"채널 {len(chans)}곳을 함께 실었습니다." if chans else
+                         f"{josa(S.site['site_name'], '이/가')} 고른 {region} 인스타그램 게시물 {len(posts)}편을 좋아요 순으로 모았습니다.",
+                         f"{region} 인스타그램 게시물 {len(posts)}편을 좋아요 순으로 모았습니다.")
+        page = _simple_page(S, path, f"인스타그램에서 본 {region} — 게시물 {len(posts)}편", desc, crumbs, None)
+        _render(env, S, out, "insta.html.j2", path, page, "insta",
+                latest(*(a.get("checked_at") for a in posts)), posts=posts, channels=chans, places=S.ent_by_slug)
 
     if S.partners:
         # /partners/ 파트너 되기 (the first site's 7f2afaad7, operator 2026-11-04 meeting; this city 2026-11-05 — the

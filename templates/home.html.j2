@@ -38,9 +38,9 @@
 {% set T = namespace(i=0) %}
 {% set N = h.news|length %}
 {% set ASK = ask_starters is defined and ask_starters is not none %}
-{#- IG: the guide whose #h-insta chapter the Instagram cards open in ('' when this build does not publish it: then no
+{#- IG: /insta/, the page that holds every curated post with its official embed ('' without insta.json: then no
     Instagram tab, list or section — they would only link to a page that is not there) -#}
-{% set IG = insta_guide|default('') %}
+{% set IG = insta_page|default('') %}
 {#- the board (from 1680px, css/48-abroad.css): a YouTube panel and an Instagram panel behind two tabs — each panel
     whole in its own <div> whatever data is there (2026-11-10: the first panel was opened by one condition and closed
     by another, so a build without curated videos or without the Instagram guide left the markup unbalanced). It
@@ -75,7 +75,7 @@
       </li>
       {% endfor %}
     </ul>
-    <p class="hrs-note">{{ site.site_name|josa('이/가') }} 고른 영상 {{ n_popular|default(popular_videos|length) }}편 안의 조회수 순 · 추천 순서가 아님 · 숫자는 실은 때의 값</p>
+    <p class="hrs-note">{{ site.site_name|josa('이/가') }} 고른 영상 {{ n_popular|default(popular_videos|length) }}편 안의 조회수 순 · 추천 순서가 아님 · 숫자는 목록에 실은 때의 값</p>
   </div>
   {% endif %}
   {% if yt_channels %}
@@ -97,7 +97,7 @@
   <div class="hrs-panel"{% if RS_YT %} role="tabpanel" aria-labelledby="hrs-tab-ig" data-tab-off{% endif %} id="hrs-panel-ig">
   {% if home_insta %}
   <div class="hrs-sec">
-    <div class="hrs-sh"><h3>화제의 {{ site.region }} {{ insta_words.topic }} 인스타그램 <em class="hrs-by">좋아요 순</em></h3><a href="{{ IG }}#h-insta">전체 {{ n_insta }}편<span class="arr" aria-hidden="true">→</span></a></div>
+    <div class="hrs-sh"><h3>화제의 {{ site.region }} {{ insta_words.topic }} 인스타그램 <em class="hrs-by">좋아요 순</em></h3><a href="{{ IG }}">전체 {{ n_insta }}편<span class="arr" aria-hidden="true">→</span></a></div>
     <ul class="hrs-clist">
       {% for a in home_insta[:5] %}
       <li class="hrs-c">
@@ -106,12 +106,12 @@
       </li>
       {% endfor %}
     </ul>
-    <p class="hrs-note">{{ site.site_name|josa('이/가') }} 고른 게시물 {{ n_insta }}편 안의 좋아요 순 · 추천 순서가 아님 · 숫자는 실은 때의 값</p>
+    <p class="hrs-note">{{ site.site_name|josa('이/가') }} 고른 게시물 {{ n_insta }}편 안의 좋아요 순 · 추천 순서가 아님 · 숫자는 목록에 실은 때의 값</p>
   </div>
   {% endif %}
   {% if insta_channels %}
   <div class="hrs-sec" id="hrs-ig">
-    <div class="hrs-sh"><h3>인기 인스타 채널 <span class="tn">{{ insta_channels|length }}</span></h3><a href="{{ IG }}#h-insta">모아 보기<span class="arr" aria-hidden="true">→</span></a></div>
+    <div class="hrs-sh"><h3>인기 인스타 채널 <span class="tn">{{ insta_channels|length }}</span></h3><a href="{{ IG }}#ig-channels">모두 보기<span class="arr" aria-hidden="true">→</span></a></div>
     <ul class="hrs-clist">
       {% for ch in insta_channels %}
       <li class="hrs-c">
@@ -216,7 +216,7 @@
       {% endif %}
       {% if RK_IG %}
       <div class="hrk-col hrk-w-ig">
-        <div class="hrk-sh"><h3>{{ ab.svc('instagram', 'ab-svc hrk-svc') }}<span>인스타그램</span><em>좋아요 순</em></h3><a href="{{ IG }}#h-insta">{{ n_insta }}편 모두<span class="arr" aria-hidden="true">›</span></a></div>
+        <div class="hrk-sh"><h3>{{ ab.svc('instagram', 'ab-svc hrk-svc') }}<span>인스타그램</span><em>좋아요 순</em></h3><a href="{{ IG }}">{{ n_insta }}편 모두<span class="arr" aria-hidden="true">›</span></a></div>
         <ol class="hrk-list" role="list">
           {% for a in RK_IG %}{% set ph = a.photo if a.photo and not a.related else none %}
           <li class="hrk-i{{ ' hrk-x' if loop.index > 3 }}">
@@ -230,11 +230,12 @@
           </li>
           {% endfor %}
         </ol>
-        <p class="hrk-doors">{% if insta_channels %}<a href="{{ IG }}#h-insta-channels"><span>인기 채널 <span class="tn">{{ insta_channels|length }}</span>곳</span><span class="arr" aria-hidden="true">›</span></a>{% endif %}</p>
+        {% set own_id = 'ig-ch-' ~ (site.site_name_en or '')|lower %}{% set own_ch = (insta_channels|selectattr('own')|first) or (insta_channels|selectattr('id', 'equalto', own_id)|first) if insta_channels else none %}
+        <p class="hrk-doors">{% if insta_channels %}<a href="{{ IG }}#ig-channels"><span>인기 채널 <span class="tn">{{ insta_channels|length }}</span>곳</span><span class="arr" aria-hidden="true">›</span></a>{% endif %}{% if own_ch %}<a href="{{ own_ch.url }}" target="_blank" rel="noopener" data-track="abroad_click"><span>{{ own_ch.name }}<span class="vh"> (새 창)</span></span><span class="arr" aria-hidden="true">↗</span></a>{% endif %}</p>
       </div>
       {% endif %}
     </div>
-    <p class="hrk-note">{{ site.site_name|josa('이/가') }} 고른 목록 안에서 {% if RK_YT %}유튜브는 조회수{% endif %}{% if RK_YT and RK_IG %}, {% endif %}{% if RK_IG %}인스타그램은 좋아요 수{% endif %}가 많은 순서이고, 추천 순서가 아닙니다. 숫자는 목록에 실은 때의 값이라 지금과 다를 수 있습니다.{% if rk_types %} 인스타그램 줄의 사진은 게시물에 나온 장소의 사진입니다(출처: 한국관광공사 · 공공누리 제{{ rk_types|sort|join('·') }}유형).{% endif %}</p>
+    <p class="hrk-note">{{ site.site_name|josa('이/가') }} 고른 {% if RK_YT %}영상 {{ n_popular|default(popular_videos|length) }}편{% endif %}{% if RK_YT and RK_IG %}·{% endif %}{% if RK_IG %}게시물 {{ n_insta }}편{% endif %} 안에서 {% if RK_YT %}유튜브는 조회수{% endif %}{% if RK_YT and RK_IG %}, {% endif %}{% if RK_IG %}인스타그램은 좋아요 수{% endif %}가 많은 순서이고, 추천 순서가 아닙니다. 숫자는 목록에 실은 때의 값이라 지금과 다를 수 있습니다.{% if rk_types %} 인스타그램 줄의 사진은 게시물에 나온 장소의 사진입니다 — 사진 출처: 한국관광공사 · 공공누리 제{{ rk_types|sort|join('·') }}유형.{% endif %}</p>
   </div></div>
 </section>
 {% endif %}

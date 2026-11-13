@@ -1,0 +1,50 @@
+{% extends "base.html.j2" %}
+{#- /insta/ 인스타그램에서 본 <region> (조정 세션 2026-11-13, the operator's word): the curated Instagram posts
+    (data/<region>/insta.json, build.load_insta) by their likes, and the curated channels. Each post is our one-line
+    note, the account, its rank and the count of the day it was put in (never the date: CLAUDE.md 3.12), the places
+    this site has (place_slugs), the original link and Instagram's official embed — loaded when the card nears the
+    screen (site.js [data-embed], as on /abroad/; .ab-wallbox keeps an embed's 326px). Nothing of the posts is copied
+    onto our server. The home's rank rows open #<post id>, '게시물 n편 모두' this page, the channels #ig-channels.
+    Korean only. -#}
+{% import "_abroad.html.j2" as ab %}
+{% block main_class %}{% endblock %}
+{% block bodyclass %}pg-abroad pg-insta{% endblock %}
+{% block content %}
+<section class="pg-hero band-s list-head" aria-labelledby="h-list">
+  <div class="wrap">
+    <h1 id="h-list" class="h-list">인스타그램에서 본 {{ site.region }} <span class="count tn">{{ posts|length }}편</span></h1>
+    <p class="lede ig-rule">{{ site.site_name|josa('이/가') }} 고른 게시물 {{ posts|length }}편 안의 좋아요 순 · 추천 순서가 아님 · 숫자는 목록에 실은 때의 값 · 원문 문장·사진은 옮기지 않고 우리가 쓴 한 줄 소개와 원문 링크, Instagram 공식 임베드로만 보여 줍니다.</p>
+    <nav class="v-nav" aria-label="이 페이지의 묶음"><a href="#ig-posts">게시물 <span class="tn">{{ posts|length }}</span></a>{% if channels %}<a href="#ig-channels">인기 채널 <span class="tn">{{ channels|length }}</span></a>{% endif %}</nav>
+  </div>
+</section>
+<section class="ab-sns ab-sns-top" id="ig-posts" aria-labelledby="ig-posts-h">
+  <div class="wrap">
+    <h2 id="ig-posts-h" class="ab-h">좋아요 순 게시물 <span class="tn">{{ posts|length }}</span></h2>
+    <div class="ab-wallbox"><div class="ab-wall ig-wall" data-wall>
+      {% for a in posts %}
+      <article class="ab-item ab-post ig-post" id="{{ a.id }}" data-embed="{{ a.platform }}" data-url="{{ a.url }}" aria-labelledby="{{ a.id }}-h">
+        <p class="ab-meta ab-head" id="{{ a.id }}-h"><span class="ig-rk tn">{{ loop.index }}<span class="vh">위</span></span>{{ ab.svc(a.platform) }}<span class="ab-who"><span class="ab-author">{{ a.author or a.platform_label }}</span>{% if a.likes %}<span class="ab-sep" aria-hidden="true"> · </span><span class="ig-likes tn">좋아요 {{ '{:,}'.format(a.likes|int) }}</span>{% endif %}</span></p>
+        <p class="ab-note">{{ a.note }}</p>
+        <div class="ab-embed" data-embed-slot data-js-only><div class="ab-ph" data-embed-ph>{{ ab.svc(a.platform, 'ab-ph-mark') }}<span class="ab-ph-msg">{{ a.platform_label }} 게시물 불러오는 중</span><button type="button" class="ab-load" data-embed-load data-title="{{ a.platform_label }} 게시물">게시물 불러오기</button></div></div>
+        <p class="ab-chips"><a class="ab-go" href="{{ a.url }}" rel="noopener" data-track="abroad_click">{{ a.platform_label }}에서 보기<span class="arr" aria-hidden="true">↗</span></a>{% set pls = [] %}{% for s in a.place_slugs or [] if s in places %}{% set _ = pls.append(places[s]) %}{% endfor %}{% if pls %}<span class="ab-rel">나온 곳</span>{% for x in pls %}<a class="ab-chip" href="{{ x._path }}">{{ x.name }}</a>{% endfor %}{% endif %}</p>
+      </article>
+      {% endfor %}
+    </div></div>
+  </div>
+</section>
+{% if channels %}
+<section class="wrap ab-sec ig-ch-sec" id="ig-channels" aria-labelledby="ig-channels-h">
+  {{ ui.chead(site.region ~ ' 관련 인기 인스타그램 채널', 'ig-channels-h', '', '', '', '', channels|length) }}
+  <ul class="ig-ch-grid">
+    {% for ch in channels %}
+    <li class="ig-ch-card" id="{{ ch.id }}">
+      <div class="ig-ch-head">{{ ab.svc('instagram') }}<div class="ig-ch-who"><b>{{ ch.name }}</b><span>{{ ch.handle }}</span></div>{% if ch.badge %}<span class="ig-ch-badge">{{ ch.badge }}</span>{% endif %}</div>
+      <p class="ig-ch-note">{{ ch.note }}</p>
+      <p class="ig-ch-links"><a class="ig-ch-go" href="{{ ch.url }}" target="_blank" rel="noopener" data-track="abroad_click">인스타그램에서 보기<span class="arr" aria-hidden="true">↗</span></a>{% for l in ch.links or [] %}<a class="ig-ch-chip" href="{{ l.href }}">{{ l.label }}</a>{% endfor %}</p>
+    </li>
+    {% endfor %}
+  </ul>
+  <p class="note yt-ch-note">팔로워 수는 채널을 골라 실은 때의 값이라 지금과 다를 수 있습니다. 소개 글은 {{ site.site_name|josa('이/가') }} 썼고, 게시물은 각 계정의 것입니다.</p>
+</section>
+{% endif %}
+{% endblock %}

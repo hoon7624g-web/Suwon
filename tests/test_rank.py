@@ -54,7 +54,7 @@ def test_the_curated_videos_are_ranked_by_views_and_the_lists_say_what_the_order
     yt_rows = re.findall(r'<li class="hrk-i[^"]*">\s*<a class="hrk-a" href="https://www\.youtube\.com/watch\?v=([^"]+)"', home)
     assert yt_rows == [v["youtube_id"] for v in pop[:5]]
     board = home[home.index('<aside class="h-rside"'):home.index("</aside>")]
-    assert "고른 영상" in board and "추천 순서가 아님" in board and "숫자는 실은 때의 값" in board
+    assert "고른 영상" in board and "추천 순서가 아님" in board and "숫자는 목록에 실은 때의 값" in board
     videos = (out / "videos" / "index.html").read_text("utf-8")
     assert 'id="yt-popular"' in videos and "추천 순서가 아닙니다" in videos
     if insta:
@@ -84,3 +84,55 @@ def test_the_instagram_words_are_neutral_unless_insta_json_names_them(tmp_path, 
         assert "인스타그램에서 많이 찾은" in guide and "여행지·맛집" in guide and "장소별 인스타그램 미리보기" in guide
         assert "감성 카페" not in guide and "카페별" not in guide
         assert "여행지·맛집 인스타그램" in re.sub(r"<[^>]+>", "", (out / "index.html").read_text("utf-8"))
+
+
+def test_insta_page_holds_every_post_by_likes_and_the_home_links_there(world):
+    """/insta/ (조정 세션 2026-11-13): '인스타그램에서 본 <region>' with the post count, the rule line (this site's list,
+    by likes, not a recommendation, the counts of the day they were put in — no date), each post an <article id> with
+    its rank, account, likes, our note, the places this site publishes, the original link and the embed slot; the
+    channels at #ig-channels. The home's Instagram rows open /insta/#<id> and its '편 모두' /insta/. Korean only; no page
+    without insta.json."""
+    insta, S, out = world
+    page = out / "insta" / "index.html"
+    if not insta:
+        assert not page.exists()
+        assert "/insta/" not in (out / "index.html").read_text("utf-8")
+        return
+    html = page.read_text("utf-8")
+    posts = sorted(S.insta, key=lambda a: (-int(a.get("likes") or 0), a["id"]))
+    assert re.search(r'<h1 id="h-list" class="h-list">인스타그램에서 본 [^<]+<span class="count tn">%d편</span></h1>' % len(posts), html)
+    rule = re.search(r'class="lede ig-rule">([^<]*)', html).group(1)
+    assert f"게시물 {len(posts)}편 안의 좋아요 순" in rule and "추천 순서가 아님" in rule and "목록에 실은 때의 값" in rule
+    main = html[html.index('<section class="pg-hero'):html.index("</main>")]
+    assert not re.search(r"20\d\d-\d\d-\d\d|\d{4}년 \d+월|\d+월 \d+일", main)   # no check date on the screen
+    ids = re.findall(r'<article class="ab-item ab-post ig-post" id="([^"]+)" data-embed="instagram" data-url="https://www\.instagram\.com/', html)
+    assert ids == [a["id"] for a in posts]
+    for i, a in enumerate(posts, 1):
+        art = html[html.index(f'<article class="ab-item ab-post ig-post" id="{a["id"]}"'):]
+        art = art[:art.index("</article>")]
+        assert f'<span class="ig-rk tn">{i}<' in art and a["note"] in art and "data-embed-slot" in art and a["url"] in art
+        for slug in a["place_slugs"]:
+            if slug in S.ent_by_slug:
+                assert f'href="{S.ent_by_slug[slug]["_path"]}"' in art
+    home = (out / "index.html").read_text("utf-8")
+    assert re.findall(r'class="hrk-a" href="/insta/#([^"]+)"', home) == [a["id"] for a in posts[:5]]
+    assert 'href="/insta/">' in home and "/en/insta/" not in home
+    assert not (out / "en" / "insta").exists()
+
+
+def test_the_rank_rows_show_short_counts_from_the_whole_number():
+    from pipeline.build import short_views
+    assert short_views(3486762) == "조회수 349만회" and short_views(916_000) == "조회수 91.6만회"
+    assert short_views(52_715) == "조회수 5.3만회" and short_views(9_100) == "조회수 9,100회" and short_views(0) == ""
+
+
+def test_no_korean_video_outside_the_curated_list_has_more_views_than_its_last(tmp_path):
+    """data/suwon: the list (yt_channels.json popular_video_ids) holds every published Korean video with more views than
+    its last one (exclude left out), in view-count order (군산각 2026-11-10 '넣어')."""
+    S = State(ROOT / "data" / "suwon", "production")
+    pop = S.popular_videos
+    counts = [view_count(v) for v in pop]
+    assert pop and counts == sorted(counts, reverse=True)
+    rest = [v for v in S.videos if v not in pop and (v.get("lang") or "ko") == "ko" and not v.get("exclude")]
+    assert not [v["youtube_id"] for v in rest if view_count(v) > counts[-1]]
+    assert all(v["short_view_text"] for v in pop)
