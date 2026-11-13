@@ -1,0 +1,281 @@
+From 452f88420530668d7a397d634f2675112d3addf1 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Tue, 10 Nov 2026 10:49:12 +0000
+Subject: [PATCH] =?UTF-8?q?feat(home):=20=ED=99=94=EC=A0=9C=20=EC=98=81?=
+ =?UTF-8?q?=EC=83=81=20=EB=AA=A9=EB=A1=9D=2024=20=E2=86=92=2069=ED=8E=B8,?=
+ =?UTF-8?q?=20=EB=84=93=EC=9D=80=20=ED=99=94=EB=A9=B4=EC=97=90=EC=84=9C=20?=
+ =?UTF-8?q?=EB=B3=B4=EB=93=9C=EC=99=80=20=EB=B8=94=EB=A1=9D=EC=9D=B4=20?=
+ =?UTF-8?q?=EB=91=90=20=EC=88=9C=EC=9C=84=EB=A5=BC=20=EB=82=98=EB=88=A0=20?=
+ =?UTF-8?q?=EB=B3=B4=EC=9E=84?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+운영자 답(2026-11-10): '조회수가 더 많은데 24편에 없는 영상 → 넣어', '축제카드는 지금 위치 유지해',
+'넓은 화면에서는 니가 생각하기에 합리적인 방향으로 진행해'.
+
+- 화제 영상 목록: 사이트에 실린 영상 가운데 고른 24편의 마지막(98,062회)보다 조회수가 많은 45편을
+  yt_channels.json popular_video_ids에 넣고 videos.json에 popular_curated·short_view_text를 붙임.
+  싣지 않는 영상(exclude)은 넣지 않음. 홈 5위가 어청도 영상(110만 회)으로 바뀜. 이제 목록 밖 영상이
+  목록 안 영상보다 조회수가 많은 경우가 없음(시험이 확인)
+- 넓은 화면(1680px~): 오른쪽 보드는 탭으로 한 번에 한 목록만 보이므로 본문 블록이 다른 하나를 카드
+  다섯 장으로 보임 — 보드가 유튜브(기본)면 블록은 인스타그램, 보드의 인스타그램 탭을 누르면 블록은
+  유튜브. 두 목록이 클릭 없이 함께 보이고 같은 줄이 두 번 나오지 않음. 스크립트가 없으면 보드가 두
+  목록을 다 보이므로 블록은 숨음
+- 축제 띠와 순위 블록의 순서는 그대로
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01NujcWun3eD1NVvxndVydTT
+---
+ data/gunsan/yt_channels.json     | 45 ++++++++++++++++++++++++++++++++
+ templates/assets/css/47-rank.css | 18 +++++++++++--
+ templates/home.html.j2           | 24 ++++++++++-------
+ tests/test_present.py            | 32 +++++++++++++++++------
+ 4 files changed, 99 insertions(+), 20 deletions(-)
+
+diff --git a/data/gunsan/yt_channels.json b/data/gunsan/yt_channels.json
+index 09689956eb..1d86203c1d 100644
+--- a/data/gunsan/yt_channels.json
++++ b/data/gunsan/yt_channels.json
+@@ -6,25 +6,70 @@
+     "KPDIICT9lUE",
+     "KBqjqXRJoiY",
+     "77O9DlR6rCk",
++    "YhLQ6V89VqE",
+     "s4pj0hA5vqA",
++    "sFRgatf_Ccw",
+     "17KwFK9VnEs",
+     "8Szk64LZu5c",
++    "khutf4Igrw4",
++    "NpmK36m-ddQ",
++    "syhNUAFYXcQ",
++    "grNA8wnRkew",
+     "KgJH0GpnzDA",
++    "atgqO8-0pSw",
++    "ShOg5vw2UT0",
+     "RRmBj_yr2lw",
++    "SAsxIoaPE6U",
++    "yPIyEFg0RJs",
++    "P_glcguXzW4",
++    "I95KNxD9S3g",
++    "4KvvEc8wF88",
++    "r8L1GMrz-Ak",
+     "ORaZBIHHvWU",
++    "wMCAWWtSS0o",
++    "f0mWJSJfH5Q",
++    "9Lp067gu5FE",
++    "HcUH0KNCW3c",
+     "3wltBUGuLa8",
++    "v-u3Z1dykUk",
++    "9y4KMnA1f8w",
++    "SthYqX0-t0s",
+     "-amnYn4bAgQ",
++    "DxMv6afbI4Q",
++    "xD1Ysn_z37c",
+     "p_-b6ZTSCW8",
++    "GuLt1bbrAmU",
+     "Uq98owHlpyM",
++    "KPFdnvsSJC8",
+     "iYAKvnzlWAA",
++    "zonHGmX9Pvc",
+     "MolvgIvIs2w",
++    "82qpQLM62mM",
++    "PdRugGPQFYU",
+     "Al9x2F_exrE",
++    "QAD78kQ09Ss",
+     "hLD_afaW-8k",
+     "nftqp1fIGLg",
++    "pKhISsLrCJc",
++    "5fEOcNs9NQc",
+     "KTimlxTtyNA",
++    "YWYR_higY_Q",
+     "oy-JtZyasw8",
++    "Hg_jMEIMNSk",
++    "BOftYg5YfJs",
+     "bjYI4STHlEg",
++    "lp4uM4AA68s",
++    "NZtvc8hfbp8",
++    "7L4U71w5k-0",
++    "KxZcF9YKFJs",
++    "qzaB4DxP-RQ",
++    "a-prZwY9l_g",
++    "U_mmbPWfjbU",
++    "TI6qM5wZZWI",
++    "jrWfojEf-P0",
++    "eGAe-24ILD8",
+     "MP1NxX0_VHI",
++    "RMPiI9xhErg",
+     "XrMCDljT8UI"
+   ],
+   "channels": [
+diff --git a/templates/assets/css/47-rank.css b/templates/assets/css/47-rank.css
+index 4aab4a10e3..2bf941a3c0 100644
+--- a/templates/assets/css/47-rank.css
++++ b/templates/assets/css/47-rank.css
+@@ -86,10 +86,24 @@
+   .hrk-a:hover .hrk-th:not(.hrk-ig) img { transform: scale(1.03); }
+ }
+ @media print { .hrk-play { display: none; } }
+-/* from 1680px the board beside the column (css/48-abroad .h-rside) shows the same ranks, fixed on the screen: the
+-   block is where there is no board, so that the ranks are on a screen once */
++/* from 1680px the board beside the column (css/48-abroad .h-rside) shows one of the two lists all the time, behind
++   its tabs (site.js [data-tabs]: the panel that is not open carries data-tab-off). The block shows the other one, so
++   that both lists are on the screen and neither twice: the Instagram ranks while the board is on YouTube, the videos
++   while it is on Instagram — one list across the card as five cards, the rank on the picture. Without the tabs (no
++   script: the board shows both lists) the block steps out. */
+ @media (min-width: 1680px) {
+   body.pg-ko-home:has(.h-rside) .hrk { display: none; }
++  html.js body.pg-ko-home:has(.h-rside .hrs-panel[data-tab-off]) .hrk { display: block; }
++  html.js body.pg-ko-home:has(#hrs-panel-ig[data-tab-off]) .hrk :is(.hrk-w-yt, .hrk-w-dot),
++  html.js body.pg-ko-home:has(#hrs-panel-yt[data-tab-off]) .hrk :is(.hrk-w-ig, .hrk-w-dot) { display: none; }
++  body.pg-ko-home:has(.h-rside) .hrk-cols { grid-template-columns: minmax(0, 1fr); }
++  body.pg-ko-home:has(.h-rside) .hrk-list { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 20px; padding-top: 16px; }
++  body.pg-ko-home:has(.h-rside) .hrk-i { padding: 0; border-bottom: 0; }
++  body.pg-ko-home:has(.h-rside) .hrk-a { position: relative; grid-template-columns: minmax(0, 1fr); gap: 10px; }
++  body.pg-ko-home:has(.h-rside) .hrk-n { position: absolute; left: 0; top: 0; z-index: 1; display: grid; place-items: center; min-width: 30px; height: 30px; padding: 0 7px; border-radius: 10px 0 10px 0; background: var(--ink); color: #fff; font-size: 15px; letter-spacing: 0; }
++  body.pg-ko-home:has(.h-rside) .hrk-t { -webkit-line-clamp: 3; }
++  body.pg-ko-home:has(.h-rside) .hrk-pl { margin-top: 8px; padding-left: 0; }
++  body.pg-ko-home:has(.h-rside) .hrk-doors { margin-top: 18px; }
+ }
+ 
+ /* the board's lists (css/48-abroad .hrs-*) say what their order is and that it is no recommendation, and a video
+diff --git a/templates/home.html.j2 b/templates/home.html.j2
+index 0b05fbd653..9ed47a692b 100644
+--- a/templates/home.html.j2
++++ b/templates/home.html.j2
+@@ -59,10 +59,11 @@
+ {% set IG = insta_guide|default('') %}
+ {#- the board (from 1680px, css/48-abroad.css): a YouTube panel and an Instagram panel behind two tabs — each panel
+     whole in its own <div> whatever data is there (2026-11-10: the first panel was opened by one condition and closed
+-    by another, so a build without curated videos or without the Instagram guide left the markup unbalanced). It is
+-    where the ranks are on a wide window (operator 2026-11-10 '순위별로 큐레이션해서 굉장히 잘 보이는 곳에'): each
++    by another, so a build without curated videos or without the Instagram guide left the markup unbalanced). It
++    carries the ranks on a wide window (operator 2026-11-10 '순위별로 큐레이션해서 굉장히 잘 보이는 곳에'): each
+     panel opens with its ranked list — the videos by views with the rank on the picture, the posts by likes — then
+-    the channels; the rank block in the column (.hrk, below) takes that place where there is no board. -#}
++    the channels; the rank block in the column (.hrk, below) shows the list of the tab that is not open, and both
++    lists where there is no board. -#}
+ {% set RS_YT = has_videos and (popular_videos or yt_channels) %}
+ {% set RS_IG = IG and (insta_channels or home_insta) %}
+ {% if RS_YT or RS_IG %}
+@@ -197,19 +198,22 @@
+     data — operator 2026-10-09, validate.visible_check_dates). A video's row goes to YouTube; a post's row to its card in
+     the cafe guide, where the official embed is. An Instagram row's small picture is a licensed photo of a place the
+     post shows (KOGL-1 cut to the box, KOGL-3 whole), never the post's own; without one the row shows the service's
+-    mark. The home's own YouTube row and Instagram section are this block now, and from 1680px — where the board
+-    beside the column shows the same ranks all the time — the block steps out (css/47-rank.css): the ranks
+-    are on a screen once. -#}
++    mark. The home's own YouTube row and Instagram section are this block now. From 1680px the board beside the
++    column shows one of the two lists all the time, behind its tabs: there the block shows the other one — the
++    Instagram ranks while the board is on YouTube, and the reverse — five cards across (css/47-rank.css; the
++    .hrk-w-yt / .hrk-w-ig parts are what steps out). So both lists are on the screen and neither twice (operator
++    2026-11-10: on a wide window 'the way you find reasonable'). Without the tabs (no script) the board shows both
++    lists and the block steps out. -#}
+ {% set RK_YT = popular_videos[:5] if has_videos else [] %}
+ {% set RK_IG = home_insta[:5] if IG else [] %}
+ {% if RK_YT or RK_IG %}
+ {% set rk_types = [] %}{% for a in RK_IG if a.photo and not a.related and a.photo.type not in rk_types %}{% set _ = rk_types.append(a.photo.type) %}{% endfor %}
+ <section class="hrk" aria-labelledby="h-rank">
+   <div class="wrap"><div class="hrk-card">
+-    <div class="hrk-head"><h2 id="h-rank" class="hrk-h">{{ '유튜브·인스타그램' if RK_YT and RK_IG else ('유튜브' if RK_YT else '인스타그램') }} 인기 순위</h2><p class="hrk-sub">{{ site.site_name|josa('이/가') }} 고른 {% if RK_YT %}영상 <span class="tn">{{ n_popular|default(popular_videos|length) }}</span>편{% endif %}{% if RK_YT and RK_IG %}·{% endif %}{% if RK_IG %}카페 게시물 <span class="tn">{{ n_insta }}</span>편{% endif %} 가운데</p></div>
++    <div class="hrk-head"><h2 id="h-rank" class="hrk-h">{% if RK_YT %}<span class="hrk-w-yt">유튜브</span>{% endif %}{% if RK_YT and RK_IG %}<span class="hrk-w-dot">·</span>{% endif %}{% if RK_IG %}<span class="hrk-w-ig">인스타그램</span>{% endif %} 인기 순위</h2><p class="hrk-sub">{{ site.site_name|josa('이/가') }} 고른 {% if RK_YT %}<span class="hrk-w-yt">영상 <span class="tn">{{ n_popular|default(popular_videos|length) }}</span>편</span>{% endif %}{% if RK_YT and RK_IG %}<span class="hrk-w-dot">·</span>{% endif %}{% if RK_IG %}<span class="hrk-w-ig">카페 게시물 <span class="tn">{{ n_insta }}</span>편</span>{% endif %} 가운데</p></div>
+     <div class="hrk-cols{{ ' hrk-one' if not (RK_YT and RK_IG) }}">
+       {% if RK_YT %}
+-      <div class="hrk-col">
++      <div class="hrk-col hrk-w-yt">
+         <div class="hrk-sh"><h3>{{ ab.svc('youtube', 'ab-svc hrk-svc') }}<span>유튜브</span><em>조회수 순</em></h3><a href="/videos/#yt-popular">{{ n_popular|default(popular_videos|length) }}편 모두<span class="arr" aria-hidden="true">›</span></a></div>
+         <ol class="hrk-list" role="list">
+           {% for v in RK_YT %}{% set t = v.thumbnail or {} %}
+@@ -228,14 +232,14 @@
+       {% endif %}
+       {% if RK_IG %}
+       {% set own_ch = insta_channels|selectattr('id', 'equalto', 'ig-ch-gunsangak')|first if insta_channels else none %}
+-      <div class="hrk-col">
++      <div class="hrk-col hrk-w-ig">
+         <div class="hrk-sh"><h3>{{ ab.svc('instagram', 'ab-svc hrk-svc') }}<span>인스타그램</span><em>좋아요 순</em></h3><a href="{{ IG }}#h-insta">{{ n_insta }}편 모두<span class="arr" aria-hidden="true">›</span></a></div>
+         <ol class="hrk-list" role="list">
+           {% for a in RK_IG %}{% set ph = a.photo if a.photo and not a.related else none %}
+           <li class="hrk-i{{ ' hrk-x' if loop.index > 3 }}">
+             <a class="hrk-a" href="{{ IG }}#{{ a.id }}" data-track="abroad_click">
+               <span class="hrk-n tn">{{ loop.index }}<span class="vh">위</span></span>
+-              <span class="hrk-th hrk-ig{% if ph %} t{{ ph.type }}{% endif %}">{% if ph %}{{ ui.img(ph, '104px', false, 'hrk-img') }}{% else %}{{ ab.svc('instagram', 'ab-svc hrk-glyph') }}{% endif %}</span>
++              <span class="hrk-th hrk-ig{% if ph %} t{{ ph.type }}{% endif %}">{% if ph %}{{ ui.img(ph, '(min-width: 1680px) 220px, 112px', false, 'hrk-img') }}{% else %}{{ ab.svc('instagram', 'ab-svc hrk-glyph') }}{% endif %}</span>
+               <span class="hrk-tx"><span class="hrk-top"><b class="hrk-who">{{ a.author or 'Instagram' }}</b>{% if a.likes %}<span class="hrk-cnt tn">좋아요 {{ '{:,}'.format(a.likes|int) }}</span>{% endif %}</span><span class="hrk-t">{{ a.note }}</span></span>
+             </a>
+             {% set pls = [] %}{% for sl in a.place_slugs or [] if sl in places %}{% set _ = pls.append(places[sl]) %}{% endfor %}
+diff --git a/tests/test_present.py b/tests/test_present.py
+index 4dee7a2fde..69ca008d0b 100644
+--- a/tests/test_present.py
++++ b/tests/test_present.py
+@@ -2376,9 +2376,10 @@ def test_home_ranks_the_curated_videos_by_views_and_the_instagram_posts_by_likes
+     every video about the region —, that it is not a recommendation and that the counts are those of the day the lists
+     were made, without the day itself (operator 2026-10-09: a check date is data, not screen text). An Instagram row's
+     picture is a licensed photo of a place the post lists, never the post's. The curated videos are in
+-    the order of their views wherever they are listed (/videos/ numbers them). The home has no other YouTube or
+-    Instagram section: the ranks are on the page once (from 1680px the board beside the column shows them and the
+-    block steps out — the browser test below)."""
++    the order of their views wherever they are listed (/videos/ numbers them), and the list holds every video of
++    this site with more views than its last one (operator 2026-11-10 '넣어': a video outside the list never has more
++    views than one in it). The home has no other YouTube or Instagram section: a list is on the screen once (from
++    1680px the board beside the column shows one of the two and the block the other — the browser test below)."""
+     from markupsafe import escape
+     from pipeline.build import view_count
+     html = (built / "index.html").read_text("utf-8")
+@@ -2395,6 +2396,7 @@ def test_home_ranks_the_curated_videos_by_views_and_the_instagram_posts_by_likes
+     pop = S.popular_videos
+     counts = [view_count(v) for v in pop]
+     assert len(pop) >= 5 and all(counts) and counts == sorted(counts, reverse=True)
++    assert not [v["youtube_id"] for v in S.videos if v not in pop and view_count(v) > counts[-1]]   # none outranks the list
+     # a count is a whole number of views; a short form is not read as its digits (it would rank below everything)
+     assert view_count({"view_text": "조회수 3,486,762회"}) == 3486762
+     assert view_count({"view_text": "조회수 349만회"}) == 0 and view_count({"view_text": "조회수 1.2만회"}) == 0 and view_count({}) == 0
+@@ -2441,12 +2443,14 @@ def test_home_ranks_the_curated_videos_by_views_and_the_instagram_posts_by_likes
+     assert f"고른 {len(pop)}편을 조회수가 많은 순으로" in rule and "추천 순서가 아닙니다" in rule and not re.search(r"\d+월 \d+일", rule)
+ 
+ 
+-def test_the_rank_block_is_under_the_opening_and_the_board_takes_its_place_on_wide_windows(built):
++def test_the_rank_block_is_under_the_opening_and_shares_the_two_lists_with_the_board_on_wide_windows(built):
+     """The same (operator 2026-11-10), in a browser: below 1680px the rank block is on the page above the food row —
+     three ranks of each list while they are one column, five in two columns from 720px — with every link a 44px
+-    target where fingers are, and no board; from 1680px the board beside the column shows the ranks and the block is
+-    not shown. Nothing is wider than the window. An Instagram row's place photo is whole inside its box (a KOGL-3
+-    photo may not be cut: it was, by its lower edge, while the box was a grid)."""
++    target where fingers are, and no board. From 1680px the board beside the column shows one list behind its tabs
++    and the block shows the other as five cards (operator: on a wide window 'the way you find reasonable'): the
++    Instagram ranks while the board is on YouTube, the videos once its Instagram tab is pressed — both lists on the
++    screen, no row on it twice. Nothing is wider than the window. An Instagram row's place photo is whole inside its
++    box (a KOGL-3 photo may not be cut: it was, by its lower edge, while the box was a grid)."""
+     sync_api = pytest.importorskip("playwright.sync_api")
+     measure = """() => { const b = document.querySelector('.hrk'), r = b.getBoundingClientRect(), shown = e => e.getClientRects().length > 0;
+       const board = document.querySelector('.h-rside');
+@@ -2454,6 +2458,9 @@ def test_the_rank_block_is_under_the_opening_and_the_board_takes_its_place_on_wi
+               cols: shown(b) ? getComputedStyle(b.querySelector('.hrk-cols')).gridTemplateColumns.split(' ').length : 0,
+               board: !!board && getComputedStyle(board).display !== 'none',
+               ranks: board ? [...board.querySelectorAll('.hrs-rk')].filter(shown).map(e => e.textContent.trim()) : [],
++              title: b.querySelector('.hrk-h').innerText.trim(),
++              mine: [...b.querySelectorAll('.hrk-a')].filter(shown).map(a => a.getAttribute('href')),
++              theirs: board ? [...board.querySelectorAll('.hrs-va, .hrs-ctop')].filter(shown).map(a => a.getAttribute('href')) : [],
+               small: [...b.querySelectorAll('a')].filter(shown).filter(a => a.getBoundingClientRect().height < 44).length,
+               cut: [...b.querySelectorAll('.hrk-ig img')].filter(shown).filter(i => { const a = i.getBoundingClientRect(),
+                 c = i.closest('.hrk-th').getBoundingClientRect(); return a.top < c.top - .5 || a.bottom > c.bottom + .5
+@@ -2484,7 +2491,16 @@ def test_the_rank_block_is_under_the_opening_and_the_board_takes_its_place_on_wi
+                     if w < 1024:
+                         assert m["small"] == 0, (w, m)
+                 else:
+-                    assert not m["block"] and m["board"] and m["ranks"] == ["1위", "2위", "3위", "4위", "5위"], (w, m)
++                    # the board is on YouTube: the block is the Instagram list, five cards in one row
++                    assert m["block"] and m["board"] and m["ranks"] == ["1위", "2위", "3위", "4위", "5위"], (w, m)
++                    assert m["title"] == "인스타그램 인기 순위" and m["rows"] == 5 and m["cols"] == 1 and m["top"] < m["food"], (w, m)
++                    assert m["photos"] >= 1 and m["cut"] == 0 and m["height"] <= 640, (w, m)
++                    assert len(m["mine"]) == 5 and not set(m["mine"]) & set(m["theirs"]), (w, m)
++                    page.click("#hrs-tab-ig")                      # … and the reverse
++                    page.wait_for_timeout(200)
++                    m = page.evaluate(measure)
++                    assert m["title"] == "유튜브 인기 순위" and m["rows"] == 5 and m["ranks"] == [], (w, m)
++                    assert len(m["mine"]) == 5 and not set(m["mine"]) & set(m["theirs"]) and m["sw"] <= m["cw"] + 1, (w, m)
+                 ctx.close()
+         finally:
+             browser.close()
+-- 
+2.43.0
+

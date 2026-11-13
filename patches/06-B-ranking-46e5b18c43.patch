@@ -1,0 +1,585 @@
+From 46e5b18c43bcdca2ed8a189b113eee3fceb0fad9 Mon Sep 17 00:00:00 2001
+From: hoon7624g-web <272256230+hoon7624g-web@users.noreply.github.com>
+Date: Tue, 10 Nov 2026 09:22:41 +0900
+Subject: [PATCH] =?UTF-8?q?feat(youtube):=20=EA=B5=B0=EC=82=B0=20=EA=B4=80?=
+ =?UTF-8?q?=EB=A0=A8=20=EC=9D=B8=EA=B8=B0=20=EC=9C=A0=ED=8A=9C=EB=B8=8C=20?=
+ =?UTF-8?q?=EC=B1=84=EB=84=90=2012=EA=B3=B3=20=EB=B0=8F=20=ED=99=94?=
+ =?UTF-8?q?=EC=A0=9C=20=EC=98=81=EC=83=81=2024=ED=8E=B8=20=ED=81=90?=
+ =?UTF-8?q?=EB=A0=88=EC=9D=B4=EC=85=98=20(=ED=99=88=C2=B7=EC=98=81?=
+ =?UTF-8?q?=EC=83=81=C2=B7=EA=B0=9C=EB=B3=84=20=EC=9E=A5=EC=86=8C=20?=
+ =?UTF-8?q?=ED=8E=98=EC=9D=B4=EC=A7=80=20=EB=B0=98=EC=98=81)?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ data/gunsan/yt_channels.json       | 340 +++++++++++++++++++++++++++++
+ pipeline/build.py                  |  24 +-
+ templates/_abroad.html.j2          |   1 +
+ templates/_ui.html.j2              |   4 +-
+ templates/assets/css/48-abroad.css |   7 +
+ templates/home.html.j2             |  16 ++
+ templates/place.html.j2            |   2 +-
+ templates/videos.html.j2           |  29 ++-
+ 8 files changed, 415 insertions(+), 8 deletions(-)
+ create mode 100644 data/gunsan/yt_channels.json
+
+diff --git a/data/gunsan/yt_channels.json b/data/gunsan/yt_channels.json
+new file mode 100644
+index 0000000000..2a3b421ee3
+--- /dev/null
++++ b/data/gunsan/yt_channels.json
+@@ -0,0 +1,340 @@
++{
++  "description": "군산 여행·맛집·로컬 문화를 다룬 인기 유튜브 채널 및 화제 영상 큐레이션 (CLAUDE.md 3.10 준수)",
++  "checked_at": "2026-10-08",
++  "popular_video_ids": [
++    "PUWwFTzh-zc",
++    "KPDIICT9lUE",
++    "KBqjqXRJoiY",
++    "77O9DlR6rCk",
++    "s4pj0hA5vqA",
++    "17KwFK9VnEs",
++    "8Szk64LZu5c",
++    "KgJH0GpnzDA",
++    "RRmBj_yr2lw",
++    "ORaZBIHHvWU",
++    "3wltBUGuLa8",
++    "-amnYn4bAgQ",
++    "p_-b6ZTSCW8",
++    "Uq98owHlpyM",
++    "iYAKvnzlWAA",
++    "MolvgIvIs2w",
++    "Al9x2F_exrE",
++    "hLD_afaW-8k",
++    "nftqp1fIGLg",
++    "KTimlxTtyNA",
++    "oy-JtZyasw8",
++    "bjYI4STHlEg",
++    "MP1NxX0_VHI",
++    "XrMCDljT8UI"
++  ],
++  "channels": [
++    {
++      "id": "yt-ch-dulcinea",
++      "handle": "@dulcinea_studio · 구독자 11만명",
++      "name": "둘시네아 dulcinea",
++      "badge": "군산 로컬 미식",
++      "url": "https://www.youtube.com/@dulcinea_studio",
++      "note": "군산 백반·짬뽕·현지인 예약 노포 시리즈 9편 이상(합산 162만뷰+)을 제작하며 군산 식도락 여행객이 가장 많이 참고하는 미식 탐방 채널.",
++      "links": [
++        {
++          "label": "군산 짬뽕 분석 영상",
++          "href": "/videos/#yt-popular"
++        },
++        {
++          "label": "복성루",
++          "href": "/places/복성루/"
++        },
++        {
++          "label": "지린성",
++          "href": "/places/지린성/"
++        },
++        {
++          "label": "빈해원",
++          "href": "/places/빈해원/"
++        }
++      ],
++      "status": "published"
++    },
++    {
++      "id": "yt-ch-tzuyang",
++      "handle": "@tzuyang6145 · 구독자 1,350만명",
++      "name": "tzuyang쯔양",
++      "badge": "메가 크리에이터",
++      "url": "https://www.youtube.com/@tzuyang6145",
++      "note": "군산 소곱창·떡갈비·3대 짬뽕 노포 먹방 3편으로 합산 1,075만 조회수를 기록하며 군산 노포 골목을 전국에 알린 대표 먹방 채널.",
++      "links": [
++        {
++          "label": "떡갈비 348만뷰 영상",
++          "href": "/videos/#yt-popular"
++        },
++        {
++          "label": "완주옥",
++          "href": "/places/완주옥/"
++        },
++        {
++          "label": "복성루",
++          "href": "/places/복성루/"
++        }
++      ],
++      "status": "published"
++    },
++    {
++      "id": "yt-ch-suze",
++      "handle": "@STUDIO_SUZE · 구독자 126만명",
++      "name": "스튜디오 수제 (또간집)",
++      "badge": "웹예능 화제작",
++      "url": "https://www.youtube.com/@STUDIO_SUZE",
++      "note": "군산 시민 길거리 인터뷰를 통해 가장 오래된 중식당과 현지인 단골 식당을 발굴한 『또간집 EP.63 군산 편』(249만뷰) 공식 채널.",
++      "links": [
++        {
++          "label": "또간집 군산 편 보기",
++          "href": "/videos/#yt-popular"
++        },
++        {
++          "label": "빈해원",
++          "href": "/places/빈해원/"
++        },
++        {
++          "label": "지린성",
++          "href": "/places/지린성/"
++        },
++        {
++          "label": "일해옥",
++          "href": "/places/일해옥/"
++        }
++      ],
++      "status": "published"
++    },
++    {
++      "id": "yt-ch-mattsajang",
++      "handle": "@mattsajang · 구독자 4.89만명",
++      "name": "맛사장",
++      "badge": "미식 총정리",
++      "url": "https://www.youtube.com/@mattsajang",
++      "note": "『꼭 먹고 와야 하는 군산맛집 7군데 총정리』(106만뷰) 등 가성비 백반집·실비집·생선구이·소고기무국 노포를 체계적으로 정리한 미식 가이드 채널.",
++      "links": [
++        {
++          "label": "군산맛집 7곳 총정리",
++          "href": "/videos/#yt-popular"
++        },
++        {
++          "label": "서우식당",
++          "href": "/places/서우식당/"
++        },
++        {
++          "label": "한일옥",
++          "href": "/places/한일옥/"
++        },
++        {
++          "label": "태성반점",
++          "href": "/places/태성반점/"
++        }
++      ],
++      "status": "published"
++    },
++    {
++      "id": "yt-ch-sunwoo",
++      "handle": "@순풍선우용여 · 구독자 59.4만명",
++      "name": "순풍 선우용여",
++      "badge": "셀럽 여행",
++      "url": "https://www.youtube.com/@%EC%88%9C%ED%92%8D%EC%84%A0%EC%9A%B0%EC%9A%A9%EC%97%AC",
++      "note": "군산 출신 이경실과 선우용여가 함께 떠난 군산 고향 여행기(130만뷰)로 중장년·가족 단위 여행객에게 큰 호응을 얻은 채널.",
++      "links": [
++        {
++          "label": "군산 여행 130만뷰 영상",
++          "href": "/videos/#yt-popular"
++        },
++        {
++          "label": "초원사진관",
++          "href": "/places/초원사진관/"
++        },
++        {
++          "label": "경암동 철길마을",
++          "href": "/places/경암동-철길마을/"
++        },
++        {
++          "label": "선유도",
++          "href": "/places/선유도/"
++        }
++      ],
++      "status": "published"
++    },
++    {
++      "id": "yt-ch-hawasoo",
++      "handle": "@무도하와수 · 구독자 22.5만명",
++      "name": "하와수 (박명수·정준하)",
++      "badge": "셀럽 여행",
++      "url": "https://www.youtube.com/@%EB%AC%B4%EB%8F%84%ED%95%98%EC%99%80%EC%88%98",
++      "note": "고향 군산을 찾은 박명수와 정준하가 초원사진관·원도심 거리와 점심 3끼 맛집 투어를 즐기는 당일치기 군산 여행기(124만뷰) 채널.",
++      "links": [
++        {
++          "label": "하와수 군산 편 보기",
++          "href": "/videos/#yt-popular"
++        },
++        {
++          "label": "초원사진관",
++          "href": "/places/초원사진관/"
++        },
++        {
++          "label": "경암동 철길마을",
++          "href": "/places/경암동-철길마을/"
++        },
++        {
++          "label": "이성당",
++          "href": "/places/이성당/"
++        }
++      ],
++      "status": "published"
++    },
++    {
++      "id": "yt-ch-sookoh",
++      "handle": "@Sookohaseyo · 구독자 26.1만명",
++      "name": "sookoh 수코",
++      "badge": "나혼자 여행",
++      "url": "https://www.youtube.com/@Sookohaseyo",
++      "note": "『나혼자 군산 당일치기』(90만뷰) 영상으로 기차·도보 여행자와 혼행족에게 군산 원도심 산책 및 혼술·노포 코스를 유행시킨 브이로그 채널.",
++      "links": [
++        {
++          "label": "나혼자 군산 90만뷰",
++          "href": "/videos/#yt-popular"
++        },
++        {
++          "label": "이성당",
++          "href": "/places/이성당/"
++        },
++        {
++          "label": "초원사진관",
++          "href": "/places/초원사진관/"
++        },
++        {
++          "label": "안동집",
++          "href": "/places/안동집/"
++        }
++      ],
++      "status": "published"
++    },
++    {
++      "id": "yt-ch-yoovlog",
++      "handle": "@yoovlog · 구독자 60.2만명",
++      "name": "yoovlog",
++      "badge": "가족 미식 여행",
++      "url": "https://www.youtube.com/@yoovlog",
++      "note": "곱창·짬뽕·디저트·칼국수까지 가족이 함께 즐기는 군산 맛집 여행기(49만뷰)로 아이 동반 가족 여행 동선을 생생하게 보여주는 채널.",
++      "links": [
++        {
++          "label": "가족 맛집 여행 영상",
++          "href": "/videos/#yt-popular"
++        },
++        {
++          "label": "또또생곱창",
++          "href": "/places/또또생곱창/"
++        },
++        {
++          "label": "이성당",
++          "href": "/places/이성당/"
++        },
++        {
++          "label": "초원사진관",
++          "href": "/places/초원사진관/"
++        }
++      ],
++      "status": "published"
++    },
++    {
++      "id": "yt-ch-doncat",
++      "handle": "@doncatplex · 구독자 20.3만명",
++      "name": "돈캣 PL․EX",
++      "badge": "여행 풀코스",
++      "url": "https://www.youtube.com/@doncatplex",
++      "note": "원도심 대표 맛집부터 새만금·고군산군도 드라이브까지 『군산 여행의 모든 것 완벽 풀코스』(25만뷰)와 실전 팁을 정리한 여행 가이드 채널.",
++      "links": [
++        {
++          "label": "군산 풀코스 영상",
++          "href": "/videos/#yt-popular"
++        },
++        {
++          "label": "한일옥",
++          "href": "/places/한일옥/"
++        },
++        {
++          "label": "오구이",
++          "href": "/places/오구이/"
++        },
++        {
++          "label": "선유도",
++          "href": "/places/선유도/"
++        }
++      ],
++      "status": "published"
++    },
++    {
++      "id": "yt-ch-yuyoungmin",
++      "handle": "@꿈에흑돈 · 구독자 2.64천명",
++      "name": "유영민의 맛이보인당게",
++      "badge": "군산·전북 노포",
++      "url": "https://www.youtube.com/@%EA%BF%88%EC%97%90%ED%9D%91%EB%8F%88",
++      "note": "『구역전시장의 아침풍광』(15만뷰) 등 오전 7시 이전의 군산 새벽시장 풍경과 현지인 백반·국밥 노포를 깊이 있게 기록하는 로컬 미식 채널.",
++      "links": [
++        {
++          "label": "구역전시장 아침풍광",
++          "href": "/videos/#yt-popular"
++        },
++        {
++          "label": "역전종합시장",
++          "href": "/places/역전종합시장/"
++        },
++        {
++          "label": "군산 음식점",
++          "href": "/food/"
++        }
++      ],
++      "status": "published"
++    },
++    {
++      "id": "yt-ch-gunsansi",
++      "handle": "@gunsansi · 구독자 2.24만명",
++      "name": "군산시 공식채널",
++      "badge": "지자체 공식",
++      "url": "https://www.youtube.com/@gunsansi",
++      "note": "군산시 공식 관광 홍보 영상과 수제맥주 블루스 페스티벌(91만뷰)·군산시간여행축제 밈 영상(12만뷰) 등 생생한 시정·축제 소식을 전하는 공식 채널.",
++      "links": [
++        {
++          "label": "축제·행사 영상",
++          "href": "/videos/축제/"
++        },
++        {
++          "label": "행사·축제 일정",
++          "href": "/events/"
++        },
++        {
++          "label": "근대역사박물관",
++          "href": "/places/근대역사박물관/"
++        }
++      ],
++      "status": "published"
++    },
++    {
++      "id": "yt-ch-jeonjumbc",
++      "handle": "@jeonju_mbc · 구독자 38만명",
++      "name": "전주MBC Original",
++      "badge": "지역 방송사",
++      "url": "https://www.youtube.com/@jeonju_mbc",
++      "note": "고군산섬잇길 5개 섬 트레킹 명소 다큐멘터리와 군산 근대역사·해양 문화를 고화질 영상으로 아카이빙하는 전북 대표 방송 채널.",
++      "links": [
++        {
++          "label": "섬·바다 영상",
++          "href": "/videos/섬-바다/"
++        },
++        {
++          "label": "고군산섬잇길",
++          "href": "/places/고군산섬잇길/"
++        },
++        {
++          "label": "선유도",
++          "href": "/places/선유도/"
++        }
++      ],
++      "status": "published"
++    }
++  ]
++}
+diff --git a/pipeline/build.py b/pipeline/build.py
+index 49d09bd719..0dabb1204f 100644
+--- a/pipeline/build.py
++++ b/pipeline/build.py
+@@ -589,14 +589,17 @@ class State:
+         # YouTube videos (data/gunsan/videos.json, each checked through YouTube oEmbed): linked from places and
+         # event pages, all of them on /videos/. Only the title, channel and link are ours to show.
+         self.videos = load_videos(data_dir)
++        for v in self.videos:
++            v["_places"] = [self.ent_by_slug[s] for s in v.get("place_slugs") or [] if s in self.ent_by_slug]
++        self.yt_channels, self.popular_videos = load_yt_channels(data_dir, self.videos)
+         for e in self.entities:
+             e["_videos"] = sorted((v for v in self.videos if e["slug"] in (v.get("place_slugs") or [])),
+-                                  key=video_rank)[:VIDEOS_PER_PAGE]
++                                  key=lambda v: (not v.get("popular_curated"), *video_rank(v)))[:VIDEOS_PER_PAGE]
+         for sr in self.series:
+             sr["videos"] = sorted((v for v in self.videos
+                                    if sr["keys"] & {normalize_name(YEAR_PREFIX.sub("", squash_ws(n)))
+                                                     for n in v.get("event_names") or []}),
+-                                  key=video_rank)[:VIDEOS_PER_PAGE]
++                                  key=lambda v: (not v.get("popular_curated"), *video_rank(v)))[:VIDEOS_PER_PAGE]
+         # 해외에서 본 군산 (data/<region>/abroad.json, owner 2026-10-13): foreign press and social posts, shown as our
+         # own one-line note + the link (+ the outlet's og:image, from its address; posts load the service's official
+         # embed near the screen). Published only.
+@@ -1394,7 +1397,7 @@ def event_series(events: list[dict], S: State) -> list[dict]:
+     return out
+ 
+ 
+-VIDEOS_PER_PAGE = 3
++VIDEOS_PER_PAGE = 4
+ VIDEO_TOPICS = ("여행 코스", "근대역사", "섬·바다", "호수·공원", "자연·생태", "먹거리", "축제", "숙소", "기타")
+ # each topic page's AI art band, videos.head.<key> (pipeline/art.py): the topic in English, as the owner's picture list
+ # (docs/handover/image_prompts_round2_2026-10-13.md M) names it — the one table of these names
+@@ -1450,6 +1453,16 @@ def load_insta_channels(data_dir: Path) -> list[dict]:
+             if c.get("status") == "published" and c.get("url") and c.get("handle") and squash_ws(c.get("note"))]
+ 
+ 
++def load_yt_channels(data_dir: Path, videos: list[dict]) -> tuple[list[dict], list[dict]]:
++    """data/<region>/yt_channels.json: curated popular regional YouTube channels and popular video ids."""
++    raw = _load(data_dir / "yt_channels.json", {}) or {}
++    chs = [c for c in raw.get("channels") or []
++           if c.get("status") == "published" and c.get("url") and c.get("name") and squash_ws(c.get("note"))]
++    by_id = {v["youtube_id"]: v for v in videos if v.get("youtube_id")}
++    pop = [by_id[yid] for yid in raw.get("popular_video_ids") or [] if yid in by_id]
++    return chs, pop
++
++
+ HL_SMALL_MAX = 60_000   # bytes: the provider's small rendition is used in a highlight circle only up to this size
+ HL_VIEWER = "/abroad/highlights.json"   # the viewer's markup, fetched on the first press (not in the page's first load)
+ 
+@@ -2003,7 +2016,7 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
+                             None, videos=True)  # no ItemList: the items are YouTube pages, not this site's URLs
+         _render(env, S, out, "videos.html.j2", path, page, "videos", checked, groups=groups, checked=checked,
+                 official=official, total=len(S.videos), places=S.ent_by_slug, topic=None,
+-                video_groups=present.video_groups_vm(groups))
++                video_groups=present.video_groups_vm(groups), yt_channels=S.yt_channels, popular_videos=S.popular_videos)
+         for g in groups:
+             label = "그 밖의" if g["title"] == "기타" else g["title"]
+             tcrumbs = crumbs + [(f"{label} 영상", S.abs(g["_path"]))]
+@@ -2230,6 +2243,9 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
+                                           S.ent_by_slug),
+             n_insta=len(getattr(S, "insta", None) or []),
+             insta_channels=getattr(S, "insta_channels", None) or [],
++            yt_channels=getattr(S, "yt_channels", None) or [],
++            popular_videos=(getattr(S, "popular_videos", None) or [])[:8],
++            places=S.ent_by_slug,
+             home_blog=blog_home(S))   # 군산각 블로그 (operator 2026-10-30): the /blog/ cards, one per category first
+ 
+     page = {"title": f"페이지를 찾을 수 없습니다 | {S.site['site_name']}", "description": "", "canonical": S.site_url + "/",
+diff --git a/templates/_abroad.html.j2 b/templates/_abroad.html.j2
+index 8fa7981d79..aa6867b74c 100644
+--- a/templates/_abroad.html.j2
++++ b/templates/_abroad.html.j2
+@@ -36,6 +36,7 @@
+ <span class="{{ cls }} svc-{{ platform }}" aria-hidden="true">
+ {%- if platform == 'x' %}<svg viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.65l-5.21-6.82-5.97 6.82H1.68l7.73-8.84L1.25 2.25h6.83l4.71 6.23zm-1.16 17.52h1.83L7.08 4.13H5.12z"/></svg>
+ {%- elif platform == 'instagram' %}<svg viewBox="0 0 24 24" focusable="false" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5.2"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor" stroke="none"/></svg>
++{%- elif platform == 'youtube' %}<svg viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M21.58 7.19a2.51 2.51 0 0 0-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42a2.51 2.51 0 0 0-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81a2.51 2.51 0 0 0 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42a2.51 2.51 0 0 0 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3-5.2 3z"/></svg>
+ {%- elif platform == 'threads' %}<b>@</b>{% else %}<b>f</b>{% endif -%}
+ </span>
+ {%- endmacro %}
+diff --git a/templates/_ui.html.j2 b/templates/_ui.html.j2
+index 2757613c33..eb2df4fb31 100644
+--- a/templates/_ui.html.j2
++++ b/templates/_ui.html.j2
+@@ -708,7 +708,7 @@
+ </a>
+ </div>
+ {% endif %}
+-<div class="vid-text"><p class="vid-title">{{ v.title }}</p>{% if v.channel %}<p class="vid-meta">{{ v.channel }}{% if v.channel_kind == 'official' %} (공식 채널){% endif %}{% if v.published_date %} · <time datetime="{{ v.published_date }}" class="tn">{{ v.published_date|ko_date }}</time> 게시{% endif %}</p>{% endif %}{% if linked %}<p class="vid-places">관련 장소 {% for x in linked %}<a href="{{ x._path }}">{{ x.name }}</a>{% if not loop.last %}<span aria-hidden="true"> · </span>{% endif %}{% endfor %}</p>{% endif %}{% if v.url %}<a class="vid-link" href="{{ v.url }}" rel="noopener" data-track="video_click"{% if place %} data-place="{{ place }}"{% endif %}>YouTube에서 보기<span class="arr" aria-hidden="true">↗</span></a>{% endif %}</div>
++<div class="vid-text"><p class="vid-title">{{ v.title }}</p>{% if v.channel %}<p class="vid-meta">{{ v.channel }}{% if v.channel_kind == 'official' %} (공식 채널){% endif %}{% if v.popular_curated and v.view_text %} · <span class="tn">{{ v.view_text }}</span>{% endif %}{% if v.published_date %} · <time datetime="{{ v.published_date }}" class="tn">{{ v.published_date|ko_date }}</time> 게시{% endif %}</p>{% endif %}{% if linked %}<p class="vid-places">관련 장소 {% for x in linked %}<a href="{{ x._path }}">{{ x.name }}</a>{% if not loop.last %}<span aria-hidden="true"> · </span>{% endif %}{% endfor %}</p>{% endif %}{% if v.url %}<a class="vid-link" href="{{ v.url }}" rel="noopener" data-track="video_click"{% if place %} data-place="{{ place }}"{% endif %}>YouTube에서 보기<span class="arr" aria-hidden="true">↗</span></a>{% endif %}</div>
+ </{{ tag }}>
+ {%- endmacro %}
+ 
+@@ -724,7 +724,7 @@
+ {#- vlite(v, linked): the folded-list row (/videos/ "더 보기" parts): a small 320×180 thumbnail (or a grey
+     placeholder), title and channel · 공식 · date, one link to YouTube. No player, nothing loaded before the press. -#}
+ {% macro vlite(v, linked=[]) -%}
+-{% set t = v.thumbnail or {} %}<li class="vid vl{% if v.channel_kind == 'official' %} is-official{% endif %}"><a class="vl-a" href="{{ v.url }}" rel="noopener" data-track="video_click">{% if t.url %}<img src="{{ t.url }}" width="{{ t.width or 320 }}" height="{{ t.height or 180 }}" alt="" loading="lazy" decoding="async">{% else %}<span class="vl-ph"></span>{% endif %}<span class="vl-t">{{ v.title }}</span><span class="vl-m">{{ v.channel }}{% if v.channel_kind == 'official' %} · 공식{% endif %}{% if v.published_date %} · <time datetime="{{ v.published_date }}" class="tn">{{ v.published_date|short_iso }}</time>{% endif %}</span></a>{% if linked %}<p class="vid-places">관련 장소 {% for x in linked %}<a href="{{ x._path }}">{{ x.name }}</a>{% if not loop.last %}<span aria-hidden="true"> · </span>{% endif %}{% endfor %}</p>{% endif %}</li>
++{% set t = v.thumbnail or {} %}<li class="vid vl{% if v.channel_kind == 'official' %} is-official{% endif %}"><a class="vl-a" href="{{ v.url }}" rel="noopener" data-track="video_click">{% if t.url %}<img src="{{ t.url }}" width="{{ t.width or 320 }}" height="{{ t.height or 180 }}" alt="" loading="lazy" decoding="async">{% else %}<span class="vl-ph"></span>{% endif %}<span class="vl-t">{{ v.title }}</span><span class="vl-m">{{ v.channel }}{% if v.channel_kind == 'official' %} · 공식{% endif %}{% if v.popular_curated and v.view_text %} · <span class="tn">{{ v.view_text }}</span>{% endif %}{% if v.published_date %} · <time datetime="{{ v.published_date }}" class="tn">{{ v.published_date|short_iso }}</time>{% endif %}</span></a>{% if linked %}<p class="vid-places">관련 장소 {% for x in linked %}<a href="{{ x._path }}">{{ x.name }}</a>{% if not loop.last %}<span aria-hidden="true"> · </span>{% endif %}{% endfor %}</p>{% endif %}</li>
+ {%- endmacro %}
+ 
+ {#- search_form(id, value, label, placeholder, live, note, data): GET /search/. live=true adds data-search
+diff --git a/templates/assets/css/48-abroad.css b/templates/assets/css/48-abroad.css
+index 0dbf2ed784..e86591b3e1 100644
+--- a/templates/assets/css/48-abroad.css
++++ b/templates/assets/css/48-abroad.css
+@@ -224,4 +224,11 @@ html.embed-manual .ab-ph-msg { display: none; }
+ .ig-ch-go .arr { margin-left: 3px; }
+ .ig-ch-chip { background: var(--bg-2); color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--hair); }
+ .ig-ch-chip:hover { background: var(--g1); color: var(--ink); }
++.svc-youtube { background: #e62117; color: #fff; }
++.yt-pop-sec { margin-bottom: clamp(28px, 4vw, 48px); }
++.home-yt-sub { margin: clamp(24px, 3vw, 36px) 0 14px; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px; }
++.home-yt-sub h3 { margin: 0; font: 700 clamp(17px, 1.8vw, 20px)/1.35 var(--font); letter-spacing: -.015em; color: var(--ink); }
++.home-yt-sub .tn { color: var(--ink-3); font-weight: 400; margin-left: 4px; }
++.home-yt-sub a { font-size: 14px; font-weight: 600; color: var(--sea-deep); text-decoration: none; }
++.home-yt-sub a:hover { text-decoration: underline; }
+ 
+diff --git a/templates/home.html.j2 b/templates/home.html.j2
+index 42e4053745..f4959282fa 100644
+--- a/templates/home.html.j2
++++ b/templates/home.html.j2
+@@ -443,6 +443,22 @@
+       {% if h.vrows %}<ol class="v-rows">{% for r in h.vrows %}{{ p2.vtopic(r) }}{% endfor %}</ol>{% endif %}
+     </div>
+     <nav class="v-chips" aria-label="영상 주제">{% for c in h.vchips %}<a href="{{ c.path or ('/videos/#' ~ c.id) }}">{{ '그 밖의 영상' if c.title == '기타' else c.title }} <span class="tn">{{ c.n }}</span></a>{% endfor %}</nav>
++    {% if yt_channels %}
++    <div class="home-yt-sub"><h3>{{ site.region }} 여행·맛집 인기 유튜브 채널 <span class="tn">{{ yt_channels|length }}</span></h3><a href="/videos/#yt-channels">인기 채널 {{ yt_channels|length }}곳 모두<span class="arr" aria-hidden="true">→</span></a></div>
++    <ul class="ig-ch-grid">
++      {% for ch in yt_channels[:6] %}
++      <li class="ig-ch-card" id="home-{{ ch.id }}">
++        <div class="ig-ch-head">{{ ab.svc('youtube') }}<div class="ig-ch-who"><b>{{ ch.name }}</b><span>{{ ch.handle }}</span></div>{% if ch.badge %}<span class="ig-ch-badge">{{ ch.badge }}</span>{% endif %}</div>
++        <p class="ig-ch-note">{{ ch.note }}</p>
++        <p class="ig-ch-links"><a class="ig-ch-go" href="{{ ch.url }}" target="_blank" rel="noopener" data-track="video_click">채널 보기<span class="arr" aria-hidden="true">↗</span></a>{% for l in ch.links or [] %}<a class="ig-ch-chip" href="{{ l.href }}">{{ l.label }}</a>{% endfor %}</p>
++      </li>
++      {% endfor %}
++    </ul>
++    {% endif %}
++    {% if popular_videos %}
++    <div class="home-yt-sub"><h3>화제의 {{ site.region }} 인기 유튜브 영상</h3><a href="/videos/#yt-popular">화제의 영상 모두 보기<span class="arr" aria-hidden="true">→</span></a></div>
++    <ul class="vids vids-4">{% for v in popular_videos[:4] %}{{ ui.video(v, '', v._places or [], false, 'li') }}{% endfor %}</ul>
++    {% endif %}
+   </div>
+ </section>
+ {% endif %}
+diff --git a/templates/place.html.j2 b/templates/place.html.j2
+index 315dc75ecd..6216e60fd8 100644
+--- a/templates/place.html.j2
++++ b/templates/place.html.j2
+@@ -262,7 +262,7 @@
+   <section class="wrap chapter ch-rail" aria-labelledby="h-media" data-block="media">
+     <h2 id="h-media" class="rail-label"><span class="nm">{{ nm }}</span> {{ media_parts|join('·') }}</h2>
+     <div class="rail-body">
+-      {% if p.videos %}<ul class="vids">{% for v in p.videos %}{{ ui.video(v, p.e.id, [], false, 'li') }}{% endfor %}</ul>
++      {% if p.videos %}<ul class="vids">{% for v in p.videos %}{% set other_p = [] %}{% for x in v._places or [] %}{% if x.slug != p.e.slug %}{% set _ = other_p.append(x) %}{% endif %}{% endfor %}{{ ui.video(v, p.e.id, other_p, false, 'li') }}{% endfor %}</ul>
+       {% if has_videos %}<p class="note"><a href="/videos/">영상 모아 보기</a></p>{% endif %}{% endif %}
+       {% if news %}<ul class="xlinks">{% for n in news %}<li><a href="{{ n.url }}" rel="noopener" data-track="news_click" data-place="{{ p.e.id }}">{{ n.title }}</a><span class="same-t">{{ n.publisher }}{% if n.date %} · <span class="tn">{{ n.date }}</span>{% endif %}</span></li>{% endfor %}</ul>{% endif %}
+       {% if insta %}<h3 class="ab-sub">인스타그램에서 본 {{ nm }} <span class="tn">{{ insta|length }}</span></h3>
+diff --git a/templates/videos.html.j2 b/templates/videos.html.j2
+index 35bec056a8..c862843ce3 100644
+--- a/templates/videos.html.j2
++++ b/templates/videos.html.j2
+@@ -10,6 +10,7 @@
+     The header band: the AI art of the index (list.head.videos) or of the topic (videos.head.<topic.art>, the keys of
+     build.VIDEO_TOPIC_ART). -#}
+ {% import "_p1.html.j2" as p1 %}
++{% import "_abroad.html.j2" as ab %}
+ {% set label = (('그 밖의' if topic.title == '기타' else topic.title) if topic else '') %}
+ {% macro lites(vs) -%}
+ {% for v in vs %}{% set linked = [] %}{% for s in v.place_slugs or [] %}{% if s in places %}{% set _ = linked.append(places[s]) %}{% endif %}{% endfor %}{{ ui.vlite(v, linked) }}{% endfor %}
+@@ -26,11 +27,37 @@
+     <div class="v-tools">
+       {% if official %}<button type="button" class="v-off" aria-pressed="false" data-v-official>공식 채널만 <span class="tn">{{ official }}</span></button>{% endif %}
+       {% if topic %}<a class="v-all" href="/videos/">모든 주제 보기<span class="arr" aria-hidden="true">›</span></a>
+-      {% else %}<nav class="v-nav" aria-label="영상 주제">{% for g in video_groups %}<a href="#{{ g.id }}">{{ '그 밖의 영상' if g.title == '기타' else g.title }} <span class="tn">{{ g.vids|length }}</span></a>{% endfor %}</nav>{% endif %}
++      {% else %}<nav class="v-nav" aria-label="영상 주제">{% if yt_channels %}<a href="#yt-channels">인기 채널 <span class="tn">{{ yt_channels|length }}</span></a>{% endif %}{% if popular_videos %}<a href="#yt-popular">화제의 인기 영상 <span class="tn">{{ popular_videos|length }}</span></a>{% endif %}{% for g in video_groups %}<a href="#{{ g.id }}">{{ '그 밖의 영상' if g.title == '기타' else g.title }} <span class="tn">{{ g.vids|length }}</span></a>{% endfor %}</nav>{% endif %}
+     </div>
+   </div>
+ </section>
+ <div class="wrap v-wrap" data-videos>
++  {% if not topic and yt_channels %}
++  <section class="v-sec yt-pop-sec" id="yt-channels" aria-labelledby="yt-channels-h">
++    {{ ui.chead(site.region ~ ' 관련 인기 유튜브 채널', 'yt-channels-h', '', '', '', site.region ~ ' 미식·여행·로컬 문화를 다룬 대표 크리에이터와 공식·방송 채널', yt_channels|length) }}
++    <ul class="ig-ch-grid">
++      {% for ch in yt_channels %}
++      <li class="ig-ch-card" id="{{ ch.id }}">
++        <div class="ig-ch-head">{{ ab.svc('youtube') }}<div class="ig-ch-who"><b>{{ ch.name }}</b><span>{{ ch.handle }}</span></div>{% if ch.badge %}<span class="ig-ch-badge">{{ ch.badge }}</span>{% endif %}</div>
++        <p class="ig-ch-note">{{ ch.note }}</p>
++        <p class="ig-ch-links"><a class="ig-ch-go" href="{{ ch.url }}" target="_blank" rel="noopener" data-track="video_click">채널 보기<span class="arr" aria-hidden="true">↗</span></a>{% for l in ch.links or [] %}<a class="ig-ch-chip" href="{{ l.href }}">{{ l.label }}</a>{% endfor %}</p>
++      </li>
++      {% endfor %}
++    </ul>
++  </section>
++  {% endif %}
++  {% if not topic and popular_videos %}
++  {% set pop_rest = popular_videos[8:] %}
++  <section class="v-sec yt-pop-sec cv" id="yt-popular" aria-labelledby="yt-popular-h">
++    {{ ui.chead('화제의 ' ~ site.region ~ ' 인기 유튜브 영상', 'yt-popular-h', '', '', '', '백만 뷰 먹방·웹예능부터 현지인 맛집·섬 트레킹 총정리까지 많이 찾은 영상', popular_videos|length) }}
++    <ul class="vids vids-4">{{ p1.vgrid(popular_videos[:8], places) }}</ul>
++    {% if pop_rest %}
++    <details class="v-more"><summary>화제의 인기 영상 {{ pop_rest|length }}편 더 보기</summary>
++    <ul class="vlist">{{ lites(pop_rest) }}</ul>
++    </details>
++    {% endif %}
++  </section>
++  {% endif %}
+   {% for g in video_groups %}
+   {% set gl = '그 밖의' if g.title == '기타' else g.title %}
+   {% set rest = g.vids[8:] %}
+-- 
+2.43.0
+

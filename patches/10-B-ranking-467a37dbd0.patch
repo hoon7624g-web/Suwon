@@ -1,0 +1,188 @@
+From 467a37dbd0f78f087179a80c18eb441dc38e4c15 Mon Sep 17 00:00:00 2001
+From: hoon7624g-web <272256230+hoon7624g-web@users.noreply.github.com>
+Date: Tue, 10 Nov 2026 11:28:29 +0900
+Subject: [PATCH] Redesign right curation board in clean editorial magazine
+ style
+
+---
+ templates/assets/css/48-abroad.css | 99 +++++++++++++++---------------
+ templates/home.html.j2             | 18 +++---
+ 2 files changed, 59 insertions(+), 58 deletions(-)
+
+diff --git a/templates/assets/css/48-abroad.css b/templates/assets/css/48-abroad.css
+index b5bd4243b2..9ee13c1cef 100644
+--- a/templates/assets/css/48-abroad.css
++++ b/templates/assets/css/48-abroad.css
+@@ -256,61 +256,62 @@ html.embed-manual .ab-ph-msg { display: none; }
+ @media (min-width: 1680px) {
+   :root { --rside-w: 356px; --rside-x: calc(var(--rside-w) + 2 * var(--side-in)); }
+ }
+-.hrs-head { display: flex; flex-direction: column; gap: 6px; padding-bottom: 12px; border-bottom: 1px solid var(--bg-3); }
+-.hrs-kicker { margin: 0; font: 700 12px/1.3 var(--font); color: var(--sea-deep); letter-spacing: -.01em; }
+-.hrs-title { margin: 0; font: 800 20px/1.25 var(--font); color: var(--ink); letter-spacing: -.03em; }
+-.hrs-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 4px; }
+-.hrs-tab { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 38px; padding: 0 10px;
+-  border: 1.5px solid transparent; border-radius: 10px; background: var(--bg-2); color: var(--ink-2); font: 800 13.5px/1 var(--font); text-decoration: none; cursor: pointer; transition: background .15s, border-color .15s, color .15s; }
+-.hrs-tab:hover { background: var(--tint); color: var(--sea-deep); text-decoration: none; }
+-.hrs-tab.is-yt[aria-selected="true"] { background: #FFF1F0; border-color: #E62117; color: #B42318; box-shadow: 0 1px 3px rgba(230, 33, 23, .12); }
+-.hrs-tab.is-ig[aria-selected="true"] { background: #FDF2F8; border-color: #DB2777; color: #9D174D; box-shadow: 0 1px 3px rgba(219, 39, 119, .12); }
++.hrs-head { display: flex; flex-direction: column; gap: 10px; padding-bottom: 14px; border-bottom: 1px solid var(--bg-3); }
++.hrs-title { margin: 0; font: 700 18.5px/1.25 var(--font); color: var(--ink); letter-spacing: -.035em; }
++.hrs-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; border-radius: 13px; background: var(--bg-2); }
++.hrs-tab { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 36px; padding: 0 10px;
++  border: 0; border-radius: 9px; background: transparent; color: var(--ink-3); font: 700 13.5px/1 var(--font); letter-spacing: -.015em; text-decoration: none; cursor: pointer; transition: background .18s var(--fb), color .18s var(--fb), box-shadow .18s var(--fb); }
++.hrs-tab:hover { color: var(--ink); text-decoration: none; }
++.hrs-tab[aria-selected="true"] { background: #fff; color: var(--ink); box-shadow: 0 2px 6px rgba(15, 23, 42, .08); }
+ .hrs-tab:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+-.hrs-tab .ab-svc { width: 20px; height: 20px; }
+-.hrs-tab .ab-svc svg { width: 12px; height: 12px; }
+-.hrs-panel { display: flex; flex-direction: column; gap: 16px; }
++.hrs-tab .ab-svc { width: 18px; height: 18px; }
++.hrs-tab .ab-svc svg { width: 11px; height: 11px; }
++.hrs-panel { display: flex; flex-direction: column; gap: 20px; }
+ html.js .hrs-panel[data-tab-off] { display: none; }
+-.hrs-ig-note { font: 500 12.5px/1.4 var(--font); color: var(--ink-2); word-break: keep-all; }
+ .hrs-sec { display: flex; flex-direction: column; gap: 10px; }
+-.hrs-sec + .hrs-sec { padding-top: 14px; border-top: 1px solid var(--bg-3); }
+-.hrs-sh { display: flex; align-items: baseline; justify-content: space-between; gap: 6px; }
+-.hrs-sh h3 { margin: 0; font: 800 16px/1.3 var(--font); color: var(--ink); letter-spacing: -.02em; }
+-.hrs-sh .tn { color: var(--ink-3); font-weight: 500; }
+-.hrs-sh a { font: 700 12.5px/1.3 var(--font); color: var(--sea-deep); text-decoration: none; white-space: nowrap; }
+-.hrs-sh a:hover { text-decoration: underline; }
+-.hrs-vlist, .hrs-clist { display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0; list-style: none; }
+-.hrs-v { display: flex; flex-direction: column; gap: 8px; padding: 11px 12px; border-radius: 14px; background: var(--g0); border: 1px solid var(--hair); }
+-.hrs-va { display: flex; flex-direction: column; gap: 7px; color: var(--ink); text-decoration: none; }
++.hrs-sec + .hrs-sec { padding-top: 16px; border-top: 1px solid var(--bg-3); }
++.hrs-sh { display: flex; align-items: baseline; justify-content: space-between; gap: 6px; padding: 0 2px; }
++.hrs-sh h3 { margin: 0; font: 700 15px/1.3 var(--font); color: var(--ink); letter-spacing: -.025em; }
++.hrs-sh .tn { color: var(--ink-3); font-weight: 400; margin-left: 2px; }
++.hrs-sh a { font: 600 12.5px/1.3 var(--font); color: var(--ink-3); text-decoration: none; white-space: nowrap; }
++.hrs-sh a:hover { color: var(--sea-deep); text-decoration: none; }
++.hrs-vlist, .hrs-clist { display: flex; flex-direction: column; margin: 0; padding: 0; list-style: none; }
++.hrs-v { display: flex; flex-direction: column; gap: 7px; padding: 11px 4px; border-bottom: 1px solid var(--bg-3); }
++.hrs-v:first-child { padding-top: 4px; }
++.hrs-v:last-child { border-bottom: 0; padding-bottom: 2px; }
++.hrs-va { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 11px; align-items: start; color: var(--ink); text-decoration: none; }
+ .hrs-va:hover { text-decoration: none; }
+-.hrs-va:hover .hrs-vch, .hrs-va:hover .hrs-vt { color: var(--sea-deep); }
+-.hrs-va:hover .hrs-vt { text-decoration: underline; }
+-.hrs-vhead { display: flex; align-items: center; gap: 7px; padding-bottom: 6px; border-bottom: 1px solid var(--bg-3); }
+-.hrs-vhead .ab-svc { width: 22px; height: 22px; flex: none; }
+-.hrs-vhead .ab-svc svg { width: 12px; height: 12px; }
+-.hrs-vch { flex: 1; min-width: 0; font: 800 15.5px/1.25 var(--font); color: var(--ink); letter-spacing: -.02em; }
+-.hrs-vviews { flex: none; padding: 2px 8px; border-radius: 999px; background: #FFEDEB; color: #B42318; font: 700 11.5px/1.3 var(--font); }
+-.hrs-vbody { display: grid; grid-template-columns: 98px minmax(0, 1fr); gap: 10px; align-items: center; }
+-.hrs-vth { position: relative; display: block; aspect-ratio: 16 / 9; border-radius: 9px; overflow: hidden; background: var(--bg-3); }
+-.hrs-vth img { display: block; width: 100%; height: 100%; object-fit: cover; }
+-.hrs-play { position: absolute; right: 5px; bottom: 5px; width: 22px; height: 22px; border-radius: 50%;
+-  background: rgba(230, 33, 23, .92); color: #fff; display: grid; place-items: center; }
++.hrs-va:hover .hrs-vch { color: var(--sea-deep); }
++.hrs-va:hover .hrs-vt { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
++.hrs-vth { position: relative; display: block; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; background: var(--bg-3); box-shadow: inset 0 0 0 1px rgba(15, 23, 42, .06); }
++.hrs-vth img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .25s var(--fb); }
++.hrs-va:hover .hrs-vth img { transform: scale(1.03); }
++.hrs-play { position: absolute; right: 6px; bottom: 5px; width: 22px; height: 22px; border-radius: 50%;
++  background: rgba(15, 23, 42, .74); backdrop-filter: blur(4px); color: #fff; display: grid; place-items: center; }
++.hrs-vtxt { display: flex; flex-direction: column; gap: 3px; min-width: 0; padding-top: 1px; }
++.hrs-vtop { display: flex; align-items: baseline; justify-content: space-between; gap: 6px; min-width: 0; }
++.hrs-vch { font: 700 15px/1.25 var(--font); color: var(--ink); letter-spacing: -.025em; word-break: keep-all; }
++.hrs-vviews { flex: none; font: 600 11.5px/1.2 var(--font); color: var(--ink-3); }
+ .hrs-vt { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;
+-  font: 600 13px/1.4 var(--font); color: var(--ink-2); letter-spacing: -.01em; }
+-.hrs-vp, .hrs-clinks { display: flex; flex-wrap: wrap; gap: 4px; margin: 0; }
++  font: 400 12.5px/1.42 var(--font); color: var(--ink-2); letter-spacing: -.01em; }
++.hrs-vp, .hrs-clinks { display: flex; flex-wrap: wrap; gap: 5px; margin: 0; }
++.hrs-clinks { padding-left: 26px; }
+ .hrs-vp a, .hrs-clinks a { display: inline-flex; align-items: center; min-height: 24px; padding: 2px 8px;
+-  border-radius: 999px; background: var(--bg-2); color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--hair);
+-  font: 600 11.5px/1.2 var(--font); text-decoration: none; }
+-.hrs-vp a { background: #fff; }
++  border-radius: 7px; background: var(--bg-2); color: var(--ink-2);
++  font: 600 11.5px/1.2 var(--font); letter-spacing: -.01em; text-decoration: none; transition: background .15s, color .15s; }
+ .hrs-vp a:hover, .hrs-clinks a:hover { background: var(--tint); color: var(--sea-deep); text-decoration: none; }
+-.hrs-c { display: flex; flex-direction: column; gap: 8px; padding: 11px 12px; border-radius: 14px; background: #fff; border: 1px solid var(--hair); box-shadow: 0 1px 2px rgba(15, 23, 42, .04); }
+-.hrs-ctop { display: flex; align-items: flex-start; gap: 9px; min-width: 0; color: var(--ink); text-decoration: none; }
++.hrs-c { display: flex; flex-direction: column; gap: 6px; padding: 10px 4px; border-bottom: 1px solid var(--bg-3); }
++.hrs-c:first-child { padding-top: 4px; }
++.hrs-c:last-child { border-bottom: 0; padding-bottom: 2px; }
++.hrs-ctop { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 6px; align-items: baseline; min-width: 0; color: var(--ink); text-decoration: none; }
+ .hrs-ctop:hover { text-decoration: none; }
+-.hrs-ctop:hover .hrs-cname { color: var(--sea-deep); text-decoration: underline; }
+-.hrs-ctop .ab-svc { width: 28px; height: 28px; flex: none; margin-top: 1px; }
+-.hrs-ctop .ab-svc svg { width: 15px; height: 15px; }
+-.hrs-cn { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+-.hrs-cname { display: inline-flex; align-items: center; gap: 4px; font: 800 16px/1.28 var(--font); color: var(--ink); letter-spacing: -.02em; word-break: keep-all; }
+-.hrs-ext { font-size: 12px; font-weight: 700; color: var(--ink-3); }
+-.hrs-cmeta { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; font: 600 12px/1.35 var(--font); color: var(--ink-2); }
+-.hrs-badge { flex: none; font-style: normal; padding: 2px 7px; border-radius: 999px; background: var(--tint); color: var(--sea-deep); font: 700 11px/1.25 var(--font); }
++.hrs-ctop:hover .hrs-cname { color: var(--sea-deep); text-decoration: underline; text-underline-offset: 2px; }
++.hrs-num { font: 700 12.5px/1.3 var(--font); color: var(--sea); letter-spacing: -.02em; }
++.hrs-cn { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
++.hrs-crow { display: flex; align-items: baseline; justify-content: space-between; gap: 6px; min-width: 0; }
++.hrs-cname { display: inline-flex; align-items: baseline; gap: 3px; font: 700 15.5px/1.3 var(--font); color: var(--ink); letter-spacing: -.025em; word-break: keep-all; }
++.hrs-ext { font-size: 11.5px; font-weight: 400; color: var(--ink-3); }
++.hrs-csub { font: 400 12px/1.35 var(--font); color: var(--ink-3); }
++.hrs-ig-note { font: 400 12.5px/1.42 var(--font); color: var(--ink-2); word-break: keep-all; }
++.hrs-badge { flex: none; font-style: normal; font: 600 11px/1.2 var(--font); color: var(--sea-deep); letter-spacing: -.01em; }
+ 
+diff --git a/templates/home.html.j2 b/templates/home.html.j2
+index 6d27192e76..001f498afc 100644
+--- a/templates/home.html.j2
++++ b/templates/home.html.j2
+@@ -57,11 +57,11 @@
+ {% if popular_videos or yt_channels or insta_channels %}
+ <aside class="h-rside" aria-label="{{ site.region }} 인기 유튜브·인스타그램 큐레이션" data-lenis-prevent data-tabs>
+   <div class="hrs-head">
+-    <p class="hrs-kicker">SNS · 크리에이터 큐레이션</p>
+-    <h2 class="hrs-title">인기 유튜브 · 인스타</h2>
++
++    <h2 class="hrs-title">지금 많이 보는 {{ site.region }}</h2>
+     <div class="hrs-tabs" role="tablist" aria-label="유튜브·인스타그램 전환">
+-      <button type="button" class="hrs-tab is-yt" role="tab" id="hrs-tab-yt" aria-controls="hrs-panel-yt" aria-selected="true">{{ ab.svc('youtube') }}<span>YouTube</span></button>
+-      <button type="button" class="hrs-tab is-ig" role="tab" id="hrs-tab-ig" aria-controls="hrs-panel-ig" aria-selected="false" tabindex="-1">{{ ab.svc('instagram') }}<span>Instagram</span></button>
++      <button type="button" class="hrs-tab is-yt" role="tab" id="hrs-tab-yt" aria-controls="hrs-panel-yt" aria-selected="true">{{ ab.svc('youtube') }}<span>유튜브</span></button>
++      <button type="button" class="hrs-tab is-ig" role="tab" id="hrs-tab-ig" aria-controls="hrs-panel-ig" aria-selected="false" tabindex="-1">{{ ab.svc('instagram') }}<span>인스타그램</span></button>
+     </div>
+   </div>
+   {% if popular_videos %}
+@@ -73,8 +73,8 @@
+       {% set t = v.thumbnail or {} %}
+       <li class="hrs-v">
+         <a class="hrs-va" href="{{ v.url }}" target="_blank" rel="noopener" data-track="video_click">
+-          <span class="hrs-vhead">{{ ab.svc('youtube') }}<b class="hrs-vch">{{ v.channel }}</b>{% if v.short_view_text or v.view_text %}<span class="hrs-vviews tn">{{ v.short_view_text or v.view_text }}</span>{% endif %}</span>
+-          <span class="hrs-vbody"><span class="hrs-vth">{% if t.url %}<img src="{{ t.url }}" width="112" height="63" alt="" loading="lazy" decoding="async">{% endif %}<span class="hrs-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="12" height="12"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg></span></span><span class="hrs-vt">{{ v.title }}</span></span>
++          <span class="hrs-vth">{% if t.url %}<img src="{{ t.url }}" width="116" height="65" alt="" loading="lazy" decoding="async">{% endif %}<span class="hrs-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="11" height="11"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg></span></span><span class="hrs-vtxt"><span class="hrs-vtop"><b class="hrs-vch">{{ v.channel }}</b>{% if v.short_view_text or v.view_text %}<span class="hrs-vviews tn">{{ (v.short_view_text or v.view_text)|replace('조회수 ', '') }}</span>{% endif %}</span><span class="hrs-vt">{{ v.title }}</span></span>
++
+ 
+ 
+ 
+@@ -92,7 +92,7 @@
+     <ul class="hrs-clist">
+       {% for ch in yt_channels %}
+       <li class="hrs-c">
+-        <a class="hrs-ctop" href="{{ ch.url }}" target="_blank" rel="noopener" data-track="video_click">{{ ab.svc('youtube') }}<span class="hrs-cn"><strong class="hrs-cname">{{ ch.name }}<span class="hrs-ext" aria-hidden="true">↗</span></strong><span class="hrs-cmeta">{% if ch.badge %}<em class="hrs-badge">{{ ch.badge }}</em>{% endif %}<span>{{ ch.handle }}</span></span></span></a>
++        <a class="hrs-ctop" href="{{ ch.url }}" target="_blank" rel="noopener" data-track="video_click"><span class="hrs-num tn">{{ '%02d'|format(loop.index) }}</span><span class="hrs-cn"><span class="hrs-crow"><strong class="hrs-cname">{{ ch.name }}<span class="hrs-ext" aria-hidden="true">↗</span></strong>{% if ch.badge %}<em class="hrs-badge">{{ ch.badge }}</em>{% endif %}</span><span class="hrs-csub">{{ ch.handle }}</span></span></a>
+         {% if ch.links %}<p class="hrs-clinks">{% for l in ch.links[:3] %}<a href="{{ l.href }}">{{ l.label }}</a>{% endfor %}</p>{% endif %}
+       </li>
+       {% endfor %}
+@@ -107,7 +107,7 @@
+     <ul class="hrs-clist">
+       {% for ch in insta_channels %}
+       <li class="hrs-c">
+-        <a class="hrs-ctop" href="{{ ch.url }}" target="_blank" rel="noopener" data-track="abroad_click">{{ ab.svc('instagram') }}<span class="hrs-cn"><strong class="hrs-cname">{{ ch.name }}<span class="hrs-ext" aria-hidden="true">↗</span></strong><span class="hrs-cmeta">{% if ch.badge %}<em class="hrs-badge">{{ ch.badge }}</em>{% endif %}<span>{{ ch.handle }}</span></span></span></a>
++        <a class="hrs-ctop" href="{{ ch.url }}" target="_blank" rel="noopener" data-track="abroad_click"><span class="hrs-num tn">{{ '%02d'|format(loop.index) }}</span><span class="hrs-cn"><span class="hrs-crow"><strong class="hrs-cname">{{ ch.name }}<span class="hrs-ext" aria-hidden="true">↗</span></strong>{% if ch.badge %}<em class="hrs-badge">{{ ch.badge }}</em>{% endif %}</span><span class="hrs-csub">{{ ch.handle }}</span></span></a>
+         {% if ch.links %}<p class="hrs-clinks">{% for l in ch.links[:3] %}<a href="{{ l.href }}">{{ l.label }}</a>{% endfor %}</p>{% endif %}
+       </li>
+       {% endfor %}
+@@ -120,7 +120,7 @@
+     <ul class="hrs-clist">
+       {% for a in home_insta[:5] %}
+       <li class="hrs-c">
+-        <a class="hrs-ctop" href="/guides/군산-카페/#{{ a.id }}" data-track="abroad_click">{{ ab.svc('instagram') }}<span class="hrs-cn"><strong class="hrs-cname">{{ a.author or 'Instagram' }}<span class="hrs-ext" aria-hidden="true">›</span></strong><span class="hrs-ig-note">{{ a.note }}</span></span></a>
++        <a class="hrs-ctop" href="/guides/군산-카페/#{{ a.id }}" data-track="abroad_click"><span class="hrs-num tn">{{ '%02d'|format(loop.index) }}</span><span class="hrs-cn"><span class="hrs-crow"><strong class="hrs-cname">{{ a.author or 'Instagram' }}<span class="hrs-ext" aria-hidden="true">›</span></strong></span><span class="hrs-ig-note">{{ a.note }}</span></span></a>
+         {% if a.place_slugs %}<p class="hrs-clinks">{% for s in a.place_slugs[:3] %}{% if s in places %}<a href="{{ places[s]._path }}">{{ places[s].name }}</a>{% endif %}{% endfor %}</p>{% endif %}
+       </li>
+       {% endfor %}
+-- 
+2.43.0
+

@@ -1,0 +1,89 @@
+/* ---------------------------------------------------------------- 82 숙박 예약하기 (/stays/booking/, operator
+   2026-11-03: '바둑판식 배열로 사진과 함께 멋지게'; stay_booking.html.j2, _staybook.html.j2, present.stay_booking_vm) and the
+   home's '숙박 예약하기' button (.ho-stay). Pretendard 400·700 only.
+   - the head: a sea band with the kicker, the H1 and the lede (operator 2026-11-11: no numbers, no notice in it);
+     the '제휴 링크' disclosure is one quiet line right over the cards (.sb-aff), before any booking-site link;
+   - the type filter (shown by site.js only), chips of 44px;
+   - the grid: 1 column on phones, 2 from 640px, 3 from 1100px; every card the same height in its row, the booking box
+     right under the facts (operator 2026-11-04 '상단에 붙여': not pushed to the card's foot). A KOGL-1 photo fills its 16:10 frame; a KOGL-3 one sits whole on the tinted frame at most its own
+     width (never cropped, enlarged or covered); a card without a photo shows the small kind icon by the name. */
+.sb-hero { position: relative; overflow: hidden; padding: 30px 0 26px; background: radial-gradient(720px 360px at 92% 0, rgba(255, 213, 74, .38), rgba(255, 213, 74, 0) 70%), linear-gradient(160deg, var(--sea-deep) 0, var(--sea) 100%); color: #fff; }
+.sb-k { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0 0 10px; font-size: 14px; font-weight: 700; color: rgba(255, 255, 255, .86); }
+.sb-k a { color: #fff; text-decoration: none; }
+.sb-k a:hover { text-decoration: underline; }
+.sb-h1 { margin: 0 0 10px; font-size: clamp(32px, 8vw, 52px); font-weight: 700; line-height: 1.1; letter-spacing: -.035em; color: #fff; }
+.sb-lede { max-width: 640px; margin: 0; font-size: 16px; line-height: 1.6; color: rgba(255, 255, 255, .92); }
+
+.sb-wrap { padding-top: 22px; padding-bottom: 40px; }
+.sb-filter { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+.sb-filter[hidden] { display: none; }
+.sb-filter button { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 16px; border: 0; border-radius: 980px; background: var(--bg-2); color: var(--ink); font: 700 15px/1 var(--font); cursor: pointer; }
+.sb-filter button span { font-size: 13px; color: var(--ink-2); }
+.sb-filter button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+.sb-filter button[aria-pressed="true"] span { color: var(--chick); }
+.sb-filter button:focus-visible { outline: 3px solid var(--sea); outline-offset: 2px; }
+
+.sb-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin: 0; padding: 0; list-style: none; }
+@media (min-width: 640px) { .sb-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { .sb-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; } }
+.sb-c { display: flex; flex-direction: column; overflow: hidden; border-radius: 22px; background: #fff; box-shadow: 0 0 0 1px var(--hair), 0 14px 30px -24px rgba(17, 34, 68, .45); transition: box-shadow .25s var(--fb), transform .25s var(--fb); }
+.sb-c:hover { transform: translateY(-2px); box-shadow: 0 0 0 1px var(--tint2), 0 20px 36px -22px rgba(17, 34, 68, .5); }
+.sb-c[hidden] { display: none; }
+.sb-ph { display: flex; align-items: center; justify-content: center; aspect-ratio: 16 / 10; overflow: hidden; background: var(--bg-2); }
+.sb-ph.t1 picture { display: block; width: 100%; height: 100%; }
+.sb-ph.t1 img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.sb-ph.t3 { padding: 10px; box-sizing: border-box; }
+.sb-ph.t3 img { display: block; width: auto; height: auto; max-width: min(100%, var(--nw, 100%)); max-height: 100%; }
+.sb-b { display: flex; flex: 1; flex-direction: column; gap: 10px; padding: 16px 16px 16px; }
+.sb-hd { display: flex; align-items: center; gap: 12px; }
+.sb-ic { flex: none; }
+.sb-ic .type-ico { width: 52px; height: 52px; border-radius: 16px; background: var(--tint); }
+.sb-ht { min-width: 0; }
+.sb-m { margin: 0 0 2px; font-size: 13px; font-weight: 700; color: var(--sea-deep); }
+.sb-n { margin: 0; font-size: 20px; font-weight: 700; line-height: 1.3; letter-spacing: -.025em; word-break: keep-all; overflow-wrap: anywhere; }
+.sb-n a { color: var(--ink); text-decoration: none; }
+.sb-n a:hover { color: var(--link); text-decoration: underline; }
+.sb-line { margin: 0; font-size: 14px; line-height: 1.55; color: var(--ink-2); display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+.sb-kf { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.sb-kf li { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 0 5px; min-height: 30px; padding: 5px 10px; box-sizing: border-box; border-radius: 10px; background: var(--bg-2); font-size: 13px; line-height: 1.35; }
+.sb-kl { color: var(--ink-2); }
+.sb-kf b { color: var(--ink); }
+.sb-kf .sb-na { color: var(--ink-2); }
+.sb-book { margin-top: 2px; padding: 12px; border-radius: 16px; background: var(--tint); }
+.sb-bh { margin: 0 0 8px; font-size: 13.5px; font-weight: 700; color: var(--ink); }
+.sb-bh b { display: inline-flex; align-items: center; justify-content: center; min-width: 22px; height: 22px; padding: 0 6px; border-radius: 980px; background: var(--chick); font-size: 13px; }
+.sb-l { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin: 0; padding: 0; list-style: none; }
+.sb-l li:only-child { grid-column: 1 / -1; }
+/* a card's site tile: icon and name only (the whole tile is the link; the ↗ gives its room to the name in a 3-column
+   grid), the name may wrap, never cut */
+.sb-a { gap: 8px; min-height: 46px; padding: 6px 8px 6px 6px; border-radius: 13px; font-size: 14px; letter-spacing: -.02em; box-shadow: 0 0 0 1px var(--tint2); }
+.sb-a .ota-logo { width: 28px; height: 28px; border-radius: 8px; }
+.sb-a .ota-go { display: none; }
+@media (min-width: 1100px) { .sb-a { gap: 7px; font-size: 13px; } .sb-a .ota-logo { width: 24px; height: 24px; border-radius: 7px; } }
+.sb-note { margin-top: 22px; }
+.sb-aff { margin: 0 0 14px; font-size: 13px; line-height: 1.55; color: var(--ink-3); word-break: keep-all; }
+@media (min-width: 768px) {
+  .sb-hero { padding: 44px 0 36px; }
+  .sb-lede { font-size: 17px; }
+}
+@media (prefers-reduced-motion: reduce) { .sb-c { transition: none; } .sb-c:hover { transform: none; } }
+
+/* the home's first-screen button (home.html.j2 .ho-cta): '숙박 예약하기' with the count, chick yellow, the size of the two
+   actions beside it (operator 2026-11-03 '너무 크다. 다른 버튼 정도로 줄여'): its own width from 768px, where it
+   follows them or wraps under them; on phones each of the three is half the row, the yellow one under the first */
+.btn-stay { display: inline-flex; align-items: center; gap: 8px; min-height: 54px; padding: 0 24px; border-radius: 999px; background: var(--chick); color: var(--ink); font: 700 17px/1 var(--font); letter-spacing: -.01em; text-decoration: none; box-shadow: 0 10px 24px -12px rgba(120, 90, 0, .55); transition: background-color .2s var(--fb); }
+.btn-stay:hover { background: #FFC81F; color: var(--ink); text-decoration: none; }
+.btn-stay:focus-visible { outline: 3px solid var(--sea-deep); outline-offset: 3px; }
+.btn-stay .icon { width: 20px; height: 20px; }
+.btn-stay .bs-n, .list-book .bs-n { display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: 980px; background: var(--ink); color: var(--chick); font-size: 12.5px; }
+@media (max-width: 767px) {
+  .ho-cta { flex-wrap: wrap; }
+  .ho-cta .btn-sea { flex: 1 1 calc(50% - 4px); }
+  .ho-cta .btn-stay { flex: 0 0 calc(50% - 4px); box-sizing: border-box; justify-content: center; min-width: 0; min-height: 46px; padding: 8px 10px; font-size: 15px; line-height: 1.25; letter-spacing: -.03em; word-break: keep-all; }
+  .ho-cta .btn-stay .icon { display: none; }
+}
+/* the stays list's link to the page (list.html.j2) */
+.list-book { margin: 12px 0 0; }
+.list-book a { display: inline-flex; align-items: center; gap: 8px; min-height: 46px; padding: 0 18px; border-radius: 999px; background: var(--chick); color: var(--ink); font-size: 15px; font-weight: 700; text-decoration: none; }
+.list-book a:hover { background: #FFC81F; color: var(--ink); text-decoration: none; }
+.list-book .icon { width: 20px; height: 20px; }

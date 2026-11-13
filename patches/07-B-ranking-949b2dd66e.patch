@@ -1,0 +1,239 @@
+From 949b2dd66e6d3a809edb0bfc9b9213470ead5205 Mon Sep 17 00:00:00 2001
+From: hoon7624g-web <272256230+hoon7624g-web@users.noreply.github.com>
+Date: Tue, 10 Nov 2026 09:45:20 +0900
+Subject: [PATCH] =?UTF-8?q?feat(home):=20=ED=99=88=20=EC=9A=B0=EC=B8=A1=20?=
+ =?UTF-8?q?=EC=97=AC=EB=B0=B1=EC=97=90=20=EC=9D=B8=EA=B8=B0=20=EC=9C=A0?=
+ =?UTF-8?q?=ED=8A=9C=EB=B8=8C=C2=B7=EC=9D=B8=EC=8A=A4=ED=83=80=20=EA=B3=A0?=
+ =?UTF-8?q?=EC=A0=95=20=ED=81=90=EB=A0=88=EC=9D=B4=EC=85=98=20=ED=8C=A8?=
+ =?UTF-8?q?=EB=84=90(.h-rside)=20=EB=B0=B0=EC=B9=98=20=EB=B0=8F=20?=
+ =?UTF-8?q?=EC=9C=A0=ED=8A=9C=EB=B8=8C=20=EC=84=B9=EC=85=98=20=EC=83=81?=
+ =?UTF-8?q?=EB=8B=A8=20=EC=9D=B4=EB=8F=99?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ templates/assets/css/48-abroad.css |  64 ++++++++++++++++
+ templates/home.html.j2             | 119 +++++++++++++++++++++--------
+ 2 files changed, 152 insertions(+), 31 deletions(-)
+
+diff --git a/templates/assets/css/48-abroad.css b/templates/assets/css/48-abroad.css
+index e86591b3e1..a9d77f780e 100644
+--- a/templates/assets/css/48-abroad.css
++++ b/templates/assets/css/48-abroad.css
+@@ -231,4 +231,68 @@ html.embed-manual .ab-ph-msg { display: none; }
+ .home-yt-sub .tn { color: var(--ink-3); font-weight: 400; margin-left: 4px; }
+ .home-yt-sub a { font-size: 14px; font-weight: 600; color: var(--sea-deep); text-decoration: none; }
+ .home-yt-sub a:hover { text-decoration: underline; }
++/* ---------------------------------------------------------------- 홈 우측 인기 유튜브·인스타 고정 큐레이션 보드 (.h-rside) */
++.h-rside { display: none; }
++@media (min-width: 1360px) {
++  :root { --rside-w: 304px; --rside-x: calc(var(--rside-w) + 2 * var(--side-in)); }
++  body.pg-ko-home { --cw: calc(100vw - var(--side-x) - var(--rside-x)); padding-right: var(--rside-x); }
++  html[lang="ko"] body.pg-ko-home main .wrap,
++  html[lang="ko"] body.pg-ko-home .foot .wrap,
++  html[lang="ko"] body.pg-ko-home .crumbs-bar .wrap { padding-right: var(--m); }
++  html[lang="ko"] body.pg-ko-home main .car-view { margin-right: 0; }
++  html[lang="ko"] body.pg-ko-home main .car-ans .car-view,
++  html[lang="ko"] body.pg-ko-home main .car-feat .car-view { padding-right: var(--ml); }
++  body.pg-ko-home .hn-in { max-width: none; }
++  body.pg-ko-home .qm { right: calc(var(--rside-x) + 12px); }
++  body.pg-ko-home .chat-fab { right: calc(var(--rside-x) + 8px); }
++  .h-rside {
++    position: fixed; z-index: 48; top: var(--side-in); bottom: var(--side-in); right: var(--side-in); width: var(--rside-w);
++    display: flex; flex-direction: column; gap: 16px; padding: 18px 16px 20px;
++    overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: var(--hair) transparent;
++    background: #fff; border: 1px solid var(--hair); border-radius: var(--r-l); box-shadow: var(--shadow-1);
++  }
++}
++.hrs-head { display: flex; flex-direction: column; gap: 6px; padding-bottom: 12px; border-bottom: 1px solid var(--bg-3); }
++.hrs-kicker { margin: 0; font: 700 12px/1.3 var(--font); color: var(--sea-deep); letter-spacing: -.01em; }
++.hrs-title { margin: 0; font: 700 20px/1.25 var(--font); color: var(--ink); letter-spacing: -.03em; }
++.hrs-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 4px; }
++.hrs-tab { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 36px; padding: 0 10px;
++  border-radius: 10px; background: var(--bg-2); color: var(--ink); font: 700 13px/1 var(--font); text-decoration: none; }
++.hrs-tab:hover { background: var(--tint); color: var(--sea-deep); text-decoration: none; }
++.hrs-tab .ab-svc { width: 20px; height: 20px; }
++.hrs-tab .ab-svc svg { width: 12px; height: 12px; }
++.hrs-sec { display: flex; flex-direction: column; gap: 10px; }
++.hrs-sec + .hrs-sec { padding-top: 14px; border-top: 1px solid var(--bg-3); }
++.hrs-sh { display: flex; align-items: baseline; justify-content: space-between; gap: 6px; }
++.hrs-sh h3 { margin: 0; font: 700 15px/1.3 var(--font); color: var(--ink); letter-spacing: -.02em; }
++.hrs-sh .tn { color: var(--ink-3); font-weight: 400; }
++.hrs-sh a { font: 700 12.5px/1.3 var(--font); color: var(--sea-deep); text-decoration: none; white-space: nowrap; }
++.hrs-sh a:hover { text-decoration: underline; }
++.hrs-vlist, .hrs-clist { display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0; list-style: none; }
++.hrs-v { display: flex; flex-direction: column; gap: 6px; padding: 10px; border-radius: 14px; background: var(--g0); border: 1px solid var(--hair); }
++.hrs-va { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 10px; align-items: center; color: var(--ink); text-decoration: none; }
++.hrs-va:hover { text-decoration: none; }
++.hrs-va:hover .hrs-vt { color: var(--sea-deep); text-decoration: underline; }
++.hrs-vth { position: relative; display: block; aspect-ratio: 16 / 9; border-radius: 9px; overflow: hidden; background: var(--bg-3); }
++.hrs-vth img { display: block; width: 100%; height: 100%; object-fit: cover; }
++.hrs-play { position: absolute; right: 5px; bottom: 5px; width: 22px; height: 22px; border-radius: 50%;
++  background: rgba(230, 33, 23, .92); color: #fff; display: grid; place-items: center; }
++.hrs-vtxt { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
++.hrs-vt { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;
++  font: 700 13px/1.35 var(--font); color: var(--ink); letter-spacing: -.015em; }
++.hrs-vm { font: 400 11.5px/1.3 var(--font); color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
++.hrs-vp, .hrs-clinks { display: flex; flex-wrap: wrap; gap: 4px; margin: 0; }
++.hrs-vp a, .hrs-clinks a { display: inline-flex; align-items: center; min-height: 24px; padding: 2px 8px;
++  border-radius: 999px; background: #fff; color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--hair);
++  font: 600 11.5px/1.2 var(--font); text-decoration: none; }
++.hrs-vp a:hover, .hrs-clinks a:hover { background: var(--tint); color: var(--sea-deep); text-decoration: none; }
++.hrs-c { display: flex; flex-direction: column; gap: 6px; padding: 9px 10px; border-radius: 13px; background: var(--bg-2); }
++.hrs-ctop { display: flex; align-items: center; gap: 8px; min-width: 0; }
++.hrs-ctop .ab-svc { width: 24px; height: 24px; flex: none; }
++.hrs-ctop .ab-svc svg { width: 13px; height: 13px; }
++.hrs-cn { flex: 1; min-width: 0; display: flex; flex-direction: column; color: var(--ink); text-decoration: none; }
++.hrs-cn:hover b { color: var(--sea-deep); text-decoration: underline; }
++.hrs-cn b { font: 700 13.5px/1.25 var(--font); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
++.hrs-cn span { font: 400 11.5px/1.25 var(--font); color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
++.hrs-badge { flex: none; padding: 2px 7px; border-radius: 999px; background: var(--tint); color: var(--sea-deep); font: 700 11px/1.25 var(--font); }
+ 
+diff --git a/templates/home.html.j2 b/templates/home.html.j2
+index f4959282fa..6c6c7e8d96 100644
+--- a/templates/home.html.j2
++++ b/templates/home.html.j2
+@@ -54,6 +54,64 @@
+ {% set T = namespace(i=0) %}
+ {% set N = h.news|length %}
+ {% set ASK = ask_starters is defined and ask_starters is not none %}
++{% if popular_videos or yt_channels or insta_channels %}
++<aside class="h-rside" aria-label="{{ site.region }} 인기 유튜브·인스타그램 큐레이션" data-lenis-prevent>
++  <div class="hrs-head">
++    <p class="hrs-kicker">SNS · 크리에이터 큐레이션</p>
++    <h2 class="hrs-title">인기 유튜브 · 인스타</h2>
++    <div class="hrs-tabs">
++      <a class="hrs-tab is-yt" href="#hrs-yt">{{ ab.svc('youtube') }}<span>YouTube</span></a>
++      <a class="hrs-tab is-ig" href="#hrs-ig">{{ ab.svc('instagram') }}<span>Instagram</span></a>
++    </div>
++  </div>
++  {% if popular_videos %}
++  <div class="hrs-sec" id="hrs-yt">
++    <div class="hrs-sh"><h3>화제의 {{ site.region }} 유튜브</h3><a href="/videos/#yt-popular">전체 보기<span class="arr" aria-hidden="true">→</span></a></div>
++    <ul class="hrs-vlist">
++      {% for v in popular_videos[:5] %}
++      {% set t = v.thumbnail or {} %}
++      <li class="hrs-v">
++        <a class="hrs-va" href="{{ v.url }}" target="_blank" rel="noopener" data-track="video_click">
++          <span class="hrs-vth">{% if t.url %}<img src="{{ t.url }}" width="112" height="63" alt="" loading="lazy" decoding="async">{% endif %}<span class="hrs-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="12" height="12"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg></span></span>
++          <span class="hrs-vtxt">
++            <b class="hrs-vt">{{ v.title }}</b>
++            <span class="hrs-vm">{{ v.channel }}{% if v.view_text %} · <span class="tn">{{ v.view_text }}</span>{% endif %}</span>
++          </span>
++        </a>
++        {% if v._places %}<p class="hrs-vp">{% for x in v._places[:3] %}<a href="{{ x._path }}">{{ x.name }}</a>{% endfor %}</p>{% endif %}
++      </li>
++      {% endfor %}
++    </ul>
++  </div>
++  {% endif %}
++  {% if yt_channels %}
++  <div class="hrs-sec">
++    <div class="hrs-sh"><h3>인기 유튜브 채널 <span class="tn">{{ yt_channels|length }}</span></h3><a href="/videos/#yt-channels">모두 보기<span class="arr" aria-hidden="true">→</span></a></div>
++    <ul class="hrs-clist">
++      {% for ch in yt_channels[:8] %}
++      <li class="hrs-c">
++        <div class="hrs-ctop">{{ ab.svc('youtube') }}<a class="hrs-cn" href="{{ ch.url }}" target="_blank" rel="noopener" data-track="video_click"><b>{{ ch.name }}</b><span>{{ ch.handle }}</span></a>{% if ch.badge %}<span class="hrs-badge">{{ ch.badge }}</span>{% endif %}</div>
++        {% if ch.links %}<p class="hrs-clinks">{% for l in ch.links[:3] %}<a href="{{ l.href }}">{{ l.label }}</a>{% endfor %}</p>{% endif %}
++      </li>
++      {% endfor %}
++    </ul>
++  </div>
++  {% endif %}
++  {% if insta_channels %}
++  <div class="hrs-sec" id="hrs-ig">
++    <div class="hrs-sh"><h3>인기 인스타 채널 · 대형카페</h3><a href="/guides/군산-카페/#h-insta">카페 가이드<span class="arr" aria-hidden="true">→</span></a></div>
++    <ul class="hrs-clist">
++      {% for ch in insta_channels[:7] %}
++      <li class="hrs-c">
++        <div class="hrs-ctop">{{ ab.svc('instagram') }}<a class="hrs-cn" href="{{ ch.url }}" target="_blank" rel="noopener" data-track="abroad_click"><b>{{ ch.name }}</b><span>{{ ch.handle }}</span></a>{% if ch.badge %}<span class="hrs-badge">{{ ch.badge }}</span>{% endif %}</div>
++        {% if ch.links %}<p class="hrs-clinks">{% for l in ch.links[:3] %}<a href="{{ l.href }}">{{ l.label }}</a>{% endfor %}</p>{% endif %}
++      </li>
++      {% endfor %}
++    </ul>
++  </div>
++  {% endif %}
++</aside>
++{% endif %}
+ <div class="hk"{% if ASK %} data-chat-dock{% endif %}>
+ {#- 시안 A (operator 2026-11-05 'A로 가되 … 첫 화면 군산 여행의 모든 것은 가운데 정렬'; css/87-design-a.css): a white
+     card in the middle — the H1 with '모든 것' in the sea blue, the lede, the site search (the header's on phones, the
+@@ -279,6 +337,36 @@
+    own cards — the service's mark, the service · account, our one-line note, the date — each to its card on /abroad/
+    (the official embed is there); nothing loads from the services on the home. A row that scrolls sideways on phones,
+    2 columns from 700px, 4 from 1024px (css/48-abroad.css .hsns). #}
++{% if h.vfeat %}
++{% set T.i = T.i + 1 %}
++<section class="sec sec-vid{{ ' tone-2' if T.i is odd }}" aria-labelledby="h-vid">
++  <div class="wrap">
++    {{ ui.sec_head('YouTube', '유튜브로 보는 ' ~ site.region ~ ' 인기 채널·화제 영상', 'h-vid', '/videos/', '영상 ' ~ h.n_videos ~ '편 모두') }}
++    {% if popular_videos %}
++    <div class="home-yt-sub"><h3>화제의 {{ site.region }} 인기 유튜브 영상</h3><a href="/videos/#yt-popular">화제의 영상 모두 보기<span class="arr" aria-hidden="true">→</span></a></div>
++    <ul class="vids vids-4">{% for v in popular_videos[:4] %}{{ ui.video(v, '', v._places or [], false, 'li') }}{% endfor %}</ul>
++    {% endif %}
++    {% if yt_channels %}
++    <div class="home-yt-sub"><h3>{{ site.region }} 여행·맛집 인기 유튜브 채널 <span class="tn">{{ yt_channels|length }}</span></h3><a href="/videos/#yt-channels">인기 채널 {{ yt_channels|length }}곳 모두<span class="arr" aria-hidden="true">→</span></a></div>
++    <ul class="ig-ch-grid">
++      {% for ch in yt_channels[:6] %}
++      <li class="ig-ch-card" id="home-{{ ch.id }}">
++        <div class="ig-ch-head">{{ ab.svc('youtube') }}<div class="ig-ch-who"><b>{{ ch.name }}</b><span>{{ ch.handle }}</span></div>{% if ch.badge %}<span class="ig-ch-badge">{{ ch.badge }}</span>{% endif %}</div>
++        <p class="ig-ch-note">{{ ch.note }}</p>
++        <p class="ig-ch-links"><a class="ig-ch-go" href="{{ ch.url }}" target="_blank" rel="noopener" data-track="video_click">채널 보기<span class="arr" aria-hidden="true">↗</span></a>{% for l in ch.links or [] %}<a class="ig-ch-chip" href="{{ l.href }}">{{ l.label }}</a>{% endfor %}</p>
++      </li>
++      {% endfor %}
++    </ul>
++    {% endif %}
++    <div class="home-yt-sub"><h3>주제별 대표 영상</h3><a href="/videos/">주제별 영상 {{ h.n_videos }}편 모두<span class="arr" aria-hidden="true">→</span></a></div>
++    <div class="vgrid">
++      <div class="v-feat">{{ ui.video(h.vfeat) }}</div>
++      {% if h.vrows %}<ol class="v-rows">{% for r in h.vrows %}{{ p2.vtopic(r) }}{% endfor %}</ol>{% endif %}
++    </div>
++    <nav class="v-chips" aria-label="영상 주제">{% for c in h.vchips %}<a href="{{ c.path or ('/videos/#' ~ c.id) }}">{{ '그 밖의 영상' if c.title == '기타' else c.title }} <span class="tn">{{ c.n }}</span></a>{% endfor %}</nav>
++  </div>
++</section>
++{% endif %}
+ {% if home_insta %}
+ {% set T.i = T.i + 1 %}
+ <section class="sec sec-sns sec-mz{{ ' tone-2' if T.i is odd }}" aria-labelledby="h-insta-home">
+@@ -431,37 +519,6 @@
+ </section>
+ {% endif %}
+ 
+-{# 영상으로 보는 군산: one featured video (thumbnail facade — nothing loads from YouTube before the press), the top video
+-   of three topics, every topic with its count and its own page #}
+-{% if h.vfeat %}
+-{% set T.i = T.i + 1 %}
+-<section class="sec sec-vid{{ ' tone-2' if T.i is odd }}" aria-labelledby="h-vid">
+-  <div class="wrap">
+-    {{ ui.sec_head('YouTube', '영상으로 보는 ' ~ site.region, 'h-vid', '/videos/', '영상 ' ~ h.n_videos ~ '편 모두') }}
+-    <div class="vgrid">
+-      <div class="v-feat">{{ ui.video(h.vfeat) }}</div>
+-      {% if h.vrows %}<ol class="v-rows">{% for r in h.vrows %}{{ p2.vtopic(r) }}{% endfor %}</ol>{% endif %}
+-    </div>
+-    <nav class="v-chips" aria-label="영상 주제">{% for c in h.vchips %}<a href="{{ c.path or ('/videos/#' ~ c.id) }}">{{ '그 밖의 영상' if c.title == '기타' else c.title }} <span class="tn">{{ c.n }}</span></a>{% endfor %}</nav>
+-    {% if yt_channels %}
+-    <div class="home-yt-sub"><h3>{{ site.region }} 여행·맛집 인기 유튜브 채널 <span class="tn">{{ yt_channels|length }}</span></h3><a href="/videos/#yt-channels">인기 채널 {{ yt_channels|length }}곳 모두<span class="arr" aria-hidden="true">→</span></a></div>
+-    <ul class="ig-ch-grid">
+-      {% for ch in yt_channels[:6] %}
+-      <li class="ig-ch-card" id="home-{{ ch.id }}">
+-        <div class="ig-ch-head">{{ ab.svc('youtube') }}<div class="ig-ch-who"><b>{{ ch.name }}</b><span>{{ ch.handle }}</span></div>{% if ch.badge %}<span class="ig-ch-badge">{{ ch.badge }}</span>{% endif %}</div>
+-        <p class="ig-ch-note">{{ ch.note }}</p>
+-        <p class="ig-ch-links"><a class="ig-ch-go" href="{{ ch.url }}" target="_blank" rel="noopener" data-track="video_click">채널 보기<span class="arr" aria-hidden="true">↗</span></a>{% for l in ch.links or [] %}<a class="ig-ch-chip" href="{{ l.href }}">{{ l.label }}</a>{% endfor %}</p>
+-      </li>
+-      {% endfor %}
+-    </ul>
+-    {% endif %}
+-    {% if popular_videos %}
+-    <div class="home-yt-sub"><h3>화제의 {{ site.region }} 인기 유튜브 영상</h3><a href="/videos/#yt-popular">화제의 영상 모두 보기<span class="arr" aria-hidden="true">→</span></a></div>
+-    <ul class="vids vids-4">{% for v in popular_videos[:4] %}{{ ui.video(v, '', v._places or [], false, 'li') }}{% endfor %}</ul>
+-    {% endif %}
+-  </div>
+-</section>
+-{% endif %}
+ 
+ {% if h.columns %}
+ {% set T.i = T.i + 1 %}
+-- 
+2.43.0
+

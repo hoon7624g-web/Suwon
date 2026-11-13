@@ -1,0 +1,20 @@
+{#- 제휴·관련 사이트 (operator 2026-11-11; pipeline/related_sites.py, data/<region>/related_sites.json): the company's sites and the sites
+    related to this one. strip(): the top of every Korean page's footer; cards(): the foot of the home. A partner's site
+    is rel="sponsored" and its note says the relationship. Icons are each site's own app icon (lazy: far below the
+    first screen). -#}
+{% macro _a(s, cls) -%}
+<a class="{{ cls }}" href="{{ s.url }}" rel="{{ 'sponsored noopener' if s.sponsored else 'noopener' }}" data-track="related_site_click" data-provider="{{ s.name }}"><img src="{{ s.icon }}" alt="" width="48" height="48" loading="lazy" decoding="async"><span class="rel-t"><span class="rel-n">{{ s.name }}</span>{% if s.note %}<span class="rel-s">{{ s.note }}</span>{% endif %}</span></a>
+{%- endmacro %}
+
+{% macro strip(rel) -%}
+{% if rel %}<section class="rel-strip" aria-labelledby="h-rel-f"><h2 id="h-rel-f">{{ rel.title }}</h2><ul class="rel-ul">{% for s in rel.sites %}<li>{{ _a(s, 'rel-a') }}</li>{% endfor %}</ul></section>{% endif %}
+{%- endmacro %}
+
+{% macro cards(rel, ui, tone, site_name) -%}
+{% if rel %}<section class="sec sec-rel{{ tone }}" aria-labelledby="h-rel">
+  <div class="wrap">
+    {{ ui.sec_head(rel.title, site_name ~ '과 함께하는 사이트', 'h-rel') }}
+    <ul class="rel-cards">{% for s in rel.sites %}<li>{{ _a(s, 'rel-c') }}</li>{% endfor %}</ul>
+  </div>
+</section>{% endif %}
+{%- endmacro %}

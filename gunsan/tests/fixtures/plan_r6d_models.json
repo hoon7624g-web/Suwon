@@ -1,0 +1,635 @@
+[
+ {
+  "name": "cafe_808_113",
+  "source": "cases_meals_base_noisy_808.json n113",
+  "conditions": {
+   "date": "2027-01-02",
+   "days": 1,
+   "start": "11:00",
+   "end": "19:00",
+   "move": "transit",
+   "with": "solo",
+   "adults": 2,
+   "kids": [],
+   "seniors": 0,
+   "from": "station",
+   "to": "express",
+   "prefs": [
+    "photo",
+    "alleys",
+    "food"
+   ],
+   "needs": [],
+   "budget": null,
+   "note": "아침도 먹고 싶어요"
+  },
+  "input": {
+   "days": [
+    {
+     "date": "2027-01-02",
+     "stops": [
+      {
+       "page": "/places/태성반점/",
+       "start": "11:00",
+       "end": "13:30",
+       "role": "meal",
+       "why": "태성반점에서 시간을 보냅니다"
+      },
+      {
+       "page": "/places/궁전갈치찜/",
+       "start": "13:30",
+       "end": "17:30",
+       "role": "cafe",
+       "why": "궁전갈치찜에서 시간을 보냅니다"
+      },
+      {
+       "page": "/places/군산항1981/",
+       "start": "17:40",
+       "end": "18:40",
+       "role": "visit",
+       "why": "군산항1981에서 시간을 보냅니다"
+      }
+     ]
+    }
+   ],
+   "title": "태성반점 점심과 군산 여행",
+   "summary": "궁전갈치찜에서 시작해 군산항1981까지 돕니다.",
+   "notes": [
+    "군산항1981는 가까이 있습니다."
+   ]
+  }
+ },
+ {
+  "name": "cafe_707_3",
+  "source": "cases_meals_base_noisy_707.json n3",
+  "conditions": {
+   "date": "2027-02-10",
+   "days": 3,
+   "start": "10:00",
+   "end": "18:00",
+   "move": "transit",
+   "with": "parents",
+   "adults": 3,
+   "kids": [],
+   "seniors": 0,
+   "from": "express",
+   "to": "station",
+   "prefs": [
+    "food",
+    "nature",
+    "history"
+   ],
+   "needs": [
+    "lesswalk"
+   ],
+   "budget": null,
+   "note": "간식도 먹고 싶어요"
+  },
+  "input": {
+   "days": [
+    {
+     "date": "2027-02-10",
+     "stops": [
+      {
+       "page": "/places/오구이/",
+       "start": "10:10",
+       "end": "14:10",
+       "role": "cafe",
+       "why": "오구이에서 시간을 보냅니다"
+      },
+      {
+       "page": "/places/비응반점/",
+       "start": "14:30",
+       "end": "16:30",
+       "role": "meal",
+       "why": "비응반점에서 시간을 보냅니다"
+      },
+      {
+       "page": "/places/새만금비응공원/",
+       "start": "16:35",
+       "end": "18:35",
+       "role": "visit",
+       "why": "새만금비응공원에서 시간을 보냅니다"
+      },
+      {
+       "page": "/places/예스모텔-2/",
+       "start": "19:05",
+       "end": "20:05",
+       "role": "stay",
+       "why": ""
+      }
+     ]
+    },
+    {
+     "date": "2027-02-11",
+     "stops": [
+      {
+       "page": "/places/등대로/",
+       "start": "10:30",
+       "end": "11:30",
+       "role": "meal",
+       "why": "등대로에서 시간을 보냅니다"
+      },
+      {
+       "page": "/places/새만금어린이랜드/",
+       "start": "11:45",
+       "end": "13:15",
+       "role": "visit",
+       "why": ""
+      },
+      {
+       "page": "/places/오구이/",
+       "start": "13:20",
+       "end": "14:10",
+       "role": "visit",
+       "why": ""
+      },
+      {
+       "page": "/places/비응도/",
+       "start": "14:25",
+       "end": "14:55",
+       "role": "visit",
+       "why": "비응도에서 시간을 보냅니다"
+      },
+      {
+       "page": "/places/비응항/",
+       "start": "15:15",
+       "end": "16:00",
+       "role": "visit",
+       "why": ""
+      },
+      {
+       "page": "/places/군산어린이교통공원/",
+       "start": "16:00",
+       "end": "16:45",
+       "role": "visit",
+       "why": ""
+      },
+      {
+       "page": "/places/비응도-풍력발전단지/",
+       "start": "16:55",
+       "end": "17:40",
+       "role": "visit",
+       "why": "비응도 풍력발전단지에서 시간을 보냅니다"
+      },
+      {
+       "page": "/places/새만금비응공원/",
+       "start": "18:10",
+       "end": "20:10",
+       "role": "visit",
+       "why": "새만금비응공원에서 시간을 보냅니다"
+      }
+     ]
+    },
+    {
+     "date": "2027-02-12",
+     "stops": [
+      {
+       "page": "/places/근대역사박물관/",
+       "start": "09:00",
+       "end": "09:45",
+       "role": "visit",
+       "why": ""
+      },
+      {
+       "page": "/places/우체통거리/",
+       "start": "09:55",
+       "end": "10:40",
+       "role": "visit",
+       "why": ""
+      },
+      {
+       "page": "/places/구-일본-제18은행-군산지점/",
+       "start": "11:40",
+       "end": "12:40",
+       "role": "visit",
+       "why": ""
+      },
+      {
+       "page": "/places/군산밤-푸드존/",
+       "start": "12:40",
+       "end": "13:25",
+       "role": "visit",
+       "why": "군산밤 푸드존에서 시간을 보냅니다"
+      },
+      {
+       "page": "/places/명산시장/",
+       "start": "13:45",
+       "end": "14:30",
+       "role": "visit",
+       "why": ""
+      },
+      {
+       "page": "/places/이당미술관/",
+       "start": "14:40",
+       "end": "15:25",
+       "role": "visit",
+       "why": ""
+      },
+      {
+       "page": "/places/역전종합시장/",
+       "start": "15:25",
+       "end": "16:25",
+       "role": "visit",
+       "why": "역전종합시장에서 시간을 보냅니다"
+      }
+     ]
+    }
+   ],
+   "title": "군산 여행",
+   "summary": "비응반점에서 시작해 비응도까지 돕니다. 점심은 가까운 곳에서 먹습니다.",
+   "notes": [
+    "비응항는 가까이 있습니다.",
+    "둘째 날 점심은 빵으로 대신합니다."
+   ]
+  }
+ },
+ {
+  "name": "cafe_606_23",
+  "source": "cases_meals_base_noisy_606.json n23",
+  "conditions": {
+   "date": "2026-11-19",
+   "days": 1,
+   "start": "11:00",
+   "end": "19:00",
+   "move": "car",
+   "with": "solo",
+   "adults": 2,
+   "kids": [],
+   "seniors": 0,
+   "from": "",
+   "to": "",
+   "prefs": [
+    "experience",
+    "photo",
+    "history"
+   ],
+   "needs": [
+    "stroller",
+    "wheelchair"
+   ],
+   "budget": null,
+   "note": ""
+  },
+  "input": {
+   "days": [
+    {
+     "date": "2026-11-19",
+     "stops": [
+      {
+       "page": "/places/등대로/",
+       "start": "11:10",
+       "end": "12:10",
+       "role": "meal",
+       "why": ""
+      },
+      {
+       "page": "/places/장가네/",
+       "start": "12:10",
+       "end": "14:40",
+       "role": "cafe",
+       "why": ""
+      },
+      {
+       "page": "/places/물고기자리/",
+       "start": "15:40",
+       "end": "17:10",
+       "role": "meal",
+       "why": ""
+      },
+      {
+       "page": "/places/새만금비응공원/",
+       "start": "17:15",
+       "end": "17:45",
+       "role": "visit",
+       "why": ""
+      }
+     ]
+    }
+   ],
+   "title": "물고기자리와 군산",
+   "summary": "등대로에서 시작해 물고기자리까지 돕니다. 점심은 가까운 곳에서 먹습니다. 저녁에는 원도심을 걷습니다.",
+   "notes": [
+    "등대로는 가까이 있습니다.",
+    "둘째 날 점심은 빵으로 대신합니다."
+   ]
+  }
+ },
+ {
+  "name": "same_808_195",
+  "source": "cases_meals_base_noisy_808.json n195",
+  "conditions": {
+   "date": "2026-11-17",
+   "days": 2,
+   "start": "10:00",
+   "end": "22:00",
+   "move": "car",
+   "with": "couple",
+   "adults": 1,
+   "kids": [],
+   "seniors": 0,
+   "from": "station",
+   "to": "bus",
+   "prefs": [
+    "alleys",
+    "experience"
+   ],
+   "needs": [
+    "free",
+    "wheelchair"
+   ],
+   "budget": null,
+   "note": ""
+  },
+  "input": {
+   "days": [
+    {
+     "date": "2026-11-17",
+     "stops": [
+      {
+       "page": "/places/군산로컬푸드복합센터/",
+       "start": "10:00",
+       "end": "11:30",
+       "role": "visit",
+       "why": ""
+      },
+      {
+       "page": "/places/롯데몰-군산점/",
+       "start": "11:30",
+       "end": "12:00",
+       "role": "visit",
+       "why": "롯데몰 군산점에서 시간을 보냅니다"
+      },
+      {
+       "page": "/places/군산-영화의-거리/",
+       "start": "13:00",
+       "end": "14:00",
+       "role": "visit",
+       "why": "군산 영화의 거리에서 시간을 보냅니다"
+      },
+      {
+       "page": "/places/군산근대건축관/",
+       "start": "14:00",
+       "end": "14:30",
+       "role": "visit",
+       "why": "군산근대건축관에서 시간을 보냅니다"
+      },
+      {
+       "page": "/places/군산밤-푸드존/",
+       "start": "15:00",
+       "end": "15:30",
+       "role": "visit",
+       "why": "군산밤 푸드존에서 시간을 보냅니다"
+      },
+      {
+       "page": "/places/동국사/",
+       "start": "16:30",
+       "end": "18:30",
+       "role": "visit",
+       "why": "동국사에서 시간을 보냅니다"
+      },
+      {
+       "page": "/places/구-일본-제18은행-군산지점/",
+       "start": "18:45",
+       "end": "19:15",
+       "role": "visit",
+       "why": "구 일본 제18은행 군산지점에서 시간을 보냅니다"
+      },
+      {
+       "page": "/places/군산항1981/",
+       "start": "20:15",
+       "end": "21:15",
+       "role": "visit",
+       "why": ""
+      },
+      {
+       "page": "/places/경암동-철길마을/",
+       "start": "21:35",
+       "end": "22:20",
+       "role": "visit",
+       "why": "경암동 철길마을에서 시간을 보냅니다"
+      },
+      {
+       "page": "/places/쏠모텔/",
+       "start": "22:30",
+       "end": "23:30",
+       "role": "stay",
+       "why": ""
+      }
+     ]
+    },
+    {
+     "date": "2026-11-18",
+     "stops": [
+      {
+       "page": "/places/새만금비응공원/",
+       "start": "09:00",
+       "end": "09:30",
+       "role": "visit",
+       "why": "새만금비응공원에서 시간을 보냅니다"
+      },
+      {
+       "page": "/places/비응-마파지길/",
+       "start": "09:40",
+       "end": "11:10",
+       "role": "visit",
+       "why": "비응 마파지길에서 시간을 보냅니다"
+      },
+      {
+       "page": "/places/비응도-풍력발전단지/",
+       "start": "11:10",
+       "end": "12:40",
+       "role": "visit",
+       "why": ""
+      },
+      {
+       "page": "/places/비응항/",
+       "start": "13:00",
+       "end": "14:00",
+       "role": "visit",
+       "why": ""
+      },
+      {
+       "page": "/places/새만금어린이랜드/",
+       "start": "14:30",
+       "end": "16:00",
+       "role": "visit",
+       "why": "새만금어린이랜드에서 시간을 보냅니다"
+      },
+      {
+       "page": "/places/군산어린이교통공원/",
+       "start": "16:20",
+       "end": "17:05",
+       "role": "visit",
+       "why": ""
+      },
+      {
+       "page": "/places/생말공원/",
+       "start": "17:05",
+       "end": "18:05",
+       "role": "visit",
+       "why": ""
+      }
+     ]
+    }
+   ],
+   "title": "군산밤 푸드존와 군산",
+   "summary": "롯데몰 군산점에서 시작해 비응 마파지길까지 돕니다. 저녁에는 원도심을 걷습니다.",
+   "notes": [
+    "군산밤 푸드존는 가까이 있습니다.",
+    "동국사는 월요일 휴관이라 다른 곳으로 바꿨습니다.",
+    "둘째 날 점심은 빵으로 대신합니다."
+   ]
+  }
+ },
+ {
+  "name": "same_808_63",
+  "source": "cases_meals_base_noisy_808.json n63",
+  "conditions": {
+   "date": "2027-01-14",
+   "days": 2,
+   "start": "11:00",
+   "end": "19:00",
+   "move": "transit",
+   "with": "parents",
+   "adults": 2,
+   "kids": [],
+   "seniors": 0,
+   "from": "",
+   "to": "express",
+   "prefs": [
+    "alleys"
+   ],
+   "needs": [
+    "stroller"
+   ],
+   "budget": null,
+   "note": ""
+  },
+  "input": {
+   "days": [
+    {
+     "date": "2027-01-14",
+     "stops": [
+      {
+       "page": "/places/풍년보리원/",
+       "start": "11:00",
+       "end": "11:30",
+       "role": "visit",
+       "why": "풍년보리원에서 시간을 보냅니다"
+      },
+      {
+       "page": "/places/한길문고/",
+       "start": "11:45",
+       "end": "12:15",
+       "role": "visit",
+       "why": ""
+      },
+      {
+       "page": "/places/하제선착장/",
+       "start": "12:25",
+       "end": "13:55",
+       "role": "visit",
+       "why": "하제선착장에서 시간을 보냅니다"
+      },
+      {
+       "page": "/places/청암산/",
+       "start": "14:10",
+       "end": "16:10",
+       "role": "visit",
+       "why": "청암산에서 시간을 보냅니다"
+      },
+      {
+       "page": "/places/멜로디/",
+       "start": "16:20",
+       "end": "17:50",
+       "role": "visit",
+       "why": ""
+      },
+      {
+       "page": "/places/숲티움치유농장/",
+       "start": "18:00",
+       "end": "18:45",
+       "role": "visit",
+       "why": "숲티움치유농장에서 시간을 보냅니다"
+      },
+      {
+       "page": "/places/꿈드레농원/",
+       "start": "19:10",
+       "end": "20:10",
+       "role": "visit",
+       "why": ""
+      },
+      {
+       "page": "/places/기쁨이네-다육농원/",
+       "start": "20:40",
+       "end": "21:25",
+       "role": "visit",
+       "why": "기쁨이네 다육농원에서 시간을 보냅니다"
+      },
+      {
+       "page": "/places/프리마호텔/",
+       "start": "22:25",
+       "end": "23:25",
+       "role": "stay",
+       "why": ""
+      }
+     ]
+    },
+    {
+     "date": "2027-01-15",
+     "stops": [
+      {
+       "page": "/places/비응도/",
+       "start": "10:00",
+       "end": "10:30",
+       "role": "visit",
+       "why": ""
+      },
+      {
+       "page": "/places/생말공원/",
+       "start": "10:50",
+       "end": "11:20",
+       "role": "visit",
+       "why": ""
+      },
+      {
+       "page": "/places/새만금비응공원/",
+       "start": "11:20",
+       "end": "12:05",
+       "role": "visit",
+       "why": "새만금비응공원에서 시간을 보냅니다"
+      },
+      {
+       "page": "/places/비응-마파지길/",
+       "start": "12:10",
+       "end": "13:40",
+       "role": "visit",
+       "why": "비응 마파지길에서 시간을 보냅니다"
+      },
+      {
+       "page": "/places/비응도-풍력발전단지/",
+       "start": "13:45",
+       "end": "15:45",
+       "role": "visit",
+       "why": "비응도 풍력발전단지에서 시간을 보냅니다"
+      },
+      {
+       "page": "/places/군산-동국사-대웅전/",
+       "start": "16:10",
+       "end": "18:10",
+       "role": "visit",
+       "why": "군산 동국사 대웅전에서 시간을 보냅니다"
+      }
+     ]
+    }
+   ],
+   "title": "군산 여행",
+   "summary": "군산 동국사 대웅전에서 시작해 꿈드레농원까지 돕니다.",
+   "notes": [
+    "비응 마파지길는 가까이 있습니다.",
+    "둘째 날 점심은 빵으로 대신합니다."
+   ]
+  }
+ }
+]

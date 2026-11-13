@@ -1,0 +1,19 @@
+{% extends "base.html.j2" %}
+{% import "_art.html.j2" as artm %}
+{% import "_courses.html.j2" as cc %}
+{#- <home>courses/ of every version but Korean: the Korean page's cards (operator 2026-10-31; templates/_courses.html.j2)
+    in this version's words — grouped by length (day trip, 1 night 2 days, 2 nights 3 days), then by theme. CV =
+    en_site Site.course_index. -#}
+{% block main_class %}{% endblock %}
+{% block bodyclass %}pg-courses{% endblock %}
+{% block content %}
+<header class="pg-hero">{{ artm.band((art_slots or {}).get('list.head.courses'), loc.code) }}<div class="wrap">
+<h1 class="h-list vt-title">{{ t.f('courses_h1', r=region) }} <span class="count tn">{{ CV.groups|sum(attribute='cards', start=[])|length }}</span></h1>
+<p class="list-lede">{{ t.courses_lede }}</p>
+{% if CV.groups|length > 1 %}{{ cc.nav(CV.groups, CV.w.nav) }}{% endif %}
+</div></header>
+<div class="wrap cc-wrap">
+  {% for g in CV.groups %}{{ cc.group(g) }}{% endfor %}
+  {{ cc.notes(CV) }}
+</div>
+{% endblock %}

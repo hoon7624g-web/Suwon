@@ -1,0 +1,282 @@
+From 1d154bf1bfa7615d51082bd6b585f25d3bab0e64 Mon Sep 17 00:00:00 2001
+From: hoon7624g-web <272256230+hoon7624g-web@users.noreply.github.com>
+Date: Mon, 9 Nov 2026 18:46:38 +0900
+Subject: [PATCH] =?UTF-8?q?feat(insta):=20=EA=B5=B0=EC=82=B0=20=EC=9D=B8?=
+ =?UTF-8?q?=EA=B8=B0=20=EC=9D=B8=EC=8A=A4=ED=83=80=EA=B7=B8=EB=9E=A8=20?=
+ =?UTF-8?q?=EB=8C=80=ED=98=95=EC=B9=B4=ED=8E=98=2022=EA=B1=B4=20=EB=B0=8F?=
+ =?UTF-8?q?=20=EC=9D=B8=EA=B8=B0=20=EC=9D=B8=EC=8A=A4=ED=83=80=20=EC=B1=84?=
+ =?UTF-8?q?=EB=84=90=2010=EA=B3=B3=20=ED=81=90=EB=A0=88=EC=9D=B4=EC=85=98?=
+ =?UTF-8?q?=20(=ED=99=88=C2=B7=EC=B9=B4=ED=8E=98=20=EA=B0=80=EC=9D=B4?=
+ =?UTF-8?q?=EB=93=9C=C2=B7=EA=B0=9C=EB=B3=84=20=EC=9E=A5=EC=86=8C=20?=
+ =?UTF-8?q?=ED=8E=98=EC=9D=B4=EC=A7=80=20=EB=B0=98=EC=98=81)?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ pipeline/build.py                  | 42 ++++++++++++++++++++++++++++++
+ templates/_mz.html.j2              |  4 +--
+ templates/assets/css/48-abroad.css | 31 ++++++++++++++++++++++
+ templates/guide.html.j2            | 33 ++++++++++++++++++++++-
+ templates/home.html.j2             | 32 +++++++++++++++++++++++
+ templates/place.html.j2            |  5 +++-
+ 6 files changed, 143 insertions(+), 4 deletions(-)
+
+diff --git a/pipeline/build.py b/pipeline/build.py
+index ee06f3c14b..49d09bd719 100644
+--- a/pipeline/build.py
++++ b/pipeline/build.py
+@@ -617,6 +617,19 @@ class State:
+         for h in self.abroad_highlights:   # an article card on /abroad/ shows its highlight's quotation too (2026-10-14)
+             if h["quote"]:
+                 h["item"]["_quote"] = {"text": h["quote"], "lang": h["quote_lang"]}
++        # 인스타그램 인기 카페 큐레이션 (data/<region>/insta.json): domestic Instagram posts curated with our own
++        # one-line note + original link + official Instagram embed ([data-embed="instagram"]).
++        self.insta = load_insta(data_dir)
++        self.insta_channels = load_insta_channels(data_dir)
++        for a in self.insta:
++            a["_places"] = [self.ent_by_slug[s] for s in a["place_slugs"] if s in self.ent_by_slug]
++        for e in self.entities:
++            e["_insta"] = [a for a in self.insta if e["slug"] in a["place_slugs"]]
++        for g in self.guides:
++            g["_insta"] = [a for a in self.insta if g["id"] in a["guide_ids"]]
++            g["_insta_multi"] = [a for a in g["_insta"] if a.get("curation_group") == "multi"]
++            g["_insta_spot"] = [a for a in g["_insta"] if a.get("curation_group") != "multi"]
++            g["_insta_channels"] = self.insta_channels if g["_insta"] else []
+         # 군산각 블로그 (data/<region>/blog.json from tools/blog_sync.py, operator 2026-10-30): the operator's Naver blog
+         # as its posts' titles and links only — no text, no photos (their sources are not known), never a fact. A place
+         # gets the posts that link to its page or name it; a guide, column or course page the posts that link to it.
+@@ -1413,6 +1426,30 @@ def load_abroad(data_dir: Path) -> list[dict]:
+     return sorted(items, key=lambda a: a.get("date") or "", reverse=True)   # '' (undated) sorts last
+ 
+ 
++def load_insta(data_dir: Path) -> list[dict]:
++    """data/<region>/insta.json: curated domestic Instagram posts (e.g. popular Gunsan cafes), shown as our own
++    one-line note + the link + Instagram's official embed ([data-embed="instagram"]). Published only."""
++    raw = _load(data_dir / "insta.json", {}) or {}
++    items = []
++    for a in raw.get("items") or []:
++        if a.get("status") != "published" or not a.get("url") or not squash_ws(a.get("note")):
++            continue
++        if a.get("platform") not in ABROAD_PLATFORMS:
++            continue
++        items.append({**a, "kind": "post",
++                      "place_slugs": list(a.get("place_slugs") or []),
++                      "guide_ids": list(a.get("guide_ids") or []),
++                      "platform_label": ABROAD_PLATFORMS.get(a.get("platform"), "Instagram")})
++    return items
++
++
++def load_insta_channels(data_dir: Path) -> list[dict]:
++    """data/<region>/insta.json channels: curated popular regional Instagram channels."""
++    raw = _load(data_dir / "insta.json", {}) or {}
++    return [c for c in raw.get("channels") or []
++            if c.get("status") == "published" and c.get("url") and c.get("handle") and squash_ws(c.get("note"))]
++
++
+ HL_SMALL_MAX = 60_000   # bytes: the provider's small rendition is used in a highlight circle only up to this size
+ HL_VIEWER = "/abroad/highlights.json"   # the viewer's markup, fetched on the first press (not in the page's first load)
+ 
+@@ -2188,6 +2225,11 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
+                                                  key=lambda a: (a.get("date") or "", a["id"]), reverse=True)[:8],
+                                           S.ent_by_slug),   # a post without a place's photo: a related one (2026-11-04)
+             n_posts=sum(a.get("kind") == "post" for a in getattr(S, "abroad", None) or []),
++            home_insta=present.home_posts(sorted(getattr(S, "insta", None) or [],
++                                                 key=lambda a: (int(a.get("likes") or 0), a["id"]), reverse=True)[:8],
++                                          S.ent_by_slug),
++            n_insta=len(getattr(S, "insta", None) or []),
++            insta_channels=getattr(S, "insta_channels", None) or [],
+             home_blog=blog_home(S))   # 군산각 블로그 (operator 2026-10-30): the /blog/ cards, one per category first
+ 
+     page = {"title": f"페이지를 찾을 수 없습니다 | {S.site['site_name']}", "description": "", "canonical": S.site_url + "/",
+diff --git a/templates/_mz.html.j2 b/templates/_mz.html.j2
+index de8f69a5ef..eb8b963ac2 100644
+--- a/templates/_mz.html.j2
++++ b/templates/_mz.html.j2
+@@ -56,10 +56,10 @@
+ </a></li>
+ {%- endmacro %}
+ 
+-{% macro sns(a, i=0) -%}
++{% macro sns(a, i=0, href_prefix='/abroad/#') -%}
+ {% set tones = ['ink', 'chick', 'sea', 'tint', 'rose'] %}
+ {% set word = a.place.name if a.place else ((a.lang ~ ' 게시물') if a.lang else (a.platform_label ~ ' 게시물')) %}
+-<li><a class="hsns-c" href="/abroad/#{{ a.id }}" data-track="abroad_click">
++<li><a class="hsns-c" href="{{ href_prefix }}{{ a.id }}" data-track="abroad_click">
+ <span class="hsns-v{% if a.photo %} t{{ a.photo.type }}{% else %} hsns-w-{{ tones[i % tones|length] }}{% endif %}">{% if a.photo %}{{ ui.img(a.photo, '(min-width: 1024px) 280px, 264px', false, 'hsns-img') }}{% else %}<span class="hsns-w">{{ word }}</span>{% endif %}{% if a.place %}<span class="hsns-pl">{{ pin_icon() }}{% if a.related %}관련 사진 · {{ a.place_short }}{% else %}{{ a.place.name if a.photo else '나온 곳' }}{% endif %}</span>{% endif %}{% if a.photo %}<span class="hsns-cr">장소 사진 · 출처: {{ a.photo.credit or '한국관광공사' }} · 공공누리 제{{ a.photo.type }}유형</span>{% endif %}</span>
+ <span class="hsns-h">{{ ab.svc(a.platform) }}<span class="hsns-who"><b>{{ a.platform_label }}</b>{% if a.author %} · {{ a.author }}{% endif %}</span>{% if a.lang %}<span class="hsns-lang">{{ a.lang }}</span>{% endif %}</span>
+ <span class="hsns-n">{{ a.note }}</span>
+diff --git a/templates/assets/css/48-abroad.css b/templates/assets/css/48-abroad.css
+index 003ef1c4a1..0dbf2ed784 100644
+--- a/templates/assets/css/48-abroad.css
++++ b/templates/assets/css/48-abroad.css
+@@ -193,4 +193,35 @@ html.embed-manual .ab-ph-msg { display: none; }
+ .hsns-n { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5; overflow: hidden; font-size: 15.5px; line-height: 1.6; }
+ .hsns-d { margin-top: auto; font-size: 13px; color: var(--ink-3); }
+ .ab-sns-top { margin-top: 0; }
++.ab-wall + .ab-sub { margin-top: clamp(28px, 3.6vw, 44px); }
++@media (min-width: 1200px) {
++  .ab-wall.ab-wall-place { grid-template-columns: repeat(2, minmax(0, 1fr)); }
++  .ab-wall.ab-wall-place.is-masonry > :nth-child(2n+1) { grid-column: 1; }
++  .ab-wall.ab-wall-place.is-masonry > :nth-child(2n) { grid-column: 2; }
++}
++.ab-wall.ab-wall-place:has(> :only-child) { grid-template-columns: minmax(0, 540px); }
++/* ---------------------------------------------------------------- 군산 관련 인기 인스타그램 채널 큐레이션 (홈 & 카페 가이드) */
++.ig-prof-av { width: 48px; height: 48px; }
++.ig-prof-av svg { width: 24px; height: 24px; }
++.ig-ch-sub { margin: 24px 0 14px; font: 700 clamp(17px, 1.8vw, 20px)/1.35 var(--font); letter-spacing: -.015em; color: var(--ink); }
++.ig-ch-sub .tn { color: var(--ink-3); font-weight: 400; margin-left: 4px; }
++.ig-ch-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; margin: 0 0 28px; padding: 0; list-style: none; }
++@media (min-width: 680px) { .ig-ch-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; } }
++@media (min-width: 1080px) { .ig-ch-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; } }
++.ig-ch-card { display: flex; flex-direction: column; gap: 10px; padding: 16px 18px 14px; border-radius: var(--r);
++  background: #fff; box-shadow: inset 0 0 0 1px var(--hair), var(--shadow-1); }
++.ig-ch-head { display: flex; align-items: center; gap: 10px; min-width: 0; }
++.ig-ch-who { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
++.ig-ch-who b { font: 700 15.5px/1.3 var(--font); color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
++.ig-ch-who span { font-size: 13px; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
++.ig-ch-badge { flex: none; padding: 3px 9px; border-radius: 999px; background: var(--tint); color: var(--sea-deep);
++  font: 700 12px/1.3 var(--font); }
++.ig-ch-note { margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--ink-2); word-break: keep-all; }
++.ig-ch-links { margin: auto 0 0; padding-top: 6px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 13px; line-height: 1.25; }
++.ig-ch-links a { display: inline-flex; align-items: center; min-height: 32px; padding: 4px 11px; border-radius: 999px; text-decoration: none; }
++.ig-ch-go { background: var(--tint); color: var(--sea-deep); font-weight: 700; }
++.ig-ch-go:hover { background: var(--tint2); }
++.ig-ch-go .arr { margin-left: 3px; }
++.ig-ch-chip { background: var(--bg-2); color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--hair); }
++.ig-ch-chip:hover { background: var(--g1); color: var(--ink); }
+ 
+diff --git a/templates/guide.html.j2 b/templates/guide.html.j2
+index d9bb465245..3abe942202 100644
+--- a/templates/guide.html.j2
++++ b/templates/guide.html.j2
+@@ -2,6 +2,7 @@
+ {% import "_blog.html.j2" as blm %}
+ {% import "_art.html.j2" as artm %}
+ {% import "_p2.html.j2" as p2 %}
++{% import "_abroad.html.j2" as ab %}
+ {#- A purpose guide (Apple direction + the reading layer, owner 2026-10-09: "줄글이라 사람이 읽기 불편"). Every sentence
+     of the guide is in the HTML, verbatim and in order; the page adds a layer to scan:
+     - the answer card: the summary's first sentence as the answer line (big), the guide's places as mini cards, then
+@@ -23,6 +24,7 @@
+ {% set links = [] %}
+ {% if G.booking %}{% set _ = links.append((G.bw.nav, '#h-book')) %}{% endif %}
+ {% if G.route %}{% set _ = links.append(('걷는 순서', '#h-route')) %}{% endif %}
++{% if G.g._insta %}{% set _ = links.append(('인스타그램', '#h-insta')) %}{% endif %}
+ {% if G.places %}{% set _ = links.append(('장소', '#h-items')) %}{% endif %}
+ {% if G.faqs %}{% set _ = links.append(('질문', '#h-faq')) %}{% endif %}
+ {% set _ = links.append(('출처', '#h-src')) %}
+@@ -59,7 +61,7 @@
+       <div class="summary" data-block="summary">{% if G.ans.first %}<p class="lede gd-ans-l {{ G.ans.size }}">{{ G.ans.html }}</p>{% if G.ans.rest_pts %}<ul class="gd-ans-pts">{% for t in G.ans.rest_pts %}<li>{{ t }}</li>{% endfor %}</ul>{% elif G.ans.rest %}<p class="dek gd-ans-r">{{ G.ans.rest_html }}</p>{% endif %}{% else %}<p class="lede">방문 정보를 확인하며 가이드를 준비하고 있습니다.</p>{% endif %}</div>
+       {% if G.picks %}
+       <div class="gd-picks">
+-        <p class="gd-picks-h"><span>이 가이드의 장소 <b class="tn">{{ G.picks_total }}</b>곳</span>{% if G.places %}<a href="#h-items">전체 목록</a>{% endif %}</p>
++        <p class="gd-picks-h"><span>이 가이드의 장소 <b class="tn">{{ G.picks_total }}</b>곳</span><span>{% if G.g._insta %}<a href="#h-insta">인스타그램 미리보기 <span class="tn">{{ G.g._insta|length }}</span>편</a> · {% endif %}{% if G.places %}<a href="#h-items">전체 목록</a>{% endif %}</span></p>
+         {% set more = {'n': '외 %d곳'|format(G.picks_more), 'text': '전체 목록 보기', 'href': '#h-items'} if G.picks_more and G.places else none %}
+         {{ ui.shelf(G.picks, '이 가이드의 장소', credit_ko(G.picks), more=more) }}
+       </div>
+@@ -116,6 +118,35 @@
+   {% endif %}
+ 
+   {% if G.places %}
++  {% if G.g._insta %}
++  <section class="ab-sns chapter cv" id="h-insta" aria-labelledby="h-insta-h">
++    <div class="wrap">
++      <h2 id="h-insta-h" class="ab-h">인스타그램에서 많이 찾은 {{ site.region }} 대형·감성 카페 <span class="tn">{{ G.g._insta|length }}</span></h2>
++      <p class="ab-sns-lede">{% if G.g._insta_multi %}카페 모음 큐레이션 <span class="tn">{{ G.g._insta_multi|length }}</span>{% endif %}{% if G.g._insta_multi and G.g._insta_spot %}<span aria-hidden="true"> · </span>{% endif %}{% if G.g._insta_spot %}장소별 미리보기 <span class="tn">{{ G.g._insta_spot|length }}</span>{% endif %}{% if G.g._insta_channels %}<span aria-hidden="true"> · </span>인기 채널 <span class="tn">{{ G.g._insta_channels|length }}</span>{% endif %} — 게시물마다 우리가 쓴 한 줄 소개와 군산각 장소 바로가기를 달고, 미리보기는 Instagram 공식 임베드로 보여 줍니다.</p>
++      {% if G.g._insta_channels %}
++      <h3 class="ab-sub" id="h-insta-channels">{{ site.region }} 관련 인기 인스타그램 채널 <span class="tn">{{ G.g._insta_channels|length }}</span></h3>
++      <ul class="ig-ch-grid ig-ch-guide">
++        {% for ch in G.g._insta_channels %}
++        <li class="ig-ch-card">
++          <div class="ig-ch-head">{{ ab.svc('instagram') }}<div class="ig-ch-who"><b>{{ ch.name }}</b><span>{{ ch.handle }}</span></div>{% if ch.badge %}<span class="ig-ch-badge">{{ ch.badge }}</span>{% endif %}</div>
++          <p class="ig-ch-note">{{ ch.note }}</p>
++          <p class="ig-ch-links"><a class="ig-ch-go" href="{{ ch.url }}" target="_blank" rel="noopener" data-track="abroad_click">채널 보기<span class="arr" aria-hidden="true">↗</span></a>{% for l in ch.links or [] %}<a class="ig-ch-chip" href="{{ l.href }}">{{ l.label }}</a>{% endfor %}</p>
++        </li>
++        {% endfor %}
++      </ul>
++      {% endif %}
++      {% if G.g._insta_multi %}
++      <h3 class="ab-sub" id="h-insta-multi">크리에이터가 꼽은 {{ site.region }} 대형·감성 카페 모음 <span class="tn">{{ G.g._insta_multi|length }}</span></h3>
++      <ul class="ab-wall" data-wall>{% for a in G.g._insta_multi %}{{ ab.post(a) }}{% endfor %}</ul>
++      {% endif %}
++      {% if G.g._insta_spot %}
++      <h3 class="ab-sub" id="h-insta-spot">카페별 인스타그램 미리보기·바로가기 <span class="tn">{{ G.g._insta_spot|length }}</span></h3>
++      <ul class="ab-wall" data-wall>{% for a in G.g._insta_spot %}{{ ab.post(a) }}{% endfor %}</ul>
++      {% endif %}
++      <p class="note ab-src-note">게시물의 글·사진·영상은 각 작성자의 것입니다. 원문 문장과 사진은 서버에 옮겨 싣지 않고 우리가 쓴 한 줄 소개와 원문 링크만 실었으며, 게시물 미리보기는 화면에 가까워지면 Instagram의 공식 임베드로 불러옵니다.</p>
++    </div>
++  </section>
++  {% endif %}
+   <section class="wrap chapter cv" aria-labelledby="h-items">
+     {{ ui.chead('이 가이드의 장소 ' ~ G.places|length ~ '곳', 'h-items') }}
+     <ol class="gitems">
+diff --git a/templates/home.html.j2 b/templates/home.html.j2
+index b25295b786..42e4053745 100644
+--- a/templates/home.html.j2
++++ b/templates/home.html.j2
+@@ -279,6 +279,38 @@
+    own cards — the service's mark, the service · account, our one-line note, the date — each to its card on /abroad/
+    (the official embed is there); nothing loads from the services on the home. A row that scrolls sideways on phones,
+    2 columns from 700px, 4 from 1024px (css/48-abroad.css .hsns). #}
++{% if home_insta %}
++{% set T.i = T.i + 1 %}
++<section class="sec sec-sns sec-mz{{ ' tone-2' if T.i is odd }}" aria-labelledby="h-insta-home">
++  <div class="wrap">
++    {{ ui.sec_head('인스타그램으로 보는 ' ~ site.region, site.region ~ ' 관련 인기 인스타그램 채널과 대형·감성 카페', 'h-insta-home', '/guides/군산-카페/#h-insta', '인스타그램 큐레이션 ' ~ n_insta ~ '편 모두') }}
++    {% if insta_channels %}
++    {% set own_ch = insta_channels|selectattr('id', 'equalto', 'ig-ch-gunsangak')|first %}
++    {% set other_chs = insta_channels|rejectattr('id', 'equalto', 'ig-ch-gunsangak')|list %}
++    {% if own_ch %}
++    <div class="blz-prof ig-prof">{{ ab.svc('instagram', 'ab-svc ig-prof-av') }}<p class="blz-who"><b>{{ own_ch.name }}</b><span>{{ own_ch.handle }} · {{ own_ch.note }}</span></p>
++      {% if own_ch.links %}<ul class="blz-cats">{% for l in own_ch.links %}<li><a href="{{ l.href }}">{{ l.label }}</a></li>{% endfor %}</ul>{% endif %}
++      <a class="blz-go" href="{{ own_ch.url }}" target="_blank" rel="noopener" data-track="abroad_click">공식 계정 가기<span class="arr" aria-hidden="true">↗</span></a></div>
++    {% endif %}
++    {% if other_chs %}
++    <h3 class="ig-ch-sub">{{ site.region }} 여행·카페·맛집 인기 인스타그램 채널 <span class="tn">{{ other_chs|length }}</span></h3>
++    <ul class="ig-ch-grid">
++      {% for ch in other_chs %}
++      <li class="ig-ch-card" id="{{ ch.id }}">
++        <div class="ig-ch-head">{{ ab.svc('instagram') }}<div class="ig-ch-who"><b>{{ ch.name }}</b><span>{{ ch.handle }}</span></div>{% if ch.badge %}<span class="ig-ch-badge">{{ ch.badge }}</span>{% endif %}</div>
++        <p class="ig-ch-note">{{ ch.note }}</p>
++        <p class="ig-ch-links"><a class="ig-ch-go" href="{{ ch.url }}" target="_blank" rel="noopener" data-track="abroad_click">채널 보기<span class="arr" aria-hidden="true">↗</span></a>{% for l in ch.links or [] %}<a class="ig-ch-chip" href="{{ l.href }}">{{ l.label }}</a>{% endfor %}</p>
++      </li>
++      {% endfor %}
++    </ul>
++    {% endif %}
++    {% endif %}
++    <h3 class="ig-ch-sub">인스타그램에서 많이 찾은 {{ site.region }} 대형·감성 카페 <span class="tn">{{ n_insta }}</span></h3>
++    <ul class="hsns">{% for a in home_insta %}{{ mz.sns(a, loop.index0, '/guides/군산-카페/#') }}{% endfor %}</ul>
++    <p class="note hsns-note">원문 문장과 게시물 사진은 옮기지 않습니다. 카드 위 그림은 게시물에 나온 카페·장소의 사진(한국관광공사 공공누리)이고, 카드를 누르면 군산 카페 가이드의 공식 임베드 미리보기와 장소 바로가기로 이어집니다.</p>
++  </div>
++</section>
++{% endif %}
+ {% if home_posts %}
+ {% set T.i = T.i + 1 %}
+ <section class="sec sec-sns sec-mz{{ ' tone-2' if T.i is odd }}" aria-labelledby="h-sns">
+diff --git a/templates/place.html.j2 b/templates/place.html.j2
+index b7c22f695a..315dc75ecd 100644
+--- a/templates/place.html.j2
++++ b/templates/place.html.j2
+@@ -21,7 +21,7 @@
+ {% import "_today.html.j2" as tdy %}
+ {% set fn = p.notes|length > 1 %}
+ {#- the media block (영상 · 소식 · 해외 기사 · SNS · 블로그 글): its parts name the heading and the page-nav link -#}
+-{% set abroad = p.e._abroad or [] %}{% set ab_art = abroad|selectattr('kind', 'equalto', 'article')|list %}{% set ab_post = abroad|selectattr('kind', 'equalto', 'post')|list %}{% set media_parts = (['영상'] if p.videos else []) + (['소식'] if (media or {}).news else []) + (['해외 기사'] if ab_art else []) + (['SNS'] if ab_post else []) + (['블로그 글'] if p.e._blog else []) %}
++{% set insta = p.e._insta or [] %}{% set abroad = p.e._abroad or [] %}{% set ab_art = abroad|selectattr('kind', 'equalto', 'article')|list %}{% set ab_post = abroad|selectattr('kind', 'equalto', 'post')|list %}{% set media_parts = (['영상'] if p.videos else []) + (['소식'] if (media or {}).news else []) + (['인스타그램'] if insta else []) + (['해외 기사'] if ab_art else []) + (['SNS'] if ab_post else []) + (['블로그 글'] if p.e._blog else []) %}
+ {% set nm = p.name %}
+ {% set lead = p.hero_k1 or p.hero_k3 %}
+ {% set kind_word = {'attraction': '볼거리', 'stay': '숙소', 'food': '음식점'}[p.kind] %}
+@@ -265,6 +265,9 @@
+       {% if p.videos %}<ul class="vids">{% for v in p.videos %}{{ ui.video(v, p.e.id, [], false, 'li') }}{% endfor %}</ul>
+       {% if has_videos %}<p class="note"><a href="/videos/">영상 모아 보기</a></p>{% endif %}{% endif %}
+       {% if news %}<ul class="xlinks">{% for n in news %}<li><a href="{{ n.url }}" rel="noopener" data-track="news_click" data-place="{{ p.e.id }}">{{ n.title }}</a><span class="same-t">{{ n.publisher }}{% if n.date %} · <span class="tn">{{ n.date }}</span>{% endif %}</span></li>{% endfor %}</ul>{% endif %}
++      {% if insta %}<h3 class="ab-sub">인스타그램에서 본 {{ nm }} <span class="tn">{{ insta|length }}</span></h3>
++      <ul class="ab-wall ab-wall-place" data-wall>{% for a in insta %}{{ ab.post(a, (a._places|length) > 1) }}{% endfor %}</ul>
++      <p class="note"><a href="/guides/군산-카페/#h-insta">{{ site.region }} 대형·감성 카페 인스타그램 큐레이션 모아 보기 →</a></p>{% endif %}
+       {% if abroad %}<h3 class="ab-sub">해외에서 본 {{ nm }}</h3>
+       <ul class="ab-list ab-in">{% for a in ab_art %}{{ ab.article(a, false, false) }}{% endfor %}{% for a in ab_post %}{{ ab.post(a, false) }}{% endfor %}</ul>
+       <p class="note"><a href="/abroad/">해외에서 본 {{ site.region }} 모아 보기</a></p>{% endif %}
+-- 
+2.43.0
+

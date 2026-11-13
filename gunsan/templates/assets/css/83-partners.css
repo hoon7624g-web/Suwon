@@ -1,0 +1,245 @@
+/* ---------------------------------------------------------------- 83 군산각 파트너 (operator 2026-11-04 meeting;
+   pipeline/partners.py): the partner stay's premium card on /stays/booking/ (a gold frame, the diagonal '파트너' ribbon
+   at the top-right corner — never over a KOGL-3 photo — the badge with its '?' under the name, its own homepage first
+   as the one filled button), the same badge, '?' and button in a stay page's booking box, the '문의/제휴' row in the
+   panel / phone menu, and the /partners/ page. Pretendard 400·700 only. */
+:root { --gold: #E5A800; --gold-ink: #7A5600; --gold-bg: #FFF8E1; }
+
+/* the badge and its '?' (ui.partner_why): a <details>, so the note opens without JavaScript */
+.pt-b { display: inline-flex; align-items: center; height: 24px; padding: 0 9px; border-radius: 980px; background: linear-gradient(135deg, #FFE27A, #F5B301); color: var(--ink); font-size: 12px; font-weight: 700; letter-spacing: -.01em; }
+.pt-why { position: relative; display: inline-block; }
+.pt-why > summary { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; box-shadow: inset 0 0 0 1.5px var(--gold); background: #fff; color: var(--gold-ink); font-size: 13px; font-weight: 700; list-style: none; cursor: pointer; }
+.pt-why > summary::-webkit-details-marker { display: none; }
+.pt-why > summary::after { content: ""; position: absolute; inset: -9px; }   /* a 44px touch target — around the '?' only: the summary is its box (2026-11-04 fix: with the details static it covered the whole card and took every click) */
+.pt-why > summary:focus-visible { outline: 3px solid var(--sea); outline-offset: 2px; }
+.pt-why[open] > summary { background: var(--gold); color: #fff; box-shadow: none; }
+.pt-pop { position: absolute; top: calc(100% + 10px); right: 0; z-index: 30; display: flex; flex-direction: column; gap: 8px; width: min(290px, calc(100vw - 72px)); padding: 14px 16px; border-radius: 16px; background: #fff; box-shadow: 0 0 0 1px var(--hair), 0 20px 40px -18px rgba(17, 34, 68, .45); color: var(--ink); font-size: 13.5px; font-weight: 400; line-height: 1.55; text-align: left; white-space: normal; }
+.pt-pt { font-size: 14px; font-weight: 700; }
+.pt-px { color: var(--ink-2); }
+.pt-pa { display: inline-flex; align-items: center; gap: 4px; min-height: 40px; color: var(--link); font-weight: 700; text-decoration: none; }
+.pt-pa:hover { text-decoration: underline; }
+
+/* the stay's own homepage first (ui.direct_link) */
+.aff-direct, .sb-direct { display: flex; align-items: center; gap: 4px 10px; flex-wrap: wrap; box-sizing: border-box; width: 100%; min-height: 58px; padding: 10px 12px 10px 16px; border-radius: 16px; background: var(--sea); color: #fff; text-decoration: none; box-shadow: 0 12px 24px -16px rgba(29, 79, 150, .8); transition: background-color .2s var(--fb), transform .2s var(--fb); }
+.aff-direct:hover, .sb-direct:hover { background: var(--sea-hi); color: #fff; text-decoration: none; transform: translateY(-1px); }
+.aff-direct:focus-visible, .sb-direct:focus-visible { outline: 3px solid var(--sea-deep); outline-offset: 2px; }
+.dl-k { font-size: 16px; font-weight: 700; }
+.dl-n { font-size: 14px; font-weight: 700; color: var(--chick); }
+.dl-h { flex: 1; min-width: 0; font-size: 12px; color: rgba(255, 255, 255, .78); text-align: right; overflow-wrap: anywhere; }
+.aff-direct .ota-go, .sb-direct .ota-go { background: #fff; color: var(--sea-deep); }
+.aff-direct { margin: 0 0 10px; }
+.sb-direct { min-height: 52px; flex-wrap: nowrap; }
+.sb-direct .dl-h { display: none; }   /* a card is too narrow for the address; the stay page shows it */
+.sb-direct .ota-go { margin-left: auto; }
+.aff-tags { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.aff-pt { box-shadow: inset 0 0 0 2px var(--gold); background: linear-gradient(180deg, var(--gold-bg) 0, var(--tint) 120px); }
+.aff-pt { position: relative; }
+.aff-pt .pt-why { position: static; }   /* the note is placed in the box, under the '?', never off a phone's edge */
+.aff-pt .pt-pop { left: 12px; right: 12px; top: auto; width: auto; margin-top: 10px; }
+@media (min-width: 761px) { .aff-pt .pt-pop { left: auto; right: 16px; width: 300px; } }
+
+/* the premium card on /stays/booking/ */
+.sb-c { position: relative; }
+.sb-c.sb-pt { z-index: 2; overflow: visible; box-shadow: 0 0 0 2.5px var(--gold), 0 20px 40px -26px rgba(122, 86, 0, .55); background: linear-gradient(180deg, var(--gold-bg) 0, #fff 160px); }
+.sb-c.sb-pt:hover { box-shadow: 0 0 0 2.5px var(--gold), 0 24px 44px -24px rgba(122, 86, 0, .6); }
+.sb-pt .sb-hd { padding-right: 72px; }
+.sb-pt .sb-ph { border-radius: 22px 22px 0 0; }   /* the card's corners now that it lets the '?' note out */
+.sb-rib { position: absolute; top: 0; right: 0; z-index: 3; width: 108px; height: 108px; overflow: hidden; border-top-right-radius: 22px; pointer-events: none; }
+.sb-rib > span { position: absolute; top: 24px; right: -38px; width: 160px; padding: 6px 0; transform: rotate(45deg); background: linear-gradient(90deg, #F5B301, #FFD54A, #F5B301); color: var(--ink); font-size: 12.5px; font-weight: 700; letter-spacing: .04em; text-align: center; box-shadow: 0 6px 14px -8px rgba(122, 86, 0, .7); }
+.sb-pw { display: flex; align-items: center; gap: 6px; margin-top: 6px; }
+.sb-pw .pt-why { position: static; }   /* the note spans the card (its box), so it never runs off a phone's edge */
+.sb-pw .pt-pop { left: 12px; right: 12px; top: auto; width: auto; margin-top: 10px; }
+.sb-join { margin: 10px 0 0; }
+.sb-join a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--link); font-size: 15px; font-weight: 700; text-decoration: none; }
+.sb-join a:hover { text-decoration: underline; }
+
+/* '문의/제휴' in the panel and the phone menu (_side.html.j2 partner) */
+.sd-pt { margin: 12px 0 0; }
+/* the partner link (operator 2026-11-04 '좀 고급스럽게'): a dark card with a gold hairline and a soft gold glow, the gold
+   spark tile, '문의/제휴' in pale gold over '군산각 파트너 되기', the gold chevron */
+.sd-pt-a { position: relative; display: flex; align-items: center; gap: 12px; min-height: 58px; padding: 10px 14px 10px 10px; overflow: hidden;
+  border-radius: 16px; background: linear-gradient(135deg, #2C2419 0, #15120E 100%); color: #fff; text-decoration: none;
+  box-shadow: inset 0 0 0 1px rgba(233, 195, 90, .6), 0 12px 24px -16px rgba(21, 18, 14, .9); transition: box-shadow .2s var(--fb), transform .2s var(--fb); }
+.sd-pt-a::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(180px 70px at 88% 0, rgba(255, 213, 74, .24), rgba(255, 213, 74, 0) 70%); }
+.sd-pt-a:hover { color: #fff; text-decoration: none; transform: translateY(-1px);
+  box-shadow: inset 0 0 0 1.5px #E9C35A, 0 16px 28px -16px rgba(21, 18, 14, .95); }
+.sd-pt-a:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+.sd-pt-ic { position: relative; flex: none; display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px;
+  background: linear-gradient(135deg, #FFF0B8 0, #F9D04A 50%, #E3A400 100%); color: #1F1A14; box-shadow: 0 6px 14px -8px rgba(227, 164, 0, .9); }
+.sd-pt-ic .icon { width: 20px; height: 20px; }
+/* the 3D handshake (btn-partner, operator 2026-11-04): on the gold tile, a touch larger than the glyph it replaces */
+.sd-pt-ic .pic { --pic: 32px; width: 32px; height: 32px; background: none; box-shadow: none; }
+.sd-pt-ic .pic img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 2px 3px rgba(60, 40, 0, .25)); }
+.sd-pt-t { position: relative; flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.sd-pt-k { font-size: 15px; font-weight: 700; line-height: 1.25; letter-spacing: -.01em; color: #FFE7A3; }
+.sd-pt-s { font-size: 12.5px; line-height: 1.3; color: rgba(255, 255, 255, .8); }
+.sd-pt-a .sg-i { position: relative; border-color: #F9D04A; }
+@media (prefers-reduced-motion: reduce) { .sd-pt-a { transition: none; } .sd-pt-a:hover { transform: none; } }
+.menu-panel .sd-pt { margin: 10px 0 4px; }
+/* from 1200px the panel scrolls inside itself (css/80-side.css .mast): the row stays at its foot, always in view */
+@media (min-width: 1200px) {
+  .side .sd-pt { position: sticky; bottom: -18px; z-index: 3; margin: 4px -18px -18px; padding: 14px 18px 18px; background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0, #fff 16px); }
+}
+
+/* the partner stay's own photos: its card (cropped to fill — the stay's picture, not a KOGL-3 one) and the place
+   page's photo slot (ui.partner_gallery: one big, a row of thumbnails that scrolls) */
+.sb-ph.sb-ph-pt img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.pv-pt .pt-gal-main img { object-fit: cover; }
+.pt-gal-row { display: flex; gap: 8px; margin: 8px 0 0; padding: 0 0 4px; list-style: none; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; }
+.pt-gal-row li { flex: none; scroll-snap-align: start; }
+.pt-gal-row a { display: block; width: 104px; height: 78px; overflow: hidden; border-radius: 12px; }
+.pt-gal-row img { display: block; width: 100%; height: 100%; object-fit: cover; }
+@media (min-width: 1024px) { .pt-gal-row a { width: 112px; height: 84px; } }
+
+/* the partner strip at the top of 숙박 예약하기 (_staybook.html.j2 banner; operator 2026-11-04 '세로로 짧고 가로로 긴
+   배너'): one low link — three photos at the left, the words, '홈페이지 보기 ↗' at the right; 88px on phones (one photo),
+   104px from 768px */
+.pt-strip { display: flex; align-items: stretch; height: 88px; margin: 0 0 18px; overflow: hidden; border-radius: 18px; background: #1F1A14; box-shadow: 0 0 0 1.5px var(--gold); color: #fff; text-decoration: none; transition: box-shadow .2s var(--fb), transform .2s var(--fb); }
+.pt-strip:hover { color: #fff; text-decoration: none; transform: translateY(-1px); box-shadow: 0 0 0 2px var(--gold), 0 14px 28px -18px rgba(31, 26, 20, .7); }
+.pt-strip:focus-visible { outline: 3px solid var(--sea); outline-offset: 3px; }
+.pt-strip-ph { flex: none; display: flex; gap: 2px; }
+.pt-strip-ph img { display: block; width: 104px; height: 100%; object-fit: cover; }
+.pt-strip-ph img:nth-child(n+2) { display: none; }
+.pt-strip-t { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: 3px; padding: 0 14px; }
+.pt-strip-k { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: 12px; color: rgba(255, 255, 255, .75); }
+.pt-strip-k .pt-b { height: 20px; padding: 0 7px; font-size: 11px; }
+.pt-strip-h { font-size: 14.5px; font-weight: 700; line-height: 1.3; letter-spacing: -.02em; word-break: keep-all; }   /* never cut: two lines on a phone */
+.pt-strip-cr { display: none; font-size: 11px; color: rgba(255, 255, 255, .5); }
+.pt-strip-go { flex: none; display: none; align-items: center; gap: 6px; padding: 0 22px; font-size: 14px; font-weight: 700; color: var(--chick); }
+@media (min-width: 768px) {
+  .pt-strip { height: 104px; }
+  .pt-strip-ph img { width: 150px; }
+  .pt-strip-ph img:nth-child(2) { display: block; }
+  .pt-strip-t { padding: 0 22px; }
+  .pt-strip-h { font-size: 18px; }
+  .pt-strip-cr { display: block; }
+  .pt-strip-go { display: flex; }
+}
+@media (min-width: 1200px) { .pt-strip-ph img:nth-child(3) { display: block; } }
+@media (prefers-reduced-motion: reduce) { .pt-strip { transition: none; } .pt-strip:hover { transform: none; } }
+
+/* /partners/ — a sales page led by the partner stay's photos */
+.pn-hero { padding: 28px 0 30px; background: radial-gradient(760px 380px at 92% 0, rgba(255, 213, 74, .32), rgba(255, 213, 74, 0) 70%), linear-gradient(160deg, #1F1A14 0, #3A2E21 100%); color: #fff; overflow: hidden; }
+.pn-hero-in { display: grid; grid-template-columns: 1fr; gap: 26px; align-items: center; }
+@media (min-width: 1000px) { .pn-hero { padding: 54px 0 56px; } .pn-hero-in { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; } }
+.pn-k { margin: 0 0 10px; font-size: 14px; font-weight: 700; color: var(--chick); }
+.pn-h1 { margin: 0 0 14px; font-size: clamp(30px, 7.4vw, 50px); font-weight: 700; line-height: 1.16; letter-spacing: -.04em; color: #fff; word-break: keep-all; }
+.pn-lede { max-width: 560px; margin: 0 0 22px; font-size: 16.5px; line-height: 1.65; color: rgba(255, 255, 255, .86); }
+.pn-cta, .pn-case-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 0; }
+.pn-btn { display: inline-flex; align-items: center; gap: 8px; min-height: 52px; padding: 0 22px; border-radius: 999px; background: var(--chick); color: var(--ink); font-size: 16px; font-weight: 700; text-decoration: none; }
+.pn-btn:hover { background: #FFC81F; color: var(--ink); text-decoration: none; }
+.pn-btn-w { background: rgba(255, 255, 255, .12); color: #fff; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .35); }
+.pn-btn-w:hover { background: rgba(255, 255, 255, .2); color: #fff; }
+.pn-btn-o { background: #fff; color: var(--sea-deep); box-shadow: inset 0 0 0 1.5px var(--sea); }
+.pn-btn-o:hover { background: var(--tint); color: var(--sea-deep); }
+.pn-link { display: inline-flex; align-items: center; gap: 4px; min-height: 44px; color: var(--link); font-weight: 700; text-decoration: none; }
+.pn-link:hover { text-decoration: underline; }
+/* the hero's collage: three of the stay's photos and a small replica of its 군산각 card */
+.pn-hero-v { position: relative; height: 330px; }
+@media (min-width: 1000px) { .pn-hero-v { height: 440px; } }
+.pn-hero-v img { position: absolute; display: block; object-fit: cover; border-radius: 18px; box-shadow: 0 20px 40px -20px rgba(0, 0, 0, .75); }
+.pn-hv-a { left: 0; top: 0; width: 66%; height: 72%; }
+.pn-hv-b { right: 0; top: 8%; width: 32%; height: 44%; }
+.pn-hv-c { right: 6%; bottom: 0; width: 30%; height: 40%; }
+.pn-hv-card { position: absolute; left: 6%; bottom: 0; display: flex; flex-direction: column; gap: 4px; width: min(300px, 62%); padding: 16px 16px 14px; overflow: hidden; border-radius: 18px; background: linear-gradient(180deg, var(--gold-bg) 0, #fff 80px); box-shadow: 0 0 0 2px var(--gold), 0 24px 40px -18px rgba(0, 0, 0, .7); color: var(--ink); }
+.pn-hv-rib { position: absolute; top: 14px; right: -34px; width: 120px; padding: 4px 0; transform: rotate(45deg); background: linear-gradient(90deg, #F5B301, #FFD54A, #F5B301); font-size: 11px; font-weight: 700; text-align: center; }
+.pn-hv-m { font-size: 11.5px; font-weight: 700; color: var(--sea-deep); }
+.pn-hv-n { font-size: 19px; font-weight: 700; letter-spacing: -.02em; }
+.pn-hv-btn { display: flex; justify-content: space-between; align-items: center; margin-top: 6px; padding: 9px 12px; border-radius: 12px; background: var(--sea); color: #fff; font-size: 12.5px; font-weight: 700; }
+.pn-hv-btn i { font-style: normal; }
+.pn-hv-ota { margin-top: 2px; padding: 7px 10px; border-radius: 10px; background: var(--tint); font-size: 11.5px; font-weight: 700; color: var(--ink-2); }
+.pn-wrap { padding-top: 30px; padding-bottom: 44px; }
+.pn-sec { margin: 0 0 40px; }
+.pn-h2 { margin: 0 0 8px; font-size: clamp(22px, 5vw, 30px); font-weight: 700; letter-spacing: -.03em; word-break: keep-all; }
+.pn-h3 { margin: 0 0 12px; font-size: 19px; font-weight: 700; letter-spacing: -.02em; }
+.pn-sub { max-width: 720px; margin: 0 0 18px; font-size: 15.5px; line-height: 1.6; color: var(--ink-2); }
+.pn-cards { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 0; padding: 0; list-style: none; }
+@media (min-width: 640px) { .pn-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { .pn-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); } .pn-cards-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.pn-card { display: flex; flex-direction: column; gap: 6px; padding: 18px; border-radius: 20px; background: #fff; box-shadow: 0 0 0 1px var(--hair), 0 14px 30px -24px rgba(17, 34, 68, .45); font-size: 14px; line-height: 1.55; color: var(--ink-2); }
+.pn-card b { font-size: 16.5px; line-height: 1.35; color: var(--ink); letter-spacing: -.02em; }
+.pn-card-l { background: var(--bg-2); box-shadow: none; }
+.pn-ic { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin-bottom: 4px; border-radius: 14px; background: linear-gradient(135deg, #FFE27A, #F5B301); color: var(--ink); }
+.pn-ic .icon { width: 22px; height: 22px; }
+.pn-terms { margin: 14px 0 0; padding: 12px 14px; border-radius: 14px; background: var(--gold-bg); box-shadow: inset 0 0 0 1px #F3DB94; font-size: 14.5px; font-weight: 700; color: var(--ink); }
+/* the case's label (operator 2026-11-04 '너무 작게 보이니까 더 키우고 좀 이쁘게'): a gold pill with a dark spark
+   disc, then a gold hairline to the column's end */
+.pn-case-k { display: flex; align-items: center; gap: 14px; margin: 0 0 14px; }
+.pn-case-k::after { content: ""; flex: 1; height: 1.5px; border-radius: 1px; background: linear-gradient(90deg, #E9C35A, rgba(233, 195, 90, 0)); }
+.pn-case-b { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 20px 0 8px; border-radius: 999px;
+  background: linear-gradient(135deg, #FFF0B8 0, #F9D04A 48%, #EDB000 100%); color: #2E2200; font-size: 17px; font-weight: 700;
+  letter-spacing: -.02em; box-shadow: 0 10px 22px -12px rgba(190, 130, 0, .75), inset 0 0 0 1px rgba(255, 255, 255, .55); }
+.pn-case-ic { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #1F1A14; color: #FFD54A; }
+.pn-case-ic .icon { width: 17px; height: 17px; }
+@media (min-width: 768px) { .pn-case-b { min-height: 48px; font-size: 19px; padding-right: 24px; } .pn-case-ic { width: 34px; height: 34px; } }
+.pn-gal { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 150px; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.pn-gal li { overflow: hidden; border-radius: 16px; }
+.pn-gal img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .4s var(--fb); }
+.pn-gal li:hover img { transform: scale(1.04); }
+.pn-g1 { grid-column: 1 / -1; grid-row: span 2; }
+@media (min-width: 900px) {
+  .pn-gal { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 170px; }
+  .pn-g1 { grid-column: 1 / 3; grid-row: span 2; }
+  .pn-g4 { grid-row: span 2; }
+}
+.pn-cr { margin: 8px 0 0; font-size: 12px; color: var(--ink-2); }
+.pn-built { display: grid; grid-template-columns: 1fr; gap: 22px; margin-top: 26px; align-items: center; }
+@media (min-width: 1000px) { .pn-built { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 36px; } }
+.pn-browser { margin: 0; overflow: hidden; border-radius: 16px; background: #fff; box-shadow: 0 0 0 1px var(--hair), 0 24px 44px -26px rgba(17, 34, 68, .55); }
+.pn-bar { display: flex; align-items: center; gap: 6px; padding: 9px 12px; background: var(--bg-2); font-size: 12px; color: var(--ink-2); }
+.pn-bar i { width: 10px; height: 10px; border-radius: 50%; background: #E0E4EA; }
+.pn-bar span { margin-left: 8px; padding: 2px 10px; border-radius: 980px; background: #fff; }
+.pn-browser img { display: block; width: 100%; height: auto; }
+.pn-browser figcaption { padding: 8px 12px; font-size: 12px; color: var(--ink-2); }
+.pn-steps { display: flex; flex-direction: column; gap: 14px; margin: 0 0 18px; padding: 0; list-style: none; counter-reset: st; }
+.pn-steps li { position: relative; display: flex; flex-direction: column; gap: 2px; padding-left: 44px; font-size: 14.5px; line-height: 1.55; color: var(--ink-2); counter-increment: st; }
+.pn-steps li::before { content: counter(st); position: absolute; left: 0; top: 0; display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: var(--gold); color: #fff; font-size: 14px; font-weight: 700; }
+.pn-steps b { font-size: 16px; color: var(--ink); }
+.pn-ask { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin: 10px 0 0; padding: 24px; border-radius: 24px; background: linear-gradient(135deg, var(--sea-deep), var(--sea)); color: #fff; }
+.pn-ask-h { margin: 0 0 6px; font-size: 22px; font-weight: 700; color: #fff; }
+.pn-ask p { margin: 0; font-size: 15px; line-height: 1.6; color: rgba(255, 255, 255, .9); }
+.pn-ask a:not(.pn-btn) { color: var(--chick); font-weight: 700; }
+.pn-note { margin-top: 18px; }
+@media (prefers-reduced-motion: reduce) { .aff-direct, .sb-direct, .pn-gal img { transition: none; } .pn-gal li:hover img { transform: none; } .aff-direct:hover, .sb-direct:hover { transform: none; } }
+
+/* ---------------------------------------------------------------- /partners/contact/ 파트너 문의 (partners_contact.html.j2,
+   operator 2026-11-04): a short dark head like /partners/, then one white card of fields; 44px+ targets, visible focus */
+.pc-hero { padding-bottom: clamp(28px, 4vw, 44px); }
+.pc-hero .pn-k a { color: inherit; text-decoration: none; }
+.pc-hero .pn-k a:hover { text-decoration: underline; }
+.pc-form { display: grid; gap: 16px; max-width: 720px; margin: clamp(-28px, -3vw, -20px) 0 0; padding: clamp(20px, 3vw, 32px); border-radius: 24px;
+  background: #fff; box-shadow: 0 0 0 1px var(--hair), 0 24px 48px -36px rgba(17, 34, 68, .45); position: relative; }
+.pc-type { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; border: 0; }
+.pc-type legend { width: 100%; margin: 0 0 8px; padding: 0; font-size: 14px; font-weight: 700; color: var(--ink); }
+.pc-type label { position: relative; }
+.pc-type input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.pc-type span { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 999px; background: var(--bg-2);
+  box-shadow: inset 0 0 0 1px var(--hair); font-size: 15px; font-weight: 700; color: var(--ink-2); cursor: pointer; }
+.pc-type input:checked + span { background: #1F1A14; color: #FFE7A3; box-shadow: inset 0 0 0 1.5px var(--gold); }
+.pc-type input:focus-visible + span { outline: 3px solid var(--focus); outline-offset: 2px; }
+.pc-f { display: grid; gap: 6px; }
+.pc-l { font-size: 14px; font-weight: 700; color: var(--ink); }
+.pc-req { margin-left: 4px; padding: 1px 7px; border-radius: 999px; background: var(--gold-bg); color: var(--gold-ink); font-size: 11.5px; }
+.pc-f input, .pc-f textarea { width: 100%; box-sizing: border-box; min-height: 48px; padding: 12px 14px; border: 0; border-radius: 14px;
+  background: var(--bg-2); box-shadow: inset 0 0 0 1px var(--hair); font: 400 16px/1.5 var(--font); color: var(--ink); }
+.pc-f textarea { min-height: 150px; resize: vertical; }
+.pc-f input:focus, .pc-f textarea:focus { outline: none; background: #fff; box-shadow: inset 0 0 0 2px var(--sea); }
+.pcf-row { display: grid; gap: 16px; }
+@media (min-width: 640px) { .pcf-row { grid-template-columns: 1fr 1fr; } }
+.pc-note { margin: 0; font-size: 13.5px; line-height: 1.6; color: var(--ink-2); }
+.pcf-act { margin: 4px 0 0; }
+.pcf-act .pn-btn { border: 0; cursor: pointer; }
+.pc-alt { display: grid; gap: 10px; padding: 16px; border-radius: 16px; background: var(--gold-bg); box-shadow: inset 0 0 0 1px #F3DB94; font-size: 14px; }
+.pc-alt[hidden] { display: none; }
+.pc-alt p { margin: 0; }
+.pc-pre { margin: 0; padding: 12px 14px; max-height: 260px; overflow: auto; border-radius: 12px; background: #fff; font: 400 13.5px/1.6 var(--font);
+  white-space: pre-wrap; word-break: break-word; }
+.pc-copy { border: 0; cursor: pointer; }
+.pc-copied { margin-left: 8px; font-size: 13px; font-weight: 700; color: var(--sea-deep); }
+
+/* the 3D pictures on the benefit tiles and the case pill (pn-*, operator 2026-11-04); a glyph stands in until a file is
+   there (templates/_pic.html.j2) */
+.pn-ic .pic { --pic: 40px; width: 40px; height: 40px; background: none; box-shadow: none; }
+.pn-ic .pic img, .pn-case-ic .pic img { width: 100%; height: 100%; object-fit: contain; }
+.pn-case-ic .pic { --pic: 30px; width: 30px; height: 30px; background: none; box-shadow: none; }

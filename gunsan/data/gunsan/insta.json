@@ -1,0 +1,563 @@
+{
+  "description": "인스타그램에서 많이 찾은 군산 대형·감성 카페 및 군산 관련 인기 인스타그램 채널 큐레이션 (CLAUDE.md 3.10: 원문 문장·사진은 서버에 복제하지 않고 직접 작성한 한 줄 소개 + 원문 링크 + Instagram 공식 임베드만 제공)",
+  "checked_at": "2026-11-09",
+  "channels": [
+    {
+      "id": "ig-ch-gunsangak",
+      "handle": "@gunsangak_official",
+      "name": "군산각 공식 인스타그램",
+      "badge": "군산각 공식",
+      "url": "https://www.instagram.com/gunsangak_official/",
+      "note": "군산 여행·맛집·대형카페·축제 일정을 릴스와 실전 가이드로 전하는 군산각 공식 채널.",
+      "links": [
+        {"label": "군산 카페 가이드", "href": "/guides/군산-카페/#h-insta"},
+        {"label": "목적별 가이드", "href": "/guides/"},
+        {"label": "축제·행사 일정", "href": "/events/"}
+      ],
+      "status": "published"
+    },
+    {
+      "id": "ig-ch-gunsan-official",
+      "handle": "@gunsan_official",
+      "name": "군산시청 공식 인스타그램",
+      "badge": "지자체 공식",
+      "url": "https://www.instagram.com/gunsan_official/",
+      "note": "군산시 시정 소식과 시간여행축제·해양불꽃축제·섬 여행 등 공식 관광·행사 일정을 안내하는 채널.",
+      "links": [
+        {"label": "행사·축제", "href": "/events/"},
+        {"label": "선유도", "href": "/places/선유도/"},
+        {"label": "은파호수공원", "href": "/places/은파호수공원/"}
+      ],
+      "status": "published"
+    },
+    {
+      "id": "ig-ch-hotgunsan",
+      "handle": "@hotgunsan",
+      "name": "군산핫플",
+      "badge": "군산 로컬",
+      "url": "https://www.instagram.com/hotgunsan/",
+      "note": "군산 대형카페 32곳·분위기 카페 34곳 총정리 등 카드뉴스와 릴스로 군산 핫플레이스를 묶어 소개하는 채널.",
+      "links": [
+        {"label": "대형카페 32곳 모음", "href": "/guides/군산-카페/#ig-gunsan-cafe-02"},
+        {"label": "카페미곡창고 SQUARE3.5", "href": "/places/카페미곡창고-square35/"},
+        {"label": "틈(TEUM)", "href": "/places/틈/"}
+      ],
+      "status": "published"
+    },
+    {
+      "id": "ig-ch-tasty-gunsan",
+      "handle": "@tasty.gunsan",
+      "name": "군산맛집여행",
+      "badge": "군산 로컬",
+      "url": "https://www.instagram.com/tasty.gunsan/",
+      "note": "원도심 노포 식당과 은파호수·고군산군도 카페, 주말 나들이 코스를 소개하는 군산 로컬 미식·여행 채널.",
+      "links": [
+        {"label": "군산 음식점", "href": "/food/"},
+        {"label": "군산 카페 가이드", "href": "/guides/군산-카페/"},
+        {"label": "은파호수공원", "href": "/places/은파호수공원/"}
+      ],
+      "status": "published"
+    },
+    {
+      "id": "ig-ch-gunsan-people",
+      "handle": "@gunsan_people",
+      "name": "군산사람들",
+      "badge": "군산 로컬",
+      "url": "https://www.instagram.com/gunsan_people/",
+      "note": "군산·익산 권역의 신상 대형카페와 해안 드라이브 명소, 동네 맛집 소식을 빠르게 전하는 로컬 큐레이션 채널.",
+      "links": [
+        {"label": "비응항", "href": "/places/비응항/"},
+        {"label": "군산 음식점", "href": "/food/"},
+        {"label": "군산 카페 가이드", "href": "/guides/군산-카페/"}
+      ],
+      "status": "published"
+    },
+    {
+      "id": "ig-ch-gunsan-go",
+      "handle": "@gunsan.go",
+      "name": "군산가볼만한곳",
+      "badge": "군산 로컬",
+      "url": "https://www.instagram.com/gunsan.go/",
+      "note": "계절별 포토존 카페와 원도심 근대역사거리, 가족 나들이 명소를 큐레이션하는 군산 여행 전문 채널.",
+      "links": [
+        {"label": "미제리", "href": "/places/미제리/"},
+        {"label": "경암동 철길마을", "href": "/places/경암동-철길마을/"},
+        {"label": "군산 카페 가이드", "href": "/guides/군산-카페/#ig-gunsan-cafe-15"}
+      ],
+      "status": "published"
+    },
+    {
+      "id": "ig-ch-jeonju-wwtg",
+      "handle": "@jeonju.wwtg",
+      "name": "전주어디갈래 (군산·전북 근교)",
+      "badge": "전북·군산 근교",
+      "url": "https://www.instagram.com/jeonju.wwtg/",
+      "note": "장자도 루프탑 오션뷰 카페와 비응항 해안 카페 등 군산 바다 드라이브 코스를 릴스로 다룬 여행 채널.",
+      "links": [
+        {"label": "카페라파르", "href": "/places/카페라파르/"},
+        {"label": "장자도", "href": "/places/장자도/"},
+        {"label": "비응항", "href": "/places/비응항/"}
+      ],
+      "status": "published"
+    },
+    {
+      "id": "ig-ch-jeonju-eats",
+      "handle": "@jeonju.eats",
+      "name": "전주잇츠 (군산·전북 맛집·카페)",
+      "badge": "전북·군산 근교",
+      "url": "https://www.instagram.com/jeonju.eats/",
+      "note": "자연광 대형카페와 갤러리형 공간 등 군산·전북 권역의 감성 카페와 미식 스폿을 테마별로 엮는 채널.",
+      "links": [
+        {"label": "대형카페 6곳 모음", "href": "/guides/군산-카페/#ig-gunsan-cafe-05"},
+        {"label": "카페산타로사", "href": "/places/카페산타로사/"},
+        {"label": "첼로네시아", "href": "/places/첼로네시아/"}
+      ],
+      "status": "published"
+    },
+    {
+      "id": "ig-ch-all-about-jeonju",
+      "handle": "@all.about.jeonju",
+      "name": "전주에서 뭐 하지? (군산·전북 여행)",
+      "badge": "전북·군산 근교",
+      "url": "https://www.instagram.com/all.about.jeonju/",
+      "note": "주말 드라이브로 다녀오기 좋은 군산 호수·바다 대형카페와 전북권 나들이 코스를 영상으로 소개하는 채널.",
+      "links": [
+        {"label": "호수권 카페 미리보기", "href": "/guides/군산-카페/#ig-gunsan-cafe-10"},
+        {"label": "은파호수공원", "href": "/places/은파호수공원/"},
+        {"label": "선유도", "href": "/places/선유도/"}
+      ],
+      "status": "published"
+    },
+    {
+      "id": "ig-ch-cafe-ing",
+      "handle": "@cafe.ing",
+      "name": "카페갈래?",
+      "badge": "카페 매거진",
+      "url": "https://www.instagram.com/cafe.ing/",
+      "note": "전국 주요 여행지의 로스터리·대형 베이커리 카페를 다루며 군산 카페 7곳 특집을 소개한 카페 전문 채널.",
+      "links": [
+        {"label": "군산 카페 7곳 모음", "href": "/guides/군산-카페/#ig-gunsan-cafe-03"},
+        {"label": "푸르던", "href": "/places/푸르던/"},
+        {"label": "첼로네시아", "href": "/places/첼로네시아/"}
+      ],
+      "status": "published"
+    }
+  ],
+  "items": [
+    {
+      "id": "ig-gunsan-cafe-01",
+      "kind": "post",
+      "curation_group": "multi",
+      "platform": "instagram",
+      "author": "@yoonify886",
+      "url": "https://www.instagram.com/p/DK7KWz9P34A/",
+      "likes": 3883,
+      "note": "원도심 창고형 카페부터 대나무 숲·정원 카페까지 군산 감성·대형 카페 6곳을 묶어 소개한 게시물.",
+      "place_slugs": [
+        "틈",
+        "공감선유",
+        "푸르던",
+        "첼로네시아"
+      ],
+      "guide_ids": [
+        "guide-16"
+      ],
+      "status": "published",
+      "checked_at": "2026-11-09"
+    },
+    {
+      "id": "ig-gunsan-cafe-02",
+      "kind": "post",
+      "curation_group": "multi",
+      "platform": "instagram",
+      "author": "@hotgunsan",
+      "url": "https://www.instagram.com/p/C-HNGlKJfu0/",
+      "likes": 1966,
+      "note": "군산 시내와 외곽·섬 권역에서 넓게 쉬어가기 좋은 대형카페 32곳을 카드뉴스로 정리한 모음.",
+      "place_slugs": [
+        "카페미곡창고-square35",
+        "카페라파르",
+        "공감선유",
+        "리투스카페",
+        "카페산타로사"
+      ],
+      "guide_ids": [
+        "guide-16"
+      ],
+      "status": "published",
+      "checked_at": "2026-11-09"
+    },
+    {
+      "id": "ig-gunsan-cafe-03",
+      "kind": "post",
+      "curation_group": "multi",
+      "platform": "instagram",
+      "author": "@cafe.ing",
+      "url": "https://www.instagram.com/p/DI21bAXpbtq/",
+      "likes": 1723,
+      "note": "군산 여행 동선에서 들르기 좋은 정원형 대형카페와 로스터리 카페 7곳을 꼽아 소개한 게시물.",
+      "place_slugs": [
+        "첼로네시아",
+        "푸르던"
+      ],
+      "guide_ids": [
+        "guide-16"
+      ],
+      "status": "published",
+      "checked_at": "2026-11-09"
+    },
+    {
+      "id": "ig-gunsan-cafe-04",
+      "kind": "post",
+      "curation_group": "multi",
+      "platform": "instagram",
+      "author": "@hotgunsan",
+      "url": "https://www.instagram.com/p/CyFBHY6M_7z/",
+      "likes": 874,
+      "note": "사진 찍기 좋은 군산의 분위기·감성 카페 34곳을 권역과 테마별로 모아 소개한 게시물.",
+      "place_slugs": [
+        "틈",
+        "첼로네시아",
+        "푸르던",
+        "미제리"
+      ],
+      "guide_ids": [
+        "guide-16"
+      ],
+      "status": "published",
+      "checked_at": "2026-11-09"
+    },
+    {
+      "id": "ig-gunsan-cafe-05",
+      "kind": "post",
+      "curation_group": "multi",
+      "platform": "instagram",
+      "author": "@jeonju.eats",
+      "url": "https://www.instagram.com/p/DJBeORANos_/",
+      "likes": 501,
+      "note": "자연광이 잘 드는 통창과 탁 트인 야외 좌석을 갖춘 군산 대형카페 6곳을 추려 소개한 모음.",
+      "place_slugs": [
+        "카페산타로사",
+        "첼로네시아",
+        "푸르던"
+      ],
+      "guide_ids": [
+        "guide-16"
+      ],
+      "status": "published",
+      "checked_at": "2026-11-09"
+    },
+    {
+      "id": "ig-gunsan-cafe-06",
+      "kind": "post",
+      "curation_group": "multi",
+      "platform": "instagram",
+      "author": "@jeonju.eats",
+      "url": "https://www.instagram.com/p/DL9HriahAno/",
+      "likes": 277,
+      "note": "창고형 외관이나 갤러리 같은 실내 구성을 갖춘 군산의 공간 중심 카페 6곳을 소개한 게시물.",
+      "place_slugs": [
+        "틈",
+        "카페라파르",
+        "첼로네시아"
+      ],
+      "guide_ids": [
+        "guide-16"
+      ],
+      "status": "published",
+      "checked_at": "2026-11-09"
+    },
+    {
+      "id": "ig-gunsan-cafe-07",
+      "kind": "post",
+      "curation_group": "multi",
+      "platform": "instagram",
+      "author": "@mens_now_",
+      "url": "https://www.instagram.com/p/DSmIgXBgQjI/",
+      "likes": 108,
+      "note": "근대 건축을 살린 원도심 레트로 카페부터 고군산군도 오션뷰 카페까지 7곳을 엮은 큐레이션.",
+      "place_slugs": [
+        "카페라파르",
+        "무녀2구마을버스",
+        "틈"
+      ],
+      "guide_ids": [
+        "guide-16"
+      ],
+      "status": "published",
+      "checked_at": "2026-11-09"
+    },
+    {
+      "id": "ig-gunsan-cafe-08",
+      "kind": "post",
+      "curation_group": "spot",
+      "platform": "instagram",
+      "author": "@jeonju.wwtg",
+      "url": "https://www.instagram.com/p/C1ixs01vDwz/",
+      "likes": 5063,
+      "note": "비응항 서해 바다를 정면으로 바라보는 통창과 루프탑 포토존을 갖춘 해안 대형카페 풍경 소개.",
+      "place_slugs": [
+        "비응항"
+      ],
+      "guide_ids": [
+        "guide-16"
+      ],
+      "status": "published",
+      "checked_at": "2026-11-09"
+    },
+    {
+      "id": "ig-gunsan-cafe-09",
+      "kind": "post",
+      "curation_group": "spot",
+      "platform": "instagram",
+      "author": "@jeonju.wwtg",
+      "url": "https://www.instagram.com/p/CxiBy53P8Yb/",
+      "likes": 4858,
+      "note": "장자도 앞바다를 마주한 야외 테라스와 2·3층 루프탑 오션뷰 풍경을 담은 카페라파르 소개 영상.",
+      "place_slugs": [
+        "카페라파르",
+        "장자도"
+      ],
+      "guide_ids": [
+        "guide-16"
+      ],
+      "status": "published",
+      "checked_at": "2026-11-09"
+    },
+    {
+      "id": "ig-gunsan-cafe-10",
+      "kind": "post",
+      "curation_group": "spot",
+      "platform": "instagram",
+      "author": "@all.about.jeonju",
+      "url": "https://www.instagram.com/p/DbFUz7bEThi/",
+      "likes": 1395,
+      "note": "은파호수공원 산책길 인근에서 넓은 주차 공간과 베이커리·브런치를 갖춘 호수권 대형카페 소개.",
+      "place_slugs": [
+        "은파호수공원"
+      ],
+      "guide_ids": [
+        "guide-16"
+      ],
+      "status": "published",
+      "checked_at": "2026-11-09"
+    },
+    {
+      "id": "ig-gunsan-cafe-11",
+      "kind": "post",
+      "curation_group": "spot",
+      "platform": "instagram",
+      "author": "@cellonesia_",
+      "url": "https://www.instagram.com/p/DYN6WLgSWJl/",
+      "likes": 1072,
+      "note": "개정면 옛 사택 건축물과 넓은 정원이 어우러진 첼로네시아의 계절 풍경을 담은 공식 계정 게시물.",
+      "place_slugs": [
+        "첼로네시아"
+      ],
+      "guide_ids": [
+        "guide-16"
+      ],
+      "status": "published",
+      "checked_at": "2026-11-09"
+    },
+    {
+      "id": "ig-gunsan-cafe-12",
+      "kind": "post",
+      "curation_group": "spot",
+      "platform": "instagram",
+      "author": "@paulwalker0925",
+      "url": "https://www.instagram.com/p/DZCOIdmhzkM/",
+      "likes": 653,
+      "note": "영화동 옛 창고 건물 외벽을 덮은 초록 덩굴과 아늑한 정원 분위기를 담아낸 카페 틈 방문 사진.",
+      "place_slugs": [
+        "틈"
+      ],
+      "guide_ids": [
+        "guide-16"
+      ],
+      "status": "published",
+      "checked_at": "2026-11-09"
+    },
+    {
+      "id": "ig-gunsan-cafe-13",
+      "kind": "post",
+      "curation_group": "spot",
+      "platform": "instagram",
+      "author": "@jjmag.official",
+      "url": "https://www.instagram.com/p/DVXfRxmkZ0E/",
+      "likes": 353,
+      "note": "차분한 목재 바 공간과 시그니처 커피·디저트를 즐길 수 있는 나운동 MCL 등 군산 감성 카페 소개.",
+      "place_slugs": [
+        "mcl"
+      ],
+      "guide_ids": [
+        "guide-16"
+      ],
+      "status": "published",
+      "checked_at": "2026-11-09"
+    },
+    {
+      "id": "ig-gunsan-cafe-14",
+      "kind": "post",
+      "curation_group": "spot",
+      "platform": "instagram",
+      "author": "@nnyounge",
+      "url": "https://www.instagram.com/p/DcbDSCID31Q/",
+      "likes": 216,
+      "note": "김중업 건축가의 유작인 옛 시민문화회관을 단장한 복합문화공간 군산회관과 카페 라운지 방문기.",
+      "place_slugs": [
+        "군산회관"
+      ],
+      "guide_ids": [
+        "guide-16"
+      ],
+      "status": "published",
+      "checked_at": "2026-11-09"
+    },
+    {
+      "id": "ig-gunsan-cafe-15",
+      "kind": "post",
+      "curation_group": "spot",
+      "platform": "instagram",
+      "author": "@gunsan.go",
+      "url": "https://www.instagram.com/p/DR_HALECbna/",
+      "likes": 59,
+      "note": "은파호수 인근에서 반짝이는 대형 트리 연출과 계절 과일 케이크·구움과자로 눈길을 끄는 미제리 소개.",
+      "place_slugs": [
+        "미제리"
+      ],
+      "guide_ids": [
+        "guide-16"
+      ],
+      "status": "published",
+      "checked_at": "2026-11-09"
+    },
+    {
+      "id": "ig-gunsan-cafe-16",
+      "kind": "post",
+      "curation_group": "spot",
+      "platform": "instagram",
+      "author": "@go_gunsan_bus",
+      "url": "https://www.instagram.com/p/DSFfzRBD4oC/",
+      "likes": 49,
+      "note": "연말 대형 크리스마스트리 포토존으로 꾸며진 미제리와 리투스카페 등 군산 베이커리·로스터리 카페 소개.",
+      "place_slugs": [
+        "미제리",
+        "리투스카페"
+      ],
+      "guide_ids": [
+        "guide-16"
+      ],
+      "status": "published",
+      "checked_at": "2026-11-09"
+    },
+    {
+      "id": "ig-gunsan-cafe-17",
+      "kind": "post",
+      "curation_group": "spot",
+      "platform": "instagram",
+      "author": "@mugbangi_house",
+      "url": "https://www.instagram.com/p/C_sHOJjvtBK/",
+      "likes": 51,
+      "note": "군산 시간여행마을에서 캐릭터 굿즈와 음료를 함께 만날 수 있는 먹방이와 친구들 공식 계정 소식.",
+      "place_slugs": [
+        "먹방이와-친구들"
+      ],
+      "guide_ids": [
+        "guide-16"
+      ],
+      "status": "published",
+      "checked_at": "2026-11-09"
+    },
+    {
+      "id": "ig-gunsan-cafe-18",
+      "kind": "post",
+      "curation_group": "spot",
+      "platform": "instagram",
+      "author": "@littus_cafe",
+      "url": "https://www.instagram.com/p/DYoy494k2ox/",
+      "likes": 30,
+      "note": "금강 하구 갯벌과 잔디 정원을 내려다보며 커피를 즐길 수 있는 리투스카페 공식 계정의 낮 풍경.",
+      "place_slugs": [
+        "리투스카페"
+      ],
+      "guide_ids": [
+        "guide-16"
+      ],
+      "status": "published",
+      "checked_at": "2026-11-09"
+    },
+    {
+      "id": "ig-gunsan-cafe-19",
+      "kind": "post",
+      "curation_group": "spot",
+      "platform": "instagram",
+      "author": "@tbag.travel",
+      "url": "https://www.instagram.com/p/DVnoz13AC-2/",
+      "likes": 15,
+      "note": "옥구읍 대나무·소나무 숲을 통창 차경으로 끌어들이고 전시 공간을 함께 갖춘 공감선유 소개 릴스.",
+      "place_slugs": [
+        "공감선유"
+      ],
+      "guide_ids": [
+        "guide-16"
+      ],
+      "status": "published",
+      "checked_at": "2026-11-09"
+    },
+    {
+      "id": "ig-gunsan-cafe-20",
+      "kind": "post",
+      "curation_group": "spot",
+      "platform": "instagram",
+      "author": "@munyeo2gu_village_bus",
+      "url": "https://www.instagram.com/p/DfbEhObBQKY/",
+      "likes": 25,
+      "note": "윤슬이 비치는 무녀도 바다 앞 노란 스쿨버스 창가 좌석과 수제버거·음료를 담은 공식 계정 게시물.",
+      "place_slugs": [
+        "무녀2구마을버스"
+      ],
+      "guide_ids": [
+        "guide-16"
+      ],
+      "status": "published",
+      "checked_at": "2026-11-09"
+    },
+    {
+      "id": "ig-gunsan-cafe-21",
+      "kind": "post",
+      "curation_group": "spot",
+      "platform": "instagram",
+      "author": "@dang_gol",
+      "url": "https://www.instagram.com/p/DZRQDGmxGvV/",
+      "likes": 20,
+      "note": "성산면의 고즈넉한 한옥 마당과 전통차·주전부리 차림을 전하는 당골 한옥카페 공식 계정 게시물.",
+      "place_slugs": [
+        "당골-한옥카페"
+      ],
+      "guide_ids": [
+        "guide-16"
+      ],
+      "status": "published",
+      "checked_at": "2026-11-09"
+    },
+    {
+      "id": "ig-gunsan-cafe-22",
+      "kind": "post",
+      "curation_group": "spot",
+      "platform": "instagram",
+      "author": "@cafe_teum",
+      "url": "https://www.instagram.com/p/Dbe7tJJzckC/",
+      "likes": 20,
+      "note": "계절 과일과 생크림으로 준비하는 후르츠산도 디저트와 매장 소식을 전하는 카페 틈 공식 게시물.",
+      "place_slugs": [
+        "틈"
+      ],
+      "guide_ids": [
+        "guide-16"
+      ],
+      "status": "published",
+      "checked_at": "2026-11-09"
+    }
+  ]
+}

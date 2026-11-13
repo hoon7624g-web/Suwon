@@ -1,0 +1,71 @@
+From 41fcaff37139a7c12d685b2ee33dc04df38bf574 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Thu, 12 Nov 2026 07:02:00 +0000
+Subject: [PATCH] =?UTF-8?q?fix(site):=20=EC=B9=B4=EC=B9=B4=EC=98=A4?=
+ =?UTF-8?q?=ED=86=A1=20=EA=B3=B5=EC=9C=A0=20=E2=80=94=20Kakao=20SDK=202.x?=
+ =?UTF-8?q?=EB=8A=94=20init=20=EB=92=A4=EC=97=90=20Share=EA=B0=80=20?=
+ =?UTF-8?q?=EC=83=9D=EA=B9=80,=20init=20=EB=92=A4=EC=97=90=20=ED=99=95?=
+ =?UTF-8?q?=EC=9D=B8?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+공개 사이트에서 카카오톡 타일이 공유 창 대신 링크 복사로 넘어가던 문제. 시험의 대역 SDK도 실제처럼
+init 때 Share가 생기게 바꿈(옛 코드에서 실패, 고친 코드에서 통과). 공개 도메인에서 실제 SDK로
+카카오 공유 창(로그인 → sharer.kakao.com/picker/link)이 열리는 것을 확인. 공개 빌드 다시 만듦(qa_errors 0).
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Vhf1SziVAxh1mVM8h72KNg
+---
+ templates/assets/site.js | 7 +++++--
+ tests/test_present.py    | 5 +++--
+ 2 files changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/templates/assets/site.js b/templates/assets/site.js
+index f3e40c8496..51a459e721 100644
+--- a/templates/assets/site.js
++++ b/templates/assets/site.js
+@@ -1580,17 +1580,20 @@
+     var kakao = function (box) {
+       if (kakaoP) return kakaoP;
+       var key = box.getAttribute("data-shr-key"), src = box.getAttribute("data-shr-sdk");
++      // Kakao SDK 2.x has no Kakao.Share before Kakao.init (found on the live site 2026-11-12: the SDK came, the
++      // check before init failed, and every press fell back to copying)
+       kakaoP = new Promise(function (res, rej) {
+-        if (win.Kakao && win.Kakao.Share) { res(win.Kakao); return; }
++        if (win.Kakao && win.Kakao.init) { res(win.Kakao); return; }
+         if (!key || !src) { rej(new Error("no key")); return; }
+         var s = doc.createElement("script");
+         s.src = src;
+         if (box.getAttribute("data-shr-sri")) { s.integrity = box.getAttribute("data-shr-sri"); s.crossOrigin = "anonymous"; }
+-        s.onload = function () { if (win.Kakao && win.Kakao.Share) res(win.Kakao); else rej(new Error("no Share")); };
++        s.onload = function () { if (win.Kakao && win.Kakao.init) res(win.Kakao); else rej(new Error("no Kakao")); };
+         s.onerror = function () { rej(new Error("sdk")); };
+         doc.head.appendChild(s);
+       }).then(function (K) {
+         if (!K.isInitialized()) K.init(key);
++        if (!K.Share || typeof K.Share.sendScrap !== "function") throw new Error("no Share");
+         return K;
+       });
+       kakaoP.catch(function () { kakaoP = null; });   // the next press tries again
+diff --git a/tests/test_present.py b/tests/test_present.py
+index 8478d93a16..7c0e47f12b 100644
+--- a/tests/test_present.py
++++ b/tests/test_present.py
+@@ -2428,10 +2428,11 @@ def test_the_send_box_copies_hands_kakaotalk_the_address_and_counts_in_ga4(S, bu
+     sync_api = pytest.importorskip("playwright.sync_api")
+     e = S.ent_by_slug["모트"]
+     path = f"http://site.test{quote(e['_path'])}"
++    # as the real SDK 2.x: no Kakao.Share before Kakao.init (the live site, 2026-11-12)
+     kakao_stub = """window.__kakao = [];
+ window.Kakao = {_on: false, isInitialized: function () { return this._on; },
+-  init: function (k) { this._on = true; window.__kakao.push(['init', k]); },
+-  Share: {sendScrap: function (o) { window.__kakao.push(['scrap', o.requestUrl]); }}};"""
++  init: function (k) { this._on = true; window.__kakao.push(['init', k]);
++    this.Share = {sendScrap: function (o) { window.__kakao.push(['scrap', o.requestUrl]); }}; }};"""
+     with sync_api.sync_playwright() as p:
+         try:
+             browser = p.chromium.launch()
+-- 
+2.43.0
+

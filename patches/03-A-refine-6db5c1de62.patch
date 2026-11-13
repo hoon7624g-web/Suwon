@@ -1,0 +1,668 @@
+From 6db5c1de6226e372fd7f5b4dd42cfa71f23b5885 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Tue, 10 Nov 2026 14:25:50 +0000
+Subject: [PATCH] =?UTF-8?q?fix(ui,tests):=20=EB=82=A1=EC=9D=80=20=EB=B8=8C?=
+ =?UTF-8?q?=EB=9D=BC=EC=9A=B0=EC=A0=80=20=EC=8B=9C=ED=97=98=2011=EA=B1=B4?=
+ =?UTF-8?q?=20=EA=B0=B1=EC=8B=A0=20+=20=EB=8F=85=EB=A6=BD=20=EC=8B=A4?=
+ =?UTF-8?q?=EC=82=AC=EC=9D=B4=ED=8A=B8=20=EC=A0=90=EA=B2=80=EC=97=90?=
+ =?UTF-8?q?=EC=84=9C=20=EB=82=98=EC=98=A8=20=ED=99=94=EB=A9=B4=20=EC=88=98?=
+ =?UTF-8?q?=EC=A0=95?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+운영자 요청(2026-11-10 '진행해' — 낡은 시험 11건 고치기, 독립 실사이트 점검)에 따른 것이다.
+
+시험 (검사 기준은 낮추지 않음 — 전체 1,418개 통과, 이전 실패 12건)
+- 시안 A(2026-11-05) 뒤로 갱신되지 않던 11건을 지금 화면에 맞게: 질문 상자는 첫 화면 아래, 한국어 휴대폰은
+  탭바의 'AI 챗봇', 챗봇 버튼 76·100·68px(820·1100·1440px), 소식 줄은 질문 카드 아래 제 구역,
+  휴대폰 홈 날씨 카드는 가까이 갔을 때만 날씨를 물음
+- 가끔 실패하던 시험: 헤드리스 Chromium이 Ctrl+클릭 새 탭을 10번에 1번꼴로 열지 못함 → 그때만 다시 누름
+- 휴대폰 목록 첫 결과 500px 시험에 360px 폭을 더함
+
+시험과 점검이 찾아낸 화면 결함
+- 인스타그램 임베드 벽(/abroad/, 카페 가이드, 장소 12쪽): 1200~1510px 창에서 칸이 임베드(326px)보다 좁아
+  서로 겹침 → 벽이 쓸 수 있는 폭으로 열 수를 정함(.ab-wallbox 컨테이너)
+- 휴대폰 /plan/: 'AI로 코스 만들기' 버튼이 탭바 뒤에 가려 양식 끝에서만 눌림 → 그 쪽의 바가 탭바 자리를 맡음
+- 홈 순위 블록(1680px부터): 순위 숫자가 제3유형 사진 위에 걸침 → 사진 바깥 위로
+- 외국어 가이드 차례(1280~1679px): 문장 전체를 쌓아 709~946px → 세 열·두 줄(321px)
+- 숙소 목록 표(1200~1366px): 전화번호가 줄 카드 테두리를 넘음 → 전화 칸 130px
+- 휴대폰 목록: 첫 결과가 500px 아래(숙소 517px, 360px 음식점 519px) → 머리 그림 띠 76 → 54px
+- 외국어 휴대폰 홈: 도우미 제목 말줄임(일·독·프·스·러) → 두 줄
+- 휴대폰 홈 탭바 'AI 챗봇': 대화창을 여는 버튼이라고 알리면서 질문 상자로 감 → 홈에서는 그 표시를 뺌
+
+휴대폰 /plan/에서 탭바를 숨긴 것은 운영자 확인 전이다. 남긴 것과 되돌리는 방법은
+docs/handover/round3_log.md 2026-11-10.
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01NujcWun3eD1NVvxndVydTT
+---
+ templates/abroad.html.j2            |   2 +-
+ templates/assets/css/47-rank.css    |   5 ++
+ templates/assets/css/48-abroad.css  |  28 +++---
+ templates/assets/css/90-refine.css  |  39 ++++++++
+ templates/assets/site.js            |   3 +-
+ templates/guide.html.j2             |   4 +-
+ templates/place.html.j2             |   4 +-
+ tests/test_ask_browser.py           | 132 +++++++++++++++++++++-------
+ tests/test_chat_browser.py          |  14 +--
+ tests/test_present.py               |  77 ++++++++--------
+ tests/test_review_r8_k4b_handoff.py |   6 +-
+ tests/test_sidebar_layout.py        |  13 +--
+ 12 files changed, 231 insertions(+), 96 deletions(-)
+
+diff --git a/templates/abroad.html.j2 b/templates/abroad.html.j2
+index df68f2ba42..6814696801 100644
+--- a/templates/abroad.html.j2
++++ b/templates/abroad.html.j2
+@@ -31,7 +31,7 @@
+     <h2 id="ab-sns-h" class="ab-h">SNS 게시물 <span class="tn">{{ posts|length }}</span></h2>
+     {% set svc_n = [] %}{% for g in posts|groupby('platform_label') %}{% set _ = svc_n.append((g.list|length, g.grouper)) %}{% endfor %}
+     <p class="ab-sns-lede">{% for n, label in svc_n|sort(reverse=true) %}{{ label }} <span class="tn">{{ n }}</span>{% if not loop.last %}<span aria-hidden="true"> · </span>{% endif %}{% endfor %} — 게시물마다 우리가 쓴 한 줄 소개를 달고, 게시물은 각 서비스의 공식 임베드로 보여 줍니다.</p>
+-    <ul class="ab-wall" data-wall>{% for a in posts %}{{ ab.post(a) }}{% endfor %}</ul>
++    <div class="ab-wallbox"><ul class="ab-wall" data-wall>{% for a in posts %}{{ ab.post(a) }}{% endfor %}</ul></div>
+   </div>
+ </section>
+ {% endif %}
+diff --git a/templates/assets/css/47-rank.css b/templates/assets/css/47-rank.css
+index 2bf941a3c0..c136130587 100644
+--- a/templates/assets/css/47-rank.css
++++ b/templates/assets/css/47-rank.css
+@@ -101,6 +101,11 @@
+   body.pg-ko-home:has(.h-rside) .hrk-i { padding: 0; border-bottom: 0; }
+   body.pg-ko-home:has(.h-rside) .hrk-a { position: relative; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+   body.pg-ko-home:has(.h-rside) .hrk-n { position: absolute; left: 0; top: 0; z-index: 1; display: grid; place-items: center; min-width: 30px; height: 30px; padding: 0 7px; border-radius: 10px 0 10px 0; background: var(--ink); color: #fff; font-size: 15px; letter-spacing: 0; }
++  /* the Instagram cards' pictures are TourAPI photos (KOGL-3 is shown whole, with nothing drawn over it — CLAUDE.md
++     3.4; the badge lay over 15–18px of four of the five, found by the live check 2026-11-10): their rank stands above
++     the picture */
++  body.pg-ko-home:has(.h-rside) .hrk-w-ig .hrk-a { padding-top: 38px; }
++  body.pg-ko-home:has(.h-rside) .hrk-w-ig .hrk-n { border-radius: 10px; }
+   body.pg-ko-home:has(.h-rside) .hrk-t { -webkit-line-clamp: 3; }
+   body.pg-ko-home:has(.h-rside) .hrk-pl { margin-top: 8px; padding-left: 0; }
+   body.pg-ko-home:has(.h-rside) .hrk-doors { margin-top: 18px; }
+diff --git a/templates/assets/css/48-abroad.css b/templates/assets/css/48-abroad.css
+index 1223e082f2..0484bb9c8c 100644
+--- a/templates/assets/css/48-abroad.css
++++ b/templates/assets/css/48-abroad.css
+@@ -146,27 +146,31 @@ html.embed-manual .ab-ph-msg { display: none; }
+   .ab-wall > :not([data-embed="x"]) .ab-embed { margin-inline: -16px; }
+   .ab-wall > :not([data-embed="x"]) .ab-ph { border-radius: 0; box-shadow: none; }
+ }
+-@media (min-width: 740px) { .ab-wall { --wall-gap: 18px; grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+-@media (min-width: 1200px) { .ab-wall { --wall-gap: 20px; grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+-@media (min-width: 1760px) {
+-  .ab-sns > .wrap { max-width: calc(1640px + 240px); padding-inline: 120px; }
+-  .ab-wall { --wall-gap: 22px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+-}
++/* the columns go by the wall's own room (.ab-wallbox, a container), not by the window: an Instagram embed is 326px
++   wide at least, and the room is the window less the tab panel (from 1200px), the page's margins and, on a place
++   page, the side column. By the window's width the tiles were 248px at 1280 and 277px at 1366: every embed ran over
++   the next one and out under the launcher (the independent check of the live site, 2026-11-10). Two columns from
++   670px of room (2 x 326 + the gap), three from 1018px, four from 1370px. */
++.ab-wallbox { container: wall / inline-size; }
++@container wall (min-width: 670px) { .ab-wall { --wall-gap: 18px; grid-template-columns: repeat(2, minmax(0, 1fr)); } }
++@container wall (min-width: 1018px) { .ab-wall { --wall-gap: 20px; grid-template-columns: repeat(3, minmax(0, 1fr)); } }
++@container wall (min-width: 1370px) { .ab-wall { --wall-gap: 22px; grid-template-columns: repeat(4, minmax(0, 1fr)); } }
++@media (min-width: 1760px) { .ab-sns > .wrap { max-width: calc(1640px + 240px); padding-inline: 120px; } }
+ .ab-wall.is-masonry > .ab-post { align-self: start; }
+-@media (min-width: 740px) {
++@container wall (min-width: 670px) {
+   .ab-wall.is-masonry { grid-auto-rows: 4px; row-gap: 0; grid-auto-flow: row dense; }
+   .ab-wall.is-masonry > .ab-post { grid-row-end: span var(--span, 1); }
+ }
+-@media (min-width: 740px) and (max-width: 1199px) {
++@container wall (min-width: 670px) and (max-width: 1017.98px) {
+   .ab-wall.is-masonry > :nth-child(2n+1) { grid-column: 1; }
+   .ab-wall.is-masonry > :nth-child(2n) { grid-column: 2; }
+ }
+-@media (min-width: 1200px) and (max-width: 1759px) {
++@container wall (min-width: 1018px) and (max-width: 1369.98px) {
+   .ab-wall.is-masonry > :nth-child(3n+1) { grid-column: 1; }
+   .ab-wall.is-masonry > :nth-child(3n+2) { grid-column: 2; }
+   .ab-wall.is-masonry > :nth-child(3n) { grid-column: 3; }
+ }
+-@media (min-width: 1760px) {
++@container wall (min-width: 1370px) {
+   .ab-wall.is-masonry > :nth-child(4n+1) { grid-column: 1; }
+   .ab-wall.is-masonry > :nth-child(4n+2) { grid-column: 2; }
+   .ab-wall.is-masonry > :nth-child(4n+3) { grid-column: 3; }
+@@ -194,8 +198,10 @@ html.embed-manual .ab-ph-msg { display: none; }
+ .hsns-d { margin-top: auto; font-size: 13px; color: var(--ink-3); }
+ .ab-sns-top { margin-top: 0; }
+ .ab-wall + .ab-sub { margin-top: clamp(28px, 3.6vw, 44px); }
+-@media (min-width: 1200px) {
++/* a place page's wall: two columns at most */
++@container wall (min-width: 1018px) {
+   .ab-wall.ab-wall-place { grid-template-columns: repeat(2, minmax(0, 1fr)); }
++  .ab-wall.ab-wall-place.is-masonry > :nth-child(n) { grid-column: auto; }
+   .ab-wall.ab-wall-place.is-masonry > :nth-child(2n+1) { grid-column: 1; }
+   .ab-wall.ab-wall-place.is-masonry > :nth-child(2n) { grid-column: 2; }
+ }
+diff --git a/templates/assets/css/90-refine.css b/templates/assets/css/90-refine.css
+index a5c3fc5015..24c4a23c82 100644
+--- a/templates/assets/css/90-refine.css
++++ b/templates/assets/css/90-refine.css
+@@ -121,6 +121,16 @@
+   body:has(.pl-bar-go) .pl-hero .route-row { grid-template-columns: 1fr 1fr; padding-right: 0; }
+ }
+ 
++/* ---- a phone's /plan/: the form's own bar ('AI로 코스 만들기', sticky at the screen's foot — plan.css, z-index 5) lay
++   behind the tab bar (80): the button could be pressed only at the form's end (there since 시안 A, 2026-11-05; found
++   by the independent check of the live site, 2026-11-10). As on a place page, the page's own bar stands instead of
++   the tabs — the header's menu keeps every list, and the fixed areas stay within 15% of the screen as plan.css sets
++   them. */
++@media (max-width: 767px) {
++  body:has(.trp-go-bar) .tabbar { display: none; }
++  body:has(.trp-go-bar) { padding-bottom: 0; }
++}
++
+ /* ---- a phone's bottom bar and the assistant (found on the live site 2026-11-10; there since 시안 A, 2026-11-05):
+    the tab bar and a place page's bar (z-index 80) were drawn over the open assistant (70) — half of the question
+    box and of the send button and most of the notice lay under them. While the assistant is open the bars step out;
+@@ -146,6 +156,13 @@
+ .pg-ko-home .hq-row .hq-l { font: 400 14px/1.2 var(--font); letter-spacing: -.01em; }
+ .pg-ko-home .hq-row .hq-n { display: none; }
+ 
++/* ---- the other versions' home on a phone: the assistant card's heading is one 38px line beside the mascot and was
++   cut with an ellipsis in ja, de, fr, es and ru ('Fragen Sie den Reisehelfer für Gun…'; found by the independent
++   check of the live site, 2026-11-10) — two lines there, centred on the mascot */
++@media (max-width: 767px) {
++  html:not([lang="ko"]) .hk-h { display: flex; align-items: center; min-height: 38px; line-height: 1.22; white-space: normal; overflow: visible; text-wrap: balance; }
++}
++
+ /* ================================================================ 3. the reading pages (guide, column) */
+ 
+ /* ---- 1280–1679px: the page's column is the window less the panel (960–1360px), too narrow for contents | text | map
+@@ -166,6 +183,14 @@
+   .gd-grid.has-toc .gd-body { grid-column: 1 / span 7; grid-row: 2; }
+   .gd-grid.has-toc .gd-map { grid-column: 8 / -1; grid-row: 2; }
+   .gd-grid.has-toc:not(.has-map) .gd-body { grid-column: 1 / span 9; }
++  /* the other versions have no short headings: a contents link there is the section's whole sentence, and as
++     full-width rows the block stood 709–946px over the text (13 sections; the independent check of the live site,
++     2026-11-10). Three columns of two-line links instead (321px): each shows the sentence's start — the whole
++     sentence is the section's heading right below, and the link's full text stays for assistive technology */
++  html:not([lang="ko"]) .gd-grid.has-toc .gd-toc-l { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
++  html:not([lang="ko"]) .gd-grid.has-toc .gd-toc-l li { max-width: none; }
++  html:not([lang="ko"]) .gd-grid.has-toc .gd-toc-l a { width: 100%; align-content: start; }
++  html:not([lang="ko"]) .gd-grid.has-toc .gd-toc-l .toc-t { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+ }
+ @media (max-width: 1279px) {
+   .pg-guide .gd-toc-l li { width: auto; max-width: min(280px, 72vw); }
+@@ -257,6 +282,20 @@ html[lang="ko"] .pl-src .rail-label .nm { display: inline; margin: 0; font-size:
+   .rec-need::before { content: attr(data-need); }
+ }
+ .yt-ch-note { margin-top: 14px; }
++/* a list's head on a phone: the first result is to stand in the first 500px (the 2026-10-17 review: the head picture
++   took the room) — the stays list's was at 517px since its '숙박 예약하기' row (operator 2026-11-04), the food list's
++   at 519px at 360px (its lede takes two lines there), the other versions' at 515px. The picture strip gives the
++   room back on every list (76 → 54px, 49-art) and the yellow button sits 4px closer to the lede: 471–495px on the
++   Korean lists at 390 and 360px (tests/test_present.py). */
++@media (max-width: 760px) {
++  .list-head .art-band img { max-height: 54px; }
++  .list-head .list-book { margin-top: 8px; }
++}
++/* the stays list as a table (from 1024px): its phone column was 80–103px at 1200–1366px and a number is 92px, a
++   0507 number 128px — at 1200–1280px every number of the Korean list crossed the row's right border (up to 32px),
++   the 0507 ones up to 1366px and in the other versions too (the independent check of the live site, 2026-11-10; the
++   long ones were so before the calm pass). The column keeps 130px; the other four share what is left. */
++.kind-stay { --cols: minmax(0, 3.9fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.6fr) minmax(130px, 1.7fr); }
+ 
+ /* ================================================================ 7. runs that were wider than a phone (found by a
+    390px sweep of every page, 2026-11-10): an event's '시간' value kept on one line in its tile; a past edition's
+diff --git a/templates/assets/site.js b/templates/assets/site.js
+index 4b614d7f4b..9f0c56b9a7 100644
+--- a/templates/assets/site.js
++++ b/templates/assets/site.js
+@@ -428,7 +428,8 @@
+     // 2026-10-21 (3acaa67: no floating widget on the PC home's first screen) — css/49-chat.css hides
+     // it from the first paint on a page with the box (body.has-ask) until html.ask-out says the box has left the
+     // screen; without IntersectionObserver html.no-askio keeps it there as before
+-    $all("[data-chat-open]").forEach(function (b) { b.removeAttribute("aria-haspopup"); });
++    // (the phone tab bar's 'AI 챗봇' button presses the launcher: it goes to the box too)
++    $all("[data-chat-open], [data-tab-chat]").forEach(function (b) { b.removeAttribute("aria-haspopup"); });
+     if ("IntersectionObserver" in win) {
+       new IntersectionObserver(function (es) {
+         root.classList.toggle("ask-out", !es[es.length - 1].isIntersecting);
+diff --git a/templates/guide.html.j2 b/templates/guide.html.j2
+index a00a072453..a492f8505f 100644
+--- a/templates/guide.html.j2
++++ b/templates/guide.html.j2
+@@ -151,11 +151,11 @@
+       {% endif %}
+       {% if G.g._insta_multi %}
+       <h3 class="ab-sub" id="h-insta-multi">크리에이터가 꼽은 {{ site.region }} 대형·감성 카페 모음 <span class="tn">{{ G.g._insta_multi|length }}</span></h3>
+-      <ul class="ab-wall" data-wall>{% for a in G.g._insta_multi %}{{ ab.post(a) }}{% endfor %}</ul>
++      <div class="ab-wallbox"><ul class="ab-wall" data-wall>{% for a in G.g._insta_multi %}{{ ab.post(a) }}{% endfor %}</ul></div>
+       {% endif %}
+       {% if G.g._insta_spot %}
+       <h3 class="ab-sub" id="h-insta-spot">카페별 인스타그램 미리보기·바로가기 <span class="tn">{{ G.g._insta_spot|length }}</span></h3>
+-      <ul class="ab-wall" data-wall>{% for a in G.g._insta_spot %}{{ ab.post(a) }}{% endfor %}</ul>
++      <div class="ab-wallbox"><ul class="ab-wall" data-wall>{% for a in G.g._insta_spot %}{{ ab.post(a) }}{% endfor %}</ul></div>
+       {% endif %}
+       <p class="note ab-src-note">게시물의 글·사진·영상은 각 작성자의 것입니다. 원문 문장과 사진은 서버에 옮겨 싣지 않고 우리가 쓴 한 줄 소개와 원문 링크만 실었으며, 게시물 미리보기는 화면에 가까워지면 Instagram의 공식 임베드로 불러옵니다.</p>
+     </div>
+diff --git a/templates/place.html.j2 b/templates/place.html.j2
+index 59c53c8d4e..7c1fcdc795 100644
+--- a/templates/place.html.j2
++++ b/templates/place.html.j2
+@@ -277,8 +277,8 @@
+           HTML; an official embed loads when its card comes near the screen, as before) — on the most visited places
+           this chapter was 39% of the page on a phone -#}
+       {% if insta %}<h3 class="ab-sub">인스타그램에서 본 {{ nm }} <span class="tn">{{ insta|length }}</span></h3>
+-      <ul class="ab-wall ab-wall-place" data-wall>{% for a in insta[:2] %}{{ ab.post(a, (a._places|length) > 1) }}{% endfor %}</ul>
+-      {% if insta|length > 2 %}<details class="fold"><summary>인스타그램 게시물 <span class="tn">{{ insta|length - 2 }}개</span> 더 보기</summary><ul class="ab-wall ab-wall-place" data-wall>{% for a in insta[2:] %}{{ ab.post(a, (a._places|length) > 1) }}{% endfor %}</ul></details>{% endif %}
++      <div class="ab-wallbox"><ul class="ab-wall ab-wall-place" data-wall>{% for a in insta[:2] %}{{ ab.post(a, (a._places|length) > 1) }}{% endfor %}</ul></div>
++      {% if insta|length > 2 %}<details class="fold"><summary>인스타그램 게시물 <span class="tn">{{ insta|length - 2 }}개</span> 더 보기</summary><div class="ab-wallbox"><ul class="ab-wall ab-wall-place" data-wall>{% for a in insta[2:] %}{{ ab.post(a, (a._places|length) > 1) }}{% endfor %}</ul></div></details>{% endif %}
+       {% if insta_guide %}<p class="note"><a href="{{ insta_guide }}#h-insta">{{ site.region }} 대형·감성 카페 인스타그램 큐레이션 모아 보기 →</a></p>{% endif %}{% endif %}
+       {% if abroad %}{% set ab_all = ab_art + ab_post %}<h3 class="ab-sub">해외에서 본 {{ nm }} <span class="tn">{{ ab_all|length }}</span></h3>
+       <ul class="ab-list ab-in">{% for a in ab_all[:2] %}{% if a.kind == 'article' %}{{ ab.article(a, false, false) }}{% else %}{{ ab.post(a, false) }}{% endif %}{% endfor %}</ul>
+diff --git a/tests/test_ask_browser.py b/tests/test_ask_browser.py
+index 18d3beb255..b88e9bbd34 100644
+--- a/tests/test_ask_browser.py
++++ b/tests/test_ask_browser.py
+@@ -3,8 +3,8 @@ together with a fake /api/chat/ that streams its answer over about a second (SSE
+ 
+ The Korean home (owner 2026-10-13 night: '이 상자를 챗봇 질문창으로'; UI4 2026-10-14: the white question card under the
+ light opening; owner 2026-10-14: '페이지 상단에는 검색, 중앙 부분에는 AI챗봇으로 확실히 구분'): the card is the assistant
+-only — its box sits in a 390×844 and a 1440×900 first screen — and the conversation opens in its own panel right under
+-the card. Asking from the box at 390
++only — since 시안 A (operator 2026-11-05) it comes after the opening's picture and lists, within two screens of the top at
++390×844 and 1440×900 — and the conversation opens in its own panel right under the card. Asking from the box at 390
+ and 1440 shows the panel at once and brings it into view, the streamed answer, its checked link and link card come in
+ the panel (announced once) while nothing above the panel moves and nothing below it moves while it streams, and the
+ floating panel is never built there; the panel's own box asks the next question into the same conversation; a starter
+@@ -14,8 +14,10 @@ nothing, in either box, while the Enter that ends a Korean syllable asks at once
+ host https://gunsan.webforai.kr too (the 2026-10-14 bug: that Enter was swallowed); the button stops an answer; the
+ header's search goes to /search/?q= (desktop: its field; phones: '검색' opens it over the bar; without JS a link);
+ Korean + not_configured lands on /search/?q=…; without
+-chat.js the box searches and a starter follows its link; the launcher is there from the first paint (390 and 1440),
+-puts the focus in the box (or in the open conversation's own box) and never steps aside (owner 2026-10-14);
++chat.js the box searches and a starter follows its link; the launcher is there from the start wherever the box is
++not on screen and steps aside while it is (operator 2026-10-15, 10-21) — 76px, 100px from 1024px, 68px in the page's
++margin from 1200px (the calm pass 2026-11-10); a Korean phone has the tab bar's 'AI 챗봇' button in its stead (시안 A);
++either puts the focus in the box (or in the open conversation's own box);
+ the same conversation shows in the floating panel on another page; nothing of the chat loads and nothing shifts while
+ the page loads (fonts already cached, as on any second page); no console errors. Skipped where Playwright or its
+ Chromium is missing."""
+@@ -297,13 +299,19 @@ def test_the_opening_asks_and_the_panel_below_answers(browser, site, width, heig
+     assert page.locator('link[href$="chat.css"]').count() == 0 and page.locator('script[src$="chat.js"]').count() == 0
+     log = page.locator("[data-chat-dock] [data-ask-log]")
+     assert log.is_hidden()
+-    # the box is in the question card, inside the first screen; the panel comes right under the card
++    # the box is in the question card; the panel comes right under the card. Since 시안 A (operator 2026-11-05) the
++    # opening's picture and lists come first: the card is past the first screen, within two screens of the top
+     box = page.locator(".hk-box").bounding_box()
+-    assert box["y"] >= 0 and box["y"] + box["height"] <= height
++    assert box["y"] >= 0 and box["y"] + box["height"] <= 2 * height
+     assert page.evaluate("document.querySelector('.hq').contains(document.getElementById('ask-q'))")
+     assert page.evaluate("document.querySelector('.hq').nextElementSibling.matches('.hk-conv')")
++    page.evaluate("document.querySelector('.hk-box').scrollIntoView({block: 'center'})")   # the reader comes to the box
++    page.wait_for_function("!document.documentElement.classList.contains('ask-out')", timeout=3000)
++    page.wait_for_timeout(400)                                       # the launcher's fade
++    assert in_viewport(page, ".hk-box")
+     # the launcher steps aside while this box is on screen (operator 2026-10-15 below 1024px: at 390x844 it covered the
+-    # box's '#' tags; operator 2026-10-21 at every width: 'hide … initial floating widgets' on the PC home too)
++    # box's '#' tags; operator 2026-10-21 at every width: 'hide … initial floating widgets' on the PC home too; a
++    # Korean phone has no floating launcher at all — the tab bar's button, 시안 A)
+     assert not page.locator(".chat-fab").is_visible()
+     later = ".foot"
+     page.fill("#ask-q", "은파 주차")
+@@ -364,13 +372,24 @@ def test_starters_ask_and_the_boxes_ignore_input_methods_and_empty_questions(bro
+     chip = page.locator(".hk-pill").first
+     href = chip.get_attribute("href")
+     assert href == "/guides/no-car-day-trip/" and chip.get_attribute("data-ask") == "차 없이 하루 여행"
+-    # with a modifier key a starter is a link (a new tab), and nothing is asked
+-    with ctx.expect_page() as other:
+-        chip.click(modifiers=["Control"])
+-    other.value.wait_for_url(lambda u: not u.startswith("about:"))   # a new tab starts at about:blank, then navigates
+-    other.value.wait_for_load_state()
+-    assert unquote(urlsplit(other.value.url).path) == href and API["calls"] == []
+-    other.value.close()
++    # with a modifier key a starter is a link (a new tab), and nothing is asked. Headless Chromium now and then opens
++    # no tab for a Ctrl+click or leaves it at about:blank (any link does, about 1 press in 10 on a busy machine —
++    # measured 2026-11-10): the press is repeated then; the tab that comes is the starter's page
++    tab = None
++    for _ in range(3):
++        try:
++            with ctx.expect_page(timeout=6000) as other:
++                chip.click(modifiers=["Control"])
++            other.value.wait_for_url(lambda u: not u.startswith("about:"), timeout=6000)   # about:blank, then the page
++            other.value.wait_for_load_state()
++            tab = other.value
++            break
++        except sync_api.TimeoutError:
++            for stuck in ctx.pages[1:]:
++                stuck.close()
++    assert tab is not None and unquote(urlsplit(tab.url).path) == href and API["calls"] == []
++    assert page.url.rstrip("/") == site                              # this page stays where it is
++    tab.close()
+     # an Enter the input method keeps (a conversion) commits the text; an empty box only takes the focus — nothing
+     # is asked
+     page.fill("#ask-q", "은파 주")
+@@ -400,6 +419,11 @@ def test_starters_ask_and_the_boxes_ignore_input_methods_and_empty_questions(bro
+     page.fill("#ask-q2", "주차 요금은 얼마인가")
+     korean_enter(page, "요")
+     page.wait_for_function(f"document.querySelectorAll('.ask-log .chat-u').length === {n + 1}")
++    for _ in range(50):                                              # its request reaches the server a moment after
++        if len(API["calls"]) > n:                                    # the question's bubble is drawn
++            break
++        page.wait_for_timeout(100)
++    assert len(API["calls"]) == n + 1
+     assert API["calls"][-1]["messages"][-1] == {"role": "user", "content": "주차 요금은 얼마인가요"}
+     assert page.locator("[data-ask-search]").count() == 0   # the card has no '검색': the search is the header's
+     assert errors == []
+@@ -472,30 +496,67 @@ def test_without_chat_js_the_box_searches_and_a_starter_follows_its_link(browser
+     ctx.close()
+ 
+ 
+-@pytest.mark.parametrize("width,height", [(390, 844), (1440, 900)])
++@pytest.mark.parametrize("width,height", [(390, 844), (820, 1180), (1100, 800), (1440, 900)])
+ def test_the_launcher_is_there_from_the_start_and_goes_to_the_box(browser, site, width, height):
+     ctx, page, errors = open_home(browser, site, width, height)
+     fab = page.locator(".chat-fab")
+-    # it steps aside while the home's question box is on screen — hidden, out of the tab order — and is there once the
+-    # box has left the screen (operator 2026-10-15 below 1024px, 2026-10-21 at every width)
+-    assert not fab.is_visible() and page.evaluate("getComputedStyle(document.querySelector('.chat-fab')).visibility") == "hidden"
+-    page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+-    page.wait_for_timeout(400)
+-    assert fab.is_visible()                                          # once the box is off screen, on the home too
+-    b = fab.bounding_box()
+-    assert b["height"] == (100 if width >= 1024 else 76) and b["y"] + b["height"] <= height - 16 and b["x"] + b["width"] <= width - 16
+-    assert fab.get_attribute("aria-haspopup") is None                # here it goes to the box, it opens no dialog
+-    # a round button at every width, its label 'AI 챗봇' always on the tag across its bottom (owner 2026-10-14: 'AI
+-    # 챗봇인 거 더 크게 잘 보이면'), the start of its accessible name
+-    tag = page.locator(".chat-fab-l")
+-    assert b["width"] == b["height"] and tag.is_visible() and tag.inner_text() == "AI 챗봇"
+-    assert fab.get_attribute("aria-label").startswith("AI 챗봇")
++    out = "document.documentElement.classList.contains('ask-out')"
++    hidden = "getComputedStyle(document.querySelector('.chat-fab')).visibility"
++    if width < 768:
++        # a Korean phone (시안 A, operator 2026-11-05): the tab bar's 'AI 챗봇' button stands for the launcher — at the
++        # bottom of the first screen from the start, a 44px target; the floating launcher is not drawn
++        opener = page.locator(".tabbar [data-tab-chat]")
++        assert page.evaluate("getComputedStyle(document.querySelector('.chat-fab')).display") == "none"
++        b = opener.bounding_box()
++        assert opener.is_visible() and opener.inner_text().strip() == "AI 챗봇"
++        assert b["width"] >= 44 and b["height"] >= 44 and b["y"] >= height - 110 and b["y"] + b["height"] <= height
++        assert 0 <= b["x"] and b["x"] + b["width"] <= width
++    else:
++        opener = fab
++        # it steps aside while the home's question box is on screen — hidden, out of the tab order — and is there
++        # whenever the box is not (operator 2026-10-15 below 1024px, 2026-10-21 at every width): from the start where
++        # the box is below the first screen (시안 A, operator 2026-11-05), as on every other page
++        zone = page.evaluate("(() => { const r = document.querySelector('[data-ask-zone]').getBoundingClientRect();"
++                             " return r.top < innerHeight && r.bottom > 0; })()")
++        if not zone:
++            page.wait_for_function(out, timeout=3000)
++            page.wait_for_timeout(400)                               # its fade
++            assert page.evaluate("scrollY") == 0 and fab.is_visible()   # at load, without scrolling
++            page.evaluate("document.querySelector('.hk-box').scrollIntoView({block: 'center'})")
++            page.wait_for_function("!" + out, timeout=3000)
++            page.wait_for_timeout(400)
++        assert not fab.is_visible() and page.evaluate(hidden) == "hidden"
++        page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
++        page.wait_for_function(out, timeout=3000)
++        page.wait_for_timeout(400)
++        assert fab.is_visible()                                      # once the box is off screen, on the home too
++        b = fab.bounding_box()
++        # 76px, 100px from 1024px (operator 2026-10-31), 68px from 1200px (the calm pass 2026-11-10, confirmed by the
++        # operator the same day): fully on screen, clear of the edges
++        assert b["height"] == (68 if width >= 1200 else 100 if width >= 1024 else 76), b
++        if width >= 1200:
++            # inside the page's right margin, over no part of the content column
++            edge = page.evaluate("document.querySelector('main .wrap').getBoundingClientRect().right"
++                                 " - parseFloat(getComputedStyle(document.querySelector('main .wrap')).paddingRight)")
++            assert b["x"] >= edge and b["x"] + b["width"] <= width - 8 and b["y"] + b["height"] <= height - 16, (b, edge)
++        else:
++            assert b["y"] + b["height"] <= height - 16 and b["x"] + b["width"] <= width - 16, b
++        # a round button at every width, its label 'AI 챗봇' always on the tag across its bottom (owner 2026-10-14: 'AI
++        # 챗봇인 거 더 크게 잘 보이면'), the start of its accessible name
++        tag = page.locator(".chat-fab-l")
++        assert b["width"] == b["height"] and tag.is_visible() and tag.inner_text() == "AI 챗봇"
++        assert fab.get_attribute("aria-label").startswith("AI 챗봇")
++    assert opener.get_attribute("aria-haspopup") is None             # here it goes to the box, it opens no dialog
+     page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+     page.wait_for_timeout(400)
+-    fab.click()                                                      # nothing asked yet: the card's question box
++    opener.click()                                                   # nothing asked yet: the card's question box
+     page.wait_for_timeout(1000)
+     assert page.evaluate("document.activeElement.id") == "ask-q" and in_viewport(page, ".hk-box")
+     assert page.locator("#chat").count() == 0 and page.locator("[data-ask-log]").is_hidden()
++    if width < 768:
++        bar = page.locator(".tabbar").bounding_box()                 # the box is clear of the bar
++        box = page.locator(".hk-box").bounding_box()
++        assert box["y"] + box["height"] <= bar["y"], (box, bar)
+     assert not fab.is_visible()                                      # the box is on screen again (operator 2026-10-15, 10-21)
+     assert errors == []
+     ctx.close()
+@@ -532,7 +593,16 @@ def test_the_launcher_brings_the_conversation_and_the_panel_keeps_it(browser, si
+     page.goto(site + "/")
+     page.wait_for_load_state("load")
+     assert page.locator("[data-ask-log]").is_hidden()                # nothing restored while the page loads
+-    assert not page.locator(".chat-fab").is_visible()                # aside while the box is on screen (2026-10-21)
++    # the box is below this first screen (시안 A, operator 2026-11-05): the launcher is there at load, and aside while
++    # the box is on screen (2026-10-21)
++    page.wait_for_function(out, timeout=3000)
++    page.wait_for_timeout(400)
++    assert page.evaluate("scrollY") == 0 and page.locator(".chat-fab").is_visible()
++    page.evaluate("document.querySelector('.hk-box').scrollIntoView({block: 'center'})")
++    page.wait_for_function("!" + out, timeout=3000)
++    page.wait_for_timeout(400)
++    assert not page.locator(".chat-fab").is_visible()
++    assert page.locator("[data-ask-log]").is_hidden()                # nor when the box comes on screen
+     page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+     page.wait_for_function(out, timeout=3000)
+     page.wait_for_timeout(400)
+diff --git a/tests/test_chat_browser.py b/tests/test_chat_browser.py
+index 61b963f091..9b759bc7f8 100644
+--- a/tests/test_chat_browser.py
++++ b/tests/test_chat_browser.py
+@@ -2,7 +2,8 @@
+ with scripted SSE: the 1440px card (non-modal) opens from the launcher with focus in the question box, an input method's
+ Enter does not send (a conversion) while the Enter that ends a Korean syllable does, a streamed answer is drawn with its checked links and link cards and announced once, Esc closes
+ and returns focus to the launcher, the conversation comes back on the next page (sessionStorage); the 390px sheet is
+-modal (page inert, full height), the launcher is there from the first paint (64px; owner 2026-10-13 night), the
++modal (page inert, full height), its opener is there from the first paint (owner 2026-10-13 night; on a Korean phone
++the tab bar's 'AI 챗봇' button since 시안 A, operator 2026-11-05), the
+ not-configured and error states (with retry), a text of its own for each 429 (the client's minute, its day, the whole
+ instance, the Vercel Firewall), a cut answer that goes on in place ('이어서 보기': continue: true with the cut answer as
+ the last message), earlier answers sent back with their checked links as page paths and a stopped question left out,
+@@ -178,13 +179,16 @@ def test_desktop_card(browser, site):
+ def test_phone_sheet_and_error_states(browser, site):
+     ctx, page, errors, calls = open_page(browser, 390, 844, [NOT_CONFIGURED, BUSY, OK])
+     page.goto(site + "/")
+-    fab = page.locator(".chat-fab")
+-    assert fab.is_visible()                                   # there from the first paint, on the home too
++    # a Korean phone page (시안 A, operator 2026-11-05): the tab bar's 'AI 챗봇' button stands for the floating launcher
++    # (not drawn there) — at the bottom of the screen from the first paint, on the home too, and while the page scrolls
++    fab = page.locator(".tabbar [data-tab-chat]")
++    assert fab.is_visible() and fab.inner_text().strip() == "AI 챗봇"
++    assert page.evaluate("getComputedStyle(document.querySelector('.chat-fab')).display") == "none"
+     box = fab.bounding_box()
+-    assert box["height"] == 76 and box["width"] == 76 and box["y"] + box["height"] <= 844 - 16   # a round face (owner 2026-10-14, 10-31: bigger)
++    assert box["height"] >= 44 and box["width"] >= 44 and 844 - 110 <= box["y"] and box["y"] + box["height"] <= 844
+     page.mouse.wheel(0, 700)
+     page.wait_for_timeout(400)
+-    assert fab.is_visible()
++    assert page.evaluate("scrollY") > 0 and fab.is_visible() and fab.bounding_box() == box
+     fab.click()
+     panel = page.locator("#chat")
+     panel.wait_for(state="visible")
+diff --git a/tests/test_present.py b/tests/test_present.py
+index 69ca008d0b..c3c86f05ff 100644
+--- a/tests/test_present.py
++++ b/tests/test_present.py
+@@ -1498,13 +1498,14 @@ def test_homes_ask_in_place(built):
+ 
+ 
+ def test_home_news_row_turns_by_itself_and_stops_for_the_reader(built):
+-    """UI4 in a browser (Playwright + Chromium; the build is served through page.route, nothing leaves the
+-    machine): exactly one news card is in view at a time — at 1440 at the right of the opening's text, in the first
+-    screen, and at 390 under the H1 and above the question box, which is in the first screen at both sizes; the row
+-    advances by itself, a control press stops it (the play button
+-    restarts it, the counter is live only while stopped), focus inside stops it; with reduced motion there is no
+-    autoplay and no pause button; without JS the controls are hidden, one card is still in view, the cards still
+-    scroll and the question box searches."""
++    """The home's news row in a browser (Playwright + Chromium; the build is served through page.route, nothing leaves
++    the machine). 시안 A (operator 2026-11-05): the first screen at 390 and 1440 is the opening card — the H1, the
++    search, the four lists and the two buttons — and the news row is a section of its own ('지금 군산 소식') under the
++    question card. Exactly one news card is in view at a time (a compact card on phones, the picture at the left of
++    the words at both sizes); from 768px the row advances by itself while it is on screen, a control press stops it
++    (the play button restarts it, the counter is live only while stopped), focus inside stops it; on phones it waits
++    on its first card; with reduced motion there is no autoplay and no pause button; without JS the controls are
++    hidden, one card is still in view, the cards still scroll and the question box searches."""
+     sync_api = pytest.importorskip("playwright.sync_api")
+     import mimetypes
+     from urllib.parse import unquote, urlsplit
+@@ -1541,44 +1542,47 @@ def test_home_news_row_turns_by_itself_and_stops_for_the_reader(built):
+                 return r.right > v.left + 1 && r.left < v.right - 1 && r.width > 0; }).length; })()"""
+             in_screen = """(sel => { const r = document.querySelector(sel).getBoundingClientRect();
+               return r.top >= 0 && r.bottom <= innerHeight && r.left >= 0 && r.right <= innerWidth; })"""
+-            ctx, page = open_home(390, 844)                          # phones: H1, the question card, then the news card
++            opening = (".ha-h1", ".ha-search", ".ha-tiles", ".ha-cta")
++            order = """(() => { const t = s => document.querySelector(s).getBoundingClientRect();
++              return t('.ha-card').bottom <= t('.hq-card').top && t('.hq-card').bottom <= t('.hn-h').top
++                && t('.hn-h').bottom <= t('[data-hcar-view]').top; })()"""
++            side_by_side = """(() => { const f = document.querySelector('[data-hcar-item] .nc-frame')
++              .getBoundingClientRect(), t = document.querySelector('[data-hcar-item] .nc-t').getBoundingClientRect();
++              return [f.width, f.right <= t.left]; })()"""
++            ctx, page = open_home(390, 844)                          # phones
+             assert page.evaluate(in_view) == 1
+-            assert page.evaluate("document.querySelector('.hk-h1').getBoundingClientRect().bottom <= "
+-                                 "document.querySelector('.hk-box').getBoundingClientRect().top")
+-            assert page.evaluate("document.querySelector('.hq-card').getBoundingClientRect().bottom <= "
+-                                 "document.querySelector('[data-hcar-view]').getBoundingClientRect().top")
+-            assert page.evaluate(in_screen + "('.hk-box')")         # the question box in the 390x844 first screen
+-            # the course buttons under the lede, the '#' tags in the first screen too; the compact news card sits
+-            # below the assistant card and waits on its first card (no autoplay below 768px)
+-            assert page.evaluate(in_screen + "('.ho-cta a')") and page.evaluate(in_screen + "('.hk-pills')")
+-            assert page.evaluate("document.querySelector('.ho-lede').getBoundingClientRect().bottom <= "
+-                                 "document.querySelector('.ho-cta a').getBoundingClientRect().top")
+-            pair = page.evaluate("[...document.querySelectorAll('.ho-cta a')].map(a => { const r = a.getBoundingClientRect();"
++            # the first screen: the opening card whole — the H1, the search, the four lists, the two buttons on one
++            # row (44px targets)
++            for sel in opening:
++                assert page.evaluate(in_screen + f"('{sel}')"), sel
++            pair = page.evaluate("[...document.querySelectorAll('.ha-cta .ha-btn')].map(a => { const r = a.getBoundingClientRect();"
+                                  " return [r.top, r.height, r.right]; })")
+             assert len(pair) == 2 and pair[0][0] == pair[1][0] and min(h for _, h, _ in pair) >= 44
+-            assert page.evaluate(in_screen + "('.ho-cta a + a')") and not page.is_visible(".ho-go")
++            # the news row: a section of its own, named by its heading, under the question card; the compact card
++            # waits on its first card (no autoplay below 768px)
++            assert page.evaluate(order) and page.inner_text(".hn-h") == "지금 군산 소식"
+             assert page.evaluate("document.documentElement.scrollWidth") == 390
+             assert page.evaluate("document.querySelector('[data-hcar-view]').getBoundingClientRect().height") < 200
+-            assert page.evaluate("(() => { const f = document.querySelector('[data-hcar-item] .nc-frame')"
+-                                 ".getBoundingClientRect(), t = document.querySelector('[data-hcar-item] .nc-t')"
+-                                 ".getBoundingClientRect(); return f.width <= 96 && f.right <= t.left; })()")
++            frame_w, beside = page.evaluate(side_by_side)
++            assert frame_w <= 96 and beside
+             assert "is-stopped" in page.get_attribute("[data-hcar]", "class")
+             assert page.get_attribute("[data-hcar-pause]", "aria-label") == "소식 자동 넘김 시작"
+             assert page.text_content("[data-hcar-cur]") == "1"
+             ctx.close()
+             ctx, page = open_home()
+             box, cur = "[data-hcar]", "[data-hcar-cur]"
+-            # 1440: the card at the right of the opening's text, inside the first screen, one card in view; the
+-            # question box in the first screen too, the white card overlapping the opening's bottom edge
+-            card = page.locator(".ho-news").bounding_box()
+-            text = page.locator(".hk-h1").bounding_box()
+-            assert card["x"] >= text["x"] + text["width"] and card["y"] >= 0 and card["y"] + card["height"] <= 900
+-            assert page.evaluate(in_screen + "('.hk-box')")
+-            assert not page.is_visible(".ho-go") and page.evaluate(
+-                "(() => { const [a, b] = document.querySelectorAll('.ho-cta a');"
+-                " return a.getBoundingClientRect().top === b.getBoundingClientRect().top; })()")
+-            assert page.evaluate("document.querySelector('.hq-card').getBoundingClientRect().top < "
+-                                 "document.querySelector('.ho').getBoundingClientRect().bottom")
++            # 1440: the opening card whole in the first screen; the news row under the question card — one feature
++            # card (the picture at the left of the words) that fits a screen with its controls
++            for sel in opening:
++                assert page.evaluate(in_screen + f"('{sel}')"), sel
++            assert page.evaluate(order) and page.inner_text(".hn-h") == "지금 군산 소식"
++            page.wait_for_timeout(1500)
++            assert page.text_content(cur) == "1"                     # it has not turned while off screen
++            page.evaluate("document.querySelector('.hn').scrollIntoView({block: 'center'})")   # the reader comes to it
++            page.wait_for_timeout(700)
++            assert page.evaluate(in_screen + "('.hn-h')") and page.evaluate(in_screen + "('[data-hcar]')")
++            frame_w, beside = page.evaluate(side_by_side)
++            assert frame_w >= 300 and beside
+             assert page.evaluate(in_view) == 1
+             assert page.text_content(cur) == "1"
+             assert page.get_attribute("[data-hcar-pause]", "aria-label") == "소식 자동 넘김 멈추기"
+@@ -2548,7 +2552,8 @@ def test_a_photo_that_does_not_load_leaves_no_broken_image(S, built):
+ def test_list_and_map_pages_show_their_filters_map_and_first_results_early(built):
+     """Outside review 2026-10-17: on the map and list pages the head picture took ~400px of a 900px desktop screen
+     (the map began at 606px, the first place at 791px). The band is a thin strip there now: on a 1440×900 screen the
+-    map and the filters start above 500px, the first result above 650px; on a phone the first result above 500px."""
++    map and the filters start above 500px, the first result above 650px; on a phone (390 and 360 wide) the first result
++    above 500px — on the stays list too, under its '숙박 예약하기' row (operator 2026-11-04; css/90-refine 6.)."""
+     sync_api = pytest.importorskip("playwright.sync_api")
+     m = """() => { const q = s => { const e = document.querySelector(s); return e ? e.getBoundingClientRect().top : null; };
+       return {map: q('.map'), filters: q('[data-filters]'), first: q('.rec, [data-filter-item]')}; }"""
+@@ -2558,7 +2563,7 @@ def test_list_and_map_pages_show_their_filters_map_and_first_results_early(built
+         except Exception as ex:  # noqa: BLE001 — Chromium is not installed here
+             pytest.skip(f"Chromium 없음: {ex}")
+         try:
+-            for w, h, mob in ((1440, 900, False), (390, 844, True)):
++            for w, h, mob in ((1440, 900, False), (390, 844, True), (360, 740, True)):
+                 ctx = browser.new_context(viewport={"width": w, "height": h}, is_mobile=mob, has_touch=mob)
+                 ctx.route("**/*", _serve(built))
+                 page = ctx.new_page()
+diff --git a/tests/test_review_r8_k4b_handoff.py b/tests/test_review_r8_k4b_handoff.py
+index 131a968700..3bc354c17f 100644
+--- a/tests/test_review_r8_k4b_handoff.py
++++ b/tests/test_review_r8_k4b_handoff.py
+@@ -265,11 +265,13 @@ def test_from_900px_the_box_is_as_before_and_the_form_says_what_is_optional(brow
+ 
+ # ------------------------------------------------------------------ memory and U3: the assistant
+ def open_chat(page, path):
+-    """The page, with the panel: restored when the tab left it open (site.js, after load), else from the launcher."""
++    """The page, with the panel: restored when the tab left it open (site.js, after load), else from the launcher — on
++    a Korean phone from the tab bar's 'AI 챗봇' button, which stands for it there (시안 A, operator 2026-11-05)."""
+     page.goto("http://site.test" + path, wait_until="load")
+     restores = page.evaluate("(() => { try { return !!(JSON.parse(sessionStorage.getItem('gs-chat')) || {}).open; } catch (e) { return false; } })()")
+     if not restores:
+-        page.click(".chat-fab")
++        bar = page.locator(".tabbar [data-tab-chat]")
++        (bar if bar.count() and bar.is_visible() else page.locator(".chat-fab")).click()
+     page.locator("#chat").wait_for(state="visible")
+     page.wait_for_function("!!window.gsChat")
+ 
+diff --git a/tests/test_sidebar_layout.py b/tests/test_sidebar_layout.py
+index 13aab90039..6d54e89270 100644
+--- a/tests/test_sidebar_layout.py
++++ b/tests/test_sidebar_layout.py
+@@ -375,8 +375,8 @@ def cells(page, sel):
+ 
+ 
+ def test_the_weather_module_fills_its_room_after_load(browser, built):
+-    """The panel's card (1440) and the home's (390, under the first screen): asked once each (the feed and the day's
+-    slots), after the page has loaded (a card asks when it nears the screen); drawn as 날씨각 draws it — the night sky
++    """The panel's card (1440) and the home's (390, after the opening's lists): asked once each (the feed and the day's
++    slots), after the page has loaded (a card asks when it nears the screen, not before); drawn as 날씨각 draws it — the night sky
+     (the feed's sky_mode) with the moon in its phase, '지금 날씨 점수' and the score, the bubble (the home: the summary
+     and the status line too), the four cells 아침 · 낮 · 저녁 · 지금 (the slot 날씨각 takes for each — the last at or
+     before 7 · 13 · 18 h; '지금' the feed's temperature, white) with 날씨각's icons; the card is one link to
+@@ -405,13 +405,16 @@ def test_the_weather_module_fills_its_room_after_load(browser, built):
+     assert [x for x in page.evaluate("window.__ls") if x["v"] > 0.001] == [], page.evaluate("window.__ls")
+     assert own(errors) == [], errors
+     ctx.close()
+-    # the home on a phone (the card right under the first screen): asked after load, drawn in the room it kept
++    # the home on a phone: the card comes after the opening's lists (시안 A, operator 2026-11-05; the rank block
++    # 2026-11-10) — nothing is asked while it is far from the screen; asked when the reader nears it, after load, and
++    # drawn in the room it kept
+     ctx, page, errors, calls = open_page(browser, built, "/", 390, 844)
+     h0 = page.evaluate(CARD, ".wx-home")
++    page.wait_for_timeout(600)
++    assert calls == [] and not page.evaluate("document.querySelector('.wx-home').classList.contains('is-ready')"), calls
++    page.evaluate("window.scrollTo(0, document.querySelector('.wx-home').getBoundingClientRect().top + scrollY - 100)")
+     page.wait_for_selector(".wx-home.is-ready", timeout=8000)
+-    page.wait_for_timeout(300)
+     assert page.evaluate("window.__wx") == ["complete", "complete"] and len(calls) == 2
+-    page.evaluate("window.scrollTo(0, document.querySelector('.wx-home').getBoundingClientRect().top + scrollY - 100)")
+     page.wait_for_timeout(1300)   # past the drop-in
+     c = page.evaluate(CARD, ".wx-home")
+     assert c["h"] == 401 and (h0["ready"] or h0["h"] == 401) and c["inside"] and c["link"] == "https://weather.o2o.kr/", (h0, c)
+-- 
+2.43.0
+

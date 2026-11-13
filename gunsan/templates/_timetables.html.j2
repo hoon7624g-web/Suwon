@@ -1,0 +1,20 @@
+{#- _timetables.html.j2 — what /sun/ and /transport/ share (pipeline/timetables.py; operator 2026-10-31). The data box
+    (자료 정보) says what the tables are, word for word as the page's Dataset JSON-LD: its name, description, provider,
+    period (the ISO interval of temporalCoverage), the portal's 이용허락범위 and the original's link. Never a check date
+    (operator decision 2026-10-09: dates of checks stay in the data and the structured data). -#}
+
+{#- databox(id, title, name, desc, rows): rows = [(label, value, href or '')] -#}
+{% macro databox(id, title, name, desc, rows) -%}
+<section class="wrap chapter tt-data" aria-labelledby="{{ id }}"><div class="tt-data-in" data-reveal>
+  <h2 id="{{ id }}" class="h-sec">{{ title }}</h2>
+  {#- the Dataset's name outside the heading: build.keep_dots splits a heading's '·' runs, the name stays one text run -#}
+  <p class="tt-data-n">{{ name }}</p>
+  <p class="tt-data-d">{{ desc }}</p>
+  <dl class="tt-data-l">{% for k, v, href in rows %}<div><dt>{{ k }}</dt><dd>{% if href %}<a href="{{ href }}" rel="noopener" data-track="official_click">{{ v }}</a>{% else %}{{ v }}{% endif %}</dd></div>{% endfor %}</dl>
+</div></section>
+{%- endmacro %}
+
+{#- jump(items): a row of in-page links ([(label, '#id')]) -#}
+{% macro jump(items, label) -%}
+<nav class="tt-jump" aria-label="{{ label }}"><ul>{% for lab, href in items %}<li><a href="{{ href }}">{{ lab }}</a></li>{% endfor %}</ul></nav>
+{%- endmacro %}

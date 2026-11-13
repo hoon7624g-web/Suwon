@@ -1,0 +1,64 @@
+{% extends "base.html.j2" %}
+{#- <home>columns/ of every version but Korean: the Korean /columns/ (columns_index.html.j2) in the version's words —
+    the head (count, H1, lede, the topics as chips), the lead column (its photo from a place with a page here, credit
+    under it; its pull quote and the names of its places), then the columns by topic (the Korean categories, in the
+    Korean order). CV = pipeline/en_site.Site.columns_index_vm. -#}
+{% import "en/_en.html.j2" as E with context %}
+{% import "_media.html.j2" as md %}
+{% block main_class %}{% endblock %}
+{% block bodyclass %}pg-columns{% endblock %}
+{% block head %}{% if CV.lead and CV.lead.photo and CV.lead.photo.type == 1 %}{{ md.preload(CV.lead.photo) }}{% endif %}{% endblock %}
+{% block content %}
+<header class="pg-hero col-idx-hero">
+  <div class="wrap">
+    <p class="kicker"><span class="kicker-dot" aria-hidden="true"></span>{{ t.columns }} <span class="tn">{{ CV.total }}</span></p>
+    <h1 class="d1">{{ t.f('columns_h1', r=region) }}</h1>
+    <p class="lede">{{ t.f('columns_lede', r=region) }}</p>
+    {% if CV.categories|length > 1 %}
+    <nav class="col-cat-nav" aria-label="{{ t.column_topics }}">
+      {% for cat in CV.categories %}<a class="chip" href="#{{ cat.id }}">{{ cat.name }} <span class="tn">{{ cat.cards|length }}</span></a>{% endfor %}
+    </nav>
+    {% endif %}
+  </div>
+</header>
+
+{% if CV.lead %}
+{% set L = CV.lead %}
+<section class="sec sec-tight" aria-labelledby="h-lead-col">
+  <div class="wrap">
+    <h2 id="h-lead-col" class="vh">{{ t.featured_column }}</h2>
+    <article class="col-lead-card">
+      {% if L.photo %}
+      <div class="col-lead-media">
+        {{ E.figure(L.photo, L.photo.place, 0, 0, 'col-lead-fig', true, '(min-width: 960px) 560px, 100vw', true, true) }}
+      </div>
+      {% endif %}
+      <div class="col-lead-body">
+        <p class="col-meta-top">{% if L.category %}<span class="col-badge">{{ L.category }}</span>{% endif %}{% if L.label %}<span>{{ L.label }}</span>{% endif %}<span class="tn">{{ t.n('min_read', L.reading_minutes) }}</span></p>
+        <h3 class="col-lead-title"><a href="{{ L.path }}">{{ L.title }}</a></h3>
+        {% if L.dek %}<p class="col-lead-dek">{{ L.dek }}</p>{% endif %}
+        {% if L.pull_quote %}<blockquote class="col-lead-quote"><p>{{ L.pull_quote }}</p></blockquote>{% endif %}
+        <p class="col-lead-places">{{ t.n('n_places', L.n_items) }}{% if L.place_names %} · {{ L.place_names|join(' · ') }}{% endif %}</p>
+        <p class="col-lead-more"><a class="btn btn-primary" href="{{ L.path }}">{{ t.read_column }} {{ ui.icon('arrow', 'icon') }}</a></p>
+      </div>
+    </article>
+  </div>
+</section>
+{% endif %}
+
+{% for cat in CV.categories %}
+<section class="sec" id="{{ cat.id }}" aria-labelledby="h-{{ cat.id }}">
+  <div class="wrap">
+    <header class="sec-h">
+      <div>
+        <p class="kicker">{{ t.column_topics }}</p>
+        <h2 id="h-{{ cat.id }}">{{ cat.name }} <span class="tn">({{ cat.cards|length }})</span></h2>
+      </div>
+    </header>
+    <div class="col-grid">
+      {% for c in cat.cards %}{{ E.colcard(c, true, true) }}{% endfor %}
+    </div>
+  </div>
+</section>
+{% endfor %}
+{% endblock %}

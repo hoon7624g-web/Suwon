@@ -1,0 +1,52 @@
+{#- ADO2 숏폼 영상 (operator decision 2026-11-11 meeting; pipeline/ado2.py, data/<region>/ado2.json): the short promotional
+    video the operator's ADO2 made for a place on this site.
+    player(v): the provider's poster (lazy) in a link to the file — site.js [data-ado2] swaps it for a <video> on the press
+    (nothing else loads from the provider before; without JS the link opens the file itself).
+    pow(svc, place): 'Powered by ADO2' — the service's wordmark in its colour, linking to the service (ado2_click).
+    box(v, site): the place page's box at the head of the main column — the video, the badge, the invitation to make
+    one, and the relationship (the operator's own service); its heading is for screen readers only (operator
+    2026-11-12 '이 부분은 통채로 빼도' — the kicker, heading and two lines of explanation came out).
+    shelf(rows, svc, site, ui): the /videos/ section — every place's video as a card (name · type · 동), 12 open and
+    the rest behind '더 보기', the order said under it. -#}
+{% macro player(v, cls='') -%}
+<div class="a2-player{% if cls %} {{ cls }}{% endif %}" data-a2box>
+<a class="a2-play" href="{{ v.video }}" data-ado2="{{ v.video }}" data-poster="{{ v.poster }}" data-place="{{ v.place }}" data-title="{{ v.name }} 숏폼 영상" rel="noopener" target="_blank"><img src="{{ v.poster }}" width="720" height="1280" alt="" loading="lazy" decoding="async"><span class="vid-disc a2-disc" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg></span><span class="vh">여기서 재생: {{ v.name }} 숏폼 영상(소리 있음)</span></a>
+</div>
+{%- endmacro %}
+
+{% macro pow(svc, place='') -%}
+<a class="a2-pow" href="{{ svc.url }}" target="_blank" rel="noopener" data-track="ado2_click" data-provider="ado2"{% if place %} data-place="{{ place }}"{% endif %}><span class="a2-pow-by">Powered by</span><img src="/assets/related/ado2-wordmark.svg" width="96" height="14" alt="ADO2"><span class="vh"> (새 창)</span></a>
+{%- endmacro %}
+
+{% macro box(v, site) -%}
+{#- operator 2026-11-12 '이 부분은 통채로 빼도': no kicker, visible heading or explanation — the video, the badge, the
+    invitation and the relationship; the heading stays for screen readers and the local bar's '숏폼' (#h-ado2) -#}
+<section class="block a2" aria-labelledby="h-ado2" data-block="ado2">
+  <h2 id="h-ado2" class="vh">{{ v.name }} 숏폼 영상</h2>
+  <div class="a2-in">
+    <div class="a2-media">{{ player(v) }}</div>
+    <div class="a2-foot">
+      {{ pow(v.service, v.place) }}
+      <p class="a2-cta">업체명만 넣으면 AI가 홍보 영상을 만들어 줍니다. <a href="{{ v.service.url }}" target="_blank" rel="noopener" data-track="ado2_click" data-provider="ado2-cta" data-place="{{ v.place }}">우리 가게 영상 만들기<span class="arr" aria-hidden="true">↗</span></a></p>
+      <p class="a2-rel">ADO2는 {{ site.site_name }} 운영사 {{ v.service.maker }}의 AI 홍보 영상 서비스입니다.{% if v.page %} <a href="{{ v.page }}" target="_blank" rel="noopener" data-track="ado2_click" data-provider="ado2-page" data-place="{{ v.place }}">ADO2에서 이 영상 보기<span class="arr" aria-hidden="true">↗</span></a>{% endif %}</p>
+    </div>
+  </div>
+</section>
+{%- endmacro %}
+
+{% macro card(v) -%}
+<li class="a2-card">{{ player(v) }}<a class="a2-cl" href="{{ v.path }}#h-ado2" data-track="ado2_place" data-place="{{ v.place }}"><span class="a2-cn">{{ v.name }}</span><span class="a2-cm">{{ v.type }}{% if v.type and v.dong %} · {% endif %}{{ v.dong }}</span></a></li>
+{%- endmacro %}
+
+{% macro shelf(rows, site, ui, open_n=12) -%}
+{% set svc = rows[0].service %}
+{% set kinds = rows|map(attribute='kind')|unique|list %}
+{% set what = '숙소·음식점' if ('food' in kinds and 'stay' in kinds) else ('음식점' if kinds == ['food'] else '숙소') %}
+<section class="v-sec a2-sec" id="ado2" aria-labelledby="ado2-h" data-block="ado2-shelf">
+  {{ ui.chead('ADO2로 만든 ' ~ site.region ~ ' ' ~ what ~ ' 숏폼', 'ado2-h', '', '', '', site.site_name ~ '에 실린 ' ~ what ~ '의 AI 홍보 영상 — 누르면 이 자리에서 재생', rows|length) }}
+  <div class="a2-band">{{ pow(svc) }}<p class="a2-rel">ADO2는 {{ site.site_name }} 운영사 {{ svc.maker }}의 AI 홍보 영상 서비스입니다. 업체명만 넣으면 AI가 홍보 영상을 만들어 줍니다. <a href="{{ svc.url }}" target="_blank" rel="noopener" data-track="ado2_click" data-provider="ado2-cta">우리 가게 영상 만들기<span class="arr" aria-hidden="true">↗</span></a></p></div>
+  <ul class="a2-grid">{% for v in rows[:open_n] %}{{ card(v) }}{% endfor %}</ul>
+  {% if rows|length > open_n %}<details class="v-more a2-more"><summary>숏폼 {{ rows|length - open_n }}편 더 보기</summary><ul class="a2-grid">{% for v in rows[open_n:] %}{{ card(v) }}{% endfor %}</ul></details>{% endif %}
+  <p class="note a2-note">{{ what }} 묶음 안에서 가나다순이고, 추천 순서가 아닙니다. 영상 속 문구는 ADO2가 업체 공개 정보로 만든 홍보 문구라 요금·시간·시설은 각 장소 페이지의 '방문 전 확인'을 보세요. 이름을 누르면 장소 페이지로 갑니다.</p>
+</section>
+{%- endmacro %}

@@ -1,0 +1,786 @@
+From b5b2d28412625e305a795541112bfda3a589b273 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Tue, 10 Nov 2026 10:20:02 +0000
+Subject: [PATCH] =?UTF-8?q?feat(home):=20=EC=9C=A0=ED=8A=9C=EB=B8=8C=C2=B7?=
+ =?UTF-8?q?=EC=9D=B8=EC=8A=A4=ED=83=80=EA=B7=B8=EB=9E=A8=20=EC=9D=B8?=
+ =?UTF-8?q?=EA=B8=B0=20=EC=88=9C=EC=9C=84=20=EB=B8=94=EB=A1=9D=20+=20?=
+ =?UTF-8?q?=EC=8B=A4=EC=82=AC=EC=9D=B4=ED=8A=B8=20=EC=A0=90=EA=B2=80?=
+ =?UTF-8?q?=EC=97=90=EC=84=9C=20=EB=82=98=EC=98=A8=20=EC=88=98=EC=A0=95?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+운영자 요청(2026-11-10 '유튜브, 인스타도 순위별로 큐레이션해서 굉장히 잘 보이는 곳에 있으면 좋겠는데').
+
+순위
+- 홈 첫 화면 바로 아래(불꽃축제 띠 다음)에 '유튜브·인스타그램 인기 순위' 카드: 유튜브는 조회수 순,
+  인스타그램은 좋아요 순으로 5위까지(한 열로 서는 720px 미만은 3위까지). 줄마다 순위·작은 사진·채널(계정)·
+  조회수(좋아요 수)·제목(소개), 1024px부터 나온 장소 링크, 아래에 전체 목록과 채널로 가는 문
+- 순위는 군산각이 고른 영상 24편·카페 게시물 22편 안의 순서임을 머리에 적고, '추천 순서가 아님'과
+  '숫자는 목록에 실은 때의 값'을 순위가 보이는 곳마다 적음(블록, 보드, /videos/). 확인 날짜는 화면에 쓰지
+  않음(운영자 결정 2026-10-09)
+- 1680px부터는 오른쪽 보드가 같은 순위를 보이므로 블록을 숨김: 보드의 영상 사진에 순위 숫자, '조회수 순'·
+  '좋아요 순' 표시, 인스타그램 탭은 순위 게시물을 먼저
+- 홈의 유튜브 줄과 인스타그램 구역은 이 블록으로 합침(휴대폰 홈 16,981 → 15,965px)
+- /videos/ 화제 영상 24편에 순위 숫자. 큐레이션 영상은 빌드가 조회수 순으로 정렬
+- 인스타그램 줄의 사진은 게시물에 나온 장소의 TourAPI 제1·3유형 사진(제3유형은 통째로)
+
+실사이트 점검에서 나온 수정
+- 휴대폰에서 챗봇을 열면 하단 탭바·장소 바가 챗봇 창 위에 그려져 질문 상자와 보내기 버튼을 반쯤 가리던 것:
+  챗봇이 열린 동안 바를 숨김(2026-11-05부터 있던 문제)
+- 외국어판 패널의 날씨 카드가 낮은 창에서 접히면 숫자만 남던 것: 'Weather score · Now 8°' 한 줄
+  (앞 배포에서 생긴 문제)
+- 휴대폰 /videos/에서 영상이 128×72px 칸 안에서 재생되던 것: 재생 중에는 줄 너비로
+
+운영자가 'MAIN에 합쳐 배포해'로 확인한 앞 작업의 네 가지를 CLAUDE.md 7절에 확인된 것으로 적음.
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01NujcWun3eD1NVvxndVydTT
+---
+ pipeline/build.py                  |  16 +++-
+ templates/assets/css/47-rank.css   | 111 ++++++++++++++++++++++
+ templates/assets/css/48-abroad.css |   7 --
+ templates/assets/css/90-refine.css |  36 +++++--
+ templates/assets/weather.js        |  11 +++
+ templates/home.html.j2             | 147 ++++++++++++++++++-----------
+ templates/videos.html.j2           |   3 +
+ tests/test_chat_browser.py         |  11 ++-
+ tests/test_present.py              | 123 ++++++++++++++++++++++++
+ tests/test_sidebar_layout.py       |  12 ++-
+ 10 files changed, 398 insertions(+), 79 deletions(-)
+ create mode 100644 templates/assets/css/47-rank.css
+
+diff --git a/pipeline/build.py b/pipeline/build.py
+index 47bf4bdc8e..9be469b6e9 100644
+--- a/pipeline/build.py
++++ b/pipeline/build.py
+@@ -1490,9 +1490,19 @@ def load_yt_channels(data_dir: Path, videos: list[dict]) -> tuple[list[dict], li
+            if c.get("status") == "published" and c.get("url") and c.get("name") and squash_ws(c.get("note"))]
+     by_id = {v["youtube_id"]: v for v in videos if v.get("youtube_id")}
+     pop = [by_id[yid] for yid in raw.get("popular_video_ids") or [] if yid in by_id]
++    # the curated videos are shown with their rank (operator 2026-11-10 '순위별로 큐레이션'): by view count, most first —
++    # the file is kept in that order, and the sort makes the rank hold whatever is added to it (ties keep file order)
++    pop.sort(key=lambda v: -view_count(v))
+     return chs, pop
+ 
+ 
++def view_count(v: dict) -> int:
++    """The number in a video's view_text ('조회수 3,486,762회' → 3486762). 0 without a whole count: a short form
++    ('349만회', '1.2만회') is not read as its digits."""
++    m = re.search(r"(\d[\d,]*)\s*회", str(v.get("view_text") or ""))
++    return int(m.group(1).replace(",", "")) if m else 0
++
++
+ HL_SMALL_MAX = 60_000   # bytes: the provider's small rendition is used in a highlight circle only up to this size
+ HL_VIEWER = "/abroad/highlights.json"   # the viewer's markup, fetched on the first press (not in the page's first load)
+ 
+@@ -2272,13 +2282,13 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
+                                           S.ent_by_slug),   # a post without a place's photo: a related one (2026-11-04)
+             n_posts=sum(a.get("kind") == "post" for a in getattr(S, "abroad", None) or []),
+             home_insta=present.home_posts(sorted(getattr(S, "insta", None) or [],
+-                                                 key=lambda a: (int(a.get("likes") or 0), a["id"]), reverse=True)[:8],
++                                                 key=lambda a: (int(a.get("likes") or 0), a["id"]), reverse=True)[:5],
+                                           S.ent_by_slug),
+             n_insta=len(getattr(S, "insta", None) or []),
+             insta_channels=live_channels(S, getattr(S, "insta_channels", None) or []),
+             yt_channels=live_channels(S, getattr(S, "yt_channels", None) or []),
+-            popular_videos=(getattr(S, "popular_videos", None) or [])[:9],   # the board's five, and the row's four beside it
+-            n_popular=len(getattr(S, "popular_videos", None) or []),   # the chip to /videos/#yt-popular counts that list, not the home's slice
++            popular_videos=(getattr(S, "popular_videos", None) or [])[:5],   # the rank block's and the board's five
++            n_popular=len(getattr(S, "popular_videos", None) or []),   # the door to /videos/#yt-popular counts that list, not the home's slice
+             places=S.ent_by_slug,
+             home_blog=blog_home(S))   # 군산각 블로그 (operator 2026-10-30): the /blog/ cards, one per category first
+ 
+diff --git a/templates/assets/css/47-rank.css b/templates/assets/css/47-rank.css
+new file mode 100644
+index 0000000000..4aab4a10e3
+--- /dev/null
++++ b/templates/assets/css/47-rank.css
+@@ -0,0 +1,111 @@
++/* 47-rank — 유튜브·인스타그램 인기 순위 (templates/home.html.j2 .hrk; operator 2026-11-10 '유튜브, 인스타도 순위별로
++   큐레이션해서 굉장히 잘 보이는 곳에'): a white card of the opening group, right under the hero (after the festival
++   card while there is one), on every window narrower than the board's 1680px. Two columns from 720px — the curated
++   videos by views, the curated Instagram posts by likes — one under the other below that; five ranks each, three
++   while the lists are one column (.hrk-x). Set as the board's lists are
++   (css/48-abroad .hrs-*, the operator's own of the same day): hairlines, the rank in the sea blue, who in bold with
++   the count the rank comes from at the end of its line, then the title or our note at the text's weight, two lines
++   of it (the whole is where the row leads). From 1024px a quiet line of the places it shows, each to its page; narrower
++   the row stays short and the places are where the row leads. An Instagram row's picture is a place photo: KOGL-1 cut
++   to the box, KOGL-3 whole inside it. Every link is a 44px target where fingers are (below 1024px). */
++.hrk { padding-top: 16px; }
++.hrk-card { padding: clamp(18px, 2.4vw, 28px); border-radius: 32px; background: #fff; }
++.hrk-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
++.hrk-h { margin: 0; font-size: clamp(20px, 2vw, 24px); font-weight: 700; letter-spacing: -.04em; }
++.hrk-sub { margin: 0; font-size: 14px; line-height: 1.45; color: var(--ink-3); }
++.hrk-cols { display: grid; gap: 22px; margin-top: 14px; }
++.hrk-col { display: flex; flex-direction: column; min-width: 0; }
++.hrk-sh { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 44px; border-bottom: 1px solid var(--ink); }
++.hrk-sh h3 { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 8px; margin: 0; font: 700 16.5px/1.3 var(--font); letter-spacing: -.03em; color: var(--ink); }
++.hrk-sh h3 em { font-style: normal; font-weight: 400; font-size: 13px; letter-spacing: -.01em; color: var(--ink-3); }
++.hrk .hrk-svc { width: 24px; height: 24px; }   /* .ab-svc (css/48-abroad) is 30px */
++.hrk .hrk-svc svg { width: 13px; height: 13px; }
++.hrk-sh > a { flex: none; display: inline-flex; align-items: center; gap: 3px; min-height: 44px; font: 400 13.5px/1 var(--font); color: var(--ink-3); text-decoration: none; white-space: nowrap; }
++.hrk-sh > a:hover { color: var(--sea-deep); text-decoration: none; }
++.hrk-list { margin: 0; padding: 0; list-style: none; }
++.hrk-i { padding: 11px 0 10px; border-bottom: 1px solid var(--bg-3); }
++.hrk-a { display: grid; grid-template-columns: 22px 96px minmax(0, 1fr); gap: 10px; align-items: start; min-height: 44px; color: var(--ink); text-decoration: none; }
++.hrk-a:hover { color: var(--ink); text-decoration: none; }
++.hrk-a:hover .hrk-who { color: var(--sea-deep); }
++.hrk-a:hover .hrk-t { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; }
++.hrk-a:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 10px; }
++.hrk-n { align-self: center; font: 700 21px/1 var(--font); letter-spacing: -.04em; text-align: center; color: var(--sea); }
++.hrk-th { position: relative; display: block; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 10px; background: var(--bg-2); box-shadow: inset 0 0 0 1px rgba(15, 23, 42, .06); }
++.hrk-th picture { display: block; width: 100%; height: 100%; }
++.hrk-th img { display: block; width: 100%; height: 100%; object-fit: cover; }
++.hrk-th.t3 img { object-fit: contain; }   /* KOGL-3: whole, never cropped or enlarged past its box */
++/* the service's mark, where a post has no place photo: centred in the box. A photo's box stays a plain block — as
++   a grid the picture's height no longer followed the box and its lower edge was cut (a KOGL-3 photo must be whole) */
++.hrk-ig:not(.t1):not(.t3) { display: grid; place-items: center; }
++.hrk .hrk-glyph { width: 30px; height: 30px; }
++.hrk-play { position: absolute; right: 6px; bottom: 5px; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: rgba(15, 23, 42, .74); color: #fff; }
++.hrk-tx { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
++.hrk-top { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 1px 10px; min-width: 0; }
++.hrk-who { font: 700 15px/1.3 var(--font); letter-spacing: -.025em; color: var(--ink); word-break: keep-all; overflow-wrap: anywhere; }
++.hrk-cnt { font: 400 13px/1.3 var(--font); color: var(--ink-2); white-space: nowrap; }
++.hrk-t { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; font: 400 14px/1.45 var(--font); letter-spacing: -.012em; color: var(--ink-2); word-break: keep-all; overflow-wrap: anywhere; }
++.hrk-pl { display: none; }
++.hrk-doors { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 0; }
++.hrk-doors a { display: inline-flex; align-items: center; gap: 4px; min-height: 44px; padding: 0 16px; border-radius: 999px; background: var(--bg-2); font: 400 14px/1.2 var(--font); letter-spacing: -.01em; color: var(--ink); text-decoration: none; }
++.hrk-doors a:hover { background: var(--tint); color: var(--sea-deep); text-decoration: none; }
++.hrk-doors .arr { color: var(--ink-3); }
++.hrk-note { margin: 14px 2px 0; font-size: 12px; line-height: 1.55; color: var(--ink-3); word-break: keep-all; }
++@media (max-width: 719px) {
++  .hrk-x { display: none; }   /* one column: the first three of each list; the head's link has them all */
++}
++@media (max-width: 599px) {
++  .hrk-card { border-radius: 28px; }
++}
++@media (max-width: 389px), (min-width: 720px) and (max-width: 899px) {
++  /* the narrowest phones, and two columns on a small tablet: a smaller picture, so that who and the count stay on
++     one line and the rows of the two lists are level */
++  .hrk-a { grid-template-columns: 20px 72px minmax(0, 1fr); gap: 8px; }
++  .hrk-doors { gap: 6px; }
++  .hrk-doors a { padding: 0 11px; font-size: 13.5px; }
++}
++@media (min-width: 720px) {
++  .hrk-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 3vw, 44px); }
++  .hrk-cols.hrk-one { grid-template-columns: minmax(0, 640px); }
++}
++@media (min-width: 1024px) {
++  .hrk-a { grid-template-columns: 24px 112px minmax(0, 1fr); gap: 12px; }
++  .hrk-n { font-size: 22px; }
++  .hrk-who { font-size: 15.5px; }
++  .hrk-t { font-size: 14.5px; }
++  /* the places a row shows, each to its page: one quiet line under the row, from the picture's left edge (under
++     the text three names did not fit one line at 1024–1366px) */
++  .hrk-pl { display: flex; flex-wrap: wrap; gap: 2px 12px; margin: 6px 0 0; padding-left: 36px; }
++  .hrk-pl a { font: 400 13px/1.5 var(--font); color: var(--sea-deep); text-decoration: underline; text-decoration-color: rgba(47, 111, 201, .45); text-decoration-thickness: 1px; text-underline-offset: .2em; }
++  .hrk-pl a:hover { text-decoration-color: currentColor; }
++  .hrk-pl a:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
++  .hrk-doors a { min-height: 40px; }
++}
++@media (prefers-reduced-motion: no-preference) {
++  /* a video's picture only: a place photo is never enlarged (KOGL-3) */
++  .hrk-th:not(.hrk-ig) img { transition: transform .25s var(--fb); }
++  .hrk-a:hover .hrk-th:not(.hrk-ig) img { transform: scale(1.03); }
++}
++@media print { .hrk-play { display: none; } }
++/* from 1680px the board beside the column (css/48-abroad .h-rside) shows the same ranks, fixed on the screen: the
++   block is where there is no board, so that the ranks are on a screen once */
++@media (min-width: 1680px) {
++  body.pg-ko-home:has(.h-rside) .hrk { display: none; }
++}
++
++/* the board's lists (css/48-abroad .hrs-*) say what their order is and that it is no recommendation, and a video
++   carries its rank on its picture */
++.hrs-note { margin: 2px 2px 0; font: 400 11.5px/1.5 var(--font); color: var(--ink-3); word-break: keep-all; }
++.hrs-by { margin-left: 4px; font-style: normal; font: 400 12px/1.3 var(--font); color: var(--ink-3); letter-spacing: -.01em; }
++.hrs-rk { position: absolute; left: 0; top: 0; display: grid; place-items: center; min-width: 22px; height: 22px; padding: 0 5px; border-radius: 10px 0 8px 0; background: var(--ink); color: #fff; font: 700 12.5px/1 var(--font); }
++
++/* /videos/ 화제의 인기 영상: the curated videos in the order of their views, each with its rank — eight cards, then
++   the folded rows from nine (templates/videos.html.j2; the counters are set on the two lists themselves: the section
++   skips its rendering while off screen, css .cv) */
++#yt-popular .vids-4 { counter-reset: ytr; }
++#yt-popular .vlist { counter-reset: ytr 8; }
++#yt-popular .vids-4 > li, #yt-popular .vlist > li { counter-increment: ytr; }
++#yt-popular .vid-box::after, #yt-popular .vl-a::before { content: counter(ytr); position: absolute; left: 0; top: 0; z-index: 1; display: grid; place-items: center; min-width: 28px; height: 28px; padding: 0 7px; border-radius: 10px 0 10px 0; background: var(--ink); color: #fff; font: 700 14px/1 var(--font); pointer-events: none; }
++#yt-popular .vid-box.is-playing::after { content: none; }
++#yt-popular .vl-a { position: relative; }
++#yt-popular .vl-a::before { min-width: 24px; height: 24px; padding: 0 6px; font-size: 12.5px; }
++.yt-rank-note { margin-top: 14px; }
+diff --git a/templates/assets/css/48-abroad.css b/templates/assets/css/48-abroad.css
+index f6aa28af75..1223e082f2 100644
+--- a/templates/assets/css/48-abroad.css
++++ b/templates/assets/css/48-abroad.css
+@@ -201,8 +201,6 @@ html.embed-manual .ab-ph-msg { display: none; }
+ }
+ .ab-wall.ab-wall-place:has(> :only-child) { grid-template-columns: minmax(0, 540px); }
+ /* ---------------------------------------------------------------- 군산 관련 인기 인스타그램 채널 큐레이션 (홈 & 카페 가이드) */
+-.ig-prof-av { width: 48px; height: 48px; }
+-.ig-prof-av svg { width: 24px; height: 24px; }
+ .ig-ch-sub { margin: 24px 0 14px; font: 700 clamp(17px, 1.8vw, 20px)/1.35 var(--font); letter-spacing: -.015em; color: var(--ink); }
+ .ig-ch-sub .tn { color: var(--ink-3); font-weight: 400; margin-left: 4px; }
+ .ig-ch-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; margin: 0 0 28px; padding: 0; list-style: none; }
+@@ -227,11 +225,6 @@ html.embed-manual .ab-ph-msg { display: none; }
+ .svc-youtube { background: #e62117; color: #fff; }
+ .vid-ch { font-weight: 700; color: var(--ink); }
+ .yt-pop-sec { margin-bottom: clamp(28px, 4vw, 48px); }
+-.home-yt-sub { margin: clamp(24px, 3vw, 36px) 0 14px; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px; }
+-.home-yt-sub h3 { margin: 0; font: 700 clamp(17px, 1.8vw, 20px)/1.35 var(--font); letter-spacing: -.015em; color: var(--ink); }
+-.home-yt-sub .tn { color: var(--ink-3); font-weight: 400; margin-left: 4px; }
+-.home-yt-sub a { font-size: 14px; font-weight: 700; color: var(--sea-deep); text-decoration: none; }
+-.home-yt-sub a:hover { text-decoration: underline; }
+ /* ---------------------------------------------------------------- 홈 우측 인기 유튜브·인스타 고정 큐레이션 보드 (.h-rside)
+    From 1680px only (operator 2026-11-10 '니가 지적한 부분들 다 수정'): from 1360px the board left the home's column
+    676–970px wide — narrower than at 1280px without it (960px) — and the event tickets, the channel cards and the guide
+diff --git a/templates/assets/css/90-refine.css b/templates/assets/css/90-refine.css
+index 9b8cd59403..a5c3fc5015 100644
+--- a/templates/assets/css/90-refine.css
++++ b/templates/assets/css/90-refine.css
+@@ -75,9 +75,16 @@
+   .side .sg-a { font-size: 15px; }
+   .side .sg-l { padding-bottom: 8px; }
+ }
++/* the other versions' card has no words of its own (weather.js .wx-fold): whole, its four cells say the day; folded,
++   a line says the temperature now and — in one row, where the label inside the sun is not shown — what the number is
++   (found on the live site 2026-11-10: the folded card was a bare '50' under 'Gunsan weather') */
++.wx-side.wx-intl .wx-say { display: none; }
+ @media (min-width: 1200px) and (max-height: 1019px) {
+   html.js .wx-side, html.js .wx-side.wx-intl { height: 170px; }
+   .wx-side .wx-strip { display: none; }
++  .wx-side.wx-intl .wx-say { display: block; height: auto; }
++  .wx-side.wx-intl .wx-fold { margin: 0; }
++  .wx-side.wx-intl .wx-fl, .wx-side.wx-intl .wx-fd { display: none; }
+   html.js .wx-side:not(.is-ready):not(.is-failed) .wx-b:empty::after { display: none; }
+   .side .sd-sun { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; padding: 9px 34px 10px 14px; }
+   .side .sd-sun .sd-k { flex-basis: 100%; }
+@@ -92,6 +99,8 @@
+   .wx-side .wx-ob { top: 0; }
+   .wx-side .wx-cl, .wx-side .wx-sc small { display: none; }
+   .wx-side .wx-say { flex: 1 1 auto; width: auto; max-width: none; margin: 0; text-align: left; }
++  .wx-side.wx-intl .wx-fl, .wx-side.wx-intl .wx-fd { display: inline; }
++  .wx-side.wx-intl .wx-fold { line-height: 1.35; }
+   html.js .wx-side:not(.is-ready):not(.is-failed) .wx-b:empty::before { top: 40px; left: 12px; width: 48px; height: 48px; margin-left: 0; }
+   /* no answer: the link under the card's name, not over it (the room is 98px) */
+   html.js .wx-side.is-failed .wx-go { top: 64%; }
+@@ -112,6 +121,16 @@
+   body:has(.pl-bar-go) .pl-hero .route-row { grid-template-columns: 1fr 1fr; padding-right: 0; }
+ }
+ 
++/* ---- a phone's bottom bar and the assistant (found on the live site 2026-11-10; there since 시안 A, 2026-11-05):
++   the tab bar and a place page's bar (z-index 80) were drawn over the open assistant (70) — half of the question
++   box and of the send button and most of the notice lay under them. While the assistant is open the bars step out;
++   closing it brings them back before the focus returns to the bar's button (chat.js close). On the home the
++   conversation panel under the question box comes into view clear of the tab bar (site.js scrollIntoView). */
++@media (max-width: 767px) {
++  html.chat-open .tabbar, html.chat-open .pl-bar { display: none; }
++  body:has(.tabbar) [data-ask-log] { scroll-margin-bottom: calc(92px + env(safe-area-inset-bottom, 0px)); }
++}
++
+ /* ================================================================ 2. the home */
+ 
+ /* ---- the icon menu under the assistant: the four lists the opening already offers as tiles step out (the same doors
+@@ -127,12 +146,6 @@
+ .pg-ko-home .hq-row .hq-l { font: 400 14px/1.2 var(--font); letter-spacing: -.01em; }
+ .pg-ko-home .hq-row .hq-n { display: none; }
+ 
+-/* ---- the YouTube row and the board: from 1680px the board beside the row lists the first five curated videos, so
+-   the row shows the next four there (home.html.j2 .vids-alt holds both fours; a lazy thumbnail that is not shown is
+-   not fetched) — the same four videos were on one screen twice */
+-@media (max-width: 1679px) { .vids-alt > li:nth-child(n+5) { display: none; } }
+-@media (min-width: 1680px) { .vids-alt > li:nth-child(-n+4) { display: none; } }
+-
+ /* ================================================================ 3. the reading pages (guide, column) */
+ 
+ /* ---- 1280–1679px: the page's column is the window less the panel (960–1360px), too narrow for contents | text | map
+@@ -244,10 +257,6 @@ html[lang="ko"] .pl-src .rail-label .nm { display: inline; margin: 0; font-size:
+   .rec-need::before { content: attr(data-need); }
+ }
+ .yt-ch-note { margin-top: 14px; }
+-/* the home's link beside a sub-heading ('인기 채널 n곳 보기'): a 44px target where fingers are */
+-@media (max-width: 1023px) {
+-  .home-yt-sub a { display: inline-flex; align-items: center; min-height: 44px; }
+-}
+ 
+ /* ================================================================ 7. runs that were wider than a phone (found by a
+    390px sweep of every page, 2026-11-10): an event's '시간' value kept on one line in its tile; a past edition's
+@@ -256,6 +265,13 @@ html[lang="ko"] .pl-src .rail-label .nm { display: inline; margin: 0; font-size:
+   .kf-hero .kf-main > .nw { white-space: normal; }
+ }
+ .usual .u-s { white-space: normal; overflow-wrap: anywhere; }
++/* a phone's compact video row (/videos/, css/30-info .vids-4): pressed, the player opened inside the row's 128×72px
++   picture — too small to watch or to use its controls (found on the live site 2026-11-10). While it plays the row
++   is one column and the player takes its width. */
++@media (max-width: 640px) {
++  .vids-4 .vid:has(.vid-box.is-playing) { grid-template-columns: minmax(0, 1fr); row-gap: 10px; }
++  .vids-4 .vid-box.is-playing { width: 100%; }
++}
+ 
+ /* ================================================================ 8. words on a KOGL-1 photo (81-home-mz)
+    the outline that keeps them readable without darkening the photo stays, thinner: the big letters 2px (2.5), the
+diff --git a/templates/assets/weather.js b/templates/assets/weather.js
+index db9ac3e3f1..e6a2723afb 100644
+--- a/templates/assets/weather.js
++++ b/templates/assets/weather.js
+@@ -300,6 +300,17 @@
+       if (num(h.feels_c) && w.feels) fig.push(w.feels.replace("{t}", deg(h.feels_c)));
+       if (num(h.humidity) && w.hum) fig.push(w.hum.replace("{p}", String(Math.round(h.humidity))));
+       if (fig.length) say.appendChild(el("p", "wx-sum", fig.join(" · ")));
++    } else {
++      // the tab panel's card in the other versions has no words of its own. Folded on a short window (css/90-refine)
++      // its four cells are not shown and, in one row, neither is the label inside the sun: this line says what the
++      // number is and the temperature now (shown only while the card is folded)
++      var fold = el("p", "wx-sum wx-fold");
++      fold.appendChild(el("span", "wx-fl", w.score));
++      if (num(h.temp_c) && S.now) {
++        fold.appendChild(el("span", "wx-fd", " · "));
++        fold.appendChild(el("span", "wx-fn", S.now + " " + deg(h.temp_c)));
++      }
++      say.appendChild(fold);
+     }
+     if (say.childNodes.length) body.appendChild(say);
+     // the four cells: 아침 · 낮 · 저녁 · 밤, the one it is now '지금'
+diff --git a/templates/home.html.j2 b/templates/home.html.j2
+index 1c95c26d10..0b05fbd653 100644
+--- a/templates/home.html.j2
++++ b/templates/home.html.j2
+@@ -59,7 +59,10 @@
+ {% set IG = insta_guide|default('') %}
+ {#- the board (from 1680px, css/48-abroad.css): a YouTube panel and an Instagram panel behind two tabs — each panel
+     whole in its own <div> whatever data is there (2026-11-10: the first panel was opened by one condition and closed
+-    by another, so a build without curated videos or without the Instagram guide left the markup unbalanced) -#}
++    by another, so a build without curated videos or without the Instagram guide left the markup unbalanced). It is
++    where the ranks are on a wide window (operator 2026-11-10 '순위별로 큐레이션해서 굉장히 잘 보이는 곳에'): each
++    panel opens with its ranked list — the videos by views with the rank on the picture, the posts by likes — then
++    the channels; the rank block in the column (.hrk, below) takes that place where there is no board. -#}
+ {% set RS_YT = has_videos and (popular_videos or yt_channels) %}
+ {% set RS_IG = IG and (insta_channels or home_insta) %}
+ {% if RS_YT or RS_IG %}
+@@ -75,13 +78,13 @@
+   <div class="hrs-panel"{% if RS_IG %} role="tabpanel" aria-labelledby="hrs-tab-yt"{% endif %} id="hrs-panel-yt">
+   {% if popular_videos %}
+   <div class="hrs-sec" id="hrs-yt">
+-    <div class="hrs-sh"><h3>화제의 {{ site.region }} 유튜브</h3><a href="/videos/#yt-popular">전체 보기<span class="arr" aria-hidden="true">→</span></a></div>
++    <div class="hrs-sh"><h3>화제의 {{ site.region }} 유튜브 <em class="hrs-by">조회수 순</em></h3><a href="/videos/#yt-popular">전체 보기<span class="arr" aria-hidden="true">→</span></a></div>
+     <ul class="hrs-vlist">
+       {% for v in popular_videos[:5] %}
+       {% set t = v.thumbnail or {} %}
+       <li class="hrs-v">
+         <a class="hrs-va" href="{{ v.url }}" target="_blank" rel="noopener" data-track="video_click">
+-          <span class="hrs-vth">{% if t.url %}<img src="{{ t.url }}" width="116" height="65" alt="" loading="lazy" decoding="async">{% endif %}<span class="hrs-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="11" height="11"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg></span></span><span class="hrs-vtxt"><span class="hrs-vtop"><b class="hrs-vch">{{ v.channel }}</b>{% if v.short_view_text or v.view_text %}<span class="hrs-vviews tn">{{ (v.short_view_text or v.view_text)|replace('조회수 ', '') }}</span>{% endif %}</span><span class="hrs-vt">{{ v.title }}</span></span>
++          <span class="hrs-vth">{% if t.url %}<img src="{{ t.url }}" width="116" height="65" alt="" loading="lazy" decoding="async">{% endif %}<span class="hrs-rk tn">{{ loop.index }}<span class="vh">위 </span></span><span class="hrs-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="11" height="11"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg></span></span><span class="hrs-vtxt"><span class="hrs-vtop"><b class="hrs-vch">{{ v.channel }}</b>{% if v.short_view_text or v.view_text %}<span class="hrs-vviews tn">{{ (v.short_view_text or v.view_text)|replace('조회수 ', '') }}</span>{% endif %}</span><span class="hrs-vt">{{ v.title }}</span></span>
+ 
+ 
+ 
+@@ -92,6 +95,7 @@
+       </li>
+       {% endfor %}
+     </ul>
++    <p class="hrs-note">고른 영상 {{ n_popular|default(popular_videos|length) }}편 안의 조회수 순 · 추천 순서가 아님 · 숫자는 실은 때의 값</p>
+   </div>
+   {% endif %}
+   {% if yt_channels %}
+@@ -111,27 +115,28 @@
+   {% endif %}
+   {% if RS_IG %}
+   <div class="hrs-panel"{% if RS_YT %} role="tabpanel" aria-labelledby="hrs-tab-ig" data-tab-off{% endif %} id="hrs-panel-ig">
+-  {% if insta_channels %}
+-  <div class="hrs-sec" id="hrs-ig">
+-    <div class="hrs-sh"><h3>인기 인스타 채널 <span class="tn">{{ insta_channels|length }}</span></h3><a href="{{ IG }}#h-insta">카페 가이드<span class="arr" aria-hidden="true">→</span></a></div>
++  {% if home_insta %}
++  <div class="hrs-sec">
++    <div class="hrs-sh"><h3>화제의 인스타 대형·감성 카페 <em class="hrs-by">좋아요 순</em></h3><a href="{{ IG }}#h-insta">전체 {{ n_insta }}편<span class="arr" aria-hidden="true">→</span></a></div>
+     <ul class="hrs-clist">
+-      {% for ch in insta_channels %}
++      {% for a in home_insta[:5] %}
+       <li class="hrs-c">
+-        <a class="hrs-ctop" href="{{ ch.url }}" target="_blank" rel="noopener" data-track="abroad_click"><span class="hrs-num tn">{{ '%02d'|format(loop.index) }}</span><span class="hrs-cn"><span class="hrs-crow"><strong class="hrs-cname">{{ ch.name }}<span class="hrs-ext" aria-hidden="true">↗</span></strong>{% if ch.badge %}<em class="hrs-badge">{{ ch.badge }}</em>{% endif %}</span><span class="hrs-csub">{{ ch.handle }}</span></span></a>
+-        {% if ch.links %}<p class="hrs-clinks">{% for l in ch.links[:3] %}<a href="{{ l.href }}">{{ l.label }}</a>{% endfor %}</p>{% endif %}
++        <a class="hrs-ctop" href="{{ IG }}#{{ a.id }}" data-track="abroad_click"><span class="hrs-num tn">{{ '%02d'|format(loop.index) }}</span><span class="hrs-cn"><span class="hrs-crow"><strong class="hrs-cname">{{ a.author or 'Instagram' }}<span class="hrs-ext" aria-hidden="true">›</span></strong>{% if a.likes %}<span class="hrs-vviews tn">좋아요 {{ '{:,}'.format(a.likes|int) }}</span>{% endif %}</span><span class="hrs-ig-note">{{ a.note }}</span></span></a>
++        {% if a.place_slugs %}<p class="hrs-clinks">{% for s in a.place_slugs[:3] %}{% if s in places %}<a href="{{ places[s]._path }}">{{ places[s].name }}</a>{% endif %}{% endfor %}</p>{% endif %}
+       </li>
+       {% endfor %}
+     </ul>
++    <p class="hrs-note">고른 카페 게시물 {{ n_insta }}편 안의 좋아요 순 · 추천 순서가 아님 · 숫자는 실은 때의 값</p>
+   </div>
+   {% endif %}
+-  {% if home_insta %}
+-  <div class="hrs-sec">
+-    <div class="hrs-sh"><h3>화제의 인스타 대형·감성 카페</h3><a href="{{ IG }}#h-insta">전체 {{ n_insta }}편<span class="arr" aria-hidden="true">→</span></a></div>
++  {% if insta_channels %}
++  <div class="hrs-sec" id="hrs-ig">
++    <div class="hrs-sh"><h3>인기 인스타 채널 <span class="tn">{{ insta_channels|length }}</span></h3><a href="{{ IG }}#h-insta">카페 가이드<span class="arr" aria-hidden="true">→</span></a></div>
+     <ul class="hrs-clist">
+-      {% for a in home_insta[:5] %}
++      {% for ch in insta_channels %}
+       <li class="hrs-c">
+-        <a class="hrs-ctop" href="{{ IG }}#{{ a.id }}" data-track="abroad_click"><span class="hrs-num tn">{{ '%02d'|format(loop.index) }}</span><span class="hrs-cn"><span class="hrs-crow"><strong class="hrs-cname">{{ a.author or 'Instagram' }}<span class="hrs-ext" aria-hidden="true">›</span></strong></span><span class="hrs-ig-note">{{ a.note }}</span></span></a>
+-        {% if a.place_slugs %}<p class="hrs-clinks">{% for s in a.place_slugs[:3] %}{% if s in places %}<a href="{{ places[s]._path }}">{{ places[s].name }}</a>{% endif %}{% endfor %}</p>{% endif %}
++        <a class="hrs-ctop" href="{{ ch.url }}" target="_blank" rel="noopener" data-track="abroad_click"><span class="hrs-num tn">{{ '%02d'|format(loop.index) }}</span><span class="hrs-cn"><span class="hrs-crow"><strong class="hrs-cname">{{ ch.name }}<span class="hrs-ext" aria-hidden="true">↗</span></strong>{% if ch.badge %}<em class="hrs-badge">{{ ch.badge }}</em>{% endif %}</span><span class="hrs-csub">{{ ch.handle }}</span></span></a>
++        {% if ch.links %}<p class="hrs-clinks">{% for l in ch.links[:3] %}<a href="{{ l.href }}">{{ l.label }}</a>{% endfor %}</p>{% endif %}
+       </li>
+       {% endfor %}
+     </ul>
+@@ -184,6 +189,68 @@
+   </div>
+ </section>
+ {% endif %}
++{#- 유튜브·인스타그램 인기 순위 (operator 2026-11-10 '유튜브, 인스타도 순위별로 큐레이션해서 굉장히 잘 보이는 곳에'): right
++    under the opening — after the festival card while there is one — the curated videos by their view counts and the
++    curated Instagram posts by their likes, five each with the rank (three while one column), then the doors to the whole
++    lists and the channels (css/47-rank.css). The order is a stated rule, not a recommendation (CLAUDE.md 3.10):
++    the note says so and that the counts are those of the day the lists were made (the day itself stays in the
++    data — operator 2026-10-09, validate.visible_check_dates). A video's row goes to YouTube; a post's row to its card in
++    the cafe guide, where the official embed is. An Instagram row's small picture is a licensed photo of a place the
++    post shows (KOGL-1 cut to the box, KOGL-3 whole), never the post's own; without one the row shows the service's
++    mark. The home's own YouTube row and Instagram section are this block now, and from 1680px — where the board
++    beside the column shows the same ranks all the time — the block steps out (css/47-rank.css): the ranks
++    are on a screen once. -#}
++{% set RK_YT = popular_videos[:5] if has_videos else [] %}
++{% set RK_IG = home_insta[:5] if IG else [] %}
++{% if RK_YT or RK_IG %}
++{% set rk_types = [] %}{% for a in RK_IG if a.photo and not a.related and a.photo.type not in rk_types %}{% set _ = rk_types.append(a.photo.type) %}{% endfor %}
++<section class="hrk" aria-labelledby="h-rank">
++  <div class="wrap"><div class="hrk-card">
++    <div class="hrk-head"><h2 id="h-rank" class="hrk-h">{{ '유튜브·인스타그램' if RK_YT and RK_IG else ('유튜브' if RK_YT else '인스타그램') }} 인기 순위</h2><p class="hrk-sub">{{ site.site_name|josa('이/가') }} 고른 {% if RK_YT %}영상 <span class="tn">{{ n_popular|default(popular_videos|length) }}</span>편{% endif %}{% if RK_YT and RK_IG %}·{% endif %}{% if RK_IG %}카페 게시물 <span class="tn">{{ n_insta }}</span>편{% endif %} 가운데</p></div>
++    <div class="hrk-cols{{ ' hrk-one' if not (RK_YT and RK_IG) }}">
++      {% if RK_YT %}
++      <div class="hrk-col">
++        <div class="hrk-sh"><h3>{{ ab.svc('youtube', 'ab-svc hrk-svc') }}<span>유튜브</span><em>조회수 순</em></h3><a href="/videos/#yt-popular">{{ n_popular|default(popular_videos|length) }}편 모두<span class="arr" aria-hidden="true">›</span></a></div>
++        <ol class="hrk-list" role="list">
++          {% for v in RK_YT %}{% set t = v.thumbnail or {} %}
++          <li class="hrk-i{{ ' hrk-x' if loop.index > 3 }}">
++            <a class="hrk-a" href="{{ v.url }}" target="_blank" rel="noopener" data-track="video_click">
++              <span class="hrk-n tn">{{ loop.index }}<span class="vh">위</span></span>
++              <span class="hrk-th">{% if t.url %}<img src="{{ t.url }}"{% if t.width and t.height %} width="{{ t.width }}" height="{{ t.height }}"{% endif %} alt="" loading="lazy" decoding="async">{% endif %}<span class="hrk-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="11" height="11"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg></span></span>
++              <span class="hrk-tx"><span class="hrk-top"><b class="hrk-who">{{ v.channel }}</b>{% if v.short_view_text or v.view_text %}<span class="hrk-cnt tn">{{ v.short_view_text or v.view_text }}</span>{% endif %}</span><span class="hrk-t">{{ v.title }}</span><span class="vh"> (YouTube, 새 창)</span></span>
++            </a>
++            {% if v._places %}<p class="hrk-pl">{% for x in v._places[:3] %}<a href="{{ x._path }}">{{ x.name }}</a>{% endfor %}</p>{% endif %}
++          </li>
++          {% endfor %}
++        </ol>
++        <p class="hrk-doors">{% if yt_channels %}<a href="/videos/#yt-channels"><span>인기 채널 <span class="tn">{{ yt_channels|length }}</span>곳</span><span class="arr" aria-hidden="true">›</span></a>{% endif %}<a href="/videos/"><span>주제별 영상 <span class="tn">{{ h.n_videos }}</span>편</span><span class="arr" aria-hidden="true">›</span></a></p>
++      </div>
++      {% endif %}
++      {% if RK_IG %}
++      {% set own_ch = insta_channels|selectattr('id', 'equalto', 'ig-ch-gunsangak')|first if insta_channels else none %}
++      <div class="hrk-col">
++        <div class="hrk-sh"><h3>{{ ab.svc('instagram', 'ab-svc hrk-svc') }}<span>인스타그램</span><em>좋아요 순</em></h3><a href="{{ IG }}#h-insta">{{ n_insta }}편 모두<span class="arr" aria-hidden="true">›</span></a></div>
++        <ol class="hrk-list" role="list">
++          {% for a in RK_IG %}{% set ph = a.photo if a.photo and not a.related else none %}
++          <li class="hrk-i{{ ' hrk-x' if loop.index > 3 }}">
++            <a class="hrk-a" href="{{ IG }}#{{ a.id }}" data-track="abroad_click">
++              <span class="hrk-n tn">{{ loop.index }}<span class="vh">위</span></span>
++              <span class="hrk-th hrk-ig{% if ph %} t{{ ph.type }}{% endif %}">{% if ph %}{{ ui.img(ph, '104px', false, 'hrk-img') }}{% else %}{{ ab.svc('instagram', 'ab-svc hrk-glyph') }}{% endif %}</span>
++              <span class="hrk-tx"><span class="hrk-top"><b class="hrk-who">{{ a.author or 'Instagram' }}</b>{% if a.likes %}<span class="hrk-cnt tn">좋아요 {{ '{:,}'.format(a.likes|int) }}</span>{% endif %}</span><span class="hrk-t">{{ a.note }}</span></span>
++            </a>
++            {% set pls = [] %}{% for sl in a.place_slugs or [] if sl in places %}{% set _ = pls.append(places[sl]) %}{% endfor %}
++            {% if pls %}<p class="hrk-pl">{% for x in pls[:3] %}<a href="{{ x._path }}">{{ x.name }}</a>{% endfor %}</p>{% endif %}
++          </li>
++          {% endfor %}
++        </ol>
++        <p class="hrk-doors">{% if insta_channels %}<a href="{{ IG }}#h-insta-channels"><span>인기 채널 <span class="tn">{{ insta_channels|length }}</span>곳</span><span class="arr" aria-hidden="true">›</span></a>{% endif %}{% if own_ch %}<a href="{{ own_ch.url }}" target="_blank" rel="noopener" data-track="abroad_click"><span>{{ own_ch.name }}<span class="vh"> (새 창)</span></span><span class="arr" aria-hidden="true">↗</span></a>{% endif %}</p>
++      </div>
++      {% endif %}
++    </div>
++    <p class="hrk-note">{{ site.site_name|josa('이/가') }} 고른 목록 안에서 {% if RK_YT %}유튜브는 조회수{% endif %}{% if RK_YT and RK_IG %}, {% endif %}{% if RK_IG %}인스타그램은 좋아요 수{% endif %}가 많은 순서이고, 추천 순서가 아닙니다. 숫자는 목록에 실은 때의 값이라 지금과 다를 수 있습니다.{% if rk_types %} 인스타그램 줄의 사진은 게시물에 나온 장소의 사진입니다(출처: 한국관광공사 · 공공누리 제{{ rk_types|sort|join('·') }}유형).{% endif %}</p>
++  </div></div>
++</section>
++{% endif %}
+ {#- the white card: the AI assistant (_ask.html.j2 box: its head, one question box with one button '물어보기', the '#'
+     tags — the site search is the header's, owner 2026-10-14), then the 3D icon menu of the service links. The menu has
+     no '물어보기' item any more: the card right above it IS the assistant and the launcher is on screen too, so a third
+@@ -338,28 +405,18 @@
+ </section>
+ {% endif %}
+ 
+-{# 유튜브로 보는 군산: where the operator put it on 2026-11-10 ('유튜브 섹션 상단 이동') — after the events, above the
+-   regions — as one short row since the calm pass of the same day (below) #}
+-{% if h.vfeat %}
++{# 영상으로 보는 군산: only a build without curated popular videos (another city, the sample) keeps this per-topic block —
++   with them the videos are the rank block under the opening (operator 2026-11-10) #}
++{% if h.vfeat and not popular_videos %}
+ {% set T.i = T.i + 1 %}
+ <section class="sec sec-vid{{ ' tone-2' if T.i is odd }}" aria-labelledby="h-vid">
+   <div class="wrap">
+-    {{ ui.sec_head('YouTube', '유튜브로 보는 ' ~ site.region ~ ' 인기 채널·화제 영상', 'h-vid', '/videos/', '영상 ' ~ h.n_videos ~ '편 모두') }}
+-    {#- 2026-11-10 (the calm pass): the home shows four of the curated videos and the doors to the rest — the
+-        channel cards and the per-topic lists are /videos/'s own (#yt-channels, #yt-popular, each topic); the chips'
+-        numbers are those lists' totals. Without curated videos (another city, the sample) the per-topic block stays. -#}
+-    {% if popular_videos %}
+-    {#- from 1680px the board beside this row lists the first five curated videos: there the row shows the next four
+-        (.vids-alt, css/90-refine), so that the same four are not on one screen twice; narrower, the first four -#}
+-    {% set PV_ALT = RS_YT and popular_videos|length >= 9 %}
+-    <ul class="vids vids-4{{ ' vids-alt' if PV_ALT }}">{% for v in ((popular_videos[:4] + popular_videos[5:9]) if PV_ALT else popular_videos[:4]) %}{{ ui.video(v, '', v._places or [], false, 'li') }}{% endfor %}</ul>
+-    {% else %}
++    {{ ui.sec_head('YouTube', '영상으로 보는 ' ~ site.region, 'h-vid', '/videos/', '영상 ' ~ h.n_videos ~ '편 모두') }}
+     <div class="vgrid">
+       <div class="v-feat">{{ ui.video(h.vfeat) }}</div>
+       {% if h.vrows %}<ol class="v-rows">{% for r in h.vrows %}{{ p2.vtopic(r) }}{% endfor %}</ol>{% endif %}
+     </div>
+-    {% endif %}
+-    <nav class="v-chips" aria-label="영상 주제">{% if yt_channels %}<a href="/videos/#yt-channels">인기 채널 <span class="tn">{{ yt_channels|length }}</span></a>{% endif %}{% if popular_videos %}<a href="/videos/#yt-popular">화제의 영상 <span class="tn">{{ n_popular|default(popular_videos|length) }}</span></a>{% endif %}{% for c in h.vchips %}<a href="{{ c.path or ('/videos/#' ~ c.id) }}">{{ '그 밖의 영상' if c.title == '기타' else c.title }} <span class="tn">{{ c.n }}</span></a>{% endfor %}</nav>
++    <nav class="v-chips" aria-label="영상 주제">{% for c in h.vchips %}<a href="{{ c.path or ('/videos/#' ~ c.id) }}">{{ '그 밖의 영상' if c.title == '기타' else c.title }} <span class="tn">{{ c.n }}</span></a>{% endfor %}</nav>
+   </div>
+ </section>
+ {% endif %}
+@@ -499,10 +556,10 @@
+ </section>
+ {% endif %}
+ 
+-{#- 2026-11-10 (the calm pass, after the review the operator asked to have carried out): the blog, the Instagram
+-    cafes and the posts from abroad come after the site's own visit information (권역 · 이야기 · 섬 · 코스 · 칼럼) —
+-    the reading (칼럼 → 블로그) together, the SNS after it. With the YouTube block they were 42% of the phone home's
+-    length and sat above the map and the courses. The YouTube row keeps the operator's place (above). -#}
++{#- 2026-11-10 (the calm pass, confirmed by the operator the same day — 'MAIN에 합쳐 배포해'): the blog and the posts
++    from abroad come after the site's own visit information (권역 · 이야기 · 섬 · 코스 · 칼럼) — the reading (칼럼 →
++    블로그) together, the SNS after it. YouTube and Instagram are the rank block under the opening (the operator's
++    word after that: '순위별로 큐레이션해서 굉장히 잘 보이는 곳에'). -#}
+ {# 군산각 블로그 (operator 2026-10-30: '홈에도 블로그 카드 몇 개'): build.blog_home — the newest post of each category
+    first — as the /blog/ cards (a licensed photo of a place the post is about, the title to the blog, the date and the
+    places); 1 column of row cards on phones, 2 from 720px, 3 from 1100px (css/48-blog.css). The photos' credit line
+@@ -531,28 +588,6 @@
+    own cards — the service's mark, the service · account, our one-line note, the date — each to its card on /abroad/
+    (the official embed is there); nothing loads from the services on the home. A row that scrolls sideways on phones,
+    2 columns from 700px, 4 from 1024px (css/48-abroad.css .hsns). #}
+-{% if home_insta and IG %}
+-{% set T.i = T.i + 1 %}
+-<section class="sec sec-sns sec-mz{{ ' tone-2' if T.i is odd }}" aria-labelledby="h-insta-home">
+-  <div class="wrap">
+-    {{ ui.sec_head('인스타그램으로 보는 ' ~ site.region, site.region ~ ' 관련 인기 인스타그램 채널과 대형·감성 카페', 'h-insta-home', IG ~ '#h-insta', '인스타그램 큐레이션 ' ~ n_insta ~ '편 모두') }}
+-    {% if insta_channels %}
+-    {% set own_ch = insta_channels|selectattr('id', 'equalto', 'ig-ch-gunsangak')|first %}
+-    {% set other_chs = insta_channels|rejectattr('id', 'equalto', 'ig-ch-gunsangak')|list %}
+-    {% if own_ch %}
+-    <div class="blz-prof ig-prof">{{ ab.svc('instagram', 'ab-svc ig-prof-av') }}<p class="blz-who"><b>{{ own_ch.name }}</b><span>{{ own_ch.handle }} · {{ own_ch.note }}</span></p>
+-      {% if own_ch.links %}<ul class="blz-cats">{% for l in own_ch.links %}<li><a href="{{ l.href }}">{{ l.label }}</a></li>{% endfor %}</ul>{% endif %}
+-      <a class="blz-go" href="{{ own_ch.url }}" target="_blank" rel="noopener" data-track="abroad_click">공식 계정 가기<span class="arr" aria-hidden="true">↗</span></a></div>
+-    {% endif %}
+-    {% endif %}
+-    {#- the calm pass 2026-11-10: eight cafe cards here; the other accounts' cards are the cafe guide's
+-        (#h-insta-channels), one link away -#}
+-    <div class="home-yt-sub"><h3>인스타그램에서 많이 찾은 {{ site.region }} 대형·감성 카페 <span class="tn">{{ n_insta }}</span></h3>{% if insta_channels %}<a href="{{ IG }}#h-insta-channels">인기 채널 {{ insta_channels|length }}곳 보기<span class="arr" aria-hidden="true">→</span></a>{% endif %}</div>
+-    <ul class="hsns">{% for a in home_insta[:8] %}{{ mz.sns(a, loop.index0, IG ~ '#') }}{% endfor %}</ul>
+-    <p class="note hsns-note">원문 문장과 게시물 사진은 옮기지 않습니다. 카드 위 그림은 게시물에 나온 카페·장소의 사진(한국관광공사 공공누리)이고, 카드를 누르면 군산 카페 가이드의 공식 임베드 미리보기와 장소 바로가기로 이어집니다.</p>
+-  </div>
+-</section>
+-{% endif %}
+ {% if home_posts %}
+ {% set T.i = T.i + 1 %}
+ <section class="sec sec-sns sec-mz{{ ' tone-2' if T.i is odd }}" aria-labelledby="h-sns">
+diff --git a/templates/videos.html.j2 b/templates/videos.html.j2
+index 981907ee05..e0f1139879 100644
+--- a/templates/videos.html.j2
++++ b/templates/videos.html.j2
+@@ -51,12 +51,15 @@
+   {% set pop_rest = popular_videos[8:] %}
+   <section class="v-sec yt-pop-sec cv" id="yt-popular" aria-labelledby="yt-popular-h">
+     {{ ui.chead('화제의 ' ~ site.region ~ ' 인기 유튜브 영상', 'yt-popular-h', '', '', '', '백만 뷰 먹방·웹예능부터 현지인 맛집·섬 트레킹 총정리까지 많이 찾은 영상', popular_videos|length) }}
++    {#- in the order of their views, each with its rank (operator 2026-11-10 '순위별로 큐레이션'; the numbers are
++        drawn by css/47-rank.css — the first list's eight, then the folded list's from nine) -#}
+     <ul class="vids vids-4">{{ p1.vgrid(popular_videos[:8], places) }}</ul>
+     {% if pop_rest %}
+     <details class="v-more"><summary>화제의 인기 영상 {{ pop_rest|length }}편 더 보기</summary>
+     <ul class="vlist">{{ lites(pop_rest) }}</ul>
+     </details>
+     {% endif %}
++    <p class="note yt-rank-note">{{ site.site_name|josa('이/가') }} 고른 {{ popular_videos|length }}편을 조회수가 많은 순으로 실었고, 추천 순서가 아닙니다. 조회수는 목록에 실은 때의 값이라 지금과 다를 수 있습니다.</p>
+   </section>
+   {% endif %}
+   {% for g in video_groups %}
+diff --git a/tests/test_chat_browser.py b/tests/test_chat_browser.py
+index f1a99c462e..61b963f091 100644
+--- a/tests/test_chat_browser.py
++++ b/tests/test_chat_browser.py
+@@ -215,8 +215,10 @@ def test_phone_sheet_and_error_states(browser, site):
+ 
+ def test_on_a_phone_the_bar_s_button_opens_the_chat_and_gets_the_focus_back(browser, site):
+     """On a phone the launcher is not on screen: the tab bar's 'AI 챗봇' (시안 A, 2026-11-05) and, on a place page, the
+-    bottom bar's (the calm pass 2026-11-10) press it for the reader (site.js [data-tab-chat]). Closing the chat gives
+-    the focus back to the button that was pressed — it went to the hidden launcher, that is to <body>."""
++    bottom bar's (the calm pass 2026-11-10) press it for the reader (site.js [data-tab-chat]). While the sheet is open
++    the bar is not drawn (it lay over half of the question box and the send button — found on the live site); closing
++    the chat brings it back and gives the focus to the button that was pressed — it went to the hidden launcher, that
++    is to <body>."""
+     ctx, page, errors, calls = open_page(browser, 390, 844, [OK])
+     for path, bar in (("/places/eunpa-lake-park/", ".pl-bar"), ("/places/", ".tabbar")):
+         page.goto(site + path)
+@@ -231,6 +233,11 @@ def test_on_a_phone_the_bar_s_button_opens_the_chat_and_gets_the_focus_back(brow
+             panel = page.locator("#chat")
+             panel.wait_for(state="visible")
+             assert panel.get_attribute("aria-modal") == "true"
++            # the bar steps out while the sheet is open: it was drawn over the question box and the send button
++            assert not page.locator(bar).is_visible(), (path, close)
++            send = page.locator(".chat-send").bounding_box()
++            assert page.evaluate("([x, y]) => !!document.elementFromPoint(x, y).closest('#chat')",
++                                 [send["x"] + send["width"] / 2, send["y"] + send["height"] - 3]), (path, close)
+             if close == "Escape":
+                 page.keyboard.press("Escape")
+             else:
+diff --git a/tests/test_present.py b/tests/test_present.py
+index c45f6e1f62..4dee7a2fde 100644
+--- a/tests/test_present.py
++++ b/tests/test_present.py
+@@ -2367,6 +2367,129 @@ def test_the_story_stage_keeps_its_text_years_and_photo_together_on_tall_windows
+         assert gaps[(1900, 1840, k)] - gaps[(1900, 900, k)] <= 24, gaps
+ 
+ 
++def test_home_ranks_the_curated_videos_by_views_and_the_instagram_posts_by_likes(S, built):
++    """Operator 2026-11-10 ('유튜브, 인스타도 순위별로 큐레이션해서 굉장히 잘 보이는 곳에'): right under the opening — after the
++    hero and the festival card, before the food row, the question box and the news — the home ranks the five curated
++    videos with the most views and the five curated Instagram posts with the most likes. Each row carries its rank,
++    who, the count the rank comes from and one link (the video on YouTube; the post's card in the cafe guide, where
++    the official embed is); the block says what the order is — an order within the lists this site picked, not among
++    every video about the region —, that it is not a recommendation and that the counts are those of the day the lists
++    were made, without the day itself (operator 2026-10-09: a check date is data, not screen text). An Instagram row's
++    picture is a licensed photo of a place the post lists, never the post's. The curated videos are in
++    the order of their views wherever they are listed (/videos/ numbers them). The home has no other YouTube or
++    Instagram section: the ranks are on the page once (from 1680px the board beside the column shows them and the
++    block steps out — the browser test below)."""
++    from markupsafe import escape
++    from pipeline.build import view_count
++    html = (built / "index.html").read_text("utf-8")
++    a = html.index('<section class="hrk"')
++    blk = html[a:html.index("</section>", a)]
++    assert html.index('aria-labelledby="h-home"') < a < html.index('aria-labelledby="h-hfood"') < html.index('aria-labelledby="h-news"')
++    if 'aria-labelledby="h-fw"' in html:
++        assert html.index('aria-labelledby="h-fw"') < a
++    assert 'aria-labelledby="h-vid"' not in html and "h-insta-home" not in html
++    yt, ig = blk.split('hrk-svc svc-instagram', 1)   # the two columns
++    row = r'<a class="hrk-a" href="([^"]+)"'
++    rank = r'<span class="hrk-n tn">(\d)<span class="vh">위</span></span>'
++    # the videos: the curated list is in the order of its view counts, and the home shows its first five
++    pop = S.popular_videos
++    counts = [view_count(v) for v in pop]
++    assert len(pop) >= 5 and all(counts) and counts == sorted(counts, reverse=True)
++    # a count is a whole number of views; a short form is not read as its digits (it would rank below everything)
++    assert view_count({"view_text": "조회수 3,486,762회"}) == 3486762
++    assert view_count({"view_text": "조회수 349만회"}) == 0 and view_count({"view_text": "조회수 1.2만회"}) == 0 and view_count({}) == 0
++    assert re.findall(row, yt) == [str(escape(v["url"])) for v in pop[:5]]
++    assert re.findall(rank, yt) == list("12345")
++    for v in pop[:5]:
++        assert (v.get("short_view_text") or v["view_text"]) in yt and str(escape(v["channel"])) in yt
++    # the posts: by likes, each to its card in the guide that holds the Instagram chapter
++    posts = sorted(S.insta, key=lambda p: (int(p.get("likes") or 0), p["id"]), reverse=True)[:5]
++    guide = next(g["_path"] for g in S.guides if g.get("_insta"))
++    assert [int(p["likes"]) for p in posts] == sorted((int(p["likes"]) for p in posts), reverse=True) and posts[-1]["likes"]
++    assert re.findall(row, ig) == [f"{guide}#{p['id']}" for p in posts]
++    assert re.findall(r'<span class="hrk-cnt tn">좋아요 ([\d,]+)</span>', ig) == [f"{int(p['likes']):,}" for p in posts]
++    assert re.findall(rank, ig) == list("12345")
++    assert len(re.findall(r"<img ", ig)) == len(re.findall(r'<img [^>]*data-kogl="[13]"', ig))   # place photos only
++    rows = ig.split('<li class="hrk-i')[1:]
++    for p, r in zip(posts, rows):     # … each of a place the post itself lists (never a 'related' one)
++        src = re.search(r'<img src="([^"]+)"', r)
++        if src:
++            own = {ph["url"] for s in p["place_slugs"] if s in S.ent_by_slug for ph in S.ent_by_slug[s]["_photos"]}
++            assert unescape(src.group(1)) in own, (p["id"], src.group(1))
++    # ranks four and five are the rows a phone leaves out (css .hrk-x)
++    assert blk.count('<li class="hrk-i hrk-x">') == 4 and blk.count('<li class="hrk-i">') == 6
++    note = unescape(re.sub(r"<[^>]+>", "", re.search(r'<p class="hrk-note">(.*?)</p>', blk, re.S).group(1)))
++    assert "고른 목록 안에서 유튜브는 조회수" in note and "인스타그램은 좋아요 수가 많은 순서" in note and "실은 때의 값" in note
++    sub = unescape(re.sub(r"<[^>]+>", "", re.search(r'<p class="hrk-sub">(.*?)</p>', blk, re.S).group(1)))
++    assert f"고른 영상 {len(pop)}편·카페 게시물 {len(S.insta)}편 가운데" in sub      # the scope of the ranks, said first
++    assert "추천 순서가 아닙니다" in note and "한국관광공사" in note and not re.search(r"\d{4}년|\d+월 \d+일|확인\)", note)
++    # the board (from 1680px) shows the same five with the rank on each picture, and says what its orders are
++    board = html[html.index('<aside class="h-rside"'):html.index("</aside>")]
++    assert re.findall(r'<span class="hrs-rk tn">(\d)<span class="vh">위 </span></span>', board) == list("12345")
++    assert board.count('class="hrs-by">조회수 순<') == 1 and board.count('class="hrs-by">좋아요 순<') == 1
++    caveats = re.findall(r'<p class="hrs-note">(.*?)</p>', board)
++    assert len(caveats) == 2 and all("추천 순서가 아님" in c and "실은 때의 값" in c and "안의" in c for c in caveats)
++    assert re.findall(r'<a class="hrs-va" href="([^"]+)"', board) == [str(escape(v["url"])) for v in pop[:5]]
++    # /videos/: the whole curated list in the same order (css/47-rank.css draws each one's number), with the rule
++    v = (built / "videos" / "index.html").read_text("utf-8")
++    sec = v[v.index('id="yt-popular"'):]
++    sec = sec[:sec.index("</section>")]
++    assert re.findall(r'data-yt="([^"]+)"', sec) == [x["youtube_id"] for x in pop[:8]]
++    listed = list(dict.fromkeys(re.findall(r'(?:data-yt="|watch\?v=)([\w-]{11})', sec)))    # the cards, then the folded rows
++    assert listed == [x["youtube_id"] for x in pop]
++    rule = unescape(re.sub(r"<[^>]+>", "", re.search(r'<p class="note yt-rank-note">(.*?)</p>', sec, re.S).group(1)))
++    assert f"고른 {len(pop)}편을 조회수가 많은 순으로" in rule and "추천 순서가 아닙니다" in rule and not re.search(r"\d+월 \d+일", rule)
++
++
++def test_the_rank_block_is_under_the_opening_and_the_board_takes_its_place_on_wide_windows(built):
++    """The same (operator 2026-11-10), in a browser: below 1680px the rank block is on the page above the food row —
++    three ranks of each list while they are one column, five in two columns from 720px — with every link a 44px
++    target where fingers are, and no board; from 1680px the board beside the column shows the ranks and the block is
++    not shown. Nothing is wider than the window. An Instagram row's place photo is whole inside its box (a KOGL-3
++    photo may not be cut: it was, by its lower edge, while the box was a grid)."""
++    sync_api = pytest.importorskip("playwright.sync_api")
++    measure = """() => { const b = document.querySelector('.hrk'), r = b.getBoundingClientRect(), shown = e => e.getClientRects().length > 0;
++      const board = document.querySelector('.h-rside');
++      return {block: shown(b), top: r.top + scrollY, height: r.height, rows: [...b.querySelectorAll('.hrk-i')].filter(shown).length,
++              cols: shown(b) ? getComputedStyle(b.querySelector('.hrk-cols')).gridTemplateColumns.split(' ').length : 0,
++              board: !!board && getComputedStyle(board).display !== 'none',
++              ranks: board ? [...board.querySelectorAll('.hrs-rk')].filter(shown).map(e => e.textContent.trim()) : [],
++              small: [...b.querySelectorAll('a')].filter(shown).filter(a => a.getBoundingClientRect().height < 44).length,
++              cut: [...b.querySelectorAll('.hrk-ig img')].filter(shown).filter(i => { const a = i.getBoundingClientRect(),
++                c = i.closest('.hrk-th').getBoundingClientRect(); return a.top < c.top - .5 || a.bottom > c.bottom + .5
++                  || a.left < c.left - .5 || a.right > c.right + .5
++                  || (i.dataset.kogl === '3' && getComputedStyle(i).objectFit !== 'contain'); }).length,
++              photos: [...b.querySelectorAll('.hrk-ig img')].filter(shown).length,
++              sw: document.documentElement.scrollWidth, cw: document.documentElement.clientWidth,
++              food: document.querySelector('.ha-food').getBoundingClientRect().top + scrollY}; }"""
++    with sync_api.sync_playwright() as p:
++        try:
++            browser = p.chromium.launch()
++        except Exception as ex:  # noqa: BLE001 — Chromium is not installed here
++            pytest.skip(f"Chromium 없음: {ex}")
++        try:
++            for w, h in ((360, 740), (390, 844), (640, 900), (768, 1024), (1280, 800), (1440, 900), (1679, 1000), (1680, 1000), (1920, 1080)):
++                ctx = browser.new_context(viewport={"width": w, "height": h})
++                ctx.route("**/*", _serve(built))
++                page = ctx.new_page()
++                page.goto("http://site.test/", wait_until="load")
++                page.wait_for_timeout(300)
++                m = page.evaluate(measure)
++                assert m["sw"] <= m["cw"] + 1, (w, m)
++                if w < 1680:
++                    assert m["block"] and not m["board"] and m["top"] < m["food"], (w, m)
++                    assert m["rows"] == (6 if w < 720 else 10) and m["cols"] == (1 if w < 720 else 2), (w, m)
++                    assert m["photos"] >= 1 and m["cut"] == 0, (w, m)
++                    assert m["height"] <= (1000 if w < 720 else 860), (w, m)      # a compact chart, not a long section
++                    if w < 1024:
++                        assert m["small"] == 0, (w, m)
++                else:
++                    assert not m["block"] and m["board"] and m["ranks"] == ["1위", "2위", "3위", "4위", "5위"], (w, m)
++                ctx.close()
++        finally:
++            browser.close()
++
++
+ def test_a_photo_that_does_not_load_leaves_no_broken_image(S, built):
+     """Report 2026-10-17 (외부 사진 실패 화면): with every photo request failing (TourAPI's server unreachable), no page
+     shows a broken-image box — a row, card or guide item keeps its text without the thumbnail, a gallery drops the
+diff --git a/tests/test_sidebar_layout.py b/tests/test_sidebar_layout.py
+index 7fb4804f8e..13aab90039 100644
+--- a/tests/test_sidebar_layout.py
++++ b/tests/test_sidebar_layout.py
+@@ -517,7 +517,7 @@ def test_on_a_short_window_the_day_card_folds_and_the_menu_shows(browser, built,
+     out), under 880px one 98px row and the next event steps out; from 1020px it is 날씨각's drawn size. At every height
+     the card has its size from the first paint (nothing shifts when the answer comes), its link is the card, every
+     row of the panel is 44px or more, and on the short windows the first group's first link is whole above the
+-    '문의/제휴' row."""
++    '문의/제휴' row. The other versions' card, which has no words of its own, is never a bare number."""
+     for path, want in (("/", card), ("/en/", intl)):
+         ctx, page, errors, _ = open_page(browser, built, path, 1440, height)
+         h0 = page.locator(".wx-side").bounding_box()["height"]
+@@ -526,6 +526,16 @@ def test_on_a_short_window_the_day_card_folds_and_the_menu_shows(browser, built,
+         assert h0 == want and c["h"] == want and c["inside"] and c["link"] == "https://weather.o2o.kr/", (path, height, h0, c)
+         strip = page.evaluate("getComputedStyle(document.querySelector('.wx-side .wx-strip')).display")
+         assert (strip == "none") == (height < 1020), (path, height, strip)
++        if path == "/en/":
++            # the other versions' card has no words of its own: folded, a line says the temperature now and — in one
++            # row, where the label inside the sun is not shown — what the number is (it was a bare number: found on
++            # the live site 2026-11-10); whole, the four cells say the day and the line is not shown
++            words = page.evaluate("""() => { const b = document.querySelector('.wx-side'), shown = e => !!e && e.getClientRects().length > 0;
++              return {fold: shown(b.querySelector('.wx-fold')), label: shown(b.querySelector('.wx-fl')), now: shown(b.querySelector('.wx-fn')),
++                      inorb: shown(b.querySelector('.wx-sc small')), text: (b.querySelector('.wx-fold') || {}).textContent || ''}; }""")
++            assert words["fold"] == (height < 1020) and words["now"] == (height < 1020), (height, words)
++            assert words["label"] == (height < 880) and (words["inorb"] or words["label"]), (height, words)
++            assert re.search(r"\d+°", words["text"]) and "score" in words["text"].lower(), (height, words)
+         assert page.locator(".side .sd-ev").is_visible() == (height >= 880), (path, height)
+         assert [x for x in page.evaluate("window.__ls") if x["v"] > 0.001] == [], page.evaluate("window.__ls")
+         for sel in (".side .sg-a", ".side .sg-s", ".side .sd-act", ".side .sd-sun", ".mast .lang-btn"):
+-- 
+2.43.0
+

@@ -1,0 +1,1787 @@
+From 244be4900b4cfe588500ab62b04fbfd4288feb75 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Wed, 11 Nov 2026 11:39:42 +0000
+Subject: [PATCH] =?UTF-8?q?feat(site):=20=EA=B3=B5=EC=9C=A0=ED=95=98?=
+ =?UTF-8?q?=EA=B8=B0=20=ED=81=AC=EA=B2=8C=20=E2=80=94=20=EB=B3=B4=EB=82=B4?=
+ =?UTF-8?q?=EA=B8=B0=20=EC=83=81=EC=9E=90=C2=B7=EC=B9=B4=EC=B9=B4=EC=98=A4?=
+ =?UTF-8?q?=ED=86=A1=20=EA=B3=B5=EC=9C=A0=C2=B7=EA=B5=B0=EC=82=B0=EA=B0=81?=
+ =?UTF-8?q?=20=EA=B3=B5=EC=9C=A0=ED=95=98=EA=B8=B0,=20=EB=AF=B8=EB=A6=AC?=
+ =?UTF-8?q?=EB=B3=B4=EA=B8=B0=EB=8A=94=20=EC=A0=9C1=EC=9C=A0=ED=98=95=20?=
+ =?UTF-8?q?=EC=82=AC=EC=A7=84=EB=A7=8C(=EC=9A=B4=EC=98=81=EC=9E=90=20?=
+ =?UTF-8?q?=EA=B2=B0=EC=A0=95=202026-11-11)?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+- 상단 바 '공유'와 숙박 예약하기·코스 목록·영상·블로그 제목 줄의 '공유' 알약: 휴대폰에서도 글자를 보인다(ui.sharebtn)
+- 보내기 상자(templates/_share.html.j2, pipeline/share.py, css/88-share.css): 휴대폰 카카오톡·링크 복사·문자·더보기,
+  1024px부터 카카오톡·링크 복사·페이스북·X·밴드 + QR(빌드 때 segno). 장소는 길찾기·예약 줄 아래, 가이드·코스·칼럼은
+  '이어서 보기' 앞, 행사는 길찾기 아래, 홈은 '군산각 알리기'(#share)
+- 패널·휴대폰 메뉴 '문의/제휴' 위 '군산각 공유하기': 사이트 상자를 <dialog>로(JS 없으면 /#share)
+- 카카오톡: 지도와 같은 kakao_js_key, Kakao SDK 2.8.4(SRI 고정)를 타일에 손이 가거나 대화상자가 열릴 때만 받음,
+  Kakao.Share.sendScrap; 실패하면 링크 복사. 공유 주소마다 utm_medium=<방법>, GA4 share
+- og:image는 제1유형 사진만 — 없으면 목록·읽을거리는 og.default, 장소는 로고 카드(og-card.png, 일러스트 아님)
+- 시험: 공유 시험 갱신, 새 시험 4개(상자 자리·대화상자·미리보기 그림·브라우저 동작)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Vhf1SziVAxh1mVM8h72KNg
+---
+ pipeline/build.py                  |  44 ++++--
+ pipeline/en_site.py                |   8 +-
+ pipeline/share.py                  |  82 +++++++++++
+ requirements.txt                   |   1 +
+ templates/_share.html.j2           |  54 ++++++++
+ templates/_ui.html.j2              |  13 +-
+ templates/assets/brand/og-card.png | Bin 0 -> 28865 bytes
+ templates/assets/css/20-chrome.css |  15 ++-
+ templates/assets/css/88-share.css  |  84 ++++++++++++
+ templates/assets/site.js           | 155 ++++++++++++++++-----
+ templates/assets/track.js          |  12 +-
+ templates/base.html.j2             |   8 +-
+ templates/blog.html.j2             |   2 +-
+ templates/column.html.j2           |   4 +
+ templates/course.html.j2           |   4 +
+ templates/courses_index.html.j2    |   2 +-
+ templates/event.html.j2            |   3 +
+ templates/guide.html.j2            |   4 +
+ templates/home.html.j2             |  10 ++
+ templates/place.html.j2            |   3 +
+ templates/stay_booking.html.j2     |   2 +-
+ templates/videos.html.j2           |   2 +-
+ tests/test_abroad.py               |   4 +-
+ tests/test_abroad_highlights.py    |   6 +-
+ tests/test_present.py              | 210 +++++++++++++++++++++++++++--
+ 25 files changed, 650 insertions(+), 82 deletions(-)
+ create mode 100644 pipeline/share.py
+ create mode 100644 templates/_share.html.j2
+ create mode 100644 templates/assets/brand/og-card.png
+ create mode 100644 templates/assets/css/88-share.css
+
+diff --git a/pipeline/build.py b/pipeline/build.py
+index 6c297d9b0f..11b8230e17 100644
+--- a/pipeline/build.py
++++ b/pipeline/build.py
+@@ -39,7 +39,7 @@ from urllib.parse import quote
+ from jinja2 import Environment, FileSystemLoader, select_autoescape
+ from markupsafe import Markup, escape
+ 
+-from . import affiliate, art, ask, chat_index, en_site, icons, jsonld, notices, partners, related_sites, relations, tickets, timetables
++from . import affiliate, art, ask, chat_index, en_site, icons, jsonld, notices, partners, related_sites, relations, share, tickets, timetables
+ from .enrich import haversine_m
+ from .maplinks import DEFAULT_TMAP_SCHEME, build_links, precision_summary, search_link
+ from .schema import (DEFAULT_ALLOWED_LICENSES, FACT_ALIASES, FACT_LABELS, FACT_ORDER, FIT_ORDER, INDEX_GROUP_LABELS,
+@@ -236,6 +236,7 @@ def make_env() -> Environment:
+     env.filters["side_state"] = present.side_state   # the tab panel's groups of one page (templates/_side.html.j2)
+     env.globals["card_vm"] = present.card_vm
+     env.globals["SHARE_WORDS"] = LC.SHARE_WORDS   # ui.lnav's share button, in the page's language
++    env.globals["share_vm"] = share.view          # 보내기 box of one address (pipeline/share.py, templates/_share.html.j2)
+     env.globals["key_facts"] = present.key_facts
+     # the 3D picture registry (pipeline/icons.py; templates/_pic.html.j2 asks it, never naming files)
+     env.globals["icon_pic"] = icons.lookup
+@@ -395,12 +396,16 @@ def latest(*dates) -> str | None:
+ 
+ 
+ def og_image(images: list[dict]) -> str:
+-    """og:image: a Type1 photo first (platforms crop previews; Type3 must not be cropped — owner decision
+-    pending), else the first licensed photo as before."""
+-    for im in images or []:
+-        if im.get("license") == "KOGL-1":
+-            return im["url"]
+-    return images[0]["url"] if images else ""
++    """og:image: a Type1 photo only. Link previews (KakaoTalk, Facebook, X …) crop the picture and a Type3 photo may
++    not be cropped (CLAUDE.md 3.4) — operator 2026-11-11 ('2번은 니 권장안대로'): a page whose photos are all Type3
++    shows the site's picture instead (_render: og.default on the lists and readings, share.CARD — the logo card, no
++    illustration — on a place page, CLAUDE.md 4)."""
++    return next((im["url"] for im in images or [] if im.get("license") == "KOGL-1"), "")
++
++
++def first_og(entities) -> str:
++    """The first Type1 photo among the places' (og_image of each, in order), or ''."""
++    return next((u for e in entities if e and (u := og_image(e.get("_images") or []))), "")
+ 
+ 
+ def ko_date(iso: str | None, with_year: bool = True) -> str:
+@@ -684,6 +689,7 @@ class State:
+         self.warnings: list[str] = list(self.relation_warnings)
+         present.prepare(self, data_dir)
+         self.common_vm = present.common_vm(self)
++        self.site_share = share.view(self.abs("/"), self.common_vm["wordmark"], "site")
+         # /sun/ 군산 일출·일몰 시간 and /transport/ 군산 교통 시간표 (pipeline/timetables.py, operator 2026-10-31): their
+         # view models, None without data — the pages, the footer's links and the place / guide links follow them
+         self.tt_sun = timetables.sun_vm(self)
+@@ -734,6 +740,9 @@ class State:
+                 # 군산각 파트너 (pipeline/partners.py): the side panel / phone menu / footer link to /partners/
+                 "partners_path": partners.PATH if self.partners else "",
+                 "related_sites": related_sites.view(self),   # 제휴·관련 사이트 (pipeline/related_sites.py): footer, home
++                # 보내기 (pipeline/share.py, operator 2026-11-11): the site's own box — the home's '군산각 알리기' and the
++                # dialog of the panel's / phone menu's '군산각 공유하기'
++                "site_share": self.site_share,
+                 "has_sun": bool(self.tt_sun), "has_transport": bool(self.tt_transport),   # /sun/ · /transport/
+                 "tt_guides": timetables.TRANSPORT_GUIDES if self.tt_transport else (),   # guides that link /transport/
+                 "art_slots": art.for_lang(self.art, "ko"), "side": self.side, **self.common_vm,
+@@ -1114,6 +1123,9 @@ def _render(env, S: State, out: Path, template: str, path: str, page: dict, page
+     og = None if page.get("image") else art.og_fallback(art.for_lang(S.art, "ko"), path, "ko")
+     if og:  # a page without a photo of its own: the link-preview illustration (never a place page)
+         page.update(image=S.abs(og["src"]), image_alt=og["alt"], image_w=og["w"], image_h=og["h"])
++    elif not page.get("image") and art.PLACE_PAGE.match(path) and (card := share.card(S.site_view.get("site_name"))):
++        # a place page without a Type1 photo: the logo card (operator 2026-11-11), never an illustration
++        page.update(image=S.abs(card["src"]), image_alt=card["alt"], image_w=card["w"], image_h=card["h"])
+     html = env.get_template(template).render({**S.common(page, page_kind), **ctx})  # a page's own keys win
+     _write(out, path, html)
+     if path != "/404.html" and in_sitemap:
+@@ -1840,6 +1852,10 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
+     S.side["latin"] = S.en.loc.site_name if S.en else ""   # the panel's wordmark line: 'Gunsangak · 군산 여행 정보'
+     env = make_env()
+     env.globals["kakao_sdk"] = kakao_sdk_url(S.site)  # the map boxes' data-kakao-sdk (templates/_ui mapfig …)
++    # 보내기 (pipeline/share.py, operator 2026-11-11): the Kakao share uses the maps' key (the domain registered for it);
++    # without a key the box has no 카카오톡 tile
++    env.globals["kakao_key"] = str(S.site.get("kakao_js_key") or "").strip()
++    env.globals["kakao_share_sdk"], env.globals["kakao_share_sri"] = share.SDK, share.SDK_SRI
+     _prepare_out(out, data_dir)
+     region = S.site.get("region", "")
+     # Dates (P0-4): every lastmod is a data date shown on that page; aggregate pages use the newest date
+@@ -1866,7 +1882,7 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
+         # the ItemList follows the page: the records in the order the list shows them (권역 groups, list_vm)
+         page = _simple_page(S, path, f"{t['name']} — {region} 여행지 {len(members)}곳", desc, crumbs,
+                             [it["e"]["_url"] for g in L["groups"] for it in g["recs"]],
+-                            image=next((og_image(e["_images"]) for e in members if e["_images"]), ""))
++                            image=first_og(members))
+         _render(env, S, out, "theme.html.j2", path, page, "theme", lastmod, theme=t, members=members, L=L)
+ 
+     for kind, cfg in LISTS.items():
+@@ -1885,7 +1901,7 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
+         page = _simple_page(S, cfg["path"], title,
+                             f"{region} {josa(cfg['title'], '을/를')} 유형·테마·지역으로 골라 보고, 방문 정보와 길찾기로 이어 갑니다.",
+                             crumbs, [it["e"]["_url"] for g in L["groups"] for it in g["recs"]], map=bool(points),
+-                            filters=True, image=next((og_image(e["_images"]) for e in items if e["_images"]), ""))
++                            filters=True, image=first_og(items))
+         page_kind = "places" if kind == "attraction" else f"list-{kind}"
+         hub_id, hub_label = cfg.get("hub") or ("", "")
+         hub = S.guide_by_id.get(hub_id)
+@@ -1920,7 +1936,7 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
+         about = [jsonld.place_ref(t["_url"], t) for t in unique]
+         page = {"title": g['title'], "description": guide_description(g, S),
+                 "canonical": g["_url"], "og_type": "article", "crumbs": crumbs, "map": bool(points),
+-                "image": next((og_image(t["_images"]) for t in targets if t["_images"]), ""),
++                "image": first_og(targets),
+                 # the summary and FAQ answers as guide.html.j2 shows them (present.decaution), so the structured
+                 # data never says more than the page
+                 "jsonld": [jsonld.dumps(jsonld.guide_graph(
+@@ -1953,7 +1969,7 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
+                          f"{col['title']} — {region} 칼럼.")
+         page = {"title": col["title"], "description": desc,
+                 "canonical": col["_url"], "og_type": "article", "crumbs": crumbs, "map": bool(points),
+-                "image": next((og_image(t["_images"]) for t in targets if t["_images"]), ""),
++                "image": first_og(targets),
+                 "jsonld": [jsonld.dumps(jsonld.guide_graph(
+                     {**col, "summary": present.decaution(col.get("summary")), "faq": []},
+                     S.site_url, col["_url"], crumbs, about, [t["_url"] for t in unique], col["_page_date"] or "",
+@@ -1970,7 +1986,7 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
+                          f"{region} 여행과 역사·건축·미식을 깊이 있게 다룬 칼럼 {len(S.columns)}편입니다.")
+         page = _simple_page(S, path, f"{region} 칼럼 — 역사·건축·동선·미식 에세이 {len(S.columns)}편", desc, crumbs,
+                             [col["_url"] for col in S.columns],
+-                            image=next((c["photo"]["url"] for c in CV["cards"] if c.get("photo")), ""))
++                            image=next((c["photo"]["url"] for c in CV["cards"] if (c.get("photo") or {}).get("type") == 1), ""))
+         _render(env, S, out, "columns_index.html.j2", path, page, "columns", lastmod, columns=S.columns, CV=CV)
+ 
+     for c in S.courses:
+@@ -2002,7 +2018,7 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
+                                          f"{name}: 경유지 {co['n_places']}곳, {co['first']}에서 {co['last']}까지.",
+                                          f"{name}: 경유지 {co['n_places']}곳.") or f"{name}.",
+                 "canonical": c["_url"], "crumbs": crumbs, "map": bool(co["map"]),
+-                "image": c["_cover"]["url"] if c.get("_cover") else "",
++                "image": first_og(S.ent_by_slug.get(s.get("place_slug")) for s in c.get("stops") or []),
+                 "jsonld": [jsonld.dumps(jsonld.course_graph(c, c["_url"], crumbs, refs, orig.get("source_url") or "",
+                                                             description=course_lede))]}
+         linked = sum(1 for s in stops if s["target"])
+@@ -2018,7 +2034,7 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
+         lastmod = date_of(S.courses)
+         page = _simple_page(S, path, f"{region} 여행 코스 — 당일·1박 2일·2박 3일",
+                             f"군산시 문화관광이 안내하는 {region} 여행 코스와 경유지를 정리했습니다.", crumbs,
+-                            image=next((c["_cover"]["url"] for c in S.courses if c.get("_cover")), ""))
++                            image=next((u for c in S.courses if (u := first_og(S.ent_by_slug.get(s.get("place_slug")) for s in c.get("stops") or []))), ""))
+         _render(env, S, out, "courses_index.html.j2", path, page, "courses", lastmod, groups=course_groups(S.courses),
+                 CV=present.course_index_vm(S))
+ 
+diff --git a/pipeline/en_site.py b/pipeline/en_site.py
+index df72e46ef9..008433fce6 100644
+--- a/pipeline/en_site.py
++++ b/pipeline/en_site.py
+@@ -44,7 +44,7 @@ from urllib.parse import urlencode, urlsplit
+ 
+ from markupsafe import Markup, escape
+ 
+-from . import art, ask, booking, intl_text, jsonld, media, notices, present, relations, tickets
++from . import art, ask, booking, intl_text, jsonld, media, notices, present, relations, share, tickets
+ from . import conditions as CD
+ from . import locales as LC
+ # a cited booking site's own page in a reader's language (QA 2026-10-15 SRC-05b): moved to booking.py with the booking
+@@ -2599,6 +2599,9 @@ class Pages:
+         if og:  # a page without a photo of its own: the version's link-preview illustration (og.default-en, og.ja …;
+             # never a place page) with its alt in the version's language
+             page.update(image=self.S.abs(og["src"]), image_alt=og["alts"].get(code, ""), image_w=og["w"], image_h=og["h"])
++        elif not page.get("image") and art.PLACE_PAGE.match(path) and (card := share.card(self.loc.site_name, code)):
++            # a place page without a Type1 photo: the logo card (operator 2026-11-11, build._render), its alt the name
++            page.update(image=self.S.abs(card["src"]), image_alt=card["alt"], image_w=card["w"], image_h=card["h"])
+         html = self.env.get_template(template).render({**self.common(page, page_kind, path), **ctx})
+         _write(self.out, path, html)
+         self.count += 1
+@@ -2638,7 +2641,8 @@ class Pages:
+             t.s("place_desc_fallback", name=p["name"], r=site.region)
+         images = vm["photos"][:7]
+         page = {"title": title, "description": desc, "canonical": p["url"], "og_type": "article",
+-                "image": next((ph["url"] for ph in vm["photos"] if ph["type"] == 1), vm["photos"][0]["url"] if vm["photos"] else ""),
++                # a Type1 photo only (operator 2026-11-11: previews crop; else the logo card, render())
++                "image": next((ph["url"] for ph in vm["photos"] if ph["type"] == 1), ""),
+                 "geo": e["_geo"], "geo_placename": f"{site.region} {p['name']}", "crumbs": crumbs, "map": bool(e["_geo"]),
+                 "jsonld": [jsonld.dumps(place_graph(site, vm, title, crumbs, images))]}
+         if p["noindex"]:
+diff --git a/pipeline/share.py b/pipeline/share.py
+new file mode 100644
+index 0000000000..bba6476757
+--- /dev/null
++++ b/pipeline/share.py
+@@ -0,0 +1,82 @@
++"""공유하기 — 보내기 (operator 2026-10-17: the local bar's 공유; 2026-11-11, after 안성민's note '공유하기 버튼을 크게 …
++웹브라우저에서 공유하기를 쉽게 하지만 못 하는 사람들이 많으니까': the recommended placement, approved with '카카오 공유
++가능하고 … 사진 내용 모두 진행하자').
++
++- ui.lnav's 공유 (place, guide, course, column, event) is a pill with its word on phones too, and the list pages carry
++  the same pill beside their title (ui.sharebtn): the phone's share sheet, else the link copied.
++- The 보내기 box (templates/_share.html.j2 box(), view()): tiles with a picture and a word each — phones: 카카오톡 ·
++  링크 복사 · 문자 · 더보기 (the phone's share sheet, when the browser has one); from 1024px: 카카오톡 · 링크 복사 ·
++  페이스북 · X · 밴드 and a QR code that opens the page on a phone. A place page has it under its route row (and
++  its booking rows), a guide, course or column before 이어서 보기, an event under its 일정·장소; the home ('군산각
++  알리기') before 제휴·관련 사이트, and the panel's / phone menu's '군산각 공유하기' opens it for the site in a dialog.
++- 카카오톡: the Kakao JavaScript SDK (SDK, SDK_SRI — fetched only when a pointer reaches the tile, the tile takes the
++  focus or the site's dialog opens: never on a page view) with site.json kakao_js_key (the maps' key: Kakao accepts it only from the domain registered
++  for it), Kakao.Share.sendScrap of the page's address — the preview is the page's own og:title / og:image.
++- Every shared address is the page's canonical one + utm_source=share&utm_medium=<method> (tagged), so the visits it
++  brings count apart in GA4; site.js sends GA4 'share' {method, content_type, item_id} (track.js).
++Nothing is sent anywhere before a reader presses a tile: 페이스북 · X · 밴드 · 문자 are plain links (no SDK, no
++counter), the QR code is drawn at build time (segno).
++"""
++from __future__ import annotations
++
++import functools
++import io
++from pathlib import Path
++from urllib.parse import quote, urlsplit
++
++import segno
++
++# Kakao SDK for JavaScript (https://t1.kakaocdn.net/kakao_js_sdk/<v>/kakao.min.js, released 2026-10-19), checked
++# against its integrity hash; the CDN answers with Access-Control-Allow-Origin: * (crossorigin="anonymous")
++SDK = "https://t1.kakaocdn.net/kakao_js_sdk/2.8.4/kakao.min.js"
++SDK_SRI = "sha384-BGX7Wb16GmRFagri4bLJV2DgipVZaU2AI812GZtHtHzzDQJnfHasDXN5houxv45w"
++
++# the logo card (operator 2026-11-11, '2번은 니 권장안대로'): the link preview of a place page without a Type1 photo —
++# previews crop (a Type3 photo may not be), and an illustration may not stand for a place (CLAUDE.md 4). The logo
++# and the address on the site's pale blue, 1200×630, drawn from templates/assets/brand/gunsangak-logo.svg.
++CARD = "/assets/brand/og-card.png"
++CARD_FILE = Path(__file__).resolve().parent.parent / "templates" / "assets" / "brand" / "og-card.png"
++
++
++def card(site_name: str | None, lang: str = "ko") -> dict | None:
++    """The logo card as a page image ({src, alt, w, h}), or None when the file is not there."""
++    if not CARD_FILE.is_file():
++        return None
++    name = (site_name or "").strip()
++    return {"src": CARD, "alt": f"{name} 로고" if lang == "ko" else name, "w": 1200, "h": 630}
++
++
++# the methods a share is counted by (utm_medium and GA4 share.method): the ones site.js sends itself and the links'
++METHODS = ("kakao", "copy_link", "web_share", "sms", "facebook", "x", "band", "qr")
++
++
++def tagged(url: str, method: str) -> str:
++    """The address to share: the page's own + utm_source=share&utm_medium=<method> (site.js does the same)."""
++    return url + ("&" if "?" in url else "?") + "utm_source=share&utm_medium=" + method
++
++
++@functools.lru_cache(maxsize=None)
++def qr_svg(url: str) -> str:
++    """The QR code of an address as one inline <svg> (a single path, dark on the page's white); the caption beside it
++    says what it does, so the picture itself is hidden from screen readers."""
++    buf = io.BytesIO()
++    segno.make(url, error="m", micro=False).save(
++        buf, kind="svg", xmldecl=False, svgns=False, nl=False, omitsize=True, border=2, dark="#111",
++        svgclass="shr-qr-i", lineclass=None)
++    return buf.getvalue().decode("ascii").replace("<svg ", '<svg aria-hidden="true" focusable="false" ', 1)
++
++
++def view(url: str, title: str, item_id: str = "") -> dict:
++    """What a 보내기 box needs for one address: the links of the plain tiles (each already tagged), the QR code and
++    the words the JavaScript tiles send (data-shr-*)."""
++    host = urlsplit(url).netloc
++    text = title.strip()
++    return {
++        "url": url, "title": text, "id": item_id,
++        "sms": "sms:?&body=" + quote(f"{text}\n{tagged(url, 'sms')}", safe=""),
++        "facebook": "https://www.facebook.com/sharer/sharer.php?u=" + quote(tagged(url, "facebook"), safe=""),
++        "x": "https://x.com/intent/tweet?text=" + quote(text, safe="") + "&url=" + quote(tagged(url, "x"), safe=""),
++        "band": ("https://band.us/plugin/share?body=" + quote(f"{text}\n{tagged(url, 'band')}", safe="")
++                 + "&route=" + quote(host, safe="")),
++        "qr": qr_svg(tagged(url, "qr")),
++    }
+diff --git a/requirements.txt b/requirements.txt
+index 0a72f2ac0e..0a941c18b8 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -2,3 +2,4 @@ jinja2>=3.1
+ markupsafe>=2.1
+ pytest>=8
+ opencc-python-reimplemented==0.1.7
++segno==1.6.6
+diff --git a/templates/_share.html.j2 b/templates/_share.html.j2
+new file mode 100644
+index 0000000000..110e12d130
+--- /dev/null
++++ b/templates/_share.html.j2
+@@ -0,0 +1,54 @@
++{#- _share.html.j2 — 보내기 (pipeline/share.py; operator 2026-11-11 '공유하기 버튼을 크게 … 여기저기 공유하기 쉽게', the
++    recommended placement approved the same day). css/88-share.css lays it out, site.js [data-shr] works it.
++
++    box(S, title, hid, sub, cls): one address (S = share.view(url, title, id)) as tiles with a picture and a word each.
++      Phones (below 1024px): 카카오톡 · 링크 복사 · 문자 · 더보기 (the phone's own share sheet — shown by site.js only
++      when the browser has one); from 1024px: 카카오톡 · 링크 복사 · 페이스북 · X · 밴드 and the QR code that opens the
++      page on a phone. 카카오톡, 링크 복사 and 더보기 need JavaScript (data-js-only); 문자 · 페이스북 · X · 밴드 are plain
++      links, each already carrying utm_source=share&utm_medium=<method>. The title is a paragraph, not a heading: the
++      page's outline stays its information. The pictures are the services' own marks (decorative: the word says it).
++    dialog(S, words): the site's box in a <dialog> (the panel's and the phone menu's '군산각 공유하기', opener()).
++    opener(cls): that row — a link to the home's box (#share) without JavaScript, the dialog with it. -#}
++
++{% macro icon(name) -%}
++{%- if name == 'kakao' -%}<svg class="shr-ic" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="9" fill="#FEE500"/><path fill="#191919" d="M16 8.4c-4.8 0-8.7 3.06-8.7 6.84 0 2.44 1.62 4.58 4.07 5.79l-.83 3.04c-.07.27.23.48.46.33l3.62-2.4c.45.05.92.08 1.38.08 4.8 0 8.7-3.06 8.7-6.84S20.8 8.4 16 8.4z"/></svg>
++{%- elif name == 'copy' -%}<svg class="shr-ic" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="9" fill="#EAF2FC"/><path fill="none" stroke="#1D4F96" stroke-width="2" stroke-linecap="round" d="M14.2 17.8l3.6-3.6M13.6 12.3l1.5-1.5a3.7 3.7 0 0 1 5.2 5.2l-1.5 1.5M18.4 19.7l-1.5 1.5a3.7 3.7 0 0 1-5.2-5.2l1.5-1.5"/></svg>
++{%- elif name == 'sms' -%}<svg class="shr-ic" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="9" fill="#2FB24C"/><path fill="#fff" d="M16 8.6c-4.75 0-8.6 3-8.6 6.7 0 2.1 1.24 3.97 3.18 5.2-.2 1.1-.78 2.2-1.6 3.03 1.7-.08 3.3-.66 4.48-1.62.82.17 1.67.26 2.54.26 4.75 0 8.6-3 8.6-6.87S20.75 8.6 16 8.6z"/></svg>
++{%- elif name == 'more' -%}<svg class="shr-ic" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="9" fill="#EAF2FC"/><path fill="none" stroke="#1D4F96" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M16 7.5v11M12.3 11.2 16 7.5l3.7 3.7M11.5 14.5h-.8a1.2 1.2 0 0 0-1.2 1.2v6.6a1.2 1.2 0 0 0 1.2 1.2h10.6a1.2 1.2 0 0 0 1.2-1.2v-6.6a1.2 1.2 0 0 0-1.2-1.2h-.8"/></svg>
++{%- elif name == 'facebook' -%}<svg class="shr-ic" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="9" fill="#1877F2"/><path fill="#fff" d="M17.6 26v-8.2h2.75l.42-3.2H17.6v-2.04c0-.93.26-1.56 1.59-1.56h1.7V8.14A22.6 22.6 0 0 0 18.42 8c-2.45 0-4.12 1.5-4.12 4.23v2.37h-2.76v3.2h2.76V26z"/></svg>
++{%- elif name == 'x' -%}<svg class="shr-ic" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="9" fill="#111"/><path fill="#fff" d="M20.4 8.5h2.6l-5.68 6.49L24 23.5h-5.24l-4.1-5.36-4.69 5.36H7.37l6.07-6.94L7 8.5h5.37l3.7 4.9zm-.91 13.5h1.44L11.6 9.92h-1.54z"/></svg>
++{%- elif name == 'band' -%}<svg class="shr-ic" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="9" fill="#21C24E"/><path fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" d="M12.4 8.6v14.6M12.4 18.1a4.6 4.6 0 1 0 9.2 0 4.6 4.6 0 1 0-9.2 0"/></svg>
++{%- endif -%}
++{%- endmacro %}
++
++{% macro box(S, title, hid, sub='', cls='') -%}
++<div class="shr{{ ' ' ~ cls if cls }}" role="group" aria-labelledby="{{ hid }}" data-shr data-shr-url="{{ S.url }}" data-shr-title="{{ S.title }}" data-shr-id="{{ S.id }}"{% if kakao_key %} data-shr-key="{{ kakao_key }}" data-shr-sdk="{{ kakao_share_sdk }}" data-shr-sri="{{ kakao_share_sri }}"{% endif %} data-copied="링크를 복사했습니다" data-failed="링크를 복사하지 못했습니다" data-kakao-failed="카카오톡을 열지 못해 링크를 복사했습니다"><div class="shr-in">
++  <div class="shr-main">
++    <p class="shr-h" id="{{ hid }}">{{ ui_share_icon() }}<span>{{ title }}</span></p>
++    {% if sub %}<p class="shr-s">{{ sub }}</p>{% endif %}
++    <ul class="shr-l">
++      {% if kakao_key %}<li data-js-only><button type="button" class="shr-b" data-shr-do="kakao">{{ icon('kakao') }}<span class="shr-t">카카오톡</span></button></li>{% endif %}
++      <li data-js-only><button type="button" class="shr-b" data-shr-do="copy_link">{{ icon('copy') }}<span class="shr-t">링크 복사</span></button></li>
++      <li class="shr-ph"><a class="shr-b" href="{{ S.sms }}" data-shr-do="sms">{{ icon('sms') }}<span class="shr-t">문자</span></a></li>
++      <li class="shr-ph" data-js-only data-shr-native hidden><button type="button" class="shr-b" data-shr-do="web_share">{{ icon('more') }}<span class="shr-t">더보기</span></button></li>
++      <li class="shr-pc"><a class="shr-b" href="{{ S.facebook }}" target="_blank" rel="noopener" data-shr-do="facebook">{{ icon('facebook') }}<span class="shr-t">페이스북</span><span class="vh"> (새 창)</span></a></li>
++      <li class="shr-pc"><a class="shr-b" href="{{ S.x }}" target="_blank" rel="noopener" data-shr-do="x">{{ icon('x') }}<span class="shr-t">X</span><span class="vh"> (새 창)</span></a></li>
++      <li class="shr-pc"><a class="shr-b" href="{{ S.band }}" target="_blank" rel="noopener" data-shr-do="band">{{ icon('band') }}<span class="shr-t">밴드</span><span class="vh"> (새 창)</span></a></li>
++    </ul>
++  </div>
++  <figure class="shr-qr shr-pc">{{ S.qr|safe }}<figcaption>휴대폰 카메라로 찍으면<br>이 페이지가 열립니다</figcaption></figure>
++</div></div>
++{%- endmacro %}
++
++{% macro ui_share_icon() -%}<svg class="shr-h-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endmacro %}
++
++{% macro dialog(S, title, sub) -%}
++<dialog class="shr-dlg" id="shr-site" aria-labelledby="shr-site-h" data-shr-dlg>
++  <form method="dialog" class="shr-dlg-f"><button type="submit" class="shr-dlg-x"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="vh">닫기</span></button></form>
++  {{ box(S, title, 'shr-site-h', sub, 'shr-in-dlg') }}
++</dialog>
++{%- endmacro %}
++
++{% macro opener(name) -%}
++<p class="sd-shr"><a class="sd-shr-a" href="/#share" data-shr-open="shr-site">{{ ui_share_icon() }}<span>{{ name }} 공유하기</span></a></p>
++{%- endmacro %}
+diff --git a/templates/_ui.html.j2 b/templates/_ui.html.j2
+index 7b03f8f4f8..5541424fb1 100644
+--- a/templates/_ui.html.j2
++++ b/templates/_ui.html.j2
+@@ -350,18 +350,27 @@
+ <a class="{{ cls }}" href="{{ a.url }}" target="_blank" rel="sponsored nofollow noopener" data-track="affiliate_click" data-provider="{{ a.key }}"{% if place %} data-place="{{ place }}"{% endif %}>{% if a.logo %}<img class="ota-logo" src="{{ a.logo }}" width="64" height="64" alt="" loading="lazy" decoding="async">{% endif %}<span class="ota-nm">{{ a.name }}</span><span class="ota-go" aria-hidden="true">↗</span><span class="vh"> (새 탭)</span></a>
+ {%- endmacro %}
+ 
++{#- sharebtn(id, lang, cls): the 공유 pill (operator 2026-10-17; its word shown on phones too since 2026-11-11 — '웹브라우저
++    에서 공유하기를 … 못 하는 사람들이 많으니까'): site.js [data-share] — the phone's share sheet, else the link copied
++    with a note; GA4 'share'. id = the page's record id (GA4 item_id), lang = the words of SHARE_WORDS; JS only.
++    ui.lnav's, and beside the title of 숙박 예약하기 · 코스 목록 · 영상 · 블로그 (cls 'ttl-share', in a .ttl-row; not on
++    the places / food / stays lists: a phone keeps their first result within 500px). -#}
++{% macro sharebtn(id, lang='ko', cls='') -%}
++{% set sw = SHARE_WORDS[lang] %}<button type="button" class="lnav-share{{ ' ' ~ cls if cls }}" data-share data-share-id="{{ id }}" data-copied="{{ sw.copied }}" data-failed="{{ sw.failed }}" data-js-only><svg class="lnav-share-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="lnav-share-t">{{ sw.label }}</span></button>
++{%- endmacro %}
++
+ {#- lnav(title, links, cta, label): the local bar, put in {% block lnav %} of base.html.j2. title = the page name;
+     links = [(label, '#id')] (desktop only); cta = {url, label, ext, track, provider, place} | none — the page's one
+     contextual action (place: 길찾기 / 지도 to the exact route, course: 경유지 목록, event: 길찾기, guide: 걷는 순서).
+     share = {id, lang} | none — the 공유 button before it (operator 2026-10-17; site.js [data-share]: the phone's share
+     sheet, else the link copied; GA4 'share'): id = the place, guide, course or event series id, lang = the words of
+-    SHARE_WORDS; JS only (data-js-only), an icon with its word hidden on phones. -#}
++    SHARE_WORDS; JS only (data-js-only), the icon and its word (sharebtn). -#}
+ {% macro lnav(title, links=[], cta=none, label='', share=none) -%}
+ <nav class="lnav" aria-label="{{ label or (title ~ ' 바로가기') }}" data-lnav>
+ <div class="wrap lnav-in">
+ <p class="lnav-t">{{ title }}</p>
+ {% if links %}<ul class="lnav-links">{% for lab, href in links %}<li><a href="{{ href }}">{{ lab }}</a></li>{% endfor %}</ul>{% endif %}
+-{% if share %}{% set sw = SHARE_WORDS[share.lang] %}<button type="button" class="lnav-share" data-share data-share-id="{{ share.id }}" data-copied="{{ sw.copied }}" data-failed="{{ sw.failed }}" data-js-only><svg class="lnav-share-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="lnav-share-t">{{ sw.label }}</span></button>{% endif %}
++{% if share %}{{ sharebtn(share.id, share.lang) }}{% endif %}
+ {% if cta %}<a class="lnav-cta" href="{{ cta.url }}"{% if cta.ext %} rel="noopener"{% endif %}{% if cta.track %} data-track="{{ cta.track }}"{% endif %}{% if cta.provider %} data-provider="{{ cta.provider }}"{% endif %}{% if cta.place %} data-place="{{ cta.place }}"{% endif %}>{{ cta.label }}</a>{% endif %}
+ </div>
+ </nav>
+diff --git a/templates/assets/brand/og-card.png b/templates/assets/brand/og-card.png
+new file mode 100644
+index 0000000000000000000000000000000000000000..ed3f9d6af84b7a71475c2989c7e9a692a6d4dcd0
+GIT binary patch
+literal 28865
+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
+MqS`a$)7KyW1NC_)=l}o!
+
+literal 0
+HcmV?d00001
+
+diff --git a/templates/assets/css/20-chrome.css b/templates/assets/css/20-chrome.css
+index b946f81bbc..f9721f87ea 100644
+--- a/templates/assets/css/20-chrome.css
++++ b/templates/assets/css/20-chrome.css
+@@ -76,19 +76,20 @@ html.is-scrolled .mast::before { box-shadow: 0 1px 0 rgba(0, 0, 0, .08); }
+ .lnav-links a:hover { color: var(--link); text-decoration: none; }
+ .lnav-cta { flex: none; display: inline-flex; align-items: center; min-height: 44px; margin-left: 10px; padding: 0 15px; border: 7px solid transparent; border-left: 0; border-right: 0; background: var(--blue) padding-box; border-radius: 980px; color: #fff; font: 400 14px/1 var(--font); text-decoration: none; white-space: nowrap; transition: background-color .2s var(--fb); }
+ .lnav-cta:hover { background-color: var(--blue-hi); color: #fff; text-decoration: none; }
+-/* 공유 (ui.lnav share, site.js [data-share]): before the pill — its word beside the icon on desktop, the icon alone
+-   (44px, the word kept for screen readers) on phones; the note after a copied link (.share-note) */
+-.lnav-share { position: relative; flex: none; display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-width: 44px; min-height: 44px; margin-left: 6px; padding: 0 12px; border: 0; border-radius: 980px; background: transparent; color: var(--ink); font: 400 14px/1 var(--font); white-space: nowrap; cursor: pointer; }
+-.lnav-share:hover { background: var(--tint); }
+-.lnav-share-i { flex: none; width: 20px; height: 20px; }
++/* 공유 (ui.sharebtn: the local bar's, before its pill, and the list pages' beside their title; site.js [data-share]):
++   the icon and its word on a tinted pill at every width (operator 2026-11-11 '공유하기 버튼을 크게' — the icon alone
++   on phones was not read as 공유); the note after a copied link (.share-note) */
++.lnav-share { position: relative; flex: none; display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-width: 44px; min-height: 44px; margin-left: 6px; padding: 0 16px 0 13px; border: 0; border-radius: 980px; background: var(--tint) padding-box; color: var(--sea-deep); font: 400 14px/1 var(--font); white-space: nowrap; cursor: pointer; transition: background-color .2s var(--fb); }
++.lnav .lnav-share { border: 7px solid transparent; border-left: 0; border-right: 0; }   /* 44px to touch, 30px drawn as the pill beside it */
++.lnav-share:hover { background-color: var(--tint2); }
++.lnav-share-i { flex: none; width: 19px; height: 19px; }
+ .share-note { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); z-index: 70; max-width: calc(100vw - 32px); padding: 11px 18px; border-radius: 980px; background: #172033; color: #fff; font: 400 14px/1.4 var(--font); text-align: center; transform: translate(-50%, 8px); opacity: 0; pointer-events: none; transition: opacity .2s var(--fb), transform .2s var(--fb); }
+ .share-note.is-on { opacity: 1; transform: translate(-50%, 0); }
+ @media (max-width: 1023px) {
+   .lnav-links { display: none; }
+   .lnav-t { font-size: 17px; }
+   .lnav-cta { margin-left: 8px; }
+-  .lnav-share { margin-left: 2px; padding: 0; }
+-  .lnav-share-t { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
++  .lnav-share { margin-left: 4px; padding: 0 14px 0 11px; }
+ }
+ @media (prefers-reduced-motion: reduce) { .share-note { transition: none; transform: translate(-50%, 0); } }
+ 
+diff --git a/templates/assets/css/88-share.css b/templates/assets/css/88-share.css
+new file mode 100644
+index 0000000000..1683439e37
+--- /dev/null
++++ b/templates/assets/css/88-share.css
+@@ -0,0 +1,84 @@
++/* 88-share — 보내기 (templates/_share.html.j2, pipeline/share.py, site.js [data-shr]; operator 2026-11-11 '공유하기
++   버튼을 크게 만드는 것도 좋을 것 같습니다. 여기저기 공유하기 쉽게', the recommended placement approved the same day).
++   A white card with a hairline (the facts' tiles stay the page's loudest thing; no accent fill: sea blue is the route,
++   yellow the booking button — 90-refine rule 1): its title with the share glyph, then tiles of the same size, each a
++   service's own mark (32px) over its name. Phones (below 1024px): 카카오톡 · 링크 복사 · 문자 · 더보기 in one row; from
++   1024px: 카카오톡 · 링크 복사 · 페이스북 · X · 밴드 and the QR code — beside the tiles when the card is wide enough
++   (container query: the place page's left column is narrower than a guide's), under them otherwise.
++   Every tile is at least 44px both ways; the QR code is drawn black on white with its quiet zone (scanners need it). */
++
++.shr { container-type: inline-size; margin: 22px 0 0; padding: 16px 16px 14px; border: 1px solid var(--hair); border-radius: 20px; background: var(--bg); }
++.shr-h { display: flex; align-items: center; gap: 8px; margin: 0; font: 700 16.5px/1.35 var(--font); letter-spacing: -.01em; color: var(--ink); }
++.shr-h-i { flex: none; width: 20px; height: 20px; color: var(--sea-deep); }
++.shr-s { margin: 4px 0 0; font-size: 14px; line-height: 1.5; color: var(--ink-3); }
++.shr-l { display: grid; grid-template-columns: repeat(auto-fit, minmax(64px, 1fr)); gap: 8px; margin: 12px 0 0; padding: 0; list-style: none; }
++.shr-l li { min-width: 0; }
++.shr-l li[hidden] { display: none; }
++.shr-b { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px; width: 100%; min-height: 78px; padding: 10px 4px 9px;
++  border: 0; border-radius: 16px; background: var(--bg-2); color: var(--ink); font: 400 13.5px/1.2 var(--font); text-align: center; text-decoration: none;
++  cursor: pointer; -webkit-tap-highlight-color: transparent; transition: background-color .2s var(--fb), transform .2s var(--fb); }
++.shr-b:hover { background: var(--tint); color: var(--ink); text-decoration: none; }
++.shr-b:active { transform: scale(.97); }
++.shr-ic { flex: none; width: 32px; height: 32px; }
++.shr-t { display: block; max-width: 100%; word-break: keep-all; }
++.shr-pc, .shr-qr { display: none; }
++.shr-qr { margin: 0; }
++.shr-qr-i { display: block; flex: none; width: 104px; height: 104px; border-radius: 8px; background: #fff; }
++.shr-qr figcaption { font-size: 13px; line-height: 1.45; color: var(--ink-3); }
++@media (min-width: 1024px) {
++  .shr { padding: 18px 20px 18px; }
++  .shr .shr-ph { display: none; }
++  .shr .shr-pc { display: block; }
++  .shr-l { grid-template-columns: repeat(5, minmax(0, 1fr)); }
++  /* a narrow card (the place page's column): the QR code under the tiles, its words beside it */
++  .shr .shr-qr { display: flex; align-items: center; gap: 14px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--hair); }
++  @container (min-width: 600px) {
++    .shr-in { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 24px; }
++    .shr .shr-qr { flex-direction: column; gap: 8px; margin: 0; padding: 0 0 0 24px; border-top: 0; border-left: 1px solid var(--hair); text-align: center; }
++  }
++}
++@media (prefers-reduced-motion: reduce) { .shr-b { transition: none; } .shr-b:active { transform: none; } }
++
++/* where it stands: a place page under its route row (and its booking rows), the readings and an event in their
++   column, the home before 제휴·관련 사이트 */
++.pl-head .shr { margin-top: 18px; }
++.shr-sec { padding-top: 8px; }
++.shr-sec .shr { margin-top: 0; }
++.shr-sec .shr, .home-shr .shr { max-width: 880px; }
++.home-shr { padding: 8px 0 40px; }
++.home-shr .shr { margin: 0; }
++
++/* the phones' bottom bars (tab bar, a place page's bar: z-index 80) would hide the note of a copied link */
++@media (max-width: 767px) {
++  body:has(.tabbar) .share-note, body:has(.pl-bar) .share-note { z-index: 85; bottom: calc(clamp(44px, calc(15svh - 52px), 68px) + 14px + env(safe-area-inset-bottom, 0px)); }
++}
++
++/* 숙박 예약하기 · 코스 목록 · 영상 · 블로그: the 공유 pill beside the title (ui.sharebtn cls 'ttl-share' in a .ttl-row) */
++.ttl-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
++.ttl-row > h1 { flex: 1 1 auto; min-width: 0; }
++.ttl-row > .ttl-share { margin: 4px 0 0; }
++@media (min-width: 1024px) { .ttl-row > .ttl-share { margin-top: 8px; } }
++
++/* '군산각 공유하기': the panel's row above 문의/제휴 (in its sticky foot from 1200px) and the phone menu's — a quiet row
++   (the partner card under it is the loud one) that opens the site's box in a dialog */
++.sd-shr { margin: 12px 0 0; }
++.sd-shr-a { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 14px; border-radius: 14px; background: var(--tint); color: var(--sea-deep); font: 700 14.5px/1.2 var(--font); text-decoration: none; }
++.sd-shr-a:hover { background: var(--tint2); color: var(--sea-deep); text-decoration: none; }
++.sd-shr-a .shr-h-i { width: 19px; height: 19px; }
++.menu-panel .sd-shr { margin: 10px 0 0; }
++.menu-panel .sd-shr + .sd-pt { margin-top: 8px; }
++@media (min-width: 1200px) {
++  .side .sd-foot { position: sticky; bottom: -18px; z-index: 3; margin: 4px -18px -18px; padding: 14px 18px 18px; background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0, #fff 16px); }
++  .side .sd-foot .sd-shr { margin: 0 0 8px; }
++  .side .sd-foot .sd-pt { position: static; margin: 0; padding: 0; background: none; }
++}
++
++/* the dialog: the site's box over a dimmed page; closes with its × button, Escape or a press outside (site.js) */
++.shr-dlg { width: min(560px, calc(100vw - 32px)); max-height: calc(100svh - 48px); margin: auto; padding: 0; border: 0; border-radius: 24px; background: var(--bg); color: var(--ink); box-shadow: var(--shadow-3); overflow: auto; }
++.shr-dlg::backdrop { background: rgba(23, 32, 51, .45); }
++.shr-dlg-f { position: absolute; top: 8px; right: 8px; z-index: 1; margin: 0; }
++.shr-dlg-x { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--ink-2); cursor: pointer; }
++.shr-dlg-x:hover { background: var(--bg-2); }
++.shr-dlg-x svg { width: 22px; height: 22px; }
++.shr-dlg .shr { margin: 0; padding: 22px 20px 20px; border: 0; }
++.shr-dlg .shr-h { padding-right: 44px; font-size: 18px; }
+diff --git a/templates/assets/site.js b/templates/assets/site.js
+index 9f0c56b9a7..6aa2891b00 100644
+--- a/templates/assets/site.js
++++ b/templates/assets/site.js
+@@ -16,10 +16,16 @@
+      [data-show-map]                masthead context link (e.g. '지도'): on screens < 1024px switches the list
+                                     to its map view instead of jumping
+      [data-sticky]                  desktop sticky column taller than the window: sticks by its bottom edge
+-     button[data-share]             공유 in the local bar (ui.lnav): the phone's share sheet, else the link copied with
+-                                    a note (data-copied / data-failed); the link carries utm_source=share&utm_medium=
+-                                    <method>; GA4 'share' {method, content_type, item_id: data-share-id} once it went
+-                                    through (track.js window.gunsanTrack)
++     button[data-share]             공유 (ui.sharebtn: the local bar's, a list page's beside its title): the phone's
++                                    share sheet, else the link copied with a note (data-copied / data-failed); the link
++                                    carries utm_source=share&utm_medium=<method>; GA4 'share' {method, content_type,
++                                    item_id: data-share-id} once it went through (track.js window.gunsanTrack)
++     [data-shr]                     보내기 (_share.html.j2 box, pipeline/share.py): [data-shr-do] kakao (the Kakao SDK
++                                    of data-shr-sdk, fetched as a pointer reaches the tile; sendScrap of data-shr-url), copy_link,
++                                    web_share (the [data-shr-native] tile, shown when the browser has a share sheet),
++                                    sms · facebook · x · band (plain links: GA4 'share' on the press)
++     [data-shr-open]                '군산각 공유하기': opens dialog[data-shr-dlg] (the site's box); a link to /#share
++                                    without dialog support
+      [data-hero-pause] in [data-hero], [data-mq-pause] in [data-marquee]
+                                     pause buttons (WCAG 2.2.2), working from the first paint: toggle .is-paused on
+                                     the box and aria-pressed; label in [data-lbl] or .lbl (texts from
+@@ -1481,45 +1487,124 @@
+     setStopped(stopped);
+   });
+ 
+-  // ------------------------------------------------------------ 공유 (ui.lnav button[data-share], operator 2026-10-17)
+-  // The page's canonical address with utm_source=share&utm_medium=<method>, so the visits a shared link brings count
+-  // apart in GA4. A closed share sheet sends nothing; a sheet the browser refuses falls back to copying the link.
+-  var shareBtns = $all("[data-share]");
+-  if (shareBtns.length) {
+-    var shareNote = doc.createElement("p"), shareTimer = 0;
+-    shareNote.className = "share-note";
+-    shareNote.setAttribute("role", "status");   // in the page before any text, so the note is announced
+-    doc.body.appendChild(shareNote);
++  // ------------------------------------------------------------ 공유 (ui.sharebtn button[data-share], operator 2026-10-17)
++  // and 보내기 ([data-shr], pipeline/share.py; operator 2026-11-11 '공유하기 버튼을 크게 … 여기저기 공유하기 쉽게').
++  // Every shared address is the page's canonical one (a box: its data-shr-url) with utm_source=share&utm_medium=
++  // <method>, so the visits a shared link brings count apart in GA4; GA4 'share' {method, content_type, item_id} goes
++  // once a share went through (a closed share sheet sends nothing; a sheet the browser refuses falls back to copying).
++  var shareBtns = $all("[data-share]"), shrBoxes = $all("[data-shr]");
++  if (shareBtns.length || shrBoxes.length) {
++    // the note (role=status) is in the page before any text, so it is announced — one in the body and one in the
++    // site's dialog (the page under a modal dialog is inert)
++    var shareTimer = 0;
++    var mkNote = function (where) {
++      var n = doc.createElement("p");
++      n.className = "share-note";
++      n.setAttribute("role", "status");
++      where.appendChild(n);
++      return n;
++    };
++    var bodyNote = mkNote(doc.body), dlgEl = doc.querySelector("dialog[data-shr-dlg]"), dlgNote = dlgEl ? mkNote(dlgEl) : null;
+     var noteShare = function (text) {
+-      shareNote.textContent = text;
+-      shareNote.classList.add("is-on");
++      var n = dlgNote && dlgEl.open ? dlgNote : bodyNote;
++      n.textContent = text;
++      n.classList.add("is-on");
+       win.clearTimeout(shareTimer);
+-      shareTimer = win.setTimeout(function () { shareNote.classList.remove("is-on"); }, 2600);
++      shareTimer = win.setTimeout(function () { bodyNote.classList.remove("is-on"); if (dlgNote) dlgNote.classList.remove("is-on"); }, 2600);
+     };
+     var canon = doc.querySelector('link[rel="canonical"]');
+-    var shareBase = (canon && canon.href) || location.href.split("#")[0].split("?")[0];
+-    var shareLink = function (method) {
+-      return shareBase + (shareBase.indexOf("?") < 0 ? "?" : "&") + "utm_source=share&utm_medium=" + method;
++    var pageUrl = (canon && canon.href) || location.href.split("#")[0].split("?")[0];
++    var tagged = function (base, method) {
++      return base + (base.indexOf("?") < 0 ? "?" : "&") + "utm_source=share&utm_medium=" + method;
++    };
++    var shared = function (method, id) {
++      if (typeof win.gunsanTrack === "function") win.gunsanTrack("share", {
++        method: method, content_type: doc.body.getAttribute("data-page-kind") || "", item_id: id || ""
++      });
++    };
++    // the link copied: data-copied / data-failed (the element's words, in the page's language)
++    var copyLink = function (el, base, id, said) {
++      var cb = navigator.clipboard;
++      var writing = cb && cb.writeText ? cb.writeText(tagged(base, "copy_link")) : Promise.reject(new Error("no clipboard"));
++      writing.then(function () { noteShare(said || el.getAttribute("data-copied")); shared("copy_link", id); },
++                   function () { noteShare(el.getAttribute("data-failed")); });
++    };
++    var sheet = function (el, base, title, id) {
++      if (typeof navigator.share !== "function") { copyLink(el, base, id); return; }
++      navigator.share({ title: title, url: tagged(base, "web_share") }).then(function () { shared("web_share", id); },
++        function (err) { if (!err || err.name !== "AbortError") copyLink(el, base, id); });
+     };
+     shareBtns.forEach(function (btn) {
+-      var shared = function (method) {
+-        if (typeof win.gunsanTrack === "function") win.gunsanTrack("share", {
+-          method: method, content_type: doc.body.getAttribute("data-page-kind") || "",
+-          item_id: btn.getAttribute("data-share-id") || ""
+-        });
+-      };
+-      var copy = function () {
+-        var cb = navigator.clipboard;
+-        var writing = cb && cb.writeText ? cb.writeText(shareLink("copy_link")) : Promise.reject(new Error("no clipboard"));
+-        writing.then(function () { noteShare(btn.getAttribute("data-copied")); shared("copy_link"); },
+-                     function () { noteShare(btn.getAttribute("data-failed")); });
+-      };
+-      btn.addEventListener("click", function () {
+-        if (typeof navigator.share !== "function") { copy(); return; }
+-        navigator.share({ title: doc.title, url: shareLink("web_share") }).then(function () { shared("web_share"); },
+-          function (err) { if (!err || err.name !== "AbortError") copy(); });
++      btn.addEventListener("click", function () { sheet(btn, pageUrl, doc.title, btn.getAttribute("data-share-id")); });
++    });
++
++    // 카카오톡: the Kakao SDK (data-shr-sdk, checked with data-shr-sri) is fetched once, only for a reader about to
++    // use it — a pointer reaching the tile (a finger's touch comes before its press), the tile's focus, or the site's
++    // dialog opening — never on a page view; the press then hands KakaoTalk the address (within the press's user
++    // activation, which the app's opening needs). Kakao.Share.sendScrap reads the page's own og:title / og:image.
++    // Without the SDK (blocked, offline) the link is copied and the note says so.
++    var kakaoP = null;
++    var kakao = function (box) {
++      if (kakaoP) return kakaoP;
++      var key = box.getAttribute("data-shr-key"), src = box.getAttribute("data-shr-sdk");
++      kakaoP = new Promise(function (res, rej) {
++        if (win.Kakao && win.Kakao.Share) { res(win.Kakao); return; }
++        if (!key || !src) { rej(new Error("no key")); return; }
++        var s = doc.createElement("script");
++        s.src = src;
++        if (box.getAttribute("data-shr-sri")) { s.integrity = box.getAttribute("data-shr-sri"); s.crossOrigin = "anonymous"; }
++        s.onload = function () { if (win.Kakao && win.Kakao.Share) res(win.Kakao); else rej(new Error("no Share")); };
++        s.onerror = function () { rej(new Error("sdk")); };
++        doc.head.appendChild(s);
++      }).then(function (K) {
++        if (!K.isInitialized()) K.init(key);
++        return K;
++      });
++      kakaoP.catch(function () { kakaoP = null; });   // the next press tries again
++      return kakaoP;
++    };
++    var kakaoNow = function () { return win.Kakao && win.Kakao.Share && win.Kakao.isInitialized && win.Kakao.isInitialized() ? win.Kakao : null; };
++
++    shrBoxes.forEach(function (box) {
++      var base = box.getAttribute("data-shr-url") || pageUrl, id = box.getAttribute("data-shr-id") || "";
++      var title = box.getAttribute("data-shr-title") || doc.title;
++      if (typeof navigator.share === "function") $all("[data-shr-native]", box).forEach(function (li) { li.hidden = false; });
++      var kBtn = box.querySelector('[data-shr-do="kakao"]');
++      if (kBtn) ["pointerenter", "pointerdown", "focus"].forEach(function (ev) { kBtn.addEventListener(ev, function () { kakao(box).catch(function () {}); }); });
++      box.addEventListener("click", function (e) {
++        var t = e.target && e.target.closest ? e.target.closest("[data-shr-do]") : null;
++        if (!t || !box.contains(t)) return;
++        var how = t.getAttribute("data-shr-do");
++        if (how === "copy_link") { copyLink(box, base, id); return; }
++        if (how === "web_share") { sheet(box, base, title, id); return; }
++        if (how === "kakao") {
++          var send = function (K) { K.Share.sendScrap({ requestUrl: tagged(base, "kakao") }); shared("kakao", id); };
++          var failed = function () { copyLink(box, base, id, box.getAttribute("data-kakao-failed")); };
++          var K = kakaoNow();
++          if (K) { try { send(K); } catch (err) { failed(); } return; }
++          kakao(box).then(function (K2) { try { send(K2); } catch (err) { failed(); } }, failed);
++          return;
++        }
++        shared(how, id);   // 문자 · 페이스북 · X · 밴드: plain links, already tagged
+       });
+     });
++
++    // '군산각 공유하기' (the panel, the phone menu): the site's box in its dialog; without dialog support the link
++    // goes to the home's box (#share). A press outside the box closes it; Escape and × are the dialog's own.
++    var shrDlg = doc.querySelector("dialog[data-shr-dlg]");
++    if (shrDlg && typeof shrDlg.showModal === "function") {
++      $all("[data-shr-open]").forEach(function (a) {
++        a.addEventListener("click", function (e) {
++          e.preventDefault();
++          var menu = a.closest("details[open]");
++          if (menu) menu.open = false;
++          shrDlg.showModal();
++          var b = shrDlg.querySelector("[data-shr]");
++          if (b && b.getAttribute("data-shr-key")) kakao(b).catch(function () {});
++        });
++      });
++      shrDlg.addEventListener("click", function (e) { if (e.target === shrDlg) shrDlg.close(); });
++    }
+   }
+ 
+   // ------------------------------------------------------------ home cards (operator 2026-11-02, templates/_mz.html.j2)
+diff --git a/templates/assets/track.js b/templates/assets/track.js
+index f2b8912d34..c2f877b530 100644
+--- a/templates/assets/track.js
++++ b/templates/assets/track.js
+@@ -13,11 +13,13 @@
+    direct booking and inquiry, shown before the booking sites (data-provider partner, place_id = the stay).
+    partner_cta: a press toward /partners/ (the panel's '문의/제휴', the footer, a badge's '?', the booking page);
+    partner_contact: the inquiry mail link on /partners/.
+-   share (GA4's recommended event; the local bar's 공유, site.js [data-share], operator 2026-10-17): sent by site.js
+-   through window.gunsanTrack once a share went through — method 'web_share' (the phone's share sheet) or
+-   'copy_link', content_type = the page kind (place-food, guide, course, events …), item_id = the place, guide,
+-   course or event series id. The shared link carries utm_source=share&utm_medium=<method>, so the visits it
+-   brings show as their own source / medium.
++   share (GA4's recommended event; the 공유 pill, site.js [data-share], operator 2026-10-17; the 보내기 box and the
++   panel's '군산각 공유하기', [data-shr], operator 2026-11-11): sent by site.js through window.gunsanTrack once a share
++   went through — method 'web_share' (the phone's share sheet), 'copy_link', 'kakao' (KakaoTalk handed the address),
++   or on the press of a link tile 'sms', 'facebook', 'x', 'band'; content_type = the page kind (place-food, guide,
++   course, events, home …), item_id = the place, guide, course or event series id, a list's key, or 'site' (the
++   site's own address). The shared link carries utm_source=share&utm_medium=<method> ('qr' for the box's QR code), so
++   the visits it brings show as their own source / medium.
+    chat_answer (chat.js): how each assistant answer ended, never its words — outcome answered | no_links | cut | stopped
+    | error, error_code, links (site pages linked), answer_lang ('und' when unsure), part (first, or more for the rest
+    of a cut answer — count answers on part = first), not_on_site (a Korean answer saying 사이트에 없음).
+diff --git a/templates/base.html.j2 b/templates/base.html.j2
+index c21d15c8f4..da7e0239d4 100644
+--- a/templates/base.html.j2
++++ b/templates/base.html.j2
+@@ -1,4 +1,4 @@
+-{% import "_ui.html.j2" as ui %}{% import "en/_chrome.html.j2" as enc %}{% import "_lang.html.j2" as lg %}{% import "_side.html.j2" as sdm %}{% import "_related_sites.html.j2" as relm %}<!doctype html>
++{% import "_ui.html.j2" as ui %}{% import "en/_chrome.html.j2" as enc %}{% import "_lang.html.j2" as lg %}{% import "_side.html.j2" as sdm %}{% import "_related_sites.html.j2" as relm %}{% import "_share.html.j2" as shm %}<!doctype html>
+ {#- base.html.j2 — every page (Apple direction). Head logic (title, description, canonical, robots/noindex,
+     search-engine tokens in production only, og/twitter, geo, JSON-LD, GA4 + track.js in production with a GA4 id) is
+     unchanged by the redesign. Blocks for page templates:
+@@ -180,6 +180,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+       <nav class="menu-panel" aria-label="전체 메뉴">
+         {% if sd %}{{ sdm.acts(sd.acts, nav_current) }}
+         {{ sdm.groups(SG, nav_current, 'menu') }}
++        {% if site_share %}{{ shm.opener(wm) }}{% endif %}
+         {{ sdm.partner(partners_path, nav_current) }}
+         {{ sdm.day(sd, 'menu') }}{% endif %}
+         <ul class="menu-sub">{% if has_search %}<li><a href="/search/"{% if nav_current == '/search/' %} aria-current="page"{% endif %}>검색</a></li>{% endif %}{% if not sd %}<li><a href="/about/"{% if nav_current == '/about/' %} aria-current="page"{% endif %}>소개·출처</a></li>{% endif %}{{ lg.others(langs) }}</ul>
+@@ -190,7 +191,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+     {{ sdm.day(sd, 'side') }}
+     {{ sdm.acts(sd.acts, nav_current) }}
+     <nav class="side-nav" aria-label="주 메뉴">{{ sdm.groups(SG, nav_current, 'side') }}</nav>
+-    {{ sdm.partner(partners_path, nav_current) }}
++    {#- 군산각 공유하기 (operator 2026-11-11) over 문의/제휴: the two stay at the panel's foot together (css 88-share) -#}
++    <div class="sd-foot">{% if site_share %}{{ shm.opener(wm) }}{% endif %}{{ sdm.partner(partners_path, nav_current) }}</div>
+   </div>{% endif %}
+ </header>
+ {% endif %}
+@@ -253,6 +255,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+   <button type="button" data-tab-chat aria-haspopup="dialog">{{ ui.icon('chat') }}<span>AI 챗봇</span></button>
+ </nav>{% endif %}
+ {% include "_chat.html.j2" %}
++{#- the dialog of '군산각 공유하기' (the panel, the phone menu; _share.html.j2, operator 2026-11-11) -#}
++{% if lang == 'ko' and site_share and sd %}{{ shm.dialog(site_share, wm ~ ' 공유하기', (site.region or '') ~ ' 여행을 준비하는 사람에게 ' ~ wm ~ ' 주소를 보내 주세요. 장소·음식점·숙소의 이용시간·요금·길찾기를 한곳에서 볼 수 있습니다.') }}{% endif %}
+ </body>
+ </html>
+ {% if false %}{% block lnav %}{% endblock %}{% block bodyclass %}{% endblock %}{% endif %}
+diff --git a/templates/blog.html.j2 b/templates/blog.html.j2
+index bb8d3febda..da1e3e3c74 100644
+--- a/templates/blog.html.j2
++++ b/templates/blog.html.j2
+@@ -10,7 +10,7 @@
+ {% block content %}
+ <section class="pg-hero band-s list-head" aria-labelledby="h-list">
+   <div class="wrap">
+-    <h1 id="h-list" class="h-list">{{ B.name }}</h1>
++    <div class="ttl-row"><h1 id="h-list" class="h-list">{{ B.name }}</h1>{{ ui.sharebtn('blog', 'ko', 'ttl-share') }}</div>
+     <p class="lede">{{ site.site_name|josa('이/가') }} 네이버 블로그에 쓴 {{ site.region }} 여행 기록 {{ B.posts|length }}편을 주제별로 모았습니다. 제목을 누르면 블로그 글이 열리고, 글에 나온 장소는 이 사이트의 장소 페이지로 이어집니다.</p>
+     <p class="bl-home"><a href="{{ B.url }}" rel="noopener" data-track="blog_click">블로그에서 보기<span class="arr" aria-hidden="true">↗</span></a></p>
+     <nav class="v-nav" aria-label="이 페이지의 묶음">{% for g in groups %}<a href="#{{ g.id }}">{{ g.title }} <span class="tn">{{ g.rows|length }}</span></a>{% endfor %}</nav>
+diff --git a/templates/column.html.j2 b/templates/column.html.j2
+index 63445009b9..71cb918064 100644
+--- a/templates/column.html.j2
++++ b/templates/column.html.j2
+@@ -2,6 +2,7 @@
+ {% import "_blog.html.j2" as blm %}
+ {% import "_ui.html.j2" as ui %}
+ {% import "_media.html.j2" as md %}
++{% import "_share.html.j2" as shm %}
+ {% block main_class %}{% endblock %}
+ {% block bodyclass %}pg-guide pg-column{% endblock %}
+ {% block head %}{% if C.lead_photo and C.lead_photo.type == 1 %}{{ md.preload(C.lead_photo) }}{% endif %}{% endblock %}
+@@ -106,6 +107,9 @@
+   </section>
+   {% endif %}
+ 
++  {#- 보내기 (operator 2026-11-11): at the reading's end, before 이어서 보기 -#}
++  <div class="wrap shr-sec">{{ shm.box(share_vm(page.canonical, (C.label or C.title) ~ ' | ' ~ site.site_name, C.col.id), '이 칼럼 보내기', 'h-shr') }}</div>
++
+   {{ ui.seealso(see) }}
+ 
+   {% if blog_posts %}{{ blm.section(blog_posts, blog, blog.name ~ '에서 더 읽기') }}{% endif %}
+diff --git a/templates/course.html.j2 b/templates/course.html.j2
+index 17247fecd4..80921c1372 100644
+--- a/templates/course.html.j2
++++ b/templates/course.html.j2
+@@ -2,6 +2,7 @@
+ {% import "_blog.html.j2" as blm %}
+ {% import "_p2.html.j2" as p2 %}
+ {% import "_art.html.j2" as artm %}
++{% import "_share.html.j2" as shm %}
+ {#- An official course (Apple direction). Opening: the name, figures (stops · straight-line sum · the most common
+     closed day · start → end), 카카오맵 길찾기 to the first stop with coordinates and the computed lede. Then the stop
+     band (course.js) beside the station tiles and the course map (co.map = present.course_map: Kakao Maps, only
+@@ -113,6 +114,9 @@
+   </section>
+   {% endif %}
+ 
++  {#- 보내기 (operator 2026-11-11): at the reading's end, before 이어서 보기 -#}
++  <div class="wrap shr-sec">{{ shm.box(share_vm(page.canonical, course_name ~ ' | ' ~ site.site_name, co.c.id), '이 코스 보내기', 'h-shr') }}</div>
++
+   {{ ui.seealso(see) }}
+ 
+   {% if blog_posts %}{{ blm.section(blog_posts, blog, blog.name ~ '에서 더 읽기') }}{% endif %}
+diff --git a/templates/courses_index.html.j2 b/templates/courses_index.html.j2
+index a693b0730e..c2c818810c 100644
+--- a/templates/courses_index.html.j2
++++ b/templates/courses_index.html.j2
+@@ -11,7 +11,7 @@
+ <section class="pg-hero band-s" aria-labelledby="h-list">{{ artm.band((art_slots or {}).get('list.head.courses')) }}
+   <div class="wrap">
+     <p class="eyebrow">{{ site.source.name }} 공식 코스</p>
+-    <h1 id="h-list" class="h-list">{{ site.region }} 여행 코스 <span class="count tn">{{ n_courses }}개</span></h1>
++    <div class="ttl-row"><h1 id="h-list" class="h-list">{{ site.region }} 여행 코스 <span class="count tn">{{ n_courses }}개</span></h1>{{ ui.sharebtn('courses', 'ko', 'ttl-share') }}</div>
+     <p class="list-lede">{{ site.source.name|josa('이/가') }} 안내하는 공식 여행 코스를 일정과 주제로 나눴습니다. 카드에서 출발지와 마지막 경유지, 지나는 권역을 보고 고른 뒤 코스 페이지에서 경유지마다 방문 정보와 길찾기를 확인하세요.</p>
+     {% if CV.groups|length > 1 %}{{ cc.nav(CV.groups, CV.w.nav) }}{% endif %}
+   </div>
+diff --git a/templates/event.html.j2 b/templates/event.html.j2
+index dd16b13c15..6412581bee 100644
+--- a/templates/event.html.j2
++++ b/templates/event.html.j2
+@@ -2,6 +2,7 @@
+ {% import "_p2.html.j2" as p2 %}
+ {% import "_media.html.j2" as md %}
+ {% import "_abroad.html.j2" as ab %}
++{% import "_share.html.j2" as shm %}
+ {#- One event series (Apple direction): the newest dated edition in the place-page skeleton. First screen: the date
+     big, the relative chip, the name, the tiles (기간 · 시간 · 요금 · 장소 · 문의; a value another source gives
+     differently reads '출처마다 다름'), '확인 필요' once, the route row and one programme fact. Below: the facts card
+@@ -39,6 +40,8 @@
+         </div>
+         {% if V.route %}{{ ui.route({'url': V.route, 'role': 'route', 'key': 'kakao_route', 'label': '카카오맵 길찾기', 'precise': true}, V.front, [], '', 'h-dir', V.sr.name) }}{% endif %}
+         {% if V.lede2 %}<p class="ev-lede">{{ V.lede2 }}</p>{% endif %}
++        {#- 보내기 (operator 2026-11-11): under the dates, the place and the route -#}
++        {{ shm.box(share_vm(page.canonical, V.title ~ ' | ' ~ site.site_name, V.sr.key), '같이 갈 사람에게 보내기', 'h-shr') }}
+       </div>
+     </div>
+   </header>
+diff --git a/templates/guide.html.j2 b/templates/guide.html.j2
+index a492f8505f..1dcfa0ea43 100644
+--- a/templates/guide.html.j2
++++ b/templates/guide.html.j2
+@@ -3,6 +3,7 @@
+ {% import "_art.html.j2" as artm %}
+ {% import "_p2.html.j2" as p2 %}
+ {% import "_abroad.html.j2" as ab %}
++{% import "_share.html.j2" as shm %}
+ {#- A purpose guide (Apple direction + the reading layer, owner 2026-10-09: "줄글이라 사람이 읽기 불편"). Every sentence
+     of the guide is in the HTML, verbatim and in order; the page adds a layer to scan:
+     - the answer card: the summary's first sentence as the answer line (big), the guide's places as mini cards, then
+@@ -189,6 +190,9 @@
+   </section>
+   {% endif %}
+ 
++  {#- 보내기 (operator 2026-11-11): at the reading's end, before 이어서 보기 -#}
++  <div class="wrap shr-sec">{{ shm.box(share_vm(page.canonical, (G.label or G.title) ~ ' | ' ~ site.site_name, G.g.id), '이 가이드 보내기', 'h-shr') }}</div>
++
+   {{ ui.seealso(see) }}
+ 
+   {% if blog_posts %}{{ blm.section(blog_posts, blog, blog.name ~ '에서 더 읽기') }}{% endif %}
+diff --git a/templates/home.html.j2 b/templates/home.html.j2
+index d459c04f53..665b63c1d9 100644
+--- a/templates/home.html.j2
++++ b/templates/home.html.j2
+@@ -9,6 +9,7 @@
+ {% import "_side.html.j2" as sdm %}
+ {% import "_mz.html.j2" as mz %}
+ {% import "_related_sites.html.j2" as relm %}
++{% import "_share.html.j2" as shm %}
+ {#- The home page. UI4 (owner 2026-10-14, after the AIO2O proposal demo for KT Skylife — its design language only;
+     docs/handover/specs/ui4_mapping.md, skyref_study.md, home_redesign.md): a LIGHT opening — a soft sea-blue gradient,
+     at the left the eyebrow pill (h.opening.kicker), the H1, one plain lede, the two pill buttons (내 일정 만들기 ·
+@@ -615,6 +616,15 @@
+ </section>
+ {% endif %}
+ 
++{# 군산각 알리기 (operator 2026-11-11, pipeline/share.py): the site's own 보내기 box — the panel's and the phone menu's
++   '군산각 공유하기' open the same box in a dialog, and come here (#share) without JavaScript #}
++{% if site_share %}
++{% set T.i = T.i + 1 %}
++<section class="home-shr{{ ' tone-2' if T.i is odd }}" id="share" aria-labelledby="h-home-shr">
++  <div class="wrap">{{ shm.box(site_share, site.site_name ~ ' 알리기', 'h-home-shr', site.region ~ ' 여행을 준비하는 사람에게 ' ~ site.site_name ~ ' 주소를 보내 주세요. 장소·음식점·숙소의 이용시간·요금·길찾기를 한곳에서 볼 수 있습니다.') }}</div>
++</section>
++{% endif %}
++
+ {# 제휴·관련 사이트 (operator 2026-11-11, pipeline/related_sites.py): the company's sites and related sites as cards — the
+    footer below repeats them as a strip on every page #}
+ {% if related_sites %}
+diff --git a/templates/place.html.j2 b/templates/place.html.j2
+index 7c1fcdc795..dfac0ec359 100644
+--- a/templates/place.html.j2
++++ b/templates/place.html.j2
+@@ -19,6 +19,7 @@
+ {% import "_near.html.j2" as nb %}
+ {% import "_blog.html.j2" as blm %}
+ {% import "_today.html.j2" as tdy %}
++{% import "_share.html.j2" as shm %}
+ {% set fn = p.notes|length > 1 %}
+ {#- the media block (영상 · 소식 · 해외 기사 · SNS · 블로그 글): its parts name the heading and the page-nav link -#}
+ {% set insta = p.e._insta or [] %}{% set abroad = p.e._abroad or [] %}{% set ab_art = abroad|selectattr('kind', 'equalto', 'article')|list %}{% set ab_post = abroad|selectattr('kind', 'equalto', 'post')|list %}{% set media_parts = (['영상'] if p.videos else []) + (['소식'] if (media or {}).news else []) + (['인스타그램'] if insta else []) + (['해외 기사'] if ab_art else []) + (['SNS'] if ab_post else []) + (['블로그 글'] if p.e._blog else []) %}
+@@ -73,6 +74,8 @@
+         <div class="kf-notes">{{ p1.notices(p.e._notices or [], p.e.id) }}{{ p1.kfnote(p.kf, p.e.id) }}</div>
+         {{ ui.route(p.primary, p.front, p.rest, p.e.id, 'h-dir', nm) }}
+         {{ ui.book(p.booking, p.bw, p.e.id) }}{{ ui.aff(p.aff, p.e.id, p.aff_more, p.partner) }}
++        {#- 보내기 (operator 2026-11-11): under the route row and the booking rows — when a visitor has what decides the visit -#}
++        {{ shm.box(share_vm(page.canonical, nm ~ ' | ' ~ site.site_name, p.e.id), '같이 갈 사람에게 보내기', 'h-shr') }}
+       </div>
+       {% if lead %}
+       <figure class="pv pv{{ lead.type }}">
+diff --git a/templates/stay_booking.html.j2 b/templates/stay_booking.html.j2
+index 577203a4ed..21293198f6 100644
+--- a/templates/stay_booking.html.j2
++++ b/templates/stay_booking.html.j2
+@@ -16,7 +16,7 @@
+ <section class="sb-hero" aria-labelledby="h-list">
+   <div class="wrap">
+     <p class="sb-k"><a href="/stays/">{{ site.region }} 숙소</a><span aria-hidden="true">›</span><span>예약 사이트 바로가기</span></p>
+-    <h1 id="h-list" class="sb-h1">숙박 예약하기</h1>
++    <div class="ttl-row"><h1 id="h-list" class="sb-h1">숙박 예약하기</h1>{{ ui.sharebtn('stays-booking', 'ko', 'ttl-share') }}</div>
+     <p class="sb-lede">{{ site.site_name }}에 있는 숙소 가운데 예약 사이트에서 바로 예약할 수 있는 {{ V.rows|length }}곳입니다. 체크인·객실 수는 이 사이트의 숙소 정보이고, 가격과 빈 방은 예약 사이트에서 확인하세요.</p>
+   </div>
+ </section>
+diff --git a/templates/videos.html.j2 b/templates/videos.html.j2
+index e0f1139879..e511d8c437 100644
+--- a/templates/videos.html.j2
++++ b/templates/videos.html.j2
+@@ -23,7 +23,7 @@
+   <div class="wrap">
+     {% if not topic %}<span class="hd-mascot">{{ ui.kpic('mascot-camera', 'play', 104) }}</span>{% endif %}
+     {% if topic %}<p class="kicker"><a href="/videos/">영상</a><span>주제</span></p>{% endif %}
+-    <h1 id="h-list" class="h-list">{% if topic %}{{ site.region }} {{ label }} 영상{% else %}영상으로 보는 {{ site.region }}{% endif %} <span class="count tn">{{ total }}편</span></h1>
++    <div class="ttl-row"><h1 id="h-list" class="h-list">{% if topic %}{{ site.region }} {{ label }} 영상{% else %}영상으로 보는 {{ site.region }}{% endif %} <span class="count tn">{{ total }}편</span></h1>{{ ui.sharebtn(('videos-' ~ topic.slug) if topic else 'videos', 'ko', 'ttl-share') }}</div>
+     <div class="v-tools">
+       {% if official %}<button type="button" class="v-off" aria-pressed="false" data-v-official>공식 채널만 <span class="tn">{{ official }}</span></button>{% endif %}
+       {% if topic %}<a class="v-all" href="/videos/">모든 주제 보기<span class="arr" aria-hidden="true">›</span></a>
+diff --git a/tests/test_abroad.py b/tests/test_abroad.py
+index 64c0c7e686..9894b00623 100644
+--- a/tests/test_abroad.py
++++ b/tests/test_abroad.py
+@@ -159,7 +159,9 @@ def test_home_sns_row_links_each_post_to_its_card(tmp_path):
+     assert "철길마을 교복 사진 게시물입니다." in row.group(1) and "<b>X</b> · someone" in row.group(1)
+     assert "아직 승인 전" not in home
+     assert 'href="/abroad/#ab-sns"' in home and "SNS 게시물 2개 모두" in home
+-    low = home.lower()
++    # the 보내기 box's X tile (operator 2026-11-11, pipeline/share.py) is X's share form for this site's address — not
++    # a post, nor an embed: every other x.com address stays off the home
++    low = home.lower().replace("https://x.com/intent/tweet?", "")
+     assert "platform.twitter.com" not in low and "instagram.com/embed" not in low and "x.com/" not in low
+     page = (out / "abroad" / "index.html").read_text("utf-8")
+     for h in hrefs:
+diff --git a/tests/test_abroad_highlights.py b/tests/test_abroad_highlights.py
+index 82b21ab4f4..185cad377a 100644
+--- a/tests/test_abroad_highlights.py
++++ b/tests/test_abroad_highlights.py
+@@ -100,7 +100,8 @@ def test_highlights_row_and_viewer(tmp_path):
+     assert "철길마을" in row and "Lake Blog" in row                   # label_ko, else the outlet
+     assert "한국관광공사" in row                                      # the KOGL-1 photo's credit under the row
+ 
+-    assert "<dialog" not in page                                     # the viewer is not in the page's first load
++    # the viewer is not in the page's first load (the one dialog there is '군산각 공유하기', operator 2026-11-11)
++    assert "data-hl-dialog" not in page and page.count("<dialog") == page.count('<dialog class="shr-dlg"') == 1
+     viewer = json.loads((out / "abroad" / "highlights.json").read_text("utf-8"))["html"]
+     dlg = re.fullmatch(r"<dialog ([^>]*)>(.*)</dialog>", viewer.strip(), re.S)
+     attrs, body = dlg.group(1), dlg.group(2)
+@@ -169,8 +170,9 @@ def test_page_unchanged_without_highlights(tmp_path):
+         pages.append((out / "abroad" / "index.html").read_text("utf-8"))
+         assert not (out / "abroad" / "highlights.json").exists()
+     assert pages[0] == pages[1]
+-    for marker in ("data-hl", "hl-dlg", "<dialog", "하이라이트"):
++    for marker in ("data-hl", "hl-dlg", "하이라이트"):
+         assert marker not in pages[0]
++    assert pages[0].count("<dialog") == pages[0].count('<dialog class="shr-dlg"')   # only '군산각 공유하기'
+     hero = pages[0].split('<h1 id="h-list"', 1)[1].split("</section>", 1)[0]
+     assert re.search(r'</h1>\s*<p class="lede">[^<]*</p>\s*<nav class="v-nav"', hero)   # title, lede, then the nav
+ 
+diff --git a/tests/test_present.py b/tests/test_present.py
+index c3c86f05ff..8478d93a16 100644
+--- a/tests/test_present.py
++++ b/tests/test_present.py
+@@ -2204,8 +2204,10 @@ SHARE_BTN = re.compile(r'<button type="button" class="lnav-share" data-share dat
+ 
+ def test_place_guide_course_and_event_pages_have_one_share_button(S, built):
+     """Operator 2026-10-17 (공유하기 + GA4): the local bar of every place, guide, course and event page holds one 공유
+-    button naming the page's id (the place, guide, course or event series id) with the Korean words; the home and the
+-    lists have none."""
++    button naming the page's id (the place, guide, course or event series id) with the Korean words. Since
++    2026-11-11 ('공유하기 버튼을 크게', the recommended placement approved: 숙박 예약하기 · 코스 목록 · 영상 · 블로그)
++    those four pages carry the same pill beside their title (one each, naming the page); the home and the other lists
++    have none (the home's 군산각 알리기 box is the share there; a phone's list keeps its first result within 500px)."""
+     from urllib.parse import unquote
+     pages = {S.ent_by_slug["모트"]["_path"]: S.ent_by_slug["모트"]["id"]}
+     for xs, key in ((S.guides, "id"), (S.courses, "id"), (S.series, "key")):
+@@ -2215,8 +2217,17 @@ def test_place_guide_course_and_event_pages_have_one_share_button(S, built):
+         found = SHARE_BTN.findall(html)
+         assert found == [(want, "링크를 복사했습니다", "링크를 복사하지 못했습니다", "공유")], path
+         assert html.index('class="lnav-share"') < html.index('class="lnav-cta"'), path
+-    for path in ("index.html", "places/index.html", "food/index.html", "guides/index.html"):
+-        assert "data-share" not in (built / path).read_text("utf-8"), path
++    assert "data-share " not in (built / "index.html").read_text("utf-8")
++    title_pill = re.compile(r'<div class="ttl-row"><h1 [^>]*>.*?</h1><button type="button" class="lnav-share ttl-share" '
++                            r'data-share data-share-id="([^"]*)"', re.S)
++    for path, want in (("courses/index.html", "courses"), ("videos/index.html", "videos"),
++                       ("stays/booking/index.html", "stays-booking"), ("blog/index.html", "blog")):
++        html = (built / path).read_text("utf-8")
++        assert title_pill.findall(html) == [want], path
++        assert html.count("data-share ") == 1, path
++    for path in ("places/index.html", "food/index.html", "stays/index.html", "guides/index.html", "columns/index.html",
++                 "events/index.html", "abroad/index.html"):
++        assert "data-share " not in (built / path).read_text("utf-8"), path
+ 
+ 
+ def _serve(built):
+@@ -2260,8 +2271,8 @@ def test_share_opens_the_sheet_or_copies_and_counts_in_ga4(S, built):
+     """In a browser (Playwright + Chromium): the 공유 button hands the phone's share sheet the page title and its
+     canonical address with utm_source=share&utm_medium=web_share, and GA4 gets 'share' {method, content_type,
+     item_id} only once it went through; a closed sheet sends nothing; a refused sheet, or a browser without one,
+-    copies the link (utm_medium=copy_link) and says so in the note. On phones the button is the 44px icon alone, its
+-    word kept for screen readers; on desktop the word shows."""
++    copies the link (utm_medium=copy_link) and says so in the note. Its word shows on phones too (operator
++    2026-11-11: the icon alone was not read as 공유), at least 44px to touch, inside the 390px screen."""
+     sync_api = pytest.importorskip("playwright.sync_api")
+     e = S.ent_by_slug["모트"]
+     path = f"http://site.test{quote(e['_path'])}"
+@@ -2283,7 +2294,8 @@ def test_share_opens_the_sheet_or_copies_and_counts_in_ga4(S, built):
+                 btn = page.locator(".lnav [data-share]")
+                 box = btn.bounding_box()
+                 assert box["width"] >= 44 and box["height"] >= 44 and box["x"] + box["width"] <= 390, mode
+-                assert btn.evaluate("b => getComputedStyle(b.querySelector('.lnav-share-t')).clip") != "auto", mode
++                assert page.locator(".lnav [data-share] .lnav-share-t").is_visible(), mode
++                assert btn.inner_text().strip() == "공유", mode
+                 btn.click()
+                 page.wait_for_timeout(300)
+                 ev = page.evaluate("window.__events")
+@@ -2292,7 +2304,7 @@ def test_share_opens_the_sheet_or_copies_and_counts_in_ga4(S, built):
+                     assert shared == [{"title": page.title(), "url": f"{canon}?utm_source=share&utm_medium=web_share"}], mode
+                 assert ev == ([["share", {"method": method, **want_ev}]] if method else []), mode
+                 assert cop == ([f"{canon}?utm_source=share&utm_medium=copy_link"] if copied else []), mode
+-                note = page.locator(".share-note")
++                note = page.locator("body > .share-note")
+                 if copied:
+                     assert note.inner_text() == "링크를 복사했습니다" and "is-on" in note.get_attribute("class"), mode
+                     assert note.get_attribute("role") == "status"
+@@ -2308,6 +2320,188 @@ def test_share_opens_the_sheet_or_copies_and_counts_in_ga4(S, built):
+             browser.close()
+ 
+ 
++# ------------------------------------------------------------------ 보내기 (operator 2026-11-11, pipeline/share.py)
++def test_share_view_tags_every_link_and_draws_the_qr_code():
++    """Each plain tile carries the page's address with utm_source=share&utm_medium=<its method>; the QR code opens the
++    address tagged qr and is hidden from screen readers (its caption says what it does)."""
++    from urllib.parse import unquote
++
++    from pipeline import share
++    url = "https://gunsan.webforai.kr/places/%EB%AA%A8%ED%8A%B8/"
++    v = share.view(url, "모트 | 군산각", "gunsan-1")
++    assert v["url"] == url and v["id"] == "gunsan-1"
++    for key, prefix in (("sms", "sms:?&body="), ("facebook", "https://www.facebook.com/sharer/sharer.php?u="),
++                        ("x", "https://x.com/intent/tweet?text="), ("band", "https://band.us/plugin/share?body=")):
++        assert v[key].startswith(prefix), key
++        assert f"{url}?utm_source=share&utm_medium={key}" in unquote(v[key]), key
++    assert "모트 | 군산각" in unquote(v["sms"]) and "&route=gunsan.webforai.kr" in v["band"]
++    assert v["qr"].startswith('<svg aria-hidden="true" focusable="false" viewBox=') and 'class="shr-qr-i"' in v["qr"]
++    assert share.tagged(url + "?a=1", "qr") == url + "?a=1&utm_source=share&utm_medium=qr"
++
++
++SHR_BOX = re.compile(r'<div class="shr[^"]*" role="group" aria-labelledby="([^"]+)" data-shr data-shr-url="([^"]+)" '
++                     r'data-shr-title="([^"]*)" data-shr-id="([^"]*)"')
++
++
++def test_the_send_box_stands_where_the_operator_placed_it(S, built):
++    """Operator 2026-11-11 (the recommended placement): a place page has the box under its route row (and booking
++    rows), before the photo; a guide, course and column before 이어서 보기; an event under its route; the home its
++    '군산각 알리기' (#share) before 제휴·관련 사이트. Every box names the page's canonical address and record id, carries
++    the Kakao key and the SDK with its integrity hash, the 카카오톡 / 링크 복사 / 문자 / 더보기 tiles and the 페이스북 / X /
++    밴드 links and the QR code. Every Korean page with the panel holds the site's dialog and two openers (the panel,
++    the phone menu), each a link to /#share without JavaScript."""
++    from urllib.parse import unquote
++
++    from pipeline import share
++    key = S.site["kakao_js_key"]
++    motte = S.ent_by_slug["모트"]
++    g = next(x for x in S.guides if present.see_also(S, "guide", x))
++    pages = {motte["_path"]: ("같이 갈 사람에게 보내기", motte["id"]), g["_path"]: ("이 가이드 보내기", g["id"]),
++             S.courses[0]["_path"]: ("이 코스 보내기", S.courses[0]["id"]),
++             S.columns[0]["_path"]: ("이 칼럼 보내기", S.columns[0]["id"]),
++             S.series[0]["_path"]: ("같이 갈 사람에게 보내기", S.series[0]["key"])}
++    for path, (title, rid) in pages.items():
++        html = (built / unquote(path).strip("/") / "index.html").read_text("utf-8")
++        canon = re.search(r'<link rel="canonical" href="([^"]+)"', html).group(1)
++        boxes = SHR_BOX.findall(html)
++        assert [b for b in boxes if b[0] == "h-shr"] == [("h-shr", canon, boxes[0][2], rid)], path
++        assert f'<p class="shr-h" id="h-shr">' in html and f"<span>{title}</span>" in html, path
++        assert f'data-shr-key="{key}" data-shr-sdk="{share.SDK}" data-shr-sri="{share.SDK_SRI}"' in html, path
++        for do in ("kakao", "copy_link", "sms", "web_share", "facebook", "x", "band"):
++            assert f'data-shr-do="{do}"' in html, (path, do)
++        assert f"utm_medium%3Dfacebook" in html and 'class="shr-qr-i"' in html, path
++        box_at = html.index('id="h-shr"')
++        if path == motte["_path"]:
++            assert html.index("data-route") < box_at < html.index('class="pv '), path
++        elif "/events/" not in path and 'id="h-see"' in html:
++            assert box_at < html.index('id="h-see"'), path
++    home = (built / "index.html").read_text("utf-8")
++    assert re.search(r'<section class="home-shr[^"]*" id="share" aria-labelledby="h-home-shr">', home)
++    assert home.index('id="share"') < home.index('제휴·관련 사이트', home.index('id="share"'))
++    site_url = S.site["site_url"].rstrip("/") + "/"
++    assert ("h-home-shr", site_url, "군산각", "site") in SHR_BOX.findall(home)
++    for path in ("index.html", "places/index.html", unquote(motte["_path"]).strip("/") + "/index.html"):
++        html = (built / path).read_text("utf-8")
++        assert html.count('<dialog class="shr-dlg" id="shr-site"') == 1, path
++        assert ("shr-site-h", site_url, "군산각", "site") in SHR_BOX.findall(html), path
++        assert html.count('<a class="sd-shr-a" href="/#share" data-shr-open="shr-site">') == 2, path
++        side = html[html.index('<div class="side">'):]
++        assert side.index('class="sd-shr"') < side.index('class="sd-pt"'), path
++
++
++def test_link_previews_show_a_type1_photo_or_the_sites_picture(S, built):
++    """Operator 2026-11-11 ('2번은 니 권장안대로'): previews crop and a Type3 photo may not be cropped, so og:image is a
++    Type1 photo only — a place page without one shows the logo card (no illustration: CLAUDE.md 4), the other pages
++    the site's link-preview picture."""
++    from urllib.parse import unquote
++    type3 = {im["url"] for e in S.entities for im in e["_images"] if im.get("license") != "KOGL-1"}
++    type1 = {im["url"] for e in S.entities for im in e["_images"] if im.get("license") == "KOGL-1"}
++    card = S.site["site_url"].rstrip("/") + "/assets/brand/og-card.png"
++    seen = {"card": 0, "photo": 0}
++    for e in S.entities:
++        if not (built / unquote(e["_path"]).strip("/") / "index.html").is_file():
++            continue
++        html = (built / unquote(e["_path"]).strip("/") / "index.html").read_text("utf-8")
++        og = re.search(r'<meta property="og:image" content="([^"]+)"', html).group(1)
++        own1 = [im["url"] for im in e["_images"] if im.get("license") == "KOGL-1"]
++        assert og == (own1[0] if own1 else card), e["id"]
++        seen["card" if og == card else "photo"] += 1
++        if og == card:
++            assert '<meta property="og:image:alt" content="군산각 로고">' in html, e["id"]
++    assert seen["card"] and seen["photo"]
++    assert (built / "assets" / "brand" / "og-card.png").is_file()
++    for f in [built / "index.html", *built.glob("guides/*/index.html"), *built.glob("courses/*/index.html"),
++              *built.glob("themes/*/index.html"), built / "places" / "index.html", built / "columns" / "index.html"]:
++        og = re.search(r'<meta property="og:image" content="([^"]+)"', f.read_text("utf-8"))
++        assert og and og.group(1) not in type3, f
++        assert og.group(1) in type1 or "/assets/art/og-" in og.group(1), f
++
++
++def test_the_send_box_copies_hands_kakaotalk_the_address_and_counts_in_ga4(S, built):
++    """In a browser (Playwright + Chromium) on a 360px phone: the box fits the screen with tiles of 44px or more; 링크
++    복사 copies the canonical address tagged copy_link and says so; 카카오톡 hands Kakao.Share.sendScrap the address
++    tagged kakao after Kakao.init with the site's key (a stand-in SDK); without the SDK (blocked) the link is copied
++    with the note '카카오톡을 열지 못해 …'; 문자 is a link tagged sms; every one sends GA4 'share' with its method.
++    On a 1440px screen the panel's '군산각 공유하기' opens the site's box in a dialog (페이스북 · X · 밴드 and the QR code
++    shown, the phone tiles hidden), its 링크 복사 copies the home's address with the note inside the dialog, and
++    Escape closes it."""
++    sync_api = pytest.importorskip("playwright.sync_api")
++    e = S.ent_by_slug["모트"]
++    path = f"http://site.test{quote(e['_path'])}"
++    kakao_stub = """window.__kakao = [];
++window.Kakao = {_on: false, isInitialized: function () { return this._on; },
++  init: function (k) { this._on = true; window.__kakao.push(['init', k]); },
++  Share: {sendScrap: function (o) { window.__kakao.push(['scrap', o.requestUrl]); }}};"""
++    with sync_api.sync_playwright() as p:
++        try:
++            browser = p.chromium.launch()
++        except Exception as ex:  # noqa: BLE001 — Chromium is not installed here
++            pytest.skip(f"Chromium 없음: {ex}")
++        try:
++            want = {"content_type": "place-food", "item_id": e["id"]}
++            for stub in (True, False):
++                ctx = browser.new_context(viewport={"width": 360, "height": 740}, is_mobile=True, has_touch=True)
++                ctx.add_init_script(SHARE_STUBS + (kakao_stub if stub else ""))
++                ctx.route("**/*", _serve(built))
++                page = ctx.new_page()
++                page.goto(f"{path}?share=none", wait_until="load")
++                canon = page.get_attribute('link[rel="canonical"]', "href")
++                box = page.locator(".pl-head [data-shr]")
++                box.scroll_into_view_if_needed()
++                assert page.evaluate("document.documentElement.scrollWidth") <= 360
++                tiles = box.locator(".shr-b:visible")
++                assert tiles.all_inner_texts() == ["카카오톡", "링크 복사", "문자"]   # 더보기: no share sheet here
++                for t in tiles.all():
++                    bb = t.bounding_box()
++                    assert bb["width"] >= 44 and bb["height"] >= 44 and bb["x"] + bb["width"] <= 360
++                assert box.locator('[data-shr-do="sms"]').get_attribute("href").endswith(
++                    quote(f"{canon}?utm_source=share&utm_medium=sms", safe=""))
++                box.locator('[data-shr-do="kakao"]').click()
++                page.wait_for_timeout(400)
++                ev, cop = page.evaluate("window.__events"), page.evaluate("window.__copied")
++                note = page.locator("body > .share-note")
++                if stub:
++                    assert page.evaluate("window.__kakao") == [["init", S.site["kakao_js_key"]],
++                                                               ["scrap", f"{canon}?utm_source=share&utm_medium=kakao"]]
++                    assert ev == [["share", {"method": "kakao", **want}]] and cop == []
++                    box.locator('[data-shr-do="copy_link"]').click()
++                    page.wait_for_timeout(300)
++                    assert page.evaluate("window.__copied") == [f"{canon}?utm_source=share&utm_medium=copy_link"]
++                    assert note.inner_text() == "링크를 복사했습니다"
++                    box.locator('[data-shr-do="sms"]').evaluate("a => a.addEventListener('click', ev => ev.preventDefault())")
++                    box.locator('[data-shr-do="sms"]').click()
++                    assert page.evaluate("window.__events")[-2:] == [["share", {"method": "copy_link", **want}],
++                                                                    ["share", {"method": "sms", **want}]]
++                else:
++                    assert cop == [f"{canon}?utm_source=share&utm_medium=copy_link"]
++                    assert note.inner_text() == "카카오톡을 열지 못해 링크를 복사했습니다"
++                    assert ev == [["share", {"method": "copy_link", **want}]]
++                ctx.close()
++            ctx = browser.new_context(viewport={"width": 1440, "height": 900})
++            ctx.add_init_script(SHARE_STUBS)
++            ctx.route("**/*", _serve(built))
++            page = ctx.new_page()
++            page.goto(path, wait_until="load")
++            pc = page.locator(".pl-head [data-shr] .shr-b:visible")
++            assert [t.split("(")[0].strip() for t in pc.all_inner_texts()] == ["카카오톡", "링크 복사", "페이스북", "X", "밴드"]
++            assert page.locator(".pl-head [data-shr] .shr-qr-i").is_visible()
++            page.locator(".side [data-shr-open]").click()
++            dlg = page.locator("dialog[data-shr-dlg]")
++            assert dlg.evaluate("d => d.open")
++            dlg.locator('[data-shr-do="copy_link"]').click()
++            page.wait_for_timeout(300)
++            home = S.site["site_url"].rstrip("/") + "/"
++            assert page.evaluate("window.__copied") == [f"{home}?utm_source=share&utm_medium=copy_link"]
++            assert dlg.locator(".share-note").inner_text() == "링크를 복사했습니다"
++            assert page.evaluate("window.__events")[-1] == ["share", {"method": "copy_link", "content_type": "place-food",
++                                                                       "item_id": "site"}]
++            page.keyboard.press("Escape")
++            assert not dlg.evaluate("d => d.open")
++            ctx.close()
++        finally:
++            browser.close()
++
++
+ def test_the_site_name_and_the_logos_colour_its_end():
+     """Operator 2026-10-17 (ChatGPT colour study A, 'gak' too): the bar's and the footer's name keeps its text and puts
+     its end in .wm-em (군산<각>, Gunsan<gak>); the light logos draw 각 and gak in the site blue #2F6FC9, the reverse in
+-- 
+2.43.0
+

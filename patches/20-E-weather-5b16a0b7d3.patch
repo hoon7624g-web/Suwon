@@ -1,0 +1,129 @@
+From 5b16a0b7d3be2338845893631bab388e384a5753 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Thu, 12 Nov 2026 05:51:34 +0000
+Subject: [PATCH] =?UTF-8?q?fix(site):=20=EB=82=A0=EC=94=A8=20=EC=B9=B4?=
+ =?UTF-8?q?=EB=93=9C=20'=EC=9E=90=EC=84=B8=ED=9E=88=20=EB=B3=B4=EA=B8=B0'?=
+ =?UTF-8?q?=EB=A5=BC=20=EB=82=A0=EC=94=A8=EA=B0=81=EC=9D=98=20=EA=B5=B0?=
+ =?UTF-8?q?=EC=82=B0=20=ED=8E=98=EC=9D=B4=EC=A7=80=EB=A1=9C(today/jeonbuk/?=
+ =?UTF-8?q?gunsan)?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+날씨각 2026-11-12 메일 '[공유]날씨각 지역 주소 목록' — 날씨각 홈은 보는 사람 위치의 날씨를 보여
+지역각에서는 https://weather.o2o.kr/today/{path}를 쓴다. 군산 path는 날씨각 sitemap에서 확인.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Vhf1SzcdSAwnkfrs9wbu8Z
+---
+ pipeline/present.py          | 13 +++++++++----
+ templates/_side.html.j2      |  2 +-
+ tests/test_sidebar_layout.py | 11 ++++++-----
+ 3 files changed, 16 insertions(+), 10 deletions(-)
+
+diff --git a/pipeline/present.py b/pipeline/present.py
+index 81371e94f3..f9cfef8406 100644
+--- a/pipeline/present.py
++++ b/pipeline/present.py
+@@ -5271,19 +5271,24 @@ def page_chrome(page_kind: str, has_courses: bool) -> dict:
+ WEATHER_FEED = "https://weather.o2o.kr/v1/feed?region={code}"
+ WEATHER_API = "https://weather.o2o.kr/v1/weather/today?region={code}"
+ WEATHER_HOME = "https://weather.o2o.kr/"
+-WEATHER_REGIONS = {"군산": "5213000000"}   # 행정표준코드 전북 군산시
++# '자세히 보기' opens 날씨각's page of the region, not its home (날씨각 2026-11-12 메일 '[공유]날씨각 지역 주소 목록': the
++# home shows the reader's own location; 대표님 — the ○○각 region's weather): https://weather.o2o.kr/today/{path}, path
++# from 날씨각's region list (its sitemap has the same pages; /today/jeonbuk/gunsan is '군산시 오늘 날씨', region 5213000000)
++WEATHER_PAGE = "https://weather.o2o.kr/today/{path}"
++WEATHER_REGIONS = {"군산": ("5213000000", "jeonbuk/gunsan")}   # (행정표준코드, 날씨각 path) 전북 군산시
+ 
+ 
+ def weather_vm(region_ko: str, code: str, region_label: str) -> dict | None:
+     """The weather card's hook ({feed, api, home, title, go, js}) in one version, or None for a region 날씨각 has no
+-    code for. js: the words weather.js draws with (more, score, slots, feels, hum, sky), the version's language (its
++    code for. home: the region's own 날씨각 page (WEATHER_PAGE) — '자세히 보기'. js: the words weather.js draws with (more, score, slots, feels, hum, sky), the version's language (its
+     date) and ko (the Korean pages show 날씨각's own sentences — bubble, summary, status; the other versions the score,
+     the figures, the icons and the cells' names in their words)."""
+-    rc = WEATHER_REGIONS.get(region_ko or "")
++    rc, path = WEATHER_REGIONS.get(region_ko or "") or ("", "")
+     if not rc:
+         return None
+     w = LC.SIDE_WORDS[code]
+-    return {"feed": WEATHER_FEED.format(code=rc), "api": WEATHER_API.format(code=rc), "home": WEATHER_HOME,
++    return {"feed": WEATHER_FEED.format(code=rc), "api": WEATHER_API.format(code=rc),
++            "home": WEATHER_PAGE.format(path=path) if path else WEATHER_HOME,
+             "title": w["wx_title"].format(r=region_label), "go": w["wx_go"].format(r=region_label),
+             "js": {"more": w["wx_more"], "score": w["wx_score"], "slots": w["wx_slots"], "feels": w["wx_feels"],
+                    "hum": w["wx_hum"], "sky": w["sky"], "lang": "ko" if code == "ko" else LC.get(code).html,
+diff --git a/templates/_side.html.j2 b/templates/_side.html.j2
+index b675a98e3f..cc6909db81 100644
+--- a/templates/_side.html.j2
++++ b/templates/_side.html.j2
+@@ -20,7 +20,7 @@
+     weather(wx, variant): 날씨각's own first-screen card (operator 2026-10-31 '날씨각 실제 디자인으로'), 'home' (the
+       homes, under the first screen: the card as 날씨각 draws it) or 'side' (the panel: the same card, small — the sun or
+       moon with the score, the bubble, the four cells). The HTML holds no weather value: the card's name and the link
+-      to weather.o2o.kr ('군산 날씨 보기' — no source words: 날씨각 is the operator's), which is all a reader without
++      to the region's 날씨각 page (weather.o2o.kr/today/<path>, present.WEATHER_PAGE; '군산 날씨 보기' — no source words: 날씨각 is the operator's), which is all a reader without
+       JavaScript (or after a failed or late answer) gets. assets/weather.js (site.js attaches it after the page has
+       loaded, when a card is on screen) asks the feed (data-wx) and the day's slots (data-wx-day) and draws the card
+       in the room css/80-side.css keeps for it; the drawn card is one link (its 자세히 보기 covers it). -#}
+diff --git a/tests/test_sidebar_layout.py b/tests/test_sidebar_layout.py
+index 6d54e89270..bf7281fac7 100644
+--- a/tests/test_sidebar_layout.py
++++ b/tests/test_sidebar_layout.py
+@@ -26,6 +26,7 @@ from pipeline.build import build
+ from conftest import feed_answer, route_weather, weather_answer
+ 
+ ROOT = Path(__file__).resolve().parent.parent
++WX_PAGE = "https://weather.o2o.kr/today/jeonbuk/gunsan"   # 날씨각의 군산 페이지 (자세히 보기, 2026-11-12)
+ DATA, SAMPLE = ROOT / "data" / "gunsan", ROOT / "data" / "sample"
+ HANGUL = re.compile(r"[가-힣]")
+ # the words 'source' and the service's name, in every version (operator 2026-10-31 '출처: 날씨각 표기 필요없어 우리 회사 거야')
+@@ -185,7 +186,7 @@ def test_the_weather_module_holds_no_value_in_the_html(built):
+             w = json.loads(unescape(words))
+             assert w["ko"] is (lang == "ko") and w["slots"] == LC.SIDE_WORDS[code]["wx_slots"] and w["lang"]
+             assert "°" not in inner and "%" not in inner and "지금은" not in inner, (path, inner)
+-            assert '<a class="wx-go" href="https://weather.o2o.kr/" rel="noopener" data-wx-go>' in inner
++            assert '<a class="wx-go" href="https://weather.o2o.kr/today/jeonbuk/gunsan" rel="noopener" data-wx-go>' in inner
+             assert not SOURCE.search(unescape(inner) + unescape(words)), (path, inner)
+         region = "군산" if code == "ko" else LC.get(code).city if code != "en" else "Gunsan"
+         assert LC.SIDE_WORDS[code]["wx_go"].format(r=region) in unescape(html), path
+@@ -387,7 +388,7 @@ def test_the_weather_module_fills_its_room_after_load(browser, built):
+     assert page.evaluate("window.__wx") == ["complete", "complete"] and len(calls) == 2, calls
+     assert {c.split("?")[0] for c in calls} == {"https://weather.o2o.kr/v1/feed", "https://weather.o2o.kr/v1/weather/today"}
+     c = page.evaluate(CARD, ".wx-side")
+-    assert c["t"] == "night" and c["h"] == 246 and c["inside"] and c["link"] == "https://weather.o2o.kr/", c
++    assert c["t"] == "night" and c["h"] == 246 and c["inside"] and c["link"] == WX_PAGE, c
+     assert box.locator(".wx-sc small").inner_text() == "지금 날씨 점수" and box.locator(".wx-sc b").inner_text() == "60"
+     assert box.locator(".wx-moon .wx-mo").count() == 1   # the moon (기우는 달, 64%) at night
+     assert box.locator(".wx-bub").inner_text() == "지금은 러닝각!" and box.locator(".wx-sum, .wx-st").count() == 0
+@@ -397,7 +398,7 @@ def test_the_weather_module_fills_its_room_after_load(browser, built):
+                                                  ("지금", "10°", True)], got
+     assert all(g[3].startswith("/assets/wx/") and g[3].endswith(".webp") and g[4] in sky.values() for g in got), got
+     go = box.locator(".wx-go")
+-    assert go.get_attribute("href") == "https://weather.o2o.kr/" and "자세히 보기" in go.inner_text()
++    assert go.get_attribute("href") == WX_PAGE and "자세히 보기" in go.inner_text()
+     assert not SOURCE.search(box.inner_text()), box.inner_text()
+     # the panel is the first screen: its card floats, but does not drop in
+     assert page.evaluate("getComputedStyle(document.querySelector('.wx-side .wx-ob')).animationName") == "none"
+@@ -417,7 +418,7 @@ def test_the_weather_module_fills_its_room_after_load(browser, built):
+     assert page.evaluate("window.__wx") == ["complete", "complete"] and len(calls) == 2
+     page.wait_for_timeout(1300)   # past the drop-in
+     c = page.evaluate(CARD, ".wx-home")
+-    assert c["h"] == 401 and (h0["ready"] or h0["h"] == 401) and c["inside"] and c["link"] == "https://weather.o2o.kr/", (h0, c)
++    assert c["h"] == 401 and (h0["ready"] or h0["h"] == 401) and c["inside"] and c["link"] == WX_PAGE, (h0, c)
+     home = page.locator(".wx-home")
+     assert home.locator(".wx-bub").inner_text() == "지금은 러닝각!"
+     assert home.locator(".wx-sum").inner_text() == "오후 7시 10°, 바람 살랑"
+@@ -526,7 +527,7 @@ def test_on_a_short_window_the_day_card_folds_and_the_menu_shows(browser, built,
+         h0 = page.locator(".wx-side").bounding_box()["height"]
+         page.wait_for_selector(".wx-side.is-ready", timeout=8000)
+         c = page.evaluate(CARD, ".wx-side")
+-        assert h0 == want and c["h"] == want and c["inside"] and c["link"] == "https://weather.o2o.kr/", (path, height, h0, c)
++        assert h0 == want and c["h"] == want and c["inside"] and c["link"] == WX_PAGE, (path, height, h0, c)
+         strip = page.evaluate("getComputedStyle(document.querySelector('.wx-side .wx-strip')).display")
+         assert (strip == "none") == (height < 1020), (path, height, strip)
+         if path == "/en/":
+-- 
+2.43.0
+

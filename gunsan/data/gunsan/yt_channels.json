@@ -1,0 +1,385 @@
+{
+  "description": "군산 여행·맛집·로컬 문화를 다룬 인기 유튜브 채널 및 화제 영상 큐레이션 (CLAUDE.md 3.10 준수)",
+  "checked_at": "2026-10-08",
+  "popular_video_ids": [
+    "PUWwFTzh-zc",
+    "KPDIICT9lUE",
+    "KBqjqXRJoiY",
+    "77O9DlR6rCk",
+    "YhLQ6V89VqE",
+    "s4pj0hA5vqA",
+    "sFRgatf_Ccw",
+    "17KwFK9VnEs",
+    "8Szk64LZu5c",
+    "khutf4Igrw4",
+    "NpmK36m-ddQ",
+    "syhNUAFYXcQ",
+    "grNA8wnRkew",
+    "KgJH0GpnzDA",
+    "atgqO8-0pSw",
+    "ShOg5vw2UT0",
+    "RRmBj_yr2lw",
+    "SAsxIoaPE6U",
+    "yPIyEFg0RJs",
+    "P_glcguXzW4",
+    "I95KNxD9S3g",
+    "4KvvEc8wF88",
+    "r8L1GMrz-Ak",
+    "ORaZBIHHvWU",
+    "wMCAWWtSS0o",
+    "f0mWJSJfH5Q",
+    "9Lp067gu5FE",
+    "HcUH0KNCW3c",
+    "3wltBUGuLa8",
+    "v-u3Z1dykUk",
+    "9y4KMnA1f8w",
+    "SthYqX0-t0s",
+    "-amnYn4bAgQ",
+    "DxMv6afbI4Q",
+    "xD1Ysn_z37c",
+    "p_-b6ZTSCW8",
+    "GuLt1bbrAmU",
+    "Uq98owHlpyM",
+    "KPFdnvsSJC8",
+    "iYAKvnzlWAA",
+    "zonHGmX9Pvc",
+    "MolvgIvIs2w",
+    "82qpQLM62mM",
+    "PdRugGPQFYU",
+    "Al9x2F_exrE",
+    "QAD78kQ09Ss",
+    "hLD_afaW-8k",
+    "nftqp1fIGLg",
+    "pKhISsLrCJc",
+    "5fEOcNs9NQc",
+    "KTimlxTtyNA",
+    "YWYR_higY_Q",
+    "oy-JtZyasw8",
+    "Hg_jMEIMNSk",
+    "BOftYg5YfJs",
+    "bjYI4STHlEg",
+    "lp4uM4AA68s",
+    "NZtvc8hfbp8",
+    "7L4U71w5k-0",
+    "KxZcF9YKFJs",
+    "qzaB4DxP-RQ",
+    "a-prZwY9l_g",
+    "U_mmbPWfjbU",
+    "TI6qM5wZZWI",
+    "jrWfojEf-P0",
+    "eGAe-24ILD8",
+    "MP1NxX0_VHI",
+    "RMPiI9xhErg",
+    "XrMCDljT8UI"
+  ],
+  "channels": [
+    {
+      "id": "yt-ch-dulcinea",
+      "handle": "@dulcinea_studio · 구독자 11만명",
+      "name": "둘시네아 dulcinea",
+      "badge": "군산 로컬 미식",
+      "url": "https://www.youtube.com/@dulcinea_studio",
+      "note": "군산 백반·짬뽕·현지인 예약 노포 시리즈 9편 이상(합산 162만뷰+)을 제작한 미식 탐방 채널.",
+      "links": [
+        {
+          "label": "군산 짬뽕 분석 영상",
+          "href": "/videos/#yt-popular"
+        },
+        {
+          "label": "복성루",
+          "href": "/places/복성루/"
+        },
+        {
+          "label": "지린성",
+          "href": "/places/지린성/"
+        },
+        {
+          "label": "빈해원",
+          "href": "/places/빈해원/"
+        }
+      ],
+      "status": "published"
+    },
+    {
+      "id": "yt-ch-tzuyang",
+      "handle": "@tzuyang6145 · 구독자 1,350만명",
+      "name": "tzuyang쯔양",
+      "badge": "메가 크리에이터",
+      "url": "https://www.youtube.com/@tzuyang6145",
+      "note": "군산 소곱창·떡갈비·3대 짬뽕 노포 먹방 3편으로 합산 1,075만 조회수를 기록한 먹방 채널.",
+      "links": [
+        {
+          "label": "떡갈비 348만뷰 영상",
+          "href": "/videos/#yt-popular"
+        },
+        {
+          "label": "완주옥",
+          "href": "/places/완주옥/"
+        },
+        {
+          "label": "복성루",
+          "href": "/places/복성루/"
+        }
+      ],
+      "status": "published"
+    },
+    {
+      "id": "yt-ch-suze",
+      "handle": "@STUDIO_SUZE · 구독자 126만명",
+      "name": "스튜디오 수제 (또간집)",
+      "badge": "웹예능 화제작",
+      "url": "https://www.youtube.com/@STUDIO_SUZE",
+      "note": "군산 시민 길거리 인터뷰로 중식당과 현지인 단골 식당을 찾아간 『또간집 EP.63 군산 편』(249만뷰) 공식 채널.",
+      "links": [
+        {
+          "label": "또간집 군산 편 보기",
+          "href": "/videos/#yt-popular"
+        },
+        {
+          "label": "빈해원",
+          "href": "/places/빈해원/"
+        },
+        {
+          "label": "지린성",
+          "href": "/places/지린성/"
+        },
+        {
+          "label": "일해옥",
+          "href": "/places/일해옥/"
+        }
+      ],
+      "status": "published"
+    },
+    {
+      "id": "yt-ch-mattsajang",
+      "handle": "@mattsajang · 구독자 4.89만명",
+      "name": "맛사장",
+      "badge": "미식 총정리",
+      "url": "https://www.youtube.com/@mattsajang",
+      "note": "『꼭 먹고 와야 하는 군산맛집 7군데 총정리』(106만뷰) 등 백반집·실비집·생선구이·소고기무국 노포를 정리한 미식 가이드 채널.",
+      "links": [
+        {
+          "label": "군산맛집 7곳 총정리",
+          "href": "/videos/#yt-popular"
+        },
+        {
+          "label": "서우식당",
+          "href": "/places/서우식당/"
+        },
+        {
+          "label": "한일옥",
+          "href": "/places/한일옥/"
+        },
+        {
+          "label": "태성반점",
+          "href": "/places/태성반점/"
+        }
+      ],
+      "status": "published"
+    },
+    {
+      "id": "yt-ch-sunwoo",
+      "handle": "@순풍선우용여 · 구독자 59.4만명",
+      "name": "순풍 선우용여",
+      "badge": "셀럽 여행",
+      "url": "https://www.youtube.com/@%EC%88%9C%ED%92%8D%EC%84%A0%EC%9A%B0%EC%9A%A9%EC%97%AC",
+      "note": "군산 출신 이경실과 선우용여가 함께 떠난 군산 고향 여행기(130만뷰)를 올린 채널.",
+      "links": [
+        {
+          "label": "군산 여행 130만뷰 영상",
+          "href": "/videos/#yt-popular"
+        },
+        {
+          "label": "초원사진관",
+          "href": "/places/초원사진관/"
+        },
+        {
+          "label": "경암동 철길마을",
+          "href": "/places/경암동-철길마을/"
+        },
+        {
+          "label": "선유도",
+          "href": "/places/선유도/"
+        }
+      ],
+      "status": "published"
+    },
+    {
+      "id": "yt-ch-hawasoo",
+      "handle": "@무도하와수 · 구독자 22.5만명",
+      "name": "하와수 (박명수·정준하)",
+      "badge": "셀럽 여행",
+      "url": "https://www.youtube.com/@%EB%AC%B4%EB%8F%84%ED%95%98%EC%99%80%EC%88%98",
+      "note": "고향 군산을 찾은 박명수와 정준하가 초원사진관·원도심 거리와 점심 3끼 맛집 투어를 즐기는 당일치기 군산 여행기(124만뷰) 채널.",
+      "links": [
+        {
+          "label": "하와수 군산 편 보기",
+          "href": "/videos/#yt-popular"
+        },
+        {
+          "label": "초원사진관",
+          "href": "/places/초원사진관/"
+        },
+        {
+          "label": "경암동 철길마을",
+          "href": "/places/경암동-철길마을/"
+        },
+        {
+          "label": "이성당",
+          "href": "/places/이성당/"
+        }
+      ],
+      "status": "published"
+    },
+    {
+      "id": "yt-ch-sookoh",
+      "handle": "@Sookohaseyo · 구독자 26.1만명",
+      "name": "sookoh 수코",
+      "badge": "나혼자 여행",
+      "url": "https://www.youtube.com/@Sookohaseyo",
+      "note": "『나혼자 군산 당일치기』(90만뷰) 영상에서 군산 원도심 산책과 혼술·노포 코스를 다닌 브이로그 채널.",
+      "links": [
+        {
+          "label": "나혼자 군산 90만뷰",
+          "href": "/videos/#yt-popular"
+        },
+        {
+          "label": "이성당",
+          "href": "/places/이성당/"
+        },
+        {
+          "label": "초원사진관",
+          "href": "/places/초원사진관/"
+        },
+        {
+          "label": "안동집",
+          "href": "/places/안동집/"
+        }
+      ],
+      "status": "published"
+    },
+    {
+      "id": "yt-ch-yoovlog",
+      "handle": "@yoovlog · 구독자 60.2만명",
+      "name": "yoovlog",
+      "badge": "가족 미식 여행",
+      "url": "https://www.youtube.com/@yoovlog",
+      "note": "곱창·짬뽕·디저트·칼국수까지 가족이 함께 다닌 군산 맛집 여행기(49만뷰)를 올린 채널.",
+      "links": [
+        {
+          "label": "가족 맛집 여행 영상",
+          "href": "/videos/#yt-popular"
+        },
+        {
+          "label": "또또생곱창",
+          "href": "/places/또또생곱창/"
+        },
+        {
+          "label": "이성당",
+          "href": "/places/이성당/"
+        },
+        {
+          "label": "초원사진관",
+          "href": "/places/초원사진관/"
+        }
+      ],
+      "status": "published"
+    },
+    {
+      "id": "yt-ch-doncat",
+      "handle": "@doncatplex · 구독자 20.3만명",
+      "name": "돈캣 PL․EX",
+      "badge": "여행 풀코스",
+      "url": "https://www.youtube.com/@doncatplex",
+      "note": "원도심 대표 맛집부터 새만금·고군산군도 드라이브까지 『군산 여행의 모든 것 완벽 풀코스』(25만뷰)와 실전 팁을 정리한 여행 가이드 채널.",
+      "links": [
+        {
+          "label": "군산 풀코스 영상",
+          "href": "/videos/#yt-popular"
+        },
+        {
+          "label": "한일옥",
+          "href": "/places/한일옥/"
+        },
+        {
+          "label": "오구이",
+          "href": "/places/오구이/"
+        },
+        {
+          "label": "선유도",
+          "href": "/places/선유도/"
+        }
+      ],
+      "status": "published"
+    },
+    {
+      "id": "yt-ch-yuyoungmin",
+      "handle": "@꿈에흑돈 · 구독자 2.64천명",
+      "name": "유영민의 맛이보인당게",
+      "badge": "군산·전북 노포",
+      "url": "https://www.youtube.com/@%EA%BF%88%EC%97%90%ED%9D%91%EB%8F%88",
+      "note": "『구역전시장의 아침풍광』(15만뷰) 등 오전 7시 이전의 군산 새벽시장 풍경과 현지인 백반·국밥 노포를 기록하는 로컬 미식 채널.",
+      "links": [
+        {
+          "label": "구역전시장 아침풍광",
+          "href": "/videos/#yt-popular"
+        },
+        {
+          "label": "역전종합시장",
+          "href": "/places/역전종합시장/"
+        },
+        {
+          "label": "군산 음식점",
+          "href": "/food/"
+        }
+      ],
+      "status": "published"
+    },
+    {
+      "id": "yt-ch-gunsansi",
+      "handle": "@gunsansi · 구독자 2.24만명",
+      "name": "군산시 공식채널",
+      "badge": "지자체 공식",
+      "url": "https://www.youtube.com/@gunsansi",
+      "note": "군산시 공식 관광 홍보 영상과 수제맥주 블루스 페스티벌(91만뷰)·군산시간여행축제 밈 영상(12만뷰) 등 시정·축제 소식을 전하는 공식 채널.",
+      "links": [
+        {
+          "label": "축제·행사 영상",
+          "href": "/videos/축제/"
+        },
+        {
+          "label": "행사·축제 일정",
+          "href": "/events/"
+        },
+        {
+          "label": "근대역사박물관",
+          "href": "/places/근대역사박물관/"
+        }
+      ],
+      "status": "published"
+    },
+    {
+      "id": "yt-ch-jeonjumbc",
+      "handle": "@jeonju_mbc · 구독자 38만명",
+      "name": "전주MBC Original",
+      "badge": "지역 방송사",
+      "url": "https://www.youtube.com/@jeonju_mbc",
+      "note": "고군산섬잇길 5개 섬 트레킹 다큐멘터리와 군산 근대역사·해양 문화 영상을 올리는 전북 지역 방송사 채널.",
+      "links": [
+        {
+          "label": "섬·바다 영상",
+          "href": "/videos/섬-바다/"
+        },
+        {
+          "label": "고군산섬잇길",
+          "href": "/places/고군산섬잇길/"
+        },
+        {
+          "label": "선유도",
+          "href": "/places/선유도/"
+        }
+      ],
+      "status": "published"
+    }
+  ]
+}

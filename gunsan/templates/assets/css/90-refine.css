@@ -1,0 +1,394 @@
+/* 90-refine — the calm pass (operator 2026-11-10: '사이트가 전체적으로 더 고급지고 정돈된 느낌 … 정보가 직관적으로 잘
+   들어오고, 정보들 간의 연결성도 좋게', after the review of the same day). The last partial: it does not add a look, it
+   takes weight off the ones before it. The rules are this pass's own, drawn from that review — where they change an
+   earlier operator decision (the launcher's size from 1200px, the panel's day card on a short window, the quick menu
+   from 1200px, the home's order) the handover log says so, for the operator to confirm. The rules it keeps:
+
+   1. One accent per screen. Sea blue is the accent; chick yellow is the one booking button; red is a closed day.
+      A value is the loudest thing in its tile — its picture and its label step back.
+   2. Bold is for names, headings and the value a visitor decides with. Running text, labels, captions and chips are 400.
+   3. The 3D pictures are doors (the home's four lists, a row or page without a photo), not ornaments of a fact.
+   4. Nothing floats over content: the launcher and 'top' live in the page's margin (from 1200px the margins are equal),
+      on a phone place page the assistant is a button of the bottom bar.
+   5. A section's heading says the section; the place's name in it is the quiet part.
+   6. Chrome gives way to navigation: on a short window the panel's day card folds so the menu's first group shows.
+
+   Contrast kept (00-tokens head): ink-2 on white 9.36, ink-3 on white 5.62 / bg-2 5.2, sea-deep on tint 7.13.
+   Targets: 44px (the panel's rows too: tests/test_sidebar_layout.py). */
+
+/* ================================================================ 1. the chrome */
+
+/* ---- from 1200px: equal margins, the launcher and 'top' inside the right one, no quick menu (the panel has the
+   search and every list). 1200–1771px: until the column is wider than the content's 1200px the page kept a 124px
+   gutter at the right only (46-quick) — the content sat off-centre and the home's own rules took the gutter back,
+   so the menu lay over its cards. */
+@media (min-width: 1200px) {
+  /* the launcher's size: every version (the other versions keep their own margins; a 68px button covers less of
+     them). 49-chat (operator 2026-10-31 '더 잘 보이게 키워') set 100px from 1024px — it stays 100px up to 1199px, where
+     the page keeps a 124px gutter for it (46-quick); from 1200px it is the size that fits the page's 88px margin. It
+     keeps its sea ring, its 'AI 챗봇' tag and the halo after load. */
+  .chat-fab { right: 10px; bottom: 28px; width: 68px; height: 68px; box-shadow: 0 8px 22px rgba(18, 32, 56, .18), 0 2px 5px rgba(18, 32, 56, .1), inset 0 0 0 2px var(--sea); }
+  .chat-fab-face { width: 68px; height: 68px; }
+  .chat-fab-face img { width: 54px; height: 54px; }
+  .chat-fab-l { bottom: -10px; padding: 4px 9px; font-size: 12.5px; }
+  html.js .foot { padding-bottom: calc(112px + env(safe-area-inset-bottom, 0px)); }
+  html[lang="ko"] .qm { right: 22px; bottom: 118px; padding: 0; border-radius: 50%; box-shadow: var(--shadow-1); }
+  html[lang="ko"] .qm li:not(:last-child) { display: none; }
+  html[lang="ko"] .qm-i { width: 44px; height: 44px; }
+}
+@media (min-width: 1200px) and (max-width: 1771px) {
+  html[lang="ko"] { --m: 88px; }
+  html[lang="ko"] main .wrap, html[lang="ko"] .foot .wrap, html[lang="ko"] .crumbs-bar .wrap { padding-right: var(--m); }
+  html[lang="ko"] main .car-view { margin-right: var(--m); }
+  /* the home's rows (81-home-mz kept the 124px gutter on them): the guide tiles' grid ends at the margin as its
+     heading does; the place cards' sideways row ends there too, clear of the launcher */
+  html[lang="ko"] main .car-mzt .car-view { margin-right: 0; padding-right: var(--ml); }
+  html[lang="ko"] main .car-fp .car-view { margin-right: var(--m); padding-right: 0; }
+  html[lang="ko"] main .gd-toc { padding-right: var(--m); }   /* the contents row ends clear of the launcher */
+  html[lang="ko"] .story.is-staged .st-grid { grid-template-columns: var(--ml) minmax(0, calc((min(var(--cw), var(--maxw) + 2 * var(--m)) - 2 * var(--m)) * .4)) clamp(32px, 4vw, 72px) minmax(0, 1fr) var(--ml); }
+}
+/* the other versions (no quick menu, no gutter of their own): their column ended 44–52px from the window's edge, so
+   the 68px launcher lay over its last 26–38px — the right ends of FAQ rows, contents links and the footer's last
+   column passed under it (the independent check of the live site, 2026-11-10). The same 88px margins as the Korean
+   pages. */
+@media (min-width: 1200px) and (max-width: 1771px) {
+  html:not([lang="ko"]) { --m: 88px; }
+}
+@media (min-width: 1200px) and (max-width: 1279px) {
+  /* /sun/: with the wider margin the arc's box met the sunset figure (the column is 880–959px here) */
+  html[lang="ko"] .sun-arc { display: none; }
+}
+@media (min-width: 1680px) and (max-width: 1771px) {
+  html[lang="ko"] body.pg-ko-home main .car-mzt .car-view { padding-right: var(--ml); }
+}
+/* the home with its right board (from 1680px, 48-abroad): the board ends above the launcher, which docks under it —
+   nothing lies over the column, so the column keeps its own margins */
+@media (min-width: 1680px) {
+  html[lang="ko"] body.pg-ko-home { --m: clamp(24px, calc(var(--cw) * .046), 64px); --ml: max(var(--m), calc((var(--cw) - var(--maxw)) / 2)); }
+  .h-rside { bottom: 112px; }
+  html[lang="ko"] body.pg-ko-home .chat-fab { right: calc(var(--side-in) + 6px); bottom: 26px; }
+  html[lang="ko"] body.pg-ko-home .qm { right: calc(var(--side-in) + 88px); bottom: 38px; }
+}
+
+/* ---- the panel (from 1200px): on a short window the day card folds so that the menu's first group is on screen
+   above the '문의/제휴' row (measured 2026-11-10: the menu began 757px down — on a 768–900px window no link of it
+   showed; with the card whole at 900px one link did). Under 1020px of height the weather card is its sky and bubble
+   without the four cells (170px) and the sunrise · sunset row one line under its date; under 880px (a laptop's
+   window) the card is one row — the sun or moon with its score, the bubble beside it — and the next event steps out
+   (it is on the home and in 행사 달력). From 1020px the card is 날씨각's drawn size (246 · 220px). The card keeps the
+   room of its size from the first paint at every height (tests/test_sidebar_layout.py); every row stays 44px or more. */
+@media (min-width: 1200px) {
+  .side .sg-s { min-height: 46px; font-size: 16.5px; }
+  .side .sg-a { font-size: 15px; }
+  .side .sg-l { padding-bottom: 8px; }
+}
+/* the other versions' card has no words of its own (weather.js .wx-fold): whole, its four cells say the day; folded,
+   a line says the temperature now and — in one row, where the label inside the sun is not shown — what the number is
+   (found on the live site 2026-11-10: the folded card was a bare '50' under 'Gunsan weather') */
+.wx-side.wx-intl .wx-say { display: none; }
+@media (min-width: 1200px) and (max-height: 1019px) {
+  html.js .wx-side, html.js .wx-side.wx-intl { height: 170px; }
+  .wx-side .wx-strip { display: none; }
+  .wx-side.wx-intl .wx-say { display: block; height: auto; }
+  .wx-side.wx-intl .wx-fold { margin: 0; }
+  .wx-side.wx-intl .wx-fl, .wx-side.wx-intl .wx-fd { display: none; }
+  html.js .wx-side:not(.is-ready):not(.is-failed) .wx-b:empty::after { display: none; }
+  .side .sd-sun { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; padding: 9px 34px 10px 14px; }
+  .side .sd-sun .sd-k { flex-basis: 100%; }
+  .side .sd-sun .sd-sv { flex-direction: row; align-items: baseline; gap: 5px; padding: 0; border-radius: 0; background: none; box-shadow: none; font-size: 12.5px; }
+  .side .sd-sun .sd-sv b { font-size: 15px; line-height: 1.3; }
+  .side .sd-sun .sd-go { top: 50%; margin-top: -4px; }
+}
+@media (min-width: 1200px) and (max-height: 879px) {
+  html.js .wx-side, html.js .wx-side.wx-intl { height: 98px; }
+  html.js .wx-side .wx-b { flex-direction: row; align-items: center; justify-content: flex-start; gap: 10px; }
+  .wx-side .wx-sky { flex: none; width: 48px; max-width: 48px; height: 48px; margin: 0; font-size: 6px; }
+  .wx-side .wx-ob { top: 0; }
+  .wx-side .wx-cl, .wx-side .wx-sc small { display: none; }
+  .wx-side .wx-say { flex: 1 1 auto; width: auto; max-width: none; margin: 0; text-align: left; }
+  .wx-side.wx-intl .wx-fl, .wx-side.wx-intl .wx-fd { display: inline; }
+  .wx-side.wx-intl .wx-fold { line-height: 1.35; }
+  html.js .wx-side:not(.is-ready):not(.is-failed) .wx-b:empty::before { top: 40px; left: 12px; width: 48px; height: 48px; margin-left: 0; }
+  /* no answer: the link under the card's name, not over it (the room is 98px) */
+  html.js .wx-side.is-failed .wx-go { top: 64%; }
+  .side .sd-ev { display: none; }
+}
+
+/* ---- a phone's place page: the assistant is a button of the bottom bar (the launcher covered the phone tile and
+   the photo credit), and the route link the bar holds is not repeated above it */
+.pl-bar-chat { display: none; }
+@media (max-width: 767px) {
+  .pl-bar-chat { flex: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; width: 58px; height: 52px; padding: 0; border: 0; border-radius: 18px; background: var(--bg-2); color: var(--ink); font: 700 11px/1 var(--font); cursor: pointer; }
+  .pl-bar-chat .icon { width: 20px; height: 20px; }
+  html:not(.js) .pl-bar-chat { display: none; }
+  .pl-bar .pl-bar-tel { width: 92px; }
+  body:has(.pl-bar) .chat-fab { display: none; }
+  body:has(.pl-bar-go) .lnav .lnav-cta { display: none; }
+  body:has(.pl-bar-go) .pl-hero .route-row .btn-go { display: none; }
+  body:has(.pl-bar-go) .pl-hero .route-row { grid-template-columns: 1fr 1fr; padding-right: 0; }
+}
+
+/* ---- a phone's fixed areas stay within 15% of the screen together (CLAUDE.md 7): with the 52px bar at the top the
+   tab bar (64px) and a place page's bar (68px) made 15.7% and 16.2% of a 360×740 screen (the independent check of
+   the live site, 2026-11-10). The bottom bar takes what the top bar leaves of 15% — its full height from 780px of
+   screen, 59px at 740, 48px at 667 (a place page's buttons stay 44px, the tab bar 44px at the least). */
+@media (max-width: 767px) {
+  .tabbar { height: clamp(44px, calc(15svh - 52px), 64px); }
+  .pl-bar { --pl-t: clamp(48px, calc(15svh - 52px), 68px); --pl-p: clamp(2px, calc((var(--pl-t) - 52px) / 2), 8px); padding: var(--pl-p) 8px; }
+  .pl-bar a, .pl-bar .pl-bar-chat { height: calc(var(--pl-t) - 2 * var(--pl-p)); }
+}
+
+/* ---- a phone's /plan/: the form's own bar ('AI로 코스 만들기', sticky at the screen's foot — plan.css, z-index 5) lay
+   behind the tab bar (80): the button could be pressed only at the form's end (there since 시안 A, 2026-11-05; found
+   by the independent check of the live site, 2026-11-10). As on a place page, the page's own bar stands instead of
+   the tabs — the header's menu keeps every list, and the fixed areas stay within 15% of the screen as plan.css sets
+   them. */
+@media (max-width: 767px) {
+  body:has(.trp-go-bar) .tabbar { display: none; }
+  body:has(.trp-go-bar) { padding-bottom: 0; }
+}
+
+/* ---- a phone's bottom bar and the assistant (found on the live site 2026-11-10; there since 시안 A, 2026-11-05):
+   the tab bar and a place page's bar (z-index 80) were drawn over the open assistant (70) — half of the question
+   box and of the send button and most of the notice lay under them. While the assistant is open the bars step out;
+   closing it brings them back before the focus returns to the bar's button (chat.js close). On the home the
+   conversation panel under the question box comes into view clear of the tab bar (site.js scrollIntoView). */
+@media (max-width: 767px) {
+  html.chat-open .tabbar, html.chat-open .pl-bar { display: none; }
+  body:has(.tabbar) [data-ask-log] { scroll-margin-bottom: calc(92px + env(safe-area-inset-bottom, 0px)); }
+}
+
+/* ================================================================ 2. the home */
+
+/* ---- the icon menu under the assistant: the four lists the opening already offers as tiles step out (the same doors
+   twice on one screen); the others are quiet chips in one wrapping row at every width */
+.pg-ko-home .hq-row > li:has(> .hq-i[href="/places/"]), .pg-ko-home .hq-row > li:has(> .hq-i[href="/food/"]),
+.pg-ko-home .hq-row > li:has(> .hq-i[href="/stays/"]), .pg-ko-home .hq-row > li:has(> .hq-i[href="/courses/"]) { display: none; }
+.pg-ko-home .hq-row.hq-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; padding-right: 0; }
+.pg-ko-home .hq-row.hq-row > li { flex: 0 0 auto; display: flex; }
+.pg-ko-home .hq-row .hq-i { flex-direction: row; align-items: center; justify-content: center; width: auto; min-height: 44px; gap: 7px; padding: 0 16px 0 10px; border-radius: 999px; background: var(--bg-2); }
+.pg-ko-home .hq-row .hq-i:hover { background: var(--tint); }
+.pg-ko-home .hq-row .pic { width: 26px; height: 26px; }
+.pg-ko-home .hq-row .hq-i:hover .pic { transform: none; }
+.pg-ko-home .hq-row .hq-l { font: 400 14px/1.2 var(--font); letter-spacing: -.01em; }
+.pg-ko-home .hq-row .hq-n { display: none; }
+
+/* ---- the other versions' home on a phone: the assistant card's heading is one 38px line beside the mascot and was
+   cut with an ellipsis in ja, de, fr, es and ru ('Fragen Sie den Reisehelfer für Gun…'; found by the independent
+   check of the live site, 2026-11-10) — two lines there, centred on the mascot */
+@media (max-width: 767px) {
+  html:not([lang="ko"]) .hk-h { display: flex; align-items: center; min-height: 38px; line-height: 1.22; white-space: normal; overflow: visible; text-wrap: balance; }
+}
+
+/* ---- 다가오는 행사 where three tickets across would be under 300px each — by the row's own room (.evband's .wrap,
+   a container): 1024–1099px, 1200–1439px (the column is the window less the panel) and 1680–1771px (less the board
+   too). At 1200–1280px a name stood in 4–8 lines of three or four characters and the place · time line was cut, at
+   1366px in 4–5 lines (the independent check of the live site, 2026-11-10; so before the calm pass). Two across
+   there, the third the full width. Below 1024px the row scrolls sideways as before. */
+.evband > .wrap { container: ev / inline-size; }
+@media (min-width: 1024px) {
+  @container ev (max-width: 939px) {
+    .tkts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .tkts > li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+    .tkts > li:last-child:nth-child(odd) a { min-height: 148px; }
+  }
+}
+
+/* ================================================================ 3. the reading pages (guide, column) */
+
+/* ---- 1280–1679px: the page's column is the window less the panel (960–1360px), too narrow for contents | text | map
+   — the text was set 390px wide at a 1440px window. The contents become a row of chips over the text, as below
+   1280px; three columns return at 1680px. */
+@media (min-width: 1280px) {
+  /* a contents link is a 44px target at every width (with a short heading a one-line row was 36px) */
+  .gd-toc-l a { min-height: 44px; align-content: center; }
+}
+@media (min-width: 1280px) and (max-width: 1679px) {
+  .gd-grid.has-toc .gd-toc { grid-column: 1 / -1; grid-row: 1; position: static; max-height: none; overflow: visible; margin: 0 0 clamp(24px, 3vw, 36px); padding: 0; }
+  .gd-grid.has-toc .gd-toc-h { padding: 0; margin-bottom: 8px; }
+  .gd-grid.has-toc .gd-toc-l { display: flex; flex-wrap: wrap; gap: 8px; }
+  .gd-grid.has-toc .gd-toc-l li { flex: 0 1 auto; display: flex; min-width: 0; max-width: 100%; margin-top: 0; }
+  .gd-grid.has-toc .gd-toc-l a { min-height: 44px; padding: 9px 14px; border-radius: 12px; background: var(--bg-2); color: var(--ink); }
+  .gd-grid.has-toc .gd-toc-l a:hover { background: var(--bg-3); }
+  .gd-grid.has-toc .gd-toc-l a[aria-current] { background: var(--tint); color: var(--sea-deep); }
+  .gd-grid.has-toc .gd-body { grid-column: 1 / span 7; grid-row: 2; }
+  .gd-grid.has-toc .gd-map { grid-column: 8 / -1; grid-row: 2; }
+  .gd-grid.has-toc:not(.has-map) .gd-body { grid-column: 1 / span 9; }
+  /* the other versions have no short headings: a contents link there is the section's whole sentence, and as
+     full-width rows the block stood 709–946px over the text (13 sections; the independent check of the live site,
+     2026-11-10). Three columns of two-line links instead (321px): each shows the sentence's start — the whole
+     sentence is the section's heading right below, and the link's full text stays for assistive technology */
+  html:not([lang="ko"]) .gd-grid.has-toc .gd-toc-l { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  html:not([lang="ko"]) .gd-grid.has-toc .gd-toc-l li { max-width: none; }
+  html:not([lang="ko"]) .gd-grid.has-toc .gd-toc-l a { width: 100%; align-content: start; }
+  html:not([lang="ko"]) .gd-grid.has-toc .gd-toc-l .toc-t { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+}
+@media (max-width: 1279px) {
+  .pg-guide .gd-toc-l li { width: auto; max-width: min(280px, 72vw); }
+}
+
+/* ---- a guide's section (templates/guide.html.j2, present.section_reading): a short heading, the answer sentence as
+   the lead, two sentences, the rest behind '자세히'. Type steps down once at each level — heading 700, lead ink 400,
+   sentences ink-2 400; the only bold in a sentence is a value a visitor decides with (a time, a price, a day). */
+.gd-sec .gd-h { max-width: 24em; font-size: clamp(21px, 1.9vw, 26px); line-height: 1.32; letter-spacing: -.028em; }
+.gd-h2l .gd-h-sub { display: block; max-width: 34em; margin-top: 10px; font: 400 17.5px/1.62 var(--font); color: var(--ink); letter-spacing: -.012em; word-break: keep-all; text-wrap: pretty; }
+.gd-lead { max-width: 34em; margin-top: 10px; font: 400 17.5px/1.62 var(--font); color: var(--ink); letter-spacing: -.012em; word-break: keep-all; text-wrap: pretty; }
+.gd-lead + .gd-pts, .gd-lead + .gd-p, .gd-h + .gd-pts, .gd-h + .gd-p { margin-top: 16px; }
+.pg-guide .gd-pts { gap: 9px; }
+.pg-guide .gd-pts li, .pg-guide .gd-sec .gd-p { max-width: 36em; font-size: 16px; line-height: 1.68; }
+.pg-guide .gd-pts li::before { top: .74em; width: 5px; height: 5px; background: var(--field); }
+.pg-guide .gd-sec .gk[data-k] { font-weight: 400; color: inherit; }
+/* a place named in a sentence: ink like the sentence, under a sea line (4.96:1 on white — the line is the link's cue) */
+.pg-guide .gd-sec .gl { color: var(--ink); text-decoration-color: var(--sea); }
+.pg-guide .gd-sec .gl:hover { color: var(--link); text-decoration-color: currentColor; }
+.gd-more, .fold { margin-top: 14px; }
+.gd-more > summary, .fold > summary { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px 0 16px; border: 1px solid var(--hair); border-radius: 999px; background: #fff; color: var(--ink-3); font: 400 14px/1 var(--font); letter-spacing: -.01em; cursor: pointer; list-style: none; transition: background-color .2s var(--fb); }
+.gd-more > summary::-webkit-details-marker, .fold > summary::-webkit-details-marker { display: none; }
+.gd-more > summary::marker, .fold > summary::marker { content: ""; }
+.gd-more > summary:hover, .fold > summary:hover { background: var(--bg-2); }
+.gd-more > summary:focus-visible, .fold > summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.gd-more-t { font-weight: 700; color: var(--ink); }
+.gd-more-i { width: 7px; height: 7px; margin: -4px 2px 0 2px; border: solid var(--ink-3); border-width: 0 1.5px 1.5px 0; transform: rotate(45deg); transition: transform .2s var(--fb); }
+.gd-more[open] > summary, .fold[open] > summary { margin-bottom: 16px; }
+.gd-more[open] .gd-more-i { margin-top: 3px; transform: rotate(-135deg); }
+@media (prefers-reduced-motion: reduce) { .gd-more > summary, .fold > summary, .gd-more-i { transition: none; } }
+@media (max-width: 767px) {
+  .gd-lead, .gd-h2l .gd-h-sub { font-size: 17px; line-height: 1.6; }
+  .pg-guide .gd-pts li, .pg-guide .gd-sec .gd-p { font-size: 15.5px; }
+}
+@media print {
+  .gd-more::details-content, .fold::details-content { content-visibility: visible; }
+}
+
+/* the generic fold ('더 보기': a place's further SNS cards): the same pill, its chevron drawn on the summary */
+.fold > summary { color: var(--ink); font-weight: 700; }
+.fold > summary .tn { font-weight: 400; color: var(--ink-3); }
+.fold > summary::after { content: ""; width: 7px; height: 7px; margin: -4px 2px 0 4px; border: solid var(--ink-3); border-width: 0 1.5px 1.5px 0; transform: rotate(45deg); }
+.fold[open] > summary::after { margin-top: 3px; transform: rotate(-135deg); }
+
+/* ================================================================ 4. the place page */
+
+/* a section's heading says the section; the place's name in it is the quiet part (it was the dark part: twelve
+   headings on a page read '초원사진관 … 초원사진관 …'). A Korean chapter's label carries the name as a small line over
+   it (in the other versions a separator or a particle follows the name: the label stays one line there). */
+.rail-label:has(.nm), .h-sec:has(.nm), .h-side:has(.nm) { color: var(--ink); }
+.rail-label .nm, .h-sec .nm, .h-side .nm { color: var(--ink-3); font-weight: 400; }
+html[lang="ko"] .rail-label .nm { display: block; margin-bottom: 6px; font-size: 14px; line-height: 1.3; letter-spacing: -.01em; }
+html[lang="ko"] .pl-src .rail-label .nm { display: inline; margin: 0; font-size: inherit; font-weight: 700; }
+.pv-map .pv-map-h .nm { color: var(--ink-3); font-weight: 400; }
+.pv-map .pv-map-h { color: var(--ink); }
+
+/* the key facts: the value is the tile — its 3D picture steps out (the pictures stay where they are a door: the
+   home's lists, a row or a page without a photo) */
+.kf-hero dt .pic { display: none; }
+.kf-hero dt { font-size: 13px; letter-spacing: -.005em; }
+
+/* ================================================================ 5. 이어서 보기 (ui.seealso, present.see_also)
+   the pages that share places with this one — an index, set as one: a hairline list under a rule, no cards */
+.see-h { margin-bottom: 6px; }
+.see-rule { max-width: 40em; margin: 0 0 22px; font-size: 14px; line-height: 1.55; color: var(--ink-3); }
+.see-g { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 24px 32px; align-items: start; }
+.see-k { margin: 0; padding-bottom: 9px; border-bottom: 1px solid var(--ink); font: 700 13px/1.3 var(--font); letter-spacing: .02em; color: var(--ink); }
+.see-l { margin: 0; padding: 0; list-style: none; }
+.see-l li { border-bottom: 1px solid var(--bg-3); }
+.see-a { display: flex; flex-direction: column; gap: 3px; min-height: 44px; padding: 13px 2px 14px; color: var(--ink); text-decoration: none; }
+.see-a:hover { text-decoration: none; }
+.see-a:hover .see-t { color: var(--sea-deep); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; }
+.see-a:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 6px; }
+.see-lab { font: 400 12.5px/1.3 var(--font); color: var(--sea-deep); }
+.see-t { font: 700 16px/1.42 var(--font); letter-spacing: -.02em; word-break: keep-all; text-wrap: pretty; }
+.see-m { font: 400 13px/1.45 var(--font); color: var(--ink-3); word-break: keep-all; }
+
+/* ================================================================ 6. the lists */
+
+/* a row's missing values once, in one line, where the cells are chips (phones): three chips said '확인 필요' one
+   after another (templates/_p1.html.j2 rec; CLAUDE.md 3.1). Only where the row carries that line (the Korean lists)
+   and only a cell that holds nothing else (a cell with a second value — '확인 필요 · 좌석 30석' — stays). Wider, the
+   columns keep their cells. The line's words are its data-need, drawn here: in the HTML the notice stays in the
+   cells only, not once more. */
+.rec-need { display: none; }
+@media (max-width: 767px) {
+  .ledger .rec:has(> .rec-need) .rec-cells > div:has(> dd > .kf-na:only-child) { display: none !important; }
+  .rec-need { display: block; margin: 9px 0 0; font: 400 12.5px/1.45 var(--font); color: var(--ink-3); letter-spacing: -.005em; }
+  .rec-need::before { content: attr(data-need); }
+}
+.yt-ch-note { margin-top: 14px; }
+/* a list's head on a phone: the first result is to stand in the first 500px (the 2026-10-17 review: the head picture
+   took the room) — the stays list's was at 517px since its '숙박 예약하기' row (operator 2026-11-04), the food list's
+   at 519px at 360px (its lede takes two lines there), the other versions' at 515px. The picture strip gives the
+   room back on every list (76 → 54px, 49-art) and the yellow button sits 4px closer to the lede: 471–495px on the
+   Korean lists at 390 and 360px (tests/test_present.py). */
+@media (max-width: 760px) {
+  .list-head .art-band img { max-height: 54px; }
+  .list-head .list-book { margin-top: 8px; }
+}
+/* the other versions' lists on a phone: their titles, ledes and tools take more lines (a Russian list's first result
+   stood at 565px, a German one's at 515px) — there the head gives up its picture strip and most of its top padding,
+   and on the narrowest phones the title is 28px. */
+@media (max-width: 760px) {
+  html:not([lang="ko"]) .list-head .art-band-wrap { display: none; }
+  html:not([lang="ko"]) .list-head { padding-top: 6px; }
+}
+@media (max-width: 374px) { html:not([lang="ko"]) .list-head .h-list { font-size: 28px; } }
+/* a stay page's booking tiles two across on a phone (operator 2026-11-12 '360px 예약 버튼 넘치는 것도 고쳐서'): a
+   1fr column could not shrink below its longest tile (icon 34 + '마이리얼트립'/'호텔스컴바인' 74 + ↗ 24 + gaps = 164px),
+   so at 360px the grid ran 9px off the screen and at 344–389px past the tinted box. The columns now never pass the
+   box, and the tile gets tighter as the column narrows so the longest name stays on one line (never cut or broken):
+   below 420px a smaller icon and ↗ (148px), below 375px no ↗ (decoration: the tile is the link, '(새 탭)' stays for
+   screen readers; 122px, a 136px column at 344px). */
+@media (max-width: 760px) {
+  .aff-l { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .aff-l.aff-1 { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 419px) {
+  .aff-a { gap: 6px; padding: 7px 8px 7px 7px; font-size: 14px; }
+  .aff-a .ota-logo { width: 30px; height: 30px; border-radius: 9px; }
+  .aff-a .ota-go { width: 20px; height: 20px; font-size: 11px; }
+}
+@media (max-width: 374px) { .aff-a .ota-go { display: none; } }
+/* narrower than 344px: one across (two did not fit and the page scrolled sideways by 24px at 320px) */
+@media (max-width: 343px) { .aff-l { grid-template-columns: minmax(0, 1fr); } }
+/* the stays list as a table (from 1024px): its phone column was 80–103px at 1200–1366px and a number is 92px, a
+   0507 number 128px — at 1200–1280px every number of the Korean list crossed the row's right border (up to 32px),
+   the 0507 ones up to 1366px and in the other versions too (the independent check of the live site, 2026-11-10; the
+   long ones were so before the calm pass). The column keeps 130px; the other four share what is left. */
+.kind-stay { --cols: minmax(0, 3.9fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.6fr) minmax(130px, 1.7fr); }
+
+/* ================================================================ 7. runs that were wider than a phone (found by a
+   390px sweep of every page, 2026-11-10): an event's '시간' value kept on one line in its tile; a past edition's
+   source line kept on one line */
+@media (max-width: 767px) {
+  .kf-hero .kf-main > .nw { white-space: normal; }
+}
+.usual .u-s { white-space: normal; overflow-wrap: anywhere; }
+/* a phone's compact video row (/videos/, css/30-info .vids-4): pressed, the player opened inside the row's 128×72px
+   picture — too small to watch or to use its controls (found on the live site 2026-11-10). While it plays the row
+   is one column and the player takes its width. */
+@media (max-width: 640px) {
+  .vids-4 .vid:has(.vid-box.is-playing) { grid-template-columns: minmax(0, 1fr); row-gap: 10px; }
+  .vids-4 .vid-box.is-playing { width: 100%; }
+}
+
+/* ================================================================ 8. words on a KOGL-1 photo (81-home-mz)
+   the outline that keeps them readable without darkening the photo stays, thinner: the big letters 2px (2.5), the
+   small ones 1px (1.5); a photo's credit is small print at the text's own weight, not a second headline */
+.mzt-photo .mzt-n, .fp-cap, .blz-ph .bl-t a {
+  text-shadow: -1px -1px 0 var(--ink), 1px -1px 0 var(--ink), -1px 1px 0 var(--ink), 1px 1px 0 var(--ink),
+    0 -1px 0 var(--ink), 0 1px 0 var(--ink), -1px 0 0 var(--ink), 1px 0 0 var(--ink), 0 2px 8px rgba(23, 32, 51, .4);
+}
+.mzt-photo .mzt-n b, .fp-cap .fp-t, .blz-ph .bl-t a {
+  text-shadow: -2px -2px 0 var(--ink), 2px -2px 0 var(--ink), -2px 2px 0 var(--ink), 2px 2px 0 var(--ink),
+    0 -2px 0 var(--ink), 0 2px 0 var(--ink), -2px 0 0 var(--ink), 2px 0 0 var(--ink), 0 3px 10px rgba(23, 32, 51, .35);
+}
+.mzt-photo .mzt-cr, .fp-cr, .hsns-v.t1 .hsns-cr {
+  font-weight: 400; letter-spacing: 0;
+  text-shadow: -1px -1px 0 var(--ink), 1px -1px 0 var(--ink), -1px 1px 0 var(--ink), 1px 1px 0 var(--ink),
+    0 -1px 0 var(--ink), 0 1px 0 var(--ink), -1px 0 0 var(--ink), 1px 0 0 var(--ink);
+}
+
+/* ================================================================ 9. Japanese and Chinese guides on a phone
+   85-guide-calm (2026-11-04) set keep-all on a guide's title, answer, headings and sentences for every version. In
+   Japanese and Chinese — no spaces — a sentence then never wrapped: its row was wider than the phone and the page
+   scrolled sideways (found 2026-11-10 at 390px: 113 of the 123 guide pages of ja · zh-Hans · zh-Hant in the public
+   build). They break between characters, as css/77-lang.css sets for those versions. */
+html:is([lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) :is(.guide .d1-q, .guide .gd-ans-l, .guide .gd-ans-r, .gd-sec .h-sec, .gd-pts li, .gd-sec .gd-p) { word-break: normal; }

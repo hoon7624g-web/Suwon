@@ -1,0 +1,84 @@
+From fc665ce6d8f82a1160b4f958a09876d317a199d8 Mon Sep 17 00:00:00 2001
+From: hoon7624g-web <hoon7624g@gmail.com>
+Date: Thu, 12 Nov 2026 13:09:14 +0900
+Subject: [PATCH] =?UTF-8?q?fix(site):=20=ED=99=88=20=ED=99=94=EB=A9=B4=20?=
+ =?UTF-8?q?=EB=B0=94=EB=8B=A5=EA=B8=80=EC=9D=98=20=EC=A0=9C=ED=9C=B4=C2=B7?=
+ =?UTF-8?q?=EA=B4=80=EB=A0=A8=20=EC=82=AC=EC=9D=B4=ED=8A=B8=20=EC=A4=91?=
+ =?UTF-8?q?=EB=B3=B5=20=EB=9D=A0=20=EC=A0=9C=EA=B1=B0(=EC=9A=B4=EC=98=81?=
+ =?UTF-8?q?=EC=9E=90=20=EA=B2=B0=EC=A0=95=202026-11-12)?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ templates/base.html.j2      |  2 +-
+ templates/home.html.j2      |  2 +-
+ tests/test_related_sites.py | 17 ++++++++++++++++-
+ 3 files changed, 18 insertions(+), 3 deletions(-)
+
+diff --git a/templates/base.html.j2 b/templates/base.html.j2
+index c21d15c8f4..7d7aa1136a 100644
+--- a/templates/base.html.j2
++++ b/templates/base.html.j2
+@@ -205,7 +205,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+ {% if lang != 'ko' %}{{ enc.footer(nav, site, langs, wordmark, tourapi_used, t, loc, wm_sym) }}{% else %}
+ <footer class="foot">
+   <div class="wrap">
+-    {{ relm.strip(related_sites) }}
++    {% if page_kind != 'home' %}{{ relm.strip(related_sites) }}{% endif %}
+     <div class="foot-in">
+       <nav class="foot-col foot-nav" aria-label="둘러보기">
+         <h2>둘러보기</h2>
+diff --git a/templates/home.html.j2 b/templates/home.html.j2
+index d459c04f53..8824f92aa8 100644
+--- a/templates/home.html.j2
++++ b/templates/home.html.j2
+@@ -616,7 +616,7 @@
+ {% endif %}
+ 
+ {# 제휴·관련 사이트 (operator 2026-11-11, pipeline/related_sites.py): the company's sites and related sites as cards — the
+-   footer below repeats them as a strip on every page #}
++   subpages show them once as a footer strip instead (operator 2026-11-12) #}
+ {% if related_sites %}
+ {% set T.i = T.i + 1 %}
+ {{ relm.cards(related_sites, ui, ' tone-2' if T.i is odd else '', site.site_name) }}
+diff --git a/tests/test_related_sites.py b/tests/test_related_sites.py
+index 8c14537213..5eefb68463 100644
+--- a/tests/test_related_sites.py
++++ b/tests/test_related_sites.py
+@@ -1,12 +1,14 @@
+ """제휴·관련 사이트 (operator 2026-11-11): the company's sites and related sites as a strip at the top of every Korean
+ footer and as cards at the foot of the home; a partner's site says the relationship and is rel="sponsored"."""
+-import json
++import json, shutil
+ from pathlib import Path
+ from types import SimpleNamespace
+ 
+ import jinja2
+ 
+ from pipeline import related_sites
++from pipeline.build import build
++from pipeline.validate import validate
+ 
+ ROOT = Path(__file__).resolve().parent.parent
+ DATA = json.loads((ROOT / "data" / "gunsan" / "related_sites.json").read_text("utf-8"))
+@@ -46,3 +48,16 @@ def test_strip_and_cards_link_out_with_the_right_rel_and_lazy_icons():
+     cards = str(m.cards(v, ui, "", "군산각"))
+     assert cards.count('class="rel-c"') == 6 and "군산각과 함께하는 사이트" in cards
+     assert str(m.strip(None)).strip() == "" and str(m.cards(None, ui, "", "군산각")).strip() == ""
++
++
++def test_home_omits_footer_strip_while_subpages_keep_it(tmp_path):
++    data = tmp_path / "data"
++    shutil.copytree(ROOT / "data" / "sample", data)
++    (data / "related_sites.json").write_text(json.dumps(DATA, ensure_ascii=False), "utf-8")
++    out = tmp_path / "out"
++    build(data, out, "sample")
++    home = (out / "index.html").read_text("utf-8")
++    about = (out / "about" / "index.html").read_text("utf-8")
++    assert home.count('class="rel-c"') == 6 and 'class="rel-strip"' not in home and 'class="rel-a"' not in home
++    assert about.count('class="rel-a"') == 6 and 'class="rel-strip"' in about and 'class="rel-c"' not in about
++    assert not validate(data, out, "sample")[0]
+-- 
+2.43.0
+

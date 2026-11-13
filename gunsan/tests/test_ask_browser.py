@@ -1,0 +1,891 @@
+"""Asking from the homes in a real browser (Playwright + Chromium): a sample build with a starter file, served locally
+together with a fake /api/chat/ that streams its answer over about a second (SSE) or answers 503 not_configured.
+
+The Korean home (owner 2026-10-13 night: '이 상자를 챗봇 질문창으로'; UI4 2026-10-14: the white question card under the
+light opening; owner 2026-10-14: '페이지 상단에는 검색, 중앙 부분에는 AI챗봇으로 확실히 구분'): the card is the assistant
+only — since 시안 A (operator 2026-11-05) it comes after the opening's picture and lists, within two screens of the top at
+390×844 and 1440×900 — and the conversation opens in its own panel right under the card. Asking from the box at 390
+and 1440 shows the panel at once and brings it into view, the streamed answer, its checked link and link card come in
+the panel (announced once) while nothing above the panel moves and nothing below it moves while it streams, and the
+floating panel is never built there; the panel's own box asks the next question into the same conversation; a starter
+is a button that asks — a click, Enter or Space — as the panel's chips do (with a modifier key, without JS or once the
+assistant is not connected it is a link); an Enter the input method keeps (a conversion) and an empty box ask
+nothing, in either box, while the Enter that ends a Korean syllable asks at once — on the page served as the public
+host https://gunsan.webforai.kr too (the 2026-10-14 bug: that Enter was swallowed); the button stops an answer; the
+header's search goes to /search/?q= (desktop: its field; phones: '검색' opens it over the bar; without JS a link);
+Korean + not_configured lands on /search/?q=…; without
+chat.js the box searches and a starter follows its link; the launcher is there from the start wherever the box is
+not on screen and steps aside while it is (operator 2026-10-15, 10-21) — 76px, 100px from 1024px, 68px in the page's
+margin from 1200px (the calm pass 2026-11-10); a Korean phone has the tab bar's 'AI 챗봇' button in its stead (시안 A);
+either puts the focus in the box (or in the open conversation's own box);
+the same conversation shows in the floating panel on another page; nothing of the chat loads and nothing shifts while
+the page loads (fonts already cached, as on any second page); no console errors. Skipped where Playwright or its
+Chromium is missing."""
+import functools
+import http.server
+import json
+import mimetypes
+import shutil
+import threading
+import time
+from pathlib import Path
+from urllib.parse import parse_qs, quote, unquote, urlsplit
+
+import pytest
+
+from pipeline import present
+from pipeline.build import State, build
+from conftest import route_weather
+
+sync_api = pytest.importorskip("playwright.sync_api")
+
+ROOT = Path(__file__).resolve().parent.parent
+SAMPLE = ROOT / "data" / "sample"
+GUNSAN = ROOT / "data" / "gunsan"
+SITE = "https://gunsan.webforai.kr"
+STARTERS = {"starters": [{"q": {"ko": "차 없이 하루 여행", "en": "A day without a car"}, "guide": "guide-sample-1"},
+                         {"q": {"ko": "이번 달 행사", "en": "Events this month"}, "page": "events"}]}
+ANSWER = ("은파호수공원은 쉬는 날 없이 열려 있습니다. [은파호수공원](/places/eunpa-lake-park/)\n\n"
+          "- 시간: 상시 개방\n- 주차: 가능 — **무료**\n\n[없는 페이지](/places/nowhere/)")
+DONE = {"type": "done", "links": [{"title": "은파호수공원", "url": f"{SITE}/places/eunpa-lake-park/", "ext": False}],
+        "fix": {"/places/eunpa-lake-park/": f"{SITE}/places/eunpa-lake-park/", "/places/nowhere/": None}}
+API = {"mode": "ok", "gap": 0.06, "hold": None, "calls": []}
+BUILT = {}
+PUBLIC = "https://gunsan.webforai.kr"   # the public host (owner 2026-10-14); served here through page routes
+SHIFTS = """window.__ls = []; new PerformanceObserver(l => { for (const e of l.getEntries()) window.__ls.push({v: e.value,
+  input: e.hadRecentInput, t: e.startTime, src: (e.sources || []).map(s => s.node && s.node.className || '')}); })
+  .observe({type: 'layout-shift', buffered: true});"""
+
+
+def sse(event) -> bytes:
+    return f"data: {json.dumps(event, ensure_ascii=False)}\n\n".encode("utf-8")
+
+
+class Site(http.server.SimpleHTTPRequestHandler):
+    """The static build, plus POST /api/chat/: a streamed answer (a chunk every API['gap'] seconds) or a 503. With
+    API['hold'] (a threading.Event) the answer stops after its first words until the test sets it: the test looks at
+    the answer while it is surely still streaming, however slow the run."""
+
+    def log_message(self, *args):
+        return None
+
+    def do_POST(self):
+        body = self.rfile.read(int(self.headers.get("Content-Length") or 0))
+        if self.path != "/api/chat/":
+            self.send_error(404)
+            return
+        API["calls"].append(json.loads(body or b"{}"))
+        try:
+            if API["mode"] == "503":
+                out = b'{"code":"not_configured"}'
+                self.send_response(503)
+                self.send_header("Content-Type", "application/json")
+                self.send_header("Content-Length", str(len(out)))
+                self.end_headers()
+                self.wfile.write(out)
+                return
+            self.send_response(200)
+            self.send_header("Content-Type", "text/event-stream; charset=utf-8")
+            self.end_headers()
+            self.wfile.write(sse({"type": "status", "text": "찾는 중: 은파호수공원"}))
+            self.wfile.flush()
+            for i in range(0, len(ANSWER), 8):
+                time.sleep(API["gap"])
+                self.wfile.write(sse({"type": "text", "delta": ANSWER[i:i + 8]}))
+                self.wfile.flush()
+                if i == 0 and API["hold"] is not None:
+                    API["hold"].wait(30)
+            self.wfile.write(sse(DONE))
+            self.wfile.flush()
+        except (BrokenPipeError, ConnectionResetError, ConnectionAbortedError):
+            pass   # the reader stopped the answer
+
+
+class Server(http.server.ThreadingHTTPServer):
+    def handle_error(self, request, client_address):   # a tab closed while a file was still being sent
+        return None
+
+
+@pytest.fixture(scope="module")
+def site(tmp_path_factory):
+    tmp = tmp_path_factory.mktemp("askweb")
+    data = tmp / "data"
+    shutil.copytree(SAMPLE, data)
+    (data / "ask.json").write_text(json.dumps(STARTERS, ensure_ascii=False), "utf-8")
+    out = tmp / "out"
+    build(data, out, "sample")
+    BUILT["out"] = out
+    srv = Server(("127.0.0.1", 0), functools.partial(Site, directory=str(out)))
+    threading.Thread(target=srv.serve_forever, daemon=True).start()
+    yield f"http://127.0.0.1:{srv.server_address[1]}"
+    srv.shutdown()
+
+
+@pytest.fixture(scope="module")
+def browser():
+    with sync_api.sync_playwright() as p:
+        try:
+            b = p.chromium.launch()
+        except sync_api.Error as err:
+            pytest.skip(f"Chromium is not installed for Playwright: {err}")
+        yield b
+        b.close()
+
+
+def open_home(browser, site, width, height, mode="ok", gap=0.06, reduced="no-preference"):
+    """A fresh tab whose fonts are already cached (one page first), then the home. Returns (ctx, page, errors)."""
+    API.update(mode=mode, gap=gap, hold=None, calls=[])
+    ctx = browser.new_context(viewport={"width": width, "height": height}, locale="ko-KR", reduced_motion=reduced)
+    route_weather(ctx)   # the tab panel's weather module (tests/conftest.py): answered here, as /api/chat/ is
+    page = ctx.new_page()
+    errors = []
+    page.on("console", lambda m: errors.append(m.text) if m.type == "error" else None)
+    page.on("pageerror", lambda e: errors.append(str(e)))
+    page.add_init_script(SHIFTS)
+    page.goto(site + "/about/")
+    page.evaluate("document.fonts.ready.then(() => 1)")
+    page.goto(site + "/")
+    page.wait_for_load_state("load")
+    page.wait_for_timeout(500)
+    return ctx, page, errors
+
+
+def doc_top(page, sel):
+    return page.evaluate(f"Math.round(document.querySelector('{sel}').getBoundingClientRect().top + window.scrollY)")
+
+
+def in_viewport(page, sel):
+    return page.evaluate(f"""(() => {{ const r = document.querySelector('{sel}').getBoundingClientRect();
+      return r.top >= -1 && r.bottom <= window.innerHeight + 1; }})()""")
+
+
+def korean_enter(page, syllable):
+    """Enter pressed while a Korean input method still composes the last syllable, as Chrome delivers it (CDP): a
+    keydown 229 that the input method keeps (it commits the syllable: compositionend), then the reader's own Enter a
+    few milliseconds later — the Enter the 2026-10-14 bug swallowed."""
+    cdp = page.context.new_cdp_session(page)
+    cdp.send("Input.imeSetComposition", {"text": syllable, "selectionStart": 1, "selectionEnd": 1})
+    cdp.send("Input.dispatchKeyEvent", {"type": "rawKeyDown", "key": "Enter", "code": "Enter",
+                                        "windowsVirtualKeyCode": 229, "nativeVirtualKeyCode": 229})
+    cdp.send("Input.insertText", {"text": syllable})
+    page.keyboard.press("Enter")
+    cdp.detach()
+
+
+def converting_enter(page, text):
+    """Enter pressed to confirm an input method's conversion (Japanese, Chinese): the key comes while composing (and
+    headless Chromium would even submit the form with it), then the text is committed."""
+    cdp = page.context.new_cdp_session(page)
+    cdp.send("Input.imeSetComposition", {"text": text, "selectionStart": len(text), "selectionEnd": len(text)})
+    page.keyboard.press("Enter")
+    cdp.send("Input.insertText", {"text": text})
+    cdp.detach()
+
+
+def open_public(browser, width, height, js=True):
+    """The sample build served as the public host (every request answered here, nothing leaves the machine), its
+    /api/chat/ a scripted SSE answer that records each request. Returns (ctx, page, errors, requests)."""
+    out, requests = BUILT["out"], []
+
+    def files(route):
+        path = unquote(urlsplit(route.request.url).path)
+        f = out / path.lstrip("/")
+        if f.is_dir():
+            f = f / "index.html"
+        if not f.is_file():
+            return route.fulfill(status=404, body="")
+        route.fulfill(status=200, body=f.read_bytes(), content_type=mimetypes.guess_type(f.name)[0] or "application/octet-stream")
+
+    def api(route):
+        r = route.request
+        requests.append({"url": r.url, "method": r.method, "origin": r.header_value("origin"), "body": r.post_data_json})
+        body = sse({"type": "status", "text": "찾는 중: 은파호수공원"}) + b"".join(
+            sse({"type": "text", "delta": ANSWER[i:i + 8]}) for i in range(0, len(ANSWER), 8)) + sse(DONE)
+        route.fulfill(status=200, body=body, headers={"content-type": "text/event-stream; charset=utf-8"})
+
+    ctx = browser.new_context(viewport={"width": width, "height": height}, locale="ko-KR", java_script_enabled=js)
+    ctx.route("**/*", lambda route: route.abort())
+    ctx.route(f"{PUBLIC}/**", files)
+    ctx.route(f"{PUBLIC}/api/chat/", api)
+    route_weather(ctx)   # the tab panel's weather module (tests/conftest.py)
+    page = ctx.new_page()
+    errors = []
+    page.on("console", lambda m: errors.append(m.text) if m.type == "error" else None)
+    page.on("pageerror", lambda e: errors.append(str(e)))
+    page.goto(PUBLIC + "/")
+    page.wait_for_load_state("load")
+    return ctx, page, errors, requests
+
+
+@pytest.mark.parametrize("width,height", [(390, 844), (1440, 900)])
+def test_enter_asks_on_the_public_host(browser, site, width, height):
+    """Owner 2026-10-14: '궁금한 것을 적어주세요 칸에 뭘 입력하고 엔터를 쳤을 때도 반응이 없고'. On the page served as
+    https://gunsan.webforai.kr: typed words + Enter ask (a same-origin POST to /api/chat/, the Origin the server's
+    allow-list checks) and the answer is drawn under the card; then a Korean question whose last syllable is still
+    composing when Enter goes down asks at once — the case the old 50 ms guard after compositionend swallowed."""
+    ctx, page, errors, requests = open_public(browser, width, height)
+    page.locator("#ask-q").press_sequentially("은파 주차")
+    page.keyboard.press("Enter")
+    page.wait_for_selector("[data-ask-log] .chat-a .chat-card")
+    assert len(requests) == 1 and requests[0]["url"] == f"{PUBLIC}/api/chat/" and requests[0]["method"] == "POST"
+    assert requests[0]["origin"] == PUBLIC   # chatbot/server.js allowedOrigins must hold this host
+    assert requests[0]["body"]["messages"] == [{"role": "user", "content": "은파 주차"}] and requests[0]["body"]["page"] == "/"
+    md = page.locator("[data-ask-log] .chat-a .chat-md")
+    assert "은파호수공원은 쉬는 날 없이" in md.inner_text() and page.url == PUBLIC + "/"
+    page.wait_for_function("document.querySelector('[data-ask-go]').getAttribute('data-mode') !== 'stop'")
+    # Korean: '…되나' typed, '요' still composing when Enter goes down — one Enter asks
+    page.click(".ask-new")
+    page.locator("#ask-q").press_sequentially("은파호수공원 주차 되나")
+    korean_enter(page, "요")
+    page.wait_for_function("document.querySelectorAll('[data-ask-log] .chat-a .chat-card').length === 1")
+    assert len(requests) == 2 and requests[1]["body"]["messages"] == [{"role": "user", "content": "은파호수공원 주차 되나요"}]
+    assert page.input_value("#ask-q") == "" and page.url == PUBLIC + "/"
+    assert errors == []
+    ctx.close()
+
+
+def test_the_header_searches_on_every_page(browser, site):
+    """The site search is the bar's (owner 2026-10-14: '페이지 상단에는 검색'). 1440: the field is in the bar of the home
+    and of a place page; words + Enter go to /search/?q=, where search.js answers; no '물어보기' in the bar. 390: '검색'
+    opens the same form over the bar — the bar keeps its 52px (the fixed area stays ≤ 15% of the screen) — with the
+    focus in the field; Escape closes it and gives the focus back to '검색'; the round button searches. Without JS
+    '검색' is a link to /search/."""
+    ctx, page, errors, _ = open_public(browser, 1440, 900)
+    for path in ("/", "/places/eunpa-lake-park/"):
+        page.goto(PUBLIC + path)
+        field = page.locator(".mast #hs-q")
+        assert field.is_visible() and field.get_attribute("placeholder") == "장소·음식·지역 검색"
+        assert page.locator(".mast-search").is_hidden() and page.locator(".mast [data-chat-open]").count() == 0
+    field.fill("은파")
+    field.press("Enter")
+    page.wait_for_url("**/search/?q=*")
+    assert parse_qs(urlsplit(page.url).query)["q"] == ["은파"]
+    page.wait_for_selector("[data-results] a")
+    assert "은파호수공원" in page.inner_text("[data-results]") and page.locator(".mast .hs").count() == 0
+    assert errors == []
+    ctx.close()
+    ctx, page, errors, _ = open_public(browser, 390, 844)
+    bar = page.locator(".mast").bounding_box()["height"]
+    assert page.locator(".mast #hs-q").is_hidden()
+    toggle = page.locator(".mast-search")
+    assert toggle.get_attribute("role") == "button" and toggle.get_attribute("aria-expanded") == "false"
+    toggle.click()
+    assert page.locator(".mast #hs-q").is_visible() and page.evaluate("document.activeElement.id") == "hs-q"
+    assert toggle.get_attribute("aria-expanded") == "true"
+    assert page.locator(".mast").bounding_box()["height"] == bar == 52 and bar / 844 <= 0.15
+    for sel in (".mast .hs-f", ".mast .hs-go", ".mast .hs-x"):
+        box = page.locator(sel).bounding_box()
+        assert box["height"] >= 40 and box["y"] >= 0 and box["y"] + box["height"] <= bar, sel
+    page.keyboard.press("Escape")
+    assert page.locator(".mast #hs-q").is_hidden() and page.evaluate("document.activeElement.className") == "mast-search"
+    toggle.click()
+    page.keyboard.type("짬뽕")
+    page.click(".mast .hs-go")
+    page.wait_for_url("**/search/?q=*")
+    assert parse_qs(urlsplit(page.url).query)["q"] == ["짬뽕"]
+    assert errors == []
+    ctx.close()
+    ctx, page, errors, _ = open_public(browser, 390, 844, js=False)
+    page.click(".mast-search")
+    page.wait_for_url(f"{PUBLIC}/search/")
+    ctx.close()
+
+
+@pytest.mark.parametrize("width,height", [(390, 844), (1440, 900)])
+def test_the_opening_asks_and_the_panel_below_answers(browser, site, width, height):
+    ctx, page, errors = open_home(browser, site, width, height)
+    assert page.evaluate("window.__ls") == []                       # nothing shifts while the page loads
+    assert not page.evaluate("!!window.gsChat")                      # nothing of the chat before the reader comes
+    assert page.locator('link[href$="chat.css"]').count() == 0 and page.locator('script[src$="chat.js"]').count() == 0
+    log = page.locator("[data-chat-dock] [data-ask-log]")
+    assert log.is_hidden()
+    # the box is in the question card; the panel comes right under the card. Since 시안 A (operator 2026-11-05) the
+    # opening's picture and lists come first: the card is past the first screen, within two screens of the top
+    box = page.locator(".hk-box").bounding_box()
+    assert box["y"] >= 0 and box["y"] + box["height"] <= 2 * height
+    assert page.evaluate("document.querySelector('.hq').contains(document.getElementById('ask-q'))")
+    assert page.evaluate("document.querySelector('.hq').nextElementSibling.matches('.hk-conv')")
+    page.evaluate("document.querySelector('.hk-box').scrollIntoView({block: 'center'})")   # the reader comes to the box
+    page.wait_for_function("!document.documentElement.classList.contains('ask-out')", timeout=3000)
+    page.wait_for_timeout(400)                                       # the launcher's fade
+    assert in_viewport(page, ".hk-box")
+    # the launcher steps aside while this box is on screen (operator 2026-10-15 below 1024px: at 390x844 it covered the
+    # box's '#' tags; operator 2026-10-21 at every width: 'hide … initial floating widgets' on the PC home too; a
+    # Korean phone has no floating launcher at all — the tab bar's button, 시안 A)
+    assert not page.locator(".chat-fab").is_visible()
+    later = ".foot"
+    page.fill("#ask-q", "은파 주차")
+    above = {s: doc_top(page, s) for s in ("#h-home", ".hk-box", ".hk-note")}
+    hold = API["hold"] = threading.Event()                           # the answer waits after its first words
+    page.press("#ask-q", "Enter")
+    assert log.is_visible()                                          # at once, before chat.js has come
+    page.wait_for_selector(".ask-log .chat-a .chat-md")              # the answer is streaming in
+    page.wait_for_timeout(700 if width >= 700 else 600)             # the panel's smooth scroll has settled
+    assert in_viewport(page, "[data-ask-log]")                       # brought into view
+    during = {s: doc_top(page, s) for s in (*above, later)}
+    go = page.locator("[data-ask-go]")
+    assert go.inner_text() == "멈추기" and go.get_attribute("data-mode") == "stop"
+    assert page.locator(".hk-box").get_by_role("button", name="멈추기", exact=True).count() == 1   # its name follows the label
+    hold.set()                                                       # the rest of the answer streams in
+    page.wait_for_selector(".ask-log .chat-a .chat-card")
+    after = {s: doc_top(page, s) for s in (*above, later)}
+    assert after == during and {s: after[s] for s in above} == above   # nothing above moves; nothing below while it streams
+    assert API["calls"][-1]["messages"] == [{"role": "user", "content": "은파 주차"}] and API["calls"][-1]["page"] == "/"
+    assert log.is_visible() and page.locator("#chat").count() == 0   # the panel below; the floating one is never built
+    md = log.locator(".chat-a .chat-md")
+    assert "주차: 가능 — 무료" in md.inner_text() and md.locator("a").count() == 1
+    assert md.locator("a").get_attribute("href") == "/places/eunpa-lake-park/" and "없는 페이지" in md.inner_text()
+    card = log.locator(".chat-card")
+    assert card.count() == 1 and card.get_attribute("href") == "/places/eunpa-lake-park/"
+    assert card.get_attribute("data-track") == "chat_link_click" and card.get_attribute("data-chat-where") == "dock"
+    assert "대화" in log.locator(".ask-log-head").inner_text() and log.locator(".ask-new").inner_text() == "새 대화"
+    assert log.locator(".ask-note").inner_text() == "AI가 이 사이트의 정보로 쓴 답입니다. 틀릴 수 있으니 방문 전에 확인하세요."
+    page.wait_for_timeout(150)
+    assert "은파호수공원은 쉬는 날 없이" in page.inner_text("[data-ask-log] [data-chat-live]")
+    assert go.inner_text() == "물어보기" and page.input_value("#ask-q") == ""
+    lh = log.bounding_box()["height"]
+    assert (500 <= lh <= 600) if width >= 700 else (abs(lh - 0.7 * height) <= 4)   # a fixed height from the first paint
+    # every shift after the page loaded is the reader's own (the panel opening on their Enter), none from the answer
+    late = [e for e in page.evaluate("window.__ls") if not e["input"] and "chat-fab" not in e["src"]]
+    assert late == []
+    # the panel's own box asks the next question into the same conversation; its send button stops an answer
+    API["gap"] = 0.2
+    page.fill("#ask-q2", "주차 요금은요?")
+    page.press("#ask-q2", "Enter")
+    page.wait_for_selector(".ask-log .chat-u >> nth=1")
+    send2 = log.locator(".ask-more .chat-send")
+    assert send2.get_attribute("data-mode") == "stop" and go.get_attribute("data-mode") == "stop"
+    msgs = API["calls"][-1]["messages"]
+    assert [m["role"] for m in msgs] == ["user", "assistant", "user"] and msgs[-1]["content"] == "주차 요금은요?"
+    send2.click()
+    page.wait_for_selector(".ask-log .chat-note2")
+    assert "답을 멈췄습니다" in log.locator(".chat-a").last.inner_text() and go.inner_text() == "물어보기"
+    # '새 대화' empties the conversation and closes the panel; the focus goes back to the question box
+    page.click(".ask-new")
+    assert log.is_hidden() and page.evaluate("document.activeElement.id") == "ask-q"
+    assert errors == []
+    ctx.close()
+
+
+def test_starters_ask_and_the_boxes_ignore_input_methods_and_empty_questions(browser, site):
+    ctx, page, errors = open_home(browser, site, 1440, 900, gap=0.25)
+    chip = page.locator(".hk-pill").first
+    href = chip.get_attribute("href")
+    assert href == "/guides/no-car-day-trip/" and chip.get_attribute("data-ask") == "차 없이 하루 여행"
+    # with a modifier key a starter is a link (a new tab), and nothing is asked. Headless Chromium now and then opens
+    # no tab for a Ctrl+click or leaves it at about:blank (any link does, about 1 press in 10 on a busy machine —
+    # measured 2026-11-10): the press is repeated then; the tab that comes is the starter's page
+    tab = None
+    for _ in range(3):
+        try:
+            with ctx.expect_page(timeout=6000) as other:
+                chip.click(modifiers=["Control"])
+            other.value.wait_for_url(lambda u: not u.startswith("about:"), timeout=6000)   # about:blank, then the page
+            other.value.wait_for_load_state()
+            tab = other.value
+            break
+        except sync_api.TimeoutError:
+            for stuck in ctx.pages[1:]:
+                stuck.close()
+    assert tab is not None and unquote(urlsplit(tab.url).path) == href and API["calls"] == []
+    assert page.url.rstrip("/") == site                              # this page stays where it is
+    tab.close()
+    # an Enter the input method keeps (a conversion) commits the text; an empty box only takes the focus — nothing
+    # is asked
+    page.fill("#ask-q", "은파 주")
+    converting_enter(page, "차")
+    page.wait_for_timeout(150)
+    assert page.input_value("#ask-q") == "은파 주차" and page.url.rstrip("/") == site
+    page.fill("#ask-q", "")
+    page.click("[data-ask-go]")
+    page.wait_for_timeout(150)
+    assert API["calls"] == [] and page.evaluate("document.activeElement.id") == "ask-q"
+    assert page.url.rstrip("/") == site and page.locator("[data-ask-log]").is_hidden()
+    # a plain click asks the starter's question; the button (now '멈추기') stops the answer
+    chip.click()
+    page.wait_for_selector(".ask-log .chat-a .chat-md")
+    assert API["calls"][-1]["messages"] == [{"role": "user", "content": "차 없이 하루 여행"}]
+    assert page.url.rstrip("/") == site
+    page.click("[data-ask-go]")
+    page.wait_for_selector(".ask-log .chat-note2")
+    assert "답을 멈췄습니다" in page.inner_text(".ask-log .chat-a") and page.inner_text("[data-ask-go]") == "물어보기"
+    # the panel's own box: an Enter the input method keeps sends nothing either; the Enter that ends a Korean
+    # syllable sends at once
+    n = len(API["calls"])
+    page.fill("#ask-q2", "다음 질")
+    converting_enter(page, "문")
+    page.wait_for_timeout(150)
+    assert len(API["calls"]) == n and page.input_value("#ask-q2") == "다음 질문"
+    page.fill("#ask-q2", "주차 요금은 얼마인가")
+    korean_enter(page, "요")
+    page.wait_for_function(f"document.querySelectorAll('.ask-log .chat-u').length === {n + 1}")
+    for _ in range(50):                                              # its request reaches the server a moment after
+        if len(API["calls"]) > n:                                    # the question's bubble is drawn
+            break
+        page.wait_for_timeout(100)
+    assert len(API["calls"]) == n + 1
+    assert API["calls"][-1]["messages"][-1] == {"role": "user", "content": "주차 요금은 얼마인가요"}
+    assert page.locator("[data-ask-search]").count() == 0   # the card has no '검색': the search is the header's
+    assert errors == []
+    ctx.close()
+
+
+def test_the_starters_are_buttons_that_ask_and_links_without_js(browser, site):
+    """The external evaluation of 2026-10-18: on the home card an example question seemed to go to a guide while the
+    floating panel's chips ask it. With JS the home's starters ask in the card as the panel's chips do — buttons to
+    assistive technology (role=button) that a click, Enter or Space asks with, the page staying where it is — until the
+    assistant says it is not connected (data-chat-off: links again); without JS they are links to the pages that
+    answer them, and the card's no-JS line says so."""
+    ctx, page, errors = open_home(browser, site, 390, 844)
+    chips = page.locator(".hk-pill")
+    assert chips.count() == 2 and [chips.nth(i).get_attribute("role") for i in range(2)] == ["button", "button"]
+    assert page.get_by_role("button", name="이번 달 행사").count() == 1 and page.get_by_role("link", name="이번 달 행사").count() == 0
+    assert page.locator(".hk-nojs").is_hidden()
+    for n, (i, key) in enumerate(((1, "Space"), (0, "Enter"))):
+        chips.nth(i).focus()
+        page.keyboard.press(key)
+        page.wait_for_function(f"document.querySelectorAll('.ask-log .chat-u').length === {n + 1}")
+        page.wait_for_function("document.querySelector('[data-ask-go]').getAttribute('data-mode') !== 'stop'")
+    assert [c["messages"][-1]["content"] for c in API["calls"]] == ["이번 달 행사", "차 없이 하루 여행"]
+    assert page.url.rstrip("/") == site and page.locator(".ask-log .chat-a .chat-md").count() == 2
+    # the assistant not connected: the starters are links again
+    page.evaluate("document.querySelector('[data-chat-dock]').setAttribute('data-chat-off', '')")
+    page.wait_for_function("![...document.querySelectorAll('.hk-pill')].some((a) => a.hasAttribute('role'))")
+    assert errors == []
+    ctx.close()
+    # without JS: links to the pages that answer them, and the line that says so
+    ctx = browser.new_context(viewport={"width": 390, "height": 844}, locale="ko-KR", java_script_enabled=False)
+    page = ctx.new_page()
+    page.goto(site + "/")
+    chip = page.locator(".hk-pill").first
+    assert chip.get_attribute("role") is None and page.get_by_role("link", name="차 없이 하루 여행").count() == 1
+    line = page.locator(".hk-nojs")
+    assert line.is_visible() and "예시 질문은 답이 실린 페이지로 연결합니다" in line.inner_text()
+    chip.click()
+    page.wait_for_url("**/guides/no-car-day-trip/")
+    ctx.close()
+
+
+def test_korean_box_without_the_api_key_is_the_site_search(browser, site):
+    ctx, page, errors = open_home(browser, site, 390, 844, mode="503")
+    page.fill("#ask-q", "은파호수공원 주차")
+    page.click("[data-ask-go]")
+    page.wait_for_url("**/search/?q=*")
+    assert parse_qs(urlsplit(page.url).query)["q"] == ["은파호수공원 주차"] and len(API["calls"]) == 1
+    # the failed exchange left the conversation: nothing of it comes back in the panel
+    assert page.evaluate("JSON.parse(sessionStorage.getItem('gs-chat')).msgs") == []
+    # Chromium logs the scripted 503 as a failed resource; nothing else may reach the console
+    assert [e for e in errors if "status of 503" not in e] == []
+    ctx.close()
+
+
+def test_without_chat_js_the_box_searches_and_a_starter_follows_its_link(browser, site):
+    ctx, page, errors = open_home(browser, site, 1440, 900)
+    page.route("**/assets/chat.js", lambda route: route.abort())
+    page.fill("#ask-q", "철길마을")
+    page.press("#ask-q", "Enter")
+    page.wait_for_url("**/search/?q=*")
+    assert parse_qs(urlsplit(page.url).query)["q"] == ["철길마을"] and API["calls"] == []
+    page.goto(site + "/")
+    page.wait_for_load_state("load")
+    page.locator(".hk-pill").first.click()
+    page.wait_for_url("**/guides/no-car-day-trip/")
+    page.wait_for_load_state("load")
+    assert API["calls"] == []
+    assert [e for e in errors if "ERR_FAILED" not in e] == []
+    ctx.close()
+
+
+@pytest.mark.parametrize("width,height", [(390, 844), (820, 1180), (1100, 800), (1440, 900)])
+def test_the_launcher_is_there_from_the_start_and_goes_to_the_box(browser, site, width, height):
+    ctx, page, errors = open_home(browser, site, width, height)
+    fab = page.locator(".chat-fab")
+    out = "document.documentElement.classList.contains('ask-out')"
+    hidden = "getComputedStyle(document.querySelector('.chat-fab')).visibility"
+    if width < 768:
+        # a Korean phone (시안 A, operator 2026-11-05): the tab bar's 'AI 챗봇' button stands for the launcher — at the
+        # bottom of the first screen from the start, a 44px target; the floating launcher is not drawn
+        opener = page.locator(".tabbar [data-tab-chat]")
+        assert page.evaluate("getComputedStyle(document.querySelector('.chat-fab')).display") == "none"
+        b = opener.bounding_box()
+        assert opener.is_visible() and opener.inner_text().strip() == "AI 챗봇"
+        assert b["width"] >= 44 and b["height"] >= 44 and b["y"] >= height - 110 and b["y"] + b["height"] <= height
+        assert 0 <= b["x"] and b["x"] + b["width"] <= width
+    else:
+        opener = fab
+        # it steps aside while the home's question box is on screen — hidden, out of the tab order — and is there
+        # whenever the box is not (operator 2026-10-15 below 1024px, 2026-10-21 at every width): from the start where
+        # the box is below the first screen (시안 A, operator 2026-11-05), as on every other page
+        zone = page.evaluate("(() => { const r = document.querySelector('[data-ask-zone]').getBoundingClientRect();"
+                             " return r.top < innerHeight && r.bottom > 0; })()")
+        if not zone:
+            page.wait_for_function(out, timeout=3000)
+            page.wait_for_timeout(400)                               # its fade
+            assert page.evaluate("scrollY") == 0 and fab.is_visible()   # at load, without scrolling
+            page.evaluate("document.querySelector('.hk-box').scrollIntoView({block: 'center'})")
+            page.wait_for_function("!" + out, timeout=3000)
+            page.wait_for_timeout(400)
+        assert not fab.is_visible() and page.evaluate(hidden) == "hidden"
+        page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+        page.wait_for_function(out, timeout=3000)
+        page.wait_for_timeout(400)
+        assert fab.is_visible()                                      # once the box is off screen, on the home too
+        b = fab.bounding_box()
+        # 76px, 100px from 1024px (operator 2026-10-31), 68px from 1200px (the calm pass 2026-11-10, confirmed by the
+        # operator the same day): fully on screen, clear of the edges
+        assert b["height"] == (68 if width >= 1200 else 100 if width >= 1024 else 76), b
+        if width >= 1200:
+            # inside the page's right margin, over no part of the content column
+            edge = page.evaluate("document.querySelector('main .wrap').getBoundingClientRect().right"
+                                 " - parseFloat(getComputedStyle(document.querySelector('main .wrap')).paddingRight)")
+            assert b["x"] >= edge and b["x"] + b["width"] <= width - 8 and b["y"] + b["height"] <= height - 16, (b, edge)
+        else:
+            assert b["y"] + b["height"] <= height - 16 and b["x"] + b["width"] <= width - 16, b
+        # a round button at every width, its label 'AI 챗봇' always on the tag across its bottom (owner 2026-10-14: 'AI
+        # 챗봇인 거 더 크게 잘 보이면'), the start of its accessible name
+        tag = page.locator(".chat-fab-l")
+        assert b["width"] == b["height"] and tag.is_visible() and tag.inner_text() == "AI 챗봇"
+        assert fab.get_attribute("aria-label").startswith("AI 챗봇")
+    assert opener.get_attribute("aria-haspopup") is None             # here it goes to the box, it opens no dialog
+    page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+    page.wait_for_timeout(400)
+    opener.click()                                                   # nothing asked yet: the card's question box
+    page.wait_for_timeout(1000)
+    assert page.evaluate("document.activeElement.id") == "ask-q" and in_viewport(page, ".hk-box")
+    assert page.locator("#chat").count() == 0 and page.locator("[data-ask-log]").is_hidden()
+    if width < 768:
+        bar = page.locator(".tabbar").bounding_box()                 # the box is clear of the bar
+        box = page.locator(".hk-box").bounding_box()
+        assert box["y"] + box["height"] <= bar["y"], (box, bar)
+    assert not fab.is_visible()                                      # the box is on screen again (operator 2026-10-15, 10-21)
+    assert errors == []
+    ctx.close()
+
+
+@pytest.mark.parametrize("reduced", ["reduce", "no-preference"])
+def test_the_launcher_brings_the_conversation_and_the_panel_keeps_it(browser, site, reduced):
+    ctx, page, errors = open_home(browser, site, 1440, 900, reduced=reduced)
+    page.fill("#ask-q", "은파 주차")
+    page.press("#ask-q", "Enter")
+    page.wait_for_selector(".ask-log .chat-a .chat-card")
+    fab = page.locator(".chat-fab")
+    page.wait_for_timeout(800)
+    # on the home it is there exactly while the question box is off screen (operator 2026-10-21: the PC home too)
+    out = "document.documentElement.classList.contains('ask-out')"
+    assert fab.is_visible() == page.evaluate(out)
+    page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+    page.wait_for_timeout(500)
+    assert page.evaluate(out) and fab.is_visible()
+    fab.click()
+    page.wait_for_timeout(100 if reduced == "reduce" else 1200)
+    assert in_viewport(page, "[data-ask-log]")                       # the conversation, in view
+    assert page.evaluate("document.activeElement.id") == "ask-q2" and page.locator("#chat").count() == 0
+    assert "은파 주차" in page.inner_text("[data-ask-log]")
+    page.wait_for_timeout(400)                                       # the fade
+    assert fab.is_visible() == page.evaluate(out)
+    # another page: the launcher opens the floating panel with the same conversation (sessionStorage)
+    page.goto(site + "/places/")
+    page.locator(".chat-fab").click()
+    page.locator("#chat").wait_for(state="visible")
+    assert "은파 주차" in page.inner_text("#chat") and page.locator("#chat .chat-card").count() == 1
+    assert page.locator("#chat .chat-card").get_attribute("data-chat-where") == "panel"
+    # back home with that conversation in the tab: the launcher shows it in the panel under the opening
+    page.goto(site + "/")
+    page.wait_for_load_state("load")
+    assert page.locator("[data-ask-log]").is_hidden()                # nothing restored while the page loads
+    # the box is below this first screen (시안 A, operator 2026-11-05): the launcher is there at load, and aside while
+    # the box is on screen (2026-10-21)
+    page.wait_for_function(out, timeout=3000)
+    page.wait_for_timeout(400)
+    assert page.evaluate("scrollY") == 0 and page.locator(".chat-fab").is_visible()
+    page.evaluate("document.querySelector('.hk-box').scrollIntoView({block: 'center'})")
+    page.wait_for_function("!" + out, timeout=3000)
+    page.wait_for_timeout(400)
+    assert not page.locator(".chat-fab").is_visible()
+    assert page.locator("[data-ask-log]").is_hidden()                # nor when the box comes on screen
+    page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+    page.wait_for_function(out, timeout=3000)
+    page.wait_for_timeout(400)
+    page.locator(".chat-fab").click()
+    page.wait_for_selector("[data-ask-log] .chat-card")
+    page.wait_for_timeout(100 if reduced == "reduce" else 1200)
+    assert "은파 주차" in page.inner_text("[data-ask-log]") and page.evaluate("document.activeElement.id") == "ask-q2"
+    assert errors == []
+    ctx.close()
+
+
+UNDER = """(sels) => { const out = []; for (const sel of sels) { const q = document.querySelector(sel);
+  if (!q || getComputedStyle(q).display === 'none' || getComputedStyle(q).visibility === 'hidden') continue;
+  const r = q.getBoundingClientRect();
+  for (const [x, y] of [[r.left + 4, r.top + r.height / 2], [r.left + r.width / 2, r.top + 6],
+                        [r.left + r.width / 2, r.bottom - 6], [r.left + r.width / 2, r.top + r.height / 2]]) {
+    q.style.pointerEvents = 'none'; const all = document.elementsFromPoint(x, y); q.style.pointerEvents = '';
+    const e = all.find(e => !q.contains(e) && e.matches('a, button, input, label') && !e.closest('.chat-fab, .qm, .chat'));
+    if (e) out.push(sel + ' over ' + e.tagName + ' ' + (e.textContent || '').trim().slice(0, 24)); } } return out; }"""
+
+
+@pytest.mark.parametrize("width,height", [(1280, 800), (390, 844)])
+def test_the_quick_menu_and_the_launcher_cover_no_control_while_scrolling(browser, site, width, height):
+    """Review 2026-10-14: from 1024 to 1439px the rows outside .wrap (the home's carousels, the story stage) reached
+    under the quick menu and the 72px launcher; at 390 the launcher sat on the starters' row. Down the whole home, step
+    by step, no link, button or field is under either of them; on a phone (full-width rows pass under any floating
+    button while scrolling) at load: the first screen's controls are clear of it."""
+    ctx, page, errors = open_home(browser, site, width, height)
+    hits = []
+    end = page.evaluate("document.documentElement.scrollHeight") if width >= 1024 else 1
+    for y in range(0, end, 300):
+        page.evaluate(f"window.scrollTo(0, {y})")
+        page.wait_for_timeout(60)
+        hits += page.evaluate(UNDER, [".qm", ".chat-fab"])
+    assert sorted(set(hits)) == []
+    ctx.close()
+
+
+def test_an_empty_question_says_why_in_the_field(browser, site):
+    """QA 2026-10-15 U30: an empty question asks nothing, and the field says why — the form's data-empty in place of the
+    placeholder (in a contrasting colour, marked aria-invalid) and read out once by its live line — with the focus in
+    the field; typing brings the placeholder back. No layout shift: the live line is visually hidden."""
+    ctx, page, errors = open_home(browser, site, 390, 844)
+    q = page.locator("#ask-q")
+    ph = q.get_attribute("placeholder")
+    want = page.get_attribute("[data-ask-form]", "data-empty")
+    assert want == "질문을 먼저 적어 주세요" and ph != want
+    for press in (lambda: page.click("[data-ask-go]"), lambda: page.press("#ask-q", "Enter")):
+        press()
+        page.wait_for_function("document.querySelector('[data-ask-hint]').textContent !== ''")
+        assert q.get_attribute("placeholder") == want and q.get_attribute("aria-invalid") == "true"
+        assert page.inner_text("[data-ask-hint]") == want and page.evaluate("document.activeElement.id") == "ask-q"
+        assert API["calls"] == [] and page.locator("[data-ask-log]").is_hidden()
+        assert page.evaluate("getComputedStyle(document.querySelector('#ask-q'), '::placeholder').color") == "rgb(201, 37, 44)"
+        page.keyboard.type("은")
+        assert q.get_attribute("placeholder") == ph and q.get_attribute("aria-invalid") is None
+        assert page.evaluate("document.querySelector('[data-ask-hint]').textContent") == ""
+        page.fill("#ask-q", "")
+    assert page.evaluate("window.__ls.filter(e => !e.input).reduce((a, e) => a + e.v, 0)") < 0.01
+    assert errors == []
+    ctx.close()
+
+
+ARABIC = ("المتحف مغلق يوم الاثنين. الهاتف 063-454-3303، الساعات 09:00–18:00، التاريخ 2026-10-15.\n\n"
+          "- [은파호수공원](/places/eunpa-lake-park/) **مجاني**")
+
+
+def test_a_right_to_left_answer_is_drawn_right_to_left_with_its_numbers_in_order(browser, site):
+    """QA 2026-10-15 F06/X1: the server's meta event says the answer is Arabic (rtl), its links open the English pages.
+    The answer gets lang=ar and dir=rtl (its lists indent on the right), a phone number or a date is one left-to-right
+    run (else 063-454-3303 reads 3303-454-063), links take their own direction, the question bubble reads right to
+    left, the cards name their kind in English and their arrows point left. A Korean answer keeps its plain DOM."""
+    ctx, page, errors = open_home(browser, site, 390, 844)
+    events = [{"type": "meta", "dir": "rtl", "site": "en", "lang": "ar"}, {"type": "text", "delta": ARABIC},
+              {"type": "done", "links": [{"title": "Eunpa Lake Park", "url": f"{SITE}/en/places/eunpa-lake-park/", "ext": False}],
+               "fix": {"/places/eunpa-lake-park/": f"{SITE}/en/places/eunpa-lake-park/"}}]
+    body = b"".join(sse(e) for e in events)
+    page.route("**/api/chat/", lambda route: route.fulfill(status=200, body=body,
+                                                          headers={"content-type": "text/event-stream; charset=utf-8"}))
+    page.fill("#ask-q", "هل المتحف مفتوح يوم الاثنين؟")
+    page.click("[data-ask-go]")
+    page.wait_for_selector(".ask-log .chat-a .chat-card")
+    md = page.locator(".ask-log .chat-a .chat-md")
+    assert md.get_attribute("dir") == "rtl" and md.get_attribute("lang") == "ar"
+    assert md.evaluate("e => getComputedStyle(e.querySelector('p')).direction") == "rtl"
+    assert md.evaluate("e => getComputedStyle(e.querySelector('ul')).paddingRight") != "0px"
+    assert md.evaluate("e => [...e.querySelectorAll('span.chat-num[dir=ltr]')].map(s => s.textContent)") == [
+        "063-454-3303", "2026-10-15"]
+    assert md.locator("a").get_attribute("dir") == "auto" and md.locator("strong").get_attribute("dir") == "auto"
+    assert page.evaluate("getComputedStyle(document.querySelector('.ask-log .chat-u p')).direction") == "rtl"
+    assert page.get_attribute(".ask-log .chat-links", "dir") == "rtl" and page.inner_text(".ask-log .chat-card-k") == "Place"
+    assert page.get_attribute(".ask-log .chat-card", "href") == "/en/places/eunpa-lake-park/"
+    assert page.evaluate("getComputedStyle(document.querySelector('.ask-log .chat-card .icon')).transform") != "none"
+    assert page.evaluate("document.querySelector('[data-chat-live]').lang") == "ar"
+    # a Korean answer (this server sends no meta): no direction or language of its own, cards in Korean
+    page.unroute("**/api/chat/")
+    page.click(".ask-new")
+    page.fill("#ask-q", "은파 주차")
+    page.click("[data-ask-go]")
+    page.wait_for_selector(".ask-log .chat-a .chat-card")
+    md = page.locator(".ask-log .chat-a .chat-md")
+    assert md.evaluate("e => e.querySelectorAll('[dir]').length") == 0 and md.get_attribute("lang") is None
+    assert page.inner_text(".ask-log .chat-card-k") == "장소"
+    assert errors == []
+    ctx.close()
+
+
+def test_a_search_that_finds_nothing_helps_instead_of_listing_every_place(browser, site):
+    """QA 2026-10-15 F08 (/search/ of the sample build): a name one letter off offers the name it may have meant, and
+    that link searches it; a diet word ('halal') says the site has no such information; nothing found shows the list
+    links, the AI chat (asked that query; the focus comes back to the button when the panel closes) and every place
+    only on request (the focus goes to its heading) — the directory stays hidden until then. An index that did not
+    load keeps the directory; without JS the directory answers and the help stays hidden."""
+    API.update(mode="ok", gap=0.01, calls=[])
+    ctx = browser.new_context(viewport={"width": 390, "height": 844}, locale="ko-KR")
+    page = ctx.new_page()
+    errors = []
+    page.on("pageerror", lambda e: errors.append(str(e)))
+    page.goto(site + "/search/?q=초원사진간")
+    page.wait_for_selector(".res-sug a[data-sug]")
+    assert page.locator(".res-sug a[data-sug]").all_inner_texts() == ["초원사진관"]
+    assert page.locator("[data-directory]").is_hidden() and page.locator("[data-none-help]").is_visible()
+    page.click(".res-sug a[data-sug]")
+    page.wait_for_selector(".f-result")
+    assert parse_qs(urlsplit(page.url).query)["q"] == ["초원사진관"] and page.input_value("#q") == "초원사진관"
+    assert page.locator(".res-nm").first.inner_text() == "초원사진관" and page.locator("[data-none-help]").is_hidden()
+    page.goto(site + "/search/?q=halal")
+    page.wait_for_selector(".res-diet")
+    assert "할랄" in page.inner_text(".res-diet") and page.locator(".res-sug").count() == 0
+    assert page.locator("[data-directory]").is_hidden() and page.locator("[data-none-help]").is_visible()
+    assert page.locator(".res-lists a").count() >= 3
+    ask = page.locator("[data-none-help] [data-chat-open]")
+    assert ask.get_attribute("data-chat-q") == "halal"
+    page.click("[data-show-all]")
+    assert page.locator("[data-directory]").is_visible() and page.evaluate("document.activeElement.id") == "h-dir"
+    ask.click()
+    page.wait_for_selector(".chat-a .chat-card")
+    assert API["calls"][-1]["messages"][-1]["content"] == "halal"
+    page.keyboard.press("Escape")
+    page.wait_for_function("document.activeElement && document.activeElement.hasAttribute('data-chat-q')")
+    page.fill("#q", "")
+    page.press("#q", "Enter")
+    assert page.locator("[data-none-help]").is_hidden() and page.locator("[data-directory]").is_visible()
+    assert errors == []
+    ctx.close()
+    ctx = browser.new_context(viewport={"width": 390, "height": 844})
+    ctx.route("**/search/index.json", lambda route: route.abort())
+    page = ctx.new_page()
+    page.goto(site + "/search/?q=halal")
+    page.wait_for_selector(".res-none")
+    assert page.locator("[data-directory]").is_visible() and page.locator("[data-show-all]").is_hidden()
+    ctx.close()
+    ctx = browser.new_context(viewport={"width": 390, "height": 844}, java_script_enabled=False)
+    page = ctx.new_page()
+    page.goto(site + "/search/?q=halal")
+    assert page.locator("[data-directory]").is_visible() and page.locator("[data-none-help]").is_hidden()
+    ctx.close()
+
+
+@pytest.fixture(scope="module")
+def gunsan_index():
+    """The real Gunsan search index (present.search_index) and its guides' paths by id."""
+    S = State(GUNSAN, "preview")
+    rows = present.search_index(S)
+    return {"rows": rows, "body": json.dumps(rows, ensure_ascii=False), "guide": {g["id"]: g["_path"] for g in S.guides}}
+
+
+def gunsan_search(browser, gunsan_index):
+    """A 390×844 tab whose /search/index.json is the real Gunsan index. Returns (ctx, page, errors)."""
+    ctx = browser.new_context(viewport={"width": 390, "height": 844}, locale="ko-KR")
+    ctx.route("**/search/index.json",
+              lambda route: route.fulfill(status=200, content_type="application/json", body=gunsan_index["body"]))
+    page = ctx.new_page()
+    errors = []
+    page.on("pageerror", lambda e: errors.append(str(e)))
+    return ctx, page, errors
+
+
+HREFS = "els => els.map(a => a.getAttribute('href'))"
+
+
+def test_search_reads_the_query_words_and_offers_the_related_guides(browser, site, gunsan_index):
+    """Evaluation 2026-10-18: '비 오는 날 아이랑' found nothing and offered only the chat, although the site has a
+    guide for rainy days and one for travelling with children. /search/ of the sample build with the real Gunsan index
+    (present.search_index; served in place of the sample's): no row has the whole query, so '관련 가이드' lists the
+    rainy-day guide (guide-03) and the guide with children (guide-02), each a link to its page, after the 'nothing'
+    line and before the help (the chat still asked that query), the words also searched named; the same typed without
+    spaces. A concept word finds the rows of its words ('뚜벅이' → the car-free guide first, '함께 찾은 말'); several
+    parts find the rows that have every one, the city's name no condition ('군산 짬뽕' → the places with 짬뽕 on the
+    menu); a query that plans a trip links to the AI course planner; a name finds as before, with no extra line. Under
+    the box one line says what the search covers (the input's description)."""
+    rows, guide = gunsan_index["rows"], gunsan_index["guide"]
+    ctx, page, errors = gunsan_search(browser, gunsan_index)
+    hrefs = HREFS
+
+    page.goto(site + "/search/?q=" + quote("비 오는 날 아이랑"))
+    page.wait_for_selector(".res-rel")
+    assert page.locator(".res-rel a").evaluate_all(hrefs) == [guide["guide-03"], guide["guide-02"]]
+    assert page.locator(".res-rel h2").inner_text().startswith("관련 가이드")
+    assert "비 오는 날 아이랑" in page.inner_text(".res-none") and page.locator(".f-result").count() == 0
+    syn = page.inner_text(".res-syn")
+    assert syn.startswith("함께 찾은 말: ") and "실내" in syn and "아이와" in syn
+    assert page.locator("[data-none-help]").is_visible() and page.locator("[data-directory]").is_hidden()
+    assert page.get_attribute("[data-none-help] [data-chat-q]", "data-chat-q") == "비 오는 날 아이랑"
+    rel_y = page.locator(".res-rel").bounding_box()["y"]
+    assert page.locator(".res-none").bounding_box()["y"] < rel_y < page.locator("[data-none-help]").bounding_box()["y"]
+    assert page.locator(".res-plan").count() == 0
+    note = page.locator(".search-note")
+    assert note.is_visible() and note.inner_text() == "장소 이름·메뉴·동네·가이드를 찾고, 여행 질문은 AI 챗봇에게 물어보세요."
+    assert page.get_attribute("#q", "aria-describedby") == note.get_attribute("id")
+
+    page.goto(site + "/search/?q=" + quote("비오는날아이랑"))
+    page.wait_for_selector(".res-rel")
+    assert page.locator(".res-rel a").evaluate_all(hrefs) == [guide["guide-03"], guide["guide-02"]]
+
+    page.goto(site + "/search/?q=" + quote("뚜벅이"))
+    page.wait_for_selector(".f-result")
+    assert page.locator(".res-g a").evaluate_all(hrefs)[0] == guide["guide-01"]
+    assert "차 없이" in page.inner_text(".res-syn") and page.locator("[data-none-help]").is_hidden()
+
+    page.goto(site + "/search/?q=" + quote("군산 짬뽕"))
+    page.wait_for_selector(".f-result")
+    jjamppong = {r["p"] for r in rows if r["k"] == "food" and "짬뽕" in (r.get("m") or "") and "군산" not in r["n"]}
+    found = set(page.locator(".res-g a").evaluate_all(hrefs))
+    assert jjamppong and jjamppong <= found
+
+    page.goto(site + "/search/?q=" + quote("1박 2일 일정"))
+    page.wait_for_selector(".res-plan a")
+    assert page.get_attribute(".res-plan a", "href") == "/plan/" and page.locator(".res-plan a").is_visible()
+    assert guide["guide-07"] in page.locator(".res-rel a").evaluate_all(hrefs)
+
+    page.goto(site + "/search/?q=" + quote("초원사진관"))
+    page.wait_for_selector(".f-result")
+    assert page.locator(".res-nm").first.inner_text() == "초원사진관"
+    assert page.locator(".res-syn").count() == 0 and page.locator(".res-plan").count() == 0
+    assert errors == []
+    ctx.close()
+
+
+def test_search_reads_concept_words_only_as_words_and_skips_filler(browser, site, gunsan_index):
+    """Review 2026-10-18 (the real Gunsan index on the sample's /search/). A concept word reads as one where it stands
+    as a word or a word start, followed by nothing more than particles, verb endings, the nouns and conversational
+    endings a question ends with, or another concept word — never as a run inside a longer word: '아이스크림', '버스킹'
+    and '가족사진관' bring no 아이·버스·가족 concept — no '함께 찾은 말', no related guides. '아이랑 놀만한곳
+    추천해줘' finds the guide with children; '주차할 곳' (round 3: it found nothing) the rows with 주차; '비오는날 아이랑
+    갈만한곳 추천해줘' lists the rainy-day and children guides. A plain word is found as typed (round 3: it is never cut
+    short in the rows found): '고군산군도가볼만한곳' finds no row, and the related guides — only there the
+    conversational ending is dropped — are those with 고군산군도. A query of two or more parts lists the related
+    guides that have two or more of them while any does (review 2026-10-18, fourth round: '비 오는 날 선유도 장자도'
+    → the island guides, which have 선유도 and 장자도, not the rainy-day guide, which has one part). A diet word lists
+    no related guide: '할랄 맛집' gives the diet note, and no 맛집 guide as if it answered."""
+    guide = gunsan_index["guide"]
+    ctx, page, errors = gunsan_search(browser, gunsan_index)
+
+    def search(q):
+        page.goto(site + "/search/?q=" + quote(q))
+        page.wait_for_selector(".f-result, .res-none")
+
+    for q in ("아이스크림", "버스킹", "가족사진관"):
+        search(q)
+        assert page.locator(".res-syn").count() == 0 and page.locator(".res-rel").count() == 0, q
+
+    search("아이랑 놀만한곳 추천해줘")
+    assert page.locator(".f-result").count() == 1 and guide["guide-02"] in page.locator(".res-g a").evaluate_all(HREFS)
+    assert page.inner_text(".res-syn").startswith("함께 찾은 말: 아이랑 → ")
+    search("비오는날 아이랑 갈만한곳 추천해줘")
+    assert page.locator(".res-rel a").evaluate_all(HREFS) == [guide["guide-03"], guide["guide-02"]]
+    search("주차할 곳")
+    assert page.locator(".f-result").count() == 1 and page.locator(".res-none").count() == 0
+    by = {r["p"]: r for r in gunsan_index["rows"]}
+    assert all("주차" in by[h]["n"] + (by[h].get("a") or "") + (by[h].get("t") or "")
+               for h in page.locator(".res-g a").evaluate_all(HREFS))
+    search("고군산군도가볼만한곳")
+    rel = page.locator(".res-rel a").evaluate_all(HREFS)
+    assert page.locator(".f-result").count() == 0 and rel
+    assert all("고군산군도" in by[h]["n"] + (by[h].get("a") or "") for h in rel), rel
+
+    search("비 오는 날 선유도 장자도")
+    rel = page.locator(".res-rel a").evaluate_all(HREFS)
+    assert rel[0] == guide["guide-08"] and guide["guide-03"] not in rel, rel
+
+    search("할랄 맛집")
+    assert page.locator(".res-diet").is_visible() and page.locator(".res-rel").count() == 0
+    assert page.locator(".res-syn").count() == 0 and page.locator("[data-none-help]").is_visible()
+    assert errors == []
+    ctx.close()

@@ -1,0 +1,58 @@
+From ea603d2f58c6df44431360d32fd6fd7c1767e606 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Thu, 12 Nov 2026 05:55:48 +0000
+Subject: [PATCH] =?UTF-8?q?test:=20=EC=A0=9C=ED=9C=B4=C2=B7=EA=B4=80?=
+ =?UTF-8?q?=EB=A0=A8=20=EC=82=AC=EC=9D=B4=ED=8A=B8=20=EB=B0=B0=EB=84=88=20?=
+ =?UTF-8?q?=EB=92=A4=20=EC=8B=A4=ED=8C=A8=ED=95=98=EB=8D=98=20=EC=8B=9C?=
+ =?UTF-8?q?=ED=97=98=202=EA=B0=9C=20=EC=88=98=EC=A0=95(/sun/=20=EB=B3=B8?=
+ =?UTF-8?q?=EB=AC=B8=20=EA=B2=80=EC=82=AC,=20=EB=B9=88=20=EB=8D=B0?=
+ =?UTF-8?q?=EC=9D=B4=ED=84=B0=20=ED=99=88=EC=9D=98=20=EB=A1=9C=EA=B3=A0)?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Vhf1SzcdSAwnkfrs9wbu8Z
+---
+ tests/test_sun_transport_pages.py | 5 ++++-
+ tests/test_uiux.py                | 8 +++++---
+ 2 files changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/tests/test_sun_transport_pages.py b/tests/test_sun_transport_pages.py
+index 304acc74d2..85b8067946 100644
+--- a/tests/test_sun_transport_pages.py
++++ b/tests/test_sun_transport_pages.py
+@@ -260,7 +260,10 @@ def test_sun_page(built):
+     html = built.render(built.S.tt_sun, T.sun_page, T.SUN_PATH, "sun.html.j2", "sun")
+     p, nodes = check_page(html)
+     assert "10월 31일(토)" in p.body and "해 뜨는 시각 06:54" in p.body and "해 지는 시각 17:39" in p.body
+-    assert "오늘" not in p.body                         # sun.js adds it on the visitor's own date
++    # sun.js adds '오늘' on the visitor's own date: the built table never says it. The page's own content only — the
++    # footer's 제휴·관련 사이트 strip names 날씨각 by its own line ('오늘의 날씨 지수', operator 2026-11-11)
++    main = scan(html.split("<main", 1)[1].split("</main>", 1)[0].join(("<main", "</main>")))
++    assert "오늘" not in main.body
+     assert "data-sun" in html and 'data-d="2026-11-01"' in html
+     assert "1~2분 다를 수 있습니다" in p.body and "한국천문연구원" in p.body
+     # the tides (국립해양조사원 조석예보, filled 2026-10-31 once the agency's server answered again): one table per
+diff --git a/tests/test_uiux.py b/tests/test_uiux.py
+index da393bf414..8a27beffa1 100644
+--- a/tests/test_uiux.py
++++ b/tests/test_uiux.py
+@@ -147,9 +147,11 @@ def test_empty_real_data_has_honest_working_visitor_choices(tmp_path):
+     home = (out / "index.html").read_text("utf-8")
+     assert "여행지 안내를 준비하고 있습니다" in home
+     assert "군산시 문화관광에서 확인" in home
+-    # nothing dresses the empty data up (CLAUDE.md 4): no photo, no illustration — only the menu's own 3D pictures,
+-    # which sit beside their links with or without data
+-    assert [i for i in scan(out / "index.html").images if not i["src"].startswith("/assets/icons/")] == []
++    # nothing dresses the empty data up (CLAUDE.md 4): no photo, no illustration — only the menu's own 3D pictures
++    # and the 제휴·관련 사이트 cards' logos (operator 2026-11-11: the company's sites, not this data), which sit beside
++    # their links with or without data
++    assert [i for i in scan(out / "index.html").images
++            if not i["src"].startswith(("/assets/icons/", "/assets/related/", "/assets/brand/icon-"))] == []
+     assert [i["alt"] for i in scan(out / "index.html").chrome_images] == [""]   # the launcher's face only
+     assert "/places/" in scan(out / "index.html").links
+     assert "/guides/" not in scan(out / "index.html").links
+-- 
+2.43.0
+

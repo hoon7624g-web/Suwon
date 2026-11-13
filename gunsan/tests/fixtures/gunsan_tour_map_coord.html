@@ -1,0 +1,24 @@
+<!-- trimmed from the 군산시 문화관광 page www.gunsan.go.kr/tour/m2080/view/305387 (fetched 2026-10-16): only the map script's coordinate block, for tests/test_official_coords.py -->
+<script type="text/javascript">
+		var lng = '35.9596090'; //위도
+		var lat = '126.5317160'; //경도
+		var s_boardId;
+		var s_adress = '전라북도 군산시 비응도동';
+		var s_dAdress = '';
+		var s_zip = '';
+		var s_dataSid = '305387';
+		
+		s_adress = $.trim(s_adress);
+		s_dAdress = $.trim(s_dAdress);
+		s_zip = $.trim(s_zip);
+		
+		//위도 경도가 설정되어 있지 않은 데이터
+		if(lat==''||lat == '')
+		{
+			lat = '126.73684';
+			lng = '35.96761';
+		}
+		
+		
+		var daumMap = new mapControll(lng,lat,"s_nowmap"); //다음지도
+</script>

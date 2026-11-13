@@ -1,0 +1,12 @@
+{
+  "_notes": "운영자 결정 2026-11-11 '군산각 내 제휴파트너 배너 추가' — (1) 회사 기본 사이트 링크, (2) 서로 관련 있는 사이트 링크(인천각에 부평시장각, 부평시장각에 인천각을 거는 식). 자리·제목은 운영자가 시안을 보고 정했다: 모든 한국어 페이지 바닥글 맨 위 띠 + 홈 맨 아래 카드, 제목 '제휴·관련 사이트'. 같은 날 '스테이머뭄 배너도 추가해줘' — 파트너 숙소라 설명에 관계('군산각 파트너 숙소')를 적고 링크는 rel=sponsored. 아이콘은 각 사이트가 자기 사이트에 건 앱 아이콘(icon_from)이고, 스테이,머뭄은 그 숙소 홈페이지 사진(partners.json photos_from)을 정사각형으로 줄인 것이다. 설명은 각 사이트의 제목·설명문에서 줄였다(2026-11-11 확인).",
+  "title": "제휴·관련 사이트",
+  "sites": [
+    {"name": "AI오투오", "url": "https://www.o2osolution.ai/", "note": "군산각 운영사 · 에이전틱 AI", "icon": "/assets/related/aio2o.png", "icon_from": "https://www.o2osolution.ai/icons/apple-touch-icon.png"},
+    {"name": "WebforAI", "url": "https://webforai.kr/", "note": "AI 검색 인용 정비 서비스", "icon": "/assets/related/webforai.png", "icon_from": "https://webforai.kr/assets/favicon-192.png"},
+    {"name": "날씨각", "url": "https://weather.o2o.kr/", "note": "오늘의 날씨 지수 · 세차각·빨래각", "icon": "/assets/related/weather.png", "icon_from": "https://weather.o2o.kr/apple-touch-icon.png"},
+    {"name": "여행각", "url": "https://travel.webforai.kr/", "note": "전국 ○○각 여행 네트워크", "icon": "/assets/related/travel.png", "icon_from": "https://travel.webforai.kr/assets/brand/icon-192.png"},
+    {"name": "군산각 블로그", "url": "https://blog.naver.com/gunsangak", "note": "군산 여행 이야기 · 네이버 블로그", "icon": "/assets/brand/icon-96.png"},
+    {"name": "스테이,머뭄", "url": "https://co.webforai.kr/s/stay", "note": "군산각 파트너 숙소 · 적산가옥 독채", "icon": "/assets/related/stay-meomum.jpg", "icon_from": "https://co.webforai.kr/s/stay", "sponsored": true}
+  ]
+}

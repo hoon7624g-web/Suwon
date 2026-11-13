@@ -1,0 +1,150 @@
+/* ---------------------------------------------------------------- 84 홈의 불꽃축제 띠 (operator 2026-11-04 meeting:
+   '불꽃축제 영상 군산각 메인에'; home.html.j2 .fw, present.home_fest). A night band right under the first screen while
+   the pinned edition is not over: the D-day, the name, day · time · place, the programme lines, the two links and the
+   source on the left; 군산각's Instagram reel on the right from 900px, under the text on phones. The sparks are CSS
+   gradients (decoration, no picture, CLAUDE.md 4). The reel's slot reuses the /abroad/ embed placeholder
+   (css/48-abroad.css .ab-embed / .ab-ph); its frame is at least 326px wide, the narrowest Instagram draws, so on
+   phones the reel takes the whole column without the panel's padding. Pretendard 400·700 only. */
+.fw { position: relative; overflow: hidden; padding: 30px 0 32px; color: #fff;
+  background: radial-gradient(460px 280px at 88% 6%, rgba(255, 196, 77, .30), rgba(255, 196, 77, 0) 70%),
+    radial-gradient(380px 260px at 4% 96%, rgba(232, 74, 140, .26), rgba(232, 74, 140, 0) 70%),
+    linear-gradient(168deg, #0B1230 0, #19154A 56%, #2B1342 100%); }
+.fw::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .7;
+  background-image: radial-gradient(1.6px 1.6px at 12% 18%, #fff 50%, transparent 52%),
+    radial-gradient(1.2px 1.2px at 31% 8%, #FFE7A3 50%, transparent 52%),
+    radial-gradient(1.4px 1.4px at 54% 22%, #fff 50%, transparent 52%),
+    radial-gradient(1.2px 1.2px at 72% 12%, #fff 50%, transparent 52%),
+    radial-gradient(1.8px 1.8px at 93% 30%, #FFE7A3 50%, transparent 52%),
+    radial-gradient(1.2px 1.2px at 8% 62%, #fff 50%, transparent 52%),
+    radial-gradient(1.4px 1.4px at 46% 88%, #FFE7A3 50%, transparent 52%),
+    radial-gradient(1.2px 1.2px at 84% 78%, #fff 50%, transparent 52%); }
+.fw-in { position: relative; display: grid; gap: 24px; }
+@media (min-width: 900px) {
+  .fw { padding: 44px 0 46px; }
+  .fw-in { grid-template-columns: minmax(0, 1fr) minmax(360px, 400px); align-items: center; gap: 44px; }
+}
+.fw-k { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 12px; font-size: 14px; font-weight: 700;
+  color: rgba(255, 255, 255, .82); }
+.fw-dd { display: inline-flex; align-items: center; height: 30px; padding: 0 12px; border-radius: 999px; background: var(--chick);
+  color: var(--ink); font-size: 16px; font-weight: 700; letter-spacing: -.01em; }
+.fw-h { margin: 0 0 18px; font-size: clamp(30px, 7.4vw, 48px); font-weight: 700; line-height: 1.12; letter-spacing: -.035em;
+  color: #fff; word-break: keep-all; }
+.fw-sub { display: block; margin-top: 6px; font-size: .58em; letter-spacing: -.02em; color: #FFD57A; }
+.fw-f { display: grid; gap: 8px; margin: 0 0 18px; }
+.fw-f div { display: flex; align-items: baseline; gap: 12px; }
+.fw-f dt { flex: none; min-width: 36px; font-size: 14px; font-weight: 700; color: #FFD57A; }
+.fw-f dd { margin: 0; font-size: 17px; font-weight: 700; line-height: 1.45; word-break: keep-all; overflow-wrap: anywhere; }
+.fw-pts { display: grid; gap: 8px; margin: 0 0 20px; padding: 0; list-style: none; }
+.fw-pts li { position: relative; padding: 11px 14px 11px 40px; border-radius: 14px; background: rgba(255, 255, 255, .08);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .14); font-size: 15px; line-height: 1.5; word-break: keep-all; }
+.fw-pts li::before { content: ""; position: absolute; left: 13px; top: 15px; width: 16px; height: 16px; border-radius: 50%;
+  background: radial-gradient(circle, #FFF3C9 0, #FFB547 42%, rgba(255, 181, 71, 0) 72%); }
+.fw-pts b { display: block; font-weight: 700; }
+.fw-pts span { display: block; margin-top: 2px; font-size: 13.5px; color: rgba(255, 255, 255, .74); }
+.fw-cta { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
+.fw-btn { display: inline-flex; align-items: center; gap: 8px; min-height: 50px; padding: 0 22px; border-radius: 999px;
+  background: var(--chick); color: var(--ink); font: 700 16px/1 var(--font); letter-spacing: -.01em; text-decoration: none;
+  transition: background-color .2s var(--fb); }
+.fw-btn:hover { background: #FFC81F; color: var(--ink); text-decoration: none; }
+.fw-btn-w { background: rgba(255, 255, 255, .12); color: #fff; box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .55); }
+.fw-btn-w:hover { background: rgba(255, 255, 255, .22); color: #fff; }
+.fw-btn .icon { width: 20px; height: 20px; }
+.fw-btn:focus-visible, .fw-v-go a:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.fw-src { margin: 0; font-size: 12.5px; line-height: 1.5; color: rgba(255, 255, 255, .7); }
+@media (max-width: 479px) { .fw-cta .fw-btn { flex: 1 1 100%; justify-content: center; } }
+
+.fw-v { width: 100%; max-width: 420px; margin: 0 auto; box-sizing: border-box; }
+@media (min-width: 480px) {
+  .fw-v { padding: 14px; border-radius: 24px; background: rgba(255, 255, 255, .07); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .16); }
+}
+.fw-v-h { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; font-size: 14px; color: rgba(255, 255, 255, .8); }
+.fw-v-h b { color: #fff; }
+.fw-v-a { color: rgba(255, 255, 255, .7); }
+.fw-embed .ab-ph { background: rgba(255, 255, 255, .06); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .16); color: rgba(255, 255, 255, .82); }
+.fw-embed .ab-ph .ab-load { min-height: 44px; padding: 0 18px; border: 0; border-radius: 999px; background: #fff; color: var(--ink);
+  font: 700 15px/1 var(--font); cursor: pointer; }
+.fw-v-go { margin: 8px 0 0; text-align: center; font-size: 14px; }
+.fw-v-go a { display: inline-flex; align-items: center; gap: 4px; min-height: 44px; color: #fff; font-weight: 700; text-decoration: none; }
+.fw-v-go a:hover { text-decoration: underline; }
+@media (prefers-reduced-motion: reduce) { .fw-btn { transition: none; } }
+
+/* ---------------------------------------------------------------- the event page's media (event.html.j2, operator
+   2026-11-04 '불꽃축제 상세 페이지에 사진, 영상 등 넣어서 다채롭게'): 군산각's reel in a night card like the home band's,
+   then the photos of the places around the venue — KOGL-1 fills its 4:3 frame, KOGL-3 sits whole on the tinted frame
+   at most its own width (never cropped or enlarged, CLAUDE.md 3.4), the name to the place and the credit under it. */
+.ev-reel-c { max-width: 440px; padding: 14px; border-radius: 24px; color: #fff; box-sizing: border-box;
+  background: radial-gradient(300px 200px at 90% 0, rgba(255, 196, 77, .28), rgba(255, 196, 77, 0) 70%),
+    linear-gradient(168deg, #0B1230 0, #19154A 60%, #2B1342 100%); }
+@media (max-width: 479px) { .ev-reel-c { padding: 10px 0 4px; border-radius: 18px; } .ev-reel-c .ev-reel-h { padding: 0 12px; } }
+.ev-reel-h { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; font-size: 14px; color: rgba(255, 255, 255, .8); }
+.ev-reel-h b { color: #fff; }
+.ev-reel-a { color: rgba(255, 255, 255, .7); }
+.ev-reel-c .ab-ph { background: rgba(255, 255, 255, .06); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .16); color: rgba(255, 255, 255, .82); }
+.ev-reel-go { margin: 8px 0 0; text-align: center; font-size: 14px; }
+.ev-reel-go a { display: inline-flex; align-items: center; gap: 4px; min-height: 44px; color: #fff; font-weight: 700; text-decoration: none; }
+.ev-reel-go a:hover { text-decoration: underline; }
+.ev-reel-go a:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+.ev-gal { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
+@media (min-width: 900px) { .ev-gal { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.ev-g { min-width: 0; }
+.ev-g-f { display: flex; align-items: center; justify-content: center; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 16px; background: var(--bg-2); }
+.ev-g.t1 .ev-g-f picture { display: block; width: 100%; height: 100%; }
+.ev-g.t1 .ev-g-f img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .4s var(--fb); }
+.ev-g.t1 .ev-g-f:hover img { transform: scale(1.04); }
+.ev-g.t3 .ev-g-f { padding: 8px; box-sizing: border-box; }
+.ev-g.t3 .ev-g-f img { display: block; width: auto; height: auto; max-width: min(100%, var(--nw, 100%)); max-height: 100%; }
+.ev-g-c { display: flex; flex-direction: column; gap: 2px; margin: 8px 2px 0; font-size: 12px; line-height: 1.45; color: var(--ink-2); }
+.ev-g-c a { font-size: 15px; font-weight: 700; color: var(--ink); text-decoration: none; word-break: keep-all; }
+.ev-g-c a:hover { color: var(--link); text-decoration: underline; }
+@media (prefers-reduced-motion: reduce) { .ev-g.t1 .ev-g-f img { transition: none; } }
+/* the day's guide (events.json page_media.guide, once published): under the band's buttons, and atop the event page's
+   main column */
+.fw-guide { margin: 0 0 12px; font-size: 15px; }
+.fw-guide a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: #FFD57A; font-weight: 700; text-decoration: none; }
+.fw-guide a:hover { text-decoration: underline; }
+.fw-guide a:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+.ev-guide { margin: 0 0 18px; }
+.ev-guide a { display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 10px 16px; border-radius: 16px; background: var(--chick);
+  color: var(--ink); text-decoration: none; box-shadow: 0 10px 22px -16px rgba(120, 90, 0, .6); }
+.ev-guide a:hover { background: #FFC81F; color: var(--ink); text-decoration: none; }
+.ev-guide-k { flex: none; padding: 3px 9px; border-radius: 999px; background: var(--ink); color: var(--chick); font-size: 12.5px; font-weight: 700; }
+.ev-guide-t { flex: 1; min-width: 0; font-size: 15px; font-weight: 700; line-height: 1.4; word-break: keep-all; }
+
+/* ---------------------------------------------------------------- the reel as a still (home: the first news slide and the
+   불꽃축제 band; operator 2026-11-04 '로딩 안 되게 미리보기 사진 넣어놓고 재생버튼'): the cover's fireworks frame fills
+   the box, a white play disc in the middle and a small 'Instagram 릴스 재생' tag; the dialog shows the official embed */
+.rp { position: absolute; inset: 0; display: block; overflow: hidden; background: #07090F; color: #fff; text-decoration: none; }
+.rp picture { position: absolute; inset: 0; display: block; }
+.rp .rp-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--fb); }
+.rp:hover .rp-img { transform: scale(1.03); }
+.rp-btn { position: absolute; left: 50%; top: 50%; display: grid; place-items: center; width: 68px; height: 68px; margin: -34px 0 0 -34px;
+  border-radius: 50%; background: rgba(255, 255, 255, .92); color: #E0245E; box-shadow: 0 12px 30px -10px rgba(0, 0, 0, .6);
+  transition: transform .25s var(--fb); }
+.rp-btn svg { margin-left: 4px; }
+.rp:hover .rp-btn { transform: scale(1.08); }
+.rp-tag { position: absolute; right: 12px; top: 12px; display: inline-flex; align-items: center; gap: 6px; min-height: 30px; padding: 0 10px 0 4px;
+  border-radius: 999px; background: rgba(0, 0, 0, .55); font-size: 12.5px; font-weight: 700; }
+.rp-tag .ab-svc { width: 22px; height: 22px; }
+.rp-tag .ab-svc svg { width: 12px; height: 12px; }
+.rp:focus-visible { outline: 3px solid var(--focus); outline-offset: -3px; }
+.nc-frame.nc-reelf { background: #07090F; }
+/* above the card's title link that covers the card (.nc-t a::after): the still opens the reel, the rest the event page */
+.nc-frame.nc-reelf { z-index: 2; }
+.nc-frame .rp { z-index: 2; }
+.fw-v .fw-play { position: relative; display: block; aspect-ratio: 1080 / 610; border-radius: 16px; }
+@media (prefers-reduced-motion: reduce) { .rp .rp-img, .rp-btn { transition: none; } .rp:hover .rp-img, .rp:hover .rp-btn { transform: none; } }
+@media (max-width: 767px) { .nc-frame .rp-btn { width: 40px; height: 40px; margin: -20px 0 0 -20px; } .nc-frame .rp-btn svg { width: 18px; height: 18px; } .nc-frame .rp-tag { display: none; } }
+
+.reel-dlg { width: min(440px, calc(100vw - 24px)); max-height: calc(100vh - 24px); padding: 0; border: 0; border-radius: 22px; overflow: auto;
+  background: linear-gradient(168deg, #0B1230 0, #19154A 60%, #2B1342 100%); color: #fff; box-shadow: 0 30px 80px -20px rgba(0, 0, 0, .7); }
+.reel-dlg::backdrop { background: rgba(7, 9, 15, .72); }
+.reel-dlg-in { padding: 14px 14px 6px; }
+.reel-dlg-h { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; font-size: 14px; color: rgba(255, 255, 255, .82); }
+.reel-dlg-h b { color: #fff; }
+.reel-x { margin-left: auto; display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 50%; background: rgba(255, 255, 255, .12);
+  color: #fff; font: 400 26px/1 var(--font); cursor: pointer; }
+.reel-x:hover { background: rgba(255, 255, 255, .22); }
+.reel-x:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+.reel-dlg .ab-ph { background: rgba(255, 255, 255, .06); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .16); color: rgba(255, 255, 255, .82); }
+.reel-dlg-go { margin: 6px 0 0; text-align: center; font-size: 14px; }
+.reel-dlg-go a { display: inline-flex; align-items: center; gap: 4px; min-height: 44px; color: #fff; font-weight: 700; text-decoration: none; }

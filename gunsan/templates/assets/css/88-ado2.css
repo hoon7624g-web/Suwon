@@ -1,0 +1,57 @@
+/* ADO2 숏폼 영상 (operator decision 2026-11-11 meeting; templates/_ado2.html.j2, pipeline/ado2.py): the short vertical
+   video the operator's ADO2 made for a place.
+   - .a2: the place page's box at the head of the main column (on phones right after 방문 전 확인): a white card, the
+     video in a dark rounded 9:16 frame at the left, then at its right 'Powered by ADO2' (the service's own teal and
+     wordmark — its brand mark), the invitation and the relationship line (operator 2026-11-12: no heading or
+     explanation on screen). Phones: the video at 46%, the badge two lines high beside it.
+   - .a2-sec: /videos/'s shelf — a band with the badge, then the cards (frame + the place's name · type · 동 as one
+     link, 44px), 3 across on phones, 4 from 600px, 6 from 1100px of the column.
+   Nothing on the first screen: the poster is lazy, the video is made by site.js on the press. */
+.a2 { background: var(--bg); border: 1px solid var(--hair); border-radius: 18px; padding: 16px; }
+.a2-in { display: grid; grid-template-columns: minmax(0, 46%) minmax(0, 1fr); gap: 14px; align-items: center; }
+.a2-media, .a2-foot { min-width: 0; }
+.a2-player { position: relative; aspect-ratio: 9 / 16; border-radius: 16px; overflow: hidden; background: #0b1120; box-shadow: 0 10px 26px rgba(11, 17, 32, .16); }
+.a2-play { position: absolute; inset: 0; display: block; color: #fff; }
+.a2-play img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.a2-player video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #0b1120; display: block; }
+/* ADO2 posters carry the title in the middle third: the play disc sits lower, between the title and the hashtag line */
+.a2-play .vid-disc { top: 72%; }
+.a2-play:hover .vid-disc, .a2-play:focus-visible .vid-disc { transform: scale(1.08); background: rgba(4, 98, 102, .94); }
+.a2-play:focus-visible { outline: 3px solid var(--sea); outline-offset: -3px; border-radius: 16px; }
+/* the badge: the service's teal and wordmark — on a phone's narrow column 'Powered by' sits over the wordmark */
+.a2-pow { display: inline-flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 4px; min-height: 44px; padding: 9px 14px; border-radius: 14px; background: #046266; color: #fff; text-decoration: none; box-shadow: 0 6px 16px rgba(4, 98, 102, .22); }
+.a2-pow img { display: block; height: 14px; width: auto; }
+.a2-pow-by { font-size: 11px; font-weight: 700; letter-spacing: .02em; opacity: .92; line-height: 1.2; }
+.a2-pow:hover { background: #034a4d; }
+.a2-pow:focus-visible { outline: 3px solid var(--sea); outline-offset: 3px; }
+.a2-cta { margin: 12px 0 0; font-size: 14px; line-height: 1.55; color: var(--ink-2); }
+.a2-cta a, .a2-rel a { color: var(--sea-hi, #255DAF); font-weight: 700; text-decoration: none; }
+.a2-cta a:hover, .a2-rel a:hover { text-decoration: underline; }
+.a2-rel { margin: 8px 0 0; font-size: 12.5px; line-height: 1.55; color: var(--ink-3); }
+@media (min-width: 560px) {
+  .a2 { padding: 22px; }
+  .a2-in { grid-template-columns: 196px minmax(0, 1fr); gap: 24px; }
+  .a2-pow { flex-direction: row; align-items: center; gap: 8px; padding: 0 18px; border-radius: 999px; }
+  .a2-pow-by { font-size: 12px; }
+  .a2-cta { font-size: 15px; }
+  .a2-cta a, .a2-rel a { white-space: nowrap; }
+}
+@media (min-width: 1024px) { .a2-in { grid-template-columns: 212px minmax(0, 1fr); } }
+
+/* /videos/ shelf */
+.a2-band { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin: 0 0 18px; padding: 14px 16px; background: var(--bg); border: 1px solid var(--hair); border-radius: 16px; }
+.a2-band .a2-rel { flex: 1 1 280px; margin: 0; font-size: 13px; color: var(--ink-2); }
+.a2-sec .a2-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 10px; container-type: normal; }
+.a2-card { min-width: 0; }
+.a2-card .a2-player { border-radius: 14px; box-shadow: 0 6px 16px rgba(11, 17, 32, .14); }
+.a2-card .a2-play:focus-visible { border-radius: 14px; }
+.a2-card .vid-disc { width: 40px; height: 40px; margin: -20px 0 0 -20px; }
+.a2-cl { display: flex; flex-direction: column; min-height: 44px; padding: 8px 0 2px; color: var(--ink); text-decoration: none; }
+.a2-cn { font-size: 14px; font-weight: 700; line-height: 1.35; word-break: keep-all; overflow-wrap: anywhere; }
+.a2-cm { font-size: 12px; line-height: 1.4; color: var(--ink-3); margin-top: 2px; }
+.a2-cl:hover .a2-cn { color: var(--sea-hi, #255DAF); text-decoration: underline; }
+.a2-more { margin-top: 16px; }
+.a2-more > .a2-grid { margin-top: 14px; }
+.a2-note { margin-top: 14px; }
+@media (min-width: 600px) { .a2-sec .a2-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px 14px; } }
+@media (min-width: 1100px) { .a2-sec .a2-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); } }

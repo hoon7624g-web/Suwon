@@ -1,0 +1,112 @@
+From 9ff8d863400d2390ae6879b34aaba562f62c76d5 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Thu, 12 Nov 2026 08:31:23 +0000
+Subject: [PATCH] =?UTF-8?q?feat(site):=20'=EA=B5=B0=EC=82=B0=EA=B0=81=20?=
+ =?UTF-8?q?=EA=B3=B5=EC=9C=A0=ED=95=98=EA=B8=B0'=EB=A5=BC=20=EB=AC=B8?=
+ =?UTF-8?q?=EC=9D=98/=EC=A0=9C=ED=9C=B4=EC=99=80=20=EA=B0=99=EC=9D=80=20?=
+ =?UTF-8?q?=EC=B9=B4=EB=93=9C=EB=A1=9C=20=E2=80=94=203D=20=EC=95=84?=
+ =?UTF-8?q?=EC=9D=B4=EC=BD=98=20=EC=9E=90=EB=A6=AC(btn-share)=EC=99=80=20?=
+ =?UTF-8?q?=EC=A0=9C=EB=AF=B8=EB=82=98=EC=9D=B4=20=ED=94=84=EB=A1=AC?=
+ =?UTF-8?q?=ED=94=84=ED=8A=B8?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Vhf1SziVAxh1mVM8h72KNg
+---
+ data/gunsan/icons.json            |  5 +++++
+ templates/_share.html.j2          |  6 +++++-
+ templates/_ui.html.j2             |  3 ++-
+ templates/assets/css/88-share.css | 28 +++++++++++++++++++++++-----
+ 4 files changed, 35 insertions(+), 7 deletions(-)
+
+diff --git a/data/gunsan/icons.json b/data/gunsan/icons.json
+index e5c5185d8a..72d8044201 100644
+--- a/data/gunsan/icons.json
++++ b/data/gunsan/icons.json
+@@ -281,6 +281,11 @@
+    "label": "문의 메일",
+    "group": "spare"
+   },
++  "btn-share": {
++   "glyph": "share",
++   "label": "군산각 공유하기",
++   "group": "side.share"
++  },
+   "pn-case": {
+    "glyph": "spark",
+    "label": "파트너 숙소 사례",
+diff --git a/templates/_share.html.j2 b/templates/_share.html.j2
+index 110e12d130..fe067c5517 100644
+--- a/templates/_share.html.j2
++++ b/templates/_share.html.j2
+@@ -49,6 +49,10 @@
+ </dialog>
+ {%- endmacro %}
+ 
++{#- the row as a card like 문의/제휴 under it (operator 2026-11-12 '공유하기 버튼도 좀 세련되면'): the 3D picture btn-share
++    (Gemini, docs/handover/gemini_icon_prompt_share_2026-11-12.md; until its file is made, the share glyph) on a sea tile,
++    the name, what it does in one line, the chevron of the panel's rows -#}
+ {% macro opener(name) -%}
+-<p class="sd-shr"><a class="sd-shr-a" href="/#share" data-shr-open="shr-site">{{ ui_share_icon() }}<span>{{ name }} 공유하기</span></a></p>
++{%- import "_pic.html.j2" as pk -%}
++<p class="sd-shr"><a class="sd-shr-a" href="/#share" data-shr-open="shr-site"><span class="sd-shr-ic" aria-hidden="true">{{ pk.pic('btn-share', 'share', 30) }}</span><span class="sd-shr-t"><span class="sd-shr-k">{{ name }} 공유하기</span><span class="sd-shr-s">카카오톡·링크로 보내기</span></span><i class="sg-i sg-i-r" aria-hidden="true"></i></a></p>
+ {%- endmacro %}
+diff --git a/templates/_ui.html.j2 b/templates/_ui.html.j2
+index 5541424fb1..5e53d31258 100644
+--- a/templates/_ui.html.j2
++++ b/templates/_ui.html.j2
+@@ -57,7 +57,8 @@
+ {%- endmacro %}
+ {#- icon_paths(name): the drawing of icon(name) alone (icon(), sprite()) -#}
+ {% macro icon_paths(name) -%}
+-{%- if name == 'bed' %}<path d="M3 19V7M3 15h18v4M21 15v-3a3 3 0 0 0-3-3h-8v6"/><circle cx="6.5" cy="11.5" r="1.8"/>
++{%- if name == 'share' %}<path d="M12 3v12M7.5 7.5 12 3l4.5 4.5M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/>
++{%- elif name == 'bed' %}<path d="M3 19V7M3 15h18v4M21 15v-3a3 3 0 0 0-3-3h-8v6"/><circle cx="6.5" cy="11.5" r="1.8"/>
+ {%- elif name == 'bowl' %}<path d="M3.5 11h17a8.5 8.5 0 0 1-17 0Z"/><path d="M8 7.5c0-1.2 1.2-1.2 1.2-2.5M12 7.5c0-1.2 1.2-1.2 1.2-2.5M16 7.5c0-1.2 1.2-1.2 1.2-2.5"/>
+ {%- elif name == 'wave' %}<path d="M2 16c2.5 0 2.5-1.8 5-1.8S9.5 16 12 16s2.5-1.8 5-1.8S19.5 16 22 16M2 20c2.5 0 2.5-1.8 5-1.8S9.5 20 12 20s2.5-1.8 5-1.8S19.5 20 22 20"/><path d="m5 12 4.5-7 3 4.5L14 7l5 5"/>
+ {%- elif name == 'tree' %}<path d="M12 21v-5"/><path d="M12 3 6.5 10h3L6 15h12l-3.5-5h3Z"/>
+diff --git a/templates/assets/css/88-share.css b/templates/assets/css/88-share.css
+index 1683439e37..73818893e0 100644
+--- a/templates/assets/css/88-share.css
++++ b/templates/assets/css/88-share.css
+@@ -59,12 +59,30 @@
+ .ttl-row > .ttl-share { margin: 4px 0 0; }
+ @media (min-width: 1024px) { .ttl-row > .ttl-share { margin-top: 8px; } }
+ 
+-/* '군산각 공유하기': the panel's row above 문의/제휴 (in its sticky foot from 1200px) and the phone menu's — a quiet row
+-   (the partner card under it is the loud one) that opens the site's box in a dialog */
++/* '군산각 공유하기': the panel's card above 문의/제휴 (in its sticky foot from 1200px) and the phone menu's — it opens the
++   site's box in a dialog. The same build as the partner card under it (tile · name over one line · chevron), in the
++   site's light sea instead of its dark gold (operator 2026-11-12 '좀 세련되면'): a white card with a sea hairline and a
++   soft sea glow at its corner, the 3D picture on a sea tile. The partner card stays the loud one. */
+ .sd-shr { margin: 12px 0 0; }
+-.sd-shr-a { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 14px; border-radius: 14px; background: var(--tint); color: var(--sea-deep); font: 700 14.5px/1.2 var(--font); text-decoration: none; }
+-.sd-shr-a:hover { background: var(--tint2); color: var(--sea-deep); text-decoration: none; }
+-.sd-shr-a .shr-h-i { width: 19px; height: 19px; }
++.sd-shr-a { position: relative; display: flex; align-items: center; gap: 12px; min-height: 54px; padding: 8px 14px 8px 8px; overflow: hidden;
++  border-radius: 16px; background: linear-gradient(135deg, #FFFFFF 0, #F2F7FD 100%); color: var(--ink); text-decoration: none;
++  box-shadow: inset 0 0 0 1px var(--tint2), 0 10px 22px -18px rgba(29, 79, 150, .55); transition: box-shadow .2s var(--fb), transform .2s var(--fb); }
++.sd-shr-a::before { content: ""; position: absolute; inset: 0; pointer-events: none;
++  background: radial-gradient(160px 60px at 92% 0, rgba(47, 111, 201, .12), rgba(47, 111, 201, 0) 70%); }
++.sd-shr-a:hover { color: var(--ink); text-decoration: none; transform: translateY(-1px);
++  box-shadow: inset 0 0 0 1.5px var(--sea), 0 14px 26px -18px rgba(29, 79, 150, .7); }
++.sd-shr-ic { position: relative; flex: none; display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px;
++  background: linear-gradient(135deg, #5C9BE8 0, var(--sea) 55%, var(--sea-deep) 100%); box-shadow: 0 6px 14px -8px rgba(29, 79, 150, .9); }
++.sd-shr-ic .pic { --pic: 30px; width: 30px; height: 30px; background: none; box-shadow: none; }
++.sd-shr-ic .pic img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 2px 3px rgba(10, 30, 70, .3)); }
++.sd-shr-ic .pic-tmp { color: #fff; background: none; box-shadow: none; }   /* until the 3D picture is made: the share glyph, white on the tile */
++.sd-shr-ic .pic-tmp::before { content: none; }
++.sd-shr-ic .pic-tmp .pic-g { width: 20px; height: 20px; stroke-width: 2; }
++.sd-shr-t { position: relative; flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
++.sd-shr-k { font-size: 15px; font-weight: 700; line-height: 1.25; letter-spacing: -.01em; color: var(--sea-deep); }
++.sd-shr-s { font-size: 12.5px; line-height: 1.3; color: var(--ink-3); }
++.sd-shr-a .sg-i { position: relative; }
++@media (prefers-reduced-motion: reduce) { .sd-shr-a { transition: none; } .sd-shr-a:hover { transform: none; } }
+ .menu-panel .sd-shr { margin: 10px 0 0; }
+ .menu-panel .sd-shr + .sd-pt { margin-top: 8px; }
+ @media (min-width: 1200px) {
+-- 
+2.43.0
+

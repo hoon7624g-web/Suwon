@@ -1,0 +1,1841 @@
+From 82d3298d022d815cc61e89d806ea460b6bf90cf9 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Tue, 10 Nov 2026 07:57:29 +0000
+Subject: [PATCH] =?UTF-8?q?feat(ui):=20=EC=A0=95=EB=8F=88=20=EC=9E=91?=
+ =?UTF-8?q?=EC=97=85=20=E2=80=94=20=EB=B3=B8=EB=AC=B8=20=EC=97=AC=EB=B0=B1?=
+ =?UTF-8?q?=C2=B7=ED=8C=A8=EB=84=90=C2=B7=EA=B0=80=EC=9D=B4=EB=93=9C=20?=
+ =?UTF-8?q?=EC=9D=BD=EA=B8=B0=20=EC=B8=B5=C2=B7=EC=9D=B4=EC=96=B4=EC=84=9C?=
+ =?UTF-8?q?=20=EB=B3=B4=EA=B8=B0=C2=B7=ED=99=88=20=EB=8D=9C=EC=96=B4?=
+ =?UTF-8?q?=EB=82=B4=EA=B8=B0=20(css/90-refine)?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+운영자 요청(2026-11-10 '니가 지적한 부분들 니가 다 수정 … 더 고급지고 정돈된 느낌 … 정보가 직관적으로
+잘 들어오고, 정보들 간의 연결성도 좋게')에 따라 같은 날 리뷰의 권고를 반영했다.
+
+깨지던 곳
+- 홈 오른쪽 보드를 1360 → 1680px부터: 1366·1440·1536px에서 본문 칸이 676~970px로 줄어 행사 티켓·채널
+  카드·가이드 숫자가 깨졌다
+- 1200px부터 본문 좌우 여백을 같게 하고 챗봇 버튼(68px)과 '맨 위로'를 여백 안에 둠(본문 위에 뜨는 것 없음)
+- 창 높이 1020px 미만에서 패널의 날씨 카드를 접어 메뉴 첫 묶음이 보이게 함
+- 휴대폰 장소 페이지: 하단 바에 'AI 챗봇' 버튼, 같은 길찾기 버튼 두 개 숨김
+- 휴대폰에서 옆으로 밀리던 쪽을 없앰(한국어 5쪽, 일본어·중국어 가이드 113쪽)
+
+읽기
+- 가이드 구역: 짧은 제목(guides.json body[].short 250곳) + 제목 문장 + 문장 1~2개 + '자세히'.
+  문장은 바꾸지 않았고 JSON-LD·llms-full·외국어판은 그대로다
+- 1280~1679px에서 가이드 차례를 본문 위 칩 줄로(본문 칸 390 → 540px 안팎)
+- 장소: '자세히'를 주변 목록 앞으로, SNS·해외 카드는 2개 뒤 '더 보기', 구역 제목에서 장소 이름을 옅게,
+  핵심 정보 칸의 3D 그림을 뺌
+- 칼럼 제목을 ':'에서 두 줄로
+
+큐레이션·연결
+- 홈: 유튜브는 운영자가 올린 자리에 4편 + 바로가기 칩, 인스타그램 채널 카드는 카페 가이드로,
+  블로그·인스타그램·해외 SNS는 칼럼 뒤로(휴대폰 홈 21,715 → 16,981px)
+- 가이드·칼럼·코스 끝에 '이어서 보기'(겹치는 장소가 많은 순, 규칙을 화면에 적음),
+  장소 페이지에 '이곳이 나오는 칼럼'
+- 계획 도구 이름을 'AI 코스 만들기'로 통일, 유튜브 채널 소개의 근거 없는 최상급 표현을 뺌
+- 목록(휴대폰): 한 줄의 '확인 필요'를 한 번만 보임
+
+그 밖에
+- 챗봇을 닫으면 포커스가 연 버튼으로 돌아감(휴대폰 탭바·하단 바에서 <body>로 가던 것)
+- 접힌 내용도 인쇄에 나옴, 차례·바로가기 링크 44px
+- 기존 실패 시험 2건(싣지 않는 글꼴 굵기 600, 가이드 없는 빌드의 홈 링크)을 코드에서 고침
+
+이전 운영자 결정을 바꾼 네 가지(1200px부터 챗봇 버튼 크기·빠른 메뉴, 낮은 창의 패널 날씨 카드,
+홈에서 블로그·인스타그램·해외 SNS 위치)는 운영자 확인 전이다 — docs/handover/round3_log.md 2026-11-10,
+CLAUDE.md 7절.
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01NujcWun3eD1NVvxndVydTT
+---
+ data/gunsan/yt_channels.json       |  20 +-
+ pipeline/build.py                  |  46 ++++-
+ pipeline/locales.py                |   2 +-
+ pipeline/present.py                | 121 ++++++++++++-
+ templates/_chat.html.j2            |   6 +-
+ templates/_p1.html.j2              |   8 +-
+ templates/_p2.html.j2              |   6 +-
+ templates/_ui.html.j2              |  18 +-
+ templates/assets/chat.js           |   5 +-
+ templates/assets/css/48-abroad.css |  24 +--
+ templates/assets/css/49-chat.css   |   4 +-
+ templates/assets/css/90-refine.css | 282 +++++++++++++++++++++++++++++
+ templates/assets/site.js           |   8 +
+ templates/column.html.j2           |   8 +-
+ templates/course.html.j2           |   2 +
+ templates/guide.html.j2            |  20 +-
+ templates/home.html.j2             | 197 ++++++++++----------
+ templates/list.html.j2             |   2 +-
+ templates/place.html.j2            |  49 +++--
+ templates/videos.html.j2           |   1 +
+ tests/test_chat_browser.py         |  28 +++
+ tests/test_guide_reading.py        |  90 +++++++++
+ tests/test_present.py              |  74 ++++++--
+ tests/test_sidebar_layout.py       |  50 ++++-
+ 24 files changed, 895 insertions(+), 176 deletions(-)
+ create mode 100644 templates/assets/css/90-refine.css
+
+diff --git a/data/gunsan/yt_channels.json b/data/gunsan/yt_channels.json
+index 2a3b421ee3..09689956eb 100644
+--- a/data/gunsan/yt_channels.json
++++ b/data/gunsan/yt_channels.json
+@@ -34,7 +34,7 @@
+       "name": "둘시네아 dulcinea",
+       "badge": "군산 로컬 미식",
+       "url": "https://www.youtube.com/@dulcinea_studio",
+-      "note": "군산 백반·짬뽕·현지인 예약 노포 시리즈 9편 이상(합산 162만뷰+)을 제작하며 군산 식도락 여행객이 가장 많이 참고하는 미식 탐방 채널.",
++      "note": "군산 백반·짬뽕·현지인 예약 노포 시리즈 9편 이상(합산 162만뷰+)을 제작한 미식 탐방 채널.",
+       "links": [
+         {
+           "label": "군산 짬뽕 분석 영상",
+@@ -61,7 +61,7 @@
+       "name": "tzuyang쯔양",
+       "badge": "메가 크리에이터",
+       "url": "https://www.youtube.com/@tzuyang6145",
+-      "note": "군산 소곱창·떡갈비·3대 짬뽕 노포 먹방 3편으로 합산 1,075만 조회수를 기록하며 군산 노포 골목을 전국에 알린 대표 먹방 채널.",
++      "note": "군산 소곱창·떡갈비·3대 짬뽕 노포 먹방 3편으로 합산 1,075만 조회수를 기록한 먹방 채널.",
+       "links": [
+         {
+           "label": "떡갈비 348만뷰 영상",
+@@ -84,7 +84,7 @@
+       "name": "스튜디오 수제 (또간집)",
+       "badge": "웹예능 화제작",
+       "url": "https://www.youtube.com/@STUDIO_SUZE",
+-      "note": "군산 시민 길거리 인터뷰를 통해 가장 오래된 중식당과 현지인 단골 식당을 발굴한 『또간집 EP.63 군산 편』(249만뷰) 공식 채널.",
++      "note": "군산 시민 길거리 인터뷰로 중식당과 현지인 단골 식당을 찾아간 『또간집 EP.63 군산 편』(249만뷰) 공식 채널.",
+       "links": [
+         {
+           "label": "또간집 군산 편 보기",
+@@ -111,7 +111,7 @@
+       "name": "맛사장",
+       "badge": "미식 총정리",
+       "url": "https://www.youtube.com/@mattsajang",
+-      "note": "『꼭 먹고 와야 하는 군산맛집 7군데 총정리』(106만뷰) 등 가성비 백반집·실비집·생선구이·소고기무국 노포를 체계적으로 정리한 미식 가이드 채널.",
++      "note": "『꼭 먹고 와야 하는 군산맛집 7군데 총정리』(106만뷰) 등 백반집·실비집·생선구이·소고기무국 노포를 정리한 미식 가이드 채널.",
+       "links": [
+         {
+           "label": "군산맛집 7곳 총정리",
+@@ -138,7 +138,7 @@
+       "name": "순풍 선우용여",
+       "badge": "셀럽 여행",
+       "url": "https://www.youtube.com/@%EC%88%9C%ED%92%8D%EC%84%A0%EC%9A%B0%EC%9A%A9%EC%97%AC",
+-      "note": "군산 출신 이경실과 선우용여가 함께 떠난 군산 고향 여행기(130만뷰)로 중장년·가족 단위 여행객에게 큰 호응을 얻은 채널.",
++      "note": "군산 출신 이경실과 선우용여가 함께 떠난 군산 고향 여행기(130만뷰)를 올린 채널.",
+       "links": [
+         {
+           "label": "군산 여행 130만뷰 영상",
+@@ -192,7 +192,7 @@
+       "name": "sookoh 수코",
+       "badge": "나혼자 여행",
+       "url": "https://www.youtube.com/@Sookohaseyo",
+-      "note": "『나혼자 군산 당일치기』(90만뷰) 영상으로 기차·도보 여행자와 혼행족에게 군산 원도심 산책 및 혼술·노포 코스를 유행시킨 브이로그 채널.",
++      "note": "『나혼자 군산 당일치기』(90만뷰) 영상에서 군산 원도심 산책과 혼술·노포 코스를 다닌 브이로그 채널.",
+       "links": [
+         {
+           "label": "나혼자 군산 90만뷰",
+@@ -219,7 +219,7 @@
+       "name": "yoovlog",
+       "badge": "가족 미식 여행",
+       "url": "https://www.youtube.com/@yoovlog",
+-      "note": "곱창·짬뽕·디저트·칼국수까지 가족이 함께 즐기는 군산 맛집 여행기(49만뷰)로 아이 동반 가족 여행 동선을 생생하게 보여주는 채널.",
++      "note": "곱창·짬뽕·디저트·칼국수까지 가족이 함께 다닌 군산 맛집 여행기(49만뷰)를 올린 채널.",
+       "links": [
+         {
+           "label": "가족 맛집 여행 영상",
+@@ -273,7 +273,7 @@
+       "name": "유영민의 맛이보인당게",
+       "badge": "군산·전북 노포",
+       "url": "https://www.youtube.com/@%EA%BF%88%EC%97%90%ED%9D%91%EB%8F%88",
+-      "note": "『구역전시장의 아침풍광』(15만뷰) 등 오전 7시 이전의 군산 새벽시장 풍경과 현지인 백반·국밥 노포를 깊이 있게 기록하는 로컬 미식 채널.",
++      "note": "『구역전시장의 아침풍광』(15만뷰) 등 오전 7시 이전의 군산 새벽시장 풍경과 현지인 백반·국밥 노포를 기록하는 로컬 미식 채널.",
+       "links": [
+         {
+           "label": "구역전시장 아침풍광",
+@@ -296,7 +296,7 @@
+       "name": "군산시 공식채널",
+       "badge": "지자체 공식",
+       "url": "https://www.youtube.com/@gunsansi",
+-      "note": "군산시 공식 관광 홍보 영상과 수제맥주 블루스 페스티벌(91만뷰)·군산시간여행축제 밈 영상(12만뷰) 등 생생한 시정·축제 소식을 전하는 공식 채널.",
++      "note": "군산시 공식 관광 홍보 영상과 수제맥주 블루스 페스티벌(91만뷰)·군산시간여행축제 밈 영상(12만뷰) 등 시정·축제 소식을 전하는 공식 채널.",
+       "links": [
+         {
+           "label": "축제·행사 영상",
+@@ -319,7 +319,7 @@
+       "name": "전주MBC Original",
+       "badge": "지역 방송사",
+       "url": "https://www.youtube.com/@jeonju_mbc",
+-      "note": "고군산섬잇길 5개 섬 트레킹 명소 다큐멘터리와 군산 근대역사·해양 문화를 고화질 영상으로 아카이빙하는 전북 대표 방송 채널.",
++      "note": "고군산섬잇길 5개 섬 트레킹 다큐멘터리와 군산 근대역사·해양 문화 영상을 올리는 전북 지역 방송사 채널.",
+       "links": [
+         {
+           "label": "섬·바다 영상",
+diff --git a/pipeline/build.py b/pipeline/build.py
+index 0dabb1204f..47bf4bdc8e 100644
+--- a/pipeline/build.py
++++ b/pipeline/build.py
+@@ -721,6 +721,9 @@ class State:
+                 "has_guides": bool(self.guides), "has_columns": bool(self.columns), "has_courses": bool(self.courses), "build_date": self.today,
+                 "list_nav": [(k, v["path"], v["title"]) for k, v in LISTS.items() if self.lists[k] or k == "attraction"],
+                 "tourapi_used": self.tourapi_used, "has_map": bool(self.entities), "has_videos": bool(self.videos),
++                # the guide whose #h-insta chapter the Instagram cards open in ('' when this build does not publish
++                # it: the home then has no Instagram section and a place page no link to it)
++                "insta_guide": next((g["_path"] for g in self.guides if g.get("_insta")), ""),
+                 "has_search": bool(self.entities), "has_abroad": bool(self.abroad or self.abroad_videos),
+                 "blog": self.blog,
+                 "has_plan": bool(self.entities),   # /plan/, the AI course planner (Korean pages)
+@@ -1446,6 +1449,33 @@ def load_insta(data_dir: Path) -> list[dict]:
+     return items
+ 
+ 
++def live_channels(S, channels: list[dict]) -> list[dict]:
++    """A curated channel list (yt_channels.json, insta.json channels) without the links to pages this build does not
++    publish: a place, guide, column or course that is not in the build, a list without rows, /events/ without events,
++    /videos/ (and a topic page under it) without videos. Any other link is kept as written (/abroad/, /blog/, /map/ …).
++    Found 2026-11-10: a build with no guides still linked /guides/ from the home (tests/test_uiux.py
++    test_empty_real_data_has_honest_working_visitor_choices had failed since the channel lists were added)."""
++    own = {"/places/": {e["_path"] for e in S.entities} | ({"/places/"} if S.lists.get("attraction") else set()),
++           "/guides/": {g["_path"] for g in S.guides} | ({"/guides/"} if S.guides else set()),
++           "/columns/": {c["_path"] for c in S.columns} | ({"/columns/"} if S.columns else set()),
++           "/courses/": {c["_path"] for c in S.courses} | ({"/courses/"} if S.courses else set()),
++           "/videos/": ({"/videos/"} | {g["_path"] for g in video_groups(S.videos) if g.get("_path")}) if S.videos else set()}
++    # a list or section that exists whole or not at all: any page under it stands when it has rows
++    whole = {"/food/": S.lists.get("food"), "/stays/": S.lists.get("stay"), "/events/": S.events}
++
++    def live(href: str) -> bool:
++        path = str(href or "").split("#")[0]
++        for prefix, rows in whole.items():
++            if path.startswith(prefix):
++                return bool(rows)
++        for prefix, paths in own.items():
++            if path.startswith(prefix):
++                return path in paths
++        return True
++
++    return [{**c, "links": [x for x in c.get("links") or [] if live(x.get("href"))]} for c in channels or []]
++
++
+ def load_insta_channels(data_dir: Path) -> list[dict]:
+     """data/<region>/insta.json channels: curated popular regional Instagram channels."""
+     raw = _load(data_dir / "insta.json", {}) or {}
+@@ -1886,7 +1916,8 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
+                     S.site_url, g["_url"], crumbs, about, [t["_url"] for t in unique], g["_page_date"] or "",
+                     site=S.site))]}
+         _render(env, S, out, "guide.html.j2", g["_path"], page, "guide", g["_page_date"], g=g, items=items,
+-                points=points, G=present.guide_vm(S, g), blog_posts=blog_for_page(S, g["_path"]))
++                points=points, G=present.guide_vm(S, g), blog_posts=blog_for_page(S, g["_path"]),
++                see=present.see_also(S, "guide", g))
+     if S.guides:
+         path = "/guides/"
+         crumbs = [("홈", S.site_url + "/"), ("목적별 가이드", S.abs(path))]
+@@ -1915,7 +1946,8 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
+                     S.site_url, col["_url"], crumbs, about, [t["_url"] for t in unique], col["_page_date"] or "",
+                     site=S.site))]}
+         _render(env, S, out, "column.html.j2", col["_path"], page, "column", col["_page_date"], col=col, items=items,
+-                points=points, C=present.column_vm(S, col), blog_posts=blog_for_page(S, col["_path"]))
++                points=points, C=present.column_vm(S, col), blog_posts=blog_for_page(S, col["_path"]),
++                see=present.see_also(S, "column", col))
+     if S.columns:
+         path = "/columns/"
+         crumbs = [("홈", S.site_url + "/"), ("칼럼", S.abs(path))]
+@@ -1962,6 +1994,7 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
+                                                             description=course_lede))]}
+         linked = sum(1 for s in stops if s["target"])
+         _render(env, S, out, "course.html.j2", c["_path"], page, "course", c["_page_date"], blog_posts=blog_for_page(S, c["_path"]),
++                see=present.see_also(S, "course", c),
+                 c=c, stops=stops, orig=orig, show_original=show_original, linked=linked, legs=legs,
+                 co=co, course_lede=course_lede, lede=course_lede, course_name=name, orig_url=orig.get("source_url") or "",
+                 orig_name=orig.get("source_name") or S.site["source"]["name"], collected=orig.get("collected_at") or "",
+@@ -2016,7 +2049,7 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
+                             None, videos=True)  # no ItemList: the items are YouTube pages, not this site's URLs
+         _render(env, S, out, "videos.html.j2", path, page, "videos", checked, groups=groups, checked=checked,
+                 official=official, total=len(S.videos), places=S.ent_by_slug, topic=None,
+-                video_groups=present.video_groups_vm(groups), yt_channels=S.yt_channels, popular_videos=S.popular_videos)
++                video_groups=present.video_groups_vm(groups), yt_channels=live_channels(S, S.yt_channels), popular_videos=S.popular_videos)
+         for g in groups:
+             label = "그 밖의" if g["title"] == "기타" else g["title"]
+             tcrumbs = crumbs + [(f"{label} 영상", S.abs(g["_path"]))]
+@@ -2242,9 +2275,10 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
+                                                  key=lambda a: (int(a.get("likes") or 0), a["id"]), reverse=True)[:8],
+                                           S.ent_by_slug),
+             n_insta=len(getattr(S, "insta", None) or []),
+-            insta_channels=getattr(S, "insta_channels", None) or [],
+-            yt_channels=getattr(S, "yt_channels", None) or [],
+-            popular_videos=(getattr(S, "popular_videos", None) or [])[:8],
++            insta_channels=live_channels(S, getattr(S, "insta_channels", None) or []),
++            yt_channels=live_channels(S, getattr(S, "yt_channels", None) or []),
++            popular_videos=(getattr(S, "popular_videos", None) or [])[:9],   # the board's five, and the row's four beside it
++            n_popular=len(getattr(S, "popular_videos", None) or []),   # the chip to /videos/#yt-popular counts that list, not the home's slice
+             places=S.ent_by_slug,
+             home_blog=blog_home(S))   # 군산각 블로그 (operator 2026-10-30): the /blog/ cards, one per category first
+ 
+diff --git a/pipeline/locales.py b/pipeline/locales.py
+index 0e148c9ebd..a2c88e2431 100644
+--- a/pipeline/locales.py
++++ b/pipeline/locales.py
+@@ -1700,7 +1700,7 @@ RELATED_WORDS = {
+ # 일출·일몰) live in "ko".
+ SIDE_WORDS = {
+     "ko": {"find": "찾기", "plan": "여행 계획", "events": "행사 달력", "read": "읽을거리", "about": "소개·출처",
+-           "tagline": "{r} 여행 정보", "next": "다음 행사", "plan_btn": "내 일정 만들기", "courses_btn": "추천 코스",
++           "tagline": "{r} 여행 정보", "next": "다음 행사", "plan_btn": "AI 코스 만들기", "courses_btn": "추천 코스",
+            "transport": "가는 법·시간표", "sun": "해 뜨고 지는 시각", "sunrise": "일출", "sunset": "일몰",
+            "wx_title": "{r} 날씨", "wx_go": "{r} 날씨 보기", "wx_more": "자세히 보기", "wx_score": "지금 날씨 점수",
+            "wx_slots": {"morning": "아침", "day": "낮", "sunset": "저녁", "night": "밤", "now": "지금"},
+diff --git a/pipeline/present.py b/pipeline/present.py
+index bb5e8edae7..28b9d5dd6a 100644
+--- a/pipeline/present.py
++++ b/pipeline/present.py
+@@ -2782,7 +2782,8 @@ def place_vm(S, e: dict, ctx: dict) -> dict:
+         # whose point this is: the map caption's '위치: …' (the nearby note prints nearby_source.provider, which
+         # tools/tourapi_bulk.compute_nearby writes from every point it used; validate.nearby_provenance_problems)
+         "geo_src": geo_provider(e["_geo"]) if e["_geo"] else "",
+-        "guide_cards": guide_cards, "event_cards": event_cards, "twin_rows": twin_rows, "rel_rows": rel_rows,
++        "guide_cards": guide_cards, "column_cards": place_columns(S, e), "event_cards": event_cards,
++        "twin_rows": twin_rows, "rel_rows": rel_rows,
+         # places that belong together (pipeline/relations.py): the line under the name, the parts list of a parent
+         "relation": relation, "parts": parts,
+         "photo_lics": photo_lics, "nw": LC.NEAR_WORDS["ko"],
+@@ -4554,7 +4555,11 @@ def rich(text: str | None, lang: str = "ko", names: list[dict] | None = None, se
+         elif kind == "web":
+             out.append(web_anchor(seg, web_href(v.group(1), v.group(2), lang != "ko")))
+         else:
+-            r = Markup(" data-numroll") if roll and re.search(r"\d", v) else Markup("")
++            # a plain count of places or things ('34곳', '5개') says how many, not when or how much: marked data-k="n"
++            # in the Korean body text, where the page sets it at the text's own weight (css/90-refine; operator
++            # 2026-11-10 '글이 너무 많아서') — never on the answer card's rolling figures
++            r = Markup(" data-numroll") if roll and re.search(r"\d", v) else \
++                Markup(' data-k="n"') if lang == "ko" and not roll and v[-1:] in ("곳", "개") else Markup("")
+             out.append(Markup('<b class="gk"{}>{}</b>').format(r, seg))
+         last = b
+     out.append(escape(t[last:]))
+@@ -4606,9 +4611,12 @@ def keep_together(text: str, names: list[dict] | None = None, lang: str = "ko"):
+     for a, b in sorted(spans):
+         # the whole word: a particle after the run ('푸드존은') or a word joined before it stays with it — a break at
+         # the span's edge would leave '은' alone on the next line
+-        while a > 0 and not text[a - 1].isspace():
++        # … up to a middle dot: names chained with '·' ('산마루·신자네연탄구이·안동집·…') are not one word — kept
++        # whole they were one unbreakable run of up to 49 characters, wider than a phone (found 2026-11-10: the page
++        # then scrolled sideways)
++        while a > 0 and not (text[a - 1].isspace() or text[a - 1] == "·"):
+             a -= 1
+-        while b < len(text) and not text[b].isspace():
++        while b < len(text) and not (text[b].isspace() or text[b] == "·"):
+             b += 1
+         if a < pos:
+             continue
+@@ -4645,6 +4653,49 @@ def guide_sections(heads_texts: list[tuple[str, list[str]]], names: list[dict],
+     return out
+ 
+ 
++# The Korean guide's reading layer (operator 2026-11-10, a guide section on a phone: '이런 곳도 글이 너무 많아서 별로인 것
++# 같은데'): a section's heading is a whole answer sentence (median 50 characters, up to 113) and every sentence under it
++# a bullet. The page now shows a short heading, that sentence as the section's lead, the first GUIDE_KEEP sentences,
++# and the rest behind '자세히' (a <details>: in the HTML, open without JavaScript by a click). Nothing is rewritten:
++# heading and sentences are the record's, in order — the JSON-LD, llms-full and the other versions read the same record.
++GUIDE_KEEP = 2                                    # sentences shown under the lead, at most
++GUIDE_KEEP_CHARS = 170                            # … the second only while the two together stay this short
++GUIDE_FOLD_MIN = 2                                # fold only when at least this many would go behind '자세히'
++HEAD_COLON = re.compile(r"^(.{2,22}?): (.+)$")    # '어린이 요금: 6세 이하 무료인 곳, …' — a label and its detail
++
++
++def section_reading(sec: dict, heading: str, short: str = "") -> dict:
++    """What the Korean guide page adds to a section of guide_sections: toc (the short heading: body[].short, else the
++    label before a heading's colon, else ''), lead (True: the heading sentence is shown under the short heading),
++    head_label / head_sub (a 'label: detail' heading without a short one, split for two lines of one <h2>),
++    vis / more (the paragraphs' bullets shown and folded) and more_n (how many sentences are folded)."""
++    m = None if short else HEAD_COLON.match(heading)
++    paras = sec.get("paras") or []
++    flat = [len(re.sub(r"<[^>]+>", "", str(b["html"]))) for p in paras for b in p]
++    total = len(flat)
++    # the first sentence always; the second when the two are short together (a sentence that lists a dozen names is
++    # the detail, not the gist)
++    keep = GUIDE_KEEP if total > 1 and sum(flat[:GUIDE_KEEP]) <= GUIDE_KEEP_CHARS else 1
++    vis, more = paras, []
++    # a list the record writes as its own marked lines ('· 「작품」: 장소 …') is the answer itself: it stays whole
++    listed = any(b.get("own") for p in paras for b in p)
++    if not listed and total - keep >= GUIDE_FOLD_MIN:
++        vis, more, left = [], [], keep
++        for p in paras:
++            if left <= 0:
++                more.append(p)
++            elif len(p) <= left:
++                vis.append(p)
++                left -= len(p)
++            else:
++                vis.append(p[:left])
++                more.append(p[left:])
++                left = 0
++    return {"toc": short or (m.group(1) if m else ""), "lead": bool(short),
++            "head_label": m.group(1) if m else "", "head_sub": m.group(2) if m else "",
++            "vis": vis, "more": more, "more_n": sum(len(p) for p in more)}
++
++
+ def answer_block(sents: list[str], lang: str = "ko") -> dict:
+     """The answer card's text: the summary's first sentence as the answer line (html, sized by its length) and the
+     rest after it (the owner's layout: answer line, the mini cards under it, the rest of the summary below them).
+@@ -4768,6 +4819,8 @@ def guide_vm(S, g: dict) -> dict:
+         paras = [decaution(squash_ws(p)) for p in str(b.get("text") or "").split("\n") if p.strip()]
+         heads.append((squash_ws(b.get("heading")), [p for p in paras if p]))
+     reading = guide_reading(ko_sentences(decaution(g.get("summary"))), heads, names, cards, "ko", ko_sentences, len(items))
++    for sec, b in zip(reading.get("sections") or [], g.get("body") or []):
++        sec.update(section_reading(sec, squash_ws(b.get("heading")), squash_ws(b.get("short"))))
+     return {**reading, "g": g, "label": g.get("label") or "", "title": g["title"], "lede": ss[0] if ss else "",
+             "dek": " ".join(ss[1:]), "dek_html": tel_markup(" ".join(ss[1:])),
+             "body": [{"heading": squash_ws(b.get("heading")), "text": squash_ws(b.get("text")),
+@@ -4781,6 +4834,66 @@ def guide_vm(S, g: dict) -> dict:
+             "booking": booking.view(booking.guide_targets(S, g), "ko"), "bw": LC.BOOK_WORDS["ko"]}
+ 
+ 
++# ----------------------------------------------------------------------------- 이어서 보기 (cross-links)
++# operator 2026-11-10 ('정보들 간의 연결성도 좋게'): a guide, a column and a course ended at their sources — nothing led
++# from one kind of page to another about the same places. see_also lists them by a stated rule: the pages whose own
++# place lists (a guide's and a column's items, a course's stops) share places with this page, most shared first.
++# It is a rule the page prints, not a recommendation, and it reads only what the records already say.
++SEE_MAX = {"guide": 4, "column": 3, "course": 3}
++SEE_TITLES = {"guide": "가이드", "column": "칼럼", "course": "공식 코스"}
++
++
++def _record_places(kind: str, rec: dict) -> list[str]:
++    rows = rec.get("stops") if kind == "course" else rec.get("items")
++    return list(dict.fromkeys(r.get("place_slug") for r in rows or [] if isinstance(r, dict) and r.get("place_slug")))
++
++
++def see_also(S, kind: str, rec: dict) -> list[dict]:
++    """Groups for ui.seealso on a guide, column or course page: [{kind, title, items [{title, label, path, n (places
++    shared), names (up to three of them)}]}] — guides, columns and courses that share at least two places with the
++    page (one when the page has fewer than four places), most shared first, ties in the data's order; the page itself
++    never; [] when nothing shares a place."""
++    mine = [x for x in _record_places(kind, rec) if x in S.ent_by_slug]
++    if not mine:
++        return []
++    need = 2 if len(mine) >= 4 else 1
++    pools = {"guide": getattr(S, "guides", None) or [], "column": getattr(S, "columns", None) or [],
++             "course": getattr(S, "courses", None) or []}
++    out = []
++    for k in ("guide", "column", "course"):
++        rows = []
++        for i, r in enumerate(pools[k]):
++            if (k == kind and r.get("id") == rec.get("id")) or not r.get("_path"):
++                continue
++            theirs = set(_record_places(k, r))
++            shared = [x for x in mine if x in theirs]
++            if len(shared) >= need:
++                rows.append((-len(shared), i, r, shared))
++        rows.sort(key=lambda x: x[:2])
++        items = []
++        for _, _, r, shared in rows[:SEE_MAX[k]]:
++            if k == "course":
++                cv = (getattr(S, "course_vms", None) or {}).get(r.get("slug")) or {}
++                title, label = cv.get("display") or squash_ws(r.get("name")), squash_ws(r.get("group"))
++            elif k == "column":
++                title, label = squash_ws(r.get("title")), squash_ws(r.get("category"))
++            else:
++                title, label = squash_ws(r.get("title")), squash_ws(r.get("label"))
++            items.append({"title": title, "label": label if label != title else "", "path": r["_path"], "n": len(shared),
++                          "names": [S.ent_by_slug[x]["name"] for x in shared[:3]]})
++        if items:
++            out.append({"kind": k, "title": SEE_TITLES[k], "items": items})
++    return out
++
++
++def place_columns(S, e: dict) -> list[dict]:
++    """The columns whose place list holds this place, as cards for the place page's 주변·함께 가기 (the guides' cards
++    beside them): [{title, path}] (_near.html.j2 card: the title is the link), in the data's order."""
++    return [{"title": squash_ws(c.get("title")), "path": c["_path"]}
++            for c in getattr(S, "columns", None) or []
++            if c.get("_path") and e.get("slug") in _record_places("column", c)]
++
++
+ # ----------------------------------------------------------------------------- columns
+ def column_card_vm(S, col: dict, used: set | None = None) -> dict:
+     """A column card for /columns/, the home showcase and related columns."""
+diff --git a/templates/_chat.html.j2 b/templates/_chat.html.j2
+index c1b85e75c6..28dac69acf 100644
+--- a/templates/_chat.html.j2
++++ b/templates/_chat.html.j2
+@@ -15,7 +15,11 @@
+     site.js html.ask-out). On the Korean pages from 1024px the floating quick menu sits above it (css/49-chat.css): a white vertical
+     pill with the few real actions — 검색, 지도, 행사 달력 (on a place page 길찾기, its own block), 맨 위로 (#main-content,
+     the top of the page's content, without JS too) — 44px round targets with their names (aria-label + title, a tooltip on hover/focus);
+-    it comes after the footer in the reading order. Phones: only the launcher. -#}
++    it comes after the footer in the reading order. Phones: only the launcher.
++    The calm pass 2026-11-10 (css/90-refine): from 1200px — the pages with the tab panel, which holds the search and
++    every list — the launcher is 68px inside the page's right margin and the quick menu is its last link only
++    ('맨 위로'); 1024–1199px keep the pill and the 100px launcher in their gutter. On a phone the tab bar's and a place
++    page's bar's 'AI 챗봇' button ([data-tab-chat], base.html.j2 · place.html.j2) opens the chat in the launcher's stead. -#}
+ {% import "_mascot.html.j2" as mm %}
+ {% set region_ko = site.region if site is defined and site and site.region else '' %}
+ {% set chat_ui = {
+diff --git a/templates/_p1.html.j2 b/templates/_p1.html.j2
+index 17def8835c..41f1563ad1 100644
+--- a/templates/_p1.html.j2
++++ b/templates/_p1.html.j2
+@@ -134,7 +134,7 @@
+ {%- endif %}
+ {%- endmacro %}
+ 
+-{% macro rec(it, kind) -%}
++{% macro rec(it, kind, need='') -%}
+ {#- empty type/theme keys are left out (a list page carries ~170 of these rows); the name link is the view-transition
+     title without data-vt (site.js takes the link in .rec-name of a [data-vt-scope] row) -#}
+ <li class="rec" data-vt-scope id="{{ it.id }}" data-group="{{ it.e._group }}" data-area="{{ it.dong }}"{{ fb.rec_attrs(it) }}>
+@@ -148,6 +148,12 @@
+ {% if it.photo %}<img class="rec-th t{{ it.photo.type }}" src="{{ it.photo.url }}"{% if it.photo.w and it.photo.h %} width="{{ it.photo.w }}" height="{{ it.photo.h }}"{% endif %} alt="" loading="lazy" decoding="async" data-kogl="{{ it.photo.type }}">{% endif %}
+ </div>
+ <dl class="rec-cells">{% for c in it.slots %}<div class="c-{{ c.key }}{% if c.conflict %} is-conflict{% endif %}"><dt>{{ c.label }}</dt><dd>{{ cellv(c, it.e.id) }}</dd></div>{% endfor %}</dl>
++{#- need (the Korean lists: '확인 필요'): the row's missing values named once in one line — on phones the cells are
++    chips and three of them said '확인 필요' one after another (CLAUDE.md 3.1: once per block; css/90-refine hides the
++    empty chips there and shows this line; wider, the columns keep their cells and the line is not shown). A slot that
++    is missing but carries a second value ('확인 필요 · 좌석 30석') keeps its chip and is not named here. The line's
++    words are its data-need attribute, drawn by the stylesheet: in the HTML the notice is not written once more -#}
++{% if need %}{% set na = [] %}{% for c in it.slots if c.missing and not c.sub %}{% set _ = na.append(c.label) %}{% endfor %}{% if na %}<p class="rec-need" data-need="{{ need }}: {{ na|join('·') }}"></p>{% endif %}{% endif %}
+ {% if it.slots|selectattr('conflict')|list %}<p class="rec-call">방문 전 전화 확인</p>{% endif %}
+ {{ fb.why(it) }}
+ </li>
+diff --git a/templates/_p2.html.j2 b/templates/_p2.html.j2
+index 3e8302d085..9069b657d9 100644
+--- a/templates/_p2.html.j2
++++ b/templates/_p2.html.j2
+@@ -30,9 +30,11 @@
+ </a></li>
+ {%- endmacro %}
+ 
+-{#- dotwrap(t): a '·' list that may wrap only after a dot, never before it (Korean lines otherwise break before '·'). -#}
++{#- dotwrap(t): a '·' list that may wrap only after a dot, never before it (Korean lines otherwise break before '·').
++    A part longer than 12 characters is a phrase, not a list item ('밤 10시 반이나 그보다 늦게 닫는 14곳, 24시간 …'):
++    it wraps as text — kept whole it was wider than a phone and the page scrolled sideways (found 2026-11-10). -#}
+ {% macro dotwrap(t) -%}
+-{% for w in (t or '').split('·') %}<span class="nw">{{ w }}{{ '·' if not loop.last }}</span>{% if not loop.last %}<wbr>{% endif %}{% endfor %}
++{% for w in (t or '').split('·') %}{% if w|length <= 12 %}<span class="nw">{{ w }}{{ '·' if not loop.last }}</span>{% else %}{{ w }}{{ '·' if not loop.last }}{% endif %}{% if not loop.last %}<wbr>{% endif %}{% endfor %}
+ {%- endmacro %}
+ 
+ {#- abar: see ui.abar for the parts. placeholder: the field's own words; hints: the owner's examples (짬뽕, 선유도,
+diff --git a/templates/_ui.html.j2 b/templates/_ui.html.j2
+index f8e0e24335..7b03f8f4f8 100644
+--- a/templates/_ui.html.j2
++++ b/templates/_ui.html.j2
+@@ -822,6 +822,22 @@
+     section): a one-line row each — the name (its link covers the row) and one short fact of the card (c.brief: the
+     value whole; a long one is left out, the card and the place list have it). Not the whole card again (review
+     2026-10-09: the same card four times on one page). Phones: one row that scrolls sideways; wider: rows that wrap. -#}
++{#- seealso(groups): 이어서 보기 (present.see_also; operator 2026-11-10 '정보들 간의 연결성도 좋게') — the guides, columns
++    and official courses that share places with this page, most shared first, each with how many places it shares and
++    up to three of their names. The rule is printed under the heading: it is not a recommendation. Nothing without
++    groups. -#}
++{% macro seealso(groups) -%}
++{% if groups %}<section class="wrap chapter cv see" aria-labelledby="h-see" data-block="see-also">
++  <h2 id="h-see" class="h-sec see-h">이어서 보기</h2>
++  <p class="see-rule">이 페이지와 같은 장소를 다루는 글과 코스입니다. 겹치는 장소가 많은 순서입니다.</p>
++  <div class="see-g">{% for g in groups %}
++    <div class="see-col see-{{ g.kind }}"><h3 class="see-k">{{ g.title }}</h3>
++      <ul class="see-l">{% for x in g['items'] %}<li><a class="see-a" href="{{ x.path }}"{% if g.kind == 'guide' %} data-track="guide_click"{% elif g.kind == 'course' %} data-track="course_click"{% endif %}>{% if x.label %}<span class="see-lab">{{ x.label }}</span>{% endif %}<b class="see-t">{{ x.title }}</b><span class="see-m">겹치는 장소 <span class="tn">{{ x.n }}</span>곳 · {{ x.names|join(' · ') }}{% if x.n > x.names|length %} 외{% endif %}</span></a></li>{% endfor %}</ul>
++    </div>{% endfor %}
++  </div>
++</section>{% endif %}
++{%- endmacro %}
++
+ {% macro again(cards, label, track='nearby_click') -%}
+ <ul class="mcr" aria-label="{{ label }}">{% for c in cards %}<li>{% if c.path %}<a href="{{ c.path }}" data-track="{{ track }}" data-place="{{ c.id }}">{{ c.name }}</a>{% else %}<b>{{ c.name }}</b>{% endif %}
+ {%- if c.brief %}<span class="mcr-kf"><span class="mcr-l">{{ c.brief.label }}</span> <span class="kf-main tn{% if c.brief.closed %} closed{% endif %}">{{ c.brief.main|nwt }}</span></span>{% endif %}</li>{% endfor %}</ul>
+@@ -830,6 +846,6 @@
+ {% macro gtoc(sections, label='이 가이드의 차례', head='차례') -%}
+ <nav class="gd-toc" aria-label="{{ label }}" data-toc>
+ <p class="gd-toc-h" aria-hidden="true">{{ head }}</p>
+-<ol class="gd-toc-l">{% for s in sections %}<li><a href="#{{ s.id }}" data-toc-link="{{ s.id }}"><span class="toc-n tn">{{ '%02d'|format(s.n) }}</span><span class="toc-t">{{ s.heading }}</span></a></li>{% endfor %}</ol>
++<ol class="gd-toc-l">{% for s in sections %}<li><a href="#{{ s.id }}" data-toc-link="{{ s.id }}"><span class="toc-n tn">{{ '%02d'|format(s.n) }}</span><span class="toc-t">{{ s.toc or s.heading }}</span></a></li>{% endfor %}</ol>
+ </nav>
+ {%- endmacro %}
+diff --git a/templates/assets/chat.js b/templates/assets/chat.js
+index 33da168706..e81a838917 100644
+--- a/templates/assets/chat.js
++++ b/templates/assets/chat.js
+@@ -701,7 +701,10 @@
+     setModal(false);
+     state.open = false;
+     save();
+-    var back = opener && opener.isConnected ? opener : doc.querySelector(".chat-fab");
++    // back to the button that opened it. On a phone the launcher is not on screen: the tab bar's or a place page's
++    // bar's own 'AI 챗봇' button pressed it for the reader (site.js [data-tab-chat]) — the focus goes to that button
++    var shown = function (el) { return !!(el && el.isConnected && el.getClientRects().length); };
++    var back = shown(opener) ? opener : [].slice.call(doc.querySelectorAll("[data-tab-chat], .chat-fab")).filter(shown)[0];
+     if (back) back.focus({ preventScroll: true });
+   }
+   function reset() {
+diff --git a/templates/assets/css/48-abroad.css b/templates/assets/css/48-abroad.css
+index 9ee13c1cef..f6aa28af75 100644
+--- a/templates/assets/css/48-abroad.css
++++ b/templates/assets/css/48-abroad.css
+@@ -213,7 +213,7 @@ html.embed-manual .ab-ph-msg { display: none; }
+ .ig-ch-head { display: flex; align-items: flex-start; gap: 10px; min-width: 0; }
+ .ig-ch-who { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+ .ig-ch-who b { font: 800 17.5px/1.3 var(--font); color: var(--ink); letter-spacing: -.02em; word-break: keep-all; }
+-.ig-ch-who span { font: 600 13.5px/1.35 var(--font); color: var(--ink-2); }
++.ig-ch-who span { font: 400 13.5px/1.35 var(--font); color: var(--ink-2); }
+ .ig-ch-badge { flex: none; padding: 3px 9px; border-radius: 999px; background: var(--tint); color: var(--sea-deep);
+   font: 700 12px/1.3 var(--font); }
+ .ig-ch-note { margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--ink-2); word-break: keep-all; }
+@@ -230,12 +230,15 @@ html.embed-manual .ab-ph-msg { display: none; }
+ .home-yt-sub { margin: clamp(24px, 3vw, 36px) 0 14px; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px; }
+ .home-yt-sub h3 { margin: 0; font: 700 clamp(17px, 1.8vw, 20px)/1.35 var(--font); letter-spacing: -.015em; color: var(--ink); }
+ .home-yt-sub .tn { color: var(--ink-3); font-weight: 400; margin-left: 4px; }
+-.home-yt-sub a { font-size: 14px; font-weight: 600; color: var(--sea-deep); text-decoration: none; }
++.home-yt-sub a { font-size: 14px; font-weight: 700; color: var(--sea-deep); text-decoration: none; }
+ .home-yt-sub a:hover { text-decoration: underline; }
+-/* ---------------------------------------------------------------- 홈 우측 인기 유튜브·인스타 고정 큐레이션 보드 (.h-rside) */
++/* ---------------------------------------------------------------- 홈 우측 인기 유튜브·인스타 고정 큐레이션 보드 (.h-rside)
++   From 1680px only (operator 2026-11-10 '니가 지적한 부분들 다 수정'): from 1360px the board left the home's column
++   676–970px wide — narrower than at 1280px without it (960px) — and the event tickets, the channel cards and the guide
++   tiles' big figures broke on the commonest laptop widths (1366 · 1440 · 1536). At 1680px the column keeps 972px. */
+ .h-rside { display: none; }
+-@media (min-width: 1360px) {
+-  :root { --rside-w: 332px; --rside-x: calc(var(--rside-w) + 2 * var(--side-in)); }
++@media (min-width: 1680px) {
++  :root { --rside-w: 356px; --rside-x: calc(var(--rside-w) + 2 * var(--side-in)); }
+   body.pg-ko-home { --cw: calc(100vw - var(--side-x) - var(--rside-x)); padding-right: var(--rside-x); }
+   html[lang="ko"] body.pg-ko-home main .wrap,
+   html[lang="ko"] body.pg-ko-home .foot .wrap,
+@@ -253,9 +256,6 @@ html.embed-manual .ab-ph-msg { display: none; }
+     background: #fff; border: 1px solid var(--hair); border-radius: var(--r-l); box-shadow: var(--shadow-1);
+   }
+ }
+-@media (min-width: 1680px) {
+-  :root { --rside-w: 356px; --rside-x: calc(var(--rside-w) + 2 * var(--side-in)); }
+-}
+ .hrs-head { display: flex; flex-direction: column; gap: 10px; padding-bottom: 14px; border-bottom: 1px solid var(--bg-3); }
+ .hrs-title { margin: 0; font: 700 18.5px/1.25 var(--font); color: var(--ink); letter-spacing: -.035em; }
+ .hrs-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; border-radius: 13px; background: var(--bg-2); }
+@@ -273,7 +273,7 @@ html.js .hrs-panel[data-tab-off] { display: none; }
+ .hrs-sh { display: flex; align-items: baseline; justify-content: space-between; gap: 6px; padding: 0 2px; }
+ .hrs-sh h3 { margin: 0; font: 700 15px/1.3 var(--font); color: var(--ink); letter-spacing: -.025em; }
+ .hrs-sh .tn { color: var(--ink-3); font-weight: 400; margin-left: 2px; }
+-.hrs-sh a { font: 600 12.5px/1.3 var(--font); color: var(--ink-3); text-decoration: none; white-space: nowrap; }
++.hrs-sh a { font: 400 12.5px/1.3 var(--font); color: var(--ink-3); text-decoration: none; white-space: nowrap; }
+ .hrs-sh a:hover { color: var(--sea-deep); text-decoration: none; }
+ .hrs-vlist, .hrs-clist { display: flex; flex-direction: column; margin: 0; padding: 0; list-style: none; }
+ .hrs-v { display: flex; flex-direction: column; gap: 7px; padding: 11px 4px; border-bottom: 1px solid var(--bg-3); }
+@@ -291,14 +291,14 @@ html.js .hrs-panel[data-tab-off] { display: none; }
+ .hrs-vtxt { display: flex; flex-direction: column; gap: 3px; min-width: 0; padding-top: 1px; }
+ .hrs-vtop { display: flex; align-items: baseline; justify-content: space-between; gap: 6px; min-width: 0; }
+ .hrs-vch { font: 700 15px/1.25 var(--font); color: var(--ink); letter-spacing: -.025em; word-break: keep-all; }
+-.hrs-vviews { flex: none; font: 600 11.5px/1.2 var(--font); color: var(--ink-3); }
++.hrs-vviews { flex: none; font: 400 11.5px/1.2 var(--font); color: var(--ink-3); }
+ .hrs-vt { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;
+   font: 400 12.5px/1.42 var(--font); color: var(--ink-2); letter-spacing: -.01em; }
+ .hrs-vp, .hrs-clinks { display: flex; flex-wrap: wrap; gap: 5px; margin: 0; }
+ .hrs-clinks { padding-left: 26px; }
+ .hrs-vp a, .hrs-clinks a { display: inline-flex; align-items: center; min-height: 24px; padding: 2px 8px;
+   border-radius: 7px; background: var(--bg-2); color: var(--ink-2);
+-  font: 600 11.5px/1.2 var(--font); letter-spacing: -.01em; text-decoration: none; transition: background .15s, color .15s; }
++  font: 400 11.5px/1.2 var(--font); letter-spacing: -.01em; text-decoration: none; transition: background .15s, color .15s; }
+ .hrs-vp a:hover, .hrs-clinks a:hover { background: var(--tint); color: var(--sea-deep); text-decoration: none; }
+ .hrs-c { display: flex; flex-direction: column; gap: 6px; padding: 10px 4px; border-bottom: 1px solid var(--bg-3); }
+ .hrs-c:first-child { padding-top: 4px; }
+@@ -313,5 +313,5 @@ html.js .hrs-panel[data-tab-off] { display: none; }
+ .hrs-ext { font-size: 11.5px; font-weight: 400; color: var(--ink-3); }
+ .hrs-csub { font: 400 12px/1.35 var(--font); color: var(--ink-3); }
+ .hrs-ig-note { font: 400 12.5px/1.42 var(--font); color: var(--ink-2); word-break: keep-all; }
+-.hrs-badge { flex: none; font-style: normal; font: 600 11px/1.2 var(--font); color: var(--sea-deep); letter-spacing: -.01em; }
++.hrs-badge { flex: none; font-style: normal; font: 700 11px/1.2 var(--font); color: var(--sea-deep); letter-spacing: -.01em; }
+ 
+diff --git a/templates/assets/css/49-chat.css b/templates/assets/css/49-chat.css
+index 72d9f225b4..6ed9b6a8db 100644
+--- a/templates/assets/css/49-chat.css
++++ b/templates/assets/css/49-chat.css
+@@ -2,7 +2,9 @@
+    chat.js on the first press. On every page from the first paint, fixed bottom right: a white round button with the
+    mascot (room set by width/height) and its label on a sea tag (owner 2026-10-13, 10-14). Owner 2026-10-31 ('더 잘
+    보이게 키워'): 76px, 100px from 1024px, a sea ring, a halo three times after load. Hidden without JS, while the chat
+-   is open and in print; the footer keeps its height free. */
++   is open and in print; the footer keeps its height free. From 1200px — the pages with the tab panel — css/90-refine
++   (the calm pass 2026-11-10) sets it 68px inside the page's right margin, so that it lies over no card; on a phone's
++   place page the bottom bar's 'AI 챗봇' button stands for it. */
+ .chat-fab { position: fixed; z-index: 90; right: max(16px, env(safe-area-inset-right)); bottom: max(18px, calc(env(safe-area-inset-bottom) + 10px));
+   display: grid; place-items: center; width: 76px; height: 76px; padding: 0; border: 0; border-radius: 50%; overflow: visible;
+   background: #fff; color: var(--ink); cursor: pointer;
+diff --git a/templates/assets/css/90-refine.css b/templates/assets/css/90-refine.css
+new file mode 100644
+index 0000000000..9b8cd59403
+--- /dev/null
++++ b/templates/assets/css/90-refine.css
+@@ -0,0 +1,282 @@
++/* 90-refine — the calm pass (operator 2026-11-10: '사이트가 전체적으로 더 고급지고 정돈된 느낌 … 정보가 직관적으로 잘
++   들어오고, 정보들 간의 연결성도 좋게', after the review of the same day). The last partial: it does not add a look, it
++   takes weight off the ones before it. The rules are this pass's own, drawn from that review — where they change an
++   earlier operator decision (the launcher's size from 1200px, the panel's day card on a short window, the quick menu
++   from 1200px, the home's order) the handover log says so, for the operator to confirm. The rules it keeps:
++
++   1. One accent per screen. Sea blue is the accent; chick yellow is the one booking button; red is a closed day.
++      A value is the loudest thing in its tile — its picture and its label step back.
++   2. Bold is for names, headings and the value a visitor decides with. Running text, labels, captions and chips are 400.
++   3. The 3D pictures are doors (the home's four lists, a row or page without a photo), not ornaments of a fact.
++   4. Nothing floats over content: the launcher and 'top' live in the page's margin (from 1200px the margins are equal),
++      on a phone place page the assistant is a button of the bottom bar.
++   5. A section's heading says the section; the place's name in it is the quiet part.
++   6. Chrome gives way to navigation: on a short window the panel's day card folds so the menu's first group shows.
++
++   Contrast kept (00-tokens head): ink-2 on white 9.36, ink-3 on white 5.62 / bg-2 5.2, sea-deep on tint 7.13.
++   Targets: 44px (the panel's rows too: tests/test_sidebar_layout.py). */
++
++/* ================================================================ 1. the chrome */
++
++/* ---- from 1200px: equal margins, the launcher and 'top' inside the right one, no quick menu (the panel has the
++   search and every list). 1200–1771px: until the column is wider than the content's 1200px the page kept a 124px
++   gutter at the right only (46-quick) — the content sat off-centre and the home's own rules took the gutter back,
++   so the menu lay over its cards. */
++@media (min-width: 1200px) {
++  /* the launcher's size: every version (the other versions keep their own margins; a 68px button covers less of
++     them). 49-chat (operator 2026-10-31 '더 잘 보이게 키워') set 100px from 1024px — it stays 100px up to 1199px, where
++     the page keeps a 124px gutter for it (46-quick); from 1200px it is the size that fits the page's 88px margin. It
++     keeps its sea ring, its 'AI 챗봇' tag and the halo after load. */
++  .chat-fab { right: 10px; bottom: 28px; width: 68px; height: 68px; box-shadow: 0 8px 22px rgba(18, 32, 56, .18), 0 2px 5px rgba(18, 32, 56, .1), inset 0 0 0 2px var(--sea); }
++  .chat-fab-face { width: 68px; height: 68px; }
++  .chat-fab-face img { width: 54px; height: 54px; }
++  .chat-fab-l { bottom: -10px; padding: 4px 9px; font-size: 12.5px; }
++  html.js .foot { padding-bottom: calc(112px + env(safe-area-inset-bottom, 0px)); }
++  html[lang="ko"] .qm { right: 22px; bottom: 118px; padding: 0; border-radius: 50%; box-shadow: var(--shadow-1); }
++  html[lang="ko"] .qm li:not(:last-child) { display: none; }
++  html[lang="ko"] .qm-i { width: 44px; height: 44px; }
++}
++@media (min-width: 1200px) and (max-width: 1771px) {
++  html[lang="ko"] { --m: 88px; }
++  html[lang="ko"] main .wrap, html[lang="ko"] .foot .wrap, html[lang="ko"] .crumbs-bar .wrap { padding-right: var(--m); }
++  html[lang="ko"] main .car-view { margin-right: var(--m); }
++  /* the home's rows (81-home-mz kept the 124px gutter on them): the guide tiles' grid ends at the margin as its
++     heading does; the place cards' sideways row ends there too, clear of the launcher */
++  html[lang="ko"] main .car-mzt .car-view { margin-right: 0; padding-right: var(--ml); }
++  html[lang="ko"] main .car-fp .car-view { margin-right: var(--m); padding-right: 0; }
++  html[lang="ko"] main .gd-toc { padding-right: var(--m); }   /* the contents row ends clear of the launcher */
++  html[lang="ko"] .story.is-staged .st-grid { grid-template-columns: var(--ml) minmax(0, calc((min(var(--cw), var(--maxw) + 2 * var(--m)) - 2 * var(--m)) * .4)) clamp(32px, 4vw, 72px) minmax(0, 1fr) var(--ml); }
++}
++@media (min-width: 1200px) and (max-width: 1279px) {
++  /* /sun/: with the wider margin the arc's box met the sunset figure (the column is 880–959px here) */
++  html[lang="ko"] .sun-arc { display: none; }
++}
++@media (min-width: 1680px) and (max-width: 1771px) {
++  html[lang="ko"] body.pg-ko-home main .car-mzt .car-view { padding-right: var(--ml); }
++}
++/* the home with its right board (from 1680px, 48-abroad): the board ends above the launcher, which docks under it —
++   nothing lies over the column, so the column keeps its own margins */
++@media (min-width: 1680px) {
++  html[lang="ko"] body.pg-ko-home { --m: clamp(24px, calc(var(--cw) * .046), 64px); --ml: max(var(--m), calc((var(--cw) - var(--maxw)) / 2)); }
++  .h-rside { bottom: 112px; }
++  html[lang="ko"] body.pg-ko-home .chat-fab { right: calc(var(--side-in) + 6px); bottom: 26px; }
++  html[lang="ko"] body.pg-ko-home .qm { right: calc(var(--side-in) + 88px); bottom: 38px; }
++}
++
++/* ---- the panel (from 1200px): on a short window the day card folds so that the menu's first group is on screen
++   above the '문의/제휴' row (measured 2026-11-10: the menu began 757px down — on a 768–900px window no link of it
++   showed; with the card whole at 900px one link did). Under 1020px of height the weather card is its sky and bubble
++   without the four cells (170px) and the sunrise · sunset row one line under its date; under 880px (a laptop's
++   window) the card is one row — the sun or moon with its score, the bubble beside it — and the next event steps out
++   (it is on the home and in 행사 달력). From 1020px the card is 날씨각's drawn size (246 · 220px). The card keeps the
++   room of its size from the first paint at every height (tests/test_sidebar_layout.py); every row stays 44px or more. */
++@media (min-width: 1200px) {
++  .side .sg-s { min-height: 46px; font-size: 16.5px; }
++  .side .sg-a { font-size: 15px; }
++  .side .sg-l { padding-bottom: 8px; }
++}
++@media (min-width: 1200px) and (max-height: 1019px) {
++  html.js .wx-side, html.js .wx-side.wx-intl { height: 170px; }
++  .wx-side .wx-strip { display: none; }
++  html.js .wx-side:not(.is-ready):not(.is-failed) .wx-b:empty::after { display: none; }
++  .side .sd-sun { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; padding: 9px 34px 10px 14px; }
++  .side .sd-sun .sd-k { flex-basis: 100%; }
++  .side .sd-sun .sd-sv { flex-direction: row; align-items: baseline; gap: 5px; padding: 0; border-radius: 0; background: none; box-shadow: none; font-size: 12.5px; }
++  .side .sd-sun .sd-sv b { font-size: 15px; line-height: 1.3; }
++  .side .sd-sun .sd-go { top: 50%; margin-top: -4px; }
++}
++@media (min-width: 1200px) and (max-height: 879px) {
++  html.js .wx-side, html.js .wx-side.wx-intl { height: 98px; }
++  html.js .wx-side .wx-b { flex-direction: row; align-items: center; justify-content: flex-start; gap: 10px; }
++  .wx-side .wx-sky { flex: none; width: 48px; max-width: 48px; height: 48px; margin: 0; font-size: 6px; }
++  .wx-side .wx-ob { top: 0; }
++  .wx-side .wx-cl, .wx-side .wx-sc small { display: none; }
++  .wx-side .wx-say { flex: 1 1 auto; width: auto; max-width: none; margin: 0; text-align: left; }
++  html.js .wx-side:not(.is-ready):not(.is-failed) .wx-b:empty::before { top: 40px; left: 12px; width: 48px; height: 48px; margin-left: 0; }
++  /* no answer: the link under the card's name, not over it (the room is 98px) */
++  html.js .wx-side.is-failed .wx-go { top: 64%; }
++  .side .sd-ev { display: none; }
++}
++
++/* ---- a phone's place page: the assistant is a button of the bottom bar (the launcher covered the phone tile and
++   the photo credit), and the route link the bar holds is not repeated above it */
++.pl-bar-chat { display: none; }
++@media (max-width: 767px) {
++  .pl-bar-chat { flex: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; width: 58px; height: 52px; padding: 0; border: 0; border-radius: 18px; background: var(--bg-2); color: var(--ink); font: 700 11px/1 var(--font); cursor: pointer; }
++  .pl-bar-chat .icon { width: 20px; height: 20px; }
++  html:not(.js) .pl-bar-chat { display: none; }
++  .pl-bar .pl-bar-tel { width: 92px; }
++  body:has(.pl-bar) .chat-fab { display: none; }
++  body:has(.pl-bar-go) .lnav .lnav-cta { display: none; }
++  body:has(.pl-bar-go) .pl-hero .route-row .btn-go { display: none; }
++  body:has(.pl-bar-go) .pl-hero .route-row { grid-template-columns: 1fr 1fr; padding-right: 0; }
++}
++
++/* ================================================================ 2. the home */
++
++/* ---- the icon menu under the assistant: the four lists the opening already offers as tiles step out (the same doors
++   twice on one screen); the others are quiet chips in one wrapping row at every width */
++.pg-ko-home .hq-row > li:has(> .hq-i[href="/places/"]), .pg-ko-home .hq-row > li:has(> .hq-i[href="/food/"]),
++.pg-ko-home .hq-row > li:has(> .hq-i[href="/stays/"]), .pg-ko-home .hq-row > li:has(> .hq-i[href="/courses/"]) { display: none; }
++.pg-ko-home .hq-row.hq-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; padding-right: 0; }
++.pg-ko-home .hq-row.hq-row > li { flex: 0 0 auto; display: flex; }
++.pg-ko-home .hq-row .hq-i { flex-direction: row; align-items: center; justify-content: center; width: auto; min-height: 44px; gap: 7px; padding: 0 16px 0 10px; border-radius: 999px; background: var(--bg-2); }
++.pg-ko-home .hq-row .hq-i:hover { background: var(--tint); }
++.pg-ko-home .hq-row .pic { width: 26px; height: 26px; }
++.pg-ko-home .hq-row .hq-i:hover .pic { transform: none; }
++.pg-ko-home .hq-row .hq-l { font: 400 14px/1.2 var(--font); letter-spacing: -.01em; }
++.pg-ko-home .hq-row .hq-n { display: none; }
++
++/* ---- the YouTube row and the board: from 1680px the board beside the row lists the first five curated videos, so
++   the row shows the next four there (home.html.j2 .vids-alt holds both fours; a lazy thumbnail that is not shown is
++   not fetched) — the same four videos were on one screen twice */
++@media (max-width: 1679px) { .vids-alt > li:nth-child(n+5) { display: none; } }
++@media (min-width: 1680px) { .vids-alt > li:nth-child(-n+4) { display: none; } }
++
++/* ================================================================ 3. the reading pages (guide, column) */
++
++/* ---- 1280–1679px: the page's column is the window less the panel (960–1360px), too narrow for contents | text | map
++   — the text was set 390px wide at a 1440px window. The contents become a row of chips over the text, as below
++   1280px; three columns return at 1680px. */
++@media (min-width: 1280px) {
++  /* a contents link is a 44px target at every width (with a short heading a one-line row was 36px) */
++  .gd-toc-l a { min-height: 44px; align-content: center; }
++}
++@media (min-width: 1280px) and (max-width: 1679px) {
++  .gd-grid.has-toc .gd-toc { grid-column: 1 / -1; grid-row: 1; position: static; max-height: none; overflow: visible; margin: 0 0 clamp(24px, 3vw, 36px); padding: 0; }
++  .gd-grid.has-toc .gd-toc-h { padding: 0; margin-bottom: 8px; }
++  .gd-grid.has-toc .gd-toc-l { display: flex; flex-wrap: wrap; gap: 8px; }
++  .gd-grid.has-toc .gd-toc-l li { flex: 0 1 auto; display: flex; min-width: 0; max-width: 100%; margin-top: 0; }
++  .gd-grid.has-toc .gd-toc-l a { min-height: 44px; padding: 9px 14px; border-radius: 12px; background: var(--bg-2); color: var(--ink); }
++  .gd-grid.has-toc .gd-toc-l a:hover { background: var(--bg-3); }
++  .gd-grid.has-toc .gd-toc-l a[aria-current] { background: var(--tint); color: var(--sea-deep); }
++  .gd-grid.has-toc .gd-body { grid-column: 1 / span 7; grid-row: 2; }
++  .gd-grid.has-toc .gd-map { grid-column: 8 / -1; grid-row: 2; }
++  .gd-grid.has-toc:not(.has-map) .gd-body { grid-column: 1 / span 9; }
++}
++@media (max-width: 1279px) {
++  .pg-guide .gd-toc-l li { width: auto; max-width: min(280px, 72vw); }
++}
++
++/* ---- a guide's section (templates/guide.html.j2, present.section_reading): a short heading, the answer sentence as
++   the lead, two sentences, the rest behind '자세히'. Type steps down once at each level — heading 700, lead ink 400,
++   sentences ink-2 400; the only bold in a sentence is a value a visitor decides with (a time, a price, a day). */
++.gd-sec .gd-h { max-width: 24em; font-size: clamp(21px, 1.9vw, 26px); line-height: 1.32; letter-spacing: -.028em; }
++.gd-h2l .gd-h-sub { display: block; max-width: 34em; margin-top: 10px; font: 400 17.5px/1.62 var(--font); color: var(--ink); letter-spacing: -.012em; word-break: keep-all; text-wrap: pretty; }
++.gd-lead { max-width: 34em; margin-top: 10px; font: 400 17.5px/1.62 var(--font); color: var(--ink); letter-spacing: -.012em; word-break: keep-all; text-wrap: pretty; }
++.gd-lead + .gd-pts, .gd-lead + .gd-p, .gd-h + .gd-pts, .gd-h + .gd-p { margin-top: 16px; }
++.pg-guide .gd-pts { gap: 9px; }
++.pg-guide .gd-pts li, .pg-guide .gd-sec .gd-p { max-width: 36em; font-size: 16px; line-height: 1.68; }
++.pg-guide .gd-pts li::before { top: .74em; width: 5px; height: 5px; background: var(--field); }
++.pg-guide .gd-sec .gk[data-k] { font-weight: 400; color: inherit; }
++/* a place named in a sentence: ink like the sentence, under a sea line (4.96:1 on white — the line is the link's cue) */
++.pg-guide .gd-sec .gl { color: var(--ink); text-decoration-color: var(--sea); }
++.pg-guide .gd-sec .gl:hover { color: var(--link); text-decoration-color: currentColor; }
++.gd-more, .fold { margin-top: 14px; }
++.gd-more > summary, .fold > summary { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px 0 16px; border: 1px solid var(--hair); border-radius: 999px; background: #fff; color: var(--ink-3); font: 400 14px/1 var(--font); letter-spacing: -.01em; cursor: pointer; list-style: none; transition: background-color .2s var(--fb); }
++.gd-more > summary::-webkit-details-marker, .fold > summary::-webkit-details-marker { display: none; }
++.gd-more > summary::marker, .fold > summary::marker { content: ""; }
++.gd-more > summary:hover, .fold > summary:hover { background: var(--bg-2); }
++.gd-more > summary:focus-visible, .fold > summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
++.gd-more-t { font-weight: 700; color: var(--ink); }
++.gd-more-i { width: 7px; height: 7px; margin: -4px 2px 0 2px; border: solid var(--ink-3); border-width: 0 1.5px 1.5px 0; transform: rotate(45deg); transition: transform .2s var(--fb); }
++.gd-more[open] > summary, .fold[open] > summary { margin-bottom: 16px; }
++.gd-more[open] .gd-more-i { margin-top: 3px; transform: rotate(-135deg); }
++@media (prefers-reduced-motion: reduce) { .gd-more > summary, .fold > summary, .gd-more-i { transition: none; } }
++@media (max-width: 767px) {
++  .gd-lead, .gd-h2l .gd-h-sub { font-size: 17px; line-height: 1.6; }
++  .pg-guide .gd-pts li, .pg-guide .gd-sec .gd-p { font-size: 15.5px; }
++}
++@media print {
++  .gd-more::details-content, .fold::details-content { content-visibility: visible; }
++}
++
++/* the generic fold ('더 보기': a place's further SNS cards): the same pill, its chevron drawn on the summary */
++.fold > summary { color: var(--ink); font-weight: 700; }
++.fold > summary .tn { font-weight: 400; color: var(--ink-3); }
++.fold > summary::after { content: ""; width: 7px; height: 7px; margin: -4px 2px 0 4px; border: solid var(--ink-3); border-width: 0 1.5px 1.5px 0; transform: rotate(45deg); }
++.fold[open] > summary::after { margin-top: 3px; transform: rotate(-135deg); }
++
++/* ================================================================ 4. the place page */
++
++/* a section's heading says the section; the place's name in it is the quiet part (it was the dark part: twelve
++   headings on a page read '초원사진관 … 초원사진관 …'). A Korean chapter's label carries the name as a small line over
++   it (in the other versions a separator or a particle follows the name: the label stays one line there). */
++.rail-label:has(.nm), .h-sec:has(.nm), .h-side:has(.nm) { color: var(--ink); }
++.rail-label .nm, .h-sec .nm, .h-side .nm { color: var(--ink-3); font-weight: 400; }
++html[lang="ko"] .rail-label .nm { display: block; margin-bottom: 6px; font-size: 14px; line-height: 1.3; letter-spacing: -.01em; }
++html[lang="ko"] .pl-src .rail-label .nm { display: inline; margin: 0; font-size: inherit; font-weight: 700; }
++.pv-map .pv-map-h .nm { color: var(--ink-3); font-weight: 400; }
++.pv-map .pv-map-h { color: var(--ink); }
++
++/* the key facts: the value is the tile — its 3D picture steps out (the pictures stay where they are a door: the
++   home's lists, a row or a page without a photo) */
++.kf-hero dt .pic { display: none; }
++.kf-hero dt { font-size: 13px; letter-spacing: -.005em; }
++
++/* ================================================================ 5. 이어서 보기 (ui.seealso, present.see_also)
++   the pages that share places with this one — an index, set as one: a hairline list under a rule, no cards */
++.see-h { margin-bottom: 6px; }
++.see-rule { max-width: 40em; margin: 0 0 22px; font-size: 14px; line-height: 1.55; color: var(--ink-3); }
++.see-g { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 24px 32px; align-items: start; }
++.see-k { margin: 0; padding-bottom: 9px; border-bottom: 1px solid var(--ink); font: 700 13px/1.3 var(--font); letter-spacing: .02em; color: var(--ink); }
++.see-l { margin: 0; padding: 0; list-style: none; }
++.see-l li { border-bottom: 1px solid var(--bg-3); }
++.see-a { display: flex; flex-direction: column; gap: 3px; min-height: 44px; padding: 13px 2px 14px; color: var(--ink); text-decoration: none; }
++.see-a:hover { text-decoration: none; }
++.see-a:hover .see-t { color: var(--sea-deep); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; }
++.see-a:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 6px; }
++.see-lab { font: 400 12.5px/1.3 var(--font); color: var(--sea-deep); }
++.see-t { font: 700 16px/1.42 var(--font); letter-spacing: -.02em; word-break: keep-all; text-wrap: pretty; }
++.see-m { font: 400 13px/1.45 var(--font); color: var(--ink-3); word-break: keep-all; }
++
++/* ================================================================ 6. the lists */
++
++/* a row's missing values once, in one line, where the cells are chips (phones): three chips said '확인 필요' one
++   after another (templates/_p1.html.j2 rec; CLAUDE.md 3.1). Only where the row carries that line (the Korean lists)
++   and only a cell that holds nothing else (a cell with a second value — '확인 필요 · 좌석 30석' — stays). Wider, the
++   columns keep their cells. The line's words are its data-need, drawn here: in the HTML the notice stays in the
++   cells only, not once more. */
++.rec-need { display: none; }
++@media (max-width: 767px) {
++  .ledger .rec:has(> .rec-need) .rec-cells > div:has(> dd > .kf-na:only-child) { display: none !important; }
++  .rec-need { display: block; margin: 9px 0 0; font: 400 12.5px/1.45 var(--font); color: var(--ink-3); letter-spacing: -.005em; }
++  .rec-need::before { content: attr(data-need); }
++}
++.yt-ch-note { margin-top: 14px; }
++/* the home's link beside a sub-heading ('인기 채널 n곳 보기'): a 44px target where fingers are */
++@media (max-width: 1023px) {
++  .home-yt-sub a { display: inline-flex; align-items: center; min-height: 44px; }
++}
++
++/* ================================================================ 7. runs that were wider than a phone (found by a
++   390px sweep of every page, 2026-11-10): an event's '시간' value kept on one line in its tile; a past edition's
++   source line kept on one line */
++@media (max-width: 767px) {
++  .kf-hero .kf-main > .nw { white-space: normal; }
++}
++.usual .u-s { white-space: normal; overflow-wrap: anywhere; }
++
++/* ================================================================ 8. words on a KOGL-1 photo (81-home-mz)
++   the outline that keeps them readable without darkening the photo stays, thinner: the big letters 2px (2.5), the
++   small ones 1px (1.5); a photo's credit is small print at the text's own weight, not a second headline */
++.mzt-photo .mzt-n, .fp-cap, .blz-ph .bl-t a {
++  text-shadow: -1px -1px 0 var(--ink), 1px -1px 0 var(--ink), -1px 1px 0 var(--ink), 1px 1px 0 var(--ink),
++    0 -1px 0 var(--ink), 0 1px 0 var(--ink), -1px 0 0 var(--ink), 1px 0 0 var(--ink), 0 2px 8px rgba(23, 32, 51, .4);
++}
++.mzt-photo .mzt-n b, .fp-cap .fp-t, .blz-ph .bl-t a {
++  text-shadow: -2px -2px 0 var(--ink), 2px -2px 0 var(--ink), -2px 2px 0 var(--ink), 2px 2px 0 var(--ink),
++    0 -2px 0 var(--ink), 0 2px 0 var(--ink), -2px 0 0 var(--ink), 2px 0 0 var(--ink), 0 3px 10px rgba(23, 32, 51, .35);
++}
++.mzt-photo .mzt-cr, .fp-cr, .hsns-v.t1 .hsns-cr {
++  font-weight: 400; letter-spacing: 0;
++  text-shadow: -1px -1px 0 var(--ink), 1px -1px 0 var(--ink), -1px 1px 0 var(--ink), 1px 1px 0 var(--ink),
++    0 -1px 0 var(--ink), 0 1px 0 var(--ink), -1px 0 0 var(--ink), 1px 0 0 var(--ink);
++}
++
++/* ================================================================ 9. Japanese and Chinese guides on a phone
++   85-guide-calm (2026-11-04) set keep-all on a guide's title, answer, headings and sentences for every version. In
++   Japanese and Chinese — no spaces — a sentence then never wrapped: its row was wider than the phone and the page
++   scrolled sideways (found 2026-11-10 at 390px: 113 of the 123 guide pages of ja · zh-Hans · zh-Hant in the public
++   build). They break between characters, as css/77-lang.css sets for those versions. */
++html:is([lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) :is(.guide .d1-q, .guide .gd-ans-l, .guide .gd-ans-r, .gd-sec .h-sec, .gd-pts li, .gd-sec .gd-p) { word-break: normal; }
+diff --git a/templates/assets/site.js b/templates/assets/site.js
+index cf4f23daca..4b614d7f4b 100644
+--- a/templates/assets/site.js
++++ b/templates/assets/site.js
+@@ -1602,6 +1602,14 @@
+   $all("[data-tab-chat]").forEach(function (b) {
+     b.addEventListener("click", function () { var fab = doc.querySelector(".chat-fab"); if (fab) fab.click(); });
+   });
++  // print: a folded '자세히' (a guide's section) or '더 보기' (a place's further cards) is on the paper too — a closed
++  // <details> prints only its summary; it is closed again after printing (css/90-refine.css, the calm pass 2026-11-10)
++  win.addEventListener("beforeprint", function () {
++    $all("details.gd-more:not([open]), details.fold:not([open])").forEach(function (d) { d.open = true; d.setAttribute("data-print", ""); });
++  });
++  win.addEventListener("afterprint", function () {
++    $all("details[data-print]").forEach(function (d) { d.open = false; d.removeAttribute("data-print"); });
++  });
+   var reelDlg = doc.querySelector("[data-reel-dlg]");
+   if (reelDlg && typeof reelDlg.showModal === "function") {
+     var reelFrom = null;
+diff --git a/templates/column.html.j2 b/templates/column.html.j2
+index 6a4286a872..63445009b9 100644
+--- a/templates/column.html.j2
++++ b/templates/column.html.j2
+@@ -25,7 +25,11 @@
+   <header class="pg-hero gd-head col-hero">
+     <div class="wrap">
+       <p class="kicker"><a href="/columns/">{{ site.region }} 칼럼</a><span>{{ C.category }}</span>{% if C.label %}<span>{{ C.label }}</span>{% endif %}<span class="tn">약 {{ C.reading_minutes }}분 읽기</span></p>
+-      <h1 class="d1 d1-q vt-title">{{ C.title }}</h1>
++      {#- a title written 'headline: what it is about' reads as the headline and, lighter on its own line, the rest
++          (the guides' two-tone head; the calm pass 2026-11-10 — all thirty titles are of that one form); the H1's text
++          stays the whole title -#}
++      {% set ct = C.title.split(': ', 1) %}
++      <h1 class="d1 d1-q vt-title">{% if ct|length == 2 %}{{ ct[0] }}<span class="d1-sub"><span class="vh">: </span>{{ ct[1] }}</span>{% else %}{{ C.title }}{% endif %}</h1>
+       {% if C.dek %}<p class="col-dek">{{ C.dek }}</p>{% endif %}
+       {% if C.lead_photo %}
+       <div class="col-hero-media">
+@@ -102,6 +106,8 @@
+   </section>
+   {% endif %}
+ 
++  {{ ui.seealso(see) }}
++
+   {% if blog_posts %}{{ blm.section(blog_posts, blog, blog.name ~ '에서 더 읽기') }}{% endif %}
+ 
+   <section class="wrap chapter ch-rail ch-src cv" aria-labelledby="h-src">
+diff --git a/templates/course.html.j2 b/templates/course.html.j2
+index 0a04de2da8..17247fecd4 100644
+--- a/templates/course.html.j2
++++ b/templates/course.html.j2
+@@ -113,6 +113,8 @@
+   </section>
+   {% endif %}
+ 
++  {{ ui.seealso(see) }}
++
+   {% if blog_posts %}{{ blm.section(blog_posts, blog, blog.name ~ '에서 더 읽기') }}{% endif %}
+ 
+   <section class="wrap chapter ch-rail ch-src" aria-labelledby="h-src">
+diff --git a/templates/guide.html.j2 b/templates/guide.html.j2
+index 3abe942202..a00a072453 100644
+--- a/templates/guide.html.j2
++++ b/templates/guide.html.j2
+@@ -27,6 +27,7 @@
+ {% if G.g._insta %}{% set _ = links.append(('인스타그램', '#h-insta')) %}{% endif %}
+ {% if G.places %}{% set _ = links.append(('장소', '#h-items')) %}{% endif %}
+ {% if G.faqs %}{% set _ = links.append(('질문', '#h-faq')) %}{% endif %}
++{% if see %}{% set _ = links.append(('이어서 보기', '#h-see')) %}{% endif %}
+ {% set _ = links.append(('출처', '#h-src')) %}
+ {% if G.route %}{% set cta = {'url': '#h-route', 'label': '걷는 순서'} %}
+ {% elif has_courses %}{% set cta = {'url': '/courses/', 'label': '추천 코스', 'track': 'course_click'} %}
+@@ -38,6 +39,10 @@
+ {% set ts = cards|selectattr('photo')|map(attribute='photo.type')|unique|sort|list %}{% if ts %}사진 출처: 한국관광공사 · 공공누리 {% for t in ts %}제{{ t }}유형{% if t == 3 %}(변경금지){% endif %}{% if not loop.last %}·{% endif %}{% endfor %}{% endif %}
+ {%- endmacro %}
+ {% set types = G.places|selectattr('photo')|map(attribute='photo.type')|unique|sort|list %}
++{#- a section's paragraphs: sentence bullets, a one-sentence paragraph as a plain paragraph -#}
++{% macro paras(ps) -%}
++{% for para in ps %}{% if para|length > 1 %}<ul class="gd-pts">{% for b in para %}<li{% if b.own %} class="own"{% endif %}>{{ b.html }}</li>{% endfor %}</ul>{% else %}<p class="gd-p">{{ para[0].html }}</p>{% endif %}{% endfor %}
++{%- endmacro %}
+ <article class="guide">
+ {% if G.picks %}{{ ui.sprite(G.icons) }}{% endif %}
+   {% set camp = (art_slots or {}).get('guide.banner.' ~ G.g.id) %}
+@@ -89,8 +94,17 @@
+       {% for s in G.sections %}
+       <section class="gd-sec" aria-labelledby="{{ s.id }}" data-sec="{{ s.id }}" data-pts="{{ s.pts|join(' ') }}">
+         <p class="gd-sec-n tn" aria-hidden="true">{{ '%02d'|format(s.n) }}</p>
+-        <h2 id="{{ s.id }}" class="h-sec" data-split>{{ s.heading }}</h2>
+-        {% for para in s.paras %}{% if para|length > 1 %}<ul class="gd-pts">{% for b in para %}<li{% if b.own %} class="own"{% endif %}>{{ b.html }}</li>{% endfor %}</ul>{% else %}<p class="gd-p">{{ para[0].html }}</p>{% endif %}{% endfor %}
++        {#- operator 2026-11-10 ('글이 너무 많아서 별로'; present.section_reading): a short heading, the record's
++            heading sentence as the section's lead, the first sentences, the rest behind '자세히' (a <details>: every
++            sentence stays in the HTML, in the record's order). A 'label: detail' heading keeps one <h2> on two lines. -#}
++        {% if s.lead %}<h2 id="{{ s.id }}" class="h-sec gd-h" data-split>{{ s.toc }}</h2>
++        <p class="gd-lead">{{ s.heading }}</p>
++        {% elif s.head_label %}<h2 id="{{ s.id }}" class="h-sec gd-h gd-h2l">{{ s.head_label }}<span class="vh">: </span><span class="gd-h-sub">{{ s.head_sub }}</span></h2>
++        {% else %}<h2 id="{{ s.id }}" class="h-sec gd-h" data-split>{{ s.heading }}</h2>
++        {% endif %}
++        {{ paras(s.vis) }}
++        {% if s.more %}<details class="gd-more"><summary><span class="gd-more-t">자세히</span><span class="gd-more-n tn">{{ s.more_n }}문장</span><i class="gd-more-i" aria-hidden="true"></i></summary>
++        {{ paras(s.more) }}</details>{% endif %}
+         {% if s.places %}{{ ui.shelf(s.places, '이 단락에 나온 장소 ' ~ s.places|length ~ '곳', credit_ko(s.places), cls='mcs-sec', nav_js=true) }}{% endif %}
+         {% if s.again %}{{ ui.again(s.again, '이 단락에 나온 장소 중 위 카드에 있는 ' ~ s.again|length ~ '곳') }}{% endif %}
+       </section>
+@@ -175,6 +189,8 @@
+   </section>
+   {% endif %}
+ 
++  {{ ui.seealso(see) }}
++
+   {% if blog_posts %}{{ blm.section(blog_posts, blog, blog.name ~ '에서 더 읽기') }}{% endif %}
+ 
+   <section class="wrap chapter ch-rail ch-src cv" aria-labelledby="h-src">
+diff --git a/templates/home.html.j2 b/templates/home.html.j2
+index 001f498afc..1c95c26d10 100644
+--- a/templates/home.html.j2
++++ b/templates/home.html.j2
+@@ -54,18 +54,26 @@
+ {% set T = namespace(i=0) %}
+ {% set N = h.news|length %}
+ {% set ASK = ask_starters is defined and ask_starters is not none %}
+-{% if popular_videos or yt_channels or insta_channels %}
+-<aside class="h-rside" aria-label="{{ site.region }} 인기 유튜브·인스타그램 큐레이션" data-lenis-prevent data-tabs>
++{#- IG: the guide whose #h-insta chapter the Instagram cards open in ('' when this build does not publish it: then no
++    Instagram tab, list or section — they would only link to a page that is not there) -#}
++{% set IG = insta_guide|default('') %}
++{#- the board (from 1680px, css/48-abroad.css): a YouTube panel and an Instagram panel behind two tabs — each panel
++    whole in its own <div> whatever data is there (2026-11-10: the first panel was opened by one condition and closed
++    by another, so a build without curated videos or without the Instagram guide left the markup unbalanced) -#}
++{% set RS_YT = has_videos and (popular_videos or yt_channels) %}
++{% set RS_IG = IG and (insta_channels or home_insta) %}
++{% if RS_YT or RS_IG %}
++<aside class="h-rside" aria-label="{{ site.region }} 인기 유튜브·인스타그램 큐레이션" data-lenis-prevent{% if RS_YT and RS_IG %} data-tabs{% endif %}>
+   <div class="hrs-head">
+-
+     <h2 class="hrs-title">지금 많이 보는 {{ site.region }}</h2>
+-    <div class="hrs-tabs" role="tablist" aria-label="유튜브·인스타그램 전환">
++    {% if RS_YT and RS_IG %}<div class="hrs-tabs" role="tablist" aria-label="유튜브·인스타그램 전환">
+       <button type="button" class="hrs-tab is-yt" role="tab" id="hrs-tab-yt" aria-controls="hrs-panel-yt" aria-selected="true">{{ ab.svc('youtube') }}<span>유튜브</span></button>
+       <button type="button" class="hrs-tab is-ig" role="tab" id="hrs-tab-ig" aria-controls="hrs-panel-ig" aria-selected="false" tabindex="-1">{{ ab.svc('instagram') }}<span>인스타그램</span></button>
+-    </div>
++    </div>{% endif %}
+   </div>
++  {% if RS_YT %}
++  <div class="hrs-panel"{% if RS_IG %} role="tabpanel" aria-labelledby="hrs-tab-yt"{% endif %} id="hrs-panel-yt">
+   {% if popular_videos %}
+-  <div class="hrs-panel" role="tabpanel" id="hrs-panel-yt" aria-labelledby="hrs-tab-yt">
+   <div class="hrs-sec" id="hrs-yt">
+     <div class="hrs-sh"><h3>화제의 {{ site.region }} 유튜브</h3><a href="/videos/#yt-popular">전체 보기<span class="arr" aria-hidden="true">→</span></a></div>
+     <ul class="hrs-vlist">
+@@ -99,11 +107,13 @@
+     </ul>
+   </div>
+   {% endif %}
+-  {% if insta_channels %}
+   </div>
+-  <div class="hrs-panel" role="tabpanel" id="hrs-panel-ig" aria-labelledby="hrs-tab-ig" data-tab-off>
++  {% endif %}
++  {% if RS_IG %}
++  <div class="hrs-panel"{% if RS_YT %} role="tabpanel" aria-labelledby="hrs-tab-ig" data-tab-off{% endif %} id="hrs-panel-ig">
++  {% if insta_channels %}
+   <div class="hrs-sec" id="hrs-ig">
+-    <div class="hrs-sh"><h3>인기 인스타 채널 <span class="tn">{{ insta_channels|length }}</span></h3><a href="/guides/군산-카페/#h-insta">카페 가이드<span class="arr" aria-hidden="true">→</span></a></div>
++    <div class="hrs-sh"><h3>인기 인스타 채널 <span class="tn">{{ insta_channels|length }}</span></h3><a href="{{ IG }}#h-insta">카페 가이드<span class="arr" aria-hidden="true">→</span></a></div>
+     <ul class="hrs-clist">
+       {% for ch in insta_channels %}
+       <li class="hrs-c">
+@@ -116,11 +126,11 @@
+   {% endif %}
+   {% if home_insta %}
+   <div class="hrs-sec">
+-    <div class="hrs-sh"><h3>화제의 인스타 대형·감성 카페</h3><a href="/guides/군산-카페/#h-insta">전체 {{ n_insta }}편<span class="arr" aria-hidden="true">→</span></a></div>
++    <div class="hrs-sh"><h3>화제의 인스타 대형·감성 카페</h3><a href="{{ IG }}#h-insta">전체 {{ n_insta }}편<span class="arr" aria-hidden="true">→</span></a></div>
+     <ul class="hrs-clist">
+       {% for a in home_insta[:5] %}
+       <li class="hrs-c">
+-        <a class="hrs-ctop" href="/guides/군산-카페/#{{ a.id }}" data-track="abroad_click"><span class="hrs-num tn">{{ '%02d'|format(loop.index) }}</span><span class="hrs-cn"><span class="hrs-crow"><strong class="hrs-cname">{{ a.author or 'Instagram' }}<span class="hrs-ext" aria-hidden="true">›</span></strong></span><span class="hrs-ig-note">{{ a.note }}</span></span></a>
++        <a class="hrs-ctop" href="{{ IG }}#{{ a.id }}" data-track="abroad_click"><span class="hrs-num tn">{{ '%02d'|format(loop.index) }}</span><span class="hrs-cn"><span class="hrs-crow"><strong class="hrs-cname">{{ a.author or 'Instagram' }}<span class="hrs-ext" aria-hidden="true">›</span></strong></span><span class="hrs-ig-note">{{ a.note }}</span></span></a>
+         {% if a.place_slugs %}<p class="hrs-clinks">{% for s in a.place_slugs[:3] %}{% if s in places %}<a href="{{ places[s]._path }}">{{ places[s].name }}</a>{% endif %}{% endfor %}</p>{% endif %}
+       </li>
+       {% endfor %}
+@@ -128,6 +138,7 @@
+   </div>
+   {% endif %}
+   </div>
++  {% endif %}
+ </aside>
+ {% endif %}
+ <div class="hk"{% if ASK %} data-chat-dock{% endif %}>
+@@ -152,7 +163,7 @@
+     </form>
+     {% set svc = {} %}{% for s in h.services %}{% set _ = svc.update({s.href: s}) %}{% endfor %}
+     <ul class="ha-tiles">{% for href, lab, k in TILES %}{% set s = svc.get(href) %}{% if s %}<li><a class="ha-tile ha-{{ k }}" href="{{ href }}"{% if s.track %} data-track="{{ s.track }}"{% endif %}>{{ pk.pic(s.pic, s.icon, 52) }}<span class="ha-tl">{{ lab }}</span></a></li>{% endif %}{% endfor %}</ul>
+-    <p class="ha-cta">{% if stay_book_n %}<a class="ha-btn ha-stay" href="/stays/booking/" data-track="stay_booking_cta">{{ pk.pic('icon-stay', 'bed', 28) }}<span>숙박 예약하기</span></a>{% endif %}{% if has_plan %}<a class="ha-btn ha-plan" href="/plan/" data-track="plan_cta">내 일정 만들기</a>{% elif courses %}<a class="ha-btn ha-plan" href="/courses/" data-track="course_click">{{ site.locality or site.region }} 추천 코스</a>{% endif %}</p>
++    <p class="ha-cta">{% if stay_book_n %}<a class="ha-btn ha-stay" href="/stays/booking/" data-track="stay_booking_cta">{{ pk.pic('icon-stay', 'bed', 28) }}<span>숙박 예약하기</span></a>{% endif %}{% if has_plan %}<a class="ha-btn ha-plan" href="/plan/" data-track="plan_cta">AI 코스 만들기</a>{% elif courses %}<a class="ha-btn ha-plan" href="/courses/" data-track="course_click">{{ site.locality or site.region }} 추천 코스</a>{% endif %}</p>
+     {% if cv %}<p class="ha-cap">사진 <a href="{{ cv.path }}">{{ cv.place }}</a> · {{ md.credit(cv) }}</p>{% endif %}
+   </div></div>
+ </section>
+@@ -327,103 +338,28 @@
+ </section>
+ {% endif %}
+ 
+-{# 군산각 블로그 (operator 2026-10-30: '홈에도 블로그 카드 몇 개'): build.blog_home — the newest post of each category
+-   first — as the /blog/ cards (a licensed photo of a place the post is about, the title to the blog, the date and the
+-   places); 1 column of row cards on phones, 2 from 720px, 3 from 1100px (css/48-blog.css). The photos' credit line
+-   closes the section, as on /blog/. #}
+-{% if home_blog %}
+-{% set T.i = T.i + 1 %}
+-<section class="sec sec-blog sec-mz{{ ' tone-2' if T.i is odd }}" aria-labelledby="h-blog">
+-  <div class="wrap">
+-    {{ ui.sec_head(blog.name, '따끈한 ' ~ site.region ~ ' 여행기', 'h-blog', '/blog/', '블로그 글 ' ~ blog.posts|length ~ '편 모두') }}
+-    {#- the blog's own line (operator 2026-11-02): the site's symbol as its avatar (drawn, not a picture: the
+-        section stands even with no place data, CLAUDE.md 4), its name, address and post count, its categories (each to its group on
+-        /blog/), then the newest posts — the one with a KOGL-1 photo as the lead (its title on the photo), the rest as
+-        rows (_blog.html.j2 lead · row) -#}
+-    <div class="blz-prof">{% if site.brand_symbol %}<span class="blz-av" aria-hidden="true">{% include "assets/brand/" ~ site.brand_symbol %}</span>{% endif %}<p class="blz-who"><b>{{ blog.name }}</b><span>{{ blog.url|replace('https://', '') }} · 글 <span class="tn">{{ blog.posts|length }}</span>편</span></p>
+-      {% if blog.categories %}<ul class="blz-cats">{% for k, name in blog.categories.items() %}<li><a href="/blog/#bl-{{ k }}">{{ name }}</a></li>{% endfor %}</ul>{% endif %}
+-      <a class="blz-go" href="{{ blog.url }}" rel="noopener" data-track="blog_click">블로그 가기<span class="arr" aria-hidden="true">↗</span></a></div>
+-    {% set lead = home_blog|selectattr('photo')|selectattr('photo.type', 'equalto', 1)|first %}
+-    <div class="blz{{ ' blz-nolead' if not lead }}">{% if lead %}{{ blm.lead(lead) }}{% endif %}<ul class="blz-list">{% for r in home_blog if not (lead and r is sameas lead) %}{{ blm.row(r) }}{% endfor %}</ul></div>
+-    {% set types = home_blog|selectattr('photo')|map(attribute='photo.type')|unique|sort|list %}
+-    {% if types %}<p class="note bl-home-cr">사진 출처: 한국관광공사 · 공공누리 {% for t in types %}제{{ t }}유형{% if t == 3 %}(변경금지){% endif %}{% if not loop.last %}·{% endif %}{% endfor %}</p>{% endif %}
+-  </div>
+-</section>
+-{% endif %}
+-
+-{# SNS에서 본 군산 (owner 2026-10-14: 'SNS 게시물이 좀 더 잘 보이면 좋겠는데 지금은 너무 구석에'): the newest posts as our
+-   own cards — the service's mark, the service · account, our one-line note, the date — each to its card on /abroad/
+-   (the official embed is there); nothing loads from the services on the home. A row that scrolls sideways on phones,
+-   2 columns from 700px, 4 from 1024px (css/48-abroad.css .hsns). #}
++{# 유튜브로 보는 군산: where the operator put it on 2026-11-10 ('유튜브 섹션 상단 이동') — after the events, above the
++   regions — as one short row since the calm pass of the same day (below) #}
+ {% if h.vfeat %}
+ {% set T.i = T.i + 1 %}
+ <section class="sec sec-vid{{ ' tone-2' if T.i is odd }}" aria-labelledby="h-vid">
+   <div class="wrap">
+     {{ ui.sec_head('YouTube', '유튜브로 보는 ' ~ site.region ~ ' 인기 채널·화제 영상', 'h-vid', '/videos/', '영상 ' ~ h.n_videos ~ '편 모두') }}
++    {#- 2026-11-10 (the calm pass): the home shows four of the curated videos and the doors to the rest — the
++        channel cards and the per-topic lists are /videos/'s own (#yt-channels, #yt-popular, each topic); the chips'
++        numbers are those lists' totals. Without curated videos (another city, the sample) the per-topic block stays. -#}
+     {% if popular_videos %}
+-    <div class="home-yt-sub"><h3>화제의 {{ site.region }} 인기 유튜브 영상</h3><a href="/videos/#yt-popular">화제의 영상 모두 보기<span class="arr" aria-hidden="true">→</span></a></div>
+-    <ul class="vids vids-4">{% for v in popular_videos[:4] %}{{ ui.video(v, '', v._places or [], false, 'li') }}{% endfor %}</ul>
+-    {% endif %}
+-    {% if yt_channels %}
+-    <div class="home-yt-sub"><h3>{{ site.region }} 여행·맛집 인기 유튜브 채널 <span class="tn">{{ yt_channels|length }}</span></h3><a href="/videos/#yt-channels">인기 채널 {{ yt_channels|length }}곳 모두<span class="arr" aria-hidden="true">→</span></a></div>
+-    <ul class="ig-ch-grid">
+-      {% for ch in yt_channels[:6] %}
+-      <li class="ig-ch-card" id="home-{{ ch.id }}">
+-        <div class="ig-ch-head">{{ ab.svc('youtube') }}<div class="ig-ch-who"><b>{{ ch.name }}</b><span>{{ ch.handle }}</span></div>{% if ch.badge %}<span class="ig-ch-badge">{{ ch.badge }}</span>{% endif %}</div>
+-        <p class="ig-ch-note">{{ ch.note }}</p>
+-        <p class="ig-ch-links"><a class="ig-ch-go" href="{{ ch.url }}" target="_blank" rel="noopener" data-track="video_click">채널 보기<span class="arr" aria-hidden="true">↗</span></a>{% for l in ch.links or [] %}<a class="ig-ch-chip" href="{{ l.href }}">{{ l.label }}</a>{% endfor %}</p>
+-      </li>
+-      {% endfor %}
+-    </ul>
+-    {% endif %}
+-    <div class="home-yt-sub"><h3>주제별 대표 영상</h3><a href="/videos/">주제별 영상 {{ h.n_videos }}편 모두<span class="arr" aria-hidden="true">→</span></a></div>
++    {#- from 1680px the board beside this row lists the first five curated videos: there the row shows the next four
++        (.vids-alt, css/90-refine), so that the same four are not on one screen twice; narrower, the first four -#}
++    {% set PV_ALT = RS_YT and popular_videos|length >= 9 %}
++    <ul class="vids vids-4{{ ' vids-alt' if PV_ALT }}">{% for v in ((popular_videos[:4] + popular_videos[5:9]) if PV_ALT else popular_videos[:4]) %}{{ ui.video(v, '', v._places or [], false, 'li') }}{% endfor %}</ul>
++    {% else %}
+     <div class="vgrid">
+       <div class="v-feat">{{ ui.video(h.vfeat) }}</div>
+       {% if h.vrows %}<ol class="v-rows">{% for r in h.vrows %}{{ p2.vtopic(r) }}{% endfor %}</ol>{% endif %}
+     </div>
+-    <nav class="v-chips" aria-label="영상 주제">{% for c in h.vchips %}<a href="{{ c.path or ('/videos/#' ~ c.id) }}">{{ '그 밖의 영상' if c.title == '기타' else c.title }} <span class="tn">{{ c.n }}</span></a>{% endfor %}</nav>
+-  </div>
+-</section>
+-{% endif %}
+-{% if home_insta %}
+-{% set T.i = T.i + 1 %}
+-<section class="sec sec-sns sec-mz{{ ' tone-2' if T.i is odd }}" aria-labelledby="h-insta-home">
+-  <div class="wrap">
+-    {{ ui.sec_head('인스타그램으로 보는 ' ~ site.region, site.region ~ ' 관련 인기 인스타그램 채널과 대형·감성 카페', 'h-insta-home', '/guides/군산-카페/#h-insta', '인스타그램 큐레이션 ' ~ n_insta ~ '편 모두') }}
+-    {% if insta_channels %}
+-    {% set own_ch = insta_channels|selectattr('id', 'equalto', 'ig-ch-gunsangak')|first %}
+-    {% set other_chs = insta_channels|rejectattr('id', 'equalto', 'ig-ch-gunsangak')|list %}
+-    {% if own_ch %}
+-    <div class="blz-prof ig-prof">{{ ab.svc('instagram', 'ab-svc ig-prof-av') }}<p class="blz-who"><b>{{ own_ch.name }}</b><span>{{ own_ch.handle }} · {{ own_ch.note }}</span></p>
+-      {% if own_ch.links %}<ul class="blz-cats">{% for l in own_ch.links %}<li><a href="{{ l.href }}">{{ l.label }}</a></li>{% endfor %}</ul>{% endif %}
+-      <a class="blz-go" href="{{ own_ch.url }}" target="_blank" rel="noopener" data-track="abroad_click">공식 계정 가기<span class="arr" aria-hidden="true">↗</span></a></div>
+     {% endif %}
+-    {% if other_chs %}
+-    <h3 class="ig-ch-sub">{{ site.region }} 여행·카페·맛집 인기 인스타그램 채널 <span class="tn">{{ other_chs|length }}</span></h3>
+-    <ul class="ig-ch-grid">
+-      {% for ch in other_chs %}
+-      <li class="ig-ch-card" id="{{ ch.id }}">
+-        <div class="ig-ch-head">{{ ab.svc('instagram') }}<div class="ig-ch-who"><b>{{ ch.name }}</b><span>{{ ch.handle }}</span></div>{% if ch.badge %}<span class="ig-ch-badge">{{ ch.badge }}</span>{% endif %}</div>
+-        <p class="ig-ch-note">{{ ch.note }}</p>
+-        <p class="ig-ch-links"><a class="ig-ch-go" href="{{ ch.url }}" target="_blank" rel="noopener" data-track="abroad_click">채널 보기<span class="arr" aria-hidden="true">↗</span></a>{% for l in ch.links or [] %}<a class="ig-ch-chip" href="{{ l.href }}">{{ l.label }}</a>{% endfor %}</p>
+-      </li>
+-      {% endfor %}
+-    </ul>
+-    {% endif %}
+-    {% endif %}
+-    <h3 class="ig-ch-sub">인스타그램에서 많이 찾은 {{ site.region }} 대형·감성 카페 <span class="tn">{{ n_insta }}</span></h3>
+-    <ul class="hsns">{% for a in home_insta %}{{ mz.sns(a, loop.index0, '/guides/군산-카페/#') }}{% endfor %}</ul>
+-    <p class="note hsns-note">원문 문장과 게시물 사진은 옮기지 않습니다. 카드 위 그림은 게시물에 나온 카페·장소의 사진(한국관광공사 공공누리)이고, 카드를 누르면 군산 카페 가이드의 공식 임베드 미리보기와 장소 바로가기로 이어집니다.</p>
+-  </div>
+-</section>
+-{% endif %}
+-{% if home_posts %}
+-{% set T.i = T.i + 1 %}
+-<section class="sec sec-sns sec-mz{{ ' tone-2' if T.i is odd }}" aria-labelledby="h-sns">
+-  <div class="wrap">
+-    {{ ui.sec_head('해외에서 본 ' ~ site.region, '해외 피드에 뜬 ' ~ site.region, 'h-sns', '/abroad/#ab-sns', 'SNS 게시물 ' ~ n_posts ~ '개 모두') }}
+-    <ul class="hsns">{% for a in home_posts %}{{ mz.sns(a, loop.index0) }}{% endfor %}</ul>
+-    <p class="note hsns-note">원문 문장과 게시물 사진은 옮기지 않습니다. 카드 위 그림은 게시물에 나온 장소의 사진이나, 나온 장소가 없으면 '관련 사진'이라고 적은 관련 장소의 사진(한국관광공사)이고, 게시물은 각 서비스의 공식 임베드로 엽니다.</p>
++    <nav class="v-chips" aria-label="영상 주제">{% if yt_channels %}<a href="/videos/#yt-channels">인기 채널 <span class="tn">{{ yt_channels|length }}</span></a>{% endif %}{% if popular_videos %}<a href="/videos/#yt-popular">화제의 영상 <span class="tn">{{ n_popular|default(popular_videos|length) }}</span></a>{% endif %}{% for c in h.vchips %}<a href="{{ c.path or ('/videos/#' ~ c.id) }}">{{ '그 밖의 영상' if c.title == '기타' else c.title }} <span class="tn">{{ c.n }}</span></a>{% endfor %}</nav>
+   </div>
+ </section>
+ {% endif %}
+@@ -563,6 +499,71 @@
+ </section>
+ {% endif %}
+ 
++{#- 2026-11-10 (the calm pass, after the review the operator asked to have carried out): the blog, the Instagram
++    cafes and the posts from abroad come after the site's own visit information (권역 · 이야기 · 섬 · 코스 · 칼럼) —
++    the reading (칼럼 → 블로그) together, the SNS after it. With the YouTube block they were 42% of the phone home's
++    length and sat above the map and the courses. The YouTube row keeps the operator's place (above). -#}
++{# 군산각 블로그 (operator 2026-10-30: '홈에도 블로그 카드 몇 개'): build.blog_home — the newest post of each category
++   first — as the /blog/ cards (a licensed photo of a place the post is about, the title to the blog, the date and the
++   places); 1 column of row cards on phones, 2 from 720px, 3 from 1100px (css/48-blog.css). The photos' credit line
++   closes the section, as on /blog/. #}
++{% if home_blog %}
++{% set T.i = T.i + 1 %}
++<section class="sec sec-blog sec-mz{{ ' tone-2' if T.i is odd }}" aria-labelledby="h-blog">
++  <div class="wrap">
++    {{ ui.sec_head(blog.name, '따끈한 ' ~ site.region ~ ' 여행기', 'h-blog', '/blog/', '블로그 글 ' ~ blog.posts|length ~ '편 모두') }}
++    {#- the blog's own line (operator 2026-11-02): the site's symbol as its avatar (drawn, not a picture: the
++        section stands even with no place data, CLAUDE.md 4), its name, address and post count, its categories (each to its group on
++        /blog/), then the newest posts — the one with a KOGL-1 photo as the lead (its title on the photo), the rest as
++        rows (_blog.html.j2 lead · row) -#}
++    <div class="blz-prof">{% if site.brand_symbol %}<span class="blz-av" aria-hidden="true">{% include "assets/brand/" ~ site.brand_symbol %}</span>{% endif %}<p class="blz-who"><b>{{ blog.name }}</b><span>{{ blog.url|replace('https://', '') }} · 글 <span class="tn">{{ blog.posts|length }}</span>편</span></p>
++      {% if blog.categories %}<ul class="blz-cats">{% for k, name in blog.categories.items() %}<li><a href="/blog/#bl-{{ k }}">{{ name }}</a></li>{% endfor %}</ul>{% endif %}
++      <a class="blz-go" href="{{ blog.url }}" rel="noopener" data-track="blog_click">블로그 가기<span class="arr" aria-hidden="true">↗</span></a></div>
++    {% set lead = home_blog|selectattr('photo')|selectattr('photo.type', 'equalto', 1)|first %}
++    <div class="blz{{ ' blz-nolead' if not lead }}">{% if lead %}{{ blm.lead(lead) }}{% endif %}<ul class="blz-list">{% for r in home_blog if not (lead and r is sameas lead) %}{{ blm.row(r) }}{% endfor %}</ul></div>
++    {% set types = home_blog|selectattr('photo')|map(attribute='photo.type')|unique|sort|list %}
++    {% if types %}<p class="note bl-home-cr">사진 출처: 한국관광공사 · 공공누리 {% for t in types %}제{{ t }}유형{% if t == 3 %}(변경금지){% endif %}{% if not loop.last %}·{% endif %}{% endfor %}</p>{% endif %}
++  </div>
++</section>
++{% endif %}
++
++{# SNS에서 본 군산 (owner 2026-10-14: 'SNS 게시물이 좀 더 잘 보이면 좋겠는데 지금은 너무 구석에'): the newest posts as our
++   own cards — the service's mark, the service · account, our one-line note, the date — each to its card on /abroad/
++   (the official embed is there); nothing loads from the services on the home. A row that scrolls sideways on phones,
++   2 columns from 700px, 4 from 1024px (css/48-abroad.css .hsns). #}
++{% if home_insta and IG %}
++{% set T.i = T.i + 1 %}
++<section class="sec sec-sns sec-mz{{ ' tone-2' if T.i is odd }}" aria-labelledby="h-insta-home">
++  <div class="wrap">
++    {{ ui.sec_head('인스타그램으로 보는 ' ~ site.region, site.region ~ ' 관련 인기 인스타그램 채널과 대형·감성 카페', 'h-insta-home', IG ~ '#h-insta', '인스타그램 큐레이션 ' ~ n_insta ~ '편 모두') }}
++    {% if insta_channels %}
++    {% set own_ch = insta_channels|selectattr('id', 'equalto', 'ig-ch-gunsangak')|first %}
++    {% set other_chs = insta_channels|rejectattr('id', 'equalto', 'ig-ch-gunsangak')|list %}
++    {% if own_ch %}
++    <div class="blz-prof ig-prof">{{ ab.svc('instagram', 'ab-svc ig-prof-av') }}<p class="blz-who"><b>{{ own_ch.name }}</b><span>{{ own_ch.handle }} · {{ own_ch.note }}</span></p>
++      {% if own_ch.links %}<ul class="blz-cats">{% for l in own_ch.links %}<li><a href="{{ l.href }}">{{ l.label }}</a></li>{% endfor %}</ul>{% endif %}
++      <a class="blz-go" href="{{ own_ch.url }}" target="_blank" rel="noopener" data-track="abroad_click">공식 계정 가기<span class="arr" aria-hidden="true">↗</span></a></div>
++    {% endif %}
++    {% endif %}
++    {#- the calm pass 2026-11-10: eight cafe cards here; the other accounts' cards are the cafe guide's
++        (#h-insta-channels), one link away -#}
++    <div class="home-yt-sub"><h3>인스타그램에서 많이 찾은 {{ site.region }} 대형·감성 카페 <span class="tn">{{ n_insta }}</span></h3>{% if insta_channels %}<a href="{{ IG }}#h-insta-channels">인기 채널 {{ insta_channels|length }}곳 보기<span class="arr" aria-hidden="true">→</span></a>{% endif %}</div>
++    <ul class="hsns">{% for a in home_insta[:8] %}{{ mz.sns(a, loop.index0, IG ~ '#') }}{% endfor %}</ul>
++    <p class="note hsns-note">원문 문장과 게시물 사진은 옮기지 않습니다. 카드 위 그림은 게시물에 나온 카페·장소의 사진(한국관광공사 공공누리)이고, 카드를 누르면 군산 카페 가이드의 공식 임베드 미리보기와 장소 바로가기로 이어집니다.</p>
++  </div>
++</section>
++{% endif %}
++{% if home_posts %}
++{% set T.i = T.i + 1 %}
++<section class="sec sec-sns sec-mz{{ ' tone-2' if T.i is odd }}" aria-labelledby="h-sns">
++  <div class="wrap">
++    {{ ui.sec_head('해외에서 본 ' ~ site.region, '해외 피드에 뜬 ' ~ site.region, 'h-sns', '/abroad/#ab-sns', 'SNS 게시물 ' ~ n_posts ~ '개 모두') }}
++    <ul class="hsns">{% for a in home_posts %}{{ mz.sns(a, loop.index0) }}{% endfor %}</ul>
++    <p class="note hsns-note">원문 문장과 게시물 사진은 옮기지 않습니다. 카드 위 그림은 게시물에 나온 장소의 사진이나, 나온 장소가 없으면 '관련 사진'이라고 적은 관련 장소의 사진(한국관광공사)이고, 게시물은 각 서비스의 공식 임베드로 엽니다.</p>
++  </div>
++</section>
++{% endif %}
++
+ {# 공식 안내: the official sites this one is built from (links only) #}
+ {% if site.official_links %}
+ {% set T.i = T.i + 1 %}
+diff --git a/templates/list.html.j2 b/templates/list.html.j2
+index c229eb4015..9bae322e58 100644
+--- a/templates/list.html.j2
++++ b/templates/list.html.j2
+@@ -51,7 +51,7 @@
+       {% for g in L.groups %}
+       <section class="lg-group{% if not loop.first %} cv{% endif %}" id="{{ g.id }}" aria-labelledby="{{ g.id }}-h">
+         <h2 class="lg-g" id="{{ g.id }}-h">{{ g.name }} <span class="tn">{{ g.recs|length }}곳</span></h2>
+-        <ol class="recs">{% for it in g.recs %}{{ p1.rec(it, L.kind) }}{% endfor %}</ol>
++        <ol class="recs">{% for it in g.recs %}{{ p1.rec(it, L.kind, '확인 필요') }}{% endfor %}</ol>
+       </section>
+       {% endfor %}
+     </div>
+diff --git a/templates/place.html.j2 b/templates/place.html.j2
+index 6216e60fd8..59c53c8d4e 100644
+--- a/templates/place.html.j2
++++ b/templates/place.html.j2
+@@ -26,7 +26,7 @@
+ {% set lead = p.hero_k1 or p.hero_k3 %}
+ {% set kind_word = {'attraction': '볼거리', 'stay': '숙소', 'food': '음식점'}[p.kind] %}
+ {% set show_same = p.dong and p.area_same and (p.compact or not (p.near_sights or p.near_biz)) %}
+-{% set has_near = p.parts or p.segs or p.near_sights or p.near_biz or p.went_next or p.guide_cards or p.event_cards or p.twin_rows or p.rel_rows or show_same %}
++{% set has_near = p.parts or p.segs or p.near_sights or p.near_biz or p.went_next or p.guide_cards or p.column_cards or p.event_cards or p.twin_rows or p.rel_rows or show_same %}
+ {% block main_class %}{% endblock %}
+ {% block bodyclass %}pg-place kind-{{ p.kind }}{% if lead %} has-photo{% else %} no-photo{% endif %}{% endblock %}
+ {% block head %}{% if p.hero_k1 %}{{ md.preload(p.hero_k1, '100vw') }}{% endif %}{% endblock %}
+@@ -35,8 +35,8 @@
+ {% if p.photos|length > 1 or p.hero_k3 %}{% set _ = links.append(('사진', '#h-photos')) %}{% endif %}
+ {% if p.shops %}{% set _ = links.append(('가게', '#h-shops')) %}{% endif %}
+ {% set _ = links.append(('지도', '#h-map' if p.points else '#h-dir')) %}
+-{% if has_near %}{% set _ = links.append(('주변', '#h-near')) %}{% endif %}
+ {% if p.details %}{% set _ = links.append(('자세히', '#h-details')) %}{% endif %}
++{% if has_near %}{% set _ = links.append(('주변', '#h-near')) %}{% endif %}
+ {% if media_parts %}{% set _ = links.append((media_parts[0], '#h-media')) %}{% endif %}
+ {% if p.faqs %}{% set _ = links.append(('질문', '#h-faq')) %}{% endif %}
+ {% set _ = links.append(('출처', '#h-src')) %}
+@@ -99,8 +99,10 @@
+     </div>
+   </header>
+   {#- phones (시안 A, operator 2026-11-05): the two things a visitor does next, held at the bottom — call (when one number
+-      is settled) and the main route link; the floating assistant steps up above it (css 87-design-a) -#}
+-  {% if p.primary or p.kf.tel[1] %}<div class="pl-bar">{% if p.kf.tel[1] %}<a class="pl-bar-tel" href="tel:{{ p.kf.tel[1] }}" data-track="tel_click" data-place="{{ p.e.id }}">{{ ui.icon('phone') }}전화</a>{% endif %}{% if p.primary %}<a class="pl-bar-go" href="{{ p.primary.url }}" rel="noopener" target="_blank" data-track="{{ 'route_click' if p.primary.role == 'route' else 'map_click' }}" data-provider="{{ p.primary.key }}" data-place="{{ p.e.id }}">{{ ui.icon('route') }}{{ p.primary.label }}<span class="vh"> (새 창)</span></a>{% endif %}</div>{% endif %}
++      is settled) and the main route link; the assistant is the bar's third button, 'AI 챗봇' as on the tab bar (the calm pass
++      2026-11-10: the floating launcher above the bar covered the phone tile and the photo credit — css 90-refine;
++      [data-tab-chat] presses the launcher, site.js, and the chat gives the focus back to this button, chat.js) -#}
++  {% if p.primary or p.kf.tel[1] %}<div class="pl-bar">{% if p.kf.tel[1] %}<a class="pl-bar-tel" href="tel:{{ p.kf.tel[1] }}" data-track="tel_click" data-place="{{ p.e.id }}">{{ ui.icon('phone') }}전화</a>{% endif %}{% if p.primary %}<a class="pl-bar-go" href="{{ p.primary.url }}" rel="noopener" target="_blank" data-track="{{ 'route_click' if p.primary.role == 'route' else 'map_click' }}" data-provider="{{ p.primary.key }}" data-place="{{ p.e.id }}">{{ ui.icon('route') }}{{ p.primary.label }}<span class="vh"> (새 창)</span></a>{% endif %}<button type="button" class="pl-bar-chat" data-tab-chat aria-haspopup="dialog" aria-label="AI 챗봇 — {{ site.region }} 여행 질문하기">{{ ui.icon('chat') }}<span aria-hidden="true">AI 챗봇</span></button></div>{% endif %}
+ 
+   <div class="pl-band tone-2">
+   <div class="wrap pl-grid{% if not lead %} lift{% endif %}">
+@@ -204,6 +206,19 @@
+   </div>
+   </div>
+ 
++  {#- the calm pass 2026-11-10: the place's own story comes right after its facts and map, before the
++      neighbours — on a phone it began on the tenth screen, under the nearby lists -#}
++  {% if p.details %}
++  <section class="wrap chapter ch-rail" aria-labelledby="h-details" data-block="details">
++    <h2 id="h-details" class="rail-label"><span class="nm">{{ nm }}</span> 자세히</h2>
++    <div class="rail-body prose details">
++      {% for d in p.details %}<h3>{{ d.heading }}</h3><p>{{ d.text|decaution|tel(p.e.id) }}{% if p.detail_notes|length > 1 %}{{ d.n|csup }}{% endif %}</p>{% endfor %}
++      {{ p1.chnotes(p.detail_notes, p.e.id) }}
++    </div>
++  </section>
++  {% endif %}
++
++
+   {% if has_near %}
+   {#- 주변·함께 가기 (templates/_near.html.j2): the official courses through the place as segments (prev ── here ── next,
+       straight-line legs, one chip per course), the nearby places on one straight-line scale (both groups), the
+@@ -237,6 +252,9 @@
+       {% endif %}
+       {% if p.guide_cards %}<div class="nb-part"><h3 class="h-sub nb-h">{{ ui.kpic('guide', '', 40) }}<span>이곳이 포함된 가이드</span></h3>
+         {{ nb.cards(p.guide_cards, p.e.id, w, 'guide_click', w.more_guides) }}</div>{% endif %}
++      {#- the columns whose place list holds this place (present.place_columns; operator 2026-11-10 '연결성') -#}
++      {% if p.column_cards %}<div class="nb-part" data-block="columns"><h3 class="h-sub nb-h"><span>이곳이 나오는 칼럼</span></h3>
++        {{ nb.cards(p.column_cards, p.e.id, w, '', '칼럼 더 보기 ({n})') }}</div>{% endif %}
+       {% if p.event_cards %}<div class="nb-part"><h3 class="h-sub nb-h">{{ ui.kpic('icon-events', '', 40) }}<span>이곳에서 열리는 행사</span></h3>
+         {{ nb.cards(p.event_cards, p.e.id, w, '', w.more_events) }}</div>{% endif %}
+       {% for title, xs, blk in [('같은 건물의 다른 이름', p.twin_rows, 'twins'), ('이름이 비슷한 곳', p.rel_rows, 'similar')] if xs %}
+@@ -247,16 +265,6 @@
+   </section>
+   {% endif %}
+ 
+-  {% if p.details %}
+-  <section class="wrap chapter ch-rail" aria-labelledby="h-details" data-block="details">
+-    <h2 id="h-details" class="rail-label"><span class="nm">{{ nm }}</span> 자세히</h2>
+-    <div class="rail-body prose details">
+-      {% for d in p.details %}<h3>{{ d.heading }}</h3><p>{{ d.text|decaution|tel(p.e.id) }}{% if p.detail_notes|length > 1 %}{{ d.n|csup }}{% endif %}</p>{% endfor %}
+-      {{ p1.chnotes(p.detail_notes, p.e.id) }}
+-    </div>
+-  </section>
+-  {% endif %}
+-
+   {% set news = (media or {}).news or [] %}
+   {% if media_parts %}
+   <section class="wrap chapter ch-rail" aria-labelledby="h-media" data-block="media">
+@@ -265,11 +273,16 @@
+       {% if p.videos %}<ul class="vids">{% for v in p.videos %}{% set other_p = [] %}{% for x in v._places or [] %}{% if x.slug != p.e.slug %}{% set _ = other_p.append(x) %}{% endif %}{% endfor %}{{ ui.video(v, p.e.id, other_p, false, 'li') }}{% endfor %}</ul>
+       {% if has_videos %}<p class="note"><a href="/videos/">영상 모아 보기</a></p>{% endif %}{% endif %}
+       {% if news %}<ul class="xlinks">{% for n in news %}<li><a href="{{ n.url }}" rel="noopener" data-track="news_click" data-place="{{ p.e.id }}">{{ n.title }}</a><span class="same-t">{{ n.publisher }}{% if n.date %} · <span class="tn">{{ n.date }}</span>{% endif %}</span></li>{% endfor %}</ul>{% endif %}
++      {#- the calm pass 2026-11-10: two cards of each list, the rest behind '더 보기' (a <details>: in the
++          HTML; an official embed loads when its card comes near the screen, as before) — on the most visited places
++          this chapter was 39% of the page on a phone -#}
+       {% if insta %}<h3 class="ab-sub">인스타그램에서 본 {{ nm }} <span class="tn">{{ insta|length }}</span></h3>
+-      <ul class="ab-wall ab-wall-place" data-wall>{% for a in insta %}{{ ab.post(a, (a._places|length) > 1) }}{% endfor %}</ul>
+-      <p class="note"><a href="/guides/군산-카페/#h-insta">{{ site.region }} 대형·감성 카페 인스타그램 큐레이션 모아 보기 →</a></p>{% endif %}
+-      {% if abroad %}<h3 class="ab-sub">해외에서 본 {{ nm }}</h3>
+-      <ul class="ab-list ab-in">{% for a in ab_art %}{{ ab.article(a, false, false) }}{% endfor %}{% for a in ab_post %}{{ ab.post(a, false) }}{% endfor %}</ul>
++      <ul class="ab-wall ab-wall-place" data-wall>{% for a in insta[:2] %}{{ ab.post(a, (a._places|length) > 1) }}{% endfor %}</ul>
++      {% if insta|length > 2 %}<details class="fold"><summary>인스타그램 게시물 <span class="tn">{{ insta|length - 2 }}개</span> 더 보기</summary><ul class="ab-wall ab-wall-place" data-wall>{% for a in insta[2:] %}{{ ab.post(a, (a._places|length) > 1) }}{% endfor %}</ul></details>{% endif %}
++      {% if insta_guide %}<p class="note"><a href="{{ insta_guide }}#h-insta">{{ site.region }} 대형·감성 카페 인스타그램 큐레이션 모아 보기 →</a></p>{% endif %}{% endif %}
++      {% if abroad %}{% set ab_all = ab_art + ab_post %}<h3 class="ab-sub">해외에서 본 {{ nm }} <span class="tn">{{ ab_all|length }}</span></h3>
++      <ul class="ab-list ab-in">{% for a in ab_all[:2] %}{% if a.kind == 'article' %}{{ ab.article(a, false, false) }}{% else %}{{ ab.post(a, false) }}{% endif %}{% endfor %}</ul>
++      {% if ab_all|length > 2 %}<details class="fold"><summary>해외 기사·게시물 <span class="tn">{{ ab_all|length - 2 }}건</span> 더 보기</summary><ul class="ab-list ab-in">{% for a in ab_all[2:] %}{% if a.kind == 'article' %}{{ ab.article(a, false, false) }}{% else %}{{ ab.post(a, false) }}{% endif %}{% endfor %}</ul></details>{% endif %}
+       <p class="note"><a href="/abroad/">해외에서 본 {{ site.region }} 모아 보기</a></p>{% endif %}
+       {% if p.e._blog %}<h3 class="ab-sub">{{ blog.name }}</h3>{{ blm.rows(p.e._blog, p.e.id) }}
+       <p class="note"><a href="/blog/">{{ blog.name }} 글 모아 보기</a></p>{% endif %}
+diff --git a/templates/videos.html.j2 b/templates/videos.html.j2
+index c862843ce3..981907ee05 100644
+--- a/templates/videos.html.j2
++++ b/templates/videos.html.j2
+@@ -44,6 +44,7 @@
+       </li>
+       {% endfor %}
+     </ul>
++    <p class="note yt-ch-note">구독자 수와 조회수는 채널을 골라 실은 때의 값이라 지금과 다를 수 있습니다. 소개 글은 군산각이 썼고, 영상은 각 채널의 것입니다.</p>
+   </section>
+   {% endif %}
+   {% if not topic and popular_videos %}
+diff --git a/tests/test_chat_browser.py b/tests/test_chat_browser.py
+index 29aed353e5..f1a99c462e 100644
+--- a/tests/test_chat_browser.py
++++ b/tests/test_chat_browser.py
+@@ -213,6 +213,34 @@ def test_phone_sheet_and_error_states(browser, site):
+     ctx.close()
+ 
+ 
++def test_on_a_phone_the_bar_s_button_opens_the_chat_and_gets_the_focus_back(browser, site):
++    """On a phone the launcher is not on screen: the tab bar's 'AI 챗봇' (시안 A, 2026-11-05) and, on a place page, the
++    bottom bar's (the calm pass 2026-11-10) press it for the reader (site.js [data-tab-chat]). Closing the chat gives
++    the focus back to the button that was pressed — it went to the hidden launcher, that is to <body>."""
++    ctx, page, errors, calls = open_page(browser, 390, 844, [OK])
++    for path, bar in (("/places/eunpa-lake-park/", ".pl-bar"), ("/places/", ".tabbar")):
++        page.goto(site + path)
++        button = page.locator(f"{bar} [data-tab-chat]")
++        assert button.is_visible() and not page.locator(".chat-fab").is_visible()
++        assert "AI 챗봇" in button.inner_text()
++        box = button.bounding_box()
++        assert box["height"] >= 44 and box["width"] >= 44
++        for close in ("Escape", "button"):
++            button.focus()
++            page.keyboard.press("Enter")
++            panel = page.locator("#chat")
++            panel.wait_for(state="visible")
++            assert panel.get_attribute("aria-modal") == "true"
++            if close == "Escape":
++                page.keyboard.press("Escape")
++            else:
++                page.click('.chat-ib[aria-label="닫기"]')
++            assert panel.is_hidden()
++            assert page.evaluate("b => document.activeElement === document.querySelector(b + ' [data-tab-chat]')", bar), (path, close)
++    assert errors == []
++    ctx.close()
++
++
+ def test_each_limit_tells_the_reader_what_it_is(browser, site):
+     """The client's minute (and the Firewall's 429): 'ask again in a minute', with retry. The client's day: the day's
+     limit, no retry, the site search instead. The whole instance full: 'cannot answer right now', not the reader's
+diff --git a/tests/test_guide_reading.py b/tests/test_guide_reading.py
+index dae826019d..73a0508808 100644
+--- a/tests/test_guide_reading.py
++++ b/tests/test_guide_reading.py
+@@ -249,3 +249,93 @@ def test_english_figures_match_the_korean_units():
+     # an age in months is the months figure, not 'ages 18' cut off from its unit
+     h = present.rich("Activities are open to ages 18 months through adults; ages 7–12 pay 1,000 won.", "en")
+     assert re.findall(r'class="gk"[^>]*>([^<]+)</b>', h) == ["18 months", "ages 7–12", "1,000 won"]
++
++
++# ---------------------------------------------------------------- the calm pass (2026-11-10)
++def test_heading_runs_stop_at_a_middle_dot_and_a_long_title_part_wraps():
++    """Found 2026-11-10 on a phone: names chained with '·' were kept as one unbreakable run (up to 49 characters) and a
++    title's long part as another, so the page scrolled sideways. A kept run ends at a middle dot; a title part longer
++    than 12 characters is plain text."""
++    h = str(present.keep_together("밤늦게 먹을 곳은 산마루·신자네연탄구이·안동집·최동민양푼갈비 군산본점 7곳입니다",
++                                  [{"name": "최동민양푼갈비 군산본점"}]))
++    assert '<span class="nw">최동민양푼갈비 군산본점</span>' in h and "산마루·신자네연탄구이·안동집·<span" in h
++    assert re.sub(r"<[^>]+>", "", h) == "밤늦게 먹을 곳은 산마루·신자네연탄구이·안동집·최동민양푼갈비 군산본점 7곳입니다"
++    from pipeline.build import make_env
++    dot = make_env().get_template("_p2.html.j2").module.dotwrap
++    out = str(dot("밤 10시 반이나 그보다 늦게 닫는 14곳, 24시간 국밥집부터 익일 02:00까지 여는 갈빗집까지"))
++    assert 'class="nw"' not in out and "갈빗집까지" in out
++    out = str(dot("짬뽕·꽃게장·박대"))
++    assert out.count('<span class="nw">') == 3 and re.sub(r"<[^>]+>", "", out) == "짬뽕·꽃게장·박대"
++
++
++def test_korean_guide_section_shows_a_short_heading_its_lead_and_folds_the_rest(S, built):
++    """A section's heading sentence stays on the page as the section's lead under a short heading (body[].short), the
++    first sentence or two stay in view and the rest sit in a <details> — every sentence, in the record's order. A list
++    the record writes as its own marked lines is never folded."""
++    folded = listed = 0
++    for g in S.guides:
++        G = present.guide_vm(S, g)
++        page = (built / "guides" / g["slug"] / "index.html").read_text("utf-8")
++        for sec, b in zip(G["sections"], g["body"]):
++            flat = [x for p in sec["paras"] for x in p]
++            vis, more = [x for p in sec["vis"] for x in p], [x for p in sec["more"] for x in p]
++            assert vis + more == flat, g["slug"]                                  # nothing dropped or moved
++            assert sec["more_n"] == len(more) and len(vis) >= min(1, len(flat))
++            if any(x["own"] for x in flat):                                       # a marked list: whole
++                listed += 1
++                assert not more, (g["slug"], sec["id"])
++            if more:
++                folded += 1
++                assert len(vis) <= present.GUIDE_KEEP and len(more) >= present.GUIDE_FOLD_MIN, (g["slug"], sec["id"])
++                # on the page: the kept sentences before the fold, the folded ones inside it, the fold says how many
++                html = page[page.index(f'<h2 id="{sec["id"]}"'):]
++                html = html[:html.index("</section>")]
++                d0, d1 = html.index('<details class="gd-more">'), html.index("</details>")
++                assert html.count('<details class="gd-more">') == 1 and f'{len(more)}문장</span>' in html[d0:d1]
++                assert all(html.index(str(x["html"])) < d0 for x in vis), (g["slug"], sec["id"])
++                assert all(d0 < html.index(str(x["html"]), d0) < d1 for x in more), (g["slug"], sec["id"])
++            short = squash_ws(b.get("short"))
++            if short:
++                assert len(short) <= 22 and sec["lead"] and sec["toc"] == short
++                h2 = re.search(rf'<h2 id="{sec["id"]}" class="h-sec gd-h" data-split>(.*?)</h2>', page, re.S)
++                assert h2 and text_of(h2.group(1)) == short, (g["slug"], short)     # (the build may wrap a '·' pair)
++                assert text_of(page).count(squash_ws(b["heading"])) >= 1               # the sentence is the lead
++                # a figure in the short heading is one the heading sentence states (whole figures, not substrings)
++                stated = re.findall(r"\d[\d,.:]*", b["heading"])
++                assert all(n in stated for n in re.findall(r"\d[\d,.:]*", short)), short
++            elif sec["head_label"]:
++                assert f'{sec["head_label"]}: {sec["head_sub"]}' == squash_ws(b["heading"])
++        assert page.count('<details class="gd-more">') == sum(1 for s in G["sections"] if s["more"])
++    assert folded > 100 and listed >= 1, (folded, listed)
++    # a plain count is marked so the page sets it at the text's weight; a time and a price stay marked as before
++    h = str(present.rich("짬뽕 20곳, 10:00~19:00, 3,000원"))
++    assert '<b class="gk" data-k="n">20곳</b>' in h and '<b class="gk">10:00~19:00</b>' in h and '<b class="gk">3,000원</b>' in h
++    assert 'data-k' not in str(present.rich("짬뽕 20곳", roll=True)) and 'data-k' not in str(present.rich("20 places", "en"))
++    assert 'data-k' not in str(present.rich("5개월 동안 11~19·61번"))
++
++
++def test_see_also_lists_the_pages_that_share_places_most_shared_first(S, built):
++    """이어서 보기 (operator 2026-11-10 '정보들 간의 연결성'): the guides, columns and courses whose own place lists share
++    places with the page — at least two (one for a page of fewer than four places), most shared first, never itself."""
++    seen = 0
++    for kind, recs, folder in (("guide", S.guides, "guides"), ("column", S.columns, "columns"), ("course", S.courses, "courses")):
++        for r in recs:
++            groups = present.see_also(S, kind, r)
++            mine = {x for x in present._record_places(kind, r) if x in S.ent_by_slug}
++            need = 2 if len(mine) >= 4 else 1
++            page = (built / folder / r["slug"] / "index.html").read_text("utf-8")
++            assert ('data-block="see-also"' in page) == bool(groups), r["slug"]
++            for grp in groups:
++                seen += 1
++                ns = [x["n"] for x in grp["items"]]
++                assert ns == sorted(ns, reverse=True) and min(ns) >= need and len(ns) <= present.SEE_MAX[grp["kind"]]
++                for x in grp["items"]:
++                    assert x["path"] != r["_path"] and f'href="{x["path"]}"' in page
++                    assert set(x["names"]) <= {S.ent_by_slug[m]["name"] for m in mine}
++    assert seen > 30
++    # a place page names the columns that hold it
++    e = S.ent_by_slug["초원사진관"]
++    cols = present.place_columns(S, e)
++    assert cols and all("초원사진관" in present._record_places("column", c) for c in S.columns if c["_path"] in {x["path"] for x in cols})
++    page = (built / "places" / e["slug"] / "index.html").read_text("utf-8")
++    assert 'data-block="columns"' in page and all(f'href="{x["path"]}"' in page for x in cols)
+diff --git a/tests/test_present.py b/tests/test_present.py
+index e2aaad04f2..c45f6e1f62 100644
+--- a/tests/test_present.py
++++ b/tests/test_present.py
+@@ -1290,7 +1290,7 @@ def test_home_opening_markup_carousel_and_links(S, built):
+     assert re.search(r'<a class="ha-btn ha-stay"[^>]*>.*?<span>숙박 예약하기</span></a>', opening, re.S)
+     # 숙박 예약하기 and the planner (the city's courses: the 코스 tile and the bar's '추천 코스')
+     assert '<a class="ha-btn ha-stay" href="/stays/booking/" data-track="stay_booking_cta">' in opening
+-    assert '<a class="ha-btn ha-plan" href="/plan/" data-track="plan_cta">내 일정 만들기</a>' in opening
++    assert '<a class="ha-btn ha-plan" href="/plan/" data-track="plan_cta">AI 코스 만들기</a>' in opening
+     # the pinned fireworks edition while it is ahead: the banner (D-day, the event page, the reel — the dialog plays the
+     # post, nothing from Instagram before) and the series' guides, each a page of this build
+     if '<section class="ha-fest"' in opening:
+@@ -1403,7 +1403,7 @@ def test_home_first_screen_tells_the_planner_from_the_citys_courses(S, built):
+     text = opening[:opening.index('<section class="ha-fest"')] if '<section class="ha-fest"' in opening else opening
+     # 시안 A (operator 2026-11-05): the card names the planner ('내 일정 만들기', /plan/) and the city's courses as the
+     # 코스 tile (/courses/); the bar keeps '추천 코스'
+-    assert '<a class="ha-btn ha-plan" href="/plan/" data-track="plan_cta">내 일정 만들기</a>' in text
++    assert '<a class="ha-btn ha-plan" href="/plan/" data-track="plan_cta">AI 코스 만들기</a>' in text
+     assert re.search(r'<a class="ha-tile ha-c" href="/courses/"[^>]*>', text) and '<span class="ha-tl">코스</span>' in text
+     assert "공식 코스 보기" not in html
+     starts = present.home_starts(S)
+@@ -1622,7 +1622,12 @@ def test_launcher_and_quick_menu_are_there_at_load(built):
+     길찾기, the page's own block); phones show only the launcher; /en/ has no quick menu. No layout shift while the home
+     loads (fonts cached, as on any second page), no console errors, and no 'AI 생성 이미지' anywhere on screen.
+     Operator 2026-10-15: on the homes below 1024px the launcher steps aside while their own question box is on screen
+-    (hidden, out of the tab order) and is there as above once the box has left the screen."""
++    (hidden, out of the tab order) and is there as above once the box has left the screen.
++    Operator 2026-11-05 (시안 A): on a Korean phone page the bottom bar stands for the launcher — the tab bar's 'AI 챗봇'
++    button, and on a place page the call/route bar's (the calm pass 2026-11-10: the launcher above that bar covered
++    the phone tile and the photo credit). The calm pass 2026-11-10 (css/90-refine): from 1200px — the pages with the
++    tab panel, which holds the search and every list — the launcher is 68px inside the page's right margin and the
++    quick menu is its last link only, '맨 위로'; at 1024–1199px the pill and the 100px launcher stay."""
+     sync_api = pytest.importorskip("playwright.sync_api")
+     import mimetypes
+     from urllib.parse import unquote, urlsplit
+@@ -1669,12 +1674,34 @@ def test_launcher_and_quick_menu_are_there_at_load(built):
+                     page.goto("http://site.test" + path, wait_until="load")
+                     page.wait_for_timeout(300)
+                     assert page.evaluate("window.scrollY") == 0
++                    shifted = page.evaluate("window.__ls.slice()")      # while the page loaded, before any scrolling
++                    box_at_load = True
+                     qm = page.locator(".qm")
+-                    if path in ("/", "/en/"):
++                    if path != "/en/" and w < 768:
++                        # a Korean phone page: the bottom bar's 'AI 챗봇' button, not the floating launcher
++                        assert page.evaluate("getComputedStyle(document.querySelector('.chat-fab')).display") == "none", (w, path)
++                        bar = ".pl-bar" if path.startswith("/places/") else ".tabbar"
++                        chat = page.locator(f"{bar} [data-tab-chat]")
++                        assert chat.is_visible() and "AI 챗봇" in chat.inner_text(), (w, path)
++                        cb = chat.bounding_box()
++                        assert cb["width"] >= 44 and cb["height"] >= 44, (w, path, cb)
++                        assert cb["y"] >= h - 110 and cb["y"] + cb["height"] <= h and cb["x"] + cb["width"] <= w, (w, path, cb)
++                    elif path in ("/", "/en/"):
+                         # on the homes the launcher (and quick menu from 1024px) steps aside while the page's own
+                         # question box is on screen — out of the tab order and the pointer's way — and comes back
+                         # once the box has left the screen
+                         fab_style = "getComputedStyle(document.querySelector('.chat-fab'))"
++                        box_at_load = page.evaluate("document.querySelector('[data-ask-zone]').getBoundingClientRect().top") < h
++                        if not box_at_load:
++                            # the Korean home since 시안 A (operator 2026-11-05): the question box is below the first
++                            # screen — the launcher is there at load (once the page has seen that the box is not on
++                            # screen: its fade) and steps aside when the box comes on screen
++                            page.wait_for_function("document.documentElement.classList.contains('ask-out')", timeout=3000)
++                            page.wait_for_timeout(400)
++                            assert page.evaluate("window.scrollY") == 0 and page.evaluate(fab_ok), (w, path)
++                            page.evaluate("document.querySelector('[data-ask-zone]').scrollIntoView({block: 'center'})")
++                            page.wait_for_function("!document.documentElement.classList.contains('ask-out')", timeout=3000)
++                            page.wait_for_timeout(400)                     # the fade
+                         assert page.evaluate(fab_style + ".visibility") == "hidden", (w, path)
+                         assert page.evaluate(fab_style + ".pointerEvents") == "none", (w, path)
+                         assert qm.count() == 0 or not qm.is_visible(), (w, path)
+@@ -1693,21 +1720,41 @@ def test_launcher_and_quick_menu_are_there_at_load(built):
+                         names = [items.nth(i).get_attribute("aria-label") for i in range(items.count())]
+                         assert names[0] == "검색" and names[1] == "지도" and names[-1] == "맨 위로"
+                         assert names[2] == ("길찾기" if path.startswith("/places/") else "행사 달력")
+-                        for i in range(items.count()):
++                        shown = [i for i in range(items.count()) if items.nth(i).is_visible()]
++                        # from 1200px the menu is its last link: the panel holds the search, the map and the calendar
++                        assert [names[i] for i in shown] == ["맨 위로"], (w, path)
++                        for i in shown:
+                             bb = items.nth(i).bounding_box()
+                             assert bb["width"] >= 44 and bb["height"] >= 44
+                         q, f = qm.bounding_box(), page.locator(".chat-fab").bounding_box()
+                         assert q["y"] + q["height"] <= f["y"]                     # above the launcher
++                        assert f["width"] == 68 and f["height"] == 68, (w, path, f)
++                        # both inside the page's right margin: over no part of the content column
++                        edge = page.evaluate("document.querySelector('main .wrap').getBoundingClientRect().right"
++                                             " - parseFloat(getComputedStyle(document.querySelector('main .wrap')).paddingRight)")
++                        assert f["x"] >= edge and q["x"] >= edge, (w, path, edge, f, q)
+                         if path.startswith("/places/"):
+                             assert page.locator("#h-dir").count() == 1
+-                    if path in ("/", "/en/"):
++                    if path in ("/", "/en/") and not (path == "/" and w < 768) and box_at_load:
+                         page.evaluate("window.scrollTo(0, 0)")
+                         page.wait_for_function("!document.documentElement.classList.contains('ask-out')", timeout=3000)
+                     if path == "/":
+-                        assert page.evaluate("window.__ls") == [], w           # nothing shifts while the home loads
++                        assert shifted == [], w                                # nothing shifts while the home loads
+                     assert "AI 생성 이미지" not in page.inner_text("body")
+                     assert [e for e in errors if "ERR_FAILED" not in e] == [], (w, path, errors)
+                     ctx.close()
++            # 1024–1199px (no tab panel): the pill with its four links above the 100px launcher, in the page's gutter
++            ctx = browser.new_context(viewport={"width": 1100, "height": 800})
++            ctx.route("**/*", serve)
++            page = ctx.new_page()
++            page.goto("http://site.test/places/이성당/", wait_until="load")
++            page.wait_for_timeout(300)
++            items = page.locator(".qm-i")
++            assert [items.nth(i).get_attribute("aria-label") for i in range(items.count()) if items.nth(i).is_visible()] \
++                == ["검색", "지도", "길찾기", "맨 위로"]
++            f = page.locator(".chat-fab").bounding_box()
++            assert f["width"] == 100 and f["height"] == 100, f
++            ctx.close()
+         finally:
+             browser.close()
+ 
+@@ -2277,7 +2324,10 @@ def test_the_site_name_and_the_logos_colour_its_end():
+ def test_the_story_stage_keeps_its_text_years_and_photo_together_on_tall_windows(built):
+     """Operator 2026-10-17: on a 1840px-tall desktop window the home's 군산 이야기 had its text at the top, its photo in
+     the middle and its years at the bottom, 1276px below the text. Now the window's spare height goes to the margins:
+-    the heading, the text and the years are one block, the photo on its centre line, on short and tall windows."""
++    the heading, the text and the years are one block, the photo on its centre line, on short and tall windows.
++    The tall window is compared with a short one of the same width (2026-11-10: the home's right board starts at 1680px,
++    so a 1440px window's column is no longer the narrower one — a chapter's text wraps differently at 1440 and 1900px,
++    and a short chapter's gap under the row that holds the longest differs by that, not by the window's height)."""
+     sync_api = pytest.importorskip("playwright.sync_api")
+     measure = """() => {
+       const box = document.querySelector('[data-story]'), r = el => el.getBoundingClientRect();
+@@ -2294,7 +2344,7 @@ def test_the_story_stage_keeps_its_text_years_and_photo_together_on_tall_windows
+             pytest.skip(f"Chromium 없음: {ex}")
+         try:
+             gaps = {}
+-            for w, h in ((1440, 900), (1900, 1840)):
++            for w, h in ((1440, 900), (1900, 900), (1900, 1840)):
+                 ctx = browser.new_context(viewport={"width": w, "height": h}, reduced_motion="no-preference")
+                 ctx.route("**/*", _serve(built))
+                 page = ctx.new_page()
+@@ -2306,15 +2356,15 @@ def test_the_story_stage_keeps_its_text_years_and_photo_together_on_tall_windows
+                     page.evaluate("y => window.scrollTo(0, y)", top + (height - h) * (k / 3 + .12))
+                     page.wait_for_timeout(700)
+                     m = page.evaluate(measure)
+-                    gaps[(h, k)] = m["rail"][0] - m["text"]
+-                    assert 0 < gaps[(h, k)] <= 160, (w, h, k, m)    # the years right under the text (its row holds the longest)
++                    gaps[(w, h, k)] = m["rail"][0] - m["text"]
++                    assert 0 < gaps[(w, h, k)] <= 160, (w, h, k, m)  # the years right under the text (its row holds the longest)
+                     block, photo = (m["head"] + m["rail"][1]) / 2, sum(m["photo"]) / 2
+                     assert abs(block - photo) <= 60 and m["rail"][1] <= h, (w, h, k, m)
+                 ctx.close()
+         finally:
+             browser.close()
+     for k in range(3):   # a taller window adds no gap between the text and the years (it was 364px → 1276px)
+-        assert gaps[(1840, k)] - gaps[(900, k)] <= 24, gaps
++        assert gaps[(1900, 1840, k)] - gaps[(1900, 900, k)] <= 24, gaps
+ 
+ 
+ def test_a_photo_that_does_not_load_leaves_no_broken_image(S, built):
+diff --git a/tests/test_sidebar_layout.py b/tests/test_sidebar_layout.py
+index 374402641c..7fb4804f8e 100644
+--- a/tests/test_sidebar_layout.py
++++ b/tests/test_sidebar_layout.py
+@@ -381,7 +381,7 @@ def test_the_weather_module_fills_its_room_after_load(browser, built):
+     and the status line too), the four cells 아침 · 낮 · 저녁 · 지금 (the slot 날씨각 takes for each — the last at or
+     before 7 · 13 · 18 h; '지금' the feed's temperature, white) with 날씨각's icons; the card is one link to
+     weather.o2o.kr; no source words; its box keeps its height, so nothing moves; no console error."""
+-    ctx, page, errors, calls = open_page(browser, built, "/", 1440)
++    ctx, page, errors, calls = open_page(browser, built, "/", 1440, 1080)   # the whole card: from 1020px of height
+     page.wait_for_selector(".wx-side.is-ready", timeout=8000)
+     box = page.locator(".wx-side")
+     assert page.evaluate("window.__wx") == ["complete", "complete"] and len(calls) == 2, calls
+@@ -431,7 +431,7 @@ def test_the_weather_module_fills_its_room_after_load(browser, built):
+ def test_the_card_takes_the_sky_of_the_hour(browser, built):
+     """By day (the feed's sky_mode 'day'): the day sky, the round sun (no moon), the 낮 cell '지금' and the night's
+     cell 밤; a cloudy slot now draws 날씨각's clouds."""
+-    ctx, page, errors, calls = open_page(browser, built, "/", 1440, weather=None)
++    ctx, page, errors, calls = open_page(browser, built, "/", 1440, 1080, weather=None)
+     slots = weather_answer()
+     for x in slots["slots"]:
+         x["sky"] = 3   # cloudy all day
+@@ -453,7 +453,7 @@ def test_the_other_versions_show_figures_and_icons_only(browser, built, code):
+     """The other versions: the score, the figures, the icons and the cells' names in their words — none of 날씨각's
+     Korean words (bubble, summary, status), no source words."""
+     W = LC.SIDE_WORDS[code]
+-    ctx, page, errors, _ = open_page(browser, built, f"/{code}/", 1440)
++    ctx, page, errors, _ = open_page(browser, built, f"/{code}/", 1440, 1080)
+     page.wait_for_selector(".wx-side.is-ready", timeout=8000)
+     text = page.locator(".wx-side").inner_text()
+     assert not HANGUL.search(text) and not SOURCE.search(text) and page.locator(".wx-side .wx-bub").count() == 0, text
+@@ -477,7 +477,7 @@ def test_the_other_versions_show_figures_and_icons_only(browser, built, code):
+ 
+ def test_without_an_answer_or_js_the_link_stays(browser, built):
+     # refused (a console line from the refused request is the browser's own, not the page's)
+-    ctx, page, errors, calls = open_page(browser, built, "/", 1440, weather="fail")
++    ctx, page, errors, calls = open_page(browser, built, "/", 1440, 1080, weather="fail")
+     page.wait_for_selector(".wx-side.is-failed", timeout=8000)
+     go = page.locator(".wx-side .wx-go")
+     assert go.is_visible() and go.inner_text().strip() == "군산 날씨 보기" and page.locator(".wx-side .wx-tc").count() == 0
+@@ -509,6 +509,48 @@ def test_without_an_answer_or_js_the_link_stays(browser, built):
+     ctx.close()
+ 
+ 
++@pytest.mark.parametrize("height,card,intl", ((1080, 246, 220), (900, 170, 170), (768, 98, 98)))
++def test_on_a_short_window_the_day_card_folds_and_the_menu_shows(browser, built, height, card, intl):
++    """The calm pass 2026-11-10 (css/90-refine.css; the review the operator asked to have carried out: '메뉴를 위로
++    올리고 날씨는 한 줄로'): the menu began 757px down the panel, so on a 768–900px
++    window none of its links was on screen. Under 1020px of height the weather card is 170px (its four cells step
++    out), under 880px one 98px row and the next event steps out; from 1020px it is 날씨각's drawn size. At every height
++    the card has its size from the first paint (nothing shifts when the answer comes), its link is the card, every
++    row of the panel is 44px or more, and on the short windows the first group's first link is whole above the
++    '문의/제휴' row."""
++    for path, want in (("/", card), ("/en/", intl)):
++        ctx, page, errors, _ = open_page(browser, built, path, 1440, height)
++        h0 = page.locator(".wx-side").bounding_box()["height"]
++        page.wait_for_selector(".wx-side.is-ready", timeout=8000)
++        c = page.evaluate(CARD, ".wx-side")
++        assert h0 == want and c["h"] == want and c["inside"] and c["link"] == "https://weather.o2o.kr/", (path, height, h0, c)
++        strip = page.evaluate("getComputedStyle(document.querySelector('.wx-side .wx-strip')).display")
++        assert (strip == "none") == (height < 1020), (path, height, strip)
++        assert page.locator(".side .sd-ev").is_visible() == (height >= 880), (path, height)
++        assert [x for x in page.evaluate("window.__ls") if x["v"] > 0.001] == [], page.evaluate("window.__ls")
++        for sel in (".side .sg-a", ".side .sg-s", ".side .sd-act", ".side .sd-sun", ".mast .lang-btn"):
++            if page.locator(sel).count():
++                box = page.locator(sel).first.bounding_box()
++                assert box and box["height"] >= 44, (path, height, sel, box)
++        if height < 1020:
++            # the first group's first link: whole on screen, and the point at its middle is the link (not the pinned row)
++            a = page.locator(".side-nav .sg-d[open] .sg-a").first
++            box = a.bounding_box()
++            assert box["y"] >= 0 and box["y"] + box["height"] <= height - 16, (path, height, box)
++            hit = page.evaluate("([x, y]) => { const e = document.elementFromPoint(x, y); return !!(e && e.closest('.sg-a')); }",
++                                [box["x"] + box["width"] / 2, box["y"] + box["height"] / 2])
++            assert hit, (path, height, box)
++        assert own(errors) == [], (path, errors)
++        ctx.close()
++    # no answer on the smallest card: the link sits under the card's name, not over it
++    if height < 880:
++        ctx, page, errors, _ = open_page(browser, built, "/", 1440, height, weather="fail")
++        page.wait_for_selector(".wx-side.is-failed", timeout=8000)
++        go, name = page.locator(".wx-side .wx-go").bounding_box(), page.locator(".wx-side .wx-t").bounding_box()
++        assert go["height"] >= 44 and go["y"] >= name["y"] + name["height"], (go, name)
++        ctx.close()
++
++
+ def test_the_panels_sunrise_follows_the_visitors_day(browser, built):
+     """The HTML says the build day's sunrise and sunset with its date written out; on another day the list holds,
+     weather.js shows that day's (the visitor's date in Korea)."""
+-- 
+2.43.0
+

@@ -1,0 +1,47 @@
+{#- _staybook.html.j2 — a card of the 숙박 예약하기 page (stay_booking.html.j2, present.stay_booking_vm,
+    css/82-stay-booking.css). c = card_vm + facts (check-in · check-out · rooms it has), need (the others, once as
+    '확인 필요'), aff (affiliate.links_for), group (the type filter).
+      photo  KOGL-1: fills the frame (cropping allowed); KOGL-3: whole on a tinted frame at most its own size (never
+             cropped, enlarged or covered, CLAUDE.md 3.4) — a link to the place hidden from the tab order (the name
+             is the link); without a photo the kind icon sits small beside the name (no empty cover, CLAUDE.md 7)
+      body   type · 동, the name (h3, the link to the place page), the distinct line, the facts as chips
+      book   data-block="affiliate": '예약 사이트 n곳' and one tile per site (ui.aff_link: its icon and name; rel
+             sponsored nofollow, GA4 affiliate_click with the provider and the place)
+      partner (pipeline/partners.py, operator 2026-11-04) a premium frame, the diagonal ribbon at the corner (never over
+             a KOGL-3 photo: then the badge alone), the badge and its '?' (ui.partner_why) and the stay's own
+             homepage first, above the booking sites (ui.direct_link) -#}
+{% import "_ui.html.j2" as ui %}
+
+{% macro card(c, i=0) -%}
+{% set rib = c.partner and not (c.photo and c.photo.type == 3) %}
+{% set pph = c.partner.photos[0] if (c.partner and c.partner.photos and not c.photo) else none %}
+<li class="sb-c{{ ' sb-np' if not c.photo and not pph }}{{ ' sb-pt' if c.partner }}" data-sb-group="{{ c.group }}">
+{% if rib %}<span class="sb-rib" aria-hidden="true"><span>{{ c.partner.badge }}</span></span>{% endif %}
+{% if c.photo %}<a class="sb-ph t{{ c.photo.type }}" href="{{ c.path }}" tabindex="-1" aria-hidden="true"{% if c.photo.type == 3 and c.photo.w %} style="--nw:{{ c.photo.w }}px"{% endif %}>{{ ui.img(c.photo, '(min-width: 1200px) 340px, (min-width: 640px) 45vw, 92vw', i < 2, 'sb-img') }}</a>{% endif %}
+{% if pph %}<a class="sb-ph sb-ph-pt" href="{{ c.path }}" tabindex="-1" aria-hidden="true"><img class="sb-img" src="{{ pph.thumb }}" width="{{ pph.tw }}" height="{{ pph.th }}" alt="{{ pph.alt }}" loading="lazy" decoding="async"></a>{% endif %}
+<div class="sb-b">
+<div class="sb-hd">{% if not c.photo and not pph %}<span class="sb-ic">{{ ui.type_icon(c.e, 40) }}</span>{% endif %}<div class="sb-ht"><p class="sb-m">{{ c.meta }}</p><h3 class="sb-n"><a href="{{ c.path }}" data-track="stay_click" data-place="{{ c.id }}">{{ c.name }}</a></h3>{% if c.partner %}<span class="sb-pw">{{ ui.partner_why(c.partner) }}</span>{% endif %}</div></div>
+{% if c.line %}<p class="sb-line">{{ c.line }}</p>{% endif %}
+{% if c.facts or c.need %}<ul class="sb-kf">{% for s in c.facts %}<li><span class="sb-kl">{{ s.label }}</span> <b class="tn">{{ (s.main or s.vals|map(attribute='main')|join(' / '))|nwt }}</b></li>{% endfor %}{% if c.need %}<li class="sb-na">확인 필요: {{ c.need|join('·') }}</li>{% endif %}</ul>{% endif %}
+{% if c.partner and c.partner.direct %}{{ ui.direct_link(c.partner.direct, c.id, 'sb-direct') }}{% endif %}
+<div class="sb-book" data-block="affiliate">
+<p class="sb-bh">예약 사이트 <b class="tn">{{ c.aff|length }}</b>곳</p>
+<ul class="sb-l">{% for a in c.aff %}<li>{{ ui.aff_link(a, c.id, 'sb-a') }}</li>{% endfor %}</ul>
+</div>
+</div>
+</li>
+{%- endmacro %}
+
+
+{#- banner(c): the partner stay's strip at the top of 숙박 예약하기 (operator 2026-11-04 meeting: 스테이,머뭄을 홍보하는
+    배너 — the same day: '세로로 짧고 가로로 긴 배너', no buttons, not a page of its own): one low, wide link to the
+    stay's Web4AI homepage — three of its photos, '파트너 숙소 · Web4AI로 만든 홈페이지', its headline and '홈페이지
+    보기 ↗' (text, not a button); the photo credit in small type. c = the partner's row (stay_booking_vm). -#}
+{% macro banner(c) -%}
+{% set pt = c.partner %}{% set ph = pt.photos %}
+{% if pt.direct %}<a class="pt-strip" href="{{ pt.direct.url }}" target="_blank" rel="sponsored noopener" data-track="direct_booking_click" data-provider="partner" data-place="{{ c.id }}">
+  <span class="pt-strip-ph" aria-hidden="true">{% for x in [ph[0], ph[2] if ph|length > 2 else none, ph[3] if ph|length > 3 else none] if x %}<img src="{{ x.thumb }}" width="{{ x.tw }}" height="{{ x.th }}" alt="" loading="lazy" decoding="async">{% endfor %}</span>
+  <span class="pt-strip-t"><span class="pt-strip-k"><span class="pt-b">{{ pt.badge }} 숙소</span> Web4AI로 만든 홈페이지</span><b class="pt-strip-h">{{ pt.headline }}</b><span class="pt-strip-cr">{{ pt.photo_credit }}</span></span>
+  <span class="pt-strip-go">홈페이지 보기<span class="arr" aria-hidden="true">↗</span></span><span class="vh"> (새 탭)</span>
+</a>{% endif %}
+{%- endmacro %}

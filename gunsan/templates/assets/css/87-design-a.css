@@ -1,0 +1,243 @@
+/* ================================================================ 87-design-a — 시안 A (operator 2026-11-05 'A로 가되,
+   상단 버튼들 대신 현재의 좌측 탭을 유지 … 첫 화면 군산 여행의 모든 것은 가운데 정렬로 … 로고도 건들지 말고'):
+   the opening centred over its photo with the news card under it, the side panel's sun as two cells, the place's key
+   facts as tiles of their own colour. Markup unchanged; the logo is not touched. */
+
+/* ---------------------------------------------------------------- home opening: centred */
+.hk-h1, .ho-lede { text-align: center; }
+.ho-cta { justify-content: center; }
+@media (max-width: 767px) {
+  .hk-h1 { justify-self: center; font-size: clamp(28px, 8vw, 34px); letter-spacing: -.045em; }
+  .ho-lede { justify-self: center; max-width: 21em; }
+}
+@media (min-width: 768px) {
+  .hk-h1, .ho-lede, .ho-cta, .ho-go { margin-inline: auto; }
+  .ho-go ul { justify-content: center; }
+}
+@media (min-width: 1024px) {
+  .ho { padding: 40px 0 104px; }
+  .ho-in { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto auto auto auto auto; column-gap: 0; justify-items: center; }
+  .hk-h1, .ho-lede, .ho-cta, .ho-go { grid-column: 1; justify-self: center; }
+  .hk-h1 { grid-row: 1; max-width: none; margin: 18px 0 12px; font-size: clamp(50px, 4.8vw, 70px); line-height: 1.1; letter-spacing: -.05em; }
+  .ho-lede { grid-row: 2; max-width: 30em; margin-bottom: 26px; }
+  .ho-cta { grid-row: 3; flex-wrap: wrap; gap: 10px; }
+  .ho-go { grid-row: 4; }
+  .ho-news { grid-column: 1; grid-row: 5; align-self: auto; width: min(900px, 100%); margin-top: 34px; }
+  .ho-ctl { grid-column: 1; grid-row: 6; width: min(900px, 100%); }
+  /* one slide: the picture left, the words right — a feature card, not a column */
+  .nc { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); column-gap: 22px; align-items: center; padding: 14px; border-radius: 30px; }
+  .nc > .nc-frame { grid-column: 1; grid-row: 1 / span 6; aspect-ratio: 16 / 9.4; border-radius: 22px; }
+  .nc > .nc-body { grid-column: 2; padding: 8px 10px 8px 0; text-align: left; }
+  .nc-t { font-size: 23px; line-height: 1.32; letter-spacing: -.03em; }
+}
+
+/* ---------------------------------------------------------------- side panel: the day's sun as two cells */
+.side .sd-sun { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding: 12px 12px 13px; }
+.side .sd-sun .sd-k { grid-column: 1 / -1; color: var(--ink-2); }
+.side .sd-sun .sd-sv { display: flex; flex-direction: column; gap: 1px; padding: 8px 11px 9px; border-radius: 12px; background: #fff; box-shadow: inset 0 0 0 1px rgba(20, 52, 99, .07); font-size: 12px; color: var(--ink-3); }
+.side .sd-sun .sd-sv b { margin: 0; font-size: 19px; line-height: 1.15; letter-spacing: -.01em; }
+.side .sd-sun .sd-go { top: 21px; margin-top: 0; }
+
+/* ---------------------------------------------------------------- place key facts: tiles of their own colour */
+/* a wrapping row, not a fixed grid: the hours and the phone take a row each, the rest share the row between them
+   evenly (no empty cell whatever the number of facts) */
+.kf.kf-hero { display: flex; flex-wrap: wrap; }
+.kf-hero .kf-i { flex: 1 1 150px; }
+.kf-hero .kf-hours, .kf-hero .kf-tel { flex-basis: 100%; }
+.kf-hero .kf-i { border-radius: 22px; box-shadow: none; background: #fff; outline: 1px solid rgba(20, 52, 99, .07); outline-offset: -1px; }
+.kf-hero .kf-hours { background: #121826; outline: 0; }
+.kf-hero .kf-hours .kf-main, .kf-hero .kf-hours .kf-main .cv-h, .kf-hero .kf-hours .kf-main .cv-t { color: #fff; }
+.kf-hero .kf-hours dt, .kf-hero .kf-hours .kf-sub, .kf-hero .kf-hours .kf-main .cv-n, .kf-hero .kf-hours .cv-l,
+.kf-hero .kf-hours .kf-src, .kf-hero .kf-hours .kfl { color: #C3CAD7; }
+.kf-hero .kf-hours a { color: #9CCBFF; }
+.kf-hero .kf-closed { background: #FFEDEB; outline-color: rgba(168, 36, 28, .12); }
+.kf-hero .kf-closed .kf-main { color: #A8241C; }
+.kf-hero .kf-closed dt { color: #7A2A24; }
+.kf-hero .kf-tel { background: #EAF2FC; outline-color: rgba(29, 79, 150, .14); }
+.kf-hero .kf-tel .tel { font-size: min(1em, 11.5cqi); }
+@media (max-width: 767px) {
+  .kf-hero .kf-i { border-radius: 18px; }
+}
+
+/* ================================================================ home (Korean) per 시안 A: the white card, the
+   fireworks banner, the series' guides, then the assistant and the news row (home.html.j2 .ha …) */
+.pg-ko-home .hk { display: block; padding: 16px 0 28px; background: #F2F4F8; }
+.pg-ko-home .hk::before { content: none; }
+.ha-card { padding: clamp(30px, 5vw, 60px) clamp(18px, 4vw, 40px) clamp(26px, 4vw, 44px); border-radius: 32px; background: #fff; text-align: center; }
+.ha-h1 { margin: 0; font-size: clamp(34px, 5vw, 64px); line-height: 1.12; font-weight: 700; letter-spacing: -.055em; color: var(--ink); word-break: keep-all; }
+.ha-em { color: var(--sea); }
+.ha-lede { margin: 14px auto 0; max-width: 32em; font-size: clamp(15px, 1.25vw, 18px); line-height: 1.6; color: var(--ink-2); word-break: keep-all; text-wrap: balance; }
+.ha-search { margin: 26px auto 0; max-width: 620px; display: flex; align-items: center; gap: 10px; height: 62px; padding: 0 8px 0 20px; border-radius: 22px; background: var(--bg-2); box-sizing: border-box; }
+.ha-search:focus-within { box-shadow: 0 0 0 2px var(--sea); }
+.ha-search .ha-s-ic { flex: none; width: 22px; height: 22px; color: var(--ink-3); }
+.ha-search input { flex: 1; min-width: 0; height: 100%; border: 0; outline: 0; background: transparent; font: 400 17px/1 var(--font); color: var(--ink); }
+.ha-search input::placeholder { color: var(--ink-3); }
+.ha-search button { flex: none; height: 46px; padding: 0 22px; border: 0; border-radius: 16px; background: var(--sea); color: #fff; font: 700 15px var(--font); cursor: pointer; }
+.ha-search button:hover { background: var(--sea-hi); }
+.ha-tiles { list-style: none; margin: 22px auto 0; padding: 0; max-width: 620px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.ha-tile { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 14px 6px 12px; border-radius: 22px; color: var(--ink); text-decoration: none; transition: transform .2s var(--ease-out); }
+.ha-tile:hover { color: var(--ink); text-decoration: none; transform: translateY(-2px); }
+.ha-tile .pic { --pic: 48px; }
+.ha-tl { font-size: 15px; font-weight: 700; letter-spacing: -.02em; }
+.ha-tn { font-size: 14px; font-weight: 700; }
+.ha-a { background: #E6F6F3; } .ha-a .ha-tn { color: #0B6E62; }
+.ha-f { background: #FFF1E6; } .ha-f .ha-tn { color: #A84E0E; }
+.ha-s { background: #EAF2FC; } .ha-s .ha-tn { color: var(--sea-deep); }
+.ha-c { background: #F3EEFE; } .ha-c .ha-tn { color: #5B3FB0; }
+.ha-cta { margin: 20px 0 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+.ha-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; padding: 0 22px; border-radius: 16px; font-size: 15px; font-weight: 700; letter-spacing: -.02em; text-decoration: none; box-sizing: border-box; }
+.ha-btn:hover { text-decoration: none; filter: brightness(.97); }
+.ha-btn .pic { --pic: 28px; }
+.ha-stay, .ha-stay:hover { background: var(--chick); color: var(--ink); }
+.ha-plan, .ha-plan:hover { background: var(--ink); color: #fff; }
+
+.ha-fest { padding-top: 16px; }
+.haf { position: relative; display: flex; align-items: center; min-height: 300px; overflow: hidden; border-radius: 32px; background: #0E1426; color: #fff; }
+.haf-bg, .haf-bg img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.haf-bg img { object-fit: cover; object-position: 65% 50%; }
+.haf::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10, 16, 32, .86) 0, rgba(10, 16, 32, .5) 55%, rgba(10, 16, 32, .12) 100%); }
+.haf-t { position: relative; z-index: 1; max-width: 580px; padding: 32px clamp(20px, 3vw, 36px); }
+.haf-dd { margin: 0; }
+.haf-dd b { display: inline-block; padding: 5px 13px; border-radius: 12px; background: var(--chick); color: var(--ink); font-size: 19px; font-weight: 700; }
+.haf-h { margin: 14px 0 0; font-size: clamp(28px, 3vw, 42px); line-height: 1.15; font-weight: 700; letter-spacing: -.05em; color: #fff; word-break: keep-all; }
+.haf-m { margin: 10px 0 0; font-size: 16px; line-height: 1.6; color: rgba(255, 255, 255, .93); word-break: keep-all; }
+.haf-cta { margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.haf-btn { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 20px; border-radius: 999px; background: rgba(255, 255, 255, .14); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .34); color: #fff; font-size: 15px; font-weight: 700; text-decoration: none; }
+.haf-btn:hover { color: #fff; text-decoration: none; background: rgba(255, 255, 255, .22); }
+.haf-play, .haf-play:hover { background: #fff; box-shadow: none; color: var(--ink); }
+.haf-cr { margin: 14px 0 0; font-size: 12px; line-height: 1.5; color: rgba(255, 255, 255, .78); }
+.ha-guides { list-style: none; margin: 16px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.ha-guides a { display: flex; flex-direction: column; gap: 6px; height: 100%; box-sizing: border-box; padding: 22px; border-radius: 28px; background: #fff; color: var(--ink); text-decoration: none; transition: transform .2s var(--ease-out); }
+.ha-guides a:hover { color: var(--ink); text-decoration: none; transform: translateY(-2px); }
+.hag-k { align-self: flex-start; padding: 2px 9px; border-radius: 8px; background: var(--tint); color: var(--sea-deep); font-size: 12px; font-weight: 700; }
+.hag-k.hag-new { background: #FFE9DC; color: #B4400C; }
+.hag-t { font-size: 19px; font-weight: 700; letter-spacing: -.035em; word-break: keep-all; }
+.hag-q { font-size: 14px; line-height: 1.5; color: var(--ink-3); word-break: keep-all; }
+.pg-ko-home .hq { margin-top: 16px; }
+.pg-ko-home .hq-card { border-radius: 32px; }
+.hn { padding: 28px 0 0; }
+.hn-h { margin: 0 0 12px; font-size: 24px; font-weight: 700; letter-spacing: -.04em; }
+.hn-in .ho-news { max-width: none; margin: 0; }
+.hn-in .ho-ctl { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 12px; }
+@media (min-width: 1024px) {
+  .hn-in { max-width: 980px; }
+}
+@media (max-width: 767px) {
+  .pg-ko-home .hk { padding: 10px 0 22px; }
+  .ha-card { border-radius: 28px; }
+  .ha-search { height: 54px; margin-top: 20px; padding-left: 16px; }
+  .ha-search input { font-size: 16px; }
+  .ha-search button { height: 40px; padding: 0 16px; }
+  .ha-tiles { gap: 8px; margin-top: 16px; }
+  .ha-tile { padding: 12px 2px 10px; border-radius: 18px; }
+  .ha-tile .pic { --pic: 40px; }
+  .ha-tl { font-size: 13px; }
+  .ha-tn { font-size: 12.5px; }
+  .ha-cta .ha-btn { flex: 1 1 0; padding: 0 12px; }
+  .haf { align-items: flex-end; min-height: 280px; border-radius: 28px; }
+  .haf::after { background: linear-gradient(180deg, rgba(10, 16, 32, .08) 0, rgba(10, 16, 32, .88) 72%); }
+  .haf-t { padding: 22px 20px; }
+  .haf-m { font-size: 14.5px; }
+  .ha-guides { gap: 10px; }
+  .ha-guides a { padding: 18px; border-radius: 22px; }
+  .pg-ko-home .hq { margin-top: 12px; }
+  .hn { padding-top: 22px; }
+  .hn-h { font-size: 21px; }
+}
+.ha-btn > span { white-space: nowrap; }
+@media (max-width: 767px) { .ha-btn .pic { --pic: 24px; } .ha-btn { gap: 6px; font-size: 14.5px; } }
+
+/* ================================================================ lists on phones per 시안 A: the facts as pills under
+   the name (a closed day in soft red, the dish in warm); the self-explaining ones without their label */
+@media (max-width: 767px) {
+  .ledger .rec-cells { display: flex !important; flex-wrap: wrap; gap: 6px !important; margin-top: 11px !important; padding-top: 0; border-top: 0; }
+  .ledger .rec-cells > div { display: inline-flex !important; flex-wrap: wrap; align-items: baseline; column-gap: 5px; max-width: 100%; box-sizing: border-box; padding: 5px 10px 6px; border-radius: 10px; background: var(--bg-2); }
+  .ledger .rec-cells dt { display: inline !important; font-size: 11.5px !important; color: var(--ink-3); }
+  .ledger .rec-cells .c-hours dt, .ledger .rec-cells .c-closed dt, .ledger .rec-cells .c-menu dt, .ledger .rec-cells .c-tel dt { display: none !important; }
+  .ledger .rec-cells dd { font-size: 13.5px !important; line-height: 1.4; }
+  .ledger .rec-cells .c-closed { background: #FFEDEB; }
+  .ledger .rec-cells .c-closed .kf-main { background: none; padding: 0; color: #A8241C; }
+  .ledger .rec-cells .c-closed .kf-main::before { display: none; }
+  .ledger .rec-cells .c-menu { background: #FFF3E6; }
+  .ledger .rec-cells .c-menu .kf-main { font-weight: 700; }
+  .ledger .rec-cells .cv .cv-n:not(.kfl) { display: inline; margin: 0 0 0 4px; font-size: 12px; }
+}
+
+/* ================================================================ phones: the tab bar and a place's call/route bar */
+.tabbar, .pl-bar { display: none; }
+@media (max-width: 767px) {
+  .tabbar { position: fixed; z-index: 80; left: 12px; right: 12px; bottom: max(12px, env(safe-area-inset-bottom)); display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: center; height: 64px; border-radius: 22px; background: rgba(18, 24, 38, .95); box-shadow: 0 10px 30px rgba(18, 24, 38, .22); }
+  .tabbar a, .tabbar button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; height: 100%; padding: 0; border: 0; background: none; color: #C9D0DC; font: 700 11px/1 var(--font); text-decoration: none; cursor: pointer; }
+  .tabbar .icon { width: 22px; height: 22px; }
+  .tabbar a[aria-current="page"] { color: var(--chick); }
+  .tabbar a:hover, .tabbar button:hover { color: #fff; text-decoration: none; }
+  body:has(.tabbar) { padding-bottom: 88px; }
+  body:has(.tabbar) .chat-fab { display: none; }
+  /* a place page: its own bar instead of the tabs, the launcher above it */
+  .pl-bar { position: fixed; z-index: 80; left: 12px; right: 12px; bottom: max(12px, env(safe-area-inset-bottom)); display: flex; gap: 8px; padding: 8px; border-radius: 24px; background: rgba(255, 255, 255, .97); box-shadow: 0 10px 30px rgba(18, 24, 38, .16); }
+  .pl-bar a { display: flex; align-items: center; justify-content: center; gap: 7px; height: 52px; border-radius: 18px; font-size: 15.5px; font-weight: 700; text-decoration: none; }
+  .pl-bar .icon { width: 18px; height: 18px; }
+  .pl-bar-tel { flex: none; width: 104px; background: var(--bg-2); color: var(--ink); }
+  .pl-bar-go { flex: 1; background: var(--sea); color: #fff; }
+  .pl-bar-go:hover { color: #fff; }
+  body:has(.pl-bar) .tabbar { display: none; }
+  body:has(.pl-bar) .chat-fab { display: flex; bottom: 88px; }
+}
+
+/* ================================================================ a place without a photo: its kind tile beside the
+   kicker and the name (시안 A) */
+.no-photo .pl-head:has(> .pl-kpic) { display: grid; grid-template-columns: 64px minmax(0, 1fr); column-gap: 14px; }
+.no-photo .pl-head:has(> .pl-kpic) > * { grid-column: 1 / -1; }
+.no-photo .pl-head > .pl-kpic { grid-column: 1; grid-row: 1 / span 2; align-self: center; margin: 0; }
+.no-photo .pl-head:has(> .pl-kpic) > .kicker { grid-column: 2; grid-row: 1; align-self: end; margin: 0; }
+.no-photo .pl-head:has(> .pl-kpic) > h1 { grid-column: 2; grid-row: 2; margin-top: 2px; }
+
+/* ---------------------------------------------------------------- the card over the 고군산군도 photo (operator
+   2026-11-05 '흰색 배경 말고, 고군산군도 고화질 사진을 배경으로'): KOGL-1, cropped to the card; a navy scrim keeps the
+   words readable; the credit at the bottom right */
+.ha-card.ha-ph { position: relative; overflow: hidden; isolation: isolate; background: #1D3557; padding-bottom: clamp(44px, 5vw, 60px); }
+.ha-bg, .ha-bg picture, .ha-bg img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ha-bg { z-index: -1; }
+.ha-bg img { object-fit: cover; object-position: 50% 55%; }
+.ha-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(9, 22, 44, .62) 0, rgba(9, 22, 44, .38) 42%, rgba(9, 22, 44, .58) 100%); }
+.ha-ph .ha-h1 { color: #fff; text-shadow: 0 2px 22px rgba(0, 0, 0, .32); }
+.ha-ph .ha-em { color: #9CCBFF; }
+.ha-ph .ha-lede { color: rgba(255, 255, 255, .95); text-shadow: 0 1px 12px rgba(0, 0, 0, .35); }
+.ha-ph .ha-search { background: #fff; box-shadow: 0 14px 34px -12px rgba(0, 0, 0, .4); }
+.ha-ph .ha-tile { box-shadow: 0 10px 26px -14px rgba(0, 0, 0, .45); }
+.ha-ph .ha-btn { box-shadow: 0 10px 26px -12px rgba(0, 0, 0, .45); }
+.ha-cap { position: absolute; right: 18px; bottom: 12px; margin: 0; font-size: 11.5px; line-height: 1.4; color: rgba(255, 255, 255, .86); text-align: right; }
+.ha-cap a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+@media (max-width: 767px) { .ha-cap { left: 16px; right: 16px; bottom: 10px; font-size: 10.5px; text-align: center; } }
+
+/* ---------------------------------------------------------------- the 원도심 food row (시안 A) */
+.ha-food { padding-top: 16px; }
+.hfo { padding: clamp(18px, 2.4vw, 28px); border-radius: 32px; background: #fff; }
+.hfo-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.hfo-h { margin: 0; font-size: clamp(20px, 2vw, 24px); font-weight: 700; letter-spacing: -.04em; }
+.hfo-all { font-size: 15px; font-weight: 700; color: var(--sea-deep); }
+.hfo-row { list-style: none; margin: 16px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; }
+.hfo-row a { display: flex; flex-direction: column; gap: 8px; color: var(--ink); text-decoration: none; }
+.hfo-row a:hover { color: var(--ink); text-decoration: none; }
+.hfo-row a:hover .hfo-nm b { color: var(--link); }
+.hfo-ph { display: grid; place-items: center; height: 150px; overflow: hidden; border-radius: 22px; background: var(--bg-2); }
+.hfo-ph img { display: block; width: 100%; height: 100%; }
+.hfo-ph.t1 img { object-fit: cover; }
+.hfo-ph.t3 img { object-fit: contain; }   /* KOGL-3: whole, never cropped or enlarged past its box */
+.hfo-ph.hfo-ic { background: linear-gradient(150deg, #FFF6EC 0, #FFE6D0 100%); }
+.hfo-ic .type-ico .pic { --pic: 76px; }
+.hfo-nm { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; padding: 0 4px; }
+.hfo-nm b { font-size: 18px; font-weight: 700; letter-spacing: -.035em; }
+.hfo-nm .dz-chip { margin-top: 0; }
+.hfo-l { padding: 0 4px; font-size: 14px; line-height: 1.45; color: var(--ink-3); }
+.hfo-l b { color: var(--ink); }
+.hfo-cl { color: #A8241C; font-weight: 700; }
+.hfo-note { margin: 14px 4px 0; font-size: 12px; color: var(--ink-3); }
+@media (max-width: 767px) {
+  .hfo { border-radius: 26px; }
+  .hfo-row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .hfo-ph { height: 118px; border-radius: 18px; }
+  .hfo-nm b { font-size: 16px; }
+  .hfo-l { font-size: 13px; }
+}
+.ha-ph .ha-plan, .ha-ph .ha-plan:hover { background: #fff; color: var(--ink); }

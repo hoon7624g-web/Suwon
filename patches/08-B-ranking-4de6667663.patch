@@ -1,0 +1,189 @@
+From 4de6667663d79ffad9f020cee79ea6dd398ba616 Mon Sep 17 00:00:00 2001
+From: hoon7624g-web <272256230+hoon7624g-web@users.noreply.github.com>
+Date: Tue, 10 Nov 2026 10:08:39 +0900
+Subject: [PATCH] Make YouTube & Instagram channel titles prominent and prevent
+ truncation
+
+---
+ templates/_ui.html.j2              |  4 +-
+ templates/assets/css/48-abroad.css | 60 ++++++++++++++++++------------
+ templates/home.html.j2             | 15 ++++----
+ 3 files changed, 46 insertions(+), 33 deletions(-)
+
+diff --git a/templates/_ui.html.j2 b/templates/_ui.html.j2
+index eb2df4fb31..f8e0e24335 100644
+--- a/templates/_ui.html.j2
++++ b/templates/_ui.html.j2
+@@ -708,7 +708,7 @@
+ </a>
+ </div>
+ {% endif %}
+-<div class="vid-text"><p class="vid-title">{{ v.title }}</p>{% if v.channel %}<p class="vid-meta">{{ v.channel }}{% if v.channel_kind == 'official' %} (공식 채널){% endif %}{% if v.popular_curated and v.view_text %} · <span class="tn">{{ v.view_text }}</span>{% endif %}{% if v.published_date %} · <time datetime="{{ v.published_date }}" class="tn">{{ v.published_date|ko_date }}</time> 게시{% endif %}</p>{% endif %}{% if linked %}<p class="vid-places">관련 장소 {% for x in linked %}<a href="{{ x._path }}">{{ x.name }}</a>{% if not loop.last %}<span aria-hidden="true"> · </span>{% endif %}{% endfor %}</p>{% endif %}{% if v.url %}<a class="vid-link" href="{{ v.url }}" rel="noopener" data-track="video_click"{% if place %} data-place="{{ place }}"{% endif %}>YouTube에서 보기<span class="arr" aria-hidden="true">↗</span></a>{% endif %}</div>
++<div class="vid-text"><p class="vid-title">{{ v.title }}</p>{% if v.channel %}<p class="vid-meta"><b class="vid-ch">{{ v.channel }}</b>{% if v.channel_kind == 'official' %} (공식 채널){% endif %}{% if v.popular_curated and v.view_text %} · <span class="tn">{{ v.view_text }}</span>{% endif %}{% if v.published_date %} · <time datetime="{{ v.published_date }}" class="tn">{{ v.published_date|ko_date }}</time> 게시{% endif %}</p>{% endif %}{% if linked %}<p class="vid-places">관련 장소 {% for x in linked %}<a href="{{ x._path }}">{{ x.name }}</a>{% if not loop.last %}<span aria-hidden="true"> · </span>{% endif %}{% endfor %}</p>{% endif %}{% if v.url %}<a class="vid-link" href="{{ v.url }}" rel="noopener" data-track="video_click"{% if place %} data-place="{{ place }}"{% endif %}>YouTube에서 보기<span class="arr" aria-hidden="true">↗</span></a>{% endif %}</div>
+ </{{ tag }}>
+ {%- endmacro %}
+ 
+@@ -724,7 +724,7 @@
+ {#- vlite(v, linked): the folded-list row (/videos/ "더 보기" parts): a small 320×180 thumbnail (or a grey
+     placeholder), title and channel · 공식 · date, one link to YouTube. No player, nothing loaded before the press. -#}
+ {% macro vlite(v, linked=[]) -%}
+-{% set t = v.thumbnail or {} %}<li class="vid vl{% if v.channel_kind == 'official' %} is-official{% endif %}"><a class="vl-a" href="{{ v.url }}" rel="noopener" data-track="video_click">{% if t.url %}<img src="{{ t.url }}" width="{{ t.width or 320 }}" height="{{ t.height or 180 }}" alt="" loading="lazy" decoding="async">{% else %}<span class="vl-ph"></span>{% endif %}<span class="vl-t">{{ v.title }}</span><span class="vl-m">{{ v.channel }}{% if v.channel_kind == 'official' %} · 공식{% endif %}{% if v.popular_curated and v.view_text %} · <span class="tn">{{ v.view_text }}</span>{% endif %}{% if v.published_date %} · <time datetime="{{ v.published_date }}" class="tn">{{ v.published_date|short_iso }}</time>{% endif %}</span></a>{% if linked %}<p class="vid-places">관련 장소 {% for x in linked %}<a href="{{ x._path }}">{{ x.name }}</a>{% if not loop.last %}<span aria-hidden="true"> · </span>{% endif %}{% endfor %}</p>{% endif %}</li>
++{% set t = v.thumbnail or {} %}<li class="vid vl{% if v.channel_kind == 'official' %} is-official{% endif %}"><a class="vl-a" href="{{ v.url }}" rel="noopener" data-track="video_click">{% if t.url %}<img src="{{ t.url }}" width="{{ t.width or 320 }}" height="{{ t.height or 180 }}" alt="" loading="lazy" decoding="async">{% else %}<span class="vl-ph"></span>{% endif %}<span class="vl-t">{{ v.title }}</span><span class="vl-m"><b class="vid-ch">{{ v.channel }}</b>{% if v.channel_kind == 'official' %} · 공식{% endif %}{% if v.popular_curated and v.view_text %} · <span class="tn">{{ v.view_text }}</span>{% endif %}{% if v.published_date %} · <time datetime="{{ v.published_date }}" class="tn">{{ v.published_date|short_iso }}</time>{% endif %}</span></a>{% if linked %}<p class="vid-places">관련 장소 {% for x in linked %}<a href="{{ x._path }}">{{ x.name }}</a>{% if not loop.last %}<span aria-hidden="true"> · </span>{% endif %}{% endfor %}</p>{% endif %}</li>
+ {%- endmacro %}
+ 
+ {#- search_form(id, value, label, placeholder, live, note, data): GET /search/. live=true adds data-search
+diff --git a/templates/assets/css/48-abroad.css b/templates/assets/css/48-abroad.css
+index a9d77f780e..4373c75c48 100644
+--- a/templates/assets/css/48-abroad.css
++++ b/templates/assets/css/48-abroad.css
+@@ -210,10 +210,10 @@ html.embed-manual .ab-ph-msg { display: none; }
+ @media (min-width: 1080px) { .ig-ch-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; } }
+ .ig-ch-card { display: flex; flex-direction: column; gap: 10px; padding: 16px 18px 14px; border-radius: var(--r);
+   background: #fff; box-shadow: inset 0 0 0 1px var(--hair), var(--shadow-1); }
+-.ig-ch-head { display: flex; align-items: center; gap: 10px; min-width: 0; }
+-.ig-ch-who { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+-.ig-ch-who b { font: 700 15.5px/1.3 var(--font); color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+-.ig-ch-who span { font-size: 13px; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
++.ig-ch-head { display: flex; align-items: flex-start; gap: 10px; min-width: 0; }
++.ig-ch-who { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
++.ig-ch-who b { font: 800 17.5px/1.3 var(--font); color: var(--ink); letter-spacing: -.02em; word-break: keep-all; }
++.ig-ch-who span { font: 600 13.5px/1.35 var(--font); color: var(--ink-2); }
+ .ig-ch-badge { flex: none; padding: 3px 9px; border-radius: 999px; background: var(--tint); color: var(--sea-deep);
+   font: 700 12px/1.3 var(--font); }
+ .ig-ch-note { margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--ink-2); word-break: keep-all; }
+@@ -225,6 +225,7 @@ html.embed-manual .ab-ph-msg { display: none; }
+ .ig-ch-chip { background: var(--bg-2); color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--hair); }
+ .ig-ch-chip:hover { background: var(--g1); color: var(--ink); }
+ .svc-youtube { background: #e62117; color: #fff; }
++.vid-ch { font-weight: 700; color: var(--ink); }
+ .yt-pop-sec { margin-bottom: clamp(28px, 4vw, 48px); }
+ .home-yt-sub { margin: clamp(24px, 3vw, 36px) 0 14px; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px; }
+ .home-yt-sub h3 { margin: 0; font: 700 clamp(17px, 1.8vw, 20px)/1.35 var(--font); letter-spacing: -.015em; color: var(--ink); }
+@@ -234,7 +235,7 @@ html.embed-manual .ab-ph-msg { display: none; }
+ /* ---------------------------------------------------------------- 홈 우측 인기 유튜브·인스타 고정 큐레이션 보드 (.h-rside) */
+ .h-rside { display: none; }
+ @media (min-width: 1360px) {
+-  :root { --rside-w: 304px; --rside-x: calc(var(--rside-w) + 2 * var(--side-in)); }
++  :root { --rside-w: 332px; --rside-x: calc(var(--rside-w) + 2 * var(--side-in)); }
+   body.pg-ko-home { --cw: calc(100vw - var(--side-x) - var(--rside-x)); padding-right: var(--rside-x); }
+   html[lang="ko"] body.pg-ko-home main .wrap,
+   html[lang="ko"] body.pg-ko-home .foot .wrap,
+@@ -252,9 +253,12 @@ html.embed-manual .ab-ph-msg { display: none; }
+     background: #fff; border: 1px solid var(--hair); border-radius: var(--r-l); box-shadow: var(--shadow-1);
+   }
+ }
++@media (min-width: 1680px) {
++  :root { --rside-w: 356px; --rside-x: calc(var(--rside-w) + 2 * var(--side-in)); }
++}
+ .hrs-head { display: flex; flex-direction: column; gap: 6px; padding-bottom: 12px; border-bottom: 1px solid var(--bg-3); }
+ .hrs-kicker { margin: 0; font: 700 12px/1.3 var(--font); color: var(--sea-deep); letter-spacing: -.01em; }
+-.hrs-title { margin: 0; font: 700 20px/1.25 var(--font); color: var(--ink); letter-spacing: -.03em; }
++.hrs-title { margin: 0; font: 800 20px/1.25 var(--font); color: var(--ink); letter-spacing: -.03em; }
+ .hrs-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 4px; }
+ .hrs-tab { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 36px; padding: 0 10px;
+   border-radius: 10px; background: var(--bg-2); color: var(--ink); font: 700 13px/1 var(--font); text-decoration: none; }
+@@ -264,35 +268,43 @@ html.embed-manual .ab-ph-msg { display: none; }
+ .hrs-sec { display: flex; flex-direction: column; gap: 10px; }
+ .hrs-sec + .hrs-sec { padding-top: 14px; border-top: 1px solid var(--bg-3); }
+ .hrs-sh { display: flex; align-items: baseline; justify-content: space-between; gap: 6px; }
+-.hrs-sh h3 { margin: 0; font: 700 15px/1.3 var(--font); color: var(--ink); letter-spacing: -.02em; }
+-.hrs-sh .tn { color: var(--ink-3); font-weight: 400; }
++.hrs-sh h3 { margin: 0; font: 800 16px/1.3 var(--font); color: var(--ink); letter-spacing: -.02em; }
++.hrs-sh .tn { color: var(--ink-3); font-weight: 500; }
+ .hrs-sh a { font: 700 12.5px/1.3 var(--font); color: var(--sea-deep); text-decoration: none; white-space: nowrap; }
+ .hrs-sh a:hover { text-decoration: underline; }
+ .hrs-vlist, .hrs-clist { display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0; list-style: none; }
+-.hrs-v { display: flex; flex-direction: column; gap: 6px; padding: 10px; border-radius: 14px; background: var(--g0); border: 1px solid var(--hair); }
+-.hrs-va { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 10px; align-items: center; color: var(--ink); text-decoration: none; }
++.hrs-v { display: flex; flex-direction: column; gap: 8px; padding: 11px 12px; border-radius: 14px; background: var(--g0); border: 1px solid var(--hair); }
++.hrs-va { display: flex; flex-direction: column; gap: 7px; color: var(--ink); text-decoration: none; }
+ .hrs-va:hover { text-decoration: none; }
+-.hrs-va:hover .hrs-vt { color: var(--sea-deep); text-decoration: underline; }
++.hrs-va:hover .hrs-vch, .hrs-va:hover .hrs-vt { color: var(--sea-deep); }
++.hrs-va:hover .hrs-vt { text-decoration: underline; }
++.hrs-vhead { display: flex; align-items: center; gap: 7px; padding-bottom: 6px; border-bottom: 1px solid var(--bg-3); }
++.hrs-vhead .ab-svc { width: 22px; height: 22px; flex: none; }
++.hrs-vhead .ab-svc svg { width: 12px; height: 12px; }
++.hrs-vch { flex: 1; min-width: 0; font: 800 15.5px/1.25 var(--font); color: var(--ink); letter-spacing: -.02em; }
++.hrs-vviews { flex: none; padding: 2px 8px; border-radius: 999px; background: #FFEDEB; color: #B42318; font: 700 11.5px/1.3 var(--font); }
++.hrs-vbody { display: grid; grid-template-columns: 98px minmax(0, 1fr); gap: 10px; align-items: center; }
+ .hrs-vth { position: relative; display: block; aspect-ratio: 16 / 9; border-radius: 9px; overflow: hidden; background: var(--bg-3); }
+ .hrs-vth img { display: block; width: 100%; height: 100%; object-fit: cover; }
+ .hrs-play { position: absolute; right: 5px; bottom: 5px; width: 22px; height: 22px; border-radius: 50%;
+   background: rgba(230, 33, 23, .92); color: #fff; display: grid; place-items: center; }
+-.hrs-vtxt { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+ .hrs-vt { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;
+-  font: 700 13px/1.35 var(--font); color: var(--ink); letter-spacing: -.015em; }
+-.hrs-vm { font: 400 11.5px/1.3 var(--font); color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
++  font: 600 13px/1.4 var(--font); color: var(--ink-2); letter-spacing: -.01em; }
+ .hrs-vp, .hrs-clinks { display: flex; flex-wrap: wrap; gap: 4px; margin: 0; }
+ .hrs-vp a, .hrs-clinks a { display: inline-flex; align-items: center; min-height: 24px; padding: 2px 8px;
+-  border-radius: 999px; background: #fff; color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--hair);
++  border-radius: 999px; background: var(--bg-2); color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--hair);
+   font: 600 11.5px/1.2 var(--font); text-decoration: none; }
++.hrs-vp a { background: #fff; }
+ .hrs-vp a:hover, .hrs-clinks a:hover { background: var(--tint); color: var(--sea-deep); text-decoration: none; }
+-.hrs-c { display: flex; flex-direction: column; gap: 6px; padding: 9px 10px; border-radius: 13px; background: var(--bg-2); }
+-.hrs-ctop { display: flex; align-items: center; gap: 8px; min-width: 0; }
+-.hrs-ctop .ab-svc { width: 24px; height: 24px; flex: none; }
+-.hrs-ctop .ab-svc svg { width: 13px; height: 13px; }
+-.hrs-cn { flex: 1; min-width: 0; display: flex; flex-direction: column; color: var(--ink); text-decoration: none; }
+-.hrs-cn:hover b { color: var(--sea-deep); text-decoration: underline; }
+-.hrs-cn b { font: 700 13.5px/1.25 var(--font); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+-.hrs-cn span { font: 400 11.5px/1.25 var(--font); color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+-.hrs-badge { flex: none; padding: 2px 7px; border-radius: 999px; background: var(--tint); color: var(--sea-deep); font: 700 11px/1.25 var(--font); }
++.hrs-c { display: flex; flex-direction: column; gap: 8px; padding: 11px 12px; border-radius: 14px; background: #fff; border: 1px solid var(--hair); box-shadow: 0 1px 2px rgba(15, 23, 42, .04); }
++.hrs-ctop { display: flex; align-items: flex-start; gap: 9px; min-width: 0; color: var(--ink); text-decoration: none; }
++.hrs-ctop:hover { text-decoration: none; }
++.hrs-ctop:hover .hrs-cname { color: var(--sea-deep); text-decoration: underline; }
++.hrs-ctop .ab-svc { width: 28px; height: 28px; flex: none; margin-top: 1px; }
++.hrs-ctop .ab-svc svg { width: 15px; height: 15px; }
++.hrs-cn { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
++.hrs-cname { display: inline-flex; align-items: center; gap: 4px; font: 800 16px/1.28 var(--font); color: var(--ink); letter-spacing: -.02em; word-break: keep-all; }
++.hrs-ext { font-size: 12px; font-weight: 700; color: var(--ink-3); }
++.hrs-cmeta { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; font: 600 12px/1.35 var(--font); color: var(--ink-2); }
++.hrs-badge { flex: none; font-style: normal; padding: 2px 7px; border-radius: 999px; background: var(--tint); color: var(--sea-deep); font: 700 11px/1.25 var(--font); }
+ 
+diff --git a/templates/home.html.j2 b/templates/home.html.j2
+index 6c6c7e8d96..50eeb3780d 100644
+--- a/templates/home.html.j2
++++ b/templates/home.html.j2
+@@ -72,11 +72,12 @@
+       {% set t = v.thumbnail or {} %}
+       <li class="hrs-v">
+         <a class="hrs-va" href="{{ v.url }}" target="_blank" rel="noopener" data-track="video_click">
+-          <span class="hrs-vth">{% if t.url %}<img src="{{ t.url }}" width="112" height="63" alt="" loading="lazy" decoding="async">{% endif %}<span class="hrs-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="12" height="12"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg></span></span>
+-          <span class="hrs-vtxt">
+-            <b class="hrs-vt">{{ v.title }}</b>
+-            <span class="hrs-vm">{{ v.channel }}{% if v.view_text %} · <span class="tn">{{ v.view_text }}</span>{% endif %}</span>
+-          </span>
++          <span class="hrs-vhead">{{ ab.svc('youtube') }}<b class="hrs-vch">{{ v.channel }}</b>{% if v.short_view_text or v.view_text %}<span class="hrs-vviews tn">{{ v.short_view_text or v.view_text }}</span>{% endif %}</span>
++          <span class="hrs-vbody"><span class="hrs-vth">{% if t.url %}<img src="{{ t.url }}" width="112" height="63" alt="" loading="lazy" decoding="async">{% endif %}<span class="hrs-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="12" height="12"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg></span></span><span class="hrs-vt">{{ v.title }}</span></span>
++
++
++
++
+         </a>
+         {% if v._places %}<p class="hrs-vp">{% for x in v._places[:3] %}<a href="{{ x._path }}">{{ x.name }}</a>{% endfor %}</p>{% endif %}
+       </li>
+@@ -90,7 +91,7 @@
+     <ul class="hrs-clist">
+       {% for ch in yt_channels[:8] %}
+       <li class="hrs-c">
+-        <div class="hrs-ctop">{{ ab.svc('youtube') }}<a class="hrs-cn" href="{{ ch.url }}" target="_blank" rel="noopener" data-track="video_click"><b>{{ ch.name }}</b><span>{{ ch.handle }}</span></a>{% if ch.badge %}<span class="hrs-badge">{{ ch.badge }}</span>{% endif %}</div>
++        <a class="hrs-ctop" href="{{ ch.url }}" target="_blank" rel="noopener" data-track="video_click">{{ ab.svc('youtube') }}<span class="hrs-cn"><strong class="hrs-cname">{{ ch.name }}<span class="hrs-ext" aria-hidden="true">↗</span></strong><span class="hrs-cmeta">{% if ch.badge %}<em class="hrs-badge">{{ ch.badge }}</em>{% endif %}<span>{{ ch.handle }}</span></span></span></a>
+         {% if ch.links %}<p class="hrs-clinks">{% for l in ch.links[:3] %}<a href="{{ l.href }}">{{ l.label }}</a>{% endfor %}</p>{% endif %}
+       </li>
+       {% endfor %}
+@@ -103,7 +104,7 @@
+     <ul class="hrs-clist">
+       {% for ch in insta_channels[:7] %}
+       <li class="hrs-c">
+-        <div class="hrs-ctop">{{ ab.svc('instagram') }}<a class="hrs-cn" href="{{ ch.url }}" target="_blank" rel="noopener" data-track="abroad_click"><b>{{ ch.name }}</b><span>{{ ch.handle }}</span></a>{% if ch.badge %}<span class="hrs-badge">{{ ch.badge }}</span>{% endif %}</div>
++        <a class="hrs-ctop" href="{{ ch.url }}" target="_blank" rel="noopener" data-track="abroad_click">{{ ab.svc('instagram') }}<span class="hrs-cn"><strong class="hrs-cname">{{ ch.name }}<span class="hrs-ext" aria-hidden="true">↗</span></strong><span class="hrs-cmeta">{% if ch.badge %}<em class="hrs-badge">{{ ch.badge }}</em>{% endif %}<span>{{ ch.handle }}</span></span></span></a>
+         {% if ch.links %}<p class="hrs-clinks">{% for l in ch.links[:3] %}<a href="{{ l.href }}">{{ l.label }}</a>{% endfor %}</p>{% endif %}
+       </li>
+       {% endfor %}
+-- 
+2.43.0
+

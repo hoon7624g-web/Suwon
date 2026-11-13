@@ -1,0 +1,36 @@
+{% extends "base.html.j2" %}
+{#- /stays/booking/ 숙박 예약하기 (operator 2026-11-03: '메인 홈화면에 숙박 예약하기 버튼 … 누르면 예약 가능한 숙박 업소들이
+    바둑판식 배열로 사진과 함께'): every built stay with affiliate links (present.stay_booking_vm) as a card in a grid —
+    its licensed photo (TourAPI KOGL-1 filling the frame, KOGL-3 whole on a tinted frame, never cropped or enlarged;
+    without one a small kind icon beside the name, never an empty cover, CLAUDE.md 4/7), name, type · 동, the distinct
+    line, check-in · check-out · rooms from this site's data and its booking sites as buttons (_staybook.html.j2). The
+    head is the title and one sentence (operator 2026-11-11 '위 사진 내용도 빼': the two big numbers and the labelled
+    notice are gone from it). The affiliate disclosure — that the buttons are affiliate links and the site may be paid,
+    which a reader must be told and validate requires on screen — is one quiet line right over the cards, before any
+    booking-site link; the partner relation is said with the order under the grid (and by each partner card's '?').
+    The type filter appears with JS only (site.js 'stay booking'); without it every card shows. Korean only. -#}
+{% import "_staybook.html.j2" as sb %}
+{% block main_class %}{% endblock %}
+{% block bodyclass %}pg-staybook{% endblock %}
+{% block content %}
+<section class="sb-hero" aria-labelledby="h-list">
+  <div class="wrap">
+    <p class="sb-k"><a href="/stays/">{{ site.region }} 숙소</a><span aria-hidden="true">›</span><span>예약 사이트 바로가기</span></p>
+    <div class="ttl-row"><h1 id="h-list" class="sb-h1">숙박 예약하기</h1>{{ ui.sharebtn('stays-booking', 'ko', 'ttl-share') }}</div>
+    <p class="sb-lede">{{ site.site_name }}에 있는 숙소 가운데 예약 사이트에서 바로 예약할 수 있는 {{ V.rows|length }}곳입니다. 체크인·객실 수는 이 사이트의 숙소 정보이고, 가격과 빈 방은 예약 사이트에서 확인하세요.</p>
+  </div>
+</section>
+<div class="wrap sb-wrap">
+  {% set pr = V.rows|selectattr('partner')|list %}{% if pr and pr[0].partner.photos %}{{ sb.banner(pr[0]) }}{% endif %}
+  {% if V.groups|length > 1 %}<div class="sb-filter" role="group" aria-label="숙소 유형으로 보기" data-sb-filter hidden>
+    <button type="button" aria-pressed="true" data-sb-g="">전체 <span class="tn">{{ V.rows|length }}</span></button>
+    {% for g in V.groups %}<button type="button" aria-pressed="false" data-sb-g="{{ g.key }}">{{ g.label }} <span class="tn">{{ g.n }}</span></button>{% endfor %}
+  </div>{% endif %}
+  <h2 class="vh">예약할 수 있는 숙소</h2>
+  <p class="sb-aff">예약 사이트 버튼은 제휴 링크입니다. 이 링크로 예약하면 {{ site.site_name|josa('이/가') }} 수수료를 받을 수 있습니다.</p>
+  <ul class="sb-grid">{% for c in V.rows %}{{ sb.card(c, loop.index0) }}{% endfor %}</ul>
+  <p class="note sb-note">순서: {% if V.n_partners %}파트너 숙소를 맨 위에, 그다음 {% endif %}사진이 있는 숙소를 먼저, 그다음은 체크인·체크아웃·주차·문의 정보가 많은 숙소부터 이름순으로 놓았습니다. {% if V.n_partners %}파트너 숙소 말고는 {% endif %}순서가 추천을 뜻하지 않습니다.{% if V.n_partners %} 파트너 숙소는 {{ site.site_name }} 운영사(에이아이오투오)의 Web4AI 고객 숙소입니다.{% endif %} 숙소 이름을 누르면 이 사이트의 숙소 페이지(가는 길·주차·문의)로 갑니다.</p>
+  {% if V.partners_path %}<p class="sb-join"><a href="{{ V.partners_path }}" data-track="partner_cta">숙소를 운영하시나요? 군산각 파트너 되기<span class="arr" aria-hidden="true">→</span></a></p>{% endif %}
+  {% if V.lics %}<p class="note">사진 출처: 한국관광공사 · 공공누리 {% for t in V.lics %}제{{ t }}유형{% if t == 3 %}(변경금지){% endif %}{% if not loop.last %}·{% endif %}{% endfor %}</p>{% endif %}
+</div>
+{% endblock %}

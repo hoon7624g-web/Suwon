@@ -1,0 +1,82 @@
+{% extends "base.html.j2" %}
+{% import "_pic.html.j2" as pk %}
+{#- /partners/ 군산각 파트너 (operator decision at the 2026-11-04 meeting: the stay page's way in is '제휴 파트너 되기';
+    the same day '사진들 예시로 다채롭게 넣으면서 구매 욕구가 들게'): a sales page led by the partner stay itself — its
+    own photos and its Web4AI homepage (partners.json stays.<id>.photos / screens) — then the four stay benefits as
+    cards, the case (photos, the homepage screens, what was built, links), the content partnership, and one inquiry
+    band (a mail to partners.contact, sales@o2o.kr). The relationship and the rule that visit facts come from sources
+    stay said. pipeline/partners.py; css/83-partners.css. -#}
+{% block main_class %}{% endblock %}
+{% block bodyclass %}pg-partners{% endblock %}
+{% set X = P.examples[0] if P.examples else none %}
+{% set icons = ['building', 'spark', 'phone', 'play'] %}
+{% set pics = ['pn-site', 'pn-top', 'pn-direct', 'pn-content'] %}{#- the 3D pictures (Gemini, operator 2026-11-04); the glyph until a file is there -#}
+{% block content %}
+{#- '·' between words gets word joiners (U+2060) so a line never starts with the middle dot. -#}
+<section class="pn-hero" aria-labelledby="h-pn">
+  <div class="wrap pn-hero-in">
+    <div class="pn-hero-t">
+      <p class="pn-k">{{ site.site_name }} 파트너</p>
+      <h1 id="h-pn" class="pn-h1"><span class="nw">{{ site.region }} 숙소,</span> <span class="nw">{{ site.site_name }} 맨 위에서</span> <span class="nw">손님을 만나세요</span></h1>
+      <p class="pn-lede">숙소 홈페이지를 만들고, {{ site.site_name }} 숙박 예약하기 맨 위에 올리고, 예약 플랫폼을 거치지 않는 직접 문의를 받습니다.</p>
+      <p class="pn-cta">{% if P.contact_path %}<a class="pn-btn" href="{{ P.contact_path }}" data-track="partner_cta">파트너 문의하기<span class="arr" aria-hidden="true">→</span></a>{% endif %}{% if X %}<a class="pn-btn pn-btn-w" href="#pn-case">파트너 숙소 사례 보기<span class="arr" aria-hidden="true">↓</span></a>{% endif %}</p>
+    </div>
+    {% if X and X.photos %}
+    <div class="pn-hero-v" aria-hidden="true">
+      <img class="pn-hv-a" src="{{ X.photos[0].thumb }}" width="{{ X.photos[0].tw }}" height="{{ X.photos[0].th }}" alt="" decoding="async">
+      {% if X.photos|length > 2 %}<img class="pn-hv-b" src="{{ X.photos[2].thumb }}" width="{{ X.photos[2].tw }}" height="{{ X.photos[2].th }}" alt="" decoding="async">{% endif %}
+      {% if X.photos|length > 3 %}<img class="pn-hv-c" src="{{ X.photos[3].thumb }}" width="{{ X.photos[3].tw }}" height="{{ X.photos[3].th }}" alt="" decoding="async">{% endif %}
+      <div class="pn-hv-card"><span class="pn-hv-rib">{{ X.badge }}</span><span class="pn-hv-m">{{ X.meta }}</span><span class="pn-hv-n">{{ X.name }}</span><span class="pn-hv-btn">공식 홈페이지 · 직접 예약·문의 <i>↗</i></span><span class="pn-hv-ota">예약 사이트 바로가기</span></div>
+    </div>
+    {% endif %}
+  </div>
+</section>
+<div class="wrap pn-wrap">
+  {% set stay = P.offers|selectattr('key', 'equalto', 'stay')|list %}
+  {% if stay %}{% set o = stay[0] %}
+  <section class="pn-sec" id="pn-stay" aria-labelledby="h-pn-stay">
+    <h2 id="h-pn-stay" class="pn-h2">{{ o.title }}가 되면</h2>
+    <p class="pn-sub">{{ o.lead }}</p>
+    <ul class="pn-cards">{% for b in o.benefits %}<li class="pn-card"><span class="pn-ic" aria-hidden="true">{{ pk.pic(pics[loop.index0 % 4], icons[loop.index0 % 4], 40) }}</span><b>{{ b.t|replace('·', '\u2060·\u2060') }}</b><span>{{ b.d|replace('·', '\u2060·\u2060') }}</span></li>{% endfor %}</ul>
+    {% if o.terms %}<p class="pn-terms">{{ o.terms }}</p>{% endif %}
+  </section>
+  {% endif %}
+  {% if X %}
+  <section class="pn-sec pn-case" id="pn-case" aria-labelledby="h-pn-case">
+    <p class="pn-case-k"><span class="pn-case-b"><span class="pn-case-ic" aria-hidden="true">{{ pk.pic('pn-case', 'spark', 30) }}</span>{{ X.badge }} 숙소 사례</span></p>
+    <h2 id="h-pn-case" class="pn-h2">{{ X.headline }}</h2>
+    {% if X.line %}<p class="pn-sub">{{ X.line }}</p>{% endif %}
+    {% if X.photos %}<ul class="pn-gal">{% for x in X.photos[:7] %}<li class="pn-g{{ loop.index }}"><img src="{{ x.thumb }}" width="{{ x.tw }}" height="{{ x.th }}" alt="{{ x.alt }}" loading="lazy" decoding="async"></li>{% endfor %}</ul>
+    <p class="pn-cr">{{ X.photo_credit }}</p>{% endif %}
+    <div class="pn-built">
+      {% if X.screens.desktop %}<figure class="pn-browser"><span class="pn-bar" aria-hidden="true"><i></i><i></i><i></i><span>{{ X.direct.host if X.direct else '' }}</span></span><img src="{{ X.screens.desktop.src }}" width="{{ X.screens.desktop.w }}" height="{{ X.screens.desktop.h }}" alt="Web4AI로 만든 {{ X.name }} 홈페이지 첫 화면" loading="lazy" decoding="async"><figcaption>Web4AI로 만든 {{ X.name }} 홈페이지</figcaption></figure>{% endif %}
+      <div class="pn-built-t">
+        <h3 class="pn-h3">이렇게 만들고, 이렇게 보입니다</h3>
+        <ol class="pn-steps">
+          <li><b>Web4AI 숙소 홈페이지</b><span>소개·객실·오시는 길·주변 축제와 맛집·영상을 AI 검색에 맞춰 한 페이지에 담았습니다.</span></li>
+          <li><b>{{ site.site_name }} 맨 위 '파트너' 노출</b><span>숙박 예약하기 첫 카드로 금색 테두리와 배지가 붙습니다.</span></li>
+          <li><b>직접 예약·문의 먼저</b><span>예약 사이트 버튼보다 숙소 홈페이지 버튼이 먼저 보입니다.</span></li>
+        </ol>
+        <p class="pn-case-cta">{% if X.direct %}<a class="pn-btn" href="{{ X.direct.url }}" target="_blank" rel="sponsored noopener" data-track="direct_booking_click" data-provider="partner" data-place="{{ X.id }}">홈페이지 보기<span class="arr" aria-hidden="true">↗</span><span class="vh"> (새 탭)</span></a>{% endif %}{% if P.example_path %}<a class="pn-btn pn-btn-o" href="{{ P.example_path }}" data-track="stay_booking_cta">{{ site.site_name }}에서 보기<span class="arr" aria-hidden="true">→</span></a>{% endif %}<a class="pn-link" href="{{ X.path }}" data-track="stay_click" data-place="{{ X.id }}">{{ X.name }} 상세 정보<span class="arr" aria-hidden="true">→</span></a></p>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+  {% set content = P.offers|selectattr('key', 'equalto', 'content')|list %}
+  {% if content %}{% set o = content[0] %}
+  <section class="pn-sec" id="pn-content" aria-labelledby="h-pn-content">
+    <h2 id="h-pn-content" class="pn-h2">{{ o.title }}</h2>
+    <p class="pn-sub">{{ o.lead }}</p>
+    <ul class="pn-cards pn-cards-3">{% for b in o.benefits %}<li class="pn-card pn-card-l"><b>{{ b.t|replace('·', '\u2060·\u2060') }}</b><span>{{ b.d|replace('·', '\u2060·\u2060') }}</span></li>{% endfor %}</ul>
+  </section>
+  {% endif %}
+  <section class="pn-ask" aria-labelledby="h-pn-ask">
+    <div>
+      <h2 id="h-pn-ask" class="pn-ask-h">파트너 문의</h2>
+      <p>숙소·채널 이름과 연락처를 적어 보내 주시면 답을 드립니다.{% if P.contact %} <a href="{{ P.mailto }}" data-track="partner_contact">{{ P.contact }}</a>{% endif %}</p>
+    </div>
+    {% if P.contact_path %}<a class="pn-btn" href="{{ P.contact_path }}" data-track="partner_cta">파트너 문의하기<span class="arr" aria-hidden="true">→</span></a>{% endif %}
+  </section>
+  <p class="note pn-note">{{ site.site_name|josa('은/는') }} {{ (site.operator.legal_name or site.operator.name)|josa('이/가') }} 운영합니다. 파트너 숙소는 숙박 예약하기에 '파트너' 표시와 함께 보이며, 그 표시를 누르면 관계를 설명합니다. 장소의 방문 정보(이용시간·요금 등)는 파트너 여부와 상관없이 출처 데이터로만 적습니다.</p>
+</div>
+{% endblock %}

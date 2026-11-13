@@ -1,0 +1,135 @@
+From cb17302e82dd0c02c13df79c6556a399ee9beb1e Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Tue, 10 Nov 2026 17:47:36 +0000
+Subject: [PATCH] =?UTF-8?q?fix(ui):=20=EC=A0=90=EA=B2=80=EC=97=90=EC=84=9C?=
+ =?UTF-8?q?=20=EB=82=A8=EA=B8=B4=20=EC=97=AC=EC=84=AF=20=EA=B0=80=EC=A7=80?=
+ =?UTF-8?q?=20=EC=88=98=EC=A0=95=20+=20=EA=B5=B0=EC=82=B0=EA=B0=81=20?=
+ =?UTF-8?q?=EB=B8=94=EB=A1=9C=EA=B7=B8=20=EB=AA=A9=EB=A1=9D=20=EB=A7=9E?=
+ =?UTF-8?q?=EC=B6=A4(286=20=E2=86=92=2074=EA=B0=9C=20=EA=B8=80)?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+운영자 요청(2026-11-11 '남긴 것들 수정하고', '블로그 데이터 같은 것들은 최신화 안 되고 항상 그대로던데?').
+
+남긴 여섯 가지 (css/90-refine·47-rank — 화면 문장·사실 변경 없음)
+- 외국어판 1200~1771px: 좌우 여백 88px — 챗봇 버튼이 본문 칸 끝 26~38px에 걸치던 것이 0
+- 홈 행사 티켓: 세 장이 300px 미만이 되는 폭에서는 두 장 + 한 장(이름 4~8줄 → 1~2줄), 줄이 쓸 수 있는 폭 기준
+- 순위 블록(720~1679px): 두 목록의 같은 순위 줄 높이를 맞춤(subgrid)
+- 휴대폰 고정 영역: 하단 바가 15%에서 위 바를 뺀 만큼만(360×740에서 15.7·16.2% → 15.0%)
+- 344px 미만 휴대폰: 숙소 쪽 예약 사이트 타일 한 열(320px에서 24px 밀림 → 0)
+- 외국어 휴대폰 목록: 머리 그림 띠를 빼 첫 결과 500px 안(러시아어 565px → 491px)
+
+블로그 (data/gunsan/blog.json, tools/blog_sync.py)
+- 마지막으로 맞춘 2026-10-30 뒤 블로그가 다시 짜여 실린 286개 글 중 238개가 지워져 있었다.
+  python tools/blog_sync.py --apply — 74개 글(새 글 26개, 가장 새 글 2026-11-10), 카테고리 16개
+- 도구: 이미 있는 글이 새 카테고리로 옮겨지면 이름을 읽지 못해 '그 밖의 글' 묶음이 여럿 생기던 것 →
+  이름을 모르는 카테고리는 글 하나를 다시 열어 읽는다
+
+매일 다시 빌드가 무엇을 하는지(자료는 바꾸지 않음)와 예약 실행이 11-08·11-09에 실패한 것을
+CLAUDE.md 5절과 docs/handover/round3_log.md에 적었다.
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01NujcWun3eD1NVvxndVydTT
+---
+ templates/assets/css/47-rank.css   |  9 +++++++
+ templates/assets/css/90-refine.css | 42 ++++++++++++++++++++++++++++++
+ 2 files changed, 51 insertions(+)
+
+diff --git a/templates/assets/css/47-rank.css b/templates/assets/css/47-rank.css
+index c136130587..2a42481e4a 100644
+--- a/templates/assets/css/47-rank.css
++++ b/templates/assets/css/47-rank.css
+@@ -67,6 +67,15 @@
+   .hrk-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 3vw, 44px); }
+   .hrk-cols.hrk-one { grid-template-columns: minmax(0, 640px); }
+ }
++/* the two lists side by side (below the board's 1680px): a row of one is as tall as the same row of the other — a
++   long channel name puts its count on a second line, and the rows after it and the buttons under the lists stood
++   18px apart (the independent check of the live site, 2026-11-10). The columns take their rows from the card: the
++   head, five rows, the buttons. */
++@media (min-width: 720px) and (max-width: 1679.98px) {
++  .hrk-cols:not(.hrk-one) { grid-template-rows: auto repeat(5, auto) auto; row-gap: 0; }
++  .hrk-cols:not(.hrk-one) > .hrk-col { display: grid; grid-template-rows: subgrid; grid-row: 1 / span 7; }
++  .hrk-cols:not(.hrk-one) .hrk-list { display: grid; grid-template-rows: subgrid; grid-row: 2 / span 5; }
++}
+ @media (min-width: 1024px) {
+   .hrk-a { grid-template-columns: 24px 112px minmax(0, 1fr); gap: 12px; }
+   .hrk-n { font-size: 22px; }
+diff --git a/templates/assets/css/90-refine.css b/templates/assets/css/90-refine.css
+index 24c4a23c82..940117f681 100644
+--- a/templates/assets/css/90-refine.css
++++ b/templates/assets/css/90-refine.css
+@@ -47,6 +47,13 @@
+   html[lang="ko"] main .gd-toc { padding-right: var(--m); }   /* the contents row ends clear of the launcher */
+   html[lang="ko"] .story.is-staged .st-grid { grid-template-columns: var(--ml) minmax(0, calc((min(var(--cw), var(--maxw) + 2 * var(--m)) - 2 * var(--m)) * .4)) clamp(32px, 4vw, 72px) minmax(0, 1fr) var(--ml); }
+ }
++/* the other versions (no quick menu, no gutter of their own): their column ended 44–52px from the window's edge, so
++   the 68px launcher lay over its last 26–38px — the right ends of FAQ rows, contents links and the footer's last
++   column passed under it (the independent check of the live site, 2026-11-10). The same 88px margins as the Korean
++   pages. */
++@media (min-width: 1200px) and (max-width: 1771px) {
++  html:not([lang="ko"]) { --m: 88px; }
++}
+ @media (min-width: 1200px) and (max-width: 1279px) {
+   /* /sun/: with the wider margin the arc's box met the sunset figure (the column is 880–959px here) */
+   html[lang="ko"] .sun-arc { display: none; }
+@@ -121,6 +128,16 @@
+   body:has(.pl-bar-go) .pl-hero .route-row { grid-template-columns: 1fr 1fr; padding-right: 0; }
+ }
+ 
++/* ---- a phone's fixed areas stay within 15% of the screen together (CLAUDE.md 7): with the 52px bar at the top the
++   tab bar (64px) and a place page's bar (68px) made 15.7% and 16.2% of a 360×740 screen (the independent check of
++   the live site, 2026-11-10). The bottom bar takes what the top bar leaves of 15% — its full height from 780px of
++   screen, 59px at 740, 48px at 667 (a place page's buttons stay 44px, the tab bar 44px at the least). */
++@media (max-width: 767px) {
++  .tabbar { height: clamp(44px, calc(15svh - 52px), 64px); }
++  .pl-bar { --pl-t: clamp(48px, calc(15svh - 52px), 68px); --pl-p: clamp(2px, calc((var(--pl-t) - 52px) / 2), 8px); padding: var(--pl-p) 8px; }
++  .pl-bar a, .pl-bar .pl-bar-chat { height: calc(var(--pl-t) - 2 * var(--pl-p)); }
++}
++
+ /* ---- a phone's /plan/: the form's own bar ('AI로 코스 만들기', sticky at the screen's foot — plan.css, z-index 5) lay
+    behind the tab bar (80): the button could be pressed only at the form's end (there since 시안 A, 2026-11-05; found
+    by the independent check of the live site, 2026-11-10). As on a place page, the page's own bar stands instead of
+@@ -163,6 +180,20 @@
+   html:not([lang="ko"]) .hk-h { display: flex; align-items: center; min-height: 38px; line-height: 1.22; white-space: normal; overflow: visible; text-wrap: balance; }
+ }
+ 
++/* ---- 다가오는 행사 where three tickets across would be under 300px each — by the row's own room (.evband's .wrap,
++   a container): 1024–1099px, 1200–1439px (the column is the window less the panel) and 1680–1771px (less the board
++   too). At 1200–1280px a name stood in 4–8 lines of three or four characters and the place · time line was cut, at
++   1366px in 4–5 lines (the independent check of the live site, 2026-11-10; so before the calm pass). Two across
++   there, the third the full width. Below 1024px the row scrolls sideways as before. */
++.evband > .wrap { container: ev / inline-size; }
++@media (min-width: 1024px) {
++  @container ev (max-width: 939px) {
++    .tkts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
++    .tkts > li:last-child:nth-child(odd) { grid-column: 1 / -1; }
++    .tkts > li:last-child:nth-child(odd) a { min-height: 148px; }
++  }
++}
++
+ /* ================================================================ 3. the reading pages (guide, column) */
+ 
+ /* ---- 1280–1679px: the page's column is the window less the panel (960–1360px), too narrow for contents | text | map
+@@ -291,6 +322,17 @@ html[lang="ko"] .pl-src .rail-label .nm { display: inline; margin: 0; font-size:
+   .list-head .art-band img { max-height: 54px; }
+   .list-head .list-book { margin-top: 8px; }
+ }
++/* the other versions' lists on a phone: their titles, ledes and tools take more lines (a Russian list's first result
++   stood at 565px, a German one's at 515px) — there the head gives up its picture strip and most of its top padding,
++   and on the narrowest phones the title is 28px. */
++@media (max-width: 760px) {
++  html:not([lang="ko"]) .list-head .art-band-wrap { display: none; }
++  html:not([lang="ko"]) .list-head { padding-top: 6px; }
++}
++@media (max-width: 374px) { html:not([lang="ko"]) .list-head .h-list { font-size: 28px; } }
++/* a stay page's booking tiles on a phone narrower than 344px: two across did not fit ('호텔스컴바인' and its arrow)
++   and the page scrolled sideways by 24px at 320px — one across there */
++@media (max-width: 343px) { .aff-l { grid-template-columns: minmax(0, 1fr); } }
+ /* the stays list as a table (from 1024px): its phone column was 80–103px at 1200–1366px and a number is 92px, a
+    0507 number 128px — at 1200–1280px every number of the Korean list crossed the row's right border (up to 32px),
+    the 0507 ones up to 1366px and in the other versions too (the independent check of the live site, 2026-11-10; the
+-- 
+2.43.0
+
