@@ -16,10 +16,16 @@
      [data-show-map]                masthead context link (e.g. '지도'): on screens < 1024px switches the list
                                     to its map view instead of jumping
      [data-sticky]                  desktop sticky column taller than the window: sticks by its bottom edge
-     button[data-share]             공유 in the local bar (ui.lnav): the phone's share sheet, else the link copied with
-                                    a note (data-copied / data-failed); the link carries utm_source=share&utm_medium=
-                                    <method>; GA4 'share' {method, content_type, item_id: data-share-id} once it went
-                                    through (track.js window.siteTrack)
+     button[data-share]             공유 (ui.sharebtn: the local bar's, a list page's beside its title): the phone's
+                                    share sheet, else the link copied with a note (data-copied / data-failed); the link
+                                    carries utm_source=share&utm_medium=<method>; GA4 'share' {method, content_type,
+                                    item_id: data-share-id} once it went through (track.js window.siteTrack)
+     [data-shr]                     보내기 (_share.html.j2 box, pipeline/share.py): [data-shr-do] kakao (the Kakao SDK
+                                    of data-shr-sdk, fetched as a pointer reaches the tile; sendScrap of data-shr-url), copy_link,
+                                    web_share (the [data-shr-native] tile, shown when the browser has a share sheet),
+                                    sms · facebook · x · band (plain links: GA4 'share' on the press)
+     [data-shr-open]                '<지역>각 공유하기': opens dialog[data-shr-dlg] (the site's box); a link to /#share
+                                    without dialog support
      [data-hero-pause] in [data-hero], [data-mq-pause] in [data-marquee]
                                     pause buttons (WCAG 2.2.2), working from the first paint: toggle .is-paused on
                                     the box and aria-pressed; label in [data-lbl] or .lbl (texts from
@@ -1461,45 +1467,127 @@
     setStopped(stopped);
   });
 
-  // ------------------------------------------------------------ 공유 (ui.lnav button[data-share], operator 2026-10-17)
-  // The page's canonical address with utm_source=share&utm_medium=<method>, so the visits a shared link brings count
-  // apart in GA4. A closed share sheet sends nothing; a sheet the browser refuses falls back to copying the link.
-  var shareBtns = $all("[data-share]");
-  if (shareBtns.length) {
-    var shareNote = doc.createElement("p"), shareTimer = 0;
-    shareNote.className = "share-note";
-    shareNote.setAttribute("role", "status");   // in the page before any text, so the note is announced
-    doc.body.appendChild(shareNote);
+  // ------------------------------------------------------------ 공유 (ui.sharebtn button[data-share], operator 2026-10-17)
+  // and 보내기 ([data-shr], pipeline/share.py; operator 2026-11-11 '공유하기 버튼을 크게 … 여기저기 공유하기 쉽게').
+  // Every shared address is the page's canonical one (a box: its data-shr-url) with utm_source=share&utm_medium=
+  // <method>, so the visits a shared link brings count apart in GA4; GA4 'share' {method, content_type, item_id} goes
+  // once a share went through (a closed share sheet sends nothing; a sheet the browser refuses falls back to copying).
+  var shareBtns = $all("[data-share]"), shrBoxes = $all("[data-shr]");
+  if (shareBtns.length || shrBoxes.length) {
+    // the note (role=status) is in the page before any text, so it is announced — one in the body and one in the
+    // site's dialog (the page under a modal dialog is inert)
+    var shareTimer = 0;
+    var mkNote = function (where) {
+      var n = doc.createElement("p");
+      n.className = "share-note";
+      n.setAttribute("role", "status");
+      where.appendChild(n);
+      return n;
+    };
+    var bodyNote = mkNote(doc.body), dlgEl = doc.querySelector("dialog[data-shr-dlg]"), dlgNote = dlgEl ? mkNote(dlgEl) : null;
     var noteShare = function (text) {
-      shareNote.textContent = text;
-      shareNote.classList.add("is-on");
+      var n = dlgNote && dlgEl.open ? dlgNote : bodyNote;
+      n.textContent = text;
+      n.classList.add("is-on");
       win.clearTimeout(shareTimer);
-      shareTimer = win.setTimeout(function () { shareNote.classList.remove("is-on"); }, 2600);
+      shareTimer = win.setTimeout(function () { bodyNote.classList.remove("is-on"); if (dlgNote) dlgNote.classList.remove("is-on"); }, 2600);
     };
     var canon = doc.querySelector('link[rel="canonical"]');
-    var shareBase = (canon && canon.href) || location.href.split("#")[0].split("?")[0];
-    var shareLink = function (method) {
-      return shareBase + (shareBase.indexOf("?") < 0 ? "?" : "&") + "utm_source=share&utm_medium=" + method;
+    var pageUrl = (canon && canon.href) || location.href.split("#")[0].split("?")[0];
+    var tagged = function (base, method) {
+      return base + (base.indexOf("?") < 0 ? "?" : "&") + "utm_source=share&utm_medium=" + method;
+    };
+    var shared = function (method, id) {
+      if (typeof win.siteTrack === "function") win.siteTrack("share", {
+        method: method, content_type: doc.body.getAttribute("data-page-kind") || "", item_id: id || ""
+      });
+    };
+    // the link copied: data-copied / data-failed (the element's words, in the page's language)
+    var copyLink = function (el, base, id, said) {
+      var cb = navigator.clipboard;
+      var writing = cb && cb.writeText ? cb.writeText(tagged(base, "copy_link")) : Promise.reject(new Error("no clipboard"));
+      writing.then(function () { noteShare(said || el.getAttribute("data-copied")); shared("copy_link", id); },
+                   function () { noteShare(el.getAttribute("data-failed")); });
+    };
+    var sheet = function (el, base, title, id) {
+      if (typeof navigator.share !== "function") { copyLink(el, base, id); return; }
+      navigator.share({ title: title, url: tagged(base, "web_share") }).then(function () { shared("web_share", id); },
+        function (err) { if (!err || err.name !== "AbortError") copyLink(el, base, id); });
     };
     shareBtns.forEach(function (btn) {
-      var shared = function (method) {
-        if (typeof win.siteTrack === "function") win.siteTrack("share", {
-          method: method, content_type: doc.body.getAttribute("data-page-kind") || "",
-          item_id: btn.getAttribute("data-share-id") || ""
-        });
-      };
-      var copy = function () {
-        var cb = navigator.clipboard;
-        var writing = cb && cb.writeText ? cb.writeText(shareLink("copy_link")) : Promise.reject(new Error("no clipboard"));
-        writing.then(function () { noteShare(btn.getAttribute("data-copied")); shared("copy_link"); },
-                     function () { noteShare(btn.getAttribute("data-failed")); });
-      };
-      btn.addEventListener("click", function () {
-        if (typeof navigator.share !== "function") { copy(); return; }
-        navigator.share({ title: doc.title, url: shareLink("web_share") }).then(function () { shared("web_share"); },
-          function (err) { if (!err || err.name !== "AbortError") copy(); });
+      btn.addEventListener("click", function () { sheet(btn, pageUrl, doc.title, btn.getAttribute("data-share-id")); });
+    });
+
+    // 카카오톡: the Kakao SDK (data-shr-sdk, checked with data-shr-sri) is fetched once, only for a reader about to
+    // use it — a pointer reaching the tile (a finger's touch comes before its press), the tile's focus, or the site's
+    // dialog opening — never on a page view; the press then hands KakaoTalk the address (within the press's user
+    // activation, which the app's opening needs). Kakao.Share.sendScrap reads the page's own og:title / og:image.
+    // Without the SDK (blocked, offline) the link is copied and the note says so.
+    var kakaoP = null;
+    var kakao = function (box) {
+      if (kakaoP) return kakaoP;
+      var key = box.getAttribute("data-shr-key"), src = box.getAttribute("data-shr-sdk");
+      // Kakao SDK 2.x has no Kakao.Share before Kakao.init (found on the live site 2026-11-12: the SDK came, the
+      // check before init failed, and every press fell back to copying)
+      kakaoP = new Promise(function (res, rej) {
+        if (win.Kakao && win.Kakao.init) { res(win.Kakao); return; }
+        if (!key || !src) { rej(new Error("no key")); return; }
+        var s = doc.createElement("script");
+        s.src = src;
+        if (box.getAttribute("data-shr-sri")) { s.integrity = box.getAttribute("data-shr-sri"); s.crossOrigin = "anonymous"; }
+        s.onload = function () { if (win.Kakao && win.Kakao.init) res(win.Kakao); else rej(new Error("no Kakao")); };
+        s.onerror = function () { rej(new Error("sdk")); };
+        doc.head.appendChild(s);
+      }).then(function (K) {
+        if (!K.isInitialized()) K.init(key);
+        if (!K.Share || typeof K.Share.sendScrap !== "function") throw new Error("no Share");
+        return K;
+      });
+      kakaoP.catch(function () { kakaoP = null; });   // the next press tries again
+      return kakaoP;
+    };
+    var kakaoNow = function () { return win.Kakao && win.Kakao.Share && win.Kakao.isInitialized && win.Kakao.isInitialized() ? win.Kakao : null; };
+
+    shrBoxes.forEach(function (box) {
+      var base = box.getAttribute("data-shr-url") || pageUrl, id = box.getAttribute("data-shr-id") || "";
+      var title = box.getAttribute("data-shr-title") || doc.title;
+      if (typeof navigator.share === "function") $all("[data-shr-native]", box).forEach(function (li) { li.hidden = false; });
+      var kBtn = box.querySelector('[data-shr-do="kakao"]');
+      if (kBtn) ["pointerenter", "pointerdown", "focus"].forEach(function (ev) { kBtn.addEventListener(ev, function () { kakao(box).catch(function () {}); }); });
+      box.addEventListener("click", function (e) {
+        var t = e.target && e.target.closest ? e.target.closest("[data-shr-do]") : null;
+        if (!t || !box.contains(t)) return;
+        var how = t.getAttribute("data-shr-do");
+        if (how === "copy_link") { copyLink(box, base, id); return; }
+        if (how === "web_share") { sheet(box, base, title, id); return; }
+        if (how === "kakao") {
+          var send = function (K) { K.Share.sendScrap({ requestUrl: tagged(base, "kakao") }); shared("kakao", id); };
+          var failed = function () { copyLink(box, base, id, box.getAttribute("data-kakao-failed")); };
+          var K = kakaoNow();
+          if (K) { try { send(K); } catch (err) { failed(); } return; }
+          kakao(box).then(function (K2) { try { send(K2); } catch (err) { failed(); } }, failed);
+          return;
+        }
+        shared(how, id);   // 문자 · 페이스북 · X · 밴드: plain links, already tagged
       });
     });
+
+    // '<지역>각 공유하기' (the panel, the phone menu): the site's box in its dialog; without dialog support the link
+    // goes to the home's box (#share). A press outside the box closes it; Escape and × are the dialog's own.
+    var shrDlg = doc.querySelector("dialog[data-shr-dlg]");
+    if (shrDlg && typeof shrDlg.showModal === "function") {
+      $all("[data-shr-open]").forEach(function (a) {
+        a.addEventListener("click", function (e) {
+          e.preventDefault();
+          var menu = a.closest("details[open]");
+          if (menu) menu.open = false;
+          shrDlg.showModal();
+          var b = shrDlg.querySelector("[data-shr]");
+          if (b && b.getAttribute("data-shr-key")) kakao(b).catch(function () {});
+        });
+      });
+      shrDlg.addEventListener("click", function (e) { if (e.target === shrDlg) shrDlg.close(); });
+    }
   }
 
   // ------------------------------------------------------------ home cards (the first site's a11b69248, _mz.html.j2)

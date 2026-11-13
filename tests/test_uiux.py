@@ -184,9 +184,11 @@ def test_empty_real_data_has_honest_working_visitor_choices(tmp_path):
     source = json.loads((data / "site.json").read_text("utf-8"))["source"]["name"]
     assert "여행지 안내를 준비하고 있습니다" in home
     assert f"{source}에서 확인" in home
-    # nothing dresses the empty data up (CLAUDE.md 4): no photo, no illustration — only the menu's own 3D pictures,
-    # which sit beside their links with or without data
-    assert [i for i in scan(out / "index.html").images if not i["src"].startswith("/assets/icons/")] == []
+    # nothing dresses the empty data up (CLAUDE.md 4): no photo, no illustration — only the menu's own 3D pictures
+    # and the 제휴·관련 사이트 cards' logos (군산각 2026-11-11: the company's sites, not this data), which sit beside
+    # their links with or without data
+    assert [i for i in scan(out / "index.html").images
+            if not i["src"].startswith(("/assets/icons/", "/assets/related/", "/assets/brand/icon-"))] == []
     assert [i["alt"] for i in scan(out / "index.html").chrome_images] == [""]   # the launcher's face only
     assert "/places/" in scan(out / "index.html").links
     assert "/guides/" not in scan(out / "index.html").links

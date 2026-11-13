@@ -1,0 +1,24 @@
+/* 제휴·관련 사이트 (operator 2026-11-11; templates/_related_sites.html.j2, pipeline/related_sites.py): a strip of small cards at the
+   top of every Korean page's footer and larger cards at the foot of the home. Each card: the site's own app icon, its
+   name, one line about it. 3 across from 720px (2 rows for 6 sites), 2 across on phones. */
+.rel-strip { padding: 4px 0 24px; margin-bottom: 24px; border-bottom: 1px solid var(--hair); }
+.rel-strip h2 { margin-bottom: 10px; }
+.rel-ul, .rel-cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.rel-ul > li, .rel-cards > li { display: flex; min-width: 0; }
+.rel-a, .rel-c { flex: 1; min-width: 0; display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none;
+  background: var(--bg); border: 1px solid var(--hair); border-radius: 14px; }
+.rel-a { padding: 10px 12px; min-height: 60px; }
+.rel-a img { width: 36px; height: 36px; border-radius: 9px; flex: none; object-fit: cover; }
+.rel-t { display: flex; flex-direction: column; min-width: 0; }
+.rel-n { font-size: 14px; font-weight: 700; color: var(--ink); line-height: 1.35; }
+.rel-s { font-size: 12px; color: var(--ink-3); line-height: 1.4; margin-top: 2px; }
+.rel-a:hover, .rel-c:hover { border-color: var(--sea); }
+.rel-a:focus-visible, .rel-c:focus-visible { outline: 2px solid var(--sea); outline-offset: 2px; }
+.rel-cards { gap: 12px; }
+.rel-c { padding: 16px; min-height: 76px; border-radius: 16px; }
+.rel-c img { width: 48px; height: 48px; border-radius: 12px; flex: none; object-fit: cover; }
+.rel-c .rel-n { font-size: 15px; }
+.rel-c .rel-s { font-size: 13px; }
+@media (min-width: 720px) {
+  .rel-ul, .rel-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}

@@ -11,7 +11,7 @@
 <section class="pg-hero band-s" aria-labelledby="h-list">{{ artm.band((art_slots or {}).get('list.head.courses')) }}
   <div class="wrap">
     {% if course_src.label %}<p class="eyebrow">{{ course_src.label }}</p>{% endif %}
-    <h1 id="h-list" class="h-list">{{ site.region }} 여행 코스 <span class="count tn">{{ n_courses }}개</span></h1>
+    <div class="ttl-row"><h1 id="h-list" class="h-list">{{ site.region }} 여행 코스 <span class="count tn">{{ n_courses }}개</span></h1>{{ ui.sharebtn('courses', 'ko', 'ttl-share') }}</div>
     <p class="list-lede">경유지를 {{ '공식 ' if course_src.official }}코스 순서대로 적고 장소 페이지로 연결했습니다. 카드의 직선 합은 장소 좌표 사이 직선거리의 합이고(좌표 출처는 코스마다 표시), 경유지 좌표가 다 있을 때만 적었습니다.</p>
     {% if CV.groups|length > 1 %}{{ cc.nav(CV.groups, CV.w.nav) }}{% endif %}
   </div>

@@ -77,19 +77,20 @@ html.is-scrolled .mast::before { box-shadow: 0 1px 0 rgba(0, 0, 0, .08); }
 .lnav-links a:hover { color: var(--link); text-decoration: none; }
 .lnav-cta { flex: none; display: inline-flex; align-items: center; min-height: 44px; margin-left: 10px; padding: 0 15px; border: 7px solid transparent; border-left: 0; border-right: 0; background: var(--blue) padding-box; border-radius: 980px; color: #fff; font: 400 14px/1 var(--font); text-decoration: none; white-space: nowrap; transition: background-color .2s var(--fb); }
 .lnav-cta:hover { background-color: var(--blue-hi); color: #fff; text-decoration: none; }
-/* 공유 (ui.lnav share, site.js [data-share]): before the pill — its word beside the icon on desktop, the icon alone
-   (44px, the word kept for screen readers) on phones; the note after a copied link (.share-note) */
-.lnav-share { position: relative; flex: none; display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-width: 44px; min-height: 44px; margin-left: 6px; padding: 0 12px; border: 0; border-radius: 980px; background: transparent; color: var(--ink); font: 400 14px/1 var(--font); white-space: nowrap; cursor: pointer; }
-.lnav-share:hover { background: var(--tint); }
-.lnav-share-i { flex: none; width: 20px; height: 20px; }
+/* 공유 (ui.sharebtn: the local bar's, before its pill, and the list pages' beside their title; site.js [data-share]):
+   the icon and its word on a tinted pill at every width (operator 2026-11-11 '공유하기 버튼을 크게' — the icon alone
+   on phones was not read as 공유); the note after a copied link (.share-note) */
+.lnav-share { position: relative; flex: none; display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-width: 44px; min-height: 44px; margin-left: 6px; padding: 0 16px 0 13px; border: 0; border-radius: 980px; background: var(--tint) padding-box; color: var(--sea-deep); font: 400 14px/1 var(--font); white-space: nowrap; cursor: pointer; transition: background-color .2s var(--fb); }
+.lnav .lnav-share { border: 7px solid transparent; border-left: 0; border-right: 0; }   /* 44px to touch, 30px drawn as the pill beside it */
+.lnav-share:hover { background-color: var(--tint2); }
+.lnav-share-i { flex: none; width: 19px; height: 19px; }
 .share-note { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); z-index: 70; max-width: calc(100vw - 32px); padding: 11px 18px; border-radius: 980px; background: #172033; color: #fff; font: 400 14px/1.4 var(--font); text-align: center; transform: translate(-50%, 8px); opacity: 0; pointer-events: none; transition: opacity .2s var(--fb), transform .2s var(--fb); }
 .share-note.is-on { opacity: 1; transform: translate(-50%, 0); }
 @media (max-width: 1023px) {
   .lnav-links { display: none; }
   .lnav-t { font-size: 17px; }
   .lnav-cta { margin-left: 8px; }
-  .lnav-share { margin-left: 2px; padding: 0; }
-  .lnav-share-t { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .lnav-share { margin-left: 4px; padding: 0 14px 0 11px; }
 }
 @media (prefers-reduced-motion: reduce) { .share-note { transition: none; transform: translate(-50%, 0); } }
 

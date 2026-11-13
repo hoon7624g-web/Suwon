@@ -100,7 +100,8 @@ def test_highlights_row_and_viewer(tmp_path):
     assert "철길마을" in row and "Lake Blog" in row                   # label_ko, else the outlet
     assert "한국관광공사" in row                                      # the KOGL-1 photo's credit under the row
 
-    assert "<dialog" not in page                                     # the viewer is not in the page's first load
+    # the viewer is not in the page's first load (the one dialog there is '군산각 공유하기', operator 2026-11-11)
+    assert "data-hl-dialog" not in page and page.count("<dialog") == page.count('<dialog class="shr-dlg"') == 1
     viewer = json.loads((out / "abroad" / "highlights.json").read_text("utf-8"))["html"]
     dlg = re.fullmatch(r"<dialog ([^>]*)>(.*)</dialog>", viewer.strip(), re.S)
     attrs, body = dlg.group(1), dlg.group(2)
@@ -169,8 +170,9 @@ def test_page_unchanged_without_highlights(tmp_path):
         pages.append((out / "abroad" / "index.html").read_text("utf-8"))
         assert not (out / "abroad" / "highlights.json").exists()
     assert pages[0] == pages[1]
-    for marker in ("data-hl", "hl-dlg", "<dialog", "하이라이트"):
+    for marker in ("data-hl", "hl-dlg", "하이라이트"):
         assert marker not in pages[0]
+    assert pages[0].count("<dialog") == pages[0].count('<dialog class="shr-dlg"')   # only '군산각 공유하기'
     hero = pages[0].split('<h1 id="h-list"', 1)[1].split("</section>", 1)[0]
     assert re.search(r'</h1>\s*<p class="lede">[^<]*</p>\s*<nav class="v-nav"', hero)   # title, lede, then the nav
 

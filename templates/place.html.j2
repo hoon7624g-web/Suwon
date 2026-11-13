@@ -18,6 +18,7 @@
 {% import "_abroad.html.j2" as ab %}
 {% import "_near.html.j2" as nb %}
 {% import "_today.html.j2" as tdy %}
+{% import "_share.html.j2" as shm %}
 {% set fn = p.notes|length > 1 %}
 {#- the media block (영상 · 소식 · 해외 기사 · SNS): its parts name the heading and the page-nav link -#}
 {% set insta = p.e._insta or [] %}{% set abroad = p.e._abroad or [] %}{% set ab_all = abroad|selectattr('kind', 'equalto', 'article')|list %}{% set ab_ref = ab_all|selectattr('source_type', 'equalto', 'reference')|list %}{% set ab_art = ab_all|rejectattr('source_type', 'equalto', 'reference')|list %}{% set ab_post = abroad|selectattr('kind', 'equalto', 'post')|list %}{% set media_parts = (['영상'] if p.videos else []) + (['소식'] if (media or {}).news else []) + (['인스타그램'] if insta else []) + (['해외 기사'] if ab_art else []) + (['SNS'] if ab_post else []) + (['외국어 참고자료'] if ab_ref else []) %}
@@ -71,6 +72,8 @@
         <div class="kf-notes">{{ p1.notices(p.e._notices or [], p.e.id) }}{{ p1.kfnote(p.kf, p.e.id) }}</div>
         {{ ui.route(p.primary, p.front, p.rest, p.e.id, 'h-dir', nm) }}
         {{ ui.book(p.booking, p.bw, p.e.id) }}
+        {#- 보내기 (군산각 2026-11-11): under the route row and the booking rows — when a visitor has what decides the visit -#}
+        {{ shm.box(share_vm(page.canonical, nm ~ ' | ' ~ site.site_name, p.e.id), '같이 갈 사람에게 보내기', 'h-shr') }}
       </div>
       {% if lead %}
       <figure class="pv pv{{ lead.type }}">

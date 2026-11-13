@@ -1428,8 +1428,9 @@ def test_home_news_row_turns_by_itself_and_stops_for_the_reader(built):
             assert page.evaluate("document.querySelector('.hq-card').getBoundingClientRect().bottom <= "
                                  "document.querySelector('[data-hcar-view]').getBoundingClientRect().top")
             assert page.evaluate("document.querySelector('[data-hcar-view]').getBoundingClientRect().height") < 200
-            frame_w, beside = page.evaluate(side_by_side)
-            assert frame_w <= 96 and beside
+            assert page.evaluate("(() => { const f = document.querySelector('[data-hcar-item] .nc-frame')"
+                                 ".getBoundingClientRect(), t = document.querySelector('[data-hcar-item] .nc-t')"
+                                 ".getBoundingClientRect(); return f.width <= 96 && f.right <= t.left; })()")
             assert "is-stopped" in page.get_attribute("[data-hcar]", "class")
             assert page.get_attribute("[data-hcar-pause]", "aria-label") == "소식 자동 넘김 시작"
             assert page.text_content("[data-hcar-cur]") == "1"
@@ -1537,7 +1538,6 @@ def test_launcher_and_quick_menu_are_there_at_load(built_en):
                     page.wait_for_timeout(300)
                     assert page.evaluate("window.scrollY") == 0
                     shifted = page.evaluate("window.__ls.slice()")      # while the page loaded, before any scrolling
-                    box_at_load = True
                     qm = page.locator(".qm")
                     fab_style = "getComputedStyle(document.querySelector('.chat-fab'))"
                     if path == "/en/":
@@ -1574,12 +1574,15 @@ def test_launcher_and_quick_menu_are_there_at_load(built_en):
                         page.wait_for_function("document.documentElement.classList.contains('ask-out')", timeout=3000)
                         page.wait_for_timeout(400)
                     elif w < 768 and page.locator(".pl-bar").count():
-                        # a place page on a phone: its call/route bar at the bottom, the launcher right above it
+                        # a place page on a phone: its call/route bar at the bottom holds the 'AI 챗봇' button (the
+                        # calm pass, 군산각 2026-11-10: the launcher above the bar covered the content) — the launcher
+                        # itself is not drawn
                         assert page.locator(".pl-bar").is_visible()
-                        bar = page.locator(".pl-bar").bounding_box()
-                        fab = page.locator(".chat-fab").bounding_box()
-                        assert fab["y"] + fab["height"] <= bar["y"] and fab["x"] + fab["width"] > w - 60, (w, path)
-                        assert page.evaluate(fab_style + ".visibility") == "visible", (w, path)
+                        chat = page.locator(".pl-bar [data-tab-chat]")
+                        assert chat.is_visible() and "AI 챗봇" in chat.inner_text(), (w, path)
+                        cb = chat.bounding_box()
+                        assert cb["width"] >= 44 and cb["height"] >= 44 and cb["y"] + cb["height"] <= h, (w, path, cb)
+                        assert page.evaluate(fab_style + ".display") == "none", (w, path)
                     else:
                         assert page.evaluate(fab_ok), (w, path)
                     if path == "/en/" or w < 1024:
@@ -1617,7 +1620,7 @@ def test_launcher_and_quick_menu_are_there_at_load(built_en):
             ctx = browser.new_context(viewport={"width": 1100, "height": 800})
             ctx.route("**/*", serve)
             page = ctx.new_page()
-            page.goto("http://site.test/places/이성당/", wait_until="load")
+            page.goto("http://site.test/places/binhaewon/", wait_until="load")
             page.wait_for_timeout(300)
             items = page.locator(".qm-i")
             assert [items.nth(i).get_attribute("aria-label") for i in range(items.count()) if items.nth(i).is_visible()] \
@@ -2066,7 +2069,9 @@ def _food(S):
 def test_place_guide_course_and_event_pages_have_one_share_button(S, built):
     """Operator 2026-10-17 (공유하기 + GA4, as on the 군산 site): the local bar of every place, guide, course and event
     page holds one 공유 button naming the page's id (the place, guide, course or event series id) with the Korean
-    words, before the bar's action; the home and the lists have none."""
+    words, before the bar's action. Since 2026-11-11 (군산각, '공유하기 버튼을 크게') the course list and /videos/ carry the
+    same pill beside their title (this site has no 숙박 예약하기 or blog page); the home and the other lists have none
+    (the home's '<지역>각 알리기' box is the share there; a phone's list keeps its first result within 500px)."""
     from urllib.parse import unquote
     e = _food(S)
     pages = {e["_path"]: e["id"]}
@@ -2076,8 +2081,19 @@ def test_place_guide_course_and_event_pages_have_one_share_button(S, built):
         html = (built / unquote(path).strip("/") / "index.html").read_text("utf-8")
         assert SHARE_BTN.findall(html) == [(want, "링크를 복사했습니다", "링크를 복사하지 못했습니다", "공유")], path
         assert html.index('class="lnav-share"') < html.index('class="lnav-cta"'), path
-    for path in ("index.html", "places/index.html", "food/index.html", "guides/index.html"):
-        assert "data-share" not in (built / path).read_text("utf-8"), path
+    assert "data-share " not in (built / "index.html").read_text("utf-8")
+    title_pill = re.compile(r'<div class="ttl-row"><h1 [^>]*>.*?</h1><button type="button" class="lnav-share ttl-share" '
+                            r'data-share data-share-id="([^"]*)"', re.S)
+    for path, want in (("courses/index.html", "courses"), ("videos/index.html", "videos")):
+        if not (built / path).is_file():   # the subset fixture has no videos
+            continue
+        html = (built / path).read_text("utf-8")
+        assert title_pill.findall(html) == [want], path
+        assert html.count("data-share ") == 1, path
+    for path in ("places/index.html", "food/index.html", "stays/index.html", "guides/index.html", "events/index.html",
+                 "abroad/index.html"):
+        if (built / path).is_file():
+            assert "data-share " not in (built / path).read_text("utf-8"), path
 
 
 def _serve(built):
@@ -2121,8 +2137,8 @@ def test_share_opens_the_sheet_or_copies_and_counts_in_ga4(S, built):
     """In a browser (Playwright + Chromium): the 공유 button hands the phone's share sheet the page title and its
     canonical address with utm_source=share&utm_medium=web_share, and GA4 gets 'share' {method, content_type,
     item_id} only once it went through; a closed sheet sends nothing; a refused sheet, or a browser without one,
-    copies the link (utm_medium=copy_link) and says so in the note. On phones the button is the 44px icon alone, its
-    word kept for screen readers; on desktop the word shows."""
+    copies the link (utm_medium=copy_link) and says so in the note. Its word shows on phones too (operator
+    2026-11-11: the icon alone was not read as 공유), at least 44px to touch, inside the 390px screen."""
     sync_api = pytest.importorskip("playwright.sync_api")
     e = _food(S)
     path = f"http://site.test{quote(e['_path'])}"
@@ -2144,7 +2160,8 @@ def test_share_opens_the_sheet_or_copies_and_counts_in_ga4(S, built):
                 btn = page.locator(".lnav [data-share]")
                 box = btn.bounding_box()
                 assert box["width"] >= 44 and box["height"] >= 44 and box["x"] + box["width"] <= 390, mode
-                assert btn.evaluate("b => getComputedStyle(b.querySelector('.lnav-share-t')).clip") != "auto", mode
+                assert page.locator(".lnav [data-share] .lnav-share-t").is_visible(), mode
+                assert btn.inner_text().strip() == "공유", mode
                 btn.click()
                 page.wait_for_timeout(300)
                 ev = page.evaluate("window.__events")
@@ -2153,7 +2170,7 @@ def test_share_opens_the_sheet_or_copies_and_counts_in_ga4(S, built):
                     assert shared == [{"title": page.title(), "url": f"{canon}?utm_source=share&utm_medium=web_share"}], mode
                 assert ev == ([["share", {"method": method, **want_ev}]] if method else []), mode
                 assert cop == ([f"{canon}?utm_source=share&utm_medium=copy_link"] if copied else []), mode
-                note = page.locator(".share-note")
+                note = page.locator("body > .share-note")
                 if copied:
                     assert note.inner_text() == "링크를 복사했습니다" and "is-on" in note.get_attribute("class"), mode
                     assert note.get_attribute("role") == "status"
@@ -2270,9 +2287,9 @@ def test_the_story_stage_keeps_its_text_years_and_photo_together_on_tall_windows
                 ctx.close()
         finally:
             browser.close()
-    for (h, k), gap in gaps.items():   # a taller window adds no gap between the text and the years
+    for (w, h, k), gap in gaps.items():   # a taller window adds no gap between the text and the years
         if h == 1840:
-            assert gap - gaps[(900, k)] <= 24, gaps
+            assert gap - gaps[(w, 900, k)] <= 24, gaps
 
 
 def test_season_ahead_is_the_same_day_one_or_two_years_back_within_three_months():

@@ -160,7 +160,9 @@ def test_home_sns_row_links_each_post_to_its_card(tmp_path):
     assert "철길마을 교복 사진 게시물입니다." in row.group(1) and "<b>X</b> · someone" in row.group(1)
     assert "아직 승인 전" not in home
     assert 'href="/abroad/#ab-sns"' in home and "SNS 게시물 2개 모두" in home
-    low = home.lower()
+    # the 보내기 box's X tile (operator 2026-11-11, pipeline/share.py) is X's share form for this site's address — not
+    # a post, nor an embed: every other x.com address stays off the home
+    low = home.lower().replace("https://x.com/intent/tweet?", "")
     assert "platform.twitter.com" not in low and "instagram.com/embed" not in low and "x.com/" not in low
     page = (out / "abroad" / "index.html").read_text("utf-8")
     for h in hrefs:

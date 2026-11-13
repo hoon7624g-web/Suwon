@@ -46,7 +46,7 @@ from urllib.parse import urlencode, urlsplit
 
 from markupsafe import Markup, escape
 
-from . import art, ask, booking, intl_text, jsonld, media, notices, present, relations
+from . import art, ask, booking, intl_text, jsonld, media, notices, present, relations, share
 from . import conditions as CD
 from . import locales as LC
 # a cited booking site's own page in a reader's language (QA 2026-10-15 SRC-05b): moved to booking.py with the booking
@@ -2248,6 +2248,9 @@ class Pages:
             page.update(image=self.S.abs(og["src"]), image_alt=og["alts"].get(code, ""), image_w=og["w"], image_h=og["h"])
         elif not page.get("image") and brand_og(self.S.site, path):   # no illustration either: the brand picture
             page.update(image=self.S.abs(BRAND_OG), image_alt=self.site.site_name, image_w=512, image_h=512)
+        elif not page.get("image") and art.PLACE_PAGE.match(path) and (card := share.card(self.site.site_name, code)):
+            # a place page without a Type1 photo: the logo card (군산각 2026-11-11, build._render), its alt the name
+            page.update(image=self.S.abs(card["src"]), image_alt=card["alt"], image_w=card["w"], image_h=card["h"])
         elif (page.get("image") or "").startswith("/"):
             page["image"] = self.S.abs(page["image"])
         html = self.env.get_template(template).render({**self.common(page, page_kind, path), **ctx})
@@ -2289,7 +2292,8 @@ class Pages:
             t.s("place_desc_fallback", name=p["name"], r=site.region)
         images = vm["photos"][:7]
         page = {"title": title, "description": desc, "canonical": p["url"], "og_type": "article",
-                "image": next((ph["url"] for ph in vm["photos"] if ph["type"] == 1), vm["photos"][0]["url"] if vm["photos"] else ""),
+                # a Type1 photo only (operator 2026-11-11: previews crop; else the logo card, render())
+                "image": next((ph["url"] for ph in vm["photos"] if ph["type"] == 1), ""),
                 "geo": e["_geo"], "geo_placename": f"{site.region} {p['name']}", "crumbs": crumbs, "map": bool(e["_geo"]),
                 "jsonld": [jsonld.dumps(place_graph(site, vm, title, crumbs, images))]}
         if p["noindex"]:

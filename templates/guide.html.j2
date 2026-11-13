@@ -2,6 +2,7 @@
 {% import "_art.html.j2" as artm %}
 {% import "_p2.html.j2" as p2 %}
 {% import "_abroad.html.j2" as ab %}
+{% import "_share.html.j2" as shm %}
 {#- A purpose guide (Apple direction + the reading layer, owner 2026-10-09: "줄글이라 사람이 읽기 불편"). Every sentence
     of the guide is in the HTML, verbatim and in order; the page adds a layer to scan:
     - the answer card: the summary's first sentence as the answer line (big), the guide's places as mini cards, then
@@ -190,6 +191,9 @@
     <div class="rail-body"><div class="faq faq-acc">{% for f in G.faqs %}<details class="qa"{% if loop.first %} open{% endif %}><summary><h3>{{ f.q }}</h3><span class="qa-i" aria-hidden="true"></span></summary><p>{{ f.a|squash|decaution }}{% if G.faq_notes|length > 1 %}{{ f.n|csup }}{% endif %}</p></details>{% endfor %}</div>{{ ui.chnotes(G.faq_notes) }}</div>
   </section>
   {% endif %}
+
+  {#- 보내기 (operator 2026-11-11): at the reading's end, before 이어서 보기 -#}
+  <div class="wrap shr-sec">{{ shm.box(share_vm(page.canonical, (G.label or G.title) ~ ' | ' ~ site.site_name, G.g.id), '이 가이드 보내기', 'h-shr') }}</div>
 
   {{ ui.seealso(see) }}
   <section class="wrap chapter ch-rail ch-src cv" aria-labelledby="h-src">

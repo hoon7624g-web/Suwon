@@ -1,4 +1,4 @@
-{% import "_ui.html.j2" as ui %}{% import "en/_chrome.html.j2" as enc %}{% import "_lang.html.j2" as lg %}{% import "_side.html.j2" as sdm %}<!doctype html>
+{% import "_ui.html.j2" as ui %}{% import "en/_chrome.html.j2" as enc %}{% import "_lang.html.j2" as lg %}{% import "_side.html.j2" as sdm %}{% import "_related_sites.html.j2" as relm %}{% import "_share.html.j2" as shm %}<!doctype html>
 {#- base.html.j2 — every page (Apple direction). Head logic (title, description, canonical, robots/noindex,
     search-engine tokens in production only, og/twitter, geo, JSON-LD, GA4 + track.js in production with a GA4 id) is
     unchanged by the redesign. Blocks for page templates:
@@ -179,6 +179,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <nav class="menu-panel" aria-label="전체 메뉴">
         {% if sd %}{{ sdm.acts(sd.acts, nav_current) }}
         {{ sdm.groups(SG, nav_current, 'menu') }}
+        {% if site_share %}{{ shm.opener(wm) }}{% endif %}
         {{ sdm.partner(partners_path|default(''), nav_current, site.site_name) }}
         {{ sdm.day(sd, 'menu') }}{% endif %}
         <ul class="menu-sub">{% if has_search %}<li><a href="/search/"{% if nav_current == '/search/' %} aria-current="page"{% endif %}>검색</a></li>{% endif %}{% if not sd %}<li><a href="/about/"{% if nav_current == '/about/' %} aria-current="page"{% endif %}>소개·출처</a></li>{% endif %}{{ lg.others(langs) }}</ul>
@@ -189,7 +190,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     {{ sdm.day(sd, 'side') }}
     {{ sdm.acts(sd.acts, nav_current) }}
     <nav class="side-nav" aria-label="주 메뉴">{{ sdm.groups(SG, nav_current, 'side') }}</nav>
-    {{ sdm.partner(partners_path|default(''), nav_current, site.site_name) }}
+    {#- <지역>각 공유하기 (군산각 2026-11-11) over 문의/제휴: the two stay at the panel's foot together (css 88-share) -#}
+    <div class="sd-foot">{% if site_share %}{{ shm.opener(wm) }}{% endif %}{{ sdm.partner(partners_path|default(''), nav_current, site.site_name) }}</div>
   </div>{% endif %}
 </header>
 {% endif %}
@@ -204,6 +206,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 {% if lang != 'ko' %}{{ enc.footer(nav, site, langs, wordmark, tourapi_used, t, loc, wm_sym) }}{% else %}
 <footer class="foot">
   <div class="wrap">
+    {% if page_kind != 'home' %}{{ relm.strip(related_sites) }}{% endif %}
     <div class="foot-in">
       <nav class="foot-col foot-nav" aria-label="둘러보기">
         <h2>둘러보기</h2>
@@ -252,6 +255,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </nav>{% endif %}
 {# the site assistant's launcher, the last thing in <body> on every page (_chat.html.j2; the chat loads on its press) #}
 {% include "_chat.html.j2" %}
+{#- the dialog of '군산각 공유하기' (the panel, the phone menu; _share.html.j2, operator 2026-11-11) -#}
+{% if lang == 'ko' and site_share and sd %}{{ shm.dialog(site_share, wm ~ ' 공유하기', (site.region or '') ~ ' 여행을 준비하는 사람에게 ' ~ wm ~ ' 주소를 보내 주세요. 장소·음식점·숙소의 이용시간·요금·길찾기를 한곳에서 볼 수 있습니다.') }}{% endif %}
 </body>
 </html>
 {% if false %}{% block lnav %}{% endblock %}{% block bodyclass %}{% endblock %}{% endif %}

@@ -57,7 +57,8 @@
 {%- endmacro %}
 {#- icon_paths(name): the drawing of icon(name) alone (icon(), sprite()) -#}
 {% macro icon_paths(name) -%}
-{%- if name == 'bed' %}<path d="M3 19V7M3 15h18v4M21 15v-3a3 3 0 0 0-3-3h-8v6"/><circle cx="6.5" cy="11.5" r="1.8"/>
+{%- if name == 'share' %}<path d="M12 3v12M7.5 7.5 12 3l4.5 4.5M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/>
+{%- elif name == 'bed' %}<path d="M3 19V7M3 15h18v4M21 15v-3a3 3 0 0 0-3-3h-8v6"/><circle cx="6.5" cy="11.5" r="1.8"/>
 {%- elif name == 'bowl' %}<path d="M3.5 11h17a8.5 8.5 0 0 1-17 0Z"/><path d="M8 7.5c0-1.2 1.2-1.2 1.2-2.5M12 7.5c0-1.2 1.2-1.2 1.2-2.5M16 7.5c0-1.2 1.2-1.2 1.2-2.5"/>
 {%- elif name == 'wave' %}<path d="M2 16c2.5 0 2.5-1.8 5-1.8S9.5 16 12 16s2.5-1.8 5-1.8S19.5 16 22 16M2 20c2.5 0 2.5-1.8 5-1.8S9.5 20 12 20s2.5-1.8 5-1.8S19.5 20 22 20"/><path d="m5 12 4.5-7 3 4.5L14 7l5 5"/>
 {%- elif name == 'tree' %}<path d="M12 21v-5"/><path d="M12 3 6.5 10h3L6 15h12l-3.5-5h3Z"/>
@@ -306,18 +307,26 @@
 <p class="book-n">{{ W.note }}</p></div>{% endif %}
 {%- endmacro %}
 
+{#- sharebtn(id, lang, cls): the 공유 pill (operator 2026-10-17; its word shown on phones too since 2026-11-11 — '웹브라우저
+    에서 공유하기를 … 못 하는 사람들이 많으니까'): site.js [data-share] — the phone's share sheet, else the link copied
+    with a note; GA4 'share'. id = the page's record id (GA4 item_id), lang = the words of SHARE_WORDS; JS only.
+    ui.lnav's, and beside the title of 숙박 예약하기 · 코스 목록 · 영상 · 블로그 (cls 'ttl-share', in a .ttl-row; not on
+    the places / food / stays lists: a phone keeps their first result within 500px). -#}
+{% macro sharebtn(id, lang='ko', cls='') -%}
+{% set sw = SHARE_WORDS[lang] %}<button type="button" class="lnav-share{{ ' ' ~ cls if cls }}" data-share data-share-id="{{ id }}" data-copied="{{ sw.copied }}" data-failed="{{ sw.failed }}" data-js-only><svg class="lnav-share-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="lnav-share-t">{{ sw.label }}</span></button>
+{%- endmacro %}
 {#- lnav(title, links, cta, label): the local bar, put in {% block lnav %} of base.html.j2. title = the page name;
     links = [(label, '#id')] (desktop only); cta = {url, label, ext, track, provider, place} | none — the page's one
     contextual action (place: 길찾기 / 지도 to the exact route, course: 경유지 목록, event: 길찾기, guide: 걷는 순서).
     share = {id, lang} | none — the 공유 button before it (operator 2026-10-17; site.js [data-share]: the phone's share
     sheet, else the link copied; GA4 'share'): id = the place, guide, course or event series id, lang = the words of
-    SHARE_WORDS; JS only (data-js-only), an icon with its word hidden on phones. -#}
+    SHARE_WORDS; JS only (data-js-only), the icon and its word (sharebtn). -#}
 {% macro lnav(title, links=[], cta=none, label='', share=none) -%}
 <nav class="lnav" aria-label="{{ label or (title ~ ' 바로가기') }}" data-lnav>
 <div class="wrap lnav-in">
 <p class="lnav-t">{{ title }}</p>
 {% if links %}<ul class="lnav-links">{% for lab, href in links %}<li><a href="{{ href }}">{{ lab }}</a></li>{% endfor %}</ul>{% endif %}
-{% if share %}{% set sw = SHARE_WORDS[share.lang] %}<button type="button" class="lnav-share" data-share data-share-id="{{ share.id }}" data-copied="{{ sw.copied }}" data-failed="{{ sw.failed }}" data-js-only><svg class="lnav-share-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="lnav-share-t">{{ sw.label }}</span></button>{% endif %}
+{% if share %}{{ sharebtn(share.id, share.lang) }}{% endif %}
 {% if cta %}<a class="lnav-cta" href="{{ cta.url }}"{% if cta.ext %} rel="noopener"{% endif %}{% if cta.track %} data-track="{{ cta.track }}"{% endif %}{% if cta.provider %} data-provider="{{ cta.provider }}"{% endif %}{% if cta.place %} data-place="{{ cta.place }}"{% endif %}>{{ cta.label }}</a>{% endif %}
 </div>
 </nav>

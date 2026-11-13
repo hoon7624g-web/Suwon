@@ -69,6 +69,41 @@
    ]
   ]
  },
+ "btn-share": {
+  "px": [
+   64,
+   128,
+   240
+  ],
+  "avif": [
+   [
+    "btn-share-64.avif",
+    64
+   ],
+   [
+    "btn-share-128.avif",
+    128
+   ],
+   [
+    "btn-share-240.avif",
+    240
+   ]
+  ],
+  "webp": [
+   [
+    "btn-share-64.webp",
+    64
+   ],
+   [
+    "btn-share-128.webp",
+    128
+   ],
+   [
+    "btn-share-240.webp",
+    240
+   ]
+  ]
+ },
  "cond-parking": {
   "px": [
    64,

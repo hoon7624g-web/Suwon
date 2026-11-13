@@ -23,7 +23,7 @@
   <div class="wrap">
     {% if not topic %}<span class="hd-mascot">{{ ui.kpic('mascot-camera', 'play', 104) }}</span>{% endif %}
     {% if topic %}<p class="kicker"><a href="/videos/">영상</a><span>주제</span></p>{% endif %}
-    <h1 id="h-list" class="h-list">{% if topic %}{{ site.region }} {{ label }} 영상{% else %}영상으로 보는 {{ site.region }}{% endif %} <span class="count tn">{{ total }}편</span></h1>
+    <div class="ttl-row"><h1 id="h-list" class="h-list">{% if topic %}{{ site.region }} {{ label }} 영상{% else %}영상으로 보는 {{ site.region }}{% endif %} <span class="count tn">{{ total }}편</span></h1>{{ ui.sharebtn(('videos-' ~ topic.slug) if topic else 'videos', 'ko', 'ttl-share') }}</div>
     <div class="v-tools">
       {% if official %}<button type="button" class="v-off" aria-pressed="false" data-v-official>공식 채널만 <span class="tn">{{ official }}</span></button>{% endif %}
       {% if topic %}<a class="v-all" href="/videos/">모든 주제 보기<span class="arr" aria-hidden="true">›</span></a>

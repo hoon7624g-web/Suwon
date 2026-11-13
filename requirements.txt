@@ -2,3 +2,4 @@ jinja2>=3.1
 markupsafe>=2.1
 pytest>=8
 opencc-python-reimplemented==0.1.7
+segno==1.6.6

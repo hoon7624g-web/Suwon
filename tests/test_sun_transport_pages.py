@@ -254,7 +254,10 @@ def test_sun_page(built):
     html = built.render(built.S.tt_sun, T.sun_page, T.SUN_PATH, "sun.html.j2", "sun")
     p, nodes = check_page(html)
     assert "11월 5일(목)" in p.body and "해 뜨는 시각 07:00" in p.body and "해 지는 시각 17:30" in p.body
-    assert "오늘" not in p.body                         # sun.js adds it on the visitor's own date
+    # sun.js adds '오늘' on the visitor's own date: the built table never says it. The page's own content only — the
+    # footer's 제휴·관련 사이트 strip names 날씨각 by its own line ('오늘의 날씨 지수', 군산각 2026-11-11)
+    main = scan(html.split("<main", 1)[1].split("</main>", 1)[0].join(("<main", "</main>")))
+    assert "오늘" not in main.body
     assert "data-sun" in html and 'data-d="2026-11-06"' in html
     assert "1~2분 다를 수 있습니다" in p.body and "한국천문연구원" in p.body
     # 수원 has no tide stations (almanac.json 2026-11-05: sun only): no tide block, and the title says sun only

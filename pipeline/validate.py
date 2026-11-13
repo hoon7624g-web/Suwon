@@ -111,7 +111,7 @@ from urllib.parse import unquote, urlsplit
 
 from collections import Counter
 
-from . import (art, ask, booking, chat_index, en_site, intl_check, media, notices, partners, plan, present, relations,
+from . import (art, ask, booking, chat_index, en_site, intl_check, media, notices, partners, plan, present, related_sites, relations,
                tickets)
 from . import locales as LC
 from .build import DESC_MAX, HL_VIEWER, LISTS, MODES, State, fact_row, index_counts, load_abroad
@@ -1791,6 +1791,8 @@ def validate(data_dir: Path, out: Path, mode: str = "production") -> tuple[list[
         (E if strict else W)("home cover", problem)
     for problem in partners.data_problems(S):   # 파트너 되기 (pipeline/partners.py): partners.json itself
         E("partners.json", problem)
+    for problem in related_sites.data_problems(S):   # 제휴·관련 사이트 (pipeline/related_sites.py)
+        E("related_sites.json", problem)
     sitemap = _sitemap_locs(out)
     llms = {name: (out / name).read_text("utf-8") if (out / name).exists() else ""
             for name in ("llms.txt", "llms-full.txt")}

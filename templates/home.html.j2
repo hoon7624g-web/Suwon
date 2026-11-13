@@ -9,6 +9,8 @@
 {% import "_abroad.html.j2" as ab %}
 {% import "_side.html.j2" as sdm %}
 {% import "_mz.html.j2" as mz %}
+{% import "_related_sites.html.j2" as relm %}
+{% import "_share.html.j2" as shm %}
 {#- The home page (시안 A, the first site's 2026-11-02~05 home ported 2026-11-05 — operator '군산각에 맞춰서 업그레이드'):
     the first screen is one card over the opening photo (site.json home.media.cover, KOGL-1) — the H1, the lede, the big
     site search, the four core lists (관광지 · 음식점 · 숙소 · 코스) and 내 일정 만들기 —, then the pinned event's banner
@@ -538,5 +540,21 @@
     <ul class="p2-links">{% for l in site.official_links %}<li><a href="{{ l.url }}" rel="noopener" data-track="official_click"><span class="p2-l-n">{{ l.name }}</span>{% if l.note %}<span class="p2-l-v">{{ l.note }}</span>{% endif %}{{ ui.icon('external', 'icon-sm') }}</a></li>{% endfor %}</ul>
   </div>
 </section>
+{% endif %}
+
+{# 군산각 알리기 (operator 2026-11-11, pipeline/share.py): the site's own 보내기 box — the panel's and the phone menu's
+   '군산각 공유하기' open the same box in a dialog, and come here (#share) without JavaScript #}
+{% if site_share %}
+{% set T.i = T.i + 1 %}
+<section class="home-shr{{ ' tone-2' if T.i is odd }}" id="share" aria-labelledby="h-home-shr">
+  <div class="wrap">{{ shm.box(site_share, site.site_name ~ ' 알리기', 'h-home-shr', site.region ~ ' 여행을 준비하는 사람에게 ' ~ site.site_name ~ ' 주소를 보내 주세요. 장소·음식점·숙소의 이용시간·요금·길찾기를 한곳에서 볼 수 있습니다.') }}</div>
+</section>
+{% endif %}
+
+{# 제휴·관련 사이트 (operator 2026-11-11, pipeline/related_sites.py): the company's sites and related sites as cards — the
+   subpages show them once as a footer strip instead (operator 2026-11-12) #}
+{% if related_sites %}
+{% set T.i = T.i + 1 %}
+{{ relm.cards(related_sites, ui, ' tone-2' if T.i is odd else '', site.site_name) }}
 {% endif %}
 {% endblock %}

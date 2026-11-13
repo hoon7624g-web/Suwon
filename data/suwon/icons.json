@@ -290,6 +290,11 @@
       "glyph": "play",
       "label": "숙소 페이지 콘텐츠",
       "group": "partners"
+    },
+    "btn-share": {
+      "glyph": "share",
+      "label": "수원각 공유하기",
+      "group": "side.share"
     }
   }
 }

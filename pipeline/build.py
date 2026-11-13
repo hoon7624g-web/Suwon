@@ -47,7 +47,8 @@ from urllib.parse import quote
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from markupsafe import Markup, escape
 
-from . import art, ask, chat_index, en_site, icons, jsonld, notices, partners, plan, relations, tickets, timetables
+from . import (art, ask, chat_index, en_site, icons, jsonld, notices, partners, plan, related_sites, relations, share,
+               tickets, timetables)
 from .city import of as city_of
 from .enrich import haversine_m
 from .maplinks import DEFAULT_TMAP_SCHEME, build_links, precision_summary, search_link
@@ -225,6 +226,7 @@ def make_env() -> Environment:
     env.globals["card_vm"] = present.card_vm
     env.globals["SHARE_WORDS"] = LC.SHARE_WORDS   # ui.lnav's share button, in the page's language
     env.globals["ART_CARD_NOTE"] = LC.ART_CARD_NOTE   # a home card's illustration line
+    env.globals["share_vm"] = share.view          # 보내기 box of one address (pipeline/share.py, templates/_share.html.j2)
     env.globals["key_facts"] = present.key_facts
     # the site assistant's launcher (templates/_chat.html.j2): the city's words for chat.js in the page's language
     env.globals["chat_ui"] = chat_index.ui_config
@@ -454,12 +456,16 @@ def latest(*dates) -> str | None:
 
 
 def og_image(images: list[dict]) -> str:
-    """og:image: a Type1 photo first (platforms crop previews; Type3 must not be cropped — owner decision
-    pending), else the first licensed photo as before."""
-    for im in images or []:
-        if im.get("license") == "KOGL-1":
-            return im["url"]
-    return images[0]["url"] if images else ""
+    """og:image: a Type1 photo only. Link previews (KakaoTalk, Facebook, X …) crop the picture and a Type3 photo may
+    not be cropped (CLAUDE.md 3.4) — operator 2026-11-11 ('2번은 니 권장안대로'): a page whose photos are all Type3
+    shows the site's picture instead (_render: og.default on the lists and readings, share.CARD — the logo card, no
+    illustration — on a place page, CLAUDE.md 4)."""
+    return next((im["url"] for im in images or [] if im.get("license") == "KOGL-1"), "")
+
+
+def first_og(entities) -> str:
+    """The first Type1 photo among the places' (og_image of each, in order), or ''."""
+    return next((u for e in entities if e and (u := og_image(e.get("_images") or []))), "")
 
 
 def ko_date(iso: str | None, with_year: bool = True) -> str:
@@ -535,6 +541,8 @@ class State:
         self.booking = _load(data_dir / "booking.json", {})
         # 파트너 되기 (pipeline/partners.py, operator 2026-11-05): /partners/ and the '문의/제휴' links; none without the file
         self.partners = _load(data_dir / "partners.json", {})
+        # 제휴·관련 사이트 (군산각 2026-11-11, pipeline/related_sites.py): the footer strip and the home's cards
+        self.related_sites = _load(data_dir / "related_sites.json", {})
         # URL slugs over every record of a file (a draft's stored slug is reserved too); the problems — a malformed
         # or duplicate stored slug — are errors in pipeline.validate
         self.slug_problems = (assign_record_slugs(self.entities_all, "place", self.city)
@@ -737,6 +745,8 @@ class State:
         self.warnings: list[str] = list(self.relation_warnings)
         present.prepare(self, data_dir)
         self.common_vm = present.common_vm(self)
+        # 공유하기 (pipeline/share.py, 군산각 2026-11-11): the site's own 보내기 box (home #share, the panel's dialog)
+        self.site_share = share.view(self.abs("/"), self.common_vm["wordmark"], "site")
         # /sun/ 일출·일몰 시간 and /transport/ 교통 시간표 (pipeline/timetables.py, operator 2026-10-31): their
         # view models, None without data — the pages, the footer's links and the place / guide links follow them
         self.tt_sun = timetables.sun_vm(self)
@@ -783,6 +793,10 @@ class State:
                 "has_plan": bool(self.entities),   # /plan/, the AI course planner (Korean pages, pipeline/plan.py)
                 # 파트너 되기 (pipeline/partners.py): the side panel / phone menu / footer link to /partners/
                 "partners_path": partners.PATH if self.partners else "",
+                "related_sites": related_sites.view(self),   # 제휴·관련 사이트 (pipeline/related_sites.py): footer, home
+                # 보내기 (pipeline/share.py, operator 2026-11-11): the site's own box — the home's '군산각 알리기' and the
+                # dialog of the panel's / phone menu's '군산각 공유하기'
+                "site_share": self.site_share,
                 "has_sun": bool(self.tt_sun), "has_transport": bool(self.tt_transport),   # /sun/ · /transport/
                 "tt_guides": timetables.TRANSPORT_GUIDES if self.tt_transport else (),   # guides that link /transport/
                 "art_slots": art.for_lang(self.art, "ko"), "side": self.side, **self.common_vm,
@@ -1216,6 +1230,9 @@ def _render(env, S: State, out: Path, template: str, path: str, page: dict, page
         page.update(image=S.abs(og["src"]), image_alt=og["alt"], image_w=og["w"], image_h=og["h"])
     elif not page.get("image") and brand_og(S.site, path):   # no illustration either: the brand picture
         page.update(image=S.abs(BRAND_OG), image_alt=S.site.get("site_name") or "", image_w=512, image_h=512)
+    elif not page.get("image") and art.PLACE_PAGE.match(path) and (card := share.card(S.site_view.get("site_name"))):
+        # a place page without a Type1 photo: the logo card (군산각 2026-11-11), never an illustration
+        page.update(image=S.abs(card["src"]), image_alt=card["alt"], image_w=card["w"], image_h=card["h"])
     html = env.get_template(template).render({**S.common(page, page_kind), **ctx})  # a page's own keys win
     _write(out, path, html)
     if path != "/404.html" and in_sitemap:
@@ -1894,6 +1911,10 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
     osm = map_provider(S.site) == "osm"
     env.globals["kakao_sdk"] = "" if osm else kakao_sdk_url(S.site)  # the map boxes' data-kakao-sdk (_ui mapfig, _p1 …)
     env.globals["osm_lib"] = OSM_LIB if osm else ""                   # … or data-osm-lib (map_provider 'osm')
+    # 보내기 (pipeline/share.py, 군산각 2026-11-11): the Kakao share uses the maps' key (the domain registered for it);
+    # without a key the box has no 카카오톡 tile
+    env.globals["kakao_key"] = str(S.site.get("kakao_js_key") or "").strip()
+    env.globals["kakao_share_sdk"], env.globals["kakao_share_sri"] = share.SDK, share.SDK_SRI
     _prepare_out(out, data_dir)
     region = S.city.region
     # Dates (P0-4): every lastmod is a data date shown on that page; aggregate pages use the newest date
@@ -1920,7 +1941,7 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
         # the ItemList follows the page: the records in the order the list shows them (권역 groups, list_vm)
         page = _simple_page(S, path, f"{t['name']} — {region} 여행지 {len(members)}곳", desc, crumbs,
                             [it["e"]["_url"] for g in L["groups"] for it in g["recs"]],
-                            image=next((og_image(e["_images"]) for e in members if e["_images"]), ""))
+                            image=first_og(members))
         _render(env, S, out, "theme.html.j2", path, page, "theme", lastmod, theme=t, members=members, L=L)
 
     for kind, cfg in LISTS.items():
@@ -1937,7 +1958,7 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
         page = _simple_page(S, cfg["path"], title,
                             f"{region} {josa(cfg['title'], '을/를')} 유형·테마·지역으로 골라 보고, 방문 정보와 길찾기로 이어 갑니다.",
                             crumbs, [it["e"]["_url"] for g in L["groups"] for it in g["recs"]], map=bool(points),
-                            filters=True, image=next((og_image(e["_images"]) for e in items if e["_images"]), ""))
+                            filters=True, image=first_og(items))
         if not items and S.mode == "production":  # (Q10) a list with no record is no answer: noindex, no sitemap
             page["robots"] = "noindex, follow"
         page_kind = "places" if kind == "attraction" else f"list-{kind}"
@@ -1971,7 +1992,7 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
         about = [jsonld.place_ref(t["_url"], t, city=S.city) for t in unique]
         page = {"title": g['title'], "description": guide_description(g, S),
                 "canonical": g["_url"], "og_type": "article", "crumbs": crumbs, "map": bool(points),
-                "image": next((og_image(t["_images"]) for t in targets if t["_images"]), ""),
+                "image": first_og(targets),
                 # the summary and FAQ answers as guide.html.j2 shows them (present.decaution), so the structured
                 # data never says more than the page
                 "jsonld": [jsonld.dumps(jsonld.guide_graph(
@@ -2023,7 +2044,7 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
                                          f"{name}: 경유지 {co['n_places']}곳, {co['first']}에서 {co['last']}까지.",
                                          f"{name}: 경유지 {co['n_places']}곳.") or f"{name}.",
                 "canonical": c["_url"], "crumbs": crumbs, "map": bool(co["map"]),
-                "image": c["_cover"]["url"] if c.get("_cover") else "",
+                "image": first_og(S.ent_by_slug.get(s.get("place_slug")) for s in c.get("stops") or []),
                 "jsonld": [jsonld.dumps(jsonld.course_graph(c, c["_url"], crumbs, refs, orig.get("source_url") or "",
                                                             description=course_lede))]}
         linked = sum(1 for s in stops if s["target"])
@@ -2049,7 +2070,7 @@ def build(data_dir: Path, out: Path, mode: str = "production") -> dict:
         desc = (f"{josa('·'.join(sources), '이/가')} 안내하는 {region} 여행 코스와 경유지를 정리했습니다." if sources
                 else f"{region} 여행 코스 {len(S.courses)}개와 경유지를 정리했습니다.")
         page = _simple_page(S, path, f"{region} 여행 코스" + (f" — {'·'.join(durations)}" if durations else ""),
-                            desc, crumbs, image=next((c["_cover"]["url"] for c in S.courses if c.get("_cover")), ""))
+                            desc, crumbs, image=next((u for c in S.courses if (u := first_og(S.ent_by_slug.get(s.get("place_slug")) for s in c.get("stops") or []))), ""))
         _render(env, S, out, "courses_index.html.j2", path, page, "courses", lastmod,
                 co_groups=present.course_groups_vm(S), CV=present.course_index_vm(S))
 

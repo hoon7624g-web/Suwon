@@ -1,6 +1,8 @@
 {% extends "base.html.j2" %}
 {% import "_p2.html.j2" as p2 %}
 {% import "_media.html.j2" as md %}
+{% import "_abroad.html.j2" as ab %}
+{% import "_share.html.j2" as shm %}
 {#- One event series (Apple direction): the newest dated edition in the place-page skeleton. First screen: the date
     big, the relative chip, the name, the tiles (기간 · 시간 · 요금 · 장소 · 문의; a value another source gives
     differently reads '출처마다 다름'), '확인 필요' once, the route row and one programme fact. Below: the facts card
@@ -37,6 +39,8 @@
         </div>
         {% if V.route %}{{ ui.route({'url': V.route, 'role': 'route', 'key': 'kakao_route', 'label': '카카오맵 길찾기', 'precise': true}, V.front, [], '', 'h-dir', V.sr.name) }}{% endif %}
         {% if V.lede2 %}<p class="ev-lede">{{ V.lede2 }}</p>{% endif %}
+        {#- 보내기 (operator 2026-11-11): under the dates, the place and the route -#}
+        {{ shm.box(share_vm(page.canonical, V.title ~ ' | ' ~ site.site_name, V.sr.key), '같이 갈 사람에게 보내기', 'h-shr') }}
       </div>
     </div>
   </header>
