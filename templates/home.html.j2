@@ -51,7 +51,7 @@
 {% set RS_YT = has_videos and (popular_videos or yt_channels) %}
 {% set RS_IG = IG and (insta_channels or home_insta) %}
 {% if RS_YT or RS_IG %}
-<aside class="h-rside" aria-label="{{ site.region }} 인기 유튜브·인스타그램 큐레이션" data-lenis-prevent{% if RS_YT and RS_IG %} data-tabs{% endif %}>
+<aside class="h-rside" aria-label="{{ site.region }} 인기 {{ '유튜브·인스타그램' if RS_YT and RS_IG else ('유튜브' if RS_YT else '인스타그램') }} 큐레이션" data-lenis-prevent{% if RS_YT and RS_IG %} data-tabs{% endif %}>
   <div class="hrs-head">
     <h2 class="hrs-title">지금 많이 보는 {{ site.region }}</h2>
     {% if RS_YT and RS_IG %}<div class="hrs-tabs" role="tablist" aria-label="유튜브·인스타그램 전환">

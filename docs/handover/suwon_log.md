@@ -115,3 +115,18 @@
 - build·validate: sample·preview·production 오류 0. `intl_table.py report` 8개 언어 소리 옮김·낡은 번역·번역 없음 0. npm test 339개 중 331 통과·실패 0.
 - pytest 전체: 실패 4건 중 3건은 바꾸기 전 커밋(94b8c987b)에서도 똑같이 실패(test_audit_engine 1, test_ask_browser 런처 대화 2 — 앞 기록과 같음), test_list_conditions 브라우저 1건은 전체 실행 부하 중 view transition 경고로 실패하고 따로 돌리면 통과(앞 기록의 가끔 실패하는 시험).
 - `public/`은 다시 만들지 않음(이 브랜치는 배포하지 않음, 병합 뒤 공개 빌드에서 반영).
+
+## 2026-11-13 군산각 2026-11-06~11-12 기능 이식(운영자 '18곳 동시에 세션 띄워서 진행해', 이식 키트 `port-kit-20261113`, 작업 브랜치 claude/port-gunsan-20261113 — 배포 안 함)
+
+### 옮긴 것
+- A 정돈(군산 57dc9fc51e·82d3298d02·6db5c1de62·cb17302e82): `css/90-refine.css`, 휴대폰 장소 하단 바 'AI 챗봇'(떠 있는 런처는 그 쪽에서 안 보임), '이어서 보기'(`present.see_also` — 칼럼이 없어 가이드·코스만), 가이드 읽기 층(`present.section_reading`, guides.json body[].short 없음 → 짧은 제목 없이), 장소의 SNS·해외 카드 2개 뒤 '더 보기', 1200px부터 런처 68px·여백 안, 인쇄 때 접힌 내용, 계획 도구 이름 'AI 코스 만들기'. 목록 '확인 필요' 한 줄(군산 rec-need)은 이 사이트 `ui.need`가 이미 하므로 옮기지 않음. 짧은 창의 패널 날씨 카드 접기는 이 사이트 카드에 맞게 새로 씀(css/80-side: 1020px 미만 네 칸 접음 282→211px, 880px 미만 요약·상태 줄도 150px — 메뉴 첫 링크 900px 창 675px·768px 창 553px, 전에는 800px로 화면 밖).
+- B 인기 순위(군산 1d154bf1bf~452f884205): `load_yt_channels`(조회수 순)·`load_insta`·`load_insta_channels`·`live_channels`, 홈 순위 블록(.hrk)·1680px부터 오른쪽 보드·/videos/ 화제 영상 순위, 가이드의 인스타그램 장. `data/suwon/yt_channels.json`은 kit `yt_popular.py`로 — 10만 회 이상이 3편이라 많이 본 20편(최저 2,533회). 조회수가 videos.json에 없어 2026-11-13 YouTube 영상 페이지에서 28편의 '조회수 n회'를 읽어 `view_text`·`view_checked_at`으로 넣음(1편 Sa1TMtcTGWA는 읽지 못해 순위 밖). 인스타그램 자료는 만들지 않음 — 없으면 유튜브만(탭·빈 칸 없음), 들어오면 둘 다(`tests/test_rank.py` 두 경우).
+- C 제휴·관련 사이트(군산 990ddd3420·fc665ce6d8·ea603d2f58): 회사 사이트 4개만(AI오투오·WebforAI·날씨각·여행각, 아이콘 kit 그대로, 운영사 설명만 '수원각'), 서브페이지 바닥글 맨 위 띠 + 홈 맨 아래 카드.
+- D 공유하기(군산 244be4900b·41fcaff371·9ff8d86340·98dba2ee07): `pipeline/share.py`(segno 1.6.6), 보내기 상자·카카오톡(SDK 2.x init 뒤 Share)·대화상자·'수원각 공유하기'·코스 목록·영상 제목 옆 알약·btn-share 아이콘. og:image는 제1유형 사진만, 없으면 장소는 로고 카드(`og-card.png`, kit `og_card.js` — 수원각 상징·#7A2328), 그 밖은 사이트 그림. OSM 사이트에는 카카오 키를 싣지 않음.
+- E 날씨(군산 5b16a0b7d3): '자세히 보기' → https://weather.o2o.kr/today/gyeonggi/suwon(위젯과 같은 지역 코드 4111500000), `site.json` weather.page_path.
+- 보류(운영자): 숙박 제휴 링크·숙박 예약하기·파트너 숙소 표시·블로그·ADO2.
+
+### 확인
+- validate 오류·경고(전 → 뒤): preview 0·3 → 0·3, sample 0·1 → 0·1, 공개 빌드(스크래치 폴더) 0·3 → 0·3. `public/`은 건드리지 않음.
+- pytest 전체(이식 뒤): 바꾼 부분 시험 통과. 남은 실패 3건은 바꾸기 전(origin/main)에도 똑같이 실패 — test_audit_engine 1, test_ask_browser 런처 대화 2.
+- 화면: 360·390·768·1440(+1920·짧은 창 768/900/1080) 캡처 2회 검토, 옆으로 밀림 0. 카카오톡 공유는 배포 뒤 실제 도메인에서 확인 필요.
