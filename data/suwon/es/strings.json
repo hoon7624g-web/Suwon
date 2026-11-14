@@ -2198,5 +2198,21 @@
   "designation_source:소상공인시장진흥공단 · 공공데이터포털 전국 백년가게 지정리스트 현황 정보(2026-08-20)": {
     "ko": "소상공인시장진흥공단 · 공공데이터포털 전국 백년가게 지정리스트 현황 정보(2026-08-20)",
     "es": "Servicio de Pequeñas Empresas y Mercados · Portal de Datos Públicos, lista nacional de Tiendas Centenarias designadas (2026-08-20)"
+  },
+  "chrome.photos_more": {
+    "en": "More photos",
+    "es": "Más fotos"
+  },
+  "chrome.foot_city_photos": {
+    "en": "Photos: {name}",
+    "es": "Fotos: {name}"
+  },
+  "chrome.about_city_photos": {
+    "en": "Photos from {name}: {n}, at {places} places. They come from the city's own websites, are shown resized and are credited “{name}”.",
+    "es": "Fotos con el crédito «{name}»: {n}, en {places} lugares. Proceden de los sitios web de la ciudad y se muestran reducidas."
+  },
+  "chrome.about_art_city": {
+    "en": "The illustrations on this site were drawn with generative AI; every photo of a place is a photo from the Korea Tourism Organization or {name}, shown with its source.",
+    "es": "Las ilustraciones de este sitio se dibujaron con IA generativa; todas las fotos de lugares son de la Organización de Turismo de Corea o de la fuente «{name}», con su fuente."
   }
 }

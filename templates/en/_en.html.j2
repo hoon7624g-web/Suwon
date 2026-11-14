@@ -27,7 +27,8 @@
 {% macro csup(n) -%}{% if n %}<sup class="fn"><span class="vh"> {{ t.source_word }} </span>{{ n }}</sup>{% endif %}{%- endmacro %}
 
 {% macro credit(ph, long=true) -%}
-{{ t.f('source_is', name=ph.credit or t.kto) }}{% if long and ph.lic %} · {{ ph.lic }}{% endif %}
+{#- by the photo's source, never a Korean credit left on a card's photo: the city's name in this language, else KTO -#}
+{%- if ph.src == 'city' %}{{ t.f('source_is', name=en.city_credit) }}{% else %}{{ t.f('source_is', name=t.kto) }}{% if long and ph.lic %} · {{ ph.lic }}{% endif %}{% endif %}
 {%- endmacro %}
 
 {% macro figure(ph, cap='', idx=0, total=0, cls='', eager=false, sizes='100vw', credit_=true, named=true) -%}

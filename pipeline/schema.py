@@ -28,7 +28,12 @@ LICENSE_LABELS = {
     # source named; it is not a 공공누리 type, so original text is still not republished (publish_rules decides)
     "OPEN": "이용허락범위 제한 없음(출처 표시)",
     "UNKNOWN": "이용조건 확인 전",
+    # the city government's own photos (its sites and photo portal), used with its permission — credit the city,
+    # resizing and cropping allowed (운영자 결정 2026-11-14 '모두 허락 받았어 …'; site.json city_photos)
+    "CITY-PERMIT": "시청 이용 허락(출처표시·편집 가능)",
 }
+# photos that may be resized, cropped and re-encoded (same-origin derivatives): KOGL-1 and the city's permitted ones
+EDITABLE_LICENSES = ("KOGL-1", "CITY-PERMIT")
 # Default: only types that allow commercial use are republished verbatim.
 DEFAULT_ALLOWED_LICENSES = ("KOGL-1", "KOGL-3")
 # TourAPI image field cpyrhtDivCd -> licence code

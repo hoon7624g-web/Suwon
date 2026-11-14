@@ -41,6 +41,7 @@ from __future__ import annotations
 import json
 import re
 from collections import Counter
+from functools import cached_property
 from pathlib import Path
 from urllib.parse import urlencode, urlsplit
 
@@ -900,9 +901,37 @@ class Site:
         kto = self.t.s("kto")
         for i, ph in enumerate(phs, 1):
             alt = self.t.s("photo_alt", name=p["name"], i=i) if len(phs) > 1 else p["name"]
+            if ph.get("src") == "city":   # the city's own photo: its name in this language, no licence words
+                out.append({**ph, "alt": alt, "name": p["name"], "credit": self.city_credit, "lic": ""})
+                continue
             out.append({**ph, "alt": alt, "name": p["name"], "credit": kto,
                         "lic": self.lic("KOGL-1" if ph["type"] == 1 else "KOGL-3")})
         return out
+
+    @cached_property
+    def city_credit(self) -> str:
+        """The city government's name in this language (site.json city_photos.credit_intl) — its photos' credit."""
+        cfg = self.S.site.get("city_photos") or {}
+        return squash_ws((cfg.get("credit_intl") or {}).get(self.loc.code)) or squash_ws(cfg.get("credit"))
+
+    @cached_property
+    def has_city_photos(self) -> bool:
+        """Does a place of this version show a city photo (the footer then names the city as a photo source)?"""
+        return any(ph.get("src") == "city" for p in self.places.values() for ph in p["e"].get("_photos") or [])
+
+    def credit_line(self, phs) -> str:
+        """The one photo-credit text of a set of photos in this language: '<KTO> · <licences>' and the city's name
+        for its own photos, joined by ' / ' — only the sources present."""
+        phs = [x for x in phs or [] if x]
+        kto = [x for x in phs if x.get("src", "kto") != "city"]
+        parts = []
+        if kto:
+            types = sorted({x.get("type") for x in kto})
+            parts.append(self.t.s("kto") + " · " + self.loc.list_sep.join(
+                self.lic("KOGL-1" if t == 1 else "KOGL-3") for t in types))
+        if any(x.get("src") == "city" for x in phs):
+            parts.append(self.city_credit)
+        return " / ".join(parts)
 
     # ---- key facts (the first-screen tiles and card rows)
     def slot_label(self, e: dict, name: str, v: dict | None = None) -> str:
@@ -1258,6 +1287,8 @@ class Site:
                          "note": present.related_note(loc.code, present.related_ym(doc, loc.code), who,
                                                       web_url(src.get("url")) if src.get("url") else "")}
         photo_lics = present.photo_credits(near_sights + near_biz + parts + went_rows)
+        # the city's own photos among the rows: credited with its name in this language (never the KTO line's words)
+        photo_city = self.city_credit if present.photo_city(near_sights + near_biz + parts + went_rows) else ""
         official = e.get("official") or {}
         orig = e.get("original") or {}
         list_cfg = self.lists()[kind]
@@ -1296,7 +1327,11 @@ class Site:
             "visitkorea": official.get("visitkorea_url", ""), "homepage": own_home if own_home and not HANGUL.search(own_home) else "",
             "facts_checked": facts_checked, "reviewed_at": e.get("reviewed_at") or "",
             "translated_at": rec.get("translated_at") or "", "ko_path": e["_path"],
-            "lics": list(dict.fromkeys(ph["lic"] for ph in photos)),
+            "lics": list(dict.fromkeys(ph["lic"] for ph in photos if ph["lic"])),
+            "credit_all": self.credit_line(photos), "photo_city": photo_city,
+            # 사진 더 보기: the photos after the lead and the strip (7), small files only, each opening to ph.full
+            "more_photos": [{**present.thumb(ph), "src": ph.get("src", "kto"), "full": ph.get("full") or ph["url"],
+                             "opens_page": ph.get("opens_page", False), "alt": ph["alt"]} for ph in photos[7:]],
             # 오늘의 상태 · 오늘의 바다 (present.today_vm, operator 2026-10-31): the Korean record's days in this
             # language's words (locales.TODAY_WORDS) — times, dates and states only, never the source's Korean words
             "today": present.today_vm(S, e, loc.code, self.provider),
@@ -1408,7 +1443,7 @@ class Site:
         map.js leaves those groups out of the first view)."""
         S, C = self.S, self.city
         L = present.list_vm(S, kind)
-        groups, n_photo, lics = [], 0, set()
+        groups, n_photo, lics, phs = [], 0, set(), []
         points = []
         for g in L["groups"]:
             recs = []
@@ -1430,7 +1465,9 @@ class Site:
                 th = present.thumb(p["e"]["_photos"][0]) if p["e"].get("_photos") else None
                 if th:
                     n_photo += 1
-                    lics.add(th["type"])
+                    phs.append(th)
+                    if th.get("src") != "city":
+                        lics.add(th["type"])
                 rid = f"r{it['i']}"
                 recs.append({"p": p, "e": p["e"], "id": rid, "name": p["name"], "path": p["path"],
                              "type": self.type_label(p["e"]), "area": self.area(p["e"]), "photo": th,
@@ -1466,7 +1503,7 @@ class Site:
         filters["result"] = self.t.sn(f"count_{kind}", count)
         return {"kind": kind, "groups": groups, "count": count, "cols": cols, "points": points, "n_geo": len(points),
                 "far_label": squash_ws((C.far or {}).get("label")), "none_label": C.none_label, "filters": filters,
-                "map_open": len(points) >= 0.3 * max(1, count), "n_photo": n_photo,
+                "map_open": len(points) >= 0.3 * max(1, count), "n_photo": n_photo, "credit": self.credit_line(phs),
                 "lics": [self.lic("KOGL-1") if t == 1 else self.lic("KOGL-3") for t in sorted(lics)]}
 
     def cond_tags(self, p: dict, kind: str, conds: dict) -> list[dict]:
@@ -1697,9 +1734,11 @@ class Site:
                                                                            or cs[0]["c"].get("group") or "") or title),
                            "range": present.stops_range([C["n_places"] for C in cs], w), "cards": cards, "courses": cs})
         cards = [k for g in groups for k in g["cards"]]
-        lics = sorted({(k["photo"]["type"], k["photo"]["lic"]) for k in cards if k["photo"]})
+        lics = sorted({(k["photo"]["type"], k["photo"]["lic"]) for k in cards if k["photo"] and k["photo"]["lic"]})
+        names = ([t.s("kto")] if any(k["photo"] and k["photo"].get("src") != "city" for k in cards) else []) + \
+            ([self.city_credit] if any(k["photo"] and k["photo"].get("src") == "city" for k in cards) else [])
         return {"groups": groups, "lics": [lab for _, lab in lics], "w": LC.COURSES_WORDS[code],
-                "credit": t.s("kto"), "any_photo": any(k["photo"] for k in cards),
+                "credit": " / ".join(names) or t.s("kto"), "any_photo": any(k["photo"] for k in cards),
                 "any_areas": any(k["areas"] for k in cards)}
 
     def course_week(self, stops: list[dict], cv: dict) -> dict:
@@ -2054,7 +2093,12 @@ def place_graph(site: Site, vm: dict, title: str, crumbs: list, images: list[dic
         node["additionalProperty"] = props
     if images:
         kto = site.t.s("kto")
-        node["image"] = [{"@type": "ImageObject", "contentUrl": im["url"], "creditText": kto, "copyrightNotice": kto,
+        city = site.city_credit
+        # a city photo (CITY-PERMIT): our same-origin copy's absolute address, the city's name, no licence page
+        node["image"] = [{"@type": "ImageObject", "contentUrl": site.S.abs(im["url"]), "creditText": city,
+                          "copyrightNotice": city, "creator": {"@type": "Organization", "name": city}}
+                         if im.get("src") == "city" else
+                         {"@type": "ImageObject", "contentUrl": im["url"], "creditText": kto, "copyrightNotice": kto,
                           "creator": {"@type": "Organization", "name": kto},
                           "license": (lic := jsonld.LICENSE_URLS["KOGL-1" if im["type"] == 1 else "KOGL-3"]),
                           "acquireLicensePage": lic}
@@ -2169,6 +2213,7 @@ class Pages:
                 "page": page, "page_kind": page_kind, "noindex": S.cfg["noindex"], "banner": "", "mode": S.mode,
                 "lang": loc.html, "og_locale": loc.og, "nav": nav, "nav_current": site.current_nav(page_kind),
                 "ctxbtn": None, "has_search": False, "has_videos": False, "tourapi_used": S.tourapi_used,
+                "city_photo_l": site.city_credit if site.has_city_photos else "",
                 "wordmark": site.site_name, "build_date": S.today, "langs": self.intl.menu(path), "en": site,
                 "t": site.t, "loc": loc, "region": site.region, "ko_site_name": S.site.get("site_name", ""),
                 "home_h1": site.home_h1,
@@ -2293,7 +2338,7 @@ class Pages:
         images = vm["photos"][:7]
         page = {"title": title, "description": desc, "canonical": p["url"], "og_type": "article",
                 # a Type1 photo only (operator 2026-11-11: previews crop; else the logo card, render())
-                "image": next((ph["url"] for ph in vm["photos"] if ph["type"] == 1), ""),
+                "image": next((ph["url"] for ph in vm["photos"] if present.og_photo(ph)), ""),
                 "geo": e["_geo"], "geo_placename": f"{site.region} {p['name']}", "crumbs": crumbs, "map": bool(e["_geo"]),
                 "jsonld": [jsonld.dumps(place_graph(site, vm, title, crumbs, images))]}
         if p["noindex"]:
@@ -2315,7 +2360,7 @@ class Pages:
             desc = t.sn(f"desc_{kind}", L["count"], r=r)
             page = {**self._simple(cfg["path"], title, desc, crumbs, urls),
                     "image": next((it["photo"]["url"] for g in L["groups"] for it in g["recs"]
-                                   if it["photo"] and it["photo"]["type"] == 1), "")}
+                                   if present.og_photo(it["photo"])), "")}
             lastmod = latest_of([it["e"].get("_page_date") for g in L["groups"] for it in g["recs"]])
             self.render("en/list.html.j2", cfg["path"], page, "places" if kind == "attraction" else f"list-{kind}",
                         lastmod, L=L, cfg=cfg, h1=cfg["h1"], lead=site.T(f"LISTS.{kind}.lead"),
@@ -2359,7 +2404,7 @@ class Pages:
                 graph.append(jsonld.faq_page(G["faqs"], x["url"]))
             page = {"title": title, "description": answer_description(G["summary"], [], loc.desc_max, loc),
                     "canonical": x["url"], "og_type": "article", "crumbs": crumbs, "map": bool(G["points"]),
-                    "image": next((it["photo"]["url"] for it in G["places"] if it["photo"] and it["photo"]["type"] == 1), ""),
+                    "image": next((it["photo"]["url"] for it in G["places"] if present.og_photo(it["photo"])), ""),
                     "jsonld": [jsonld.dumps({"@context": "https://schema.org", "@graph": graph})]}
             self.render("en/guide.html.j2", x["path"], page, "guide", x["g"].get("_page_date"), G=G)
         crumbs = self.crumbs((t.s("guides"), self.abs(f"{home}guides/")))
@@ -2394,7 +2439,7 @@ class Pages:
             page = {"title": title, "description": answer_description(C["summary"], [], loc.desc_max, loc)
                     or t.sn("course_desc_fallback", C["n_places"], name=C["name"]),
                     "canonical": x["url"], "crumbs": crumbs, "map": bool(C["map"]),
-                    "image": next((s["photo"]["url"] for s in C["stops"] if s["photo"] and s["photo"]["type"] == 1), ""),
+                    "image": next((s["photo"]["url"] for s in C["stops"] if present.og_photo(s["photo"])), ""),
                     "jsonld": [jsonld.dumps({"@context": "https://schema.org", "@graph": [trip, jsonld.breadcrumb(crumbs)]})]}
             self.render("en/course.html.j2", x["path"], page, "course", x["c"].get("_page_date"), C=C)
         groups: dict[str, list] = {}
@@ -2466,7 +2511,9 @@ class Pages:
         path = f"{site.home}about/"
         crumbs = self.crumbs((t.s("about"), self.abs(path)))
         page = self._simple(path, t.s("about_title"), t.s("about_desc", site=site.site_name), crumbs)
-        lics = Counter(ph["type"] for p in site.places.values() for ph in p["e"].get("_photos") or [])
+        lics = Counter(ph["type"] for p in site.places.values() for ph in p["e"].get("_photos") or [] if ph.get("src") != "city")
+        city_n = sum(1 for p in site.places.values() for ph in p["e"].get("_photos") or [] if ph.get("src") == "city")
+        city_places = sum(1 for p in site.places.values() if any(ph.get("src") == "city" for ph in p["e"].get("_photos") or []))
         # English: a name made by the government guideline (romanized proper part + English generic) as the example
         example = next((p["name"] for p in sorted(site.places.values(), key=lambda p: p["e"]["id"])
                         if "generic" in squash_ws(p["rec"].get("name_en_source")) and p["name"] != romanize(p["e"]["name"])),
@@ -2475,6 +2522,7 @@ class Pages:
                     latest_of([p["e"].get("_page_date") for p in site.places.values()]),
                     n_places=len(site.places), n_index=sum(1 for p in site.places.values() if not p["noindex"]),
                     n_guides=len(site.guides), n_courses=len(site.courses), n_series=len(site.series), lics=lics,
+                    n_city_photos=city_n, n_city_places=city_places,
                     name_example=example, offer=site.offer())
 
     def search(self) -> None:

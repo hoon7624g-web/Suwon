@@ -62,7 +62,8 @@
     <div class="rail-body prose">
       <p>사진이 있는 장소는 {{ n_photo_places }}곳이고, 공공누리 제1유형 {{ img_lic[1] or 0 }}장·제3유형 {{ img_lic[3] or 0 }}장을 씁니다. 사진 옆이나 목록 끝에 ‘출처: 한국관광공사’와 유형을 적습니다.</p>
       <p>제3유형(변경금지)은 자르거나 늘리거나 보정하지 않고 원래 비율 그대로 싣습니다.{% if n_thumb %} 목록의 작은 사진은 한국관광공사가 원본과 함께 올려 둔 작은 크기 파일({{ n_thumb }}장)을 그대로 씁니다.{% endif %} 사진이 없는 곳에 대신 넣는 그림은 없습니다.</p>
-      <p id="illustrations">이 사이트의 일러스트는 생성형 AI로 그렸고, 장소 사진은 모두 출처를 함께 적은 한국관광공사의 공식 사진입니다.</p>
+      {% if n_city_photos %}<p>{{ city_credit }}의 사진은 {{ n_city_places }}곳에 {{ n_city_photos }}장을 씁니다. {{ city_credit }}{% if city_sources %}({% for s in city_sources %}<a href="{{ s.url }}" rel="noopener">{{ s.name }}</a>{% if not loop.last %}·{% endif %}{% endfor %}){% endif %}의 사진을 크기를 줄여 싣고, 사진 옆과 목록 끝에 ‘출처: {{ city_credit }}’를 적습니다. 사진은 이 사이트에 둔 사본으로 보여 주고, 포토뱅크 사진을 누르면 그 게시물로 갑니다.</p>{% endif %}
+      <p id="illustrations">이 사이트의 일러스트는 생성형 AI로 그렸고, 장소 사진은 모두 출처를 함께 적은 한국관광공사{% if n_city_photos %} 또는 {{ city_credit }}{% endif %}의 사진입니다.</p>
     </div>
   </section>
   {% endif %}

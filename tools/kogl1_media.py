@@ -40,27 +40,43 @@ sys.path.insert(0, str(ROOT))
 from pipeline import media  # noqa: E402
 from pipeline.schema import PHOTO_SOURCES  # noqa: E402
 
-WIDTHS = {"cover": (480, 940, 1280), "hero": (480, 940, 1280), "k1": (480, 940, 1280)}   # cover: the full-bleed home photo
-QUALITY = {"cover": {"avif": 72, "webp": 86}, "hero": {"avif": 64, "webp": 80}, "k1": {"avif": 64, "webp": 80}}
+WIDTHS = {"cover": (480, 940, 1280), "hero": (480, 940, 1280), "k1": (480, 940, 1280),   # cover: the full-bleed home photo
+          "view": (480, 960), "thumb": (480,)}   # the city's photos after the lead (media.wanted): WebP only
+QUALITY = {"cover": {"avif": 72, "webp": 86}, "hero": {"avif": 64, "webp": 80}, "k1": {"avif": 64, "webp": 80},
+           "view": {"webp": 72}, "thumb": {"webp": 70}}
+FORMATS = {"view": ("webp",), "thumb": ("webp",)}   # every other slot: AVIF and WebP
+EDITABLE = ("KOGL-1", "CITY-PERMIT")   # pipeline/schema.EDITABLE_LICENSES
+# the servers of the city's own photos (site.json city_photos.hosts, set by run()): their originals come only from
+# tools/city_photos.py fetch / tools/city_portal.py photos (paced, retried) — never downloaded here
+CITY_HOSTS: set[str] = set()
 UA = "Mozilla/5.0 (compatible; kogl1-media)"
 BUDGET_BYTES = 15 * 1024 * 1024  # every derivative together (tests/test_media_behaviour.py holds the same bound)
 
 
+def is_city(url: str) -> bool:
+    from tools.city_photos import host_of
+    return host_of(url) in CITY_HOSTS
+
+
 def stem_of(url: str) -> str:
     name = url.rsplit("/", 1)[-1].lower()
-    return name.rsplit(".", 1)[0].replace("_image2_1", "")
+    stem = name.rsplit(".", 1)[0].replace("_image2_1", "")
+    return "g-" + stem if is_city(url) else stem   # the city's files: never meet a TourAPI content id
 
 
 def licence_of(S, url: str) -> str:
     """The stored licence of a photo URL (any place that shows it); '' when not found."""
     for e in S.entities:
         for im in e.get("_images") or []:
-            if im.get("url") == url and im.get("source") in PHOTO_SOURCES:
+            if im.get("url") == url and (im.get("source") in PHOTO_SOURCES or im.get("license") == "CITY-PERMIT"):
                 return im.get("license") or ""
     return ""
 
 
 def fetch(url: str, cache: Path, budget: list[int]) -> Path | None:
+    if is_city(url):   # the city's originals come only from its paced tools (tools/city_photos.py, city_portal.py)
+        from tools.city_photos import cached
+        return cached(url)
     raw = cache / url.rsplit("/", 1)[-1].lower()
     if raw.exists() and raw.stat().st_size:
         return raw
@@ -76,9 +92,9 @@ def fetch(url: str, cache: Path, budget: list[int]) -> Path | None:
 
 
 def encode(raw: Path, url: str, slot: str, out: Path, force: bool) -> dict:
-    from PIL import Image  # Pillow with AVIF (pillow>=11.3 ships libavif)
+    from PIL import Image, ImageOps  # Pillow with AVIF (pillow>=11.3 ships libavif)
 
-    im = Image.open(raw).convert("RGB")
+    im = ImageOps.exif_transpose(Image.open(raw)).convert("RGB")   # camera originals carry their rotation in EXIF
     W, H = im.size
     stem, mark = stem_of(url), "h" if slot == "hero" else ""
     entry = {"w": W, "h": H, "slot": slot, "avif": [], "webp": []}
@@ -86,12 +102,12 @@ def encode(raw: Path, url: str, slot: str, out: Path, force: bool) -> dict:
         w = min(target, W)
         h = round(H * w / W)
         frame = im if w == W else im.resize((w, h), Image.LANCZOS)
-        for fmt in ("avif", "webp"):
+        for fmt in FORMATS.get(slot, ("avif", "webp")):
             path = out / f"{stem}-{w}{mark}.{fmt}"
             if force or not path.exists():
                 buf = io.BytesIO()
                 opts = {"quality": QUALITY[slot][fmt], "speed": 4} if fmt == "avif" else \
-                    {"quality": QUALITY[slot][fmt], "method": 6}
+                    {"quality": QUALITY[slot][fmt], "method": 6 if slot in ("cover", "hero", "k1") else 4}
                 frame.save(buf, fmt.upper(), **opts)
                 path.write_bytes(buf.getvalue())
             entry[fmt].append([media.URL_PREFIX + path.name, w, path.stat().st_size])
@@ -102,7 +118,7 @@ def encode(raw: Path, url: str, slot: str, out: Path, force: bool) -> dict:
 
 def _files(entry: dict) -> list[tuple[str, int]]:
     """(file name, bytes) of every derivative of one manifest entry."""
-    return [(Path(p).name, b) for fmt in ("avif", "webp") for p, _, b in entry[fmt]]
+    return [(Path(p).name, b) for fmt in ("avif", "webp") for p, _, b in entry.get(fmt) or []]
 
 
 def run(data_dir: Path, out: Path = media.MEDIA_DIR, cache: Path = ROOT / "data" / "cache" / "kogl1-src",
@@ -111,18 +127,20 @@ def run(data_dir: Path, out: Path = media.MEDIA_DIR, cache: Path = ROOT / "data"
     from pipeline.build import State
 
     S = State(Path(data_dir), "production")  # published records only: drafts and reviewed records get no derivative
+    CITY_HOSTS.clear()
+    CITY_HOSTS.update(h.lower() for h in (S.site.get("city_photos") or {}).get("hosts") or [])
     want = media.wanted(S)
-    for url in want:  # KOGL-1 only, by construction — and checked against the stored licence again here
+    for url in want:  # editable only, by construction — and checked against the stored licence again here
         lic = licence_of(S, url)
-        if lic != "KOGL-1":
-            raise SystemExit(f"공공누리 제1유형이 아닌 사진은 변환하지 않습니다: {url} ({lic or '라이선스 없음'})")
+        if lic not in EDITABLE:
+            raise SystemExit(f"공공누리 제1유형·시청 사진이 아닌 사진은 변환하지 않습니다: {url} ({lic or '라이선스 없음'})")
     if dry_run:
         for url, slot in want.items():
             print(f"{slot}\t{url}")
         print(f"공개(published) 기록의 제1유형 사진 {len(want)}장 (변환 안 함, --dry-run)")
         return {"photos": len(want), "dry_run": True}
     out.mkdir(parents=True, exist_ok=True)
-    budget, man, skipped, total = [max_downloads], {}, [], 0
+    budget, man, skipped, total, city_total = [max_downloads], {}, [], 0, 0
     for url, slot in sorted(want.items(), key=lambda kv: (kv[1] not in ("cover", "hero"), kv[1] != "cover", kv[0])):  # the home's cover, then its slides, first
         try:
             raw = fetch(url, cache, budget)
@@ -130,10 +148,23 @@ def run(data_dir: Path, out: Path = media.MEDIA_DIR, cache: Path = ROOT / "data"
             skipped.append(f"{url}: {exc}")
             continue
         if raw is None:
-            skipped.append(f"{url}: 실행당 내려받기 상한(--max-downloads {max_downloads}) 도달")
+            skipped.append(f"{url}: 원본 없음 — tools/city_photos.py fetch·tools/city_portal.py photos로 먼저 받는다"
+                           if is_city(url) else f"{url}: 실행당 내려받기 상한(--max-downloads {max_downloads}) 도달")
             continue
-        entry = encode(raw, url, slot, out, force)
+        try:
+            entry = encode(raw, url, slot, out, force)
+        except OSError as exc:   # a broken or truncated original: report it, keep going
+            skipped.append(f"{url}: 변환 실패 {exc}")
+            continue
         size = sum(b for _, b in _files(entry))
+        if is_city(url):   # the city's copies: a budget of their own (media.CITY_BUDGET)
+            if city_total + size > media.CITY_BUDGET:
+                for name, _ in _files(entry):
+                    (out / name).unlink(missing_ok=True)
+                skipped.append(f"{url}: 시청 사진 사본 예산 {media.CITY_BUDGET / 1024 / 1024:g}MB를 넘어 만들지 않음")
+                continue
+            man[url], city_total = entry, city_total + size
+            continue
         if total + size > budget_bytes:  # the whole set stays within the budget: this photo is not made
             kept = {name for v in man.values() for name, _ in _files(v)}
             for name, _ in _files(entry):
@@ -153,7 +184,8 @@ def run(data_dir: Path, out: Path = media.MEDIA_DIR, cache: Path = ROOT / "data"
     (out / "manifest.json").write_text(json.dumps(man, ensure_ascii=False, indent=1, sort_keys=True) + "\n", "utf-8")
     files = sum(len(v["avif"]) + len(v["webp"]) for v in man.values())
     total = sum(b for v in man.values() for fmt in ("avif", "webp") for _, _, b in v[fmt])
-    report = {"photos": len(man), "files": files, "kb": round(total / 1024), "removed": removed,
+    city_kb = round(sum(b for u, v in man.items() if is_city(u) for fmt in ("avif", "webp") for _, _, b in v[fmt]) / 1024)
+    report = {"photos": len(man), "files": files, "kb": round(total / 1024), "city_kb": city_kb, "removed": removed,
               "skipped": skipped, "hero": sum(1 for v in man.values() if v["slot"] == "hero"), "cover": sum(1 for v in man.values() if v["slot"] == "cover")}
     print(json.dumps(report, ensure_ascii=False))
     return report

@@ -53,8 +53,8 @@
       </section>
       {% endfor %}
     </div>
-    {% if L.n_photo %}{% set lics = [] %}{% for g in L.groups %}{% for it in g.recs %}{% if it.photo and it.photo.type not in lics %}{% set _ = lics.append(it.photo.type) %}{% endif %}{% endfor %}{% endfor %}
-    <p class="note list-foot">사진 출처: 한국관광공사 · 공공누리 제{{ lics|sort|join('·') }}유형</p>{% endif %}
+    {% if L.n_photo %}{% set phs = [] %}{% for g in L.groups %}{% for it in g.recs %}{% if it.photo %}{% set _ = phs.append(it.photo) %}{% endif %}{% endfor %}{% endfor %}
+    <p class="note list-foot">사진 출처: {{ photo_credit(phs) }}</p>{% endif %}
     {{ p1.dzsrc(L.dz_sources) }}
   </div>
   {% if L.n_geo %}

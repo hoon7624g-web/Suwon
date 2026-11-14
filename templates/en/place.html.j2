@@ -66,7 +66,7 @@
       {% if v.hero_k3 and v.thumbs %}
       <div class="pl-thumbs only-narrow">
         <ul>{% for t in v.thumbs %}<li><a href="#h-photos"><img class="t{{ t.type }}" src="{{ t.url }}" width="{{ t.w }}" height="{{ t.h }}" style="height:{{ [t.h, 100]|min }}px" alt="{{ t.alt }}" loading="lazy" decoding="async" data-kogl="{{ t.type }}"></a></li>{% endfor %}</ul>
-        <p class="pl-thumbs-c"><a href="#h-photos">{{ t.n('photos_n', v.photos|length) }} ↓</a> · {{ t.f('source_is', name=t.kto) }} · {{ v.lics|join(loc.list_sep) }}</p>
+        <p class="pl-thumbs-c"><a href="#h-photos">{{ t.n('photos_n', v.photos|length) }} ↓</a> · {{ t.f('source_is', name=v.credit_all) }}</p>
       </div>
       {% endif %}
     </div>
@@ -96,8 +96,16 @@
         {% if strip %}
         <div class="car car-ph" data-gallery>
           <div class="car-view" data-gal-view><ul class="strip car-track">{% for ph in strip %}<li>{{ E.figure(ph, nm, loop.index + 1, v.photos|length, '', false, '(min-width: 1024px) 460px, 340px', false, false) }}</li>{% endfor %}</ul></div>
-          <div class="car-foot car-foot-s"><p class="strip-credit">{{ t.f('source_is', name=t.kto) }} · {{ strip|map(attribute='lic')|unique|join(loc.list_sep) }}</p>{% if strip|length > 1 %}<div class="car-nav" data-gal-nav><button type="button" class="gal-btn" data-dir="-1">{{ ui.icon('prev', 'icon') }}<span class="vh">{{ t.prev_photo }}</span></button><button type="button" class="gal-btn" data-dir="1">{{ ui.icon('next', 'icon') }}<span class="vh">{{ t.next_photo }}</span></button></div>{% endif %}</div>
+          <div class="car-foot car-foot-s"><p class="strip-credit">{{ t.f('source_is', name=en.credit_line(strip)) }}</p>{% if strip|length > 1 %}<div class="car-nav" data-gal-nav><button type="button" class="gal-btn" data-dir="-1">{{ ui.icon('prev', 'icon') }}<span class="vh">{{ t.prev_photo }}</span></button><button type="button" class="gal-btn" data-dir="1">{{ ui.icon('next', 'icon') }}<span class="vh">{{ t.next_photo }}</span></button></div>{% endif %}</div>
         </div>
+        {% endif %}
+        {#- 사진 더 보기 (the Korean page's, templates/place.html.j2): the photos after the strip, closed, small files only #}
+        {% if v.more_photos %}
+        <details class="ph-more">
+          <summary>{{ t.s('photos_more') }} <span class="tn">{{ v.more_photos|length }}</span></summary>
+          <ul class="ph-grid">{% for p in v.more_photos %}<li class="t{{ p.type }}"><a href="{{ p.full }}"{% if p.opens_page %} rel="noopener"{% endif %}><img src="{{ p.url }}"{% if p.w and p.h %} width="{{ p.w }}" height="{{ p.h }}"{% endif %} alt="{{ p.alt }}" loading="lazy" decoding="async" data-kogl="{{ p.type }}"></a></li>{% endfor %}</ul>
+          <p class="strip-credit">{{ t.f('source_is', name=en.credit_line(v.more_photos)) }}</p>
+        </details>
         {% endif %}
       </section>
       {% endif %}
@@ -139,7 +147,7 @@
       <div class="nb-part" data-block="near-rows">
         {{ nb.groups([(t.s('near_sights'), v.near_sights, 'icon-sights'), (t.s('near_biz'), v.near_biz, 'icon-stay')], v.e.id, w, v.points) }}
         <p class="note nb-note">{{ w.scale.format(d=loc.dist(v.near_scale)) }}{% if v.nearby_source.provider %} · {{ t.f('near_note', m=loc.num((v.nearby_source.radius_m or 0)|int), provider=v.near_src) }}{% endif %}</p>
-        {% if v.photo_lics %}<p class="note nb-credit">{{ w.credit.format(lic=v.photo_lics|join(loc.list_sep)) }}</p>{% endif %}
+        {% if v.photo_lics or v.photo_city %}<p class="note nb-credit">{% if v.photo_lics %}{{ w.credit.format(lic=v.photo_lics|join(loc.list_sep)) }}{% if v.photo_city %} / {{ v.photo_city }}{% endif %}{% else %}{{ t.f('photos_is', name=v.photo_city) }}{% endif %}</p>{% endif %}
       </div>
       {% endif %}
       {% if v.went_next %}
@@ -150,7 +158,7 @@
         {{ nb.cards(v.guide_cards, v.e.id, w, 'guide_click', w.more_guides) }}</div>{% endif %}
       {% if v.event_cards %}<div class="nb-part"><h3 class="h-sub nb-h">{{ ui.kpic('icon-events', '', 40) }}<span>{{ t.events_here }}</span></h3>
         {{ nb.cards(v.event_cards, v.e.id, w, '', w.more_events) }}</div>{% endif %}
-      {% if v.photo_lics and not (v.near_sights or v.near_biz) %}<p class="note nb-credit">{{ w.credit.format(lic=v.photo_lics|join(loc.list_sep)) }}</p>{% endif %}
+      {% if (v.photo_lics or v.photo_city) and not (v.near_sights or v.near_biz) %}<p class="note nb-credit">{% if v.photo_lics %}{{ w.credit.format(lic=v.photo_lics|join(loc.list_sep)) }}{% if v.photo_city %} / {{ v.photo_city }}{% endif %}{% else %}{{ t.f('photos_is', name=v.photo_city) }}{% endif %}</p>{% endif %}
     </div>
   </section>
   {% endif %}
@@ -178,7 +186,7 @@
       <dl class="src-dl">
         {% if v.orig_url %}<div data-block="original"><dt>{{ t.original_page }}</dt><dd><a href="{{ v.orig_url }}" rel="noopener" data-track="official_click" data-place="{{ v.e.id }}">{{ t.f('in_korean_paren', name=v.orig_name) }}</a></dd></div>{% endif %}
         {% if v.visitkorea %}<div><dt>{{ t.visitkorea }}</dt><dd><a href="{{ v.visitkorea }}" rel="noopener" data-track="official_click" data-place="{{ v.e.id }}">{{ t.kto_page }}</a></dd></div>{% endif %}
-        {% if v.photos %}<div><dt>{{ t.sec_photos }}</dt><dd>{{ t.kto }} · {{ v.lics|join(loc.list_sep) }}</dd></div>{% endif %}
+        {% if v.photos %}<div><dt>{{ t.sec_photos }}</dt><dd>{{ v.credit_all }}</dd></div>{% endif %}
         <div><dt>{{ t.korean_page }}</dt><dd><a href="{{ v.ko_path }}" hreflang="ko" lang="ko">{{ v.name_ko }}</a></dd></div>
       </dl>
       <p class="note"><a href="{{ loc.home }}about/#corrections">{{ t.report_error }}</a></p>

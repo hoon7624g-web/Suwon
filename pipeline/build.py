@@ -228,6 +228,7 @@ def make_env() -> Environment:
     env.globals["ART_CARD_NOTE"] = LC.ART_CARD_NOTE   # a home card's illustration line
     env.globals["share_vm"] = share.view          # 보내기 box of one address (pipeline/share.py, templates/_share.html.j2)
     env.globals["key_facts"] = present.key_facts
+    env.globals["photo_credit"] = present.credit_line   # the one '사진 출처' text of a set of photos (한국관광공사 / the city)
     # the site assistant's launcher (templates/_chat.html.j2): the city's words for chat.js in the page's language
     env.globals["chat_ui"] = chat_index.ui_config
     # the 3D picture registry (pipeline/icons.py; templates/_pic.html.j2 asks it, never naming files)
@@ -713,6 +714,9 @@ class State:
                 for src in [e.get("facts_source"), *(e.get("fact_sources") or {}).values(),
                             *(a for alts in (e.get("fact_alternatives") or {}).values() for a in alts or [])])
             or any(i.get("source") in PHOTO_SOURCES for i in e["_images"]) for e in self.entities)
+        # the city's own photos shown (site.json city_photos; CITY-PERMIT): the footer names the city as a photo source
+        self.city_photo_credit = squash_ws((self.site.get("city_photos") or {}).get("credit")) if any(
+            i.get("license") == "CITY-PERMIT" for e in self.entities for i in e["_images"]) else ""
         self.pages: list[tuple[str, str]] = []  # (path, lastmod) — the sitemap
         self.stats = {"entities": len(self.entities),
                       "excluded_entities": sum(1 for x in self.entities_all if x not in self.entities
@@ -787,6 +791,7 @@ class State:
                 "has_guides": bool(self.guides), "has_courses": bool(self.courses), "build_date": self.today,
                 "list_nav": [(k, v["path"], v["title"]) for k, v in LISTS.items() if self.lists[k] or k == "attraction"],
                 "tourapi_used": self.tourapi_used, "has_map": bool(self.entities), "has_videos": bool(self.videos),
+                "city_photo_credit": self.city_photo_credit,
                 # the guide whose #h-insta chapter the Instagram cards open in ('' when this build does not publish
                 # it: the home then has no Instagram section and a place page no link to it)
                 "insta_guide": next((g["_path"] for g in self.guides if g.get("_insta")), ""),
@@ -1161,7 +1166,10 @@ def entity_ctx(e: dict, S: State) -> dict:
     if _url_key(own_homepage) in S.shared_homepages or city_site(own_homepage, city):
         own_homepage = ""
     same_as = [orig.get("source_url"), official.get("visitkorea_url"), own_homepage]
-    shown_images = images[:7]  # hero + gallery images[1:7], exactly what the page renders
+    # hero + gallery photos[1:7], exactly what the page renders: 한국관광공사 photos as stored; a city photo (CITY-PERMIT)
+    # by our same-origin copy's absolute address, credited with the city's name and no licence page
+    shown_images = [{"url": ph["url"], "credit": ph["credit"], "license": ph["license"]} if ph.get("src") != "city" else
+                    {"url": S.abs(ph["url"]), "credit": ph["credit"], "license": "CITY-PERMIT"} for ph in e["_photos"][:7]]
     kakao = next((l["url"] for l in links if l["key"] == "kakao" and l["precise"]), "")
     graph = jsonld.place_graph(e, site, S.site_url, e["_url"], title, crumbs, shown_images, same_as,
                                [orig.get("source_url")], faqs, e.get("reviewed_at") or "", facts_checked, kakao,

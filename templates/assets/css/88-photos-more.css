@@ -1,0 +1,25 @@
+/* 사진 더 보기 (운영자 2026-11-13 '페이지가 무거워질 것 같으면 사진 더 보기를 누를 때만 불러오도록'):
+   the place page's photos after the strip, in a closed <details> (templates/place.html.j2). The grid's images are
+   loading="lazy" and have no box while it is closed, so nothing is fetched before it is opened. Square cells:
+   an editable photo (KOGL-1, the city's own photos) fills its cell; a KOGL-3 photo sits whole on the tint (never cropped). */
+.ph-more { margin-top: 14px; border-top: 1px solid var(--hair); }
+.ph-more > summary { display: flex; align-items: center; gap: 8px; min-height: 48px; cursor: pointer; list-style: none;
+  font-weight: 700; color: var(--link); }
+.ph-more > summary::-webkit-details-marker { display: none; }
+.ph-more > summary::before { content: ""; width: 9px; height: 9px; border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor; transform: rotate(-45deg); transition: transform .2s var(--ease, ease);
+  margin: 0 4px 0 2px; }
+.ph-more[open] > summary::before { transform: rotate(45deg); }
+.ph-more > summary .tn { color: var(--ink-3); font-weight: 400; }
+.ph-more > summary:focus-visible { outline: 2px solid var(--focus, var(--link)); outline-offset: 2px; border-radius: 6px; }
+.ph-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin: 6px 0 10px; padding: 0;
+  list-style: none; }
+@media (min-width: 600px) { .ph-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .ph-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; } }
+.ph-grid li { aspect-ratio: 1 / 1; border-radius: 8px; overflow: hidden; background: var(--tint); }
+.ph-grid a { display: block; width: 100%; height: 100%; }
+.ph-grid img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ph-grid li.t3 img { object-fit: contain; }
+.ph-grid a:focus-visible { outline: 2px solid var(--focus, var(--link)); outline-offset: -2px; }
+.ph-more .strip-credit { margin: 0 0 6px; }
+@media (prefers-reduced-motion: reduce) { .ph-more > summary::before { transition: none; } }

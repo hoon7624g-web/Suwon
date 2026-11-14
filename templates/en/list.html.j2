@@ -55,7 +55,7 @@
       </section>
       {% endfor %}
     </div>
-    {% if L.n_photo %}<p class="note list-foot">{{ t.f('photos_is', name=t.kto) }} · {{ L.lics|join(loc.list_sep) }}</p>{% endif %}
+    {% if L.n_photo %}<p class="note list-foot">{{ t.f('photos_is', name=L.credit) }}</p>{% endif %}
   </div>
   {% if L.n_geo %}
   <aside class="list-map" id="list-map" aria-label="{{ t.sec_map }}">

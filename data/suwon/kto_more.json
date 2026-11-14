@@ -1,0 +1,8 @@
+{
+ "_about": "tools/kto_more_photos.py 지역 설정(2026-11-14 확인): gallery_aliases — 관광사진 갤러리 제목(앞 '수원'·띄어쓰기 뺀 것) → 이 사이트 장소 이름(같은 곳임을 확인: 월화원은 효원공원 안 중국 정원, 해우재문화센터는 해우재), same_address — 없음.",
+ "gallery_aliases": {
+  "월화원": "효원공원 월화원",
+  "해우재문화센터": "해우재"
+ },
+ "same_address": {}
+}

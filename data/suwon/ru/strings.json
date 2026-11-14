@@ -2326,5 +2326,21 @@
   "designation_source:소상공인시장진흥공단 · 공공데이터포털 전국 백년가게 지정리스트 현황 정보(2026-08-20)": {
     "ko": "소상공인시장진흥공단 · 공공데이터포털 전국 백년가게 지정리스트 현황 정보(2026-08-20)",
     "ru": "Служба малого предпринимательства и рынков · Портал открытых данных, общенациональный список заведений со статусом «Столетняя лавка» (2026-08-20)"
+  },
+  "chrome.photos_more": {
+    "en": "More photos",
+    "ru": "Ещё фото"
+  },
+  "chrome.foot_city_photos": {
+    "en": "Photos: {name}",
+    "ru": "Фото: {name}"
+  },
+  "chrome.about_city_photos": {
+    "en": "Photos from {name}: {n}, at {places} places. They come from the city's own websites, are shown resized and are credited “{name}”.",
+    "ru": "Фотографии с подписью «{name}»: {n}, число мест: {places}. Они взяты с сайтов города и показаны в уменьшенном виде."
+  },
+  "chrome.about_art_city": {
+    "en": "The illustrations on this site were drawn with generative AI; every photo of a place is a photo from the Korea Tourism Organization or {name}, shown with its source.",
+    "ru": "Иллюстрации на этом сайте нарисованы с помощью генеративного ИИ; все фотографии мест получены от Корейской организации по туризму или из источника «{name}» и показаны с указанием источника."
   }
 }

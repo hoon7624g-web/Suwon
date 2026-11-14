@@ -92,7 +92,7 @@
       {% if p.thumbs %}
       <div class="pl-thumbs only-narrow">
         <ul>{% for t in p.thumbs %}<li><a href="#h-photos"><img class="t{{ t.type }}" src="{{ t.url }}" width="{{ t.w }}" height="{{ t.h }}" style="height:{{ [t.h, 100]|min }}px" alt="{{ t.alt }}" loading="lazy" decoding="async" data-kogl="{{ t.type }}"></a></li>{% endfor %}</ul>
-        <p class="pl-thumbs-c"><a href="#h-photos">사진 {{ p.photos|length }}장 ↓</a> · 출처: 한국관광공사 · {{ p.photos|map(attribute='lic')|unique|join(', ') }}</p>
+        <p class="pl-thumbs-c"><a href="#h-photos">사진 {{ p.photos|length }}장 ↓</a> · 출처: {{ photo_credit(p.photos) }}</p>
       </div>
       {% endif %}
       {% endif %}
@@ -132,8 +132,19 @@
         {% if strip %}
         <div class="car car-ph" data-gallery>
           <div class="car-view" data-gal-view><ul class="strip car-track">{% for ph in strip %}<li>{{ ui.figure(ph, nm, loop.index + 1, p.photos|length, '', false, '(min-width: 1024px) 460px, 340px', false, false) }}</li>{% endfor %}</ul></div>
-          <div class="car-foot car-foot-s"><p class="strip-credit">출처: {{ strip|map(attribute='credit')|select|unique|join(', ') or '한국관광공사' }} · {{ strip|map(attribute='lic')|unique|join(', ') }}</p>{% if strip|length > 1 %}{{ ui.carnav('사진') }}{% endif %}</div>
+          <div class="car-foot car-foot-s"><p class="strip-credit">출처: {{ photo_credit(strip) }}</p>{% if strip|length > 1 %}{{ ui.carnav('사진') }}{% endif %}</div>
         </div>
+        {% endif %}
+        {#- 사진 더 보기 (운영자 2026-11-13 '페이지가 무거워질 것 같으면 사진 더 보기를 누를 때만 불러오도록'): the photos after
+            the strip in a closed <details>; small files only (the provider's small copy or our 480 WebP), lazy, so
+            nothing is fetched before it is opened; each opens to ph.full (a photo-portal post, or the larger file).
+            KOGL-3 sits whole in its cell (css/88-photos-more.css). #}
+        {% if p.more_photos %}
+        <details class="ph-more">
+          <summary>사진 더 보기 <span class="tn">{{ p.more_photos|length }}장</span></summary>
+          <ul class="ph-grid">{% for t in p.more_photos %}<li class="t{{ t.type }}"><a href="{{ t.full }}"{% if t.opens_page %} rel="noopener"{% endif %}><img src="{{ t.url }}"{% if t.w and t.h %} width="{{ t.w }}" height="{{ t.h }}"{% endif %} alt="{{ t.alt }}" loading="lazy" decoding="async" data-kogl="{{ t.type }}"></a></li>{% endfor %}</ul>
+          <p class="strip-credit">출처: {{ photo_credit(p.more_photos) }}{% for s in p.photo_sources %} · <a href="{{ s.url }}" rel="noopener">{{ s.name }}</a>{% endfor %}</p>
+        </details>
         {% endif %}
       </section>
       {% endif %}
@@ -223,7 +234,7 @@
       <div class="nb-part" data-block="near-rows">
         {{ nb.groups([('주변 볼거리', p.near_sights, 'icon-sights'), ('주변 숙소·음식점', p.near_biz, 'icon-stay')], p.e.id, w, p.points) }}
         <p class="note nb-note">{{ w.scale.format(d=p.near_scale|pdist) }}{% if p.nearby_source.provider %} · 반경 {{ p.nearby_source.radius_m|pdist }} 안 · 직선거리 순 · {{ p.nearby_source.provider }}{% endif %}</p>
-        {% if p.photo_lics %}<p class="note nb-credit">{{ w.credit.format(lic=p.photo_lics|join(', ')) }}</p>{% endif %}
+        {% if p.photo_lics or p.photo_city %}<p class="note nb-credit">{% if p.photo_lics %}{{ w.credit.format(lic=p.photo_lics|join(', ')) }}{% if p.photo_city %} / {{ p.photo_city }}{% endif %}{% else %}사진 출처: {{ p.photo_city }}{% endif %}</p>{% endif %}
       </div>
       {% endif %}
       {% if p.went_next %}
@@ -248,7 +259,7 @@
       {% for title, xs, blk in [('같은 건물의 다른 이름', p.twin_rows, 'twins'), ('이름이 비슷한 곳', p.rel_rows, 'similar')] if xs %}
       <div class="nb-part" data-block="{{ blk }}"><h3 class="h-sub">{{ title }}</h3>{{ nb.rows(xs, p.e.id, w) }}</div>
       {% endfor %}
-      {% if p.photo_lics and not (p.near_sights or p.near_biz) %}<p class="note nb-credit">{{ w.credit.format(lic=p.photo_lics|join(', ')) }}</p>{% endif %}
+      {% if (p.photo_lics or p.photo_city) and not (p.near_sights or p.near_biz) %}<p class="note nb-credit">{% if p.photo_lics %}{{ w.credit.format(lic=p.photo_lics|join(', ')) }}{% if p.photo_city %} / {{ p.photo_city }}{% endif %}{% else %}사진 출처: {{ p.photo_city }}{% endif %}</p>{% endif %}
     </div>
   </section>
   {% endif %}
@@ -300,7 +311,7 @@
         </dd></div>{% endif %}
         {% if p.visitkorea and has_orig %}<div><dt>대한민국 구석구석</dt><dd><a href="{{ p.visitkorea }}" rel="noopener" data-track="official_click" data-place="{{ p.e.id }}">한국관광공사 안내에서 보기</a></dd></div>{% endif %}
         {% for s in sources if s.label == '공식 홈페이지' %}<div><dt>공식 홈페이지</dt><dd><a href="{{ s.url }}" rel="noopener" data-track="official_click" data-place="{{ p.e.id }}">{{ s.url|replace('https://', '')|replace('http://', '') }}</a></dd></div>{% endfor %}
-        {% if p.photos %}<div><dt>사진</dt><dd>한국관광공사 · {{ p.photos|map(attribute='lic')|unique|join(', ') }}</dd></div>{% endif %}
+        {% if p.photos %}<div><dt>사진</dt><dd>{{ photo_credit(p.photos) }}</dd></div>{% endif %}
       </dl>
       <p class="note">{{ site.site_name }}({{ site.region }} 여행 정보 사이트) 정리 · <a href="/about/#correction">틀린 정보 알리기</a></p>
     </div>

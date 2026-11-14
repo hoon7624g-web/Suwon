@@ -36,7 +36,7 @@
 {% endblock %}
 {% block content %}
 {% macro credit_ko(cards) -%}
-{% set ts = cards|selectattr('photo')|map(attribute='photo.type')|unique|sort|list %}{% if ts %}사진 출처: 한국관광공사 · 공공누리 {% for t in ts %}제{{ t }}유형{% if t == 3 %}(변경금지){% endif %}{% if not loop.last %}·{% endif %}{% endfor %}{% endif %}
+{% set phs = cards|selectattr('photo')|map(attribute='photo')|list %}{% if phs %}사진 출처: {{ photo_credit(phs) }}{% endif %}
 {%- endmacro %}
 {% set types = G.places|selectattr('photo')|map(attribute='photo.type')|unique|sort|list %}
 {#- a section's paragraphs: sentence bullets, a one-sentence paragraph as a plain paragraph -#}
@@ -179,7 +179,7 @@
       </li>
       {% endfor %}
     </ol>
-    {% if types %}<p class="note">사진 출처: 한국관광공사 · 공공누리 {% for t in types %}제{{ t }}유형{% if t == 3 %}(변경금지){% endif %}{% if not loop.last %}·{% endif %}{% endfor %}</p>{% endif %}
+    {% if types %}<p class="note">사진 출처: {{ photo_credit(G.places|selectattr('photo')|map(attribute='photo')|list) }}</p>{% endif %}
   </section>
   {% endif %}
 

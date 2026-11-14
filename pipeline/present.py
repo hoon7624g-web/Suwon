@@ -1715,7 +1715,11 @@ def week_grid(ents: list[dict]) -> dict | None:
 
 
 # ----------------------------------------------------------------------------- photos
-LIC = {"KOGL-1": ("공공누리 제1유형", 1), "KOGL-3": ("공공누리 제3유형(변경금지)", 3)}
+LIC = {"KOGL-1": ("공공누리 제1유형", 1), "KOGL-3": ("공공누리 제3유형(변경금지)", 3),
+       # the city government's own photos (site.json city_photos): editable like KOGL-1 (type 1), credited with the
+       # city's name only — no licence words on any page (운영자 2026-11-14 ''이용 허락'이라는 글자 표기하지 말고 모두
+       # 빼 출처만 표기해')
+       "CITY-PERMIT": ("", 1)}
 
 
 def small_rendition(url: str) -> str:
@@ -1732,24 +1736,70 @@ def load_image_sizes(data_dir: Path) -> dict:
         return {}
 
 
-def photo(im: dict, name: str, sizes: dict) -> dict:
-    """A licensed TourAPI photo with its intrinsic size (None when not measured; never guessed), the licence,
-    the alt text and the provider's small rendition for thumbnails when measured."""
+def photo(im: dict, name: str, sizes: dict, city_credit: str = "") -> dict:
+    """A licensed photo with its intrinsic size (None when not measured; never guessed), the licence, the alt text
+    and the provider's small rendition for thumbnails when measured. src: 'kto' (한국관광공사, TourAPI) or 'city'
+    (the city government's own photo, CITY-PERMIT: credit = the city's name; page = its post or page there;
+    opens_page: pressing it opens that page — a photo portal post — instead of our larger copy)."""
     size = sizes.get(im["url"]) or [None, None, None]
     w, h, b = (list(size) + [None, None, None])[:3]
     lab, t = LIC[im["license"]]
-    small = small_rendition(im["url"])
+    city = im["license"] == "CITY-PERMIT"
+    small = "" if city else small_rendition(im["url"])
     th = sizes.get(small) if small else None
     return {"url": im["url"], "w": w, "h": h, "bytes": b, "ar": f"{w}/{h}" if w and h else "", "type": t, "lic": lab,
-            "credit": squash_ws(im.get("credit")) or "한국관광공사",
+            "license": im["license"], "src": "city" if city else "kto",
+            "credit": (city_credit or squash_ws(im.get("credit"))) if city else (squash_ws(im.get("credit")) or "한국관광공사"),
+            "page": (im.get("page") or "") if city else "", "opens_page": bool(im.get("opens_page")) if city else False,
             "alt": im.get("_alt") or squash_ws(im.get("alt")) or name, "name": name,
             "th": {"url": small, "w": th[0], "h": th[1], "bytes": th[2]} if th else None}
 
 
-def photos(e: dict, sizes: dict) -> list[dict]:
-    """Only TourAPI photos under KOGL-1/KOGL-3 (CLAUDE.md 3.4); the city's own photos are never shown."""
-    return [photo(i, e["name"], sizes) for i in e.get("_images") or []
-            if i.get("source") in PHOTO_SOURCES and i.get("license") in LIC]
+def photos(e: dict, sizes: dict, city_credit: str = "") -> list[dict]:
+    """TourAPI photos under KOGL-1/KOGL-3 first, in stored order (CLAUDE.md 3.4; the home's photo slots name them by
+    number), then the city government's own photos (CITY-PERMIT, site.json city_photos) in stored order. A city
+    photo is shown only from our same-origin copies (media.attach drops one without them)."""
+    imgs = e.get("_images") or []
+    kto = [photo(i, e["name"], sizes) for i in imgs if i.get("source") in PHOTO_SOURCES and i.get("license") in LIC
+           and i["license"] != "CITY-PERMIT"]
+    city = [photo(i, e["name"], sizes, city_credit) for i in imgs if i.get("license") == "CITY-PERMIT"]
+    return kto + city
+
+
+def is_kto(ph: dict | None) -> bool:
+    """A photo (or thumb) of 한국관광공사 — not the city's own."""
+    return bool(ph) and ph.get("src", "kto") != "city"
+
+
+def og_photo(ph: dict | None) -> bool:
+    """May this photo be a link preview (og:image)? 한국관광공사 제1유형 only — never a KOGL-3 photo (previews crop) and
+    never the city's own photo (운영자 2026-11-13: link previews stay as they were)."""
+    return bool(ph) and ph.get("type") == 1 and is_kto(ph)
+
+
+CITY_CREDIT = {"name": ""}   # the city's photo credit (site.json city_photos.credit), set by prepare()
+
+
+CITY_SOURCES: list = []   # site.json city_photos.sources ({name, url}), set by prepare()
+
+
+def city_sources(phs) -> list[dict]:
+    """The city's sites the photos come from (linked under 사진 더 보기) when a place shows a city photo."""
+    return list(CITY_SOURCES) if any(not is_kto(p) for p in phs or []) else []
+
+
+def credit_line(phs) -> str:
+    """The one '사진 출처' text for a set of photos (or thumbs): '한국관광공사 · 공공누리 제1유형·제3유형(변경금지)', and
+    the city's name for its own photos ('… / <city>') — only the sources present, no licence words for the city's."""
+    phs = [p for p in phs or [] if p]
+    types = sorted({p.get("type") for p in phs if is_kto(p)})
+    parts = []
+    if types:
+        parts.append("한국관광공사 · 공공누리 " + "·".join(f"제{t}유형" + ("(변경금지)" if t == 3 else "") for t in types))
+    city = [p for p in phs if not is_kto(p)]
+    if city:
+        parts.append(next((p.get("credit") for p in city if p.get("credit")), "") or CITY_CREDIT["name"])
+    return " / ".join(parts)
 
 
 def thumb(ph: dict | None) -> dict | None:
@@ -1758,12 +1808,14 @@ def thumb(ph: dict | None) -> dict | None:
     if not ph:
         return None
     t = ph.get("th")
+    keep = {"alt": ph["alt"], "type": ph["type"], "src": ph.get("src", "kto"), "credit": ph.get("credit", ""),
+            "lic": ph.get("lic", "")}
     if t:
-        return {"url": t["url"], "w": t["w"], "h": t["h"], "alt": ph["alt"], "type": ph["type"]}
+        return {"url": t["url"], "w": t["w"], "h": t["h"], **keep}
     small = media.smallest(ph)
     if small:
-        return {"url": small[0], "w": small[1], "h": small[2], "alt": ph["alt"], "type": ph["type"]}
-    return {"url": ph["url"], "w": ph["w"], "h": ph["h"], "alt": ph["alt"], "type": ph["type"]}
+        return {"url": small[0], "w": small[1], "h": small[2], **keep}
+    return {"url": ph["url"], "w": ph["w"], "h": ph["h"], **keep}
 
 
 # ----------------------------------------------------------------------------- State-level preparation
@@ -1779,6 +1831,8 @@ def prepare(S, data_dir: Path) -> None:
     S.warnings = getattr(S, "warnings", [])
     C = S.city
     S.image_sizes = load_image_sizes(data_dir)
+    CITY_CREDIT["name"] = squash_ws((S.site.get("city_photos") or {}).get("credit"))
+    CITY_SOURCES[:] = [x for x in (S.site.get("city_photos") or {}).get("sources") or [] if x.get("name") and x.get("url")]
     S.theme_names = {t["slug"]: t["name"] for t in S.themes}
     S.ent_by_id = {e["id"]: e for e in S.entities if e.get("id")}
     S.access_names = access_names(S, data_dir)
@@ -1788,7 +1842,7 @@ def prepare(S, data_dir: Path) -> None:
     for e in S.entities:
         e["_type"] = kind_type(e, S.theme_names, city=C)
         e["_street"] = street_of(e)
-        e["_photos"] = photos(e, S.image_sizes)
+        e["_photos"] = photos(e, S.image_sizes, CITY_CREDIT["name"])
         e["_line"] = distinct_line(e.get("summary"), C.locator_rx)
         e["_providers"] = {p: short_provider(p, city=C) for p in provider_names(e)}
         e.setdefault("_place_label", C.area_label(e))   # build.State sets it (and `_district`) when it knows them
@@ -2380,9 +2434,9 @@ def course_index_vm(S) -> dict:
                        "range": stops_range([cv["n_places"] for cv in g["courses"]], w),
                        "cards": [course_card(cv, used) for cv in g["courses"]]})
     cards = [c for g in groups for c in g["cards"]]
-    lics = sorted({(c["photo"]["type"], c["photo"]["lic"]) for c in cards if c["photo"]})
+    lics = sorted({(c["photo"]["type"], c["photo"]["lic"]) for c in cards if c["photo"] and c["photo"]["lic"]})
     return {"groups": groups, "lics": [lab for _, lab in lics], "w": LC.COURSES_WORDS["ko"],
-            "credit": next((c["photo"]["credit"] for c in cards if c["photo"]), ""),
+            "credit": " / ".join(dict.fromkeys(c["photo"]["credit"] for c in cards if c["photo"] and c["photo"]["credit"])),
             "any_line": any(f["k"] == w("line") for c in cards for f in c["facts"]),
             "any_areas": any(c["areas"] for c in cards), "any_photo": any(c["photo"] for c in cards)}
 
@@ -2801,17 +2855,25 @@ def small_thumb(ph: dict | None) -> dict | None:
     t = ph.get("th")
     if t and same_shape(ph.get("w"), ph.get("h"), t.get("w"), t.get("h")):
         return {"url": t["url"], "w": t["w"], "h": t["h"], "alt": ph.get("alt", ""), "type": ph["type"],
-                "lic": ph.get("lic", "")}
+                "lic": ph.get("lic", ""), "src": ph.get("src", "kto"), "credit": ph.get("credit", "")}
     small = media.smallest(ph)
     if small:
         return {"url": small[0], "w": small[1], "h": small[2], "alt": ph.get("alt", ""), "type": ph["type"],
-                "lic": ph.get("lic", "")}
+                "lic": ph.get("lic", ""), "src": ph.get("src", "kto"), "credit": ph.get("credit", "")}
     return None
 
 
 def photo_credits(rows) -> list[str]:
-    """The licences of the rows' pictures, once each, KOGL-1 before KOGL-3 (the same order on every page)."""
-    return [lic for _, lic in sorted({(r["photo"]["type"], r["photo"]["lic"]) for r in rows if r.get("photo")})]
+    """The licences of the rows' 한국관광공사 pictures, once each, KOGL-1 before KOGL-3 (the same order on every page);
+    the city's own photos are credited apart (photo_city)."""
+    return [lic for _, lic in sorted({(r["photo"]["type"], r["photo"]["lic"]) for r in rows
+                                      if r.get("photo") and is_kto(r["photo"])})]
+
+
+def photo_city(rows) -> str:
+    """The city's name when one of the rows' pictures is the city's own photo, else ''."""
+    return next((r["photo"].get("credit") or CITY_CREDIT["name"] for r in rows
+                 if r.get("photo") and not is_kto(r["photo"])), "")
 
 
 def near_scale(ms, radius=None) -> int:
@@ -2999,7 +3061,9 @@ def place_vm(S, e: dict, ctx: dict) -> dict:
     rel_rows = [near_row(S, x) for x in ctx["related"] if x not in twins and x["_path"] not in near_hrefs]
     relation, parts = relation_vm(S, e)
     went_next = related_vm(S, e)   # 이어서 많이 간 곳 (related.json): its rows' photos share the chapter's credit line
-    photo_lics = photo_credits(near + twin_rows + rel_rows + parts + (went_next["rows"] if went_next else []))
+    near_rows = near + twin_rows + rel_rows + parts + (went_next["rows"] if went_next else [])
+    photo_lics = photo_credits(near_rows)
+    near_city = photo_city(near_rows)
     kicker = [(KIND_LABELS[kind], LIST_PATH[kind])]
     if e["_type"]:
         kicker.append((e["_type"], f"{LIST_PATH[kind]}?type={quote(e['_type'])}"))
@@ -3043,6 +3107,10 @@ def place_vm(S, e: dict, ctx: dict) -> dict:
         "conflicts": [r for r in all_rows if r["conflict"]], "tel": tel, "tel_text": tel_text,
         **links, "precise": bool(e["_geo"]),
         "photos": e["_photos"], "geo": e["_geo"], "place_points": place_points, "anchors": anchors,
+        # 사진 더 보기: the photos after the lead and the strip (7), small files only, each opening to ph.full
+        "more_photos": [{**thumb(ph), "full": ph.get("full") or ph["url"], "opens_page": ph.get("opens_page", False)}
+                        for ph in e["_photos"][7:]],
+        "photo_sources": city_sources(e["_photos"]),
         "access": access_vm(S, e),
         "near_sights": [n for n in near if n["kind"] == "attraction"],
         "near_biz": [n for n in near if n["kind"] in ("stay", "food")],
@@ -3054,7 +3122,7 @@ def place_vm(S, e: dict, ctx: dict) -> dict:
         "twin_rows": twin_rows, "rel_rows": rel_rows,
         # places that belong together (pipeline/relations.py): the line under the name, the parts list of a parent
         "relation": relation, "parts": parts,
-        "photo_lics": photo_lics, "nw": LC.NEAR_WORDS["ko"],
+        "photo_lics": photo_lics, "photo_city": near_city, "nw": LC.NEAR_WORDS["ko"],
         # 예약하기 (pipeline/booking.py): the official booking pages, a row under the route row on the first screen
         "booking": booking.view(booking.place_targets(S, e), "ko"), "bw": LC.BOOK_WORDS["ko"],
         "guides": ctx["guides"], "events": ctx["events"], "twins": e.get("_twins") or [],
@@ -5361,7 +5429,10 @@ def about_vm(S) -> dict:
     own = squash_ws((S.site.get("source") or {}).get("name"))
     other_src = {p for e in S.entities for p in provider_names(e)
                  if p and p != own and not any(w in p for w in NATIONAL_PROVIDER)}
-    return {"lic": lic, "img_lic": Counter(p["type"] for e in S.entities for p in e["_photos"]),
+    city = [p for e in S.entities for p in e["_photos"] if not is_kto(p)]
+    return {"lic": lic, "img_lic": Counter(p["type"] for e in S.entities for p in e["_photos"] if is_kto(p)),
+            "n_city_photos": len(city), "city_credit": CITY_CREDIT["name"], "city_sources": list(CITY_SOURCES),
+            "n_city_places": sum(1 for e in S.entities if any(not is_kto(p) for p in e["_photos"])),
             "n_other_sources": len(other_src),
             "n_tourapi": sum(1 for e in S.entities if (e.get("tourapi") or {}).get("contentid")),
             "n_photo_places": sum(1 for e in S.entities if e["_photos"]), "n_all": len(S.entities),

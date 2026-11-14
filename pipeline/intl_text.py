@@ -322,6 +322,12 @@ EN: dict[str, str | dict] = {
     # owner 2026-10-13 night: no label on the illustrations; this one sentence says what they are
     "about_art": "The illustrations on this site were drawn with generative AI; every photo of a place is an official "
                  "Korea Tourism Organization photo, shown with its source.",
+    # the city government's own photos (site.json city_photos; 운영자 2026-11-14): {name} is its name in this language —
+    # the credit is the name only, no licence words (운영자 2026-11-14 ''이용 허락'이라는 글자 표기하지 말고 모두 빼')
+    "photos_more": "More photos",
+    "foot_city_photos": "Photos: {name}",
+    "about_city_photos": "Photos from {name}: {n}, at {places} places. They come from the city's own websites, are shown resized and are credited “{name}”.",
+    "about_art_city": "The illustrations on this site were drawn with generative AI; every photo of a place is a photo from the Korea Tourism Organization or {name}, shown with its source.",
     "about_names_h": "Names",
     "about_names": "English names follow the Korean government's guideline for public terms: the proper part in Revised "
                    "Romanization and the generic part in English (for example, {example}). Business names are "

@@ -2070,5 +2070,21 @@
   "designation_source:소상공인시장진흥공단 · 공공데이터포털 전국 백년가게 지정리스트 현황 정보(2026-08-20)": {
     "ko": "소상공인시장진흥공단 · 공공데이터포털 전국 백년가게 지정리스트 현황 정보(2026-08-20)",
     "zh_hant": "小商工人市場振興公團 · 公共資料入口網 全國百年老店指定名單現況資訊（2026-08-20）"
+  },
+  "chrome.photos_more": {
+    "en": "More photos",
+    "zh_hant": "查看更多照片"
+  },
+  "chrome.foot_city_photos": {
+    "en": "Photos: {name}",
+    "zh_hant": "照片：{name}"
+  },
+  "chrome.about_city_photos": {
+    "en": "Photos from {name}: {n}, at {places} places. They come from the city's own websites, are shown resized and are credited “{name}”.",
+    "zh_hant": "{name}照片：{places}個地點共{n}張。照片來自{name}的網站，縮小後刊登，並標示「{name}」。"
+  },
+  "chrome.about_art_city": {
+    "en": "The illustrations on this site were drawn with generative AI; every photo of a place is a photo from the Korea Tourism Organization or {name}, shown with its source.",
+    "zh_hant": "本站的插圖以生成式 AI 繪製；每張地點照片都是韓國觀光公社或{name}的照片，並標示來源。"
   }
 }

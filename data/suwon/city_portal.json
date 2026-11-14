@@ -1,0 +1,24 @@
+{
+ "_about": "수원시 포토뱅크(photo.suwon.go.kr, 수원시 언론과 운영 — 바닥글 'COPYRIGHT(C) SUWON CITY', 저작권 수원시) 어댑터 설정 — tools/city_portal.py. type photobank: 목록 /gmMenuSearchList.do(분류 cate_numb_1-cate_numb_2), 게시물 /gmMenuView.do?group_numb=. fields: 읽을 분류, aliases: 포토뱅크 제목의 다른 이름 → 이 사이트의 장소 이름(빈 값은 맞추지 않음). 운영자 결정 2026-11-14(수원시 이용 허락). 2026-11-14 확인.",
+ "type": "photobank",
+ "base": "https://photo.suwon.go.kr",
+ "source": "수원시 포토뱅크",
+ "fields": {
+  "4-27": "문화,예술,관광",
+  "4-31": "문화재",
+  "4-33": "문화 기타",
+  "4-29": "체육",
+  "5-34": "항공사진",
+  "5-37": "자연,환경",
+  "5-35": "지역개발"
+ },
+ "aliases": {
+  "월화원": "효원공원 월화원",
+  "서장대": "효원의 종·서장대",
+  "동장대": "연무대(동장대)",
+  "화홍문": "화홍문(華虹門)",
+  "화서문": "화서문(華西門)",
+  "방화수류정": "방화수류정(동북각루)"
+ },
+ "cap": 20
+}

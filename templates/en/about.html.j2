@@ -39,7 +39,8 @@
   <h2 id="h-photos" class="rail-label">{{ t.sec_photos }}</h2>
   <div class="rail-body prose">
     <p>{{ t.f('about_photos', n1=lics[1] or 0, lic1=en.lic('KOGL-1'), n3=lics[3] or 0, lic3=en.lic('KOGL-3')) }}</p>
-    <p id="illustrations">{{ t.about_art }}</p>
+    {% if n_city_photos %}<p>{{ t.f('about_city_photos', name=en.city_credit, n=n_city_photos, places=n_city_places) }}</p>{% endif %}
+    <p id="illustrations">{{ t.f('about_art_city', name=en.city_credit) if n_city_photos else t.about_art }}</p>
   </div>
 </section>
 

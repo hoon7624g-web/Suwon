@@ -351,6 +351,32 @@ def _quotations(html: str, cls: str) -> set[tuple[str, str, str]]:
 FEE_LABELS = (FACT_LABELS["usefee"], "요금")          # place fee row, event fee row (not 주차요금)
 AMENITY_LABELS = {FACT_LABELS[k]: k for k in AMENITY_VALUES}   # 주차 / 유모차 대여 / 반려동물 동반 -> fact key
 TOURAPI_IMAGE_HOSTS = ("https://tong.visitkorea.or.kr/",)
+# the city government's own photos (site.json city_photos, 운영자 2026-11-14): pages show only our same-origin copies
+# (templates/assets/media/g-*), never the city's own files; never a link preview (og:image: 한국관광공사 제1유형 only);
+# and their credit is the city's name only — no licence or permission words anywhere ('이용 허락'이라는 글자 표기하지
+# 말고 모두 빼 출처만 표기해)
+IMG_ATTRS = re.compile(r'\b(?:src|srcset|data-src|data-srcset|imagesrcset)="([^"]*)"')
+CITY_COPY = re.compile(r"/assets/media/g-")
+PERMISSION_WORDS = ("이용 허락", "이용허락", "허락을 받아", "used with permission", "with its permission", "利用許可",
+                    "经许可", "經許可", "mit Genehmigung", "avec l'autorisation", "con permiso", "с разрешения")
+
+
+def city_photo_problems(raw: str, meta: dict, visible: str, hosts) -> list[str]:
+    """A page that loads a city server's photo file, previews a city photo (og:image / twitter:image) or prints a
+    permission word next to photos (Korean, one line each; [] when nothing). hosts: site.json city_photos.hosts."""
+    out = []
+    hosts = [h.lower() for h in hosts or [] if h]
+    for val in IMG_ATTRS.findall(raw):
+        hit = next((h for h in hosts if h in val.lower()), "")
+        if hit:
+            out.append(f"시청 서버의 사진 파일을 직접 부름({hit}) — 우리 사본(tools/kogl1_media.py)만 쓴다: {val[:120]}")
+    for key in ("og:image", "twitter:image"):
+        u = meta.get(key, "")
+        if u and (CITY_COPY.search(u) or any(h in u.lower() for h in hosts)):
+            out.append(f"{key}에 시청 사진: {u} — 링크 미리보기는 한국관광공사 제1유형만")
+    if hosts:
+        out += [f"시청 사진의 이용조건 말이 화면에 보임: '{w}'" for w in PERMISSION_WORDS if w in visible]
+    return out
 URL_KEYS = ("homepage", "reservationurl")
 # Every URL path the site publishes (design 2.5; an engine rule, no switch): '/'-separated lower-case ASCII slugs, the
 # last segment possibly a file name ('404.html', 'llms.txt'). The query string and #fragment are not part of it.
@@ -2065,6 +2091,7 @@ def validate(data_dir: Path, out: Path, mode: str = "production") -> tuple[list[
             E(f"root_files/{name}", "공개 빌드 루트에 없음")
     html_files = sorted(f for f in out.rglob("*.html") if not (f.parent == out and f.name in root_files))
     lang_pages: dict[str, tuple[str, list]] = {}   # rel -> (canonical, hreflang links), for the hreflang checks
+    city_hosts = (S.site.get("city_photos") or {}).get("hosts") or []
     art_used: set[str] = set()                     # the AI art renditions the pages show
     # canonicals of noindex pages, never in sitemap.xml or llms.txt in production — place pages and the other
     # versions' pages have their own checks (above, validate_intl), so this one covers lists, themes, hubs and the rest
@@ -2093,6 +2120,8 @@ def validate(data_dir: Path, out: Path, mode: str = "production") -> tuple[list[
         # AI art (owner decision 2026-10-13, CLAUDE.md 4): labelled, never on a place page or in a place's data
         place = any(set(node_types(n)) & ENTITY_TYPES and str(n.get("@id", "")).endswith("#place") for n in nodes)
         for problem in art.page_problems(raw, nodes, place, out):
+            E(rel, problem)
+        for problem in city_photo_problems(raw, p.meta, p.visible, city_hosts):
             E(rel, problem)
         art_used |= art.files_in(raw)
         seen_text = " ".join([p.visible, p.meta.get("description", ""), p.meta.get("og:description", ""),

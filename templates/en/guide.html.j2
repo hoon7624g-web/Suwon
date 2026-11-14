@@ -22,7 +22,7 @@
 {% endblock %}
 {% block content %}
 {% macro credit_en(cards) -%}
-{% set ls = cards|selectattr('photo')|map(attribute='photo.lic')|unique|list %}{% if ls %}{{ t.f('photos_is', name=t.kto) }} · {{ ls|join(loc.list_sep) }}{% endif %}
+{% set phs = cards|selectattr('photo')|map(attribute='photo')|list %}{% if phs %}{{ t.f('photos_is', name=en.credit_line(phs)) }}{% endif %}
 {%- endmacro %}
 {% set types = G.places|selectattr('photo')|map(attribute='photo.lic')|unique|list %}
 <article class="guide" data-record="guide:{{ G.g.id }}">
@@ -102,7 +102,7 @@
       </li>
       {% endfor %}
     </ol>
-    {% if types %}<p class="note">{{ t.f('photos_is', name=t.kto) }} · {{ types|join(loc.list_sep) }}</p>{% endif %}
+    {% if types %}<p class="note">{{ t.f('photos_is', name=en.credit_line(G.places|selectattr('photo')|map(attribute='photo')|list)) }}</p>{% endif %}
   </section>
   {% endif %}
 

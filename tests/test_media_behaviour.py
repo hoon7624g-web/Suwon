@@ -76,7 +76,8 @@ def test_repository_media_holds_only_listed_kogl1_derivatives():
     .webp may be left in templates/assets/media; with a manifest, every rule of manifest_problems holds against the
     licences stored in the data."""
     licences = {i["url"]: i.get("license") for f in sorted((ROOT / "data").glob("*/places.json"))
-                for e in json.loads(f.read_text("utf-8")) for i in e.get("images") or [] if i.get("source") in PHOTO_SOURCES}
+                for e in json.loads(f.read_text("utf-8")) for i in e.get("images") or []
+                if i.get("source") in PHOTO_SOURCES or i.get("license") == "CITY-PERMIT"}
     assert media.manifest_problems(media.load_manifest(), licences, media.MEDIA_DIR) == []
 
 

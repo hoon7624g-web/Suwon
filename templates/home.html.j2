@@ -191,7 +191,7 @@
 {% set RK_YT = popular_videos[:5] if has_videos else [] %}
 {% set RK_IG = home_insta[:5] if IG else [] %}
 {% if RK_YT or RK_IG %}
-{% set rk_types = [] %}{% for a in RK_IG if a.photo and not a.related and a.photo.type not in rk_types %}{% set _ = rk_types.append(a.photo.type) %}{% endfor %}
+{% set rk_types = [] %}{% for a in RK_IG if a.photo and not a.related %}{% set _ = rk_types.append(a.photo) %}{% endfor %}
 <section class="hrk" aria-labelledby="h-rank">
   <div class="wrap"><div class="hrk-card">
     <div class="hrk-head"><h2 id="h-rank" class="hrk-h">{% if RK_YT %}<span class="hrk-w-yt">유튜브</span>{% endif %}{% if RK_YT and RK_IG %}<span class="hrk-w-dot">·</span>{% endif %}{% if RK_IG %}<span class="hrk-w-ig">인스타그램</span>{% endif %} 인기 순위</h2><p class="hrk-sub">{{ site.site_name|josa('이/가') }} 고른 {% if RK_YT %}<span class="hrk-w-yt">영상 <span class="tn">{{ n_popular|default(popular_videos|length) }}</span>편</span>{% endif %}{% if RK_YT and RK_IG %}<span class="hrk-w-dot">·</span>{% endif %}{% if RK_IG %}<span class="hrk-w-ig">게시물 <span class="tn">{{ n_insta }}</span>편</span>{% endif %} 가운데</p></div>
@@ -235,7 +235,7 @@
       </div>
       {% endif %}
     </div>
-    <p class="hrk-note">{{ site.site_name|josa('이/가') }} 고른 {% if RK_YT %}영상 {{ n_popular|default(popular_videos|length) }}편{% endif %}{% if RK_YT and RK_IG %}·{% endif %}{% if RK_IG %}게시물 {{ n_insta }}편{% endif %} 안에서 {% if RK_YT %}유튜브는 조회수{% endif %}{% if RK_YT and RK_IG %}, {% endif %}{% if RK_IG %}인스타그램은 좋아요 수{% endif %}가 많은 순서이고, 추천 순서가 아닙니다. 숫자는 목록에 실은 때의 값이라 지금과 다를 수 있습니다.{% if rk_types %} 인스타그램 줄의 사진은 게시물에 나온 장소의 사진입니다 — 사진 출처: 한국관광공사 · 공공누리 제{{ rk_types|sort|join('·') }}유형.{% endif %}</p>
+    <p class="hrk-note">{{ site.site_name|josa('이/가') }} 고른 {% if RK_YT %}영상 {{ n_popular|default(popular_videos|length) }}편{% endif %}{% if RK_YT and RK_IG %}·{% endif %}{% if RK_IG %}게시물 {{ n_insta }}편{% endif %} 안에서 {% if RK_YT %}유튜브는 조회수{% endif %}{% if RK_YT and RK_IG %}, {% endif %}{% if RK_IG %}인스타그램은 좋아요 수{% endif %}가 많은 순서이고, 추천 순서가 아닙니다. 숫자는 목록에 실은 때의 값이라 지금과 다를 수 있습니다.{% if rk_types %} 인스타그램 줄의 사진은 게시물에 나온 장소의 사진입니다 — 사진 출처: {{ photo_credit(rk_types) }}.{% endif %}</p>
   </div></div>
 </section>
 {% endif %}
@@ -253,7 +253,7 @@
       <span class="hfo-nm"><b>{{ r.name }}</b>{{ p1.dzchip(r.dz) }}</span>
       <span class="hfo-l">{% if r.menu %}<b>{{ r.menu }}</b>{% endif %}{% if r.hours %}{% if r.menu %} · {% endif %}<span class="tn">{{ r.hours }}</span>{% endif %}{% if r.closed %} · <span class="{{ 'hfo-cl' if r.is_closed else '' }}">{{ r.closed }}</span>{% endif %}</span>
     </a></li>{% endfor %}</ul>
-    <p class="hfo-note">사진이 있는 곳부터 · 추천 순서가 아닙니다{% if FR.lics %} · 사진: 한국관광공사 · 공공누리 제{{ FR.lics|join('·') }}유형{% endif %}</p>
+    <p class="hfo-note">사진이 있는 곳부터 · 추천 순서가 아닙니다{% if FR.lics %} · 사진: {{ photo_credit(FR.recs|selectattr('photo')|map(attribute='photo')|list) }}{% endif %}</p>
   </div></div>
 </section>
 {% endif %}

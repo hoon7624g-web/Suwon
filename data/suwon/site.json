@@ -149,6 +149,30 @@
       "KOGL-3"
     ]
   },
+  "city_photos": {
+    "_note": "운영자 결정 2026-11-14(조정 세션 전달, 그대로): '모두 허락 받았어. 전수조사하고, 최대한 사진들 많이 끌어와서 19개 사이트에 모두 넣자. 부평시장각도 포함해서. 모든 사이트가 아주 풍성해지도록' — 수원특례시가 운영하는 누리집·사진 포털의 사진을 수원특례시의 이용 허락으로 싣는다(크기 조절·자르기 가능, 출처 '수원특례시 · 이용 허락'). 글은 여전히 링크로만. 수원문화재단 등 재단·공사 누리집의 사진은 이 허락 밖. 화면은 시 서버의 원본을 부르지 않고 우리 사본(templates/assets/media, tools/kogl1_media.py)만 쓴다. 공개 빌드에 싣는 것은 publish_rules.allowed_image_licenses에 CITY-PERMIT이 있을 때뿐이다(운영자가 정한다).",
+    "credit": "수원특례시",
+    "credit_intl": {
+      "en": "Suwon Special City",
+      "ja": "水原特例市",
+      "zh-hans": "水原特例市",
+      "zh-hant": "水原特例市",
+      "de": "Stadt Suwon",
+      "fr": "Ville de Suwon",
+      "es": "Ciudad de Suwon",
+      "ru": "Город Сувон"
+    },
+    "permit_at": "2026-11-14",
+    "hosts": [
+      "photo.suwon.go.kr"
+    ],
+    "sources": [
+      {
+        "name": "수원시 포토뱅크",
+        "url": "https://photo.suwon.go.kr/"
+      }
+    ]
+  },
   "crawler_policy": {
     "allow_training_bots": true,
     "decided": "2026-10-23 운영자: 군산각과 동일하게 AI 학습·생성형 답변 크롤러 허용(브랜드 인지·인용 확대 목적)"

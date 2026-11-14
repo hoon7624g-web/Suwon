@@ -61,7 +61,7 @@
 {% set tones = ['ink', 'chick', 'sea', 'tint', 'rose'] %}
 {% set word = a.place.name if a.place else ((a.lang ~ ' 게시물') if a.lang else (a.platform_label ~ ' 게시물')) %}
 <li><a class="hsns-c" href="{{ href_prefix }}{{ a.id }}" data-track="abroad_click">
-<span class="hsns-v{% if a.photo %} t{{ a.photo.type }}{% else %} hsns-w-{{ tones[i % tones|length] }}{% endif %}">{% if a.photo %}{{ ui.img(a.photo, '(min-width: 1024px) 280px, 264px', false, 'hsns-img') }}{% else %}<span class="hsns-w">{{ word }}</span>{% endif %}{% if a.place %}<span class="hsns-pl">{{ pin_icon() }}{{ a.place.name if a.photo else '나온 곳' }}</span>{% endif %}{% if a.photo %}<span class="hsns-cr">장소 사진 · 출처: {{ a.photo.credit or '한국관광공사' }} · 공공누리 제{{ a.photo.type }}유형</span>{% endif %}</span>
+<span class="hsns-v{% if a.photo %} t{{ a.photo.type }}{% else %} hsns-w-{{ tones[i % tones|length] }}{% endif %}">{% if a.photo %}{{ ui.img(a.photo, '(min-width: 1024px) 280px, 264px', false, 'hsns-img') }}{% else %}<span class="hsns-w">{{ word }}</span>{% endif %}{% if a.place %}<span class="hsns-pl">{{ pin_icon() }}{{ a.place.name if a.photo else '나온 곳' }}</span>{% endif %}{% if a.photo %}<span class="hsns-cr">장소 사진 · 출처: {{ photo_credit([a.photo]) }}</span>{% endif %}</span>
 <span class="hsns-h">{{ ab.svc(a.platform) }}<span class="hsns-who"><b>{{ a.platform_label }}</b>{% if a.author %} · {{ a.author }}{% endif %}</span>{% if a.lang %}<span class="hsns-lang">{{ a.lang }}</span>{% endif %}</span>
 <span class="hsns-n">{{ a.note }}</span>
 <span class="hsns-f">{% if a.date %}<span class="hsns-d tn">{{ ab.when(a.date) }}</span>{% endif %}<span class="hsns-go">게시물 보기<span class="arr" aria-hidden="true">›</span></span></span>

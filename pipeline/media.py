@@ -35,6 +35,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from .schema import EDITABLE_LICENSES
 from .slugs import SLUG_RE, anchor_id
 from .textutil import squash_ws
 
@@ -42,8 +43,14 @@ ROOT = Path(__file__).resolve().parent.parent
 MEDIA_DIR = ROOT / "templates" / "assets" / "media"
 MANIFEST = MEDIA_DIR / "manifest.json"
 URL_PREFIX = "/assets/media/"
-MEDIA_BUDGET = 15 * 1024 * 1024   # every derivative together (Q14: KOGL-1 photos of published places only)
+MEDIA_BUDGET = 15 * 1024 * 1024   # every KOGL-1 derivative together (Q14: KOGL-1 photos of published places only)
+# the city government's own photos (CITY-PERMIT, site.json city_photos — 운영자 2026-11-14): their same-origin copies
+# have a budget of their own (the photo kit's 250MB) — pages never load the city's files
+CITY_BUDGET = 250 * 1024 * 1024
 FORMATS = ("avif", "webp")
+# slots of the city's photos after a place's lead: WebP only — 'view' 480 + 960 (a tourism-website photo opens to our
+# copy), 'thumb' 480 (a photo-portal photo opens to its post)
+WEBP_ONLY = ("view", "thumb")
 
 
 def load_manifest(path: Path = MANIFEST) -> dict:
@@ -70,10 +77,16 @@ def smallest(ph: dict) -> tuple[str, int, int] | None:
 
 
 def attach(S, manifest: dict | None = None) -> None:
-    """Add avif/webp srcsets (and a missing intrinsic size) to every photo of every place. KOGL-1 only: a manifest
-    entry for any other photo is ignored, so a mistaken derivative can never reach a page."""
+    """Add avif/webp srcsets (and a missing intrinsic size) to every photo of every place. Editable photos only
+    (type 1: KOGL-1 and the city's own photos, CITY-PERMIT): a manifest entry for a KOGL-3 photo is ignored, so a
+    mistaken derivative can never reach a page. ph.full is what a photo opens to (a city photo: its photo-portal post
+    when it opens_page, else our widest WebP; else the provider's file). A city photo without derivatives is dropped
+    and one with them gets our widest WebP as ph.url (ph.orig keeps the city's address): pages never load the city's
+    own files. e['_photos_all'] keeps every photo before that (wanted() asks for the missing copies)."""
     man = load_manifest() if manifest is None else manifest
     for e in S.entities:
+        e["_photos_all"] = list(e.get("_photos") or [])
+        keep = []
         for ph in e.get("_photos") or []:
             entry = (man or {}).get(ph["url"]) if ph.get("type") == 1 else None
             ph["avif"] = srcset(entry["avif"]) if entry and entry.get("avif") else ""
@@ -81,32 +94,46 @@ def attach(S, manifest: dict | None = None) -> None:
             if entry and not (ph.get("w") and ph.get("h")):
                 ph["w"], ph["h"] = entry["w"], entry["h"]
                 ph["ar"] = f"{entry['w']}/{entry['h']}"
+            ph["full"] = ph["url"]
+            if ph.get("src") == "city":
+                if not ph["webp"]:
+                    continue
+                widest = max(entry["webp"], key=lambda f: f[1])
+                ph["full"] = ph["page"] if (ph.get("opens_page") and ph.get("page")) else widest[0]
+                ph["orig"], ph["url"], ph["bytes"] = ph["url"], widest[0], widest[2]
+            keep.append(ph)
+        e["_photos"] = keep
 
 
 def manifest_problems(manifest: dict | None, licences: dict, media_dir: Path = MEDIA_DIR,
-                      budget: int = MEDIA_BUDGET) -> list[str]:
+                      budget: int = MEDIA_BUDGET, city_budget: int = CITY_BUDGET) -> list[str]:
     """What is wrong with the derivatives (Korean, one line each; [] when nothing):
-    - an entry whose photo is not KOGL-1 in the data (licences: {provider url: licence code}) — KOGL-3 (변경금지) is
-      never re-encoded;
-    - a format without a file; a file path outside URL_PREFIX, a file missing or not of the listed size, a width
-      above the source's (nothing is upscaled);
+    - an entry whose photo is not editable in the data (licences: {provider url: licence code}): KOGL-1, or the city's
+      own photo (CITY-PERMIT) — KOGL-3 (변경금지) is never re-encoded; a WebP-only slot (view, thumb) for anything but
+      a city photo;
+    - a format without a file (a WebP-only slot needs no AVIF); a file path outside URL_PREFIX, a file missing or not
+      of the listed size, a width above the source's (nothing is upscaled);
     - an .avif / .webp in media_dir that the manifest does not list (a stray derivative would ship with the assets);
-    - more than `budget` bytes in all.
+    - more than `budget` bytes of KOGL-1 derivatives, or more than `city_budget` bytes of the city's copies.
     An empty or missing manifest with no derivative on disk has no problem (Q15)."""
-    out, total, listed = [], 0, set()
+    out, totals, listed = [], {"KOGL-1": 0, "CITY-PERMIT": 0}, set()
     media_dir = Path(media_dir)
     for url, entry in sorted((manifest or {}).items()):
         entry = entry if isinstance(entry, dict) else {}
-        if licences.get(url) != "KOGL-1":
-            out.append(f"{url}: 공공누리 제1유형이 아닌 사진({licences.get(url) or '라이선스 없음'})의 파생 이미지")
+        lic = licences.get(url)
+        if lic not in EDITABLE_LICENSES:
+            out.append(f"{url}: 공공누리 제1유형이 아닌 사진({lic or '라이선스 없음'}, 시청 사진도 아님)의 파생 이미지")
+        webp_only = entry.get("slot") in WEBP_ONLY
+        if webp_only and lic != "CITY-PERMIT":
+            out.append(f"{url}: WebP만 만드는 자리({entry.get('slot')})는 시청 사진에만 씀")
         for fmt in FORMATS:
             files = entry.get(fmt) or []
-            if not files:
+            if not files and not (webp_only and fmt == "avif"):
                 out.append(f"{url}: {fmt} 파일 없음")
             for path, width, size in files:
                 f = media_dir / Path(path).name
                 listed.add(f.name)
-                total += size
+                totals["CITY-PERMIT" if lic == "CITY-PERMIT" else "KOGL-1"] += size
                 if not str(path).startswith(URL_PREFIX):
                     out.append(f"{url}: {URL_PREFIX} 밖의 경로 {path}")
                 elif not f.exists() or f.stat().st_size != size:
@@ -115,8 +142,10 @@ def manifest_problems(manifest: dict | None, licences: dict, media_dir: Path = M
                     out.append(f"{url}: 원본 너비({entry.get('w')})보다 큰 파생 이미지 {path}")
     on_disk = {f.name for f in media_dir.iterdir() if f.suffix[1:] in FORMATS} if media_dir.is_dir() else set()
     out += [f"manifest에 없는 파생 이미지 파일(남은 파일): {name}" for name in sorted(on_disk - listed)]
-    if total > budget:
-        out.append(f"파생 이미지 합계 {total:,}바이트가 상한 {budget:,}바이트를 넘음")
+    if totals["KOGL-1"] > budget:
+        out.append(f"파생 이미지 합계 {totals['KOGL-1']:,}바이트가 상한 {budget:,}바이트를 넘음")
+    if totals["CITY-PERMIT"] > city_budget:
+        out.append(f"시청 사진 사본 합계 {totals['CITY-PERMIT']:,}바이트가 상한 {city_budget:,}바이트를 넘음")
     return out
 
 
@@ -241,22 +270,28 @@ def cover_problems(S) -> list[str]:
 
 
 def wanted(S) -> dict:
-    """{url: slot} for every KOGL-1 photo that gets derivatives (no warning here: present reports the slots); slot
+    """{url: slot} for every editable photo that gets derivatives (no warning here: present reports the slots); slot
     'cover' (the full-bleed home opening: up to 1280w, a fuller encode — it fills a wide screen, the LCP image),
     'hero' (the opening slides: a lighter encode, small on phones) or 'k1' — the KOGL-1 photos of the story and
-    gallery slots and every place's KOGL-1 lead photo. Used by tools/kogl1_media.py."""
+    gallery slots and every place's editable lead photo (KOGL-1, or the city's own when it leads); and for the city's
+    photos after the lead 'view' (a tourism-website photo: WebP 480 + 960, it opens to our copy) or 'thumb' (a
+    photo-portal photo: WebP 480, it opens to its post). Built from every photo (e['_photos_all']), so a city photo
+    without copies yet is still asked for. Used by tools/kogl1_media.py."""
     by_id = {e.get("id"): e for e in S.entities if e.get("id")}
     out: dict[str, str] = {}
     for slot, _, ref in sorted(home_refs(S), key=lambda x: x[0] not in ("cover", "hero")):
         r = _ref(ref)
         e = by_id.get(r[0]) if r else None
         ph = _photo(e, *r, True, "")[0] if e else None
-        if ph:
+        if ph and ph.get("src") != "city":
             out.setdefault(ph["url"], slot if slot in ("cover", "hero") else "k1")
     for e in S.entities:
-        photos = e.get("_photos") or []
+        photos = e.get("_photos_all") or e.get("_photos") or []
         if photos and photos[0].get("type") == 1:
-            out.setdefault(photos[0]["url"], "k1")
+            out.setdefault(photos[0].get("orig") or photos[0]["url"], "k1")
+        for ph in photos[1:]:
+            if ph.get("src") == "city":
+                out.setdefault(ph.get("orig") or ph["url"], "thumb" if ph.get("opens_page") else "view")
     return out
 
 
