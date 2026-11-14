@@ -118,6 +118,8 @@ def fetch(path: str, binary: bool = False, tries: int = 7, cache: Path = PAGES) 
             if r.returncode:
                 raise OSError(r.stderr.decode("utf-8", "ignore").strip()[:120])
             head, _, body = r.stdout.partition(b"\r\n\r\n")
+            while body.startswith(b"HTTP/"):   # a proxy's CONNECT reply comes first: the server's own headers follow
+                head, _, body = body.partition(b"\r\n\r\n")
             ctype = "html" if b"content-type: text/html" in head.lower() else ""
             if binary and ("html" in ctype or body[:15].lstrip().lower().startswith((b"<!doctype", b"<html"))):
                 raise RuntimeError(f"사진이 아님(HTML 응답): {url}")

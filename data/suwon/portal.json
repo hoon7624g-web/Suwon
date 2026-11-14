@@ -1,0 +1,1941 @@
+{
+ "_about": "수원시 포토뱅크 게시물 가운데 제목이 이 사이트의 장소를 가리키는 것(행사·인물이 주인공인 게시물 제외)에서 장소마다 최신 게시물부터 돌아가며 고른 사진(장소당 20장까지, 거의 같은 연속 사진 제외). 운영자 결정 2026-11-14 '모두 허락 받았어. 전수조사하고, 최대한 사진들 많이 끌어와서 … 모든 사이트가 아주 풍성해지도록'. tools/city_portal.py가 만들고 tools/city_photos.py attach가 장소에 붙인다. 싣지 않을 게시물·사진은 hold: true.",
+ "source": "수원시 포토뱅크",
+ "checked_at": "2026-11-14",
+ "posts": [
+  {
+   "id": "9126",
+   "title": "효원공원-월화원",
+   "date": "2012-05-16",
+   "places": [
+    "tourapi-750947"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=9126&list_numb=1&menu_id=0",
+   "fields": [
+    "검색"
+   ],
+   "opens_page": true,
+   "alt": "효원공원-월화원",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0415/I00000207191.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0415/I00000207192.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0415/I00000207193.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0415/I00000207194.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0415/I00000207195.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0415/I00000207196.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0415/I00000207197.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0415/I00000207198.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0415/I00000207199.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0415/I00000207200.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0415/I00000207201.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0415/I00000207202.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0415/I00000207203.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0415/I00000207204.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0415/I00000207205.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0415/I00000207206.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0415/I00000207207.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0415/I00000207208.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0415/I00000207209.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0415/I00000207210.JPG"
+    }
+   ]
+  },
+  {
+   "id": "5603",
+   "title": "심온선생묘",
+   "date": "2000-08-01",
+   "places": [
+    "tourapi-736630"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=5603&list_numb=1&menu_id=0",
+   "fields": [
+    "검색"
+   ],
+   "opens_page": true,
+   "alt": "심온선생묘",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0205/I00000102040.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0205/I00000102041.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0205/I00000102042.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0205/I00000102043.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0205/I00000102044.JPG"
+    }
+   ]
+  },
+  {
+   "id": "19388",
+   "title": "수원박물관벚꽃",
+   "date": "2018-04-10",
+   "places": [
+    "tourapi-638913"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=19388&list_numb=1&menu_id=0",
+   "fields": [
+    "검색"
+   ],
+   "opens_page": true,
+   "alt": "수원박물관벚꽃",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/community_file1/I397.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/community_file1/I397-I1044.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/community_file1/I397-I1045.JPG"
+    }
+   ]
+  },
+  {
+   "id": "20039",
+   "title": "광교푸른숲도서관푸른숲책뜰",
+   "date": "2021-06-24",
+   "places": [
+    "tourapi-4076762"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=20039&list_numb=1&menu_id=0",
+   "fields": [
+    "문화,예술,관광"
+   ],
+   "opens_page": true,
+   "alt": "광교푸른숲도서관푸른숲책뜰",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202106/I00000700909.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202106/I00000700910.jpg"
+    }
+   ]
+  },
+  {
+   "id": "24061",
+   "title": "[기획보도]만석공원가을풍경",
+   "date": "2025-10-30",
+   "places": [
+    "tourapi-3351831"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=24061&list_numb=1&menu_id=0",
+   "fields": [
+    "검색"
+   ],
+   "opens_page": true,
+   "alt": "만석공원가을풍경",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202510/I00000822650.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202510/I00000822651.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202510/I00000822652.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202510/I00000822653.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202510/I00000822654.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202510/I00000822655.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202510/I00000822656.jpg"
+    }
+   ]
+  },
+  {
+   "id": "20038",
+   "title": "수원전통문화관",
+   "date": "2021-06-23",
+   "places": [
+    "tourapi-3080477"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=20038&list_numb=1&menu_id=0",
+   "fields": [
+    "문화,예술,관광"
+   ],
+   "opens_page": true,
+   "alt": "수원전통문화관",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202106/I00000700908.jpg"
+    }
+   ]
+  },
+  {
+   "id": "17769",
+   "title": "수원전통문화관",
+   "date": "2020-10-11",
+   "places": [
+    "tourapi-3080477"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=17769&list_numb=1&menu_id=0",
+   "fields": [
+    "문화,예술,관광"
+   ],
+   "opens_page": true,
+   "alt": "수원전통문화관",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1313/I00000656410.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1313/I00000656411.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1313/I00000656412.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1313/I00000656413.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1313/I00000656414.JPG"
+    }
+   ]
+  },
+  {
+   "id": "17709",
+   "title": "수원전통문화관",
+   "date": "2020-10-05",
+   "places": [
+    "tourapi-3080477"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=17709&list_numb=1&menu_id=0",
+   "fields": [
+    "문화,예술,관광"
+   ],
+   "opens_page": true,
+   "alt": "수원전통문화관",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1310/I00000654803.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1310/I00000654804.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1310/I00000654805.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1310/I00000654807.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1310/I00000654808.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1310/I00000654823.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1310/I00000654824.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1310/I00000654825.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1310/I00000654826.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1310/I00000654827.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1310/I00000654828.JPG"
+    }
+   ]
+  },
+  {
+   "id": "17518",
+   "title": "수원SK아트리움일대",
+   "date": "2020-05-21",
+   "places": [
+    "tourapi-3075454"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=17518&list_numb=1&menu_id=0",
+   "fields": [
+    "문화,예술,관광"
+   ],
+   "opens_page": true,
+   "alt": "수원SK아트리움일대",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1298/I00000648742.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1298/I00000648743.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1298/I00000648744.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1298/I00000648745.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1298/I00000648747.JPG"
+    }
+   ]
+  },
+  {
+   "id": "22231",
+   "title": "수원 구 부국원",
+   "date": "2023-11-09",
+   "places": [
+    "tourapi-3033796"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=22231&list_numb=1&menu_id=0",
+   "fields": [
+    "검색"
+   ],
+   "opens_page": true,
+   "alt": "수원 구 부국원",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202312/I00000776094.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202312/I00000776095.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202312/I00000776096.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202312/I00000776097.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202312/I00000776098.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202312/I00000776099.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202312/I00000776100.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202312/I00000776101.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202312/I00000776102.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202312/I00000776103.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202312/I00000776104.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202312/I00000776105.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202312/I00000776106.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202312/I00000776107.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202312/I00000776108.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202312/I00000776109.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202312/I00000776110.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202312/I00000776111.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202312/I00000776112.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202312/I00000776113.JPG"
+    }
+   ]
+  },
+  {
+   "id": "11291",
+   "title": "서호공원",
+   "date": "2014-09-19",
+   "places": [
+    "tourapi-2781854"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=11291&list_numb=1&menu_id=0",
+   "fields": [
+    "검색"
+   ],
+   "opens_page": true,
+   "alt": "서호공원",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0607/I00000303138.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0607/I00000303139.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0607/I00000303140.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0607/I00000303141.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0607/I00000303142.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0607/I00000303143.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0607/I00000303144.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0607/I00000303145.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0607/I00000303147.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0607/I00000303148.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0607/I00000303149.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0607/I00000303150.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0607/I00000303151.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0607/I00000303152.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0607/I00000303153.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0607/I00000303154.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0607/I00000303155.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0607/I00000303156.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0607/I00000303157.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0607/I00000303158.JPG"
+    }
+   ]
+  },
+  {
+   "id": "14736",
+   "title": "밤밭청개구리공원연꽃",
+   "date": "2017-07-12",
+   "places": [
+    "tourapi-2781841"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=14736&list_numb=1&menu_id=0",
+   "fields": [
+    "검색"
+   ],
+   "opens_page": true,
+   "alt": "밤밭청개구리공원연꽃",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1002/I00000500686.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1002/I00000500687.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1002/I00000500688.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1002/I00000500689.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1002/I00000500690.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1002/I00000500691.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1002/I00000500692.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1002/I00000500693.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1002/I00000500694.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1002/I00000500695.JPG"
+    }
+   ]
+  },
+  {
+   "id": "12205",
+   "title": "율천동밤밭청개구리공원연꽃",
+   "date": "2015-07-07",
+   "places": [
+    "tourapi-2781841"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=12205&list_numb=1&menu_id=0",
+   "fields": [
+    "검색"
+   ],
+   "opens_page": true,
+   "alt": "율천동밤밭청개구리공원연꽃",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0703/I00000351045.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0703/I00000351046.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0703/I00000351047.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0703/I00000351048.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0703/I00000351049.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0703/I00000351050.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0703/I00000351051.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0703/I00000351052.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0703/I00000351053.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0703/I00000351054.JPG"
+    }
+   ]
+  },
+  {
+   "id": "21723",
+   "title": "[기획보도]수원시건축자산재활용 고색뉴지엄",
+   "date": "2023-05-23",
+   "places": [
+    "tourapi-2747134"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=21723&list_numb=1&menu_id=0",
+   "fields": [
+    "문화,예술,관광"
+   ],
+   "opens_page": true,
+   "alt": "수원시건축자산재활용 고색뉴지엄",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202305/I00000763363.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202305/I00000763364.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202305/I00000763365.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202305/I00000763366.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202305/I00000763367.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202305/I00000763368.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202305/I00000763369.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202305/I00000763370.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202305/I00000763371.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202305/I00000763372.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202305/I00000763373.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202305/I00000763374.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202305/I00000763375.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202305/I00000763376.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202305/I00000763377.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202305/I00000763378.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202305/I00000763379.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202305/I00000763380.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202305/I00000763381.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202305/I00000763382.JPG"
+    }
+   ]
+  },
+  {
+   "id": "15628",
+   "title": "경기상상캠퍼스(구서울대농대부지)",
+   "date": "2018-05-21",
+   "places": [
+    "tourapi-2747132"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=15628&list_numb=1&menu_id=0",
+   "fields": [
+    "검색"
+   ],
+   "opens_page": true,
+   "alt": "경기상상캠퍼스(구서울대농대부지)",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1101/I00000550424.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1101/I00000550425.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1101/I00000550426.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1101/I00000550427.JPG"
+    }
+   ]
+  },
+  {
+   "id": "5783",
+   "title": "효행공원",
+   "date": "2000-11-03",
+   "places": [
+    "tourapi-2741606"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=5783&list_numb=1&menu_id=0",
+   "fields": [
+    "검색"
+   ],
+   "opens_page": true,
+   "alt": "효행공원",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0210/I00000104711.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0210/I00000104713.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0210/I00000104714.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0210/I00000104715.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0210/I00000104716.JPG"
+    }
+   ]
+  },
+  {
+   "id": "17064",
+   "title": "화서공원가을단풍",
+   "date": "2019-11-09",
+   "places": [
+    "tourapi-2741604"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=17064&list_numb=1&menu_id=0",
+   "fields": [
+    "검색"
+   ],
+   "opens_page": true,
+   "alt": "화서공원가을단풍",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1266/I00000632706.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1266/I00000632707.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1266/I00000632708.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1266/I00000632709.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1266/I00000632710.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1266/I00000632712.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1266/I00000632713.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1266/I00000632714.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1266/I00000632715.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1266/I00000632716.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1266/I00000632717.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1266/I00000632718.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1266/I00000632719.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1266/I00000632720.JPG"
+    }
+   ]
+  },
+  {
+   "id": "17549",
+   "title": "중보들공원도시숲조성",
+   "date": "2020-06-19",
+   "places": [
+    "tourapi-2741603"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=17549&list_numb=1&menu_id=0",
+   "fields": [
+    "검색"
+   ],
+   "opens_page": true,
+   "alt": "중보들공원도시숲조성",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1300/I00000649784.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1300/I00000649785.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1300/I00000649786.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1300/I00000649788.JPG"
+    }
+   ]
+  },
+  {
+   "id": "17507",
+   "title": "서호꽃뫼공원The큰통합놀이터(무장애놀이터)",
+   "date": "2020-05-19",
+   "places": [
+    "tourapi-2739474"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=17507&list_numb=1&menu_id=0",
+   "fields": [
+    "검색"
+   ],
+   "opens_page": true,
+   "alt": "서호꽃뫼공원The큰통합놀이터(무장애놀이터)",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1297/I00000648211.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1297/I00000648212.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1297/I00000648213.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1297/I00000648214.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1297/I00000648215.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1297/I00000648216.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1297/I00000648217.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1297/I00000648218.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1297/I00000648219.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1297/I00000648220.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1297/I00000648221.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1297/I00000648223.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1297/I00000648224.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1297/I00000648225.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1297/I00000648226.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1297/I00000648227.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1297/I00000648228.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1297/I00000648229.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1297/I00000648230.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1297/I00000648231.JPG"
+    }
+   ]
+  },
+  {
+   "id": "1969",
+   "title": "여기산공원",
+   "date": "2004-11-20",
+   "places": [
+    "tourapi-2739462"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=1969&list_numb=1&menu_id=0",
+   "fields": [
+    "검색"
+   ],
+   "opens_page": true,
+   "alt": "여기산공원",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0076/I00000037579.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0076/I00000037581.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0076/I00000037582.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0076/I00000037583.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0076/I00000037584.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0076/I00000037585.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0076/I00000037586.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0076/I00000037587.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0076/I00000037588.JPG"
+    }
+   ]
+  },
+  {
+   "id": "13820",
+   "title": "플라잉수원헬륨기구에서바라본수원화성일대",
+   "date": "2016-09-26",
+   "places": [
+    "tourapi-2714220"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=13820&list_numb=1&menu_id=0",
+   "fields": [
+    "문화,예술,관광"
+   ],
+   "opens_page": true,
+   "alt": "플라잉수원헬륨기구에서바라본수원화성일대",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0882/I00000440714.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0882/I00000440715.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0882/I00000440716.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0882/I00000440718.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0882/I00000440719.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0882/I00000440720.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0882/I00000440721.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0882/I00000440723.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0882/I00000440724.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0882/I00000440725.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0882/I00000440726.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0882/I00000440728.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0882/I00000440730.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0882/I00000440732.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0882/I00000440734.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0882/I00000440736.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0882/I00000440738.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0882/I00000440739.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0882/I00000440741.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0882/I00000440742.JPG"
+    }
+   ]
+  },
+  {
+   "id": "20256",
+   "title": "수원컨벤션센터",
+   "date": "2021-09-25",
+   "places": [
+    "tourapi-2703375"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=20256&list_numb=1&menu_id=0",
+   "fields": [
+    "문화,예술,관광"
+   ],
+   "opens_page": true,
+   "alt": "수원컨벤션센터",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202109/I00000706540.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202109/I00000706541.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202109/I00000706542.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202109/I00000706543.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202109/I00000706544.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202109/I00000706545.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202109/I00000706546.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202109/I00000706547.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202109/I00000706548.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202109/I00000706549.jpg"
+    }
+   ]
+  },
+  {
+   "id": "17560",
+   "title": "수원컨벤션센터",
+   "date": "2020-06-21",
+   "places": [
+    "tourapi-2703375"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=17560&list_numb=1&menu_id=0",
+   "fields": [
+    "문화,예술,관광"
+   ],
+   "opens_page": true,
+   "alt": "수원컨벤션센터",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1301/I00000650047.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1301/I00000650048.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1301/I00000650049.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1301/I00000650050.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1301/I00000650051.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1301/I00000650052.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1301/I00000650053.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1301/I00000650054.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1301/I00000650055.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1301/I00000650056.JPG"
+    }
+   ]
+  },
+  {
+   "id": "14472",
+   "title": "화성어차",
+   "date": "2017-04-13",
+   "places": [
+    "tourapi-264402"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=14472&list_numb=1&menu_id=0",
+   "fields": [
+    "문화,예술,관광"
+   ],
+   "opens_page": true,
+   "alt": "화성어차",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0971/I00000485256.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0971/I00000485257.JPG"
+    }
+   ]
+  },
+  {
+   "id": "29369",
+   "title": "[기획보도] 창룡문 억새",
+   "date": "2026-11-12",
+   "places": [
+    "tourapi-264392"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=29369&list_numb=1&menu_id=0",
+   "fields": [
+    "검색"
+   ],
+   "opens_page": true,
+   "alt": "창룡문 억새",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202611/I00000879614.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202611/I00000879615.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202611/I00000879616.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202611/I00000879617.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202611/I00000879618.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202611/I00000879619.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202611/I00000879620.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202611/I00000879621.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202611/I00000879622.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202611/I00000879623.JPG"
+    }
+   ]
+  },
+  {
+   "id": "24037",
+   "title": "[기획보도]창룡문일대야경",
+   "date": "2025-10-24",
+   "places": [
+    "tourapi-264392"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=24037&list_numb=1&menu_id=0",
+   "fields": [
+    "검색"
+   ],
+   "opens_page": true,
+   "alt": "창룡문일대야경",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202510/I00000821953.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202510/I00000821954.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202510/I00000821955.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202510/I00000821956.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202510/I00000821957.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202510/I00000821959.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202510/I00000821960.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202510/I00000821961.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202510/I00000821962.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202510/I00000821964.jpg"
+    }
+   ]
+  },
+  {
+   "id": "26152",
+   "title": "[기획보도] 수원화성 성곽 장안문",
+   "date": "2026-08-29",
+   "places": [
+    "tourapi-264390"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=26152&list_numb=1&menu_id=0",
+   "fields": [
+    "문화,예술,관광"
+   ],
+   "opens_page": true,
+   "alt": "수원화성 성곽 장안문",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202608/I00000848727.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202608/I00000848728.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202608/I00000848729.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202608/I00000848730.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202608/I00000848731.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202608/I00000848732.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202608/I00000848733.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202608/I00000848734.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202608/I00000848735.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202608/I00000848736.jpg"
+    }
+   ]
+  },
+  {
+   "id": "20249",
+   "title": "수원화성서포루억새-화서문",
+   "date": "2021-09-24",
+   "places": [
+    "tourapi-264388"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=20249&list_numb=1&menu_id=0",
+   "fields": [
+    "검색"
+   ],
+   "opens_page": true,
+   "alt": "수원화성서포루억새-화서문",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202109/I00000706456.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202109/I00000706458.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202109/I00000706459.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202109/I00000706460.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202109/I00000706462.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202109/I00000706463.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202109/I00000706465.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202109/I00000706467.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202109/I00000706468.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202109/I00000706469.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202109/I00000706470.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202109/I00000706471.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202109/I00000706472.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202109/I00000706473.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202109/I00000706474.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202109/I00000706475.JPG"
+    }
+   ]
+  },
+  {
+   "id": "28186",
+   "title": "[기획보도] 수원 통닭거리",
+   "date": "2026-10-16",
+   "places": [
+    "tourapi-2613664"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=28186&list_numb=1&menu_id=0",
+   "fields": [
+    "문화,예술,관광"
+   ],
+   "opens_page": true,
+   "alt": "수원 통닭거리",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202610/I00000868974.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202610/I00000868975.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202610/I00000868976.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202610/I00000868977.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202610/I00000868978.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202610/I00000868979.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202610/I00000868980.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202610/I00000868981.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202610/I00000868982.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202610/I00000868983.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202610/I00000868984.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202610/I00000868985.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202610/I00000868986.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202610/I00000868987.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202610/I00000868988.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202610/I00000868989.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202610/I00000868990.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202610/I00000868991.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202610/I00000868992.jpg"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202610/I00000868993.jpg"
+    }
+   ]
+  },
+  {
+   "id": "20672",
+   "title": "방화수류정의봄",
+   "date": "2022-04-23",
+   "places": [
+    "tourapi-2613658"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=20672&list_numb=1&menu_id=0",
+   "fields": [
+    "검색"
+   ],
+   "opens_page": true,
+   "alt": "방화수류정의봄",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202204/I00000722197.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202204/I00000722199.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202204/I00000722201.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202204/I00000722203.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202204/I00000722204.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202204/I00000722206.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202204/I00000722208.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202204/I00000722210.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202204/I00000722212.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202204/I00000722214.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202204/I00000722215.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202204/I00000722216.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202204/I00000722217.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202204/I00000722219.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202204/I00000722221.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202204/I00000722222.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202204/I00000722225.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202204/I00000722228.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202204/I00000722229.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202204/I00000722231.JPG"
+    }
+   ]
+  },
+  {
+   "id": "20961",
+   "title": "동북공심돈",
+   "date": "2022-09-03",
+   "places": [
+    "tourapi-2613657"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=20961&list_numb=1&menu_id=0",
+   "fields": [
+    "검색"
+   ],
+   "opens_page": true,
+   "alt": "동북공심돈",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202209/I00000737732.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202209/I00000737734.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202209/I00000737735.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202209/I00000737736.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202209/I00000737737.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202209/I00000737739.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202209/I00000737740.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202209/I00000737742.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202209/I00000737743.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202209/I00000737744.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202209/I00000737745.JPG"
+    }
+   ]
+  },
+  {
+   "id": "19407",
+   "title": "가을은 억새 #동북공심돈",
+   "date": "2019-10-19",
+   "places": [
+    "tourapi-2613657"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=19407&list_numb=1&menu_id=0",
+   "fields": [
+    "검색"
+   ],
+   "opens_page": true,
+   "alt": "가을은 억새 #동북공심돈",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/community_file1/I416.JPG"
+    }
+   ]
+  },
+  {
+   "id": "13677",
+   "title": "수원광교박물관(소강민관식실올림픽관련등)",
+   "date": "2016-08-05",
+   "places": [
+    "tourapi-2379222"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=13677&list_numb=1&menu_id=0",
+   "fields": [
+    "문화,예술,관광"
+   ],
+   "opens_page": true,
+   "alt": "수원광교박물관(소강민관식실올림픽관련등)",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0865/I00000432117.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0865/I00000432119.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0865/I00000432120.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0865/I00000432121.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0865/I00000432122.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0865/I00000432123.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0865/I00000432124.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0865/I00000432125.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0865/I00000432126.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0865/I00000432128.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0865/I00000432129.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0865/I00000432131.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0865/I00000432133.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0865/I00000432135.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0865/I00000432136.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0865/I00000432140.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0865/I00000432146.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0865/I00000432147.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0865/I00000432149.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0865/I00000432150.JPG"
+    }
+   ]
+  },
+  {
+   "id": "20347",
+   "title": "해우재단풍",
+   "date": "2021-11-10",
+   "places": [
+    "tourapi-1925403"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=20347&list_numb=1&menu_id=0",
+   "fields": [
+    "검색"
+   ],
+   "opens_page": true,
+   "alt": "해우재단풍",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202111/I00000709196.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202111/I00000709197.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202111/I00000709198.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202111/I00000709199.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202111/I00000709200.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/202111/I00000709201.JPG"
+    }
+   ]
+  },
+  {
+   "id": "19404",
+   "title": "해우재",
+   "date": "2019-07-02",
+   "places": [
+    "tourapi-1925403"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=19404&list_numb=1&menu_id=0",
+   "fields": [
+    "검색"
+   ],
+   "opens_page": true,
+   "alt": "해우재",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/community_file1/I413.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/community_file1/I413-I1086.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/community_file1/I413-I1087.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/community_file1/I413-I1088.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/community_file1/I413-I1089.JPG"
+    }
+   ]
+  },
+  {
+   "id": "13758",
+   "title": "나혜석거리",
+   "date": "2016-09-02",
+   "places": [
+    "tourapi-129191"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=13758&list_numb=1&menu_id=0",
+   "fields": [
+    "검색"
+   ],
+   "opens_page": true,
+   "alt": "나혜석거리",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0874/I00000436704.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0874/I00000436705.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0874/I00000436707.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0874/I00000436708.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0874/I00000436709.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0874/I00000436710.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0874/I00000436711.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0874/I00000436712.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0874/I00000436713.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0874/I00000436714.JPG"
+    }
+   ]
+  },
+  {
+   "id": "50",
+   "title": "나혜석거리 이모저모",
+   "date": "2007-08-06",
+   "places": [
+    "tourapi-129191"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=50&list_numb=1&menu_id=0",
+   "fields": [
+    "검색"
+   ],
+   "opens_page": true,
+   "alt": "나혜석거리 이모저모",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/E0003/I00000001090.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/E0003/I00000001092.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/E0003/I00000001093.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/E0003/I00000001094.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/E0003/I00000001095.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/E0003/I00000001096.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/E0003/I00000001097.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/E0003/I00000001098.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/E0003/I00000001099.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/E0003/I00000001100.JPG"
+    }
+   ]
+  },
+  {
+   "id": "17758",
+   "title": "효원공원가을단풍",
+   "date": "2020-10-24",
+   "places": [
+    "tourapi-128985"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=17758&list_numb=1&menu_id=0",
+   "fields": [
+    "검색"
+   ],
+   "opens_page": true,
+   "alt": "효원공원가을단풍",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1313/I00000656031.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1313/I00000656032.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1313/I00000656033.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1313/I00000656034.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1313/I00000656035.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1313/I00000656036.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1313/I00000656037.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1313/I00000656038.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1313/I00000656039.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1313/I00000656040.JPG"
+    }
+   ]
+  },
+  {
+   "id": "12758",
+   "title": "효원공원가을단풍",
+   "date": "2015-11-03",
+   "places": [
+    "tourapi-128985"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=12758&list_numb=1&menu_id=0",
+   "fields": [
+    "검색"
+   ],
+   "opens_page": true,
+   "alt": "효원공원가을단풍",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0754/I00000376912.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0754/I00000376913.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0754/I00000376914.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0754/I00000376915.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0754/I00000376916.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0754/I00000376917.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0754/I00000376918.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0754/I00000376919.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0754/I00000376920.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0754/I00000376921.JPG"
+    }
+   ]
+  },
+  {
+   "id": "17656",
+   "title": "노송지대맥문동",
+   "date": "2020-08-28",
+   "places": [
+    "tourapi-125577"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=17656&list_numb=1&menu_id=0",
+   "fields": [
+    "검색"
+   ],
+   "opens_page": true,
+   "alt": "노송지대맥문동",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1307/I00000653348.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1307/I00000653349.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1307/I00000653350.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1307/I00000653351.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1307/I00000653352.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1307/I00000653354.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1307/I00000653355.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1307/I00000653356.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I1307/I00000653357.JPG"
+    }
+   ]
+  },
+  {
+   "id": "14696",
+   "title": "노송지대",
+   "date": "2017-06-27",
+   "places": [
+    "tourapi-125577"
+   ],
+   "page": "https://photo.suwon.go.kr/gmMenuView.do?group_numb=14696&list_numb=1&menu_id=0",
+   "fields": [
+    "검색"
+   ],
+   "opens_page": true,
+   "alt": "노송지대",
+   "photos": [
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0995/I00000497346.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0995/I00000497347.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0995/I00000497348.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0995/I00000497349.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0995/I00000497350.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0995/I00000497351.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0995/I00000497352.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0995/I00000497353.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0995/I00000497354.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0995/I00000497355.JPG"
+    },
+    {
+     "url": "https://photo.suwon.go.kr/data/simg/I0995/I00000497356.JPG"
+    }
+   ]
+  }
+ ]
+}
