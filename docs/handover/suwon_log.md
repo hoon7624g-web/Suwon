@@ -137,3 +137,8 @@
 - 이야기 무대 연도 줄이 1200~1280px에서 가로로 넘치던 것 고침(1200px은 원래부터 넘쳤음).
 - 확인: pytest 전체 실패 3건(원래부터 — test_audit_engine 1, test_ask_browser 런처 대화 2), preview 0·3, sample 0·1, production 0·3. 홈·/insta/·/videos/·장소·가이드 × 360·390·768·1280·1440·1920 가로 넘침 0, /insta/·/videos/ 앵커 깨짐 0.
 - 조정 세션 요청으로 `public/`을 이 작업 브랜치에서 다시 만들어 커밋(main 병합·배포는 조정 세션).
+
+## 2026-11-14 시청 사진(운영자 '모두 허락 받았어 … 아주 풍성해지도록', 이식 키트 port-kit-photos-20261114)
+- 엔진: 시청 사진 라이선스 CITY-PERMIT(편집 가능, 출처는 시 이름만 — '이용 허락' 글자 없음), 우리 사본만 쓰고 시청 서버를 부르지 않음, 장소 '사진 더 보기', og:image는 관광공사 제1유형만, 검증기 city_photo_problems. 9개 언어 출처 이름(site.json city_photos.credit_intl).
+- 수집: 수원시 포토뱅크 426장(공개 31곳, 게시물 41건), 관광공사 미사용 사진 286장(공개 90곳). 조사는 `docs/handover/city_photos_survey_20261114.md`.
+- 운영자 몫(바꾸지 않음): `publish_rules.allowed_image_licenses`에 CITY-PERMIT 추가(그 전에는 시청 사진이 화면에 나오지 않음), CLAUDE.md 3절 결정 기록.
