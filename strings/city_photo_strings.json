@@ -1,0 +1,177 @@
+{
+ "_about": "외국어판 시청 사진 문구 — intl_text.EN에 넣을 영어(en_keys)와 각 언어 strings.json에 넣을 행(rows). {name}은 site.json city_photos.credit_intl의 그 언어 이름.",
+ "en_keys": {
+  "photos_more": "More photos",
+  "foot_city_photos": "Photos: {name} (used with permission)",
+  "about_city_photos": "Photos from {name}: {n}, at {places} places. They come from the city's own websites, are shown resized with its permission and are credited “{name}”.",
+  "about_art_city": "The illustrations on this site were drawn with generative AI; every photo of a place is a photo from the Korea Tourism Organization or {name}, shown with its source."
+ },
+ "en_notes": {
+  "photos_more": "A button under a place's photo strip that opens the rest of its photos.",
+  "foot_city_photos": "{name} is the city government's name in this language (e.g. Gunsan City).",
+  "about_city_photos": "{n} is a number of photos, {places} a number of places, {name} the city government's name in this language.",
+  "about_art_city": "{name} is the city government's name in this language (e.g. Gunsan City)."
+ },
+ "rows": {
+  "en": {
+   "LIC.CITY-PERMIT": {
+    "ko": "이용 허락",
+    "en": "used with permission"
+   }
+  },
+  "ja": {
+   "LIC.CITY-PERMIT": {
+    "ko": "이용 허락",
+    "ja": "利用許可"
+   },
+   "chrome.photos_more": {
+    "en": "More photos",
+    "ja": "写真をもっと見る"
+   },
+   "chrome.foot_city_photos": {
+    "en": "Photos: {name} (used with permission)",
+    "ja": "写真：{name}（利用許可）"
+   },
+   "chrome.about_city_photos": {
+    "en": "Photos from {name}: {n}, at {places} places. They come from the city's own websites, are shown resized with its permission and are credited “{name}”.",
+    "ja": "{name}の写真：{places}か所で{n}枚。{name}のウェブサイトの写真で、{name}の許可を得て縮小して掲載し、「{name}」と表示しています。"
+   },
+   "chrome.about_art_city": {
+    "en": "The illustrations on this site were drawn with generative AI; every photo of a place is a photo from the Korea Tourism Organization or {name}, shown with its source.",
+    "ja": "このサイトのイラストは生成AIで描きました。場所の写真はすべて韓国観光公社または{name}の写真で、出典とともに掲載しています。"
+   }
+  },
+  "zh-hans": {
+   "LIC.CITY-PERMIT": {
+    "ko": "이용 허락",
+    "zh_hans": "经许可使用"
+   },
+   "chrome.photos_more": {
+    "en": "More photos",
+    "zh_hans": "查看更多照片"
+   },
+   "chrome.foot_city_photos": {
+    "en": "Photos: {name} (used with permission)",
+    "zh_hans": "照片：{name}（经许可使用）"
+   },
+   "chrome.about_city_photos": {
+    "en": "Photos from {name}: {n}, at {places} places. They come from the city's own websites, are shown resized with its permission and are credited “{name}”.",
+    "zh_hans": "{name}照片：{places}个地点共{n}张。照片来自{name}的网站，经{name}许可缩小后刊登，并标注“{name}”。"
+   },
+   "chrome.about_art_city": {
+    "en": "The illustrations on this site were drawn with generative AI; every photo of a place is a photo from the Korea Tourism Organization or {name}, shown with its source.",
+    "zh_hans": "本站插图由生成式AI绘制；所有地点照片均为韩国观光公社或{name}的照片，并注明来源。"
+   }
+  },
+  "zh-hant": {
+   "LIC.CITY-PERMIT": {
+    "ko": "이용 허락",
+    "zh_hant": "經許可使用"
+   },
+   "chrome.photos_more": {
+    "en": "More photos",
+    "zh_hant": "查看更多照片"
+   },
+   "chrome.foot_city_photos": {
+    "en": "Photos: {name} (used with permission)",
+    "zh_hant": "照片：{name}（經許可使用）"
+   },
+   "chrome.about_city_photos": {
+    "en": "Photos from {name}: {n}, at {places} places. They come from the city's own websites, are shown resized with its permission and are credited “{name}”.",
+    "zh_hant": "{name}照片：{places}個地點共{n}張。照片來自{name}的網站，經{name}許可縮小後刊登，並標示「{name}」。"
+   },
+   "chrome.about_art_city": {
+    "en": "The illustrations on this site were drawn with generative AI; every photo of a place is a photo from the Korea Tourism Organization or {name}, shown with its source.",
+    "zh_hant": "本站的插圖以生成式 AI 繪製；每張地點照片都是韓國觀光公社或{name}的照片，並標示來源。"
+   }
+  },
+  "de": {
+   "LIC.CITY-PERMIT": {
+    "ko": "이용 허락",
+    "de": "mit Genehmigung"
+   },
+   "chrome.photos_more": {
+    "en": "More photos",
+    "de": "Weitere Fotos"
+   },
+   "chrome.foot_city_photos": {
+    "en": "Photos: {name} (used with permission)",
+    "de": "Fotos: {name} (mit Genehmigung)"
+   },
+   "chrome.about_city_photos": {
+    "en": "Photos from {name}: {n}, at {places} places. They come from the city's own websites, are shown resized with its permission and are credited “{name}”.",
+    "de": "Fotos mit der Quellenangabe „{name}“: {n}, an {places} Orten. Sie stammen von den Websites der Stadt und werden mit ihrer Genehmigung verkleinert gezeigt."
+   },
+   "chrome.about_art_city": {
+    "en": "The illustrations on this site were drawn with generative AI; every photo of a place is a photo from the Korea Tourism Organization or {name}, shown with its source.",
+    "de": "Die Illustrationen auf dieser Website wurden mit generativer KI gezeichnet; jedes Foto eines Ortes stammt aus einer von zwei Quellen – Koreanische Tourismusorganisation oder „{name}“ – und wird mit seiner Quelle gezeigt."
+   }
+  },
+  "fr": {
+   "LIC.CITY-PERMIT": {
+    "ko": "이용 허락",
+    "fr": "avec autorisation"
+   },
+   "chrome.photos_more": {
+    "en": "More photos",
+    "fr": "Plus de photos"
+   },
+   "chrome.foot_city_photos": {
+    "en": "Photos: {name} (used with permission)",
+    "fr": "Photos : {name} (avec autorisation)"
+   },
+   "chrome.about_city_photos": {
+    "en": "Photos from {name}: {n}, at {places} places. They come from the city's own websites, are shown resized with its permission and are credited “{name}”.",
+    "fr": "Photos portant la mention « {name} » : {n}, pour {places} lieux. Elles proviennent des sites de la ville et sont présentées réduites avec son autorisation."
+   },
+   "chrome.about_art_city": {
+    "en": "The illustrations on this site were drawn with generative AI; every photo of a place is a photo from the Korea Tourism Organization or {name}, shown with its source.",
+    "fr": "Les illustrations de ce site ont été dessinées avec une IA générative ; chaque photo d'un lieu provient de l'Office national du tourisme coréen ou de la source « {name} », présentée avec sa source."
+   }
+  },
+  "es": {
+   "LIC.CITY-PERMIT": {
+    "ko": "이용 허락",
+    "es": "con permiso"
+   },
+   "chrome.photos_more": {
+    "en": "More photos",
+    "es": "Más fotos"
+   },
+   "chrome.foot_city_photos": {
+    "en": "Photos: {name} (used with permission)",
+    "es": "Fotos: {name} (con permiso)"
+   },
+   "chrome.about_city_photos": {
+    "en": "Photos from {name}: {n}, at {places} places. They come from the city's own websites, are shown resized with its permission and are credited “{name}”.",
+    "es": "Fotos con el crédito «{name}»: {n}, en {places} lugares. Proceden de los sitios web de la ciudad y se muestran reducidas con su permiso."
+   },
+   "chrome.about_art_city": {
+    "en": "The illustrations on this site were drawn with generative AI; every photo of a place is a photo from the Korea Tourism Organization or {name}, shown with its source.",
+    "es": "Las ilustraciones de este sitio se dibujaron con IA generativa; todas las fotos de lugares son de la Organización de Turismo de Corea o de la fuente «{name}», con su fuente."
+   }
+  },
+  "ru": {
+   "LIC.CITY-PERMIT": {
+    "ko": "이용 허락",
+    "ru": "с разрешения"
+   },
+   "chrome.photos_more": {
+    "en": "More photos",
+    "ru": "Ещё фото"
+   },
+   "chrome.foot_city_photos": {
+    "en": "Photos: {name} (used with permission)",
+    "ru": "Фото: {name} (с разрешения)"
+   },
+   "chrome.about_city_photos": {
+    "en": "Photos from {name}: {n}, at {places} places. They come from the city's own websites, are shown resized with its permission and are credited “{name}”.",
+    "ru": "Фотографии с подписью «{name}»: {n}, число мест: {places}. Они взяты с сайтов города и показаны в уменьшенном виде с его разрешения."
+   },
+   "chrome.about_art_city": {
+    "en": "The illustrations on this site were drawn with generative AI; every photo of a place is a photo from the Korea Tourism Organization or {name}, shown with its source.",
+    "ru": "Иллюстрации на этом сайте нарисованы с помощью генеративного ИИ; все фотографии мест получены от Корейской организации по туризму или из источника «{name}» и показаны с указанием источника."
+   }
+  }
+ }
+}
