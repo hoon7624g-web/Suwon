@@ -1923,7 +1923,7 @@ def test_thumb_uses_the_smallest_kogl1_derivative_when_the_provider_has_no_small
     base = {"url": "https://tong.visitkorea.or.kr/cms2/website/28/3587128.jpg", "w": 1280, "h": 850, "alt": "한빛군도",
             "type": 1, "webp": "/assets/media/3587128-940.webp 940w, /assets/media/3587128-480.webp 480w", "th": None}
     assert present.thumb(base) == {"url": "/assets/media/3587128-480.webp", "w": 480, "h": 319, "alt": "한빛군도",
-                                   "type": 1}
+                                   "type": 1, "src": "kto", "credit": "", "lic": ""}   # src·credit: the one credit line
     # the provider's own small copy still wins; KOGL-3 (never re-encoded) and photos without derivatives keep the original
     own = {**base, "th": {"url": "https://tong.visitkorea.or.kr/x_image3_1.jpg", "w": 160, "h": 106}}
     assert present.thumb(own)["url"] == "https://tong.visitkorea.or.kr/x_image3_1.jpg"

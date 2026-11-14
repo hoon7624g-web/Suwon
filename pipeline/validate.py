@@ -357,7 +357,8 @@ TOURAPI_IMAGE_HOSTS = ("https://tong.visitkorea.or.kr/",)
 # 말고 모두 빼 출처만 표기해)
 IMG_ATTRS = re.compile(r'\b(?:src|srcset|data-src|data-srcset|imagesrcset)="([^"]*)"')
 CITY_COPY = re.compile(r"/assets/media/g-")
-PERMISSION_WORDS = ("이용 허락", "이용허락", "허락을 받아", "used with permission", "with its permission", "利用許可",
+PERMISSION_WORDS = ("이용 허락", "허락을 받아",   # not 이용허락범위 (공공데이터 licence terms)
+                    "used with permission", "with its permission", "利用許可",
                     "经许可", "經許可", "mit Genehmigung", "avec l'autorisation", "con permiso", "с разрешения")
 
 
