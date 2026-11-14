@@ -146,7 +146,8 @@
     ],
     "allowed_image_licenses": [
       "KOGL-1",
-      "KOGL-3"
+      "KOGL-3",
+      "CITY-PERMIT"
     ]
   },
   "city_photos": {
