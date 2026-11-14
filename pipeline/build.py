@@ -507,7 +507,7 @@ def index_note(e: dict) -> str:
 
 
 class State:
-    def __init__(self, data_dir: Path, mode: str):
+    def __init__(self, data_dir: Path, mode: str, extra_image_licenses: tuple[str, ...] = ()):
         self.mode = mode
         self.cfg = MODES[mode]
         self.site = _load(data_dir / "site.json")
@@ -562,7 +562,7 @@ class State:
         self.events = sorted(keep(self.events_all), key=lambda e: (e.get("start_date") or "9999", e.get("name", "")))
         rules = self.site.get("publish_rules") or {}
         self.allowed_original = tuple(rules.get("allowed_original_licenses") or DEFAULT_ALLOWED_LICENSES)
-        self.allowed_images = tuple(rules.get("allowed_image_licenses") or DEFAULT_ALLOWED_LICENSES)
+        self.allowed_images = tuple(rules.get("allowed_image_licenses") or DEFAULT_ALLOWED_LICENSES) + tuple(extra_image_licenses)
         self.theme_by_slug = {t["slug"]: t for t in self.themes}
         for e in self.entities:
             facts = e.get("facts") or {}

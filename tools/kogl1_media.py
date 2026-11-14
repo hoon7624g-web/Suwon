@@ -126,7 +126,11 @@ def run(data_dir: Path, out: Path = media.MEDIA_DIR, cache: Path = ROOT / "data"
         budget_bytes: int = BUDGET_BYTES) -> dict:
     from pipeline.build import State
 
-    S = State(Path(data_dir), "production")  # published records only: drafts and reviewed records get no derivative
+    # published records only: drafts and reviewed records get no derivative. The city's own photos (site.json
+    # city_photos) get their copies before the operator adds CITY-PERMIT to publish_rules.allowed_image_licenses, so
+    # turning the key on shows them at once and a routine run never deletes them as stale
+    city = bool((json.loads((Path(data_dir) / "site.json").read_text("utf-8")).get("city_photos") or {}).get("hosts"))
+    S = State(Path(data_dir), "production", ("CITY-PERMIT",) if city else ())
     CITY_HOSTS.clear()
     CITY_HOSTS.update(h.lower() for h in (S.site.get("city_photos") or {}).get("hosts") or [])
     want = media.wanted(S)
