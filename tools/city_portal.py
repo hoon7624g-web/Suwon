@@ -68,6 +68,8 @@ EXCLUDE = ("개장식", "개막식", "폐막식", "개회식", "폐회식", "위
            "전달식", "기탁", "후원", "나눔", "성금", "물품", "증정", "축사", "인사", "의회", "위원회", "협의회", "연합회",
            "대책", "피해", "복구", "사고", "화재", "침몰", "불법", "공사", "철거", "정비사업", "조성사업", "추진", "용역",
            # occasions at a place (people are the subject): festivals, rites, openings, shows (→ not a place photo)
+           "49재", "산타", "사령", "전달", "생일파티", "화장실", "라운딩", "개원전",
+           "문화의거리", "크리스마스트리", "아브뉴프랑", "서포루",
            "축제", "돌파", "잔치", "석전", "대제", "법회", "점안", "전시회", "제막", "개관", "개장", "오신 날", "기획전",
            "감사패", "탐방", "공연", "행사", "대회", "기념", "공모", "사진전", "음악회", "콘서트", "페스티벌", "축전",
            "문화제", "야적장", "설명", "답사", "견학", "투어", "체험", "참가", "참여", "시민", "학생", "어린이날", "졸업",
@@ -224,7 +226,7 @@ def match_title(title: str, keys: dict) -> dict | None:
     # a post about two subjects or more ('광교호수공원, 수원컨벤션센터 봄 스케치', '수원메쎄, 롯데몰'): its photos mix them —
     # no place's, unless every part names the same place (a name inside a longer hit — 장안문 in 장안문거북시장 — is that hit)
     ids = {keys[k][0]["id"] for _, k in hits if not any(k != o and k in o for _, o in hits)}
-    parts = [norm(x) for x in re.split(r"[,，/]", re.sub(r"\[.*?\]", "", title)) if norm(x)]
+    parts = [norm(x) for x in re.split(r"[,，/\-]", re.sub(r"\[.*?\]", "", title)) if norm(x)]
     if len(ids) > 1 or (len(parts) > 1 and not all(any(k in x for _, k in hits) for x in parts)):
         return None
     return keys[max(hits)[1]][0] if hits else None
@@ -287,6 +289,10 @@ def search() -> dict:
                 continue
             t = norm(STRIP.sub("", re.sub(r"\[.*?\]", "", title)))
             if not (t == key or (len(key) >= MIN_KEY and p.get("kind") == "attraction" and key in t)):
+                continue
+            # a post about two subjects or more ('광교마루길,팔달산벚꽃'): its photos mix them — every part must name it
+            parts = [norm(x) for x in re.split(r"[,，/\-]", re.sub(r"\[.*?\]", "", title)) if norm(x)]
+            if len(parts) > 1 and not all(key in x for x in parts):
                 continue
             db.setdefault(it["id"], {**it, "cats": ["검색"]})
             if it["id"] not in res.setdefault(p["id"], []):
