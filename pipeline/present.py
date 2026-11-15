@@ -58,7 +58,7 @@ NAV = (("관광지", "/places/", "attraction"), ("숙소", "/stays/", "stay"), (
 # the 권역 of the nearest anchor place (regions.anchors, by place id), beyond regions.far.m of every anchor in
 # regions.far.label (no far group when far is null), and a place without coordinates in the 권역 most places of its
 # (구·군, 동) fall in. The map page states the rule of its mode.
-REGION_BASIS_ADDRESS, REGION_BASIS_GEO, REGION_BASIS_AREA = "주소", "좌표", "읍·면·동"
+REGION_BASIS_ADDRESS, REGION_BASIS_GEO, REGION_BASIS_AREA, REGION_BASIS_PIN = "주소", "좌표", "읍·면·동", "고정"
 
 # Type labels: plain names; generic source buckets ('음식점', '기타') are not shown as a type. National source words
 # only (TourAPI); a city's own source words are layered over them by site.json categories (City.category).
@@ -1863,14 +1863,25 @@ def prepare(S, data_dir: Path) -> None:
     S.course_vms = {c["slug"]: course_vm(S, c) for c in S.courses}
 
 
+def area_in(area: str, names) -> bool:
+    """Whether an address area (City.address_parts) is one of a 권역's `areas`: the same word, or that 동 with a 가
+    number ('효자동' takes '효자동1가', '효자동2가'); '산곡동' does not take '산곡1동' (list it)."""
+    a = squash_ws(area)
+    return bool(a) and any(a == n or re.fullmatch(rf"{re.escape(n)}\d+가", a) for n in names if n)
+
+
 def assign_regions(S) -> None:
     """e['_region'] and e['_region_basis'], S.anchors and S.region_names (group order) by site.json regions.mode:
     - district: the 구·군 of the address ('주소'), else regions.none_label (''); S.region_names = the 구·군 in
       districts order that have places, then none_label;
-    - anchors: the nearest anchor place ('좌표'; beyond regions.far.m of every anchor: regions.far.label, no far
-      group when far is null); without coordinates the 권역 most places of the same (구·군, 동) fall in ('읍·면·동'),
-      else none_label. An anchor place missing from the build (or without coordinates) is skipped with a warning;
-      with no anchor at all every place is none_label."""
+    - anchors, in this order (CEO 2026-11-13 '카테고리가 좀 잘못된 부분이 좀 있는 것 같거든', the 2026-11-15 check of
+      every anchors-mode site): a place a 권역 `pins` ('고정'); a place whose nearest reference point is a `keep`
+      권역's ('좌표'); a place whose address 읍·면·동 is a 권역's `areas` ('주소', area_in); the 권역 of the nearest
+      reference point — the anchor places and each 권역's `points` ('좌표'; beyond regions.far.m of every point:
+      regions.far.label, no far group when far is null); without coordinates the 권역 most places of the same (구·군, 동)
+      fall in ('읍·면·동'), else none_label. An anchor place missing from the build (or without coordinates) skips its
+      권역 with a warning; a point or pin that is not a place of the build with coordinates (a pin: of the build) is
+      left out with a warning (validate: region_config_problems). With no anchor at all every place is none_label."""
     C = S.city
     S.anchors = []
     if C.region_mode == "district":
@@ -1882,33 +1893,93 @@ def assign_regions(S) -> None:
         S.region_names = [d for d in C.districts if d in seen] + [C.none_label]
         return
     by_id = getattr(S, "ent_by_id", None) or {e["id"]: e for e in S.entities if e.get("id")}
+    refs: list[tuple[str, dict]] = []         # (권역, geo): the anchor places and the points
+    pin_of: dict[str, str] = {}
+    areas: list[tuple[str, tuple]] = []
+    keep: set[str] = set()
     for a in C.anchors:
         pid, name = squash_ws(a.get("place_id")), squash_ws(a.get("name"))
         p = by_id.get(pid)
         if not (p and p.get("_geo")):
             S.warnings.append(f"권역 기준점 없음(좌표 포함): {pid} — {name} 권역 생략")
             continue
+        refs.append((name, p["_geo"]))
+        points, pins = [], []
+        for x in a.get("points") or []:
+            q = by_id.get(squash_ws(x))
+            if q and q.get("_geo"):
+                refs.append((name, q["_geo"]))
+                points.append({"place": q["name"], "path": q["_path"], "geo": q["_geo"]})
+            else:
+                S.warnings.append(f"권역 보조 기준점 없음(좌표 포함): {x} — {name}")
+        for x in a.get("pins") or []:
+            q = by_id.get(squash_ws(x))
+            if q:
+                pin_of[q["id"]] = name
+                pins.append({"place": q["name"], "path": q["_path"]})
+            else:
+                S.warnings.append(f"권역 고정 장소 없음: {x} — {name}")
+        own = tuple(squash_ws(x) for x in a.get("areas") or [] if squash_ws(x))
+        if own:
+            areas.append((name, own))
+        if a.get("keep") is True:
+            keep.add(name)
         S.anchors.append({"name": name, "key": a.get("key"), "place_id": pid, "slug": p["slug"], "place": p["name"],
-                          "path": p["_path"], "geo": p["_geo"], "id": anchor_id("r", C.region_key(name))})
+                          "path": p["_path"], "geo": p["_geo"], "id": anchor_id("r", C.region_key(name)),
+                          "areas": list(own), "points": points, "pins": pins, "keep": name in keep})
     far_m, far_label = (C.far or {}).get("m"), squash_ws((C.far or {}).get("label"))
     by_area: dict[tuple, Counter] = defaultdict(Counter)
     for e in S.entities:
         e["_region"], e["_region_basis"] = C.none_label, ""
-        if e.get("_geo") and S.anchors:
-            d = {a["name"]: hav(e["_geo"], a["geo"]) for a in S.anchors}
-            best = min(d, key=d.get)
-            far_out = bool(far_label) and far_m is not None and d[best] > far_m
-            e["_region"], e["_region_basis"] = (far_label if far_out else best), REGION_BASIS_GEO
-            key = C.address_parts(e)
-            if key[1] and not far_out:
-                by_area[key][best] += 1
+        near, far_out = None, False
+        if e.get("_geo") and refs:
+            dist = {}
+            for name, geo in refs:
+                d = hav(e["_geo"], geo)
+                dist[name] = min(d, dist.get(name, d))
+            near = min(dist, key=dist.get)
+            far_out = bool(far_label) and far_m is not None and dist[near] > far_m
+        key = C.address_parts(e)
+        owner = next((name for name, own in areas if area_in(key[1], own)), None) if S.anchors else None
+        if e.get("id") in pin_of:
+            e["_region"], e["_region_basis"] = pin_of[e["id"]], REGION_BASIS_PIN
+        elif near and near in keep and not far_out:
+            e["_region"], e["_region_basis"] = near, REGION_BASIS_GEO
+        elif owner:
+            e["_region"], e["_region_basis"] = owner, REGION_BASIS_ADDRESS
+        elif near:
+            e["_region"], e["_region_basis"] = (far_label if far_out else near), REGION_BASIS_GEO
+        if e.get("_geo") and key[1] and not far_out and e["_region"] != C.none_label:
+            by_area[key][e["_region"]] += 1
     for e in S.entities:
-        if not e.get("_geo"):
+        if not e.get("_geo") and not e["_region_basis"]:
             key = C.address_parts(e)
             c = by_area.get(key) if key[1] else None
             if c:
                 e["_region"], e["_region_basis"] = c.most_common(1)[0][0], REGION_BASIS_AREA
     S.region_names = [a["name"] for a in S.anchors] + ([far_label] if far_label else []) + [C.none_label]
+
+
+def region_config_problems(S) -> list[str]:
+    """site.json regions.anchors points and pins that are not a published place (a point: with coordinates) of this
+    build — validate reports each as an error (an id the build cannot find would silently drop a rule). A 권역 whose
+    anchor place is not in the build is not made (assign_regions warns): its points and pins are not checked."""
+    if S.city.region_mode != "anchors":
+        return []
+    by_id = getattr(S, "ent_by_id", None) or {e["id"]: e for e in S.entities if e.get("id")}
+    made = {a["name"] for a in getattr(S, "anchors", None) or []}
+    out = []
+    for a in S.city.anchors:
+        if squash_ws(a.get("name")) not in made:   # its anchor place is not in this build: no 권역 (a warning says so)
+            continue
+        for x in a.get("points") or []:
+            q = by_id.get(squash_ws(x))
+            if not (q and q.get("_geo")):
+                out.append(f"regions.anchors points: 좌표 있는 공개 장소가 아님 — {x} ({a.get('name')})")
+        for x in a.get("pins") or []:
+            if not by_id.get(squash_ws(x)):
+                out.append(f"regions.anchors pins: 공개 장소가 아님 — {x} ({a.get('name')})")
+    return out
 
 
 def region_id(S, name: str, prefix: str = "r") -> str:

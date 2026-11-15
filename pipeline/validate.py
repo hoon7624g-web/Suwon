@@ -1826,6 +1826,8 @@ def validate(data_dir: Path, out: Path, mode: str = "production") -> tuple[list[
 
     for problem in S.city.problems():   # site.json read by pipeline.city: an inconsistent setting is never ignored
         E("site.json", f"도시 설정 오류: {problem}")
+    for problem in present.region_config_problems(S):   # 권역 points·pins that name no place of this build
+        E("site.json", f"도시 설정 오류: {problem}")
     # the course planner's city values (site.json plan: hubs, prefs; pipeline/plan.py)
     for problem in plan.problems(S.site, {e["id"]: e for e in S.entities}):
         E("site.json", f"코스 만들기 설정 오류: {problem}")

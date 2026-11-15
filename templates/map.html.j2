@@ -19,9 +19,14 @@
     <h1 id="h-list" class="h-list">{{ site.region }} 지도 <span class="count tn">{{ n_all }}곳</span></h1>
     <p class="list-lede">{% if n_regions %}{{ '여행 ' if mode == 'anchors' }}{{ cityv.region_label }} <span class="tn">{{ n_regions }}</span>곳 · {% endif %}{{ cityv.area_label }} <span class="tn">{{ n_dong }}</span>곳 · 지도: 좌표가 있는 <span class="tn">{{ n_geo }}</span>곳</p>
     {% if mode == 'anchors' and anchors %}
+    {#- the rule in present.assign_regions' order of strength: pins, keep, areas, then distance (CEO 2026-11-13; the
+        2026-11-15 check) — each sentence only when site.json uses it -#}
+    {% set rl = cityv.region_label %}{% set al = cityv.area_label %}
+    {% set by_area = anchors|selectattr('areas')|list %}{% set kept = anchors|selectattr('keep')|list %}
+    {% set pts = [] %}{% for a in anchors %}{% for x in a.points %}{% set _ = pts.append({'x': x, 'r': a.name}) %}{% endfor %}{% endfor %}
     <details class="rule">
-      <summary>{{ cityv.region_label|josa('을/를') }} 나눈 기준</summary>
-      <p>좌표가 있는 곳은 기준점 {{ anchors|length }}곳 — {% for a in anchors %}<a href="{{ a.path }}">{{ a.place }}</a>({{ a.name }}){% if not loop.last %}, {% endif %}{% endfor %} — 가운데 직선거리로 가장 가까운 기준점의 {{ cityv.region_label }}에 넣었습니다.{% if far_label and far_m %} 가장 가까운 기준점까지 {{ (far_m / 1000)|round(1)|replace('.0', '') }}km를 넘는 곳은 ‘{{ far_label }}’{{ (far_label|josa('으로/로'))[far_label|length:] }} 따로 뒀습니다.{% endif %} 좌표가 없는 곳은 주소의 {{ cityv.area_label|josa('이/가') }} 같은 장소들이 가장 많이 속한 {{ cityv.region_label|josa('을/를') }} 따랐고, {{ cityv.area_label }}도 없으면 ‘{{ none_label }}’입니다.</p>
+      <summary>{{ rl|josa('을/를') }} 나눈 기준</summary>
+      <p>{% if by_area %}주소의 {{ al|josa('이/가') }} {{ rl }}마다 정해 둔 곳이면 그 {{ rl }}에 넣었습니다({% for a in by_area %}{{ a.areas|join('·') }} → {{ a.name }}{% if not loop.last %}; {% endif %}{% endfor %}). 나머지 가운데 {% endif %}좌표가 있는 곳은 기준점 {{ anchors|length + pts|length }}곳 — {% for a in anchors %}<a href="{{ a.path }}">{{ a.place }}</a>({{ a.name }}){% if not loop.last %}, {% endif %}{% endfor %}{% if pts %}, 보조 기준점 {% for p in pts %}<a href="{{ p.x.path }}">{{ p.x.place }}</a>({{ p.r }}){% if not loop.last %}, {% endif %}{% endfor %}{% endif %} — 가운데 직선거리로 가장 가까운 곳의 {{ rl }}에 넣었습니다.{% for a in kept %} 다만 ‘{{ a.name }}’의 기준점이 가장 가까운 곳은 주소와 상관없이 ‘{{ a.name }}’에 두었습니다.{% endfor %}{% for a in anchors if a.pins %} {% for x in a.pins %}<a href="{{ x.path }}">{{ x.place }}</a>{% if not loop.last %}·{% endif %}{% endfor %}{{ ((a.pins|last).place|josa('은/는'))[(a.pins|last).place|length:] }} 거리·주소와 상관없이 ‘{{ a.name }}’에 두었습니다.{% endfor %}{% if far_label and far_m %} 가장 가까운 기준점까지 {{ (far_m / 1000)|round(1)|replace('.0', '') }}km를 넘는 곳은 ‘{{ far_label }}’{{ (far_label|josa('으로/로'))[far_label|length:] }} 따로 뒀습니다.{% endif %} 좌표가 없는 곳은 주소의 {{ al|josa('이/가') }} 같은 장소들이 가장 많이 속한 {{ rl|josa('을/를') }} 따랐고, {{ al }}도 없으면 ‘{{ none_label }}’입니다.</p>
     </details>
     {% elif mode == 'district' %}
     <details class="rule">
@@ -57,7 +62,7 @@
     <section class="region{% if not loop.first %} cv{% endif %}" id="{{ r.id }}" data-region-sec="{{ r.name }}" aria-labelledby="{{ r.id }}-h">{{ artm.strip((art_slots or {}).get('area.' ~ r.art) if r.art else none) }}
       <div class="region-head">
         <h2 id="{{ r.id }}-h">{{ r.name }} <span class="count tn" data-group-n>{{ r.members|length }}곳</span></h2>
-        <p class="region-k tn">관광지 {{ r.k.attraction or 0 }} · 숙소 {{ r.k.stay or 0 }} · 음식점 {{ r.k.food or 0 }}{% if r.anchor %} · 기준점 <a href="{{ r.anchor.path }}">{{ r.anchor.place }}</a>{% endif %}</p>
+        <p class="region-k tn">관광지 {{ r.k.attraction or 0 }} · 숙소 {{ r.k.stay or 0 }} · 음식점 {{ r.k.food or 0 }}{% if r.anchor %} · 기준점 <a href="{{ r.anchor.path }}">{{ r.anchor.place }}</a>{% for x in r.anchor.points %}, <a href="{{ x.path }}">{{ x.place }}</a>{% endfor %}{% if r.anchor.areas %} · 주소 기준: {{ r.anchor.areas|join('·') }}{% endif %}{% endif %}</p>
       </div>
       <div class="dongs">
         {% for d in r.dongs %}

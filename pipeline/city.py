@@ -34,6 +34,12 @@ class CityConfigError(ValueError):
 
 REQUIRED = ("site_url", "region", "region_admin", "locality")   # site_url may be '' (the production gate reports it)
 REGION_MODES = ("district", "anchors")
+# optional lists on a regions.anchors[] item (anchors mode, present.assign_regions): areas — the 읍·면·동 (an address's
+# area as City.address_parts reads it; '효자동' also takes '효자동1가'…) that belong to this 권역 by address; points —
+# place ids that are further reference points of this 권역 for the distance rule; pins — place ids this 권역 holds
+# whatever the distance. keep (true/false): a place whose nearest reference point is this 권역's stays in it whatever
+# its address says (pins still win).
+REGION_ANCHOR_LISTS = ("areas", "points", "pins")
 # site.json languages: Korean and the other versions the engine knows (pipeline/locales.py CODES, the same order)
 LANGUAGES = ("ko", "en", "ja", "zh-hans", "zh-hant", "de", "fr", "es", "ru")
 KINDS = ("attraction", "stay", "food")
@@ -415,6 +421,27 @@ class City:
         twice = dup([k for k in keys if k]) + dup([n for n in names if n])
         if twice:
             out.append(f"regions.anchors key·name 중복: {', '.join(twice)}")
+        # a 권역's own 읍·면·동 (areas), its extra reference places (points), the places it holds whatever the distance
+        # (pins) and keep (its nearest places stay, whatever their address): present.assign_regions
+        owner: dict[str, list] = {}
+        for a in (x for x in anchors if isinstance(x, dict)):
+            for k in REGION_ANCHOR_LISTS:
+                v = a.get(k)
+                if v is not None and (not isinstance(v, list) or not all(isinstance(x, str) and x.strip() for x in v)):
+                    out.append(f"regions.anchors {k}: 빈 값이 아닌 문자열 목록이어야 함 ({a.get('key') or a.get('name')})")
+            if a.get("keep") is not None and not isinstance(a.get("keep"), bool):
+                out.append(f"regions.anchors keep: true/false ({a.get('key') or a.get('name')})")
+            for k in ("areas", "pins"):
+                for x in a.get(k) or [] if isinstance(a.get(k), list) else []:
+                    if isinstance(x, str) and x.strip():
+                        owner.setdefault(f"{k}:{squash_ws(x)}", []).append(squash_ws(a.get("name")))
+        for k, ns in owner.items():
+            if len(ns) > 1:
+                what, x = k.split(":", 1)
+                out.append(f"regions.anchors {what} 중복: {x} ({'·'.join(ns)})")
+        if self.region_mode == "district" and any(isinstance(a, dict) and any(a.get(k) for k in REGION_ANCHOR_LISTS)
+                                                   for a in anchors):
+            out.append("regions.anchors areas·points·pins는 anchors 모드에서만 씀")
         if set(keys) & {"far", "none"}:
             out.append("regions.anchors key에 far·none은 쓸 수 없음")
         far = (raw.get("regions") or {}).get("far")

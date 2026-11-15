@@ -715,6 +715,78 @@ def test_anchor_missing_and_no_far_group(tmp_path):
     assert place(S2, "어청도")["_region"] in [a["name"] for a in S2.anchors]
 
 
+def test_region_areas_points_pins_and_keep(tmp_path):
+    """CEO 2026-11-13 ('카테고리가 좀 잘못된 부분이 좀 있는 것 같거든') and the 2026-11-15 check of every anchors-mode
+    site: optional regions.anchors[] areas / points / pins / keep, applied in the order pins → keep → areas → the
+    nearest reference point (anchors and points) → the 읍·면·동 majority; the rule is written on /map/ (each 권역's
+    header names its 주소 기준 and 보조 기준점) and on the home."""
+    base = State(DATA, "preview")
+    C = city.of(base.site)
+    jangmi = [e for e in base.entities if C.address_parts(e)[1] == "장미동" and e.get("_geo")
+              and e["id"] != "gunsan-305395"]
+    point, pinned = jangmi[0], jangmi[1]
+    sinheung = [e["id"] for e in base.entities if C.address_parts(e)[1] == "신흥동"]
+    okdo_near = [e["id"] for e in base.entities if C.address_parts(e)[1] == "옥도면" and e["_region"] == "고군산"
+                 and e.get("_geo")]
+    okdo_nogeo = [e["id"] for e in base.entities if C.address_parts(e)[1] == "옥도면" and not e.get("_geo")]
+    assert sinheung and okdo_near and all(e["_region"] == "원도심" for e in jangmi[:2])
+
+    def edit_site(site):
+        A = {a["name"]: a for a in site["regions"]["anchors"]}
+        A["은파"]["areas"] = ["신흥동"]
+        A["금강"]["areas"] = ["옥도면"]
+        A["금강"]["pins"] = [pinned["id"]]
+        A["새만금·비응"]["points"] = [point["id"]]
+        A["고군산"]["keep"] = True
+    data = data_copy(tmp_path, edit_site=edit_site)
+    S2 = State(data, "preview")
+    by = {e["id"]: e for e in S2.entities}
+    assert S2.warnings == [] and present.region_config_problems(S2) == [] and city.of(S2.site).problems() == []
+    assert all((by[i]["_region"], by[i]["_region_basis"]) == ("은파", "주소") for i in sinheung)          # areas
+    assert (by[pinned["id"]]["_region"], by[pinned["id"]]["_region_basis"]) == ("금강", "고정")           # pins
+    assert (by[point["id"]]["_region"], by[point["id"]]["_region_basis"]) == ("새만금·비응", "좌표")       # points
+    assert all(by[i]["_region"] == "고군산" for i in okdo_near)                     # keep beats 금강's 옥도면
+    assert okdo_nogeo and all((by[i]["_region"], by[i]["_region_basis"]) == ("금강", "주소") for i in okdo_nogeo)
+    # (keep needs a nearest point: a place without coordinates follows its address)
+    assert (by["tourapi-126297"]["_region"], by["tourapi-126297"]["_region_basis"]) == ("금강", "주소")  # 어청도: far,
+    # so keep does not hold it; its address area does (areas before the far group)
+    assert present.area_in("효자동2가", ["효자동"]) and not present.area_in("산곡1동", ["산곡동"])
+    # /map/ and the home say so
+    out = tmp_path / "out"
+    build(data, out, "preview")
+    mp = (out / "map" / "index.html").read_text("utf-8")
+    assert "주소의 읍·면·동이 권역마다 정해 둔 곳이면 그 권역에 넣었습니다(신흥동 → 은파; 옥도면 → 금강)" in mp
+    assert re.search(r"보조 기준점 <a href=\"[^\"]+\">" + re.escape(point["name"]) + r"</a>\(새만금·비응\)", mp)
+    assert "다만 ‘고군산’의 기준점이 가장 가까운 곳은 주소와 상관없이 ‘고군산’에 두었습니다." in mp
+    assert re.search(re.escape(pinned["name"]) + r"</a>(은|는) 거리·주소와 상관없이 ‘금강’에 두었습니다\.", mp)
+    assert " · 주소 기준: 신흥동</p>" in mp and " · 주소 기준: 옥도면</p>" in mp
+    home = (out / "index.html").read_text("utf-8")
+    assert "권역은 주소의 읍·면·동을 먼저 따르고(권역마다 정해 둔 곳), 나머지는 기준점 5곳(" in home
+    assert f"과 보조 기준점 1곳({point['name']}) 가운데 직선거리로 가장 가까운 곳으로 묶었습니다. 정해 둔 1곳은 거리와 상관없이 그 권역에 두었습니다." in home
+
+
+def test_region_config_problems(tmp_path):
+    """An area under two 권역, a pin listed twice, a list of the wrong type: City.problems(); a point or pin that is not
+    a place of the build (a point: with coordinates): a warning in the build and an error in validate."""
+    def edit_site(site):
+        A = {a["name"]: a for a in site["regions"]["anchors"]}
+        A["은파"]["areas"] = ["신흥동"]
+        A["금강"]["areas"] = ["신흥동", "성산면"]
+        A["고군산"]["points"] = ["no-such-place"]
+        A["금강"]["pins"] = ["no-such-pin"]
+        A["원도심"]["keep"] = "yes"
+    S2 = State(data_copy(tmp_path, edit_site=edit_site), "preview")
+    probs = city.of(S2.site).problems()
+    assert "regions.anchors areas 중복: 신흥동 (은파·금강)" in probs
+    assert any("keep: true/false" in p for p in probs)
+    assert any("no-such-place" in w for w in S2.warnings) and any("no-such-pin" in w for w in S2.warnings)
+    rp = present.region_config_problems(S2)
+    assert any("points" in p and "no-such-place" in p for p in rp) and any("pins" in p and "no-such-pin" in p for p in rp)
+    assert city.of({**S2.site, "regions": {**S2.site["regions"], "anchors": [{"key": "x", "name": "X", "place_id": "p",
+                                                                             "areas": "신흥동"}]}}).problems() \
+        == ["regions.anchors areas: 빈 값이 아닌 문자열 목록이어야 함 (x)"]
+
+
 def test_district_regions_follow_the_address(M):
     """district mode (the metro fixture): the 구·군 of the address, in the official order of site.json districts
     (only those with places), then '구·군 미기재'; list and map groups follow it; ids are 'g-jung-gu', 'r-jung-gu'."""
