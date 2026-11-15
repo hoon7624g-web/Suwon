@@ -255,19 +255,66 @@
         "place_id": "tourapi-264386"
       },
       {
+        "key": "suwonstation-ingye",
+        "name": "수원역·인계동",
+        "place_id": "tourapi-129191",
+        "areas": [
+          "매산로1가",
+          "매산로2가",
+          "매산로3가",
+          "인계동"
+        ],
+        "points": [
+          "tourapi-2753666"
+        ]
+      },
+      {
         "key": "gwanggyo-yeongtong",
         "name": "광교호수공원·박물관·영통",
-        "place_id": "tourapi-2662855"
+        "place_id": "tourapi-2662855",
+        "areas": [
+          "이의동",
+          "망포동",
+          "매탄동",
+          "신동",
+          "영통동",
+          "원천동",
+          "하동"
+        ]
       },
       {
         "key": "manseok-jangan",
         "name": "만석공원·광교산·장안",
-        "place_id": "tourapi-3351831"
+        "place_id": "tourapi-3351831",
+        "areas": [
+          "상광교동",
+          "하광교동",
+          "송죽동",
+          "이목동",
+          "파장동"
+        ]
       },
       {
         "key": "irwol-gwonseon",
         "name": "일월수목원·서호공원·권선",
-        "place_id": "tourapi-3076051"
+        "place_id": "tourapi-3076051",
+        "areas": [
+          "고색동",
+          "곡반정동",
+          "권선동",
+          "서둔동",
+          "세류동",
+          "오목천동",
+          "평동",
+          "구운동",
+          "금곡동",
+          "입북동",
+          "탑동",
+          "호매실동",
+          "천천동",
+          "정자동",
+          "율전동"
+        ]
       }
     ],
     "far": null,
